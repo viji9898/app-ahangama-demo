@@ -7,6 +7,12 @@ import {
   QrcodeOutlined,
   ArrowRightOutlined,
   ThunderboltOutlined,
+  HeartOutlined,
+  LaptopOutlined,
+  CarOutlined,
+  ShopOutlined,
+  TeamOutlined,
+  EnvironmentOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
@@ -239,7 +245,7 @@ export default function Home() {
               subtitle="Surf, wellness, and day-makers"
               href="/experiences"
               image={
-                "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/surfing_ahangama_surf_camp_poe_waves_sri_lanka-scaled.jpg"
+                "              https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stilt-fisherman.jpg"
               }
               icon={<CompassOutlined />}
             />
@@ -252,6 +258,75 @@ export default function Home() {
                 "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/yaka-mask.jpg"
               }
               icon={<CompassOutlined />}
+            />
+          </Col>
+          <Col xs={24} md={8}>
+            <FeaturedCard
+              title="Wellness"
+              subtitle="Yoga, recovery, and slow rituals"
+              href="/wellness"
+              image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/wellness.avif"
+              icon={<HeartOutlined />}
+            />
+          </Col>
+
+          <Col xs={24} md={8}>
+            <FeaturedCard
+              title="Surf"
+              subtitle="Breaks, schools, and surf culture"
+              href="/surf"
+              image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/surfing_ahangama_surf_camp_poe_waves_sri_lanka-scaled.jpg"
+              icon={<ThunderboltOutlined />}
+            />
+          </Col>
+
+          <Col xs={24} md={8}>
+            <FeaturedCard
+              title="Work & Long Stays"
+              subtitle="Coworking, Wi-Fi, and living well"
+              href="/work-long-stays"
+              image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/long-stays.avif"
+              icon={<LaptopOutlined />}
+            />
+          </Col>
+
+          <Col xs={24} md={8}>
+            <FeaturedCard
+              title="Getting Around"
+              subtitle="Scooters, tuk-tuks, and drivers"
+              href="/getting-around"
+              image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tuk-tuk.jpg"
+              icon={<CarOutlined />}
+            />
+          </Col>
+
+          <Col xs={24} md={8}>
+            <FeaturedCard
+              title="Shops & Essentials"
+              subtitle="Groceries, pharmacies, and basics"
+              href="/shops-essentials"
+              image="https://images.pexels.com/photos/3962284/pexels-photo-3962284.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              icon={<ShopOutlined />}
+            />
+          </Col>
+
+          <Col xs={24} md={8}>
+            <FeaturedCard
+              title="Community"
+              subtitle="Events, meetups, and people"
+              href="/community"
+              image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/community.jpg"
+              icon={<TeamOutlined />}
+            />
+          </Col>
+
+          <Col xs={24} md={8}>
+            <FeaturedCard
+              title="Maps & Itineraries"
+              subtitle="Walks, days, and short trips"
+              href="/maps-itineraries"
+              image="https://images.pexels.com/photos/7412095/pexels-photo-7412095.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              icon={<EnvironmentOutlined />}
             />
           </Col>
         </Row>
