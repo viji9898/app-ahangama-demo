@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Space, Typography, Input, Button, Tag } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useSearch } from "../../app/searchContext";
 
 const { Text } = Typography;
@@ -45,7 +45,9 @@ export default function TopNav() {
                 background: "#111",
               }}
             />
-            <Text strong>ahangama.com</Text>
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              <Text strong>ahangama.com</Text>
+            </Link>
             <Tag>Curated</Tag>
           </Space>
         </Col>

@@ -1,0 +1,111 @@
+/* --- Ahangama homepage visual layer --- */
+.ahg-hero {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: radial-gradient(
+      1200px 400px at 10% 0%,
+      rgba(0, 0, 0, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 400px at 90% 10%,
+      rgba(0, 0, 0, 0.05),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0.95)
+    );
+}
+.ahg-heroInner {
+  padding: 22px;
+}
+
+.ahg-pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.ahg-pill {
+  border-radius: 999px !important;
+}
+
+.ahg-h1 {
+  margin: 0 !important;
+  font-size: 46px !important;
+  line-height: 1.02 !important;
+}
+.ahg-sub {
+  font-size: 16px;
+  max-width: 680px;
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.ahg-metrics {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.ahg-metric {
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.7);
+  min-width: 140px;
+}
+.ahg-metricVal {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.ahg-heroMedia {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  height: 360px;
+}
+.ahg-heroImg {
+  width: 100%;
+  height: 100%;
+  background: url("https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1800")
+    center/cover no-repeat;
+  filter: saturate(1.05) contrast(1.05);
+  transform: scale(1.03);
+}
+.ahg-heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.55));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+}
+.ahg-overlayTop {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ahg-overlayBottom {
+}
+.ahg-overlayTag {
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+.ahg-feature .ant-card-body {
+  padding: 16px !important;
+}
+
+.ahg-cardCta {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.04));
+}
