@@ -9,11 +9,13 @@ import CardLanding from "../pages/CardLanding";
 import CardBuy from "../pages/CardBuy";
 import MyCard from "../pages/MyCard";
 import CardVerify from "../pages/CardVerify";
+import MasterIndex from "../pages/MasterIndex";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 
 export const routes = [
   { path: "/", element: <Home /> },
+  { path: "/master-index", element: <MasterIndex /> },
   { path: "/search", element: <SearchPage /> },
   { path: "/card", element: <CardLanding /> },
   { path: "/card/buy", element: <CardBuy /> },

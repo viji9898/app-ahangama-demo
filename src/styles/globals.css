@@ -1,3 +1,28 @@
+:root {
+  /* Core neutrals */
+  --bg-sand: #f4f1ec; /* warm off-white / sand */
+  --bg-card: #faf8f4;
+  --ink-primary: #1f2a24; /* editorial ink */
+  --ink-muted: #6b6f6a;
+
+  /* Ocean blue (primary action) */
+  --ocean-blue: #4f6f86;
+  --ocean-blue-hover: #435f73;
+
+  /* Category accents (low saturation) */
+  --accent-food: #c46a3a; /* burnt orange */
+  --accent-surf: #3e5f73; /* deep blue */
+  --accent-stays: #6b7c5a; /* olive / sage */
+  --accent-wellness: #7a6a86; /* muted purple */
+
+  /* UI */
+  --line-soft: rgba(31, 42, 36, 0.08);
+  --shadow-soft: 0 12px 32px rgba(31, 42, 36, 0.08);
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+}
+
 /* --- Ahangama homepage visual layer --- */
 .ahg-hero {
   border-radius: 22px;
@@ -108,4 +133,467 @@
 
 .ahg-cardCta {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.04));
+}
+
+/* ===== Daymaker-inspired skin for existing Ahangama homepage (style-only) ===== */
+:root {
+  --dm-ink: #1f2a24; /* deep ink */
+  --dm-ink-2: #2f3b34; /* button ink */
+  --dm-cream: #f6f0e6; /* warm cream canvas */
+  --dm-card: #fbf7ef; /* warm card surface */
+  --dm-line: rgba(31, 42, 36, 0.08);
+  --dm-line-2: rgba(31, 42, 36, 0.12);
+  --dm-shadow: 0 14px 40px rgba(31, 42, 36, 0.08);
+  --dm-radius-xl: 26px;
+  --dm-radius-lg: 18px;
+  --dm-radius-md: 14px;
+}
+
+/* Rounded “sheet” under hero */
+.dm-heroCut {
+  height: 28px;
+  margin-top: -14px;
+  background: var(--dm-cream);
+  border-top-left-radius: var(--dm-radius-xl);
+  border-top-right-radius: var(--dm-radius-xl);
+}
+.dm-canvas {
+  background: var(--bg-sand);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  margin-top: -16px;
+  padding-top: 24px;
+}
+
+.dm-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+
+/* Hero: keep your structure, just soften and “Daymaker” it */
+.ahg-hero {
+  border-radius: var(--dm-radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--dm-shadow);
+  background: radial-gradient(
+      1200px 420px at 15% 0%,
+      rgba(0, 0, 0, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 420px at 90% 10%,
+      rgba(0, 0, 0, 0.05),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.92)
+    );
+}
+.ahg-heroInner {
+  padding: 22px;
+}
+.ahg-h1 {
+  letter-spacing: -0.02em;
+}
+.ahg-sub {
+  font-size: 15px;
+}
+
+/* Pills */
+.ahg-pill {
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Buttons: ink like screenshot */
+.ant-btn-primary {
+  background: var(--dm-ink-2) !important;
+  border-color: var(--dm-ink-2) !important;
+}
+.ant-btn-primary:hover {
+  filter: brightness(1.03);
+}
+
+/* Metrics blocks */
+.ahg-metric {
+  border-radius: var(--dm-radius-xl);
+  border: 1px solid var(--dm-line);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 26px rgba(31, 42, 36, 0.06);
+}
+
+/* Featured cards: softer + warmer */
+.ahg-feature {
+  border-radius: var(--dm-radius-xl) !important;
+  border: 1px solid var(--dm-line) !important;
+  background: var(--dm-card) !important;
+  box-shadow: 0 10px 28px rgba(31, 42, 36, 0.06);
+}
+.ahg-feature:hover {
+  box-shadow: 0 18px 44px rgba(31, 42, 36, 0.1);
+}
+.ahg-feature .ant-card-body {
+  padding: 16px !important;
+}
+
+/* The hero media card should feel premium */
+.ahg-heroMedia {
+  border-radius: var(--dm-radius-xl);
+  border: 1px solid var(--dm-line);
+  box-shadow: var(--dm-shadow);
+}
+.ahg-overlayTag {
+  border-radius: 999px !important;
+}
+
+/* Cards in lower sections */
+.ahg-cardCta,
+.ant-card {
+  border-radius: var(--dm-radius-xl);
+}
+.ahg-cardCta {
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 34px rgba(31, 42, 36, 0.07);
+  border: 1px solid var(--dm-line) !important;
+}
+
+/* ===== Master Index (calm editorial) ===== */
+.mi-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 12px 36px;
+}
+
+.mi-hero,
+.mi-side,
+.mi-footerCta {
+  background: var(--bg-card, #faf8f4);
+  border-radius: var(--radius-lg, 22px);
+  border: 1px solid var(--line-soft, rgba(31, 42, 36, 0.08));
+  box-shadow: var(--shadow-soft, 0 12px 32px rgba(31, 42, 36, 0.08));
+}
+
+.mi-pill {
+  border-radius: 999px !important;
+  background: rgba(79, 111, 134, 0.1) !important; /* muted ocean tint */
+  border: 1px solid rgba(79, 111, 134, 0.18) !important;
+  color: rgba(31, 42, 36, 0.85) !important;
+}
+
+.mi-title {
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: -0.01em;
+}
+
+.mi-search.ant-input-affix-wrapper {
+  border-radius: 999px !important;
+  border: 1px solid rgba(31, 42, 36, 0.1) !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+.mi-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 42, 36, 0.1);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.mi-nav {
+  display: grid;
+  gap: 8px;
+}
+
+.mi-navLink {
+  color: rgba(31, 42, 36, 0.8);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.mi-navLink:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.mi-collapse {
+  background: transparent !important;
+  border: none !important;
+}
+
+.mi-collapse .ant-collapse-item {
+  border-radius: var(--radius-lg, 22px);
+  overflow: hidden;
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  margin-bottom: 12px;
+}
+
+.mi-collapse .ant-collapse-header {
+  padding: 14px 16px !important;
+}
+
+.mi-sectionLabel {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.mi-table .ant-table {
+  background: transparent !important;
+}
+
+.mi-table .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.65) !important;
+  border-bottom: 1px solid rgba(31, 42, 36, 0.08) !important;
+}
+
+.mi-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid rgba(31, 42, 36, 0.06) !important;
+}
+
+.mi-offerTag {
+  border-radius: 999px !important;
+  background: rgba(79, 111, 134, 0.1) !important;
+  border: 1px solid rgba(79, 111, 134, 0.18) !important;
+}
+
+/* ===== Master Index: make table feel editorial + roomy ===== */
+.mi-table .ant-table {
+  background: transparent !important;
+}
+
+/* Header: lighter, calmer */
+.mi-table .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border-bottom: 1px solid rgba(31, 42, 36, 0.08) !important;
+  color: rgba(31, 42, 36, 0.85) !important;
+  font-weight: 600;
+  padding: 14px 14px !important;
+}
+
+/* Rows: more breathing room */
+.mi-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid rgba(31, 42, 36, 0.06) !important;
+  padding: 18px 14px !important;
+  vertical-align: top;
+}
+
+/* Subtle zebra (very light) */
+.mi-table .ant-table-tbody > tr:nth-child(even) > td {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Hover: calm highlight */
+.mi-table .ant-table-tbody > tr:hover > td {
+  background: rgba(79, 111, 134, 0.08) !important;
+}
+
+/* ID tag */
+.mi-idTag {
+  border-radius: 999px !important;
+  background: rgba(31, 42, 36, 0.06) !important;
+  border: 1px solid rgba(31, 42, 36, 0.1) !important;
+  color: rgba(31, 42, 36, 0.85) !important;
+  font-weight: 600;
+}
+
+/* Place cell layout */
+.mi-placeCell {
+  display: grid;
+  gap: 8px;
+  min-width: 260px;
+}
+
+.mi-placeTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mi-placeName {
+  font-weight: 700;
+  color: rgba(31, 42, 36, 0.92);
+  font-size: 16px;
+}
+
+/* meta chips */
+.mi-metaTag {
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(31, 42, 36, 0.1) !important;
+  color: rgba(31, 42, 36, 0.78) !important;
+}
+
+/* Why curated text */
+.mi-why {
+  color: rgba(31, 42, 36, 0.68);
+  line-height: 1.5;
+}
+
+/* Offer: pill + wrap, not a long stretched chip */
+.mi-offerWrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.mi-offerPill {
+  border-radius: 999px !important;
+  padding: 6px 10px !important;
+  background: rgba(79, 111, 134, 0.12) !important;
+  border: 1px solid rgba(79, 111, 134, 0.2) !important;
+  color: rgba(31, 42, 36, 0.9) !important;
+  white-space: normal !important;
+  max-width: 240px;
+}
+
+/* Make table container feel like a calm card */
+.mi-table .ant-table-container {
+  border: 1px solid rgba(31, 42, 36, 0.08) !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+
+/* ===== Master Index Premium List ===== */
+.mi-list {
+  display: grid;
+  gap: 12px;
+}
+
+/* Each row becomes a soft editorial card */
+.mi-rowCard {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 14px;
+  padding: 16px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 14px 32px rgba(31, 42, 36, 0.07);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .mi-rowCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Left block */
+.mi-rowTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mi-rowTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 240px;
+}
+
+.mi-idPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 42, 36, 0.1);
+  background: rgba(31, 42, 36, 0.05);
+  color: rgba(31, 42, 36, 0.86);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.mi-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(31, 42, 36, 0.92);
+}
+
+/* Meta pills (type + area) */
+.mi-metaRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mi-metaPill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 42, 36, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  color: rgba(31, 42, 36, 0.78);
+  font-size: 13px;
+}
+
+/* “Why” */
+.mi-whyText {
+  margin-top: 10px;
+  color: rgba(31, 42, 36, 0.68);
+  line-height: 1.55;
+  max-width: 760px;
+}
+
+/* Offer block (right) */
+.mi-rowRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+@media (max-width: 860px) {
+  .mi-rowRight {
+    justify-content: flex-start;
+  }
+}
+
+.mi-offerPillPremium {
+  max-width: 240px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(79, 111, 134, 0.22);
+  background: rgba(79, 111, 134, 0.12);
+  color: rgba(31, 42, 36, 0.88);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.mi-offerMuted {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px dashed rgba(31, 42, 36, 0.18);
+  color: rgba(31, 42, 36, 0.45);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Make Collapse items feel like editorial sections */
+.mi-collapse .ant-collapse-item {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.mi-collapse .ant-collapse-header {
+  padding: 16px 16px !important;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mi-collapse .ant-collapse-content {
+  background: transparent !important;
 }
