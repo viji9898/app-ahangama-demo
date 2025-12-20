@@ -597,3 +597,96 @@
 .mi-collapse .ant-collapse-content {
   background: transparent !important;
 }
+
+/* ===== Vendors page: calm, editorial, premium ===== */
+.vd-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 12px 36px;
+}
+
+.vd-hero,
+.vd-card,
+.vd-why,
+.vd-footer {
+  background: var(--bg-card, #faf8f4);
+  border-radius: var(--radius-lg, 22px);
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  box-shadow: 0 14px 32px rgba(31, 42, 36, 0.07);
+}
+
+.vd-pill {
+  border-radius: 999px !important;
+  background: rgba(79, 111, 134, 0.1) !important;
+  border: 1px solid rgba(79, 111, 134, 0.18) !important;
+  color: rgba(31, 42, 36, 0.85) !important;
+  margin-bottom: 10px;
+}
+
+.vd-title {
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: -0.01em;
+}
+
+.vd-search.ant-input-affix-wrapper {
+  border-radius: 999px !important;
+  border: 1px solid rgba(31, 42, 36, 0.1) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.vd-heroCtas {
+  margin-top: 14px;
+}
+
+.vd-collapse {
+  background: transparent !important;
+  border: none !important;
+}
+
+.vd-collapse .ant-collapse-item {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 12px;
+}
+
+.vd-collapse .ant-collapse-header {
+  padding: 16px 16px !important;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.vd-secLabel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.vd-secBody {
+  padding-top: 6px;
+}
+
+.vd-blockTitle {
+  display: block;
+  font-weight: 700;
+  color: rgba(31, 42, 36, 0.88);
+  margin-bottom: 10px;
+}
+
+.vd-list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(31, 42, 36, 0.72);
+  line-height: 1.6;
+}
+
+.vd-li {
+  margin-bottom: 8px;
+}
+
+.vd-why {
+  margin-top: 14px;
+  background: rgba(79, 111, 134, 0.08) !important;
+  border: 1px solid rgba(79, 111, 134, 0.14) !important;
+}
