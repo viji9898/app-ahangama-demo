@@ -19,7 +19,7 @@ export const PLACES = [
     lat: 5.9705,
     lng: 80.364,
     image:
-      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coffee.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl: "https://maps.google.com/?q=5.9705,80.3640",
@@ -44,7 +44,7 @@ export const PLACES = [
     lat: 5.9695,
     lng: 80.365,
     image:
-      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+6food.webp",
     ogImage:
       "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl: "https://maps.google.com/?q=Ahangama",
@@ -143,7 +143,7 @@ export const PLACES = [
     lat: 5.969,
     lng: 80.368,
     image:
-      "https://images.pexels.com/photos/390051/surfing-wave-surfboard-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+2soul-surf.webp",
     ogImage:
       "https://images.pexels.com/photos/390051/surfing-wave-surfboard-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl: "https://maps.google.com/?q=5.9690,80.3680",
@@ -167,7 +167,7 @@ export const PLACES = [
     lat: 5.97,
     lng: 80.366,
     image:
-      "https://images.pexels.com/photos/3822356/pexels-photo-3822356.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+3yoga.webp",
     ogImage:
       "https://images.pexels.com/photos/3822356/pexels-photo-3822356.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl: "https://maps.google.com/?q=5.9700,80.3660",
@@ -187,7 +187,7 @@ export const PLACES = [
     price: "Mid-range",
     area: "Ahangama",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cactus-logo.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+5catus.webp",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cactus-logo.jpg",
     lat: 5.9718909084100185,
@@ -209,7 +209,7 @@ export const PLACES = [
     price: "Mid-range",
     area: "Ahangama",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marshmellow-logo.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+1marshmellow.webp",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marshmellow-logo.jpg",
     lat: 5.972424094254227,
