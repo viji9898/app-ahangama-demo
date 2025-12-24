@@ -43,7 +43,7 @@ export const CATEGORIES = [
     key: "culture",
     title: "Culture",
     description:
-      "Context that helps you travel better — local rhythms, etiquette, seasons, and how it actually works.",
+      "Context thats helps you travel better — local rhythms, etiquette, seasons, and how it actually works.",
     icon: BookOutlined,
     basePath: "/culture",
     seoTitle: "Ahangama Culture Guide",
