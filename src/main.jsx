@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import "antd/dist/reset.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 import App from "./app/App";
 import "./styles/globals.css";
 import { SearchProvider } from "./app/searchContext";

@@ -20,6 +20,7 @@ import { absUrl } from "../app/siteUrl";
 import CategoryGrid from "../components/ui/CategoryGrid";
 import { CATEGORIES } from "../data/categories";
 import { PLACES } from "../data/places";
+import PassUnlocksSection from "../components/home/PassUnlocksSection";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -222,9 +223,12 @@ export default function Home() {
               </Row>
             </div>
           </div>
+          <div style={{ marginTop: 16 }}>
+            <PassUnlocksSection destinationSlug="ahangama" />
+          </div>
 
           {/* QUICK FEATURED */}
-          <div style={{ marginTop: 16 }}>
+          {/* <div style={{ marginTop: 16 }}>
             <Row gutter={[12, 12]}>
               <Col xs={24} md={8}>
                 <FeaturedCard
@@ -341,10 +345,10 @@ export default function Home() {
                 />
               </Col>
             </Row>
-          </div>
+          </div> */}
 
           {/* CATEGORY GRID */}
-          <div style={{ marginTop: 16 }}>
+          {/* <div style={{ marginTop: 16 }}>
             <Card
               style={{ borderRadius: 18, border: "1px solid rgba(0,0,0,0.06)" }}
               bodyStyle={{ padding: 18 }}
@@ -367,7 +371,7 @@ export default function Home() {
               <Divider style={{ margin: "14px 0" }} />
               <CategoryGrid categories={categories} />
             </Card>
-          </div>
+          </div> */}
 
           {/* CARD CTA */}
           <div style={{ marginTop: 16 }}>

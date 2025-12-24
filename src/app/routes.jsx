@@ -11,13 +11,17 @@ import MyCard from "../pages/MyCard";
 import CardVerify from "../pages/CardVerify";
 import MasterIndex from "../pages/MasterIndex";
 import Vendors from "../pages/Vendors";
+import MapPage from "../pages/Map";
+import MapGoogle from "../pages/MapGoogle";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 
 export const routes = [
   { path: "/", element: <Home /> },
   { path: "/master-index", element: <MasterIndex /> },
+  { path: "/map", element: <MapPage /> },
   { path: "/search", element: <SearchPage /> },
+  { path: "/map-google", element: <MapGoogle /> },
   { path: "/vendors", element: <Vendors /> },
   { path: "/card", element: <CardLanding /> },
   { path: "/card/buy", element: <CardBuy /> },

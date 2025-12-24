@@ -12,14 +12,17 @@ export const PLACES = [
     bestFor: ["Coffee", "Breakfast", "Reading", "Work-friendly"],
     tags: ["Calm", "Bright", "Consistent"],
     cardPerk: "10% off the bill with the Ahangama Card (once per day).",
+    offer: "10% off the bill with the Ahangama Card (once per day).",
     price: "Mid-range",
     hours: "07:30 – 16:30 (confirm seasonally)",
     area: "Ahangama (Central)",
+    lat: 5.9705,
+    lng: 80.364,
     image:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl: "https://maps.google.com/?q=Ahangama",
+    mapUrl: "https://maps.google.com/?q=5.9705,80.3640",
   },
   {
     id: "good-lunch",
@@ -34,9 +37,12 @@ export const PLACES = [
     bestFor: ["Lunch", "Casual", "Consistent"],
     tags: ["Easy", "Relaxed", "Reliable"],
     cardPerk: "Free coffee with the Ahangama Card (once per day).",
+    offer: "Free coffee with the Ahangama Card (once per day).",
     price: "Mid-range",
     hours: "11:30 – 16:00 (confirm seasonally)",
     area: "Ahangama (Central)",
+    lat: 5.9695,
+    lng: 80.365,
     image:
       "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ogImage:
@@ -56,14 +62,17 @@ export const PLACES = [
     bestFor: ["Sunset", "Drinks", "Casual"],
     tags: ["Sunset", "Chill", "Good vibe"],
     cardPerk: "15% off drinks with the Ahangama Card (once per day).",
+    offer: "15% off drinks with the Ahangama Card (once per day).",
     price: "Mid-range",
     hours: "16:00 – late (confirm seasonally)",
     area: "Ahangama (Beach road)",
+    lat: 5.9685,
+    lng: 80.3675,
     image:
       "https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ogImage:
       "https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl: "https://maps.google.com/?q=Ahangama",
+    mapUrl: "https://maps.google.com/?q=5.9685,80.3675",
   },
   {
     id: "quiet-boutique-stay",
@@ -77,14 +86,17 @@ export const PLACES = [
     bestFor: ["Boutique", "Couples", "Long-stay friendly"],
     tags: ["Quiet", "Minimal", "Good service"],
     cardPerk: "Room upgrade (subject to availability) with the Ahangama Card.",
+    offer: "Room upgrade (subject to availability) with the Ahangama Card.",
     price: "Premium",
     hours: "Check-in/out times vary",
     area: "Ahangama",
+    lat: 5.971,
+    lng: 80.363,
     image:
       "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ogImage:
       "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl: "https://maps.google.com/?q=Ahangama",
+    mapUrl: "https://maps.google.com/?q=5.9710,80.3630",
   },
   {
     id: "long-stay-guesthouse",
@@ -98,14 +110,17 @@ export const PLACES = [
     bestFor: ["Budget", "Long stays", "Work-friendly"],
     tags: ["Practical", "Calm", "Good value"],
     cardPerk: "Late checkout (subject to availability) with the Ahangama Card.",
+    offer: "Late checkout (subject to availability) with the Ahangama Card.",
     price: "Budget–Mid",
     hours: "Check-in/out times vary",
     area: "Ahangama",
+    lat: 5.972,
+    lng: 80.362,
     image:
       "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ogImage:
       "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl: "https://maps.google.com/?q=Ahangama",
+    mapUrl: "https://maps.google.com/?q=5.9720,80.3620",
   },
 
   // EXPERIENCES
@@ -121,14 +136,17 @@ export const PLACES = [
     bestFor: ["Surf", "Beginners", "Improvers"],
     tags: ["Coaching", "Safe", "Progress"],
     cardPerk: "10% off surf lesson packages with the Ahangama Card.",
+    offer: "10% off surf lesson packages with the Ahangama Card.",
     price: "Mid-range",
     hours: "Depends on tides/conditions",
     area: "Ahangama / Midigama",
+    lat: 5.969,
+    lng: 80.368,
     image:
       "https://images.pexels.com/photos/390051/surfing-wave-surfboard-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ogImage:
       "https://images.pexels.com/photos/390051/surfing-wave-surfboard-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl: "https://maps.google.com/?q=Ahangama",
+    mapUrl: "https://maps.google.com/?q=5.9690,80.3680",
   },
   {
     id: "sunset-yoga-session",
@@ -142,13 +160,60 @@ export const PLACES = [
     bestFor: ["Wellness", "Yoga", "Evenings"],
     tags: ["Calm", "Consistent", "Good teachers"],
     cardPerk: "Free class add-on (subject to schedule) with the Ahangama Card.",
+    offer: "Free class add-on (subject to schedule) with the Ahangama Card.",
     price: "Mid-range",
     hours: "Class schedule varies",
     area: "Ahangama",
+    lat: 5.97,
+    lng: 80.366,
     image:
       "https://images.pexels.com/photos/3822356/pexels-photo-3822356.jpeg?auto=compress&cs=tinysrgb&w=1600",
     ogImage:
       "https://images.pexels.com/photos/3822356/pexels-photo-3822356.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl: "https://maps.google.com/?q=Ahangama",
+    mapUrl: "https://maps.google.com/?q=5.9700,80.3660",
+  },
+  {
+    id: "cactus-cafe",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Cactus",
+    slug: "cactus-cafe",
+    excerpt: "A local cafe with great atmosphere and good coffee.",
+    description:
+      "Cactus offers a cozy atmosphere perfect for coffee and casual dining.",
+    bestFor: ["Coffee", "Casual dining", "Local vibe"],
+    tags: ["Local", "Coffee", "Casual"],
+    offer: "10% off coffee with the Ahangama Card",
+    price: "Mid-range",
+    area: "Ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cactus-logo.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cactus-logo.jpg",
+    lat: 5.9718909084100185,
+    lng: 80.36452917292674,
+    mapUrl: "https://maps.google.com/?q=5.9718909084100185,80.36452917292674",
+  },
+  {
+    id: "marshmellow-surf-cafe",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Marshmellow Surf Café",
+    slug: "marshmellow-surf-cafe",
+    excerpt: "A surf-themed cafe with great coffee and laid-back vibes.",
+    description:
+      "Marshmellow Surf Café combines great coffee with a relaxed surf atmosphere, perfect for post-session refreshments.",
+    bestFor: ["Coffee", "Surf culture", "Casual dining", "Relaxed atmosphere"],
+    tags: ["Surf", "Coffee", "Casual", "Local"],
+    offer: "Free smoothie with breakfast order using the Ahangama Card",
+    price: "Mid-range",
+    area: "Ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marshmellow-logo.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marshmellow-logo.jpg",
+    lat: 5.972424094254227,
+    lng: 80.36355358042105,
+    mapUrl: "https://maps.google.com/?q=5.972424094254227,80.36355358042105",
   },
 ];
