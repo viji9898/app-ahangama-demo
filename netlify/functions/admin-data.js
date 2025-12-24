@@ -1,7 +1,13 @@
 // Force fresh deployment - 2025-12-24
-import { db } from "../../src/lib/database.js";
+// Direct database imports like qr-verify function
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-serverless";
 import { purchases, redemptions } from "../../db/schema.js";
 import { desc, eq, and, gte, count, sum } from "drizzle-orm";
+
+// Initialize database connection directly
+const sql = neon(process.env.DATABASE_URL);
+const db = drizzle(sql);
 
 export const handler = async (event, context) => {
   const headers = {
