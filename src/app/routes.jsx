@@ -9,10 +9,12 @@ import CardLanding from "../pages/CardLanding";
 import CardBuy from "../pages/CardBuy";
 import MyCard from "../pages/MyCard";
 import CardVerify from "../pages/CardVerify";
+import PaymentSuccess from "../pages/PaymentSuccess";
 import MasterIndex from "../pages/MasterIndex";
 import Vendors from "../pages/Vendors";
 import MapPage from "../pages/Map";
 import MapGoogle from "../pages/MapGoogle";
+import AdminDashboard from "../pages/AdminDashboard";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 
@@ -25,9 +27,11 @@ export const routes = [
   { path: "/vendors", element: <Vendors /> },
   { path: "/card", element: <CardLanding /> },
   { path: "/card/buy", element: <CardBuy /> },
+  { path: "/card/success", element: <PaymentSuccess /> },
   { path: "/card/my", element: <MyCard /> },
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
+  { path: "/admin", element: <AdminDashboard /> },
   {
     path: "/eat",
     element: <CategoryIndex categoryKey="eat" config={cfg("eat")} />,

@@ -12,15 +12,20 @@
   },
   "dependencies": {
     "@mapbox/search-js-react": "^1.5.1",
+    "@neondatabase/serverless": "^1.0.2",
+    "@netlify/neon": "^0.1.0",
     "@react-google-maps/api": "^2.20.8",
     "antd": "^6.1.1",
+    "drizzle-kit": "^0.31.8",
+    "drizzle-orm": "^0.45.1",
     "mapbox-gl": "^3.17.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-helmet-async": "^2.0.5",
     "react-map-gl": "^8.1.0",
-    "react-router-dom": "^7.11.0"
+    "react-router-dom": "^7.11.0",
+    "stripe": "^20.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
