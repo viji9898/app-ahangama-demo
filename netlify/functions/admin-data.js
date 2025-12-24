@@ -1,3 +1,4 @@
+// Force fresh deployment - 2025-12-24
 import { db } from "../../src/lib/database.js";
 import { purchases, redemptions } from "../../db/schema.js";
 import { desc, eq, and, gte, count, sum } from "drizzle-orm";
