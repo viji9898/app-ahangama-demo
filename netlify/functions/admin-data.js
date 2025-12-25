@@ -1,13 +1,8 @@
-// Force fresh deployment - 2025-12-24
-// Direct database imports like qr-verify function
+// Force fresh deployment - 2025-12-25
+// Use raw SQL like qr-verify function to avoid drizzle import issues
 import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-serverless";
-import { purchases, redemptions } from "../../db/schema.js";
-import { desc, eq, and, gte, count, sum } from "drizzle-orm";
 
-// Initialize database connection directly
 const sql = neon(process.env.DATABASE_URL);
-const db = drizzle(sql);
 
 export const handler = async (event, context) => {
   const headers = {
@@ -34,10 +29,10 @@ export const handler = async (event, context) => {
 
     switch (type) {
       case "purchases":
-        const allPurchases = await db
-          .select()
-          .from(purchases)
-          .orderBy(desc(purchases.createdAt));
+        const allPurchases = await sql`
+          SELECT * FROM purchases 
+          ORDER BY created_at DESC
+        `;
 
         return {
           statusCode: 200,
@@ -50,10 +45,10 @@ export const handler = async (event, context) => {
         };
 
       case "redemptions":
-        const allRedemptions = await db
-          .select()
-          .from(redemptions)
-          .orderBy(desc(redemptions.redeemedAt));
+        const allRedemptions = await sql`
+          SELECT * FROM redemptions 
+          ORDER BY redeemed_at DESC
+        `;
 
         return {
           statusCode: 200,
@@ -66,27 +61,22 @@ export const handler = async (event, context) => {
         };
 
       case "stats":
-        const purchaseCount = await db
-          .select({ count: count() })
-          .from(purchases);
+        const purchaseCount = await sql`
+          SELECT COUNT(*) as count FROM purchases
+        `;
 
-        const redemptionCount = await db
-          .select({ count: count() })
-          .from(redemptions);
+        const redemptionCount = await sql`
+          SELECT COUNT(*) as count FROM redemptions
+        `;
 
-        const totalRevenue = await db
-          .select({ total: sum(purchases.priceUsd) })
-          .from(purchases);
+        const totalRevenue = await sql`
+          SELECT SUM(price_usd::numeric) as total FROM purchases
+        `;
 
-        const activePurchases = await db
-          .select({ count: count() })
-          .from(purchases)
-          .where(
-            and(
-              eq(purchases.isActive, true),
-              gte(purchases.expiryDate, new Date())
-            )
-          );
+        const activePurchases = await sql`
+          SELECT COUNT(*) as count FROM purchases 
+          WHERE is_active = true AND expiry_date >= NOW()
+        `;
 
         return {
           statusCode: 200,
@@ -94,10 +84,10 @@ export const handler = async (event, context) => {
           body: JSON.stringify({
             success: true,
             stats: {
-              totalPurchases: purchaseCount[0]?.count || 0,
-              totalRedemptions: redemptionCount[0]?.count || 0,
-              totalRevenue: totalRevenue[0]?.total || 0,
-              activePasses: activePurchases[0]?.count || 0,
+              totalPurchases: parseInt(purchaseCount[0]?.count) || 0,
+              totalRedemptions: parseInt(redemptionCount[0]?.count) || 0,
+              totalRevenue: parseFloat(totalRevenue[0]?.total) || 0,
+              activePasses: parseInt(activePurchases[0]?.count) || 0,
             },
           }),
         };
@@ -112,11 +102,11 @@ export const handler = async (event, context) => {
           };
         }
 
-        const customerPurchases = await db
-          .select()
-          .from(purchases)
-          .where(eq(purchases.customerEmail, email))
-          .orderBy(desc(purchases.createdAt));
+        const customerPurchases = await sql`
+          SELECT * FROM purchases 
+          WHERE customer_email = ${email}
+          ORDER BY created_at DESC
+        `;
 
         return {
           statusCode: 200,
