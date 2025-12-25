@@ -232,7 +232,9 @@ const AdminDashboard = () => {
             {new Date(record.purchaseDate).toLocaleDateString()}
           </Text>
           <Text style={{ fontSize: "11px" }} type="secondary">
-            {record.sessionId.substring(0, 20)}...
+            {record.sessionId
+              ? record.sessionId.substring(0, 20) + "..."
+              : "N/A"}
           </Text>
         </Space>
       ),

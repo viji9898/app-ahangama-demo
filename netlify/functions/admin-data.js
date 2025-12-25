@@ -29,10 +29,32 @@ export const handler = async (event, context) => {
 
     switch (type) {
       case "purchases":
-        const allPurchases = await sql`
+        const allPurchasesRaw = await sql`
           SELECT * FROM purchases 
           ORDER BY created_at DESC
         `;
+
+        // Transform snake_case to camelCase to match frontend expectations
+        const allPurchases = allPurchasesRaw.map((purchase) => ({
+          id: purchase.id,
+          sessionId: purchase.session_id,
+          qrCode: purchase.qr_code,
+          productId: purchase.product_id,
+          productName: purchase.product_name,
+          priceUsd: purchase.price_usd,
+          validityDays: purchase.validity_days,
+          maxPeople: purchase.max_people,
+          customerName: purchase.customer_name,
+          customerEmail: purchase.customer_email,
+          customerPhone: purchase.customer_phone,
+          stripePaymentIntentId: purchase.stripe_payment_intent_id,
+          currency: purchase.currency,
+          purchaseDate: purchase.purchase_date,
+          expiryDate: purchase.expiry_date,
+          isActive: purchase.is_active,
+          createdAt: purchase.created_at,
+          updatedAt: purchase.updated_at,
+        }));
 
         return {
           statusCode: 200,
@@ -45,10 +67,21 @@ export const handler = async (event, context) => {
         };
 
       case "redemptions":
-        const allRedemptions = await sql`
+        const allRedemptionsRaw = await sql`
           SELECT * FROM redemptions 
           ORDER BY redeemed_at DESC
         `;
+
+        // Transform snake_case to camelCase
+        const allRedemptions = allRedemptionsRaw.map((redemption) => ({
+          id: redemption.id,
+          purchaseId: redemption.purchase_id,
+          qrCode: redemption.qr_code,
+          vendorName: redemption.vendor_name,
+          locationDetails: redemption.location_details,
+          redeemedAt: redemption.redeemed_at,
+          createdAt: redemption.created_at,
+        }));
 
         return {
           statusCode: 200,
@@ -102,11 +135,33 @@ export const handler = async (event, context) => {
           };
         }
 
-        const customerPurchases = await sql`
+        const customerPurchasesRaw = await sql`
           SELECT * FROM purchases 
           WHERE customer_email = ${email}
           ORDER BY created_at DESC
         `;
+
+        // Transform snake_case to camelCase
+        const customerPurchases = customerPurchasesRaw.map((purchase) => ({
+          id: purchase.id,
+          sessionId: purchase.session_id,
+          qrCode: purchase.qr_code,
+          productId: purchase.product_id,
+          productName: purchase.product_name,
+          priceUsd: purchase.price_usd,
+          validityDays: purchase.validity_days,
+          maxPeople: purchase.max_people,
+          customerName: purchase.customer_name,
+          customerEmail: purchase.customer_email,
+          customerPhone: purchase.customer_phone,
+          stripePaymentIntentId: purchase.stripe_payment_intent_id,
+          currency: purchase.currency,
+          purchaseDate: purchase.purchase_date,
+          expiryDate: purchase.expiry_date,
+          isActive: purchase.is_active,
+          createdAt: purchase.created_at,
+          updatedAt: purchase.updated_at,
+        }));
 
         return {
           statusCode: 200,
