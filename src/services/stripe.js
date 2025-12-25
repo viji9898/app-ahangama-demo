@@ -10,21 +10,24 @@ export const STRIPE_PRICE_IDS = {
 
 export const createCheckoutSession = async (productId, customerData) => {
   try {
-    const response = await fetch("/.netlify/functions/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        priceId: STRIPE_PRICE_IDS[productId],
-        productId,
-        customerName: customerData.name,
-        customerEmail: customerData.email,
-        customerPhone: customerData.phone,
-        successUrl: `${window.location.origin}/card/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancelUrl: `${window.location.origin}/card`,
-      }),
-    });
+    const response = await fetch(
+      "/.netlify/functions/create-checkout-session",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          priceId: STRIPE_PRICE_IDS[productId],
+          productId,
+          customerName: customerData.name,
+          customerEmail: customerData.email,
+          customerPhone: customerData.phone,
+          successUrl: `${window.location.origin}/card/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${window.location.origin}/card`,
+        }),
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -32,19 +35,25 @@ export const createCheckoutSession = async (productId, customerData) => {
         status: response.status,
         statusText: response.statusText,
         error: errorText,
-        url: response.url
+        url: response.url,
       });
-      throw new Error(`Checkout session failed: ${response.status} - ${errorText}`);
+      throw new Error(
+        `Checkout session failed: ${response.status} - ${errorText}`
+      );
     }
 
     const session = await response.json();
 
-  if (session.error) {
-    throw new Error(session.error);
-  }
+    if (session.error) {
+      throw new Error(session.error);
+    }
 
-  // Redirect to Stripe Checkout
-  window.location.href = session.url;
+    // Redirect to Stripe Checkout
+    window.location.href = session.url;
+  } catch (error) {
+    console.error("Error creating checkout session:", error);
+    throw error;
+  }
 };
 
 export const verifyPayment = async (sessionId) => {
