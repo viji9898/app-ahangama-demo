@@ -325,7 +325,7 @@ export default function CardVerify() {
       <>
         {/* Redemption Modal - needed in vendor view too */}
         <RedemptionModal />
-        
+
         <div
           style={{
             minHeight: "100vh",
@@ -337,190 +337,197 @@ export default function CardVerify() {
             justifyContent: "center",
           }}
         >
-        <Card
-          style={{
-            width: "100%",
-            maxWidth: 500,
-            borderRadius: 16,
-            border: `2px solid ${borderColor}`,
-            boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
-          }}
-          bodyStyle={{ padding: 32, textAlign: "center" }}
-        >
-          {isValid ? (
-            <>
-              <div style={{ fontSize: 64, marginBottom: 16 }}>✅</div>
-              <Title level={2} style={{ color: "#52c41a", marginBottom: 8 }}>
-                VALID PASS
-              </Title>
-
-              <div style={{ marginTop: 24, textAlign: "left" }}>
-                <Title level={4} style={{ marginBottom: 16, color: "#262626" }}>
-                  Customer Details:
+          <Card
+            style={{
+              width: "100%",
+              maxWidth: 500,
+              borderRadius: 16,
+              border: `2px solid ${borderColor}`,
+              boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+            }}
+            bodyStyle={{ padding: 32, textAlign: "center" }}
+          >
+            {isValid ? (
+              <>
+                <div style={{ fontSize: 64, marginBottom: 16 }}>✅</div>
+                <Title level={2} style={{ color: "#52c41a", marginBottom: 8 }}>
+                  VALID PASS
                 </Title>
 
-                <Space direction="vertical" size={12} style={{ width: "100%" }}>
-                  <div>
-                    <Text strong style={{ color: "#595959" }}>
-                      Name:
-                    </Text>
-                    <div style={{ fontSize: 18, fontWeight: 500 }}>
-                      {verificationResult.purchase?.customerName}
-                    </div>
-                  </div>
+                <div style={{ marginTop: 24, textAlign: "left" }}>
+                  <Title
+                    level={4}
+                    style={{ marginBottom: 16, color: "#262626" }}
+                  >
+                    Customer Details:
+                  </Title>
 
-                  <div>
-                    <Text strong style={{ color: "#595959" }}>
-                      Email:
-                    </Text>
-                    <div style={{ fontSize: 16 }}>
-                      {verificationResult.purchase?.customerEmail}
-                    </div>
-                  </div>
-
-                  <div>
-                    <Text strong style={{ color: "#595959" }}>
-                      Phone:
-                    </Text>
-                    <div style={{ fontSize: 16 }}>
-                      {verificationResult.purchase?.customerPhone ||
-                        "Not provided"}
-                    </div>
-                  </div>
-
-                  <Divider />
-
-                  <div>
-                    <Text strong style={{ color: "#595959" }}>
-                      Pass Type:
-                    </Text>
-                    <div style={{ fontSize: 16 }}>
-                      {verificationResult.purchase?.productName}
-                    </div>
-                  </div>
-
-                  <div>
-                    <Text strong style={{ color: "#595959" }}>
-                      Expires:
-                    </Text>
-                    <div
-                      style={{
-                        fontSize: 16,
-                        color: "#52c41a",
-                        fontWeight: 500,
-                      }}
-                    >
-                      {new Date(
-                        verificationResult.purchase?.expiryDate
-                      ).toLocaleDateString("en-US", {
-                        weekday: "long",
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </div>
-                  </div>
-
-                  <div>
-                    <Text strong style={{ color: "#595959" }}>
-                      Max People:
-                    </Text>
-                    <div style={{ fontSize: 16 }}>
-                      {verificationResult.purchase?.maxPeople}{" "}
-                      {verificationResult.purchase?.maxPeople === 1
-                        ? "person"
-                        : "people"}
-                    </div>
-                  </div>
-
-                  {verificationResult.purchase?.redemptionCount > 0 && (
+                  <Space
+                    direction="vertical"
+                    size={12}
+                    style={{ width: "100%" }}
+                  >
                     <div>
                       <Text strong style={{ color: "#595959" }}>
-                        Previous Uses:
+                        Name:
                       </Text>
-                      <div style={{ fontSize: 16 }}>
-                        {verificationResult.purchase.redemptionCount} times
+                      <div style={{ fontSize: 18, fontWeight: 500 }}>
+                        {verificationResult.purchase?.customerName}
                       </div>
                     </div>
-                  )}
-                </Space>
 
-                {/* Add redemption button for valid passes */}
-                <Button
-                  type="primary"
-                  size="large"
-                  icon={<GiftOutlined />}
-                  onClick={() => {
-                    console.log("Redemption button clicked");
-                    setShowRedemptionModal(true);
-                  }}
-                  style={{
-                    marginTop: 24,
-                    width: "100%",
-                    height: 48,
-                    fontSize: 16,
-                    background: "#52c41a",
-                    borderColor: "#52c41a",
-                  }}
-                >
-                  Log Redemption
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div style={{ fontSize: 64, marginBottom: 16 }}>❌</div>
-              <Title level={2} style={{ color: "#ff4d4f", marginBottom: 8 }}>
-                {verificationResult.expired ? "EXPIRED PASS" : "INVALID PASS"}
-              </Title>
+                    <div>
+                      <Text strong style={{ color: "#595959" }}>
+                        Email:
+                      </Text>
+                      <div style={{ fontSize: 16 }}>
+                        {verificationResult.purchase?.customerEmail}
+                      </div>
+                    </div>
 
-              <Text style={{ fontSize: 16, color: "#8c8c8c" }}>
-                {verificationResult.error ||
-                  "This QR code is not valid or has expired."}
-              </Text>
+                    <div>
+                      <Text strong style={{ color: "#595959" }}>
+                        Phone:
+                      </Text>
+                      <div style={{ fontSize: 16 }}>
+                        {verificationResult.purchase?.customerPhone ||
+                          "Not provided"}
+                      </div>
+                    </div>
 
-              {verificationResult.expired && verificationResult.purchase && (
-                <div style={{ marginTop: 24, textAlign: "left" }}>
-                  <Text strong style={{ color: "#595959" }}>
-                    Customer:
-                  </Text>
-                  <div style={{ fontSize: 16 }}>
-                    {verificationResult.purchase.customerName}
-                  </div>
+                    <Divider />
 
-                  <Text
-                    strong
+                    <div>
+                      <Text strong style={{ color: "#595959" }}>
+                        Pass Type:
+                      </Text>
+                      <div style={{ fontSize: 16 }}>
+                        {verificationResult.purchase?.productName}
+                      </div>
+                    </div>
+
+                    <div>
+                      <Text strong style={{ color: "#595959" }}>
+                        Expires:
+                      </Text>
+                      <div
+                        style={{
+                          fontSize: 16,
+                          color: "#52c41a",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {new Date(
+                          verificationResult.purchase?.expiryDate
+                        ).toLocaleDateString("en-US", {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </div>
+                    </div>
+
+                    <div>
+                      <Text strong style={{ color: "#595959" }}>
+                        Max People:
+                      </Text>
+                      <div style={{ fontSize: 16 }}>
+                        {verificationResult.purchase?.maxPeople}{" "}
+                        {verificationResult.purchase?.maxPeople === 1
+                          ? "person"
+                          : "people"}
+                      </div>
+                    </div>
+
+                    {verificationResult.purchase?.redemptionCount > 0 && (
+                      <div>
+                        <Text strong style={{ color: "#595959" }}>
+                          Previous Uses:
+                        </Text>
+                        <div style={{ fontSize: 16 }}>
+                          {verificationResult.purchase.redemptionCount} times
+                        </div>
+                      </div>
+                    )}
+                  </Space>
+
+                  {/* Add redemption button for valid passes */}
+                  <Button
+                    type="primary"
+                    size="large"
+                    icon={<GiftOutlined />}
+                    onClick={() => {
+                      console.log("Redemption button clicked");
+                      setShowRedemptionModal(true);
+                    }}
                     style={{
-                      color: "#595959",
-                      marginTop: 12,
-                      display: "block",
+                      marginTop: 24,
+                      width: "100%",
+                      height: 48,
+                      fontSize: 16,
+                      background: "#52c41a",
+                      borderColor: "#52c41a",
                     }}
                   >
-                    Expired:
-                  </Text>
-                  <div style={{ fontSize: 16, color: "#ff4d4f" }}>
-                    {new Date(
-                      verificationResult.purchase.expiryDate
-                    ).toLocaleDateString()}
-                  </div>
+                    Log Redemption
+                  </Button>
                 </div>
-              )}
-            </>
-          )}
+              </>
+            ) : (
+              <>
+                <div style={{ fontSize: 64, marginBottom: 16 }}>❌</div>
+                <Title level={2} style={{ color: "#ff4d4f", marginBottom: 8 }}>
+                  {verificationResult.expired ? "EXPIRED PASS" : "INVALID PASS"}
+                </Title>
 
-          <Button
-            type="primary"
-            size="large"
-            style={{ marginTop: 32, width: "100%" }}
-            onClick={() => window.location.reload()}
-          >
-            Scan Another Pass
-          </Button>
-        </Card>
+                <Text style={{ fontSize: 16, color: "#8c8c8c" }}>
+                  {verificationResult.error ||
+                    "This QR code is not valid or has expired."}
+                </Text>
 
-        <Text style={{ marginTop: 16, color: "#8c8c8c", fontSize: 14 }}>
-          QR Code: {qrCode}
-        </Text>
+                {verificationResult.expired && verificationResult.purchase && (
+                  <div style={{ marginTop: 24, textAlign: "left" }}>
+                    <Text strong style={{ color: "#595959" }}>
+                      Customer:
+                    </Text>
+                    <div style={{ fontSize: 16 }}>
+                      {verificationResult.purchase.customerName}
+                    </div>
+
+                    <Text
+                      strong
+                      style={{
+                        color: "#595959",
+                        marginTop: 12,
+                        display: "block",
+                      }}
+                    >
+                      Expired:
+                    </Text>
+                    <div style={{ fontSize: 16, color: "#ff4d4f" }}>
+                      {new Date(
+                        verificationResult.purchase.expiryDate
+                      ).toLocaleDateString()}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            <Button
+              type="primary"
+              size="large"
+              style={{ marginTop: 32, width: "100%" }}
+              onClick={() => window.location.reload()}
+            >
+              Scan Another Pass
+            </Button>
+          </Card>
+
+          <Text style={{ marginTop: 16, color: "#8c8c8c", fontSize: 14 }}>
+            QR Code: {qrCode}
+          </Text>
         </div>
       </>
     );
