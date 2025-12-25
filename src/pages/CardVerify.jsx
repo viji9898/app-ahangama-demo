@@ -179,11 +179,10 @@ export default function CardVerify() {
       const result = await response.json();
       setRedemptionResult(result);
 
-      // Close modal and clear verification result after successful redemption
+      // Don't automatically close modal - let user see the result and manually close
       if (result.success) {
-        setShowRedemptionModal(false);
-        setVerificationResult(null);
         redemptionForm.resetFields();
+        // Modal stays open to show success message
       }
     } catch (error) {
       setRedemptionResult({
@@ -225,6 +224,52 @@ export default function CardVerify() {
             redemptionType: "discount",
           }}
         >
+          {/* Show redemption result within the modal */}
+          {redemptionResult && (
+            <div style={{ marginBottom: 16 }}>
+              {redemptionResult.success ? (
+                <Alert
+                  message="Pass Redeemed Successfully!"
+                  description={redemptionResult.message}
+                  type="success"
+                  showIcon
+                  closable
+                  onClose={() => {
+                    setRedemptionResult(null);
+                    setShowRedemptionModal(false);
+                    setVerificationResult(null);
+                  }}
+                  action={
+                    <Button
+                      size="small"
+                      type="text"
+                      onClick={() => {
+                        setRedemptionResult(null);
+                        setShowRedemptionModal(false);
+                        setVerificationResult(null);
+                      }}
+                    >
+                      Done
+                    </Button>
+                  }
+                  style={{ borderRadius: 8 }}
+                />
+              ) : (
+                <Alert
+                  message="Redemption Failed"
+                  description={
+                    redemptionResult.error || "Unable to redeem this pass."
+                  }
+                  type="error"
+                  showIcon
+                  closable
+                  onClose={() => setRedemptionResult(null)}
+                  style={{ borderRadius: 8 }}
+                />
+              )}
+            </div>
+          )}
+
           <Form.Item
             label="Venue"
             name="venueId"
