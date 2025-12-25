@@ -174,7 +174,7 @@ const AdminDashboard = () => {
       render: (qrCode) => (
         <Space direction="vertical" size="small">
           <Text code copyable={{ text: qrCode }} style={{ fontSize: "11px" }}>
-            {qrCode.substring(0, 20)}...
+            {qrCode ? qrCode.substring(0, 20) + "..." : "N/A"}
           </Text>
           <Button
             size="small"
