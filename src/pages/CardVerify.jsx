@@ -12,10 +12,14 @@ import {
   Alert,
   Spin,
   Result,
+  Modal,
+  Form,
 } from "antd";
 import {
   CheckCircleOutlined,
   ExclamationCircleOutlined,
+  ShopOutlined,
+  GiftOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
@@ -33,12 +37,12 @@ export default function CardVerify() {
   const urlParams = new URLSearchParams(window.location.search);
   const qrFromUrl = urlParams.get("qr");
 
-  const [venueId, setVenueId] = useState("");
-  const [pin, setPin] = useState("");
   const [qrCode, setQrCode] = useState(prefill || qrFromUrl || "");
   const [loading, setLoading] = useState(false);
   const [autoVerified, setAutoVerified] = useState(false);
   const [isVendorView, setIsVendorView] = useState(false);
+  const [showRedemptionModal, setShowRedemptionModal] = useState(false);
+  const [redemptionForm] = Form.useForm();
 
   // result state
   const [verificationResult, setVerificationResult] = useState(null);
@@ -59,25 +63,46 @@ export default function CardVerify() {
       id: place.id || place.slug,
       name: place.name,
       category: place.category,
+      offer: place.offer,
       pin: "1234", // Default PIN for demo - in production this would be secure
     }));
   }, []);
 
-  const venue = useMemo(
-    () => venues.find((v) => v.id === venueId) || null,
-    [venueId, venues]
-  );
+  // Redemption types based on venue categories
+  const redemptionTypes = [
+    {
+      value: "discount",
+      label: "🎯 Discount/Offer",
+      categories: ["eat", "stay", "surf", "shop"],
+    },
+    { value: "free-item", label: "🎁 Free Item", categories: ["eat", "shop"] },
+    {
+      value: "upgrade",
+      label: "⭐ Upgrade Service",
+      categories: ["stay", "surf"],
+    },
+    {
+      value: "welcome-drink",
+      label: "🥤 Welcome Drink",
+      categories: ["eat", "stay"],
+    },
+    {
+      value: "priority-access",
+      label: "🚀 Priority Access",
+      categories: ["surf", "activity"],
+    },
+    {
+      value: "custom",
+      label: "🔧 Custom Offer",
+      categories: ["eat", "stay", "surf", "shop", "activity"],
+    },
+  ];
 
   const canonical = absUrl(
     params.cardId
       ? `/card/verify/${encodeURIComponent(prefill)}`
       : "/card/verify"
   );
-
-  const isAuthed = useMemo(() => {
-    if (!venue) return false;
-    return pin === venue.pin;
-  }, [pin, venue]);
 
   // QR Code verification function
   const verifyQRCode = async (codeToVerify = null) => {
@@ -117,13 +142,15 @@ export default function CardVerify() {
   };
 
   // Redeem pass at venue
-  const redeemPass = async () => {
-    if (!venue || !isAuthed || !qrCode) return;
+  const redeemPass = async (formData) => {
+    if (!qrCode) return;
 
     setLoading(true);
     setRedemptionResult(null);
 
     try {
+      const selectedVenue = venues.find((v) => v.id === formData.venueId);
+
       const response = await fetch("/.netlify/functions/qr-verify", {
         method: "POST",
         headers: {
@@ -131,12 +158,13 @@ export default function CardVerify() {
         },
         body: JSON.stringify({
           qrCode,
-          venueId: venue.id,
-          venueName: venue.name,
-          venueCategory: venue.category,
-          offerUsed:
-            PLACES.find((p) => (p.id || p.slug) === venue.id)?.offer ||
-            "Standard offer",
+          venueId: selectedVenue.id,
+          venueName: selectedVenue.name,
+          venueCategory: selectedVenue.category,
+          redemptionType: formData.redemptionType,
+          customOffer: formData.customOffer || null,
+          offerUsed: selectedVenue.offer,
+          vendorPin: formData.pin,
         }),
       });
 
@@ -147,9 +175,11 @@ export default function CardVerify() {
       const result = await response.json();
       setRedemptionResult(result);
 
-      // Clear verification result after successful redemption
+      // Close modal and clear verification result after successful redemption
       if (result.success) {
+        setShowRedemptionModal(false);
         setVerificationResult(null);
+        redemptionForm.resetFields();
       }
     } catch (error) {
       setRedemptionResult({
@@ -161,6 +191,130 @@ export default function CardVerify() {
     }
   };
 
+  // Redemption Modal Component - defined early to avoid hoisting issues
+  const RedemptionModal = () => {
+    console.log(
+      "RedemptionModal rendering, showRedemptionModal:",
+      showRedemptionModal
+    );
+    return (
+      <Modal
+        title={
+          <Space>
+            <ShopOutlined />
+            Log Redemption
+          </Space>
+        }
+        open={showRedemptionModal}
+        onCancel={() => {
+          setShowRedemptionModal(false);
+          redemptionForm.resetFields();
+        }}
+        footer={null}
+        width={500}
+      >
+        <Form
+          form={redemptionForm}
+          layout="vertical"
+          onFinish={redeemPass}
+          initialValues={{
+            redemptionType: "discount",
+          }}
+        >
+          <Form.Item
+            label="Venue"
+            name="venueId"
+            rules={[{ required: true, message: "Please select a venue" }]}
+          >
+            <Select
+              placeholder="Select your venue"
+              options={venues.map((v) => ({
+                value: v.id,
+                label: `${v.name} (${v.category})`,
+              }))}
+            />
+          </Form.Item>
+
+          <Form.Item
+            label="Redemption Type"
+            name="redemptionType"
+            rules={[
+              { required: true, message: "Please select redemption type" },
+            ]}
+          >
+            <Select
+              placeholder="Select redemption type"
+              options={redemptionTypes.map((type) => ({
+                value: type.value,
+                label: type.label,
+              }))}
+            />
+          </Form.Item>
+
+          <Form.Item
+            noStyle
+            shouldUpdate={(prevValues, currentValues) =>
+              prevValues.redemptionType !== currentValues.redemptionType
+            }
+          >
+            {({ getFieldValue }) =>
+              getFieldValue("redemptionType") === "custom" ? (
+                <Form.Item
+                  label="Custom Offer Description"
+                  name="customOffer"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please describe the custom offer",
+                    },
+                  ]}
+                >
+                  <Input.TextArea
+                    rows={2}
+                    placeholder="Describe the specific offer provided..."
+                  />
+                </Form.Item>
+              ) : null
+            }
+          </Form.Item>
+
+          <Form.Item
+            label="Venue PIN"
+            name="pin"
+            rules={[{ required: true, message: "Please enter venue PIN" }]}
+          >
+            <Input.Password placeholder="Enter your venue PIN" />
+          </Form.Item>
+
+          <div style={{ color: "#8c8c8c", fontSize: 12, marginBottom: 16 }}>
+            Demo PIN: 1234 (for all venues)
+          </div>
+
+          <Form.Item style={{ marginBottom: 0 }}>
+            <Space style={{ width: "100%", justifyContent: "flex-end" }}>
+              <Button
+                onClick={() => {
+                  setShowRedemptionModal(false);
+                  redemptionForm.resetFields();
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                style={{ background: "#52c41a", borderColor: "#52c41a" }}
+              >
+                Complete Redemption
+              </Button>
+            </Space>
+          </Form.Item>
+        </Form>
+      </Modal>
+    );
+  };
+
   // Special vendor view when QR code is scanned directly
   if (isVendorView && verificationResult) {
     const isValid = verificationResult.valid && !verificationResult.expired;
@@ -168,17 +322,21 @@ export default function CardVerify() {
     const borderColor = isValid ? "#52c41a" : "#ff4d4f";
 
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          backgroundColor: bgColor,
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <>
+        {/* Redemption Modal - needed in vendor view too */}
+        <RedemptionModal />
+        
+        <div
+          style={{
+            minHeight: "100vh",
+            backgroundColor: bgColor,
+            padding: "20px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
         <Card
           style={{
             width: "100%",
@@ -286,6 +444,27 @@ export default function CardVerify() {
                     </div>
                   )}
                 </Space>
+
+                {/* Add redemption button for valid passes */}
+                <Button
+                  type="primary"
+                  size="large"
+                  icon={<GiftOutlined />}
+                  onClick={() => {
+                    console.log("Redemption button clicked");
+                    setShowRedemptionModal(true);
+                  }}
+                  style={{
+                    marginTop: 24,
+                    width: "100%",
+                    height: 48,
+                    fontSize: 16,
+                    background: "#52c41a",
+                    borderColor: "#52c41a",
+                  }}
+                >
+                  Log Redemption
+                </Button>
               </div>
             </>
           ) : (
@@ -342,7 +521,8 @@ export default function CardVerify() {
         <Text style={{ marginTop: 16, color: "#8c8c8c", fontSize: 14 }}>
           QR Code: {qrCode}
         </Text>
-      </div>
+        </div>
+      </>
     );
   }
 
@@ -354,6 +534,9 @@ export default function CardVerify() {
         canonical={canonical}
       />
 
+      {/* Redemption Modal */}
+      <RedemptionModal />
+
       <Card
         style={{ borderRadius: 16, border: "1px solid #eee" }}
         bodyStyle={{ padding: 18 }}
@@ -362,7 +545,7 @@ export default function CardVerify() {
           Vendor Verify
         </Title>
         <Paragraph type="secondary" style={{ marginBottom: 0 }}>
-          Select venue → enter PIN → scan QR → verify → redeem.
+          Scan QR code → verify pass → log redemption with venue details.
         </Paragraph>
       </Card>
 
@@ -457,43 +640,6 @@ export default function CardVerify() {
       >
         <Space direction="vertical" size={16} style={{ width: "100%" }}>
           <div>
-            <Text strong>Venue</Text>
-            <Select
-              style={{ width: "100%", marginTop: 6 }}
-              value={venueId}
-              onChange={(value) => {
-                setVenueId(value);
-                setVerificationResult(null);
-                setRedemptionResult(null);
-              }}
-              placeholder="Select your venue"
-              options={venues.map((v) => ({
-                value: v.id,
-                label: `${v.name} (${v.category})`,
-              }))}
-            />
-          </div>
-
-          <div>
-            <Text strong>Venue PIN</Text>
-            <Input.Password
-              style={{ marginTop: 6 }}
-              value={pin}
-              onChange={(e) => setPin(e.target.value)}
-              placeholder="Enter venue PIN"
-              disabled={!venue}
-            />
-            <Text
-              type="secondary"
-              style={{ fontSize: 12, display: "block", marginTop: 4 }}
-            >
-              Demo PIN: 1234 (for all venues)
-            </Text>
-          </div>
-
-          <Divider style={{ margin: "8px 0" }} />
-
-          <div>
             <Text strong>QR Code</Text>
             <Input
               style={{ marginTop: 6 }}
@@ -501,7 +647,6 @@ export default function CardVerify() {
               onChange={(e) => setQrCode(e.target.value)}
               placeholder="Scan QR code or enter manually"
               allowClear
-              disabled={!isAuthed}
             />
           </div>
 
@@ -511,7 +656,7 @@ export default function CardVerify() {
               size="large"
               onClick={verifyQRCode}
               loading={loading}
-              disabled={!isAuthed || !qrCode}
+              disabled={!qrCode}
             >
               Verify QR Code
             </Button>
@@ -520,16 +665,20 @@ export default function CardVerify() {
               <Button
                 type="default"
                 size="large"
-                onClick={redeemPass}
+                onClick={() => {
+                  console.log("Regular redemption button clicked");
+                  setShowRedemptionModal(true);
+                }}
                 loading={loading}
-                disabled={!isAuthed || !qrCode}
+                disabled={!qrCode}
+                icon={<GiftOutlined />}
                 style={{
                   background: "#52c41a",
                   borderColor: "#52c41a",
                   color: "white",
                 }}
               >
-                Redeem Pass
+                Log Redemption
               </Button>
             )}
 
@@ -543,15 +692,6 @@ export default function CardVerify() {
               Clear
             </Button>
           </Space>
-
-          {!isAuthed && venue && (
-            <Alert
-              message="Enter PIN to continue"
-              description={`Please enter the PIN for ${venue.name} to verify passes.`}
-              type="warning"
-              showIcon
-            />
-          )}
         </Space>
       </Card>
     </SiteLayout>
