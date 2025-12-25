@@ -15,6 +15,7 @@ import Vendors from "../pages/Vendors";
 import MapPage from "../pages/Map";
 import MapGoogle from "../pages/MapGoogle";
 import AdminDashboard from "../pages/AdminDashboard";
+import PlacesTable from "../pages/PlacesTable";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 
@@ -32,6 +33,7 @@ export const routes = [
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
+  { path: "/places", element: <PlacesTable /> },
   {
     path: "/eat",
     element: <CategoryIndex categoryKey="eat" config={cfg("eat")} />,
