@@ -68,19 +68,36 @@ export const handler = async (event, context) => {
 
       case "redemptions":
         const allRedemptionsRaw = await sql`
-          SELECT * FROM redemptions 
-          ORDER BY redeemed_at DESC
+          SELECT 
+            r.*,
+            p.qr_code,
+            p.product_name,
+            p.customer_name,
+            p.customer_email,
+            p.customer_phone
+          FROM redemptions r
+          LEFT JOIN purchases p ON r.purchase_id = p.id
+          ORDER BY r.redeemed_at DESC
         `;
 
-        // Transform snake_case to camelCase
+        // Transform snake_case to camelCase and include enhanced details
         const allRedemptions = allRedemptionsRaw.map((redemption) => ({
           id: redemption.id,
           purchaseId: redemption.purchase_id,
           qrCode: redemption.qr_code,
-          vendorName: redemption.vendor_name,
-          locationDetails: redemption.location_details,
+          venueId: redemption.venue_id,
+          venueName: redemption.venue_name,
+          venueCategory: redemption.venue_category,
           redeemedAt: redemption.redeemed_at,
+          offerUsed: redemption.offer_used,
+          verifiedByStaff: redemption.verified_by_staff,
+          staffNotes: redemption.staff_notes,
           createdAt: redemption.created_at,
+          // Purchase details
+          productName: redemption.product_name,
+          customerName: redemption.customer_name,
+          customerEmail: redemption.customer_email,
+          customerPhone: redemption.customer_phone,
         }));
 
         return {

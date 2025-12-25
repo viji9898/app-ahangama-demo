@@ -151,7 +151,7 @@ export default function CardVerify() {
     try {
       const selectedVenue = venues.find((v) => v.id === formData.venueId);
 
-      const response = await fetch("/.netlify/functions/qr-verify", {
+      const response = await fetch("/.netlify/functions/log-redemption", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
