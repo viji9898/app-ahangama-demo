@@ -169,7 +169,11 @@ export default function CardVerify() {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        // Try to get the error message from the server response
+        const errorResponse = await response.json().catch(() => ({}));
+        const errorMessage =
+          errorResponse.error || `HTTP error! status: ${response.status}`;
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
@@ -184,7 +188,7 @@ export default function CardVerify() {
     } catch (error) {
       setRedemptionResult({
         success: false,
-        error: "Failed to redeem pass. Please try again.",
+        error: error.message || "Failed to redeem pass. Please try again.",
       });
     } finally {
       setLoading(false);
