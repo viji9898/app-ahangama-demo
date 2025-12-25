@@ -98,6 +98,11 @@ export default function CardVerify() {
       const response = await fetch(
         `/.netlify/functions/qr-verify?qr=${encodeURIComponent(targetCode)}`
       );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
 
       setVerificationResult(result);
@@ -134,6 +139,10 @@ export default function CardVerify() {
             "Standard offer",
         }),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const result = await response.json();
       setRedemptionResult(result);

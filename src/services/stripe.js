@@ -25,6 +25,10 @@ export const createCheckoutSession = async (productId, customerData) => {
     }),
   });
 
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
   const session = await response.json();
 
   if (session.error) {

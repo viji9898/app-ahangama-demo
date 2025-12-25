@@ -43,6 +43,11 @@ const AdminDashboard = () => {
       const response = await fetch("/.netlify/functions/seed-database", {
         method: "POST",
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
 
       if (result.success) {
@@ -81,12 +86,22 @@ const AdminDashboard = () => {
       const purchasesResponse = await fetch(
         "/.netlify/functions/admin-data?type=purchases"
       );
+
+      if (!purchasesResponse.ok) {
+        throw new Error(`HTTP error! status: ${purchasesResponse.status}`);
+      }
+
       const purchasesData = await purchasesResponse.json();
 
       // Fetch all redemptions
       const redemptionsResponse = await fetch(
         "/.netlify/functions/admin-data?type=redemptions"
       );
+
+      if (!redemptionsResponse.ok) {
+        throw new Error(`HTTP error! status: ${redemptionsResponse.status}`);
+      }
+
       const redemptionsData = await redemptionsResponse.json();
 
       setPurchases(purchasesData.data || []);
