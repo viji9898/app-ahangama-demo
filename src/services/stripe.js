@@ -9,27 +9,35 @@ export const STRIPE_PRICE_IDS = {
 };
 
 export const createCheckoutSession = async (productId, customerData) => {
-  const response = await fetch("/.netlify/functions/create-checkout-session", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      priceId: STRIPE_PRICE_IDS[productId],
-      productId,
-      customerName: customerData.name,
-      customerEmail: customerData.email,
-      customerPhone: customerData.phone,
-      successUrl: `${window.location.origin}/card/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancelUrl: `${window.location.origin}/card`,
-    }),
-  });
+  try {
+    const response = await fetch("/.netlify/functions/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        priceId: STRIPE_PRICE_IDS[productId],
+        productId,
+        customerName: customerData.name,
+        customerEmail: customerData.email,
+        customerPhone: customerData.phone,
+        successUrl: `${window.location.origin}/card/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancelUrl: `${window.location.origin}/card`,
+      }),
+    });
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Checkout session creation failed:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText,
+        url: response.url
+      });
+      throw new Error(`Checkout session failed: ${response.status} - ${errorText}`);
+    }
 
-  const session = await response.json();
+    const session = await response.json();
 
   if (session.error) {
     throw new Error(session.error);
