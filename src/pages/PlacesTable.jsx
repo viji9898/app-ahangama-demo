@@ -18,7 +18,7 @@ import {
   SearchOutlined,
   EnvironmentOutlined,
   StarOutlined,
-  ExternalLinkOutlined,
+  LinkOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
@@ -59,11 +59,11 @@ export default function PlacesTable() {
       });
 
       const response = await fetch(`/.netlify/functions/places?${params}`);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
 
       if (!data.success) {
@@ -71,7 +71,11 @@ export default function PlacesTable() {
       }
 
       setPlaces(data.places || []);
-      setLastSearch({ ...values, resultsCount: data.places?.length || 0, cached: data.cached });
+      setLastSearch({
+        ...values,
+        resultsCount: data.places?.length || 0,
+        cached: data.cached,
+      });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -156,7 +160,7 @@ export default function PlacesTable() {
         <Button
           type="link"
           size="small"
-          icon={<ExternalLinkOutlined />}
+          icon={<LinkOutlined />}
           onClick={() => window.open(record.mapsUrl, "_blank")}
         >
           Maps
@@ -280,11 +284,17 @@ export default function PlacesTable() {
                   Found <strong>{lastSearch.resultsCount}</strong> places
                 </Text>
                 <Text>
-                  <strong>{PLACE_TYPES.find(t => t.value === lastSearch.type)?.label}</strong> near{" "}
-                  <strong>{lastSearch.location}</strong>
+                  <strong>
+                    {
+                      PLACE_TYPES.find((t) => t.value === lastSearch.type)
+                        ?.label
+                    }
+                  </strong>{" "}
+                  near <strong>{lastSearch.location}</strong>
                 </Text>
                 <Text>
-                  Within <strong>{(lastSearch.radius / 1000).toFixed(1)}km</strong>
+                  Within{" "}
+                  <strong>{(lastSearch.radius / 1000).toFixed(1)}km</strong>
                 </Text>
                 {lastSearch.cached && (
                   <Tag color="blue" icon={<ReloadOutlined />}>
