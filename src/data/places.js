@@ -239,7 +239,7 @@ export const PLACES = [
     lat: 5.9722427,
     lng: 80.3635965,
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+1marshmellow.webp",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+14marshmellow.webp",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marshmellow-logo.jpg",
     mapUrl:
@@ -295,7 +295,7 @@ export const PLACES = [
     lat: 5.9703741,
     lng: 80.3676768,
     image:
-      "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+15moochies.webp",
     ogImage:
       "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -379,7 +379,7 @@ export const PLACES = [
     lat: 5.9723607,
     lng: 80.362433,
     image:
-      "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Le+Cafe%CC%81+French+Bistro.webp",
     ogImage:
       "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -406,7 +406,7 @@ export const PLACES = [
     lat: 5.9669647,
     lng: 80.3748064,
     image:
-      "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+17Hakuna.webp",
     ogImage:
       "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -433,7 +433,7 @@ export const PLACES = [
     lat: 5.9782004,
     lng: 80.348526,
     image:
-      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+19cafe-ceylon.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -461,7 +461,7 @@ export const PLACES = [
     lat: 5.987142,
     lng: 80.3543167,
     image:
-      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+21black-honey-cafe.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -489,7 +489,7 @@ export const PLACES = [
     lat: 5.9667637,
     lng: 80.3753645,
     image:
-      "https://images.pexels.com/photos/1346155/pexels-photo-1346155.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+22squeeze-me.webp",
     ogImage:
       "https://images.pexels.com/photos/1346155/pexels-photo-1346155.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -516,7 +516,7 @@ export const PLACES = [
     lat: 5.973358,
     lng: 80.3604935,
     image:
-      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+25twin-fin.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -543,7 +543,7 @@ export const PLACES = [
     lat: 5.9680796,
     lng: 80.3734503,
     image:
-      "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+23samba.webp",
     ogImage:
       "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -571,7 +571,7 @@ export const PLACES = [
     lat: 5.9689078,
     lng: 80.3706031,
     image:
-      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+24kaffi.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -599,7 +599,7 @@ export const PLACES = [
     lat: 5.9756109,
     lng: 80.3552236,
     image:
-      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+30meori.webp",
     ogImage:
       "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -654,7 +654,7 @@ export const PLACES = [
     lat: 5.9713144,
     lng: 80.3661895,
     image:
-      "https://images.pexels.com/photos/1346155/pexels-photo-1346155.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+26fruit-cafe.webp",
     ogImage:
       "https://images.pexels.com/photos/1346155/pexels-photo-1346155.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -682,7 +682,7 @@ export const PLACES = [
     lat: 5.9743119,
     lng: 80.3583762,
     image:
-      "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp",
     ogImage:
       "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -710,7 +710,7 @@ export const PLACES = [
     lat: 5.9745022,
     lng: 80.3575392,
     image:
-      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+28follow-the-white-rabbit.webp",
     ogImage:
       "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
@@ -739,7 +739,7 @@ export const PLACES = [
     lat: 5.9717426,
     lng: 80.3709232,
     image:
-      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+29makai.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
