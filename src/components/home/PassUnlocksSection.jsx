@@ -61,6 +61,12 @@ function PlaceRow({ p }) {
   const parseOfferTags = (offer) => {
     if (!offer) return [];
 
+    // If offer is already an array (new format), return it directly
+    if (Array.isArray(offer)) {
+      return offer;
+    }
+
+    // Legacy string parsing (fallback for old format)
     const tags = [];
     const offerLower = offer.toLowerCase();
 
