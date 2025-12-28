@@ -21,6 +21,7 @@ import CategoryGrid from "../components/ui/CategoryGrid";
 import { CATEGORIES } from "../data/categories";
 import { PLACES } from "../data/places";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
+import HomeMapSection from "../components/home/HomeMapSection";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -222,6 +223,9 @@ export default function Home() {
                 </Col>
               </Row>
             </div>
+          </div>
+          <div style={{ marginTop: 24 }}>
+            <HomeMapSection />
           </div>
           <div style={{ marginTop: 16 }}>
             <PassUnlocksSection destinationSlug="ahangama" />

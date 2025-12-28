@@ -1,220 +1,4 @@
 export const PLACES = [
-  // {
-  //   id: "slow-mornings",
-  //   destinationSlug: "ahangama",
-  //   category: "eat",
-  //   name: "A Café for Slow Mornings",
-  //   slug: "slow-mornings",
-  //   excerpt:
-  //     "Natural light, unhurried service, and a menu that rewards staying longer than one coffee.",
-  //   description:
-  //     "If you want a slow, easy start to the day—this is our go-to. Good coffee, good light, and a calm rhythm that makes you stay longer than planned.",
-  //   bestFor: ["Coffee", "Breakfast", "Reading", "Work-friendly"],
-  //   tags: ["Calm", "Bright", "Consistent"],
-  //   cardPerk: "10% off the bill with the Ahangama Card (once per day).",
-  //   offer: "10% off the bill with the Ahangama Card (once per day).",
-  //   price: "Mid-range",
-  //   hours: "07:30 – 16:30 (confirm seasonally)",
-  //   area: "Ahangama (Central)",
-  //   lat: 5.9705,
-  //   lng: 80.364,
-  //   image:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coffee.webp",
-  //   ogImage:
-  //     "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   mapUrl: "https://maps.google.com/?q=5.9705,80.3640",
-  // },
-  // {
-  //   id: "good-lunch",
-  //   destinationSlug: "ahangama",
-  //   category: "eat",
-  //   name: "The Place We Go Back for Lunch",
-  //   slug: "good-lunch",
-  //   excerpt:
-  //     "Simple food done properly. Reliable, relaxed, and easy to return to day after day.",
-  //   description:
-  //     "A dependable lunch spot with a menu that keeps it simple. If you’re here for a while, this becomes one of your default choices.",
-  //   bestFor: ["Lunch", "Casual", "Consistent"],
-  //   tags: ["Easy", "Relaxed", "Reliable"],
-  //   cardPerk: "Free coffee with the Ahangama Card (once per day).",
-  //   offer: "Free coffee with the Ahangama Card (once per day).",
-  //   price: "Mid-range",
-  //   hours: "11:30 – 16:00 (confirm seasonally)",
-  //   area: "Ahangama (Central)",
-  //   lat: 5.9695,
-  //   lng: 80.365,
-  //   image:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+6food.webp",
-  //   ogImage:
-  //     "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   mapUrl: "https://maps.google.com/?q=Ahangama",
-  // },
-  // {
-  //   id: "sunset-drinks",
-  //   destinationSlug: "ahangama",
-  //   category: "eat",
-  //   name: "Sunset Drinks Without the Chaos",
-  //   slug: "sunset-drinks",
-  //   excerpt:
-  //     "Good drinks, space to breathe, and a view that doesn’t require fighting for a table.",
-  //   description:
-  //     "A calmer sunset option with a better mood than the loud party spots. Come for a drink, stay for the view, leave before it gets messy.",
-  //   bestFor: ["Sunset", "Drinks", "Casual"],
-  //   tags: ["Sunset", "Chill", "Good vibe"],
-  //   cardPerk: "15% off drinks with the Ahangama Card (once per day).",
-  //   offer: "15% off drinks with the Ahangama Card (once per day).",
-  //   price: "Mid-range",
-  //   hours: "16:00 – late (confirm seasonally)",
-  //   area: "Ahangama (Beach road)",
-  //   lat: 5.9685,
-  //   lng: 80.3675,
-  //   image:
-  //     "https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   ogImage:
-  //     "https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   mapUrl: "https://maps.google.com/?q=5.9685,80.3675",
-  // },
-  // {
-  //   id: "quiet-boutique-stay",
-  //   destinationSlug: "ahangama",
-  //   category: "stays",
-  //   name: "A Quiet Boutique Stay",
-  //   slug: "quiet-boutique-stay",
-  //   excerpt: "Design-led, calm, and perfectly located for beach + town.",
-  //   description:
-  //     "A boutique stay we’d recommend for people who want calm, comfort, and easy access to the best parts of Ahangama.",
-  //   bestFor: ["Boutique", "Couples", "Long-stay friendly"],
-  //   tags: ["Quiet", "Minimal", "Good service"],
-  //   cardPerk: "Room upgrade (subject to availability) with the Ahangama Card.",
-  //   offer: "Room upgrade (subject to availability) with the Ahangama Card.",
-  //   price: "Premium",
-  //   hours: "Check-in/out times vary",
-  //   area: "Ahangama",
-  //   lat: 5.971,
-  //   lng: 80.363,
-  //   image:
-  //     "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   ogImage:
-  //     "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   mapUrl: "https://maps.google.com/?q=5.9710,80.3630",
-  // },
-  // {
-  //   id: "long-stay-guesthouse",
-  //   destinationSlug: "ahangama",
-  //   category: "stays",
-  //   name: "A Long-Stay Guesthouse",
-  //   slug: "long-stay-guesthouse",
-  //   excerpt: "Simple, comfortable, and good value if you’re here for weeks.",
-  //   description:
-  //     "If you’re staying longer, this is the kind of place that feels easy: practical rooms, calm vibe, and a location that doesn’t complicate your days.",
-  //   bestFor: ["Budget", "Long stays", "Work-friendly"],
-  //   tags: ["Practical", "Calm", "Good value"],
-  //   cardPerk: "Late checkout (subject to availability) with the Ahangama Card.",
-  //   offer: "Late checkout (subject to availability) with the Ahangama Card.",
-  //   price: "Budget–Mid",
-  //   hours: "Check-in/out times vary",
-  //   area: "Ahangama",
-  //   lat: 5.972,
-  //   lng: 80.362,
-  //   image:
-  //     "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   ogImage:
-  //     "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   mapUrl: "https://maps.google.com/?q=5.9720,80.3620",
-  // },
-  // EXPERIENCES
-  // {
-  //   id: "progressive-surf-school",
-  //   destinationSlug: "ahangama",
-  //   category: "experiences",
-  //   name: "A Surf School That Actually Teaches",
-  //   slug: "progressive-surf-school",
-  //   excerpt: "Progress-focused coaching, not just pushing you into waves.",
-  //   description:
-  //     "A coaching-first surf setup for beginners and improvers who want real technique and steady progression.",
-  //   bestFor: ["Surf", "Beginners", "Improvers"],
-  //   tags: ["Coaching", "Safe", "Progress"],
-  //   cardPerk: "10% off surf lesson packages with the Ahangama Card.",
-  //   offer: "10% off surf lesson packages with the Ahangama Card.",
-  //   price: "Mid-range",
-  //   hours: "Depends on tides/conditions",
-  //   area: "Ahangama / Midigama",
-  //   lat: 5.969,
-  //   lng: 80.368,
-  //   image:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+2soul-surf.webp",
-  //   ogImage:
-  //     "https://images.pexels.com/photos/390051/surfing-wave-surfboard-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   mapUrl: "https://maps.google.com/?q=5.9690,80.3680",
-  // },
-  // {
-  //   id: "sunset-yoga-session",
-  //   destinationSlug: "ahangama",
-  //   category: "experiences",
-  //   name: "A Sunset Yoga Session",
-  //   slug: "sunset-yoga-session",
-  //   excerpt: "A calm, consistent class that resets your day.",
-  //   description:
-  //     "A well-run yoga session with a grounded vibe. Good pacing, good instruction, and not overly spiritualised.",
-  //   bestFor: ["Wellness", "Yoga", "Evenings"],
-  //   tags: ["Calm", "Consistent", "Good teachers"],
-  //   cardPerk: "Free class add-on (subject to schedule) with the Ahangama Card.",
-  //   offer: "Free class add-on (subject to schedule) with the Ahangama Card.",
-  //   price: "Mid-range",
-  //   hours: "Class schedule varies",
-  //   area: "Ahangama",
-  //   lat: 5.97,
-  //   lng: 80.366,
-  //   image:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+3yoga.webp",
-  //   ogImage:
-  //     "https://images.pexels.com/photos/3822356/pexels-photo-3822356.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   mapUrl: "https://maps.google.com/?q=5.9700,80.3660",
-  // },
-  // {
-  //   id: "cactus-cafe",
-  //   destinationSlug: "ahangama",
-  //   category: "eat",
-  //   name: "Cactus",
-  //   slug: "cactus-cafe",
-  //   excerpt: "A local cafe with great atmosphere and good coffee.",
-  //   description:
-  //     "Cactus offers a cozy atmosphere perfect for coffee and casual dining.",
-  //   bestFor: ["Coffee", "Casual dining", "Local vibe"],
-  //   tags: ["Local", "Coffee", "Casual"],
-  //   offer: "10% off coffee with the Ahangama Card",
-  //   price: "Mid-range",
-  //   area: "Ahangama",
-  //   image:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+5catus.webp",
-  //   ogImage:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cactus-logo.jpg",
-  //   lat: 5.9718909084100185,
-  //   lng: 80.36452917292674,
-  //   mapUrl: "https://maps.google.com/?q=5.9718909084100185,80.36452917292674",
-  // },
-  // {
-  //   id: "marshmellow-surf-cafe",
-  //   destinationSlug: "ahangama",
-  //   category: "eat",
-  //   name: "Marshmellow Surf Café",
-  //   slug: "marshmellow-surf-cafe",
-  //   excerpt: "A surf-themed cafe with great coffee and laid-back vibes.",
-  //   description:
-  //     "Marshmellow Surf Café combines great coffee with a relaxed surf atmosphere, perfect for post-session refreshments.",
-  //   bestFor: ["Coffee", "Surf culture", "Casual dining", "Relaxed atmosphere"],
-  //   tags: ["Surf", "Coffee", "Casual", "Local"],
-  //   offer: "Free smoothie with breakfast order using the Ahangama Card",
-  //   price: "Mid-range",
-  //   area: "Ahangama",
-  //   image:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+1marshmellow.webp",
-  //   ogImage:
-  //     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marshmellow-logo.jpg",
-  //   lat: 5.972424094254227,
-  //   lng: 80.36355358042105,
-  //   mapUrl: "https://maps.google.com/?q=5.972424094254227,80.36355358042105",
-  // },
   //CAFES
 
   {
@@ -238,6 +22,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9722427,
     lng: 80.3635965,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+14marshmellow.webp",
     ogImage:
@@ -266,6 +51,7 @@ export const PLACES = [
     area: "Ahangama (Central)",
     lat: 5.9718757,
     lng: 80.3645275,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+5catus.webp",
     ogImage:
@@ -277,7 +63,7 @@ export const PLACES = [
     id: "moochies-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Moochies Ahangama Restaurant & Rooftop",
+    name: "Moochies",
     slug: "moochies-ahangama",
     stars: 4.9,
     reviews: 608,
@@ -294,6 +80,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9703741,
     lng: 80.3676768,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/moochies.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+15moochies.webp",
     ogImage:
@@ -322,6 +109,7 @@ export const PLACES = [
     area: "Ahangama (Dharmarama Rd)",
     lat: 5.9700077,
     lng: 80.3735191,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the-kip.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+9the-kip.webp",
     ogImage:
@@ -349,6 +137,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9721737,
     lng: 80.3640169,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+7ceylon-sliders.webp",
     ogImage:
@@ -360,7 +149,7 @@ export const PLACES = [
     id: "le-cafe-french-bistro-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Le Café French Bistro Ahangama",
+    name: "Le Café",
     slug: "le-cafe-french-bistro-ahangama",
     stars: 4.8,
     reviews: 448,
@@ -378,6 +167,7 @@ export const PLACES = [
     area: "Ahangama (Wella Watta)",
     lat: 5.9723607,
     lng: 80.362433,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Le+Cafe%CC%81+French+Bistro.webp",
     ogImage:
@@ -405,6 +195,7 @@ export const PLACES = [
     area: "Ahangama (Aranwala Junction)",
     lat: 5.9669647,
     lng: 80.3748064,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/hakuna_matata.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+17Hakuna.webp",
     ogImage:
@@ -416,7 +207,7 @@ export const PLACES = [
     id: "cafe-ceylon-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Café Ceylon Ahangama",
+    name: "Café Ceylon",
     slug: "cafe-ceylon-ahangama",
     stars: 4.3,
     reviews: 403,
@@ -432,6 +223,7 @@ export const PLACES = [
     area: "Kabalana (Matara Road)",
     lat: 5.9782004,
     lng: 80.348526,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+19cafe-ceylon.webp",
     ogImage:
@@ -460,6 +252,7 @@ export const PLACES = [
     area: "Ahangama (Wewilihena / Duwa Watta)",
     lat: 5.987142,
     lng: 80.3543167,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+21black-honey-cafe.webp",
     ogImage:
@@ -488,6 +281,7 @@ export const PLACES = [
     area: "Ahangama (Kaya Collective)",
     lat: 5.9667637,
     lng: 80.3753645,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/squeeze-me.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+22squeeze-me.webp",
     ogImage:
@@ -499,7 +293,7 @@ export const PLACES = [
     id: "twin-fin-surf-x-coffee",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Twin Fin Surf x Coffee",
+    name: "Twin Fin",
     slug: "twin-fin-surf-x-coffee",
     stars: 4.9,
     reviews: 275,
@@ -515,6 +309,7 @@ export const PLACES = [
     area: "Ahangama (Galle Road)",
     lat: 5.973358,
     lng: 80.3604935,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+25twin-fin.webp",
     ogImage:
@@ -526,7 +321,7 @@ export const PLACES = [
     id: "samba-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Samba Ahangama",
+    name: "Samba",
     slug: "samba-ahangama",
     stars: 4.8,
     reviews: 263,
@@ -542,6 +337,7 @@ export const PLACES = [
     area: "Ahangama (A2 Southern Beach Road)",
     lat: 5.9680796,
     lng: 80.3734503,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/samba.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+23samba.webp",
     ogImage:
@@ -570,6 +366,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9689078,
     lng: 80.3706031,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/kaffi.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+24kaffi.webp",
     ogImage:
@@ -598,6 +395,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9756109,
     lng: 80.3552236,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+30meori.webp",
     ogImage:
@@ -625,6 +423,7 @@ export const PLACES = [
     hours: "Confirm seasonally",
     area: "Kabalana (Beach / Matara-Galle Road)",
     lat: 5.9779099,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     lng: 80.3513977,
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+10sisters.webp",
@@ -637,7 +436,7 @@ export const PLACES = [
     id: "fruit-cafe-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Fruit Cafe - 100% Vegetarian / Vegan Friendly",
+    name: "Fruit Cafe",
     slug: "fruit-cafe-ahangama",
     stars: 4.9,
     reviews: 197,
@@ -653,6 +452,7 @@ export const PLACES = [
     area: "Ahangama",
     lat: 5.9713144,
     lng: 80.3661895,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+26fruit-cafe.webp",
     ogImage:
@@ -664,7 +464,7 @@ export const PLACES = [
     id: "maria-bonita-sri-lanka",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Maria Bonita Sri Lanka Café & Casa",
+    name: "Maria Bonita ",
     slug: "maria-bonita-sri-lanka",
     stars: 4.8,
     reviews: 178,
@@ -680,6 +480,7 @@ export const PLACES = [
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda)",
     lat: 5.9743119,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     lng: 80.3583762,
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp",
@@ -692,7 +493,7 @@ export const PLACES = [
     id: "follow-the-white-rabbit-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Follow The White Rabbit – Restaurant & Garden Brunch and sunset cafe",
+    name: "Follow The White Rabbit",
     slug: "follow-the-white-rabbit-ahangama",
     stars: 4.5,
     reviews: 177,
@@ -708,6 +509,7 @@ export const PLACES = [
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda / Matara Road)",
     lat: 5.9745022,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
     lng: 80.3575392,
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+28follow-the-white-rabbit.webp",
@@ -736,6 +538,7 @@ export const PLACES = [
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Mahavihara Road)",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/makai.jpg",
     lat: 5.9717426,
     lng: 80.3709232,
     image:
@@ -749,7 +552,7 @@ export const PLACES = [
     id: "teddies-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Teddies Ahangama",
+    name: "Teddies",
     slug: "teddies-ahangama",
     stars: 5,
     reviews: 157,
@@ -765,13 +568,102 @@ export const PLACES = [
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
+
     lat: 5.9701641,
     lng: 80.3680971,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Asset+2teddies-v2.webp",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+8teddies.webp",
     ogImage:
       "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
       "https://www.google.com/maps/place/?q=place_id:ChIJ3Sf2xwsV4ToRsupIqBjy_Ao",
+  },
+  {
+    id: "the-kip-stay",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "The Kip",
+    slug: "the-kip-stay",
+    stars: 4.7,
+    reviews: 503,
+    excerpt:
+      "Long-stay favorite—easy rhythms, steady quality, very repeatable.",
+    description:
+      "A well-known base in Ahangama with a café component people return to. Feels like a reliable anchor if you're staying nearby.",
+    bestFor: ["Coffee", "Long-stay", "Casual bites"],
+    tags: ["Chill", "Reliable", "Local-favorite"],
+    cardPerk: "Extended wifi hours + workspace perks with the Ahangama Card.",
+    offer: ["Late Checkout", ""],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama (Dharmarama Rd)",
+    lat: 5.9700077,
+    lng: 80.3735191,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the-kip.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+31kip-stay.webp",
+    ogImage:
+      "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJMTRdTaQU4ToRM-xEwUWydew",
+  },
+  {
+    id: "teddies-stay-ahangama",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Teddies",
+    slug: "teddies-stay-ahangama",
+    stars: 5,
+    reviews: 157,
+    excerpt:
+      "Popular roadside stop—easy for dinner + drinks with a lively crowd.",
+    description:
+      "A well-reviewed place that’s become part of the main-strip rotation. Good for relaxed evenings and social plans.",
+    bestFor: ["Dinner", "Drinks", "Groups"],
+    tags: ["Lively", "Main road", "Social"],
+    cardPerk:
+      "Social hour drinks - buy one get one 50% off with the Ahangama Card.",
+    offer: ["Free Upgrade"],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama (Matara Road)",
+    lat: 5.9701641,
+    lng: 80.3680971,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+32teddies.webp",
+    ogImage:
+      "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJ3Sf2xwsV4ToRsupIqBjy_Ao",
+  },
+  {
+    id: "samba-stay-ahangama",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Samba",
+    slug: "samba-stay-ahangama",
+    stars: 4.8,
+    reviews: 263,
+    excerpt: "Beach-road staple—strong all-rounder for food + a lively scene.",
+    description:
+      "A popular, highly reviewed option on the southern beach road. Works for casual dinners and easy evening plans.",
+    bestFor: ["Dinner", "Drinks", "Beach road"],
+    tags: ["Lively", "Dependable", "Social"],
+    cardPerk: "Fresh catch of the day - 10% off with the Ahangama Card.",
+    offer: ["Free refill on coffee / tea", "Late checkout"],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama (A2 Southern Beach Road)",
+    lat: 5.9680796,
+    lng: 80.3734503,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/samba.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp",
+    ogImage:
+      "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJt2e3EEQV4ToRUqgcr_LXi5Q",
   },
 ];

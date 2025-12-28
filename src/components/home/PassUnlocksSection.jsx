@@ -196,25 +196,44 @@ function PlaceRow({ p }) {
               marginBottom: "10px",
             }}
           >
-            {offerTags.map((tag, index) => (
-              <span
-                key={index}
-                className="offer-tag"
-                style={{
-                  display: "inline-block",
-                  fontSize: "11px",
-                  padding: "4px 8px",
-                  borderRadius: "12px",
+            {offerTags.map((tag, index) => {
+              // Different colors for different categories
+              const getTagColors = (category) => {
+                if (category === "stays") {
+                  return {
+                    background: "#fff4e6",
+                    color: "#d46b08",
+                  };
+                }
+                // Default green for eat and other categories
+                return {
                   background: "#e8f5e8",
                   color: "#2d5016",
-                  fontWeight: "500",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                {tag}
-              </span>
-            ))}
+                };
+              };
+
+              const tagColors = getTagColors(p.category);
+
+              return (
+                <span
+                  key={index}
+                  className="offer-tag"
+                  style={{
+                    display: "inline-block",
+                    fontSize: "11px",
+                    padding: "4px 8px",
+                    borderRadius: "12px",
+                    background: tagColors.background,
+                    color: tagColors.color,
+                    fontWeight: "500",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  {tag}
+                </span>
+              );
+            })}
           </div>
         )}
 
