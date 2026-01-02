@@ -1,0 +1,104 @@
+{
+  "name": "Ahangama.com - Sri Lanka Travel Guide",
+  "short_name": "Ahangama",
+  "description": "Curated destination guides + local privileges for independent travellers in Ahangama, Sri Lanka",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f1ec",
+  "theme_color": "#4f6f86",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["travel", "tourism", "lifestyle"],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Places to Eat",
+      "short_name": "Eat",
+      "description": "Browse curated restaurants and cafes",
+      "url": "/eat",
+      "icons": [
+        {
+          "src": "/icons/eat-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Find Accommodation",
+      "short_name": "Stays",
+      "description": "Discover places to stay",
+      "url": "/stays",
+      "icons": [
+        {
+          "src": "/icons/stays-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Get Discount Card",
+      "short_name": "Card",
+      "description": "Purchase your Ahangama discount card",
+      "url": "/card",
+      "icons": [
+        {
+          "src": "/icons/card-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Ahangama homepage on desktop"
+    },
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Ahangama homepage on mobile"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

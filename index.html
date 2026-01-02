@@ -2,13 +2,152 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ahangama-app</title>
+
+    <!-- Primary Meta Tags -->
+    <title>
+      Ahangama.com - Curated Sri Lanka Travel Guide & Privilege Card
+    </title>
+    <meta
+      name="title"
+      content="Ahangama.com - Curated Sri Lanka Travel Guide & Discount Card"
+    />
+    <meta
+      name="description"
+      content="Curated destination guides + local privileges for independent travellers in Ahangama, Sri Lanka. Get discounts at restaurants, accommodations, and experiences."
+    />
+    <meta
+      name="keywords"
+      content="Ahangama, Sri Lanka, travel guide, discount card, restaurants, accommodations, experiences, independent travel, local privileges"
+    />
+    <meta name="author" content="ahangama.com" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="en" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ahangama.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ahangama.com/" />
+    <meta
+      property="og:title"
+      content="Ahangama.com - Curated Sri Lanka Travel Guide & Discount Card"
+    />
+    <meta
+      property="og:description"
+      content="Curated destination guides + local privileges for independent travellers in Ahangama, Sri Lanka. Get discounts at restaurants, accommodations, and experiences."
+    />
+    <meta property="og:image" content="https://ahangama.com/og-image.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Ahangama.com" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ahangama.com/" />
+    <meta
+      property="twitter:title"
+      content="Ahangama.com - Curated Sri Lanka Travel Guide & Discount Card"
+    />
+    <meta
+      property="twitter:description"
+      content="Curated destination guides + local privileges for independent travellers in Ahangama, Sri Lanka. Get discounts at restaurants, accommodations, and experiences."
+    />
+    <meta
+      property="twitter:image"
+      content="https://ahangama.com/og-image.jpeg"
+    />
+    <meta property="twitter:creator" content="@ahangamacom" />
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#4f6f86" />
+    <meta name="msapplication-TileColor" content="#4f6f86" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Ahangama" />
+
+    <!-- Geographic Meta Tags -->
+    <meta name="geo.region" content="LK-11" />
+    <meta
+      name="geo.placename"
+      content="Ahangama, Southern Province, Sri Lanka"
+    />
+    <meta name="geo.position" content="5.9732;80.3736" />
+    <meta name="ICBM" content="5.9732, 80.3736" />
+
+    <!-- Business/Local SEO -->
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
+    <meta name="category" content="travel, tourism, food, accommodation" />
+
+    <!-- Performance and Security -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ahangama.com",
+        "url": "https://ahangama.com",
+        "description": "Curated destination guides + local privileges for independent travellers in Ahangama, Sri Lanka",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Ahangama.com"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://ahangama.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "sameAs": ["https://instagram.com/ahangamacom"]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Ahangama.com",
+        "url": "https://ahangama.com",
+        "description": "Curated destination guides and discount card for Ahangama, Sri Lanka",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ahangama",
+          "addressRegion": "Southern Province",
+          "addressCountry": "Sri Lanka"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "5.9732",
+          "longitude": "80.3736"
+        },
+        "serviceArea": {
+          "@type": "City",
+          "name": "Ahangama"
+        }
+      }
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script
