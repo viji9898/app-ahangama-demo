@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Row, Col, Typography, Button, Space, Tag, Divider } from "antd";
+import { Card, Row, Col, Typography, Button, Space, Tag } from "antd";
+import QRCode from "react-qr-code";
 import {
   CoffeeOutlined,
   HomeOutlined,
@@ -7,74 +8,16 @@ import {
   QrcodeOutlined,
   ArrowRightOutlined,
   ThunderboltOutlined,
-  HeartOutlined,
-  LaptopOutlined,
-  CarOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  EnvironmentOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import CategoryGrid from "../components/ui/CategoryGrid";
 import { CATEGORIES } from "../data/categories";
 import { PLACES } from "../data/places";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
 import HomeMapSection from "../components/home/HomeMapSection";
 
 const { Title, Paragraph, Text } = Typography;
-
-function FeaturedCard({ title, subtitle, image, href, icon }) {
-  return (
-    <a href={href} style={{ textDecoration: "none" }}>
-      <Card
-        hoverable
-        className="ahg-feature"
-        style={{
-          borderRadius: 18,
-          border: "1px solid rgba(0,0,0,0.06)",
-          overflow: "hidden",
-        }}
-        bodyStyle={{ padding: 16 }}
-      >
-        <div
-          style={{
-            height: 170,
-            borderRadius: 16,
-            background: `url(${image}) center/cover no-repeat`,
-            border: "1px solid rgba(0,0,0,0.06)",
-          }}
-        />
-        <div style={{ marginTop: 12 }}>
-          <Space align="center" size={10}>
-            <div
-              style={{
-                width: 34,
-                height: 34,
-                borderRadius: 12,
-                display: "grid",
-                placeItems: "center",
-                border: "1px solid rgba(0,0,0,0.08)",
-                background: "rgba(255,255,255,0.8)",
-              }}
-            >
-              {icon}
-            </div>
-            <div style={{ minWidth: 0 }}>
-              <Text strong style={{ fontSize: 16, display: "block" }}>
-                {title}
-              </Text>
-              <Text type="secondary" style={{ fontSize: 12 }}>
-                {subtitle}
-              </Text>
-            </div>
-          </Space>
-        </div>
-      </Card>
-    </a>
-  );
-}
 
 export default function Home() {
   const canonical = absUrl("/");
@@ -224,158 +167,159 @@ export default function Home() {
               </Row>
             </div>
           </div>
+
+          {/* FREE GUIDE CTA */}
+          <div style={{ marginTop: 24 }}>
+            <Card
+              style={{
+                borderRadius: 18,
+                border: "1px solid rgba(0,0,0,0.06)",
+                background:
+                  "linear-gradient(135deg, rgba(37,211,102,0.05) 0%, rgba(255,255,255,0.9) 100%)",
+              }}
+              bodyStyle={{ padding: 24 }}
+            >
+              <Row gutter={[24, 16]} align="middle">
+                <Col xs={24} lg={14}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "12px",
+                        background: "linear-gradient(135deg, #25D366, #128C7E)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "18px",
+                      }}
+                    >
+                      📄
+                    </div>
+                    <div>
+                      <Title
+                        level={3}
+                        style={{
+                          margin: 0,
+                          color: "#2F3349",
+                          fontSize: "20px",
+                        }}
+                      >
+                        Free Ahangama PDF Guide
+                      </Title>
+                      <Text type="secondary" style={{ fontSize: "13px" }}>
+                        Comprehensive offline guide
+                      </Text>
+                    </div>
+                  </div>
+                  <Paragraph
+                    style={{
+                      marginBottom: 0,
+                      fontSize: "15px",
+                      color: "#5A6C7D",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    Get our complete PDF guide sent directly to WhatsApp.
+                    Perfect for offline reading, planning your itinerary, and
+                    discovering hidden gems in Ahangama.
+                  </Paragraph>
+                </Col>
+
+                <Col xs={24} lg={10}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                      justifyContent: "center",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ marginBottom: "8px" }}>
+                        <Text
+                          strong
+                          style={{ fontSize: "13px", color: "#2F3349" }}
+                        >
+                          Scan to get guide
+                        </Text>
+                      </div>
+                      <div
+                        style={{
+                          padding: "12px",
+                          background: "#fff",
+                          borderRadius: "12px",
+                          border: "2px solid rgba(37,211,102,0.2)",
+                          boxShadow: "0 4px 12px rgba(37,211,102,0.15)",
+                          display: "inline-block",
+                        }}
+                      >
+                        <QRCode
+                          value="https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide"
+                          size={90}
+                          level="M"
+                          fgColor="#2F3349"
+                        />
+                      </div>
+                    </div>
+
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ marginBottom: "8px" }}>
+                        <Text
+                          strong
+                          style={{ fontSize: "13px", color: "#2F3349" }}
+                        >
+                          Or click here
+                        </Text>
+                      </div>
+                      <Button
+                        type="primary"
+                        size="large"
+                        href="https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, #25D366, #128C7E)",
+                          borderColor: "transparent",
+                          borderRadius: "12px",
+                          height: "48px",
+                          padding: "0 20px",
+                          fontWeight: "600",
+                          boxShadow: "0 4px 12px rgba(37,211,102,0.25)",
+                          border: "none",
+                        }}
+                        icon={
+                          <span
+                            style={{ fontSize: "16px", marginRight: "4px" }}
+                          >
+                            💬
+                          </span>
+                        }
+                      >
+                        WhatsApp Guide
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </div>
+
           <div style={{ marginTop: 24 }}>
             <HomeMapSection />
           </div>
           <div style={{ marginTop: 16 }}>
             <PassUnlocksSection destinationSlug="ahangama" />
           </div>
-
-          {/* QUICK FEATURED */}
-          {/* <div style={{ marginTop: 16 }}>
-            <Row gutter={[12, 12]}>
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Eat & Drink"
-                  subtitle="Cafés + restaurants worth returning to"
-                  href="/eat"
-                  image={
-                    eat?.image ||
-                    "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  }
-                  icon={<CoffeeOutlined />}
-                />
-              </Col>
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Stays"
-                  subtitle="Design-led, calm, well-located"
-                  href="/stays"
-                  image={
-                    stays?.image ||
-                    "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  }
-                  icon={<HomeOutlined />}
-                />
-              </Col>
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Experiences"
-                  subtitle="Surf, wellness, and day-makers"
-                  href="/experiences"
-                  image={
-                    "              https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stilt-fisherman.jpg"
-                  }
-                  icon={<CompassOutlined />}
-                />
-              </Col>
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Culture"
-                  subtitle="Rituals, heritage, and local life"
-                  image={
-                    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/yaka-mask.jpg"
-                  }
-                  icon={<CompassOutlined />}
-                />
-              </Col>
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Wellness"
-                  subtitle="Yoga, recovery, and slow rituals"
-                  href="/wellness"
-                  image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/wellness.avif"
-                  icon={<HeartOutlined />}
-                />
-              </Col>
-
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Surf"
-                  subtitle="Breaks, schools, and surf culture"
-                  href="/surf"
-                  image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/surfing_ahangama_surf_camp_poe_waves_sri_lanka-scaled.jpg"
-                  icon={<ThunderboltOutlined />}
-                />
-              </Col>
-
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Work & Long Stays"
-                  subtitle="Coworking, Wi-Fi, and living well"
-                  href="/work-long-stays"
-                  image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/long-stays.avif"
-                  icon={<LaptopOutlined />}
-                />
-              </Col>
-
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Getting Around"
-                  subtitle="Scooters, tuk-tuks, and drivers"
-                  href="/getting-around"
-                  image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tuk-tuk.jpg"
-                  icon={<CarOutlined />}
-                />
-              </Col>
-
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Shops & Essentials"
-                  subtitle="Groceries, pharmacies, and basics"
-                  href="/shops-essentials"
-                  image="https://images.pexels.com/photos/3962284/pexels-photo-3962284.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  icon={<ShopOutlined />}
-                />
-              </Col>
-
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Community"
-                  subtitle="Events, meetups, and people"
-                  href="/community"
-                  image="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/community.jpg"
-                  icon={<TeamOutlined />}
-                />
-              </Col>
-
-              <Col xs={24} md={8}>
-                <FeaturedCard
-                  title="Maps & Itineraries"
-                  subtitle="Walks, days, and short trips"
-                  href="/maps-itineraries"
-                  image="https://images.pexels.com/photos/7412095/pexels-photo-7412095.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  icon={<EnvironmentOutlined />}
-                />
-              </Col>
-            </Row>
-          </div> */}
-
-          {/* CATEGORY GRID */}
-          {/* <div style={{ marginTop: 16 }}>
-            <Card
-              style={{ borderRadius: 18, border: "1px solid rgba(0,0,0,0.06)" }}
-              bodyStyle={{ padding: 18 }}
-            >
-              <Row align="middle" justify="space-between" gutter={[12, 12]}>
-                <Col>
-                  <Title level={3} style={{ margin: 0 }}>
-                    Browse the guide
-                  </Title>
-                  <Text type="secondary">
-                    No rankings. Just picks we’d send to a friend.
-                  </Text>
-                </Col>
-                <Col>
-                  <Button href="/search" icon={<ArrowRightOutlined />}>
-                    Open the index
-                  </Button>
-                </Col>
-              </Row>
-              <Divider style={{ margin: "14px 0" }} />
-              <CategoryGrid categories={categories} />
-            </Card>
-          </div> */}
 
           {/* CARD CTA */}
           <div style={{ marginTop: 16 }}>
