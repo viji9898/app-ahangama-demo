@@ -46,13 +46,13 @@ export default function TopNav() {
               }}
             />
             <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              <Text strong>ahangama.com</Text>
+              <Text strong>DEMO_SITE - LAUNCHING SOON</Text>
             </Link>
-            <Tag>Curated</Tag>
+            {/* <Tag>Curated</Tag> */}
           </Space>
         </Col>
 
-        <Col flex="auto" style={{ maxWidth: 520 }}>
+        {/* <Col flex="auto" style={{ maxWidth: 520 }}>
           <Input
             placeholder="Search places (coffee, surf, long-stay...)"
             allowClear
@@ -60,7 +60,7 @@ export default function TopNav() {
             onChange={(e) => setQuery(e.target.value)}
             onPressEnter={(e) => onSearch(e.currentTarget.value)}
           />
-        </Col>
+        </Col> */}
 
         <Col>
           <Button type="primary" href="/card">
