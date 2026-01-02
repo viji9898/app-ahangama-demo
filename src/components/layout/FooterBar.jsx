@@ -23,7 +23,7 @@ export default function FooterBar() {
           <Col xs={24} md={8}>
             <Space direction="vertical" size={6}>
               <a href="/about">About</a>
-              <a href="/partner">Partner with us</a>
+              <a href="/partners">Partner with us</a>
               <a href="/card/terms">Card terms</a>
               <a href="/contact">Contact</a>
             </Space>

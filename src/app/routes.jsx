@@ -9,6 +9,7 @@ import { CATEGORIES } from "../data/categories";
 import SearchPage from "../pages/SearchPage";
 import CardLanding from "../pages/CardLanding";
 import CardBuy from "../pages/CardBuy";
+import CardTerms from "../pages/CardTerms";
 import MyCard from "../pages/MyCard";
 import CardVerify from "../pages/CardVerify";
 import PaymentSuccess from "../pages/PaymentSuccess";
@@ -32,6 +33,7 @@ export const routes = [
   { path: "/vendors", element: <Vendors /> },
   { path: "/card", element: <CardLanding /> },
   { path: "/card/buy", element: <CardBuy /> },
+  { path: "/card/terms", element: <CardTerms /> },
   { path: "/card/success", element: <PaymentSuccess /> },
   { path: "/card/my", element: <MyCard /> },
   { path: "/card/verify", element: <CardVerify /> },
