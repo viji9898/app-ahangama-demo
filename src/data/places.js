@@ -689,9 +689,9 @@ export const PLACES = [
     lng: 80.37417669999999,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/aksaaya_ayurveda.jpg",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/experiences/aksaaya-spa.webp",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+34aksaaya_ayurveda.webp",
     ogImage:
-      "https://images.pexels.com/photos/3757941/pexels-photo-3757941.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+34aksaaya_ayurveda.webp",
     mapUrl:
       "https://www.google.com/maps/place/?q=place_id:ChIJoYPnwlYV4ToROzJFXcMtjlI",
   },
