@@ -25,6 +25,21 @@ export default function Home() {
     ["eat", "stays", "experiences", "culture"].includes(c.key)
   );
 
+  const handleFreeGuideClick = () => {
+    if (window.gtag) {
+      window.gtag("event", "click_free_guide_whatsapp", {
+        guide: "ahangama_free_guide",
+        source: "website",
+        page: window.location.pathname,
+      });
+    }
+
+    window.open(
+      "https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide",
+      "_blank"
+    );
+  };
+
   // Quick “featured” picks from your arrays (first items per category)
   const eat = PLACES.find(
     (p) => p.destinationSlug === "ahangama" && p.category === "eat"
@@ -283,9 +298,7 @@ export default function Home() {
                       <Button
                         type="primary"
                         size="large"
-                        href="https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={handleFreeGuideClick}
                         style={{
                           background:
                             "linear-gradient(135deg, #25D366, #128C7E)",
