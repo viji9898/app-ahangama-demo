@@ -666,4 +666,33 @@ export const PLACES = [
     mapUrl:
       "https://www.google.com/maps/place/?q=place_id:ChIJt2e3EEQV4ToRUqgcr_LXi5Q",
   },
+  {
+    id: "aksaaya-ayurveda-wellness-spa",
+    destinationSlug: "ahangama",
+    category: "experiences",
+    name: "Aksaaya Ayurveda Wellness Spa Ahangama",
+    slug: "aksaaya-ayurveda-wellness-spa",
+    stars: 4.9,
+    reviews: 641,
+    excerpt:
+      "Authentic Ayurvedic treatments and wellness—perfect for reset and rejuvenation.",
+    description:
+      "A highly-rated traditional Ayurvedic spa offering authentic treatments in a peaceful setting. Great for healing, relaxation, and experiencing traditional Sri Lankan wellness practices.",
+    bestFor: ["Ayurveda", "Massage", "Wellness"],
+    tags: ["Authentic", "Traditional", "Healing"],
+    cardPerk: "20% off any 90-minute treatment package with the Ahangama Card.",
+    offer: ["20% Off", "Treatment Package"],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.9678567,
+    lng: 80.37417669999999,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/aksaaya_ayurveda.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/experiences/aksaaya-spa.webp",
+    ogImage:
+      "https://images.pexels.com/photos/3757941/pexels-photo-3757941.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJoYPnwlYV4ToROzJFXcMtjlI",
+  },
 ];

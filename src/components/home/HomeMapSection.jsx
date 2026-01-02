@@ -45,12 +45,16 @@ export default function HomeMapSection() {
 
   const places = useMemo(() => {
     return PLACES.filter((p) => p.destinationSlug === "ahangama")
-      .filter(
-        (p) => selectedCategory === "all" || p.category === selectedCategory
-      )
+      .filter((p) => {
+        if (selectedCategory === "all") {
+          // Explicitly include eat, stays, and experiences for "all" filter
+          return ["eat", "stays", "experiences"].includes(p.category);
+        }
+        return p.category === selectedCategory;
+      })
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }))
       .filter((p) => !!p._latlng)
-      .slice(0, 20); // Show up to 20 places for homepage
+      .slice(0, 40); // Show up to 20 places for homepage
   }, [selectedCategory]);
 
   const availableCategories = useMemo(() => {
