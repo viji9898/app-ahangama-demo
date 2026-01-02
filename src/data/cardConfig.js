@@ -1,83 +1,53 @@
 export const CARD_PRODUCTS = {
+  week: {
+    id: "week",
+    name: "7-Day Pass",
+    priceUsd: 18,
+    validityDays: 7,
+    maxPeople: 1,
+    oncePerDayPerVenue: true,
+    validForOnePerson: true,
+    description: "Perfect for short stays and exploring Ahangama's highlights",
+    bestFor: "Weekend trips, first-time visitors, short stays",
+    features: [
+      "All venue discounts",
+      "7-day validity",
+      "Perfect for short trips",
+    ],
+    isPopular: true,
+  },
+
   standard: {
     id: "standard",
-    name: "Ahangama Card",
+    name: "30-Day Pass",
     priceUsd: 35,
     validityDays: 30,
     maxPeople: 1,
     oncePerDayPerVenue: true,
     validForOnePerson: true,
-    description: "Full access to all partner venues and offers",
-    bestFor: "Solo travelers, couples sharing a card",
+    description: "Full access to all partner venues and offers for a month",
+    bestFor: "Solo travelers, couples, medium-term stays",
     features: ["All venue discounts", "Standard offers", "30-day validity"],
-  },
-
-  duo: {
-    id: "duo",
-    name: "Ahangama Duo Card",
-    priceUsd: 60,
-    validityDays: 30,
-    maxPeople: 2,
-    oncePerDayPerVenue: true,
-    validForOnePerson: false,
-    description:
-      "Same access and offers as the standard Ahangama Card for 2 people",
-    bestFor: "Couples, friends travelling together",
-    features: ["All venue discounts", "Named for 2 people", "30-day validity"],
   },
 
   longStay: {
     id: "longStay",
-    name: "Ahangama Long-Stay Card",
+    name: "90-Day Long-Stay Pass",
     priceUsd: 60,
     validityDays: 90,
     maxPeople: 1,
     oncePerDayPerVenue: true,
     validForOnePerson: true,
-    description:
-      "Includes all standard discounts + occasional members-only offers",
-    bestFor: "Digital nomads, slow travellers",
+    description: "Extended access for long-term visitors and digital nomads",
+    bestFor: "Digital nomads, slow travelers, extended stays",
     features: [
-      "All standard discounts",
-      "Members-only offers",
-      "90-day validity",
+      "All venue discounts",
+      "Extended validity",
+      "90-day access",
+      "Best value for long stays",
     ],
-  },
-
-  explorer: {
-    id: "explorer",
-    name: "Ahangama Explorer Card (Premium)",
-    priceUsd: 99,
-    validityDays: 90,
-    maxPeople: 1,
-    oncePerDayPerVenue: true,
-    validForOnePerson: true,
-    description:
-      "Premium experiences, early access to new venues, and exclusive perks",
-    bestFor: "Power users, creators, long-stay visitors",
-    features: [
-      "Premium experiences",
-      "Early venue access",
-      "Exclusive perks",
-      "90-day validity",
-    ],
-    isPremium: true,
-  },
-
-  week: {
-    id: "week",
-    name: "Ahangama Week Pass",
-    priceUsd: 15,
-    validityDays: 7,
-    maxPeople: 1,
-    oncePerDayPerVenue: true,
-    validForOnePerson: true,
-    description: "Limited partner venues",
-    bestFor: "Short stays, first-time visitors",
-    features: ["Limited venues", "7-day validity", "Perfect for short trips"],
-    isLimited: true,
   },
 };
 
 // Legacy export for backward compatibility
-export const CARD_PRODUCT = CARD_PRODUCTS.standard;
+export const CARD_PRODUCT = CARD_PRODUCTS.week; // Default to most popular

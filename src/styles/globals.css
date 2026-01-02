@@ -1126,3 +1126,37 @@
   place-items: center;
   padding: 18px;
 }
+
+/* ===== Card Landing Mobile Optimizations ===== */
+@media (max-width: 768px) {
+  .ant-list-item {
+    display: block !important;
+    flex-direction: column !important;
+  }
+
+  .ant-list-item-action {
+    margin-top: 16px !important;
+    margin-left: 0 !important;
+  }
+
+  .ant-list-item-action > li {
+    width: 100% !important;
+  }
+
+  .ant-list-item-action .ant-btn {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 100% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ant-space-horizontal {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .ant-space-horizontal .ant-space-item {
+    width: 100% !important;
+  }
+}
