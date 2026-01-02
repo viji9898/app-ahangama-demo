@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "../pages/Home";
 import About from "../pages/About";
+import Partners from "../pages/Partners";
 import PlaceDetail from "../pages/PlaceDetail";
 import CategoryIndex from "../pages/CategoryIndex";
 import NotFound from "../NotFound";
@@ -23,6 +24,7 @@ const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 export const routes = [
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
+  { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },
   { path: "/search", element: <SearchPage /> },
