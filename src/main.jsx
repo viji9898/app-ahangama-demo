@@ -5,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 import "antd/dist/reset.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import App from "./app/App";
+import AnalyticsTracker from "./AnalyticsTracker";
 import "./styles/globals.css";
 import { SearchProvider } from "./app/searchContext";
 
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <HelmetProvider>
       <SearchProvider>
         <BrowserRouter>
+          <AnalyticsTracker />
           <App />
         </BrowserRouter>
       </SearchProvider>
