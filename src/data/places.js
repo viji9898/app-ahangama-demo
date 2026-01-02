@@ -22,7 +22,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9722427,
     lng: 80.3635965,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/marshmellow.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+14marshmellow.webp",
     ogImage:
@@ -51,7 +51,7 @@ export const PLACES = [
     area: "Ahangama (Central)",
     lat: 5.9718757,
     lng: 80.3645275,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cactus.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+5catus.webp",
     ogImage:
@@ -137,7 +137,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9721737,
     lng: 80.3640169,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/ceylon_sliders.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+7ceylon-sliders.webp",
     ogImage:
@@ -167,7 +167,7 @@ export const PLACES = [
     area: "Ahangama (Wella Watta)",
     lat: 5.9723607,
     lng: 80.362433,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/le_cafe.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Le+Cafe%CC%81+French+Bistro.webp",
     ogImage:
@@ -223,7 +223,7 @@ export const PLACES = [
     area: "Kabalana (Matara Road)",
     lat: 5.9782004,
     lng: 80.348526,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cafe+ceylon.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+19cafe-ceylon.webp",
     ogImage:
@@ -252,7 +252,7 @@ export const PLACES = [
     area: "Ahangama (Wewilihena / Duwa Watta)",
     lat: 5.987142,
     lng: 80.3543167,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/black_honey_cafe.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+21black-honey-cafe.webp",
     ogImage:
@@ -309,7 +309,7 @@ export const PLACES = [
     area: "Ahangama (Galle Road)",
     lat: 5.973358,
     lng: 80.3604935,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/twin+fin.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+25twin-fin.webp",
     ogImage:
@@ -395,7 +395,7 @@ export const PLACES = [
     area: "Ahangama (Matara Road)",
     lat: 5.9756109,
     lng: 80.3552236,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/meori.jpg",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+30meori.webp",
     ogImage:
@@ -423,7 +423,7 @@ export const PLACES = [
     hours: "Confirm seasonally",
     area: "Kabalana (Beach / Matara-Galle Road)",
     lat: 5.9779099,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sister_kabalana.jpg",
     lng: 80.3513977,
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+10sisters.webp",
@@ -480,7 +480,7 @@ export const PLACES = [
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda)",
     lat: 5.9743119,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/maria_bonita.jpg",
     lng: 80.3583762,
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp",
@@ -509,7 +509,7 @@ export const PLACES = [
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda / Matara Road)",
     lat: 5.9745022,
-    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fruit+cafe+logo.jpg",
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/fellow_the_white_rabbit.jpg",
     lng: 80.3575392,
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+28follow-the-white-rabbit.webp",
