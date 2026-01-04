@@ -52,7 +52,7 @@ export default function Home() {
   );
 
   const heroImage =
-    "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1800";
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero.jpg";
 
   return (
     <SiteLayout>
@@ -132,7 +132,7 @@ export default function Home() {
                     </div>
                     <div className="ahg-metric">
                       <Text type="secondary">Card</Text>
-                      <div className="ahg-metricVal">$35</div>
+                      <div className="ahg-metricVal">$18</div>
                     </div>
                   </div>
                 </Col>
@@ -143,7 +143,7 @@ export default function Home() {
                     <div className="ahg-heroOverlay">
                       <div className="ahg-overlayTop">
                         <Text strong style={{ color: "#fff" }}>
-                          This week in Ahangama
+                          {/* This week in Ahangama */}
                         </Text>
                         <Text
                           style={{
@@ -151,7 +151,7 @@ export default function Home() {
                             fontSize: 12,
                           }}
                         >
-                          (Placeholder spotlight)
+                          {/* (Placeholder spotlight) */}
                         </Text>
                       </div>
                       <div className="ahg-overlayBottom">

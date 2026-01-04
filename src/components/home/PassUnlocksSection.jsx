@@ -205,6 +205,18 @@ function PlaceRow({ p }) {
                     color: "#d46b08",
                   };
                 }
+                if (category === "experiences") {
+                  return {
+                    background: "#f6f0ff",
+                    color: "#8B5A96",
+                  };
+                }
+                if (category === "culture") {
+                  return {
+                    background: "#e6f7ff",
+                    color: "#1890ff",
+                  };
+                }
                 // Default green for eat and other categories
                 return {
                   background: "#e8f5e8",

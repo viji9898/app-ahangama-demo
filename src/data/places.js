@@ -695,4 +695,123 @@ export const PLACES = [
     mapUrl:
       "https://www.google.com/maps/place/?q=place_id:ChIJoYPnwlYV4ToROzJFXcMtjlI",
   },
+  {
+    id: "the-board-hut",
+    destinationSlug: "ahangama",
+    category: "experiences",
+    name: "The Board Hut",
+    slug: "the-board-hut",
+    stars: 4.7,
+    reviews: 13,
+    excerpt:
+      "Surf board rental spot—get set up with quality boards for local breaks.",
+    description:
+      "A reliable surf board rental place catering to surfers looking for quality equipment. Perfect for accessing Ahangama's renowned surf breaks with proper gear.",
+    bestFor: ["Surf rentals", "Board gear", "Local breaks"],
+    tags: ["Surf", "Rental", "Equipment"],
+    cardPerk: "10% off daily board rental rates with the Ahangama Card.",
+    offer: ["10% Off", "Daily Rental"],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.966269525558065,
+    lng: 80.37681812446193,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/the_board_hut.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_board_hut.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/the_board_hut.jpg",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.966269525558065,80.37681812446193",
+  },
+  {
+    id: "lotus-surf-wellness",
+    destinationSlug: "ahangama",
+    category: "experiences",
+    name: "Lotus Surf & Wellness",
+    slug: "lotus-surf-wellness",
+    stars: 5,
+    reviews: 86,
+    excerpt:
+      "Premium surf coaching and wellness spa—perfect blend of action and relaxation.",
+    description:
+      "A highly-rated combination of professional surf instruction and rejuvenating wellness treatments. Ideal for those seeking both adventure on the waves and recovery through spa services.",
+    bestFor: ["Surf lessons", "Wellness spa", "Recovery"],
+    tags: ["Surf", "Wellness", "Premium", "Spa"],
+    cardPerk:
+      "Surf lesson + spa treatment combo discount with the Ahangama Card.",
+    offer: ["Combo Discount", "Surf + Spa"],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.968806766102098,
+    lng: 80.37512405092698,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/lotus_surf_camp.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lotus_surf_wellness.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lotus_surf_wellness.jpg",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.968806766102098,80.37512405092698",
+  },
+  {
+    id: "shramalaya",
+    destinationSlug: "ahangama",
+    category: "experiences",
+    name: "Shramalaya",
+    slug: "shramalaya",
+    stars: 4.9,
+    reviews: 124,
+    excerpt:
+      "Yoga wellness sanctuary—find balance and inner peace in a tranquil setting.",
+    description:
+      "A serene yoga wellness center offering authentic practices in a peaceful environment. Perfect for deepening your yoga journey, meditation, and holistic wellness experiences.",
+    bestFor: ["Yoga", "Meditation", "Wellness retreat"],
+    tags: ["Yoga", "Wellness", "Meditation", "Retreat"],
+    cardPerk:
+      "Free meditation session with any yoga class using the Ahangama Card.",
+    offer: ["Free Meditation", "Yoga Class"],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.973290711727406,
+    lng: 80.38481636441814,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/shramalaya.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/shramalaya.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/shramalaya.jpg",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.973290711727406,80.38481636441814",
+  },
+  {
+    id: "senses",
+    destinationSlug: "ahangama",
+    category: "experiences",
+    name: "Senses",
+    slug: "senses",
+    stars: 4.7,
+    reviews: 74,
+    excerpt:
+      "Yoga and wellness retreat—awaken your senses in a mindful setting.",
+    description:
+      "A holistic yoga and wellness center focused on sensory awareness and mindful practices. Offers a range of yoga styles and wellness treatments in a tranquil environment.",
+    bestFor: ["Yoga classes", "Wellness treatments", "Mindfulness"],
+    tags: ["Yoga", "Wellness", "Mindful", "Retreat"],
+    cardPerk:
+      "Complimentary wellness consultation with any yoga package using the Ahangama Card.",
+    offer: ["Free Consultation", "Yoga Package"],
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.985234560816895,
+    lng: 80.39236177976328,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/senses.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/senses.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/senses.jpg",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.985234560816895,80.39236177976328",
+  },
 ];

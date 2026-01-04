@@ -99,7 +99,7 @@
 .ahg-heroImg {
   width: 100%;
   height: 100%;
-  background: url("https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1800")
+  background: url("https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero.jpg")
     center/cover no-repeat;
   filter: saturate(1.05) contrast(1.05);
   transform: scale(1.03);
@@ -107,7 +107,7 @@
 .ahg-heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.55));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
