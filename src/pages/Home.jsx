@@ -110,19 +110,23 @@ export default function Home() {
                     >
                       Start exploring
                     </Button>
-                    <Button size="large" href="/card" icon={<QrcodeOutlined />}>
+                    <Button
+                      size="large"
+                      href="/search"
+                      icon={<QrcodeOutlined />}
+                    >
                       Get the Card
                     </Button>
-                    <Button size="large" href="/search">
+                    {/* <Button size="large" href="/search">
                       Search everything
-                    </Button>
+                    </Button> */}
                   </Space>
 
                   <div className="ahg-metrics">
-                    <div className="ahg-metric">
+                    {/* <div className="ahg-metric">
                       <Text type="secondary">Categories</Text>
                       <div className="ahg-metricVal">4</div>
-                    </div>
+                    </div> */}
                     <div className="ahg-metric">
                       <Text type="secondary">Curated places</Text>
                       <div className="ahg-metricVal">
@@ -378,9 +382,9 @@ export default function Home() {
                   >
                     Get the Card
                   </Button>
-                  <Button style={{ marginTop: 10 }} block href="/card/my">
+                  {/* <Button style={{ marginTop: 10 }} block href="/card/my">
                     View my QR
-                  </Button>
+                  </Button> */}
                 </Col>
               </Row>
             </Card>
