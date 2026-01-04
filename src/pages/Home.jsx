@@ -17,6 +17,7 @@ import { PLACES } from "../data/places";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
 import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
+import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -329,7 +330,14 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 24 }}>
-            <HomeMapSection />
+            {/* Desktop version */}
+            <div className="desktop-only" style={{ display: "block" }}>
+              <HomeMapSection />
+            </div>
+            {/* Mobile version */}
+            <div className="mobile-only" style={{ display: "none" }}>
+              <HomeMapSectionMobile />
+            </div>
           </div>
           <div style={{ marginTop: 16 }}>
             {/* Desktop version */}

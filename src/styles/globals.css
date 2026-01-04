@@ -1176,4 +1176,9 @@
   .mobile-only {
     display: block !important;
   }
+
+  /* Hide hero image on mobile */
+  .ahg-heroMedia {
+    display: none !important;
+  }
 }
