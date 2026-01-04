@@ -37,16 +37,25 @@ export default function TopNav() {
       <Row align="middle" justify="space-between" gutter={[12, 12]}>
         <Col>
           <Space align="center" size={10}>
-            <div
+            <Link
+              to="/"
               style={{
-                width: 28,
-                height: 28,
-                borderRadius: 8,
-                background: "#111",
+                textDecoration: "none",
+                color: "inherit",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
               }}
-            />
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              <Text strong>DEMO_SITE - LAUNCHING SOON</Text>
+            >
+              <div
+                style={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: 8,
+                  background: "#111",
+                }}
+              />
+              <Text strong>DEMO-Launching Soon</Text>
             </Link>
             {/* <Tag>Curated</Tag> */}
           </Space>
