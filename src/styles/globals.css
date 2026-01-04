@@ -168,7 +168,7 @@
 .dm-wrap {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 16px 48px;
+  padding: 0;
 }
 
 /* Hero: keep your structure, just soften and “Daymaker” it */
@@ -1180,5 +1180,11 @@
   /* Hide hero image on mobile */
   .ahg-heroMedia {
     display: none !important;
+  }
+
+  /* Remove margins and padding from main content on mobile */
+  .ant-layout-content {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }

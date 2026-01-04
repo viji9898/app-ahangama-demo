@@ -16,8 +16,8 @@ export default function HeroSectionMobile({ heroImage }) {
       {heroImage && (
         <div
           style={{
-            marginBottom: "20px",
-            borderRadius: "16px",
+            marginBottom: "16px",
+            borderRadius: "0px",
             overflow: "hidden",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           }}
@@ -27,7 +27,7 @@ export default function HeroSectionMobile({ heroImage }) {
             alt="Ahangama"
             style={{
               width: "100%",
-              height: "200px",
+              height: "240px",
               objectFit: "cover",
               display: "block",
             }}
@@ -35,7 +35,7 @@ export default function HeroSectionMobile({ heroImage }) {
         </div>
       )}
 
-      <div className="ahg-heroInner" style={{ padding: "0 16px 20px" }}>
+      <div className="ahg-heroInner" style={{ padding: "0 16px" }}>
         <div className="ahg-pillRow" style={{ marginBottom: "16px" }}>
           <Tag
             className="ahg-pill"
@@ -100,8 +100,8 @@ export default function HeroSectionMobile({ heroImage }) {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "12px",
-            marginBottom: "20px",
+            gap: "16px",
+            marginBottom: "24px",
           }}
         >
           <Button
@@ -141,6 +141,7 @@ export default function HeroSectionMobile({ heroImage }) {
             justifyContent: "center",
             gap: "24px",
             marginTop: "16px",
+            marginBottom: "16px",
           }}
         >
           <div className="ahg-metric" style={{ textAlign: "center" }}>
