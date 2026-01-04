@@ -15,6 +15,7 @@ import { absUrl } from "../app/siteUrl";
 import { CATEGORIES } from "../data/categories";
 import { PLACES } from "../data/places";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
+import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
 
 const { Title, Paragraph, Text } = Typography;
@@ -331,7 +332,14 @@ export default function Home() {
             <HomeMapSection />
           </div>
           <div style={{ marginTop: 16 }}>
-            <PassUnlocksSection destinationSlug="ahangama" />
+            {/* Desktop version */}
+            <div className="desktop-only" style={{ display: "block" }}>
+              <PassUnlocksSection destinationSlug="ahangama" />
+            </div>
+            {/* Mobile version */}
+            <div className="mobile-only" style={{ display: "none" }}>
+              <PassUnlocksMobile destinationSlug="ahangama" />
+            </div>
           </div>
 
           {/* CARD CTA */}

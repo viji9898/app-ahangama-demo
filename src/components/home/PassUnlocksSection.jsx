@@ -479,7 +479,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
 
         <Col>
           <Space wrap size={10}>
-            <Segmented
+            {/* <Segmented
               value={view}
               onChange={setView}
               options={[
@@ -492,7 +492,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
                 borderRadius: "16px",
                 border: "1px solid rgba(139,69,19,0.1)",
               }}
-            />
+            /> */}
             <Button
               type="primary"
               href="/card"
