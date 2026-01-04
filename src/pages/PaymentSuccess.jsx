@@ -9,13 +9,18 @@ import {
 } from "@ant-design/icons";
 import jsPDF from "jspdf";
 import QRCodeLib from "qrcode";
+import { sendPassEmailViaFunction } from "../services/emailService";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { verifyPayment } from "../services/stripe";
 
 const { Title, Paragraph, Text } = Typography;
 
-const generatePassPDF = async (paymentData) => {
+const generatePassPDF = async (
+  paymentData,
+  shouldDownload = true,
+  shouldEmail = false
+) => {
   // Create A5 PDF (148mm x 210mm = 5.83in x 8.27in at 72dpi = 420px x 595px)
   const pdf = new jsPDF({
     orientation: "portrait",
@@ -119,9 +124,22 @@ const generatePassPDF = async (paymentData) => {
     align: "center",
   });
 
-  // Save the PDF
+  // Generate filename
   const filename = `ahangama-pass-${paymentData.qrCode.split("-").pop()}.pdf`;
-  pdf.save(filename);
+
+  if (shouldEmail) {
+    // Return PDF as base64 for emailing
+    const pdfBuffer = pdf.output("arraybuffer");
+    const pdfBase64 = pdf.output("datauristring").split(",")[1];
+    return { pdfBase64, filename };
+  }
+
+  if (shouldDownload) {
+    // Save the PDF for download
+    pdf.save(filename);
+  }
+
+  return { filename };
 };
 
 export default function PaymentSuccess() {
@@ -131,6 +149,9 @@ export default function PaymentSuccess() {
   const [loading, setLoading] = useState(true);
   const [paymentData, setPaymentData] = useState(null);
   const [error, setError] = useState(null);
+  const [emailSending, setEmailSending] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailError, setEmailError] = useState(null);
 
   useEffect(() => {
     if (!sessionId) {
@@ -143,10 +164,34 @@ export default function PaymentSuccess() {
       try {
         const data = await verifyPayment(sessionId);
         setPaymentData(data);
+
+        // Auto-send email with PDF
+        await sendPassPDF(data);
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
+      }
+    };
+
+    const sendPassPDF = async (data) => {
+      try {
+        setEmailSending(true);
+        const { pdfBase64 } = await generatePassPDF(data, false, true);
+
+        await sendPassEmailViaFunction(
+          data.customerEmail,
+          data.customerName || data.customerEmail.split("@")[0],
+          data.qrCode,
+          pdfBase64
+        );
+
+        setEmailSent(true);
+      } catch (err) {
+        console.error("Failed to send pass email:", err);
+        setEmailError(err.message);
+      } finally {
+        setEmailSending(false);
       }
     };
 
@@ -264,22 +309,54 @@ export default function PaymentSuccess() {
         </div>
 
         <Alert
-          message="QR Code Delivery"
+          message={
+            emailSending
+              ? "📧 Sending your pass..."
+              : emailSent
+              ? "📧 Pass delivered!"
+              : emailError
+              ? "⚠️ Email delivery issue"
+              : "📧 Pass delivery"
+          }
           description={
             <div>
-              {/* <div style={{ marginBottom: 8 }}>
-                <WhatsAppOutlined
-                  style={{ color: "#25D366", marginRight: 8 }}
-                />
-                WhatsApp message sent to: {paymentData.customerPhone}
-              </div> */}
+              {emailSending && (
+                <div style={{ marginBottom: 8 }}>
+                  <Text>🔄 Generating and sending your PDF pass...</Text>
+                </div>
+              )}
+              {emailSent && (
+                <div style={{ marginBottom: 8 }}>
+                  <Text>
+                    ✅ PDF pass successfully sent to:{" "}
+                    <strong>{paymentData.customerEmail}</strong>
+                  </Text>
+                </div>
+              )}
+              {emailError && (
+                <div style={{ marginBottom: 8, color: "#ff4d4f" }}>
+                  <Text>❌ Could not send email: {emailError}</Text>
+                  <br />
+                  <Text>
+                    Don't worry! You can still download your pass below.
+                  </Text>
+                </div>
+              )}
               <div>
                 <MailOutlined style={{ color: "#1890ff", marginRight: 8 }} />
-                Email sent to: {paymentData.customerEmail}
+                Check your email: {paymentData.customerEmail}
               </div>
             </div>
           }
-          type="success"
+          type={
+            emailSending
+              ? "info"
+              : emailSent
+              ? "success"
+              : emailError
+              ? "warning"
+              : "info"
+          }
           showIcon
           style={{ marginBottom: 24 }}
         />
