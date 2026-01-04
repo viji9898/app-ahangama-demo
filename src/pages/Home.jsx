@@ -19,6 +19,7 @@ import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
+import HeroSectionMobile from "../components/home/HeroSectionMobile";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -75,119 +76,127 @@ export default function Home() {
       <div className="dm-heroCut" />
       <div className="dm-canvas">
         <div className="dm-wrap">
-          <div className="ahg-hero">
-            <div className="ahg-heroInner">
-              <Row gutter={[16, 16]} align="middle">
-                <Col xs={24} md={13}>
-                  <div className="ahg-pillRow">
-                    <Tag className="ahg-pill" icon={<ThunderboltOutlined />}>
-                      Curated
-                    </Tag>
-                    <Tag className="ahg-pill">FIT-friendly</Tag>
-                    <Tag className="ahg-pill">Long-stay</Tag>
-                    <Tag className="ahg-pill" icon={<QrcodeOutlined />}>
-                      Discount card
-                    </Tag>
-                  </div>
+          {/* Desktop version */}
+          <div className="desktop-only" style={{ display: "block" }}>
+            <div className="ahg-hero">
+              <div className="ahg-heroInner">
+                <Row gutter={[16, 16]} align="middle">
+                  <Col xs={24} md={13}>
+                    <div className="ahg-pillRow">
+                      <Tag className="ahg-pill" icon={<ThunderboltOutlined />}>
+                        Curated
+                      </Tag>
+                      <Tag className="ahg-pill">FIT-friendly</Tag>
+                      <Tag className="ahg-pill">Long-stay</Tag>
+                      <Tag className="ahg-pill" icon={<QrcodeOutlined />}>
+                        Discount card
+                      </Tag>
+                    </div>
 
-                  <Title className="ahg-h1">
-                    Ahangama,
-                    <br />
-                    but curated.
-                  </Title>
+                    <Title className="ahg-h1">
+                      Ahangama,
+                      <br />
+                      but curated.
+                    </Title>
 
-                  <Paragraph className="ahg-sub">
-                    A clean, opinionated guide to where to stay, eat, and spend
-                    your days — plus a <strong>$35 card</strong> that unlocks
-                    local privileges at selected venues.
-                  </Paragraph>
+                    <Paragraph className="ahg-sub">
+                      A clean, opinionated guide to where to stay, eat, and
+                      spend your days — plus a <strong>$35 card</strong> that
+                      unlocks local privileges at selected venues.
+                    </Paragraph>
 
-                  <Space wrap size={10}>
-                    <Button
-                      type="primary"
-                      size="large"
-                      href="/eat"
-                      icon={<ArrowRightOutlined />}
-                    >
-                      Start exploring
-                    </Button>
-                    <Button
-                      size="large"
-                      href="/search"
-                      icon={<QrcodeOutlined />}
-                    >
-                      Get the Card
-                    </Button>
-                    {/* <Button size="large" href="/search">
-                      Search everything
-                    </Button> */}
-                  </Space>
+                    <Space wrap size={10}>
+                      <Button
+                        type="primary"
+                        size="large"
+                        href="/eat"
+                        icon={<ArrowRightOutlined />}
+                      >
+                        Start exploring
+                      </Button>
+                      <Button
+                        size="large"
+                        href="/search"
+                        icon={<QrcodeOutlined />}
+                      >
+                        Get the Card
+                      </Button>
+                      {/* <Button size="large" href="/search">
+                        Search everything
+                      </Button> */}
+                    </Space>
 
-                  <div className="ahg-metrics">
-                    {/* <div className="ahg-metric">
-                      <Text type="secondary">Categories</Text>
-                      <div className="ahg-metricVal">4</div>
-                    </div> */}
-                    <div className="ahg-metric">
-                      <Text type="secondary">Curated places</Text>
-                      <div className="ahg-metricVal">
-                        {
-                          PLACES.filter((p) => p.destinationSlug === "ahangama")
-                            .length
-                        }
+                    <div className="ahg-metrics">
+                      {/* <div className="ahg-metric">
+                        <Text type="secondary">Categories</Text>
+                        <div className="ahg-metricVal">4</div>
+                      </div> */}
+                      <div className="ahg-metric">
+                        <Text type="secondary">Curated places</Text>
+                        <div className="ahg-metricVal">
+                          {
+                            PLACES.filter(
+                              (p) => p.destinationSlug === "ahangama"
+                            ).length
+                          }
+                        </div>
+                      </div>
+                      <div className="ahg-metric">
+                        <Text type="secondary">Card</Text>
+                        <div className="ahg-metricVal">$18</div>
                       </div>
                     </div>
-                    <div className="ahg-metric">
-                      <Text type="secondary">Card</Text>
-                      <div className="ahg-metricVal">$18</div>
-                    </div>
-                  </div>
-                </Col>
+                  </Col>
 
-                <Col xs={24} md={11}>
-                  <div className="ahg-heroMedia">
-                    <div className="ahg-heroImg" />
-                    <div className="ahg-heroOverlay">
-                      <div className="ahg-overlayTop">
-                        <Text strong style={{ color: "#fff" }}>
-                          {/* This week in Ahangama */}
-                        </Text>
-                        <Text
-                          style={{
-                            color: "rgba(255,255,255,0.75)",
-                            fontSize: 12,
-                          }}
-                        >
-                          {/* (Placeholder spotlight) */}
-                        </Text>
-                      </div>
-                      <div className="ahg-overlayBottom">
-                        <Space wrap size={[6, 6]}>
-                          <Tag
-                            className="ahg-overlayTag"
-                            icon={<CoffeeOutlined />}
+                  <Col xs={24} md={11}>
+                    <div className="ahg-heroMedia">
+                      <div className="ahg-heroImg" />
+                      <div className="ahg-heroOverlay">
+                        <div className="ahg-overlayTop">
+                          <Text strong style={{ color: "#fff" }}>
+                            {/* This week in Ahangama */}
+                          </Text>
+                          <Text
+                            style={{
+                              color: "rgba(255,255,255,0.75)",
+                              fontSize: 12,
+                            }}
                           >
-                            Best coffee mornings
-                          </Tag>
-                          <Tag
-                            className="ahg-overlayTag"
-                            icon={<CompassOutlined />}
-                          >
-                            Sunset experience
-                          </Tag>
-                          <Tag
-                            className="ahg-overlayTag"
-                            icon={<HomeOutlined />}
-                          >
-                            Long-stay pick
-                          </Tag>
-                        </Space>
+                            {/* (Placeholder spotlight) */}
+                          </Text>
+                        </div>
+                        <div className="ahg-overlayBottom">
+                          <Space wrap size={[6, 6]}>
+                            <Tag
+                              className="ahg-overlayTag"
+                              icon={<CoffeeOutlined />}
+                            >
+                              Best coffee mornings
+                            </Tag>
+                            <Tag
+                              className="ahg-overlayTag"
+                              icon={<CompassOutlined />}
+                            >
+                              Sunset experience
+                            </Tag>
+                            <Tag
+                              className="ahg-overlayTag"
+                              icon={<HomeOutlined />}
+                            >
+                              Long-stay pick
+                            </Tag>
+                          </Space>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Col>
-              </Row>
+                  </Col>
+                </Row>
+              </div>
             </div>
+          </div>
+          {/* Mobile version */}
+          <div className="mobile-only" style={{ display: "none" }}>
+            <HeroSectionMobile heroImage={heroImage} />
           </div>
 
           {/* FREE GUIDE CTA */}
