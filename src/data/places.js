@@ -667,6 +667,496 @@ export const PLACES = [
       "https://www.google.com/maps/place/?q=place_id:ChIJt2e3EEQV4ToRUqgcr_LXi5Q",
   },
   {
+    id: "solas-surf",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Solas Surf",
+    slug: "solas-surf",
+    stars: 4.9,
+    reviews: 78,
+    excerpt:
+      "Exceptional surf-focused accommodation with top ratings and personalized service.",
+    description:
+      "Highly-rated boutique stay specializing in surf experiences. Perfect for wave enthusiasts seeking quality accommodation.",
+    bestFor: ["Surf", "Boutique", "Personalized service"],
+    tags: ["Surf", "Boutique", "Highly rated"],
+    cardPerk:
+      "Free surfboard rental for one day with stay booking using the Ahangama Card.",
+    offer: ["Free Surfboard", "Surf Package"],
+    price: "Upper-mid",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.977439687059655,
+    lng: 80.3517054864877,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Solas+Surf.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/solas_surf.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/solas_surf.jpg",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977439687059655,80.3517054864877`,
+  },
+  {
+    id: "mosvold-villa",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Mosvold Villa",
+    slug: "mosvold-villa",
+    stars: 4.5,
+    reviews: 311,
+    excerpt:
+      "Well-reviewed villa offering comfortable accommodation with excellent hospitality.",
+    description:
+      "Established villa with strong reputation and extensive positive reviews. Known for consistent quality and warm hospitality.",
+    bestFor: ["Villa", "Comfort", "Hospitality"],
+    tags: ["Villa", "Well-reviewed", "Comfort"],
+    cardPerk:
+      "Late checkout until 2pm and welcome drink with the Ahangama Card.",
+    offer: ["Late Checkout", "Welcome Drink"],
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.977298709439299,
+    lng: 80.35352992935663,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Mosvold+Villa.jpg",
+    image:
+      "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977298709439299,80.35352992935663`,
+  },
+  {
+    id: "kabalana-house-by-ceilao-villas",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Kabalana House by Ceilão Villas",
+    slug: "kabalana-house-by-ceilao-villas",
+    stars: 4.8,
+    reviews: 64,
+    excerpt:
+      "Premium villa experience with exceptional design and luxury amenities.",
+    description:
+      "Beautifully designed villa managed by Ceilão Villas, offering luxury accommodation with attention to detail.",
+    bestFor: ["Luxury", "Design", "Premium"],
+    tags: ["Luxury", "Design", "Premium"],
+    cardPerk:
+      "Complimentary airport transfer and room upgrade with the Ahangama Card.",
+    offer: ["Airport Transfer", "Room Upgrade"],
+    price: "Premium",
+    hours: "24/7",
+    area: "Kabalana",
+    lat: 5.978416237124174,
+    lng: 80.3468283042806,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Kabalana+House+by+Ceila%CC%83o+Villas.jpg",
+    image:
+      "https://images.pexels.com/photos/1374125/pexels-photo-1374125.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/1374125/pexels-photo-1374125.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.978416237124174,80.3468283042806`,
+  },
+  {
+    id: "teal-ahangama",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Teal Ahangama",
+    slug: "teal-ahangama",
+    stars: 4.7,
+    reviews: 31,
+    excerpt:
+      "Stylish boutique accommodation with modern design and personalized touches.",
+    description:
+      "Contemporary boutique stay with excellent ratings and modern amenities. Perfect for travelers seeking style and comfort.",
+    bestFor: ["Boutique", "Modern", "Style"],
+    tags: ["Boutique", "Modern", "Stylish"],
+    cardPerk:
+      "Complimentary breakfast upgrade and late checkout with the Ahangama Card.",
+    offer: ["Breakfast Upgrade", "Late Checkout"],
+    price: "Upper-mid",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.977861080434612,
+    lng: 80.35127966692241,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/teal+ahangama%2C.jpg",
+    image:
+      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977861080434612,80.35127966692241`,
+  },
+  {
+    id: "tea-tree-villa",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Tea Tree Villa",
+    slug: "tea-tree-villa",
+    stars: 4.4,
+    reviews: 65,
+    excerpt:
+      "Charming villa accommodation with tropical garden setting and peaceful atmosphere.",
+    description:
+      "Well-reviewed villa offering tranquil accommodation surrounded by tropical greenery. Great for relaxation and nature lovers.",
+    bestFor: ["Villa", "Garden", "Peaceful"],
+    tags: ["Villa", "Garden", "Tranquil"],
+    cardPerk: "Garden dinner setup and spa discount with the Ahangama Card.",
+    offer: ["Garden Dinner", "Spa Discount"],
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.973511168835268,
+    lng: 80.36165592935615,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/tea+tree+villa%2C.jpg",
+    image:
+      "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.973511168835268,80.36165592935615`,
+  },
+  {
+    id: "the-find",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "The Find",
+    slug: "the-find",
+    stars: 4.9,
+    reviews: 57,
+    excerpt:
+      "Exceptional boutique accommodation with outstanding service and unique character.",
+    description:
+      "Highly-rated boutique stay known for exceptional hospitality and unique design elements. A true hidden gem.",
+    bestFor: ["Boutique", "Unique", "Service"],
+    tags: ["Boutique", "Hidden gem", "Exceptional"],
+    cardPerk:
+      "Personalized welcome package and activity recommendations with the Ahangama Card.",
+    offer: ["Welcome Package", "Activity Guide"],
+    price: "Upper-mid",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.977067409839829,
+    lng: 80.35363442935659,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the+find.jpg",
+    image:
+      "https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977067409839829,80.35363442935659`,
+  },
+  {
+    id: "lighthouse",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Lighthouse",
+    slug: "lighthouse",
+    stars: 4.7,
+    reviews: 461,
+    excerpt:
+      "Popular accommodation with extensive reviews and reliable service near the coast.",
+    description:
+      "Well-established accommodation with strong reputation and numerous positive reviews. Great coastal location.",
+    bestFor: ["Coast", "Popular", "Reliable"],
+    tags: ["Coastal", "Popular", "Well-established"],
+    cardPerk: "Ocean view room upgrade and sunset tour with the Ahangama Card.",
+    offer: ["Ocean View Upgrade", "Sunset Tour"],
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama Coast",
+    lat: 5.965762,
+    lng: 80.377438,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/lighthouse.jpg",
+    image:
+      "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966905893239799,80.37708872935528`,
+  },
+  {
+    id: "merchant",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Merchant",
+    slug: "merchant",
+    stars: 4.8,
+    reviews: 24,
+    excerpt:
+      "Intimate boutique accommodation with exceptional ratings and personalized service.",
+    description:
+      "Small boutique property with outstanding ratings and intimate atmosphere. Perfect for those seeking exclusive and personalized experiences.",
+    bestFor: ["Boutique", "Intimate", "Exclusive"],
+    tags: ["Boutique", "Intimate", "Exclusive"],
+    cardPerk:
+      "Private dining experience and local excursion with the Ahangama Card.",
+    offer: ["Private Dining", "Local Excursion"],
+    price: "Premium",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.972988634469191,
+    lng: 80.3707064140131,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/merchant+house.jpg",
+    image:
+      "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.972988634469191,80.3707064140131`,
+  },
+  {
+    id: "marigold-gedara",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Marigold Gedara",
+    slug: "marigold-gedara",
+    stars: 5.0,
+    reviews: 1,
+    excerpt:
+      "Perfect rated new accommodation offering exceptional quality and authentic experience.",
+    description:
+      "Brand new accommodation with perfect rating, promising exceptional quality and authentic Sri Lankan hospitality experience.",
+    bestFor: ["New", "Authentic", "Quality"],
+    tags: ["New", "Perfect rating", "Authentic"],
+    cardPerk:
+      "Traditional welcome ceremony and local cooking class with the Ahangama Card.",
+    offer: ["Welcome Ceremony", "Cooking Class"],
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.971091377620412,
+    lng: 80.372467844143,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/marigold+gedara.jpg",
+    image:
+      "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.971091377620412,80.372467844143`,
+  },
+  {
+    id: "trebartha-east-the-roundhouse",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Trebartha East – The Roundhouse",
+    slug: "trebartha-east-the-roundhouse",
+    stars: 5.0,
+    reviews: 86,
+    excerpt:
+      "Perfect rated unique accommodation with distinctive architecture and exceptional service.",
+    description:
+      "Uniquely designed accommodation with perfect 5-star rating and numerous positive reviews. Known for distinctive roundhouse architecture.",
+    bestFor: ["Unique", "Architecture", "Perfect rating"],
+    tags: ["Unique", "Architecture", "Perfect rating"],
+    cardPerk:
+      "Architectural tour and premium room upgrade with the Ahangama Card.",
+    offer: ["Architectural Tour", "Premium Upgrade"],
+    price: "Premium",
+    hours: "24/7",
+    area: "Trebartha East",
+    lat: 5.997323316318728,
+    lng: 80.35726862935918,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Trebartha+East+The+Roundhouse.jpg",
+    image:
+      "https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.997323316318728,80.35726862935918`,
+  },
+  {
+    id: "the-spice-trail",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "The Spice Trail",
+    slug: "the-spice-trail",
+    stars: 4.6,
+    reviews: 69,
+    excerpt:
+      "Themed accommodation celebrating local spice heritage with cultural immersion.",
+    description:
+      "Unique spice-themed accommodation offering cultural experiences and locally-inspired design. Perfect for cultural enthusiasts.",
+    bestFor: ["Cultural", "Themed", "Heritage"],
+    tags: ["Cultural", "Spice theme", "Heritage"],
+    cardPerk: "Spice garden tour and cooking workshop with the Ahangama Card.",
+    offer: ["Spice Tour", "Cooking Workshop"],
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.971547406755345,
+    lng: 80.37097158781593,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/The+Spice+Trail.jpg",
+    image:
+      "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.971547406755345,80.37097158781593`,
+  },
+  {
+    id: "kurulu-bay",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Kurulu Bay",
+    slug: "kurulu-bay",
+    stars: 4.9,
+    reviews: 157,
+    excerpt:
+      "Exceptional bay-side accommodation with outstanding service and scenic location.",
+    description:
+      "Premium bay-side accommodation with excellent ratings and beautiful coastal setting. Known for exceptional hospitality and scenic views.",
+    bestFor: ["Bay views", "Premium", "Scenic"],
+    tags: ["Bay-side", "Scenic", "Premium"],
+    cardPerk:
+      "Bay-side dinner and water sports package with the Ahangama Card.",
+    offer: ["Bay-side Dinner", "Water Sports"],
+    price: "Premium",
+    hours: "24/7",
+    area: "Kurulu Bay",
+    lat: 5.992706744517811,
+    lng: 80.34447406004452,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/kurulu+bay.jpg",
+    image:
+      "https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.992706744517811,80.34447406004452`,
+  },
+  {
+    id: "harding-boutique",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Harding Boutique",
+    slug: "harding-boutique",
+    stars: 4.6,
+    reviews: 170,
+    excerpt:
+      "Well-established boutique accommodation with strong reputation and consistent quality.",
+    description:
+      "Popular boutique accommodation with extensive positive reviews and established reputation for quality service and comfort.",
+    bestFor: ["Boutique", "Established", "Quality"],
+    tags: ["Boutique", "Established", "Popular"],
+    cardPerk:
+      "Boutique shopping tour and room amenities upgrade with the Ahangama Card.",
+    offer: ["Shopping Tour", "Amenities Upgrade"],
+    price: "Upper-mid",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.973952979952777,
+    lng: 80.36118506004209,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Harding+boutique.jpg",
+    image:
+      "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.973952979952777,80.36118506004209`,
+  },
+  {
+    id: "the-hotel",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "The Hotel",
+    slug: "the-hotel",
+    stars: 4.1,
+    reviews: 232,
+    excerpt:
+      "Classic accommodation with numerous reviews and reliable service in central location.",
+    description:
+      "Traditional hotel accommodation with extensive review history and central location. Known for consistent service and accessibility.",
+    bestFor: ["Central", "Traditional", "Reliable"],
+    tags: ["Central", "Traditional", "Accessible"],
+    cardPerk:
+      "Central location perks and local transport discount with the Ahangama Card.",
+    offer: ["Location Perks", "Transport Discount"],
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama Central",
+    lat: 5.966647310795568,
+    lng: 80.37754764469821,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the+hotel.jpg",
+    image:
+      "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966647310795568,80.37754764469821`,
+  },
+  {
+    id: "sama",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Sama",
+    slug: "sama",
+    stars: 4.9,
+    reviews: 107,
+    excerpt:
+      "Exceptional accommodation with outstanding ratings and premium service standards.",
+    description:
+      "Premium accommodation with near-perfect ratings and extensive positive feedback. Known for exceptional service and attention to detail.",
+    bestFor: ["Premium", "Service", "Excellence"],
+    tags: ["Premium", "Exceptional", "Service"],
+    cardPerk:
+      "Premium service upgrade and personalized itinerary with the Ahangama Card.",
+    offer: ["Service Upgrade", "Personal Itinerary"],
+    price: "Premium",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.97195657116178,
+    lng: 80.36734476798406,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sama.jpg",
+    image:
+      "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.97195657116178,80.36734476798406`,
+  },
+  {
+    id: "palm-hotel",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Palm Hotel",
+    slug: "palm-hotel",
+    stars: 4.6,
+    reviews: 274,
+    excerpt:
+      "Popular hotel accommodation with extensive reviews and tropical setting.",
+    description:
+      "Well-established hotel with numerous positive reviews and tropical ambiance. Popular choice for consistent quality and service.",
+    bestFor: ["Hotel", "Tropical", "Popular"],
+    tags: ["Hotel", "Tropical", "Popular"],
+    cardPerk:
+      "Tropical garden tour and pool privileges with the Ahangama Card.",
+    offer: ["Garden Tour", "Pool Privileges"],
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.989357169694588,
+    lng: 80.38216766798632,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Palm+hotel.jpg",
+    image:
+      "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.989357169694588,80.38216766798632`,
+  },
+  {
+    id: "abode-by-the-beach",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Abode by the Beach",
+    slug: "abode-by-the-beach",
+    stars: 4.5,
+    reviews: 152,
+    excerpt:
+      "Beachfront accommodation offering direct beach access and coastal charm.",
+    description:
+      "Beachfront accommodation with direct beach access and coastal setting. Well-reviewed for location and beach proximity.",
+    bestFor: ["Beach", "Coastal", "Direct access"],
+    tags: ["Beachfront", "Coastal", "Beach access"],
+    cardPerk:
+      "Beach cabana setup and water sports equipment with the Ahangama Card.",
+    offer: ["Beach Cabana", "Water Sports"],
+    price: "Upper-mid",
+    hours: "24/7",
+    area: "Ahangama Beach",
+    lat: 5.966115228787099,
+    lng: 80.37946534469813,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/abode+by+the+beach.jpg",
+    image:
+      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    ogImage:
+      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966115228787099,80.37946534469813`,
+  },
+  {
     id: "aksaaya-ayurveda-wellness-spa",
     destinationSlug: "ahangama",
     category: "experiences",
