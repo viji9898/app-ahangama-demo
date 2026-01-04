@@ -18,6 +18,7 @@ import PassUnlocksSection from "../components/home/PassUnlocksSection";
 import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
+import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -191,146 +192,154 @@ export default function Home() {
 
           {/* FREE GUIDE CTA */}
           <div style={{ marginTop: 24 }}>
-            <Card
-              style={{
-                borderRadius: 18,
-                border: "1px solid rgba(0,0,0,0.06)",
-                background:
-                  "linear-gradient(135deg, rgba(37,211,102,0.05) 0%, rgba(255,255,255,0.9) 100%)",
-              }}
-              bodyStyle={{ padding: 24 }}
-            >
-              <Row gutter={[24, 16]} align="middle">
-                <Col xs={24} lg={14}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "12px",
-                      marginBottom: "12px",
-                    }}
-                  >
+            {/* Desktop version */}
+            <div className="desktop-only" style={{ display: "block" }}>
+              <Card
+                style={{
+                  borderRadius: 18,
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  background:
+                    "linear-gradient(135deg, rgba(37,211,102,0.05) 0%, rgba(255,255,255,0.9) 100%)",
+                }}
+                bodyStyle={{ padding: 24 }}
+              >
+                <Row gutter={[24, 16]} align="middle">
+                  <Col xs={24} lg={14}>
                     <div
                       style={{
-                        width: "40px",
-                        height: "40px",
-                        borderRadius: "12px",
-                        background: "linear-gradient(135deg, #25D366, #128C7E)",
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "18px",
+                        gap: "12px",
+                        marginBottom: "12px",
                       }}
                     >
-                      📄
-                    </div>
-                    <div>
-                      <Title
-                        level={3}
-                        style={{
-                          margin: 0,
-                          color: "#2F3349",
-                          fontSize: "20px",
-                        }}
-                      >
-                        Free Ahangama PDF Guide
-                      </Title>
-                      <Text type="secondary" style={{ fontSize: "13px" }}>
-                        Comprehensive offline guide
-                      </Text>
-                    </div>
-                  </div>
-                  <Paragraph
-                    style={{
-                      marginBottom: 0,
-                      fontSize: "15px",
-                      color: "#5A6C7D",
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    Get our complete PDF guide sent directly to WhatsApp.
-                    Perfect for offline reading, planning your itinerary, and
-                    discovering hidden gems in Ahangama.
-                  </Paragraph>
-                </Col>
-
-                <Col xs={24} lg={10}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "20px",
-                      justifyContent: "center",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ marginBottom: "8px" }}>
-                        <Text
-                          strong
-                          style={{ fontSize: "13px", color: "#2F3349" }}
-                        >
-                          Scan to get guide
-                        </Text>
-                      </div>
                       <div
                         style={{
-                          padding: "12px",
-                          background: "#fff",
+                          width: "40px",
+                          height: "40px",
                           borderRadius: "12px",
-                          border: "2px solid rgba(37,211,102,0.2)",
-                          boxShadow: "0 4px 12px rgba(37,211,102,0.15)",
-                          display: "inline-block",
-                        }}
-                      >
-                        <QRCode
-                          value="https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide"
-                          size={90}
-                          level="M"
-                          fgColor="#2F3349"
-                        />
-                      </div>
-                    </div>
-
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ marginBottom: "8px" }}>
-                        <Text
-                          strong
-                          style={{ fontSize: "13px", color: "#2F3349" }}
-                        >
-                          Or click here
-                        </Text>
-                      </div>
-                      <Button
-                        type="primary"
-                        size="large"
-                        onClick={handleFreeGuideClick}
-                        style={{
                           background:
                             "linear-gradient(135deg, #25D366, #128C7E)",
-                          borderColor: "transparent",
-                          borderRadius: "12px",
-                          height: "48px",
-                          padding: "0 20px",
-                          fontWeight: "600",
-                          boxShadow: "0 4px 12px rgba(37,211,102,0.25)",
-                          border: "none",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "18px",
                         }}
-                        icon={
-                          <span
-                            style={{ fontSize: "16px", marginRight: "4px" }}
-                          >
-                            💬
-                          </span>
-                        }
                       >
-                        WhatsApp Guide
-                      </Button>
+                        📄
+                      </div>
+                      <div>
+                        <Title
+                          level={3}
+                          style={{
+                            margin: 0,
+                            color: "#2F3349",
+                            fontSize: "20px",
+                          }}
+                        >
+                          Free Ahangama Guide
+                        </Title>
+                        <Text type="secondary" style={{ fontSize: "13px" }}>
+                          Comprehensive offline guide
+                        </Text>
+                      </div>
                     </div>
-                  </div>
-                </Col>
-              </Row>
-            </Card>
+                    <Paragraph
+                      style={{
+                        marginBottom: 0,
+                        fontSize: "15px",
+                        color: "#5A6C7D",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      Get our complete PDF guide sent directly to WhatsApp.
+                      Perfect for offline reading, planning your itinerary, and
+                      discovering hidden gems in Ahangama.
+                    </Paragraph>
+                  </Col>
+
+                  <Col xs={24} lg={10}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                        justifyContent: "center",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <div style={{ textAlign: "center" }}>
+                        <div style={{ marginBottom: "8px" }}>
+                          <Text
+                            strong
+                            style={{ fontSize: "13px", color: "#2F3349" }}
+                          >
+                            Scan to get guide
+                          </Text>
+                        </div>
+                        <div
+                          style={{
+                            padding: "12px",
+                            background: "#fff",
+                            borderRadius: "12px",
+                            border: "2px solid rgba(37,211,102,0.2)",
+                            boxShadow: "0 4px 12px rgba(37,211,102,0.15)",
+                            display: "inline-block",
+                          }}
+                        >
+                          <QRCode
+                            value="https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide"
+                            size={90}
+                            level="M"
+                            fgColor="#2F3349"
+                          />
+                        </div>
+                      </div>
+
+                      <div style={{ textAlign: "center" }}>
+                        <div style={{ marginBottom: "8px" }}>
+                          <Text
+                            strong
+                            style={{ fontSize: "13px", color: "#2F3349" }}
+                          >
+                            Or click here
+                          </Text>
+                        </div>
+                        <Button
+                          type="primary"
+                          size="large"
+                          onClick={handleFreeGuideClick}
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #25D366, #128C7E)",
+                            borderColor: "transparent",
+                            borderRadius: "12px",
+                            height: "48px",
+                            padding: "0 20px",
+                            fontWeight: "600",
+                            boxShadow: "0 4px 12px rgba(37,211,102,0.25)",
+                            border: "none",
+                          }}
+                          icon={
+                            <span
+                              style={{ fontSize: "16px", marginRight: "4px" }}
+                            >
+                              💬
+                            </span>
+                          }
+                        >
+                          WhatsApp Guide
+                        </Button>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </Card>
+            </div>
+            {/* Mobile version */}
+            <div className="mobile-only" style={{ display: "none" }}>
+              <FreeGuideCtaMobile onGuideClick={handleFreeGuideClick} />
+            </div>
           </div>
 
           <div style={{ marginTop: 24 }}>
