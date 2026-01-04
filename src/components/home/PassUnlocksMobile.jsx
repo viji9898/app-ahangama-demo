@@ -225,27 +225,16 @@ function MobilePlaceCard({ p }) {
 }
 
 export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
-  const [q, setQ] = useState("");
   const [selectedCats, setSelectedCats] = useState([]);
-  const [showFilters, setShowFilters] = useState(false);
 
   const passPlaces = useMemo(() => {
-    const query = q.trim().toLowerCase();
-
     return PLACES.filter((p) => p.destinationSlug === destinationSlug)
       .filter((p) => !!p.offer)
       .filter((p) => {
         if (!selectedCats.length) return true;
         return selectedCats.includes(p.category);
-      })
-      .filter((p) => {
-        if (!query) return true;
-        const hay = `${p.name ?? ""} ${p.area ?? ""} ${p.category ?? ""} ${
-          p.description ?? ""
-        } ${p.offer ?? ""}`.toLowerCase();
-        return hay.includes(query);
       });
-  }, [destinationSlug, q, selectedCats]);
+  }, [destinationSlug, selectedCats]);
 
   const catsAvailable = useMemo(() => {
     const set = new Set(
@@ -325,123 +314,67 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
         </Button>
       </div>
 
-      {/* Search Bar */}
-      <div style={{ marginBottom: "12px" }}>
-        <Input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          prefix={<SearchOutlined style={{ color: "#999" }} />}
-          placeholder="Search offers..."
-          size="large"
-          style={{
-            borderRadius: "12px",
-            border: "1px solid rgba(139,69,19,0.1)",
-            fontSize: "14px",
-          }}
-          suffix={
-            <Button
-              type="text"
-              size="small"
-              icon={<FilterOutlined />}
-              onClick={() => setShowFilters(!showFilters)}
-              style={{
-                color: selectedCats.length > 0 ? "#8B4513" : "#999",
-                fontWeight: selectedCats.length > 0 ? "600" : "normal",
-              }}
-            >
-              {selectedCats.length > 0 && (
-                <span
-                  style={{
-                    background: "#8B4513",
-                    color: "#fff",
-                    borderRadius: "50%",
-                    width: "16px",
-                    height: "16px",
-                    fontSize: "10px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginLeft: "4px",
-                  }}
-                >
-                  {selectedCats.length}
-                </span>
-              )}
-            </Button>
-          }
-        />
-      </div>
-
-      {/* Collapsible Filter Pills */}
-      {showFilters && (
+      {/* Filter Pills */}
+      <div
+        style={{
+          marginBottom: "12px",
+          background: "rgba(255,255,255,0.7)",
+          padding: "12px",
+          borderRadius: "12px",
+          border: "1px solid rgba(139,69,19,0.1)",
+        }}
+      >
         <div
           style={{
-            marginBottom: "12px",
-            background: "rgba(255,255,255,0.7)",
-            padding: "12px",
-            borderRadius: "12px",
-            border: "1px solid rgba(139,69,19,0.1)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "8px",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "8px",
-            }}
-          >
-            <Text strong style={{ fontSize: "12px", color: "#8B4513" }}>
-              Filter by category
-            </Text>
-            <Button
-              type="text"
-              size="small"
-              icon={<CloseOutlined />}
-              onClick={() => setShowFilters(false)}
-              style={{ color: "#999" }}
-            />
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-            {catsAvailable.map((cat) => (
-              <Tag
-                key={cat}
-                color={selectedCats.includes(cat) ? "#8B4513" : "default"}
-                style={{
-                  cursor: "pointer",
-                  fontSize: "11px",
-                  margin: 0,
-                  padding: "4px 8px",
-                  borderRadius: "8px",
-                }}
-                onClick={() => toggleCat(cat)}
-              >
-                {CATEGORY_LABELS[cat] || cat}
-              </Tag>
-            ))}
-            {selectedCats.length > 0 && (
-              <Tag
-                color="red"
-                style={{
-                  cursor: "pointer",
-                  fontSize: "11px",
-                  margin: 0,
-                  padding: "4px 8px",
-                  borderRadius: "8px",
-                }}
-                onClick={() => setSelectedCats([])}
-              >
-                Clear all
-              </Tag>
-            )}
-          </div>
+          <Text strong style={{ fontSize: "12px", color: "#8B4513" }}>
+            Filter by category
+          </Text>
         </div>
-      )}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          {catsAvailable.map((cat) => (
+            <Tag
+              key={cat}
+              color={selectedCats.includes(cat) ? "#8B4513" : "default"}
+              style={{
+                cursor: "pointer",
+                fontSize: "11px",
+                margin: 0,
+                padding: "4px 8px",
+                borderRadius: "8px",
+              }}
+              onClick={() => toggleCat(cat)}
+            >
+              {CATEGORY_LABELS[cat] || cat}
+            </Tag>
+          ))}
+          {selectedCats.length > 0 && (
+            <Tag
+              color="red"
+              style={{
+                cursor: "pointer",
+                fontSize: "11px",
+                margin: 0,
+                padding: "4px 8px",
+                borderRadius: "8px",
+              }}
+              onClick={() => setSelectedCats([])}
+            >
+              Clear all
+            </Tag>
+          )}
+        </div>
+      </div>
 
       {/* Places List - Optimized for mobile scrolling */}
       <div
         style={{
-          maxHeight: "400px",
+          maxHeight: "500px",
           overflowY: "auto",
           overflowX: "hidden",
           WebkitOverflowScrolling: "touch",
@@ -487,7 +420,7 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
               borderColor: "rgba(139,69,19,0.3)",
             }}
           >
-            View Full Map & More Details →
+            GET THE PASS →
           </Button>
         </div>
       )}
