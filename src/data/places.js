@@ -1171,8 +1171,8 @@ export const PLACES = [
     bestFor: ["Luxury", "Boutique", "Modern"],
     tags: ["Boutique", "Premium", "Contemporary"],
     cardPerk:
-      "Complimentary airport transfer and welcome amenities package with the Ahangama Card.",
-    offer: ["Airport Transfer", "Welcome Package"],
+      "Get 10% off food & beverage and late checkout with the Ahangama Card.",
+    offer: ["10% Off F&B", "Late Checkout", "Early Check-in"],
     price: "Premium",
     hours: "24/7",
     area: "Ahangama",
@@ -1180,9 +1180,9 @@ export const PLACES = [
     lng: 80.3592737,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/una_logo.jpg",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_boutique_hotel.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_vintage.jpg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_boutique_hotel.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_vintage.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.9741413,80.3592737`,
   },
   {
