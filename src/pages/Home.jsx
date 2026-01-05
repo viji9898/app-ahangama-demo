@@ -109,14 +109,14 @@ export default function Home() {
                       <Button
                         type="primary"
                         size="large"
-                        href="/eat"
+                        href="/search"
                         icon={<ArrowRightOutlined />}
                       >
                         Start exploring
                       </Button>
                       <Button
                         size="large"
-                        href="/search"
+                        href="/card"
                         icon={<QrcodeOutlined />}
                       >
                         Get the Card
