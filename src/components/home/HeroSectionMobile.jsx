@@ -146,7 +146,7 @@ export default function HeroSectionMobile({ heroImage }) {
         >
           <div className="ahg-metric" style={{ textAlign: "center" }}>
             <Text type="secondary" style={{ fontSize: "12px" }}>
-              Curated places
+              Partners{" "}
             </Text>
             <div
               className="ahg-metricVal"

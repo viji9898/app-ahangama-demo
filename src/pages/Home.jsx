@@ -101,7 +101,7 @@ export default function Home() {
 
                     <Paragraph className="ahg-sub">
                       A clean, opinionated guide to where to stay, eat, and
-                      spend your days — plus a <strong>$35 card</strong> that
+                      spend your days — plus a <strong>$18 card</strong> that
                       unlocks local privileges at selected venues.
                     </Paragraph>
 
@@ -132,7 +132,7 @@ export default function Home() {
                         <div className="ahg-metricVal">4</div>
                       </div> */}
                       <div className="ahg-metric">
-                        <Text type="secondary">Curated places</Text>
+                        <Text type="secondary">Partners</Text>
                         <div className="ahg-metricVal">
                           {
                             PLACES.filter(
