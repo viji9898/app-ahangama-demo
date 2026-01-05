@@ -26,7 +26,7 @@ const { Title, Paragraph, Text } = Typography;
 export default function Home() {
   const canonical = absUrl("/");
   const categories = CATEGORIES.filter((c) =>
-    ["eat", "stays", "experiences", "culture"].includes(c.key)
+    ["eat", "stays", "wellness", "culture"].includes(c.key)
   );
 
   const handleFreeGuideClick = () => {
@@ -51,8 +51,8 @@ export default function Home() {
   const stays = PLACES.find(
     (p) => p.destinationSlug === "ahangama" && p.category === "stays"
   );
-  const exp = PLACES.find(
-    (p) => p.destinationSlug === "ahangama" && p.category === "experiences"
+  const wellness = PLACES.find(
+    (p) => p.destinationSlug === "ahangama" && p.category === "wellness"
   );
 
   const heroImage =
@@ -62,7 +62,7 @@ export default function Home() {
     <SiteLayout>
       <Seo
         title="Ahangama"
-        description="Curated guides to stays, food, experiences and culture in Ahangama — plus a discount card that gives you more for your money."
+        description="Curated guides to stays, food, wellness and culture in Ahangama — plus a discount card that gives you more for your money."
         canonical={canonical}
         ogImage={heroImage}
         jsonLd={{
@@ -202,7 +202,7 @@ export default function Home() {
           {/* FREE GUIDE CTA */}
           <div style={{ marginTop: 24 }}>
             {/* Desktop version */}
-            <div className="desktop-only" style={{ display: "block" }}>
+            {/* <div className="desktop-only" style={{ display: "block" }}>
               <Card
                 style={{
                   borderRadius: 18,
@@ -261,7 +261,7 @@ export default function Home() {
                         lineHeight: 1.6,
                       }}
                     >
-                      Our favourite cafés, stays, experiences, and hidden
+                      Our favourite cafés, stays, wellness, and hidden
                       corners — with simple local context so you know where to
                       go, when, and why. Sent straight to WhatsApp for easy
                       access anytime.
@@ -345,11 +345,11 @@ export default function Home() {
                   </Col>
                 </Row>
               </Card>
-            </div>
+            </div> */}
             {/* Mobile version */}
-            <div className="mobile-only" style={{ display: "none" }}>
+            {/* <div className="mobile-only" style={{ display: "none" }}>
               <FreeGuideCtaMobile onGuideClick={handleFreeGuideClick} />
-            </div>
+            </div> */}
           </div>
 
           <div style={{ marginTop: 24 }}>

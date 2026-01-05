@@ -15,9 +15,8 @@ const CATEGORY_LABELS = {
   all: "All",
   eat: "Eat & Drink",
   stays: "Stays",
-  experiences: "Experiences",
-  culture: "Culture",
   wellness: "Wellness",
+  culture: "Culture",
   surf: "Surf",
   "work-long-stays": "Work & Long Stays",
   "getting-around": "Getting Around",
@@ -47,8 +46,8 @@ export default function HomeMapSection() {
     return PLACES.filter((p) => p.destinationSlug === "ahangama")
       .filter((p) => {
         if (selectedCategory === "all") {
-          // Explicitly include eat, stays, and experiences for "all" filter
-          return ["eat", "stays", "experiences"].includes(p.category);
+          // Explicitly include eat, stays, wellness, and surf for "all" filter
+          return ["eat", "stays", "wellness", "surf"].includes(p.category);
         }
         return p.category === selectedCategory;
       })

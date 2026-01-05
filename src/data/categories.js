@@ -29,15 +29,15 @@ export const CATEGORIES = [
       "Curated stays in Ahangama — boutique hotels, guesthouses, and long-stay picks.",
   },
   {
-    key: "experiences",
-    title: "Experiences",
+    key: "wellness",
+    title: "Wellness",
     description:
-      "Surf, wellness, workshops, and things worth planning your day around — curated for FITs.",
+      "Yoga, mindfulness, wellness treatments, and holistic practices — curated for wellness travelers.",
     icon: CompassOutlined,
-    basePath: "/experiences",
-    seoTitle: "Experiences in Ahangama",
+    basePath: "/wellness",
+    seoTitle: "Wellness in Ahangama",
     seoDescription:
-      "Curated experiences in Ahangama — surf, wellness, and cultural activities.",
+      "Curated wellness experiences in Ahangama — yoga, mindfulness, and holistic practices.",
   },
   {
     key: "culture",

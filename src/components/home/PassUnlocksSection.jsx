@@ -26,9 +26,8 @@ const DEFAULT_CENTER = { lat: 5.9699, lng: 80.3666 }; // Ahangama-ish
 const CATEGORY_LABELS = {
   eat: "Eat & Drink",
   stays: "Stays",
-  experiences: "Experiences",
-  culture: "Culture",
   wellness: "Wellness",
+  culture: "Culture",
   surf: "Surf",
   "work-long-stays": "Work & Long Stays",
   "getting-around": "Getting Around",

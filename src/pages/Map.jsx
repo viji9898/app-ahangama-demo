@@ -17,7 +17,7 @@ const CATEGORY_KEYS = [
   { key: "all", label: "All" },
   { key: "eat", label: "Eat" },
   { key: "stays", label: "Stays" },
-  { key: "experiences", label: "Experiences" },
+  { key: "wellness", label: "Wellness" },
   { key: "culture", label: "Culture" },
   { key: "surf", label: "Surf" },
   { key: "wellness", label: "Wellness" },

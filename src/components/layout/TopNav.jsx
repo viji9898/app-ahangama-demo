@@ -16,7 +16,7 @@ export default function TopNav() {
     if (
       !loc.pathname.startsWith("/eat") &&
       !loc.pathname.startsWith("/stays") &&
-      !loc.pathname.startsWith("/experiences")
+      !loc.pathname.startsWith("/wellness")
     ) {
       nav("/eat");
     }

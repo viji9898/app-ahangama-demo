@@ -23,9 +23,8 @@ const { Title, Text } = Typography;
 const CATEGORY_LABELS = {
   eat: "Eat & Drink",
   stays: "Stays",
-  experiences: "Experiences",
-  culture: "Culture",
   wellness: "Wellness",
+  culture: "Culture",
   surf: "Surf",
   "work-long-stays": "Work & Long Stays",
   "getting-around": "Getting Around",
@@ -81,7 +80,7 @@ function MobilePlaceCard({ p }) {
     if (category === "stays") {
       return { background: "#fff4e6", color: "#d46b08" };
     }
-    if (category === "experiences") {
+    if (category === "wellness") {
       return { background: "#f6f0ff", color: "#8B5A96" };
     }
     if (category === "culture") {

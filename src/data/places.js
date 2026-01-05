@@ -1188,7 +1188,7 @@ export const PLACES = [
   {
     id: "aksaaya-ayurveda-wellness-spa",
     destinationSlug: "ahangama",
-    category: "experiences",
+    category: "wellness",
     name: "Aksaaya Ayurveda Wellness Spa Ahangama",
     slug: "aksaaya-ayurveda-wellness-spa",
     stars: 4.9,
@@ -1217,7 +1217,7 @@ export const PLACES = [
   {
     id: "the-board-hut",
     destinationSlug: "ahangama",
-    category: "experiences",
+    category: "surf",
     name: "The Board Hut",
     slug: "the-board-hut",
     stars: 4.7,
@@ -1246,7 +1246,7 @@ export const PLACES = [
   {
     id: "lotus-surf-wellness",
     destinationSlug: "ahangama",
-    category: "experiences",
+    category: "wellness",
     name: "Lotus Surf & Wellness",
     slug: "lotus-surf-wellness",
     stars: 5,
@@ -1276,7 +1276,7 @@ export const PLACES = [
   {
     id: "shramalaya",
     destinationSlug: "ahangama",
-    category: "experiences",
+    category: "wellness",
     name: "Shramalaya",
     slug: "shramalaya",
     stars: 4.9,
@@ -1306,7 +1306,7 @@ export const PLACES = [
   {
     id: "senses",
     destinationSlug: "ahangama",
-    category: "experiences",
+    category: "wellness",
     name: "Senses",
     slug: "senses",
     stars: 4.7,
