@@ -249,7 +249,7 @@ export default function Home() {
                           Free Ahangama Guide
                         </Title>
                         <Text type="secondary" style={{ fontSize: "13px" }}>
-                          Comprehensive offline guide
+                          Comprehensive guide
                         </Text>
                       </div>
                     </div>
@@ -261,9 +261,10 @@ export default function Home() {
                         lineHeight: 1.6,
                       }}
                     >
-                      Get our complete PDF guide sent directly to WhatsApp.
-                      Perfect for offline reading, planning your itinerary, and
-                      discovering hidden gems in Ahangama.
+                      Our favourite cafés, stays, experiences, and hidden
+                      corners — with simple local context so you know where to
+                      go, when, and why. Sent straight to WhatsApp for easy
+                      access anytime.
                     </Paragraph>
                   </Col>
 

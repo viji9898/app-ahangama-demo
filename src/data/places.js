@@ -1157,6 +1157,35 @@ export const PLACES = [
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966115228787099,80.37946534469813`,
   },
   {
+    id: "unu-boutique-hotel",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "UNU Boutique Hotel",
+    slug: "unu-boutique-hotel",
+    stars: 4.7,
+    reviews: 102,
+    excerpt:
+      "Sophisticated boutique hotel offering premium accommodations with modern amenities.",
+    description:
+      "A stylish boutique hotel featuring contemporary design and exceptional service. Perfect for travelers seeking luxury accommodation with personalized attention in Ahangama.",
+    bestFor: ["Luxury", "Boutique", "Modern"],
+    tags: ["Boutique", "Premium", "Contemporary"],
+    cardPerk:
+      "Complimentary airport transfer and welcome amenities package with the Ahangama Card.",
+    offer: ["Airport Transfer", "Welcome Package"],
+    price: "Premium",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.9741413,
+    lng: 80.3592737,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/una_logo.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_boutique_hotel.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_boutique_hotel.jpg",
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.9741413,80.3592737`,
+  },
+  {
     id: "aksaaya-ayurveda-wellness-spa",
     destinationSlug: "ahangama",
     category: "experiences",

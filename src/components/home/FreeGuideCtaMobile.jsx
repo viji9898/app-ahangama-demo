@@ -62,8 +62,8 @@ export default function FreeGuideCtaMobile({ onGuideClick }) {
           lineHeight: 1.5,
         }}
       >
-        Get our complete PDF guide sent directly to WhatsApp. Perfect for
-        offline reading and planning your itinerary.
+        A practical offline PDF with our favourite cafés, stays, and hidden
+        spots. Sent straight to WhatsApp.
       </Paragraph>
 
       <Button
