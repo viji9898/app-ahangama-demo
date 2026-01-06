@@ -272,7 +272,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
 
   const [view, setView] = useState("List");
   const [q, setQ] = useState("");
-  const [selectedCats, setSelectedCats] = useState([]); // multi-select
+  const [selectedCategory, setSelectedCategory] = useState("all"); // multi-select
   const [selected, setSelected] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
 
@@ -282,8 +282,8 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
     return PLACES.filter((p) => p.destinationSlug === destinationSlug)
       .filter((p) => !!p.offer) // only pass venues (discounts/value adds)
       .filter((p) => {
-        if (!selectedCats.length) return true;
-        return selectedCats.includes(p.category);
+        if (selectedCategory === "all") return true;
+        return p.category === selectedCategory;
       })
       .filter((p) => {
         if (!query) return true;
@@ -293,12 +293,19 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
         return hay.includes(query);
       })
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }));
-  }, [destinationSlug, q, selectedCats]);
+  }, [destinationSlug, q, selectedCategory]);
 
-  const catsAvailable = useMemo(() => {
-    const set = new Set(passPlaces.map((p) => p.category).filter(Boolean));
-    return Array.from(set);
-  }, [passPlaces]);
+  const availableCategories = useMemo(() => {
+    const categories = ["all"];
+    const categoriesFromPlaces = PLACES.filter(
+      (p) => p.destinationSlug === destinationSlug
+    )
+      .filter((p) => !!p.offer)
+      .map((p) => p.category)
+      .filter(Boolean);
+
+    return [...categories, ...new Set(categoriesFromPlaces)];
+  }, [destinationSlug]);
 
   const mappable = useMemo(
     () => passPlaces.filter((p) => !!p._latlng),
@@ -306,11 +313,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
   );
   const center = mappable[0]?._latlng || DEFAULT_CENTER;
 
-  const toggleCat = (cat) => {
-    setSelectedCats((prev) =>
-      prev.includes(cat) ? prev.filter((x) => x !== cat) : [...prev, cat]
-    );
-  };
+  // Single selection - no toggle function needed
 
   // Initialize Mapbox when view switches to Map
   useEffect(() => {
@@ -524,7 +527,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
       <div style={{ height: 12 }} />
 
       <Row gutter={[10, 10]} align="middle">
-        <Col xs={24} md={10}>
+        {/* <Col xs={24} md={10}>
           <Input
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -533,31 +536,46 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
             placeholder="Search offers, places, areas…"
             className="pu-search"
           />
-        </Col>
+        </Col> */}
 
         <Col xs={24} md={14}>
-          <div className="pu-filters">
-            {catsAvailable.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                className={`pu-filterBtn ${
-                  selectedCats.includes(cat) ? "is-active" : ""
-                }`}
-                onClick={() => toggleCat(cat)}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "12px",
+            }}
+          >
+            <div>
+              <Title
+                level={5}
+                style={{ margin: "0 0 8px", fontSize: "13px", color: "#666" }}
               >
-                {CATEGORY_LABELS[cat] || cat}
-              </button>
-            ))}
-            {!!selectedCats.length && (
-              <button
-                type="button"
-                className="pu-clear"
-                onClick={() => setSelectedCats([])}
-              >
-                Clear
-              </button>
-            )}
+                FILTER BY TYPE
+              </Title>
+              <div className="map-filters">
+                {availableCategories.map((category) => (
+                  <button
+                    key={category}
+                    className={`map-filter ${
+                      selectedCategory === category ? "is-active" : ""
+                    }`}
+                    onClick={() => setSelectedCategory(category)}
+                    type="button"
+                  >
+                    {CATEGORY_LABELS[category] || category}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <Text type="secondary" style={{ fontSize: "11px" }}>
+                Showing {passPlaces.length} places
+              </Text>
+            </div>
           </div>
         </Col>
       </Row>

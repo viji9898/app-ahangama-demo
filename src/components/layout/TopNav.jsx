@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Space, Typography, Input, Button, Tag } from "antd";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useSearch } from "../../app/searchContext";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 
@@ -47,15 +48,11 @@ export default function TopNav() {
                 gap: "8px",
               }}
             >
-              <div
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 8,
-                  background: "#111",
-                }}
+              <div />
+              <ExclamationCircleOutlined
+                style={{ color: "var(--orange)", fontSize: "24px" }}
               />
-              <Text strong>DEMO-Launching Soon</Text>
+              <Text strong>Concept Site / Prototype</Text>
             </Link>
             {/* <Tag>Curated</Tag> */}
           </Space>

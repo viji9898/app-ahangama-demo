@@ -8,6 +8,8 @@ import {
   QrcodeOutlined,
   ArrowRightOutlined,
   ThunderboltOutlined,
+  ExclamationCircleOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
@@ -72,6 +74,73 @@ export default function Home() {
           url: canonical,
         }}
       />
+      {/* DISCLAIMER CARD */}
+      <div
+        className="dm-canvas"
+        style={{ paddingTop: "16px", paddingBottom: "0" }}
+      >
+        <div className="dm-wrap">
+          <Card
+            style={{
+              marginBottom: "24px",
+              border: "2px solid var(--orange)",
+              borderRadius: "12px",
+              background: "linear-gradient(135deg, #fff9f2 0%, #fff 100%)",
+            }}
+          >
+            <div
+              style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}
+            >
+              <ExclamationCircleOutlined
+                style={{
+                  color: "var(--orange)",
+                  fontSize: "24px",
+                  marginTop: "2px",
+                }}
+              />
+              <div style={{ flex: 1 }}>
+                <Title
+                  level={5}
+                  style={{ margin: "0 0 8px 0", color: "var(--dm-ink)" }}
+                >
+                  Concept Site / Prototype
+                </Title>
+                <Text
+                  style={{
+                    color: "var(--ink-muted)",
+                    fontSize: "14px",
+                    display: "block",
+                    marginBottom: "12px",
+                  }}
+                >
+                  This is a demonstration website. All venue information,
+                  pricing, and data shown are for testing purposes only and may
+                  not reflect actual businesses or services.
+                </Text>
+                <Button
+                  type="primary"
+                  icon={<WhatsAppOutlined />}
+                  size="small"
+                  style={{
+                    backgroundColor: "#25D366",
+                    borderColor: "#25D366",
+                    borderRadius: "6px",
+                    fontSize: "12px",
+                  }}
+                  onClick={() => {
+                    window.open(
+                      "https://wa.me/94777908790?text=Hi!%20I%20have%20concerns%20about%20the%20test%20data%20on%20your%20concept%20site.",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Have concerns? Contact us
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
       {/* HERO */}
       <div className="dm-heroCut" />
       <div className="dm-canvas">
