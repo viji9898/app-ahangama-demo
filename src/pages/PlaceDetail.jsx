@@ -157,6 +157,62 @@ export default function PlaceDetail({ category }) {
               <strong>Price:</strong> {place.price}
             </Text>
 
+            {place.howToClaim && (
+              <>
+                <Divider />
+                <Title level={5} style={{ marginTop: 0, marginBottom: 8 }}>
+                  How to Claim Your Card Benefit
+                </Title>
+                <Paragraph style={{ fontSize: 14, marginBottom: 8 }}>
+                  {place.howToClaim}
+                </Paragraph>
+                {place.restrictions && (
+                  <Text type="secondary" style={{ fontSize: 12 }}>
+                    <strong>Terms:</strong> {place.restrictions}
+                  </Text>
+                )}
+              </>
+            )}
+
+            {(place.whatsApp || place.email || place.instagram) && (
+              <>
+                <Divider />
+                <Title level={5} style={{ marginTop: 0, marginBottom: 8 }}>
+                  Contact Information
+                </Title>
+                {place.whatsApp && (
+                  <Text style={{ display: "block", marginBottom: 4 }}>
+                    <strong>WhatsApp:</strong>{" "}
+                    <a
+                      href={`https://wa.me/${place.whatsApp}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {place.whatsApp}
+                    </a>
+                  </Text>
+                )}
+                {place.email && (
+                  <Text style={{ display: "block", marginBottom: 4 }}>
+                    <strong>Email:</strong>{" "}
+                    <a href={`mailto:${place.email}`}>{place.email}</a>
+                  </Text>
+                )}
+                {place.instagram && (
+                  <Text style={{ display: "block", marginBottom: 4 }}>
+                    <strong>Instagram:</strong>{" "}
+                    <a
+                      href={`https://instagram.com/${place.instagram}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      @{place.instagram}
+                    </a>
+                  </Text>
+                )}
+              </>
+            )}
+
             <div style={{ marginTop: 14 }}>
               <Button
                 type="primary"

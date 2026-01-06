@@ -17,6 +17,14 @@ export const PLACES = [
     tags: ["Popular", "All-day", "Social"],
     cardPerk: "Free smoothie with any breakfast order using the Ahangama Card.",
     offer: ["Free Smoothie", "Breakfast Deal"],
+    howToClaim:
+      "Show your Ahangama Card when ordering breakfast to claim your free smoothie.",
+    restrictions:
+      "Valid for breakfast orders only. One free smoothie per card per day.",
+    whatsApp: "94771234568",
+    email: "info@marshmellowcafe.com",
+    instagram: "marshmellowcafe",
+    discount: "Free smoothie with breakfast order",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -46,6 +54,14 @@ export const PLACES = [
     tags: ["Central", "Reliable", "Busy"],
     cardPerk: "10% off all coffee drinks with the Ahangama Card.",
     offer: ["10% Off", "Coffee Discount"],
+    howToClaim:
+      "Present your Ahangama Card when ordering coffee to receive the discount.",
+    restrictions:
+      "Valid for coffee drinks only. Cannot be combined with other offers.",
+    whatsApp: "94771234573",
+    email: "info@cactusahangama.com",
+    instagram: "cactusahangama",
+    discount: "10% off coffee drinks",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Central)",
@@ -75,6 +91,14 @@ export const PLACES = [
     tags: ["Rooftop", "Lively", "Group-friendly"],
     cardPerk: "15% off sunset drinks on the rooftop with the Ahangama Card.",
     offer: ["15% Off", "Sunset Drinks"],
+    howToClaim:
+      "Present your Ahangama Card when ordering drinks during sunset hours to receive the discount.",
+    restrictions:
+      "Valid for rooftop sunset drinks only. Available 5-7 PM. Cannot be combined with other offers.",
+    whatsApp: "94771234578",
+    email: "info@moochiesahangama.com",
+    instagram: "moochiesahangama",
+    discount: "15% off sunset drinks",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -132,6 +156,14 @@ export const PLACES = [
     tags: ["Social", "Casual", "Dependable"],
     cardPerk: "Buy 2 get 1 free on signature sliders with the Ahangama Card.",
     offer: ["Buy 2", "Get 1"],
+    howToClaim:
+      "Show your Ahangama Card when ordering 2 signature sliders to receive the third one free.",
+    restrictions:
+      "Valid for signature sliders only. Third slider must be of equal or lesser value.",
+    whatsApp: "94771234579",
+    email: "info@ceylonsliders.lk",
+    instagram: "ceylonsliders",
+    discount: "Buy 2 get 1 free signature sliders",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -162,6 +194,14 @@ export const PLACES = [
     cardPerk:
       "Complimentary French pastry with coffee using the Ahangama Card.",
     offer: ["Free Pastry", "Coffee Combo"],
+    howToClaim:
+      "Present your Ahangama Card when ordering coffee to receive a complimentary French pastry.",
+    restrictions:
+      "Valid with coffee orders only. One free pastry per card per visit.",
+    whatsApp: "94771234580",
+    email: "info@lecafeahangama.com",
+    instagram: "lecafeahangama",
+    discount: "Free French pastry with coffee",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Wella Watta)",
@@ -190,6 +230,14 @@ export const PLACES = [
     tags: ["Casual", "Easy", "Crowd-pleaser"],
     cardPerk: "20% off the daily special with the Ahangama Card.",
     offer: ["20% Off", "Daily Special"],
+    howToClaim:
+      "Show your Ahangama Card when ordering the daily special to receive 20% discount.",
+    restrictions:
+      "Valid for daily special only. Cannot be combined with other promotions.",
+    whatsApp: "94771234581",
+    email: "info@hakunamataahangama.com",
+    instagram: "hakunamataahangama",
+    discount: "20% off daily special",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Aranwala Junction)",
@@ -218,6 +266,14 @@ export const PLACES = [
     tags: ["Easy", "Convenient", "No-fuss"],
     cardPerk: "Free second coffee refill with the Ahangama Card.",
     offer: ["Free Refill", "Coffee Perk"],
+    howToClaim:
+      "Present your Ahangama Card with your first coffee order to receive a free refill.",
+    restrictions:
+      "Valid for coffee orders only. One free refill per card per visit.",
+    whatsApp: "94771234582",
+    email: "info@cafeceylonhangama.com",
+    instagram: "cafeceylonhangama",
+    discount: "Free coffee refill",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Kabalana (Matara Road)",
@@ -247,6 +303,14 @@ export const PLACES = [
     tags: ["Calm", "Tucked-away", "Well-loved"],
     cardPerk: "Honey-infused drink upgrade free with the Ahangama Card.",
     offer: ["Honey Upgrade", "Free Boost"],
+    howToClaim:
+      "Show your Ahangama Card when ordering any drink to receive free honey infusion upgrade.",
+    restrictions:
+      "Valid for any drink order. One upgrade per card per visit.",
+    whatsApp: "94771234585",
+    email: "info@blackhoneycafehangama.com",
+    instagram: "blackhoneycafehangama",
+    discount: "Free honey-infused drink upgrade",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Wewilihena / Duwa Watta)",
@@ -276,6 +340,14 @@ export const PLACES = [
     tags: ["Fresh", "Wellness", "Light"],
     cardPerk: "Free protein boost in any smoothie with the Ahangama Card.",
     offer: ["Protein Boost", "Free Add-on"],
+    howToClaim:
+      "Present your Ahangama Card when ordering any smoothie to receive free protein boost.",
+    restrictions:
+      "Valid for smoothie orders only. One boost per card per visit.",
+    whatsApp: "94771234586",
+    email: "info@squeezamehangama.com",
+    instagram: "squeezamehangama",
+    discount: "Free protein boost in smoothies",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Kaya Collective)",
@@ -304,6 +376,14 @@ export const PLACES = [
     tags: ["Hybrid", "Convenient", "Surf vibe"],
     cardPerk: "Free coffee with any surf gear rental using the Ahangama Card.",
     offer: ["Free Coffee", "Surf Gear"],
+    howToClaim:
+      "Rent any surf gear and show your Ahangama Card to receive a free coffee.",
+    restrictions:
+      "Valid with surf gear rental only. One free coffee per rental.",
+    whatsApp: "94771234587",
+    email: "info@twinfinhangama.com",
+    instagram: "twinfinhangama",
+    discount: "Free coffee with surf gear rental",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Galle Road)",
@@ -332,6 +412,14 @@ export const PLACES = [
     tags: ["Lively", "Dependable", "Social"],
     cardPerk: "Fresh catch of the day - 10% off with the Ahangama Card.",
     offer: ["Fresh Catch", "10% Off"],
+    howToClaim:
+      "Order the fresh catch of the day and present your Ahangama Card to receive 10% discount.",
+    restrictions:
+      "Valid for fresh catch specials only. Cannot be combined with other promotions.",
+    whatsApp: "94771234588",
+    email: "info@sambahangama.com",
+    instagram: "sambahangama",
+    discount: "10% off fresh catch of the day",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (A2 Southern Beach Road)",
@@ -361,6 +449,14 @@ export const PLACES = [
     cardPerk:
       "Double shot espresso at single shot price with the Ahangama Card.",
     offer: ["Double Shot", "Single Price"],
+    howToClaim:
+      "Show your Ahangama Card when ordering an espresso to get double shot at single shot price.",
+    restrictions:
+      "Valid for espresso orders only. One upgrade per card per visit.",
+    whatsApp: "94771234589",
+    email: "info@kaffihangama.com",
+    instagram: "kaffihangama",
+    discount: "Double shot espresso at single price",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -390,6 +486,14 @@ export const PLACES = [
     cardPerk:
       "Complimentary appetizer with main course using the Ahangama Card.",
     offer: ["Free Appetizer", "Main Course"],
+    howToClaim:
+      "Order any main course and show your Ahangama Card to receive a complimentary appetizer.",
+    restrictions:
+      "Valid with main course order only. One appetizer per card per visit.",
+    whatsApp: "94771234590",
+    email: "info@meorihangama.com",
+    instagram: "meorihangama",
+    discount: "Free appetizer with main course",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -419,6 +523,14 @@ export const PLACES = [
     tags: ["Kabalana", "Beach-adjacent", "Popular"],
     cardPerk: "Pre-surf breakfast combo special with the Ahangama Card.",
     offer: ["Surf Combo", "Breakfast Special"],
+    howToClaim:
+      "Present your Ahangama Card when ordering to get the pre-surf breakfast combo at special rate.",
+    restrictions:
+      "Available before 11 AM only. Valid for combo meal selections.",
+    whatsApp: "94771234591",
+    email: "info@sisterskabalana.com",
+    instagram: "sisterskabalana",
+    discount: "Pre-surf breakfast combo special rate",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Kabalana (Beach / Matara-Galle Road)",
@@ -447,6 +559,14 @@ export const PLACES = [
     tags: ["Vegan-friendly", "Light", "Fresh"],
     cardPerk: "Free coconut water with any fruit bowl using the Ahangama Card.",
     offer: ["Free Coconut", "Fruit Bowl"],
+    howToClaim:
+      "Order any fruit bowl and present your Ahangama Card to receive free coconut water.",
+    restrictions:
+      "Valid with fruit bowl order only. One coconut water per card per visit.",
+    whatsApp: "94771234592",
+    email: "info@fruitcafehangama.com",
+    instagram: "fruitcafehangama",
+    discount: "Free coconut water with fruit bowl",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -476,6 +596,14 @@ export const PLACES = [
     tags: ["Casa", "Relaxed", "Well-loved"],
     cardPerk: "Extended stay perks + café discounts with the Ahangama Card.",
     offer: ["Stay Perks", "Café Discount"],
+    howToClaim:
+      "Show your Ahangama Card at check-in for stay perks or when ordering at café for discounts.",
+    restrictions:
+      "Stay perks valid for bookings above 2 nights. Café discounts valid on food and beverages.",
+    whatsApp: "94771234593",
+    email: "info@mariabonitahangama.com",
+    instagram: "mariabonitahangama",
+    discount: "Extended stay perks + café discounts",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda)",
@@ -505,6 +633,14 @@ export const PLACES = [
     tags: ["Garden", "Scenic", "Brunch"],
     cardPerk: "Garden table priority booking with the Ahangama Card.",
     offer: ["Priority Booking", "Garden Table"],
+    howToClaim:
+      "Mention your Ahangama Card when making a reservation to get priority for garden table seating.",
+    restrictions:
+      "Subject to availability. Priority booking for parties of 4 or less.",
+    whatsApp: "94771234594",
+    email: "info@followwhiterabbit.com",
+    instagram: "followwhiterabbitahangama",
+    discount: "Garden table priority booking",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda / Matara Road)",
@@ -565,6 +701,14 @@ export const PLACES = [
     cardPerk:
       "Social hour drinks - buy one get one 50% off with the Ahangama Card.",
     offer: ["Social Hour", "BOGO 50%"],
+    howToClaim:
+      "Visit during social hours (5-7 PM) and show your Ahangama Card to get second drink at 50% off.",
+    restrictions:
+      "Valid during social hours only (5-7 PM). Second drink must be equal or lesser value.",
+    whatsApp: "94771234595",
+    email: "info@teddieshangama.com",
+    instagram: "teddieshangama",
+    discount: "Buy one get one 50% off drinks during social hours",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -595,6 +739,15 @@ export const PLACES = [
     tags: ["Chill", "Reliable", "Local-favorite"],
     cardPerk: "Extended wifi hours + workspace perks with the Ahangama Card.",
     offer: ["Late Checkout", ""],
+    howToClaim:
+      "Present your Ahangama Card at check-in to access extended wifi and workspace benefits.",
+    restrictions:
+      "Wifi and workspace perks available during business hours. Late checkout subject to availability.",
+    whatsApp: "94771234569",
+    email: "stay@thekip.lk",
+    instagram: "thekipahangama",
+    emailContact: "Contact The Kip",
+    discount: "Extended wifi and workspace perks",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Dharmarama Rd)",
@@ -625,6 +778,14 @@ export const PLACES = [
     cardPerk:
       "Social hour drinks - buy one get one 50% off with the Ahangama Card.",
     offer: ["Free Upgrade"],
+    howToClaim:
+      "Present your Ahangama Card at check-in to receive complimentary room upgrade based on availability.",
+    restrictions:
+      "Subject to availability at time of check-in. Valid for bookings of 2+ nights.",
+    whatsApp: "94771234596",
+    email: "stay@teddieshangama.com",
+    instagram: "teddiesstayahangama",
+    discount: "Free room upgrade",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -653,6 +814,14 @@ export const PLACES = [
     tags: ["Lively", "Dependable", "Social"],
     cardPerk: "Fresh catch of the day - 10% off with the Ahangama Card.",
     offer: ["Free refill on coffee / tea", "Late checkout"],
+    howToClaim:
+      "Show your Ahangama Card at check-in to receive late checkout and free refills on beverages.",
+    restrictions:
+      "Late checkout subject to availability. Free refills available during stay.",
+    whatsApp: "94771234597",
+    email: "stay@sambahangama.com",
+    instagram: "sambastayahangama",
+    discount: "Late checkout and free beverage refills",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (A2 Southern Beach Road)",
@@ -683,6 +852,14 @@ export const PLACES = [
     cardPerk:
       "Free surfboard rental for one day with stay booking using the Ahangama Card.",
     offer: ["Free Surfboard", "Surf Package"],
+    howToClaim:
+      "Present your Ahangama Card at check-in to receive one day free surfboard rental during your stay.",
+    restrictions:
+      "Valid for stays of 2+ nights. Surfboard rental subject to availability and weather conditions.",
+    whatsApp: "94771234598",
+    email: "info@solassurfhangama.com",
+    instagram: "solassurfhangama",
+    discount: "Free surfboard rental for one day",
     price: "Upper-mid",
     hours: "24/7",
     area: "Ahangama",
@@ -712,6 +889,14 @@ export const PLACES = [
     cardPerk:
       "Late checkout until 2pm and welcome drink with the Ahangama Card.",
     offer: ["Late Checkout", "Welcome Drink"],
+    howToClaim:
+      "Present your Ahangama Card at check-in to receive late checkout and complimentary welcome drink.",
+    restrictions:
+      "Late checkout subject to availability. Welcome drink served upon arrival.",
+    whatsApp: "94771234599",
+    email: "info@mosvoldvilla.com",
+    instagram: "mosvoldvilla",
+    discount: "Late checkout and welcome drink",
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -741,6 +926,14 @@ export const PLACES = [
     cardPerk:
       "Complimentary airport transfer and room upgrade with the Ahangama Card.",
     offer: ["Airport Transfer", "Room Upgrade"],
+    howToClaim:
+      "Show your Ahangama Card at booking to receive airport transfer and room upgrade based on availability.",
+    restrictions:
+      "Airport transfer for stays 3+ nights. Room upgrade subject to availability at check-in.",
+    whatsApp: "94771234600",
+    email: "info@kabalanahouse.com",
+    instagram: "kabalanaceilao",
+    discount: "Airport transfer and room upgrade",
     price: "Premium",
     hours: "24/7",
     area: "Kabalana",
@@ -770,6 +963,14 @@ export const PLACES = [
     cardPerk:
       "Complimentary breakfast upgrade and late checkout with the Ahangama Card.",
     offer: ["Breakfast Upgrade", "Late Checkout"],
+    howToClaim:
+      "Show your Ahangama Card at check-in to receive breakfast upgrade and late checkout.",
+    restrictions:
+      "Late checkout subject to availability. Breakfast upgrade to continental or local cuisine.",
+    whatsApp: "94771234601",
+    email: "info@tealahangama.com",
+    instagram: "tealahangama",
+    discount: "Breakfast upgrade and late checkout",
     price: "Upper-mid",
     hours: "24/7",
     area: "Ahangama",
@@ -798,6 +999,14 @@ export const PLACES = [
     tags: ["Villa", "Garden", "Tranquil"],
     cardPerk: "Garden dinner setup and spa discount with the Ahangama Card.",
     offer: ["Garden Dinner", "Spa Discount"],
+    howToClaim:
+      "Present your Ahangama Card to arrange romantic garden dinner setup and receive spa service discounts.",
+    restrictions:
+      "Garden dinner setup requires 24-hour notice. Spa discount valid for treatments above 2 hours.",
+    whatsApp: "94771234602",
+    email: "info@teatreevilla.com",
+    instagram: "teatreevilla",
+    discount: "Garden dinner setup and spa discount",
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -855,6 +1064,14 @@ export const PLACES = [
     tags: ["Coastal", "Popular", "Well-established"],
     cardPerk: "Ocean view room upgrade and sunset tour with the Ahangama Card.",
     offer: ["Ocean View Upgrade", "Sunset Tour"],
+    howToClaim:
+      "Present your Ahangama Card at check-in for ocean view room upgrade and complimentary sunset tour.",
+    restrictions:
+      "Ocean view upgrade subject to availability. Sunset tour weather dependent.",
+    whatsApp: "94771234603",
+    email: "info@lighthouseahangama.com",
+    instagram: "lighthouseahangama",
+    discount: "Ocean view upgrade and sunset tour",
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama Coast",
@@ -884,6 +1101,14 @@ export const PLACES = [
     cardPerk:
       "Private dining experience and local excursion with the Ahangama Card.",
     offer: ["Private Dining", "Local Excursion"],
+    howToClaim:
+      "Show your Ahangama Card when booking to arrange private dining and local excursion experiences.",
+    restrictions:
+      "Private dining requires 48-hour advance booking. Local excursion subject to availability and weather.",
+    whatsApp: "94771234604",
+    email: "info@merchantahangama.com",
+    instagram: "merchantahangama",
+    discount: "Private dining and local excursion",
     price: "Premium",
     hours: "24/7",
     area: "Ahangama",
@@ -942,6 +1167,14 @@ export const PLACES = [
     cardPerk:
       "Architectural tour and premium room upgrade with the Ahangama Card.",
     offer: ["Architectural Tour", "Premium Upgrade"],
+    howToClaim:
+      "Present your Ahangama Card at check-in for premium room upgrade and private architectural tour.",
+    restrictions:
+      "Premium upgrade subject to availability. Architectural tour by appointment with advance notice.",
+    whatsApp: "94771234605",
+    email: "info@trebarthaeast.com",
+    instagram: "trebarthaeastroundhouse",
+    discount: "Architectural tour and premium room upgrade",
     price: "Premium",
     hours: "24/7",
     area: "Trebartha East",
@@ -970,6 +1203,14 @@ export const PLACES = [
     tags: ["Cultural", "Spice theme", "Heritage"],
     cardPerk: "Spice garden tour and cooking workshop with the Ahangama Card.",
     offer: ["Spice Tour", "Cooking Workshop"],
+    howToClaim:
+      "Show your Ahangama Card when booking to join spice garden tour and hands-on cooking workshop.",
+    restrictions:
+      "Cooking workshop requires minimum 2 participants. Spice tour available daily with advance booking.",
+    whatsApp: "94771234606",
+    email: "info@spicetrailahangama.com",
+    instagram: "spicetrailahangama",
+    discount: "Spice garden tour and cooking workshop",
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -1028,6 +1269,14 @@ export const PLACES = [
     cardPerk:
       "Boutique shopping tour and room amenities upgrade with the Ahangama Card.",
     offer: ["Shopping Tour", "Amenities Upgrade"],
+    howToClaim:
+      "Show your Ahangama Card at check-in to receive room amenities upgrade and join boutique shopping tour.",
+    restrictions:
+      "Shopping tour available twice weekly. Amenities upgrade includes premium toiletries and welcome treats.",
+    whatsApp: "94771234607",
+    email: "info@hardingboutique.com",
+    instagram: "hardingboutiqueahangama",
+    discount: "Boutique shopping tour and amenities upgrade",
     price: "Upper-mid",
     hours: "24/7",
     area: "Ahangama",
@@ -1057,6 +1306,14 @@ export const PLACES = [
     cardPerk:
       "Central location perks and local transport discount with the Ahangama Card.",
     offer: ["Location Perks", "Transport Discount"],
+    howToClaim:
+      "Present your Ahangama Card to receive local transport discounts and central location perks.",
+    restrictions:
+      "Transport discount valid for tuk-tuk and taxi services. Location perks include area map and recommendations.",
+    whatsApp: "94771234608",
+    email: "info@thehotelahangama.com",
+    instagram: "thehotelahangama",
+    discount: "Local transport discount and location perks",
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama Central",
@@ -1115,6 +1372,14 @@ export const PLACES = [
     cardPerk:
       "Tropical garden tour and pool privileges with the Ahangama Card.",
     offer: ["Garden Tour", "Pool Privileges"],
+    howToClaim:
+      "Show your Ahangama Card to join tropical garden tours and receive extended pool privileges.",
+    restrictions:
+      "Garden tour available daily at 10 AM. Pool privileges include extended hours and poolside service.",
+    whatsApp: "94771234609",
+    email: "info@palmhotelahangama.com",
+    instagram: "palmhotelahangama",
+    discount: "Tropical garden tour and pool privileges",
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -1173,6 +1438,15 @@ export const PLACES = [
     cardPerk:
       "Get 10% off food & beverage and late checkout with the Ahangama Card.",
     offer: ["10% Off F&B", "Late Checkout", "Early Check-in"],
+    howToClaim:
+      "Present your Ahangama Card at the time of billing to avail the discount and request late checkout or early check-in during reservation.",
+    restrictions:
+      "Offer valid for direct bookings only. Not combinable with other promotions. Subject to availability.",
+    whatsApp: "94771234567",
+    email: "info@unuboutiquehotel.com",
+    instagram: "unuboutiquehotel",
+    discount: "10% off food & beverage, late checkout, early check-in",
+    emailContact: "Contact UNU Boutique Hotel",
     price: "Premium",
     hours: "24/7",
     area: "Ahangama",
@@ -1201,6 +1475,13 @@ export const PLACES = [
     tags: ["Authentic", "Traditional", "Healing"],
     cardPerk: "20% off any 90-minute treatment package with the Ahangama Card.",
     offer: ["20% Off", "Treatment Package"],
+    howToClaim:
+      "Present your Ahangama Card when booking your 90-minute treatment to receive the discount.",
+    restrictions:
+      "Discount applies to 90-minute treatments only. Advance booking recommended. Not combinable with other promotions.",
+    whatsApp: "94771234570",
+    email: "info@aksaayaayurveda.com",
+    instagram: "aksaayaayurveda",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1230,6 +1511,14 @@ export const PLACES = [
     tags: ["Surf", "Rental", "Equipment"],
     cardPerk: "10% off daily board rental rates with the Ahangama Card.",
     offer: ["10% Off", "Daily Rental"],
+    howToClaim:
+      "Show your Ahangama Card when renting a board to receive the discount on daily rates.",
+    restrictions:
+      "Discount applies to daily rentals only. Valid for standard board rentals. Equipment subject to availability.",
+    whatsApp: "94771234571",
+    email: "info@theboardhut.lk",
+    instagram: "theboardhut",
+    discount: "10% off daily board rental rates",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1260,6 +1549,14 @@ export const PLACES = [
     cardPerk:
       "Surf lesson + spa treatment combo discount with the Ahangama Card.",
     offer: ["Combo Discount", "Surf + Spa"],
+    howToClaim:
+      "Book both surf lesson and spa treatment together and show your Ahangama Card to receive combo discount.",
+    restrictions:
+      "Both services must be booked within same visit. Advance booking recommended for combo packages.",
+    whatsApp: "94771234611",
+    email: "info@lotussurfwellness.com",
+    instagram: "lotussurfwellness",
+    discount: "Surf lesson and spa treatment combo discount",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1290,6 +1587,14 @@ export const PLACES = [
     cardPerk:
       "Free meditation session with any yoga class using the Ahangama Card.",
     offer: ["Free Meditation", "Yoga Class"],
+    howToClaim:
+      "Book any yoga class and present your Ahangama Card to receive a complimentary meditation session.",
+    restrictions:
+      "Free meditation session must be booked within same day as yoga class. Based on instructor availability.",
+    whatsApp: "94771234612",
+    email: "info@shramalayahangama.com",
+    instagram: "shramalayahangama",
+    discount: "Free meditation session with yoga class",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1320,6 +1625,14 @@ export const PLACES = [
     cardPerk:
       "Complimentary wellness consultation with any yoga package using the Ahangama Card.",
     offer: ["Free Consultation", "Yoga Package"],
+    howToClaim:
+      "Present your Ahangama Card when booking a yoga package to receive your complimentary wellness consultation.",
+    restrictions:
+      "Free consultation valid with yoga package purchase only. Consultation must be scheduled within package period.",
+    whatsApp: "94771234572",
+    email: "info@sensesahangama.com",
+    instagram: "sensesahangama",
+    discount: "Complimentary wellness consultation with yoga package",
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
