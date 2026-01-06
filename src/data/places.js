@@ -305,8 +305,7 @@ export const PLACES = [
     offer: ["Honey Upgrade", "Free Boost"],
     howToClaim:
       "Show your Ahangama Card when ordering any drink to receive free honey infusion upgrade.",
-    restrictions:
-      "Valid for any drink order. One upgrade per card per visit.",
+    restrictions: "Valid for any drink order. One upgrade per card per visit.",
     whatsApp: "94771234585",
     email: "info@blackhoneycafehangama.com",
     instagram: "blackhoneycafehangama",
@@ -904,9 +903,9 @@ export const PLACES = [
     lng: 80.35352992935663,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Mosvold+Villa.jpg",
     image:
-      "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Mosvold+Villa.jpg",
     ogImage:
-      "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Mosvold+Villa.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977298709439299,80.35352992935663`,
   },
   {
@@ -941,9 +940,9 @@ export const PLACES = [
     lng: 80.3468283042806,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Kabalana+House+by+Ceila%CC%83o+Villas.jpg",
     image:
-      "https://images.pexels.com/photos/1374125/pexels-photo-1374125.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Kabalana+House+by+Ceila%CC%83o+Villas.jpg",
     ogImage:
-      "https://images.pexels.com/photos/1374125/pexels-photo-1374125.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Kabalana+House+by+Ceila%CC%83o+Villas.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.978416237124174,80.3468283042806`,
   },
   {
@@ -978,9 +977,9 @@ export const PLACES = [
     lng: 80.35127966692241,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/teal+ahangama%2C.jpg",
     image:
-      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/teel.jpg",
     ogImage:
-      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/teel.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977861080434612,80.35127966692241`,
   },
   {
@@ -1014,9 +1013,9 @@ export const PLACES = [
     lng: 80.36165592935615,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/tea+tree+villa%2C.jpg",
     image:
-      "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tee_tree_villa.jpg",
     ogImage:
-      "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tee_tree_villa.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.973511168835268,80.36165592935615`,
   },
   {
@@ -1043,9 +1042,9 @@ export const PLACES = [
     lng: 80.35363442935659,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the+find.jpg",
     image:
-      "https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_find.jpg",
     ogImage:
-      "https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_find.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977067409839829,80.35363442935659`,
   },
   {
@@ -1079,9 +1078,9 @@ export const PLACES = [
     lng: 80.377438,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/lighthouse.jpg",
     image:
-      "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lighthouse.jpg",
     ogImage:
-      "https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lighthouse.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966905893239799,80.37708872935528`,
   },
   {
@@ -1116,9 +1115,9 @@ export const PLACES = [
     lng: 80.3707064140131,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/merchant+house.jpg",
     image:
-      "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/merchant.jpg",
     ogImage:
-      "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/merchant.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.972988634469191,80.3707064140131`,
   },
   {
@@ -1145,9 +1144,9 @@ export const PLACES = [
     lng: 80.372467844143,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/marigold+gedara.jpg",
     image:
-      "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marigold_gedara.jpg",
     ogImage:
-      "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/marigold_gedara.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.971091377620412,80.372467844143`,
   },
   {
@@ -1182,9 +1181,9 @@ export const PLACES = [
     lng: 80.35726862935918,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Trebartha+East+The+Roundhouse.jpg",
     image:
-      "https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/trebartha_east_the_roundhouse.jpg",
     ogImage:
-      "https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/trebartha_east_the_roundhouse.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.997323316318728,80.35726862935918`,
   },
   {
@@ -1218,9 +1217,9 @@ export const PLACES = [
     lng: 80.37097158781593,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/The+Spice+Trail.jpg",
     image:
-      "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/spice_trails.jpg",
     ogImage:
-      "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/spice_trails.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.971547406755345,80.37097158781593`,
   },
   {
@@ -1247,9 +1246,9 @@ export const PLACES = [
     lng: 80.34447406004452,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/kurulu+bay.jpg",
     image:
-      "https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/kurula_bay.jpg",
     ogImage:
-      "https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/kurula_bay.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.992706744517811,80.34447406004452`,
   },
   {
@@ -1284,9 +1283,9 @@ export const PLACES = [
     lng: 80.36118506004209,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Harding+boutique.jpg",
     image:
-      "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_harding_boutique.jpg",
     ogImage:
-      "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_harding_boutique.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.973952979952777,80.36118506004209`,
   },
   {
@@ -1321,9 +1320,9 @@ export const PLACES = [
     lng: 80.37754764469821,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the+hotel.jpg",
     image:
-      "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_hotel.jpg",
     ogImage:
-      "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_hotel.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966647310795568,80.37754764469821`,
   },
   {
@@ -1350,9 +1349,9 @@ export const PLACES = [
     lng: 80.36734476798406,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sama.jpg",
     image:
-      "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sama.jpg",
     ogImage:
-      "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sama.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.97195657116178,80.36734476798406`,
   },
   {
@@ -1387,9 +1386,9 @@ export const PLACES = [
     lng: 80.38216766798632,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Palm+hotel.jpg",
     image:
-      "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_palm.jpeg",
     ogImage:
-      "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_palm.jpeg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.989357169694588,80.38216766798632`,
   },
   {
@@ -1416,9 +1415,9 @@ export const PLACES = [
     lng: 80.37946534469813,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/abode+by+the+beach.jpg",
     image:
-      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/abode_by_the_beach.jpg",
     ogImage:
-      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/abode_by_the_beach.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966115228787099,80.37946534469813`,
   },
   {
