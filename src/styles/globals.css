@@ -135,6 +135,30 @@
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.04));
 }
 
+/* ===== Partners Page Styling ===== */
+.ahg-pill-text {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--dm-line);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dm-ink);
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.partners-feature-card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.partners-benefit-card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
 /* ===== Daymaker-inspired skin for existing Ahangama homepage (style-only) ===== */
 :root {
   --dm-ink: #1f2a24; /* deep ink */

@@ -1,15 +1,9 @@
 import React from "react";
-import { Card, Row, Col, Typography, Button, Space, Tag, Divider } from "antd";
+import { Card, Row, Col, Typography, Button, Space } from "antd";
 import {
-  ShopOutlined,
-  TeamOutlined,
-  TrophyOutlined,
-  GlobalOutlined,
   MailOutlined,
   WhatsAppOutlined,
-  ArrowRightOutlined,
-  ThunderboltOutlined,
-  HeartOutlined,
+  CheckCircleOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
@@ -20,62 +14,11 @@ const { Title, Paragraph, Text } = Typography;
 const Partners = () => {
   const canonical = absUrl("/partners");
 
-  const partnershipTypes = [
-    {
-      icon: <ShopOutlined style={{ fontSize: "2rem", color: "#8B4513" }} />,
-      title: "Local Businesses",
-      description:
-        "Join our curated network of restaurants, cafes, and shops. Offer exclusive deals to pass holders and reach travelers who value authentic experiences.",
-      benefits: [
-        "Increased foot traffic",
-        "Premium customer base",
-        "Marketing support",
-        "Digital visibility",
-      ],
-    },
-    {
-      icon: <TeamOutlined style={{ fontSize: "2rem", color: "#D2691E" }} />,
-      title: "Accommodation Partners",
-      description:
-        "Hotels, guesthouses, and unique stays that align with our curated travel philosophy. Provide value-added experiences for our community.",
-      benefits: [
-        "Quality guest referrals",
-        "Partnership marketing",
-        "Seasonal promotions",
-        "Brand association",
-      ],
-    },
-    {
-      icon: <TrophyOutlined style={{ fontSize: "2rem", color: "#CD853F" }} />,
-      title: "Experience Providers",
-      description:
-        "Surf schools, yoga studios, tour operators, and activity providers. Share your passion with travelers seeking authentic Sri Lankan experiences.",
-      benefits: [
-        "Targeted audience",
-        "Repeat customers",
-        "Cross-promotion",
-        "Community building",
-      ],
-    },
-    {
-      icon: <GlobalOutlined style={{ fontSize: "2rem", color: "#A0522D" }} />,
-      title: "Regional Expansion",
-      description:
-        "Help us expand to new destinations. Local knowledge and partnerships to bring the Ahangama Pass concept to other coastal towns.",
-      benefits: [
-        "Revenue sharing",
-        "Brand licensing",
-        "Operational support",
-        "Marketing assistance",
-      ],
-    },
-  ];
-
   return (
     <SiteLayout>
       <Seo
-        title="Partner with Us - Ahangama"
-        description="Join our curated network of local businesses, accommodations, and experience providers. Partner with Ahangama Pass to reach quality-focused travelers and grow your business."
+        title="Business Partners - Ahangama Pass"
+        description="Join our partnership program. Grant a discount for cardholders, get free marketing exposure, and connect with quality travelers in Ahangama."
         canonical={canonical}
       />
 
@@ -83,478 +26,686 @@ const Partners = () => {
       <div className="dm-canvas">
         <div className="dm-wrap">
           {/* HERO SECTION */}
-          <div style={{ marginBottom: 40 }}>
-            <Card
-              style={{
-                borderRadius: 18,
-                border: "1px solid rgba(0,0,0,0.06)",
-                background:
-                  "linear-gradient(135deg, rgba(255,248,220,0.3) 0%, rgba(255,255,255,0.8) 100%)",
-              }}
-              bodyStyle={{ padding: 32 }}
-            >
-              <Row gutter={[32, 24]} align="middle">
-                <Col xs={24} lg={16}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "12px",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "48px",
-                        height: "48px",
-                        borderRadius: "16px",
-                        background: "linear-gradient(135deg, #8B4513, #D2691E)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "20px",
-                      }}
+          <div className="ahg-hero" style={{ marginBottom: 48 }}>
+            <div className="ahg-heroInner">
+              <Row gutter={[24, 24]} align="middle">
+                <Col xs={24} lg={14}>
+                  <div className="ahg-pillRow">
+                    <span className="ahg-pill-text">🤝 Partnership Program</span>
+                    <span className="ahg-pill-text">📈 Free Marketing</span>
+                    <span className="ahg-pill-text">👥 Quality Customers</span>
+                  </div>
+                  
+                  <Title className="ahg-h1" style={{ color: "var(--dm-ink)", marginBottom: "16px" }}>
+                    Partner with
+                    <br />
+                    Ahangama Pass
+                  </Title>
+                  
+                  <Paragraph className="ahg-sub" style={{ color: "var(--ink-muted)", marginBottom: "24px" }}>
+                    Join our curated network of quality businesses. Offer discounts to our cardholders 
+                    and get <strong>free promotion</strong> across our platform and marketing channels.
+                  </Paragraph>
+                  
+                  <Space wrap size={[12, 12]}>
+                    <Button
+                      type="primary"
+                      size="large"
+                      href="mailto:partners@ahangama.com?subject=Partnership Application"
+                      icon={<MailOutlined />}
+                      style={{ borderRadius: "12px" }}
                     >
-                      🤝
+                      Apply as Partner
+                    </Button>
+                    <Button
+                      size="large"
+                      href="https://wa.me/94777908790?text=Hi! I'm interested in partnering with Ahangama Pass"
+                      target="_blank"
+                      icon={<WhatsAppOutlined />}
+                      style={{ borderRadius: "12px", borderColor: "#25D366", color: "#25D366" }}
+                    >
+                      WhatsApp Us
+                    </Button>
+                  </Space>
+                  
+                  <div className="ahg-metrics">
+                    <div className="ahg-metric">
+                      <Text type="secondary">Minimum Discount</Text>
+                      <div className="ahg-metricVal">10%</div>
                     </div>
-                    <div>
-                      <Title level={1} style={{ margin: 0, fontSize: "28px" }}>
-                        Partner with Us
-                      </Title>
-                      <Text type="secondary" style={{ fontSize: "16px" }}>
-                        Join our curated network
-                      </Text>
+                    <div className="ahg-metric">
+                      <Text type="secondary">Marketing</Text>
+                      <div className="ahg-metricVal">Free</div>
+                    </div>
+                    <div className="ahg-metric">
+                      <Text type="secondary">Setup Cost</Text>
+                      <div className="ahg-metricVal">$0</div>
                     </div>
                   </div>
-
-                  <Paragraph
-                    style={{
-                      fontSize: "17px",
-                      lineHeight: 1.7,
-                      color: "#5A6C7D",
-                      marginBottom: 24,
-                    }}
-                  >
-                    We're building a community of travelers and local businesses
-                    committed to authentic, sustainable tourism experiences.
-                    Join our curated network and connect with travelers who
-                    value quality over quantity.
-                  </Paragraph>
-
-                  <Space wrap size={12}>
-                    <Tag
-                      icon={<ThunderboltOutlined />}
-                      style={{ padding: "4px 12px", fontSize: "13px" }}
-                    >
-                      Quality-focused
-                    </Tag>
-                    <Tag
-                      icon={<HeartOutlined />}
-                      style={{ padding: "4px 12px", fontSize: "13px" }}
-                    >
-                      Sustainable tourism
-                    </Tag>
-                    <Tag style={{ padding: "4px 12px", fontSize: "13px" }}>
-                      Local partnerships
-                    </Tag>
-                  </Space>
                 </Col>
-                <Col xs={24} lg={8}>
-                  <div style={{ textAlign: "center" }}>
-                    <Space
-                      direction="vertical"
-                      size={12}
-                      style={{ width: "100%" }}
-                    >
-                      <Button
-                        type="primary"
-                        size="large"
-                        icon={<MailOutlined />}
-                        style={{ width: "100%" }}
-                        href="mailto:partners@ahangamapass.com"
-                      >
-                        Get in Touch
-                      </Button>
-                      <Button
-                        size="large"
-                        icon={<WhatsAppOutlined />}
-                        style={{
-                          width: "100%",
-                          color: "#25D366",
-                          borderColor: "#25D366",
-                        }}
-                        href="https://wa.me/94777123456?text=Hi! I'm interested in partnering with Ahangama Pass"
-                        target="_blank"
-                      >
-                        WhatsApp Us
-                      </Button>
-                    </Space>
+                
+                <Col xs={24} lg={10}>
+                  <div style={{ 
+                    background: "linear-gradient(135deg, rgba(79,111,134,0.1) 0%, rgba(203,106,58,0.1) 100%)",
+                    borderRadius: "18px",
+                    padding: "32px 24px",
+                    textAlign: "center",
+                    border: "1px solid rgba(255,255,255,0.2)"
+                  }}>
+                    <div style={{ fontSize: "64px", marginBottom: "16px" }}>🤝</div>
+                    <Title level={3} style={{ color: "var(--dm-ink)", marginBottom: "12px" }}>Ready to Partner?</Title>
+                    <Text style={{ color: "var(--ink-muted)", fontSize: "16px" }}>
+                      Join our growing network of quality businesses and start attracting 
+                      more customers today.
+                    </Text>
                   </div>
                 </Col>
               </Row>
-            </Card>
+            </div>
           </div>
 
-          {/* PARTNERSHIP TYPES */}
-          <div style={{ marginBottom: 48 }}>
-            <div style={{ textAlign: "center", marginBottom: 32 }}>
-              <Title
-                level={2}
-                style={{ fontSize: "24px", marginBottom: "8px" }}
-              >
-                Partnership Opportunities
-              </Title>
-              <Text type="secondary" style={{ fontSize: "16px" }}>
-                We're looking for like-minded partners who share our commitment
-                to quality and authenticity.
-              </Text>
-            </div>
 
-            <Row gutter={[24, 24]}>
-              {partnershipTypes.map((type, index) => (
-                <Col xs={24} md={12} key={index}>
-                  <Card
-                    style={{
-                      height: "100%",
-                      borderRadius: 16,
-                      border: "1px solid rgba(0,0,0,0.06)",
-                      transition: "all 0.3s ease",
-                    }}
-                    bodyStyle={{ padding: 24 }}
-                    hoverable
-                  >
-                    <div style={{ marginBottom: "20px", textAlign: "center" }}>
-                      {type.icon}
-                    </div>
-                    <Title
-                      level={3}
-                      style={{
-                        textAlign: "center",
-                        marginBottom: "16px",
-                        fontSize: "20px",
-                      }}
-                    >
-                      {type.title}
-                    </Title>
-                    <Paragraph
-                      style={{
-                        marginBottom: "20px",
-                        color: "#5A6C7D",
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {type.description}
-                    </Paragraph>
-                    <div>
-                      <Text strong style={{ color: "#8B4513" }}>
-                        Key Benefits:
-                      </Text>
-                      <ul style={{ marginTop: "8px", paddingLeft: "20px" }}>
-                        {type.benefits.map((benefit, idx) => (
-                          <li
-                            key={idx}
-                            style={{ marginBottom: "6px", color: "#5A6C7D" }}
-                          >
-                            {benefit}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </Card>
-                </Col>
-              ))}
+
+          {/* HOW IT WORKS */}
+          <div style={{ marginBottom: 64, textAlign: "center" }}>
+            <Title level={2} style={{ 
+              fontSize: "36px", 
+              marginBottom: "16px", 
+              color: "var(--dm-ink)",
+              letterSpacing: "-0.02em"
+            }}>
+              How it works
+            </Title>
+            <Paragraph style={{ 
+              fontSize: "18px", 
+              color: "var(--ink-muted)", 
+              marginBottom: "48px",
+              maxWidth: "600px",
+              margin: "0 auto 48px auto"
+            }}>
+              Three simple steps to start attracting quality customers and growing your business
+            </Paragraph>
+            
+            <Row gutter={[32, 32]} justify="center">
+              <Col xs={24} lg={8}>
+                <Card
+                  className="partners-feature-card"
+                  style={{ 
+                    borderRadius: "var(--dm-radius-lg)",
+                    height: "100%",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "40px 32px", textAlign: "center" }}
+                  hoverable
+                >
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>🤝</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    1. Grant Discount
+                  </Title>
+                  <Paragraph style={{ 
+                    color: "var(--ink-muted)", 
+                    fontSize: "16px",
+                    lineHeight: "1.6"
+                  }}>
+                    Simply offer a minimum 10% discount to Ahangama Pass holders. 
+                    Easy to implement, immediate results.
+                  </Paragraph>
+                </Card>
+              </Col>
+              <Col xs={24} lg={8}>
+                <Card
+                  className="partners-feature-card"
+                  style={{ 
+                    borderRadius: "var(--dm-radius-lg)",
+                    height: "100%",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "40px 32px", textAlign: "center" }}
+                  hoverable
+                >
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>📢</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    2. Free Promotion
+                  </Title>
+                  <Paragraph style={{ 
+                    color: "var(--ink-muted)", 
+                    fontSize: "16px",
+                    lineHeight: "1.6"
+                  }}>
+                    We promote your business across our website, social media, and 
+                    marketing channels at no cost to you.
+                  </Paragraph>
+                </Card>
+              </Col>
+              <Col xs={24} lg={8}>
+                <Card
+                  className="partners-feature-card"
+                  style={{ 
+                    borderRadius: "var(--dm-radius-lg)",
+                    height: "100%",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "40px 32px", textAlign: "center" }}
+                  hoverable
+                >
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>🎉</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    3. Enjoy Results
+                  </Title>
+                  <Paragraph style={{ 
+                    color: "var(--ink-muted)", 
+                    fontSize: "16px",
+                    lineHeight: "1.6"
+                  }}>
+                    Watch as quality travelers visit your business, enjoy the 
+                    discount, and become loyal customers.
+                  </Paragraph>
+                </Card>
+              </Col>
             </Row>
           </div>
 
-          {/* WHY PARTNER */}
-          <div style={{ marginBottom: 48 }}>
-            <Card
-              style={{
-                borderRadius: 16,
-                border: "1px solid rgba(0,0,0,0.06)",
-                background: "#fafafa",
-              }}
-              bodyStyle={{ padding: 32 }}
-            >
-              <div style={{ textAlign: "center", marginBottom: 32 }}>
-                <Title
-                  level={2}
-                  style={{ fontSize: "24px", marginBottom: "8px" }}
-                >
-                  Why Partner With Ahangama?
-                </Title>
-                <Text type="secondary" style={{ fontSize: "16px" }}>
-                  More than just a discount card - we're building a sustainable
-                  tourism ecosystem.
-                </Text>
-              </div>
-
-              <Row gutter={[24, 24]}>
-                <Col xs={24} sm={12} md={6}>
-                  <div style={{ textAlign: "center" }}>
-                    <div
-                      style={{
-                        width: "64px",
-                        height: "64px",
-                        borderRadius: "20px",
-                        background: "linear-gradient(135deg, #8B4513, #D2691E)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "0 auto 16px",
-                        fontSize: "24px",
-                      }}
-                    >
-                      👥
-                    </div>
-                    <Title
-                      level={4}
-                      style={{ fontSize: "16px", marginBottom: "12px" }}
-                    >
-                      Quality Community
-                    </Title>
-                    <Text style={{ color: "#5A6C7D" }}>
-                      Discerning travelers who value authentic, high-quality
-                      experiences over mass tourism.
-                    </Text>
-                  </div>
-                </Col>
-                <Col xs={24} sm={12} md={6}>
-                  <div style={{ textAlign: "center" }}>
-                    <div
-                      style={{
-                        width: "64px",
-                        height: "64px",
-                        borderRadius: "20px",
-                        background: "linear-gradient(135deg, #8B4513, #D2691E)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "0 auto 16px",
-                        fontSize: "24px",
-                      }}
-                    >
-                      🌱
-                    </div>
-                    <Title
-                      level={4}
-                      style={{ fontSize: "16px", marginBottom: "12px" }}
-                    >
-                      Sustainable Tourism
-                    </Title>
-                    <Text style={{ color: "#5A6C7D" }}>
-                      Responsible travel that benefits local communities and
-                      preserves authentic character.
-                    </Text>
-                  </div>
-                </Col>
-                <Col xs={24} sm={12} md={6}>
-                  <div style={{ textAlign: "center" }}>
-                    <div
-                      style={{
-                        width: "64px",
-                        height: "64px",
-                        borderRadius: "20px",
-                        background: "linear-gradient(135deg, #8B4513, #D2691E)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "0 auto 16px",
-                        fontSize: "24px",
-                      }}
-                    >
-                      📱
-                    </div>
-                    <Title
-                      level={4}
-                      style={{ fontSize: "16px", marginBottom: "12px" }}
-                    >
-                      Marketing Support
-                    </Title>
-                    <Text style={{ color: "#5A6C7D" }}>
-                      Featured placement in our app, social media promotion, and
-                      curated travel guides.
-                    </Text>
-                  </div>
-                </Col>
-                <Col xs={24} sm={12} md={6}>
-                  <div style={{ textAlign: "center" }}>
-                    <div
-                      style={{
-                        width: "64px",
-                        height: "64px",
-                        borderRadius: "20px",
-                        background: "linear-gradient(135deg, #8B4513, #D2691E)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "0 auto 16px",
-                        fontSize: "24px",
-                      }}
-                    >
-                      🤝
-                    </div>
-                    <Title
-                      level={4}
-                      style={{ fontSize: "16px", marginBottom: "12px" }}
-                    >
-                      Fair Partnership
-                    </Title>
-                    <Text style={{ color: "#5A6C7D" }}>
-                      Transparent, mutually beneficial terms that support local
-                      business growth.
-                    </Text>
-                  </div>
-                </Col>
-              </Row>
-            </Card>
-          </div>
-
-          {/* SUCCESS STORY */}
-          <div style={{ marginBottom: 48 }}>
-            <Card
-              style={{
-                borderRadius: 16,
-                border: "1px solid rgba(0,0,0,0.06)",
-                textAlign: "center",
-              }}
-              bodyStyle={{ padding: 32 }}
-            >
-              <Title
-                level={2}
-                style={{ fontSize: "24px", marginBottom: "24px" }}
-              >
-                Partner Success Story
+          {/* WHY BECOME A PARTNER */}
+          <div style={{ marginBottom: 64 }}>
+            <div style={{ textAlign: "center", marginBottom: "48px" }}>
+              <Title level={2} style={{ 
+                fontSize: "36px", 
+                marginBottom: "16px", 
+                color: "var(--dm-ink)",
+                letterSpacing: "-0.02em"
+              }}>
+                Why become an Ahangama Pass Partner?
               </Title>
-
-              <div style={{ maxWidth: "600px", margin: "0 auto" }}>
-                <blockquote
-                  style={{
-                    fontSize: "18px",
-                    fontStyle: "italic",
-                    color: "#5A6C7D",
-                    lineHeight: 1.6,
-                    margin: "24px 0",
-                    padding: "24px",
-                    background: "#f9f9f9",
-                    borderRadius: "12px",
-                    border: "none",
+              <Paragraph style={{ 
+                fontSize: "18px", 
+                color: "var(--ink-muted)", 
+                maxWidth: "700px",
+                margin: "0 auto"
+              }}>
+                Join a curated network of quality businesses and unlock growth opportunities
+              </Paragraph>
+            </div>
+            
+            <Row gutter={[32, 32]}>
+              <Col xs={24} lg={8}>
+                <Card 
+                  className="partners-benefit-card"
+                  style={{ 
+                    textAlign: "center", 
+                    height: "100%", 
+                    borderRadius: "var(--dm-radius-lg)",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
                   }}
+                  bodyStyle={{ padding: "40px 32px" }}
+                  hoverable
                 >
-                  "Partnering with Ahangama Pass has brought us exactly the kind
-                  of customers we want - travelers who appreciate quality food
-                  and authentic experiences. Our revenue has increased by 35%
-                  since joining, and we love being part of this community."
-                </blockquote>
-                <div style={{ marginTop: "16px" }}>
-                  <Text strong style={{ color: "#8B4513" }}>
-                    Maria Santos, Owner of Maria Bonita Restaurant
-                  </Text>
-                </div>
-              </div>
-            </Card>
-          </div>
-
-          {/* GET STARTED */}
-          <div style={{ marginBottom: 48 }}>
-            <Card
-              style={{
-                borderRadius: 16,
-                border: "1px solid rgba(0,0,0,0.06)",
-                background:
-                  "linear-gradient(135deg, rgba(139,69,19,0.05) 0%, rgba(210,105,30,0.05) 100%)",
-                textAlign: "center",
-              }}
-              bodyStyle={{ padding: 40 }}
-            >
-              <Title
-                level={2}
-                style={{ fontSize: "24px", marginBottom: "16px" }}
-              >
-                Ready to Partner with Us?
-              </Title>
-              <Paragraph
-                style={{
-                  fontSize: "16px",
-                  color: "#5A6C7D",
-                  marginBottom: "32px",
-                  maxWidth: "600px",
-                  margin: "0 auto 32px",
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>👥</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    More Customers
+                  </Title>
+                  <Paragraph style={{ 
+                    fontSize: "16px", 
+                    color: "var(--ink-muted)",
+                    lineHeight: "1.6"
+                  }}>
+                    Connect with quality tourists and locals who actively seek authentic experiences in Ahangama.
+                  </Paragraph>
+                </Card>
+              </Col>
+              
+              <Col xs={24} lg={8}>
+                <Card 
+                  className="partners-benefit-card"
+                  style={{ 
+                    textAlign: "center", 
+                    height: "100%", 
+                    borderRadius: "var(--dm-radius-lg)",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "40px 32px" }}
+                  hoverable
+                >
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>📣</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    Free Marketing Exposure
+                  </Title>
+                  <Paragraph style={{ 
+                    fontSize: "16px", 
+                    color: "var(--ink-muted)",
+                    lineHeight: "1.6"
+                  }}>
+                    Get featured on our platform and social media channels without any advertising costs.
+                  </Paragraph>
+                </Card>
+              </Col>
+              
+              <Col xs={24} lg={8}>
+                <Card 
+                  className="partners-benefit-card"
+                  style={{ 
+                    textAlign: "center", 
+                    height: "100%", 
+                    borderRadius: "var(--dm-radius-lg)",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "40px 32px" }}
+                  hoverable
+                >
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>⭐</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    Mark of Quality
+                  </Title>
+                  <Paragraph style={{ 
+                    fontSize: "16px", 
+                    color: "var(--ink-muted)",
+                    lineHeight: "1.6"
+                  }}>
+                    Being an Ahangama Pass partner signals quality and trustworthiness to visitors.
+                  </Paragraph>
+                </Card>
+              </Col>
+              
+              <Col xs={24} lg={12}>
+                <Card 
+                  className="partners-benefit-card"
+                  style={{ 
+                    textAlign: "center", 
+                    height: "100%", 
+                    borderRadius: "var(--dm-radius-lg)",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "40px 32px" }}
+                  hoverable
+                >
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>🚀</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    Website Visibility
+                  </Title>
+                  <Paragraph style={{ 
+                    fontSize: "16px", 
+                    color: "var(--ink-muted)",
+                    lineHeight: "1.6"
+                  }}>
+                    Drive traffic to your own website through our platform referrals and backlinks.
+                  </Paragraph>
+                </Card>
+              </Col>
+              
+              <Col xs={24} lg={12}>
+                <Card 
+                  className="partners-benefit-card"
+                  style={{ 
+                    textAlign: "center", 
+                    height: "100%", 
+                    borderRadius: "var(--dm-radius-lg)",
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "40px 32px" }}
+                  hoverable
+                >
+                  <div style={{ 
+                    fontSize: "56px", 
+                    marginBottom: "20px",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}>📞</div>
+                  <Title level={3} style={{ 
+                    color: "var(--dm-ink)", 
+                    marginBottom: "16px",
+                    fontSize: "24px"
+                  }}>
+                    Direct Customer Contact
+                  </Title>
+                  <Paragraph style={{ 
+                    fontSize: "16px", 
+                    color: "var(--ink-muted)",
+                    lineHeight: "1.6"
+                  }}>
+                    Build lasting relationships with customers while we handle the promotional aspects.
+                  </Paragraph>
+                </Card>
+              </Col>
+            </Row>
+            
+            <div style={{ textAlign: "center", marginTop: "48px" }}>
+              <Button 
+                type="primary" 
+                size="large"
+                href="mailto:partners@ahangama.com?subject=Partnership Application"
+                icon={<MailOutlined />}
+                style={{ 
+                  fontSize: "18px", 
+                  height: "48px", 
+                  padding: "0 32px",
+                  borderRadius: "12px"
                 }}
               >
-                Getting started is simple. Reach out to our partnership team and
-                we'll schedule a conversation to discuss how we can work
-                together to grow your business and enhance our travelers'
-                experiences.
+                Sign-up as Ahangama Pass Partner
+              </Button>
+            </div>
+          </div>
+
+          {/* BASIC TERMS & CONDITIONS */}
+          <div style={{ marginBottom: 64 }}>
+            <div style={{ textAlign: "center", marginBottom: "48px" }}>
+              <Title level={2} style={{ 
+                fontSize: "36px", 
+                marginBottom: "16px", 
+                color: "var(--dm-ink)",
+                letterSpacing: "-0.02em"
+              }}>
+                Partnership Terms & Conditions
+              </Title>
+              <Paragraph style={{ 
+                fontSize: "18px", 
+                color: "var(--ink-muted)", 
+                maxWidth: "600px",
+                margin: "0 auto"
+              }}>
+                Simple, transparent terms for a mutually beneficial partnership
               </Paragraph>
+            </div>
+            
+            <Row justify="center">
+              <Col xs={24} lg={20}>
+                <Card 
+                  style={{ 
+                    borderRadius: "var(--dm-radius-lg)", 
+                    background: "var(--dm-card)",
+                    border: "1px solid var(--dm-line)",
+                    boxShadow: "var(--dm-shadow)"
+                  }}
+                  bodyStyle={{ padding: "48px 40px" }}
+                >
+                  <Space direction="vertical" size={24} style={{ width: "100%" }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <CheckCircleOutlined style={{ 
+                        color: "var(--ocean-blue)", 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }} />
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Cardholders present their valid digital pass to receive the agreed discount
+                      </Text>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <Text style={{ 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }}>👥</Text>
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Each cardholder can include up to 4 additional guests (total: 5 people per card)
+                      </Text>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <Text style={{ 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }}>📱</Text>
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Staff may request to see the digital card for verification
+                      </Text>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <Text style={{ 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }}>🕒</Text>
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Partners may restrict discounts to specific hours, products, or periods (e.g. Happy Hour)
+                      </Text>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <Text style={{ 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }}>✉️</Text>
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Discount or benefit changes require 1 month's written notice
+                      </Text>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <Text style={{ 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }}>🔁</Text>
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Minimum 10% discount must be maintained at all times
+                      </Text>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <Text style={{ 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }}>📅</Text>
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Partnership can be cancelled by either party with 3 months' notice
+                      </Text>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                      <CheckCircleOutlined style={{ 
+                        color: "var(--ocean-blue)", 
+                        fontSize: "24px", 
+                        marginTop: "2px" 
+                      }} />
+                      <Text style={{ 
+                        fontSize: "16px", 
+                        color: "var(--dm-ink)",
+                        lineHeight: "1.6"
+                      }}>
+                        Active partners are featured on ahangama.com website and listings
+                      </Text>
+                    </div>
 
-              <div style={{ maxWidth: "500px", margin: "0 auto" }}>
-                <Row gutter={[16, 16]} style={{ marginBottom: "32px" }}>
-                  <Col xs={24} md={8}>
-                    <div style={{ padding: "16px" }}>
-                      <div style={{ fontSize: "24px", marginBottom: "8px" }}>
-                        📞
+                    <div style={{ 
+                      marginTop: "40px", 
+                      padding: "32px", 
+                      background: "linear-gradient(135deg, rgba(79,111,134,0.08) 0%, rgba(203,106,58,0.08) 100%)", 
+                      borderRadius: "16px",
+                      textAlign: "center",
+                      border: "1px solid var(--dm-line-2)"
+                    }}>
+                      <div style={{ marginBottom: "16px" }}>
+                        <CheckCircleOutlined style={{ 
+                          color: "var(--ocean-blue)", 
+                          fontSize: "24px", 
+                          marginRight: "12px" 
+                        }} />
+                        <Text strong style={{ 
+                          fontSize: "18px",
+                          color: "var(--dm-ink)"
+                        }}>
+                          By submitting your application, you agree to these terms and conditions
+                        </Text>
                       </div>
-                      <Text strong style={{ color: "#8B4513" }}>
-                        Initial Consultation
-                      </Text>
-                      <br />
-                      <Text style={{ color: "#5A6C7D", fontSize: "14px" }}>
-                        Discuss your business and partnership benefits
+                      <Text style={{ 
+                        fontSize: "14px", 
+                        color: "var(--ink-muted)" 
+                      }}>
+                        All changes or cancellation requests must be sent to{" "}
+                        <a 
+                          href="mailto:partners@ahangama.com" 
+                          style={{ 
+                            color: "var(--ocean-blue)",
+                            textDecoration: "none",
+                            fontWeight: "500"
+                          }}
+                        >
+                          partners@ahangama.com
+                        </a>
                       </Text>
                     </div>
-                  </Col>
-                  <Col xs={24} md={8}>
-                    <div style={{ padding: "16px" }}>
-                      <div style={{ fontSize: "24px", marginBottom: "8px" }}>
-                        📋
-                      </div>
-                      <Text strong style={{ color: "#8B4513" }}>
-                        Partnership Agreement
-                      </Text>
-                      <br />
-                      <Text style={{ color: "#5A6C7D", fontSize: "14px" }}>
-                        Simple, transparent terms for both parties
-                      </Text>
-                    </div>
-                  </Col>
-                  <Col xs={24} md={8}>
-                    <div style={{ padding: "16px" }}>
-                      <div style={{ fontSize: "24px", marginBottom: "8px" }}>
-                        🚀
-                      </div>
-                      <Text strong style={{ color: "#8B4513" }}>
-                        Launch & Support
-                      </Text>
-                      <br />
-                      <Text style={{ color: "#5A6C7D", fontSize: "14px" }}>
-                        Setup help and partnership promotion
-                      </Text>
-                    </div>
-                  </Col>
-                </Row>
+                  </Space>
+                </Card>
+              </Col>
+            </Row>
+          </div>
 
-                <Space size={16}>
-                  <Button
-                    type="primary"
-                    size="large"
-                    icon={<MailOutlined />}
-                    href="mailto:partners@ahangamapass.com?subject=Partnership Inquiry"
-                  >
-                    Email Us
-                  </Button>
-                  <Button
-                    size="large"
-                    icon={<WhatsAppOutlined />}
-                    style={{ color: "#25D366", borderColor: "#25D366" }}
-                    href="https://wa.me/94777123456?text=Hi! I'm interested in partnering with Ahangama Pass. Can we schedule a call?"
-                    target="_blank"
-                  >
-                    WhatsApp
-                  </Button>
-                </Space>
-              </div>
-            </Card>
+          {/* FINAL CTA */}
+          <div style={{ 
+            textAlign: "center", 
+            marginBottom: 64,
+            padding: "48px 32px",
+            background: "linear-gradient(135deg, rgba(79,111,134,0.05) 0%, rgba(203,106,58,0.05) 100%)",
+            borderRadius: "var(--dm-radius-lg)",
+            border: "1px solid var(--dm-line)"
+          }}>
+            <div style={{ fontSize: "56px", marginBottom: "24px" }}>🚀</div>
+            <Title level={2} style={{ 
+              fontSize: "32px", 
+              marginBottom: "16px", 
+              color: "var(--dm-ink)",
+              letterSpacing: "-0.02em"
+            }}>
+              Ready to grow your business?
+            </Title>
+            <Paragraph style={{ 
+              fontSize: "18px", 
+              color: "var(--ink-muted)", 
+              marginBottom: "32px",
+              maxWidth: "500px",
+              margin: "0 auto 32px auto"
+            }}>
+              Join our partnership program today and start attracting quality customers
+            </Paragraph>
+            <Space size={16} wrap>
+              <Button 
+                type="primary" 
+                size="large"
+                href="mailto:partners@ahangama.com?subject=Partnership Application"
+                icon={<MailOutlined />}
+                style={{ 
+                  borderRadius: "12px",
+                  fontSize: "16px",
+                  height: "48px",
+                  padding: "0 24px"
+                }}
+              >
+                Apply as Partner
+              </Button>
+              <Button 
+                size="large"
+                icon={<WhatsAppOutlined />}
+                style={{ 
+                  borderRadius: "12px",
+                  fontSize: "16px",
+                  height: "48px",
+                  padding: "0 24px",
+                  color: "#25D366", 
+                  borderColor: "#25D366" 
+                }}
+                href="https://wa.me/94777908790?text=Hi! I'm interested in partnering with Ahangama Pass"
+                target="_blank"
+              >
+                WhatsApp Us
+              </Button>
+            </Space>
           </div>
         </div>
       </div>
