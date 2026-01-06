@@ -539,44 +539,53 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
         </Col> */}
 
         <Col xs={24} md={14}>
-          <div
+          <Card
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "12px",
+              borderRadius: "12px",
+              border: "1px solid rgba(0,0,0,0.06)",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
             }}
+            bodyStyle={{ padding: "16px" }}
           >
-            <div>
-              <Title
-                level={5}
-                style={{ margin: "0 0 8px", fontSize: "13px", color: "#666" }}
-              >
-                FILTER BY TYPE
-              </Title>
-              <div className="map-filters">
-                {availableCategories.map((category) => (
-                  <button
-                    key={category}
-                    className={`map-filter ${
-                      selectedCategory === category ? "is-active" : ""
-                    }`}
-                    onClick={() => setSelectedCategory(category)}
-                    type="button"
-                  >
-                    {CATEGORY_LABELS[category] || category}
-                  </button>
-                ))}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "12px",
+              }}
+            >
+              <div>
+                <Title
+                  level={5}
+                  style={{ margin: "0 0 8px", fontSize: "13px", color: "#666" }}
+                >
+                  FILTER BY TYPE
+                </Title>
+                <div className="map-filters">
+                  {availableCategories.map((category) => (
+                    <button
+                      key={category}
+                      className={`map-filter ${
+                        selectedCategory === category ? "is-active" : ""
+                      }`}
+                      onClick={() => setSelectedCategory(category)}
+                      type="button"
+                    >
+                      {CATEGORY_LABELS[category] || category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <Text type="secondary" style={{ fontSize: "11px" }}>
+                  Showing {passPlaces.length} places
+                </Text>
               </div>
             </div>
-
-            <div>
-              <Text type="secondary" style={{ fontSize: "11px" }}>
-                Showing {passPlaces.length} places
-              </Text>
-            </div>
-          </div>
+          </Card>
         </Col>
       </Row>
 
