@@ -163,15 +163,14 @@ export default function Home() {
                     </div>
 
                     <Title className="ahg-h1">
-                      Ahangama,
+                      Favourite Places,
                       <br />
-                      but curated.
+                      With Benefits.
                     </Title>
 
                     <Paragraph className="ahg-sub">
-                      A clean, opinionated guide to where to stay, eat, and
-                      spend your days — plus a <strong>$18 card</strong> that
-                      unlocks local privileges at selected venues.
+                      A <strong>$18 card</strong> that unlocks local privileges
+                      at our favourite places.
                     </Paragraph>
 
                     <Space wrap size={10}>
