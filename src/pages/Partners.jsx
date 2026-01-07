@@ -1,10 +1,6 @@
 import React from "react";
 import { Card, Row, Col, Typography, Button, Space } from "antd";
-import {
-  MailOutlined,
-  WhatsAppOutlined,
-  CheckCircleOutlined,
-} from "@ant-design/icons";
+import { WhatsAppOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";

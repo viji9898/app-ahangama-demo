@@ -24,7 +24,7 @@ export const PLACES = [
     whatsApp: "94771234568",
     email: "info@marshmellowcafe.com",
     instagram: "marshmellowcafe",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -61,7 +61,7 @@ export const PLACES = [
     whatsApp: "94771234573",
     email: "info@cactusahangama.com",
     instagram: "cactusahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Central)",
@@ -98,7 +98,7 @@ export const PLACES = [
     whatsApp: "94771234578",
     email: "info@moochiesahangama.com",
     instagram: "moochiesahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -131,7 +131,7 @@ export const PLACES = [
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Dharmarama Rd)",
-
+    discount: 0.1,
     lat: 5.9700077,
     lng: 80.3735191,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the-kip.jpg",
@@ -164,7 +164,7 @@ export const PLACES = [
     whatsApp: "94771234579",
     email: "info@ceylonsliders.lk",
     instagram: "ceylonsliders",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -202,7 +202,7 @@ export const PLACES = [
     whatsApp: "94771234580",
     email: "info@lecafeahangama.com",
     instagram: "lecafeahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Wella Watta)",
@@ -238,7 +238,7 @@ export const PLACES = [
     whatsApp: "94771234581",
     email: "info@hakunamataahangama.com",
     instagram: "hakunamataahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Aranwala Junction)",
@@ -274,7 +274,7 @@ export const PLACES = [
     whatsApp: "94771234582",
     email: "info@cafeceylonhangama.com",
     instagram: "cafeceylonhangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Kabalana (Matara Road)",
@@ -310,7 +310,7 @@ export const PLACES = [
     whatsApp: "94771234585",
     email: "info@blackhoneycafehangama.com",
     instagram: "blackhoneycafehangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Wewilihena / Duwa Watta)",
@@ -347,7 +347,7 @@ export const PLACES = [
     whatsApp: "94771234586",
     email: "info@squeezamehangama.com",
     instagram: "squeezamehangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Kaya Collective)",
@@ -383,7 +383,7 @@ export const PLACES = [
     whatsApp: "94771234587",
     email: "info@twinfinhangama.com",
     instagram: "twinfinhangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Galle Road)",
@@ -419,7 +419,7 @@ export const PLACES = [
     whatsApp: "94771234588",
     email: "info@sambahangama.com",
     instagram: "sambahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (A2 Southern Beach Road)",
@@ -456,7 +456,7 @@ export const PLACES = [
     whatsApp: "94771234589",
     email: "info@kaffihangama.com",
     instagram: "kaffihangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -493,7 +493,7 @@ export const PLACES = [
     whatsApp: "94771234590",
     email: "info@meorihangama.com",
     instagram: "meorihangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -530,7 +530,7 @@ export const PLACES = [
     whatsApp: "94771234591",
     email: "info@sisterskabalana.com",
     instagram: "sisterskabalana",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Kabalana (Beach / Matara-Galle Road)",
@@ -566,7 +566,7 @@ export const PLACES = [
     whatsApp: "94771234592",
     email: "info@fruitcafehangama.com",
     instagram: "fruitcafehangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -603,7 +603,7 @@ export const PLACES = [
     whatsApp: "94771234593",
     email: "info@mariabonitahangama.com",
     instagram: "mariabonitahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda)",
@@ -640,7 +640,7 @@ export const PLACES = [
     whatsApp: "94771234594",
     email: "info@followwhiterabbit.com",
     instagram: "followwhiterabbitahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Welikanda / Matara Road)",
@@ -671,7 +671,7 @@ export const PLACES = [
     cardPerk:
       "Signature MAKAI latte + pastry combo deal with the Ahangama Card.",
     offer: ["Latte Combo", "Signature Drink"],
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Mahavihara Road)",
@@ -709,7 +709,7 @@ export const PLACES = [
     whatsApp: "94771234595",
     email: "info@teddieshangama.com",
     instagram: "teddieshangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -748,7 +748,7 @@ export const PLACES = [
     email: "stay@thekip.lk",
     instagram: "thekipahangama",
     emailContact: "Contact The Kip",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Dharmarama Rd)",
@@ -787,7 +787,7 @@ export const PLACES = [
     whatsApp: "94771234596",
     email: "stay@teddieshangama.com",
     instagram: "teddiesstayahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
@@ -823,7 +823,7 @@ export const PLACES = [
     whatsApp: "94771234597",
     email: "stay@sambahangama.com",
     instagram: "sambastayahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (A2 Southern Beach Road)",
@@ -861,7 +861,7 @@ export const PLACES = [
     whatsApp: "94771234598",
     email: "info@solassurfhangama.com",
     instagram: "solassurfhangama",
-
+    discount: 0.1,
     price: "Upper-mid",
     hours: "24/7",
     area: "Ahangama",
@@ -898,7 +898,7 @@ export const PLACES = [
     whatsApp: "94771234599",
     email: "info@mosvoldvilla.com",
     instagram: "mosvoldvilla",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -935,7 +935,7 @@ export const PLACES = [
     whatsApp: "94771234600",
     email: "info@kabalanahouse.com",
     instagram: "kabalanaceilao",
-
+    discount: 0.1,
     price: "Premium",
     hours: "24/7",
     area: "Kabalana",
@@ -972,7 +972,7 @@ export const PLACES = [
     whatsApp: "94771234601",
     email: "info@tealahangama.com",
     instagram: "tealahangama",
-
+    discount: 0.1,
     price: "Upper-mid",
     hours: "24/7",
     area: "Ahangama",
@@ -1008,7 +1008,7 @@ export const PLACES = [
     whatsApp: "94771234602",
     email: "info@teatreevilla.com",
     instagram: "teatreevilla",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -1035,7 +1035,7 @@ export const PLACES = [
       "Highly-rated boutique stay known for exceptional hospitality and unique design elements. A true hidden gem.",
     bestFor: ["Boutique", "Unique", "Service"],
     tags: ["Boutique", "Hidden gem", "Exceptional"],
-
+    discount: 0.1,
     cardPerk:
       "Personalized welcome package and activity recommendations with the Ahangama Card.",
     offer: ["Welcome Package", "Activity Guide"],
@@ -1074,7 +1074,7 @@ export const PLACES = [
     whatsApp: "94771234603",
     email: "info@lighthouseahangama.com",
     instagram: "lighthouseahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama Coast",
@@ -1111,7 +1111,7 @@ export const PLACES = [
     whatsApp: "94771234604",
     email: "info@merchantahangama.com",
     instagram: "merchantahangama",
-
+    discount: 0.1,
     price: "Premium",
     hours: "24/7",
     area: "Ahangama",
@@ -1141,7 +1141,7 @@ export const PLACES = [
     cardPerk:
       "Traditional welcome ceremony and local cooking class with the Ahangama Card.",
     offer: ["Welcome Ceremony", "Cooking Class"],
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -1178,7 +1178,7 @@ export const PLACES = [
     whatsApp: "94771234605",
     email: "info@trebarthaeast.com",
     instagram: "trebarthaeastroundhouse",
-
+    discount: 0.1,
     price: "Premium",
     hours: "24/7",
     area: "Trebartha East",
@@ -1214,7 +1214,7 @@ export const PLACES = [
     whatsApp: "94771234606",
     email: "info@spicetrailahangama.com",
     instagram: "spicetrailahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -1241,7 +1241,7 @@ export const PLACES = [
       "Premium bay-side accommodation with excellent ratings and beautiful coastal setting. Known for exceptional hospitality and scenic views.",
     bestFor: ["Bay views", "Premium", "Scenic"],
     tags: ["Bay-side", "Scenic", "Premium"],
-
+    discount: 0.1,
     cardPerk:
       "Bay-side dinner and water sports package with the Ahangama Card.",
     offer: ["Bay-side Dinner", "Water Sports"],
@@ -1281,7 +1281,7 @@ export const PLACES = [
     whatsApp: "94771234607",
     email: "info@hardingboutique.com",
     instagram: "hardingboutiqueahangama",
-
+    discount: 0.1,
     price: "Upper-mid",
     hours: "24/7",
     area: "Ahangama",
@@ -1318,7 +1318,7 @@ export const PLACES = [
     whatsApp: "94771234608",
     email: "info@thehotelahangama.com",
     instagram: "thehotelahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama Central",
@@ -1345,7 +1345,7 @@ export const PLACES = [
       "Premium accommodation with near-perfect ratings and extensive positive feedback. Known for exceptional service and attention to detail.",
     bestFor: ["Premium", "Service", "Excellence"],
     tags: ["Premium", "Exceptional", "Service"],
-
+    discount: 0.1,
     cardPerk:
       "Premium service upgrade and personalized itinerary with the Ahangama Card.",
     offer: ["Service Upgrade", "Personal Itinerary"],
@@ -1385,7 +1385,7 @@ export const PLACES = [
     whatsApp: "94771234609",
     email: "info@palmhotelahangama.com",
     instagram: "palmhotelahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "24/7",
     area: "Ahangama",
@@ -1415,7 +1415,7 @@ export const PLACES = [
     cardPerk:
       "Beach cabana setup and water sports equipment with the Ahangama Card.",
     offer: ["Beach Cabana", "Water Sports"],
-
+    discount: 0.1,
     price: "Upper-mid",
     hours: "24/7",
     area: "Ahangama Beach",
@@ -1423,9 +1423,9 @@ export const PLACES = [
     lng: 80.37946534469813,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/abode+by+the+beach.jpg",
     image:
-      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/abode_by_the_beach.jpg",
     ogImage:
-      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/abode_by_the_beach.jpg",
     mapUrl: `https://www.google.com/maps/search/?api=1&query=5.966115228787099,80.37946534469813`,
   },
   {
@@ -1452,7 +1452,7 @@ export const PLACES = [
     whatsApp: "94771234567",
     email: "info@unuboutiquehotel.com",
     instagram: "unuboutiquehotel",
-
+    discount: 0.1,
     emailContact: "Contact UNU Boutique Hotel",
     price: "Premium",
     hours: "24/7",
@@ -1482,7 +1482,7 @@ export const PLACES = [
     tags: ["Authentic", "Traditional", "Healing"],
     cardPerk: "20% off any 90-minute treatment package with the Ahangama Card.",
     offer: ["20% Off", "Treatment Package"],
-
+    discount: 0.1,
     howToClaim:
       "Present your Ahangama Card when booking your 90-minute treatment to receive the discount.",
     restrictions:
@@ -1526,7 +1526,7 @@ export const PLACES = [
     whatsApp: "94771234571",
     email: "info@theboardhut.lk",
     instagram: "theboardhut",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1564,7 +1564,7 @@ export const PLACES = [
     whatsApp: "94771234611",
     email: "info@lotussurfwellness.com",
     instagram: "lotussurfwellness",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1602,7 +1602,7 @@ export const PLACES = [
     whatsApp: "94771234612",
     email: "info@shramalayahangama.com",
     instagram: "shramalayahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1640,7 +1640,7 @@ export const PLACES = [
     whatsApp: "94771234572",
     email: "info@sensesahangama.com",
     instagram: "sensesahangama",
-
+    discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
@@ -1653,5 +1653,41 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/senses.jpg",
     mapUrl:
       "https://www.google.com/maps/search/?api=1&query=5.985234560816895,80.39236177976328",
+  },
+  {
+    id: "manoris-kitchen",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Manori's Kitchen",
+    slug: "manoris-kitchen",
+    stars: 4.9,
+    reviews: 648,
+    excerpt: "Great Sri Lankan food restaurant with authentic local flavors.",
+    description:
+      "Experience authentic Sri Lankan cuisine in a welcoming atmosphere. Known for traditional dishes prepared with fresh local ingredients and genuine hospitality.",
+    bestFor: ["Sri Lankan Food", "Local Cuisine", "Traditional Meals"],
+    tags: ["Authentic", "Local", "Traditional"],
+    cardPerk: "10% discount on all meals with the Ahangama Card.",
+    offer: ["10% Off", "All Meals"],
+    howToClaim:
+      "Present your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all food items. Cannot be combined with other offers.",
+    whatsApp: "94771234595",
+    email: "info@manoriskitchen.com",
+    instagram: "manoriskitchen",
+    discounts: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.970553677414811,
+    lng: 80.37116892443733,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/manoris.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/manori_s_kitchen.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/manori_s_kitchen.jpg",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.970553677414811,80.37116892443733",
   },
 ];
