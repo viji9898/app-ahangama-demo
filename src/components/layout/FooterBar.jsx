@@ -159,7 +159,9 @@ export default function FooterBar() {
                 </Text>
                 <Button
                   block
-                  href="/instagram"
+                  href="https://www.instagram.com/ahan.gama/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     background: "transparent",
                     border: "1px solid rgba(31, 42, 36, 0.12)",
