@@ -229,8 +229,19 @@ export default function FooterBar() {
               opacity: 0.8,
             }}
           >
-            © {new Date().getFullYear()} ahangama.com - Discover Sri Lanka's
-            hidden gems
+            © {new Date().getFullYear()} ahangama.com -{" "}
+            <a
+              href="https://viji.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "14px",
+                color: "var(--ink-muted, #6b6f6a)",
+                opacity: 0.8,
+              }}
+            >
+              VIJI -
+            </a>
           </Text>
         </div>
       </div>
