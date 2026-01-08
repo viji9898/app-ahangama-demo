@@ -124,7 +124,7 @@ export default function FooterBar() {
                   >
                     Card terms
                   </a>
-                  <a
+                  {/* <a
                     href="/contact"
                     style={{
                       color: "var(--ink-muted, #6b6f6a)",
@@ -140,7 +140,7 @@ export default function FooterBar() {
                     }
                   >
                     Contact
-                  </a>
+                  </a> */}
                 </div>
               </Space>
             </Col>

@@ -472,14 +472,14 @@ const CardTerms = () => {
                   </Paragraph>
 
                   <Space size="middle">
-                    <Button
+                    {/* <Button
                       type="primary"
                       href="mailto:support@ahangamapass.com?subject=Card Terms Question"
                     >
                       Email Support
-                    </Button>
+                    </Button> */}
                     <Button
-                      href="https://wa.me/94777123456?text=I have a question about the card terms"
+                      href="https://wa.me/94777908790?text=I have a question about the card terms"
                       target="_blank"
                       style={{ color: "#25D366", borderColor: "#25D366" }}
                     >

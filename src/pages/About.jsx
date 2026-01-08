@@ -122,8 +122,7 @@ export default function About() {
                         margin: "0 auto",
                         borderRadius: "20px",
                         background:
-                          "url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover",
-                        border: "3px solid rgba(139,69,19,0.2)",
+                          "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/about-us.jpg') center/cover",
                       }}
                     />
                     <Text
@@ -133,9 +132,7 @@ export default function About() {
                         marginTop: "8px",
                         display: "block",
                       }}
-                    >
-                      Ahangama's iconic stilt fishermen
-                    </Text>
+                    ></Text>
                   </div>
                 </Col>
               </Row>
@@ -368,8 +365,7 @@ export default function About() {
                       height: "250px",
                       borderRadius: "16px",
                       background:
-                        "url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover",
-                      border: "1px solid rgba(0,0,0,0.06)",
+                        "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/about_gif.gif') center/cover",
                     }}
                   />
                 </Col>
