@@ -53,7 +53,7 @@ export default function HomeMapSection() {
       })
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }))
       .filter((p) => !!p._latlng)
-      .slice(0, 40); // Show up to 20 places for homepage
+      .slice(0, 100); // Show up to 20 places for homepage
   }, [selectedCategory]);
 
   const availableCategories = useMemo(() => {
@@ -100,271 +100,233 @@ export default function HomeMapSection() {
     markersRef.current = [];
 
     // Remove existing sources and layers if they exist
-    if (mapRef.current.getSource('places')) {
-      if (mapRef.current.getLayer('clusters')) mapRef.current.removeLayer('clusters');
-      if (mapRef.current.getLayer('cluster-count')) mapRef.current.removeLayer('cluster-count');
-      if (mapRef.current.getLayer('unclustered-point')) mapRef.current.removeLayer('unclustered-point');
-      mapRef.current.removeSource('places');
+    if (mapRef.current.getSource("places")) {
+      if (mapRef.current.getLayer("clusters"))
+        mapRef.current.removeLayer("clusters");
+      if (mapRef.current.getLayer("cluster-count"))
+        mapRef.current.removeLayer("cluster-count");
+      if (mapRef.current.getLayer("unclustered-point"))
+        mapRef.current.removeLayer("unclustered-point");
+      mapRef.current.removeSource("places");
     }
 
     // Create GeoJSON data for clustering
     const geojson = {
-      type: 'FeatureCollection',
+      type: "FeatureCollection",
       features: places.map((place) => ({
-        type: 'Feature',
+        type: "Feature",
         properties: {
-          id: place.id,
           name: place.name,
           category: place.category,
-          logo: place.logo || place.ogImage || "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
-          categoryColor: getCategoryColor(place.category),
-          // Store essential place data as JSON string for click handler
-          placeData: JSON.stringify({
-            id: place.id,
-            name: place.name,
-            category: place.category,
-            slug: place.slug,
-            area: place.area,
-            logo: place.logo,
-            ogImage: place.ogImage,
-            stars: place.stars,
-            reviews: place.reviews,
-            offer: place.offer,
-            description: place.description,
-            _latlng: place._latlng
-          })
+          offer: place.offer,
+          logo: place.logo,
+          stars: place.stars,
+          reviews: place.reviews,
+          area: place.area,
+          slug: place.slug,
+          description: place.description,
         },
         geometry: {
-          type: 'Point',
-          coordinates: [place._latlng.lng, place._latlng.lat]
-        }
-      }))
+          type: "Point",
+          coordinates: [place._latlng.lng, place._latlng.lat],
+        },
+      })),
     };
 
-    // Add source with clustering enabled
-    mapRef.current.addSource('places', {
-      type: 'geojson',
+    // Clean up existing sources and layers
+    if (mapRef.current.getSource("places")) {
+      ["clusters", "cluster-count", "unclustered-point", "unclustered-point-bg"].forEach((layerId) => {
+        if (mapRef.current.getLayer(layerId)) {
+          mapRef.current.removeLayer(layerId);
+        }
+      });
+      mapRef.current.removeSource("places");
+    }
+
+    // Clear existing markers
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = [];
+
+    // Add clustering source
+    mapRef.current.addSource("places", {
+      type: "geojson",
       data: geojson,
       cluster: true,
-      clusterMaxZoom: 14, // Max zoom to cluster points on - balanced clustering with natural breakup
-      clusterRadius: 50, // Radius of each cluster when clustering points
-      clusterProperties: {
-        // Keep track of categories in clusters
-        'eat_count': ['+', ['case', ['==', ['get', 'category'], 'eat'], 1, 0]],
-        'stays_count': ['+', ['case', ['==', ['get', 'category'], 'stays'], 1, 0]],
-        'wellness_count': ['+', ['case', ['==', ['get', 'category'], 'wellness'], 1, 0]],
-        'surf_count': ['+', ['case', ['==', ['get', 'category'], 'surf'], 1, 0]]
-      }
+      clusterMaxZoom: 15,
+      clusterRadius: 60,
     });
 
-    // Add cluster circle layer
+    // Cluster circle layer
     mapRef.current.addLayer({
-      id: 'clusters',
-      type: 'circle',
-      source: 'places',
-      filter: ['has', 'point_count'],
+      id: "clusters",
+      type: "circle",
+      source: "places",
+      filter: ["has", "point_count"],
       paint: {
-        'circle-color': [
-          'step',
-          ['get', 'point_count'],
-          '#8B4513',  // Brown for 2-4 places
-          3, '#c46a3a', // Orange for 3-7 places  
-          7, '#6b7c5a', // Green for 7-15 places
-          15, '#3e5f73' // Blue for 15+ places
+        "circle-color": [
+          "step",
+          ["get", "point_count"],
+          "#11b4da",
+          10,
+          "#f1f075",
+          100,
+          "#f28cb1",
         ],
-        'circle-radius': [
-          'step',
-          ['get', 'point_count'],
-          16, // Small clusters (2-4 places)
-          3, 20, // Medium clusters (3-7 places)
-          7, 25, // Large clusters (7-15 places) 
-          15, 30 // Very large clusters (15+ places)
+        "circle-radius": [
+          "step",
+          ["get", "point_count"],
+          20,
+          10,
+          30,
+          100,
+          40,
         ],
-        'circle-opacity': 0.8,
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#fff'
-      }
+        "circle-stroke-width": 2,
+        "circle-stroke-color": "#fff",
+      },
     });
 
-    // Add cluster count labels
+    // Cluster count layer
     mapRef.current.addLayer({
-      id: 'cluster-count',
-      type: 'symbol',
-      source: 'places',
-      filter: ['has', 'point_count'],
+      id: "cluster-count",
+      type: "symbol",
+      source: "places",
+      filter: ["has", "point_count"],
       layout: {
-        'text-field': ['get', 'point_count_abbreviated'],
-        'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-        'text-size': 12,
-        'text-allow-overlap': true
+        "text-field": "{point_count_abbreviated}",
+        "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+        "text-size": 12,
       },
       paint: {
-        'text-color': '#ffffff'
-      }
+        "text-color": "#ffffff",
+      },
     });
 
-    // Add individual points (unclustered) - invisible layer for click handling only
+    // Unclustered point layer with place names
     mapRef.current.addLayer({
-      id: 'unclustered-point',
-      type: 'circle',
-      source: 'places',
-      filter: ['!', ['has', 'point_count']],
+      id: "unclustered-point",
+      type: "symbol",
+      source: "places",
+      filter: ["!", ["has", "point_count"]],
+      layout: {
+        "text-field": ["get", "name"],
+        "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+        "text-size": 11,
+        "text-anchor": "center",
+        "text-offset": [0, 2],
+        "text-max-width": 10,
+        "text-allow-overlap": false,
+        "text-ignore-placement": false,
+      },
       paint: {
-        'circle-radius': 16,
-        'circle-stroke-width': 0,
-        'circle-stroke-color': 'transparent',
-        'circle-opacity': 0, // Make completely transparent - only used for click detection
-        'circle-color': 'transparent'
-      }
+        "text-color": [
+          "case",
+          ["==", ["get", "category"], "eat"], "#c46a3a",
+          ["==", ["get", "category"], "stays"], "#6b7c5a",
+          ["==", ["get", "category"], "experiences"], "#3e5f73",
+          ["==", ["get", "category"], "surf"], "#3e5f73",
+          ["==", ["get", "category"], "wellness"], "#7a6a86",
+          ["==", ["get", "category"], "culture"], "#7a6a86",
+          ["==", ["get", "category"], "work-long-stays"], "#6b7c5a",
+          ["==", ["get", "category"], "getting-around"], "#4f6f86",
+          ["==", ["get", "category"], "shops-essentials"], "#6b6f6a",
+          ["==", ["get", "category"], "community"], "#4f6f86",
+          "#4f6f86"
+        ],
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2,
+        "text-halo-blur": 1,
+      },
     });
 
-    // Add individual point images
-    places.forEach((place) => {
-      if (!place._latlng) return;
+    // Add background circles for better visibility
+    mapRef.current.addLayer({
+      id: "unclustered-point-bg",
+      type: "circle",
+      source: "places", 
+      filter: ["!", ["has", "point_count"]],
+      paint: {
+        "circle-color": [
+          "case",
+          ["==", ["get", "category"], "eat"], "#c46a3a",
+          ["==", ["get", "category"], "stays"], "#6b7c5a",
+          ["==", ["get", "category"], "experiences"], "#3e5f73",
+          ["==", ["get", "category"], "surf"], "#3e5f73",
+          ["==", ["get", "category"], "wellness"], "#7a6a86",
+          ["==", ["get", "category"], "culture"], "#7a6a86",
+          ["==", ["get", "category"], "work-long-stays"], "#6b7c5a",
+          ["==", ["get", "category"], "getting-around"], "#4f6f86",
+          ["==", ["get", "category"], "shops-essentials"], "#6b6f6a",
+          ["==", ["get", "category"], "community"], "#4f6f86",
+          "#4f6f86"
+        ],
+        "circle-radius": 5,
+        "circle-stroke-width": 2,
+        "circle-stroke-color": "#fff",
+        "circle-opacity": 0.8,
+      },
+    }, "unclustered-point");
 
-      const customElement = document.createElement('div');
-      customElement.className = 'custom-marker-element';
-      customElement.style.display = 'none'; // Initially hidden, will be shown for unclustered points
-      
-      customElement.innerHTML = `
-        <div style="
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          cursor: pointer;
-          transform-origin: bottom center;
-        ">
-          <div style="
-            width: 32px;
-            height: 32px;
-            background-image: url('${place.logo || place.ogImage || "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600"}');
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            border: 2px solid ${getCategoryColor(place.category)};
-            box-shadow: 0 1px 5px rgba(0,0,0,0.3);
-          "></div>
-          <div style="
-            background: linear-gradient(135deg, rgba(255,248,220,0.3) 0%, rgba(255,255,255,0.8) 100%);
-            color: #8B4513;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: bold;
-            margin-top: 4px;
-            white-space: nowrap;
-            max-width: 120px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-align: center;
-          ">
-            ${place.name.length > 12 ? place.name.substring(0, 12) + "..." : place.name}
-          </div>
-        </div>
-      `;
-
-      const marker = new mapboxgl.Marker({
-        element: customElement,
-        anchor: 'bottom'
-      })
-        .setLngLat([place._latlng.lng, place._latlng.lat])
-        .addTo(mapRef.current);
-
-      // Add click handler
-      customElement.addEventListener('click', () => {
-        if (selectedMarkerRef.current) {
-          selectedMarkerRef.current.getElement().classList.remove('marker-selected');
-        }
-        customElement.classList.add('marker-selected');
-        selectedMarkerRef.current = marker;
-        setSelectedPlace(place);
-      });
-
-      markersRef.current.push(marker);
-    });
-
-    // Handle cluster clicks (zoom in)
-    mapRef.current.on('click', 'clusters', (e) => {
+    // Add event handlers using standard Mapbox API
+    mapRef.current.on("click", "clusters", (e) => {
       const features = mapRef.current.queryRenderedFeatures(e.point, {
-        layers: ['clusters']
+        layers: ["clusters"],
       });
       const clusterId = features[0].properties.cluster_id;
-      mapRef.current.getSource('places').getClusterExpansionZoom(
-        clusterId,
-        (err, zoom) => {
+      mapRef.current
+        .getSource("places")
+        .getClusterExpansionZoom(clusterId, (err, zoom) => {
           if (err) return;
           mapRef.current.easeTo({
             center: features[0].geometry.coordinates,
-            zoom: zoom
+            zoom: zoom,
           });
-        }
-      );
+        });
     });
 
-    // Handle individual point clicks
-    mapRef.current.on('click', 'unclustered-point', (e) => {
-      const features = mapRef.current.queryRenderedFeatures(e.point, {
-        layers: ['unclustered-point']
-      });
-      if (features.length > 0) {
-        const placeData = features[0].properties.placeData;
-        if (placeData) {
-          try {
-            const parsedPlace = JSON.parse(placeData);
-            // Reset previous selected marker appearance
-            if (selectedMarkerRef.current) {
-              selectedMarkerRef.current.getElement().classList.remove('marker-selected');
-            }
-            setSelectedPlace(parsedPlace);
-          } catch (err) {
-            console.error('Error parsing place data:', err);
-          }
-        }
+    mapRef.current.on("click", "unclustered-point", (e) => {
+      const coordinates = e.features[0].geometry.coordinates.slice();
+      const place = e.features[0].properties;
+      
+      // Update UI state
+      setSelectedPlace(place);
+
+      // Ensure coordinates are not changed by the flyTo
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
       }
-    });
 
-    // Update marker visibility based on zoom level
-    const updateMarkerVisibility = () => {
-      const zoom = mapRef.current.getZoom();
-      markersRef.current.forEach((marker) => {
-        const element = marker.getElement();
-        if (zoom > 14.5) { // Show individual markers when clusters break up
-          element.style.display = 'block';
-        } else {
-          element.style.display = 'none';
-        }
+      mapRef.current.flyTo({
+        center: coordinates,
+        zoom: Math.max(mapRef.current.getZoom(), 14),
+        duration: 1000,
       });
-    };
+    });
 
-    mapRef.current.on('zoom', updateMarkerVisibility);
-    updateMarkerVisibility(); // Initial call
+    mapRef.current.on("mouseenter", "clusters", () => {
+      mapRef.current.getCanvas().style.cursor = "pointer";
+    });
 
-    // Change cursor on hover
-    mapRef.current.on('mouseenter', 'clusters', () => {
-      mapRef.current.getCanvas().style.cursor = 'pointer';
+    mapRef.current.on("mouseleave", "clusters", () => {
+      mapRef.current.getCanvas().style.cursor = "";
     });
-    mapRef.current.on('mouseleave', 'clusters', () => {
-      mapRef.current.getCanvas().style.cursor = '';
-    });
-    mapRef.current.on('mouseenter', 'unclustered-point', () => {
-      mapRef.current.getCanvas().style.cursor = 'pointer';
-    });
-    mapRef.current.on('mouseleave', 'unclustered-point', () => {
-      mapRef.current.getCanvas().style.cursor = '';
-    });
-    return () => {
-      if (mapRef.current) {
-        // Remove event listeners
-        mapRef.current.off('click', 'clusters');
-        mapRef.current.off('click', 'unclustered-point');
-        mapRef.current.off('zoom');
-        mapRef.current.off('mouseenter', 'clusters');
-        mapRef.current.off('mouseleave', 'clusters');
-        mapRef.current.off('mouseenter', 'unclustered-point');
-        mapRef.current.off('mouseleave', 'unclustered-point');
-      }
-    };
 
+    mapRef.current.on("mouseenter", "unclustered-point", () => {
+      mapRef.current.getCanvas().style.cursor = "pointer";
+    });
+
+    mapRef.current.on("mouseleave", "unclustered-point", () => {
+      mapRef.current.getCanvas().style.cursor = "";
+    });
+
+    // Also add hover events for the background circles
+    mapRef.current.on("mouseenter", "unclustered-point-bg", () => {
+      mapRef.current.getCanvas().style.cursor = "pointer";  
+    });
+
+    mapRef.current.on("mouseleave", "unclustered-point-bg", () => {
+      mapRef.current.getCanvas().style.cursor = "";
+    });
   }, [places, mapLoaded]);
 
   const getCategoryColor = (category) => {
