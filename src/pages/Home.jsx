@@ -169,8 +169,8 @@ export default function Home() {
                     </Title>
 
                     <Paragraph className="ahg-sub">
-                      A <strong>$18 card</strong> that unlocks local privileges
-                      at our favourite places.
+                      A <strong>$18 card</strong> that unlocks local discounts &
+                      privileges
                     </Paragraph>
 
                     <Space wrap size={10}>
