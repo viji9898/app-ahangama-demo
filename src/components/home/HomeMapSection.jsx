@@ -619,11 +619,53 @@ export default function HomeMapSection() {
                         >
                           Pass Offers
                         </Title>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: formatOffers(selectedPlace.offer),
-                          }}
-                        />
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                          {(() => {
+                            let offers = selectedPlace.offer;
+                            
+                            // Try to parse JSON string if it looks like an array
+                            if (typeof offers === 'string' && offers.startsWith('[')) {
+                              try {
+                                offers = JSON.parse(offers);
+                              } catch (e) {
+                                // If parsing fails, treat as single offer
+                                offers = selectedPlace.offer;
+                              }
+                            }
+                            
+                            if (Array.isArray(offers)) {
+                              return offers.map((offer, index) => (
+                                <Tag
+                                  key={index}
+                                  color={getCategoryColor(selectedPlace.category)}
+                                  style={{
+                                    borderRadius: "10px",
+                                    fontSize: "10px",
+                                    fontWeight: "500",
+                                    border: "none",
+                                  }}
+                                >
+                                  {offer}
+                                </Tag>
+                              ));
+                            } else {
+                              return (
+                                <div
+                                  style={{
+                                    fontSize: "11px",
+                                    color: "rgba(31, 42, 36, 0.8)",
+                                    padding: "5px 6px",
+                                    background: "rgba(79, 111, 134, 0.08)",
+                                    borderRadius: "6px",
+                                    borderLeft: "2px solid rgba(79, 111, 134, 0.3)",
+                                  }}
+                                >
+                                  {offers}
+                                </div>
+                              );
+                            }
+                          })()}
+                        </div>
                       </div>
                     )}
 
