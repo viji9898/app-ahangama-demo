@@ -311,6 +311,14 @@ export default function HomeMapSection() {
       setSelectedPlace(place);
     });
 
+    // Also make the background circles clickable
+    mapRef.current.on("click", "unclustered-point-bg", (e) => {
+      const place = e.features[0].properties;
+
+      // Update UI state only - don't move the map
+      setSelectedPlace(place);
+    });
+
     mapRef.current.on("mouseenter", "clusters", () => {
       mapRef.current.getCanvas().style.cursor = "pointer";
     });
