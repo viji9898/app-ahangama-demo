@@ -135,7 +135,12 @@ export default function HomeMapSection() {
 
     // Clean up existing sources and layers
     if (mapRef.current.getSource("places")) {
-      ["clusters", "cluster-count", "unclustered-point", "unclustered-point-bg"].forEach((layerId) => {
+      [
+        "clusters",
+        "cluster-count",
+        "unclustered-point",
+        "unclustered-point-bg",
+      ].forEach((layerId) => {
         if (mapRef.current.getLayer(layerId)) {
           mapRef.current.removeLayer(layerId);
         }
@@ -172,15 +177,7 @@ export default function HomeMapSection() {
           100,
           "#f28cb1",
         ],
-        "circle-radius": [
-          "step",
-          ["get", "point_count"],
-          20,
-          10,
-          30,
-          100,
-          40,
-        ],
+        "circle-radius": ["step", ["get", "point_count"], 20, 10, 30, 100, 40],
         "circle-stroke-width": 2,
         "circle-stroke-color": "#fff",
       },
@@ -221,17 +218,27 @@ export default function HomeMapSection() {
       paint: {
         "text-color": [
           "case",
-          ["==", ["get", "category"], "eat"], "#c46a3a",
-          ["==", ["get", "category"], "stays"], "#6b7c5a",
-          ["==", ["get", "category"], "experiences"], "#3e5f73",
-          ["==", ["get", "category"], "surf"], "#3e5f73",
-          ["==", ["get", "category"], "wellness"], "#7a6a86",
-          ["==", ["get", "category"], "culture"], "#7a6a86",
-          ["==", ["get", "category"], "work-long-stays"], "#6b7c5a",
-          ["==", ["get", "category"], "getting-around"], "#4f6f86",
-          ["==", ["get", "category"], "shops-essentials"], "#6b6f6a",
-          ["==", ["get", "category"], "community"], "#4f6f86",
-          "#4f6f86"
+          ["==", ["get", "category"], "eat"],
+          "#c46a3a",
+          ["==", ["get", "category"], "stays"],
+          "#6b7c5a",
+          ["==", ["get", "category"], "experiences"],
+          "#3e5f73",
+          ["==", ["get", "category"], "surf"],
+          "#3e5f73",
+          ["==", ["get", "category"], "wellness"],
+          "#7a6a86",
+          ["==", ["get", "category"], "culture"],
+          "#7a6a86",
+          ["==", ["get", "category"], "work-long-stays"],
+          "#6b7c5a",
+          ["==", ["get", "category"], "getting-around"],
+          "#4f6f86",
+          ["==", ["get", "category"], "shops-essentials"],
+          "#6b6f6a",
+          ["==", ["get", "category"], "community"],
+          "#4f6f86",
+          "#4f6f86",
         ],
         "text-halo-color": "#ffffff",
         "text-halo-width": 2,
@@ -240,32 +247,45 @@ export default function HomeMapSection() {
     });
 
     // Add background circles for better visibility
-    mapRef.current.addLayer({
-      id: "unclustered-point-bg",
-      type: "circle",
-      source: "places", 
-      filter: ["!", ["has", "point_count"]],
-      paint: {
-        "circle-color": [
-          "case",
-          ["==", ["get", "category"], "eat"], "#c46a3a",
-          ["==", ["get", "category"], "stays"], "#6b7c5a",
-          ["==", ["get", "category"], "experiences"], "#3e5f73",
-          ["==", ["get", "category"], "surf"], "#3e5f73",
-          ["==", ["get", "category"], "wellness"], "#7a6a86",
-          ["==", ["get", "category"], "culture"], "#7a6a86",
-          ["==", ["get", "category"], "work-long-stays"], "#6b7c5a",
-          ["==", ["get", "category"], "getting-around"], "#4f6f86",
-          ["==", ["get", "category"], "shops-essentials"], "#6b6f6a",
-          ["==", ["get", "category"], "community"], "#4f6f86",
-          "#4f6f86"
-        ],
-        "circle-radius": 5,
-        "circle-stroke-width": 2,
-        "circle-stroke-color": "#fff",
-        "circle-opacity": 0.8,
+    mapRef.current.addLayer(
+      {
+        id: "unclustered-point-bg",
+        type: "circle",
+        source: "places",
+        filter: ["!", ["has", "point_count"]],
+        paint: {
+          "circle-color": [
+            "case",
+            ["==", ["get", "category"], "eat"],
+            "#c46a3a",
+            ["==", ["get", "category"], "stays"],
+            "#6b7c5a",
+            ["==", ["get", "category"], "experiences"],
+            "#3e5f73",
+            ["==", ["get", "category"], "surf"],
+            "#3e5f73",
+            ["==", ["get", "category"], "wellness"],
+            "#7a6a86",
+            ["==", ["get", "category"], "culture"],
+            "#7a6a86",
+            ["==", ["get", "category"], "work-long-stays"],
+            "#6b7c5a",
+            ["==", ["get", "category"], "getting-around"],
+            "#4f6f86",
+            ["==", ["get", "category"], "shops-essentials"],
+            "#6b6f6a",
+            ["==", ["get", "category"], "community"],
+            "#4f6f86",
+            "#4f6f86",
+          ],
+          "circle-radius": 5,
+          "circle-stroke-width": 2,
+          "circle-stroke-color": "#fff",
+          "circle-opacity": 0.8,
+        },
       },
-    }, "unclustered-point");
+      "unclustered-point"
+    );
 
     // Add event handlers using standard Mapbox API
     mapRef.current.on("click", "clusters", (e) => {
@@ -285,22 +305,10 @@ export default function HomeMapSection() {
     });
 
     mapRef.current.on("click", "unclustered-point", (e) => {
-      const coordinates = e.features[0].geometry.coordinates.slice();
       const place = e.features[0].properties;
-      
-      // Update UI state
+
+      // Update UI state only - don't move the map
       setSelectedPlace(place);
-
-      // Ensure coordinates are not changed by the flyTo
-      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      }
-
-      mapRef.current.flyTo({
-        center: coordinates,
-        zoom: Math.max(mapRef.current.getZoom(), 14),
-        duration: 1000,
-      });
     });
 
     mapRef.current.on("mouseenter", "clusters", () => {
@@ -321,7 +329,7 @@ export default function HomeMapSection() {
 
     // Also add hover events for the background circles
     mapRef.current.on("mouseenter", "unclustered-point-bg", () => {
-      mapRef.current.getCanvas().style.cursor = "pointer";  
+      mapRef.current.getCanvas().style.cursor = "pointer";
     });
 
     mapRef.current.on("mouseleave", "unclustered-point-bg", () => {
