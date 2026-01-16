@@ -4,6 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { Card, Button, Space, Tag, Typography } from "antd";
 import { EnvironmentOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { PLACES } from "../../data/places";
+import { shouldShowPlace } from "../../data/placeStatus";
 
 const { Title, Text } = Typography;
 
@@ -44,6 +45,7 @@ export default function HomeMapSection() {
 
   const places = useMemo(() => {
     return PLACES.filter((p) => p.destinationSlug === "ahangama")
+      .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => {
         if (selectedCategory === "all") {
           // Explicitly include eat, stays, wellness, and surf for "all" filter
@@ -619,12 +621,21 @@ export default function HomeMapSection() {
                         >
                           Pass Offers
                         </Title>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: "6px",
+                          }}
+                        >
                           {(() => {
                             let offers = selectedPlace.offer;
-                            
+
                             // Try to parse JSON string if it looks like an array
-                            if (typeof offers === 'string' && offers.startsWith('[')) {
+                            if (
+                              typeof offers === "string" &&
+                              offers.startsWith("[")
+                            ) {
                               try {
                                 offers = JSON.parse(offers);
                               } catch (e) {
@@ -632,12 +643,14 @@ export default function HomeMapSection() {
                                 offers = selectedPlace.offer;
                               }
                             }
-                            
+
                             if (Array.isArray(offers)) {
                               return offers.map((offer, index) => (
                                 <Tag
                                   key={index}
-                                  color={getCategoryColor(selectedPlace.category)}
+                                  color={getCategoryColor(
+                                    selectedPlace.category
+                                  )}
                                   style={{
                                     borderRadius: "10px",
                                     fontSize: "10px",
@@ -657,7 +670,8 @@ export default function HomeMapSection() {
                                     padding: "5px 6px",
                                     background: "rgba(79, 111, 134, 0.08)",
                                     borderRadius: "6px",
-                                    borderLeft: "2px solid rgba(79, 111, 134, 0.3)",
+                                    borderLeft:
+                                      "2px solid rgba(79, 111, 134, 0.3)",
                                   }}
                                 >
                                   {offers}

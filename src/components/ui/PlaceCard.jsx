@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Typography, Tag, Space, Button } from "antd";
+import PlaceStatusTag from "./PlaceStatusTag";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -21,6 +22,7 @@ export default function PlaceCard({ place, basePath = "/eat" }) {
       />
       <Title level={4} style={{ marginBottom: 6 }}>
         {place.name}
+        <PlaceStatusTag place={place} />
       </Title>
       <Paragraph type="secondary" style={{ marginBottom: 10 }}>
         {place.excerpt}

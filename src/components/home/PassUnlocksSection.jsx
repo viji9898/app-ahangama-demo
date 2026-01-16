@@ -18,6 +18,8 @@ import {
   QrcodeOutlined,
 } from "@ant-design/icons";
 import { PLACES } from "../../data/places";
+import { shouldShowPlace } from "../../data/placeStatus";
+import PlaceStatusTag from "../ui/PlaceStatusTag";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -183,6 +185,7 @@ function PlaceRow({ p }) {
           }}
         >
           {p.name}
+          <PlaceStatusTag place={p} />
         </h3>
 
         {offerTags.length > 0 && (
@@ -280,6 +283,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
     const query = q.trim().toLowerCase();
 
     return PLACES.filter((p) => p.destinationSlug === destinationSlug)
+      .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => !!p.offer) // only pass venues (discounts/value adds)
       .filter((p) => {
         if (selectedCategory === "all") return true;

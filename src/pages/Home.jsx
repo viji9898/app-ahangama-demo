@@ -22,6 +22,7 @@ import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
+import ComingSoonSection from "../components/home/ComingSoonSection";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -439,6 +440,11 @@ export default function Home() {
             <div className="mobile-only" style={{ display: "none" }}>
               <PassUnlocksMobile destinationSlug="ahangama" />
             </div>
+          </div>
+
+          {/* Coming Soon Section */}
+          <div style={{ marginTop: 0 }}>
+            <ComingSoonSection />
           </div>
 
           {/* CARD CTA */}

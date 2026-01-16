@@ -17,6 +17,8 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { PLACES } from "../../data/places";
+import { shouldShowPlace } from "../../data/placeStatus";
+import PlaceStatusTag from "../ui/PlaceStatusTag";
 
 const { Title, Text } = Typography;
 
@@ -168,6 +170,7 @@ function MobilePlaceCard({ p }) {
               }}
             >
               {p.name}
+              <PlaceStatusTag place={p} />
             </h4>
             <Text
               style={{
@@ -228,6 +231,7 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
 
   const passPlaces = useMemo(() => {
     return PLACES.filter((p) => p.destinationSlug === destinationSlug)
+      .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => !!p.offer)
       .filter((p) => {
         if (!selectedCats.length) return true;
@@ -238,6 +242,7 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
   const catsAvailable = useMemo(() => {
     const set = new Set(
       PLACES.filter((p) => p.destinationSlug === destinationSlug && p.offer)
+        .filter((p) => shouldShowPlace(p)) // Only show active places
         .map((p) => p.category)
         .filter(Boolean)
     );

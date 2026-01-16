@@ -7,6 +7,7 @@ export const PLACES = [
     category: "eat",
     name: "Marshmellow Surf Café",
     slug: "marshmellow-surf-cafe",
+    status: "coming_soon",
     stars: 4.6,
     reviews: 1103,
     excerpt:
@@ -44,6 +45,7 @@ export const PLACES = [
     category: "eat",
     name: "Cactus",
     slug: "cactus-ahangama",
+    status: "coming_soon",
     stars: 4.5,
     reviews: 1018,
     excerpt:
@@ -81,6 +83,7 @@ export const PLACES = [
     category: "eat",
     name: "Moochies",
     slug: "moochies-ahangama",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 608,
     excerpt:
@@ -118,6 +121,7 @@ export const PLACES = [
     category: "eat",
     name: "The Kip",
     slug: "the-kip",
+    status: "coming_soon",
     stars: 4.7,
     reviews: 503,
     excerpt:
@@ -148,6 +152,7 @@ export const PLACES = [
     category: "eat",
     name: "Ceylon Sliders",
     slug: "ceylon-sliders",
+    status: "coming_soon",
     stars: 4.5,
     reviews: 454,
     excerpt: "A strong all-rounder—good energy, good food, easy dinner option.",
@@ -184,6 +189,7 @@ export const PLACES = [
     category: "eat",
     name: "Le Café",
     slug: "le-cafe-french-bistro-ahangama",
+    status: "coming_soon",
     stars: 4.8,
     reviews: 448,
     excerpt:
@@ -222,6 +228,7 @@ export const PLACES = [
     category: "eat",
     name: "Hakuna Matata",
     slug: "hakuna-matata-ahangama",
+    status: "active",
     stars: 4.4,
     reviews: 441,
     excerpt: "Easygoing, no-fuss spot with a broad appeal and steady traffic.",
@@ -229,8 +236,8 @@ export const PLACES = [
       "A familiar name around the junction area. Works well when you want something casual and straightforward.",
     bestFor: ["Casual dinner", "Groups", "Drinks"],
     tags: ["Casual", "Easy", "Crowd-pleaser"],
-    cardPerk: "20% off the daily special with the Ahangama Card.",
-    offer: ["20% Off", "Daily Special"],
+    cardPerk: "10% off the daily special with the Ahangama Card.",
+    offer: ["10% Off", "Daily Special"],
     howToClaim:
       "Show your Ahangama Card when ordering the daily special to receive 20% discount.",
     restrictions:
@@ -258,6 +265,7 @@ export const PLACES = [
     category: "eat",
     name: "Café Ceylon",
     slug: "cafe-ceylon-ahangama",
+    status: "active",
     stars: 4.3,
     reviews: 403,
     excerpt: "A familiar stop near Kabalana—good for a quick coffee reset.",
@@ -294,6 +302,7 @@ export const PLACES = [
     category: "eat",
     name: "Black Honey cafe",
     slug: "black-honey-cafe",
+    status: "coming_soon",
     stars: 4.6,
     reviews: 395,
     excerpt:
@@ -330,6 +339,7 @@ export const PLACES = [
     category: "eat",
     name: "Squeeze Me",
     slug: "squeeze-me",
+    status: "coming_soon",
     stars: 4.7,
     reviews: 315,
     excerpt:
@@ -367,6 +377,7 @@ export const PLACES = [
     category: "eat",
     name: "Twin Fin",
     slug: "twin-fin-surf-x-coffee",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 275,
     excerpt: "Surf-shop-meets-café—easy coffee stop with gear and good energy.",
@@ -403,6 +414,7 @@ export const PLACES = [
     category: "eat",
     name: "Samba",
     slug: "samba-ahangama",
+    status: "coming_soon",
     stars: 4.8,
     reviews: 263,
     excerpt: "Beach-road staple—strong all-rounder for food + a lively scene.",
@@ -439,6 +451,7 @@ export const PLACES = [
     category: "eat",
     name: "Kaffi",
     slug: "kaffi-ahangama",
+    status: "coming_soon",
     stars: 4.6,
     reviews: 242,
     excerpt: "A steady coffee stop on Matara Road—easy to default to.",
@@ -476,6 +489,7 @@ export const PLACES = [
     category: "eat",
     name: "Meori",
     slug: "meori-ahangama",
+    status: "coming_soon",
     stars: 4.8,
     reviews: 211,
     excerpt: "A polished café/restaurant pick—good for a slightly nicer meal.",
@@ -513,6 +527,7 @@ export const PLACES = [
     category: "eat",
     name: "Sisters Kabalana",
     slug: "sisters-kabalana",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 201,
     excerpt:
@@ -550,6 +565,7 @@ export const PLACES = [
     category: "eat",
     name: "Fruit Cafe",
     slug: "fruit-cafe-ahangama",
+    status: "active",
     stars: 4.9,
     reviews: 197,
     excerpt: "Light, fresh, and easy—strong pick for plant-forward meals.",
@@ -586,6 +602,7 @@ export const PLACES = [
     category: "eat",
     name: "Maria Bonita ",
     slug: "maria-bonita-sri-lanka",
+    status: "active",
     stars: 4.8,
     reviews: 178,
     excerpt:
@@ -623,6 +640,7 @@ export const PLACES = [
     category: "eat",
     name: "Follow The White Rabbit",
     slug: "follow-the-white-rabbit-ahangama",
+    status: "coming_soon",
     stars: 4.5,
     reviews: 177,
     excerpt:
@@ -660,6 +678,7 @@ export const PLACES = [
     category: "eat",
     name: "MAKAI Café",
     slug: "makai-cafe-ahangama",
+    status: "coming_soon",
     stars: 5,
     reviews: 170,
     excerpt:
@@ -691,6 +710,7 @@ export const PLACES = [
     category: "eat",
     name: "Teddies",
     slug: "teddies-ahangama",
+    status: "coming_soon",
     stars: 5,
     reviews: 157,
     excerpt:
@@ -725,11 +745,118 @@ export const PLACES = [
       "https://www.google.com/maps/place/?q=place_id:ChIJ3Sf2xwsV4ToRsupIqBjy_Ao",
   },
   {
+    id: "jam-house-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Jam House",
+    slug: "jam-house-ahangama",
+    status: "active",
+    stars: 4.7,
+    reviews: 297,
+    excerpt:
+      "Popular spot offering great food and atmosphere with 10% off for cardholders.",
+    description:
+      "A well-reviewed restaurant in Ahangama known for its excellent food and welcoming atmosphere. Perfect for a great dining experience.",
+    bestFor: ["Lunch", "Dinner", "Groups"],
+    tags: ["Popular", "Good food", "Welcoming"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in orders. Cannot be combined with other offers.",
+    whatsApp: "94771234596",
+    email: "info@jamhouseahangama.com",
+    instagram: "jamhouseahangama",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.967926764702394,
+    lng: 80.37403316856151,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/jam_house.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/jam_house.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/jam_house.jpg",
+    mapUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJMWdHKFgT4ToRU_rkte-QoDI",
+  },
+  {
+    id: "patels-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Patels",
+    slug: "patels-ahangama",
+    status: "active",
+    stars: 4.7,
+    reviews: 136,
+    excerpt:
+      "Great restaurant with excellent food and service offering 10% off for cardholders.",
+    description:
+      "A highly-rated dining establishment in Ahangama known for its quality food and welcoming atmosphere.",
+    bestFor: ["Lunch", "Dinner", "Local cuisine"],
+    tags: ["Popular", "Good food", "Quality service"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in orders. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.9781800860434835,
+    lng: 80.35357067301068,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/petals.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/petals.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/petals.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
+    id: "tahini-and-friends-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Tahini and friends",
+    slug: "tahini-and-friends-ahangama",
+    status: "active",
+    stars: 4.4,
+    reviews: 110,
+    excerpt:
+      "Popular restaurant offering delicious food with 10% off for cardholders.",
+    description:
+      "A well-rated dining establishment in Ahangama known for its quality cuisine and friendly atmosphere.",
+    bestFor: ["Lunch", "Dinner", "Casual dining"],
+    tags: ["Popular", "Good food", "Friendly service"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in orders. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.970669959976448,
+    lng: 80.3671700288351,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/tahini_and_friends.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tahini_friends.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tahini_friends.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
     id: "the-kip-stay",
     destinationSlug: "ahangama",
     category: "stays",
     name: "The Kip",
     slug: "the-kip-stay",
+    status: "coming_soon",
     stars: 4.7,
     reviews: 503,
     excerpt:
@@ -768,6 +895,7 @@ export const PLACES = [
     category: "stays",
     name: "Teddies",
     slug: "teddies-stay-ahangama",
+    status: "coming_soon",
     stars: 5,
     reviews: 157,
     excerpt:
@@ -807,6 +935,7 @@ export const PLACES = [
     category: "stays",
     name: "Samba",
     slug: "samba-stay-ahangama",
+    status: "coming_soon",
     stars: 4.8,
     reviews: 263,
     excerpt: "Beach-road staple—strong all-rounder for food + a lively scene.",
@@ -843,6 +972,7 @@ export const PLACES = [
     category: "stays",
     name: "Solas Surf",
     slug: "solas-surf",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 78,
     excerpt:
@@ -880,6 +1010,7 @@ export const PLACES = [
     category: "stays",
     name: "Mosvold Villa",
     slug: "mosvold-villa",
+    status: "coming_soon",
     stars: 4.5,
     reviews: 311,
     excerpt:
@@ -917,6 +1048,7 @@ export const PLACES = [
     category: "stays",
     name: "Kabalana House by Ceilão Villas",
     slug: "kabalana-house-by-ceilao-villas",
+    status: "coming_soon",
     stars: 4.8,
     reviews: 64,
     excerpt:
@@ -954,6 +1086,7 @@ export const PLACES = [
     category: "stays",
     name: "Teal Ahangama",
     slug: "teal-ahangama",
+    status: "coming_soon",
     stars: 4.7,
     reviews: 31,
     excerpt:
@@ -991,6 +1124,7 @@ export const PLACES = [
     category: "stays",
     name: "Tea Tree Villa",
     slug: "tea-tree-villa",
+    status: "coming_soon",
     stars: 4.4,
     reviews: 65,
     excerpt:
@@ -1027,6 +1161,7 @@ export const PLACES = [
     category: "stays",
     name: "The Find",
     slug: "the-find",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 57,
     excerpt:
@@ -1057,6 +1192,7 @@ export const PLACES = [
     category: "stays",
     name: "Lighthouse",
     slug: "lighthouse",
+    status: "coming_soon",
     stars: 4.7,
     reviews: 461,
     excerpt:
@@ -1093,6 +1229,7 @@ export const PLACES = [
     category: "stays",
     name: "Merchant",
     slug: "merchant",
+    status: "coming_soon",
     stars: 4.8,
     reviews: 24,
     excerpt:
@@ -1130,6 +1267,7 @@ export const PLACES = [
     category: "stays",
     name: "Marigold Gedara",
     slug: "marigold-gedara",
+    status: "coming_soon",
     stars: 5.0,
     reviews: 1,
     excerpt:
@@ -1160,6 +1298,7 @@ export const PLACES = [
     category: "stays",
     name: "Trebartha East – The Roundhouse",
     slug: "trebartha-east-the-roundhouse",
+    status: "coming_soon",
     stars: 5.0,
     reviews: 86,
     excerpt:
@@ -1197,6 +1336,7 @@ export const PLACES = [
     category: "stays",
     name: "The Spice Trail",
     slug: "the-spice-trail",
+    status: "coming_soon",
     stars: 4.6,
     reviews: 69,
     excerpt:
@@ -1233,6 +1373,7 @@ export const PLACES = [
     category: "stays",
     name: "Kurulu Bay",
     slug: "kurulu-bay",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 157,
     excerpt:
@@ -1263,6 +1404,7 @@ export const PLACES = [
     category: "stays",
     name: "Harding Boutique",
     slug: "harding-boutique",
+    status: "coming_soon",
     stars: 4.6,
     reviews: 170,
     excerpt:
@@ -1300,6 +1442,7 @@ export const PLACES = [
     category: "stays",
     name: "The Hotel",
     slug: "the-hotel",
+    status: "coming_soon",
     stars: 4.1,
     reviews: 232,
     excerpt:
@@ -1337,6 +1480,7 @@ export const PLACES = [
     category: "stays",
     name: "Sama",
     slug: "sama",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 107,
     excerpt:
@@ -1367,6 +1511,7 @@ export const PLACES = [
     category: "stays",
     name: "Palm Hotel",
     slug: "palm-hotel",
+    status: "coming_soon",
     stars: 4.6,
     reviews: 274,
     excerpt:
@@ -1404,6 +1549,7 @@ export const PLACES = [
     category: "stays",
     name: "Abode by the Beach",
     slug: "abode-by-the-beach",
+    status: "coming_soon",
     stars: 4.5,
     reviews: 152,
     excerpt:
@@ -1434,6 +1580,7 @@ export const PLACES = [
     category: "stays",
     name: "UNU Boutique Hotel",
     slug: "unu-boutique-hotel",
+    status: "active",
     stars: 4.7,
     reviews: 102,
     excerpt:
@@ -1472,6 +1619,7 @@ export const PLACES = [
     category: "wellness",
     name: "Aksaaya Ayurveda Wellness Spa Ahangama",
     slug: "aksaaya-ayurveda-wellness-spa",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 641,
     excerpt:
@@ -1509,6 +1657,7 @@ export const PLACES = [
     category: "surf",
     name: "The Board Hut",
     slug: "the-board-hut",
+    status: "active",
     stars: 4.7,
     reviews: 13,
     excerpt:
@@ -1546,6 +1695,7 @@ export const PLACES = [
     category: "wellness",
     name: "Lotus Surf & Wellness",
     slug: "lotus-surf-wellness",
+    status: "coming_soon",
     stars: 5,
     reviews: 86,
     excerpt:
@@ -1584,6 +1734,7 @@ export const PLACES = [
     category: "wellness",
     name: "Shramalaya",
     slug: "shramalaya",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 124,
     excerpt:
@@ -1622,6 +1773,7 @@ export const PLACES = [
     category: "wellness",
     name: "Senses",
     slug: "senses",
+    status: "coming_soon",
     stars: 4.7,
     reviews: 74,
     excerpt:
@@ -1655,11 +1807,47 @@ export const PLACES = [
       "https://www.google.com/maps/search/?api=1&query=5.985234560816895,80.39236177976328",
   },
   {
+    id: "sarana-ahangama",
+    destinationSlug: "ahangama",
+    category: "wellness",
+    name: "Sarana",
+    slug: "sarana-ahangama",
+    status: "active",
+    stars: 5,
+    reviews: 51,
+    excerpt:
+      "Premium wellness center offering exceptional spa treatments and relaxation experiences.",
+    description:
+      "A premier wellness destination in Ahangama providing luxurious spa treatments and holistic wellness experiences. Known for its serene atmosphere and high-quality services.",
+    bestFor: ["Spa treatments", "Wellness", "Relaxation"],
+    tags: ["Spa", "Wellness", "Luxury", "Relaxation"],
+    cardPerk: "20% off wellness classes with the Ahangama Card.",
+    offer: ["20% off"],
+    howToClaim:
+      "Show your Ahangama Card when booking to receive 10% off wellness treatments.",
+    restrictions:
+      "Valid for wellness treatments. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Premium",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.969675,
+    lng: 80.379016,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sarana.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sarana.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sarana.jpg",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.969675,80.379016",
+  },
+  {
     id: "manoris-kitchen",
     destinationSlug: "ahangama",
     category: "eat",
     name: "Manori's Kitchen",
     slug: "manoris-kitchen",
+    status: "coming_soon",
     stars: 4.9,
     reviews: 648,
     excerpt: "Great Sri Lankan food restaurant with authentic local flavors.",
