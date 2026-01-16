@@ -132,7 +132,7 @@ export default function ComingSoonSection() {
             key: place.id || place.slug || index,
           }))}
           pagination={{
-            pageSize: 10,
+            pageSize: 15,
             showSizeChanger: false,
             showQuickJumper: true,
             showTotal: (total, range) =>
