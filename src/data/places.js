@@ -1010,7 +1010,7 @@ export const PLACES = [
     category: "stays",
     name: "Mosvold Villa",
     slug: "mosvold-villa",
-    status: "coming_soon",
+    status: "active",
     stars: 4.5,
     reviews: 311,
     excerpt:
@@ -1019,13 +1019,11 @@ export const PLACES = [
       "Established villa with strong reputation and extensive positive reviews. Known for consistent quality and warm hospitality.",
     bestFor: ["Villa", "Comfort", "Hospitality"],
     tags: ["Villa", "Well-reviewed", "Comfort"],
-    cardPerk:
-      "Late checkout until 2pm and welcome drink with the Ahangama Card.",
-    offer: ["Late Checkout", "Welcome Drink"],
+    cardPerk: "10% off food and beverages with the Ahangama Card.",
+    offer: ["10% off F&B"],
     howToClaim:
-      "Present your Ahangama Card at check-in to receive late checkout and complimentary welcome drink.",
-    restrictions:
-      "Late checkout subject to availability. Welcome drink served upon arrival.",
+      "Present your Ahangama Card at check-in to receive 10% off food and beverages.",
+    restrictions: "Offer valid for food and beverage purchases only.",
     whatsApp: "94771234599",
     email: "info@mosvoldvilla.com",
     instagram: "mosvoldvilla",
