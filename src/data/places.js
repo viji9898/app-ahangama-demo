@@ -851,6 +851,220 @@ export const PLACES = [
     mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
   },
   {
+    id: "burrito-bandito-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Burrito Bandito",
+    slug: "burrito-bandito-ahangama",
+    status: "active",
+    stars: 5,
+    reviews: 42,
+    excerpt: "Exceptional Mexican restaurant with 10% off for cardholders.",
+    description:
+      "A highly-rated Mexican eatery in Ahangama serving delicious burritos and authentic Mexican cuisine with perfect customer satisfaction.",
+    bestFor: ["Lunch", "Dinner", "Mexican food"],
+    tags: ["Mexican", "Authentic", "Perfect rating"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in and takeaway orders. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.9660619914503235,
+    lng: 80.378269583243,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/burrito_bandito.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/burrito_bandito.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/burrito_bandito.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
+    id: "iluk-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Iluk",
+    slug: "iluk-ahangama",
+    status: "active",
+    stars: 4.8,
+    reviews: 133,
+    excerpt:
+      "Highly-rated restaurant offering excellent cuisine with 10% off for cardholders.",
+    description:
+      "A top-rated dining establishment in Ahangama known for its exceptional food quality and outstanding customer satisfaction.",
+    bestFor: ["Lunch", "Dinner", "Fine dining"],
+    tags: ["Highly rated", "Quality cuisine", "Excellent service"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in orders. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.974010882010841,
+    lng: 80.35978603558193,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/iluk.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/iluk.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/iluk.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
+    id: "alii-kai-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Alii Kai",
+    slug: "alii-kai-ahangama",
+    status: "active",
+    stars: 5,
+    reviews: 45,
+    excerpt:
+      "Perfect 5-star restaurant offering exceptional dining experience with 10% off for cardholders.",
+    description:
+      "An outstanding restaurant in Ahangama with a perfect 5-star rating, known for its exceptional cuisine and impeccable service.",
+    bestFor: ["Lunch", "Dinner", "Fine dining"],
+    tags: ["Perfect rating", "Exceptional cuisine", "Outstanding service"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in orders. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.966997131328545,
+    lng: 80.37491362023748,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/alii_kai.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/alii_kai.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/alii_kai.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
+    id: "citra-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Citra",
+    slug: "citra-ahangama",
+    status: "active",
+    stars: 4.6,
+    reviews: 540,
+    excerpt:
+      "Popular restaurant with excellent ratings and 10% off for cardholders.",
+    description:
+      "A well-established restaurant in Ahangama with an impressive 4.6-star rating from 540 reviews, known for its consistent quality and excellent service.",
+    bestFor: ["Lunch", "Dinner", "Local cuisine"],
+    tags: ["Popular", "High ratings", "Established"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in and takeaway orders. Cannot be combined with other offers.",
+    whatsApp: "94771234571",
+    email: "info@citrarestaurant.com",
+    instagram: "citraahangama",
+    emailContact: "Contact Citra",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.977351446070663,
+    lng: 80.35293963743476,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/citra.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/citra.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/citra.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
+    id: "donna-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Donna",
+    slug: "donna-ahangama",
+    status: "active",
+    stars: 4.9,
+    reviews: 66,
+    excerpt:
+      "Outstanding restaurant with exceptional 4.9-star rating and 10% off for cardholders.",
+    description:
+      "An exceptional dining establishment in Ahangama with an outstanding 4.9-star rating from 66 reviews, known for its superb quality and excellent customer service.",
+    bestFor: ["Lunch", "Dinner", "Fine dining"],
+    tags: ["Outstanding", "Exceptional rating", "Quality dining"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in and takeaway orders. Cannot be combined with other offers.",
+    whatsApp: "94771234572",
+    email: "info@donnarestaurant.com",
+    instagram: "donnaahangama",
+    emailContact: "Contact Donna",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.978427591667606,
+    lng: 80.34855730859866,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/donna.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/donna.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/donna.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
+    id: "tara-cafe-eat",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Tara Cafe",
+    slug: "tara-cafe-ahangama",
+    status: "active",
+    stars: 4.8,
+    reviews: 148,
+    excerpt: "Popular cafe with 4.8-star rating and 10% off for cardholders.",
+    description:
+      "A beloved cafe in Ahangama with a strong 4.8-star rating from 148 reviews, known for its quality food and welcoming atmosphere.",
+    bestFor: ["Coffee", "Light meals", "Casual dining"],
+    tags: ["Popular", "Quality cafe", "Great atmosphere"],
+    cardPerk: "10% off your total bill with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+    restrictions:
+      "Valid for dine-in and takeaway orders. Cannot be combined with other offers.",
+    whatsApp: "94771234573",
+    email: "info@taracafe.com",
+    instagram: "taracafeahangama",
+    emailContact: "Contact Tara Cafe",
+    discount: 0.1,
+    price: "Budget-friendly",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.974754858352326,
+    lng: 80.35716826256525,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/tara_cafe.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tara_cafe.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tara_cafe.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+  },
+  {
     id: "the-kip-stay",
     destinationSlug: "ahangama",
     category: "stays",
@@ -888,6 +1102,45 @@ export const PLACES = [
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
       "https://www.google.com/maps/place/?q=place_id:ChIJMTRdTaQU4ToRM-xEwUWydew",
+  },
+  {
+    id: "ayurveda-palm-garden-resort",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Ayurveda Palm Garden Resort",
+    slug: "ayurveda-palm-garden-resort",
+    status: "coming_soon",
+    stars: 4.6,
+    reviews: 127,
+    excerpt:
+      "Wellness-focused resort combining traditional Ayurveda with modern comfort for a rejuvenating stay.",
+    description:
+      "An authentic Ayurvedic wellness retreat offering holistic healing experiences in a serene palm garden setting. Perfect for those seeking relaxation and traditional wellness treatments.",
+    bestFor: ["Wellness", "Spa treatments", "Ayurveda"],
+    tags: ["Wellness", "Spa", "Traditional healing"],
+    cardPerk:
+      "Complimentary wellness consultation and 10% off spa treatments with the Ahangama Card.",
+    offer: ["Wellness Consultation", ""],
+    howToClaim:
+      "Present your Ahangama Card at check-in to receive complimentary wellness consultation and spa discount.",
+    restrictions:
+      "Spa discount valid for treatments booked during stay. Wellness consultation subject to therapist availability.",
+    whatsApp: "94771234570",
+    email: "info@palmgardenayurveda.com",
+    instagram: "palmgardenayurveda",
+    emailContact: "Contact Ayurveda Palm Garden Resort",
+    discount: 0.1,
+    price: "Premium",
+    hours: "24/7 reception",
+    area: "Ahangama (Wellness District)",
+    lat: 5.979557120672358,
+    lng: 80.35709962209029,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/palm_garden.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/palm_garden.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/palm_garden.jpg",
+    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
   },
   {
     id: "teddies-stay-ahangama",
