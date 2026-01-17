@@ -274,7 +274,7 @@ export const PLACES = [
     bestFor: ["Coffee", "Quick stop", "Casual"],
     tags: ["Easy", "Convenient", "No-fuss"],
     cardPerk: "Free second coffee refill with the Ahangama Card.",
-    offer: ["Free Refill", "Coffee Perk"],
+    offer: ["10% off F&B"],
     howToClaim:
       "Present your Ahangama Card with your first coffee order to receive a free refill.",
     restrictions:
@@ -574,7 +574,7 @@ export const PLACES = [
     bestFor: ["Vegan", "Light lunch", "Fresh"],
     tags: ["Vegan-friendly", "Light", "Fresh"],
     cardPerk: "Free coconut water with any fruit bowl using the Ahangama Card.",
-    offer: ["Free Coconut", "Fruit Bowl"],
+    offer: ["10% off"],
     howToClaim:
       "Order any fruit bowl and present your Ahangama Card to receive free coconut water.",
     restrictions:
@@ -612,7 +612,7 @@ export const PLACES = [
     bestFor: ["Brunch", "Coffee", "Chill time"],
     tags: ["Casa", "Relaxed", "Well-loved"],
     cardPerk: "Extended stay perks + café discounts with the Ahangama Card.",
-    offer: ["Stay Perks", "Café Discount"],
+    offer: ["10% OFF", "Café Discount"],
     howToClaim:
       "Show your Ahangama Card at check-in for stay perks or when ordering at café for discounts.",
     restrictions:
