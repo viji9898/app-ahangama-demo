@@ -49,10 +49,6 @@ export default function TopNav() {
               }}
             >
               <div />
-              <ExclamationCircleOutlined
-                style={{ color: "var(--orange)", fontSize: "24px" }}
-              />
-              <Text strong>Concept Site / Prototype</Text>
             </Link>
             {/* <Tag>Curated</Tag> */}
           </Space>

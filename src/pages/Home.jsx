@@ -76,7 +76,7 @@ export default function Home() {
         }}
       />
       {/* DISCLAIMER CARD */}
-      <div
+      {/* <div
         className="dm-canvas"
         style={{ paddingTop: "16px", paddingBottom: "0" }}
       >
@@ -141,7 +141,7 @@ export default function Home() {
             </div>
           </Card>
         </div>
-      </div>
+      </div> */}
       {/* HERO */}
       <div className="dm-heroCut" />
       <div className="dm-canvas">
