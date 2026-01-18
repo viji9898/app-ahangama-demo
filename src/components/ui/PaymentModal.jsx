@@ -96,13 +96,14 @@ export default function PaymentModal({ visible, onCancel, product }) {
             { required: true, message: "Please enter your WhatsApp number" },
             {
               pattern: /^\+?[1-9]\d{1,14}$/,
-              message: "Please enter a valid phone number with country code",
+              message:
+                "Please enter a valid phone number with country code e.g. +44 XXXXXXXXX",
             },
           ]}
         >
           <Input
             prefix={<PhoneOutlined />}
-            placeholder="+94 77 123 4567"
+            placeholder="+1 77123d567"
             size="large"
           />
         </Form.Item>
