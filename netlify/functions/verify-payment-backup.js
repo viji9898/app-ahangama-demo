@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { neon } from "@netlify/neon";
+import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy");
 const databaseUrl =
@@ -42,7 +43,7 @@ export const handler = async (event, context) => {
       !process.env.STRIPE_SECRET_KEY ||
       process.env.STRIPE_SECRET_KEY === "sk_test_dummy"
     ) {
-      const qrCodeId = `AHANGAMA-TEST-${sessionId
+      const qrCodeId = `AHG-${CARD_PRODUCTS.standard.qrId}-${sessionId
         .substring(0, 8)
         .toUpperCase()}`;
       const qrCode = `${
@@ -124,7 +125,8 @@ export const handler = async (event, context) => {
     }
 
     // Generate QR code as a scannable URL
-    const qrCodeId = `AHANGAMA-${session.metadata.productId.toUpperCase()}-${sessionId
+    const product = CARD_PRODUCTS[session.metadata.productId];
+    const qrCodeId = `AHG-${product.qrId}-${sessionId
       .substring(0, 8)
       .toUpperCase()}`;
     const qrCode = `${

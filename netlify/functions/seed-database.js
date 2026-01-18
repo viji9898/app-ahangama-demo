@@ -85,7 +85,7 @@ export const handler = async (event, context) => {
 
       const purchaseData = {
         sessionId: `cs_test_${Date.now()}_${i}`,
-        qrCode: `AHANGAMA-${randomProduct.id.toUpperCase()}-${Math.random()
+        qrCode: `AHG-${randomProduct.qrId}-${Math.random()
           .toString(36)
           .substr(2, 8)
           .toUpperCase()}`,

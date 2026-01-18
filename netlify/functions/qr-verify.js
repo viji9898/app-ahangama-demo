@@ -47,7 +47,7 @@ export const handler = async (event, context) => {
 
       const actualQrCode = extractQrCode(qrCode);
 
-      if (!actualQrCode || !actualQrCode.startsWith("AHANGAMA-")) {
+      if (!actualQrCode || !actualQrCode.startsWith("AHG-")) {
         return {
           statusCode: 400,
           headers,
@@ -130,7 +130,7 @@ export const handler = async (event, context) => {
 
       const actualQrCode = extractQrCode(qrCode);
 
-      if (!actualQrCode || !actualQrCode.startsWith("AHANGAMA-")) {
+      if (!actualQrCode || !actualQrCode.startsWith("AHG-")) {
         return {
           statusCode: 200,
           headers,

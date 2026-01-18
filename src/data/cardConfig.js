@@ -2,6 +2,7 @@ export const CARD_PRODUCTS = {
   week: {
     id: "week",
     name: "7-Day Pass",
+    qrId: "P7",
     priceUsd: 18,
     validityDays: 7,
     maxPeople: 1,
@@ -20,6 +21,7 @@ export const CARD_PRODUCTS = {
   standard: {
     id: "standard",
     name: "30-Day Pass",
+    qrId: "P30",
     priceUsd: 35,
     validityDays: 30,
     maxPeople: 1,
@@ -33,6 +35,7 @@ export const CARD_PRODUCTS = {
   longStay: {
     id: "longStay",
     name: "90-Day Long-Stay Pass",
+    qrId: "P90",
     priceUsd: 60,
     validityDays: 90,
     maxPeople: 1,

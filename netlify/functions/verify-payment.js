@@ -1,5 +1,25 @@
 import Stripe from "stripe";
 import { neon } from "@netlify/neon";
+import crypto from "crypto";
+import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
+
+const ALPH = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"; // Crockford Base32
+
+function base32(buf) {
+  let bits = 0,
+    value = 0,
+    out = "";
+  for (const b of buf) {
+    value = (value << 8) | b;
+    bits += 8;
+    while (bits >= 5) {
+      out += ALPH[(value >>> (bits - 5)) & 31];
+      bits -= 5;
+    }
+  }
+  if (bits > 0) out += ALPH[(value << (5 - bits)) & 31];
+  return out;
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy");
 
@@ -62,9 +82,14 @@ export const handler = async (event, context) => {
     ) {
       console.log("Using test mode for sessionId:", sessionId);
 
-      const qrCodeId = `AHANGAMA-STANDARD-${sessionId
-        .substring(3, 11)
-        .toUpperCase()}`;
+      const token = base32(
+        crypto
+          .createHmac("sha256", process.env.QR_SECRET || "test-secret")
+          .update(sessionId)
+          .digest()
+      ).slice(0, 6);
+
+      const qrCodeId = `AHG-${CARD_PRODUCTS.standard.qrId}-${token}`;
       const qrCode = `https://ahangama.com/card/verify?qr=${encodeURIComponent(
         qrCodeId
       )}`;
@@ -130,9 +155,15 @@ export const handler = async (event, context) => {
     }
 
     // Generate QR code as a scannable URL
-    const qrCodeId = `AHANGAMA-${session.metadata.productId.toUpperCase()}-${sessionId
-      .substring(3, 11)
-      .toUpperCase()}`;
+    const product = CARD_PRODUCTS[session.metadata.productId];
+    const token = base32(
+      crypto
+        .createHmac("sha256", process.env.QR_SECRET || "test-secret")
+        .update(sessionId)
+        .digest()
+    ).slice(0, 6);
+
+    const qrCodeId = `AHG-${product.qrId}-${token}`;
     const qrCode = `https://ahangama.com/card/verify?qr=${encodeURIComponent(
       qrCodeId
     )}`;
