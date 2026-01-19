@@ -11,6 +11,7 @@ import CardLanding from "../pages/CardLanding";
 import CardBuy from "../pages/CardBuy";
 import CardTerms from "../pages/CardTerms";
 import MyCard from "../pages/MyCard";
+import CardPass from "../pages/CardPass";
 import CardVerify from "../pages/CardVerify";
 import PaymentSuccess from "../pages/PaymentSuccess";
 import MasterIndex from "../pages/MasterIndex";
@@ -36,6 +37,7 @@ export const routes = [
   { path: "/card/terms", element: <CardTerms /> },
   { path: "/card/success", element: <PaymentSuccess /> },
   { path: "/card/my", element: <MyCard /> },
+  { path: "/card/pass/:cardId", element: <CardPass /> },
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },

@@ -365,13 +365,25 @@ export default function PaymentSuccess() {
           <Button
             type="primary"
             size="large"
+            href={`/card/pass?qr=${paymentData.qrCode}`}
+            style={{
+              marginRight: 8,
+              marginBottom: 8,
+              background: "linear-gradient(135deg, #52c41a, #73d13d)",
+              borderColor: "#52c41a",
+              fontSize: "16px",
+            }}
+          >
+            📱 View Digital Pass
+          </Button>
+          <br />
+          <Button
+            size="large"
             icon={<DownloadOutlined />}
             onClick={() => generatePassPDF(paymentData)}
             style={{
               marginRight: 8,
               marginBottom: 8,
-              background: "linear-gradient(135deg, #8B4513, #D2691E)",
-              borderColor: "#8B4513",
             }}
           >
             Download PDF Pass
