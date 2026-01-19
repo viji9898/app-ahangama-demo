@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { Card, Typography, Result, Button, Spin, Alert, QRCode } from "antd";
 import {
   CheckCircleOutlined,
@@ -21,108 +21,186 @@ const generatePassPDF = async (
   shouldDownload = true,
   shouldEmail = false
 ) => {
-  // Create A5 PDF (148mm x 210mm = 5.83in x 8.27in at 72dpi = 420px x 595px)
+  // Create phone-sized PDF (105mm x 160mm - A6 portrait with extra height)
   const pdf = new jsPDF({
     orientation: "portrait",
     unit: "mm",
-    format: "a5",
+    format: [105, 160],
   });
+
+  const pageWidth = 105;
+  const pageHeight = 160;
+  const margin = 8;
 
   // Generate QR Code as data URL
-  const qrCodeDataUrl = await QRCodeLib.toDataURL(paymentData.qrCode, {
-    width: 150,
-    margin: 2,
-    color: {
-      dark: "#000000",
-      light: "#FFFFFF",
-    },
-  });
+  const qrCodeDataUrl = await QRCodeLib.toDataURL(
+    `https://ahangama.com/card/verify?qr=${paymentData.qrCode}`,
+    {
+      width: 120,
+      margin: 1,
+      color: {
+        dark: "#000000",
+        light: "#ffffff",
+      },
+      errorCorrectionLevel: "M",
+    }
+  );
 
-  // Set up the document
-  pdf.setFillColor(255, 248, 220); // Light cream background
-  pdf.rect(0, 0, 148, 210, "F");
-
-  // Header with gradient-like effect
-  pdf.setFillColor(139, 69, 19); // Brown
-  pdf.rect(0, 0, 148, 40, "F");
+  // Simple header - no fancy gradients
+  pdf.setFillColor(255, 127, 80);
+  pdf.rect(0, 0, pageWidth, 20, "F");
 
   // Title
   pdf.setTextColor(255, 255, 255);
-  pdf.setFontSize(20);
-  pdf.setFont("helvetica", "bold");
-  pdf.text("AHANGAMA PASS", 74, 18, { align: "center" });
-
-  pdf.setFontSize(12);
-  pdf.setFont("helvetica", "normal");
-  pdf.text("Your Digital Experience Card", 74, 28, { align: "center" });
-
-  // QR Code
-  pdf.addImage(qrCodeDataUrl, "PNG", 24, 50, 40, 40);
-
-  // Pass details section
-  pdf.setTextColor(0, 0, 0);
   pdf.setFontSize(14);
   pdf.setFont("helvetica", "bold");
-  pdf.text("Pass Details", 74, 60);
+  pdf.text("AHANGAMA PASS", pageWidth / 2, 13, { align: "center" });
 
-  pdf.setFontSize(10);
-  pdf.setFont("helvetica", "normal");
+  // QR Code - larger and more prominent for phone viewing
+  const qrSize = 45;
+  const qrX = pageWidth / 2 - qrSize / 2;
+  const qrY = 25;
 
-  // Pass information
-  let yPos = 70;
-  const details = [
-    ["Pass Type:", paymentData.productName],
-    ["QR Code:", paymentData.qrCode],
-    ["Valid for:", `${paymentData.validityDays} days`],
-    ["Purchase Date:", new Date(paymentData.purchaseDate).toLocaleDateString()],
-    ["Expires:", new Date(paymentData.expiryDate).toLocaleDateString()],
-    ["Customer:", `${paymentData.customerEmail}`],
-    ["Phone:", `${paymentData.customerPhone || "Not provided"}`],
-  ];
+  // Simple QR background
+  pdf.setFillColor(255, 255, 255);
+  pdf.setDrawColor(200, 200, 200);
+  pdf.setLineWidth(1);
+  pdf.rect(qrX - 2, qrY - 2, qrSize + 4, qrSize + 4, "FD");
 
-  details.forEach(([label, value]) => {
-    pdf.setFont("helvetica", "bold");
-    pdf.text(label, 74, yPos);
-    pdf.setFont("helvetica", "normal");
-    pdf.text(value, 74, yPos + 4);
-    yPos += 12;
-  });
+  pdf.addImage(qrCodeDataUrl, "PNG", qrX, qrY, qrSize, qrSize);
 
-  // How to use section
-  yPos += 10;
-  pdf.setFontSize(12);
-  pdf.setFont("helvetica", "bold");
-  pdf.text("How to Use Your Pass", 74, yPos, { align: "center" });
-
-  yPos += 10;
+  // Pass Code - clearly visible
+  pdf.setTextColor(0, 0, 0);
   pdf.setFontSize(9);
-  pdf.setFont("helvetica", "normal");
-  const instructions = [
-    "• Show this QR code at participating venues",
-    "• Scan with any QR code reader or show to staff",
-    "• Valid for discounts and perks at listed locations",
-    "• Keep this pass safe - each code is unique",
-    "• Check ahangama.com for full venue list",
-  ];
-
-  instructions.forEach((instruction) => {
-    pdf.text(instruction, 15, yPos);
-    yPos += 6;
+  pdf.setFont("helvetica", "bold");
+  const qrCodeId = paymentData.qrCode.split("-").pop() || paymentData.qrCode;
+  pdf.text(`ID: ${qrCodeId}`, pageWidth / 2, qrY + qrSize + 8, {
+    align: "center",
   });
 
-  // Footer
-  pdf.setFillColor(139, 69, 19);
-  pdf.rect(0, 180, 148, 30, "F");
+  // Pass details in compact format
+  let currentY = qrY + qrSize + 20;
 
-  pdf.setTextColor(255, 255, 255);
+  // Pass Type
+  pdf.setTextColor(0, 0, 0);
   pdf.setFontSize(8);
-  pdf.setFont("helvetica", "italic");
-  pdf.text("Visit ahangama.com for venue locations", 74, 190, {
-    align: "center",
-  });
-  pdf.text("© 2026 Ahangama Pass - Curated Local Experiences", 74, 200, {
-    align: "center",
-  });
+  pdf.setFont("helvetica", "normal");
+  pdf.text("PASS:", margin, currentY);
+  pdf.setFontSize(10);
+  pdf.setFont("helvetica", "bold");
+  pdf.text(paymentData.productName, margin + 20, currentY);
+  currentY += 8;
+
+  // Customer
+  pdf.setFontSize(8);
+  pdf.setFont("helvetica", "normal");
+  pdf.text("NAME:", margin, currentY);
+  pdf.setFontSize(10);
+  pdf.setFont("helvetica", "bold");
+  const customerName = paymentData.customerName
+    ? paymentData.customerName.length > 22
+      ? paymentData.customerName.substring(0, 22) + "..."
+      : paymentData.customerName
+    : paymentData.customerEmail;
+  pdf.text(customerName, margin + 20, currentY);
+  currentY += 8;
+
+  // Validity
+  pdf.setFontSize(8);
+  pdf.setFont("helvetica", "normal");
+  pdf.text("VALID:", margin, currentY);
+  pdf.setFontSize(10);
+  pdf.setFont("helvetica", "bold");
+  pdf.text(`${paymentData.validityDays} days`, margin + 20, currentY);
+  currentY += 8;
+
+  // Dates on same line to save space
+  const startDate = new Date(paymentData.purchaseDate).toLocaleDateString(
+    "en-GB",
+    {
+      day: "2-digit",
+      month: "short",
+      year: "2-digit",
+    }
+  );
+  const expiryDate = new Date(paymentData.expiryDate).toLocaleDateString(
+    "en-GB",
+    {
+      day: "2-digit",
+      month: "short",
+      year: "2-digit",
+    }
+  );
+
+  pdf.setFontSize(8);
+  pdf.setFont("helvetica", "normal");
+  pdf.text("FROM:", margin, currentY);
+  pdf.setFontSize(9);
+  pdf.setFont("helvetica", "bold");
+  pdf.text(startDate, margin + 20, currentY);
+
+  pdf.setFontSize(8);
+  pdf.setFont("helvetica", "normal");
+  pdf.text("TO:", margin + 55, currentY);
+  pdf.setFontSize(9);
+  pdf.setFont("helvetica", "bold");
+  pdf.text(expiryDate, margin + 68, currentY);
+  currentY += 12;
+
+  // Instructions - simplified
+  pdf.setDrawColor(200, 200, 200);
+  pdf.setLineWidth(0.5);
+  pdf.line(margin, currentY, pageWidth - margin, currentY);
+  currentY += 6;
+
+  pdf.setTextColor(0, 0, 0);
+  pdf.setFontSize(8);
+  pdf.setFont("helvetica", "bold");
+  pdf.text("HOW TO USE:", margin, currentY);
+  currentY += 6;
+
+  pdf.setFontSize(7);
+  pdf.setFont("helvetica", "normal");
+  pdf.text("• Show QR code to venue staff", margin, currentY);
+  currentY += 5;
+  pdf.text("• Staff scans code for verification", margin, currentY);
+  currentY += 5;
+  pdf.text("• Enjoy your benefits!", margin, currentY);
+  currentY += 8;
+
+  // Contact info - compact
+  pdf.setDrawColor(200, 200, 200);
+  pdf.line(margin, currentY, pageWidth - margin, currentY);
+  currentY += 6;
+
+  pdf.setFontSize(8);
+  pdf.setFont("helvetica", "bold");
+  pdf.text("SUPPORT:", margin, currentY);
+  currentY += 6;
+
+  pdf.setFontSize(7);
+  pdf.setFont("helvetica", "normal");
+  pdf.text("WhatsApp: +94 777 908 790", margin, currentY);
+  currentY += 5;
+  pdf.text("Web: ahangama.com", margin, currentY);
+  currentY += 8;
+
+  // Customer contact if available
+  if (paymentData.customerEmail) {
+    pdf.setFontSize(6);
+    pdf.setTextColor(100, 100, 100);
+    pdf.text(`Email: ${paymentData.customerEmail}`, margin, currentY);
+    currentY += 4;
+  }
+  if (paymentData.customerPhone) {
+    pdf.setFontSize(6);
+    pdf.setTextColor(100, 100, 100);
+    pdf.text(`Phone: ${paymentData.customerPhone}`, margin, currentY);
+    currentY += 4;
+  }
+
+  // Add extra bottom padding to prevent cutting
+  currentY += 10;
 
   // Generate filename
   const filename = `ahangama-pass-${paymentData.qrCode.split("-").pop()}.pdf`;
@@ -144,6 +222,7 @@ const generatePassPDF = async (
 
 export default function PaymentSuccess() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const sessionId = searchParams.get("session_id");
 
   const [loading, setLoading] = useState(true);
@@ -192,6 +271,14 @@ export default function PaymentSuccess() {
         setEmailError(err.message);
       } finally {
         setEmailSending(false);
+
+        // Extract QR code from URL if it's a full URL, otherwise use as-is
+        const qrCode = data.qrCode.includes("?qr=")
+          ? data.qrCode.split("?qr=")[1]
+          : data.qrCode;
+
+        // Redirect immediately to pass page
+        navigate(`/card/pass/${qrCode}`);
       }
     };
 
@@ -365,7 +452,7 @@ export default function PaymentSuccess() {
           <Button
             type="primary"
             size="large"
-            href={`/card/pass?qr=${paymentData.qrCode}`}
+            href={`/card/pass/${paymentData.qrCode}`}
             style={{
               marginRight: 8,
               marginBottom: 8,

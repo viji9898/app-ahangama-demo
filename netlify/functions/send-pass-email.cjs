@@ -84,10 +84,8 @@ exports.handler = async (event) => {
                   
                   <p>🎊 <strong>Congratulations!</strong> Your Ahangama Pass purchase was successful, and you're now ready to unlock exclusive experiences in beautiful Ahangama!</p>
                   
-                  <div class="pass-code">
-                      <strong>Your Pass Code:</strong><br>
-                      <span style="font-size: 18px; color: #8B4513;">${qrCode}</span><br>
-                      <a href="https://ahangama.com/card/pass?qr=${qrCode}" class="button" style="margin-top: 10px; display: inline-block;">📱 View Your Digital Pass</a>
+                  <div class="pass-code" style="text-align: center; margin: 20px 0;">
+                      <a href="https://ahangama.com/card/pass/${qrCode.includes('?qr=') ? qrCode.split('?qr=')[1] : qrCode}" class="button" style="margin-top: 10px; display: inline-block;">📱 View Your Digital Pass</a>
                   </div>
                   
                   <div class="benefits">
