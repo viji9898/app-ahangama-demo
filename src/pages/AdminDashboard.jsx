@@ -244,7 +244,13 @@ const AdminDashboard = () => {
       render: (_, record) => (
         <Space direction="vertical" size="small">
           <Text style={{ fontSize: "12px" }}>
-            {new Date(record.purchaseDate).toLocaleDateString()}
+            Purchased: {new Date(record.purchaseDate).toLocaleDateString()}
+          </Text>
+          <Text style={{ fontSize: "12px" }}>
+            Start:{" "}
+            {record.startDate
+              ? new Date(record.startDate).toLocaleDateString()
+              : "N/A"}
           </Text>
           <Text style={{ fontSize: "11px" }} type="secondary">
             {record.sessionId
@@ -439,6 +445,11 @@ const AdminDashboard = () => {
               </Descriptions.Item>
               <Descriptions.Item label="Purchase Date">
                 {new Date(selectedPurchase.purchaseDate).toLocaleString()}
+              </Descriptions.Item>
+              <Descriptions.Item label="Start Date">
+                {selectedPurchase.startDate
+                  ? new Date(selectedPurchase.startDate).toLocaleString()
+                  : "N/A"}
               </Descriptions.Item>
               <Descriptions.Item label="Expiry Date">
                 {new Date(selectedPurchase.expiryDate).toLocaleString()}

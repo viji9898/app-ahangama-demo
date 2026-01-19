@@ -175,6 +175,7 @@ export const handler = async (event, context) => {
           stripePaymentIntentId: purchase.stripe_payment_intent_id,
           currency: purchase.currency,
           purchaseDate: purchase.purchase_date,
+          startDate: purchase.start_date,
           expiryDate: purchase.expiry_date,
           isActive: purchase.is_active,
           createdAt: purchase.created_at,
