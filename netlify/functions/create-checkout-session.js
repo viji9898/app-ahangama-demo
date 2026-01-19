@@ -77,7 +77,7 @@ export const handler = async (event, context) => {
         productName: product.name,
         validityDays: product.validityDays.toString(),
         maxPeople: product.maxPeople.toString(),
-        startDate: startDate || new Date().toISOString().split('T')[0], // Default to today if not provided
+        startDate: startDate || new Date().toISOString().split("T")[0], // Default to today if not provided
       },
       success_url: successUrl,
       cancel_url: cancelUrl,

@@ -87,12 +87,14 @@ export const handler = async (event, context) => {
     }/card/verify?qr=${encodeURIComponent(qrCodeId)}`;
 
     // Calculate dates based on start date from metadata
-    const startDate = session.metadata.startDate 
-      ? new Date(session.metadata.startDate) 
+    const startDate = session.metadata.startDate
+      ? new Date(session.metadata.startDate)
       : new Date();
-    
-    const expiryDate = new Date(startDate.getTime() + 
-      parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000);
+
+    const expiryDate = new Date(
+      startDate.getTime() +
+        parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
+    );
 
     const responseData = {
       productName: session.metadata.productName,

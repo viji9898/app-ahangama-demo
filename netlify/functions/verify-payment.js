@@ -99,7 +99,9 @@ export const handler = async (event, context) => {
         try {
           // Default start date for test mode (today)
           const testStartDate = new Date();
-          const testExpiryDate = new Date(testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+          const testExpiryDate = new Date(
+            testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000
+          );
 
           await sql`
             INSERT INTO purchases (
@@ -129,7 +131,9 @@ export const handler = async (event, context) => {
 
       // Default start date for test mode (today)
       const testStartDate = new Date();
-      const testExpiryDate = new Date(testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+      const testExpiryDate = new Date(
+        testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000
+      );
 
       return {
         statusCode: 200,
@@ -174,12 +178,14 @@ export const handler = async (event, context) => {
     )}`;
 
     // Calculate dates based on start date from metadata
-    const startDate = session.metadata.startDate 
-      ? new Date(session.metadata.startDate) 
+    const startDate = session.metadata.startDate
+      ? new Date(session.metadata.startDate)
       : new Date();
-    
-    const expiryDate = new Date(startDate.getTime() + 
-      parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000);
+
+    const expiryDate = new Date(
+      startDate.getTime() +
+        parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
+    );
 
     // Save real purchase to database
     if (sql) {
