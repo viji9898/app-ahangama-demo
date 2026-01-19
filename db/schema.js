@@ -32,6 +32,7 @@ export const purchases = pgTable("purchases", {
 
   // Pass validity
   purchaseDate: timestamp("purchase_date").defaultNow().notNull(),
+  startDate: timestamp("start_date").notNull(), // When the pass becomes valid
   expiryDate: timestamp("expiry_date").notNull(),
   isActive: boolean("is_active").default(true),
 

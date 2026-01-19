@@ -97,20 +97,22 @@ export const handler = async (event, context) => {
       // Save test purchase to database
       if (sql) {
         try {
+          // Default start date for test mode (today)
+          const testStartDate = new Date();
+          const testExpiryDate = new Date(testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+
           await sql`
             INSERT INTO purchases (
               session_id, qr_code, product_id, product_name, price_usd,
               validity_days, max_people, customer_name, customer_email, customer_phone,
-              stripe_payment_intent_id, currency, purchase_date, expiry_date,
+              stripe_payment_intent_id, currency, purchase_date, start_date, expiry_date,
               is_active, created_at, updated_at
             ) VALUES (
               ${sessionId}, ${qrCodeId}, ${"standard"},
               ${"Test Ahangama Pass"}, ${"35.00"}, ${30},
               ${1}, ${"Test Customer"}, ${"test@example.com"},
               ${"+1234567890"}, ${`pi_test_${sessionId}`}, ${"usd"},
-              ${new Date()}, ${new Date(
-            Date.now() + 30 * 24 * 60 * 60 * 1000
-          )}, ${true},
+              ${new Date()}, ${testStartDate}, ${testExpiryDate}, ${true},
               ${new Date()}, ${new Date()}
             )
             ON CONFLICT (session_id) DO UPDATE SET
@@ -125,6 +127,10 @@ export const handler = async (event, context) => {
         console.warn("⚠️ Database not available - purchase not saved");
       }
 
+      // Default start date for test mode (today)
+      const testStartDate = new Date();
+      const testExpiryDate = new Date(testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+
       return {
         statusCode: 200,
         headers,
@@ -135,9 +141,8 @@ export const handler = async (event, context) => {
           qrCode,
           validityDays: 30,
           purchaseDate: new Date().toISOString(),
-          expiryDate: new Date(
-            Date.now() + 30 * 24 * 60 * 60 * 1000
-          ).toISOString(),
+          startDate: testStartDate.toISOString(),
+          expiryDate: testExpiryDate.toISOString(),
         }),
       };
     }
@@ -168,6 +173,14 @@ export const handler = async (event, context) => {
       qrCodeId
     )}`;
 
+    // Calculate dates based on start date from metadata
+    const startDate = session.metadata.startDate 
+      ? new Date(session.metadata.startDate) 
+      : new Date();
+    
+    const expiryDate = new Date(startDate.getTime() + 
+      parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000);
+
     // Save real purchase to database
     if (sql) {
       try {
@@ -175,7 +188,7 @@ export const handler = async (event, context) => {
           INSERT INTO purchases (
             session_id, qr_code, product_id, product_name, price_usd,
             validity_days, max_people, customer_name, customer_email, customer_phone,
-            stripe_payment_intent_id, currency, purchase_date, expiry_date,
+            stripe_payment_intent_id, currency, purchase_date, start_date, expiry_date,
             is_active, created_at, updated_at
           ) VALUES (
             ${session.id}, ${qrCodeId}, ${session.metadata.productId},
@@ -188,10 +201,7 @@ export const handler = async (event, context) => {
             ${session.metadata.customerPhone || ""}, ${
           session.payment_intent
         }, ${session.currency},
-            ${new Date()}, ${new Date(
-          Date.now() +
-            parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
-        )}, ${true},
+            ${new Date()}, ${startDate}, ${expiryDate}, ${true},
             ${new Date()}, ${new Date()}
           )
           ON CONFLICT (session_id) DO UPDATE SET
@@ -213,10 +223,8 @@ export const handler = async (event, context) => {
       qrCode,
       validityDays: parseInt(session.metadata.validityDays),
       purchaseDate: new Date().toISOString(),
-      expiryDate: new Date(
-        Date.now() +
-          parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
-      ).toISOString(),
+      startDate: startDate.toISOString(),
+      expiryDate: expiryDate.toISOString(),
     };
 
     return {

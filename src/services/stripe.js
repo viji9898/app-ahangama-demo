@@ -23,6 +23,7 @@ export const createCheckoutSession = async (productId, customerData) => {
           customerName: customerData.name,
           customerEmail: customerData.email,
           customerPhone: customerData.phone,
+          startDate: customerData.startDate,
           successUrl: `${window.location.origin}/card/success?session_id={CHECKOUT_SESSION_ID}`,
           cancelUrl: `${window.location.origin}/card`,
         }),

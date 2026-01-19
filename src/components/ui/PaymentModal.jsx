@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Button, Typography, Alert } from "antd";
-import { UserOutlined, PhoneOutlined, MailOutlined } from "@ant-design/icons";
+import { Modal, Form, Input, Button, Typography, Alert, DatePicker } from "antd";
+import { UserOutlined, PhoneOutlined, MailOutlined, CalendarOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
 import { createCheckoutSession } from "../../services/stripe";
 
 const { Text } = Typography;
@@ -9,6 +10,10 @@ export default function PaymentModal({ visible, onCancel, product }) {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [startDate, setStartDate] = useState(dayjs());
+  
+  // Calculate end date based on start date and product validity
+  const endDate = startDate?.add(product?.validityDays || 30, 'day');
 
   const handlePayment = async (values) => {
     setLoading(true);
@@ -19,6 +24,7 @@ export default function PaymentModal({ visible, onCancel, product }) {
         name: values.name,
         email: values.email,
         phone: values.phone,
+        startDate: startDate.format('YYYY-MM-DD'),
       });
     } catch (err) {
       setError(err.message);
@@ -30,7 +36,12 @@ export default function PaymentModal({ visible, onCancel, product }) {
     <Modal
       title={`Purchase ${product?.name}`}
       open={visible}
-      onCancel={onCancel}
+      onCancel={() => {
+        onCancel();
+        form.resetFields();
+        setStartDate(dayjs());
+        setError(null);
+      }}
       footer={null}
       width={480}
     >
@@ -107,6 +118,42 @@ export default function PaymentModal({ visible, onCancel, product }) {
             size="large"
           />
         </Form.Item>
+
+        <Form.Item
+          label="Pass Start Date"
+          style={{ marginBottom: 16 }}
+        >
+          <DatePicker
+            size="large"
+            value={startDate}
+            onChange={(date) => setStartDate(date || dayjs())}
+            disabledDate={(current) => current && current < dayjs().startOf('day')}
+            format="MMMM D, YYYY"
+            placeholder="Select start date"
+            style={{ width: '100%' }}
+            suffixIcon={<CalendarOutlined />}
+          />
+        </Form.Item>
+        
+        <div style={{ 
+          background: '#f8f9fa', 
+          padding: 12, 
+          borderRadius: 8, 
+          marginBottom: 16,
+          border: '1px solid #e9ecef'
+        }}>
+          <Text style={{ fontSize: 12, color: '#6c757d', fontWeight: 500 }}>
+            📅 Pass Validity Period
+          </Text>
+          <div style={{ marginTop: 4 }}>
+            <Text style={{ fontSize: 14, fontWeight: 600 }}>
+              {startDate?.format('MMM D, YYYY')} → {endDate?.format('MMM D, YYYY')}
+            </Text>
+          </div>
+          <Text style={{ fontSize: 12, color: '#6c757d' }}>
+            ({product?.validityDays || 30} days validity)
+          </Text>
+        </div>
 
         <Text
           type="secondary"

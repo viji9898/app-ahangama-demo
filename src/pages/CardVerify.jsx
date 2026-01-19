@@ -457,6 +457,30 @@ export default function CardVerify() {
 
                     <div>
                       <Text strong style={{ color: "#595959" }}>
+                        Starts:
+                      </Text>
+                      <div
+                        style={{
+                          fontSize: 16,
+                          color: "#1890ff",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {verificationResult.purchase?.startDate
+                          ? new Date(
+                              verificationResult.purchase.startDate
+                            ).toLocaleDateString("en-US", {
+                              weekday: "long",
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })
+                          : "Not specified"}
+                      </div>
+                    </div>
+
+                    <div>
+                      <Text strong style={{ color: "#595959" }}>
                         Expires:
                       </Text>
                       <div
@@ -626,6 +650,17 @@ export default function CardVerify() {
                       : "people"}
                   </Text>
                   <br />
+                  {verificationResult.purchase?.startDate && (
+                    <>
+                      <Text>
+                        Starts:{" "}
+                        {new Date(
+                          verificationResult.purchase.startDate
+                        ).toLocaleDateString()}
+                      </Text>
+                      <br />
+                    </>
+                  )}
                   <Text>
                     Expires:{" "}
                     {new Date(

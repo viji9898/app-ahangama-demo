@@ -86,6 +86,14 @@ export const handler = async (event, context) => {
       process.env.URL || "http://localhost:8888"
     }/card/verify?qr=${encodeURIComponent(qrCodeId)}`;
 
+    // Calculate dates based on start date from metadata
+    const startDate = session.metadata.startDate 
+      ? new Date(session.metadata.startDate) 
+      : new Date();
+    
+    const expiryDate = new Date(startDate.getTime() + 
+      parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000);
+
     const responseData = {
       productName: session.metadata.productName,
       customerEmail: session.customer_details.email,
@@ -93,10 +101,8 @@ export const handler = async (event, context) => {
       qrCode,
       validityDays: parseInt(session.metadata.validityDays),
       purchaseDate: new Date().toISOString(),
-      expiryDate: new Date(
-        Date.now() +
-          parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
-      ).toISOString(),
+      startDate: startDate.toISOString(),
+      expiryDate: expiryDate.toISOString(),
     };
 
     return {

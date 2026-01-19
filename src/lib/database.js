@@ -22,6 +22,11 @@ export const db = drizzle(sql);
 export const DatabaseService = {
   // Create purchase record after successful Stripe payment
   async createPurchase(stripeSession) {
+    // Get start date from metadata, default to current date if not provided
+    const startDate = stripeSession.metadata.startDate 
+      ? new Date(stripeSession.metadata.startDate)
+      : new Date();
+
     const purchaseData = {
       sessionId: stripeSession.id,
       qrCode: this.generateQRCode(stripeSession.id, stripeSession.metadata),
@@ -35,8 +40,9 @@ export const DatabaseService = {
       customerPhone: stripeSession.metadata.customerPhone,
       stripePaymentIntentId: stripeSession.payment_intent,
       currency: stripeSession.currency,
+      startDate: startDate,
       expiryDate: new Date(
-        Date.now() +
+        startDate.getTime() +
           parseInt(stripeSession.metadata.validityDays) * 24 * 60 * 60 * 1000
       ),
     };

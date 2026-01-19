@@ -177,6 +177,7 @@ export const handler = async (event, context) => {
             customerEmail: purchaseRecord.customer_email,
             customerPhone: purchaseRecord.customer_phone,
             validityDays: purchaseRecord.validity_days,
+            startDate: purchaseRecord.start_date,
             expiryDate: expiryDate.toISOString(),
             maxPeople: purchaseRecord.max_people,
             redemptionCount: 0, // We'll add redemption counting later
