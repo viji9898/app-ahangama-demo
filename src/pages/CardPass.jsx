@@ -82,7 +82,10 @@ const CardPass = () => {
           status: result.valid && !result.expired ? "active" : "expired",
           remainingDays: Math.max(
             0,
-            Math.ceil((new Date(purchase.expiryDate) - new Date()) / (1000 * 60 * 60 * 24))
+            Math.ceil(
+              (new Date(purchase.expiryDate) - new Date()) /
+                (1000 * 60 * 60 * 24)
+            )
           ),
         };
 
@@ -100,7 +103,9 @@ const CardPass = () => {
 
   const handleWhatsAppContact = () => {
     const message = `Hi! I need help with my Ahangama Pass. My pass code is: ${qrCode}`;
-    const whatsappUrl = `https://wa.me/94777908790?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/94777908790?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -112,206 +117,187 @@ const CardPass = () => {
   const generatePassPDF = async () => {
     if (!passData) return;
 
-    // Create A5 PDF (148mm x 210mm)
+    // Create phone-sized PDF (105mm x 160mm - A6 portrait with extra height)
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "mm",
-      format: "a5",
+      format: [105, 160],
     });
+
+    const pageWidth = 105;
+    const pageHeight = 160;
+    const margin = 8;
 
     // Generate QR Code as data URL
-    const qrCodeDataUrl = await QRCodeLib.toDataURL(`https://ahangama.com/card/verify?qr=${passData.qrCode}`, {
-      width: 150,
-      margin: 2,
-      color: {
-        dark: "#000000",
-        light: "#FFFFFF",
-      },
-    });
+    const qrCodeDataUrl = await QRCodeLib.toDataURL(
+      `https://ahangama.com/card/verify?qr=${passData.qrCode}`,
+      {
+        width: 120,
+        margin: 1,
+        color: {
+          dark: "#000000",
+          light: "#ffffff",
+        },
+        errorCorrectionLevel: "M",
+      }
+    );
 
-    // Set up tropical beach background
-    pdf.setFillColor(255, 218, 185); // Warm peach base
-    pdf.rect(0, 0, 148, 210, "F");
-
-    // Header with coral gradient
-    pdf.setFillColor(255, 127, 80); // Coral sunset
-    pdf.rect(0, 0, 148, 28, "F");
+    // Simple header - no fancy gradients
+    pdf.setFillColor(255, 127, 80);
+    pdf.rect(0, 0, pageWidth, 20, "F");
 
     // Title
     pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(20);
+    pdf.setFontSize(14);
     pdf.setFont("helvetica", "bold");
-    pdf.text("🏝️ Ahangama Pass", 74, 14, { align: "center" });
+    pdf.text("AHANGAMA PASS", pageWidth / 2, 13, { align: "center" });
 
-    // Subtitle
-    pdf.setFontSize(11);
-    pdf.setFont("helvetica", "normal");
-    pdf.text("Show QR code at participating venues", 74, 23, { align: "center" });
+    // QR Code - larger and more prominent for phone viewing
+    const qrSize = 45;
+    const qrX = pageWidth / 2 - qrSize / 2;
+    const qrY = 25;
 
-    // QR Code
-    const qrSize = 65;
-    const qrX = (148 - qrSize) / 2;
-    const qrY = 38;
-
-    // QR code background
+    // Simple QR background
     pdf.setFillColor(255, 255, 255);
-    pdf.setDrawColor(220, 220, 220);
+    pdf.setDrawColor(200, 200, 200);
     pdf.setLineWidth(1);
-    pdf.rect(qrX - 3, qrY - 3, qrSize + 6, qrSize + 6, "FD");
+    pdf.rect(qrX - 2, qrY - 2, qrSize + 4, qrSize + 4, "FD");
 
     pdf.addImage(qrCodeDataUrl, "PNG", qrX, qrY, qrSize, qrSize);
 
-    // QR Code ID
-    pdf.setTextColor(45, 52, 54);
-    pdf.setFontSize(12);
+    // Pass Code - clearly visible
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFontSize(9);
     pdf.setFont("helvetica", "bold");
-    const qrCodeId = passData.qrCode.split("-").pop();
-    pdf.text(qrCodeId, 74, qrY + qrSize + 12, { align: "center" });
-
-    // Details card
-    const cardY = qrY + qrSize + 22;
-    const cardHeight = 85;
-
-    // Card background with shadow
-    pdf.setFillColor(240, 240, 240);
-    pdf.rect(11, cardY + 1, 126, cardHeight, "F");
-    pdf.setFillColor(255, 255, 255);
-    pdf.setDrawColor(220, 220, 220);
-    pdf.setLineWidth(0.5);
-    pdf.rect(10, cardY, 128, cardHeight, "FD");
-
-    // Pass details
-    let detailY = cardY + 10;
-    const labelFontSize = 8;
-    const valueFontSize = 10;
-
-    // Pass Type
-    pdf.setTextColor(120, 120, 120);
-    pdf.setFontSize(labelFontSize);
-    pdf.text("PASS TYPE", 16, detailY);
-    pdf.setTextColor(44, 62, 80);
-    pdf.setFontSize(13);
-    pdf.setFont("helvetica", "bold");
-    pdf.text(passData.productName, 16, detailY + 8);
-    detailY += 18;
-
-    // Divider
-    pdf.setDrawColor(235, 235, 235);
-    pdf.setLineWidth(0.3);
-    pdf.line(16, detailY, 132, detailY);
-    detailY += 8;
-
-    // Two columns
-    const leftColX = 16;
-    const rightColX = 80;
-
-    // Customer name
-    pdf.setTextColor(120, 120, 120);
-    pdf.setFontSize(labelFontSize);
-    pdf.setFont("helvetica", "normal");
-    pdf.text("CUSTOMER", leftColX, detailY);
-    pdf.setTextColor(44, 62, 80);
-    pdf.setFontSize(valueFontSize);
-    pdf.setFont("helvetica", "bold");
-    pdf.text(passData.customerName, leftColX, detailY + 8);
-
-    // Validity
-    pdf.setTextColor(120, 120, 120);
-    pdf.setFontSize(labelFontSize);
-    pdf.setFont("helvetica", "normal");
-    pdf.text("VALID FOR", rightColX, detailY);
-    pdf.setTextColor(44, 62, 80);
-    pdf.setFontSize(valueFontSize);
-    pdf.setFont("helvetica", "bold");
-    pdf.text(`${passData.validityDays} days`, rightColX, detailY + 8);
-
-    detailY += 16;
-
-    // Start date
-    pdf.setTextColor(120, 120, 120);
-    pdf.setFontSize(labelFontSize);
-    pdf.setFont("helvetica", "normal");
-    pdf.text("STARTS", leftColX, detailY);
-    pdf.setTextColor(44, 62, 80);
-    pdf.setFontSize(valueFontSize);
-    pdf.setFont("helvetica", "bold");
-    const startDate = new Date(passData.purchaseDate).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-    pdf.text(startDate, leftColX, detailY + 8);
-
-    // Expires
-    pdf.setTextColor(120, 120, 120);
-    pdf.setFontSize(labelFontSize);
-    pdf.setFont("helvetica", "normal");
-    pdf.text("EXPIRES", rightColX, detailY);
-    pdf.setTextColor(44, 62, 80);
-    pdf.setFontSize(valueFontSize);
-    pdf.setFont("helvetica", "bold");
-    const expiryDate = new Date(passData.expiryDate).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-    pdf.text(expiryDate, rightColX, detailY + 8);
-
-    // Footer
-    const footerStartY = cardY + cardHeight + 15;
-
-    // Website info
-    pdf.setTextColor(100, 149, 237);
-    pdf.setFontSize(10);
-    pdf.setFont("helvetica", "normal");
-    pdf.text("🌐 ahangama.com - Discover all venues", 74, footerStartY, {
+    const qrCodeId = passData.qrCode.split("-").pop() || passData.qrCode;
+    pdf.text(`ID: ${qrCodeId}`, pageWidth / 2, qrY + qrSize + 8, {
       align: "center",
     });
 
-    // WhatsApp button
-    const whatsappY = footerStartY + 12;
-    const buttonWidth = 75;
-    const buttonHeight = 20;
-    const buttonX = (148 - buttonWidth) / 2;
+    // Pass details in compact format
+    let currentY = qrY + qrSize + 20;
 
-    // Button shadow
-    pdf.setFillColor(200, 200, 200);
-    pdf.rect(buttonX + 1, whatsappY + 1, buttonWidth, buttonHeight, "F");
-
-    // Main button
-    pdf.setFillColor(37, 211, 102);
-    pdf.rect(buttonX, whatsappY, buttonWidth, buttonHeight, "F");
-
-    // Button text
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(11);
-    pdf.setFont("helvetica", "bold");
-    pdf.text("💬 WhatsApp Support", 74, whatsappY + 8, { align: "center" });
-
-    // Phone number
-    pdf.setTextColor(120, 120, 120);
-    pdf.setFontSize(9);
-    pdf.setFont("helvetica", "normal");
-    pdf.text("+94 777 908 790", 74, whatsappY + 15, { align: "center" });
-
-    // Add clickable link
-    const whatsappUrl = `https://wa.me/94777908790?text=Hi!%20I%20need%20help%20with%20my%20Ahangama%20Pass`;
-    pdf.link(buttonX, whatsappY, buttonWidth, buttonHeight, { url: whatsappUrl });
-
-    // Contact details
-    const contactY = whatsappY + 25;
-    pdf.setTextColor(120, 120, 120);
+    // Pass Type
+    pdf.setTextColor(0, 0, 0);
     pdf.setFontSize(8);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("PASS:", margin, currentY);
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "bold");
+    pdf.text(passData.productName, margin + 20, currentY);
+    currentY += 8;
 
+    // Customer
+    pdf.setFontSize(8);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("NAME:", margin, currentY);
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "bold");
+    const customerName =
+      passData.customerName.length > 22
+        ? passData.customerName.substring(0, 22) + "..."
+        : passData.customerName;
+    pdf.text(customerName, margin + 20, currentY);
+    currentY += 8;
+
+    // Validity
+    pdf.setFontSize(8);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("VALID:", margin, currentY);
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "bold");
+    pdf.text(`${passData.validityDays} days`, margin + 20, currentY);
+    currentY += 8;
+
+    // Dates on same line to save space
+    const startDate = new Date(passData.purchaseDate).toLocaleDateString(
+      "en-GB",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "2-digit",
+      }
+    );
+    const expiryDate = new Date(passData.expiryDate).toLocaleDateString(
+      "en-GB",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "2-digit",
+      }
+    );
+
+    pdf.setFontSize(8);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("FROM:", margin, currentY);
+    pdf.setFontSize(9);
+    pdf.setFont("helvetica", "bold");
+    pdf.text(startDate, margin + 20, currentY);
+
+    pdf.setFontSize(8);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("TO:", margin + 55, currentY);
+    pdf.setFontSize(9);
+    pdf.setFont("helvetica", "bold");
+    pdf.text(expiryDate, margin + 68, currentY);
+    currentY += 12;
+
+    // Instructions - simplified
+    pdf.setDrawColor(200, 200, 200);
+    pdf.setLineWidth(0.5);
+    pdf.line(margin, currentY, pageWidth - margin, currentY);
+    currentY += 6;
+
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFontSize(8);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("HOW TO USE:", margin, currentY);
+    currentY += 6;
+
+    pdf.setFontSize(7);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("• Show QR code to venue staff", margin, currentY);
+    currentY += 5;
+    pdf.text("• Staff scans code for verification", margin, currentY);
+    currentY += 5;
+    pdf.text("• Enjoy your benefits!", margin, currentY);
+    currentY += 8;
+
+    // Contact info - compact
+    pdf.setDrawColor(200, 200, 200);
+    pdf.line(margin, currentY, pageWidth - margin, currentY);
+    currentY += 6;
+
+    pdf.setFontSize(8);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("SUPPORT:", margin, currentY);
+    currentY += 6;
+
+    pdf.setFontSize(7);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("WhatsApp: +94 777 908 790", margin, currentY);
+    currentY += 5;
+    pdf.text("Web: ahangama.com", margin, currentY);
+    currentY += 8;
+
+    // Customer contact if available
     if (passData.customerEmail) {
-      pdf.text("📧 " + passData.customerEmail, 74, contactY, { align: "center" });
+      pdf.setFontSize(6);
+      pdf.setTextColor(100, 100, 100);
+      pdf.text(`Email: ${passData.customerEmail}`, margin, currentY);
+      currentY += 4;
     }
-
     if (passData.customerPhone) {
-      pdf.text("📱 " + passData.customerPhone, 74, contactY + 6, { align: "center" });
+      pdf.setFontSize(6);
+      pdf.setTextColor(100, 100, 100);
+      pdf.text(`Phone: ${passData.customerPhone}`, margin, currentY);
+      currentY += 4;
     }
 
-    // Save PDF
+    // Add extra bottom padding to prevent cutting
+    currentY += 10;
+
+    // Save with simple filename
     const filename = `ahangama-pass-${qrCodeId}.pdf`;
     pdf.save(filename);
   };
@@ -349,13 +335,15 @@ const CardPass = () => {
   const isExpired = new Date() > new Date(passData.expiryDate);
   const remainingDays = Math.max(
     0,
-    Math.ceil((new Date(passData.expiryDate) - new Date()) / (1000 * 60 * 60 * 24))
+    Math.ceil(
+      (new Date(passData.expiryDate) - new Date()) / (1000 * 60 * 60 * 24)
+    )
   );
 
   return (
     <>
-      <Seo 
-        title="Your Ahangama Pass" 
+      <Seo
+        title="Your Ahangama Pass"
         description="View your digital Ahangama Pass and QR code for exclusive local experiences."
       />
       <SiteLayout>
@@ -365,19 +353,25 @@ const CardPass = () => {
             <div style={{ padding: "0 12px" }}>
               {/* Page Header */}
               <div style={{ textAlign: "center", marginBottom: "32px" }}>
-                <Title level={2} style={{ 
-                  color: "var(--dm-ink)",
-                  letterSpacing: "-0.02em",
-                  marginBottom: "8px"
-                }}>
+                <Title
+                  level={2}
+                  style={{
+                    color: "var(--dm-ink)",
+                    letterSpacing: "-0.02em",
+                    marginBottom: "8px",
+                  }}
+                >
                   🏝️ Your Ahangama Pass
                 </Title>
-                <Paragraph style={{ 
-                  color: "var(--ink-muted)", 
-                  fontSize: "15px",
-                  marginBottom: "0"
-                }}>
-                  Show this QR code at participating venues to unlock exclusive benefits
+                <Paragraph
+                  style={{
+                    color: "var(--ink-muted)",
+                    fontSize: "15px",
+                    marginBottom: "0",
+                  }}
+                >
+                  Show this QR code at participating venues to unlock exclusive
+                  benefits
                 </Paragraph>
               </div>
 
@@ -393,54 +387,66 @@ const CardPass = () => {
                     }
                     className="ahg-feature"
                     bodyStyle={{
-                      backgroundImage: "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero.jpg')",
+                      backgroundImage:
+                        "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero.jpg')",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                       position: "relative",
                       minHeight: "300px",
-                      padding: "0"
+                      padding: "0",
                     }}
-                    style={{ 
+                    style={{
                       height: "100%",
                       display: "flex",
-                      flexDirection: "column"
+                      flexDirection: "column",
                     }}
                   >
-                    <div style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: "rgba(255, 255, 255, 0.85)",
-                      borderRadius: "0 0 8px 8px"
-                    }} />
-                    <div style={{ 
-                      display: "flex", 
-                      justifyContent: "center", 
-                      alignItems: "center",
-                      flex: 1,
-                      flexDirection: "column",
-                      padding: "24px",
-                      position: "relative",
-                      zIndex: 1,
-                      minHeight: "300px"
-                    }}>
-                      <div style={{
-                        padding: "20px",
-                        background: "rgba(255, 255, 255, 0.9)",
-                        borderRadius: "var(--dm-radius-lg)",
-                        border: "1px solid var(--dm-line)",
-                        marginBottom: "20px"
-                      }}>
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: "rgba(255, 255, 255, 0.85)",
+                        borderRadius: "0 0 8px 8px",
+                      }}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                        flexDirection: "column",
+                        padding: "24px",
+                        position: "relative",
+                        zIndex: 1,
+                        minHeight: "300px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          padding: "20px",
+                          background: "rgba(255, 255, 255, 0.9)",
+                          borderRadius: "var(--dm-radius-lg)",
+                          border: "1px solid var(--dm-line)",
+                          marginBottom: "20px",
+                        }}
+                      >
                         <QRCode
                           value={`https://ahangama.com/card/verify?qr=${passData.qrCode}`}
                           size={200}
                         />
                       </div>
-                      <Paragraph style={{ textAlign: "center", marginBottom: "0" }}>
-                        <Text strong style={{ fontSize: "16px", color: "var(--dm-ink)" }}>
+                      <Paragraph
+                        style={{ textAlign: "center", marginBottom: "0" }}
+                      >
+                        <Text
+                          strong
+                          style={{ fontSize: "16px", color: "var(--dm-ink)" }}
+                        >
                           Pass Code: {passData.qrCode}
                         </Text>
                         <Button
@@ -451,8 +457,6 @@ const CardPass = () => {
                           style={{ marginLeft: "8px" }}
                         />
                       </Paragraph>
-                      
-
                     </div>
                   </Card>
                 </Col>
@@ -464,105 +468,136 @@ const CardPass = () => {
                     className="ahg-feature"
                     style={{ height: "100%" }}
                   >
-                <Row gutter={[16, 20]}>
-                  {/* Left Column */}
-                  <Col xs={12} sm={12}>
-                    <Space direction="vertical" style={{ width: "100%" }} size="medium">
-                      <div>
-                        <Text type="secondary" style={{ fontSize: "15px" }}>Pass Type</Text>
-                        <div>
-                          <Text strong style={{ fontSize: "18px" }}>
-                            {passData.productName}
-                          </Text>
-                        </div>
-                      </div>
-
-                      <div>
-                        <Text type="secondary" style={{ fontSize: "15px" }}>
-                          <UserOutlined /> Customer
-                        </Text>
-                        <div>
-                          <Text strong style={{ fontSize: "18px" }}>{passData.customerName}</Text>
-                        </div>
-                      </div>
-
-                      <div>
-                        <Text type="secondary" style={{ fontSize: "15px" }}>
-                          <CalendarOutlined /> Valid From
-                        </Text>
-                        <div>
-                          <Text strong style={{ color: "#52c41a", fontSize: "18px" }}>
-                            {new Date(passData.purchaseDate).toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}
-                          </Text>
-                        </div>
-                      </div>
-
-                      <div>
-                        <Text type="secondary" style={{ fontSize: "15px" }}>
-                          <CalendarOutlined /> Purchase Date
-                        </Text>
-                        <div>
-                          <Text style={{ fontSize: "18px" }}>
-                            {new Date(passData.purchaseDate).toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}
-                          </Text>
-                        </div>
-                      </div>
-                    </Space>
-                  </Col>
-
-                  {/* Right Column */}
-                  <Col xs={12} sm={12}>
-                    <Space direction="vertical" style={{ width: "100%" }} size="medium">
-                      <div>
-                        <Text type="secondary" style={{ fontSize: "15px" }}>
-                          <ClockCircleOutlined /> Valid Until
-                        </Text>
-                        <div>
-                          <Text style={{ fontSize: "18px" }}>
-                            {new Date(passData.expiryDate).toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}
-                          </Text>
-                        </div>
-                      </div>
-
-                      {passData.customerEmail && (
-                        <div>
-                          <Text type="secondary" style={{ fontSize: "15px" }}>
-                            <MailOutlined /> Email
-                          </Text>
+                    <Row gutter={[16, 20]}>
+                      {/* Left Column */}
+                      <Col xs={12} sm={12}>
+                        <Space
+                          direction="vertical"
+                          style={{ width: "100%" }}
+                          size="medium"
+                        >
                           <div>
-                            <Text style={{ fontSize: "18px" }}>{passData.customerEmail}</Text>
+                            <Text type="secondary" style={{ fontSize: "15px" }}>
+                              Pass Type
+                            </Text>
+                            <div>
+                              <Text strong style={{ fontSize: "18px" }}>
+                                {passData.productName}
+                              </Text>
+                            </div>
                           </div>
-                        </div>
-                      )}
 
-                      {passData.customerPhone && (
-                        <div>
-                          <Text type="secondary" style={{ fontSize: "15px" }}>
-                            <PhoneOutlined /> Phone
-                          </Text>
                           <div>
-                            <Text style={{ fontSize: "18px" }}>{passData.customerPhone}</Text>
+                            <Text type="secondary" style={{ fontSize: "15px" }}>
+                              <UserOutlined /> Customer
+                            </Text>
+                            <div>
+                              <Text strong style={{ fontSize: "18px" }}>
+                                {passData.customerName}
+                              </Text>
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </Space>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-          </Row>
+
+                          <div>
+                            <Text type="secondary" style={{ fontSize: "15px" }}>
+                              <CalendarOutlined /> Valid From
+                            </Text>
+                            <div>
+                              <Text
+                                strong
+                                style={{ color: "#52c41a", fontSize: "18px" }}
+                              >
+                                {new Date(
+                                  passData.purchaseDate
+                                ).toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                })}
+                              </Text>
+                            </div>
+                          </div>
+
+                          <div>
+                            <Text type="secondary" style={{ fontSize: "15px" }}>
+                              <CalendarOutlined /> Purchase Date
+                            </Text>
+                            <div>
+                              <Text style={{ fontSize: "18px" }}>
+                                {new Date(
+                                  passData.purchaseDate
+                                ).toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                })}
+                              </Text>
+                            </div>
+                          </div>
+                        </Space>
+                      </Col>
+
+                      {/* Right Column */}
+                      <Col xs={12} sm={12}>
+                        <Space
+                          direction="vertical"
+                          style={{ width: "100%" }}
+                          size="medium"
+                        >
+                          <div>
+                            <Text type="secondary" style={{ fontSize: "15px" }}>
+                              <ClockCircleOutlined /> Valid Until
+                            </Text>
+                            <div>
+                              <Text style={{ fontSize: "18px" }}>
+                                {new Date(
+                                  passData.expiryDate
+                                ).toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                })}
+                              </Text>
+                            </div>
+                          </div>
+
+                          {passData.customerEmail && (
+                            <div>
+                              <Text
+                                type="secondary"
+                                style={{ fontSize: "15px" }}
+                              >
+                                <MailOutlined /> Email
+                              </Text>
+                              <div>
+                                <Text style={{ fontSize: "18px" }}>
+                                  {passData.customerEmail}
+                                </Text>
+                              </div>
+                            </div>
+                          )}
+
+                          {passData.customerPhone && (
+                            <div>
+                              <Text
+                                type="secondary"
+                                style={{ fontSize: "15px" }}
+                              >
+                                <PhoneOutlined /> Phone
+                              </Text>
+                              <div>
+                                <Text style={{ fontSize: "18px" }}>
+                                  {passData.customerPhone}
+                                </Text>
+                              </div>
+                            </div>
+                          )}
+                        </Space>
+                      </Col>
+                    </Row>
+                  </Card>
+                </Col>
+              </Row>
 
               <Divider style={{ margin: "32px 0" }} />
 
@@ -580,7 +615,7 @@ const CardPass = () => {
                       fontSize: "16px",
                       height: "50px",
                       padding: "0 30px",
-                      borderRadius: "999px"
+                      borderRadius: "999px",
                     }}
                   >
                     WhatsApp Support
@@ -596,7 +631,7 @@ const CardPass = () => {
                       padding: "0 30px",
                       borderRadius: "999px",
                       background: "var(--dm-card)",
-                      borderColor: "var(--dm-line)"
+                      borderColor: "var(--dm-line)",
                     }}
                   >
                     Download PDF Pass
@@ -605,14 +640,16 @@ const CardPass = () => {
                   <Button
                     type="default"
                     size="large"
-                    onClick={() => window.open("https://ahangama.com", "_blank")}
+                    onClick={() =>
+                      window.open("https://ahangama.com", "_blank")
+                    }
                     style={{
                       fontSize: "16px",
                       height: "50px",
                       padding: "0 30px",
                       borderRadius: "999px",
                       background: "var(--dm-card)",
-                      borderColor: "var(--dm-line)"
+                      borderColor: "var(--dm-line)",
                     }}
                   >
                     🌐 View All Venues
@@ -626,15 +663,24 @@ const CardPass = () => {
                 className="ahg-feature"
                 style={{ marginBottom: "24px" }}
               >
-                <ol style={{ fontSize: "16px", lineHeight: "1.8", color: "var(--dm-ink)" }}>
+                <ol
+                  style={{
+                    fontSize: "16px",
+                    lineHeight: "1.8",
+                    color: "var(--dm-ink)",
+                  }}
+                >
                   <li>
-                    <strong>Show the QR code</strong> above or from the downloaded PDF at any participating venue
+                    <strong>Show the QR code</strong> above or from the
+                    downloaded PDF at any participating venue
                   </li>
                   <li>
-                    <strong>Ask staff to scan your code</strong> - they'll verify your pass instantly
+                    <strong>Ask staff to scan your code</strong> - they'll
+                    verify your pass instantly
                   </li>
                   <li>
-                    <strong>Enjoy your exclusive benefit</strong> - each venue offers unique perks and discounts!
+                    <strong>Enjoy your exclusive benefit</strong> - each venue
+                    offers unique perks and discounts!
                   </li>
                 </ol>
 
@@ -643,33 +689,59 @@ const CardPass = () => {
                   description="Save this page to your phone's bookmarks or home screen for quick access to your pass!"
                   type="info"
                   showIcon
-                  style={{ 
+                  style={{
                     marginTop: "20px",
                     borderRadius: "var(--dm-radius-md)",
                     background: "rgba(79, 111, 134, 0.05)",
-                    border: "1px solid rgba(79, 111, 134, 0.15)"
+                    border: "1px solid rgba(79, 111, 134, 0.15)",
                   }}
                 />
               </Card>
 
               {/* Benefits Section */}
-              <Card
-                title="🎁 What Your Pass Unlocks"
-                className="ahg-feature"
-              >
+              <Card title="🎁 What Your Pass Unlocks" className="ahg-feature">
                 <Row gutter={[16, 16]}>
                   <Col xs={24} sm={12}>
-                    <ul style={{ fontSize: "14px", lineHeight: "1.6", color: "var(--dm-ink)" }}>
-                      <li><strong>Exclusive Discounts</strong> at curated restaurants and cafes</li>
-                      <li><strong>Special Perks</strong> at wellness and experience venues</li>
-                      <li><strong>VIP Treatment</strong> at selected accommodations</li>
+                    <ul
+                      style={{
+                        fontSize: "14px",
+                        lineHeight: "1.6",
+                        color: "var(--dm-ink)",
+                      }}
+                    >
+                      <li>
+                        <strong>Exclusive Discounts</strong> at curated
+                        restaurants and cafes
+                      </li>
+                      <li>
+                        <strong>Special Perks</strong> at wellness and
+                        experience venues
+                      </li>
+                      <li>
+                        <strong>VIP Treatment</strong> at selected
+                        accommodations
+                      </li>
                     </ul>
                   </Col>
                   <Col xs={24} sm={12}>
-                    <ul style={{ fontSize: "14px", lineHeight: "1.6", color: "var(--dm-ink)" }}>
-                      <li><strong>Free Items</strong> and upgrades at partner locations</li>
-                      <li><strong>Local Insider Access</strong> to hidden gems</li>
-                      <li><strong>Priority Service</strong> at participating venues</li>
+                    <ul
+                      style={{
+                        fontSize: "14px",
+                        lineHeight: "1.6",
+                        color: "var(--dm-ink)",
+                      }}
+                    >
+                      <li>
+                        <strong>Free Items</strong> and upgrades at partner
+                        locations
+                      </li>
+                      <li>
+                        <strong>Local Insider Access</strong> to hidden gems
+                      </li>
+                      <li>
+                        <strong>Priority Service</strong> at participating
+                        venues
+                      </li>
                     </ul>
                   </Col>
                 </Row>
