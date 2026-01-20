@@ -786,7 +786,7 @@ export const PLACES = [
     id: "patels-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Patels",
+    name: "Petals",
     slug: "patels-ahangama",
     status: "active",
     stars: 4.7,
