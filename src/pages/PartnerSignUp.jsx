@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Form,
   Input,
@@ -26,6 +27,7 @@ const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
 
 export default function PartnerSignUp() {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [venueType, setVenueType] = useState([]);
@@ -50,12 +52,8 @@ export default function PartnerSignUp() {
       });
 
       if (response.ok) {
-        message.success(
-          "🎉 Welcome to the Ahangama Pass Partner Network! Your venue is now live as a partner."
-        );
-        form.resetFields();
-        setVenueType([]);
-        setDiscountType({});
+        // Redirect to success page instead of showing message
+        navigate("/partner-signup/success");
       } else {
         throw new Error("Failed to submit application");
       }

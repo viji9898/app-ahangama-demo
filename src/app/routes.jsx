@@ -21,6 +21,7 @@ import MapGoogle from "../pages/MapGoogle";
 import AdminDashboard from "../pages/AdminDashboard";
 import PlacesTable from "../pages/PlacesTable";
 import PartnerSignUp from "../pages/PartnerSignUp";
+import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 
@@ -43,6 +44,7 @@ export const routes = [
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
   { path: "/partner-signup", element: <PartnerSignUp /> },
+  { path: "/partner-signup/success", element: <PartnerSignUpSuccess /> },
   { path: "/places", element: <PlacesTable /> },
   {
     path: "/eat",
