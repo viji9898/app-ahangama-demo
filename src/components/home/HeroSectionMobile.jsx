@@ -92,8 +92,7 @@ export default function HeroSectionMobile({ heroImage }) {
             color: "#5A6C7D",
           }}
         >
-          A clean guide to stays, food, and experiences — plus a{" "}
-          <strong>$18 card</strong> that unlocks local privileges.
+          A <strong>$18 card</strong> that unlocks local discounts & privileges
         </Paragraph>
 
         <div
