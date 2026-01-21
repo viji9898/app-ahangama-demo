@@ -273,7 +273,7 @@ exports.handler = async (event) => {
     // Send email to admin
     const adminEmailMessage = [
       `From: "Ahangama Pass" <${GMAIL_USER}>`,
-      `To: ${GMAIL_USER}`,
+      `To: team@ahangama.com`,
       `Subject: ${formData.venueName} Partnership Sign Up`,
       `Content-Type: text/html; charset=utf-8`,
       ``,
