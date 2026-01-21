@@ -177,6 +177,25 @@ exports.handler = async (event) => {
           <li>Fixed offers or complimentary items</li>
           <li>Optional stay enhancements (subject to availability)</li>
         </ul>
+
+        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid #d9d9d9;">
+          <h4>Your Specific Offer Details:</h4>
+          ${
+            formData.offerType
+              ? `<p><strong>Offer Type:</strong> ${Array.isArray(formData.offerType) ? formData.offerType.join(', ') : formData.offerType}</p>`
+              : ""
+          }
+          ${
+            formData.offerDescription
+              ? `<p><strong>Offer Description:</strong> ${formData.offerDescription}</p>`
+              : ""
+          }
+          ${
+            formData.offerAppliesTo
+              ? `<p><strong>Applies To:</strong> ${Array.isArray(formData.offerAppliesTo) ? formData.offerAppliesTo.join(', ') : formData.offerAppliesTo}</p>`
+              : ""
+          }
+        </div>
         
         <p><strong>Conditions</strong></p>
         
