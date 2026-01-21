@@ -182,7 +182,11 @@ exports.handler = async (event) => {
           <h4>Your Specific Offer Details:</h4>
           ${
             formData.offerType
-              ? `<p><strong>Offer Type:</strong> ${Array.isArray(formData.offerType) ? formData.offerType.join(', ') : formData.offerType}</p>`
+              ? `<p><strong>Offer Type:</strong> ${
+                  Array.isArray(formData.offerType)
+                    ? formData.offerType.join(", ")
+                    : formData.offerType
+                }</p>`
               : ""
           }
           ${
@@ -192,7 +196,11 @@ exports.handler = async (event) => {
           }
           ${
             formData.offerAppliesTo
-              ? `<p><strong>Applies To:</strong> ${Array.isArray(formData.offerAppliesTo) ? formData.offerAppliesTo.join(', ') : formData.offerAppliesTo}</p>`
+              ? `<p><strong>Applies To:</strong> ${
+                  Array.isArray(formData.offerAppliesTo)
+                    ? formData.offerAppliesTo.join(", ")
+                    : formData.offerAppliesTo
+                }</p>`
               : ""
           }
         </div>
