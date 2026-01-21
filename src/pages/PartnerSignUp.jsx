@@ -62,7 +62,7 @@ export default function PartnerSignUp() {
     } catch (error) {
       console.error("Error submitting form:", error);
       message.error(
-        "Unable to complete sign-up. Please try again or contact us at viji@viji.com"
+        "Unable to complete sign-up. Please try again or contact us at hello@ahangama.com"
       );
     } finally {
       setLoading(false);
