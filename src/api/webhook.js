@@ -2,8 +2,9 @@
 // This ensures payment processing is handled securely via webhooks
 
 import Stripe from "stripe";
+import { getStripeKey } from "../../lib/stripe-config.js";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(getStripeKey());
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export const handleWebhook = async (req, res) => {

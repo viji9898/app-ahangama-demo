@@ -2,9 +2,10 @@
 import Stripe from "stripe";
 import { CARD_PRODUCTS } from "../data/cardConfig";
 import DatabaseService from "../lib/database.js";
+import { getStripeKey } from "../../lib/stripe-config.js";
 
-// Initialize Stripe with your secret key
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Initialize Stripe with environment-appropriate key
+const stripe = new Stripe(getStripeKey());
 
 export const createCheckoutSession = async (req, res) => {
   try {

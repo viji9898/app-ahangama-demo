@@ -1,7 +1,8 @@
 import Stripe from "stripe";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
+import { getStripeKey } from "../../lib/stripe-config.js";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy");
+const stripe = new Stripe(getStripeKey());
 
 // Stripe Price IDs - update these with your actual Stripe Price IDs
 const STRIPE_PRICE_IDS = {

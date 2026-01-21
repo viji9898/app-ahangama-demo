@@ -1,8 +1,9 @@
 import Stripe from "stripe";
 import { neon } from "@netlify/neon";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
+import { getStripeKey, getEnvironmentName } from "../../lib/stripe-config.js";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy");
+const stripe = new Stripe(getStripeKey());
 const databaseUrl =
   process.env.NETLIFY_DATABASE_URL || process.env.DATABASE_URL;
 const sql = databaseUrl ? neon(databaseUrl) : null;
@@ -38,11 +39,11 @@ export const handler = async (event, context) => {
       };
     }
 
-    // For testing without Stripe key
-    if (
-      !process.env.STRIPE_SECRET_KEY ||
-      process.env.STRIPE_SECRET_KEY === "sk_test_dummy"
-    ) {
+    // Environment validation - if keys are missing, use test mode
+    try {
+      getStripeKey(); // This will throw if keys are missing
+    } catch (error) {
+      console.error('Stripe configuration error:', error.message);
       const qrCodeId = `AHG-${CARD_PRODUCTS.standard.qrId}-${sessionId
         .substring(0, 8)
         .toUpperCase()}`;

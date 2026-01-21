@@ -1,7 +1,8 @@
 import Stripe from "stripe";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
+import { getStripeKey, getEnvironmentName } from "../../lib/stripe-config.js";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy");
+const stripe = new Stripe(getStripeKey());
 
 export const handler = async (event, context) => {
   const headers = {
@@ -34,11 +35,11 @@ export const handler = async (event, context) => {
       };
     }
 
-    // For testing without Stripe key - simplified version
-    if (
-      !process.env.STRIPE_SECRET_KEY ||
-      process.env.STRIPE_SECRET_KEY === "sk_test_dummy"
-    ) {
+    // Environment validation - if keys are missing, use test mode
+    try {
+      getStripeKey(); // This will throw if keys are missing
+    } catch (error) {
+      console.error('Stripe configuration error:', error.message);
       console.log("Using test mode for sessionId:", sessionId);
 
       const qrCodeId = `AHG-${CARD_PRODUCTS.standard.qrId}-${sessionId

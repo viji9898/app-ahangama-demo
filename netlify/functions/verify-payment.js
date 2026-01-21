@@ -2,6 +2,7 @@ import Stripe from "stripe";
 import { neon } from "@netlify/neon";
 import crypto from "crypto";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
+import { getStripeKey, getEnvironmentName } from "../../lib/stripe-config.js";
 
 const ALPH = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"; // Crockford Base32
 
@@ -21,7 +22,7 @@ function base32(buf) {
   return out;
 }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy");
+const stripe = new Stripe(getStripeKey());
 
 // Only initialize database connection if we have a valid URL
 let sql = null;
@@ -75,11 +76,11 @@ export const handler = async (event, context) => {
       };
     }
 
-    // For testing without Stripe key - simplified version
-    if (
-      !process.env.STRIPE_SECRET_KEY ||
-      process.env.STRIPE_SECRET_KEY === "sk_test_dummy"
-    ) {
+    // Environment validation
+    try {
+      getStripeKey(); // This will throw if keys are missing
+    } catch (error) {
+      console.error('Stripe configuration error:', error.message);
       console.log("Using test mode for sessionId:", sessionId);
 
       const token = base32(
