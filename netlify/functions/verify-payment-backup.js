@@ -43,7 +43,7 @@ export const handler = async (event, context) => {
     try {
       getStripeKey(); // This will throw if keys are missing
     } catch (error) {
-      console.error('Stripe configuration error:', error.message);
+      console.error("Stripe configuration error:", error.message);
       const qrCodeId = `AHG-${CARD_PRODUCTS.standard.qrId}-${sessionId
         .substring(0, 8)
         .toUpperCase()}`;

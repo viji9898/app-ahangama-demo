@@ -39,7 +39,7 @@ export const handler = async (event, context) => {
     try {
       getStripeKey(); // This will throw if keys are missing
     } catch (error) {
-      console.error('Stripe configuration error:', error.message);
+      console.error("Stripe configuration error:", error.message);
       console.log("Using test mode for sessionId:", sessionId);
 
       const qrCodeId = `AHG-${CARD_PRODUCTS.standard.qrId}-${sessionId
