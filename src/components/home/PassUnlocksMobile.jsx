@@ -31,6 +31,7 @@ const CATEGORY_LABELS = {
   "work-long-stays": "Work & Long Stays",
   "getting-around": "Getting Around",
   "shops-essentials": "Shops & Essentials",
+  retail: "Retail",
   community: "Community",
 };
 
@@ -87,6 +88,9 @@ function MobilePlaceCard({ p }) {
     }
     if (category === "culture") {
       return { background: "#e6f7ff", color: "#1890ff" };
+    }
+    if (category === "retail") {
+      return { background: "#f0e6ff", color: "#9c5a95" };
     }
     return { background: "#e8f5e8", color: "#2d5016" };
   };
@@ -244,14 +248,14 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
       PLACES.filter((p) => p.destinationSlug === destinationSlug && p.offer)
         .filter((p) => shouldShowPlace(p)) // Only show active places
         .map((p) => p.category)
-        .filter(Boolean)
+        .filter(Boolean),
     );
     return Array.from(set);
   }, [destinationSlug]);
 
   const toggleCat = (cat) => {
     setSelectedCats((prev) =>
-      prev.includes(cat) ? prev.filter((x) => x !== cat) : [...prev, cat]
+      prev.includes(cat) ? prev.filter((x) => x !== cat) : [...prev, cat],
     );
   };
 

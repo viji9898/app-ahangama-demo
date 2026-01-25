@@ -34,6 +34,7 @@ const CATEGORY_LABELS = {
   "work-long-stays": "Work & Long Stays",
   "getting-around": "Getting Around",
   "shops-essentials": "Shops & Essentials",
+  retail: "Retail",
   community: "Community",
 };
 
@@ -219,6 +220,12 @@ function PlaceRow({ p }) {
                     color: "#1890ff",
                   };
                 }
+                if (category === "retail") {
+                  return {
+                    background: "#f0e6ff",
+                    color: "#9c5a95",
+                  };
+                }
                 // Default green for eat and other categories
                 return {
                   background: "#e8f5e8",
@@ -302,7 +309,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
   const availableCategories = useMemo(() => {
     const categories = ["all"];
     const categoriesFromPlaces = PLACES.filter(
-      (p) => p.destinationSlug === destinationSlug
+      (p) => p.destinationSlug === destinationSlug,
     )
       .filter((p) => !!p.offer)
       .map((p) => p.category)
@@ -313,7 +320,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
 
   const mappable = useMemo(
     () => passPlaces.filter((p) => !!p._latlng),
-    [passPlaces]
+    [passPlaces],
   );
   const center = mappable[0]?._latlng || DEFAULT_CENTER;
 
@@ -412,7 +419,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
                   : ""
               }
             </div>
-          `
+          `,
           )
           .addTo(mapRef.current);
 
@@ -442,6 +449,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
       "work-long-stays": "#6b7c5a",
       "getting-around": "#4f6f86",
       "shops-essentials": "#6b6f6a",
+      retail: "#9c5a95",
       community: "#4f6f86",
     };
     return colors[category] || "#4f6f86";

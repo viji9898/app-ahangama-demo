@@ -50,4 +50,15 @@ export const CATEGORIES = [
     seoDescription:
       "A practical culture guide to Ahangama — rhythms, etiquette, seasons, and local context.",
   },
+  {
+    key: "retail",
+    title: "Retail",
+    description:
+      "Shops, markets, and online stores for essentials, groceries, and more in Ahangama.",
+    icon: CompassOutlined, // You can change this to a more suitable icon if desired
+    basePath: "/retail",
+    seoTitle: "Retail & Shopping in Ahangama",
+    seoDescription:
+      "Retail, shops, and online supermarkets in Ahangama — essentials, groceries, and more.",
+  },
 ];

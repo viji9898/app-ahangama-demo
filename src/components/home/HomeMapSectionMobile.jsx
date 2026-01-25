@@ -27,6 +27,7 @@ const CATEGORY_LABELS = {
   "work-long-stays": "Work & Long Stays",
   "getting-around": "Getting Around",
   "shops-essentials": "Shops & Essentials",
+  retail: "Retail",
   community: "Community",
 };
 
@@ -53,8 +54,10 @@ export default function HomeMapSectionMobile() {
       .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => {
         if (selectedCategory === "all") {
-          // Include eat, stays, wellness, and surf for "all" filter like desktop
-          return ["eat", "stays", "wellness", "surf"].includes(p.category);
+          // Include eat, stays, wellness, surf, and retail for "all" filter
+          return ["eat", "stays", "wellness", "surf", "retail"].includes(
+            p.category,
+          );
         }
         return p.category === selectedCategory;
       })
@@ -75,7 +78,7 @@ export default function HomeMapSectionMobile() {
     const categorySet = new Set(
       PLACES.filter((p) => p.destinationSlug === "ahangama")
         .map((p) => p.category)
-        .filter(Boolean)
+        .filter(Boolean),
     );
     return [...categories, ...Array.from(categorySet)];
   }, []);
@@ -239,6 +242,8 @@ export default function HomeMapSectionMobile() {
           "#4f6f86",
           ["==", ["get", "category"], "shops-essentials"],
           "#6b6f6a",
+          ["==", ["get", "category"], "retail"],
+          "#9c5a95",
           ["==", ["get", "category"], "community"],
           "#4f6f86",
           "#4f6f86",
@@ -277,6 +282,8 @@ export default function HomeMapSectionMobile() {
             "#4f6f86",
             ["==", ["get", "category"], "shops-essentials"],
             "#6b6f6a",
+            ["==", ["get", "category"], "retail"],
+            "#9c5a95",
             ["==", ["get", "category"], "community"],
             "#4f6f86",
             "#4f6f86",
@@ -287,7 +294,7 @@ export default function HomeMapSectionMobile() {
           "circle-opacity": 0.8,
         },
       },
-      "unclustered-point"
+      "unclustered-point",
     );
 
     // Add event handlers using standard Mapbox API
@@ -363,6 +370,7 @@ export default function HomeMapSectionMobile() {
       "work-long-stays": "#6b7c5a",
       "getting-around": "#4f6f86",
       "shops-essentials": "#6b6f6a",
+      retail: "#9c5a95",
       community: "#4f6f86",
     };
     return colors[category] || "#4f6f86";

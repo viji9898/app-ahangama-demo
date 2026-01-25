@@ -58,13 +58,13 @@ export const routes = [
     path: "/wellness",
     element: <CategoryIndex categoryKey="wellness" config={cfg("wellness")} />,
   },
-
+  {
+    path: "/retail",
+    element: <CategoryIndex categoryKey="retail" config={cfg("retail")} />,
+  },
   { path: "/eat/:slug", element: <PlaceDetail category="eat" /> },
   { path: "/stays/:slug", element: <PlaceDetail category="stays" /> },
-  {
-    path: "/wellness/:slug",
-    element: <PlaceDetail category="wellness" />,
-  },
-
+  { path: "/wellness/:slug", element: <PlaceDetail category="wellness" /> },
+  { path: "/retail/:slug", element: <PlaceDetail category="retail" /> },
   { path: "*", element: <NotFound /> },
 ];

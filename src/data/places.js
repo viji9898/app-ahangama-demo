@@ -339,7 +339,7 @@ export const PLACES = [
     category: "eat",
     name: "Squeeze Me",
     slug: "squeeze-me",
-    status: "coming_soon",
+    status: "active",
     stars: 4.7,
     reviews: 315,
     excerpt:
@@ -2128,5 +2128,36 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/manori_s_kitchen.jpg",
     mapUrl:
       "https://www.google.com/maps/search/?api=1&query=5.970553677414811,80.37116892443733",
+  },
+  {
+    id: "gusta",
+    destinationSlug: "ahangama",
+    category: "retail",
+    name: "Gusta",
+    slug: "gusta",
+    status: "active",
+    excerpt: "Online supermarket serving Kabalana and surrounding areas.",
+    description:
+      "Online supermarket in Kabalana offering convenient grocery delivery and pickup services.",
+    bestFor: ["Groceries", "Online Shopping", "Delivery"],
+    tags: ["Online", "Supermarket", "Convenient"],
+    offer: ["10% Discount"],
+    cardPerk: "10% discount on orders with the Ahangama Card.",
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive 10% discount.",
+    restrictions: "Valid for all orders. One discount per card per order.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Check online for availability",
+    area: "Kabalana",
+    lat: 5.978468021160938,
+    lng: 80.34854993743255,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/gusta.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/guesta.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/guesta.jpg",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.978468021160938,80.34854993743255",
   },
 ];

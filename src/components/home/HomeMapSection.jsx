@@ -22,6 +22,7 @@ const CATEGORY_LABELS = {
   "work-long-stays": "Work & Long Stays",
   "getting-around": "Getting Around",
   "shops-essentials": "Shops & Essentials",
+  retail: "Retail",
   community: "Community",
 };
 
@@ -48,8 +49,10 @@ export default function HomeMapSection() {
       .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => {
         if (selectedCategory === "all") {
-          // Explicitly include eat, stays, wellness, and surf for "all" filter
-          return ["eat", "stays", "wellness", "surf"].includes(p.category);
+          // Explicitly include eat, stays, wellness, surf, and retail for "all" filter
+          return ["eat", "stays", "wellness", "surf", "retail"].includes(
+            p.category,
+          );
         }
         return p.category === selectedCategory;
       })
@@ -63,7 +66,7 @@ export default function HomeMapSection() {
     const categorySet = new Set(
       PLACES.filter((p) => p.destinationSlug === "ahangama")
         .map((p) => p.category)
-        .filter(Boolean)
+        .filter(Boolean),
     );
     return [...categories, ...Array.from(categorySet)];
   }, []);
@@ -238,6 +241,8 @@ export default function HomeMapSection() {
           "#4f6f86",
           ["==", ["get", "category"], "shops-essentials"],
           "#6b6f6a",
+          ["==", ["get", "category"], "retail"],
+          "#9c5a95",
           ["==", ["get", "category"], "community"],
           "#4f6f86",
           "#4f6f86",
@@ -276,6 +281,8 @@ export default function HomeMapSection() {
             "#4f6f86",
             ["==", ["get", "category"], "shops-essentials"],
             "#6b6f6a",
+            ["==", ["get", "category"], "retail"],
+            "#9c5a95",
             ["==", ["get", "category"], "community"],
             "#4f6f86",
             "#4f6f86",
@@ -286,7 +293,7 @@ export default function HomeMapSection() {
           "circle-opacity": 0.8,
         },
       },
-      "unclustered-point"
+      "unclustered-point",
     );
 
     // Add event handlers using standard Mapbox API
@@ -358,6 +365,7 @@ export default function HomeMapSection() {
       "work-long-stays": "#6b7c5a",
       "getting-around": "#4f6f86",
       "shops-essentials": "#6b6f6a",
+      retail: "#9c5a95",
       community: "#4f6f86",
     };
     return colors[category] || "#4f6f86";
@@ -380,7 +388,7 @@ export default function HomeMapSection() {
         font-weight: 500;
         margin-right: 3px;
         margin-bottom: 3px;
-      ">${tag}</span>`
+      ">${tag}</span>`,
         )
         .join("");
     }
@@ -649,7 +657,7 @@ export default function HomeMapSection() {
                                 <Tag
                                   key={index}
                                   color={getCategoryColor(
-                                    selectedPlace.category
+                                    selectedPlace.category,
                                   )}
                                   style={{
                                     borderRadius: "10px",
@@ -699,7 +707,7 @@ export default function HomeMapSection() {
                         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                           `${selectedPlace.name} ${
                             selectedPlace.area || "Ahangama"
-                          }`
+                          }`,
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
