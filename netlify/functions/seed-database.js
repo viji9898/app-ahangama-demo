@@ -1,6 +1,6 @@
 import { db } from "../../src/lib/database.js";
 import { purchases, redemptions } from "../../db/schema.js";
-import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
+import { CARD_PRODUCTS } from "../../src/data/cardConfig.js"; // 'week' is now 15-day pass (P15)
 
 const TEST_CUSTOMERS = [
   {
@@ -80,7 +80,7 @@ export const handler = async (event, context) => {
       const purchaseDate = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000);
       const expiryDate = new Date(
         purchaseDate.getTime() +
-          randomProduct.validityDays * 24 * 60 * 60 * 1000
+          randomProduct.validityDays * 24 * 60 * 60 * 1000,
       );
 
       const purchaseData = {
@@ -124,7 +124,7 @@ export const handler = async (event, context) => {
             SAMPLE_VENUES[Math.floor(Math.random() * SAMPLE_VENUES.length)];
           const redemptionDate = new Date(
             purchaseDate.getTime() +
-              Math.random() * (Date.now() - purchaseDate.getTime())
+              Math.random() * (Date.now() - purchaseDate.getTime()),
           );
 
           // Don't create future redemptions
@@ -177,13 +177,13 @@ export const handler = async (event, context) => {
         summary: {
           totalRevenue: createdPurchases.reduce(
             (sum, p) => sum + parseFloat(p.priceUsd),
-            0
+            0,
           ),
           activePasses: createdPurchases.filter(
-            (p) => p.isActive && new Date() < new Date(p.expiryDate)
+            (p) => p.isActive && new Date() < new Date(p.expiryDate),
           ).length,
           expiredPasses: createdPurchases.filter(
-            (p) => new Date() >= new Date(p.expiryDate)
+            (p) => new Date() >= new Date(p.expiryDate),
           ).length,
         },
       }),

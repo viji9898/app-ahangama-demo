@@ -29,7 +29,7 @@ const { Title, Paragraph, Text } = Typography;
 export default function Home() {
   const canonical = absUrl("/");
   const categories = CATEGORIES.filter((c) =>
-    ["eat", "stays", "wellness", "culture"].includes(c.key)
+    ["eat", "stays", "wellness", "culture"].includes(c.key),
   );
 
   const handleFreeGuideClick = () => {
@@ -43,19 +43,19 @@ export default function Home() {
 
     window.open(
       "https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide",
-      "_blank"
+      "_blank",
     );
   };
 
   // Quick “featured” picks from your arrays (first items per category)
   const eat = PLACES.find(
-    (p) => p.destinationSlug === "ahangama" && p.category === "eat"
+    (p) => p.destinationSlug === "ahangama" && p.category === "eat",
   );
   const stays = PLACES.find(
-    (p) => p.destinationSlug === "ahangama" && p.category === "stays"
+    (p) => p.destinationSlug === "ahangama" && p.category === "stays",
   );
   const wellness = PLACES.find(
-    (p) => p.destinationSlug === "ahangama" && p.category === "wellness"
+    (p) => p.destinationSlug === "ahangama" && p.category === "wellness",
   );
 
   const heroImage =
@@ -164,9 +164,9 @@ export default function Home() {
                     </div>
 
                     <Title className="ahg-h1">
-                      Favourite Places,
+                      Ahangama Pass
                       <br />
-                      With Benefits.
+                      <small>Discounts at the best places</small>
                     </Title>
 
                     <Paragraph className="ahg-sub">
@@ -175,14 +175,14 @@ export default function Home() {
                     </Paragraph>
 
                     <Space wrap size={10}>
-                      <Button
+                      {/* <Button
                         type="primary"
                         size="large"
                         href="/search"
                         icon={<ArrowRightOutlined />}
                       >
                         Start exploring
-                      </Button>
+                      </Button> */}
                       <Button
                         size="large"
                         href="/card"
@@ -205,7 +205,7 @@ export default function Home() {
                         <div className="ahg-metricVal">
                           {
                             PLACES.filter(
-                              (p) => p.destinationSlug === "ahangama"
+                              (p) => p.destinationSlug === "ahangama",
                             ).length
                           }
                         </div>
@@ -423,13 +423,13 @@ export default function Home() {
 
           <div style={{ marginTop: 24 }}>
             {/* Desktop version */}
-            <div className="desktop-only" style={{ display: "block" }}>
+            {/* <div className="desktop-only" style={{ display: "block" }}>
               <HomeMapSection />
-            </div>
+            </div> */}
             {/* Mobile version */}
-            <div className="mobile-only" style={{ display: "none" }}>
+            {/* <div className="mobile-only" style={{ display: "none" }}>
               <HomeMapSectionMobile />
-            </div>
+            </div> */}
           </div>
           <div style={{ marginTop: 16 }}>
             {/* Desktop version */}

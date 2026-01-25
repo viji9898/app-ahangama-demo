@@ -5,7 +5,7 @@ export const STRIPE_PRICE_IDS = {
   duo: "price_ahangama_duo",
   longStay: "price_ahangama_longstay",
   explorer: "price_ahangama_explorer",
-  week: "price_ahangama_week",
+  week: "price_ahangama_week", // Now 15-day pass (P15)
 };
 
 export const createCheckoutSession = async (productId, customerData) => {
@@ -27,7 +27,7 @@ export const createCheckoutSession = async (productId, customerData) => {
           successUrl: `${window.location.origin}/card/success?session_id={CHECKOUT_SESSION_ID}`,
           cancelUrl: `${window.location.origin}/card`,
         }),
-      }
+      },
     );
 
     if (!response.ok) {
@@ -39,7 +39,7 @@ export const createCheckoutSession = async (productId, customerData) => {
         url: response.url,
       });
       throw new Error(
-        `Checkout session failed: ${response.status} - ${errorText}`
+        `Checkout session failed: ${response.status} - ${errorText}`,
       );
     }
 
@@ -59,7 +59,7 @@ export const createCheckoutSession = async (productId, customerData) => {
 
 export const verifyPayment = async (sessionId) => {
   const response = await fetch(
-    `/.netlify/functions/verify-payment?sessionId=${sessionId}`
+    `/.netlify/functions/verify-payment?sessionId=${sessionId}`,
   );
 
   if (!response.ok) {

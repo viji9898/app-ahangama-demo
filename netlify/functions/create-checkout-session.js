@@ -10,7 +10,7 @@ const STRIPE_PRICE_IDS = {
   duo: "price_ahangama_duo",
   longStay: "price_ahangama_longstay",
   explorer: "price_ahangama_explorer",
-  week: "price_ahangama_week",
+  week: "price_ahangama_week", // Now 15-day pass (P15)
 };
 
 export const handler = async (event, context) => {

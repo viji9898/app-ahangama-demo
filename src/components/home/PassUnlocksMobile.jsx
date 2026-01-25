@@ -382,7 +382,7 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
       {/* Places List - Optimized for mobile scrolling */}
       <div
         style={{
-          maxHeight: "500px",
+          maxHeight: "1000px",
           overflowY: "auto",
           overflowX: "hidden",
           WebkitOverflowScrolling: "touch",

@@ -57,10 +57,10 @@ export const handler = async (event, context) => {
           customerEmail: "test@example.com",
           customerPhone: "+1234567890",
           qrCode,
-          validityDays: 30,
+          validityDays: 15,
           purchaseDate: new Date().toISOString(),
           expiryDate: new Date(
-            Date.now() + 30 * 24 * 60 * 60 * 1000
+            Date.now() + 15 * 24 * 60 * 60 * 1000,
           ).toISOString(),
         }),
       };
@@ -94,7 +94,7 @@ export const handler = async (event, context) => {
 
     const expiryDate = new Date(
       startDate.getTime() +
-        parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
+        parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000,
     );
 
     const responseData = {

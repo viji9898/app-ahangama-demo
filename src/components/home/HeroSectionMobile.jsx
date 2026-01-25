@@ -92,7 +92,8 @@ export default function HeroSectionMobile({ heroImage }) {
             color: "#5A6C7D",
           }}
         >
-          A <strong>$18 card</strong> that unlocks local discounts & privileges
+          A <strong>$18 card</strong> that unlocks 15 days of local discounts &
+          privileges
         </Paragraph>
 
         <div
@@ -103,7 +104,7 @@ export default function HeroSectionMobile({ heroImage }) {
             marginBottom: "24px",
           }}
         >
-          <Button
+          {/* <Button
             type="primary"
             size="large"
             href="/eat"
@@ -117,7 +118,7 @@ export default function HeroSectionMobile({ heroImage }) {
             }}
           >
             Start exploring
-          </Button>
+          </Button> */}
           <Button
             size="large"
             href="/card"

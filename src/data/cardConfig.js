@@ -1,18 +1,19 @@
 export const CARD_PRODUCTS = {
   week: {
     id: "week",
-    name: "7-Day Pass",
-    qrId: "P7",
+    name: "15-Day Pass",
+    qrId: "P15",
     priceUsd: 18,
-    validityDays: 7,
+    validityDays: 15,
     maxPeople: 1,
     oncePerDayPerVenue: true,
     validForOnePerson: true,
-    description: "Perfect for short stays and exploring Ahangama's highlights",
+    description:
+      "Perfect for short stays and exploring Ahangama's highlights. Now valid for 15 days!",
     bestFor: "Weekend trips, first-time visitors, short stays",
     features: [
       "All venue discounts",
-      "7-day validity",
+      "15-day validity",
       "Perfect for short trips",
     ],
     isPopular: true,
@@ -53,4 +54,4 @@ export const CARD_PRODUCTS = {
 };
 
 // Legacy export for backward compatibility
-export const CARD_PRODUCT = CARD_PRODUCTS.week; // Default to most popular
+export const CARD_PRODUCT = CARD_PRODUCTS.week; // Default to most popular (now 15 days)

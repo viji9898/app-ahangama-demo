@@ -87,12 +87,12 @@ export const handler = async (event, context) => {
         crypto
           .createHmac("sha256", process.env.QR_SECRET || "test-secret")
           .update(sessionId)
-          .digest()
+          .digest(),
       ).slice(0, 6);
 
       const qrCodeId = `AHG-${CARD_PRODUCTS.standard.qrId}-${token}`;
       const qrCode = `https://ahangama.com/card/verify?qr=${encodeURIComponent(
-        qrCodeId
+        qrCodeId,
       )}`;
 
       // Save test purchase to database
@@ -101,7 +101,7 @@ export const handler = async (event, context) => {
           // Default start date for test mode (today)
           const testStartDate = new Date();
           const testExpiryDate = new Date(
-            testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000
+            testStartDate.getTime() + 15 * 24 * 60 * 60 * 1000,
           );
 
           await sql`
@@ -133,7 +133,7 @@ export const handler = async (event, context) => {
       // Default start date for test mode (today)
       const testStartDate = new Date();
       const testExpiryDate = new Date(
-        testStartDate.getTime() + 30 * 24 * 60 * 60 * 1000
+        testStartDate.getTime() + 15 * 24 * 60 * 60 * 1000,
       );
 
       return {
@@ -144,7 +144,7 @@ export const handler = async (event, context) => {
           customerEmail: "test@example.com",
           customerPhone: "+1234567890",
           qrCode,
-          validityDays: 30,
+          validityDays: 15,
           purchaseDate: new Date().toISOString(),
           startDate: testStartDate.toISOString(),
           expiryDate: testExpiryDate.toISOString(),
@@ -170,12 +170,12 @@ export const handler = async (event, context) => {
       crypto
         .createHmac("sha256", process.env.QR_SECRET || "test-secret")
         .update(sessionId)
-        .digest()
+        .digest(),
     ).slice(0, 6);
 
     const qrCodeId = `AHG-${product.qrId}-${token}`;
     const qrCode = `https://ahangama.com/card/verify?qr=${encodeURIComponent(
-      qrCodeId
+      qrCodeId,
     )}`;
 
     // Calculate dates based on start date from metadata
@@ -185,7 +185,7 @@ export const handler = async (event, context) => {
 
     const expiryDate = new Date(
       startDate.getTime() +
-        parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
+        parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000,
     );
 
     // Save real purchase to database
@@ -200,14 +200,14 @@ export const handler = async (event, context) => {
           ) VALUES (
             ${session.id}, ${qrCodeId}, ${session.metadata.productId},
             ${session.metadata.productName}, ${(
-          session.amount_total / 100
-        ).toString()}, ${parseInt(session.metadata.validityDays)},
+              session.amount_total / 100
+            ).toString()}, ${parseInt(session.metadata.validityDays)},
             ${parseInt(session.metadata.maxPeople || "1")}, ${
-          session.metadata.customerName || "Unknown"
-        }, ${session.customer_details.email},
+              session.metadata.customerName || "Unknown"
+            }, ${session.customer_details.email},
             ${session.metadata.customerPhone || ""}, ${
-          session.payment_intent
-        }, ${session.currency},
+              session.payment_intent
+            }, ${session.currency},
             ${new Date()}, ${startDate}, ${expiryDate}, ${true},
             ${new Date()}, ${new Date()}
           )
