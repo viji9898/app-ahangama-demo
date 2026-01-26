@@ -349,7 +349,7 @@ export const PLACES = [
     bestFor: ["Juices", "Light lunch", "Post-surf"],
     tags: ["Fresh", "Wellness", "Light"],
     cardPerk: "Free protein boost in any smoothie with the Ahangama Card.",
-    offer: ["Protein Boost", "Free Add-on"],
+    offer: ["10% off", "Free Add-on"],
     howToClaim:
       "Present your Ahangama Card when ordering any smoothie to receive free protein boost.",
     restrictions:
@@ -527,7 +527,7 @@ export const PLACES = [
     category: "eat",
     name: "Sisters Kabalana",
     slug: "sisters-kabalana",
-    status: "coming_soon",
+    status: "active",
     stars: 4.9,
     reviews: 201,
     excerpt:
@@ -537,7 +537,7 @@ export const PLACES = [
     bestFor: ["Coffee", "Breakfast", "Beach days"],
     tags: ["Kabalana", "Beach-adjacent", "Popular"],
     cardPerk: "Pre-surf breakfast combo special with the Ahangama Card.",
-    offer: ["Surf Combo", "Breakfast Special"],
+    offer: ["10% off"],
     howToClaim:
       "Present your Ahangama Card when ordering to get the pre-surf breakfast combo at special rate.",
     restrictions:
