@@ -2141,7 +2141,7 @@ export const PLACES = [
       "Online supermarket in Kabalana offering convenient grocery delivery and pickup services.",
     bestFor: ["Groceries", "Online Shopping", "Delivery"],
     tags: ["Online", "Supermarket", "Convenient"],
-    offer: ["10% Discount"],
+    offer: ["5-10% off Gusta & CIAO Selected Items"],
     cardPerk: "10% discount on orders with the Ahangama Card.",
     howToClaim:
       "Show your Ahangama Card when ordering to receive 10% discount.",
