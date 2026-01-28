@@ -36,6 +36,18 @@ const CATEGORY_LABELS = {
 };
 
 function MobilePlaceCard({ p }) {
+    // Helper to get correct Google Maps URL
+    const getGoogleMapsUrl = (url) => {
+      if (!url) return null;
+      // If url is a place_id or starts with place_id:
+      const placeIdMatch = url.match(/^place_id:(.+)$/i);
+      if (placeIdMatch) {
+        const placeId = placeIdMatch[1].trim();
+        return `https://www.google.com/maps/search/?api=1&query_place_id=${encodeURIComponent(placeId)}`;
+      }
+      // If url looks like a full Google Maps URL, return as is
+      return url;
+    };
   const fallbackImage =
     "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=400";
 
@@ -234,19 +246,20 @@ function MobilePlaceCard({ p }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
-                  // Try to open in new tab, fallback to same tab for mobile
-                  const win = window.open(p.mapUrl, "_blank");
+                  const mapUrl = getGoogleMapsUrl(p.mapUrl);
+                  const win = window.open(mapUrl, "_blank");
                   if (!win) {
-                    window.location.href = p.mapUrl;
+                    window.location.href = mapUrl;
                   }
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.stopPropagation();
                     e.preventDefault();
-                    const win = window.open(p.mapUrl, "_blank");
+                    const mapUrl = getGoogleMapsUrl(p.mapUrl);
+                    const win = window.open(mapUrl, "_blank");
                     if (!win) {
-                      window.location.href = p.mapUrl;
+                      window.location.href = mapUrl;
                     }
                   }
                 }}
