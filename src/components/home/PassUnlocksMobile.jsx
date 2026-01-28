@@ -218,21 +218,41 @@ function MobilePlaceCard({ p }) {
           {/* Google Maps link */}
           {p.mapUrl && (
             <div style={{ margin: "2px 0 0 0" }}>
-              <a
-                href={p.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <span
+                role="button"
+                tabIndex={0}
                 style={{
                   color: "#388e3c",
                   fontWeight: 600,
                   fontSize: 13,
                   textDecoration: "underline",
                   letterSpacing: "0.02em",
+                  cursor: "pointer",
+                  outline: "none",
+                  display: "inline-block",
                 }}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  // Try to open in new tab, fallback to same tab for mobile
+                  const win = window.open(p.mapUrl, "_blank");
+                  if (!win) {
+                    window.location.href = p.mapUrl;
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const win = window.open(p.mapUrl, "_blank");
+                    if (!win) {
+                      window.location.href = p.mapUrl;
+                    }
+                  }
+                }}
               >
                 Open in Google Maps →
-              </a>
+              </span>
             </div>
           )}
         </div>
