@@ -59,7 +59,7 @@ export default function Home() {
   );
 
   const heroImage =
-    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero.jpg";
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-2.jpg";
 
   return (
     <SiteLayout>
@@ -164,9 +164,9 @@ export default function Home() {
                     </div>
 
                     <Title className="ahg-h1">
-                      Ahangama Pass
+                      Ahangama Guide
                       <br />
-                      <small>Discounts at the best places</small>
+                      <small>to Perks & Discounts</small>
                     </Title>
 
                     <Paragraph className="ahg-sub">
@@ -234,7 +234,7 @@ export default function Home() {
                             {/* (Placeholder spotlight) */}
                           </Text>
                         </div>
-                        <div className="ahg-overlayBottom">
+                        {/* <div className="ahg-overlayBottom">
                           <Space wrap size={[6, 6]}>
                             <Tag
                               className="ahg-overlayTag"
@@ -255,7 +255,7 @@ export default function Home() {
                               Long-stay pick
                             </Tag>
                           </Space>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </Col>
