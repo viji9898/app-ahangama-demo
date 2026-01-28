@@ -1858,6 +1858,30 @@ export const PLACES = [
     mapUrl: `https://maps.app.goo.gl/7D7y5G6vi2VVjEa39`,
   },
   {
+    id: "coconut-court",
+    destinationSlug: "ahangama",
+    category: "wellness",
+    name: "Coconut Court",
+    slug: "coconut-court",
+    status: "active",
+    stars: 5,
+    reviews: 52,
+    excerpt: "Pickleball, wellness, and more at Coconut Court.",
+    description:
+      "A vibrant wellness destination featuring a pickleball court and 10% off for pass holders.",
+    offer: ["10%", "Pickleball court"],
+    mapUrl: "https://maps.app.goo.gl/b1zqTnJJgsETKm9k8",
+    lat: 5.978418297405438,
+    lng: 80.34807776441775,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/coconut_court.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coconut_court.jpg",
+    area: "Ahangama",
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    // Add more fields as needed for consistency
+  },
+  {
     id: "aksaaya-ayurveda-wellness-spa",
     destinationSlug: "ahangama",
     category: "wellness",
