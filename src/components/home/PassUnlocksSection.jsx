@@ -189,6 +189,28 @@ function PlaceRow({ p }) {
           <PlaceStatusTag place={p} />
         </h3>
 
+        {/* Reviews and Stars */}
+        {typeof p.stars === "number" && typeof p.reviews === "number" && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              marginBottom: 8,
+            }}
+          >
+            <span style={{ color: "#FFD700", fontSize: 15, marginRight: 2 }}>
+              ★
+            </span>
+            <span style={{ fontWeight: 500, color: "#222", fontSize: 14 }}>
+              {p.stars.toFixed(1)}
+            </span>
+            <span style={{ color: "#888", fontSize: 13 }}>
+              ({p.reviews.toLocaleString()} reviews)
+            </span>
+          </div>
+        )}
+
         {offerTags.length > 0 && (
           <div
             className="place-card__tags"
@@ -258,17 +280,25 @@ function PlaceRow({ p }) {
           </div>
         )}
 
-        <span
-          className="place-card__cta"
-          style={{
-            display: "inline-block",
-            fontSize: "14px",
-            color: "#8b5a2b",
-            fontWeight: "500",
-          }}
-        >
-          Discover →
-        </span>
+        {/* Google Maps link */}
+        {p.mapUrl && (
+          <a
+            className="place-card__cta"
+            href={p.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              fontSize: "14px",
+              color: "#8b5a2b",
+              fontWeight: "500",
+              textDecoration: "underline",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            Open in Google Maps →
+          </a>
+        )}
       </div>
     </article>
   );
