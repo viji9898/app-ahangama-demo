@@ -64,8 +64,8 @@ export default function Home() {
   return (
     <SiteLayout>
       <Seo
-        title="Ahangama"
-        description="Curated guides to stays, food, wellness and culture in Ahangama — plus a discount card that gives you more for your money."
+        title="Ahangama Guide to Perks & Discounts at the Best Local Spots"
+        description="Ahangama guide to perks and discounts at the best cafés, stays, surf spots, and experiences—curated local favourites, unlocked with one pass."
         canonical={canonical}
         ogImage={heroImage}
         jsonLd={{

@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 
 export function Seo({ title, description, canonical, ogImage, jsonLd }) {
-  const fullTitle = title ? `${title} | ahangama.com` : "ahangama.com";
+  const fullTitle = title ? `${title}` : "ahangama.com";
   return (
     <Helmet>
       <title>{fullTitle}</title>
