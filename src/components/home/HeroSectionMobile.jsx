@@ -68,7 +68,7 @@ export default function HeroSectionMobile({ heroImage }) {
           </Tag>
         </div>
 
-        {/* <Title
+        <Title
           className="ahg-h1"
           style={{
             fontSize: "28px",
@@ -77,10 +77,10 @@ export default function HeroSectionMobile({ heroImage }) {
             textAlign: "center",
           }}
         >
-          Ahangama,
+          Ahangama Guide
           <br />
-          but curated.
-        </Title> */}
+          <small>to Perks & Discounts</small>
+        </Title>
 
         <Paragraph
           className="ahg-sub"
@@ -92,8 +92,7 @@ export default function HeroSectionMobile({ heroImage }) {
             color: "#5A6C7D",
           }}
         >
-          A <strong>$18 card</strong> that unlocks 15 days of local discounts &
-          privileges
+          A <strong>$18 card</strong> that unlocks local discounts & privileges
         </Paragraph>
 
         <div
