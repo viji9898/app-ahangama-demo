@@ -256,8 +256,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+17Hakuna.webp",
     ogImage:
       "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJoUInqa0T4ToRj3sGiuTB3bU",
+    mapUrl: "https://maps.app.goo.gl/48Mm3kbcMVNKBqAh7",
   },
   {
     id: "cafe-ceylon-ahangama",
@@ -293,8 +292,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+19cafe-ceylon.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJ5cfB9UsT4ToR399DOqCo6dg",
+    mapUrl: "https://maps.app.goo.gl/ehxBrdtir8ogyk3M6",
   },
   {
     id: "black-honey-cafe",
@@ -368,8 +366,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+22squeeze-me.webp",
     ogImage:
       "https://images.pexels.com/photos/1346155/pexels-photo-1346155.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJ96Mwsbw_4ToRE5WfSZI7o8U",
+    mapUrl: "https://maps.app.goo.gl/xbhEAfjCQkRmPyVp9",
   },
   {
     id: "twin-fin-surf-x-coffee",
@@ -592,8 +589,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+26fruit-cafe.webp",
     ogImage:
       "https://images.pexels.com/photos/1346155/pexels-photo-1346155.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJ0z_XLQAV4ToR57cYLTd1E-w",
+    mapUrl: "https://maps.app.goo.gl/5W2j6qfJTZbc8DGk8",
   },
   {
     id: "maria-bonita-sri-lanka",
@@ -630,8 +626,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp",
     ogImage:
       "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJkbeaLj8T4ToR8Pb-FNdHuro",
+    mapUrl: "https://maps.app.goo.gl/pPNjhCKkUxhj3Vo68",
   },
   {
     id: "follow-the-white-rabbit-ahangama",
@@ -778,8 +773,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/jam_house.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/jam_house.jpg",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJMWdHKFgT4ToRU_rkte-QoDI",
+    mapUrl: "https://maps.app.goo.gl/tUduC5yN4dTWnEEYA",
   },
   {
     id: "patels-ahangama",
@@ -813,7 +807,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/petals.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/petals.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/PCgejj7xebDu9Y5r9",
   },
   {
     id: "tahini-and-friends-ahangama",
@@ -847,7 +841,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tahini_friends.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tahini_friends.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/zDup8fE9BapuXbzz6",
   },
   {
     id: "burrito-bandito-ahangama",
@@ -880,7 +874,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/burrito_bandito.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/burrito_bandito.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/kc6hnMtQW6zgNMrD8",
   },
   {
     id: "iluk-ahangama",
@@ -914,7 +908,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/iluk.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/iluk.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/RGzbQFd9hCCxaJzb8",
   },
   {
     id: "alii-kai-ahangama",
@@ -948,7 +942,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/alii_kai.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/alii_kai.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/1DgHfZsVHNXqpxfy7",
   },
   {
     id: "citra-ahangama",
@@ -986,7 +980,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/citra.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/citra.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/MxmfncUtakuGstv47",
   },
   {
     id: "donna-ahangama",
@@ -1024,7 +1018,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/donna.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/donna.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/tGXAaSHGY8cYZY479",
   },
   {
     id: "tara-cafe-eat",
@@ -1061,7 +1055,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tara_cafe.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tara_cafe.jpg",
-    mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJDefault",
+    mapUrl: "https://maps.app.goo.gl/LMZudj96VDKeiKzW7",
   },
   {
     id: "the-kip-stay",
@@ -1290,7 +1284,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Mosvold+Villa.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Mosvold+Villa.jpg",
-    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.977298709439299,80.35352992935663`,
+    mapUrl: `https://maps.app.goo.gl/kgo61MvLMfaHHfdv9`,
   },
   {
     id: "kabalana-house-by-ceilao-villas",
@@ -1861,7 +1855,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_vintage.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unu_vintage.jpg",
-    mapUrl: `https://www.google.com/maps/search/?api=1&query=5.9741413,80.3592737`,
+    mapUrl: `https://maps.app.goo.gl/7D7y5G6vi2VVjEa39`,
   },
   {
     id: "aksaaya-ayurveda-wellness-spa",
@@ -1936,8 +1930,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_board_hut.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/experiences/the_board_hut.jpg",
-    mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=5.966269525558065,80.37681812446193",
+    mapUrl: "https://maps.app.goo.gl/n9rrWQUhSsYuiBa46",
   },
   {
     id: "lotus-surf-wellness",
@@ -2135,6 +2128,8 @@ export const PLACES = [
     name: "Gusta",
     slug: "gusta",
     status: "active",
+    stars: 4.9,
+    reviews: 23,
     excerpt: "Online supermarket serving Kabalana and surrounding areas.",
     description:
       "Online supermarket in Kabalana offering convenient grocery delivery and pickup services.",
@@ -2156,7 +2151,6 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/guesta.jpg",
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/guesta.jpg",
-    mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=5.978468021160938,80.34854993743255",
+    mapUrl: "https://maps.app.goo.gl/gt5VL71Vu3uxqrYw5",
   },
 ];
