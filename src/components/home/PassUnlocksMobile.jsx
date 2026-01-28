@@ -104,17 +104,21 @@ function MobilePlaceCard({ p }) {
       }
       style={{
         background: "#fff",
-        borderRadius: "12px",
+        borderRadius: "14px",
         overflow: "hidden",
         cursor: "pointer",
         boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-        marginBottom: "12px",
+        marginBottom: "16px",
         position: "relative",
+        minHeight: 140,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-end",
       }}
     >
-      {/* Horizontal layout for mobile */}
+      {/* Main content */}
       <div style={{ display: "flex", height: "120px" }}>
-        {/* Image section - smaller for mobile */}
+        {/* Image section */}
         <div
           style={{
             width: "100px",
@@ -151,81 +155,136 @@ function MobilePlaceCard({ p }) {
             {CATEGORY_LABELS[p.category]?.split(" ")[0] || p.category}
           </div>
         </div>
-
-        {/* Content section */}
+        {/* Info section */}
         <div
           style={{
             flex: 1,
-            padding: "12px",
+            padding: "12px 12px 8px 12px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: "flex-start",
+            minWidth: 0,
           }}
         >
-          {/* Top section */}
-          <div>
-            <h4
+          <h4
+            style={{
+              fontSize: "15px",
+              fontWeight: "600",
+              margin: "0 0 4px 0",
+              color: "#222",
+              lineHeight: "1.3",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {p.name}
+            <PlaceStatusTag place={p} />
+          </h4>
+          <Text
+            style={{
+              fontSize: "12px",
+              color: "#666",
+              display: "block",
+              marginBottom: "6px",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {p.area || "Ahangama"}
+          </Text>
+          {/* Reviews and Stars */}
+          {typeof p.stars === "number" && typeof p.reviews === "number" && (
+            <div
               style={{
-                fontSize: "15px",
-                fontWeight: "600",
-                margin: "0 0 4px 0",
-                color: "#222",
-                lineHeight: "1.3",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                marginBottom: 6,
               }}
             >
-              {p.name}
-              <PlaceStatusTag place={p} />
-            </h4>
-            <Text
-              style={{
-                fontSize: "12px",
-                color: "#666",
-                display: "block",
-                marginBottom: "8px",
-              }}
-            >
-              {p.area || "Ahangama"}
-            </Text>
-          </div>
-
-          {/* Offer tags */}
-          {offerTags.length > 0 && (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
-              {offerTags.slice(0, 2).map((tag, index) => (
-                <span
-                  key={index}
-                  style={{
-                    fontSize: "10px",
-                    padding: "3px 6px",
-                    borderRadius: "8px",
-                    background: tagColors.background,
-                    color: tagColors.color,
-                    fontWeight: "500",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.3px",
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-              {offerTags.length > 2 && (
-                <span
-                  style={{
-                    fontSize: "10px",
-                    padding: "3px 6px",
-                    borderRadius: "8px",
-                    background: "#f0f0f0",
-                    color: "#666",
-                    fontWeight: "500",
-                  }}
-                >
-                  +{offerTags.length - 2}
-                </span>
-              )}
+              <span style={{ color: "#FFD700", fontSize: 14, marginRight: 2 }}>
+                ★
+              </span>
+              <span style={{ fontWeight: 500, color: "#222", fontSize: 13 }}>
+                {p.stars.toFixed(1)}
+              </span>
+              <span style={{ color: "#888", fontSize: 12 }}>
+                ({p.reviews.toLocaleString()} reviews)
+              </span>
+            </div>
+          )}
+          {/* Google Maps link */}
+          {p.mapUrl && (
+            <div style={{ margin: "2px 0 0 0" }}>
+              <a
+                href={p.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#388e3c",
+                  fontWeight: 600,
+                  fontSize: 13,
+                  textDecoration: "underline",
+                  letterSpacing: "0.02em",
+                }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                Open in Google Maps →
+              </a>
             </div>
           )}
         </div>
       </div>
+      {/* Offer bar at the bottom */}
+      {offerTags.length > 0 && (
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "8px",
+            // background: "#e8f5e8",
+            boxShadow:
+              "0 2px 8px 0 rgba(44, 62, 80, 0.10), 0 -2px 8px 0 rgba(44, 62, 80, 0.04) inset",
+            borderBottomLeftRadius: 14,
+            borderBottomRightRadius: 14,
+            padding: "12px 12px 10px 12px",
+            minHeight: 44,
+            alignItems: "center",
+            position: "relative",
+            zIndex: 2,
+            marginTop: 0,
+          }}
+        >
+          {offerTags.map((tag, index) => (
+            <span
+              key={index}
+              style={{
+                background: "#b7e4c7",
+                color: "#205c3b",
+                fontWeight: 700,
+                fontSize: 10,
+                textTransform: "uppercase",
+                borderRadius: 999,
+                padding: "7px 16px",
+                letterSpacing: "0.08em",
+                boxShadow: "0 1px 4px 0 rgba(44, 62, 80, 0.08)",
+                margin: 0,
+                display: "inline-block",
+                border: "none",
+                outline: "none",
+                cursor: "pointer",
+                userSelect: "none",
+                transition: "background 0.2s, color 0.2s",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
