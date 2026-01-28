@@ -257,20 +257,14 @@ function MobilePlaceCard({ p }) {
                   e.stopPropagation();
                   e.preventDefault();
                   const mapUrl = getGoogleMapsUrl(p.mapUrl);
-                  const win = window.open(mapUrl, "_blank");
-                  if (!win) {
-                    window.location.href = mapUrl;
-                  }
+                  window.location.href = mapUrl;
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.stopPropagation();
                     e.preventDefault();
                     const mapUrl = getGoogleMapsUrl(p.mapUrl);
-                    const win = window.open(mapUrl, "_blank");
-                    if (!win) {
-                      window.location.href = mapUrl;
-                    }
+                    window.location.href = mapUrl;
                   }
                 }}
               >
