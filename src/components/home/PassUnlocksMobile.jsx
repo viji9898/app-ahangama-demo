@@ -36,18 +36,28 @@ const CATEGORY_LABELS = {
 };
 
 function MobilePlaceCard({ p }) {
-    // Helper to get correct Google Maps URL
-    const getGoogleMapsUrl = (url) => {
-      if (!url) return null;
-      // If url is a place_id or starts with place_id:
-      const placeIdMatch = url.match(/^place_id:(.+)$/i);
-      if (placeIdMatch) {
-        const placeId = placeIdMatch[1].trim();
-        return `https://www.google.com/maps/search/?api=1&query_place_id=${encodeURIComponent(placeId)}`;
-      }
-      // If url looks like a full Google Maps URL, return as is
+  // Helper to get correct Google Maps URL
+  const getGoogleMapsUrl = (url) => {
+    if (!url) return null;
+    // Case 1: url is just place_id:...
+    let placeIdMatch = url.match(/^place_id:(.+)$/i);
+    if (placeIdMatch) {
+      const placeId = placeIdMatch[1].trim();
+      return `https://www.google.com/maps/search/?api=1&query_place_id=${encodeURIComponent(placeId)}`;
+    }
+    // Case 2: url is https://www.google.com/maps/place/?q=place_id:...
+    placeIdMatch = url.match(/\/maps\/place\/?\?q=place_id:([^&]+)/i);
+    if (placeIdMatch) {
+      const placeId = placeIdMatch[1].trim();
+      return `https://www.google.com/maps/search/?api=1&query_place_id=${encodeURIComponent(placeId)}`;
+    }
+    // Case 3: url is already the correct /search/?api=1&query_place_id=...
+    if (url.includes("/maps/search/") && url.includes("query_place_id=")) {
       return url;
-    };
+    }
+    // Otherwise, return as is
+    return url;
+  };
   const fallbackImage =
     "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=400";
 
