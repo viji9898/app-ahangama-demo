@@ -556,8 +556,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sisters.jpg",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJs3TNP9YT4ToRsOY3_6NdMfA",
+    mapUrl: "https://maps.app.goo.gl/ysBJY5B2zj5jVrN17",
   },
   {
     id: "fruit-cafe-ahangama",
