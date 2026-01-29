@@ -1,4 +1,40 @@
 export const PLACES = [
+  {
+    id: "veda-cafe",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Veda Cafe",
+    slug: "veda-cafe",
+    status: "active",
+    stars: 4.9,
+    reviews: 328,
+    excerpt: "Healthy, vibrant café with a focus on fresh ingredients.",
+    description:
+      "Veda Cafe offers a delicious menu of healthy eats and drinks, with a 10% discount for pass holders.",
+    bestFor: ["Healthy Eats", "Coffee", "Brunch"],
+    tags: ["Healthy", "Vibrant", "Fresh"],
+    cardPerk: "10% off all menu items with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all menu items. Cannot be combined with other offers.",
+    whatsApp: "94771234599",
+    email: "info@vedacafe.com",
+    instagram: "vedacafeahangama",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.97829759746546,
+    lng: 80.34999516626638,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/veda.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/veda_cafe.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/veda_cafe.jpg",
+    mapUrl: "https://maps.app.goo.gl/fLNGYjxupgALPgLX6",
+  },
   //CAFES
 
   {
@@ -911,11 +947,11 @@ export const PLACES = [
     mapUrl: "https://maps.app.goo.gl/RGzbQFd9hCCxaJzb8",
   },
   {
-    id: "alii-kai-ahangama",
+    id: "aliikai-ahangama",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "Alii Kai",
-    slug: "alii-kai-ahangama",
+    name: "Aliikai",
+    slug: "aliikai-ahangama",
     status: "active",
     stars: 5,
     reviews: 45,
