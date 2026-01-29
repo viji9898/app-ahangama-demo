@@ -1,5 +1,40 @@
 export const PLACES = [
   {
+    id: "daydream",
+    destinationSlug: "ahangama",
+    category: "retail",
+    name: "Daydream",
+    slug: "daydream",
+    status: "active",
+    stars: 4.8,
+    reviews: 22,
+    excerpt: "Trendy retail shop for unique finds in Ahangama.",
+    description:
+      "Daydream offers a curated selection of retail goods with a 10% discount for pass holders.",
+    bestFor: ["Shopping", "Gifts", "Trendy Finds"],
+    tags: ["Retail", "Trendy", "Curated"],
+    cardPerk: "10% off all purchases with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim: "Show your Ahangama Card at checkout to receive the discount.",
+    restrictions:
+      "Valid for all purchases. Cannot be combined with other offers.",
+    whatsApp: "94771234601",
+    email: "info@daydream.com",
+    instagram: "daydreamahangama",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.9708791479746575,
+    lng: 80.3668191797624,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/day_dream.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/daydream.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+9the-kip.webp",
+    mapUrl: "https://maps.app.goo.gl/LE1mdwYayDufwWaY8",
+  },
+  {
     id: "mellow-hostel",
     destinationSlug: "ahangama",
     category: "stays",
