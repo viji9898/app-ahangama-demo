@@ -77,9 +77,9 @@ export default function HeroSectionMobile({ heroImage }) {
             textAlign: "center",
           }}
         >
-          Ahangama Guide
+          Privileges & Discounts
           <br />
-          <small>to Perks & Discounts</small>
+          <small>Ahangama Guide</small>
         </Title>
 
         <Paragraph

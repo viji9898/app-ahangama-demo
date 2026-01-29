@@ -164,9 +164,9 @@ export default function Home() {
                     </div>
 
                     <Title className="ahg-h1">
-                      Ahangama Guide
+                      Privileges & Discounts
                       <br />
-                      <small>to Perks & Discounts</small>
+                      <small>Ahangama Guide </small>
                     </Title>
 
                     <Paragraph className="ahg-sub">
