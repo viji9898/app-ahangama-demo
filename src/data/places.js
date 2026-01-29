@@ -1,5 +1,41 @@
 export const PLACES = [
   {
+    id: "wave-cafe",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Wave Cafe",
+    slug: "wave-cafe",
+    status: "active",
+    stars: 4.8,
+    reviews: 155,
+    excerpt: "Beachside café with a relaxed vibe and great coffee.",
+    description:
+      "Wave Cafe serves up delicious food and drinks by the sea, with a 10% discount for pass holders.",
+    bestFor: ["Coffee", "Beachside", "Brunch"],
+    tags: ["Cafe", "Beach", "Relaxed"],
+    cardPerk: "10% off all menu items with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all menu items. Cannot be combined with other offers.",
+    whatsApp: "94771234602",
+    email: "info@wavecafe.com",
+    instagram: "wavecafeahangama",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.98254317290508,
+    lng: 80.33695907790974,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cafe_wave.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/wave_cafe.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/wave_cafe.jpg",
+    mapUrl: "https://maps.app.goo.gl/Ct3asNTv9FPYWers7",
+  },
+  {
     id: "daydream",
     destinationSlug: "ahangama",
     category: "retail",
@@ -1371,7 +1407,7 @@ export const PLACES = [
     bestFor: ["Villa", "Comfort", "Hospitality"],
     tags: ["Villa", "Well-reviewed", "Comfort"],
     cardPerk: "10% off food and beverages with the Ahangama Card.",
-    offer: ["10% off F&B"],
+    offer: ["10% off F&B & direct bookings"],
     howToClaim:
       "Present your Ahangama Card at check-in to receive 10% off food and beverages.",
     restrictions: "Offer valid for food and beverage purchases only.",
