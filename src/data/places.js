@@ -1,5 +1,42 @@
 export const PLACES = [
   {
+    id: "coconut-republik",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Coconut Republik",
+    slug: "coconut-republik",
+    status: "active",
+    stars: 4.8,
+    reviews: 31,
+    excerpt:
+      "Tropical café with a focus on coconut-inspired dishes and drinks.",
+    description:
+      "Coconut Republik offers a unique menu centered around coconut, with a 10% discount for pass holders.",
+    bestFor: ["Coconut Dishes", "Cafe", "Brunch"],
+    tags: ["Coconut", "Cafe", "Tropical"],
+    cardPerk: "10% off all menu items with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all menu items. Cannot be combined with other offers.",
+    whatsApp: "94771234603",
+    email: "info@coconutrepublik.com",
+    instagram: "coconutrepublikahangama",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.966741271767227,
+    lng: 80.37552489325415,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/coconut_republik.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coconut_republik.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coconut_republik.jpg",
+    mapUrl: "https://maps.app.goo.gl/yan9wpQrVt45x2vJA",
+  },
+  {
     id: "wave-cafe",
     destinationSlug: "ahangama",
     category: "eat",
