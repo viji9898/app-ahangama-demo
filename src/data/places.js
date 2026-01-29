@@ -1095,7 +1095,7 @@ export const PLACES = [
     destinationSlug: "ahangama",
     category: "eat",
     name: "Tara Beach Cafe",
-    slug: "tara-cafe-ahangama",
+    slug: "tara-beach-cafe-ahangama",
     status: "active",
     stars: 4.8,
     reviews: 148,
