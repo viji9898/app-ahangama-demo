@@ -1173,10 +1173,10 @@ export const PLACES = [
       "A well-established restaurant in Ahangama with an impressive 4.6-star rating from 540 reviews, known for its consistent quality and excellent service.",
     bestFor: ["Lunch", "Dinner", "Local cuisine"],
     tags: ["Popular", "High ratings", "Established"],
-    cardPerk: "10% off your total bill with the Ahangama Card.",
-    offer: ["10% off", "Free desert"],
+    cardPerk: "Free desert with the Ahangama Card.",
+    offer: ["Free desert"],
     howToClaim:
-      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+      "Show your Ahangama Card when ordering to receive a free desert.",
     restrictions:
       "Valid for dine-in and takeaway orders. Cannot be combined with other offers.",
     whatsApp: "94771234571",
