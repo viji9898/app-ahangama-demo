@@ -1,5 +1,41 @@
 export const PLACES = [
   {
+    id: "its-your-living-room",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "It's Your Living Room",
+    slug: "its-your-living-room",
+    status: "active",
+    stars: 5,
+    reviews: 47,
+    excerpt: "Cozy café with a homey vibe and delicious eats.",
+    description:
+      "It's Your Living Room offers a welcoming space and a 10% discount for pass holders.",
+    bestFor: ["Coffee", "Brunch", "Chill"],
+    tags: ["Cozy", "Homey", "Cafe"],
+    cardPerk: "10% off all menu items with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all menu items. Cannot be combined with other offers.",
+    whatsApp: "94771234604",
+    email: "info@livingroom.com",
+    instagram: "livingroomahangama",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.972781176617157,
+    lng: 80.36349925767135,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/living_room.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/living_room.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/living_room.jpg",
+    mapUrl: "https://maps.app.goo.gl/YHBjSbC1JG91Xdvu5",
+  },
+  {
     id: "coconut-republik",
     destinationSlug: "ahangama",
     category: "eat",
@@ -2322,6 +2358,39 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/manori_s_kitchen.jpg",
     mapUrl:
       "https://www.google.com/maps/search/?api=1&query=5.970553677414811,80.37116892443733",
+  },
+  {
+    id: "daily-dose-cafe",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Daily Dose Cafe",
+    slug: "daily-dose-cafe",
+    status: "active",
+    stars: 5,
+    reviews: 15,
+    excerpt: "Chill cafe with great coffee and 10% off for pass holders.",
+    description:
+      "Daily Dose Cafe offers a relaxing atmosphere and a 10% discount for Ahangama Card holders.",
+    bestFor: ["Coffee", "Breakfast", "Remote Work"],
+    tags: ["Cafe", "Chill", "Coffee"],
+    cardPerk: "10% off all menu items with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all menu items. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.9786992334030895,
+    lng: 80.34792627790884,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/daily_dose.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/daily_dose.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/daily_dose.jpg",
+    mapUrl: "https://maps.app.goo.gl/2Lwo5eFGmpDLSDu29",
   },
   {
     id: "gusta",
