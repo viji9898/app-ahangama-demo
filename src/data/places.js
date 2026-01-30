@@ -967,10 +967,10 @@ export const PLACES = [
       "A well-reviewed restaurant in Ahangama known for its excellent food and welcoming atmosphere. Perfect for a great dining experience.",
     bestFor: ["Lunch", "Dinner", "Groups"],
     tags: ["Popular", "Good food", "Welcoming"],
-    cardPerk: "10% off your total bill with the Ahangama Card.",
-    offer: ["10% off"],
+    cardPerk: "20% off your total bill with the Ahangama Card.",
+    offer: ["20% off"],
     howToClaim:
-      "Show your Ahangama Card when ordering to receive 10% off your total bill.",
+      "Show your Ahangama Card when ordering to receive 20% off your total bill.",
     restrictions:
       "Valid for dine-in orders. Cannot be combined with other offers.",
     whatsApp: "94771234596",
@@ -1174,7 +1174,7 @@ export const PLACES = [
     bestFor: ["Lunch", "Dinner", "Local cuisine"],
     tags: ["Popular", "High ratings", "Established"],
     cardPerk: "10% off your total bill with the Ahangama Card.",
-    offer: ["10% off"],
+    offer: ["10% off", "Free desert"],
     howToClaim:
       "Show your Ahangama Card when ordering to receive 10% off your total bill.",
     restrictions:
