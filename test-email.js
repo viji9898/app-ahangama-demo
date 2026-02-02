@@ -8,7 +8,7 @@ async function sendTestEmail() {
     const oauth2Client = new google.auth.OAuth2(
       process.env.GMAIL_CLIENT_ID,
       process.env.GMAIL_CLIENT_SECRET,
-      "http://localhost:8889"
+      "http://localhost:8889",
     );
 
     // Set refresh token
