@@ -1,4 +1,4 @@
-const { google } = require("googleapis");
+const sgMail = require("@sendgrid/mail");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -10,7 +10,7 @@ exports.handler = async (event) => {
 
   try {
     const { customerEmail, customerName, qrCode, pdfBase64 } = JSON.parse(
-      event.body || "{}"
+      event.body || "{}",
     );
 
     // Input validation
@@ -23,34 +23,8 @@ exports.handler = async (event) => {
       };
     }
 
-    // Environment variables validation
-    const {
-      GMAIL_USER,
-      GMAIL_CLIENT_ID,
-      GMAIL_CLIENT_SECRET,
-      GMAIL_REFRESH_TOKEN,
-    } = process.env;
-    if (
-      !GMAIL_USER ||
-      !GMAIL_CLIENT_ID ||
-      !GMAIL_CLIENT_SECRET ||
-      !GMAIL_REFRESH_TOKEN
-    ) {
-      throw new Error("Missing Gmail environment variables");
-    }
-
-    // Set up Gmail API with OAuth2
-    const oauth2Client = new google.auth.OAuth2(
-      GMAIL_CLIENT_ID,
-      GMAIL_CLIENT_SECRET,
-      "urn:ietf:wg:oauth:2.0:oob"
-    );
-
-    oauth2Client.setCredentials({
-      refresh_token: GMAIL_REFRESH_TOKEN,
-    });
-
-    const gmail = google.gmail({ version: "v1", auth: oauth2Client });
+    // Set SendGrid API key
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
     const subject = "Your Ahangama Pass is Ready - Digital Card Inside!";
 
@@ -85,7 +59,7 @@ exports.handler = async (event) => {
                   <p>🎊 <strong>Congratulations!</strong> Your Ahangama Pass purchase was successful, and you're now ready to unlock exclusive experiences in beautiful Ahangama!</p>
                   
                   <div class="pass-code" style="text-align: center; margin: 20px 0;">
-                      <a href="https://ahangama.com/card/pass/${qrCode.includes('?qr=') ? qrCode.split('?qr=')[1] : qrCode}" class="button" style="margin-top: 10px; display: inline-block;">📱 View Your Digital Pass</a>
+                      <a href="https://ahangama.com/card/pass/${qrCode.includes("?qr=") ? qrCode.split("?qr=")[1] : qrCode}" class="button" style="margin-top: 10px; display: inline-block;">📱 View Your Digital Pass</a>
                   </div>
                   
                   <div class="benefits">
@@ -140,43 +114,23 @@ exports.handler = async (event) => {
     const safeSuffix = String(qrCode).split("-").pop() || "pass";
     const filename = `ahangama-pass-${safeSuffix}.pdf`;
 
-    // Create email content with proper MIME structure
-    const boundary = "ahangama_pass_boundary_" + Date.now();
+    // Send email with SendGrid
+    const msg = {
+      to: customerEmail,
+      from: "hello@ahangama.com",
+      subject,
+      html: htmlBody,
+      attachments: [
+        {
+          content: pdfBase64,
+          filename,
+          type: "application/pdf",
+          disposition: "attachment",
+        },
+      ],
+    };
 
-    const rawMessage = [
-      `From: "Ahangama Pass" <${GMAIL_USER}>`,
-      `To: ${customerEmail}`,
-      `Subject: ${subject}`,
-      `MIME-Version: 1.0`,
-      `Content-Type: multipart/mixed; boundary="${boundary}"`,
-      ``,
-      `--${boundary}`,
-      `Content-Type: text/html; charset=utf-8`,
-      `Content-Transfer-Encoding: quoted-printable`,
-      ``,
-      htmlBody.replace(/=/g, "=3D").replace(/\n/g, "\r\n"),
-      ``,
-      `--${boundary}`,
-      `Content-Type: application/pdf; name="${filename}"`,
-      `Content-Transfer-Encoding: base64`,
-      `Content-Disposition: attachment; filename="${filename}"`,
-      ``,
-      pdfBase64,
-      ``,
-      `--${boundary}--`,
-    ].join("\r\n");
-
-    // Send email using Gmail API
-    await gmail.users.messages.send({
-      userId: "me",
-      requestBody: {
-        raw: Buffer.from(rawMessage)
-          .toString("base64")
-          .replace(/\+/g, "-")
-          .replace(/\//g, "_")
-          .replace(/=+$/, ""),
-      },
-    });
+    await sgMail.send(msg);
 
     return {
       statusCode: 200,
