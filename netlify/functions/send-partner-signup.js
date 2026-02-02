@@ -1,4 +1,4 @@
-const { google } = require("googleapis");
+const sgMail = require("@sendgrid/mail");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -21,34 +21,8 @@ exports.handler = async (event) => {
       };
     }
 
-    // Environment variables validation
-    const {
-      GMAIL_USER,
-      GMAIL_CLIENT_ID,
-      GMAIL_CLIENT_SECRET,
-      GMAIL_REFRESH_TOKEN,
-    } = process.env;
-    if (
-      !GMAIL_USER ||
-      !GMAIL_CLIENT_ID ||
-      !GMAIL_CLIENT_SECRET ||
-      !GMAIL_REFRESH_TOKEN
-    ) {
-      throw new Error("Missing Gmail environment variables");
-    }
-
-    // Set up Gmail API with OAuth2
-    const oauth2Client = new google.auth.OAuth2(
-      GMAIL_CLIENT_ID,
-      GMAIL_CLIENT_SECRET,
-      "urn:ietf:wg:oauth:2.0:oob"
-    );
-
-    oauth2Client.setCredentials({
-      refresh_token: GMAIL_REFRESH_TOKEN,
-    });
-
-    const gmail = google.gmail({ version: "v1", auth: oauth2Client });
+    // Set SendGrid API key
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
     // Create email content for admin
     const adminEmailContent = `
@@ -92,7 +66,7 @@ exports.handler = async (event) => {
         ${
           formData.offerType
             ? `<p><strong>Offer Type:</strong> ${JSON.stringify(
-                formData.offerType
+                formData.offerType,
               )}</p>`
             : ""
         }
@@ -104,7 +78,7 @@ exports.handler = async (event) => {
         ${
           formData.offerAppliesTo
             ? `<p><strong>Applies To:</strong> ${JSON.stringify(
-                formData.offerAppliesTo
+                formData.offerAppliesTo,
               )}</p>`
             : ""
         }
@@ -271,53 +245,23 @@ exports.handler = async (event) => {
     `;
 
     // Send email to admin
-    const adminEmailMessage = [
-      `From: "Ahangama Pass" <${GMAIL_USER}>`,
-      `To: team@ahangama.com`,
-      `Subject: ${formData.venueName} Partnership Sign Up`,
-      `Content-Type: text/html; charset=utf-8`,
-      ``,
-      adminEmailContent,
-    ].join("\r\n");
-
-    const adminEncodedMessage = Buffer.from(adminEmailMessage)
-      .toString("base64")
-      .replace(/\+/g, "-")
-      .replace(/\//g, "_")
-      .replace(/=+$/, "");
-
-    await gmail.users.messages.send({
-      userId: "me",
-      requestBody: {
-        raw: adminEncodedMessage,
-      },
+    await sgMail.send({
+      to: "team@ahangama.com",
+      from: "hello@ahangama.com",
+      subject: `${formData.venueName} Partnership Sign Up`,
+      html: adminEmailContent,
     });
 
     // Send confirmation email to partner
-    const partnerEmailMessage = [
-      `From: "Ahangama Pass" <${GMAIL_USER}>`,
-      `To: ${formData.email}`,
-      `Subject: Partnership Application Received - ${formData.venueName}`,
-      `Content-Type: text/html; charset=utf-8`,
-      ``,
-      partnerEmailContent,
-    ].join("\r\n");
-
-    const partnerEncodedMessage = Buffer.from(partnerEmailMessage)
-      .toString("base64")
-      .replace(/\+/g, "-")
-      .replace(/\//g, "_")
-      .replace(/=+$/, "");
-
-    await gmail.users.messages.send({
-      userId: "me",
-      requestBody: {
-        raw: partnerEncodedMessage,
-      },
+    await sgMail.send({
+      to: formData.email,
+      from: "hello@ahangama.com",
+      subject: `Partnership Application Received - ${formData.venueName}`,
+      html: partnerEmailContent,
     });
 
     console.log(
-      `Partnership application emails sent successfully for ${formData.venueName}`
+      `Partnership application emails sent successfully for ${formData.venueName}`,
     );
 
     return {
