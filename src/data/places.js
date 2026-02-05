@@ -1,16 +1,16 @@
 export const PLACES = [
   {
-    id: "its-your-living-room",
+    id: "living-room-concept-store",
     destinationSlug: "ahangama",
     category: "eat",
-    name: "It's Your Living Room",
-    slug: "its-your-living-room",
+    name: "Living Room Concept Store",
+    slug: "living-room-concept-store",
     status: "active",
     stars: 5,
     reviews: 47,
     excerpt: "Cozy café with a homey vibe and delicious eats.",
     description:
-      "It's Your Living Room offers a welcoming space and a 10% discount for pass holders.",
+      "Living Room Concept Store offers a welcoming space and a 10% discount for pass holders.",
     bestFor: ["Coffee", "Brunch", "Chill"],
     tags: ["Cozy", "Homey", "Cafe"],
     cardPerk: "10% off all menu items with the Ahangama Card.",
@@ -20,7 +20,7 @@ export const PLACES = [
     restrictions:
       "Valid for all menu items. Cannot be combined with other offers.",
     whatsApp: "94771234604",
-    email: "info@livingroom.com",
+    email: "info@livingroomconceptstore.com",
     instagram: "livingroomahangama",
     discount: 0.1,
     price: "Mid-range",
@@ -50,8 +50,8 @@ export const PLACES = [
       "Coconut Republik offers a unique menu centered around coconut, with a 10% discount for pass holders.",
     bestFor: ["Coconut Dishes", "Cafe", "Brunch"],
     tags: ["Coconut", "Cafe", "Tropical"],
-    cardPerk: "10% off all menu items with the Ahangama Card.",
-    offer: ["10% Off"],
+    cardPerk: "20% off all menu items with the Ahangama Card.",
+    offer: ["20% Off"],
     howToClaim:
       "Show your Ahangama Card when ordering to receive the discount.",
     restrictions:
@@ -59,7 +59,7 @@ export const PLACES = [
     whatsApp: "94771234603",
     email: "info@coconutrepublik.com",
     instagram: "coconutrepublikahangama",
-    discount: 0.1,
+    discount: 0.2,
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama",
