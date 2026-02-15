@@ -26,7 +26,9 @@ const CardTerms = () => {
             <Button
               type="text"
               icon={<ArrowLeftOutlined />}
-              href="/card"
+              href="https://pass.ahangama.com"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ marginBottom: 16, padding: 0 }}
             >
               Back to Card Options

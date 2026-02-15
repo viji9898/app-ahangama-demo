@@ -148,7 +148,7 @@ export default function MasterIndex() {
               </div>
 
               <div style={{ marginTop: 14 }}>
-                <Button block href="/card" icon={<ArrowRightOutlined />}>
+                <Button block href="https://pass.ahangama.com" icon={<ArrowRightOutlined />} target="_blank" rel="noopener noreferrer">
                   Get the Pass
                 </Button>
               </div>

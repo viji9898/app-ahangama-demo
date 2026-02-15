@@ -185,8 +185,10 @@ export default function Home() {
                       </Button> */}
                       <Button
                         size="large"
-                        href="/card"
+                        href="https://pass.ahangama.com"
                         icon={<QrcodeOutlined />}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Get the Card
                       </Button>
@@ -470,8 +472,10 @@ export default function Home() {
                     type="primary"
                     size="large"
                     block
-                    href="/card"
+                    href="https://pass.ahangama.com"
                     icon={<QrcodeOutlined />}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Get the Card
                   </Button>

@@ -190,7 +190,9 @@ export default function FooterBar() {
                 <Button
                   block
                   type="primary"
-                  href="/card"
+                  href="https://pass.ahangama.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     background: "var(--ocean-blue, #4f6f86)",
                     border: "none",

@@ -476,8 +476,10 @@ export default function About() {
 
                   <Button
                     size="large"
-                    href="/card"
+                    href="https://pass.ahangama.com"
                     icon={<QrcodeOutlined />}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                       borderRadius: "12px",
                       height: "48px",

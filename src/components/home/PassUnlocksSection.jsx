@@ -539,7 +539,9 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
             /> */}
             <Button
               type="primary"
-              href="/card"
+              href="https://pass.ahangama.com"
+              target="_blank"
+              rel="noopener noreferrer"
               icon={<QrcodeOutlined />}
               style={{
                 borderRadius: "16px",

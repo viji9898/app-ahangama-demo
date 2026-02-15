@@ -65,7 +65,12 @@ export default function TopNav() {
         </Col> */}
 
         <Col>
-          <Button type="primary" href="/card">
+          <Button
+            type="primary"
+            href="https://pass.ahangama.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Get the Card
           </Button>
         </Col>

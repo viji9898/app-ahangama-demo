@@ -514,7 +514,9 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
           <Button
             type="dashed"
             block
-            href="/card"
+            href="https://pass.ahangama.com"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               borderRadius: "12px",
               height: "40px",
