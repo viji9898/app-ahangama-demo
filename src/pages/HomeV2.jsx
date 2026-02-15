@@ -70,6 +70,134 @@ export default function HomeV2() {
   return (
     <SiteLayout>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: 24 }}>
+        {/* Banner Section */}
+        <div
+          className="ahg-banner-responsive"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundImage: ` url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/banner_background.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            borderRadius: 16,
+            boxShadow: "0 2px 8px rgba(79,111,134,0.06)",
+            padding: "28px 32px 24px 24px",
+            marginBottom: 32,
+            position: "relative",
+            overflow: "hidden",
+            flexWrap: "wrap",
+          }}
+        >
+          <div
+            className="ahg-banner-content"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              flex: 1,
+              minWidth: 0,
+            }}
+          >
+            <img
+              src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pass_sample.jpeg"
+              alt="Ahangama Pass Illustration"
+              style={{
+                width: 64,
+                height: "100%",
+                borderRadius: 6,
+                background: "#fff",
+                boxShadow: "0 1px 4px #e0e0e0",
+                flexShrink: 0,
+              }}
+            />
+            <div style={{ minWidth: 0 }}>
+              <div
+                className="ahg-banner-title"
+                style={{
+                  fontSize: 26,
+                  fontWeight: 700,
+                  color: "#222",
+                  lineHeight: 1.2,
+                }}
+              >
+                Unlock exclusive access & perks in
+                <strong>{` Ahangama.`}</strong>
+              </div>
+              <div
+                className="ahg-banner-desc"
+                style={{ fontSize: 17, color: "#6b6f6a", marginTop: 6 }}
+              >
+                One pass to save at cafés, surf-schools, hostels, and shops
+                owned by locals.
+              </div>
+            </div>
+          </div>
+          <a
+            href="https://pass.ahangama.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ahg-banner-btn"
+            style={{
+              display: "inline-block",
+              background: "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
+              color: "#fff",
+              fontWeight: 600,
+              fontSize: 20,
+              padding: "14px 38px",
+              borderRadius: 999,
+              boxShadow: "0 2px 8px rgba(252,136,3,0.10)",
+              textDecoration: "none",
+              transition: "background 0.2s, box-shadow 0.2s",
+              marginLeft: 32,
+              whiteSpace: "nowrap",
+              marginTop: 0,
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background =
+                "linear-gradient(90deg, #fc8803 60%, #f7b733 100%)";
+              e.currentTarget.style.boxShadow =
+                "0 4px 16px rgba(252,136,3,0.18)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background =
+                "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)";
+              e.currentTarget.style.boxShadow =
+                "0 2px 8px rgba(252,136,3,0.10)";
+            }}
+          >
+            Get Your Pass
+          </a>
+        </div>
+        <style>{`
+          @media (max-width: 700px) {
+            .ahg-banner-responsive {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              padding: 18px 10px 18px 10px !important;
+            }
+            .ahg-banner-content {
+              flex-direction: row !important;
+              gap: 12px !important;
+              margin-bottom: 12px !important;
+            }
+            .ahg-banner-title {
+              font-size: 20px !important;
+            }
+            .ahg-banner-desc {
+              font-size: 15px !important;
+            }
+            .ahg-banner-btn {
+              width: 100% !important;
+              margin-left: 0 !important;
+              margin-top: 16px !important;
+              font-size: 18px !important;
+              text-align: center !important;
+              padding: 14px 0 !important;
+            }
+          }
+        `}</style>
         <div
           style={{
             display: "flex",
