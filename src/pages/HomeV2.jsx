@@ -1,4 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// Haversine formula to calculate distance between two lat/lng points in km
+function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of the earth in km
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
 import {
   Card,
   Row,
@@ -24,6 +38,22 @@ const categories = Array.from(
 export default function HomeV2() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setUserLocation({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          });
+        },
+        () => {},
+        { enableHighAccuracy: true, timeout: 10000 },
+      );
+    }
+  }, []);
 
   // Filter active venues
   const filtered = PLACES.filter(
@@ -99,113 +129,130 @@ export default function HomeV2() {
               <Text type="secondary">No venues found.</Text>
             </Col>
           )}
-          {filtered.map((place) => (
-            <Col xs={12} sm={12} md={8} lg={6} key={place.id}>
-              <div
-                role="button"
-                tabIndex={0}
-                onClick={() =>
-                  place.mapUrl &&
-                  window.open(place.mapUrl, "_blank", "noopener,noreferrer")
-                }
-                onKeyPress={(e) => {
-                  if ((e.key === "Enter" || e.key === " ") && place.mapUrl) {
-                    window.open(place.mapUrl, "_blank", "noopener,noreferrer");
+          {filtered.map((place) => {
+            let distance = null;
+            if (userLocation && place.lat && place.lng) {
+              distance = getDistanceFromLatLonInKm(
+                userLocation.lat,
+                userLocation.lng,
+                place.lat,
+                place.lng,
+              );
+            }
+            return (
+              <Col xs={12} sm={12} md={8} lg={6} key={place.id}>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() =>
+                    place.mapUrl &&
+                    window.open(place.mapUrl, "_blank", "noopener,noreferrer")
                   }
-                }}
-                style={{
-                  cursor: place.mapUrl ? "pointer" : "default",
-                  borderRadius: 12,
-                }}
-              >
-                <Card
-                  size="small"
-                  className="ahg-card-hoverable"
-                  title={
-                    <div
-                      style={{ display: "flex", alignItems: "center", gap: 8 }}
-                    >
-                      {place.logo && (
-                        <img
-                          src={place.logo}
-                          alt={place.name + " logo"}
-                          style={{
-                            width: 32,
-                            height: 32,
-                            objectFit: "cover",
-                            borderRadius: 8,
-                            background: "#f5f5f5",
-                          }}
-                          loading="lazy"
-                        />
-                      )}
-                      <span style={{ fontWeight: 600 }}>{place.name}</span>
-                    </div>
-                  }
-                  extra={
-                    place.discount ? (
-                      <Tag color="gold">
-                        {Math.round(place.discount * 100)}% Off
-                      </Tag>
-                    ) : null
-                  }
+                  onKeyPress={(e) => {
+                    if ((e.key === "Enter" || e.key === " ") && place.mapUrl) {
+                      window.open(
+                        place.mapUrl,
+                        "_blank",
+                        "noopener,noreferrer",
+                      );
+                    }
+                  }}
                   style={{
-                    minHeight: 180,
-                    transition: "box-shadow 0.18s, border-color 0.18s",
+                    cursor: place.mapUrl ? "pointer" : "default",
                     borderRadius: 12,
                   }}
-                  bodyStyle={{ padding: 12 }}
                 >
-                  <div style={{ marginBottom: 4 }}>
-                    <Rate
-                      disabled
-                      value={place.stars || 0}
-                      allowHalf
-                      style={{ fontSize: 14 }}
-                    />
-                    <Text
-                      type="secondary"
-                      style={{ marginLeft: 6, fontSize: 13 }}
-                    >
-                      {place.stars ? place.stars.toFixed(1) : "-"} •{" "}
-                      {place.reviews || 0} reviews
-                    </Text>
-                  </div>
-                  <div
-                    className="ahg-hide-mobile-desc"
+                  <Card
+                    size="small"
+                    className="ahg-card-hoverable"
+                    title={
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 8,
+                        }}
+                      >
+                        {place.logo && (
+                          <img
+                            src={place.logo}
+                            alt={place.name + " logo"}
+                            style={{
+                              width: 32,
+                              height: 32,
+                              objectFit: "cover",
+                              borderRadius: 8,
+                              background: "#f5f5f5",
+                            }}
+                            loading="lazy"
+                          />
+                        )}
+                        <span style={{ fontWeight: 600 }}>{place.name}</span>
+                      </div>
+                    }
+                    extra={
+                      place.discount ? (
+                        <Tag color="gold">
+                          {Math.round(place.discount * 100)}% Off
+                        </Tag>
+                      ) : null
+                    }
                     style={{
-                      fontSize: 13,
-                      marginBottom: 6,
-                      color: "#555",
-                      display: "block",
+                      minHeight: 180,
+                      transition: "box-shadow 0.18s, border-color 0.18s",
+                      borderRadius: 12,
                     }}
+                    bodyStyle={{ padding: 12 }}
                   >
-                    {place.cardPerk}
-                  </div>
-                  <div style={{ fontSize: 12, color: "#888", marginBottom: 2 }}>
-                    {place.tags && place.tags.join(", ")}
-                  </div>
-                  <div style={{ fontSize: 12, color: "#888" }}>
-                    {place.area || place.category}
-                  </div>
-                </Card>
-              </div>
-              <style>{`
-                    @media (max-width: 600px) {
-                      .ahg-hide-mobile-desc {
-                        display: none !important;
-                      }
-                    }
-                    .ahg-card-hoverable {
-                      border: 1px solid #eee;
-                    }
-                    .ahg-card-hoverable:hover {
-                      box-shadow: 0 4px 18px rgba(79,111,134,0.13), 0 1.5px 6px rgba(0,0,0,0.07);
-                      border: 1.5px solid #b2c7d9 !important;
-                    }
-                  `}</style>
-            </Col>
-          ))}
+                    <div style={{ marginBottom: 4 }}>
+                      <Rate
+                        disabled
+                        value={place.stars || 0}
+                        allowHalf
+                        style={{ fontSize: 14 }}
+                      />
+                      <Text
+                        type="secondary"
+                        style={{ marginLeft: 6, fontSize: 13 }}
+                      >
+                        {place.stars ? place.stars.toFixed(1) : "-"} •{" "}
+                        {place.reviews || 0} reviews
+                      </Text>
+                    </div>
+                    <div
+                      className="ahg-hide-mobile-desc"
+                      style={{
+                        fontSize: 13,
+                        marginBottom: 6,
+                        color: "#555",
+                        display: "block",
+                      }}
+                    >
+                      {place.cardPerk}
+                    </div>
+                    <div
+                      style={{ fontSize: 12, color: "#888", marginBottom: 2 }}
+                    >
+                      {place.tags && place.tags.join(", ")}
+                    </div>
+                    <div style={{ fontSize: 12, color: "#888" }}>
+                      {place.area || place.category}
+                    </div>
+                    {distance !== null && (
+                      <div
+                        style={{ fontSize: 12, color: "#4f6f86", marginTop: 4 }}
+                      >
+                        {distance < 1
+                          ? `${Math.round(distance * 1000)} m`
+                          : `${distance.toFixed(1)} km`}{" "}
+                        away
+                      </div>
+                    )}
+                  </Card>
+                </div>
+              </Col>
+            );
+          })}
           <style>{`
                 @media (max-width: 600px) {
                   .ahg-hide-mobile-desc {
