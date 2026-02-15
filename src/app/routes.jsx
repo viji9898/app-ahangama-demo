@@ -27,7 +27,7 @@ import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 
 export const routes = [
-    { path: "/home-v-2", element: <HomeV2 /> },
+  { path: "/home-v-2", element: <HomeV2 /> },
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
   { path: "/partners", element: <Partners /> },
