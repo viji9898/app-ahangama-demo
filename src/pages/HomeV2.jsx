@@ -122,15 +122,14 @@ export default function HomeV2() {
                   lineHeight: 1.2,
                 }}
               >
-                Unlock exclusive access & perks in
-                <strong>{` Ahangama.`}</strong>
+                Guide to exclusive privileges in <strong>{` Ahangama.`}</strong>
               </div>
               <div
                 className="ahg-banner-desc"
                 style={{ fontSize: 17, color: "#6b6f6a", marginTop: 6 }}
               >
-                One pass to save at cafés, surf-schools, hostels, and shops
-                owned by locals.
+                One pass to save at cafés, surf-schools, hostels,experiences and
+                shops
               </div>
             </div>
           </div>
@@ -206,9 +205,6 @@ export default function HomeV2() {
             marginBottom: 24,
           }}
         >
-          <Title level={2} style={{ marginBottom: 0, fontSize: 28 }}>
-            All Active Venues & Discounts
-          </Title>
           <Input.Search
             placeholder="Search venues or perks"
             value={search}
@@ -267,6 +263,23 @@ export default function HomeV2() {
                 place.lng,
               );
             }
+            // Category to emoji mapping
+            const categoryIcons = {
+              food: "🍽️",
+              eat: "🍽️",
+              drink: "🍹",
+              stay: "🏨",
+              sleep: "🛏️",
+              sport: "🏄",
+              surf: "🏄",
+              yoga: "🧘",
+              shop: "🛍️",
+              wellness: "💆",
+              art: "🎨",
+              music: "🎵",
+            };
+            // Try to match category, fallback to generic icon
+            const icon = categoryIcons[(place.category || '').toLowerCase()] || "⭐";
             return (
               <Col xs={12} sm={12} md={8} lg={6} key={place.id}>
                 <div
@@ -318,17 +331,11 @@ export default function HomeV2() {
                         <span style={{ fontWeight: 600 }}>{place.name}</span>
                       </div>
                     }
-                    extra={
-                      place.discount ? (
-                        <Tag color="gold">
-                          {Math.round(place.discount * 100)}% Off
-                        </Tag>
-                      ) : null
-                    }
                     style={{
                       minHeight: 180,
                       transition: "box-shadow 0.18s, border-color 0.18s",
                       borderRadius: 12,
+                      position: 'relative',
                     }}
                     bodyStyle={{ padding: 12 }}
                   >
@@ -363,19 +370,48 @@ export default function HomeV2() {
                     >
                       {place.tags && place.tags.join(", ")}
                     </div>
-                    <div style={{ fontSize: 12, color: "#888" }}>
-                      {place.area || place.category}
-                    </div>
+                    {/* Removed location. Add line above discount tag. */}
                     {distance !== null && (
-                      <div
-                        style={{ fontSize: 12, color: "#4f6f86", marginTop: 4 }}
-                      >
-                        {distance < 1
-                          ? `${Math.round(distance * 1000)} m`
-                          : `${distance.toFixed(1)} km`}{" "}
-                        away
+                      <>
+                        <div style={{ borderTop: '1px solid #eee', margin: '8px 0 4px 0' }} />
+                        <div
+                          style={{ fontSize: 12, color: "#4f6f86", marginTop: 0 }}
+                        >
+                          {distance < 1
+                            ? `${Math.round(distance * 1000)} m`
+                            : `${distance.toFixed(1)} km`} {" "}
+                          away
+                        </div>
+                      </>
+                    )}
+                    {/* Discount tag and emoji at bottom right, side by side */}
+                    {(place.discount || icon) && (
+                      <div style={{
+                        position: 'absolute',
+                        right: 10,
+                        bottom: 8,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 6,
+                        pointerEvents: 'none',
+                      }}>
+                        {place.discount && (
+                          <Tag color="gold" style={{ margin: 0, fontSize: 13, padding: '0 8px', height: 22, display: 'flex', alignItems: 'center' }}>
+                            {Math.round(place.discount * 100)}% Off
+                          </Tag>
+                        )}
+                        <span style={{ fontSize: 18, opacity: 0.88 }}>{icon}</span>
                       </div>
                     )}
+                    {/* Category icon at bottom right */}
+                    <div style={{
+                      position: 'absolute',
+                      right: 10,
+                      bottom: 8,
+                      fontSize: 18,
+                      opacity: 0.88,
+                      pointerEvents: 'none',
+                    }}>{icon}</div>
                   </Card>
                 </div>
               </Col>
