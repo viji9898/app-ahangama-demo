@@ -127,7 +127,7 @@ export default function HomeMobile() {
             flex: 1,
           }}
         >
-          Discover & unlock the best of Ahangama with your Pass!
+          SAVE 10-30%+ at 100+ venues with the <strong>Ahangama Pass</strong>
         </span>
       </div>
       {/* Floating Get Pass button for mobile */}
