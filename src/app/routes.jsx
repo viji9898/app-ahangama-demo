@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "../pages/Home";
 import HomeV2 from "../pages/HomeV2";
+import HomeMobile from "../pages/HomeMobile";
 import About from "../pages/About";
 import Partners from "../pages/Partners";
 import PlaceDetail from "../pages/PlaceDetail";
@@ -25,9 +26,9 @@ import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
-
 export const routes = [
   { path: "/home-v-2", element: <HomeV2 /> },
+  { path: "/home-mobile", element: <HomeMobile /> },
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
   { path: "/partners", element: <Partners /> },

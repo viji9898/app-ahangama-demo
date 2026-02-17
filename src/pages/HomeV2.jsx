@@ -36,6 +36,7 @@ const categories = Array.from(
 );
 
 export default function HomeV2() {
+  const [expandedId, setExpandedId] = useState(null);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
   const [userLocation, setUserLocation] = useState(null);
@@ -56,7 +57,7 @@ export default function HomeV2() {
   }, []);
 
   // Filter active venues
-  const filtered = PLACES.filter(
+  let filtered = PLACES.filter(
     (p) =>
       p.status === "active" &&
       (!category || p.category === category) &&
@@ -67,9 +68,70 @@ export default function HomeV2() {
           p.tags.join(" ").toLowerCase().includes(search.toLowerCase()))),
   );
 
+  // Sort by distance if userLocation is available
+  if (userLocation) {
+    filtered = filtered
+      .map((place) => {
+        let distance = null;
+        if (place.lat && place.lng) {
+          distance = getDistanceFromLatLonInKm(
+            userLocation.lat,
+            userLocation.lng,
+            place.lat,
+            place.lng,
+          );
+        }
+        return { ...place, _distance: distance };
+      })
+      .sort((a, b) => {
+        if (a._distance === null && b._distance === null) return 0;
+        if (a._distance === null) return 1;
+        if (b._distance === null) return -1;
+        return a._distance - b._distance;
+      });
+  }
+
   return (
     <SiteLayout>
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: 24 }}>
+      <div
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding: 24,
+          position: "relative",
+        }}
+      >
+        {/* Floating Get Pass button for mobile */}
+        <a
+          href="https://pass.ahangama.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ahg-floating-getpass-btn"
+          style={{
+            display: "none",
+            position: "fixed",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            margin: "0 auto",
+            zIndex: 1000,
+            width: "100vw",
+            maxWidth: 500,
+            background: "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: 20,
+            padding: "18px 0 16px 0",
+            borderRadius: "18px 18px 0 0",
+            boxShadow: "0 -2px 16px rgba(79,111,134,0.10)",
+            textAlign: "center",
+            textDecoration: "none",
+            letterSpacing: 0.5,
+            transition: "background 0.2s, box-shadow 0.2s",
+          }}
+        >
+          Get Your Pass
+        </a>
         {/* Banner Section */}
         <div
           className="ahg-banner-responsive"
@@ -133,44 +195,12 @@ export default function HomeV2() {
               </div>
             </div>
           </div>
-          <a
-            href="https://pass.ahangama.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ahg-banner-btn"
-            style={{
-              display: "inline-block",
-              background: "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
-              color: "#fff",
-              fontWeight: 600,
-              fontSize: 20,
-              padding: "14px 38px",
-              borderRadius: 999,
-              boxShadow: "0 2px 8px rgba(252,136,3,0.10)",
-              textDecoration: "none",
-              transition: "background 0.2s, box-shadow 0.2s",
-              marginLeft: 32,
-              whiteSpace: "nowrap",
-              marginTop: 0,
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background =
-                "linear-gradient(90deg, #fc8803 60%, #f7b733 100%)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 16px rgba(252,136,3,0.18)";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background =
-                "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)";
-              e.currentTarget.style.boxShadow =
-                "0 2px 8px rgba(252,136,3,0.10)";
-            }}
-          >
-            Get Your Pass
-          </a>
         </div>
         <style>{`
           @media (max-width: 700px) {
+            .ahg-mobile-top-image {
+              display: flex !important;
+            }
             .ahg-banner-responsive {
               flex-direction: column !important;
               align-items: flex-start !important;
@@ -194,6 +224,9 @@ export default function HomeV2() {
               font-size: 18px !important;
               text-align: center !important;
               padding: 14px 0 !important;
+            }
+            .ahg-floating-getpass-btn {
+              display: block !important;
             }
           }
         `}</style>
@@ -279,10 +312,12 @@ export default function HomeV2() {
               music: "🎵",
             };
             // Try to match category, fallback to generic icon
-            const icon = categoryIcons[(place.category || '').toLowerCase()] || "⭐";
+            const icon =
+              categoryIcons[(place.category || "").toLowerCase()] || "⭐";
             return (
-              <Col xs={12} sm={12} md={8} lg={6} key={place.id}>
+              <Col xs={24} sm={24} md={24} lg={6} key={place.id}>
                 <div
+                  className="ahg-listing-card-shell"
                   role="button"
                   tabIndex={0}
                   onClick={() =>
@@ -300,119 +335,342 @@ export default function HomeV2() {
                   }}
                   style={{
                     cursor: place.mapUrl ? "pointer" : "default",
-                    borderRadius: 12,
+                    borderRadius: 16,
+                    background: "#fff",
+                    boxShadow: "0 1px 8px rgba(79,111,134,0.07)",
+                    padding: 12,
+                    margin: "0 auto",
+                    minHeight: 104,
+                    maxHeight: 148,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-start",
+                    gap: 12,
+                    position: "relative",
+                    maxWidth: 430,
                   }}
                 >
-                  <Card
-                    size="small"
-                    className="ahg-card-hoverable"
-                    title={
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 8,
-                        }}
-                      >
-                        {place.logo && (
-                          <img
-                            src={place.logo}
-                            alt={place.name + " logo"}
-                            style={{
-                              width: 32,
-                              height: 32,
-                              objectFit: "cover",
-                              borderRadius: 8,
-                              background: "#f5f5f5",
-                            }}
-                            loading="lazy"
-                          />
-                        )}
-                        <span style={{ fontWeight: 600 }}>{place.name}</span>
-                      </div>
-                    }
-                    style={{
-                      minHeight: 180,
-                      transition: "box-shadow 0.18s, border-color 0.18s",
-                      borderRadius: 12,
-                      position: 'relative',
-                    }}
-                    bodyStyle={{ padding: 12 }}
-                  >
-                    <div style={{ marginBottom: 4 }}>
-                      <Rate
-                        disabled
-                        value={place.stars || 0}
-                        allowHalf
-                        style={{ fontSize: 14 }}
-                      />
-                      <Text
-                        type="secondary"
-                        style={{ marginLeft: 6, fontSize: 13 }}
-                      >
-                        {place.stars ? place.stars.toFixed(1) : "-"} •{" "}
-                        {place.reviews || 0} reviews
-                      </Text>
-                    </div>
+                  {/* Left: Image */}
+                  <div className="ahg-listing-card-imgcol">
                     <div
-                      className="ahg-hide-mobile-desc"
                       style={{
-                        fontSize: 13,
-                        marginBottom: 6,
-                        color: "#555",
-                        display: "block",
+                        position: "relative",
+                        width: "120px",
+                        height: "120px",
+                        margin: 0,
+                        padding: 0,
+                        flex: "0 0 120px",
                       }}
                     >
-                      {place.cardPerk}
+                      {place.image && (
+                        <img
+                          src={place.image}
+                          alt={place.name + " photo"}
+                          className="ahg-listing-card-img"
+                          style={{
+                            width: "120px",
+                            height: "120px",
+                            objectFit: "cover",
+                            borderRadius: "14px",
+                            display: "block",
+                            margin: 0,
+                            padding: 0,
+                            boxSizing: "border-box",
+                          }}
+                          loading="lazy"
+                        />
+                      )}
+                      {place.discount && (
+                        <span
+                          style={{
+                            position: "absolute",
+                            top: 8,
+                            left: 8,
+                            background: "rgba(255, 215, 64, 0.95)",
+                            color: "#7a5c00",
+                            fontWeight: 700,
+                            fontSize: 13,
+                            borderRadius: 10,
+                            padding: "2px 10px",
+                            boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+                            zIndex: 2,
+                            letterSpacing: 0.2,
+                          }}
+                        >
+                          {Math.round(place.discount * 100)}% Off
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {/* Right: Content */}
+                  <div className="ahg-listing-card-content">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        marginTop: 4,
+                      }}
+                    >
+                      <button
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: "#2176AE",
+                          fontWeight: 600,
+                          fontSize: 15,
+                          cursor: "pointer",
+                          padding: 0,
+                          outline: "none",
+                        }}
+                        onClick={() =>
+                          setExpandedId(
+                            expandedId === place.id ? null : place.id,
+                          )
+                        }
+                        aria-expanded={expandedId === place.id}
+                        aria-controls={`expand-details-${place.id}`}
+                      >
+                        {expandedId === place.id
+                          ? "Hide details"
+                          : "More details"}
+                      </button>
                     </div>
                     <div
-                      style={{ fontSize: 12, color: "#888", marginBottom: 2 }}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        marginBottom: 2,
+                      }}
                     >
-                      {place.tags && place.tags.join(", ")}
+                      <span style={{ fontSize: 20, marginRight: 2 }}>
+                        {icon}
+                      </span>
+                      <span
+                        style={{
+                          fontWeight: 700,
+                          fontSize: 20,
+                          lineHeight: "28px",
+                          color: "#222",
+                          flex: 1,
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {place.name}
+                      </span>
                     </div>
-                    {/* Removed location. Add line above discount tag. */}
-                    {distance !== null && (
-                      <>
-                        <div style={{ borderTop: '1px solid #eee', margin: '8px 0 4px 0' }} />
-                        <div
-                          style={{ fontSize: 12, color: "#4f6f86", marginTop: 0 }}
-                        >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 4,
+                        marginBottom: 2,
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#FFC700",
+                          fontSize: 18,
+                          letterSpacing: "-1px",
+                        }}
+                      >
+                        {"★★★★★".slice(0, Math.round(place.stars || 0))}
+                      </span>
+                      <span
+                        style={{
+                          color: "#888",
+                          fontWeight: 500,
+                          fontSize: 15,
+                          marginLeft: 2,
+                        }}
+                      >
+                        {place.stars ? place.stars.toFixed(1) : "-"}
+                      </span>
+                      <span style={{ color: "#888", fontSize: 15 }}>
+                        · {place.reviews || 0} reviews
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 15,
+                        color: "#555",
+                        marginBottom: 2,
+                        lineHeight: "20px",
+                        maxHeight: 40,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
+                      }}
+                    >
+                      {place.excerpt || place.cardPerk}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        marginBottom: 2,
+                      }}
+                    >
+                      {distance !== null && (
+                        <span style={{ color: "#888", fontSize: 15 }}>
                           {distance < 1
                             ? `${Math.round(distance * 1000)} m`
-                            : `${distance.toFixed(1)} km`} {" "}
+                            : `${distance.toFixed(1)} km`}{" "}
                           away
+                        </span>
+                      )}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        marginBottom: 2,
+                      }}
+                    >
+                      {place.offer && place.offer.length > 0
+                        ? place.offer
+                            .filter(
+                              (offer) => !(offer && /%\s*off/i.test(offer)),
+                            )
+                            .slice(0, 2)
+                            .map((offer, i) => (
+                              <span
+                                key={i}
+                                style={{
+                                  background: i === 0 ? "#F8E9C7" : "#E6F0FA",
+                                  color: i === 0 ? "#A67C00" : "#2176AE",
+                                  fontSize: 14,
+                                  borderRadius: 16,
+                                  padding: "3px 12px",
+                                  fontWeight: 600,
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: 4,
+                                }}
+                              >
+                                {i === 0 ? (
+                                  <svg
+                                    width="16"
+                                    height="16"
+                                    style={{ marginRight: 2 }}
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <circle
+                                      cx="12"
+                                      cy="12"
+                                      r="10"
+                                      fill="#F8E9C7"
+                                    />
+                                    <path
+                                      d="M8 12l2 2 4-4"
+                                      stroke="#A67C00"
+                                      strokeWidth="2"
+                                      fill="none"
+                                    />
+                                  </svg>
+                                ) : (
+                                  <svg
+                                    width="16"
+                                    height="16"
+                                    style={{ marginRight: 2 }}
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <rect
+                                      x="2"
+                                      y="6"
+                                      width="20"
+                                      height="12"
+                                      rx="6"
+                                      fill="#E6F0FA"
+                                    />
+                                    <path
+                                      d="M8 12h8"
+                                      stroke="#2176AE"
+                                      strokeWidth="2"
+                                    />
+                                  </svg>
+                                )}
+                                {offer}
+                              </span>
+                            ))
+                        : place.tags &&
+                          place.tags.slice(0, 2).map((tag, i) => (
+                            <span
+                              key={i}
+                              style={{
+                                background: "#eee",
+                                color: "#666",
+                                fontSize: 14,
+                                borderRadius: 16,
+                                padding: "3px 12px",
+                                fontWeight: 500,
+                                display: "inline-flex",
+                                alignItems: "center",
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                    </div>
+                  </div>
+                  {/* Expandable details section */}
+                  {expandedId === place.id && (
+                    <div
+                      id={`expand-details-${place.id}`}
+                      style={{
+                        background: "#f9f9f9",
+                        borderRadius: 12,
+                        marginTop: 10,
+                        padding: "16px 14px",
+                        fontSize: 15,
+                        color: "#333",
+                        boxShadow: "0 1px 6px rgba(79,111,134,0.07)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      {place.description && (
+                        <div style={{ marginBottom: 10 }}>
+                          {place.description}
                         </div>
-                      </>
-                    )}
-                    {/* Discount tag and emoji at bottom right, side by side */}
-                    {(place.discount || icon) && (
-                      <div style={{
-                        position: 'absolute',
-                        right: 10,
-                        bottom: 8,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 6,
-                        pointerEvents: 'none',
-                      }}>
-                        {place.discount && (
-                          <Tag color="gold" style={{ margin: 0, fontSize: 13, padding: '0 8px', height: 22, display: 'flex', alignItems: 'center' }}>
-                            {Math.round(place.discount * 100)}% Off
-                          </Tag>
-                        )}
-                        <span style={{ fontSize: 18, opacity: 0.88 }}>{icon}</span>
-                      </div>
-                    )}
-                    {/* Category icon at bottom right */}
-                    <div style={{
-                      position: 'absolute',
-                      right: 10,
-                      bottom: 8,
-                      fontSize: 18,
-                      opacity: 0.88,
-                      pointerEvents: 'none',
-                    }}>{icon}</div>
-                  </Card>
+                      )}
+                      {place.bestFor && place.bestFor.length > 0 && (
+                        <div style={{ marginBottom: 8 }}>
+                          <strong>Best for:</strong> {place.bestFor.join(", ")}
+                        </div>
+                      )}
+                      {place.hours && (
+                        <div style={{ marginBottom: 8 }}>
+                          <strong>Hours:</strong> {place.hours}
+                        </div>
+                      )}
+                      {place.howToClaim && (
+                        <div style={{ marginBottom: 8 }}>
+                          <strong>How to claim:</strong> {place.howToClaim}
+                        </div>
+                      )}
+                      {place.restrictions && (
+                        <div style={{ marginBottom: 8 }}>
+                          <strong>Restrictions:</strong> {place.restrictions}
+                        </div>
+                      )}
+                      {place.whatsApp && (
+                        <div style={{ marginBottom: 8 }}>
+                          <strong>WhatsApp:</strong> {place.whatsApp}
+                        </div>
+                      )}
+                      {place.instagram && (
+                        <div style={{ marginBottom: 8 }}>
+                          <strong>Instagram:</strong> @{place.instagram}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </Col>
             );
@@ -421,6 +679,69 @@ export default function HomeV2() {
                 @media (max-width: 600px) {
                   .ahg-hide-mobile-desc {
                     display: none !important;
+                  }
+                  .ahg-listing-image-wrapper {
+                    display: block;
+                  }
+                  .ahg-listing-image {
+                    width: 100% !important;
+                    height: 70px !important;
+                    border-radius: 10px 10px 0 0 !important;
+                  }
+                  .ahg-card-hoverable {
+                    min-height: 90px !important;
+                    padding: 6px 6px 8px 6px !important;
+                  }
+                  .ant-card-body {
+                    padding: 8px 6px 8px 6px !important;
+                  }
+                  .ahg-card-hoverable .ant-card-head {
+                    min-height: 32px !important;
+                    padding: 0 6px !important;
+                  }
+                  .ahg-card-hoverable .ant-card-head-title {
+                    font-size: 15px !important;
+                  }
+                  .ahg-card-hoverable .ant-card-head img {
+                    width: 22px !important;
+                    height: 22px !important;
+                  }
+                  .ahg-card-hoverable .ant-card-head span {
+                    font-size: 15px !important;
+                  }
+                  .ahg-card-hoverable .ant-rate {
+                    font-size: 12px !important;
+                  }
+                  .ahg-card-hoverable .ant-typography {
+                    font-size: 11px !important;
+                  }
+                  .ahg-card-hoverable .ant-tag {
+                    font-size: 11px !important;
+                    height: 18px !important;
+                    padding: 0 6px !important;
+                  }
+                  .ahg-card-hoverable .ant-card-body > div,
+                  .ahg-card-hoverable .ant-card-body > span {
+                    margin-bottom: 2px !important;
+                  }
+                  .ahg-card-hoverable .ant-card-body {
+                    font-size: 12px !important;
+                  }
+                  .ahg-card-hoverable .ant-card-body > div[style*="color: #555"] {
+                    display: none !important;
+                  }
+                  .ahg-card-hoverable .ant-card-body > div[style*="color: #888"] {
+                    display: none !important;
+                  }
+                }
+                @media (min-width: 601px) {
+                  .ahg-listing-image-wrapper {
+                    display: block;
+                  }
+                  .ahg-listing-image {
+                    width: 100% !important;
+                    height: 120px !important;
+                    border-radius: 12px 12px 0 0 !important;
                   }
                 }
               `}</style>
