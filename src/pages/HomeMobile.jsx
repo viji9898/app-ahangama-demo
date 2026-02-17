@@ -135,6 +135,47 @@ export default function HomeMobile() {
             marginBottom: 8,
           }}
         />
+        {/* Category filter buttons */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, overflowX: "auto", marginBottom: 8 }}>
+          <button
+            onClick={() => setCategory(undefined)}
+            style={{
+              minWidth: 70,
+              padding: "6px 14px",
+              borderRadius: 8,
+              border: "none",
+              background: !category ? "#2176AE" : "#eee",
+              color: !category ? "#fff" : "#2176AE",
+              fontWeight: 600,
+              fontSize: 15,
+              cursor: "pointer",
+              transition: "background 0.2s, color 0.2s",
+            }}
+          >
+            All
+          </button>
+          {[...new Set(PLACES.filter((p) => p.status === "active").map((p) => p.category))].map((c) => (
+            <button
+              key={c}
+              onClick={() => setCategory(category === c ? undefined : c)}
+              style={{
+                minWidth: 70,
+                padding: "6px 14px",
+                borderRadius: 8,
+                border: "none",
+                background: category === c ? "#2176AE" : "#eee",
+                color: category === c ? "#fff" : "#2176AE",
+                fontWeight: 600,
+                fontSize: 15,
+                cursor: "pointer",
+                textTransform: "capitalize",
+                transition: "background 0.2s, color 0.2s",
+              }}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
       </div>
       <div
         style={{
