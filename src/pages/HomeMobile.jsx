@@ -93,12 +93,12 @@ export default function HomeMobile() {
           fontSize: 20,
           letterSpacing: 0.2,
           position: "relative",
-          overflowX: "auto",
-          whiteSpace: "nowrap",
           boxShadow: "0 2px 8px rgba(79,111,134,0.06)",
           display: "flex",
           alignItems: "center",
           gap: 14,
+          flexWrap: "nowrap",
+          overflow: "hidden",
         }}
       >
         <img
@@ -120,11 +120,14 @@ export default function HomeMobile() {
             display: "inline-block",
             verticalAlign: "middle",
             lineHeight: 1.2,
-            textAlign: "center",
+            minWidth: 0,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "normal",
+            flex: 1,
           }}
         >
-          SAVE 10-30% AT 100+ VENUES
-          <br /> AHANGAMA PASS
+          Discover & unlock the best of Ahangama with your Pass!
         </span>
       </div>
       {/* Floating Get Pass button for mobile */}

@@ -36,7 +36,6 @@ const categories = Array.from(
 );
 
 export default function HomeV2() {
-  const [expandedId, setExpandedId] = useState(null);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
   const [userLocation, setUserLocation] = useState(null);
@@ -57,9 +56,9 @@ export default function HomeV2() {
   }, []);
 
   // Filter active venues
-  let filtered = PLACES.filter(
-    (p) =>
-      p.status === "active" &&
+  const filtered = PLACES.filter(
+    (p) => p.statu,
+    s === "active" &&
       (!category || p.category === category) &&
       (p.name.toLowerCase().includes(search.toLowerCase()) ||
         (p.cardPerk &&
@@ -67,29 +66,6 @@ export default function HomeV2() {
         (p.tags &&
           p.tags.join(" ").toLowerCase().includes(search.toLowerCase()))),
   );
-
-  // Sort by distance if userLocation is available
-  if (userLocation) {
-    filtered = filtered
-      .map((place) => {
-        let distance = null;
-        if (place.lat && place.lng) {
-          distance = getDistanceFromLatLonInKm(
-            userLocation.lat,
-            userLocation.lng,
-            place.lat,
-            place.lng,
-          );
-        }
-        return { ...place, _distance: distance };
-      })
-      .sort((a, b) => {
-        if (a._distance === null && b._distance === null) return 0;
-        if (a._distance === null) return 1;
-        if (b._distance === null) return -1;
-        return a._distance - b._distance;
-      });
-  }
 
   return (
     <SiteLayout>
@@ -407,37 +383,6 @@ export default function HomeV2() {
                     <div
                       style={{
                         display: "flex",
-                        justifyContent: "flex-end",
-                        marginTop: 4,
-                      }}
-                    >
-                      <button
-                        style={{
-                          background: "none",
-                          border: "none",
-                          color: "#2176AE",
-                          fontWeight: 600,
-                          fontSize: 15,
-                          cursor: "pointer",
-                          padding: 0,
-                          outline: "none",
-                        }}
-                        onClick={() =>
-                          setExpandedId(
-                            expandedId === place.id ? null : place.id,
-                          )
-                        }
-                        aria-expanded={expandedId === place.id}
-                        aria-controls={`expand-details-${place.id}`}
-                      >
-                        {expandedId === place.id
-                          ? "Hide details"
-                          : "More details"}
-                      </button>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
                         alignItems: "center",
                         gap: 8,
                         marginBottom: 2,
@@ -619,58 +564,6 @@ export default function HomeV2() {
                           ))}
                     </div>
                   </div>
-                  {/* Expandable details section */}
-                  {expandedId === place.id && (
-                    <div
-                      id={`expand-details-${place.id}`}
-                      style={{
-                        background: "#f9f9f9",
-                        borderRadius: 12,
-                        marginTop: 10,
-                        padding: "16px 14px",
-                        fontSize: 15,
-                        color: "#333",
-                        boxShadow: "0 1px 6px rgba(79,111,134,0.07)",
-                        transition: "all 0.2s",
-                      }}
-                    >
-                      {place.description && (
-                        <div style={{ marginBottom: 10 }}>
-                          {place.description}
-                        </div>
-                      )}
-                      {place.bestFor && place.bestFor.length > 0 && (
-                        <div style={{ marginBottom: 8 }}>
-                          <strong>Best for:</strong> {place.bestFor.join(", ")}
-                        </div>
-                      )}
-                      {place.hours && (
-                        <div style={{ marginBottom: 8 }}>
-                          <strong>Hours:</strong> {place.hours}
-                        </div>
-                      )}
-                      {place.howToClaim && (
-                        <div style={{ marginBottom: 8 }}>
-                          <strong>How to claim:</strong> {place.howToClaim}
-                        </div>
-                      )}
-                      {place.restrictions && (
-                        <div style={{ marginBottom: 8 }}>
-                          <strong>Restrictions:</strong> {place.restrictions}
-                        </div>
-                      )}
-                      {place.whatsApp && (
-                        <div style={{ marginBottom: 8 }}>
-                          <strong>WhatsApp:</strong> {place.whatsApp}
-                        </div>
-                      )}
-                      {place.instagram && (
-                        <div style={{ marginBottom: 8 }}>
-                          <strong>Instagram:</strong> @{place.instagram}
-                        </div>
-                      )}
-                    </div>
-                  )}
                 </div>
               </Col>
             );
