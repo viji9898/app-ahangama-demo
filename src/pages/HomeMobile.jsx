@@ -97,8 +97,7 @@ export default function HomeMobile() {
           zIndex: 1000,
           width: "100vw",
           maxWidth: 500,
-          background:
-            "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
+          background: "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
           color: "#fff",
           fontWeight: 700,
           fontSize: 20,
@@ -197,14 +196,10 @@ export default function HomeMobile() {
                   flexDirection: "row",
                   alignItems: "flex-start",
                   gap: 10,
-                  cursor: place.mapUrl ? "pointer" : "default",
+                  cursor: "default",
                   padding: 0,
                   paddingBottom: 0,
                 }}
-                onClick={() =>
-                  place.mapUrl &&
-                  window.open(place.mapUrl, "_blank", "noopener,noreferrer")
-                }
               >
                 <div
                   style={{
@@ -398,34 +393,63 @@ export default function HomeMobile() {
                   </div>
                 </div>
               </div>
-              {/* Banner for More Details at the bottom of the card */}
-              <button
-                className="ahg-listing-details-btn"
-                style={{
-                  width: "100%",
-                  background: expandedId === place.id ? "#e6f0fa" : "#2176AE",
-                  color: expandedId === place.id ? "#2176AE" : "#fff",
-                  border: "none",
-                  borderRadius: "0 0 16px 16px",
-                  fontWeight: 700,
-                  fontSize: 15,
-                  padding: "12px 0",
-                  cursor: "pointer",
-                  outline: "none",
-                  letterSpacing: 0.2,
-                  boxShadow: "0 -1px 6px rgba(79,111,134,0.04)",
-                  transition: "background 0.2s, color 0.2s",
-                  margin: 0,
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setExpandedId(expandedId === place.id ? null : place.id);
-                }}
-                aria-expanded={expandedId === place.id}
-                aria-controls={`expand-details-${place.id}`}
-              >
-                {expandedId === place.id ? "Hide details" : "More details"}
-              </button>
+              {/* Banner for More Details and Google Maps at the bottom of the card */}
+              <div style={{ display: "flex", width: "100%" }}>
+                <button
+                  className="ahg-listing-details-btn"
+                  style={{
+                    flex: 1,
+                    background: expandedId === place.id ? "#e6f0fa" : "#2176AE",
+                    color: expandedId === place.id ? "#2176AE" : "#fff",
+                    border: "none",
+                    borderRadius: "0 0 0 16px",
+                    fontWeight: 700,
+                    fontSize: 15,
+                    padding: "12px 0",
+                    cursor: "pointer",
+                    outline: "none",
+                    letterSpacing: 0.2,
+                    boxShadow: "0 -1px 6px rgba(79,111,134,0.04)",
+                    transition: "background 0.2s, color 0.2s",
+                    margin: 0,
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setExpandedId(expandedId === place.id ? null : place.id);
+                  }}
+                  aria-expanded={expandedId === place.id}
+                  aria-controls={`expand-details-${place.id}`}
+                >
+                  {expandedId === place.id ? "Hide details" : "More details"}
+                </button>
+                <button
+                  className="ahg-listing-maps-btn"
+                  style={{
+                    flex: 1,
+                    background: "#fff",
+                    color: "#2176AE",
+                    border: "none",
+                    borderRadius: "0 0 16px 0",
+                    fontWeight: 700,
+                    fontSize: 15,
+                    padding: "12px 0",
+                    cursor: place.mapUrl ? "pointer" : "not-allowed",
+                    outline: "none",
+                    letterSpacing: 0.2,
+                    boxShadow: "0 -1px 6px rgba(79,111,134,0.04)",
+                    borderLeft: "1px solid #e6f0fa",
+                    margin: 0,
+                    opacity: place.mapUrl ? 1 : 0.5,
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (place.mapUrl) window.open(place.mapUrl, "_self");
+                  }}
+                  disabled={!place.mapUrl}
+                >
+                  Google Maps
+                </button>
+              </div>
               {expandedId === place.id && (
                 <div
                   id={`expand-details-${place.id}`}
