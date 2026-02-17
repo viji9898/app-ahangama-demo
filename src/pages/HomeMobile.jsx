@@ -519,7 +519,7 @@ export default function HomeMobile() {
                   }}
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (place.mapUrl) window.open(place.mapUrl, "_blank", "noopener,noreferrer");
+                    if (place.mapUrl) window.open(place.mapUrl, "_self");
                   }}
                   disabled={!place.mapUrl}
                 >
