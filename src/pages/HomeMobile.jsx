@@ -81,6 +81,52 @@ export default function HomeMobile() {
         position: "relative",
       }}
     >
+      {/* Hero section at the top */}
+      <div
+        style={{
+          width: "100%",
+          background: "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
+          color: "#fff",
+          padding: "14px 0 14px 0",
+          textAlign: "left",
+          fontWeight: 700,
+          fontSize: 20,
+          letterSpacing: 0.2,
+          position: "relative",
+          overflowX: "auto",
+          whiteSpace: "nowrap",
+          boxShadow: "0 2px 8px rgba(79,111,134,0.06)",
+          display: "flex",
+          alignItems: "center",
+          gap: 14,
+        }}
+      >
+        <img
+          src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pass_sample.jpeg"
+          alt="Ahangama Pass Sample"
+          style={{
+            width: 60,
+            height: 60,
+            borderRadius: 10,
+            boxShadow: "0 1px 4px #e0e0e0",
+            marginLeft: 12,
+            marginRight: 10,
+            flexShrink: 0,
+            objectFit: "contain",
+          }}
+        />
+        <span
+          style={{
+            display: "inline-block",
+            verticalAlign: "middle",
+            lineHeight: 1.2,
+            textAlign: "center",
+          }}
+        >
+          SAVE 10-30% AT 100+ VENUES
+          <br /> AHANGAMA PASS
+        </span>
+      </div>
       {/* Floating Get Pass button for mobile */}
       <a
         href="https://pass.ahangama.com"
@@ -136,7 +182,15 @@ export default function HomeMobile() {
           }}
         />
         {/* Category filter buttons */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, overflowX: "auto", marginBottom: 8 }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 8,
+            overflowX: "auto",
+            marginBottom: 8,
+          }}
+        >
           <button
             onClick={() => setCategory(undefined)}
             style={{
@@ -154,7 +208,13 @@ export default function HomeMobile() {
           >
             All
           </button>
-          {[...new Set(PLACES.filter((p) => p.status === "active").map((p) => p.category))].map((c) => (
+          {[
+            ...new Set(
+              PLACES.filter((p) => p.status === "active").map(
+                (p) => p.category,
+              ),
+            ),
+          ].map((c) => (
             <button
               key={c}
               onClick={() => setCategory(category === c ? undefined : c)}
@@ -207,7 +267,6 @@ export default function HomeMobile() {
             stay: "🏨",
             sleep: "🛏️",
             sport: "🏄",
-            surf: "🏄",
             yoga: "🧘",
             shop: "🛍️",
             wellness: "💆",
