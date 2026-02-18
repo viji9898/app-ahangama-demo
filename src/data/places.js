@@ -514,7 +514,7 @@ export const PLACES = [
     category: "eat",
     name: "Black Honey cafe",
     slug: "black-honey-cafe",
-    status: "coming_soon",
+    status: "active",
     stars: 4.6,
     reviews: 395,
     excerpt:
