@@ -662,7 +662,7 @@ export const PLACES = [
     category: "eat",
     name: "Kaffi",
     slug: "kaffi-ahangama",
-    status: "coming_soon",
+    status: "active",
     stars: 4.6,
     reviews: 242,
     excerpt: "A steady coffee stop on Matara Road—easy to default to.",
@@ -1316,7 +1316,7 @@ export const PLACES = [
     category: "stays",
     name: "Ayurveda Palm Garden Resort",
     slug: "ayurveda-palm-garden-resort",
-    status: "coming_soon",
+    status: "active",
     stars: 4.6,
     reviews: 127,
     excerpt:

@@ -85,7 +85,8 @@ export default function HomeMobile() {
       <div
         style={{
           width: "100%",
-          background: "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
+          background:
+            "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_mobile.jpg') center center/cover no-repeat",
           color: "#fff",
           padding: "14px 0 14px 0",
           textAlign: "left",
@@ -99,37 +100,66 @@ export default function HomeMobile() {
           gap: 14,
           flexWrap: "nowrap",
           overflow: "hidden",
+          borderRadius: 28,
+          margin: "10px 10px 0 10px",
         }}
       >
-        <img
-          src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pass_sample.jpeg"
-          alt="Ahangama Pass Sample"
+        <div
           style={{
-            width: 60,
-            height: 60,
-            borderRadius: 10,
-            boxShadow: "0 1px 4px #e0e0e0",
-            marginLeft: 12,
-            marginRight: 10,
-            flexShrink: 0,
-            objectFit: "contain",
-          }}
-        />
-        <span
-          style={{
-            display: "inline-block",
-            verticalAlign: "middle",
-            lineHeight: 1.2,
-            minWidth: 0,
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "normal",
-            flex: 1,
+            background: "rgba(0,0,0,0.32)",
+            borderRadius: 18,
+            display: "flex",
+            alignItems: "center",
+            padding: "10px 10px 10px 10px",
+            margin: 0,
+            width: "100%",
+            maxWidth: "100%",
+            gap: 12,
           }}
         >
-          SAVE 10-30%+ at 100+ venues with the <strong>Ahangama Pass</strong>
-        </span>
+          <img
+            src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pass_sample.jpeg"
+            alt="Ahangama Pass Sample"
+            style={{
+              width: 60,
+              height: 60,
+              borderRadius: 12,
+              boxShadow: "0 1px 4px #e0e0e0",
+              flexShrink: 0,
+              objectFit: "contain",
+              background: "transparent",
+              marginRight: 10,
+            }}
+          />
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div
+              style={{
+                fontWeight: 700,
+                fontSize: 17,
+                marginBottom: 2,
+                lineHeight: 1.2,
+                color: "#fff",
+                wordBreak: "break-word",
+              }}
+            >
+              SAVE 10-30%+ at 100+ venues
+            </div>
+            <div
+              style={{
+                fontWeight: 400,
+                fontSize: 15,
+                color: "#fff",
+                opacity: 0.95,
+                lineHeight: 1.2,
+                wordBreak: "break-word",
+              }}
+            >
+              Ahangama Pass
+            </div>
+          </div>
+        </div>
       </div>
+
       {/* Floating Get Pass button for mobile */}
       <a
         href="https://pass.ahangama.com"
@@ -185,6 +215,7 @@ export default function HomeMobile() {
           }}
         />
         {/* Category filter buttons */}
+
         <div
           style={{
             display: "flex",
@@ -604,6 +635,103 @@ export default function HomeMobile() {
             </div>
           );
         })}
+        {/* Top Cafes Horizontal Scroll Section */}
+        <div style={{ margin: "18px 0 0 0", padding: "0 0 0 8px" }}>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: 17,
+              margin: "0 0 10px 6px",
+              color: "#222",
+            }}
+          >
+            Top Rated Cafes
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              overflowX: "auto",
+              gap: 12,
+              paddingBottom: 8,
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {PLACES.filter(
+              (p) =>
+                p.status === "active" &&
+                (p.category || "").toLowerCase().includes("eat"),
+            )
+              .sort((a, b) => (b.reviews || 0) - (a.reviews || 0))
+              .slice(0, 6)
+              .map((place) => (
+                <div
+                  key={place.id}
+                  style={{
+                    minWidth: 140,
+                    maxWidth: 160,
+                    background: "#fff",
+                    borderRadius: 14,
+                    boxShadow: "0 1px 6px rgba(79,111,134,0.07)",
+                    padding: 0,
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    cursor: "pointer",
+                    position: "relative",
+                  }}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  {place.image && (
+                    <img
+                      src={place.image}
+                      alt={place.name + " photo"}
+                      style={{
+                        width: 120,
+                        height: 80,
+                        objectFit: "cover",
+                        borderRadius: 10,
+                        margin: "10px 0 6px 0",
+                      }}
+                      loading="lazy"
+                    />
+                  )}
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      fontSize: 15,
+                      textAlign: "center",
+                      margin: "0 8px",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      maxWidth: 120,
+                    }}
+                  >
+                    {place.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: "#666",
+                      margin: "2px 0 8px 0",
+                      textAlign: "center",
+                    }}
+                  >
+                    <span style={{ color: "#f7b733", fontSize: 14 }}>★</span>{" "}
+                    {place.stars ? place.stars.toFixed(1) : "-"}
+                    <span style={{ color: "#aaa", fontWeight: 400 }}>
+                      {" "}
+                      · {place.reviews || 0}
+                    </span>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );
