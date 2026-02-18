@@ -30,6 +30,35 @@ export const PLACES = [
     mapUrl: "https://maps.app.goo.gl/anwSAY8zApdK74U89",
   },
   {
+    id: "unsung",
+    destinationSlug: "ahangama",
+    category: "cafe",
+    name: "Unsung",
+    slug: "unsung",
+    status: "active",
+    stars: 4.9,
+    reviews: 180,
+    excerpt: "Cafe with 10% discount for pass holders.",
+    description: "Unsung is a cozy cafe offering 10% off for pass holders.",
+    bestFor: ["Cafe", "Eat", "Discount"],
+    tags: ["Cafe", "Discount"],
+    cardPerk: "10% off with the Midigama Card.",
+    offer: ["10% Off"],
+    howToClaim:
+      "Show your Midigama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all menu items. Cannot be combined with other offers.",
+    area: "Midigama",
+    lat: 5.964854087767094,
+    lng: 80.39155181365028,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/unsung.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unsung.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unsung.jpg",
+    mapUrl: "https://maps.app.goo.gl/72k7Y35KJ7DQxw4g9",
+  },
+  {
     id: "crave",
     destinationSlug: "ahangama",
     category: "eat",
@@ -39,19 +68,24 @@ export const PLACES = [
     stars: 4.7,
     reviews: 88,
     excerpt: "Eatery with 10% discount for pass holders.",
-    description: "Crave offers delicious food and a 10% discount for pass holders.",
+    description:
+      "Crave offers delicious food and a 10% discount for pass holders.",
     bestFor: ["Eat", "Cafe", "Discount"],
     tags: ["Eat", "Discount"],
     cardPerk: "10% off with the Ahangama Card.",
     offer: ["10% Off"],
-    howToClaim: "Show your Ahangama Card when ordering to receive the discount.",
-    restrictions: "Valid for all menu items. Cannot be combined with other offers.",
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid for all menu items. Cannot be combined with other offers.",
     area: "Ahangama",
     lat: 5.9726530766658374,
     lng: 80.3631771134925,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/crave.jpeg",
-    image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/crave.jpg",
-    ogImage: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/crave.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/crave.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/crave.jpg",
     mapUrl: "https://maps.app.goo.gl/1m2j4waEbuyLmHHs5",
   },
   {
