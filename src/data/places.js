@@ -1,5 +1,35 @@
 export const PLACES = [
   {
+    id: "animals",
+    destinationSlug: "ahangama",
+    category: "eat and drink",
+    name: "Animals",
+    slug: "animals",
+    status: "active",
+    stars: 4.8,
+    reviews: 103,
+    excerpt: "Eat, drink, and enjoy a Free Prosecco at Animals.",
+    description:
+      "Animals is a vibrant spot for food and drinks. Pass holders enjoy a Free Prosecco.",
+    bestFor: ["Eat", "Drink", "Social"],
+    tags: ["Eat", "Drink", "Prosecco"],
+    cardPerk: "Free Prosecco with the Ahangama Card.",
+    offer: ["Free Prosecco"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive your Free Prosecco.",
+    restrictions:
+      "Valid for one Free Prosecco per visit. Cannot be combined with other offers.",
+    area: "Ahangama",
+    lat: 5.979034944715787,
+    lng: 80.3542700558208,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/animals.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/animals.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/animals.jpg",
+    mapUrl: "https://maps.app.goo.gl/anwSAY8zApdK74U89",
+  },
+  {
     id: "living-room-concept-store",
     destinationSlug: "ahangama",
     category: "eat",
@@ -617,7 +647,7 @@ export const PLACES = [
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
     mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJ30q9adET4ToR5oSAehWi8Fk",
+      "https://www.google.com/maps/place/?q=place_id:ChIJ30q9adET4ToRzNnyYODfGU4",
   },
   {
     id: "samba-ahangama",
@@ -941,7 +971,6 @@ export const PLACES = [
     price: "Mid-range",
     hours: "Confirm seasonally",
     area: "Ahangama (Matara Road)",
-
     lat: 5.9701641,
     lng: 80.3680971,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Asset+2teddies-v2.webp",
@@ -1327,7 +1356,7 @@ export const PLACES = [
     tags: ["Wellness", "Spa", "Traditional healing"],
     cardPerk:
       "Complimentary wellness consultation and 10% off spa treatments with the Ahangama Card.",
-    offer: ["Wellness Consultation", ""],
+    offer: ["FFree Wellness Check in"],
     howToClaim:
       "Present your Ahangama Card at check-in to receive complimentary wellness consultation and spa discount.",
     restrictions:
@@ -2423,5 +2452,35 @@ export const PLACES = [
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/guesta.jpg",
     mapUrl: "https://maps.app.goo.gl/gt5VL71Vu3uxqrYw5",
+  },
+  {
+    id: "pebble-alma",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Pebble Alma",
+    slug: "pebble-alma",
+    status: "active",
+    stars: 4.8,
+    reviews: 4,
+    excerpt: "Boutique stay with 20% off total bill for pass holders.",
+    description:
+      "Pebble Alma offers a tranquil boutique stay experience. Pass holders enjoy 20% off their total bill.",
+    bestFor: ["Stay", "Boutique", "Relax"],
+    tags: ["Stay", "Boutique", "Discount"],
+    cardPerk: "20% off total bill with the Ahangama Card.",
+    offer: ["20% Off"],
+    howToClaim:
+      "Show your Ahangama Card at check-in or when settling the bill.",
+    restrictions: "Valid for total bill. Cannot be combined with other offers.",
+    discount: 0.2,
+    area: "Ahangama",
+    lat: 5.975803375468581,
+    lng: 80.36331710185085,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/pebble_alma.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pebble_alma.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pebble_alma.jpg",
+    mapUrl: "https://maps.app.goo.gl/W3mmmS2DFKyer67i6",
   },
 ];
