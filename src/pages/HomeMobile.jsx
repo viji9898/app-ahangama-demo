@@ -76,7 +76,7 @@ export default function HomeMobile() {
         maxWidth: 430,
         margin: "0 auto",
         padding: 0,
-        background: "#fafbfc",
+        background: "#F6EFE8",
         minHeight: "100vh",
         position: "relative",
       }}
@@ -176,8 +176,8 @@ export default function HomeMobile() {
           zIndex: 1000,
           width: "100vw",
           maxWidth: 500,
-          background: "linear-gradient(90deg, #f7b733 60%, #fc8803 100%)",
-          color: "#fff",
+          background: "#2F3E3A",
+          color: "#FFFFFF",
           fontWeight: 700,
           fontSize: 20,
           padding: "18px 0 16px 0",
@@ -194,7 +194,7 @@ export default function HomeMobile() {
       <div
         style={{
           padding: 12,
-          background: "#fff",
+          background: "#FBF6F1",
           position: "sticky",
           top: 0,
           zIndex: 10,
@@ -232,12 +232,20 @@ export default function HomeMobile() {
               padding: "6px 14px",
               borderRadius: 8,
               border: "none",
-              background: !category ? "#2176AE" : "#eee",
-              color: !category ? "#fff" : "#2176AE",
+              background: !category ? "#D6E2DD" : "#EFE6DD",
+              color: !category ? "#2F3E3A" : "#4A3F36",
               fontWeight: 600,
               fontSize: 15,
               cursor: "pointer",
               transition: "background 0.2s, color 0.2s",
+            }}
+            onMouseOver={e => {
+              e.currentTarget.style.background = "#E3D6CB";
+              e.currentTarget.style.color = "#4A3F36";
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.background = !category ? "#D6E2DD" : "#EFE6DD";
+              e.currentTarget.style.color = !category ? "#2F3E3A" : "#4A3F36";
             }}
           >
             All
@@ -257,13 +265,21 @@ export default function HomeMobile() {
                 padding: "6px 14px",
                 borderRadius: 8,
                 border: "none",
-                background: category === c ? "#2176AE" : "#eee",
-                color: category === c ? "#fff" : "#2176AE",
+                background: category === c ? "#D6E2DD" : "#EFE6DD",
+                color: category === c ? "#2F3E3A" : "#4A3F36",
                 fontWeight: 600,
                 fontSize: 15,
                 cursor: "pointer",
                 textTransform: "capitalize",
                 transition: "background 0.2s, color 0.2s",
+              }}
+              onMouseOver={e => {
+                e.currentTarget.style.background = "#E3D6CB";
+                e.currentTarget.style.color = "#4A3F36";
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.background = category === c ? "#D6E2DD" : "#EFE6DD";
+                e.currentTarget.style.color = category === c ? "#2F3E3A" : "#4A3F36";
               }}
             >
               {c}
@@ -313,7 +329,7 @@ export default function HomeMobile() {
             <div
               key={place.id}
               style={{
-                background: "#fff",
+                background: "#FBF6F1",
                 borderRadius: 16,
                 boxShadow: "0 1px 8px rgba(79,111,134,0.07)",
                 padding: 0,
@@ -533,8 +549,8 @@ export default function HomeMobile() {
                   className="ahg-listing-maps-btn"
                   style={{
                     flex: 1,
-                    background: "#fff",
-                    color: "#2176AE",
+                    background: "#E6DDD4",
+                    color: "#4A3F36",
                     border: "none",
                     borderRadius: "0 0 0 16px",
                     fontWeight: 700,
@@ -560,8 +576,8 @@ export default function HomeMobile() {
                   className="ahg-listing-details-btn"
                   style={{
                     flex: 1,
-                    background: expandedId === place.id ? "#e6f0fa" : "#2176AE",
-                    color: expandedId === place.id ? "#2176AE" : "#fff",
+                    background: "#F0E6DC",
+                    color: "#4A3F36",
                     border: "none",
                     borderRadius: "0 0 16px 0",
                     fontWeight: 700,
@@ -587,7 +603,7 @@ export default function HomeMobile() {
                 <div
                   id={`expand-details-${place.id}`}
                   style={{
-                    background: "#f9f9f9",
+                    background: "#FBF6F1",
                     borderRadius: 12,
                     marginTop: 0,
                     padding: "16px 14px",
