@@ -2835,4 +2835,33 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sama.jpeg",
     mapUrl: "https://maps.app.goo.gl/P8rrGvhgapETUNyz7",
   },
+  {
+    id: "palm-and-paint",
+    destinationSlug: "ahangama",
+    category: "Experiences",
+    name: "Palm and Paint",
+    slug: "palm-and-paint",
+    status: "active",
+    stars: 5.0,
+    reviews: 10,
+    excerpt: "10% off at Palm and Paint experiences studio.",
+    description:
+      "Enjoy 10% off at Palm and Paint, a experiences and art studio in Ahangama.",
+    bestFor: ["Experiences", "Art", "Relax"],
+    tags: ["Experiences", "Art", "Discount"],
+    cardPerk: "10% off with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim: "Show your Ahangama Card to receive your discount.",
+    restrictions:
+      "Valid for experiences and art sessions only. Cannot be combined with other offers.",
+    area: "Ahangama",
+    lat: null,
+    lng: null,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/palm_paint.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/palm_and_paint.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/palm_and_paint.jpeg",
+    mapUrl: "https://maps.app.goo.gl/WyYHk2vrbwyo1zsa7",
+  },
 ];
