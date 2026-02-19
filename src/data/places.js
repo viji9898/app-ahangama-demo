@@ -2,7 +2,7 @@ export const PLACES = [
   {
     id: "animals",
     destinationSlug: "ahangama",
-    category: "eat and drink",
+    category: "eat",
     name: "Animals",
     slug: "animals",
     status: "active",
