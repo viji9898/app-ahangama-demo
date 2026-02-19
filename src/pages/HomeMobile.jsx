@@ -81,20 +81,56 @@ export default function HomeMobile() {
         position: "relative",
       }}
     >
-      {/* Hero image at the top */}
-      <img
-        src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_banner_mobile.jpg"
-        alt="Ahangama Hero Banner"
+      {/* Hero image as background with text overlay */}
+      <div
         style={{
           width: "100%",
-          display: "block",
-          maxWidth: "100%",
-          height: "auto",
-          margin: 0,
-          padding: 0,
+          minHeight: 120,
+          height: 170,
+          zIndex: 1,
+          // background:
+          //   "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_banner_v2.jpg') center center/cover no-repeat",
+          background:
+            "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_banner_v3.jpg') center center/cover no-repeat",
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
           borderRadius: 0,
+          marginBottom: 0,
         }}
-      />
+      >
+        {/* <div
+          style={{
+            borderRadius: 16,
+
+            padding: "18px 22px 18px 18px",
+            margin: 18,
+            maxWidth: 340,
+            textAlign: "center",
+            fontFamily: "Playfair Display, serif",
+            fontWeight: 600,
+            fontSize: 22,
+            letterSpacing: 0.5,
+            color: "#2E4B4A",
+            boxShadow: "0 2px 12px rgba(79,111,134,0.08)",
+          }}
+        >
+          Huge Saving Across <br />
+          <span
+            style={{
+              color: "#1F3A39",
+              fontSize: 30,
+              fontWeight: 700,
+              color: "#2E4B4A",
+              letterSpacing: 1,
+              marginLeft: 8,
+            }}
+          >
+            100+ Venues
+          </span>
+        </div> */}
+      </div>
       {/* Hero section at the top */}
       {/* <div
         style={{

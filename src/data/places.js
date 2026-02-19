@@ -2679,6 +2679,7 @@ export const PLACES = [
     status: "active",
     stars: 4.8,
     reviews: 40,
+    discount: 0.1,
     excerpt: "10% off at Mana boutique stay.",
     description:
       "Enjoy 10% off your stay at Mana, a boutique accommodation in Ahangama.",
