@@ -582,7 +582,11 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
           />
         </Col> */}
 
-        <Col xs={24} md={24} style={{ width: "100%", flex: 1, minWidth: 0, maxWidth: "100%" }}>
+        <Col
+          xs={24}
+          md={24}
+          style={{ width: "100%", flex: 1, minWidth: 0, maxWidth: "100%" }}
+        >
           <Card
             style={{
               borderRadius: "12px",
