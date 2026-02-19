@@ -2805,4 +2805,34 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lucky_u_hostel.jpeg",
     mapUrl: "https://maps.app.goo.gl/EQPEa8u9mpyXqegJ9",
   },
+  {
+    id: "sama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "SĀMA",
+    slug: "sama",
+    status: "active",
+    stars: 4.9,
+    reviews: 126,
+    excerpt: "10% off at SĀMA.",
+    description:
+      "Enjoy 10% off your meal at SĀMA, a top-rated eatery in Ahangama.",
+    bestFor: ["Eat", "Healthy", "Cafe", "Stays"],
+    tags: ["Eat", "Cafe", "Discount", "Stays"],
+    cardPerk: "10% off with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive your discount.",
+    restrictions:
+      "Valid for food and drink only. Cannot be combined with other offers.",
+    area: "Ahangama",
+    lat: 5.971289753426491,
+    lng: 80.36776862762348,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sama.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sama.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sama.jpeg",
+    mapUrl: "https://maps.app.goo.gl/P8rrGvhgapETUNyz7",
+  },
 ];
