@@ -121,7 +121,7 @@ export const PLACES = [
   {
     id: "focus-hub",
     destinationSlug: "ahangama",
-    category: "eat",
+    category: "Co-Working",
     name: "Focus Hub",
     slug: "focus-hub",
     status: "active",
@@ -2604,7 +2604,7 @@ export const PLACES = [
   {
     id: "colive",
     destinationSlug: "ahangama",
-    category: "co-working",
+    category: "Co-Working",
     name: "Colive",
     slug: "colive",
     status: "active",
@@ -2630,5 +2630,35 @@ export const PLACES = [
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/co_live.jpg",
     mapUrl: "https://maps.app.goo.gl/pGdGBtxtyE42RPNW9",
+  },
+  {
+    id: "gik-bike-rentals",
+    destinationSlug: "ahangama",
+    category: "Transport",
+    name: "GIK Bike Rentals",
+    slug: "gik-bike-rentals",
+    status: "active",
+    stars: 5.0,
+    reviews: 18,
+    excerpt: "10% off bike rentals at GIK Bike Rentals.",
+    description:
+      "Get 10% off your bike rental at GIK Bike Rentals, the top-rated transport option in Ahangama.",
+    bestFor: ["Transport", "Explore", "Bike"],
+    tags: ["Transport", "Bike", "Discount"],
+    cardPerk: "10% off with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card when renting to receive your discount.",
+    restrictions:
+      "Valid for bike rentals only. Cannot be combined with other offers.",
+    area: "Ahangama",
+    lat: 5.976002083702839,
+    lng: 80.38362103322369,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/gik_rental.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg",
+    mapUrl: "https://maps.app.goo.gl/iEiSZPJtrxLrhFGA6",
   },
 ];
