@@ -42,10 +42,10 @@ export const PLACES = [
     description: "Unsung is a cozy cafe offering 10% off for pass holders.",
     bestFor: ["Cafe", "Eat", "Discount"],
     tags: ["Cafe", "Discount"],
-    cardPerk: "10% off with the Midigama Card.",
+    cardPerk: "10% off with the Ahangama Pass.",
     offer: ["10% Off"],
     howToClaim:
-      "Show your Midigama Card when ordering to receive the discount.",
+      "Show your Ahangama Pass when ordering to receive the discount.",
     restrictions:
       "Valid for all menu items. Cannot be combined with other offers.",
     area: "Midigama",
