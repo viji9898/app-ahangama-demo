@@ -45,7 +45,7 @@ export const PLACES = [
     tags: ["Cafe", "Discount"],
     discount: 0.1,
     cardPerk: "10% off with the Ahangama Pass.",
-    offer: ["10% Off"],
+    offer: ["10% Off", "Surf Spot"],
     howToClaim:
       "Show your Ahangama Pass when ordering to receive the discount.",
     restrictions:
@@ -605,7 +605,7 @@ export const PLACES = [
     bestFor: ["Casual dinner", "Groups", "Drinks"],
     tags: ["Casual", "Easy", "Crowd-pleaser"],
     cardPerk: "10% off the daily special with the Ahangama Card.",
-    offer: ["10% Off", "Daily Special"],
+    offer: ["10% Off", "Friday Night"],
     howToClaim:
       "Show your Ahangama Card when ordering the daily special to receive 20% discount.",
     restrictions:
@@ -1293,7 +1293,7 @@ export const PLACES = [
     bestFor: ["Lunch", "Dinner", "Fine dining"],
     tags: ["Perfect rating", "Exceptional cuisine", "Outstanding service"],
     cardPerk: "10% off your total bill with the Ahangama Card.",
-    offer: ["10% off"],
+    offer: ["10% off", "Cocktails"],
     howToClaim:
       "Show your Ahangama Card when ordering to receive 10% off your total bill.",
     restrictions:
@@ -1326,10 +1326,10 @@ export const PLACES = [
       "A well-established restaurant in Ahangama with an impressive 4.6-star rating from 540 reviews, known for its consistent quality and excellent service.",
     bestFor: ["Lunch", "Dinner", "Local cuisine"],
     tags: ["Popular", "High ratings", "Established"],
-    cardPerk: "Free desert with the Ahangama Card.",
-    offer: ["Free desert"],
+    cardPerk: "Free dessert with the Ahangama Card.",
+    offer: ["Free dessert"],
     howToClaim:
-      "Show your Ahangama Card when ordering to receive a free desert.",
+      "Show your Ahangama Card when ordering to receive a free dessert.",
     restrictions:
       "Valid for dine-in and takeaway orders. Cannot be combined with other offers.",
     whatsApp: "94771234571",
@@ -2655,7 +2655,7 @@ export const PLACES = [
     bestFor: ["Transport", "Explore", "Bike"],
     tags: ["Transport", "Bike", "Discount"],
     cardPerk: "10% off with the Ahangama Card.",
-    offer: ["10% off"],
+    offer: ["10% off", "Scooters"],
     howToClaim:
       "Show your Ahangama Card when renting to receive your discount.",
     restrictions:
