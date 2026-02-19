@@ -32,7 +32,7 @@ export const PLACES = [
   {
     id: "unsung",
     destinationSlug: "ahangama",
-    category: "cafe",
+    category: "eat",
     name: "Unsung",
     slug: "unsung",
     status: "active",
@@ -2600,5 +2600,35 @@ export const PLACES = [
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pebble_alma.jpg",
     mapUrl: "https://maps.app.goo.gl/W3mmmS2DFKyer67i6",
+  },
+  {
+    id: "colive",
+    destinationSlug: "ahangama",
+    category: "co-working",
+    name: "Colive",
+    slug: "colive",
+    status: "active",
+    stars: 4.9,
+    reviews: 107,
+    excerpt: "10% off at Colive co-working space.",
+    description:
+      "Enjoy 10% off at Colive, a top-rated co-working space in Ahangama.",
+    bestFor: ["Work", "Network", "Focus"],
+    tags: ["Co-working", "Work", "Discount"],
+    cardPerk: "10% off with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim:
+      "Show your Ahangama Card at the front desk to claim your discount.",
+    restrictions:
+      "Valid for workspace bookings only. Cannot be combined with other offers.",
+    area: "Ahangama",
+    lat: 5.9706469242337405,
+    lng: 80.37186681229623,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/co_live.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/co_live.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/co_live.jpg",
+    mapUrl: "https://maps.app.goo.gl/pGdGBtxtyE42RPNW9",
   },
 ];
