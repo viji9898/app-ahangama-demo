@@ -24,11 +24,12 @@ import AdminDashboard from "../pages/AdminDashboard";
 import PlacesTable from "../pages/PlacesTable";
 import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
-
+import HomeDesktop from "../pages/HomeDesktop";
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 export const routes = [
   { path: "/home-v-2", element: <HomeV2 /> },
   { path: "/home-mobile", element: <HomeMobile /> },
+  { path: "/home-desktop", element: <HomeDesktop /> },
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
   { path: "/partners", element: <Partners /> },
