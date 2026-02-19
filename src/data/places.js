@@ -8,6 +8,7 @@ export const PLACES = [
     status: "active",
     stars: 4.8,
     reviews: 103,
+    discount: 0.1,
     excerpt: "Eat, drink, and enjoy a Free Prosecco at Animals.",
     description:
       "Animals is a vibrant spot for food and drinks. Pass holders enjoy a Free Prosecco.",
@@ -42,6 +43,7 @@ export const PLACES = [
     description: "Unsung is a cozy cafe offering 10% off for pass holders.",
     bestFor: ["Cafe", "Eat", "Discount"],
     tags: ["Cafe", "Discount"],
+    discount: 0.1,
     cardPerk: "10% off with the Ahangama Pass.",
     offer: ["10% Off"],
     howToClaim:
@@ -67,6 +69,7 @@ export const PLACES = [
     status: "active",
     stars: 4.7,
     reviews: 88,
+    discount: 0.1,
     excerpt: "Eatery with 10% discount for pass holders.",
     description:
       "Crave offers delicious food and a 10% discount for pass holders.",
@@ -96,6 +99,7 @@ export const PLACES = [
     slug: "abrazo-ahangama",
     status: "active",
     stars: 4.9,
+    discount: 0.1,
     reviews: 646,
     excerpt: "Tacos & Burritos, 10% off and Free Drink for pass holders.",
     description:
@@ -123,6 +127,7 @@ export const PLACES = [
     destinationSlug: "ahangama",
     category: "Co-Working",
     name: "Focus Hub",
+    discount: 0.1,
     slug: "focus-hub",
     status: "active",
     stars: 4.7,
@@ -192,6 +197,7 @@ export const PLACES = [
     status: "active",
     stars: 4.8,
     reviews: 31,
+
     excerpt:
       "Tropical café with a focus on coconut-inspired dishes and drinks.",
     description:
@@ -2227,6 +2233,7 @@ export const PLACES = [
     status: "active",
     stars: 5,
     reviews: 52,
+    discount: 0.1,
     excerpt: "Pickleball, wellness, and more at Coconut Court.",
     description:
       "A vibrant wellness destination featuring a pickleball court and 10% off for pass holders.",
@@ -2610,6 +2617,7 @@ export const PLACES = [
     status: "active",
     stars: 4.9,
     reviews: 107,
+    discount: 0.1,
     excerpt: "10% off at Colive co-working space.",
     description:
       "Enjoy 10% off at Colive, a top-rated co-working space in Ahangama.",
@@ -2640,6 +2648,7 @@ export const PLACES = [
     status: "active",
     stars: 5.0,
     reviews: 18,
+    discount: 0.1,
     excerpt: "10% off bike rentals at GIK Bike Rentals.",
     description:
       "Get 10% off your bike rental at GIK Bike Rentals, the top-rated transport option in Ahangama.",
@@ -2699,6 +2708,7 @@ export const PLACES = [
     status: "active",
     stars: 4.8,
     reviews: 30,
+    discount: 0.1,
     excerpt: "10% off at Sallam wellness.",
     description: "Enjoy 10% off at Sallam, a wellness destination in Ahangama.",
     bestFor: ["Wellness", "Relax", "Health"],
@@ -2727,6 +2737,7 @@ export const PLACES = [
     status: "active",
     stars: 5.0,
     reviews: 48,
+    discount: 0.1,
     excerpt: "10% off at Kumbuk Community experiences.",
     description:
       "Enjoy 10% off at Kumbuk Community, a unique experiences destination in Ahangama.",
@@ -2756,6 +2767,7 @@ export const PLACES = [
     status: "active",
     stars: 5.0,
     reviews: 24,
+    discount: 0.1,
     excerpt: "10% off at Divas Hostel.",
     description:
       "Enjoy 10% off your stay at Divas Hostel, a top-rated hostel in Ahangama.",
@@ -2783,6 +2795,7 @@ export const PLACES = [
     name: "Lucky U Hostel",
     slug: "lucky-u-hostel",
     status: "active",
+    discount: 0.1,
     stars: 4.9,
     reviews: 16,
     excerpt: "10% off at Lucky U Hostel.",
@@ -2810,6 +2823,7 @@ export const PLACES = [
     destinationSlug: "ahangama",
     category: "eat",
     name: "SĀMA",
+    discount: 0.1,
     slug: "sama",
     status: "active",
     stars: 4.9,
@@ -2844,6 +2858,7 @@ export const PLACES = [
     status: "active",
     stars: 5.0,
     reviews: 10,
+    discount: 0.1,
     excerpt: "10% off at Palm and Paint experiences studio.",
     description:
       "Enjoy 10% off at Palm and Paint, a experiences and art studio in Ahangama.",
@@ -2872,6 +2887,7 @@ export const PLACES = [
     slug: "thilenis",
     status: "active",
     stars: 4.6,
+    discount: 0.1,
     reviews: 936,
     excerpt: "10% off at Thileni's.",
     description:
@@ -2903,6 +2919,7 @@ export const PLACES = [
     status: "active",
     stars: 4.9,
     reviews: 157,
+    discount: 0.1,
     excerpt: "10% off at Oyummy.",
     description:
       "Enjoy 10% off your meal at Oyummy, a top-rated eatery in Ahangama.",
@@ -2933,6 +2950,7 @@ export const PLACES = [
     status: "active",
     stars: null,
     reviews: null,
+    discount: 0.1,
     excerpt: "10% off at Chillinguito Cafe.",
     description: "Enjoy 10% off at Chillinguito, a cozy cafe in Ahangama.",
     bestFor: ["Eat", "Cafe", "Chill"],
@@ -2962,6 +2980,7 @@ export const PLACES = [
     status: "active",
     stars: 5.0,
     reviews: 5,
+    discount: 0.1,
     excerpt: "10% off at Puffer Fish stays.",
     description:
       "Enjoy 10% off your stay at Puffer Fish, a boutique accommodation in Ahangama.",
