@@ -81,8 +81,22 @@ export default function HomeMobile() {
         position: "relative",
       }}
     >
+      {/* Hero image at the top */}
+      <img
+        src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_banner_mobile.jpg"
+        alt="Ahangama Hero Banner"
+        style={{
+          width: "100%",
+          display: "block",
+          maxWidth: "100%",
+          height: "auto",
+          margin: 0,
+          padding: 0,
+          borderRadius: 0,
+        }}
+      />
       {/* Hero section at the top */}
-      <div
+      {/* <div
         style={{
           width: "100%",
           background:
@@ -94,7 +108,6 @@ export default function HomeMobile() {
           fontSize: 20,
           letterSpacing: 0.2,
           position: "relative",
-          boxShadow: "0 2px 8px rgba(79,111,134,0.06)",
           display: "flex",
           alignItems: "center",
           gap: 14,
@@ -106,7 +119,6 @@ export default function HomeMobile() {
       >
         <div
           style={{
-            background: "rgba(0,0,0,0.32)",
             borderRadius: 18,
             display: "flex",
             alignItems: "center",
@@ -124,7 +136,7 @@ export default function HomeMobile() {
               width: 60,
               height: 60,
               borderRadius: 12,
-              boxShadow: "0 1px 4px #e0e0e0",
+
               flexShrink: 0,
               objectFit: "contain",
               background: "transparent",
@@ -138,27 +150,27 @@ export default function HomeMobile() {
                 fontSize: 17,
                 marginBottom: 2,
                 lineHeight: 1.2,
-                color: "#fff",
-                wordBreak: "break-word",
-              }}
-            >
-              SAVE 10-30%+ at 100+ venues
-            </div>
-            <div
-              style={{
-                fontWeight: 400,
-                fontSize: 15,
-                color: "#fff",
-                opacity: 0.95,
-                lineHeight: 1.2,
+                color: "black",
                 wordBreak: "break-word",
               }}
             >
               Ahangama Pass
             </div>
+            <div
+              style={{
+                fontWeight: 400,
+                fontSize: 15,
+                color: "black",
+                opacity: 0.95,
+                lineHeight: 1.2,
+                wordBreak: "break-word",
+              }}
+            >
+              Huge Saving Across 100+ Venues
+            </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Floating Get Pass button for mobile */}
       <a
@@ -239,12 +251,14 @@ export default function HomeMobile() {
               cursor: "pointer",
               transition: "background 0.2s, color 0.2s",
             }}
-            onMouseOver={e => {
+            onMouseOver={(e) => {
               e.currentTarget.style.background = "#E3D6CB";
               e.currentTarget.style.color = "#4A3F36";
             }}
-            onMouseOut={e => {
-              e.currentTarget.style.background = !category ? "#D6E2DD" : "#EFE6DD";
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = !category
+                ? "#D6E2DD"
+                : "#EFE6DD";
               e.currentTarget.style.color = !category ? "#2F3E3A" : "#4A3F36";
             }}
           >
@@ -273,13 +287,15 @@ export default function HomeMobile() {
                 textTransform: "capitalize",
                 transition: "background 0.2s, color 0.2s",
               }}
-              onMouseOver={e => {
+              onMouseOver={(e) => {
                 e.currentTarget.style.background = "#E3D6CB";
                 e.currentTarget.style.color = "#4A3F36";
               }}
-              onMouseOut={e => {
-                e.currentTarget.style.background = category === c ? "#D6E2DD" : "#EFE6DD";
-                e.currentTarget.style.color = category === c ? "#2F3E3A" : "#4A3F36";
+              onMouseOut={(e) => {
+                e.currentTarget.style.background =
+                  category === c ? "#D6E2DD" : "#EFE6DD";
+                e.currentTarget.style.color =
+                  category === c ? "#2F3E3A" : "#4A3F36";
               }}
             >
               {c}

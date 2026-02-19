@@ -136,7 +136,7 @@ export const PLACES = [
     description:
       "Focus Hub is a modern co-working space and cafe, perfect for remote work and great coffee.",
     bestFor: ["Co-Working", "Cafe", "Remote Work"],
-    tags: ["Co-Working", "Cafe", "Workspace"],
+    tags: ["Co-Working", "coworking", "Cafe", "Workspace"],
     cardPerk: "Contact venue for pass holder perks.",
     offer: ["10% off"],
     howToClaim:
@@ -2622,7 +2622,7 @@ export const PLACES = [
     description:
       "Enjoy 10% off at Colive, a top-rated co-working space in Ahangama.",
     bestFor: ["Work", "Network", "Focus"],
-    tags: ["Co-working", "Work", "Discount"],
+    tags: ["Co-working", "coworking", "Work", "Discount"],
     cardPerk: "10% off with the Ahangama Card.",
     offer: ["10% off"],
     howToClaim:
@@ -2712,7 +2712,7 @@ export const PLACES = [
     excerpt: "10% off at Sallam wellness.",
     description: "Enjoy 10% off at Sallam, a wellness destination in Ahangama.",
     bestFor: ["Wellness", "Relax", "Health"],
-    tags: ["Wellness", "Discount"],
+    tags: ["Wellness", "Gym", "Discount"],
     cardPerk: "10% off with the Ahangama Card.",
     offer: ["10% off"],
     howToClaim: "Show your Ahangama Card to receive your discount.",
