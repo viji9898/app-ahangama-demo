@@ -2661,4 +2661,33 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg",
     mapUrl: "https://maps.app.goo.gl/iEiSZPJtrxLrhFGA6",
   },
+  {
+    id: "mana",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Mana",
+    slug: "mana",
+    status: "active",
+    stars: 4.8,
+    reviews: 40,
+    excerpt: "10% off at Mana boutique stay.",
+    description:
+      "Enjoy 10% off your stay at Mana, a boutique accommodation in Ahangama.",
+    bestFor: ["Stay", "Boutique", "Relax"],
+    tags: ["Stay", "Boutique", "Discount"],
+    cardPerk: "10% off with the Ahangama Card.",
+    offer: ["10% off"],
+    howToClaim: "Show your Ahangama Card at check-in to receive your discount.",
+    restrictions:
+      "Valid for room bookings only. Cannot be combined with other offers.",
+    area: "Ahangama",
+    lat: 5.982002743143535,
+    lng: 80.34946372423394,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/mana.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mana.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mana.jpeg",
+    mapUrl: "https://maps.app.goo.gl/zq5vUFJxVNW8RLDV6",
+  },
 ];
