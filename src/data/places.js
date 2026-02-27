@@ -2475,7 +2475,7 @@ export const PLACES = [
   {
     id: "sarana-ahangama",
     destinationSlug: "ahangama",
-    category: "wellness",
+    category: "experiences",
     name: "Sarana",
     slug: "sarana-ahangama",
     status: "active",
