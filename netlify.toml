@@ -9,45 +9,6 @@
 [functions]
   directory = "netlify/functions"
 
-# --- QR redirects (must be ABOVE the SPA fallback) ---
-[[redirects]]
-  from = "/fruit-cafe"
-  to = "https://ahangama.com/?utm_source=postcard&utm_medium=offline&utm_campaign=qr_launch_2026&utm_content=fruit-cafe"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/aliikai"
-  to = "https://ahangama.com/?utm_source=postcard&utm_medium=offline&utm_campaign=qr_launch_2026&utm_content=aliikai"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/illuk"
-  to = "https://ahangama.com/?utm_source=postcard&utm_medium=offline&utm_campaign=qr_launch_2026&utm_content=illuk"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/palm-garden"
-  to = "https://ahangama.com/?utm_source=postcard&utm_medium=offline&utm_campaign=qr_launch_2026&utm_content=palm-garden-ayurveda"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/kaffi"
-  to = "https://ahangama.com/?utm_source=postcard&utm_medium=offline&utm_campaign=qr_launch_2026&utm_content=kaffi-ahangama"
-  status = 302
-  force = true
-
-# Optional: root of qr.ahangama.com
-[[redirects]]
-  from = "/"
-  to = "https://ahangama.com/?utm_source=postcard&utm_medium=offline&utm_campaign=qr_launch_2026&utm_content=qr-root"
-  status = 302
-  force = true
-
-# --- SPA fallback (keep LAST) ---
 [[redirects]]
   from = "/*"
   to = "/index.html"
