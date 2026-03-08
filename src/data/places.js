@@ -3077,9 +3077,9 @@ export const PLACES = [
     lng: 80.39441722883541,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/dirty_cloths_laundry.jpeg",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/dirty_clothes.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/dirty_clothes.jpeg",
     mapUrl: "https://maps.app.goo.gl/xDVQYsKJfqvXCYmd9",
   },
   {
@@ -3137,7 +3137,7 @@ export const PLACES = [
     restrictions: "Valid on eligible retail purchases only.",
     whatsApp: "",
     email: "",
-    instagram: "",
+    instagram: "https://www.instagram.com/teazoneceylon",
     discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
@@ -3289,9 +3289,9 @@ export const PLACES = [
     lng: 80.3406476819529,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/south_point_villa.jpeg",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/south_villa.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/south_villa.jpeg",
     mapUrl: "https://maps.app.goo.gl/konEHJiEhJK3MbdQ8",
   },
   {
@@ -3792,9 +3792,9 @@ export const PLACES = [
     lng: 80.35071306820878,
     logo: "",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/bayana_steam_house.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/bayana_steam_house.jpeg",
     mapUrl: "https://maps.app.goo.gl/FbUPQAsxxSL4quyC8",
   },
   {
@@ -4156,9 +4156,9 @@ export const PLACES = [
     lng: 80.36298551784026,
     logo: "",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/aggala.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/aggala.jpeg",
     mapUrl: "https://maps.app.goo.gl/zN5cGq3EU1Q2RfNs5",
   },
   {
@@ -4195,5 +4195,81 @@ export const PLACES = [
     ogImage:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/nova_rental.jpeg",
     mapUrl: "https://maps.app.goo.gl/UR4k8dY9pr3Q1o3u8",
+  },
+  {
+    id: "cristina-ailmentart-school",
+    destinationSlug: "ahangama",
+    category: "experiences",
+    name: "Cristina Ailmentart School",
+    slug: "cristina-ailmentart-school",
+    status: "active",
+    stars: 4.8,
+    reviews: 122,
+    excerpt:
+      "A more niche Ahangama experience built around conscious learning, craft, and hands-on training.",
+    description:
+      "A distinctive experience-led venue in Ahangama offering creative and training-focused sessions, with extra value for guests joining the Conscious Chef Professional Training.",
+    bestFor: ["Workshops", "Training", "Experiences"],
+    tags: ["Experience", "Creative", "Learning"],
+    cardPerk:
+      "15% off total bill plus a free apron for Conscious Chef Professional Training with the Ahangama Card.",
+    offer: [
+      "15% off total bill",
+      "Free apron for Conscious Chef Professional Training",
+    ],
+    howToClaim:
+      "Present your Ahangama Card before payment or when confirming your booking.",
+    restrictions:
+      "Free apron applies only to Conscious Chef Professional Training participants.",
+    whatsApp: "",
+    email: "",
+    instagram: "",
+    discount: 0.15,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.985259901516676,
+    lng: 80.39235541534379,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cristina_ailmentart_school.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cristina_ailmentart_school.jpeg",
+    mapUrl: "https://maps.app.goo.gl/5btagD92iHnVc7zM7",
+  },
+  {
+    id: "tea-zone-ceylon",
+    destinationSlug: "ahangama",
+    category: "shops-essentials",
+    name: "Tea Zone Ceylon",
+    slug: "tea-zone-ceylon",
+    status: "active",
+    stars: 4.5,
+    reviews: 120,
+    excerpt:
+      "A compact retail stop for Ceylon tea, coffee, and spice picks in the heart of Ahangama.",
+    description:
+      "A simple local retail stop focused on Sri Lankan tea, coffee, and spice varieties, making it a good place for gifts, pantry staples, and easy take-home finds.",
+    bestFor: ["Tea", "Retail", "Souvenirs"],
+    tags: ["Retail", "Tea", "Local products"],
+    cardPerk: "10% off tea, coffee & spice varieties with the Ahangama Card.",
+    offer: ["10% off tea, coffee & spice varieties"],
+    howToClaim: "Show your Ahangama Card at checkout to redeem the offer.",
+    restrictions: "Valid on eligible retail purchases only.",
+    whatsApp: "",
+    email: "",
+    instagram: "",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.972904417975067,
+    lng: 80.36289622296849,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/tea_zone_ceylon.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tea_zone_ceylon.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tea_zone_ceylon.jpeg",
+    mapUrl: "https://maps.app.goo.gl/DiHiSxJSYo2LWfiw7",
   },
 ];
