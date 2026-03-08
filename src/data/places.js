@@ -3553,7 +3553,7 @@ export const PLACES = [
   {
     id: "happy-tours",
     destinationSlug: "ahangama",
-    category: "getting-around",
+    category: "Transport",
     name: "Happy Tours",
     slug: "happy-tours",
     status: "active",
@@ -4130,7 +4130,7 @@ export const PLACES = [
   {
     id: "aggala",
     destinationSlug: "ahangama",
-    category: "shops-essentials",
+    category: "Experiences",
     name: "Aggala",
     slug: "aggala",
     status: "active",
@@ -4164,7 +4164,7 @@ export const PLACES = [
   {
     id: "nova-rent-a-car",
     destinationSlug: "ahangama",
-    category: "getting-around",
+    category: "Transport",
     name: "Nova Rent a Car",
     slug: "nova-rent-a-car",
     status: "active",
@@ -4199,7 +4199,7 @@ export const PLACES = [
   {
     id: "cristina-ailmentart-school",
     destinationSlug: "ahangama",
-    category: "experiences",
+    category: "Experiences",
     name: "Cristina Ailmentart School",
     slug: "cristina-ailmentart-school",
     status: "active",
