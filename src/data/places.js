@@ -819,7 +819,7 @@ export const PLACES = [
     bestFor: ["Dinner", "Drinks", "Beach road"],
     tags: ["Lively", "Dependable", "Social"],
     cardPerk: "Fresh catch of the day - 10% off with the Ahangama Card.",
-    offer: ["Fresh Catch", "10% Off"],
+    offer: ["10% Off"],
     howToClaim:
       "Order the fresh catch of the day and present your Ahangama Card to receive 10% discount.",
     restrictions:
@@ -1071,7 +1071,7 @@ export const PLACES = [
     category: "eat",
     name: "MAKAI Café",
     slug: "makai-cafe-ahangama",
-    status: "coming_soon",
+    status: "active",
     stars: 5,
     reviews: 170,
     excerpt:
@@ -1082,7 +1082,7 @@ export const PLACES = [
     tags: ["Highly-rated", "Modern", "Easy"],
     cardPerk:
       "Signature MAKAI latte + pastry combo deal with the Ahangama Card.",
-    offer: ["Latte Combo", "Signature Drink"],
+    offer: ["10% off"],
     discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
@@ -1094,8 +1094,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+29makai.webp",
     ogImage:
       "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJ6fM2WqwV4ToRDwJESR4dQbs",
+    mapUrl: "https://maps.app.goo.gl/HQtJHo6xxXaQwCwz8",
   },
   {
     id: "teddies-ahangama",
@@ -1587,12 +1586,17 @@ export const PLACES = [
       "A popular, highly reviewed option on the southern beach road. Works for casual dinners and easy evening plans.",
     bestFor: ["Dinner", "Drinks", "Beach road"],
     tags: ["Lively", "Dependable", "Social"],
-    cardPerk: "Fresh catch of the day - 10% off with the Ahangama Card.",
-    offer: ["Free refill on coffee / tea", "Late checkout"],
+    cardPerk:
+      "10% off rooms; 1 free coffee with brunch menu; 1 free dessert for dinner for two with the Ahangama Card.",
+    offer: [
+      "10% off rooms",
+      "1 free coffee with brunch menu",
+      "1 free dessert for dinner for two",
+    ],
     howToClaim:
-      "Show your Ahangama Card at check-in to receive late checkout and free refills on beverages.",
+      "Show your Ahangama Card at check-in/booking for 10% off rooms, and when ordering brunch/dinner to receive the coffee/dessert.",
     restrictions:
-      "Late checkout subject to availability. Free refills available during stay.",
+      "Room discount applies to accommodation only. One free coffee per brunch order. One free dessert per dinner for two. Cannot be combined with other promotions.",
     whatsApp: "94771234597",
     email: "stay@sambahangama.com",
     instagram: "sambastayahangama",
@@ -1607,8 +1611,7 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp",
     ogImage:
       "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    mapUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJt2e3EEQV4ToRUqgcr_LXi5Q",
+    mapUrl: "https://maps.app.goo.gl/YRWWptBySGgfHVYv5",
   },
   {
     id: "solas-surf",
