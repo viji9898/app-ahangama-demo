@@ -3048,7 +3048,7 @@ export const PLACES = [
   },
   {
     id: "dirty-clothes-midigama",
-    destinationSlug: "Midigama",
+    destinationSlug: "midigama",
     category: "shops-essentials",
     name: "Dirty Clothes",
     slug: "dirty-clothes-midigama",
