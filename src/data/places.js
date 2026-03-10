@@ -3551,6 +3551,44 @@ export const PLACES = [
     mapUrl: "https://maps.app.goo.gl/YgmhMJKtvLqACQFN9",
   },
   {
+    id: "frostys-recovery-centre-hangout",
+    destinationSlug: "ahangama",
+    category: "wellness",
+    name: "Frosty's | Recovery Centre & Hangout",
+    slug: "frostys-recovery-centre-hangout",
+    status: "active",
+    stars: 4.9,
+    reviews: 43,
+    excerpt:
+      "Recovery centre and hangout with 10% off entry fees and membership purchases for pass holders.",
+    description:
+      "Frosty's offers a recovery-focused experience with 10% off all entry fees and membership purchases for Ahangama Card holders.",
+    bestFor: ["Recovery", "Wellness", "Hangout"],
+    tags: ["Wellness", "Recovery"],
+    cardPerk:
+      "10% off all entry fees and membership purchases at Frosty's with the Ahangama Card.",
+    offer: ["10% off entry fees", "10% off memberships"],
+    howToClaim:
+      "Show your Ahangama Card before paying to receive the discount.",
+    restrictions:
+      "Valid on entry fees and membership purchases only. Check with the venue for any exclusions.",
+    whatsApp: "",
+    email: "",
+    instagram: "",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Kabalana",
+    lat: 5.979636614939634,
+    lng: 80.35439605767189,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+    mapUrl: "https://maps.app.goo.gl/tJXVUG6rdw7jnQaFA",
+  },
+  {
     id: "happy-tours",
     destinationSlug: "ahangama",
     category: "Transport",
