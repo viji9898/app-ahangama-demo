@@ -138,7 +138,7 @@ export const PLACES = [
     bestFor: ["Tacos", "Burritos", "Mexican", "Eat"],
     tags: ["Tacos", "Burritos", "Free Drink"],
     cardPerk: "10% off and Free Drink with the Ahangama Card.",
-    offer: ["10% Off", "Free Drink"],
+    offer: ["10% Off + Free Drink"],
     howToClaim:
       "Show your Ahangama Card when ordering to receive the discount and free drink.",
     restrictions:
