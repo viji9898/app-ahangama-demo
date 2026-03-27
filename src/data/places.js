@@ -4502,4 +4502,40 @@ export const PLACES = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tea_zone_ceylon.jpeg",
     mapUrl: "https://maps.app.goo.gl/DiHiSxJSYo2LWfiw7",
   },
+  {
+    id: "pachcha-sanni",
+    destinationSlug: "ahangama",
+    category: "shops-essentials",
+    name: "Pachcha Sanni",
+    slug: "pachcha-sanni",
+    status: "active",
+    stars: 2,
+    reviews: 2,
+    excerpt:
+      "A tattoo-shop retail stop for sticker packs and merch in Ahangama.",
+    description:
+      "Pachcha Sanni is an Ahangama tattoo shop offering sticker packs and other merch for visitors looking for something creative and collectible to take away.",
+    bestFor: ["Tattoo culture", "Sticker packs", "Merch"],
+    tags: ["Retail", "Tattoo shop", "Merch"],
+    cardPerk: "Sticker pack and other merch perks with the Ahangama Card.",
+    offer: ["Sticker Pack", "Other Merch"],
+    howToClaim: "Show your Ahangama Card at checkout when buying merch.",
+    restrictions:
+      "Valid on eligible merch purchases only. Check in-store for current included items.",
+    whatsApp: "",
+    email: "",
+    instagram: "",
+    discount: 0,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.982642872487125,
+    lng: 80.36866349380335,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/pachcha_sanni.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pachcha_sanni.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pachcha_sanni.jpeg",
+    mapUrl: "https://maps.app.goo.gl/WbWmqRMYU5kPqeAe7",
+  },
 ];
