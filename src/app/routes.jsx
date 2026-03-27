@@ -25,13 +25,29 @@ import PlacesTable from "../pages/PlacesTable";
 import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 import HomeDesktop from "../pages/HomeDesktop";
+import { Seo } from "./seo";
 
 function ExternalRedirect({ to }) {
   React.useEffect(() => {
     window.location.replace(to);
   }, [to]);
 
-  return null;
+  return (
+    <>
+      <Seo
+        title="Google Map Redirect — Ahangama"
+        description="Direct link to Google Maps for Ahangama."
+        canonical={to}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Google Map Redirect — Ahangama",
+          url: to,
+        }}
+      />
+      <a href={to}>Continuing to Google Maps</a>
+    </>
+  );
 }
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
@@ -48,7 +64,9 @@ export const routes = [
   { path: "/map-google", element: <MapGoogle /> },
   {
     path: "/google-map",
-    element: <ExternalRedirect to="https://maps.app.goo.gl/YyrJvehP4y3BSBae6" />,
+    element: (
+      <ExternalRedirect to="https://maps.app.goo.gl/YyrJvehP4y3BSBae6" />
+    ),
   },
   { path: "/vendors", element: <Vendors /> },
   { path: "/card", element: <CardLanding /> },
