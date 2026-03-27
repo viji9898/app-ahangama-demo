@@ -25,6 +25,7 @@ try {
   console.log("   npm run dev");
 }
 
-console.log("\n🔍 Now check the database:");
-console.log("   node verify-db.js");
-console.log("   node db-query.js list-customers");
+console.log("\n🔍 Next step:");
+console.log(
+  "   Open the generated /card/pass/<qr-code> URL in the same browser to verify the locally stored pass."
+);

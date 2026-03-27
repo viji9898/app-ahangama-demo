@@ -13,6 +13,7 @@ import { sendPassEmailViaFunction } from "../services/emailService";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { verifyPayment } from "../services/stripe";
+import { issuePurchasedCard, normalizeQrCode } from "../app/cardStore";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -242,10 +243,25 @@ export default function PaymentSuccess() {
     const verifyAndLoadPayment = async () => {
       try {
         const data = await verifyPayment(sessionId);
-        setPaymentData(data);
+        const normalizedData = {
+          ...data,
+          qrCode: normalizeQrCode(data.qrCode),
+          customerName:
+            data.customerName || data.customerEmail?.split("@")[0] || "Guest",
+          purchaseDate: data.purchaseDate || new Date().toISOString(),
+          startDate:
+            data.startDate || data.purchaseDate || new Date().toISOString(),
+        };
+
+        issuePurchasedCard({
+          ...normalizedData,
+          sessionId,
+        });
+
+        setPaymentData(normalizedData);
 
         // Auto-send email with PDF
-        await sendPassPDF(data);
+        await sendPassPDF(normalizedData);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -273,9 +289,7 @@ export default function PaymentSuccess() {
         setEmailSending(false);
 
         // Extract QR code from URL if it's a full URL, otherwise use as-is
-        const qrCode = data.qrCode.includes("?qr=")
-          ? data.qrCode.split("?qr=")[1]
-          : data.qrCode;
+        const qrCode = normalizeQrCode(data.qrCode);
 
         // Redirect immediately to pass page
         navigate(`/card/pass/${qrCode}`);

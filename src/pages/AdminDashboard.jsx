@@ -11,7 +11,6 @@ import {
   Alert,
   Input,
   Select,
-  DatePicker,
   Spin,
 } from "antd";
 import {
@@ -22,9 +21,9 @@ import {
   ShopOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import { listCards, listRedemptions, seedDemoData } from "../app/cardStore";
 
 const { Title, Text } = Typography;
-const { RangePicker } = DatePicker;
 
 const AdminDashboard = () => {
   const [purchases, setPurchases] = useState([]);
@@ -36,40 +35,25 @@ const AdminDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
-  // Seed database with test data
   const seedDatabase = async () => {
     try {
       setSeeding(true);
-      const response = await fetch("/.netlify/functions/seed-database", {
-        method: "POST",
+      const result = seedDemoData();
+      Modal.success({
+        title: "Demo Data Added",
+        content: (
+          <div>
+            <p>✅ {result.purchasesCreated} purchases created</p>
+            <p>✅ {result.redemptionsCreated} redemptions created</p>
+            <p>✅ {result.customers} customers added</p>
+            <p>💰 Total revenue: ${result.summary.totalRevenue}</p>
+          </div>
+        ),
       });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-
-      if (result.success) {
-        Modal.success({
-          title: "Database Seeded Successfully!",
-          content: (
-            <div>
-              <p>✅ {result.data.purchasesCreated} purchases created</p>
-              <p>✅ {result.data.redemptionsCreated} redemptions created</p>
-              <p>✅ {result.data.customers} customers added</p>
-              <p>💰 Total revenue: ${result.summary.totalRevenue}</p>
-            </div>
-          ),
-        });
-        // Refresh data after seeding
-        await fetchData();
-      } else {
-        throw new Error(result.error || "Seeding failed");
-      }
+      await fetchData();
     } catch (error) {
       Modal.error({
-        title: "Seeding Failed",
+        title: "Unable to add demo data",
         content: error.message,
       });
     } finally {
@@ -77,35 +61,11 @@ const AdminDashboard = () => {
     }
   };
 
-  // Fetch all purchases and redemptions
   const fetchData = async () => {
     try {
       setLoading(true);
-
-      // Fetch all purchases
-      const purchasesResponse = await fetch(
-        "/.netlify/functions/admin-data?type=purchases"
-      );
-
-      if (!purchasesResponse.ok) {
-        throw new Error(`HTTP error! status: ${purchasesResponse.status}`);
-      }
-
-      const purchasesData = await purchasesResponse.json();
-
-      // Fetch all redemptions
-      const redemptionsResponse = await fetch(
-        "/.netlify/functions/admin-data?type=redemptions"
-      );
-
-      if (!redemptionsResponse.ok) {
-        throw new Error(`HTTP error! status: ${redemptionsResponse.status}`);
-      }
-
-      const redemptionsData = await redemptionsResponse.json();
-
-      setPurchases(purchasesData.data || []);
-      setRedemptions(redemptionsData.data || []);
+      setPurchases(listCards());
+      setRedemptions(listRedemptions());
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -121,9 +81,13 @@ const AdminDashboard = () => {
   const filteredPurchases = purchases.filter((purchase) => {
     const matchesSearch =
       !searchTerm ||
-      purchase.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      purchase.customerEmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      purchase.qrCode.toLowerCase().includes(searchTerm.toLowerCase());
+      (purchase.customerName || "")
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      (purchase.customerEmail || "")
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      (purchase.qrCode || "").toLowerCase().includes(searchTerm.toLowerCase());
 
     const matchesStatus =
       statusFilter === "all" ||
@@ -283,7 +247,7 @@ const AdminDashboard = () => {
       {!loading && purchases.length === 0 && (
         <Alert
           message="No Purchase Data Found"
-          description="No customer purchases found in the database. Click 'Seed Test Data' to populate with sample data for testing."
+          description="No locally stored passes were found in this browser. Click 'Seed Test Data' to populate sample cards for testing."
           type="info"
           showIcon
           action={

@@ -26,6 +26,7 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { PLACES } from "../data/places";
 import VerifyStatusPanel from "../components/ui/VerifyStatusPanel";
+import { redeemCard, verifyCardByCode } from "../app/cardStore";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -120,16 +121,7 @@ export default function CardVerify() {
     setRedemptionResult(null);
 
     try {
-      const response = await fetch(
-        `/.netlify/functions/qr-verify?qr=${encodeURIComponent(targetCode)}`
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-
+      const result = verifyCardByCode(targetCode);
       setVerificationResult(result);
     } catch (error) {
       setVerificationResult({
@@ -149,40 +141,29 @@ export default function CardVerify() {
     setRedemptionResult(null);
 
     try {
-      const selectedVenue = venues.find((v) => v.id === formData.venueId);
-
-      const response = await fetch("/.netlify/functions/log-redemption", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          qrCode,
-          venueId: selectedVenue.id,
-          venueName: selectedVenue.name,
-          venueCategory: selectedVenue.category,
-          redemptionType: formData.redemptionType,
-          customOffer: formData.customOffer || null,
-          offerUsed: selectedVenue.offer,
-          vendorPin: formData.pin,
-        }),
+      const selectedVenue = venues.find((venue) => venue.id === formData.venueId);
+      const result = redeemCard({
+        qrCode,
+        venueId: selectedVenue.id,
+        venueName: selectedVenue.name,
+        venueCategory: selectedVenue.category,
+        redemptionType: formData.redemptionType,
+        customOffer: formData.customOffer || null,
+        offerUsed: Array.isArray(selectedVenue.offer)
+          ? selectedVenue.offer.join(", ")
+          : selectedVenue.offer,
+        vendorPin: formData.pin,
       });
 
-      if (!response.ok) {
-        // Try to get the error message from the server response
-        const errorResponse = await response.json().catch(() => ({}));
-        const errorMessage =
-          errorResponse.error || `HTTP error! status: ${response.status}`;
-        throw new Error(errorMessage);
+      if (!result.success) {
+        throw new Error(result.error || "Unable to redeem this pass.");
       }
 
-      const result = await response.json();
       setRedemptionResult(result);
+      setVerificationResult(verifyCardByCode(qrCode));
 
-      // Don't automatically close modal - let user see the result and manually close
       if (result.success) {
         redemptionForm.resetFields();
-        // Modal stays open to show success message
       }
     } catch (error) {
       setRedemptionResult({

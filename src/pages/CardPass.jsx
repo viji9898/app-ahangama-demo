@@ -29,6 +29,7 @@ import jsPDF from "jspdf";
 import QRCodeLib from "qrcode";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
+import { verifyCardByCode } from "../app/cardStore";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -49,56 +50,45 @@ const CardPass = () => {
       return;
     }
 
-    // Fetch pass data from the API
-    const fetchPassData = async () => {
-      try {
-        const response = await fetch(
-          `/.netlify/functions/qr-verify?qr=${encodeURIComponent(qrCode)}`
-        );
+    try {
+      const result = verifyCardByCode(qrCode);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-
-        if (!result.valid) {
-          setError(result.error || "Invalid pass code");
-          setLoading(false);
-          return;
-        }
-
-        // Transform API response to match our component needs
-        const purchase = result.purchase;
-        const passData = {
-          qrCode: purchase.qrCode,
-          productName: purchase.productName,
-          customerName: purchase.customerName,
-          customerEmail: purchase.customerEmail,
-          customerPhone: purchase.customerPhone,
-          validityDays: purchase.validityDays,
-          purchaseDate: purchase.purchaseDate,
-          expiryDate: purchase.expiryDate,
-          status: result.valid && !result.expired ? "active" : "expired",
-          remainingDays: Math.max(
-            0,
-            Math.ceil(
-              (new Date(purchase.expiryDate) - new Date()) /
-                (1000 * 60 * 60 * 24)
-            )
-          ),
-        };
-
-        setPassData(passData);
-      } catch (err) {
-        console.error("Error fetching pass data:", err);
-        setError("Failed to load pass data");
-      } finally {
+      if (!result.purchase) {
+        setError(result.error || "Invalid pass code");
         setLoading(false);
+        return;
       }
-    };
 
-    fetchPassData();
+      const purchase = result.purchase;
+      const nextPassData = {
+        qrCode: purchase.qrCode,
+        productName: purchase.productName,
+        customerName: purchase.customerName,
+        customerEmail: purchase.customerEmail,
+        customerPhone: purchase.customerPhone,
+        validityDays: purchase.validityDays,
+        purchaseDate: purchase.purchaseDate,
+        expiryDate: purchase.expiryDate,
+        status: result.valid && !result.expired ? "active" : "expired",
+        remainingDays: Math.max(
+          0,
+          Math.ceil(
+            (new Date(purchase.expiryDate) - new Date()) /
+              (1000 * 60 * 60 * 24)
+          )
+        ),
+      };
+
+      setPassData(nextPassData);
+      if (!result.valid) {
+        setError(result.error || "This pass has expired.");
+      }
+    } catch (err) {
+      console.error("Error loading pass data:", err);
+      setError("Failed to load pass data");
+    } finally {
+      setLoading(false);
+    }
   }, [qrCode]);
 
   const handleWhatsAppContact = () => {
