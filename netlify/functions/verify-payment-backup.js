@@ -1,11 +1,10 @@
 import Stripe from "stripe";
-import { neon } from "@netlify/neon";
+import { neon } from "@neondatabase/serverless";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
 import { getStripeKey, getEnvironmentName } from "../../lib/stripe-config.js";
 
 const stripe = new Stripe(getStripeKey());
-const databaseUrl =
-  process.env.NETLIFY_DATABASE_URL || process.env.DATABASE_URL;
+const databaseUrl = process.env.DATABASE_URL || process.env.NEON_DATABASE_URL;
 const sql = databaseUrl ? neon(databaseUrl) : null;
 
 export const handler = async (event, context) => {

@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { neon } from "@netlify/neon";
+import { neon } from "@neondatabase/serverless";
 import crypto from "crypto";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
 import { getStripeKey, getEnvironmentName } from "../../lib/stripe-config.js";
@@ -26,8 +26,7 @@ const stripe = new Stripe(getStripeKey());
 
 // Only initialize database connection if we have a valid URL
 let sql = null;
-const databaseUrl =
-  process.env.NETLIFY_DATABASE_URL || process.env.DATABASE_URL;
+const databaseUrl = process.env.DATABASE_URL || process.env.NEON_DATABASE_URL;
 
 if (
   databaseUrl &&

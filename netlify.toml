@@ -14,10 +14,4 @@
   to = "/index.html"
   status = 200
 
-# Disable Neon buildhooks plugin to avoid auth issues
-# [[plugins]]
-#   package = "neon-buildhooks"
-#   
-#   [plugins.inputs]
-#     disabled = true
 

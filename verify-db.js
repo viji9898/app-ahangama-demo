@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-import { neon } from "@netlify/neon";
+import { neon } from "@neondatabase/serverless";
 
-const databaseUrl =
-  process.env.NETLIFY_DATABASE_URL || process.env.DATABASE_URL;
+const databaseUrl = process.env.DATABASE_URL || process.env.NEON_DATABASE_URL;
 const sql = neon(databaseUrl);
 
 console.log("🔍 Verifying database connection and schema...\n");
@@ -56,7 +55,7 @@ try {
   console.log(`  - Redemptions: ${redemptionCount[0].count} records`);
 
   console.log("\n✅ Database connection verified successfully!");
-  console.log("🔗 Connected to Neon PostgreSQL via Netlify DB");
+  console.log("🔗 Connected to PostgreSQL database");
 } catch (error) {
   console.error("❌ Error verifying database:", error.message);
   process.exit(1);
