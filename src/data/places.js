@@ -455,6 +455,35 @@ export const PLACES = [
     mapUrl: "https://maps.app.goo.gl/LHgtJ3oPy7XoaEaz5",
   },
   {
+    id: "villa-mugatiya",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Villa Mugatiya",
+    slug: "villa-mugatiya",
+    status: "active",
+    stars: 4.7,
+    reviews: 43,
+    excerpt: "10% off total bill for stay bookings.",
+    description:
+      "Villa Mugatiya offers a 10% discount on the total bill for Ahangama Card holders.",
+    bestFor: ["Stay", "Villa", "Discount"],
+    tags: ["Stay", "Villa", "Discount"],
+    cardPerk: "10% off total bill with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim: "Show your Ahangama Card when booking to receive the discount.",
+    restrictions:
+      "Valid on the total bill. Cannot be combined with other offers.",
+    discount: 0.1,
+    area: "Ahangama",
+    lat: 5.978007274630647,
+    lng: 80.37235887301598,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/villa_mugatiya.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/villa_mugatiya.jpeg",
+  },
+  {
     id: "veda-cafe",
     destinationSlug: "ahangama",
     category: "eat",
