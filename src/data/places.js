@@ -3583,9 +3583,9 @@ export const PLACES = [
     lng: 80.35439605767189,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/frostys.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/frostys.jpeg",
     mapUrl: "https://maps.app.goo.gl/tJXVUG6rdw7jnQaFA",
   },
   {
