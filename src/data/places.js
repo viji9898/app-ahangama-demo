@@ -1809,6 +1809,39 @@ export const PLACES = [
     mapUrl: `https://maps.app.goo.gl/kgo61MvLMfaHHfdv9`,
   },
   {
+    id: "art-house",
+    destinationSlug: "ahangama",
+    category: "stays",
+    name: "Art House",
+    slug: "art-house",
+    status: "active",
+    stars: 5,
+    reviews: 5,
+    excerpt: "10% off total bill plus late checkout at this Ahangama stay.",
+    description:
+      "Art House is a stay in Ahangama offering 10% off the total bill and late checkout.",
+    bestFor: ["Stay", "Late checkout", "Boutique"],
+    tags: ["Stay", "Late checkout", "Ahangama"],
+    cardPerk: "10% off total bill and late checkout with the Ahangama Card.",
+    offer: ["10% Off", "Late Checkout"],
+    howToClaim:
+      "Show your Ahangama Card at check-in to receive 10% off the total bill and late checkout.",
+    restrictions:
+      "Late checkout is subject to availability. Cannot be combined with other offers.",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "24/7",
+    area: "Ahangama",
+    lat: 5.991135707722517,
+    lng: 80.34593598650798,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/art_house.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/art_house.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/art_house.jpeg",
+    mapUrl: "https://maps.app.goo.gl/qciDizhkrTtoAf2x8",
+  },
+  {
     id: "kabalana-house-by-ceilao-villas",
     destinationSlug: "ahangama",
     category: "stays",
