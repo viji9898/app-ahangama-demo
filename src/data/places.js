@@ -343,7 +343,7 @@ export const PLACES = [
     bestFor: ["Hostel Stay", "Social", "Budget"],
     tags: ["Hostel", "Chill", "Social"],
     cardPerk: "10% off all stays with the Ahangama Card.",
-    offer: ["10% Off"],
+    offer: ["10% Off + Free Drink"],
     howToClaim: "Show your Ahangama Card when booking to receive the discount.",
     restrictions: "Valid for all stays. Cannot be combined with other offers.",
     whatsApp: "94771234600",
@@ -696,7 +696,7 @@ export const PLACES = [
   {
     id: "black-honey-cafe",
     destinationSlug: "ahangama",
-    category: "eat",
+    category: "stays",
     name: "Black Honey cafe",
     slug: "black-honey-cafe",
     status: "active",
@@ -709,7 +709,7 @@ export const PLACES = [
     bestFor: ["Coffee", "Brunch", "Quiet catch-up"],
     tags: ["Calm", "Tucked-away", "Well-loved"],
     cardPerk: "Honey-infused drink upgrade free with the Ahangama Card.",
-    offer: ["Honey Upgrade", "Free Boost"],
+    offer: ["Honey Upgrade", "10% off Rooms"],
     howToClaim:
       "Show your Ahangama Card when ordering any drink to receive free honey infusion upgrade.",
     restrictions: "Valid for any drink order. One upgrade per card per visit.",
@@ -857,7 +857,7 @@ export const PLACES = [
     tags: ["Central", "Reliable", "Simple"],
     cardPerk:
       "Double shot espresso at single shot price with the Ahangama Card.",
-    offer: ["Double Shot", "Single Price"],
+    offer: ["10% Off"],
     howToClaim:
       "Show your Ahangama Card when ordering an espresso to get double shot at single shot price.",
     restrictions:
@@ -1222,7 +1222,7 @@ export const PLACES = [
     bestFor: ["Lunch", "Dinner", "Casual dining"],
     tags: ["Popular", "Good food", "Friendly service"],
     cardPerk: "10% off your total bill with the Ahangama Card.",
-    offer: ["10% off"],
+    offer: ["10% off Bill, Yoga, Surf"],
     howToClaim:
       "Show your Ahangama Card when ordering to receive 10% off your total bill.",
     restrictions:
@@ -2627,7 +2627,7 @@ export const PLACES = [
     bestFor: ["Stay", "Boutique", "Relax"],
     tags: ["Stay", "Boutique", "Discount"],
     cardPerk: "20% off total bill with the Ahangama Card.",
-    offer: ["20% Off"],
+    offer: ["30% Off"],
     howToClaim:
       "Show your Ahangama Card at check-in or when settling the bill.",
     restrictions: "Valid for total bill. Cannot be combined with other offers.",
@@ -2819,7 +2819,7 @@ export const PLACES = [
     bestFor: ["Stay", "Hostel", "Budget"],
     tags: ["Stay", "Hostel", "Discount"],
     cardPerk: "10% off with the Ahangama Card.",
-    offer: ["10% off"],
+    offer: ["10% off", "20% off Breakfast (Direct Bookings)"],
     howToClaim: "Show your Ahangama Card at check-in to receive your discount.",
     restrictions:
       "Valid for room bookings only. Cannot be combined with other offers.",
@@ -2940,7 +2940,7 @@ export const PLACES = [
     bestFor: ["Eat", "Local", "Family"],
     tags: ["Eat", "Local", "Discount"],
     cardPerk: "10% off with the Ahangama Card.",
-    offer: ["10% off"],
+    offer: ["Free Banana Bread Before 4pm with Coffee Purchase"],
     howToClaim:
       "Show your Ahangama Card when ordering to receive your discount.",
     restrictions:
@@ -3062,7 +3062,7 @@ export const PLACES = [
     bestFor: ["Laundry", "Travelers", "Long stays"],
     tags: ["Laundry", "Essentials", "Midigama"],
     cardPerk: "10% off all entry fees and memberships at Dirty Clothes.",
-    offer: ["10% off all entry fees", "10% off memberships"],
+    offer: ["10% off bill"],
     howToClaim: "Show your Ahangama Card when paying to redeem the discount.",
     restrictions:
       "Valid on eligible services only. Check in-store for any exclusions.",
@@ -3554,7 +3554,7 @@ export const PLACES = [
     id: "frostys-recovery-centre-hangout",
     destinationSlug: "ahangama",
     category: "wellness",
-    name: "Frosty's | Recovery Centre & Hangout",
+    name: "Frosty's",
     slug: "frostys-recovery-centre-hangout",
     status: "active",
     stars: 4.9,
@@ -3640,7 +3640,7 @@ export const PLACES = [
     bestFor: ["Massage", "Recovery", "Wellness"],
     tags: ["Spa", "Massage", "Midigama"],
     cardPerk: "Free aroma oil with massage when using the Ahangama Card.",
-    offer: ["Free aroma oil with massage"],
+    offer: ["10% off any treatment + free aromatherapy add-on"],
     howToClaim: "Show your Ahangama Card before your treatment begins.",
     restrictions: "Valid with eligible massage bookings only.",
     whatsApp: "",
