@@ -325,6 +325,37 @@ export const PLACES = [
     mapUrl: "https://maps.app.goo.gl/ZYcmsymHhEtNugKn7",
   },
   {
+    id: "folklore-ahangama",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Folklore Ahangama",
+    slug: "folklore-ahangama",
+    status: "active",
+    stars: 5,
+    reviews: 94,
+    excerpt: "Complimentary welcome drink for pass holders.",
+    description:
+      "Folklore Ahangama offers a complimentary welcome drink for Ahangama Card holders.",
+    bestFor: ["Eat", "Drink", "Welcome Drink"],
+    tags: ["Eat", "Drink", "Welcome Drink"],
+    cardPerk: "Complimentary welcome drink with the Ahangama Card.",
+    offer: ["Complimentary Welcome Drink"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the complimentary welcome drink.",
+    restrictions:
+      "Valid for one welcome drink per visit. Cannot be combined with other offers.",
+    discount: 0,
+    area: "Ahangama",
+    lat: 5.984640642473304,
+    lng: 80.354292642328,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/folklore_ahangama.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/folklore_ahangama.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/folklore_ahangama.jpeg",
+    mapUrl: "https://maps.app.goo.gl/kxosQguvvnp84MCX9",
+  },
+  {
     id: "daydream",
     destinationSlug: "ahangama",
     category: "shops-essentials",
@@ -410,7 +441,8 @@ export const PLACES = [
     cardPerk: "10% off total bill with the Ahangama Card.",
     offer: ["10% Off"],
     howToClaim: "Show your Ahangama Card when booking to receive the discount.",
-    restrictions: "Valid on the total bill. Cannot be combined with other offers.",
+    restrictions:
+      "Valid on the total bill. Cannot be combined with other offers.",
     discount: 0.1,
     area: "Ahangama",
     lat: 5.967599707886407,
