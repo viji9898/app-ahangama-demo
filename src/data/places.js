@@ -294,6 +294,37 @@ export const PLACES = [
     mapUrl: "https://maps.app.goo.gl/Ct3asNTv9FPYWers7",
   },
   {
+    id: "hungry-puppet",
+    destinationSlug: "ahangama",
+    category: "eat",
+    name: "Hungry Puppet",
+    slug: "hungry-puppet",
+    status: "active",
+    stars: 4.9,
+    reviews: 296,
+    excerpt: "10% off total bill for pass holders.",
+    description:
+      "Hungry Puppet offers 10% off the total bill for Ahangama Card holders.",
+    bestFor: ["Eat", "Discount"],
+    tags: ["Eat", "Discount"],
+    cardPerk: "10% off total bill with the Ahangama Card.",
+    offer: ["10% Off"],
+    howToClaim:
+      "Show your Ahangama Card when ordering to receive the discount.",
+    restrictions:
+      "Valid on the total bill. Cannot be combined with other offers.",
+    discount: 0.1,
+    area: "Ahangama",
+    lat: 5.969430265901759,
+    lng: 80.37531511534397,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/hungry_puppet.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hungry_puppets.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hungry_puppets.jpeg",
+    mapUrl: "https://maps.app.goo.gl/ZYcmsymHhEtNugKn7",
+  },
+  {
     id: "daydream",
     destinationSlug: "ahangama",
     category: "shops-essentials",
