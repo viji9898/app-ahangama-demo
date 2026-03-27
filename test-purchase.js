@@ -6,7 +6,7 @@ const testSessionId = `cs_test_${Date.now()}_test`;
 
 try {
   const response = await fetch(
-    `http://localhost:8888/.netlify/functions/verify-payment?sessionId=${testSessionId}`
+    `http://localhost:8888/.netlify/functions/verify-payment?sessionId=${testSessionId}`,
   );
   const result = await response.json();
 
@@ -27,5 +27,5 @@ try {
 
 console.log("\n🔍 Next step:");
 console.log(
-  "   Open the generated /card/pass/<qr-code> URL in the same browser to verify the locally stored pass."
+  "   Open the generated /card/pass/<qr-code> URL in the same browser to verify the locally stored pass.",
 );

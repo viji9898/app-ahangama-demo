@@ -20,7 +20,7 @@ const { Title, Paragraph, Text } = Typography;
 const generatePassPDF = async (
   paymentData,
   shouldDownload = true,
-  shouldEmail = false
+  shouldEmail = false,
 ) => {
   // Create phone-sized PDF (105mm x 160mm - A6 portrait with extra height)
   const pdf = new jsPDF({
@@ -44,7 +44,7 @@ const generatePassPDF = async (
         light: "#ffffff",
       },
       errorCorrectionLevel: "M",
-    }
+    },
   );
 
   // Simple header - no fancy gradients
@@ -122,7 +122,7 @@ const generatePassPDF = async (
       day: "2-digit",
       month: "short",
       year: "2-digit",
-    }
+    },
   );
   const expiryDate = new Date(paymentData.expiryDate).toLocaleDateString(
     "en-GB",
@@ -130,7 +130,7 @@ const generatePassPDF = async (
       day: "2-digit",
       month: "short",
       year: "2-digit",
-    }
+    },
   );
 
   pdf.setFontSize(8);
@@ -278,7 +278,7 @@ export default function PaymentSuccess() {
           data.customerEmail,
           data.customerName || data.customerEmail.split("@")[0],
           data.qrCode,
-          pdfBase64
+          pdfBase64,
         );
 
         setEmailSent(true);
@@ -414,10 +414,10 @@ export default function PaymentSuccess() {
             emailSending
               ? "📧 Sending your pass..."
               : emailSent
-              ? "📧 Pass delivered!"
-              : emailError
-              ? "⚠️ Email delivery issue"
-              : "📧 Pass delivery"
+                ? "📧 Pass delivered!"
+                : emailError
+                  ? "⚠️ Email delivery issue"
+                  : "📧 Pass delivery"
           }
           description={
             <div>
@@ -453,10 +453,10 @@ export default function PaymentSuccess() {
             emailSending
               ? "info"
               : emailSent
-              ? "success"
-              : emailError
-              ? "warning"
-              : "info"
+                ? "success"
+                : emailError
+                  ? "warning"
+                  : "info"
           }
           showIcon
           style={{ marginBottom: 24 }}

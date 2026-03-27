@@ -4,7 +4,9 @@ const KEY_CARDS = "ahangama_cards_v1";
 const KEY_REDEMPTIONS = "ahangama_card_redemptions_v1";
 
 function hasStorage() {
-  return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
+  return (
+    typeof window !== "undefined" && typeof window.localStorage !== "undefined"
+  );
 }
 
 function readJson(key, fallback) {
@@ -25,7 +27,7 @@ function writeJson(key, value) {
 
 function sortNewestFirst(items, key) {
   return [...items].sort(
-    (left, right) => Date.parse(right[key] || 0) - Date.parse(left[key] || 0)
+    (left, right) => Date.parse(right[key] || 0) - Date.parse(left[key] || 0),
   );
 }
 
@@ -40,7 +42,7 @@ function deriveProduct(productId, validityDays) {
 
   return (
     Object.values(CARD_PRODUCTS).find(
-      (product) => Number(product.validityDays) === Number(validityDays)
+      (product) => Number(product.validityDays) === Number(validityDays),
     ) || CARD_PRODUCT
   );
 }
@@ -74,7 +76,9 @@ export function makeCardId() {
 }
 
 function upsertCard(card) {
-  const cards = listCards().filter((existing) => existing.cardId !== card.cardId);
+  const cards = listCards().filter(
+    (existing) => existing.cardId !== card.cardId,
+  );
   cards.unshift(card);
   writeJson(KEY_CARDS, cards);
   return card;
@@ -88,7 +92,7 @@ export function issuePurchasedCard(data = {}) {
   const expiryDate =
     data.expiryDate ||
     new Date(
-      Date.parse(startDate) + validityDays * 24 * 60 * 60 * 1000
+      Date.parse(startDate) + validityDays * 24 * 60 * 60 * 1000,
     ).toISOString();
   const qrCode = normalizeQrCode(data.qrCode) || makeCardId();
 
@@ -141,7 +145,7 @@ export function getCard(cardId) {
   const normalized = normalizeQrCode(cardId);
   return (
     listCards().find(
-      (card) => card.cardId === normalized || card.qrCode === normalized
+      (card) => card.cardId === normalized || card.qrCode === normalized,
     ) || null
   );
 }
@@ -158,7 +162,7 @@ export function getRedemptionsForCard(cardId) {
   const normalized = normalizeQrCode(cardId);
   return listRedemptions().filter(
     (redemption) =>
-      redemption.cardId === normalized || redemption.qrCode === normalized
+      redemption.cardId === normalized || redemption.qrCode === normalized,
   );
 }
 
@@ -188,7 +192,7 @@ export function canRedeem({ cardId, venueId, date = new Date() }) {
     (redemption) =>
       redemption.cardId === normalized &&
       redemption.venueId === venueId &&
-      yyyyMmDd(redemption.redeemedAt) === dateKey
+      yyyyMmDd(redemption.redeemedAt) === dateKey,
   );
 
   return { ok: !alreadyRedeemed, dateKey };
@@ -298,7 +302,9 @@ export function seedDemoData() {
       customerName: "Demo Guest",
       customerEmail: "demo1@example.com",
       customerPhone: "+94770000001",
-      purchaseDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+      purchaseDate: new Date(
+        Date.now() - 2 * 24 * 60 * 60 * 1000,
+      ).toISOString(),
       startDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
       expiryDate: new Date(Date.now() + 13 * 24 * 60 * 60 * 1000).toISOString(),
     }),

@@ -327,7 +327,7 @@ const AdminDashboard = () => {
           <Title level={4}>
             {
               purchases.filter(
-                (p) => p.isActive && new Date(p.expiryDate) > new Date()
+                (p) => p.isActive && new Date(p.expiryDate) > new Date(),
               ).length
             }
           </Title>
@@ -457,7 +457,7 @@ const AdminDashboard = () => {
                     },
                   ]}
                   dataSource={redemptions.filter(
-                    (r) => r.purchaseId === selectedPurchase.id
+                    (r) => r.purchaseId === selectedPurchase.id,
                   )}
                   pagination={false}
                   rowKey="id"

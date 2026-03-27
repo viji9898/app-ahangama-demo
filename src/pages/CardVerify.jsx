@@ -102,7 +102,7 @@ export default function CardVerify() {
   const canonical = absUrl(
     params.cardId
       ? `/card/verify/${encodeURIComponent(prefill)}`
-      : "/card/verify"
+      : "/card/verify",
   );
 
   // QR Code verification function
@@ -141,7 +141,9 @@ export default function CardVerify() {
     setRedemptionResult(null);
 
     try {
-      const selectedVenue = venues.find((venue) => venue.id === formData.venueId);
+      const selectedVenue = venues.find(
+        (venue) => venue.id === formData.venueId,
+      );
       const result = redeemCard({
         qrCode,
         venueId: selectedVenue.id,
@@ -179,7 +181,7 @@ export default function CardVerify() {
   const RedemptionModal = () => {
     console.log(
       "RedemptionModal rendering, showRedemptionModal:",
-      showRedemptionModal
+      showRedemptionModal,
     );
     return (
       <Modal
@@ -449,7 +451,7 @@ export default function CardVerify() {
                       >
                         {verificationResult.purchase?.startDate
                           ? new Date(
-                              verificationResult.purchase.startDate
+                              verificationResult.purchase.startDate,
                             ).toLocaleDateString("en-US", {
                               weekday: "long",
                               year: "numeric",
@@ -472,7 +474,7 @@ export default function CardVerify() {
                         }}
                       >
                         {new Date(
-                          verificationResult.purchase?.expiryDate
+                          verificationResult.purchase?.expiryDate,
                         ).toLocaleDateString("en-US", {
                           weekday: "long",
                           year: "numeric",
@@ -561,7 +563,7 @@ export default function CardVerify() {
                     </Text>
                     <div style={{ fontSize: 16, color: "#ff4d4f" }}>
                       {new Date(
-                        verificationResult.purchase.expiryDate
+                        verificationResult.purchase.expiryDate,
                       ).toLocaleDateString()}
                     </div>
                   </div>
@@ -636,7 +638,7 @@ export default function CardVerify() {
                       <Text>
                         Starts:{" "}
                         {new Date(
-                          verificationResult.purchase.startDate
+                          verificationResult.purchase.startDate,
                         ).toLocaleDateString()}
                       </Text>
                       <br />
@@ -645,7 +647,7 @@ export default function CardVerify() {
                   <Text>
                     Expires:{" "}
                     {new Date(
-                      verificationResult.purchase?.expiryDate
+                      verificationResult.purchase?.expiryDate,
                     ).toLocaleDateString()}
                   </Text>
                 </div>

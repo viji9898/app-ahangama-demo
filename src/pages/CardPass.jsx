@@ -74,8 +74,8 @@ const CardPass = () => {
           0,
           Math.ceil(
             (new Date(purchase.expiryDate) - new Date()) /
-              (1000 * 60 * 60 * 24)
-          )
+              (1000 * 60 * 60 * 24),
+          ),
         ),
       };
 
@@ -94,7 +94,7 @@ const CardPass = () => {
   const handleWhatsAppContact = () => {
     const message = `Hi! I need help with my Ahangama Pass. My pass code is: ${qrCode}`;
     const whatsappUrl = `https://wa.me/94777908790?text=${encodeURIComponent(
-      message
+      message,
     )}`;
     window.open(whatsappUrl, "_blank");
   };
@@ -129,7 +129,7 @@ const CardPass = () => {
           light: "#ffffff",
         },
         errorCorrectionLevel: "M",
-      }
+      },
     );
 
     // Simple header - no fancy gradients
@@ -206,7 +206,7 @@ const CardPass = () => {
         day: "2-digit",
         month: "short",
         year: "2-digit",
-      }
+      },
     );
     const expiryDate = new Date(passData.expiryDate).toLocaleDateString(
       "en-GB",
@@ -214,7 +214,7 @@ const CardPass = () => {
         day: "2-digit",
         month: "short",
         year: "2-digit",
-      }
+      },
     );
 
     pdf.setFontSize(8);
@@ -326,8 +326,8 @@ const CardPass = () => {
   const remainingDays = Math.max(
     0,
     Math.ceil(
-      (new Date(passData.expiryDate) - new Date()) / (1000 * 60 * 60 * 24)
-    )
+      (new Date(passData.expiryDate) - new Date()) / (1000 * 60 * 60 * 24),
+    ),
   );
 
   return (
@@ -498,7 +498,7 @@ const CardPass = () => {
                                 style={{ color: "#52c41a", fontSize: "18px" }}
                               >
                                 {new Date(
-                                  passData.purchaseDate
+                                  passData.purchaseDate,
                                 ).toLocaleDateString("en-US", {
                                   year: "numeric",
                                   month: "long",
@@ -515,7 +515,7 @@ const CardPass = () => {
                             <div>
                               <Text style={{ fontSize: "18px" }}>
                                 {new Date(
-                                  passData.purchaseDate
+                                  passData.purchaseDate,
                                 ).toLocaleDateString("en-US", {
                                   year: "numeric",
                                   month: "long",
@@ -541,7 +541,7 @@ const CardPass = () => {
                             <div>
                               <Text style={{ fontSize: "18px" }}>
                                 {new Date(
-                                  passData.expiryDate
+                                  passData.expiryDate,
                                 ).toLocaleDateString("en-US", {
                                   year: "numeric",
                                   month: "long",
