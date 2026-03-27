@@ -3990,6 +3990,44 @@ export const PLACES = [
     mapUrl: "https://maps.app.goo.gl/FbUPQAsxxSL4quyC8",
   },
   {
+    id: "krish-combat-fitness",
+    destinationSlug: "ahangama",
+    category: "wellness",
+    name: "Krish Combat & Fitness",
+    slug: "krish-combat-fitness",
+    status: "active",
+    stars: 5,
+    reviews: 205,
+    excerpt:
+      "A strong wellness pick for training-focused visitors, with value on private classes and day access.",
+    description:
+      "Krish Combat & Fitness is an Ahangama wellness spot offering 10% off private classes and 10% off the one day pass for gym and martial arts sessions.",
+    bestFor: ["Gym", "Martial arts", "Private classes"],
+    tags: ["Wellness", "Gym", "Martial Arts"],
+    cardPerk:
+      "10% off private classes and 10% off the one day pass with the Ahangama Card.",
+    offer: ["10% off private classes", "10% off one day pass"],
+    howToClaim:
+      "Show your Ahangama Card before booking or paying for private classes or a one day pass.",
+    restrictions:
+      "Valid on private classes and one day pass purchases only. Cannot be combined with other offers unless venue confirms otherwise.",
+    whatsApp: "",
+    email: "",
+    instagram: "",
+    discount: 0.1,
+    price: "Mid-range",
+    hours: "Confirm seasonally",
+    area: "Ahangama",
+    lat: 5.980292314664622,
+    lng: 80.35859682883599,
+    logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/krish_combat.jpeg",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/krish_combat_fitness.jpeg",
+    ogImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/krish_combat_fitness.jpeg",
+    mapUrl: "https://maps.app.goo.gl/9SZfPLE7ajABCkzP9",
+  },
+  {
     id: "lum-cafe",
     destinationSlug: "ahangama",
     category: "eat",
