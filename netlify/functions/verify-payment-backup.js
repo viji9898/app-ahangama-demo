@@ -108,7 +108,7 @@ export const handler = async (event, context) => {
           validityDays: 30,
           purchaseDate: new Date().toISOString(),
           expiryDate: new Date(
-            Date.now() + 30 * 24 * 60 * 60 * 1000
+            Date.now() + 30 * 24 * 60 * 60 * 1000,
           ).toISOString(),
         }),
       };
@@ -152,7 +152,7 @@ export const handler = async (event, context) => {
           purchaseDate: new Date(),
           expiryDate: new Date(
             Date.now() +
-              parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
+              parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000,
           ),
           isActive: true,
           createdAt: new Date(),
@@ -193,7 +193,7 @@ export const handler = async (event, context) => {
       purchaseDate: new Date().toISOString(),
       expiryDate: new Date(
         Date.now() +
-          parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000
+          parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000,
       ).toISOString(),
     };
 

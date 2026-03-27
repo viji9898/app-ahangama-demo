@@ -43,7 +43,7 @@ export const DatabaseService = {
       startDate: startDate,
       expiryDate: new Date(
         startDate.getTime() +
-          parseInt(stripeSession.metadata.validityDays) * 24 * 60 * 60 * 1000
+          parseInt(stripeSession.metadata.validityDays) * 24 * 60 * 60 * 1000,
       ),
     };
 
@@ -81,7 +81,7 @@ export const DatabaseService = {
     const todayRedemptions = await dbQueries.checkTodayRedemption(
       db,
       purchase.id,
-      venueId
+      venueId,
     );
 
     if (todayRedemptions.length > 0) {

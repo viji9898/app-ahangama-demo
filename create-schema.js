@@ -4,9 +4,7 @@ import { neon } from "@neondatabase/serverless";
 const databaseUrl = process.env.DATABASE_URL || process.env.NEON_DATABASE_URL;
 
 if (!databaseUrl) {
-  console.error(
-    "❌ Database URL not found. Make sure DATABASE_URL is set."
-  );
+  console.error("❌ Database URL not found. Make sure DATABASE_URL is set.");
   process.exit(1);
 }
 

@@ -47,7 +47,7 @@ try {
   // Test a simple query
   const purchaseCount = await sql(`SELECT COUNT(*) as count FROM purchases`);
   const redemptionCount = await sql(
-    `SELECT COUNT(*) as count FROM redemptions`
+    `SELECT COUNT(*) as count FROM redemptions`,
   );
 
   console.log("\n📈 Data summary:");
