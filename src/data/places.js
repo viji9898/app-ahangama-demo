@@ -3216,9 +3216,9 @@ export const PLACES = [
     lng: 80.35175240964983,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the_cinnamon_trail.jpeg",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_cinnamon_trails.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_cinnamon_trails.jpeg",
     mapUrl: "https://maps.app.goo.gl/adedDVC4D8qe4Vcx6",
   },
   {
@@ -3397,9 +3397,9 @@ export const PLACES = [
     lng: 80.37939460384266,
     logo: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/roaming_retreat_cafe%CC%81.jpeg",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_roaming_retreat.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_roaming_retreat.jpeg",
     mapUrl: "https://maps.app.goo.gl/tWUn5vpJPMAb4vWi9",
   },
   {
@@ -3795,9 +3795,9 @@ export const PLACES = [
     lng: 80.36107749816125,
     logo: "",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sandwich_spot.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sandwich_spot.jpeg",
     mapUrl: "https://maps.app.goo.gl/49VYvbdj5KThrAs29",
   },
   {
@@ -4160,9 +4160,9 @@ export const PLACES = [
     lng: 80.39751208310368,
     logo: "",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/paradise_cove.jpeg",
     ogImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/paradise_cove.jpeg",
     mapUrl: "https://maps.app.goo.gl/GLP1h2BvQm34Hq8q9",
   },
   {
