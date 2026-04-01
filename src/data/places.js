@@ -1203,7 +1203,7 @@ export const PLACES = [
     tags: ["Highly-rated", "Modern", "Easy"],
     cardPerk:
       "Signature MAKAI latte + pastry combo deal with the Ahangama Card.",
-    offer: ["10% off"],
+    offer: ["10% off", "15% off Stays"],
     discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
