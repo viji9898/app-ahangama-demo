@@ -25,6 +25,7 @@ import PlacesTable from "../pages/PlacesTable";
 import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 import HomeDesktop from "../pages/HomeDesktop";
+import Resellers from "../pages/Resellers";
 import { Seo } from "./seo";
 
 function ExternalRedirect({ to }) {
@@ -80,6 +81,7 @@ export const routes = [
   { path: "/admin", element: <AdminDashboard /> },
   { path: "/partner-signup", element: <PartnerSignUp /> },
   { path: "/partner-signup/success", element: <PartnerSignUpSuccess /> },
+  { path: "/resellers", element: <Resellers /> },
   { path: "/places", element: <PlacesTable /> },
   {
     path: "/eat",

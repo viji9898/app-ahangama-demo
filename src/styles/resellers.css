@@ -1,0 +1,413 @@
+.reseller-page {
+  min-height: calc(100vh - 120px);
+  padding: 24px 0 48px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(0, 95, 107, 0.14),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(236, 169, 95, 0.2),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #efe7d8 0%, #f5efe0 42%, #f7f2e8 100%);
+}
+
+.reseller-shell {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.reseller-logo-bar {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.reseller-eyebrow {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #005f6b;
+}
+
+.reseller-logo-bar h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.05;
+  color: #143039;
+}
+
+.reseller-intro {
+  margin: 10px auto 0;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #5d767d;
+}
+
+.reseller-card {
+  position: relative;
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid rgba(11, 74, 82, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 24px 64px rgba(13, 42, 45, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.reseller-step-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.reseller-step-dot {
+  height: 4px;
+  flex: 1;
+  border-radius: 999px;
+  background: #dde6e8;
+  transition: background-color 0.2s ease;
+}
+
+.reseller-step-dot.active {
+  background: #005f6b;
+}
+
+.reseller-step-dot.done {
+  background: #008c9e;
+}
+
+.reseller-step-header {
+  margin-bottom: 24px;
+}
+
+.reseller-step-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #143039;
+}
+
+.reseller-step-sub {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6b8a91;
+}
+
+.reseller-fields {
+  display: grid;
+  gap: 18px;
+}
+
+.reseller-field {
+  display: grid;
+  gap: 8px;
+}
+
+.reseller-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #658188;
+}
+
+.reseller-field input,
+.reseller-field select,
+.reseller-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #b7ced2;
+  border-radius: 12px;
+  background: #fff;
+  color: #173139;
+  font: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  appearance: none;
+}
+
+.reseller-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.reseller-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B8A91' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+}
+
+.reseller-field input:focus,
+.reseller-field select:focus,
+.reseller-field textarea:focus {
+  outline: none;
+  border-color: #005f6b;
+  box-shadow: 0 0 0 4px rgba(0, 95, 107, 0.1);
+}
+
+.reseller-field.has-error input,
+.reseller-field.has-error select,
+.reseller-field.has-error textarea {
+  border-color: #df6252;
+}
+
+.reseller-error-msg {
+  font-size: 12px;
+  color: #cf4f3f;
+}
+
+.reseller-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.reseller-type-card {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  padding: 16px 12px;
+  border: 1px solid #b7ced2;
+  border-radius: 14px;
+  background: #fff;
+  color: #173139;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.reseller-type-card:hover,
+.reseller-type-card:focus-visible {
+  border-color: #005f6b;
+  background: #f5fbfc;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.reseller-type-card.selected {
+  border-width: 2px;
+  border-color: #005f6b;
+  background: #edf7f8;
+  box-shadow: 0 10px 24px rgba(0, 95, 107, 0.08);
+}
+
+.reseller-type-icon {
+  font-size: 24px;
+}
+
+.reseller-type-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.reseller-type-sub {
+  font-size: 11px;
+  color: #6b8a91;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.reseller-checkbox-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #b7ced2;
+  border-radius: 14px;
+  background: #f8fbfc;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.reseller-checkbox-wrap:hover {
+  border-color: #005f6b;
+}
+
+.reseller-checkbox-wrap.checked {
+  border-color: #005f6b;
+  background: #edf7f8;
+}
+
+.reseller-checkbox-wrap.error {
+  border-color: #df6252;
+}
+
+.reseller-checkbox-wrap input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reseller-custom-check {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin-top: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #b7ced2;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.reseller-checkbox-wrap.checked .reseller-custom-check {
+  border-color: #005f6b;
+  background: #005f6b;
+}
+
+.reseller-check-label {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #658188;
+}
+
+.reseller-check-label strong {
+  color: #173139;
+}
+
+.reseller-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e8ea;
+}
+
+.reseller-progress-label {
+  font-size: 12px;
+  color: #6b8a91;
+}
+
+.reseller-btn {
+  min-width: 124px;
+  padding: 11px 18px;
+  border: 1px solid #b7ced2;
+  border-radius: 12px;
+  background: transparent;
+  color: #173139;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.reseller-btn:hover:not(:disabled),
+.reseller-btn:focus-visible:not(:disabled) {
+  background: #f0f7f8;
+  border-color: #93b3b8;
+  outline: none;
+}
+
+.reseller-btn.primary {
+  border-color: #005f6b;
+  background: #005f6b;
+  color: #fff;
+}
+
+.reseller-btn.primary:hover:not(:disabled),
+.reseller-btn.primary:focus-visible:not(:disabled) {
+  background: #004d58;
+  border-color: #004d58;
+}
+
+.reseller-btn:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.reseller-error-banner {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid #efb0a3;
+  border-radius: 10px;
+  background: #fff0ee;
+  color: #a23b2d;
+  font-size: 13px;
+}
+
+.reseller-success-box {
+  padding: 26px 12px 8px;
+  text-align: center;
+}
+
+.reseller-success-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e0f4f6;
+}
+
+.reseller-success-box h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #173139;
+}
+
+.reseller-success-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #658188;
+}
+
+@media (max-width: 640px) {
+  .reseller-page {
+    padding-top: 8px;
+  }
+
+  .reseller-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .reseller-type-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reseller-actions {
+    flex-wrap: wrap;
+  }
+
+  .reseller-btn {
+    flex: 1 1 calc(50% - 7px);
+  }
+
+  .reseller-progress-label {
+    width: 100%;
+    order: 3;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .reseller-type-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reseller-btn {
+    flex-basis: 100%;
+  }
+}
