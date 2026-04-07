@@ -73,6 +73,41 @@ exports.handler = async (event) => {
       submittedAt: escapeHtml(new Date(submittedAt).toLocaleString()),
     };
 
+    const resellerEmailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 680px; margin: 0 auto; color: #1f2937; line-height: 1.65;">
+        <h1 style="margin-bottom: 20px; color: #005f6b; font-size: 28px;">Welcome to Ahangama Pass Reseller Program - you're in!</h1>
+
+        <p>Welcome to Ahangama Pass, we're thrilled to have you selling with us.</p>
+
+        <p>You're now part of a select network of reseller partners bringing the Ahangama Pass to travellers across Sri Lanka. Every pass you sell gives your clients instant access to the best of Ahangama, and adds value to your establishment through our commission structure.</p>
+
+        <p>We are happy to walk you through a quick onboarding so you and your team know exactly how to present and sell the pass with confidence, if needed.</p>
+
+        <p>For any support you need to get you set up with everything you need, such as your reseller pricing, pass access, and any sales materials to help you hit the ground running, reach out to us on:<br><a href="mailto:hello@ahangama.com" style="color: #005f6b;">hello@ahangama.com</a></p>
+
+        <div style="margin: 28px 0; padding: 18px 20px; border: 1px solid #e5e7eb; border-radius: 12px; background: #f8fafc;">
+          <h2 style="margin: 0 0 12px; font-size: 18px; color: #143039;">Application details received</h2>
+          <p style="margin: 0 0 8px;"><strong>Business:</strong> ${safe.business}</p>
+          <p style="margin: 0 0 8px;"><strong>Contact name:</strong> ${safe.name}</p>
+          <p style="margin: 0 0 8px;"><strong>Partner type:</strong> ${safe.partnerType}</p>
+          <p style="margin: 0 0 8px;"><strong>Location:</strong> ${safe.location}</p>
+          <p style="margin: 0 0 8px;"><strong>Estimated monthly volume:</strong> ${safe.volume}</p>
+          <p style="margin: 0 0 8px;"><strong>Email:</strong> ${safe.email}</p>
+          <p style="margin: 0 0 8px;"><strong>Phone:</strong> ${safe.phone}</p>
+          <p style="margin: 0 0 8px;"><strong>Sales channel:</strong> ${safe.channel}</p>
+          <p style="margin: 0;"><strong>Motivation:</strong> ${safe.motivation}</p>
+        </div>
+
+        <p>We're looking forward to working closely with you, this is just the beginning.</p>
+
+        <p style="margin-top: 24px;">
+          Warm regards,<br>
+          Team Ahangama Pass<br>
+          <a href="https://www.ahangama.com" style="color: #005f6b;">www.ahangama.com</a>
+        </p>
+      </div>
+    `;
+
     await sgMail.send({
       to: "team@ahangama.com",
       from: "hello@ahangama.com",
@@ -126,6 +161,13 @@ exports.handler = async (event) => {
           </table>
         </div>
       `,
+    });
+
+    await sgMail.send({
+      to: formData.email,
+      from: "hello@ahangama.com",
+      subject: "Welcome to Ahangama Pass Reseller Program - you're in!",
+      html: resellerEmailHtml,
     });
 
     return {
