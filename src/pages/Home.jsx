@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col, Typography, Button, Space, Tag } from "antd";
+import { Card, Row, Col, Typography, Button, Space, Spin, Tag } from "antd";
 import QRCode from "react-qr-code";
 import {
   CoffeeOutlined,
@@ -27,7 +27,7 @@ import ComingSoonSection from "../components/home/ComingSoonSection";
 const { Title, Paragraph, Text } = Typography;
 
 export default function Home() {
-  const { places } = usePlaces();
+  const { places, loading } = usePlaces();
   const canonical = absUrl("/");
   const categories = CATEGORIES.filter((c) =>
     ["eat", "stays", "wellness", "culture"].includes(c.key),
@@ -206,11 +206,13 @@ export default function Home() {
                       <div className="ahg-metric">
                         <Text type="secondary">Partners</Text>
                         <div className="ahg-metricVal">
-                          {
+                          {loading ? (
+                            <Spin size="small" />
+                          ) : (
                             places.filter(
                               (p) => p.destinationSlug === "ahangama",
                             ).length
-                          }
+                          )}
                         </div>
                       </div>
                       <div className="ahg-metric">
@@ -435,19 +437,47 @@ export default function Home() {
             </div> */}
           </div>
           <div style={{ marginTop: 16 }}>
-            {/* Desktop version */}
-            <div className="desktop-only" style={{ display: "block" }}>
-              <PassUnlocksSection destinationSlug="ahangama" />
-            </div>
-            {/* Mobile version */}
-            <div className="mobile-only" style={{ display: "none" }}>
-              <PassUnlocksMobile destinationSlug="ahangama" />
-            </div>
-          </div>
+            {loading ? (
+              <Card
+                style={{
+                  borderRadius: 18,
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  background:
+                    "linear-gradient(135deg, rgba(255,248,220,0.25) 0%, rgba(255,255,255,0.95) 100%)",
+                }}
+                bodyStyle={{ padding: 32 }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 12,
+                    minHeight: 180,
+                  }}
+                >
+                  <Spin size="large" />
+                  <Text type="secondary">Loading venues...</Text>
+                </div>
+              </Card>
+            ) : (
+              <>
+                {/* Desktop version */}
+                <div className="desktop-only" style={{ display: "block" }}>
+                  <PassUnlocksSection destinationSlug="ahangama" />
+                </div>
+                {/* Mobile version */}
+                <div className="mobile-only" style={{ display: "none" }}>
+                  <PassUnlocksMobile destinationSlug="ahangama" />
+                </div>
 
-          {/* Coming Soon Section */}
-          <div style={{ marginTop: 0 }}>
-            <ComingSoonSection />
+                {/* Coming Soon Section */}
+                <div style={{ marginTop: 0 }}>
+                  <ComingSoonSection />
+                </div>
+              </>
+            )}
           </div>
 
           {/* CARD CTA */}

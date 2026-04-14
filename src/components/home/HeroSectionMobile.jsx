@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Button, Space, Tag } from "antd";
+import { Typography, Button, Space, Spin, Tag } from "antd";
 import {
   QrcodeOutlined,
   ArrowRightOutlined,
@@ -10,7 +10,7 @@ import { usePlaces } from "../../app/placesContext";
 const { Title, Paragraph, Text } = Typography;
 
 export default function HeroSectionMobile({ heroImage }) {
-  const { places } = usePlaces();
+  const { places, loading } = usePlaces();
 
   return (
     <div className="ahg-hero" style={{ marginBottom: 0 }}>
@@ -153,7 +153,11 @@ export default function HeroSectionMobile({ heroImage }) {
               className="ahg-metricVal"
               style={{ fontSize: "20px", fontWeight: "700" }}
             >
-              {places.filter((p) => p.destinationSlug === "ahangama").length}
+              {loading ? (
+                <Spin size="small" />
+              ) : (
+                places.filter((p) => p.destinationSlug === "ahangama").length
+              )}
             </div>
           </div>
           <div className="ahg-metric" style={{ textAlign: "center" }}>
