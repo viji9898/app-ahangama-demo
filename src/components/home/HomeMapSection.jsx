@@ -3,14 +3,12 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Card, Button, Space, Tag, Typography } from "antd";
 import { EnvironmentOutlined, ArrowRightOutlined } from "@ant-design/icons";
-import { PLACES } from "../../data/places";
+import { usePlaces } from "../../app/placesContext";
 import { shouldShowPlace } from "../../data/placeStatus";
 
 const { Title, Text } = Typography;
 
 const DEFAULT_CENTER = { lat: 5.9699, lng: 80.3666 }; // Ahangama-ish
-const MAPBOX_ACCESS_TOKEN =
-  "pk.eyJ1IjoidmlqaXciLCJhIjoiY21qZHlrbHNoMGM5ejNlcHE5dDY4a2V2aiJ9.9H0iEZmTR17WCYkBki-XRQ";
 
 const CATEGORY_LABELS = {
   all: "All",
@@ -35,7 +33,8 @@ function safeLatLng(p) {
 }
 
 export default function HomeMapSection() {
-  const token = import.meta.env.VITE_MAPBOX_TOKEN || MAPBOX_ACCESS_TOKEN;
+  const { places: allPlaces } = usePlaces();
+  const token = import.meta.env.VITE_MAPBOX_TOKEN;
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
@@ -45,7 +44,8 @@ export default function HomeMapSection() {
   const [selectedPlace, setSelectedPlace] = useState(null);
 
   const places = useMemo(() => {
-    return PLACES.filter((p) => p.destinationSlug === "ahangama")
+    return allPlaces
+      .filter((p) => p.destinationSlug === "ahangama")
       .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => {
         if (selectedCategory === "all") {
@@ -59,17 +59,18 @@ export default function HomeMapSection() {
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }))
       .filter((p) => !!p._latlng)
       .slice(0, 100); // Show up to 20 places for homepage
-  }, [selectedCategory]);
+  }, [allPlaces, selectedCategory]);
 
   const availableCategories = useMemo(() => {
     const categories = ["all"];
     const categorySet = new Set(
-      PLACES.filter((p) => p.destinationSlug === "ahangama")
+      allPlaces
+        .filter((p) => p.destinationSlug === "ahangama")
         .map((p) => p.category)
         .filter(Boolean),
     );
     return [...categories, ...Array.from(categorySet)];
-  }, []);
+  }, [allPlaces]);
 
   // Initialize Mapbox GL map
   useEffect(() => {

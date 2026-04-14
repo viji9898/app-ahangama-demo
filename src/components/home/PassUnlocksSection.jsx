@@ -17,7 +17,7 @@ import {
   EnvironmentOutlined,
   QrcodeOutlined,
 } from "@ant-design/icons";
-import { PLACES } from "../../data/places";
+import { usePlaces } from "../../app/placesContext";
 import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
@@ -305,6 +305,7 @@ function PlaceRow({ p }) {
 }
 
 export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
+  const { places: allPlaces } = usePlaces();
   const token = import.meta.env.VITE_MAPBOX_TOKEN;
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
@@ -319,7 +320,8 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
   const passPlaces = useMemo(() => {
     const query = q.trim().toLowerCase();
 
-    return PLACES.filter((p) => p.destinationSlug === destinationSlug)
+    return allPlaces
+      .filter((p) => p.destinationSlug === destinationSlug)
       .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => !!p.offer) // only pass venues (discounts/value adds)
       .filter((p) => {
@@ -334,19 +336,18 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
         return hay.includes(query);
       })
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }));
-  }, [destinationSlug, q, selectedCategory]);
+  }, [allPlaces, destinationSlug, q, selectedCategory]);
 
   const availableCategories = useMemo(() => {
     const categories = ["all"];
-    const categoriesFromPlaces = PLACES.filter(
-      (p) => p.destinationSlug === destinationSlug,
-    )
+    const categoriesFromPlaces = allPlaces
+      .filter((p) => p.destinationSlug === destinationSlug)
       .filter((p) => !!p.offer)
       .map((p) => p.category)
       .filter(Boolean);
 
     return [...categories, ...new Set(categoriesFromPlaces)];
-  }, [destinationSlug]);
+  }, [allPlaces, destinationSlug]);
 
   const mappable = useMemo(
     () => passPlaces.filter((p) => !!p._latlng),

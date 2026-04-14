@@ -12,10 +12,10 @@ import {
   WhatsAppOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
+import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { CATEGORIES } from "../data/categories";
-import { PLACES } from "../data/places";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
 import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
@@ -27,6 +27,7 @@ import ComingSoonSection from "../components/home/ComingSoonSection";
 const { Title, Paragraph, Text } = Typography;
 
 export default function Home() {
+  const { places } = usePlaces();
   const canonical = absUrl("/");
   const categories = CATEGORIES.filter((c) =>
     ["eat", "stays", "wellness", "culture"].includes(c.key),
@@ -48,13 +49,13 @@ export default function Home() {
   };
 
   // Quick “featured” picks from your arrays (first items per category)
-  const eat = PLACES.find(
+  const eat = places.find(
     (p) => p.destinationSlug === "ahangama" && p.category === "eat",
   );
-  const stays = PLACES.find(
+  const stays = places.find(
     (p) => p.destinationSlug === "ahangama" && p.category === "stays",
   );
-  const wellness = PLACES.find(
+  const wellness = places.find(
     (p) => p.destinationSlug === "ahangama" && p.category === "wellness",
   );
 
@@ -206,7 +207,7 @@ export default function Home() {
                         <Text type="secondary">Partners</Text>
                         <div className="ahg-metricVal">
                           {
-                            PLACES.filter(
+                            places.filter(
                               (p) => p.destinationSlug === "ahangama",
                             ).length
                           }

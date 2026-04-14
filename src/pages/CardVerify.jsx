@@ -22,15 +22,16 @@ import {
   GiftOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
+import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import { PLACES } from "../data/places";
 import VerifyStatusPanel from "../components/ui/VerifyStatusPanel";
 import { redeemCard, verifyCardByCode } from "../app/cardStore";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function CardVerify() {
+  const { places: allPlaces } = usePlaces();
   const params = useParams();
   const prefill = params.cardId ? decodeURIComponent(params.cardId) : "";
 
@@ -60,14 +61,16 @@ export default function CardVerify() {
 
   // Get venues from places data (only venues that have offers)
   const venues = useMemo(() => {
-    return PLACES.filter((place) => place.offer).map((place) => ({
-      id: place.id || place.slug,
-      name: place.name,
-      category: place.category,
-      offer: place.offer,
-      pin: "1234", // Default PIN for demo - in production this would be secure
-    }));
-  }, []);
+    return allPlaces
+      .filter((place) => place.offer)
+      .map((place) => ({
+        id: place.id || place.slug,
+        name: place.name,
+        category: place.category,
+        offer: place.offer,
+        pin: "1234", // Default PIN for demo - in production this would be secure
+      }));
+  }, [allPlaces]);
 
   // Redemption types based on venue categories
   const redemptionTypes = [

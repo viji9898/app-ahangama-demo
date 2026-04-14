@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import {
+  Alert,
   Card,
   Row,
   Col,
@@ -10,11 +11,12 @@ import {
   Button,
   Divider,
   Breadcrumb,
+  Spin,
 } from "antd";
 import { EnvironmentOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
+import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
-import { PLACES } from "../data/places";
 import { absUrl } from "../app/siteUrl";
 import RelatedPlaces from "../components/ui/RelatedPlaces";
 
@@ -22,13 +24,40 @@ const { Title, Paragraph, Text } = Typography;
 
 export default function PlaceDetail({ category }) {
   const { slug } = useParams();
+  const { places: allPlaces, loading, error } = usePlaces();
 
-  const place = PLACES.find(
+  const place = allPlaces.find(
     (p) =>
       p.destinationSlug === "ahangama" &&
       p.category === category &&
-      p.slug === slug
+      p.slug === slug,
   );
+
+  if (loading) {
+    return (
+      <SiteLayout>
+        <Card
+          style={{ borderRadius: 16, border: "1px solid #eee" }}
+          bodyStyle={{ padding: 20 }}
+        >
+          <Spin />
+        </Card>
+      </SiteLayout>
+    );
+  }
+
+  if (error) {
+    return (
+      <SiteLayout>
+        <Alert
+          type="error"
+          message="Unable to load venues"
+          description={error.message}
+          showIcon
+        />
+      </SiteLayout>
+    );
+  }
 
   if (!place) {
     return (
@@ -250,7 +279,7 @@ export default function PlaceDetail({ category }) {
       </Card>
       <RelatedPlaces
         place={place}
-        allPlaces={PLACES.filter((p) => p.destinationSlug === "ahangama")}
+        allPlaces={allPlaces.filter((p) => p.destinationSlug === "ahangama")}
         basePath={basePath}
       />
     </SiteLayout>

@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from "react";
 import { Row, Col, Empty, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
+import { usePlaces } from "../app/placesContext";
 import PageHeader from "../components/ui/PageHeader";
 import PlaceCard from "../components/ui/PlaceCard";
 import FiltersBar from "../components/ui/FiltersBar";
 import { Seo } from "../app/seo";
-import { PLACES } from "../data/places";
 import { useSearch } from "../app/searchContext";
 import { absUrl } from "../app/siteUrl";
 
@@ -16,6 +16,7 @@ function normalize(s) {
 }
 
 export default function CategoryIndex({ categoryKey, config }) {
+  const { places: allPlaces } = usePlaces();
   const { query: globalQuery } = useSearch();
 
   const [localQuery, setLocalQuery] = useState("");
@@ -24,10 +25,10 @@ export default function CategoryIndex({ categoryKey, config }) {
 
   const basePlaces = useMemo(
     () =>
-      PLACES.filter(
-        (p) => p.destinationSlug === "ahangama" && p.category === categoryKey
+      allPlaces.filter(
+        (p) => p.destinationSlug === "ahangama" && p.category === categoryKey,
       ),
-    [categoryKey]
+    [allPlaces, categoryKey],
   );
 
   const allTags = useMemo(() => {
@@ -62,7 +63,7 @@ export default function CategoryIndex({ categoryKey, config }) {
           p.price,
           ...(p.bestFor || []),
           ...(p.tags || []),
-        ].join(" ")
+        ].join(" "),
       );
 
       // both queries must match if both exist

@@ -3,12 +3,14 @@ import { Row, Col } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import PageHeader from "../components/ui/PageHeader";
 import PlaceCard from "../components/ui/PlaceCard";
+import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
-import { PLACES } from "../data/places";
 
 export default function EatIndex() {
-  const places = PLACES.filter(
-    (p) => p.destinationSlug === "ahangama" && p.category === "eat"
+  const { places: allPlaces } = usePlaces();
+
+  const places = allPlaces.filter(
+    (p) => p.destinationSlug === "ahangama" && p.category === "eat",
   );
 
   const canonical = `${import.meta.env.VITE_SITE_URL}/eat`;

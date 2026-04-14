@@ -16,7 +16,7 @@ import {
   FilterOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import { PLACES } from "../../data/places";
+import { usePlaces } from "../../app/placesContext";
 import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
@@ -327,27 +327,30 @@ function MobilePlaceCard({ p }) {
 }
 
 export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
+  const { places: allPlaces } = usePlaces();
   const [selectedCats, setSelectedCats] = useState([]);
 
   const passPlaces = useMemo(() => {
-    return PLACES.filter((p) => p.destinationSlug === destinationSlug)
+    return allPlaces
+      .filter((p) => p.destinationSlug === destinationSlug)
       .filter((p) => shouldShowPlace(p)) // Only show active places
       .filter((p) => !!p.offer)
       .filter((p) => {
         if (!selectedCats.length) return true;
         return selectedCats.includes(p.category);
       });
-  }, [destinationSlug, selectedCats]);
+  }, [allPlaces, destinationSlug, selectedCats]);
 
   const catsAvailable = useMemo(() => {
     const set = new Set(
-      PLACES.filter((p) => p.destinationSlug === destinationSlug && p.offer)
+      allPlaces
+        .filter((p) => p.destinationSlug === destinationSlug && p.offer)
         .filter((p) => shouldShowPlace(p)) // Only show active places
         .map((p) => p.category)
         .filter(Boolean),
     );
     return Array.from(set);
-  }, [destinationSlug]);
+  }, [allPlaces, destinationSlug]);
 
   const toggleCat = (cat) => {
     setSelectedCats((prev) =>

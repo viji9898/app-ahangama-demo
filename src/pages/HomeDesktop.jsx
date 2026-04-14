@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PLACES } from "../data/places";
+import { usePlaces } from "../app/placesContext";
 import { CATEGORIES } from "../data/categories";
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -17,6 +17,7 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 }
 
 export default function HomeDesktop() {
+  const { places } = usePlaces();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
   const [userLocation, setUserLocation] = useState(null);
@@ -37,7 +38,7 @@ export default function HomeDesktop() {
     }
   }, []);
 
-  let filtered = PLACES.filter(
+  let filtered = places.filter(
     (p) =>
       p.status === "active" &&
       (!category || p.category === category) &&

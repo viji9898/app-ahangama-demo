@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PLACES } from "../data/places";
+import { usePlaces } from "../app/placesContext";
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -16,6 +16,7 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 }
 
 export default function HomeMobile() {
+  const { places } = usePlaces();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
   const [userLocation, setUserLocation] = useState(null);
@@ -36,7 +37,7 @@ export default function HomeMobile() {
     }
   }, []);
 
-  let filtered = PLACES.filter(
+  let filtered = places.filter(
     (p) =>
       p.status === "active" &&
       (!category || p.category === category) &&
@@ -302,9 +303,9 @@ export default function HomeMobile() {
           </button>
           {[
             ...new Set(
-              PLACES.filter((p) => p.status === "active").map(
-                (p) => p.category,
-              ),
+              places
+                .filter((p) => p.status === "active")
+                .map((p) => p.category),
             ),
           ].map((c) => (
             <button
@@ -853,11 +854,12 @@ export default function HomeMobile() {
               WebkitOverflowScrolling: "touch",
             }}
           >
-            {PLACES.filter(
-              (p) =>
-                p.status === "active" &&
-                (p.category || "").toLowerCase().includes("eat"),
-            )
+            {places
+              .filter(
+                (p) =>
+                  p.status === "active" &&
+                  (p.category || "").toLowerCase().includes("eat"),
+              )
               .sort((a, b) => (b.reviews || 0) - (a.reviews || 0))
               .slice(0, 6)
               .map((place) => (

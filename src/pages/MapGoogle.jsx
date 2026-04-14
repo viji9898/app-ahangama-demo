@@ -3,15 +3,13 @@ import mapboxgl from "mapbox-gl";
 import { Card, Input, Space, Tag, Typography, Button } from "antd";
 import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
+import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import { PLACES } from "../data/places";
 
 const { Title, Text } = Typography;
 
 const MAP_CENTER = { lat: 5.9699, lng: 80.3666 }; // Ahangama center-ish
-const MAPBOX_ACCESS_TOKEN =
-  "pk.eyJ1IjoidmlqaXciLCJhIjoiY21qZHlrbHNoMGM5ejNlcHE5dDY4a2V2aiJ9.9H0iEZmTR17WCYkBki-XRQ";
 
 const CATEGORY_KEYS = [
   { key: "all", label: "All" },
@@ -36,8 +34,9 @@ function safeLatLng(p) {
 }
 
 export default function MapGoogle() {
+  const { places: allPlaces } = usePlaces();
   const canonical = absUrl("/map-google");
-  const token = import.meta.env.VITE_MAPBOX_TOKEN || MAPBOX_ACCESS_TOKEN;
+  const token = import.meta.env.VITE_MAPBOX_TOKEN;
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
@@ -49,7 +48,8 @@ export default function MapGoogle() {
   const places = useMemo(() => {
     const query = q.trim().toLowerCase();
 
-    return PLACES.filter((p) => p.destinationSlug === "ahangama")
+    return allPlaces
+      .filter((p) => p.destinationSlug === "ahangama")
       .filter((p) => (category === "all" ? true : p.category === category))
       .filter((p) => {
         if (!query) return true;
@@ -60,7 +60,7 @@ export default function MapGoogle() {
       })
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }))
       .filter((p) => !!p._latlng);
-  }, [category, q]);
+  }, [allPlaces, category, q]);
 
   // Initialize Mapbox GL map
   useEffect(() => {
@@ -197,7 +197,7 @@ export default function MapGoogle() {
                   }
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      `${place.name} ${place.area || "Ahangama"}`
+                      `${place.name} ${place.area || "Ahangama"}`,
                     )}"
                     target="_blank"
                     rel="noreferrer"
@@ -205,8 +205,8 @@ export default function MapGoogle() {
                     Open in Google Maps →
                   </a>
                 </div>
-              </div>`
-          )
+              </div>`,
+          ),
         )
         .addTo(mapRef.current);
 

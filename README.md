@@ -24,7 +24,7 @@ The platform combines:
 - Editorially curated listings (eat, stays, experiences, culture)
 - Strong SEO foundations
 - A paid destination discount card (USD 35) with vendor-verified perks
-- A frontend-only MVP architecture designed to evolve into a full backend system
+- A React frontend backed by Neon for venue content and Netlify functions for server-side access
 
 ---
 
@@ -52,7 +52,7 @@ We start with Ahangama and plan to expand to other destinations using the same a
   - Culture
 - Editorial, opinionated listings
 - No ratings, no reviews, no noise
-- Data is intentionally hardcoded for the MVP
+- Venue content is loaded from Neon via the `venues260414` table
 
 ---
 
@@ -127,6 +127,7 @@ A **USD 35** destination discount card that:
 
 - Netlify
 - SPA routing handled via redirects
+- Neon Postgres
 
 ---
 
@@ -189,6 +190,7 @@ Copy code
 Create a `.env` file:
 
 VITE_SITE_URL=http://localhost:5173
+DATABASE_URL=postgresql://...
 
 java
 Copy code
@@ -205,6 +207,7 @@ Used for:
 - Canonical URLs
 - Sitemap URLs
 - QR code verification URLs
+- Venue reads from Neon (`venues260414`)
 
 ---
 
@@ -235,6 +238,11 @@ Outputs:
 
 npm install
 npm run dev
+
+The app now serves venue data from `/api/venues`.
+
+- In local Vite development, that endpoint is handled directly by `vite.config.js` using `DATABASE_URL`.
+- In Netlify, `/api/venues` redirects to the Netlify function `api-venues-list`.
 
 sql
 Copy code

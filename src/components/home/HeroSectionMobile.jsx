@@ -5,11 +5,13 @@ import {
   ArrowRightOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
-import { PLACES } from "../../data/places";
+import { usePlaces } from "../../app/placesContext";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function HeroSectionMobile({ heroImage }) {
+  const { places } = usePlaces();
+
   return (
     <div className="ahg-hero" style={{ marginBottom: 0 }}>
       {/* Hero Image */}
@@ -151,7 +153,7 @@ export default function HeroSectionMobile({ heroImage }) {
               className="ahg-metricVal"
               style={{ fontSize: "20px", fontWeight: "700" }}
             >
-              {PLACES.filter((p) => p.destinationSlug === "ahangama").length}
+              {places.filter((p) => p.destinationSlug === "ahangama").length}
             </div>
           </div>
           <div className="ahg-metric" style={{ textAlign: "center" }}>

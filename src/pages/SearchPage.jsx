@@ -4,7 +4,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import PlaceCard from "../components/ui/PlaceCard";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import { PLACES } from "../data/places";
+import { usePlaces } from "../app/placesContext";
 import { CATEGORIES } from "../data/categories";
 
 const { Title, Paragraph, Text } = Typography;
@@ -14,12 +14,13 @@ function normalize(s) {
 }
 
 export default function SearchPage() {
+  const { places: allPlaces } = usePlaces();
   const [q, setQ] = useState("");
   const [cat, setCat] = useState(null);
 
   const places = useMemo(
-    () => PLACES.filter((p) => p.destinationSlug === "ahangama"),
-    []
+    () => allPlaces.filter((p) => p.destinationSlug === "ahangama"),
+    [allPlaces],
   );
   const filtered = useMemo(() => {
     const nq = normalize(q);
@@ -35,7 +36,7 @@ export default function SearchPage() {
           p.price,
           ...(p.bestFor || []),
           ...(p.tags || []),
-        ].join(" ")
+        ].join(" "),
       );
       return hay.includes(nq);
     });
@@ -81,7 +82,7 @@ export default function SearchPage() {
               All
             </Tag>
             {CATEGORIES.filter((c) =>
-              ["eat", "stays", "experiences"].includes(c.key)
+              ["eat", "stays", "experiences"].includes(c.key),
             ).map((c) => (
               <Tag
                 key={c.key}

@@ -13,7 +13,7 @@ import {
   message,
 } from "antd";
 import { SearchOutlined, EditOutlined } from "@ant-design/icons";
-import { PLACES } from "../../data/places";
+import { usePlaces } from "../../app/placesContext";
 import {
   PLACE_STATUS,
   PLACE_STATUS_LABELS,
@@ -24,6 +24,7 @@ const { Title, Text } = Typography;
 const { Option } = Select;
 
 export default function PlaceStatusManager() {
+  const { places: allPlaces } = usePlaces();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [editModal, setEditModal] = useState(false);
@@ -32,20 +33,20 @@ export default function PlaceStatusManager() {
 
   // Filter places based on search and status
   const filteredPlaces = useMemo(() => {
-    let filtered = PLACES.filter(
+    let filtered = allPlaces.filter(
       (place) =>
         place.destinationSlug === "ahangama" &&
-        place.name.toLowerCase().includes(searchTerm.toLowerCase())
+        place.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
     if (statusFilter !== "all") {
       filtered = filtered.filter(
-        (place) => (place.status || "active") === statusFilter
+        (place) => (place.status || "active") === statusFilter,
       );
     }
 
     return filtered;
-  }, [searchTerm, statusFilter]);
+  }, [allPlaces, searchTerm, statusFilter]);
 
   const handleEditStatus = (place) => {
     setEditingPlace(place);

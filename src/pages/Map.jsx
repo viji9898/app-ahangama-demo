@@ -3,15 +3,13 @@ import mapboxgl from "mapbox-gl";
 import { Card, Input, Space, Tag, Typography } from "antd";
 import { EnvironmentOutlined, SearchOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
+import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import { PLACES } from "../data/places";
 
 const { Title, Text } = Typography;
 
 const MAP_CENTER = { lat: 5.9699, lng: 80.3666 }; // Ahangama-ish center
-const MAPBOX_ACCESS_TOKEN =
-  "pk.eyJ1IjoidmlqaXciLCJhIjoiY21qZHlrbHNoMGM5ejNlcHE5dDY4a2V2aiJ9.9H0iEZmTR17WCYkBki-XRQ";
 
 const CATEGORY_KEYS = [
   { key: "all", label: "All" },
@@ -36,8 +34,9 @@ function safeLatLng(p) {
 }
 
 export default function MapPage() {
+  const { places: allPlaces } = usePlaces();
   const canonical = absUrl("/map");
-  const token = import.meta.env.VITE_MAPBOX_TOKEN || MAPBOX_ACCESS_TOKEN;
+  const token = import.meta.env.VITE_MAPBOX_TOKEN;
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
@@ -49,7 +48,8 @@ export default function MapPage() {
   const places = useMemo(() => {
     const query = q.trim().toLowerCase();
 
-    return PLACES.filter((p) => p.destinationSlug === "ahangama")
+    return allPlaces
+      .filter((p) => p.destinationSlug === "ahangama")
       .filter((p) => {
         if (category === "all") return true;
         return p.category === category;
@@ -63,7 +63,7 @@ export default function MapPage() {
       })
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }))
       .filter((p) => !!p._latlng);
-  }, [category, q]);
+  }, [allPlaces, category, q]);
 
   // Initialize Mapbox GL map
   useEffect(() => {
@@ -167,7 +167,7 @@ export default function MapPage() {
 
           const normalizedZoom = Math.max(
             0,
-            Math.min(1, (zoom - minZoom) / (maxZoom - minZoom))
+            Math.min(1, (zoom - minZoom) / (maxZoom - minZoom)),
           );
           const scale = minScale + (maxScale - minScale) * normalizedZoom;
 
@@ -205,8 +205,8 @@ export default function MapPage() {
                     ? `<p style="margin: 8px 0 0 0; font-size: 13px;">${place.description}</p>`
                     : ""
                 }
-              </div>`
-          )
+              </div>`,
+          ),
         )
         .addTo(mapRef.current);
 

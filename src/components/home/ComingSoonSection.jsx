@@ -1,14 +1,16 @@
 import React, { useMemo } from "react";
 import { Typography, Table, Tag, Avatar } from "antd";
-import { PLACES } from "../../data/places";
+import { usePlaces } from "../../app/placesContext";
 import { PLACE_STATUS, getPlacesByStatus } from "../../data/placeStatus";
 
 const { Title, Text } = Typography;
 
 export default function ComingSoonSection() {
+  const { places } = usePlaces();
+
   const comingSoonPlaces = useMemo(() => {
-    return getPlacesByStatus(PLACES, PLACE_STATUS.COMING_SOON);
-  }, []);
+    return getPlacesByStatus(places, PLACE_STATUS.COMING_SOON);
+  }, [places]);
 
   // Function to get category-specific colors (matching PassUnlocksSection)
   const getTagColors = (category) => {

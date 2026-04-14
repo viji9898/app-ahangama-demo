@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 // Haversine formula to calculate distance between two lat/lng points in km
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
@@ -25,20 +25,29 @@ import {
   Space,
   Button,
 } from "antd";
-import { PLACES } from "../data/places";
+import { usePlaces } from "../app/placesContext";
 import SiteLayout from "../components/layout/SiteLayout";
 
 const { Title, Text } = Typography;
 
-// Extract unique categories for filtering
-const categories = Array.from(
-  new Set(PLACES.filter((p) => p.status === "active").map((p) => p.category)),
-);
-
 export default function HomeV2() {
+  const { places } = usePlaces();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
   const [userLocation, setUserLocation] = useState(null);
+
+  const categories = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          places
+            .filter((p) => p.status === "active")
+            .map((p) => p.category)
+            .filter(Boolean),
+        ),
+      ),
+    [places],
+  );
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -56,9 +65,9 @@ export default function HomeV2() {
   }, []);
 
   // Filter active venues
-  const filtered = PLACES.filter(
-    (p) => p.statu,
-    s === "active" &&
+  const filtered = places.filter(
+    (p) =>
+      p.status === "active" &&
       (!category || p.category === category) &&
       (p.name.toLowerCase().includes(search.toLowerCase()) ||
         (p.cardPerk &&
