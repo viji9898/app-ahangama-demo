@@ -59,16 +59,9 @@ function PlaceRow({ p }) {
   const fallbackImage =
     "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=400";
 
-  // Parse offers into tags
   const parseOfferTags = (offer) => {
     if (!offer) return [];
 
-    // If offer is already an array (new format), return it directly
-    if (Array.isArray(offer)) {
-      return offer;
-    }
-
-    // Legacy string parsing (fallback for old format)
     const tags = [];
     const offerLower = offer.toLowerCase();
 
@@ -112,7 +105,10 @@ function PlaceRow({ p }) {
     return tags;
   };
 
-  const offerTags = parseOfferTags(p.offer);
+  const offerTags =
+    Array.isArray(p.offers) && p.offers.length > 0
+      ? p.offers.filter(Boolean)
+      : parseOfferTags(p.offer);
 
   return (
     <article
@@ -323,16 +319,22 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
     return allPlaces
       .filter((p) => p.destinationSlug === destinationSlug)
       .filter((p) => shouldShowPlace(p)) // Only show active places
-      .filter((p) => !!p.offer) // only pass venues (discounts/value adds)
+      .filter(
+        (p) =>
+          (Array.isArray(p.offers) && p.offers.length > 0) || Boolean(p.offer),
+      ) // only pass venues (discounts/value adds)
       .filter((p) => {
         if (selectedCategory === "all") return true;
         return p.category === selectedCategory;
       })
       .filter((p) => {
         if (!query) return true;
+        const offerText = Array.isArray(p.offers)
+          ? p.offers.join(" ")
+          : p.offer;
         const hay = `${p.name ?? ""} ${p.area ?? ""} ${p.category ?? ""} ${
           p.description ?? ""
-        } ${p.offer ?? ""}`.toLowerCase();
+        } ${offerText ?? ""}`.toLowerCase();
         return hay.includes(query);
       })
       .map((p) => ({ ...p, _latlng: safeLatLng(p) }));
@@ -342,7 +344,10 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
     const categories = ["all"];
     const categoriesFromPlaces = allPlaces
       .filter((p) => p.destinationSlug === destinationSlug)
-      .filter((p) => !!p.offer)
+      .filter(
+        (p) =>
+          (Array.isArray(p.offers) && p.offers.length > 0) || Boolean(p.offer),
+      )
       .map((p) => p.category)
       .filter(Boolean);
 

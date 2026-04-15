@@ -28,6 +28,7 @@
         "npm:googleapis@169",
         "npm:jspdf@4",
         "npm:mapbox-gl@^3.17.0",
+        "npm:pg@^8.20.0",
         "npm:qrcode.react@^4.2.0",
         "npm:qrcode@^1.5.4",
         "npm:react-dom@^19.2.0",
