@@ -94,7 +94,8 @@ export default function HeroSectionMobile({ heroImage }) {
             color: "#5A6C7D",
           }}
         >
-          A <strong>$18 card</strong> that unlocks local discounts & privileges
+          From <strong>$30 card</strong> that unlocks local discounts &
+          privileges
         </Paragraph>
 
         <div
@@ -168,7 +169,7 @@ export default function HeroSectionMobile({ heroImage }) {
               className="ahg-metricVal"
               style={{ fontSize: "20px", fontWeight: "700" }}
             >
-              $18
+              From $30
             </div>
           </div>
         </div>

@@ -209,9 +209,9 @@ export default function About() {
                     The Card
                   </Title>
                   <Paragraph style={{ color: "#5A6C7D", lineHeight: 1.6 }}>
-                    Get real perks at our partner venues. $18 gets you
-                    discounts, freebies, and priority access that pays for
-                    itself.
+                    Get real perks at our partner venues. From{" "}
+                    <strong>$30</strong> gets you discounts, freebies, and
+                    priority access that pays for itself.
                   </Paragraph>
                 </Card>
               </Col>

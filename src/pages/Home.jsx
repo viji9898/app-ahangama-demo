@@ -172,7 +172,7 @@ export default function Home() {
                     </Title>
 
                     <Paragraph className="ahg-sub">
-                      A <strong>$18 card</strong> that unlocks local discounts &
+                      A <strong>$30 card</strong> that unlocks local discounts &
                       privileges
                     </Paragraph>
 
@@ -218,7 +218,7 @@ export default function Home() {
                       </div>
                       <div className="ahg-metric">
                         <Text type="secondary">Card</Text>
-                        <div className="ahg-metricVal">$18</div>
+                        <div className="ahg-metricVal">From $30</div>
                       </div>
                     </div>
                   </Col>
