@@ -20,6 +20,7 @@ import PassUnlocksSection from "../components/home/PassUnlocksSection";
 import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
+import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
 import ComingSoonSection from "../components/home/ComingSoonSection";
@@ -271,6 +272,10 @@ export default function Home() {
           {/* Mobile version */}
           <div className="mobile-only" style={{ display: "none" }}>
             <HeroSectionMobile heroImage={heroImage} />
+          </div>
+
+          <div style={{ marginTop: 24 }}>
+            <HomeGoogleMapSection />
           </div>
 
           {/* FREE GUIDE CTA */}
