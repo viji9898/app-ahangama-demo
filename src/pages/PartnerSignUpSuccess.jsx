@@ -55,9 +55,8 @@ export default function PartnerSignUpSuccess() {
                   What's Next?
                 </Title>
                 <Paragraph>
-                  You'll receive a confirmation email with detailed partnership
-                  terms and information about how guests will redeem offers at
-                  your venue.
+                  You'll receive a confirmation email with onboarding details,
+                  next steps, partner terms, and support contact information.
                 </Paragraph>
               </div>
 
@@ -69,9 +68,9 @@ export default function PartnerSignUpSuccess() {
                   Confirmation Email Sent
                 </Title>
                 <Paragraph>
-                  We've sent partnership details and terms to your email
-                  address. Please check your inbox (and spam folder) for
-                  important information.
+                  We've sent a welcome email to your address with next steps,
+                  onboarding guidance, partner terms, and support contact
+                  details. Please check your inbox and spam folder.
                 </Paragraph>
               </div>
 

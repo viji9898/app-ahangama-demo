@@ -108,55 +108,57 @@ exports.handler = async (event) => {
 
     // Create email content for partner
     const partnerEmailContent = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-        <h1>🎉 Welcome to the Ahangama Pass Partner Network</h1>
-        
-        <p>Dear ${formData.venueName || formData.contactName},</p>
-        
-        <p>Thank you for signing up to the <strong>Ahangama Pass Partner Program</strong>.<br>
-        Your venue is now <strong>live as an Ahangama Pass partner</strong>, and we're excited to have you on board.</p>
-        
-        <p>By submitting the partner form, you've confirmed your participation and agreement to the program terms outlined below.</p>
-        
-        <hr style="border: 1px solid #e0e0e0; margin: 30px 0;">
-        
-        <h2>What This Means</h2>
-        
-        <p>Your venue will be featured across <strong>Ahangama.com</strong> and our visitor touchpoints, giving you increased visibility among local and international travellers who actively seek trusted places to eat, stay, and experience Ahangama.</p>
-        
-        <p>You'll also be part of our growing community of Ahangama Pass holders, who are encouraged to support partner venues during their stay.</p>
-        
-        <hr style="border: 1px solid #e0e0e0; margin: 30px 0;">
-        
-        <h2>Partner Terms (Summary)</h2>
-        
-        <p>By joining the Ahangama Pass, you agree to the following:</p>
-        
-        <h3>1. Participation</h3>
-        
-        <p>Your venue may participate under one or more of the following:</p>
-        
-        <ul>
-          <li>Food & Beverage</li>
-          <li>Accommodation (direct bookings only)</li>
-          <li>Experiences / Wellness / Retail</li>
-        </ul>
-        
-        <h3>2. Customer Offers</h3>
-        
-        <p>You agree to honour the offer(s) submitted via your form, such as:</p>
-        
-        <ul>
-          <li>Percentage discount (e.g. 10% off total bill or room rate)</li>
-          <li>Fixed offers or complimentary items</li>
-          <li>Optional stay enhancements (subject to availability)</li>
-        </ul>
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; color: #333; line-height: 1.6;">
+        <h1 style="margin-bottom: 24px;">Welcome to the Ahangama Pass</h1>
 
-        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid #d9d9d9;">
-          <h4>Your Specific Offer Details:</h4>
+        <p>Dear Partner,</p>
+
+        <p>
+          We’re excited to have you on board as a vendor partner, joining a curated network of
+          businesses coming together to offer exclusive privileges and experiences to travellers
+          exploring Ahangama. Your participation plays a key role in shaping how visitors discover and
+          engage with the destination.
+        </p>
+
+        <h2 style="margin-top: 32px;">What happens next</h2>
+
+        <h3 style="margin-top: 24px;">1. Media &amp; Brand Asset Collection</h3>
+        <p>
+          A member of our team will be in touch within 2 business days to collect your media and
+          branding assets. This includes photography, logos, and any relevant brand materials
+          required to feature your business across Ahangama Pass platforms and marketing channels.
+        </p>
+
+        <h3 style="margin-top: 24px;">2. Staff Training &amp; Onboarding</h3>
+        <p>
+          We will guide you on how to brief and train your staff to ensure a smooth and consistent
+          experience for Ahangama Pass holders. Detailed training guidelines will follow in a separate
+          communication.
+        </p>
+
+        <h3 style="margin-top: 24px;">3. Ongoing Support</h3>
+        <p>
+          For any questions or assistance, please feel free to reach out to our Vendor Coordinator:
+        </p>
+
+        <div style="background: #f7f7f7; padding: 16px; border-radius: 8px; border: 1px solid #e5e5e5; margin: 16px 0 24px;">
+          <p style="margin: 0 0 8px;"><strong>Vishmi de Silva</strong></p>
+          <p style="margin: 0 0 8px;">hello@ahangama.com</p>
+          <p style="margin: 0;">+94 77 273 3202</p>
+        </div>
+
+        <h2 style="margin-top: 32px;">Partner Terms Summary</h2>
+
+        <p>
+          By joining the Ahangama Pass, you agree to honour the offer submitted through your
+          signup form and participate as part of the Ahangama Pass partner network.
+        </p>
+
+        <div style="background: #f7f7f7; padding: 16px; border-radius: 8px; border: 1px solid #e5e5e5; margin: 16px 0 24px;">
+          <p style="margin: 0 0 8px;"><strong>Your submitted offer</strong></p>
           ${
             formData.offerType
-              ? `<p><strong>Offer Type:</strong> ${
+              ? `<p style="margin: 0 0 8px;"><strong>Offer Type:</strong> ${
                   Array.isArray(formData.offerType)
                     ? formData.offerType.join(", ")
                     : formData.offerType
@@ -165,12 +167,12 @@ exports.handler = async (event) => {
           }
           ${
             formData.offerDescription
-              ? `<p><strong>Offer Description:</strong> ${formData.offerDescription}</p>`
+              ? `<p style="margin: 0 0 8px;"><strong>Offer Description:</strong> ${formData.offerDescription}</p>`
               : ""
           }
           ${
             formData.offerAppliesTo
-              ? `<p><strong>Applies To:</strong> ${
+              ? `<p style="margin: 0;"><strong>Applies To:</strong> ${
                   Array.isArray(formData.offerAppliesTo)
                     ? formData.offerAppliesTo.join(", ")
                     : formData.offerAppliesTo
@@ -178,69 +180,26 @@ exports.handler = async (event) => {
               : ""
           }
         </div>
-        
-        <p><strong>Conditions</strong></p>
-        
-        <ul>
-          <li>Guests must present the Ahangama Pass <strong>before payment</strong></li>
-          <li>Offers cannot be applied after payment</li>
-          <li>Accommodation discounts apply to <strong>direct bookings only</strong></li>
-          <li>OTA bookings are excluded</li>
-          <li>Direct booking rates must not exceed OTA rates for the same dates</li>
+
+        <ul style="padding-left: 20px; margin: 0 0 24px;">
+          <li>Guests must present the Ahangama Pass before payment or mention it when booking directly.</li>
+          <li>Offers cannot be applied after payment has been completed.</li>
+          <li>Accommodation offers apply to direct bookings only and exclude OTA bookings.</li>
+          <li>Direct booking rates should not exceed OTA rates for the same dates.</li>
+          <li>You agree to support minimal Ahangama Pass branding at the venue where appropriate.</li>
+          <li>There are no fees or commissions, and the partnership is non-exclusive.</li>
+          <li>Either party may terminate the partnership with 30 days written notice.</li>
         </ul>
-        
-        <h3>3. How Guests Claim</h3>
-        
-        <p>Guests may claim offers by:</p>
-        
-        <ul>
-          <li>Showing their Ahangama Pass at the venue</li>
-          <li>Mentioning the Ahangama Pass when booking directly</li>
-          <li>QR or staff verification where applicable</li>
-        </ul>
-        
-        <h3>4. Venue Branding</h3>
-        
-        <p>You agree to display minimal, tasteful Ahangama Pass branding, such as:</p>
-        
-        <ul>
-          <li>A small sticker at the counter or entrance</li>
-          <li>A QR card at the cashier or reception</li>
-          <li>A digital mention where appropriate</li>
-        </ul>
-        
-        <p>All branding is designed to remain subtle and aligned with your venue's aesthetic.</p>
-        
-        <h3>5. Commercial Terms</h3>
-        
-        <ul>
-          <li><strong>No fees</strong></li>
-          <li><strong>No commissions</strong></li>
-          <li><strong>Non-exclusive partnership</strong></li>
-        </ul>
-        
-        <h3>6. Termination</h3>
-        
-        <ul>
-          <li>Either party may terminate with <strong>30 days written notice</strong></li>
-          <li>No penalties or ongoing obligations upon termination</li>
-        </ul>
-        
-        <hr style="border: 1px solid #e0e0e0; margin: 30px 0;">
-        
-        <h2>Partner Support</h2>
-        
-        <p>If you need anything at all — updates, offer changes, marketing materials, or staff guidance — our partner support team is available on WhatsApp:</p>
-        
-        <p>📱 <strong>Partner Support (WhatsApp): +94 77 790 8790</strong></p>
-        
-        <hr style="border: 1px solid #e0e0e0; margin: 30px 0;">
-        
-        <p>We're looking forward to driving thoughtful, high-quality visitors your way and building something valuable for Ahangama together.</p>
-        
-        <p>Warm regards,<br>
-        <strong>The Ahangama Pass Team</strong><br>
-        Ahangama.com</p>
+
+        <p>
+          We look forward to working closely with you and building something meaningful together in
+          Ahangama.
+        </p>
+
+        <p style="margin-top: 24px;">
+          Warm regards,<br>
+          <strong>Ahangama Pass Team</strong>
+        </p>
       </div>
     `;
 
