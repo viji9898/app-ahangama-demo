@@ -22,6 +22,7 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { CARD_PRODUCTS } from "../data/cardConfig";
 import PaymentModal from "../components/ui/PaymentModal";
+import { trackPassCtaClick } from "../analytics";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -32,6 +33,11 @@ export default function CardLanding() {
   });
 
   const handlePurchase = (product) => {
+    trackPassCtaClick({
+      ctaLocation: "card_landing",
+      productId: product.id,
+    });
+
     setPaymentModal({
       visible: true,
       product,

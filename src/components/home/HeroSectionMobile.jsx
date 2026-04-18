@@ -6,6 +6,7 @@ import {
   ThunderboltOutlined,
 } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
+import { trackPassCtaClick } from "../../analytics";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -126,6 +127,12 @@ export default function HeroSectionMobile({ heroImage }) {
             href="/card"
             icon={<QrcodeOutlined />}
             block
+            onClick={() => {
+              trackPassCtaClick({
+                ctaLocation: "hero",
+                destinationUrl: "/card",
+              });
+            }}
             style={{
               borderRadius: "10px",
               height: "44px",

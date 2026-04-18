@@ -17,6 +17,7 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
+import { trackPassCtaClick } from "../../analytics";
 import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
@@ -408,6 +409,12 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
           size="small"
           href="/card"
           icon={<QrcodeOutlined />}
+          onClick={() => {
+            trackPassCtaClick({
+              ctaLocation: "pass_unlocks_mobile_header",
+              destinationUrl: "/card",
+            });
+          }}
           style={{
             borderRadius: "12px",
             background: "linear-gradient(135deg, #FFD700, #FFA500)",
@@ -520,6 +527,12 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
             href="https://pass.ahangama.com"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              trackPassCtaClick({
+                ctaLocation: "pass_unlocks_mobile_footer",
+                destinationUrl: "https://pass.ahangama.com",
+              });
+            }}
             style={{
               borderRadius: "12px",
               height: "40px",

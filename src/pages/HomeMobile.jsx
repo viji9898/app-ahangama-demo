@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { usePlaces } from "../app/placesContext";
+import { trackPassCtaClick } from "../analytics";
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -215,6 +216,12 @@ export default function HomeMobile() {
         target="_blank"
         rel="noopener noreferrer"
         className="ahg-floating-getpass-btn"
+        onClick={() => {
+          trackPassCtaClick({
+            ctaLocation: "home_mobile_floating",
+            destinationUrl: "https://pass.ahangama.com",
+          });
+        }}
         style={{
           display: "block",
           position: "fixed",

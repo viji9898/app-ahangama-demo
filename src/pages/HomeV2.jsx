@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 // Haversine formula to calculate distance between two lat/lng points in km
+import { trackPassCtaClick } from "../analytics";
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -92,6 +93,12 @@ export default function HomeV2() {
           target="_blank"
           rel="noopener noreferrer"
           className="ahg-floating-getpass-btn"
+          onClick={() => {
+            trackPassCtaClick({
+              ctaLocation: "home_v2_floating",
+              destinationUrl: "https://pass.ahangama.com",
+            });
+          }}
           style={{
             display: "none",
             position: "fixed",

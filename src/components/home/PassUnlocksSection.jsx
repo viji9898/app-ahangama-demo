@@ -18,6 +18,7 @@ import {
   QrcodeOutlined,
 } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
+import { trackPassCtaClick } from "../../analytics";
 import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
@@ -549,6 +550,12 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
               target="_blank"
               rel="noopener noreferrer"
               icon={<QrcodeOutlined />}
+              onClick={() => {
+                trackPassCtaClick({
+                  ctaLocation: "pass_unlocks_section",
+                  destinationUrl: "https://pass.ahangama.com",
+                });
+              }}
               style={{
                 borderRadius: "16px",
                 background: "linear-gradient(135deg, #FFD700, #FFA500)",

@@ -16,6 +16,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { MASTER_INDEX } from "../data/masterIndex";
+import { trackPassCtaClick } from "../analytics";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -148,7 +149,19 @@ export default function MasterIndex() {
               </div>
 
               <div style={{ marginTop: 14 }}>
-                <Button block href="https://pass.ahangama.com" icon={<ArrowRightOutlined />} target="_blank" rel="noopener noreferrer">
+                <Button
+                  block
+                  href="https://pass.ahangama.com"
+                  icon={<ArrowRightOutlined />}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackPassCtaClick({
+                      ctaLocation: "master_index_sidebar",
+                      destinationUrl: "https://pass.ahangama.com",
+                    });
+                  }}
+                >
                   Get the Pass
                 </Button>
               </div>
@@ -235,6 +248,12 @@ export default function MasterIndex() {
                     size="large"
                     href="/card"
                     icon={<ArrowRightOutlined />}
+                    onClick={() => {
+                      trackPassCtaClick({
+                        ctaLocation: "master_index_footer",
+                        destinationUrl: "/card",
+                      });
+                    }}
                   >
                     Get the Pass
                   </Button>
