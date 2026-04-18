@@ -124,7 +124,7 @@ export default function HeroSectionMobile({ heroImage }) {
           </Button> */}
           <Button
             size="large"
-            href="/card"
+            href="https://pass.ahangama.com"
             icon={<QrcodeOutlined />}
             block
             onClick={() => {
