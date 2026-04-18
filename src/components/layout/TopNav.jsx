@@ -3,6 +3,7 @@ import { Row, Col, Space, Typography, Input, Button, Tag } from "antd";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useSearch } from "../../app/searchContext";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { trackPassCtaClick } from "../../analytics";
 
 const { Text } = Typography;
 
@@ -70,6 +71,12 @@ export default function TopNav() {
             href="https://pass.ahangama.com"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              trackPassCtaClick({
+                ctaLocation: "top_nav",
+                destinationUrl: "https://pass.ahangama.com",
+              });
+            }}
           >
             Get the Card
           </Button>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Typography, Space, Button, Divider } from "antd";
+import { trackPassCtaClick } from "../../analytics";
 
 const { Text } = Typography;
 
@@ -193,6 +194,12 @@ export default function FooterBar() {
                   href="https://pass.ahangama.com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    trackPassCtaClick({
+                      ctaLocation: "footer",
+                      destinationUrl: "https://pass.ahangama.com",
+                    });
+                  }}
                   style={{
                     background: "var(--ocean-blue, #4f6f86)",
                     border: "none",

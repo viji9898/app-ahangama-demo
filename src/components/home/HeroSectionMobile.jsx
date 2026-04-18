@@ -130,7 +130,7 @@ export default function HeroSectionMobile({ heroImage }) {
             onClick={() => {
               trackPassCtaClick({
                 ctaLocation: "hero",
-                destinationUrl: "/card",
+                destinationUrl: "https://pass.ahangama.com",
               });
             }}
             style={{

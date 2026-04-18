@@ -16,6 +16,7 @@ import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { CATEGORIES } from "../data/categories";
+import { trackPassCtaClick } from "../analytics";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
 import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
@@ -191,6 +192,12 @@ export default function Home() {
                         icon={<QrcodeOutlined />}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => {
+                          trackPassCtaClick({
+                            ctaLocation: "home_hero_card",
+                            destinationUrl: "https://pass.ahangama.com",
+                          });
+                        }}
                       >
                         Get the Card
                       </Button>
@@ -512,6 +519,12 @@ export default function Home() {
                     icon={<QrcodeOutlined />}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      trackPassCtaClick({
+                        ctaLocation: "home_card_section",
+                        destinationUrl: "https://pass.ahangama.com",
+                      });
+                    }}
                   >
                     Get the Card
                   </Button>
