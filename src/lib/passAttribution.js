@@ -94,11 +94,17 @@ export const persistPassAttribution = (search) => {
   );
   const storedAttribution = readStoredPassAttribution();
 
-  if (!hasAttribution(storedAttribution) && hasAttribution(incomingAttribution)) {
+  if (
+    !hasAttribution(storedAttribution) &&
+    hasAttribution(incomingAttribution)
+  ) {
     return writeStoredPassAttribution(incomingAttribution);
   }
 
-  if (hasAttribution(incomingAttribution) && isCanonicalQrAttribution(incomingAttribution)) {
+  if (
+    hasAttribution(incomingAttribution) &&
+    isCanonicalQrAttribution(incomingAttribution)
+  ) {
     return writeStoredPassAttribution(incomingAttribution);
   }
 

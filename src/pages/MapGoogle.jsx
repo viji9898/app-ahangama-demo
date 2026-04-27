@@ -334,7 +334,11 @@ export default function MapGoogle() {
                   >
                     Master Index
                   </Button>
-                  <Button href={passCtaUrl} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    href={passCtaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Get the Pass
                   </Button>
                 </Space>

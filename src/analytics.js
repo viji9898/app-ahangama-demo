@@ -1,4 +1,7 @@
-import { getPassAttribution, persistPassAttribution } from "./lib/passAttribution";
+import {
+  getPassAttribution,
+  persistPassAttribution,
+} from "./lib/passAttribution";
 
 // src/analytics.js
 export const trackPageView = (url) => {
@@ -35,7 +38,9 @@ export const trackPassCtaClick = ({
     ...(attribution.utm_campaign
       ? { utm_campaign: attribution.utm_campaign }
       : {}),
-    ...(attribution.utm_content ? { utm_content: attribution.utm_content } : {}),
+    ...(attribution.utm_content
+      ? { utm_content: attribution.utm_content }
+      : {}),
     ...(attribution.utm_term ? { utm_term: attribution.utm_term } : {}),
   });
 };

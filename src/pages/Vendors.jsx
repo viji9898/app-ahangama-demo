@@ -106,7 +106,11 @@ export default function Vendors() {
               >
                 View Master Index
               </Button>
-              <Button href={passCtaUrl} target="_blank" rel="noopener noreferrer">
+              <Button
+                href={passCtaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 See the Pass
               </Button>
             </Space>
