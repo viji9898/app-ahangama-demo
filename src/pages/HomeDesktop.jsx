@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { usePlaces } from "../app/placesContext";
 import { CATEGORIES } from "../data/categories";
 import { trackPassCtaClick } from "../analytics";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -19,6 +20,7 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 
 export default function HomeDesktop() {
   const { places } = usePlaces();
+  const passCtaUrl = buildPassCtaUrl();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
   const [userLocation, setUserLocation] = useState(null);
@@ -507,13 +509,13 @@ export default function HomeDesktop() {
         })}
       </div>
       <a
-        href="https://pass.ahangama.com"
+        href={passCtaUrl}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => {
           trackPassCtaClick({
             ctaLocation: "home_desktop_floating",
-            destinationUrl: "https://pass.ahangama.com",
+            destinationUrl: passCtaUrl,
           });
         }}
         style={{

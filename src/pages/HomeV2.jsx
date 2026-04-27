@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 // Haversine formula to calculate distance between two lat/lng points in km
 import { trackPassCtaClick } from "../analytics";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -32,6 +33,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 const { Title, Text } = Typography;
 
 export default function HomeV2() {
+  const passCtaUrl = buildPassCtaUrl();
   const { places } = usePlaces();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
@@ -89,14 +91,14 @@ export default function HomeV2() {
       >
         {/* Floating Get Pass button for mobile */}
         <a
-          href="https://pass.ahangama.com"
+          href={passCtaUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="ahg-floating-getpass-btn"
           onClick={() => {
             trackPassCtaClick({
               ctaLocation: "home_v2_floating",
-              destinationUrl: "https://pass.ahangama.com",
+              destinationUrl: passCtaUrl,
             });
           }}
           style={{

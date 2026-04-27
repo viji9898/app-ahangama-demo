@@ -4,11 +4,13 @@ import { ArrowLeftOutlined, SafetyOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 const { Title, Paragraph, Text } = Typography;
 
 const CardTerms = () => {
   const canonical = absUrl("/card/terms");
+  const passCtaUrl = buildPassCtaUrl();
 
   return (
     <SiteLayout>
@@ -26,7 +28,7 @@ const CardTerms = () => {
             <Button
               type="text"
               icon={<ArrowLeftOutlined />}
-              href="https://pass.ahangama.com"
+              href={passCtaUrl}
               target="_blank"
               rel="noopener noreferrer"
               style={{ marginBottom: 16, padding: 0 }}

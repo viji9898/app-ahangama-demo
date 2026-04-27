@@ -18,6 +18,7 @@ import {
 } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
 import { trackPassCtaClick } from "../../analytics";
+import { buildPassCtaUrl } from "../../lib/passAttribution";
 import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
@@ -328,6 +329,7 @@ function MobilePlaceCard({ p }) {
 }
 
 export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
+  const passCtaUrl = buildPassCtaUrl();
   const { places: allPlaces } = usePlaces();
   const [selectedCats, setSelectedCats] = useState([]);
 
@@ -407,12 +409,14 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
         <Button
           type="primary"
           size="small"
-          href="/card"
+          href={passCtaUrl}
           icon={<QrcodeOutlined />}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => {
             trackPassCtaClick({
               ctaLocation: "pass_unlocks_mobile_header",
-              destinationUrl: "/card",
+              destinationUrl: passCtaUrl,
             });
           }}
           style={{
@@ -524,13 +528,13 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
           <Button
             type="dashed"
             block
-            href="https://pass.ahangama.com"
+            href={passCtaUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => {
               trackPassCtaClick({
                 ctaLocation: "pass_unlocks_mobile_footer",
-                destinationUrl: "https://pass.ahangama.com",
+                destinationUrl: passCtaUrl,
               });
             }}
             style={{

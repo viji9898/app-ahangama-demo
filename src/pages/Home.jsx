@@ -17,6 +17,7 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { CATEGORIES } from "../data/categories";
 import { trackPassCtaClick } from "../analytics";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
 import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
@@ -31,6 +32,7 @@ const { Title, Paragraph, Text } = Typography;
 export default function Home() {
   const { places, loading } = usePlaces();
   const canonical = absUrl("/");
+  const passCtaUrl = buildPassCtaUrl();
   const categories = CATEGORIES.filter((c) =>
     ["eat", "stays", "wellness", "culture"].includes(c.key),
   );
@@ -188,14 +190,14 @@ export default function Home() {
                       </Button> */}
                       <Button
                         size="large"
-                        href="https://pass.ahangama.com"
+                        href={passCtaUrl}
                         icon={<QrcodeOutlined />}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => {
                           trackPassCtaClick({
                             ctaLocation: "home_hero_card",
-                            destinationUrl: "https://pass.ahangama.com",
+                            destinationUrl: passCtaUrl,
                           });
                         }}
                       >
@@ -515,14 +517,14 @@ export default function Home() {
                     type="primary"
                     size="large"
                     block
-                    href="https://pass.ahangama.com"
+                    href={passCtaUrl}
                     icon={<QrcodeOutlined />}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
                       trackPassCtaClick({
                         ctaLocation: "home_card_section",
-                        destinationUrl: "https://pass.ahangama.com",
+                        destinationUrl: passCtaUrl,
                       });
                     }}
                   >

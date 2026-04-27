@@ -7,11 +7,13 @@ import {
 } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
 import { trackPassCtaClick } from "../../analytics";
+import { buildPassCtaUrl } from "../../lib/passAttribution";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function HeroSectionMobile({ heroImage }) {
   const { places, loading } = usePlaces();
+  const passCtaUrl = buildPassCtaUrl();
 
   return (
     <div className="ahg-hero" style={{ marginBottom: 0 }}>
@@ -124,13 +126,13 @@ export default function HeroSectionMobile({ heroImage }) {
           </Button> */}
           <Button
             size="large"
-            href="https://pass.ahangama.com"
+            href={passCtaUrl}
             icon={<QrcodeOutlined />}
             block
             onClick={() => {
               trackPassCtaClick({
                 ctaLocation: "hero",
-                destinationUrl: "https://pass.ahangama.com",
+                destinationUrl: passCtaUrl,
               });
             }}
             style={{

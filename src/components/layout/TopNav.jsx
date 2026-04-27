@@ -4,6 +4,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useSearch } from "../../app/searchContext";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { trackPassCtaClick } from "../../analytics";
+import { buildPassCtaUrl } from "../../lib/passAttribution";
 
 const { Text } = Typography;
 
@@ -11,6 +12,7 @@ export default function TopNav() {
   const { query, setQuery } = useSearch();
   const nav = useNavigate();
   const loc = useLocation();
+  const passCtaUrl = buildPassCtaUrl();
 
   const onSearch = (value) => {
     setQuery(value || "");
@@ -68,13 +70,13 @@ export default function TopNav() {
         <Col>
           <Button
             type="primary"
-            href="https://pass.ahangama.com"
+            href={passCtaUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => {
               trackPassCtaClick({
                 ctaLocation: "top_nav",
-                destinationUrl: "https://pass.ahangama.com",
+                destinationUrl: passCtaUrl,
               });
             }}
           >

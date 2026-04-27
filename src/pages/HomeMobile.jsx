@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { usePlaces } from "../app/placesContext";
 import { trackPassCtaClick } from "../analytics";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -18,6 +19,7 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 
 export default function HomeMobile() {
   const { places } = usePlaces();
+  const passCtaUrl = buildPassCtaUrl();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState(undefined);
   const [userLocation, setUserLocation] = useState(null);
@@ -212,14 +214,14 @@ export default function HomeMobile() {
 
       {/* Floating Get Pass button for mobile */}
       <a
-        href="https://pass.ahangama.com"
+        href={passCtaUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="ahg-floating-getpass-btn"
         onClick={() => {
           trackPassCtaClick({
             ctaLocation: "home_mobile_floating",
-            destinationUrl: "https://pass.ahangama.com",
+            destinationUrl: passCtaUrl,
           });
         }}
         style={{

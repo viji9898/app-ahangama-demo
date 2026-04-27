@@ -1,10 +1,13 @@
 import React from "react";
 import { Row, Col, Typography, Space, Button, Divider } from "antd";
 import { trackPassCtaClick } from "../../analytics";
+import { buildPassCtaUrl } from "../../lib/passAttribution";
 
 const { Text } = Typography;
 
 export default function FooterBar() {
+  const passCtaUrl = buildPassCtaUrl();
+
   return (
     <div
       style={{
@@ -191,13 +194,13 @@ export default function FooterBar() {
                 <Button
                   block
                   type="primary"
-                  href="https://pass.ahangama.com"
+                  href={passCtaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
                     trackPassCtaClick({
                       ctaLocation: "footer",
-                      destinationUrl: "https://pass.ahangama.com",
+                      destinationUrl: passCtaUrl,
                     });
                   }}
                   style={{

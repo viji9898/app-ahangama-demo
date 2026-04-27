@@ -15,11 +15,13 @@ import {
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function About() {
   const canonical = absUrl("/about");
+  const passCtaUrl = buildPassCtaUrl();
 
   return (
     <SiteLayout>
@@ -476,7 +478,7 @@ export default function About() {
 
                   <Button
                     size="large"
-                    href="https://pass.ahangama.com"
+                    href={passCtaUrl}
                     icon={<QrcodeOutlined />}
                     target="_blank"
                     rel="noopener noreferrer"

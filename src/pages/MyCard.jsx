@@ -6,10 +6,12 @@ import { absUrl } from "../app/siteUrl";
 import { getLatestCard } from "../app/cardStore";
 import { CARD_PRODUCT } from "../data/cardConfig";
 import { QRCodeSVG } from "qrcode.react";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function MyCard() {
+  const passCtaUrl = buildPassCtaUrl();
   const card = getLatestCard();
   const verifyUrl = card
     ? absUrl(`/card/verify/${encodeURIComponent(card.cardId)}`)
@@ -76,7 +78,12 @@ export default function MyCard() {
               <Button type="primary" href={verifyUrl}>
                 Open vendor verify link
               </Button>
-              <Button style={{ marginLeft: 10 }} href="/card">
+              <Button
+                style={{ marginLeft: 10 }}
+                href={passCtaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Back
               </Button>
             </div>

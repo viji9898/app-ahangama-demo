@@ -6,6 +6,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 const { Title, Text } = Typography;
 
@@ -34,6 +35,7 @@ function safeLatLng(p) {
 }
 
 export default function MapGoogle() {
+  const passCtaUrl = buildPassCtaUrl();
   const { places: allPlaces } = usePlaces();
   const canonical = absUrl("/map-google");
   const token = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -332,7 +334,9 @@ export default function MapGoogle() {
                   >
                     Master Index
                   </Button>
-                  <Button href="/card">Get the Pass</Button>
+                  <Button href={passCtaUrl} target="_blank" rel="noopener noreferrer">
+                    Get the Pass
+                  </Button>
                 </Space>
               </div>
             </Card>

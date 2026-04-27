@@ -15,6 +15,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { VENDOR_OFFER_FRAMEWORK } from "../data/vendorOfferFramework";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -34,6 +35,7 @@ function Block({ heading, items }) {
 }
 
 export default function Vendors() {
+  const passCtaUrl = buildPassCtaUrl();
   const canonical = absUrl("/vendors");
   const [q, setQ] = useState("");
 
@@ -104,7 +106,9 @@ export default function Vendors() {
               >
                 View Master Index
               </Button>
-              <Button href="/card">See the Pass</Button>
+              <Button href={passCtaUrl} target="_blank" rel="noopener noreferrer">
+                See the Pass
+              </Button>
             </Space>
           </div>
         </Card>

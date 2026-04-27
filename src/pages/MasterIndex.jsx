@@ -17,6 +17,7 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { MASTER_INDEX } from "../data/masterIndex";
 import { trackPassCtaClick } from "../analytics";
+import { buildPassCtaUrl } from "../lib/passAttribution";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -52,6 +53,7 @@ function IndexRowCard({ row }) {
 
 export default function MasterIndex() {
   const canonical = absUrl("/master-index");
+  const passCtaUrl = buildPassCtaUrl();
   const [q, setQ] = useState("");
   const [offersOnly, setOffersOnly] = useState(false);
 
@@ -151,14 +153,14 @@ export default function MasterIndex() {
               <div style={{ marginTop: 14 }}>
                 <Button
                   block
-                  href="https://pass.ahangama.com"
+                  href={passCtaUrl}
                   icon={<ArrowRightOutlined />}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
                     trackPassCtaClick({
                       ctaLocation: "master_index_sidebar",
-                      destinationUrl: "https://pass.ahangama.com",
+                      destinationUrl: passCtaUrl,
                     });
                   }}
                 >
@@ -246,12 +248,14 @@ export default function MasterIndex() {
                   <Button
                     type="primary"
                     size="large"
-                    href="/card"
+                    href={passCtaUrl}
                     icon={<ArrowRightOutlined />}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => {
                       trackPassCtaClick({
                         ctaLocation: "master_index_footer",
-                        destinationUrl: "/card",
+                        destinationUrl: passCtaUrl,
                       });
                     }}
                   >

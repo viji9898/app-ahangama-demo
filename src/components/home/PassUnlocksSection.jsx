@@ -19,6 +19,7 @@ import {
 } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
 import { trackPassCtaClick } from "../../analytics";
+import { buildPassCtaUrl } from "../../lib/passAttribution";
 import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
@@ -303,6 +304,7 @@ function PlaceRow({ p }) {
 
 export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
   const { places: allPlaces } = usePlaces();
+  const passCtaUrl = buildPassCtaUrl();
   const token = import.meta.env.VITE_MAPBOX_TOKEN;
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
@@ -546,14 +548,14 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
             /> */}
             <Button
               type="primary"
-              href="https://pass.ahangama.com"
+              href={passCtaUrl}
               target="_blank"
               rel="noopener noreferrer"
               icon={<QrcodeOutlined />}
               onClick={() => {
                 trackPassCtaClick({
                   ctaLocation: "pass_unlocks_section",
-                  destinationUrl: "https://pass.ahangama.com",
+                  destinationUrl: passCtaUrl,
                 });
               }}
               style={{
