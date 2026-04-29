@@ -112,6 +112,23 @@ export default function FooterBar() {
                     Partner with us
                   </a>
                   <a
+                    href="/partners-knowledge"
+                    style={{
+                      color: "var(--ink-muted, #6b6f6a)",
+                      textDecoration: "none",
+                      fontSize: "15px",
+                      transition: "color 0.3s ease",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.target.style.color = "var(--ocean-blue, #4f6f86)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.color = "var(--ink-muted, #6b6f6a)")
+                    }
+                  >
+                    Partner knowledge base
+                  </a>
+                  <a
                     href="/card/terms"
                     style={{
                       color: "var(--ink-muted, #6b6f6a)",

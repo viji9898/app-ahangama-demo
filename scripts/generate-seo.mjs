@@ -81,6 +81,11 @@ Sitemap: ${sitemap}
   const staticRoutes = [
     { loc: `${siteUrl}/`, changefreq: "weekly", priority: "1.0" },
     { loc: `${siteUrl}/search`, changefreq: "weekly", priority: "0.8" },
+    {
+      loc: `${siteUrl}/partners-knowledge`,
+      changefreq: "daily",
+      priority: "0.8",
+    },
     { loc: `${siteUrl}/eat`, changefreq: "weekly", priority: "0.9" },
     { loc: `${siteUrl}/stays`, changefreq: "weekly", priority: "0.9" },
     { loc: `${siteUrl}/experiences`, changefreq: "weekly", priority: "0.9" },

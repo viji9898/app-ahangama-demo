@@ -10,6 +10,16 @@
   directory = "netlify/functions"
 
 [[redirects]]
+  from = "/partners-knowledge"
+  to = "/.netlify/functions/partners-knowledge"
+  status = 200
+
+[[redirects]]
+  from = "/api/partners-knowledge"
+  to = "/.netlify/functions/partners-knowledge?format=json"
+  status = 200
+
+[[redirects]]
   from = "/api/venues"
   to = "/.netlify/functions/api-venues-list"
   status = 200
