@@ -812,7 +812,6 @@ export default function VenueQrLandingPage() {
             <Link to="/">See the full Ahangama guide.</Link>
           </Text>
         </div>
-        <StickyCta purchaseUrl={purchaseUrl} onPassClick={handlePassClick} />
       </div>
     </>
   );
