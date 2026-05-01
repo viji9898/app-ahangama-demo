@@ -15,14 +15,20 @@ import {
   ArrowRightOutlined,
   CheckCircleFilled,
   CompassOutlined,
+  CoffeeOutlined,
   EnvironmentOutlined,
   GiftOutlined,
+  HeartFilled,
+  LockFilled,
   MenuOutlined,
   MessageOutlined,
+  PercentageOutlined,
+  PictureOutlined,
   SafetyCertificateOutlined,
   ShopOutlined,
   StarFilled,
   ThunderboltOutlined,
+  WalletOutlined,
 } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";
 import { Seo } from "../app/seo";
@@ -64,6 +70,35 @@ const PASS_BENEFITS = [
     icon: <ThunderboltOutlined style={{ color: "#204133", fontSize: 18 }} />,
     title: "Exclusive perks",
     text: "Members-only offers designed to pay back fast.",
+  },
+];
+
+const PASS_STRIP_ITEMS = [
+  {
+    icon: <EnvironmentOutlined style={{ color: "#173a2f", fontSize: 18 }} />,
+    label: "100+ venues",
+  },
+  {
+    icon: <ShopOutlined style={{ color: "#173a2f", fontSize: 18 }} />,
+    label: "Cafes & restaurants",
+  },
+  {
+    icon: <CompassOutlined style={{ color: "#173a2f", fontSize: 18 }} />,
+    label: "Surf & experiences",
+  },
+  {
+    icon: (
+      <SafetyCertificateOutlined style={{ color: "#173a2f", fontSize: 18 }} />
+    ),
+    label: "Wellness & beauty",
+  },
+  {
+    icon: <ShopOutlined style={{ color: "#173a2f", fontSize: 18 }} />,
+    label: "Shops & services",
+  },
+  {
+    icon: <GiftOutlined style={{ color: "#173a2f", fontSize: 18 }} />,
+    label: "Exclusive perks",
   },
 ];
 
@@ -258,6 +293,75 @@ function HeroSection({
   );
 }
 
+function PassBenefitsStrip() {
+  return (
+    <section className="qr-stripCard" aria-label="Pass categories">
+      <div className="qr-stripGrid">
+        {PASS_STRIP_ITEMS.map((item) => (
+          <div className="qr-stripItem" key={item.label}>
+            <div className="qr-stripIcon">{item.icon}</div>
+            <span className="qr-stripLabel">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PassExplainerSection({ venue }) {
+  const venueName = normalizeText(venue?.name).toUpperCase() || "KAFFI";
+
+  return (
+    <section className="qr-explainerCard" aria-label="Venue and pass benefits">
+      <div className="qr-explainerGrid">
+        <div className="qr-explainerColumn qr-explainerColumn--left">
+          <h3 className="qr-explainerTitle">AT {venueName}</h3>
+          <div className="qr-explainerOfferList">
+            <div className="qr-explainerOfferRow">
+              <CoffeeOutlined className="qr-explainerOfferIcon" />
+              <span>Any beverage</span>
+            </div>
+            <div className="qr-explainerPlus">+</div>
+            <div className="qr-explainerOfferRow">
+              <GiftOutlined className="qr-explainerOfferIcon" />
+              <span>Any pastry</span>
+            </div>
+            <div className="qr-explainerPlus">+</div>
+            <div className="qr-explainerOfferRow">
+              <PictureOutlined className="qr-explainerOfferIcon" />
+              <span>Two free postcards</span>
+            </div>
+          </div>
+          <div className="qr-explainerBanner">ON US</div>
+        </div>
+
+        <div className="qr-explainerColumn qr-explainerColumn--right">
+          <h3 className="qr-explainerTitle qr-explainerTitle--right">
+            Perks & privileges across 100+ venues
+          </h3>
+          <div className="qr-explainerChecklist">
+            {[
+              "Special discounts",
+              "Freebies & upgrades",
+              "Local experiences",
+              "Curated for Ahangama",
+            ].map((item) => (
+              <div className="qr-explainerCheckRow" key={item}>
+                <CheckCircleFilled className="qr-explainerCheckIcon" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="qr-explainerTagline">
+            <span>Experience Ahangama</span>
+            <span>like a local!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function OfferBreakdownCard({ venue, offers, howToClaim, restrictions }) {
   return (
     <Card
@@ -381,54 +485,83 @@ function EditorialSection({ venue, excerpt, description, mediaItems }) {
 
 function ConversionSection({ purchaseUrl, onPassClick }) {
   return (
-    <Card
-      className="qr-card"
-      bodyStyle={{ padding: 18 }}
-      style={{ marginBottom: 16 }}
-    >
-      <Tag
-        style={{
-          borderRadius: 999,
-          padding: "6px 10px",
-          marginBottom: 12,
-          background: "rgba(32, 65, 51, 0.08)",
-          color: "#204133",
-          border: "1px solid rgba(32, 65, 51, 0.1)",
-        }}
-      >
-        Limited QR offer
-      </Tag>
-      <Title level={3} className="qr-sectionTitle">
-        Get the pass while you are here
-      </Title>
-      <Paragraph className="qr-sectionText" style={{ marginBottom: 14 }}>
-        Start with this venue perk today, then unlock the rest of the network
-        for the rest of your stay.
-      </Paragraph>
-      <div className="qr-priceRow">
-        <Text delete style={{ color: "rgba(31, 42, 36, 0.45)", fontSize: 18 }}>
-          30 USD
-        </Text>
-        <Title level={2} style={{ margin: 0, color: "#204133" }}>
-          15 USD
-        </Title>
+    <section className="qr-offerCta" aria-label="Get the Ahangama Pass">
+      <div className="qr-offerCtaPanel">
+        <div className="qr-offerCtaHeader">
+          <PercentageOutlined className="qr-offerCtaHeaderIcon" />
+          <span>Get the pass (50% off today)</span>
+        </div>
+
+        <div className="qr-offerCtaPricing">
+          <div className="qr-offerCtaPriceCell">
+            <span className="qr-offerCtaLabel">Original price</span>
+            <div className="qr-offerCtaPrice qr-offerCtaPrice--old">30 USD</div>
+          </div>
+          <div className="qr-offerCtaDivider" />
+          <div className="qr-offerCtaPriceCell">
+            <span className="qr-offerCtaLabel">After promo code</span>
+            <div className="qr-offerCtaPrice qr-offerCtaPrice--new">15 USD</div>
+          </div>
+          <div className="qr-offerCtaCodeBox">
+            <span className="qr-offerCtaCodeLabel">Use code:</span>
+            <span className="qr-offerCtaCodeValue">HELLO50</span>
+          </div>
+        </div>
+
+        <Button
+          className="qr-offerCtaButton"
+          size="large"
+          block
+          href={purchaseUrl}
+          onClick={() => onPassClick("conversion")}
+        >
+          <span>Get my pass now</span>
+          <ArrowRightOutlined />
+        </Button>
+
+        <div className="qr-offerCtaMeta">
+          <LockFilled />
+          <span>Instant access</span>
+          <span className="qr-offerCtaMetaDot">•</span>
+          <span>Secure payment</span>
+          <span className="qr-offerCtaMetaDot">•</span>
+          <span>Cancel anytime</span>
+        </div>
       </div>
-      <div className="qr-codePill">
-        <ThunderboltOutlined />
-        Code: HELLO50
+
+      <div className="qr-offerCtaBenefits">
+        <div className="qr-offerCtaBenefit">
+          <ThunderboltOutlined className="qr-offerCtaBenefitIcon" />
+          <div>
+            <div className="qr-offerCtaBenefitTitle">Instant access</div>
+            <div className="qr-offerCtaBenefitText">Start using right away</div>
+          </div>
+        </div>
+        <div className="qr-offerCtaBenefit">
+          <WalletOutlined className="qr-offerCtaBenefitIcon" />
+          <div>
+            <div className="qr-offerCtaBenefitTitle">Show your pass</div>
+            <div className="qr-offerCtaBenefitText">
+              at any venue to unlock your perk
+            </div>
+          </div>
+        </div>
+        <div className="qr-offerCtaBenefit">
+          <HeartFilled className="qr-offerCtaBenefitIcon" />
+          <div>
+            <div className="qr-offerCtaBenefitTitle">Support local</div>
+            <div className="qr-offerCtaBenefitText">
+              Independent businesses in Ahangama
+            </div>
+          </div>
+        </div>
       </div>
-      <Button
-        type="primary"
-        size="large"
-        block
-        href={purchaseUrl}
-        onClick={() => onPassClick("conversion")}
-        icon={<ArrowRightOutlined />}
-        style={{ height: 52, borderRadius: 16, marginTop: 16, fontWeight: 700 }}
-      >
-        Get my pass now
-      </Button>
-    </Card>
+
+      <div className="qr-offerCtaFooter">
+        <div className="qr-offerCtaFooterLine">One pass. Endless perks.</div>
+        <div className="qr-offerCtaFooterTagline">Make the most of Ahangama.</div>
+      </div>
+    </section>
   );
 }
 
@@ -726,6 +859,15 @@ export default function VenueQrLandingPage() {
             categoryLabel={categoryLabel}
           />
 
+          <PassBenefitsStrip />
+
+          <PassExplainerSection venue={venue} />
+
+          <ConversionSection
+            purchaseUrl={purchaseUrl}
+            onPassClick={handlePassClick}
+          />
+
           <Card
             className="qr-card"
             bodyStyle={{ padding: 18 }}
@@ -784,10 +926,6 @@ export default function VenueQrLandingPage() {
             excerpt={excerpt}
             description={description}
             mediaItems={mediaItems}
-          />
-          <ConversionSection
-            purchaseUrl={purchaseUrl}
-            onPassClick={handlePassClick}
           />
           <SecondaryActions
             mapUrl={mapUrl}

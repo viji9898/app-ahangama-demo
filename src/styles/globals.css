@@ -319,6 +319,522 @@
   inset: 0;
 }
 
+.qr-stripCard {
+  margin-bottom: 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  background: rgba(251, 247, 239, 0.96);
+  box-shadow: 0 16px 34px rgba(31, 42, 36, 0.08);
+  overflow: hidden;
+}
+
+.qr-stripGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.qr-stripItem {
+  display: flex;
+  min-height: 78px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 6px;
+  text-align: center;
+  border-right: 1px solid rgba(31, 42, 36, 0.08);
+}
+
+.qr-stripItem:last-child {
+  border-right: 0;
+}
+
+.qr-stripIcon {
+  line-height: 1;
+}
+
+.qr-stripLabel {
+  color: #1f2a24;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.qr-explainerCard {
+  margin-bottom: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(31, 42, 36, 0.08);
+  background: rgba(251, 247, 239, 0.96);
+  box-shadow: 0 16px 34px rgba(31, 42, 36, 0.08);
+  overflow: hidden;
+}
+
+.qr-explainerGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.qr-explainerColumn {
+  padding: 12px 12px;
+}
+
+.qr-explainerColumn--left {
+  border-right: 1px solid rgba(31, 42, 36, 0.12);
+  text-align: center;
+}
+
+.qr-explainerColumn--left .qr-explainerOfferList {
+  align-items: center;
+}
+
+.qr-explainerColumn--left .qr-explainerOfferRow {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.qr-explainerColumn--left .qr-explainerPlus {
+  padding-left: 0;
+  text-align: center;
+}
+
+.qr-explainerTitle {
+  margin: 0 0 9px;
+  color: #173a2f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.qr-explainerTitle--right {
+  max-width: 150px;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.qr-explainerOfferList,
+.qr-explainerChecklist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qr-explainerOfferRow,
+.qr-explainerCheckRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1f2a24;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.qr-explainerOfferIcon {
+  color: #173a2f;
+  font-size: 14px;
+}
+
+.qr-explainerCheckIcon {
+  color: #173a2f;
+  font-size: 12px;
+}
+
+.qr-explainerPlus {
+  padding-left: 4px;
+  color: #1f2a24;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.qr-explainerBanner {
+  margin-top: 10px;
+  padding: 6px 9px;
+  border-radius: 999px 14px 999px 14px;
+  background: #2a6a52;
+  color: #fff;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-align: center;
+  transform: rotate(-3deg);
+}
+
+.qr-explainerTagline {
+  margin-top: 10px;
+  color: #b17f27;
+  font-family: "Snell Roundhand", "Brush Script MT", cursive;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.qr-explainerTagline span {
+  display: block;
+  white-space: nowrap;
+}
+
+.qr-offerCta {
+  margin-bottom: 16px;
+  padding: 8px 8px 10px;
+  border-radius: 22px;
+  border: 1px solid rgba(13, 54, 40, 0.08);
+  background:
+    radial-gradient(circle at left bottom, rgba(173, 190, 139, 0.18), transparent 28%),
+    linear-gradient(180deg, #fbf7ef 0%, #f7f2e8 100%);
+  box-shadow: 0 16px 34px rgba(31, 42, 36, 0.08);
+}
+
+.qr-offerCtaPanel {
+  padding: 11px 11px 10px;
+  border-radius: 19px;
+  background: #05392b;
+  color: #fff;
+}
+
+.qr-offerCtaHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 11px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.qr-offerCtaHeaderIcon {
+  font-size: 16px;
+}
+
+.qr-offerCtaPricing {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr) minmax(78px, 96px);
+  gap: 10px;
+  align-items: stretch;
+  padding: 10px;
+  border-radius: 14px;
+  background: #faf7ef;
+  color: #153126;
+}
+
+.qr-offerCtaPriceCell {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.qr-offerCtaLabel {
+  margin-bottom: 5px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.qr-offerCtaPrice {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.qr-offerCtaPrice--old {
+  color: #121b16;
+  text-decoration: line-through;
+  text-decoration-color: #d94f4f;
+  text-decoration-thickness: 2px;
+}
+
+.qr-offerCtaPrice--new {
+  color: #05392b;
+}
+
+.qr-offerCtaDivider {
+  width: 1px;
+  background: rgba(21, 49, 38, 0.12);
+}
+
+.qr-offerCtaCodeBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 8px;
+  border: 1px dashed rgba(21, 49, 38, 0.24);
+  border-radius: 13px;
+  text-align: center;
+}
+
+.qr-offerCtaCodeLabel {
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.qr-offerCtaCodeValue {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.qr-offerCtaButton {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 43px;
+  margin-top: 10px;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background: #b8ca83 !important;
+  color: #173327 !important;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: none !important;
+}
+
+.qr-offerCtaButton:hover,
+.qr-offerCtaButton:focus {
+  background: #aec276 !important;
+  color: #173327 !important;
+}
+
+.qr-offerCtaMeta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+  color: rgba(255, 248, 235, 0.92);
+  font-size: 9px;
+  font-weight: 600;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.qr-offerCtaMetaDot {
+  opacity: 0.7;
+}
+
+.qr-offerCtaBenefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 11px;
+}
+
+.qr-offerCtaBenefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px 9px;
+}
+
+.qr-offerCtaBenefit + .qr-offerCtaBenefit {
+  border-left: 1px solid rgba(21, 49, 38, 0.1);
+}
+
+.qr-offerCtaBenefitIcon {
+  margin-top: 2px;
+  color: #05392b;
+  font-size: 16px;
+}
+
+.qr-offerCtaBenefitTitle {
+  color: #153126;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.qr-offerCtaBenefitText {
+  margin-top: 3px;
+  color: rgba(21, 49, 38, 0.84);
+  font-size: 6px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.qr-offerCtaFooter {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.qr-offerCtaFooterLine {
+  color: #132d22;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.qr-offerCtaFooterTagline {
+  margin-top: 1px;
+  color: #132d22;
+  font-family: "Snell Roundhand", "Brush Script MT", cursive;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+@media (max-width: 520px) {
+  .qr-explainerGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .qr-explainerColumn {
+    padding: 10px 8px;
+  }
+
+  .qr-explainerColumn--left {
+    border-right: 1px solid rgba(31, 42, 36, 0.12);
+    border-bottom: 0;
+  }
+
+  .qr-explainerTitle {
+    font-size: 10px;
+    margin-bottom: 7px;
+  }
+
+  .qr-explainerTitle--right {
+    max-width: 120px;
+    font-size: 9px;
+  }
+
+  .qr-explainerOfferList,
+  .qr-explainerChecklist {
+    gap: 5px;
+  }
+
+  .qr-explainerOfferRow,
+  .qr-explainerCheckRow {
+    gap: 6px;
+    font-size: 9px;
+  }
+
+  .qr-explainerOfferIcon {
+    font-size: 12px;
+  }
+
+  .qr-explainerCheckIcon {
+    font-size: 10px;
+  }
+
+  .qr-explainerPlus {
+    padding-left: 2px;
+    font-size: 12px;
+  }
+
+  .qr-explainerBanner {
+    margin-top: 8px;
+    padding: 5px 7px;
+    font-size: 13px;
+  }
+
+  .qr-explainerTagline {
+    margin-top: 8px;
+    font-size: 10px;
+  }
+
+  .qr-offerCta {
+    padding: 6px 6px 8px;
+  }
+
+  .qr-offerCtaPanel {
+    padding: 10px 8px 8px;
+  }
+
+  .qr-offerCtaHeader {
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 9px;
+  }
+
+  .qr-offerCtaHeaderIcon {
+    font-size: 13px;
+  }
+
+  .qr-offerCtaPricing {
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr) minmax(68px, 78px);
+    gap: 6px;
+    padding: 8px 6px;
+  }
+
+  .qr-offerCtaLabel {
+    margin-bottom: 4px;
+    font-size: 7px;
+  }
+
+  .qr-offerCtaPrice {
+    font-size: 13px;
+  }
+
+  .qr-offerCtaCodeBox {
+    padding: 5px 4px;
+    border-radius: 10px;
+  }
+
+  .qr-offerCtaCodeLabel {
+    font-size: 6px;
+  }
+
+  .qr-offerCtaCodeValue {
+    font-size: 14px;
+  }
+
+  .qr-offerCtaButton {
+    height: 37px;
+    gap: 6px;
+    margin-top: 8px;
+    border-radius: 12px !important;
+    font-size: 10px;
+  }
+
+  .qr-offerCtaMeta {
+    gap: 4px;
+    margin-top: 8px;
+    font-size: 7px;
+  }
+
+  .qr-offerCtaBenefit {
+    gap: 6px;
+    padding: 6px 6px;
+  }
+
+  .qr-offerCtaBenefitIcon {
+    font-size: 13px;
+  }
+
+  .qr-offerCtaBenefitTitle {
+    font-size: 6px;
+  }
+
+  .qr-offerCtaBenefitText {
+    margin-top: 3px;
+    font-size: 6px;
+  }
+
+  .qr-offerCtaFooterLine {
+    font-size: 10px;
+  }
+
+  .qr-offerCtaFooterTagline {
+    font-size: 15px;
+  }
+}
+
 .qr-heroBody {
   position: relative;
   z-index: 1;
