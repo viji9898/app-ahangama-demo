@@ -286,9 +286,9 @@ function HeroSection({
     <section className="qr-hero">
       <div
         className="qr-heroImage"
-          style={heroImage ? { backgroundImage: `url(${heroImage})` } : undefined}
+        style={heroImage ? { backgroundImage: `url(${heroImage})` } : undefined}
       />
-        <div className="qr-heroOverlay" style={heroOverlayStyle} />
+      <div className="qr-heroOverlay" style={heroOverlayStyle} />
     </section>
   );
 }
@@ -413,76 +413,6 @@ function OfferBreakdownCard({ venue, offers, howToClaim, restrictions }) {
   );
 }
 
-function PassValueSection() {
-  return (
-    <Card
-      className="qr-card"
-      bodyStyle={{ padding: 18 }}
-      style={{ marginBottom: 16 }}
-    >
-      <Title level={3} className="qr-sectionTitle">
-        This is just your first perk
-      </Title>
-      <Paragraph className="qr-sectionText" style={{ marginBottom: 14 }}>
-        The Ahangama Pass is built to pay for itself fast, then keep saving you
-        money all trip long.
-      </Paragraph>
-      <Row gutter={[12, 12]}>
-        {PASS_BENEFITS.map((benefit) => (
-          <Col span={12} key={benefit.title}>
-            <div className="qr-benefitTile">
-              <div style={{ marginBottom: 10 }}>{benefit.icon}</div>
-              <Text
-                strong
-                style={{ display: "block", color: "#1f2a24", marginBottom: 4 }}
-              >
-                {benefit.title}
-              </Text>
-              <Text style={{ color: "rgba(31, 42, 36, 0.68)", fontSize: 13 }}>
-                {benefit.text}
-              </Text>
-            </div>
-          </Col>
-        ))}
-      </Row>
-    </Card>
-  );
-}
-
-function EditorialSection({ venue, excerpt, description, mediaItems }) {
-  return (
-    <Card
-      className="qr-card"
-      bodyStyle={{ padding: 18 }}
-      style={{ marginBottom: 16 }}
-    >
-      <Title level={3} className="qr-sectionTitle">
-        Why we love {venue.name}
-      </Title>
-      {excerpt ? (
-        <Paragraph className="qr-sectionText">{excerpt}</Paragraph>
-      ) : null}
-      {description && description !== excerpt ? (
-        <Paragraph
-          className="qr-sectionText"
-          style={{ marginBottom: mediaItems.length ? 14 : 0 }}
-        >
-          {description}
-        </Paragraph>
-      ) : null}
-      {mediaItems.length ? (
-        <div className="qr-mediaGrid">
-          {mediaItems.map((item) => (
-            <div className="qr-mediaBlock" key={item.key}>
-              <img src={item.src} alt={item.alt} />
-            </div>
-          ))}
-        </div>
-      ) : null}
-    </Card>
-  );
-}
-
 function ConversionSection({ purchaseUrl, onPassClick }) {
   return (
     <section className="qr-offerCta" aria-label="Get the Ahangama Pass">
@@ -559,7 +489,9 @@ function ConversionSection({ purchaseUrl, onPassClick }) {
 
       <div className="qr-offerCtaFooter">
         <div className="qr-offerCtaFooterLine">One pass. Endless perks.</div>
-        <div className="qr-offerCtaFooterTagline">Make the most of Ahangama.</div>
+        <div className="qr-offerCtaFooterTagline">
+          Make the most of Ahangama.
+        </div>
       </div>
     </section>
   );
@@ -868,71 +800,6 @@ export default function VenueQrLandingPage() {
             onPassClick={handlePassClick}
           />
 
-          <Card
-            className="qr-card"
-            bodyStyle={{ padding: 18 }}
-            style={{ marginBottom: 16 }}
-          >
-            <Row gutter={12} align="middle" wrap={false}>
-              <Col flex="56px">
-                <Avatar
-                  src={
-                    logo ||
-                    normalizeText(getVenueField(venue, "image")) ||
-                    undefined
-                  }
-                  shape="square"
-                  size={56}
-                  style={{
-                    borderRadius: 18,
-                    backgroundColor: "rgba(32, 65, 51, 0.08)",
-                  }}
-                >
-                  {venue.name?.slice(0, 1)}
-                </Avatar>
-              </Col>
-              <Col flex="auto">
-                <Text style={{ color: "rgba(31, 42, 36, 0.58)", fontSize: 12 }}>
-                  Featured partner venue
-                </Text>
-                <Title
-                  level={4}
-                  style={{ margin: "2px 0 0", color: "#1f2a24" }}
-                >
-                  {venue.name}
-                </Title>
-                {(areaLabel || categoryLabel) && (
-                  <Text style={{ color: "rgba(31, 42, 36, 0.68)" }}>
-                    {[areaLabel, categoryLabel].filter(Boolean).join(" • ")}
-                  </Text>
-                )}
-              </Col>
-            </Row>
-          </Card>
-
-          <OfferBreakdownCard
-            venue={venue}
-            offers={
-              offerItems.length
-                ? offerItems
-                : [mainOffer || "Perk details available after purchase"]
-            }
-            howToClaim={howToClaim}
-            restrictions={restrictions}
-          />
-          <PassValueSection />
-          <EditorialSection
-            venue={venue}
-            excerpt={excerpt}
-            description={description}
-            mediaItems={mediaItems}
-          />
-          <SecondaryActions
-            mapUrl={mapUrl}
-            whatsAppUrl={whatsAppUrl}
-            onMapClick={handleMapClick}
-            onWhatsAppClick={handleWhatsAppClick}
-          />
           <div style={{ height: 12 }} />
           <Text
             style={{
