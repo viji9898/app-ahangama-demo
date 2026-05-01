@@ -26,6 +26,7 @@ import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 import HomeDesktop from "../pages/HomeDesktop";
 import Resellers from "../pages/Resellers";
+import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import { Seo } from "./seo";
 
 function ExternalRedirect({ to }) {
@@ -56,6 +57,7 @@ export const routes = [
   { path: "/home-v-2", element: <HomeV2 /> },
   { path: "/home-mobile", element: <HomeMobile /> },
   { path: "/home-desktop", element: <HomeDesktop /> },
+  { path: "/qr/:slug", element: <VenueQrLandingPage /> },
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
   { path: "/partners", element: <Partners /> },
