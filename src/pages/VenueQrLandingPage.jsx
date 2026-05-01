@@ -28,6 +28,7 @@ import { Link, useParams } from "react-router-dom";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { trackQrEvent } from "../analytics";
+import kaffiPromoTemplate from "../assets/kaffi-promo-template.jpeg";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -48,7 +49,9 @@ const PASS_BENEFITS = [
     text: "Lessons, boards, and local experiences with better value.",
   },
   {
-    icon: <SafetyCertificateOutlined style={{ color: "#204133", fontSize: 18 }} />,
+    icon: (
+      <SafetyCertificateOutlined style={{ color: "#204133", fontSize: 18 }} />
+    ),
     title: "Wellness & beauty",
     text: "Treatments, recovery, and self-care perks in one place.",
   },
@@ -86,18 +89,22 @@ function normalizeOffers(venue) {
     if (value === null || value === undefined) return null;
     if (typeof value === "string") return value.trim() || null;
     if (Array.isArray(value)) {
-      return value
-        .map((entry) => toOfferText(entry))
-        .filter(Boolean)
-        .join(" ")
-        .trim() || null;
+      return (
+        value
+          .map((entry) => toOfferText(entry))
+          .filter(Boolean)
+          .join(" ")
+          .trim() || null
+      );
     }
     if (typeof value === "object") {
-      return Object.values(value)
-        .map((entry) => toOfferText(entry))
-        .filter(Boolean)
-        .join(" ")
-        .trim() || null;
+      return (
+        Object.values(value)
+          .map((entry) => toOfferText(entry))
+          .filter(Boolean)
+          .join(" ")
+          .trim() || null
+      );
     }
 
     return String(value).trim() || null;
@@ -213,74 +220,51 @@ function EmptyState({ slug }) {
   );
 }
 
-function HeroSection({ venue, purchaseUrl, mainOffer, onPrimaryClick, areaLabel, categoryLabel }) {
+function HeroSection({
+  venue,
+  purchaseUrl,
+  mainOffer,
+  onPrimaryClick,
+  areaLabel,
+  categoryLabel,
+}) {
+  const isKaffiPromo = venue?.slug === "kaffi-ahangama";
   const heroImage =
-    normalizeText(getVenueField(venue, "image", "ogImage", "logo")) ||
-    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-2.jpg";
+    (isKaffiPromo
+      ? null
+      : normalizeText(getVenueField(venue, "image", "ogImage", "logo"))) ||
+    (!isKaffiPromo
+      ? "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-2.jpg"
+      : null);
   const stars = getVenueField(venue, "stars");
   const reviews = getVenueField(venue, "reviews");
+  const heroOverlayStyle = isKaffiPromo
+    ? {
+        backgroundImage: `url(${kaffiPromoTemplate})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "contain",
+      }
+    : undefined;
 
   return (
     <section className="qr-hero">
       <div
         className="qr-heroImage"
-        style={{ backgroundImage: `url(${heroImage})` }}
+          style={heroImage ? { backgroundImage: `url(${heroImage})` } : undefined}
       />
-      <div className="qr-heroOverlay" />
-      <div className="qr-heroBody">
-        <Space wrap>
-          <Tag className="qr-heroTag">Ahangama Pass</Tag>
-          {categoryLabel ? <Tag className="qr-heroTag">{categoryLabel}</Tag> : null}
-          {areaLabel ? <Tag className="qr-heroTag">{areaLabel}</Tag> : null}
-        </Space>
-        <Title level={1} className="qr-heroTitle">
-          Your perk at {venue.name}
-        </Title>
-        <Paragraph style={{ color: "rgba(255,255,255,0.82)", marginBottom: 0 }}>
-          Unlock this venue perk right now, then keep using the pass across Ahangama.
-        </Paragraph>
-        {mainOffer ? (
-          <div className="qr-heroPerk">
-            <GiftOutlined />
-            <span>{mainOffer}</span>
-          </div>
-        ) : null}
-        {stars ? (
-          <div className="qr-rating">
-            <StarFilled style={{ color: "#ffd76a" }} />
-            <span>
-              {stars}
-              {reviews ? ` (${reviews} reviews)` : ""}
-            </span>
-          </div>
-        ) : null}
-        <Button
-          type="primary"
-          size="large"
-          href={purchaseUrl}
-          block
-          onClick={() => onPrimaryClick("hero")}
-          style={{
-            marginTop: 18,
-            height: 52,
-            borderRadius: 16,
-            fontWeight: 700,
-            background: "#f6d87a",
-            borderColor: "#f6d87a",
-            color: "#163025",
-            boxShadow: "0 12px 24px rgba(10, 20, 16, 0.24)",
-          }}
-        >
-          Get the Pass — 50% Off Today
-        </Button>
-      </div>
+        <div className="qr-heroOverlay" style={heroOverlayStyle} />
     </section>
   );
 }
 
 function OfferBreakdownCard({ venue, offers, howToClaim, restrictions }) {
   return (
-    <Card className="qr-card" bodyStyle={{ padding: 18 }} style={{ marginBottom: 16 }}>
+    <Card
+      className="qr-card"
+      bodyStyle={{ padding: 18 }}
+      style={{ marginBottom: 16 }}
+    >
       <Title level={3} className="qr-sectionTitle">
         At {venue.name}
       </Title>
@@ -307,7 +291,9 @@ function OfferBreakdownCard({ venue, offers, howToClaim, restrictions }) {
         ) : null}
         {restrictions ? (
           <div className="qr-offerItem" style={{ paddingBottom: 0 }}>
-            <SafetyCertificateOutlined style={{ color: "#7a6a4c", marginTop: 4 }} />
+            <SafetyCertificateOutlined
+              style={{ color: "#7a6a4c", marginTop: 4 }}
+            />
             <div>
               <Text strong style={{ display: "block", color: "#1f2a24" }}>
                 Good to know
@@ -325,19 +311,27 @@ function OfferBreakdownCard({ venue, offers, howToClaim, restrictions }) {
 
 function PassValueSection() {
   return (
-    <Card className="qr-card" bodyStyle={{ padding: 18 }} style={{ marginBottom: 16 }}>
+    <Card
+      className="qr-card"
+      bodyStyle={{ padding: 18 }}
+      style={{ marginBottom: 16 }}
+    >
       <Title level={3} className="qr-sectionTitle">
         This is just your first perk
       </Title>
       <Paragraph className="qr-sectionText" style={{ marginBottom: 14 }}>
-        The Ahangama Pass is built to pay for itself fast, then keep saving you money all trip long.
+        The Ahangama Pass is built to pay for itself fast, then keep saving you
+        money all trip long.
       </Paragraph>
       <Row gutter={[12, 12]}>
         {PASS_BENEFITS.map((benefit) => (
           <Col span={12} key={benefit.title}>
             <div className="qr-benefitTile">
               <div style={{ marginBottom: 10 }}>{benefit.icon}</div>
-              <Text strong style={{ display: "block", color: "#1f2a24", marginBottom: 4 }}>
+              <Text
+                strong
+                style={{ display: "block", color: "#1f2a24", marginBottom: 4 }}
+              >
                 {benefit.title}
               </Text>
               <Text style={{ color: "rgba(31, 42, 36, 0.68)", fontSize: 13 }}>
@@ -353,13 +347,22 @@ function PassValueSection() {
 
 function EditorialSection({ venue, excerpt, description, mediaItems }) {
   return (
-    <Card className="qr-card" bodyStyle={{ padding: 18 }} style={{ marginBottom: 16 }}>
+    <Card
+      className="qr-card"
+      bodyStyle={{ padding: 18 }}
+      style={{ marginBottom: 16 }}
+    >
       <Title level={3} className="qr-sectionTitle">
         Why we love {venue.name}
       </Title>
-      {excerpt ? <Paragraph className="qr-sectionText">{excerpt}</Paragraph> : null}
+      {excerpt ? (
+        <Paragraph className="qr-sectionText">{excerpt}</Paragraph>
+      ) : null}
       {description && description !== excerpt ? (
-        <Paragraph className="qr-sectionText" style={{ marginBottom: mediaItems.length ? 14 : 0 }}>
+        <Paragraph
+          className="qr-sectionText"
+          style={{ marginBottom: mediaItems.length ? 14 : 0 }}
+        >
           {description}
         </Paragraph>
       ) : null}
@@ -378,7 +381,11 @@ function EditorialSection({ venue, excerpt, description, mediaItems }) {
 
 function ConversionSection({ purchaseUrl, onPassClick }) {
   return (
-    <Card className="qr-card" bodyStyle={{ padding: 18 }} style={{ marginBottom: 16 }}>
+    <Card
+      className="qr-card"
+      bodyStyle={{ padding: 18 }}
+      style={{ marginBottom: 16 }}
+    >
       <Tag
         style={{
           borderRadius: 999,
@@ -395,7 +402,8 @@ function ConversionSection({ purchaseUrl, onPassClick }) {
         Get the pass while you are here
       </Title>
       <Paragraph className="qr-sectionText" style={{ marginBottom: 14 }}>
-        Start with this venue perk today, then unlock the rest of the network for the rest of your stay.
+        Start with this venue perk today, then unlock the rest of the network
+        for the rest of your stay.
       </Paragraph>
       <div className="qr-priceRow">
         <Text delete style={{ color: "rgba(31, 42, 36, 0.45)", fontSize: 18 }}>
@@ -424,7 +432,12 @@ function ConversionSection({ purchaseUrl, onPassClick }) {
   );
 }
 
-function SecondaryActions({ mapUrl, whatsAppUrl, onMapClick, onWhatsAppClick }) {
+function SecondaryActions({
+  mapUrl,
+  whatsAppUrl,
+  onMapClick,
+  onWhatsAppClick,
+}) {
   return (
     <Card className="qr-card" bodyStyle={{ padding: 18 }}>
       <Space direction="vertical" size={12} style={{ width: "100%" }}>
@@ -473,7 +486,13 @@ function StickyCta({ purchaseUrl, onPassClick }) {
     <div className="qr-stickyBar">
       <div className="qr-stickyInner">
         <div>
-          <Text style={{ color: "rgba(255,255,255,0.72)", fontSize: 12, display: "block" }}>
+          <Text
+            style={{
+              color: "rgba(255,255,255,0.72)",
+              fontSize: 12,
+              display: "block",
+            }}
+          >
             HELLO50 active
           </Text>
           <Text strong style={{ color: "#fff", fontSize: 15 }}>
@@ -544,9 +563,15 @@ export default function VenueQrLandingPage() {
     };
   }, [retryToken]);
 
-  const venue = useMemo(() => venues.find((v) => v.slug === slug), [venues, slug]);
+  const venue = useMemo(
+    () => venues.find((v) => v.slug === slug),
+    [venues, slug],
+  );
 
-  const offerItems = useMemo(() => (venue ? normalizeOffers(venue) : []), [venue]);
+  const offerItems = useMemo(
+    () => (venue ? normalizeOffers(venue) : []),
+    [venue],
+  );
   const mainOffer = useMemo(() => {
     if (!venue) return "";
     return (
@@ -558,7 +583,9 @@ export default function VenueQrLandingPage() {
 
   const excerpt = normalizeText(getVenueField(venue, "excerpt"));
   const description = normalizeText(getVenueField(venue, "description"));
-  const howToClaim = normalizeText(getVenueField(venue, "howToClaim", "how_to_claim"));
+  const howToClaim = normalizeText(
+    getVenueField(venue, "howToClaim", "how_to_claim"),
+  );
   const restrictions = normalizeText(getVenueField(venue, "restrictions"));
   const mapUrl = normalizeText(getVenueField(venue, "mapUrl", "map_url"));
   const logo = normalizeText(getVenueField(venue, "logo"));
@@ -566,7 +593,10 @@ export default function VenueQrLandingPage() {
   const categoryLabel = useMemo(() => {
     const categories = getVenueField(venue, "categories", "category");
     if (Array.isArray(categories)) {
-      return categories.filter(Boolean).map((item) => normalizeText(item)).join(" • ");
+      return categories
+        .filter(Boolean)
+        .map((item) => normalizeText(item))
+        .join(" • ");
     }
 
     return normalizeText(categories);
@@ -647,7 +677,9 @@ export default function VenueQrLandingPage() {
   }
 
   if (error) {
-    return <ErrorState onRetry={() => setRetryToken((current) => current + 1)} />;
+    return (
+      <ErrorState onRetry={() => setRetryToken((current) => current + 1)} />
+    );
   }
 
   if (!venue) {
@@ -658,9 +690,16 @@ export default function VenueQrLandingPage() {
     <>
       <Seo
         title={`${venue.name} Perk — Ahangama Pass`}
-        description={mainOffer || excerpt || `Exclusive Ahangama Pass perks at ${venue.name}.`}
+        description={
+          mainOffer ||
+          excerpt ||
+          `Exclusive Ahangama Pass perks at ${venue.name}.`
+        }
         canonical={absUrl(`/qr/${venue.slug}`)}
-        ogImage={normalizeText(getVenueField(venue, "image", "ogImage", "logo")) || undefined}
+        ogImage={
+          normalizeText(getVenueField(venue, "image", "ogImage", "logo")) ||
+          undefined
+        }
       />
       <div className="qr-page">
         <div className="qr-shell">
@@ -687,14 +726,25 @@ export default function VenueQrLandingPage() {
             categoryLabel={categoryLabel}
           />
 
-          <Card className="qr-card" bodyStyle={{ padding: 18 }} style={{ marginBottom: 16 }}>
+          <Card
+            className="qr-card"
+            bodyStyle={{ padding: 18 }}
+            style={{ marginBottom: 16 }}
+          >
             <Row gutter={12} align="middle" wrap={false}>
               <Col flex="56px">
                 <Avatar
-                  src={logo || normalizeText(getVenueField(venue, "image")) || undefined}
+                  src={
+                    logo ||
+                    normalizeText(getVenueField(venue, "image")) ||
+                    undefined
+                  }
                   shape="square"
                   size={56}
-                  style={{ borderRadius: 18, backgroundColor: "rgba(32, 65, 51, 0.08)" }}
+                  style={{
+                    borderRadius: 18,
+                    backgroundColor: "rgba(32, 65, 51, 0.08)",
+                  }}
                 >
                   {venue.name?.slice(0, 1)}
                 </Avatar>
@@ -703,7 +753,10 @@ export default function VenueQrLandingPage() {
                 <Text style={{ color: "rgba(31, 42, 36, 0.58)", fontSize: 12 }}>
                   Featured partner venue
                 </Text>
-                <Title level={4} style={{ margin: "2px 0 0", color: "#1f2a24" }}>
+                <Title
+                  level={4}
+                  style={{ margin: "2px 0 0", color: "#1f2a24" }}
+                >
                   {venue.name}
                 </Title>
                 {(areaLabel || categoryLabel) && (
@@ -717,7 +770,11 @@ export default function VenueQrLandingPage() {
 
           <OfferBreakdownCard
             venue={venue}
-            offers={offerItems.length ? offerItems : [mainOffer || "Perk details available after purchase"]}
+            offers={
+              offerItems.length
+                ? offerItems
+                : [mainOffer || "Perk details available after purchase"]
+            }
             howToClaim={howToClaim}
             restrictions={restrictions}
           />
@@ -728,7 +785,10 @@ export default function VenueQrLandingPage() {
             description={description}
             mediaItems={mediaItems}
           />
-          <ConversionSection purchaseUrl={purchaseUrl} onPassClick={handlePassClick} />
+          <ConversionSection
+            purchaseUrl={purchaseUrl}
+            onPassClick={handlePassClick}
+          />
           <SecondaryActions
             mapUrl={mapUrl}
             whatsAppUrl={whatsAppUrl}
@@ -736,8 +796,15 @@ export default function VenueQrLandingPage() {
             onWhatsAppClick={handleWhatsAppClick}
           />
           <div style={{ height: 12 }} />
-          <Text style={{ display: "block", color: "rgba(31, 42, 36, 0.54)", textAlign: "center" }}>
-            Prefer browsing first? <Link to="/">See the full Ahangama guide.</Link>
+          <Text
+            style={{
+              display: "block",
+              color: "rgba(31, 42, 36, 0.54)",
+              textAlign: "center",
+            }}
+          >
+            Prefer browsing first?{" "}
+            <Link to="/">See the full Ahangama guide.</Link>
           </Text>
         </div>
         <StickyCta purchaseUrl={purchaseUrl} onPassClick={handlePassClick} />
