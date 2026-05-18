@@ -1,39 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="438" height="307" viewBox="0 0 438 307" fill="none">
-  <title>Rolled yoga mat icon</title>
-  <g stroke="#242424" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <!-- unrolled mat base -->
-    <path d="M92 250
-             C124 251 168 255 218 259
-             C246 261 272 261 284 257
-             L397 137
-             C404 129 399 121 388 120
-             L278 114" />
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Yoga mat icon</title>
 
-    <!-- rolled cylinder outer body -->
-    <path d="M81 144
-             L211 40
-             C236 21 274 30 289 58
-             C304 87 296 119 272 140
-             L137 254" />
+  <!-- mat body -->
+  <path d="M18 44H46C49 44 52 41 52 38C52 35 49 32 46 32H18"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- front circular roll -->
-    <ellipse cx="94" cy="201" rx="64" ry="56" transform="rotate(-20 94 201)" />
+  <!-- rolled section -->
+  <circle cx="18" cy="38" r="12"
+          stroke="#3A352D"
+          stroke-width="2.5"/>
 
-    <!-- spiral inside roll -->
-    <path d="M76 198
-             C77 181 91 169 108 173
-             C128 178 139 199 130 218
-             C117 245 79 250 57 229
-             C29 202 44 155 82 144
-             C126 131 169 169 160 215
-             C151 261 96 280 56 254" />
+  <!-- inner spiral -->
+  <path d="M18 32C21 32 24 35 24 38C24 41 21 44 18 44C15 44 12 41 12 38C12 33 16 29 21 29C27 29 32 34 32 40C32 47 26 53 19 53"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- lower edge of mat connected to roll -->
-    <path d="M36 218
-             C42 237 58 251 92 250" />
+  <!-- unrolled base -->
+  <path d="M19 49L41 51C43 51 45 50 46 49L58 37C59 36 58 34 56 34L46 33"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- visible top edge where mat unrolls -->
-    <path d="M275 115
-             L389 121" />
-  </g>
 </svg>

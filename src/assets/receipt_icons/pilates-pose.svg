@@ -1,69 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="250" height="156" viewBox="0 0 250 156" fill="none">
-  <title>Pilates pose line icon</title>
-  <g stroke="#242424" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <!-- floor line -->
-    <path d="M44 142H188" />
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Pilates icon</title>
 
-    <!-- hair bun and head -->
-    <circle cx="42" cy="31" r="9" />
-    <path d="M50 24
-             C62 17 78 22 82 36
-             C86 51 76 65 62 65
-             C50 65 43 55 44 44
-             C44 36 46 29 50 24Z" />
+  <path d="M11 55H53"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"/>
 
-    <!-- face profile -->
-    <path d="M70 33
-             C76 36 77 42 70 44
-             C69 50 68 54 62 55
-             C57 56 54 53 52 50" />
+  <circle cx="22" cy="13" r="5"
+          stroke="#3A352D"
+          stroke-width="2.5"/>
 
-    <!-- neck and upper body -->
-    <path d="M55 62
-             C55 75 58 86 65 96
-             C72 108 83 120 97 124" />
+  <path d="M17 12C13.5 10 11 12 11 15C11 18 14 19.5 17 17"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- back / torso curve -->
-    <path d="M48 60
-             C45 82 51 110 72 127
-             C86 139 106 140 123 129" />
+  <path d="M25 17C29 18 31 21.5 30 25"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- waist band / top -->
-    <path d="M58 84
-             C69 91 81 92 94 89" />
-    <path d="M67 98L80 88" />
+  <path d="M22 18C18 22 17 28 20 34C23 41 29 45 36 43"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- arms reaching forward -->
-    <path d="M60 68
-             C82 71 104 69 126 61
-             L161 56" />
-    <path d="M63 78
-             C84 81 106 77 126 68
-             L159 57" />
+  <path d="M20 28C27 30 34 28 43 25"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- front leg -->
-    <path d="M91 125
-             C114 103 137 82 160 62
-             C176 48 191 35 207 22" />
-    <path d="M121 126
-             C142 103 163 81 184 58" />
+  <path d="M21 33C28 34 36 31 45 26"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- rear leg -->
-    <path d="M84 100
-             C109 81 135 68 164 57" />
-    <path d="M123 129
-             C142 113 159 96 178 75" />
+  <path d="M26 39L31 32"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"/>
 
-    <!-- foot -->
-    <path d="M207 22
-             C212 17 217 16 216 22
-             C213 35 205 43 198 51
-             L184 58" />
-    <path d="M184 58
-             C192 59 201 61 205 65" />
+  <path d="M31 43C38 36 45 29 52 20"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 
-    <!-- hair detail -->
-    <path d="M47 45
-             C52 35 61 29 73 31" />
-  </g>
+  <path d="M36 43C42 37 48 31 54 24"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <path d="M52 20C55 16 58 15 57 19C56 23 54 26 51 29"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <path d="M51 29C54 29 56 30 57 32"
+        stroke="#3A352D"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 </svg>
