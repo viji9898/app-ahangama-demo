@@ -7,7 +7,7 @@ import {
   MenuOutlined,
   TagFilled,
 } from "@ant-design/icons";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { trackQrEvent } from "../analytics";
@@ -18,8 +18,7 @@ import pastryIcon from "../assets/receipt_icons/pastry.svg";
 import postcardsIcon from "../assets/receipt_icons/postcards.svg";
 import passIcon from "../assets/receipt_icons/pass.svg";
 import giftIcon from "../assets/receipt_icons/gift-icon.svg";
-
-const { Text } = Typography;
+import palmTreeIcon from "../assets/receipt_icons/palm-tree-icon.svg";
 
 const RECEIPT_ICON_MAP = {
   coffee: coffeeIcon,
@@ -185,11 +184,19 @@ function ReceiptSection({ promotion, purchaseUrl, onPassClick }) {
       className="qr-receiptCard"
       aria-label="Promo receipt"
     >
-      <div className="qr-receiptHeader">
-        <h1 className="qr-receiptHeading">{conversion.header}</h1>
-      </div>
-
       <div className="qr-receiptPaper">
+        <div className="qr-receiptBrandBlock">
+          <img
+            src={palmTreeIcon}
+            alt=""
+            className="qr-receiptBrandIcon"
+            aria-hidden="true"
+          />
+          <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+          <div className="qr-receiptBrandTagline">UNLOCK LOCAL PERKS</div>
+        </div>
+
+        <div className="qr-receiptDivider qr-receiptDivider--brand" />
         <div className="qr-receiptEyebrow">{receipt.title}</div>
 
         {summary.items.map((item) => {
@@ -447,16 +454,6 @@ export default function VenueQrLandingPage() {
           />
 
           <div style={{ height: 12 }} />
-          <Text
-            style={{
-              display: "block",
-              color: "rgba(31, 42, 36, 0.54)",
-              textAlign: "center",
-            }}
-          >
-            Prefer browsing first?{" "}
-            <Link to="/">See the full Ahangama guide.</Link>
-          </Text>
         </div>
       </div>
     </>
