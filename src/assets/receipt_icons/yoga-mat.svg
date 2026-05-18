@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="438" height="307" viewBox="0 0 438 307" fill="none">
+  <title>Rolled yoga mat icon</title>
+  <g stroke="#242424" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- unrolled mat base -->
+    <path d="M92 250
+             C124 251 168 255 218 259
+             C246 261 272 261 284 257
+             L397 137
+             C404 129 399 121 388 120
+             L278 114" />
+
+    <!-- rolled cylinder outer body -->
+    <path d="M81 144
+             L211 40
+             C236 21 274 30 289 58
+             C304 87 296 119 272 140
+             L137 254" />
+
+    <!-- front circular roll -->
+    <ellipse cx="94" cy="201" rx="64" ry="56" transform="rotate(-20 94 201)" />
+
+    <!-- spiral inside roll -->
+    <path d="M76 198
+             C77 181 91 169 108 173
+             C128 178 139 199 130 218
+             C117 245 79 250 57 229
+             C29 202 44 155 82 144
+             C126 131 169 169 160 215
+             C151 261 96 280 56 254" />
+
+    <!-- lower edge of mat connected to roll -->
+    <path d="M36 218
+             C42 237 58 251 92 250" />
+
+    <!-- visible top edge where mat unrolls -->
+    <path d="M275 115
+             L389 121" />
+  </g>
+</svg>

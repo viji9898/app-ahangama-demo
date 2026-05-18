@@ -1,4 +1,6 @@
 const DEFAULT_ITEM_SUBTITLE = "Included with this venue offer";
+const DEFAULT_PASS_SUBTITLE = "USD30 · 1 Month · 100+ Perks · All Ahangama";
+const STANDARD_PASS_SUBTITLE = "1 Year · 100+ Perks · All Ahangama";
 
 export const DEFAULT_PR_PROMOTION = {
   trustPoints: ["Instant access", "Valid across Ahangama", "100+ local perks"],
@@ -30,7 +32,7 @@ export const DEFAULT_PR_PROMOTION = {
       {
         icon: "pass",
         label: "Ahangama Pass",
-        subtitle: "USD30 · 1 Month · 100+ Perks · All Ahangama",
+        subtitle: DEFAULT_PASS_SUBTITLE,
         quantity: 1,
         unitPrice: 30,
         showDividerBefore: true,
@@ -76,7 +78,7 @@ export const PR_PROMOTIONS = {
         {
           icon: "pass",
           label: "Ahangama Pass",
-          subtitle: "USD30 · 1 Month · 100+ Perks · All Ahangama",
+          subtitle: DEFAULT_PASS_SUBTITLE,
           quantity: 1,
           unitPrice: 30,
           showDividerBefore: true,
@@ -117,7 +119,7 @@ export const PR_PROMOTIONS = {
         {
           icon: "pass",
           label: "Ahangama Pass",
-          subtitle: "1 Year · 100+ Perks · All Ahangama",
+          subtitle: STANDARD_PASS_SUBTITLE,
           quantity: 1,
           unitPrice: 30,
           showDividerBefore: true,
@@ -135,36 +137,29 @@ export const PR_PROMOTIONS = {
       currency: "USD",
       items: [
         {
-          icon: "coffee",
-          label: "Tahini meal credit",
+          icon: "yoga-classes",
+          label: "Yoga classes",
           subtitle: DEFAULT_ITEM_SUBTITLE,
-          quantity: 1,
-          unitPrice: 7,
-        },
-        {
-          icon: "pastry",
-          label: "Drink credit",
-          subtitle: DEFAULT_ITEM_SUBTITLE,
-          quantity: 1,
-          unitPrice: 4.5,
+          quantity: 3,
+          unitPrice: 9.31,
         },
         {
           icon: "postcards",
           label: "Postcards",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
-          unitPrice: 2,
+          unitPrice: 2.17,
         },
         {
           icon: "pass",
           label: "Ahangama Pass",
-          subtitle: "1 Year · 100+ Perks · All Ahangama",
+          subtitle: STANDARD_PASS_SUBTITLE,
           quantity: 1,
           unitPrice: 30,
           showDividerBefore: true,
         },
       ],
-      promoPrice: 15,
+      promoPrice: 22,
     },
     conversion: {
       codeValue: "HELLO50",
@@ -176,29 +171,36 @@ export const PR_PROMOTIONS = {
       currency: "USD",
       items: [
         {
-          icon: "coffee",
-          label: "Yoga classes",
+          icon: "yoga-mat",
+          label: "Yoga mat",
           subtitle: DEFAULT_ITEM_SUBTITLE,
-          quantity: 3,
-          unitPrice: 6,
+          quantity: 1,
+          unitPrice: 9.31,
+        },
+        {
+          icon: "pilates-class",
+          label: "Pilates class",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 9.31,
         },
         {
           icon: "postcards",
           label: "Postcards",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
-          unitPrice: 2,
+          unitPrice: 2.17,
         },
         {
           icon: "pass",
           label: "Ahangama Pass",
-          subtitle: "1 Year · 100+ Perks · All Ahangama",
+          subtitle: STANDARD_PASS_SUBTITLE,
           quantity: 1,
           unitPrice: 30,
           showDividerBefore: true,
         },
       ],
-      promoPrice: 15,
+      promoPrice: 22,
     },
     conversion: {
       codeValue: "HELLO50",
@@ -233,7 +235,7 @@ export const PR_PROMOTIONS = {
         {
           icon: "pass",
           label: "Ahangama Pass",
-          subtitle: "1 Year · 100+ Perks · All Ahangama",
+          subtitle: STANDARD_PASS_SUBTITLE,
           quantity: 1,
           unitPrice: 30,
           showDividerBefore: true,
@@ -274,7 +276,7 @@ export const PR_PROMOTIONS = {
         {
           icon: "pass",
           label: "Ahangama Pass",
-          subtitle: "1 Year · 100+ Perks · All Ahangama",
+          subtitle: STANDARD_PASS_SUBTITLE,
           quantity: 1,
           unitPrice: 30,
           showDividerBefore: true,
@@ -288,12 +290,17 @@ export const PR_PROMOTIONS = {
   },
 };
 
+const PR_PROMOTION_ALIASES = {
+  "tahini-f": "tahini",
+};
+
 export function getPrPromotion(slug) {
   if (!slug) {
     return DEFAULT_PR_PROMOTION;
   }
 
-  const promotion = PR_PROMOTIONS[slug];
+  const promotion =
+    PR_PROMOTIONS[slug] || PR_PROMOTIONS[PR_PROMOTION_ALIASES[slug]];
 
   if (!promotion) {
     return DEFAULT_PR_PROMOTION;

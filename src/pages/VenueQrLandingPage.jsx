@@ -19,12 +19,16 @@ import postcardsIcon from "../assets/receipt_icons/postcards.svg";
 import passIcon from "../assets/receipt_icons/pass.svg";
 import giftIcon from "../assets/receipt_icons/gift-icon.svg";
 import palmTreeIcon from "../assets/receipt_icons/palm-tree-icon.svg";
+import yogaMatIcon from "../assets/receipt_icons/yoga-mat.svg";
+import pilatesPoseIcon from "../assets/receipt_icons/pilates-pose.svg";
 
 const RECEIPT_ICON_MAP = {
   coffee: coffeeIcon,
   pastry: pastryIcon,
   postcards: postcardsIcon,
   pass: passIcon,
+  "yoga-mat": yogaMatIcon,
+  "pilates-class": pilatesPoseIcon,
 };
 
 function normalizeText(value) {
@@ -200,7 +204,7 @@ function ReceiptSection({ promotion, purchaseUrl, onPassClick, venueName }) {
         <div className="qr-receiptEyebrow">{receipt.title}</div>
 
         {summary.items.map((item) => {
-          const iconSrc = RECEIPT_ICON_MAP[item.icon];
+          const iconSrc = RECEIPT_ICON_MAP[item.icon] || giftIcon;
 
           return (
             <React.Fragment key={item.label}>
