@@ -28,7 +28,7 @@ export const DEFAULT_PR_PROMOTION = {
 };
 
 export const PR_PROMOTIONS = {
-  "kaffi-ahangama": {
+  "kaffi-ag": {
     heroImageUrl:
       "https://ahangama-pass.s3.eu-west-2.amazonaws.com/promos/kaffi_promo_01.jpg",
     bundleItems: ["Any coffee", "Any pastry", "2 postcards", "Ahangama Pass"],
@@ -52,7 +52,7 @@ export const PR_PROMOTIONS = {
       codeValue: "KAFFI60",
     },
   },
-  "coconut-court": {
+  coconut: {
     heroImageUrl:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coconut_court.jpg",
     bundleItems: [
@@ -81,7 +81,7 @@ export const PR_PROMOTIONS = {
       codeValue: "COCO60",
     },
   },
-  "tahini-and-friends-ahangama": {
+  tahini: {
     heroImageUrl:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tahini_friends.jpg",
     bundleItems: [
@@ -110,7 +110,7 @@ export const PR_PROMOTIONS = {
       codeValue: "HELLO50",
     },
   },
-  "pura-pilates-ahangama": {
+  pura: {
     heroImageUrl:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
     bundleItems: ["3 yoga classes", "2 postcards", "Ahangama Pass"],
@@ -163,7 +163,7 @@ export const PR_PROMOTIONS = {
       codeValue: "HELLO50",
     },
   },
-  "living-room-concept-store": {
+  living: {
     heroImageUrl:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/living_room.jpg",
     bundleItems: [
