@@ -5,27 +5,28 @@ import {
   CheckCircleFilled,
   LockFilled,
   MenuOutlined,
+  TagFilled,
 } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { trackQrEvent } from "../analytics";
 import { getPrPromotion } from "../data/prPromotions";
+import { calculatePromoReceipt, formatCurrency } from "../lib/promoReceipt";
+import coffeeIcon from "../assets/receipt_icons/coffee.svg";
+import pastryIcon from "../assets/receipt_icons/pastry.svg";
+import postcardsIcon from "../assets/receipt_icons/postcards.svg";
+import passIcon from "../assets/receipt_icons/pass.svg";
+import giftIcon from "../assets/receipt_icons/gift-icon.svg";
 
 const { Text } = Typography;
 
-const CTA_CHECKLIST = ["Instant access", "100+ perks", "Valid across Ahangama"];
-
-function getBundleItems(promotion) {
-  if (
-    Array.isArray(promotion?.bundleItems) &&
-    promotion.bundleItems.length > 0
-  ) {
-    return promotion.bundleItems.filter(Boolean);
-  }
-
-  return ["Ahangama Pass"];
-}
+const RECEIPT_ICON_MAP = {
+  coffee: coffeeIcon,
+  pastry: pastryIcon,
+  postcards: postcardsIcon,
+  pass: passIcon,
+};
 
 function normalizeText(value) {
   if (value === null || value === undefined) return "";
@@ -175,49 +176,98 @@ function EmptyState({ slug }) {
   );
 }
 
-function OfferBundleSection({ bundleItems }) {
-  return (
-    <section className="qr-bundleCard" aria-label="Included in this promo">
-      <div className="qr-bundleKicker">Included in this promo</div>
-      <div className="qr-bundleList">
-        {bundleItems.map((item, index) => (
-          <React.Fragment key={item}>
-            {index > 0 ? <div className="qr-bundlePlus">+</div> : null}
-            <div className="qr-bundleItem">{item}</div>
-          </React.Fragment>
-        ))}
-      </div>
-    </section>
-  );
-}
+function ReceiptSection({ promotion, purchaseUrl, onPassClick }) {
+  const { conversion, receipt, trustPoints } = promotion;
+  const summary = calculatePromoReceipt(receipt.items, receipt.promoPrice);
 
-function ConversionSection({ purchaseUrl, onPassClick, conversion }) {
   return (
     <section
-      className="qr-offerCta qr-simpleOffer"
-      aria-label="Get the Ahangama Pass"
+      className="qr-receiptCard"
+      aria-label="Promo receipt"
     >
-      <div className="qr-offerCardInner">
-        <h2 className="qr-offerTitle">{conversion.header}</h2>
-        <div className="qr-offerSubline">
-          <span className="qr-offerOldPrice">{conversion.originalPrice}</span>
-          <span className="qr-offerArrow">→</span>
-          <span className="qr-offerNewPrice">{conversion.discountedPrice}</span>
-        </div>
-        <div className="qr-offerCodeLabel">{conversion.codeLabel}</div>
-        <div className="qr-offerCodeValue">{conversion.codeValue}</div>
+      <div className="qr-receiptHeader">
+        <h1 className="qr-receiptHeading">{conversion.header}</h1>
+      </div>
 
-        <div className="qr-offerChecklist">
-          {CTA_CHECKLIST.map((item) => (
-            <div className="qr-offerChecklistItem" key={item}>
-              <CheckCircleFilled />
-              <span>{item}</span>
-            </div>
-          ))}
+      <div className="qr-receiptPaper">
+        <div className="qr-receiptEyebrow">{receipt.title}</div>
+
+        {summary.items.map((item) => {
+          const iconSrc = RECEIPT_ICON_MAP[item.icon];
+
+          return (
+            <React.Fragment key={item.label}>
+              {item.showDividerBefore ? (
+                <div className="qr-receiptSectionDivider" />
+              ) : null}
+              <div className="qr-receiptRow">
+                <div className="qr-receiptItemLead">
+                  <div className="qr-receiptIconWrap">
+                    {iconSrc ? (
+                      <img
+                        src={iconSrc}
+                        alt=""
+                        className="qr-receiptIcon"
+                        aria-hidden="true"
+                      />
+                    ) : null}
+                  </div>
+                  <div
+                    className={`qr-receiptCell qr-receiptCell--main${
+                      item.icon === "pass" ? " qr-receiptCell--pass" : ""
+                    }`}
+                  >
+                    <div className="qr-receiptItemName">{item.label}</div>
+                    {item.subtitle ? (
+                      <div className="qr-receiptItemSubtitle">{item.subtitle}</div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className="qr-receiptQty">x {item.quantity}</div>
+              </div>
+            </React.Fragment>
+          );
+        })}
+
+        <div className="qr-receiptDivider" />
+
+        <div className="qr-receiptSummaryRow">
+          <span>TOTAL PRICE</span>
+          <strong>{formatCurrency(summary.totalRetailValue, receipt.currency)}</strong>
+        </div>
+        <div className="qr-receiptDivider qr-receiptDivider--total" />
+        <div className="qr-receiptSummaryRow qr-receiptSummaryRow--highlight">
+          <span>FINAL VALUE</span>
+          <strong>{formatCurrency(summary.finalPrice, receipt.currency)}</strong>
+        </div>
+        <div className="qr-receiptSavingsChip">
+          <span className="qr-receiptSavingsChipLabel">
+            <TagFilled />
+            <span>YOU SAVE</span>
+          </span>
+          <strong>
+            {formatCurrency(summary.savings, receipt.currency)} ({summary.savingsPercent}%)
+          </strong>
         </div>
 
+        <div className="qr-receiptDivider qr-receiptDivider--summary" />
+
+        <div className="qr-receiptPromoNote">
+          <div className="qr-receiptPromoIconWrap">
+            <img
+              src={giftIcon}
+              alt=""
+              className="qr-receiptPromoIcon"
+              aria-hidden="true"
+            />
+          </div>
+          <div className="qr-receiptPromoCopy">
+            <div className="qr-receiptPromoTitle">Huge savings across 100+ local spots</div>
+            <div className="qr-receiptPromoMeta">Cafes • Surf • Wellness • More</div>
+          </div>
+        </div>
         <Button
-          className="qr-offerCtaButton"
+          className="qr-receiptButton"
           size="large"
           block
           href={purchaseUrl}
@@ -227,19 +277,13 @@ function ConversionSection({ purchaseUrl, onPassClick, conversion }) {
           <ArrowRightOutlined />
         </Button>
 
-        <div className="qr-offerCtaMeta qr-offerCtaMeta--simple">
-          <LockFilled />
-          <span>Secure checkout</span>
-        </div>
-
-        <div
-          className="qr-offerPaymentRow"
-          aria-label="Accepted payment methods"
-        >
-          <span className="qr-offerPaymentPill">Visa</span>
-          <span className="qr-offerPaymentPill">Mastercard</span>
-          <span className="qr-offerPaymentPill">Apple Pay</span>
-          <span className="qr-offerPaymentPill">G Pay</span>
+        <div className="qr-receiptTrustList">
+          {trustPoints.map((item) => (
+            <div className="qr-receiptTrustItem" key={item}>
+              <CheckCircleFilled />
+              <span>{item}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -309,7 +353,6 @@ export default function VenueQrLandingPage() {
     () => getPrPromotion(venue?.slug || slug),
     [slug, venue],
   );
-  const bundleItems = useMemo(() => getBundleItems(promotion), [promotion]);
   const purchaseUrl = buildPurchaseUrl(slug, promotion.conversion.codeValue);
 
   const analyticsPayload = useMemo(
@@ -397,12 +440,10 @@ export default function VenueQrLandingPage() {
             />
           </div>
 
-          <OfferBundleSection bundleItems={bundleItems} />
-
-          <ConversionSection
+          <ReceiptSection
+            promotion={promotion}
             purchaseUrl={purchaseUrl}
             onPassClick={handlePassClick}
-            conversion={promotion.conversion}
           />
 
           <div style={{ height: 12 }} />
