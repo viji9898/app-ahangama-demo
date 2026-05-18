@@ -1,25 +1,36 @@
+const DEFAULT_ITEM_SUBTITLE = "Included with this venue offer";
+
 export const DEFAULT_PR_PROMOTION = {
-  trustPoints: [
-    "Instant access",
-    "Valid across Ahangama",
-    "100+ local perks",
-  ],
+  trustPoints: ["Instant access", "Valid across Ahangama", "100+ local perks"],
   receipt: {
     title: "YOUR ORDER",
     currency: "USD",
     items: [
-      { icon: "coffee", label: "Any coffee", quantity: 1, unitPrice: 3.5 },
-      { icon: "pastry", label: "Any pastry", quantity: 1, unitPrice: 4 },
+      {
+        icon: "coffee",
+        label: "Any coffee",
+        subtitle: DEFAULT_ITEM_SUBTITLE,
+        quantity: 1,
+        unitPrice: 3.5,
+      },
+      {
+        icon: "pastry",
+        label: "Any pastry",
+        subtitle: DEFAULT_ITEM_SUBTITLE,
+        quantity: 1,
+        unitPrice: 4,
+      },
       {
         icon: "postcards",
         label: "Postcards",
+        subtitle: DEFAULT_ITEM_SUBTITLE,
         quantity: 2,
         unitPrice: 2,
       },
       {
         icon: "pass",
         label: "Ahangama Pass",
-        subtitle: "1 Year · 100+ Perks · All Ahangama",
+        subtitle: "USD30 · 1 Month · 100+ Perks · All Ahangama",
         quantity: 1,
         unitPrice: 30,
         showDividerBefore: true,
@@ -41,18 +52,31 @@ export const PR_PROMOTIONS = {
       title: "YOUR ORDER",
       currency: "USD",
       items: [
-        { icon: "coffee", label: "Any coffee", quantity: 1, unitPrice: 3.5 },
-        { icon: "pastry", label: "Any pastry", quantity: 1, unitPrice: 4 },
+        {
+          icon: "coffee",
+          label: "Any coffee",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 3.5,
+        },
+        {
+          icon: "pastry",
+          label: "Any pastry",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 4,
+        },
         {
           icon: "postcards",
           label: "Postcards",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
           unitPrice: 2,
         },
         {
           icon: "pass",
           label: "Ahangama Pass",
-          subtitle: "1 Year · 100+ Perks · All Ahangama",
+          subtitle: "USD30 · 1 Month · 100+ Perks · All Ahangama",
           quantity: 1,
           unitPrice: 30,
           showDividerBefore: true,
@@ -69,11 +93,24 @@ export const PR_PROMOTIONS = {
       title: "YOUR ORDER",
       currency: "USD",
       items: [
-        { icon: "coffee", label: "Pickleball access", quantity: 1, unitPrice: 8 },
-        { icon: "pastry", label: "Wellness perk", quantity: 1, unitPrice: 6 },
+        {
+          icon: "coffee",
+          label: "Pickleball access",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 8,
+        },
+        {
+          icon: "pastry",
+          label: "Wellness perk",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 6,
+        },
         {
           icon: "postcards",
           label: "Postcards",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
           unitPrice: 2,
         },
@@ -97,11 +134,24 @@ export const PR_PROMOTIONS = {
       title: "YOUR ORDER",
       currency: "USD",
       items: [
-        { icon: "coffee", label: "Tahini meal credit", quantity: 1, unitPrice: 7 },
-        { icon: "pastry", label: "Drink credit", quantity: 1, unitPrice: 4.5 },
+        {
+          icon: "coffee",
+          label: "Tahini meal credit",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 7,
+        },
+        {
+          icon: "pastry",
+          label: "Drink credit",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 4.5,
+        },
         {
           icon: "postcards",
           label: "Postcards",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
           unitPrice: 2,
         },
@@ -125,10 +175,17 @@ export const PR_PROMOTIONS = {
       title: "YOUR ORDER",
       currency: "USD",
       items: [
-        { icon: "coffee", label: "Yoga classes", quantity: 3, unitPrice: 6 },
+        {
+          icon: "coffee",
+          label: "Yoga classes",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 3,
+          unitPrice: 6,
+        },
         {
           icon: "postcards",
           label: "Postcards",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
           unitPrice: 2,
         },
@@ -152,11 +209,24 @@ export const PR_PROMOTIONS = {
       title: "YOUR ORDER",
       currency: "USD",
       items: [
-        { icon: "coffee", label: "Stay credit", quantity: 1, unitPrice: 10 },
-        { icon: "pastry", label: "Boutique villa benefit", quantity: 1, unitPrice: 5 },
+        {
+          icon: "coffee",
+          label: "Stay credit",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 10,
+        },
+        {
+          icon: "pastry",
+          label: "Boutique villa benefit",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 5,
+        },
         {
           icon: "postcards",
           label: "Postcards",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
           unitPrice: 2,
         },
@@ -180,11 +250,24 @@ export const PR_PROMOTIONS = {
       title: "YOUR ORDER",
       currency: "USD",
       items: [
-        { icon: "coffee", label: "Coffee and brunch credit", quantity: 1, unitPrice: 8 },
-        { icon: "pastry", label: "Menu perk", quantity: 1, unitPrice: 4 },
+        {
+          icon: "coffee",
+          label: "Coffee and brunch credit",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 8,
+        },
+        {
+          icon: "pastry",
+          label: "Menu perk",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 4,
+        },
         {
           icon: "postcards",
           label: "Postcards",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
           unitPrice: 2,
         },

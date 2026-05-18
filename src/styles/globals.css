@@ -324,7 +324,11 @@
   border: 1px solid rgba(31, 42, 36, 0.11);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 14%),
-    linear-gradient(180deg, var(--qr-receipt-bg-top) 0%, var(--qr-receipt-bg-bottom) 100%);
+    linear-gradient(
+      180deg,
+      var(--qr-receipt-bg-top) 0%,
+      var(--qr-receipt-bg-bottom) 100%
+    );
   box-shadow: 0 12px 28px rgba(31, 42, 36, 0.07);
 }
 
@@ -504,7 +508,7 @@
 
 .qr-receiptItemLead {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   min-width: 0;
   flex: 1;
@@ -512,7 +516,7 @@
 
 .qr-receiptIconWrap {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 60px;
   height: 60px;
@@ -531,7 +535,8 @@
   flex-direction: column;
   justify-content: center;
   min-width: 0;
-  text-align: center;
+  padding-top: 10px;
+  text-align: left;
 }
 
 .qr-receiptCell--pass {
@@ -540,7 +545,8 @@
 
 .qr-receiptQty {
   min-width: 30px;
-  padding-top: 1px;
+  align-self: flex-start;
+  padding-top: 12px;
   color: #1b241e;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 13px;
@@ -650,7 +656,11 @@
   margin-top: 12px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(110, 137, 92, 0.16), rgba(110, 137, 92, 0.1));
+  background: linear-gradient(
+    180deg,
+    rgba(110, 137, 92, 0.16),
+    rgba(110, 137, 92, 0.1)
+  );
   color: #355433;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -1468,7 +1478,11 @@
 }
 
 .qr-heroOverlay {
-  background: linear-gradient(180deg, rgba(10, 23, 18, 0.08) 0%, rgba(10, 23, 18, 0.72) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 23, 18, 0.08) 0%,
+    rgba(10, 23, 18, 0.72) 100%
+  );
 }
 
 .qr-heroContent {

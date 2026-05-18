@@ -175,15 +175,15 @@ function EmptyState({ slug }) {
   );
 }
 
-function ReceiptSection({ promotion, purchaseUrl, onPassClick }) {
+function ReceiptSection({ promotion, purchaseUrl, onPassClick, venueName }) {
   const { conversion, receipt, trustPoints } = promotion;
   const summary = calculatePromoReceipt(receipt.items, receipt.promoPrice);
+  const brandTitle = normalizeText(venueName)
+    ? `${normalizeText(venueName).toUpperCase()} X AHANGAMA PASS`
+    : "AHANGAMA PASS";
 
   return (
-    <section
-      className="qr-receiptCard"
-      aria-label="Promo receipt"
-    >
+    <section className="qr-receiptCard" aria-label="Promo receipt">
       <div className="qr-receiptPaper">
         <div className="qr-receiptBrandBlock">
           <img
@@ -192,7 +192,7 @@ function ReceiptSection({ promotion, purchaseUrl, onPassClick }) {
             className="qr-receiptBrandIcon"
             aria-hidden="true"
           />
-          <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+          <div className="qr-receiptBrandTitle">{brandTitle}</div>
           <div className="qr-receiptBrandTagline">UNLOCK LOCAL PERKS</div>
         </div>
 
@@ -226,7 +226,9 @@ function ReceiptSection({ promotion, purchaseUrl, onPassClick }) {
                   >
                     <div className="qr-receiptItemName">{item.label}</div>
                     {item.subtitle ? (
-                      <div className="qr-receiptItemSubtitle">{item.subtitle}</div>
+                      <div className="qr-receiptItemSubtitle">
+                        {item.subtitle}
+                      </div>
                     ) : null}
                   </div>
                 </div>
@@ -240,20 +242,25 @@ function ReceiptSection({ promotion, purchaseUrl, onPassClick }) {
 
         <div className="qr-receiptSummaryRow">
           <span>TOTAL PRICE</span>
-          <strong>{formatCurrency(summary.totalRetailValue, receipt.currency)}</strong>
+          <strong>
+            {formatCurrency(summary.totalRetailValue, receipt.currency)}
+          </strong>
         </div>
         <div className="qr-receiptDivider qr-receiptDivider--total" />
         <div className="qr-receiptSummaryRow qr-receiptSummaryRow--highlight">
           <span>FINAL VALUE</span>
-          <strong>{formatCurrency(summary.finalPrice, receipt.currency)}</strong>
+          <strong>
+            {formatCurrency(summary.finalPrice, receipt.currency)}
+          </strong>
         </div>
         <div className="qr-receiptSavingsChip">
           <span className="qr-receiptSavingsChipLabel">
             <TagFilled />
-            <span>YOU SAVE</span>
+            <span>YOU SAVE </span>
           </span>
           <strong>
-            {formatCurrency(summary.savings, receipt.currency)} ({summary.savingsPercent}%)
+            {formatCurrency(summary.savings, receipt.currency)} (
+            {summary.savingsPercent}%)
           </strong>
         </div>
 
@@ -269,8 +276,12 @@ function ReceiptSection({ promotion, purchaseUrl, onPassClick }) {
             />
           </div>
           <div className="qr-receiptPromoCopy">
-            <div className="qr-receiptPromoTitle">Huge savings across 100+ local spots</div>
-            <div className="qr-receiptPromoMeta">Cafes • Surf • Wellness • More</div>
+            <div className="qr-receiptPromoTitle">
+              Huge savings across 100+ local spots
+            </div>
+            <div className="qr-receiptPromoMeta">
+              Cafes • Surf • Wellness • More
+            </div>
           </div>
         </div>
         <Button
@@ -451,6 +462,7 @@ export default function VenueQrLandingPage() {
             promotion={promotion}
             purchaseUrl={purchaseUrl}
             onPassClick={handlePassClick}
+            venueName={venue.name}
           />
 
           <div style={{ height: 12 }} />
