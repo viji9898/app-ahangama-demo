@@ -5,6 +5,8 @@ import {
   WhatsAppOutlined,
   CopyOutlined,
   DownloadOutlined,
+  BookOutlined,
+  UpOutlined,
 } from "@ant-design/icons";
 import jsPDF from "jspdf";
 import QRCodeLib from "qrcode";
@@ -131,12 +133,33 @@ const normalizeLocalPassData = (purchase, result) => ({
   passkitUrl: purchase.passkitUrl || "",
 });
 
+const HOW_TO_USE_STEPS = [
+  {
+    title: "Present QR Code",
+    description: "Show this QR code to staff at any participating venue.",
+  },
+  {
+    title: "Staff Verification",
+    description:
+      "Venue staff will scan the code to verify and log the redemption.",
+  },
+  {
+    title: "Enjoy Your Offer",
+    description: "Your discount or benefit will be applied instantly.",
+  },
+  {
+    title: "Keep This Pass",
+    description: "Keep this page handy so you can access your pass anytime.",
+  },
+];
+
 const CardPass = () => {
   const { cardId } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [passData, setPassData] = useState(null);
   const [error, setError] = useState(null);
+  const [isHowToExpanded, setIsHowToExpanded] = useState(true);
 
   const qrCode = cardId;
 
@@ -621,20 +644,49 @@ const CardPass = () => {
               <div className="qr-receiptSectionDivider" />
 
               <div className="qr-successReceiptSection">
-                <div className="qr-successReceiptSectionTitle">HOW TO USE</div>
-                <div className="qr-passInfoList">
-                  <div className="qr-passInfoItem">
-                    Present this QR code or your downloaded PDF at a
-                    participating venue.
-                  </div>
-                  <div className="qr-passInfoItem">
-                    Venue staff will scan the code to verify and log the
-                    redemption.
-                  </div>
-                  <div className="qr-passInfoItem">
-                    Keep this page handy so you can access your pass and support
-                    quickly.
-                  </div>
+                <div className="qr-passHowToCard">
+                  <button
+                    type="button"
+                    className="qr-passHowToHeader"
+                    onClick={() => setIsHowToExpanded((value) => !value)}
+                    aria-expanded={isHowToExpanded}
+                  >
+                    <div className="qr-passHowToTitleWrap">
+                      <BookOutlined className="qr-passHowToHeaderIcon" />
+                      <div className="qr-successReceiptSectionTitle qr-passHowToTitle">
+                        HOW TO USE
+                      </div>
+                    </div>
+                    <UpOutlined
+                      className={`qr-passHowToChevron${
+                        isHowToExpanded ? "" : " qr-passHowToChevron--collapsed"
+                      }`}
+                    />
+                  </button>
+                  {isHowToExpanded ? (
+                    <div className="qr-passTimeline">
+                      {HOW_TO_USE_STEPS.map((step, index) => (
+                        <div className="qr-passTimelineItem" key={step.title}>
+                          <div className="qr-passTimelineMarkerWrap">
+                            <div className="qr-passTimelineMarker">
+                              {index + 1}
+                            </div>
+                            {index < HOW_TO_USE_STEPS.length - 1 ? (
+                              <div className="qr-passTimelineLine" />
+                            ) : null}
+                          </div>
+                          <div className="qr-passTimelineContent">
+                            <div className="qr-passTimelineTitle">
+                              {step.title}
+                            </div>
+                            <div className="qr-passTimelineDescription">
+                              {step.description}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
               </div>
 
@@ -685,6 +737,7 @@ const CardPass = () => {
                   View All Venues
                 </Button>
               </div>
+              <div className="qr-passFooter">objects.Viji</div>
             </div>
           </section>
         </div>
