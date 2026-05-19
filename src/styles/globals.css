@@ -964,6 +964,179 @@
   letter-spacing: 0.06em;
 }
 
+.qr-successPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-successReceiptPaper {
+  text-align: center;
+}
+
+.qr-successReceiptPaper--error {
+  border-color: rgba(143, 58, 58, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 14%),
+    linear-gradient(180deg, #fbf4f0 0%, #f8ede6 100%);
+}
+
+.qr-successLoadingBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0 2px;
+}
+
+.qr-successLoadingTitle {
+  margin: 10px 0 0 !important;
+  color: #1b241e !important;
+}
+
+.qr-successLoadingText {
+  color: rgba(31, 42, 36, 0.62) !important;
+}
+
+.qr-successStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.qr-successStatusBadge--success {
+  background: rgba(53, 84, 51, 0.12);
+  color: #284429;
+}
+
+.qr-successStatusBadge--error {
+  background: rgba(143, 58, 58, 0.1);
+  color: #8b3a3a;
+}
+
+.qr-successStatusSummary {
+  margin-top: 12px;
+  color: rgba(31, 42, 36, 0.78);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.qr-successQrBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.qr-successQrCard {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(31, 42, 36, 0.08);
+}
+
+.qr-successQrHint {
+  max-width: 260px;
+  color: rgba(31, 42, 36, 0.72);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.qr-successReceiptSection {
+  text-align: left;
+}
+
+.qr-successReceiptSectionTitle {
+  margin-bottom: 10px;
+  color: rgba(31, 42, 36, 0.54);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.qr-successReceiptRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.qr-successReceiptRow + .qr-successReceiptRow {
+  margin-top: 12px;
+}
+
+.qr-successReceiptLabel {
+  color: rgba(31, 42, 36, 0.62);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.qr-successReceiptValue {
+  max-width: 58%;
+  color: #19221c;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.qr-successReceiptValue--success {
+  color: #355433;
+}
+
+.qr-successReceiptValue--code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.qr-successDeliveryNote {
+  margin-top: 14px;
+}
+
+.qr-successActionStack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.qr-successSecondaryButton {
+  height: 46px !important;
+  border-radius: 12px !important;
+  border-color: rgba(31, 42, 36, 0.12) !important;
+  background: rgba(255, 255, 255, 0.74) !important;
+  color: #233026 !important;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: none !important;
+}
+
+.qr-successSecondaryButton:hover,
+.qr-successSecondaryButton:focus {
+  border-color: rgba(31, 42, 36, 0.18) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #233026 !important;
+}
+
+.qr-successTrustList {
+  margin-top: 16px;
+}
+
 .qr-receiptMeta {
   display: flex;
   align-items: center;

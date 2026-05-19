@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { Card, Typography, Result, Button, Spin, Alert, QRCode } from "antd";
-import {
-  CheckCircleOutlined,
-  WhatsAppOutlined,
-  MailOutlined,
-  DownloadOutlined,
-} from "@ant-design/icons";
+import { Typography, Button, Spin, QRCode } from "antd";
+import { CheckCircleOutlined, MailOutlined, DownloadOutlined } from "@ant-design/icons";
 import jsPDF from "jspdf";
 import QRCodeLib from "qrcode";
 import { sendPassEmailViaFunction } from "../services/emailService";
-import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { getPromoPurchaseBySession, verifyPayment } from "../services/stripe";
 import { issuePurchasedCard, normalizeQrCode } from "../app/cardStore";
 import { trackPassPurchase } from "../analytics";
+import palmTreeIcon from "../assets/receipt_icons/palm-tree-icon.svg";
+import giftIcon from "../assets/receipt_icons/gift-icon.svg";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Text } = Typography;
 const PURCHASE_TRACKED_STORAGE_PREFIX = "ahangama_purchase_tracked";
 const LEGACY_DELIVERY_STORAGE_PREFIX = "ahangama_legacy_delivery";
 const PASSKIT_REDIRECT_STORAGE_PREFIX = "ahangama_passkit_redirect";
@@ -37,6 +33,19 @@ const calculateValidityDays = (startDate, expiryDate, fallback = 0) => {
 
 const buildVerifyUrl = (qrCode) =>
   `https://ahangama.com/verify?${encodeURIComponent(qrCode || "")}`;
+
+const formatDisplayDate = (value) => {
+  if (!value) {
+    return "Not specified";
+  }
+
+  return new Date(value).toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 
 const normalizePromoPurchaseData = (data) => {
   const purchaseDate = data.createdAt || new Date().toISOString();
@@ -511,204 +520,225 @@ export default function PaymentSuccess() {
 
   if (loading) {
     return (
-      <SiteLayout>
-        <div style={{ textAlign: "center", padding: "60px 0" }}>
-          <Spin size="large" />
-          <Text style={{ display: "block", marginTop: 16 }}>
-            Verifying your payment...
-          </Text>
+      <div className="qr-page qr-successPage">
+        <div className="qr-shell">
+          <section className="qr-receiptCard">
+            <div className="qr-receiptPaper qr-successReceiptPaper">
+              <div className="qr-receiptBrandBlock">
+                <img
+                  src={palmTreeIcon}
+                  alt=""
+                  className="qr-receiptBrandIcon"
+                  aria-hidden="true"
+                />
+                <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+                <div className="qr-receiptBrandTagline">PAYMENT CONFIRMATION</div>
+              </div>
+              <div className="qr-receiptDivider qr-receiptDivider--brand" />
+              <div className="qr-receiptEyebrow">PREPARING YOUR PASS</div>
+              <div className="qr-successLoadingBlock">
+                <Spin size="large" />
+                <Title level={3} className="qr-successLoadingTitle">
+                  Verifying Payment
+                </Title>
+                <Text className="qr-successLoadingText">
+                  We are preparing your digital pass.
+                </Text>
+              </div>
+            </div>
+          </section>
         </div>
-      </SiteLayout>
+      </div>
     );
   }
 
   if (error || !paymentData) {
     return (
-      <SiteLayout>
-        <Result
-          status="error"
-          title="Payment Verification Failed"
-          subTitle={
-            error || "Unable to verify your payment. Please contact support."
-          }
-          extra={[
-            <Button type="primary" key="home" href="/">
-              Go Home
-            </Button>,
-            <Button key="support" href="/contact">
-              Contact Support
-            </Button>,
-          ]}
-        />
-      </SiteLayout>
+      <div className="qr-page qr-successPage">
+        <div className="qr-shell">
+          <section className="qr-receiptCard">
+            <div className="qr-receiptPaper qr-successReceiptPaper qr-successReceiptPaper--error">
+              <div className="qr-receiptBrandBlock">
+                <img
+                  src={palmTreeIcon}
+                  alt=""
+                  className="qr-receiptBrandIcon"
+                  aria-hidden="true"
+                />
+                <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+                <div className="qr-receiptBrandTagline">PAYMENT CONFIRMATION</div>
+              </div>
+              <div className="qr-receiptDivider qr-receiptDivider--brand" />
+              <div className="qr-receiptEyebrow">CHECKOUT ISSUE</div>
+              <div className="qr-successStatusBadge qr-successStatusBadge--error">
+                PAYMENT VERIFICATION FAILED
+              </div>
+              <div className="qr-successStatusSummary">
+                {error || "Unable to verify your payment. Please contact support."}
+              </div>
+              <div className="qr-successActionStack">
+                <Button className="qr-receiptButton" href="/" block>
+                  Go Home
+                </Button>
+                <Button className="qr-successSecondaryButton" href="/partners" block>
+                  Contact Support
+                </Button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
     );
   }
 
   return (
-    <SiteLayout>
+    <>
       <Seo
         title="Payment Successful"
         description="Your Ahangama Pass purchase was successful"
         noIndex={true}
       />
+      <div className="qr-page qr-successPage">
+        <div className="qr-shell">
+          <section className="qr-receiptCard">
+            <div className="qr-receiptPaper qr-successReceiptPaper">
+              <div className="qr-receiptBrandBlock">
+                <img
+                  src={palmTreeIcon}
+                  alt=""
+                  className="qr-receiptBrandIcon"
+                  aria-hidden="true"
+                />
+                <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+                <div className="qr-receiptBrandTagline">PAYMENT CONFIRMATION</div>
+              </div>
 
-      <Result
-        icon={<CheckCircleOutlined style={{ color: "#52c41a" }} />}
-        status="success"
-        title="Payment Successful!"
-        subTitle={`Thank you for purchasing the ${paymentData.productName}`}
-      />
+              <div className="qr-receiptDivider qr-receiptDivider--brand" />
+              <div className="qr-receiptEyebrow">ORDER COMPLETE</div>
+              <div className="qr-successStatusBadge qr-successStatusBadge--success">
+                PAYMENT SUCCESSFUL
+              </div>
+              <div className="qr-successStatusSummary">
+                Thank you for purchasing the {paymentData.productName}
+              </div>
 
-      <Card
-        style={{ borderRadius: 16, marginBottom: 24 }}
-        bodyStyle={{ padding: 24 }}
-      >
-        <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <Title level={3}>Your Ahangama Pass</Title>
-          <Text type="secondary">
-            Save this QR code or use the one sent to your WhatsApp/Email
-          </Text>
-        </div>
+              <div className="qr-receiptDivider" />
 
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: 24,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <QRCode
-            value={buildVerifyUrl(paymentData.qrCode)}
-            size={200}
-            style={{ marginBottom: 16 }}
-          />
-          <Text
-            copyable={{ text: paymentData.qrCode }}
-            code
-            style={{ display: "block", fontSize: 12 }}
-          >
-            {paymentData.qrCode}
-          </Text>
-        </div>
-
-        <div
-          style={{
-            background: "#f5f5f5",
-            borderRadius: 8,
-            padding: 16,
-            marginBottom: 24,
-          }}
-        >
-          <Title level={5} style={{ marginBottom: 8 }}>
-            Pass Details
-          </Title>
-          <Text strong>{paymentData.productName}</Text>
-          <br />
-          <Text>Valid for {paymentData.validityDays} days</Text>
-          <br />
-          <Text>
-            Purchase Date:{" "}
-            {new Date(paymentData.purchaseDate).toLocaleDateString()}
-          </Text>
-          <br />
-          <Text>
-            Expires: {new Date(paymentData.expiryDate).toLocaleDateString()}
-          </Text>
-        </div>
-
-        <Alert
-          message={
-            emailSending
-              ? "📧 Sending your pass..."
-              : emailSent
-                ? "📧 Pass delivered!"
-                : emailError
-                  ? "⚠️ Email delivery issue"
-                  : "📧 Pass delivery"
-          }
-          description={
-            <div>
-              {emailSending && (
-                <div style={{ marginBottom: 8 }}>
-                  <Text>🔄 Generating and sending your PDF pass...</Text>
+              <div className="qr-successQrBlock">
+                <div className="qr-successQrCard">
+                  <QRCode value={buildVerifyUrl(paymentData.qrCode)} size={190} />
                 </div>
-              )}
-              {emailSent && (
-                <div style={{ marginBottom: 8 }}>
-                  <Text>
-                    ✅ PDF pass successfully sent to:{" "}
-                    <strong>{paymentData.customerEmail}</strong>
-                  </Text>
+                <div className="qr-successQrHint">
+                  Show QR CODE to Staff to Redeem Promotion
                 </div>
-              )}
-              {emailError && (
-                <div style={{ marginBottom: 8, color: "#ff4d4f" }}>
-                  <Text>❌ Could not send email: {emailError}</Text>
-                  <br />
-                  <Text>
-                    Don't worry! You can still download your pass below.
-                  </Text>
+              </div>
+
+              <div className="qr-receiptDivider qr-receiptDivider--summary" />
+
+              <div className="qr-successReceiptSection">
+                <div className="qr-successReceiptSectionTitle">PASS DETAILS</div>
+
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Pass Type</span>
+                  <strong className="qr-successReceiptValue">
+                    {paymentData.productName}
+                  </strong>
                 </div>
-              )}
-              <div>
-                <MailOutlined style={{ color: "#1890ff", marginRight: 8 }} />
-                Check your email: {paymentData.customerEmail}
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">PASS CODE</span>
+                  <strong className="qr-successReceiptValue qr-successReceiptValue--code">
+                    {paymentData.qrCode}
+                  </strong>
+                </div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Validity</span>
+                  <strong className="qr-successReceiptValue">
+                    {paymentData.validityDays} days
+                  </strong>
+                </div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Purchase Date</span>
+                  <strong className="qr-successReceiptValue">
+                    {formatDisplayDate(paymentData.purchaseDate)}
+                  </strong>
+                </div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Expires</span>
+                  <strong className="qr-successReceiptValue qr-successReceiptValue--success">
+                    {formatDisplayDate(paymentData.expiryDate)}
+                  </strong>
+                </div>
+                {paymentData.chargedPriceUsd ? (
+                  <div className="qr-successReceiptRow">
+                    <span className="qr-successReceiptLabel">Paid</span>
+                    <strong className="qr-successReceiptValue">
+                      ${Number(paymentData.chargedPriceUsd).toFixed(2)}
+                    </strong>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="qr-receiptSectionDivider" />
+
+              <div className="qr-receiptPromoNote qr-successDeliveryNote">
+                <div className="qr-receiptPromoIconWrap">
+                  <img
+                    src={giftIcon}
+                    alt=""
+                    className="qr-receiptPromoIcon"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="qr-receiptPromoCopy">
+                  <div className="qr-receiptPromoTitle">
+                    {emailSending
+                      ? "Sending your pass"
+                      : emailSent
+                        ? "Pass delivered"
+                        : emailError
+                          ? "Email delivery issue"
+                          : "Pass delivery in progress"}
+                  </div>
+                  <div className="qr-receiptPromoMeta">
+                    {emailSending
+                      ? "Generating and sending your PDF pass now."
+                      : emailSent
+                        ? `Sent to ${paymentData.customerEmail}`
+                        : emailError
+                          ? `Could not send email: ${emailError}`
+                          : `Check your email: ${paymentData.customerEmail}`}
+                  </div>
+                </div>
+              </div>
+
+              <div className="qr-successActionStack">
+                <Button
+                  className="qr-receiptButton"
+                  href={
+                    paymentData.passkitUrl ||
+                    paymentData.passUrl ||
+                    `/card/pass/${paymentData.qrCode}`
+                  }
+                  block
+                >
+                  Add to Digital Wallet
+                </Button>
+                <Button
+                  className="qr-successSecondaryButton"
+                  icon={<DownloadOutlined />}
+                  onClick={() => generatePassPDF(paymentData)}
+                  block
+                >
+                  Download PDF Pass
+                </Button>
+                <Button className="qr-successSecondaryButton" href="/" block>
+                  Explore Venues
+                </Button>
               </div>
             </div>
-          }
-          type={
-            emailSending
-              ? "info"
-              : emailSent
-                ? "success"
-                : emailError
-                  ? "warning"
-                  : "info"
-          }
-          showIcon
-          style={{ marginBottom: 24 }}
-        />
-
-        <div style={{ textAlign: "center" }}>
-          <Button
-            type="primary"
-            size="large"
-            href={
-              paymentData.passkitUrl ||
-              paymentData.passUrl ||
-              `/card/pass/${paymentData.qrCode}`
-            }
-            style={{
-              marginRight: 8,
-              marginBottom: 8,
-              background: "linear-gradient(135deg, #52c41a, #73d13d)",
-              borderColor: "#52c41a",
-              fontSize: "16px",
-            }}
-          >
-            📱 View Digital Pass
-          </Button>
-          <br />
-          <Button
-            size="large"
-            icon={<DownloadOutlined />}
-            onClick={() => generatePassPDF(paymentData)}
-            style={{
-              marginRight: 8,
-              marginBottom: 8,
-            }}
-          >
-            Download PDF Pass
-          </Button>
-          <br />
-          <Button size="large" href="/">
-            Explore Venues
-          </Button>
+          </section>
         </div>
-      </Card>
-    </SiteLayout>
+      </div>
+    </>
   );
 }
