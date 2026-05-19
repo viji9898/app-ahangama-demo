@@ -3,6 +3,8 @@ import {
   getPromoPurchaseByPassId,
   getPromoRedemptionByPassAndVenue,
 } from "../../lib/promo-purchases-db.js";
+import { sendPromoRedemptionVenueEmail } from "../../lib/promo-purchase-emails.js";
+import { getPrPromotion } from "../../src/data/prPromotions.js";
 
 const DEMO_VENDOR_PIN = "1234";
 
@@ -126,6 +128,17 @@ export const handler = async (event) => {
       offerUsed,
       redeemedBy: "promo-verify",
     });
+
+    try {
+      const promotion = getPrPromotion(purchase.venueSlug);
+      await sendPromoRedemptionVenueEmail(purchase, redemption, promotion);
+    } catch (emailError) {
+      console.error("promo-redeem-pass venue email error:", {
+        passId: purchase.passId,
+        venueSlug: purchase.venueSlug,
+        message: emailError?.message || "Unknown error",
+      });
+    }
 
     return {
       statusCode: 200,

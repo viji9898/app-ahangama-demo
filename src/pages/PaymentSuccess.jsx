@@ -15,7 +15,6 @@ import giftIcon from "../assets/receipt_icons/gift-icon.svg";
 const { Title, Text } = Typography;
 const PURCHASE_TRACKED_STORAGE_PREFIX = "ahangama_purchase_tracked";
 const LEGACY_DELIVERY_STORAGE_PREFIX = "ahangama_legacy_delivery";
-const PASSKIT_REDIRECT_STORAGE_PREFIX = "ahangama_passkit_redirect";
 
 const calculateValidityDays = (startDate, expiryDate, fallback = 0) => {
   const start = new Date(startDate || 0);
@@ -106,25 +105,6 @@ const shouldSendLegacyDelivery = (sessionId) => {
 
   try {
     const storageKey = `${LEGACY_DELIVERY_STORAGE_PREFIX}:${sessionId}`;
-
-    if (window.sessionStorage.getItem(storageKey)) {
-      return false;
-    }
-
-    window.sessionStorage.setItem(storageKey, "1");
-    return true;
-  } catch {
-    return true;
-  }
-};
-
-const shouldRedirectToPasskit = (sessionId) => {
-  if (typeof window === "undefined") {
-    return true;
-  }
-
-  try {
-    const storageKey = `${PASSKIT_REDIRECT_STORAGE_PREFIX}:${sessionId}`;
 
     if (window.sessionStorage.getItem(storageKey)) {
       return false;
@@ -504,19 +484,6 @@ export default function PaymentSuccess() {
 
     verifyAndLoadPayment();
   }, [navigate, sessionId]);
-
-  useEffect(() => {
-    if (
-      !paymentData?.passkitUrl ||
-      paymentData.flowType !== "promo" ||
-      !sessionId ||
-      !shouldRedirectToPasskit(sessionId)
-    ) {
-      return;
-    }
-
-    window.location.replace(paymentData.passkitUrl);
-  }, [paymentData, sessionId]);
 
   if (loading) {
     return (

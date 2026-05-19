@@ -3,6 +3,7 @@ const DEFAULT_PASS_SUBTITLE = "USD30 · 1 Month · 100+ Perks · All Ahangama";
 const STANDARD_PASS_SUBTITLE = "1 Year · 100+ Perks · All Ahangama";
 
 export const DEFAULT_PR_PROMOTION = {
+  venueEmail: "hello@viji.com",
   trustPoints: ["Instant access", "Valid across Ahangama", "100+ local perks"],
   receipt: {
     title: "YOUR ORDER",
@@ -50,6 +51,7 @@ export const DEFAULT_PR_PROMOTION = {
 
 export const PR_PROMOTIONS = {
   "kaffi-ag": {
+    venueEmail: "hello@viji.com",
     receipt: {
       title: "YOUR ORDER",
       currency: "USD",
@@ -91,6 +93,7 @@ export const PR_PROMOTIONS = {
     },
   },
   coconut: {
+    venueEmail: "hello@viji.com",
     receipt: {
       title: "YOUR ORDER",
       currency: "USD",
@@ -132,6 +135,7 @@ export const PR_PROMOTIONS = {
     },
   },
   tahini: {
+    venueEmail: "hello@viji.com",
     receipt: {
       title: "YOUR ORDER",
       currency: "USD",
@@ -162,10 +166,11 @@ export const PR_PROMOTIONS = {
       promoPrice: 22,
     },
     conversion: {
-      codeValue: "HELLO50",
+      codeValue: "TAHINI60",
     },
   },
   pura: {
+    venueEmail: "hello@viji.com",
     receipt: {
       title: "YOUR ORDER",
       currency: "USD",
@@ -203,10 +208,11 @@ export const PR_PROMOTIONS = {
       promoPrice: 22,
     },
     conversion: {
-      codeValue: "HELLO50",
+      codeValue: "PURA50",
     },
   },
   mana: {
+    venueEmail: "hello@viji.com",
     receipt: {
       title: "YOUR ORDER",
       currency: "USD",
@@ -244,10 +250,11 @@ export const PR_PROMOTIONS = {
       promoPrice: 15,
     },
     conversion: {
-      codeValue: "HELLO50",
+      codeValue: "MANA50",
     },
   },
   living: {
+    venueEmail: "hello@viji.com",
     receipt: {
       title: "YOUR ORDER",
       currency: "USD",
@@ -285,7 +292,7 @@ export const PR_PROMOTIONS = {
       promoPrice: 15,
     },
     conversion: {
-      codeValue: "HELLO50",
+      codeValue: "LIVINGG50",
     },
   },
 };
@@ -305,10 +312,12 @@ export function resolvePrPromotionSlug(slug) {
 export function getPrPromoCheckoutContext(slug, promoCode) {
   const resolvedSlug = resolvePrPromotionSlug(slug);
   const promotion = getPrPromotion(resolvedSlug);
-  const resolvedPromoCode = String(promoCode || "").trim().toUpperCase();
-  const expectedPromoCode = String(
-    promotion?.conversion?.codeValue || "",
-  ).trim().toUpperCase();
+  const resolvedPromoCode = String(promoCode || "")
+    .trim()
+    .toUpperCase();
+  const expectedPromoCode = String(promotion?.conversion?.codeValue || "")
+    .trim()
+    .toUpperCase();
 
   if (!resolvedSlug || !PR_PROMOTIONS[resolvedSlug]) {
     return null;
