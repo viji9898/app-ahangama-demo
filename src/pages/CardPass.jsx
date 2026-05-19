@@ -49,7 +49,7 @@ const calculateValidityDays = (startDate, expiryDate, fallback = 0) => {
 };
 
 const isWebhookPromoPassId = (passId) =>
-  /^AHG-[A-F0-9]{12}$/.test(String(passId || "").trim());
+  /^(?:[A-Z0-9]{6}|AHG-[A-F0-9]{12})$/.test(String(passId || "").trim());
 
 const normalizePromoPassData = (data) => {
   const purchaseDate = data.purchaseDate || data.startDate || new Date().toISOString();
