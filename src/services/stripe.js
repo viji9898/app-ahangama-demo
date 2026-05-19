@@ -146,3 +146,35 @@ export const getPromoPassById = async (passId) => {
 
   return response.json();
 };
+
+export const redeemPromoPass = async ({
+  passId,
+  venueSlug,
+  venueName,
+  redemptionType,
+  offerUsed,
+  vendorPin,
+}) => {
+  const response = await fetch(`/.netlify/functions/promo-redeem-pass`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      passId,
+      venueSlug,
+      venueName,
+      redemptionType,
+      offerUsed,
+      vendorPin,
+    }),
+  });
+
+  const payload = await response.json();
+
+  if (!response.ok) {
+    throw new Error(payload.error || `Promo redemption failed: ${response.status}`);
+  }
+
+  return payload;
+};

@@ -1,4 +1,8 @@
-import { getPromoPurchaseByPassId } from "../../lib/promo-purchases-db.js";
+import {
+  getPromoPurchaseByPassId,
+  getPromoRedemptionByPassAndVenue,
+  listPromoRedemptionsForPass,
+} from "../../lib/promo-purchases-db.js";
 
 export const handler = async (event) => {
   const headers = {
@@ -43,6 +47,14 @@ export const handler = async (event) => {
       };
     }
 
+    const venueRedemption = purchase.venueSlug
+      ? await getPromoRedemptionByPassAndVenue(
+          purchase.passId,
+          purchase.venueSlug,
+        )
+      : null;
+    const redemptions = await listPromoRedemptionsForPass(purchase.passId);
+
     return {
       statusCode: 200,
       headers,
@@ -56,11 +68,17 @@ export const handler = async (event) => {
         startDate: purchase.startDate,
         expiryDate: purchase.expiryDate,
         status: purchase.fulfillmentStatus,
+        venueSlug: purchase.venueSlug,
+        venueName: purchase.venueSlug,
         passUrl: purchase.passUrl,
         passkitUrl: purchase.passkitUrl,
         listPriceUsd: purchase.listPriceUsd,
         discountUsd: purchase.discountUsd,
         chargedPriceUsd: purchase.chargedPriceUsd,
+        redemptionCount: redemptions.length,
+        isRedeemedAtVenue: Boolean(venueRedemption),
+        redeemedAt: venueRedemption?.redeemedAt || null,
+        redemptionVenueSlug: venueRedemption?.venueSlug || purchase.venueSlug,
       }),
     };
   } catch (error) {

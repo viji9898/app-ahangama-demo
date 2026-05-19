@@ -817,6 +817,153 @@
   font-size: 14px;
 }
 
+.qr-verifyPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-verifyReceiptPaper {
+  text-align: center;
+}
+
+.qr-verifyReceiptPaper--valid {
+  border-color: rgba(53, 84, 51, 0.22);
+}
+
+.qr-verifyReceiptPaper--invalid {
+  border-color: rgba(143, 58, 58, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 14%),
+    linear-gradient(180deg, #fbf4f0 0%, #f8ede6 100%);
+}
+
+.qr-verifyLoadingBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0 2px;
+}
+
+.qr-verifyLoadingTitle {
+  margin: 10px 0 0 !important;
+  color: #1b241e !important;
+}
+
+.qr-verifyLoadingText {
+  color: rgba(31, 42, 36, 0.62) !important;
+}
+
+.qr-verifyStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.qr-verifyStatusBadge--valid {
+  background: rgba(53, 84, 51, 0.12);
+  color: #284429;
+}
+
+.qr-verifyStatusBadge--invalid {
+  background: rgba(143, 58, 58, 0.1);
+  color: #8b3a3a;
+}
+
+.qr-verifyStatusSummary {
+  margin-top: 12px;
+  color: rgba(31, 42, 36, 0.78);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.qr-verifyReceiptSection {
+  text-align: left;
+}
+
+.qr-verifyReceiptSectionTitle {
+  margin-bottom: 10px;
+  color: rgba(31, 42, 36, 0.54);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.qr-verifyReceiptRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.qr-verifyReceiptRow + .qr-verifyReceiptRow {
+  margin-top: 12px;
+}
+
+.qr-verifyReceiptLabel {
+  color: rgba(31, 42, 36, 0.62);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.qr-verifyReceiptValue {
+  max-width: 58%;
+  color: #19221c;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.qr-verifyReceiptValue--accent {
+  color: #335871;
+}
+
+.qr-verifyReceiptValue--success {
+  color: #355433;
+}
+
+.qr-verifyReceiptValue--invalid {
+  color: #8b3a3a;
+}
+
+.qr-verifyStatusMeta {
+  margin-top: 8px;
+  color: rgba(31, 42, 36, 0.62);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.qr-verifyReceiptAction {
+  margin-top: 18px;
+}
+
+.qr-verifyInvalidCopy {
+  color: #5e3a34;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.qr-verifyFooterCode {
+  margin-top: 18px;
+  color: rgba(31, 42, 36, 0.58);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
 .qr-receiptMeta {
   display: flex;
   align-items: center;
