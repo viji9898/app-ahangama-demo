@@ -618,26 +618,6 @@ export default function CardVerify() {
                     )}
                   </Space>
 
-                  {/* Add redemption button for valid passes */}
-                  <Button
-                    type="primary"
-                    size="large"
-                    icon={<GiftOutlined />}
-                    onClick={() => {
-                      console.log("Redemption button clicked");
-                      setShowRedemptionModal(true);
-                    }}
-                    style={{
-                      marginTop: 24,
-                      width: "100%",
-                      height: 48,
-                      fontSize: 16,
-                      background: "#52c41a",
-                      borderColor: "#52c41a",
-                    }}
-                  >
-                    Log Redemption
-                  </Button>
                 </div>
               </>
             ) : (
@@ -681,14 +661,6 @@ export default function CardVerify() {
               </>
             )}
 
-            <Button
-              type="primary"
-              size="large"
-              style={{ marginTop: 32, width: "100%" }}
-              onClick={() => window.location.reload()}
-            >
-              Scan Another Pass
-            </Button>
           </Card>
 
           <Text style={{ marginTop: 16, color: "#8c8c8c", fontSize: 14 }}>
