@@ -24,9 +24,12 @@ async function resolveStripeReceiptUrl(session) {
   }
 
   try {
-    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId, {
-      expand: ["latest_charge"],
-    });
+    const paymentIntent = await stripe.paymentIntents.retrieve(
+      paymentIntentId,
+      {
+        expand: ["latest_charge"],
+      },
+    );
 
     return paymentIntent.latest_charge?.receipt_url || null;
   } catch (error) {
@@ -155,7 +158,7 @@ export const handler = async (event) => {
     let promoPurchase = isPromoFlow
       ? await syncPromoPurchaseFromSession(session, {
           headers: event.headers || {},
-        resolveStripeReceiptUrl,
+          resolveStripeReceiptUrl,
         })
       : null;
 
@@ -187,7 +190,8 @@ export const handler = async (event) => {
       priceUsd: (session.amount_total / 100).toString(),
       listPriceUsd: session.metadata.listPriceUsd || "",
       chargedPriceUsd:
-        session.metadata.chargedPriceUsd || (session.amount_total / 100).toString(),
+        session.metadata.chargedPriceUsd ||
+        (session.amount_total / 100).toString(),
       flowType: session.metadata.flowType || "standard",
       ctaLocation: session.metadata.ctaLocation || "",
       venueSlug: session.metadata.venueSlug || "",

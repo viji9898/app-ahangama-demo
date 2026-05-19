@@ -93,7 +93,8 @@ export default function CardLanding() {
                   fontWeight: 600,
                 }}
               >
-                Promo applied: {promoContext.promoCode} • Final checkout price ${promoContext.promoPrice}
+                Promo applied: {promoContext.promoCode} • Final checkout price $
+                {promoContext.promoPrice}
               </Paragraph>
             ) : null}
             <Title

@@ -173,7 +173,9 @@ export const redeemPromoPass = async ({
   const payload = await response.json();
 
   if (!response.ok) {
-    throw new Error(payload.error || `Promo redemption failed: ${response.status}`);
+    throw new Error(
+      payload.error || `Promo redemption failed: ${response.status}`,
+    );
   }
 
   return payload;

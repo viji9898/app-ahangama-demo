@@ -85,4 +85,3 @@ Before testing promo flows:
 For the full end-to-end workflow including QR scan, checkout, webhook, fallback verification, emails, PassKit, UTM propagation, GA4 tracking, and verify-page behavior, read:
 
 - [docs/pass-workflow.md](/Users/viji/DevEnv/ahangama-app/docs/pass-workflow.md)
-

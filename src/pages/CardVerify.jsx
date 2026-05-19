@@ -26,7 +26,11 @@ import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import VerifyStatusPanel from "../components/ui/VerifyStatusPanel";
-import { normalizeQrCode, redeemCard, verifyCardByCode } from "../app/cardStore";
+import {
+  normalizeQrCode,
+  redeemCard,
+  verifyCardByCode,
+} from "../app/cardStore";
 import { getPromoPassById, redeemPromoPass } from "../services/stripe";
 import palmTreeIcon from "../assets/receipt_icons/palm-tree-icon.svg";
 
@@ -163,10 +167,14 @@ export default function CardVerify() {
       return;
     }
 
-    if (verificationResult.purchase.isPromo && verificationResult.purchase.venueSlug) {
+    if (
+      verificationResult.purchase.isPromo &&
+      verificationResult.purchase.venueSlug
+    ) {
       redemptionForm.setFieldsValue({
         venueId: verificationResult.purchase.venueSlug,
-        redemptionType: redemptionForm.getFieldValue("redemptionType") || "discount",
+        redemptionType:
+          redemptionForm.getFieldValue("redemptionType") || "discount",
       });
     }
   }, [showRedemptionModal, verificationResult, redemptionForm]);
@@ -202,9 +210,7 @@ export default function CardVerify() {
   ];
 
   const canonical = absUrl(
-    params.cardId
-      ? `/verify/${encodeURIComponent(prefill)}`
-      : "/verify",
+    params.cardId ? `/verify/${encodeURIComponent(prefill)}` : "/verify",
   );
 
   // QR Code verification function
@@ -244,7 +250,8 @@ export default function CardVerify() {
 
     try {
       const selectedVenue = venues.find(
-        (venue) => venue.id === formData.venueId || venue.slug === formData.venueId,
+        (venue) =>
+          venue.id === formData.venueId || venue.slug === formData.venueId,
       );
 
       if (verificationResult?.purchase?.isPromo) {
@@ -270,7 +277,9 @@ export default function CardVerify() {
 
         setRedemptionResult(result);
         setVerificationResult(
-          await getVerificationResultForCode(verificationResult.purchase.cardId),
+          await getVerificationResultForCode(
+            verificationResult.purchase.cardId,
+          ),
         );
 
         if (result.success) {
@@ -607,175 +616,202 @@ export default function CardVerify() {
                   <div className="qr-verifyStatusSummary">{statusSummary}</div>
                 ) : null}
 
-            {isValid ? (
-              <>
-                {redemptionResult && (
-                  <Alert
-                    style={{ marginTop: 18, marginBottom: 22, textAlign: "left" }}
-                    type={redemptionResult.success ? "success" : "error"}
-                    message={
-                      redemptionResult.success
-                        ? "Redemption logged"
-                        : "Redemption failed"
-                    }
-                    description={
-                      redemptionResult.success
-                        ? redemptionResult.message
-                        : redemptionResult.error || "Unable to redeem this pass."
-                    }
-                    showIcon
-                  />
-                )}
-
-                <div className="qr-receiptDivider" />
-
-                <div className="qr-verifyReceiptSection">
-                  <div className="qr-verifyReceiptSectionTitle">PASS DETAILS</div>
-
-                  <div className="qr-verifyReceiptRow">
-                    <span className="qr-verifyReceiptLabel">Pass Type</span>
-                    <strong className="qr-verifyReceiptValue">
-                      {verificationResult.purchase?.productName}
-                    </strong>
-                  </div>
-                  <div className="qr-verifyReceiptRow">
-                    <span className="qr-verifyReceiptLabel">Starts</span>
-                    <strong className="qr-verifyReceiptValue qr-verifyReceiptValue--accent">
-                      {formatDisplayDate(verificationResult.purchase?.startDate)}
-                    </strong>
-                  </div>
-                  <div className="qr-verifyReceiptRow">
-                    <span className="qr-verifyReceiptLabel">Expires</span>
-                    <strong className="qr-verifyReceiptValue qr-verifyReceiptValue--success">
-                      {formatDisplayDate(verificationResult.purchase?.expiryDate)}
-                    </strong>
-                  </div>
-                  <div className="qr-verifyReceiptRow">
-                    <span className="qr-verifyReceiptLabel">Max People</span>
-                    <strong className="qr-verifyReceiptValue">
-                      {verificationResult.purchase?.maxPeople}{" "}
-                      {verificationResult.purchase?.maxPeople === 1
-                        ? "person"
-                        : "people"}
-                    </strong>
-                  </div>
-                  {verificationResult.purchase?.redemptionCount > 0 && (
-                    <div className="qr-verifyReceiptRow">
-                      <span className="qr-verifyReceiptLabel">Previous Uses</span>
-                      <strong className="qr-verifyReceiptValue">
-                        {verificationResult.purchase.redemptionCount} times
-                      </strong>
-                    </div>
-                  )}
-                </div>
-
-                <div className="qr-receiptSectionDivider" />
-
-                <div className="qr-verifyReceiptSection">
-                  <div className="qr-verifyReceiptSectionTitle">CUSTOMER DETAILS</div>
-
-                  <div className="qr-verifyReceiptRow">
-                    <span className="qr-verifyReceiptLabel">Name</span>
-                    <strong className="qr-verifyReceiptValue">
-                      {verificationResult.purchase?.customerName}
-                    </strong>
-                  </div>
-                  <div className="qr-verifyReceiptRow">
-                    <span className="qr-verifyReceiptLabel">Email</span>
-                    <strong className="qr-verifyReceiptValue">
-                      {verificationResult.purchase?.customerEmail}
-                    </strong>
-                  </div>
-                  {verificationResult.purchase?.customerPhone ? (
-                    <div className="qr-verifyReceiptRow">
-                      <span className="qr-verifyReceiptLabel">Phone</span>
-                      <strong className="qr-verifyReceiptValue">
-                        {verificationResult.purchase.customerPhone}
-                      </strong>
-                    </div>
-                  ) : null}
-                </div>
-
-                <div className="qr-receiptDivider qr-receiptDivider--summary" />
-
-                <div className="qr-receiptSummaryRow">
-                  <span>{venueLabel.toUpperCase()} REDEMPTION</span>
-                  <strong>
-                    {isRedeemedAtVenue ? "Redeemed" : "Available"}
-                  </strong>
-                </div>
-                {verificationResult.purchase?.redeemedAt ? (
-                  <div className="qr-verifyStatusMeta">
-                    Redeemed {new Date(
-                      verificationResult.purchase.redeemedAt,
-                    ).toLocaleString()}
-                  </div>
-                ) : null}
-
-                <div className="qr-verifyReceiptAction">
-                    {canRedeem ? (
-                      <Button
-                        className="qr-receiptButton"
-                        size="large"
-                        icon={<GiftOutlined />}
-                        loading={loading}
-                        onClick={() =>
-                          redeemPass({
-                            venueId:
-                              verificationResult.purchase?.venueSlug ||
-                              verificationResult.purchase?.redemptionVenueSlug,
-                            redemptionType: "discount",
-                            pin: "1234",
-                          })
-                        }
-                        block
-                      >
-                        Redeem {venueLabel} Offer
-                      </Button>
-                    ) : (
-                      <Button size="large" disabled block>
-                        {isRedeemedAtVenue
-                          ? `${venueLabel} Offer Redeemed`
-                          : "Redemption unavailable"}
-                      </Button>
-                    )}
-                  </div>
-              </>
-            ) : (
-              <>
-                <div className="qr-receiptDivider" />
-
-                <div className="qr-verifyReceiptSection">
-                  <div className="qr-verifyReceiptSectionTitle">STATUS</div>
-                  <div className="qr-verifyInvalidCopy">
-                    {verificationResult.error ||
-                      "This QR code is not valid or has expired."}
-                  </div>
-                </div>
-
-                {verificationResult.expired && verificationResult.purchase && (
+                {isValid ? (
                   <>
-                    <div className="qr-receiptSectionDivider" />
+                    {redemptionResult && (
+                      <Alert
+                        style={{
+                          marginTop: 18,
+                          marginBottom: 22,
+                          textAlign: "left",
+                        }}
+                        type={redemptionResult.success ? "success" : "error"}
+                        message={
+                          redemptionResult.success
+                            ? "Redemption logged"
+                            : "Redemption failed"
+                        }
+                        description={
+                          redemptionResult.success
+                            ? redemptionResult.message
+                            : redemptionResult.error ||
+                              "Unable to redeem this pass."
+                        }
+                        showIcon
+                      />
+                    )}
+
+                    <div className="qr-receiptDivider" />
+
                     <div className="qr-verifyReceiptSection">
+                      <div className="qr-verifyReceiptSectionTitle">
+                        PASS DETAILS
+                      </div>
+
                       <div className="qr-verifyReceiptRow">
-                        <span className="qr-verifyReceiptLabel">Customer</span>
+                        <span className="qr-verifyReceiptLabel">Pass Type</span>
                         <strong className="qr-verifyReceiptValue">
-                          {verificationResult.purchase.customerName}
+                          {verificationResult.purchase?.productName}
                         </strong>
                       </div>
                       <div className="qr-verifyReceiptRow">
-                        <span className="qr-verifyReceiptLabel">Expired</span>
-                        <strong className="qr-verifyReceiptValue qr-verifyReceiptValue--invalid">
-                          {formatDisplayDate(verificationResult.purchase.expiryDate, {
-                            weekday: undefined,
-                          })}
+                        <span className="qr-verifyReceiptLabel">Starts</span>
+                        <strong className="qr-verifyReceiptValue qr-verifyReceiptValue--accent">
+                          {formatDisplayDate(
+                            verificationResult.purchase?.startDate,
+                          )}
                         </strong>
                       </div>
+                      <div className="qr-verifyReceiptRow">
+                        <span className="qr-verifyReceiptLabel">Expires</span>
+                        <strong className="qr-verifyReceiptValue qr-verifyReceiptValue--success">
+                          {formatDisplayDate(
+                            verificationResult.purchase?.expiryDate,
+                          )}
+                        </strong>
+                      </div>
+                      <div className="qr-verifyReceiptRow">
+                        <span className="qr-verifyReceiptLabel">
+                          Max People
+                        </span>
+                        <strong className="qr-verifyReceiptValue">
+                          {verificationResult.purchase?.maxPeople}{" "}
+                          {verificationResult.purchase?.maxPeople === 1
+                            ? "person"
+                            : "people"}
+                        </strong>
+                      </div>
+                      {verificationResult.purchase?.redemptionCount > 0 && (
+                        <div className="qr-verifyReceiptRow">
+                          <span className="qr-verifyReceiptLabel">
+                            Previous Uses
+                          </span>
+                          <strong className="qr-verifyReceiptValue">
+                            {verificationResult.purchase.redemptionCount} times
+                          </strong>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="qr-receiptSectionDivider" />
+
+                    <div className="qr-verifyReceiptSection">
+                      <div className="qr-verifyReceiptSectionTitle">
+                        CUSTOMER DETAILS
+                      </div>
+
+                      <div className="qr-verifyReceiptRow">
+                        <span className="qr-verifyReceiptLabel">Name</span>
+                        <strong className="qr-verifyReceiptValue">
+                          {verificationResult.purchase?.customerName}
+                        </strong>
+                      </div>
+                      <div className="qr-verifyReceiptRow">
+                        <span className="qr-verifyReceiptLabel">Email</span>
+                        <strong className="qr-verifyReceiptValue">
+                          {verificationResult.purchase?.customerEmail}
+                        </strong>
+                      </div>
+                      {verificationResult.purchase?.customerPhone ? (
+                        <div className="qr-verifyReceiptRow">
+                          <span className="qr-verifyReceiptLabel">Phone</span>
+                          <strong className="qr-verifyReceiptValue">
+                            {verificationResult.purchase.customerPhone}
+                          </strong>
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div className="qr-receiptDivider qr-receiptDivider--summary" />
+
+                    <div className="qr-receiptSummaryRow">
+                      <span>{venueLabel.toUpperCase()} REDEMPTION</span>
+                      <strong>
+                        {isRedeemedAtVenue ? "Redeemed" : "Available"}
+                      </strong>
+                    </div>
+                    {verificationResult.purchase?.redeemedAt ? (
+                      <div className="qr-verifyStatusMeta">
+                        Redeemed{" "}
+                        {new Date(
+                          verificationResult.purchase.redeemedAt,
+                        ).toLocaleString()}
+                      </div>
+                    ) : null}
+
+                    <div className="qr-verifyReceiptAction">
+                      {canRedeem ? (
+                        <Button
+                          className="qr-receiptButton"
+                          size="large"
+                          icon={<GiftOutlined />}
+                          loading={loading}
+                          onClick={() =>
+                            redeemPass({
+                              venueId:
+                                verificationResult.purchase?.venueSlug ||
+                                verificationResult.purchase
+                                  ?.redemptionVenueSlug,
+                              redemptionType: "discount",
+                              pin: "1234",
+                            })
+                          }
+                          block
+                        >
+                          Redeem {venueLabel} Offer
+                        </Button>
+                      ) : (
+                        <Button size="large" disabled block>
+                          {isRedeemedAtVenue
+                            ? `${venueLabel} Offer Redeemed`
+                            : "Redemption unavailable"}
+                        </Button>
+                      )}
                     </div>
                   </>
+                ) : (
+                  <>
+                    <div className="qr-receiptDivider" />
+
+                    <div className="qr-verifyReceiptSection">
+                      <div className="qr-verifyReceiptSectionTitle">STATUS</div>
+                      <div className="qr-verifyInvalidCopy">
+                        {verificationResult.error ||
+                          "This QR code is not valid or has expired."}
+                      </div>
+                    </div>
+
+                    {verificationResult.expired &&
+                      verificationResult.purchase && (
+                        <>
+                          <div className="qr-receiptSectionDivider" />
+                          <div className="qr-verifyReceiptSection">
+                            <div className="qr-verifyReceiptRow">
+                              <span className="qr-verifyReceiptLabel">
+                                Customer
+                              </span>
+                              <strong className="qr-verifyReceiptValue">
+                                {verificationResult.purchase.customerName}
+                              </strong>
+                            </div>
+                            <div className="qr-verifyReceiptRow">
+                              <span className="qr-verifyReceiptLabel">
+                                Expired
+                              </span>
+                              <strong className="qr-verifyReceiptValue qr-verifyReceiptValue--invalid">
+                                {formatDisplayDate(
+                                  verificationResult.purchase.expiryDate,
+                                  {
+                                    weekday: undefined,
+                                  },
+                                )}
+                              </strong>
+                            </div>
+                          </div>
+                        </>
+                      )}
+                  </>
                 )}
-              </>
-            )}
 
                 <div className="qr-verifyFooterCode">QR Code: {qrCode}</div>
               </div>
@@ -929,7 +965,9 @@ export default function CardVerify() {
             <Input
               style={{ marginTop: 6 }}
               value={qrCode}
-              onChange={(event) => setQrCode(normalizeQrCode(event.target.value))}
+              onChange={(event) =>
+                setQrCode(normalizeQrCode(event.target.value))
+              }
               placeholder="Scan QR code or enter manually"
               allowClear
             />
@@ -948,25 +986,25 @@ export default function CardVerify() {
 
             {verificationResult?.valid &&
               !verificationResult.purchase?.isRedeemedAtVenue && (
-              <Button
-                type="default"
-                size="large"
-                onClick={() => {
-                  console.log("Regular redemption button clicked");
-                  setShowRedemptionModal(true);
-                }}
-                loading={loading}
-                disabled={!qrCode}
-                icon={<GiftOutlined />}
-                style={{
-                  background: "#52c41a",
-                  borderColor: "#52c41a",
-                  color: "white",
-                }}
-              >
-                Log Redemption
-              </Button>
-            )}
+                <Button
+                  type="default"
+                  size="large"
+                  onClick={() => {
+                    console.log("Regular redemption button clicked");
+                    setShowRedemptionModal(true);
+                  }}
+                  loading={loading}
+                  disabled={!qrCode}
+                  icon={<GiftOutlined />}
+                  style={{
+                    background: "#52c41a",
+                    borderColor: "#52c41a",
+                    color: "white",
+                  }}
+                >
+                  Log Redemption
+                </Button>
+              )}
 
             <Button
               onClick={() => {

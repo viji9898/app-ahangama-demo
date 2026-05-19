@@ -420,7 +420,11 @@ const CardPass = () => {
                 {error || "The pass code you provided is not valid."}
               </div>
               <div className="qr-successActionStack">
-                <Button className="qr-receiptButton" onClick={() => navigate("/card")} block>
+                <Button
+                  className="qr-receiptButton"
+                  onClick={() => navigate("/card")}
+                  block
+                >
                   Get a New Pass
                 </Button>
                 <Button
@@ -474,7 +478,8 @@ const CardPass = () => {
               <div className="qr-receiptEyebrow">PASS READY</div>
               <div className={statusBadgeClass}>{statusLabel}</div>
               <div className="qr-successStatusSummary qr-passStatusSummary">
-                Show this receipt and QR code to venue staff when redeeming your offer.
+                Show this receipt and QR code to venue staff when redeeming your
+                offer.
               </div>
 
               <div className="qr-receiptDivider" />
@@ -499,7 +504,9 @@ const CardPass = () => {
               <div className="qr-receiptDivider qr-receiptDivider--summary" />
 
               <div className="qr-successReceiptSection">
-                <div className="qr-successReceiptSectionTitle">PASS DETAILS</div>
+                <div className="qr-successReceiptSectionTitle">
+                  PASS DETAILS
+                </div>
                 <div className="qr-successReceiptRow">
                   <span className="qr-successReceiptLabel">Pass Type</span>
                   <strong className="qr-successReceiptValue">
@@ -557,7 +564,9 @@ const CardPass = () => {
                   </strong>
                 </div>
                 <div className="qr-successReceiptRow">
-                  <span className="qr-successReceiptLabel">Redemptions Logged</span>
+                  <span className="qr-successReceiptLabel">
+                    Redemptions Logged
+                  </span>
                   <strong className="qr-successReceiptValue">
                     {passData.redemptionCount || 0}
                   </strong>
@@ -574,7 +583,9 @@ const CardPass = () => {
                     <div className="qr-passHistoryList">
                       {redemptions.map((redemption) => {
                         const venueLabel =
-                          redemption.venueName || redemption.venueSlug || "Venue";
+                          redemption.venueName ||
+                          redemption.venueSlug ||
+                          "Venue";
 
                         return (
                           <div
@@ -582,7 +593,9 @@ const CardPass = () => {
                             className="qr-passHistoryItem"
                           >
                             <div className="qr-passHistoryRow">
-                              <div className="qr-passHistoryVenue">{venueLabel}</div>
+                              <div className="qr-passHistoryVenue">
+                                {venueLabel}
+                              </div>
                               <div className="qr-passHistoryDate">
                                 {formatDisplayDateTime(redemption.redeemedAt)}
                               </div>
@@ -611,13 +624,16 @@ const CardPass = () => {
                 <div className="qr-successReceiptSectionTitle">HOW TO USE</div>
                 <div className="qr-passInfoList">
                   <div className="qr-passInfoItem">
-                    Present this QR code or your downloaded PDF at a participating venue.
+                    Present this QR code or your downloaded PDF at a
+                    participating venue.
                   </div>
                   <div className="qr-passInfoItem">
-                    Venue staff will scan the code to verify and log the redemption.
+                    Venue staff will scan the code to verify and log the
+                    redemption.
                   </div>
                   <div className="qr-passInfoItem">
-                    Keep this page handy so you can access your pass and support quickly.
+                    Keep this page handy so you can access your pass and support
+                    quickly.
                   </div>
                 </div>
               </div>
@@ -625,16 +641,21 @@ const CardPass = () => {
               <div className="qr-receiptSectionDivider" />
 
               <div className="qr-successReceiptSection">
-                <div className="qr-successReceiptSectionTitle">PASS BENEFITS</div>
+                <div className="qr-successReceiptSectionTitle">
+                  PASS BENEFITS
+                </div>
                 <div className="qr-passInfoList">
                   <div className="qr-passInfoItem">
-                    Exclusive discounts and venue-specific perks across the Ahangama partner network.
+                    Exclusive discounts and venue-specific perks across the
+                    Ahangama partner network.
                   </div>
                   <div className="qr-passInfoItem">
-                    A hosted digital pass link you can reopen from email or your device anytime.
+                    A hosted digital pass link you can reopen from email or your
+                    device anytime.
                   </div>
                   <div className="qr-passInfoItem">
-                    A downloadable PDF backup in case your connection is weak while redeeming.
+                    A downloadable PDF backup in case your connection is weak
+                    while redeeming.
                   </div>
                 </div>
               </div>

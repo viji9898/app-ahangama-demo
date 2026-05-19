@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Typography, Button, Spin, QRCode } from "antd";
-import { CheckCircleOutlined, MailOutlined, DownloadOutlined } from "@ant-design/icons";
+import {
+  CheckCircleOutlined,
+  MailOutlined,
+  DownloadOutlined,
+} from "@ant-design/icons";
 import jsPDF from "jspdf";
 import QRCodeLib from "qrcode";
 import { sendPassEmailViaFunction } from "../services/emailService";
@@ -128,7 +132,11 @@ const isInvalidSessionId = (sessionId) => {
   );
 };
 
-const waitForPromoPurchase = async (sessionId, attempts = 5, delayMs = 1200) => {
+const waitForPromoPurchase = async (
+  sessionId,
+  attempts = 5,
+  delayMs = 1200,
+) => {
   for (let attempt = 0; attempt < attempts; attempt += 1) {
     const promoPurchase = await getPromoPurchaseBySession(sessionId);
 
@@ -499,7 +507,9 @@ export default function PaymentSuccess() {
                   aria-hidden="true"
                 />
                 <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
-                <div className="qr-receiptBrandTagline">PAYMENT CONFIRMATION</div>
+                <div className="qr-receiptBrandTagline">
+                  PAYMENT CONFIRMATION
+                </div>
               </div>
               <div className="qr-receiptDivider qr-receiptDivider--brand" />
               <div className="qr-receiptEyebrow">PREPARING YOUR PASS</div>
@@ -533,7 +543,9 @@ export default function PaymentSuccess() {
                   aria-hidden="true"
                 />
                 <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
-                <div className="qr-receiptBrandTagline">PAYMENT CONFIRMATION</div>
+                <div className="qr-receiptBrandTagline">
+                  PAYMENT CONFIRMATION
+                </div>
               </div>
               <div className="qr-receiptDivider qr-receiptDivider--brand" />
               <div className="qr-receiptEyebrow">CHECKOUT ISSUE</div>
@@ -541,13 +553,18 @@ export default function PaymentSuccess() {
                 PAYMENT VERIFICATION FAILED
               </div>
               <div className="qr-successStatusSummary">
-                {error || "Unable to verify your payment. Please contact support."}
+                {error ||
+                  "Unable to verify your payment. Please contact support."}
               </div>
               <div className="qr-successActionStack">
                 <Button className="qr-receiptButton" href="/" block>
                   Go Home
                 </Button>
-                <Button className="qr-successSecondaryButton" href="/partners" block>
+                <Button
+                  className="qr-successSecondaryButton"
+                  href="/partners"
+                  block
+                >
                   Contact Support
                 </Button>
               </div>
@@ -577,7 +594,9 @@ export default function PaymentSuccess() {
                   aria-hidden="true"
                 />
                 <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
-                <div className="qr-receiptBrandTagline">PAYMENT CONFIRMATION</div>
+                <div className="qr-receiptBrandTagline">
+                  PAYMENT CONFIRMATION
+                </div>
               </div>
 
               <div className="qr-receiptDivider qr-receiptDivider--brand" />
@@ -593,7 +612,10 @@ export default function PaymentSuccess() {
 
               <div className="qr-successQrBlock">
                 <div className="qr-successQrCard">
-                  <QRCode value={buildVerifyUrl(paymentData.qrCode)} size={190} />
+                  <QRCode
+                    value={buildVerifyUrl(paymentData.qrCode)}
+                    size={190}
+                  />
                 </div>
                 <div className="qr-successQrHint">
                   Show QR CODE to Staff to Redeem Promotion
@@ -603,7 +625,9 @@ export default function PaymentSuccess() {
               <div className="qr-receiptDivider qr-receiptDivider--summary" />
 
               <div className="qr-successReceiptSection">
-                <div className="qr-successReceiptSectionTitle">PASS DETAILS</div>
+                <div className="qr-successReceiptSectionTitle">
+                  PASS DETAILS
+                </div>
 
                 <div className="qr-successReceiptRow">
                   <span className="qr-successReceiptLabel">Pass Type</span>

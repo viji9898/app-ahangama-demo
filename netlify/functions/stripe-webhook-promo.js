@@ -25,9 +25,12 @@ async function resolveStripeReceiptUrl(session) {
   }
 
   try {
-    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId, {
-      expand: ["latest_charge"],
-    });
+    const paymentIntent = await stripe.paymentIntents.retrieve(
+      paymentIntentId,
+      {
+        expand: ["latest_charge"],
+      },
+    );
 
     return paymentIntent.latest_charge?.receipt_url || null;
   } catch (error) {

@@ -40,15 +40,19 @@ export default function PaymentModal({
     setError(null);
 
     try {
-      await createCheckoutSession(product.id, {
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-        startDate: startDate.format("YYYY-MM-DD"),
-      }, {
-        promoContext,
-        ctaLocation,
-      });
+      await createCheckoutSession(
+        product.id,
+        {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          startDate: startDate.format("YYYY-MM-DD"),
+        },
+        {
+          promoContext,
+          ctaLocation,
+        },
+      );
     } catch (err) {
       setError(err.message);
       setLoading(false);
@@ -78,7 +82,9 @@ export default function PaymentModal({
             <Text style={{ fontSize: 24, fontWeight: "600", color: "#1890ff" }}>
               ${displayPrice}
             </Text>
-            {promoContext ? <Text type="secondary"> • promo {promoContext.promoCode}</Text> : null}
+            {promoContext ? (
+              <Text type="secondary"> • promo {promoContext.promoCode}</Text>
+            ) : null}
             <Text type="secondary">
               {" "}
               • {product.validityDays} days • {product.maxPeople}{" "}
@@ -213,9 +219,7 @@ export default function PaymentModal({
               color: product?.isPremium ? "#fff" : undefined,
             }}
           >
-            {loading
-              ? "Processing..."
-              : `Pay $${displayPrice} with Stripe`}
+            {loading ? "Processing..." : `Pay $${displayPrice} with Stripe`}
           </Button>
         </Form.Item>
       </Form>

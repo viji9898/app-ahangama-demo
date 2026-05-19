@@ -86,7 +86,9 @@ export const trackPassPurchase = ({ sessionId, paymentData }) => {
       Object.entries(paymentAttribution).filter(([, value]) => Boolean(value)),
     ),
   };
-  const value = Number(paymentData?.chargedPriceUsd || paymentData?.priceUsd || 0);
+  const value = Number(
+    paymentData?.chargedPriceUsd || paymentData?.priceUsd || 0,
+  );
 
   window.gtag("event", "purchase", {
     transaction_id: sessionId,
