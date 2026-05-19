@@ -79,6 +79,7 @@ export const handler = async (event) => {
         isRedeemedAtVenue: Boolean(venueRedemption),
         redeemedAt: venueRedemption?.redeemedAt || null,
         redemptionVenueSlug: venueRedemption?.venueSlug || purchase.venueSlug,
+        redemptions,
       }),
     };
   } catch (error) {

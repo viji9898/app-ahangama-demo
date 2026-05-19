@@ -1,38 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Typography, Button, Spin, QRCode } from "antd";
 import {
-  Card,
-  Typography,
-  Result,
-  Button,
-  Spin,
-  Alert,
-  QRCode,
-  Space,
-  Divider,
-  Tag,
-  Row,
-  Col,
-} from "antd";
-import {
-  CheckCircleOutlined,
   WhatsAppOutlined,
-  CalendarOutlined,
-  UserOutlined,
-  ClockCircleOutlined,
-  MailOutlined,
-  PhoneOutlined,
   CopyOutlined,
   DownloadOutlined,
 } from "@ant-design/icons";
 import jsPDF from "jspdf";
 import QRCodeLib from "qrcode";
-import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { verifyCardByCode } from "../app/cardStore";
 import { getPromoPassById } from "../services/stripe";
+import palmTreeIcon from "../assets/receipt_icons/palm-tree-icon.svg";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Text } = Typography;
 
 const calculateValidityDays = (startDate, expiryDate, fallback = 0) => {
   const start = new Date(startDate || 0);
@@ -53,8 +34,50 @@ const isWebhookPromoPassId = (passId) =>
     String(passId || "").trim(),
   );
 
+const buildVerifyUrl = (passId) =>
+  `https://ahangama.com/verify?${encodeURIComponent(passId || "")}`;
+
+const formatDisplayDate = (value) => {
+  if (!value) {
+    return "-";
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "-";
+  }
+
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+};
+
+const formatDisplayDateTime = (value) => {
+  if (!value) {
+    return "-";
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "-";
+  }
+
+  return date.toLocaleString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+};
+
 const normalizePromoPassData = (data) => {
-  const purchaseDate = data.purchaseDate || data.startDate || new Date().toISOString();
+  const purchaseDate =
+    data.purchaseDate || data.startDate || new Date().toISOString();
   const startDate = data.startDate || purchaseDate;
   const expiryDate = data.expiryDate || purchaseDate;
 
@@ -73,10 +96,40 @@ const normalizePromoPassData = (data) => {
       0,
       Math.ceil((new Date(expiryDate) - new Date()) / (1000 * 60 * 60 * 24)),
     ),
+    redemptionCount: Number(data.redemptionCount || 0),
+    isRedeemedAtVenue: Boolean(data.isRedeemedAtVenue),
+    redemptionVenueSlug: data.redemptionVenueSlug || "",
+    redeemedAt: data.redeemedAt || null,
+    redemptions: Array.isArray(data.redemptions) ? data.redemptions : [],
     passUrl: data.passUrl || "",
     passkitUrl: data.passkitUrl || "",
   };
 };
+
+const normalizeLocalPassData = (purchase, result) => ({
+  qrCode: purchase.qrCode,
+  productName: purchase.productName,
+  customerName: purchase.customerName,
+  customerEmail: purchase.customerEmail,
+  customerPhone: purchase.customerPhone,
+  validityDays: purchase.validityDays,
+  purchaseDate: purchase.purchaseDate,
+  expiryDate: purchase.expiryDate,
+  status: result.valid && !result.expired ? "active" : "expired",
+  remainingDays: Math.max(
+    0,
+    Math.ceil(
+      (new Date(purchase.expiryDate) - new Date()) / (1000 * 60 * 60 * 24),
+    ),
+  ),
+  redemptionCount: Number(purchase.redemptionCount || 0),
+  isRedeemedAtVenue: Boolean(purchase.isRedeemedAtVenue),
+  redemptionVenueSlug: purchase.redemptionVenueSlug || "",
+  redeemedAt: purchase.redeemedAt || null,
+  redemptions: [],
+  passUrl: purchase.passUrl || "",
+  passkitUrl: purchase.passkitUrl || "",
+});
 
 const CardPass = () => {
   const { cardId } = useParams();
@@ -85,7 +138,6 @@ const CardPass = () => {
   const [passData, setPassData] = useState(null);
   const [error, setError] = useState(null);
 
-  // Use cardId directly as the QR code
   const qrCode = cardId;
 
   useEffect(() => {
@@ -113,27 +165,8 @@ const CardPass = () => {
           return;
         }
 
-        const purchase = result.purchase;
-        const nextPassData = {
-          qrCode: purchase.qrCode,
-          productName: purchase.productName,
-          customerName: purchase.customerName,
-          customerEmail: purchase.customerEmail,
-          customerPhone: purchase.customerPhone,
-          validityDays: purchase.validityDays,
-          purchaseDate: purchase.purchaseDate,
-          expiryDate: purchase.expiryDate,
-          status: result.valid && !result.expired ? "active" : "expired",
-          remainingDays: Math.max(
-            0,
-            Math.ceil(
-              (new Date(purchase.expiryDate) - new Date()) /
-                (1000 * 60 * 60 * 24),
-            ),
-          ),
-        };
+        setPassData(normalizeLocalPassData(result.purchase, result));
 
-        setPassData(nextPassData);
         if (!result.valid) {
           setError(result.error || "This pass has expired.");
         }
@@ -149,7 +182,7 @@ const CardPass = () => {
   }, [qrCode]);
 
   const handleWhatsAppContact = () => {
-    const message = `Hi! I need help with my Ahangama Pass. My pass code is: ${qrCode}`;
+    const message = `Hi Ahangama I need some help with my pass - ${qrCode}`;
     const whatsappUrl = `https://wa.me/94777908790?text=${encodeURIComponent(
       message,
     )}`;
@@ -158,13 +191,11 @@ const CardPass = () => {
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(qrCode);
-    // You could add a notification here
   };
 
   const generatePassPDF = async () => {
     if (!passData) return;
 
-    // Create phone-sized PDF (105mm x 160mm - A6 portrait with extra height)
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "mm",
@@ -174,9 +205,8 @@ const CardPass = () => {
     const pageWidth = 105;
     const margin = 8;
 
-    // Generate QR Code as data URL
     const qrCodeDataUrl = await QRCodeLib.toDataURL(
-      `https://ahangama.com/verify?${encodeURIComponent(passData.qrCode)}`,
+      buildVerifyUrl(passData.qrCode),
       {
         width: 120,
         margin: 1,
@@ -188,22 +218,18 @@ const CardPass = () => {
       },
     );
 
-    // Simple header - no fancy gradients
     pdf.setFillColor(255, 127, 80);
     pdf.rect(0, 0, pageWidth, 20, "F");
 
-    // Title
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(14);
     pdf.setFont("helvetica", "bold");
     pdf.text("AHANGAMA PASS", pageWidth / 2, 13, { align: "center" });
 
-    // QR Code - larger and more prominent for phone viewing
     const qrSize = 45;
     const qrX = pageWidth / 2 - qrSize / 2;
     const qrY = 25;
 
-    // Simple QR background
     pdf.setFillColor(255, 255, 255);
     pdf.setDrawColor(200, 200, 200);
     pdf.setLineWidth(1);
@@ -211,7 +237,6 @@ const CardPass = () => {
 
     pdf.addImage(qrCodeDataUrl, "PNG", qrX, qrY, qrSize, qrSize);
 
-    // Pass Code - clearly visible
     pdf.setTextColor(0, 0, 0);
     pdf.setFontSize(9);
     pdf.setFont("helvetica", "bold");
@@ -220,11 +245,8 @@ const CardPass = () => {
       align: "center",
     });
 
-    // Pass details in compact format
     let currentY = qrY + qrSize + 20;
 
-    // Pass Type
-    pdf.setTextColor(0, 0, 0);
     pdf.setFontSize(8);
     pdf.setFont("helvetica", "normal");
     pdf.text("PASS:", margin, currentY);
@@ -233,7 +255,6 @@ const CardPass = () => {
     pdf.text(passData.productName, margin + 20, currentY);
     currentY += 8;
 
-    // Customer
     pdf.setFontSize(8);
     pdf.setFont("helvetica", "normal");
     pdf.text("NAME:", margin, currentY);
@@ -241,12 +262,11 @@ const CardPass = () => {
     pdf.setFont("helvetica", "bold");
     const customerName =
       passData.customerName.length > 22
-        ? passData.customerName.substring(0, 22) + "..."
+        ? `${passData.customerName.substring(0, 22)}...`
         : passData.customerName;
     pdf.text(customerName, margin + 20, currentY);
     currentY += 8;
 
-    // Validity
     pdf.setFontSize(8);
     pdf.setFont("helvetica", "normal");
     pdf.text("VALID:", margin, currentY);
@@ -255,7 +275,6 @@ const CardPass = () => {
     pdf.text(`${passData.validityDays} days`, margin + 20, currentY);
     currentY += 8;
 
-    // Dates on same line to save space
     const startDate = new Date(passData.purchaseDate).toLocaleDateString(
       "en-GB",
       {
@@ -288,7 +307,6 @@ const CardPass = () => {
     pdf.text(expiryDate, margin + 68, currentY);
     currentY += 12;
 
-    // Instructions - simplified
     pdf.setDrawColor(200, 200, 200);
     pdf.setLineWidth(0.5);
     pdf.line(margin, currentY, pageWidth - margin, currentY);
@@ -309,7 +327,6 @@ const CardPass = () => {
     pdf.text("• Enjoy your benefits!", margin, currentY);
     currentY += 8;
 
-    // Contact info - compact
     pdf.setDrawColor(200, 200, 200);
     pdf.line(margin, currentY, pageWidth - margin, currentY);
     currentY += 6;
@@ -326,13 +343,13 @@ const CardPass = () => {
     pdf.text("Web: ahangama.com", margin, currentY);
     currentY += 8;
 
-    // Customer contact if available
     if (passData.customerEmail) {
       pdf.setFontSize(6);
       pdf.setTextColor(100, 100, 100);
       pdf.text(`Email: ${passData.customerEmail}`, margin, currentY);
       currentY += 4;
     }
+
     if (passData.customerPhone) {
       pdf.setFontSize(6);
       pdf.setTextColor(100, 100, 100);
@@ -340,43 +357,97 @@ const CardPass = () => {
       currentY += 4;
     }
 
-    // Add extra bottom padding to prevent cutting
-    currentY += 10;
-
-    // Save with simple filename
     const filename = `ahangama-pass-${qrCodeId}.pdf`;
     pdf.save(filename);
   };
 
   if (loading) {
     return (
-      <SiteLayout>
-        <div style={{ textAlign: "center", padding: "100px 20px" }}>
-          <Spin size="large" />
-          <Paragraph style={{ marginTop: 16 }}>Loading your pass...</Paragraph>
+      <div className="qr-page qr-successPage qr-passPage">
+        <div className="qr-shell">
+          <section className="qr-receiptCard">
+            <div className="qr-receiptPaper qr-successReceiptPaper qr-passReceiptPaper">
+              <div className="qr-receiptBrandBlock">
+                <img
+                  src={palmTreeIcon}
+                  alt=""
+                  className="qr-receiptBrandIcon"
+                  aria-hidden="true"
+                />
+                <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+                <div className="qr-receiptBrandTagline">DIGITAL PASS</div>
+              </div>
+              <div className="qr-receiptDivider qr-receiptDivider--brand" />
+              <div className="qr-receiptEyebrow">LOADING PASS</div>
+              <div className="qr-successLoadingBlock">
+                <Spin size="large" />
+                <Title level={3} className="qr-successLoadingTitle">
+                  Loading Your Pass
+                </Title>
+                <Text className="qr-successLoadingText">
+                  Fetching your pass details and QR code.
+                </Text>
+              </div>
+            </div>
+          </section>
         </div>
-      </SiteLayout>
+      </div>
     );
   }
 
   if (error || !passData) {
     return (
-      <SiteLayout>
-        <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-          <Result
-            status="error"
-            title="Pass Not Found"
-            subTitle={error || "The pass code you provided is not valid."}
-            extra={
-              <Button type="primary" onClick={() => navigate("/card")}>
-                Get a New Pass
-              </Button>
-            }
-          />
+      <div className="qr-page qr-successPage qr-passPage">
+        <div className="qr-shell">
+          <section className="qr-receiptCard">
+            <div className="qr-receiptPaper qr-successReceiptPaper qr-successReceiptPaper--error qr-passReceiptPaper">
+              <div className="qr-receiptBrandBlock">
+                <img
+                  src={palmTreeIcon}
+                  alt=""
+                  className="qr-receiptBrandIcon"
+                  aria-hidden="true"
+                />
+                <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+                <div className="qr-receiptBrandTagline">DIGITAL PASS</div>
+              </div>
+              <div className="qr-receiptDivider qr-receiptDivider--brand" />
+              <div className="qr-receiptEyebrow">PASS ISSUE</div>
+              <div className="qr-successStatusBadge qr-successStatusBadge--error">
+                PASS NOT FOUND
+              </div>
+              <div className="qr-successStatusSummary">
+                {error || "The pass code you provided is not valid."}
+              </div>
+              <div className="qr-successActionStack">
+                <Button className="qr-receiptButton" onClick={() => navigate("/card")} block>
+                  Get a New Pass
+                </Button>
+                <Button
+                  className="qr-successSecondaryButton"
+                  icon={<WhatsAppOutlined />}
+                  onClick={handleWhatsAppContact}
+                  block
+                >
+                  Contact Support
+                </Button>
+              </div>
+            </div>
+          </section>
         </div>
-      </SiteLayout>
+      </div>
     );
   }
+
+  const isExpired =
+    passData.status === "expired" || passData.remainingDays <= 0;
+  const statusLabel = isExpired ? "EXPIRED" : "ACTIVE";
+  const statusBadgeClass = isExpired
+    ? "qr-successStatusBadge qr-successStatusBadge--error"
+    : "qr-successStatusBadge qr-successStatusBadge--success";
+  const redemptions = Array.isArray(passData.redemptions)
+    ? passData.redemptions
+    : [];
 
   return (
     <>
@@ -384,410 +455,219 @@ const CardPass = () => {
         title="Your Ahangama Pass"
         description="View your digital Ahangama Pass and QR code for exclusive local experiences."
       />
-      <SiteLayout>
-        <div className="dm-heroCut" />
-        <div className="dm-canvas">
-          <div className="dm-wrap">
-            <div style={{ padding: "0 12px" }}>
-              {/* Page Header */}
-              <div style={{ textAlign: "center", marginBottom: "32px" }}>
-                <Title
-                  level={2}
-                  style={{
-                    color: "var(--dm-ink)",
-                    letterSpacing: "-0.02em",
-                    marginBottom: "8px",
-                  }}
-                >
-                  🏝️ Your Ahangama Pass
-                </Title>
-                <Paragraph
-                  style={{
-                    color: "var(--ink-muted)",
-                    fontSize: "15px",
-                    marginBottom: "0",
-                  }}
-                >
-                  Show this QR code at participating venues to unlock exclusive
-                  benefits
-                </Paragraph>
-              </div>
-
-              <Row gutter={[24, 24]}>
-                {/* QR Code Section */}
-                <Col xs={24} md={12}>
-                  <Card
-                    title={
-                      <Space>
-                        <CheckCircleOutlined style={{ color: "#52c41a" }} />
-                        QR Code Pass
-                      </Space>
-                    }
-                    className="ahg-feature"
-                    bodyStyle={{
-                      backgroundImage:
-                        "url('https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero.jpg')",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                      position: "relative",
-                      minHeight: "300px",
-                      padding: "0",
-                    }}
-                    style={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        background: "rgba(255, 255, 255, 0.85)",
-                        borderRadius: "0 0 8px 8px",
-                      }}
-                    />
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        flex: 1,
-                        flexDirection: "column",
-                        padding: "24px",
-                        position: "relative",
-                        zIndex: 1,
-                        minHeight: "300px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          padding: "20px",
-                          background: "rgba(255, 255, 255, 0.9)",
-                          borderRadius: "var(--dm-radius-lg)",
-                          border: "1px solid var(--dm-line)",
-                          marginBottom: "20px",
-                        }}
-                      >
-                        <QRCode
-                          value={`https://ahangama.com/verify?${encodeURIComponent(passData.qrCode)}`}
-                          size={200}
-                        />
-                      </div>
-                      <Paragraph
-                        style={{ textAlign: "center", marginBottom: "0" }}
-                      >
-                        <Text
-                          strong
-                          style={{ fontSize: "16px", color: "var(--dm-ink)" }}
-                        >
-                          Pass Code: {passData.qrCode}
-                        </Text>
-                        <Button
-                          type="text"
-                          icon={<CopyOutlined />}
-                          size="small"
-                          onClick={handleCopyCode}
-                          style={{ marginLeft: "8px" }}
-                        />
-                      </Paragraph>
-                    </div>
-                  </Card>
-                </Col>
-
-                {/* Pass Details Section */}
-                <Col xs={24} md={12}>
-                  <Card
-                    title="Pass Details"
-                    className="ahg-feature"
-                    style={{ height: "100%" }}
-                  >
-                    <Row gutter={[16, 20]}>
-                      {/* Left Column */}
-                      <Col xs={12} sm={12}>
-                        <Space
-                          direction="vertical"
-                          style={{ width: "100%" }}
-                          size="medium"
-                        >
-                          <div>
-                            <Text type="secondary" style={{ fontSize: "15px" }}>
-                              Pass Type
-                            </Text>
-                            <div>
-                              <Text strong style={{ fontSize: "18px" }}>
-                                {passData.productName}
-                              </Text>
-                            </div>
-                          </div>
-
-                          <div>
-                            <Text type="secondary" style={{ fontSize: "15px" }}>
-                              <UserOutlined /> Customer
-                            </Text>
-                            <div>
-                              <Text strong style={{ fontSize: "18px" }}>
-                                {passData.customerName}
-                              </Text>
-                            </div>
-                          </div>
-
-                          <div>
-                            <Text type="secondary" style={{ fontSize: "15px" }}>
-                              <CalendarOutlined /> Valid From
-                            </Text>
-                            <div>
-                              <Text
-                                strong
-                                style={{ color: "#52c41a", fontSize: "18px" }}
-                              >
-                                {new Date(
-                                  passData.purchaseDate,
-                                ).toLocaleDateString("en-US", {
-                                  year: "numeric",
-                                  month: "long",
-                                  day: "numeric",
-                                })}
-                              </Text>
-                            </div>
-                          </div>
-
-                          <div>
-                            <Text type="secondary" style={{ fontSize: "15px" }}>
-                              <CalendarOutlined /> Purchase Date
-                            </Text>
-                            <div>
-                              <Text style={{ fontSize: "18px" }}>
-                                {new Date(
-                                  passData.purchaseDate,
-                                ).toLocaleDateString("en-US", {
-                                  year: "numeric",
-                                  month: "long",
-                                  day: "numeric",
-                                })}
-                              </Text>
-                            </div>
-                          </div>
-                        </Space>
-                      </Col>
-
-                      {/* Right Column */}
-                      <Col xs={12} sm={12}>
-                        <Space
-                          direction="vertical"
-                          style={{ width: "100%" }}
-                          size="medium"
-                        >
-                          <div>
-                            <Text type="secondary" style={{ fontSize: "15px" }}>
-                              <ClockCircleOutlined /> Valid Until
-                            </Text>
-                            <div>
-                              <Text style={{ fontSize: "18px" }}>
-                                {new Date(
-                                  passData.expiryDate,
-                                ).toLocaleDateString("en-US", {
-                                  year: "numeric",
-                                  month: "long",
-                                  day: "numeric",
-                                })}
-                              </Text>
-                            </div>
-                          </div>
-
-                          {passData.customerEmail && (
-                            <div>
-                              <Text
-                                type="secondary"
-                                style={{ fontSize: "15px" }}
-                              >
-                                <MailOutlined /> Email
-                              </Text>
-                              <div>
-                                <Text style={{ fontSize: "18px" }}>
-                                  {passData.customerEmail}
-                                </Text>
-                              </div>
-                            </div>
-                          )}
-
-                          {passData.customerPhone && (
-                            <div>
-                              <Text
-                                type="secondary"
-                                style={{ fontSize: "15px" }}
-                              >
-                                <PhoneOutlined /> Phone
-                              </Text>
-                              <div>
-                                <Text style={{ fontSize: "18px" }}>
-                                  {passData.customerPhone}
-                                </Text>
-                              </div>
-                            </div>
-                          )}
-                        </Space>
-                      </Col>
-                    </Row>
-                  </Card>
-                </Col>
-              </Row>
-
-              <Divider style={{ margin: "32px 0" }} />
-
-              {/* Action Buttons */}
-              <div style={{ textAlign: "center", marginBottom: "32px" }}>
-                <Space size="large" wrap>
-                  <Button
-                    type="primary"
-                    icon={<WhatsAppOutlined />}
-                    size="large"
-                    onClick={handleWhatsAppContact}
-                    style={{
-                      background: "#25d366",
-                      borderColor: "#25d366",
-                      fontSize: "16px",
-                      height: "50px",
-                      padding: "0 30px",
-                      borderRadius: "999px",
-                    }}
-                  >
-                    WhatsApp Support
-                  </Button>
-
-                  <Button
-                    icon={<DownloadOutlined />}
-                    size="large"
-                    onClick={generatePassPDF}
-                    style={{
-                      fontSize: "16px",
-                      height: "50px",
-                      padding: "0 30px",
-                      borderRadius: "999px",
-                      background: "var(--dm-card)",
-                      borderColor: "var(--dm-line)",
-                    }}
-                  >
-                    Download PDF Pass
-                  </Button>
-
-                  <Button
-                    type="default"
-                    size="large"
-                    onClick={() =>
-                      window.open("https://ahangama.com", "_blank")
-                    }
-                    style={{
-                      fontSize: "16px",
-                      height: "50px",
-                      padding: "0 30px",
-                      borderRadius: "999px",
-                      background: "var(--dm-card)",
-                      borderColor: "var(--dm-line)",
-                    }}
-                  >
-                    🌐 View All Venues
-                  </Button>
-                </Space>
-              </div>
-
-              {/* How to Use Section */}
-              <Card
-                title="📱 How to Use Your Pass"
-                className="ahg-feature"
-                style={{ marginBottom: "24px" }}
-              >
-                <ol
-                  style={{
-                    fontSize: "16px",
-                    lineHeight: "1.8",
-                    color: "var(--dm-ink)",
-                  }}
-                >
-                  <li>
-                    <strong>Show the QR code</strong> above or from the
-                    downloaded PDF at any participating venue
-                  </li>
-                  <li>
-                    <strong>Ask staff to scan your code</strong> - they'll
-                    verify your pass instantly
-                  </li>
-                  <li>
-                    <strong>Enjoy your exclusive benefit</strong> - each venue
-                    offers unique perks and discounts!
-                  </li>
-                </ol>
-
-                <Alert
-                  message="💡 Pro Tip"
-                  description="Save this page to your phone's bookmarks or home screen for quick access to your pass!"
-                  type="info"
-                  showIcon
-                  style={{
-                    marginTop: "20px",
-                    borderRadius: "var(--dm-radius-md)",
-                    background: "rgba(79, 111, 134, 0.05)",
-                    border: "1px solid rgba(79, 111, 134, 0.15)",
-                  }}
+      <div className="qr-page qr-successPage qr-passPage">
+        <div className="qr-shell">
+          <section className="qr-receiptCard">
+            <div className="qr-receiptPaper qr-successReceiptPaper qr-passReceiptPaper">
+              <div className="qr-receiptBrandBlock">
+                <img
+                  src={palmTreeIcon}
+                  alt=""
+                  className="qr-receiptBrandIcon"
+                  aria-hidden="true"
                 />
-              </Card>
+                <div className="qr-receiptBrandTitle">AHANGAMA PASS</div>
+                <div className="qr-receiptBrandTagline">DIGITAL PASS</div>
+              </div>
 
-              {/* Benefits Section */}
-              <Card title="🎁 What Your Pass Unlocks" className="ahg-feature">
-                <Row gutter={[16, 16]}>
-                  <Col xs={24} sm={12}>
-                    <ul
-                      style={{
-                        fontSize: "14px",
-                        lineHeight: "1.6",
-                        color: "var(--dm-ink)",
-                      }}
-                    >
-                      <li>
-                        <strong>Exclusive Discounts</strong> at curated
-                        restaurants and cafes
-                      </li>
-                      <li>
-                        <strong>Special Perks</strong> at wellness and
-                        experience venues
-                      </li>
-                      <li>
-                        <strong>VIP Treatment</strong> at selected
-                        accommodations
-                      </li>
-                    </ul>
-                  </Col>
-                  <Col xs={24} sm={12}>
-                    <ul
-                      style={{
-                        fontSize: "14px",
-                        lineHeight: "1.6",
-                        color: "var(--dm-ink)",
-                      }}
-                    >
-                      <li>
-                        <strong>Free Items</strong> and upgrades at partner
-                        locations
-                      </li>
-                      <li>
-                        <strong>Local Insider Access</strong> to hidden gems
-                      </li>
-                      <li>
-                        <strong>Priority Service</strong> at participating
-                        venues
-                      </li>
-                    </ul>
-                  </Col>
-                </Row>
-              </Card>
+              <div className="qr-receiptDivider qr-receiptDivider--brand" />
+              <div className="qr-receiptEyebrow">PASS READY</div>
+              <div className={statusBadgeClass}>{statusLabel}</div>
+              <div className="qr-successStatusSummary qr-passStatusSummary">
+                Show this receipt and QR code to venue staff when redeeming your offer.
+              </div>
+
+              <div className="qr-receiptDivider" />
+
+              <div className="qr-successQrBlock">
+                <div className="qr-successQrCard qr-passQrCard">
+                  <QRCode value={buildVerifyUrl(passData.qrCode)} size={190} />
+                </div>
+                <div className="qr-successQrHint">
+                  Show QR CODE to Staff to Redeem Promotion
+                </div>
+                {passData.passkitUrl ? (
+                  <Button
+                    className="qr-successSecondaryButton qr-passWalletButton"
+                    href={passData.passkitUrl}
+                  >
+                    Add to Digital Wallet
+                  </Button>
+                ) : null}
+              </div>
+
+              <div className="qr-receiptDivider qr-receiptDivider--summary" />
+
+              <div className="qr-successReceiptSection">
+                <div className="qr-successReceiptSectionTitle">PASS DETAILS</div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Pass Type</span>
+                  <strong className="qr-successReceiptValue">
+                    {passData.productName}
+                  </strong>
+                </div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">PASS CODE</span>
+                  <strong className="qr-successReceiptValue qr-successReceiptValue--code">
+                    {passData.qrCode}
+                  </strong>
+                </div>
+                <div className="qr-passInlineAction">
+                  <Button
+                    type="text"
+                    className="qr-passCopyButton"
+                    icon={<CopyOutlined />}
+                    onClick={handleCopyCode}
+                  >
+                    Copy pass code
+                  </Button>
+                </div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Pass Holder</span>
+                  <strong className="qr-successReceiptValue">
+                    {passData.customerName}
+                  </strong>
+                </div>
+                {passData.customerEmail ? (
+                  <div className="qr-successReceiptRow">
+                    <span className="qr-successReceiptLabel">Email</span>
+                    <strong className="qr-successReceiptValue qr-passReceiptValueWrap">
+                      {passData.customerEmail}
+                    </strong>
+                  </div>
+                ) : null}
+                {passData.customerPhone ? (
+                  <div className="qr-successReceiptRow">
+                    <span className="qr-successReceiptLabel">Phone</span>
+                    <strong className="qr-successReceiptValue">
+                      {passData.customerPhone}
+                    </strong>
+                  </div>
+                ) : null}
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Purchase Date</span>
+                  <strong className="qr-successReceiptValue">
+                    {formatDisplayDate(passData.purchaseDate)}
+                  </strong>
+                </div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Expires</span>
+                  <strong className="qr-successReceiptValue qr-successReceiptValue--success">
+                    {formatDisplayDate(passData.expiryDate)}
+                  </strong>
+                </div>
+                <div className="qr-successReceiptRow">
+                  <span className="qr-successReceiptLabel">Redemptions Logged</span>
+                  <strong className="qr-successReceiptValue">
+                    {passData.redemptionCount || 0}
+                  </strong>
+                </div>
+              </div>
+
+              {redemptions.length ? (
+                <>
+                  <div className="qr-receiptSectionDivider" />
+                  <div className="qr-successReceiptSection">
+                    <div className="qr-successReceiptSectionTitle">
+                      REDEMPTION HISTORY
+                    </div>
+                    <div className="qr-passHistoryList">
+                      {redemptions.map((redemption) => {
+                        const venueLabel =
+                          redemption.venueName || redemption.venueSlug || "Venue";
+
+                        return (
+                          <div
+                            key={`${redemption.redeemedAt || "unknown"}-${venueLabel}`}
+                            className="qr-passHistoryItem"
+                          >
+                            <div className="qr-passHistoryRow">
+                              <div className="qr-passHistoryVenue">{venueLabel}</div>
+                              <div className="qr-passHistoryDate">
+                                {formatDisplayDateTime(redemption.redeemedAt)}
+                              </div>
+                            </div>
+                            {redemption.offerUsed ? (
+                              <div className="qr-passHistoryMeta">
+                                Offer used: {redemption.offerUsed}
+                              </div>
+                            ) : null}
+                            {redemption.redemptionType ? (
+                              <div className="qr-passHistoryMeta">
+                                Type: {redemption.redemptionType}
+                              </div>
+                            ) : null}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              ) : null}
+
+              <div className="qr-receiptSectionDivider" />
+
+              <div className="qr-successReceiptSection">
+                <div className="qr-successReceiptSectionTitle">HOW TO USE</div>
+                <div className="qr-passInfoList">
+                  <div className="qr-passInfoItem">
+                    Present this QR code or your downloaded PDF at a participating venue.
+                  </div>
+                  <div className="qr-passInfoItem">
+                    Venue staff will scan the code to verify and log the redemption.
+                  </div>
+                  <div className="qr-passInfoItem">
+                    Keep this page handy so you can access your pass and support quickly.
+                  </div>
+                </div>
+              </div>
+
+              <div className="qr-receiptSectionDivider" />
+
+              <div className="qr-successReceiptSection">
+                <div className="qr-successReceiptSectionTitle">PASS BENEFITS</div>
+                <div className="qr-passInfoList">
+                  <div className="qr-passInfoItem">
+                    Exclusive discounts and venue-specific perks across the Ahangama partner network.
+                  </div>
+                  <div className="qr-passInfoItem">
+                    A hosted digital pass link you can reopen from email or your device anytime.
+                  </div>
+                  <div className="qr-passInfoItem">
+                    A downloadable PDF backup in case your connection is weak while redeeming.
+                  </div>
+                </div>
+              </div>
+
+              <div className="qr-successActionStack qr-passActionStack">
+                <Button
+                  className="qr-receiptButton"
+                  icon={<DownloadOutlined />}
+                  onClick={generatePassPDF}
+                  block
+                >
+                  Download PDF Pass
+                </Button>
+                <Button
+                  className="qr-successSecondaryButton qr-passWhatsappButton"
+                  icon={<WhatsAppOutlined />}
+                  onClick={handleWhatsAppContact}
+                  block
+                >
+                  WhatsApp Support
+                </Button>
+                <Button
+                  className="qr-successSecondaryButton"
+                  onClick={() => window.open("https://ahangama.com", "_blank")}
+                  block
+                >
+                  View All Venues
+                </Button>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
-      </SiteLayout>
+      </div>
     </>
   );
 };

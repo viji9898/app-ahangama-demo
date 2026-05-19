@@ -1148,6 +1148,121 @@
   font-weight: 700;
 }
 
+.qr-passPage {
+  padding: 24px 0;
+}
+
+.qr-passReceiptPaper {
+  text-align: center;
+}
+
+.qr-passStatusSummary {
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qr-passQrCard {
+  padding: 18px;
+}
+
+.qr-passWalletButton {
+  min-width: 220px;
+  margin-top: 2px;
+}
+
+.qr-passInlineAction {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.qr-passCopyButton {
+  padding-inline: 0 !important;
+  color: rgba(31, 42, 36, 0.62) !important;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.qr-passReceiptValueWrap {
+  overflow-wrap: anywhere;
+}
+
+.qr-passHistoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.qr-passHistoryItem {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(31, 42, 36, 0.08);
+}
+
+.qr-passHistoryRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.qr-passHistoryVenue {
+  color: #19221c;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.qr-passHistoryDate {
+  color: rgba(31, 42, 36, 0.58);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.qr-passHistoryMeta {
+  margin-top: 6px;
+  color: rgba(31, 42, 36, 0.68);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.qr-passInfoList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qr-passInfoItem {
+  color: rgba(31, 42, 36, 0.76);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.qr-passActionStack {
+  margin-top: 20px;
+}
+
+.qr-passWhatsappButton {
+  color: #1f6e3a !important;
+}
+
+@media (max-width: 640px) {
+  .qr-passHistoryRow {
+    flex-direction: column;
+  }
+
+  .qr-passHistoryDate {
+    text-align: left;
+  }
+}
+
 .qr-card,
 .qr-hero,
 .qr-empty {
