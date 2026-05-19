@@ -94,10 +94,11 @@ export default function CardVerify() {
   };
 
   const qrFromUrl = parseQrFromLocation();
+  const directVerifyCode = normalizeQrCode(prefill || qrFromUrl || "");
 
-  const [qrCode, setQrCode] = useState(prefill || qrFromUrl || "");
-  const [loading, setLoading] = useState(false);
-  const [isVendorView, setIsVendorView] = useState(false);
+  const [qrCode, setQrCode] = useState(directVerifyCode);
+  const [loading, setLoading] = useState(Boolean(directVerifyCode));
+  const [isVendorView, setIsVendorView] = useState(Boolean(directVerifyCode));
   const [showRedemptionModal, setShowRedemptionModal] = useState(false);
   const [redemptionForm] = Form.useForm();
 
@@ -107,9 +108,9 @@ export default function CardVerify() {
 
   // Auto-verify when QR code is present in URL (vendor scanning workflow)
   useEffect(() => {
-    if (qrFromUrl && qrFromUrl.trim()) {
+    if (directVerifyCode) {
       setIsVendorView(true);
-      setQrCode(qrFromUrl);
+      setQrCode(directVerifyCode);
 
       const runAutoVerify = async () => {
         setLoading(true);
@@ -117,7 +118,7 @@ export default function CardVerify() {
         setRedemptionResult(null);
 
         try {
-          const result = await getVerificationResultForCode(qrFromUrl);
+          const result = await getVerificationResultForCode(directVerifyCode);
           setVerificationResult(result);
         } catch {
           setVerificationResult({
@@ -131,7 +132,7 @@ export default function CardVerify() {
 
       runAutoVerify();
     }
-  }, [qrFromUrl]);
+  }, [directVerifyCode]);
 
   // Get venues from places data (only venues that have offers)
   const venues = useMemo(() => {
@@ -425,6 +426,38 @@ export default function CardVerify() {
   };
 
   // Special vendor view when QR code is scanned directly
+  if (isVendorView && loading) {
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          backgroundColor: "#f5f5f5",
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Card
+          style={{
+            width: "100%",
+            maxWidth: 500,
+            borderRadius: 16,
+            boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+          }}
+          bodyStyle={{ padding: 32, textAlign: "center" }}
+        >
+          <Spin size="large" />
+          <Title level={3} style={{ marginTop: 24, marginBottom: 8 }}>
+            Verifying Pass
+          </Title>
+          <Text type="secondary">Checking pass details for {qrCode}</Text>
+        </Card>
+      </div>
+    );
+  }
+
   if (isVendorView && verificationResult) {
     const isValid = verificationResult.valid && !verificationResult.expired;
     const bgColor = isValid ? "#f6ffed" : "#fff2f0";
