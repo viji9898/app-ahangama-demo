@@ -294,13 +294,47 @@ const PR_PROMOTION_ALIASES = {
   "tahini-f": "tahini",
 };
 
-export function getPrPromotion(slug) {
+export function resolvePrPromotionSlug(slug) {
   if (!slug) {
+    return "";
+  }
+
+  return PR_PROMOTIONS[slug] ? slug : PR_PROMOTION_ALIASES[slug] || slug;
+}
+
+export function getPrPromoCheckoutContext(slug, promoCode) {
+  const resolvedSlug = resolvePrPromotionSlug(slug);
+  const promotion = getPrPromotion(resolvedSlug);
+  const resolvedPromoCode = String(promoCode || "").trim().toUpperCase();
+  const expectedPromoCode = String(
+    promotion?.conversion?.codeValue || "",
+  ).trim().toUpperCase();
+
+  if (!resolvedSlug || !PR_PROMOTIONS[resolvedSlug]) {
+    return null;
+  }
+
+  if (!resolvedPromoCode || resolvedPromoCode !== expectedPromoCode) {
+    return null;
+  }
+
+  return {
+    slug: resolvedSlug,
+    promoCode: promotion.conversion.codeValue,
+    promoPrice: Number(promotion.receipt?.promoPrice) || 0,
+    currency: promotion.receipt?.currency || "USD",
+    promotion,
+  };
+}
+
+export function getPrPromotion(slug) {
+  const resolvedSlug = resolvePrPromotionSlug(slug);
+
+  if (!resolvedSlug) {
     return DEFAULT_PR_PROMOTION;
   }
 
-  const promotion =
-    PR_PROMOTIONS[slug] || PR_PROMOTIONS[PR_PROMOTION_ALIASES[slug]];
+  const promotion = PR_PROMOTIONS[resolvedSlug];
 
   if (!promotion) {
     return DEFAULT_PR_PROMOTION;

@@ -27,33 +27,10 @@ import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 import HomeDesktop from "../pages/HomeDesktop";
 import Resellers from "../pages/Resellers";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
-import { Seo } from "./seo";
-
-function ExternalRedirect({ to }) {
-  React.useEffect(() => {
-    window.location.replace(to);
-  }, [to]);
-
-  return (
-    <>
-      <Seo
-        title="Google Map Redirect — Ahangama"
-        description="Direct link to Google Maps for Ahangama."
-        canonical={to}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "Google Map Redirect — Ahangama",
-          url: to,
-        }}
-      />
-      <a href={to}>Continuing to Google Maps</a>
-    </>
-  );
-}
+import ExternalRedirect from "./ExternalRedirect";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
-export const routes = [
+const routes = [
   { path: "/home-v-2", element: <HomeV2 /> },
   { path: "/home-mobile", element: <HomeMobile /> },
   { path: "/home-desktop", element: <HomeDesktop /> },
@@ -78,6 +55,8 @@ export const routes = [
   { path: "/card/success", element: <PaymentSuccess /> },
   { path: "/card/my", element: <MyCard /> },
   { path: "/card/pass/:cardId", element: <CardPass /> },
+  { path: "/verify", element: <CardVerify /> },
+  { path: "/verify/:cardId", element: <CardVerify /> },
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
@@ -107,3 +86,5 @@ export const routes = [
   { path: "/retail/:slug", element: <PlaceDetail category="retail" /> },
   { path: "*", element: <NotFound /> },
 ];
+
+export default routes;

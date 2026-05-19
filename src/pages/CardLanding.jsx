@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Card,
   Typography,
@@ -23,14 +23,34 @@ import { absUrl } from "../app/siteUrl";
 import { CARD_PRODUCTS } from "../data/cardConfig";
 import PaymentModal from "../components/ui/PaymentModal";
 import { trackPassCtaClick } from "../analytics";
+import { useSearchParams } from "react-router-dom";
+import { getPrPromoCheckoutContext } from "../data/prPromotions";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function CardLanding() {
-  const [paymentModal, setPaymentModal] = useState({
-    visible: false,
-    product: null,
-  });
+  const [searchParams] = useSearchParams();
+
+  const promoFlowType = searchParams.get("flow") || "";
+  const promoCode = searchParams.get("promo") || "";
+  const promoVenueSlug =
+    searchParams.get("venue") || searchParams.get("utm_content") || "";
+  const promoProductId = searchParams.get("product") || "week";
+  const promoCtaLocation = searchParams.get("cta") || "conversion";
+
+  const promoContext = useMemo(() => {
+    if (promoFlowType !== "promo") {
+      return null;
+    }
+
+    return getPrPromoCheckoutContext(promoVenueSlug, promoCode);
+  }, [promoCode, promoFlowType, promoVenueSlug]);
+
+  const [paymentModal, setPaymentModal] = useState(() => ({
+    visible: Boolean(promoContext && CARD_PRODUCTS[promoProductId]),
+    product: promoContext ? CARD_PRODUCTS[promoProductId] || null : null,
+    ctaLocation: promoContext ? `qr_${promoCtaLocation}` : null,
+  }));
 
   const handlePurchase = (product) => {
     trackPassCtaClick({
@@ -41,6 +61,7 @@ export default function CardLanding() {
     setPaymentModal({
       visible: true,
       product,
+      ctaLocation: "card_landing",
     });
   };
 
@@ -48,6 +69,7 @@ export default function CardLanding() {
     setPaymentModal({
       visible: false,
       product: null,
+      ctaLocation: null,
     });
   };
   return (
@@ -62,6 +84,18 @@ export default function CardLanding() {
       <div className="dm-canvas">
         <div className="dm-wrap">
           <div style={{ marginBottom: 32 }}>
+            {promoContext ? (
+              <Paragraph
+                style={{
+                  fontSize: 14,
+                  marginBottom: 12,
+                  color: "var(--ocean-blue, #4f6f86)",
+                  fontWeight: 600,
+                }}
+              >
+                Promo applied: {promoContext.promoCode} • Final checkout price ${promoContext.promoPrice}
+              </Paragraph>
+            ) : null}
             <Title
               level={1}
               style={{
@@ -367,6 +401,8 @@ export default function CardLanding() {
         visible={paymentModal.visible}
         onCancel={closePaymentModal}
         product={paymentModal.product}
+        promoContext={promoContext}
+        ctaLocation={paymentModal.ctaLocation}
       />
     </SiteLayout>
   );

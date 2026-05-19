@@ -26,22 +26,77 @@ import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import VerifyStatusPanel from "../components/ui/VerifyStatusPanel";
-import { redeemCard, verifyCardByCode } from "../app/cardStore";
+import { normalizeQrCode, redeemCard, verifyCardByCode } from "../app/cardStore";
+import { getPromoPassById } from "../services/stripe";
 
 const { Title, Paragraph, Text } = Typography;
+
+const normalizePromoVerificationResult = (purchase) => {
+  const expiryDate = purchase.expiryDate || purchase.validTo || null;
+  const startDate = purchase.startDate || purchase.validFrom || null;
+  const now = Date.now();
+  const expiryTime = Date.parse(expiryDate || 0);
+  const startTime = Date.parse(startDate || 0);
+  const expired = Number.isFinite(expiryTime) ? now > expiryTime : false;
+  const notYetActive = Number.isFinite(startTime) ? now < startTime : false;
+  const valid = !expired && !notYetActive;
+
+  return {
+    valid,
+    expired,
+    error: expired
+      ? "Card expired"
+      : notYetActive
+        ? "Card not active yet"
+        : null,
+    purchase: {
+      qrCode: purchase.passId,
+      cardId: purchase.passId,
+      customerName: purchase.customerName,
+      customerEmail: purchase.customerEmail,
+      customerPhone: purchase.customerPhone,
+      productName: purchase.productName,
+      startDate,
+      expiryDate,
+      maxPeople: purchase.maxPeople || 1,
+      redemptionCount: 0,
+    },
+  };
+};
+
+async function getVerificationResultForCode(targetCode) {
+  const promoPass = await getPromoPassById(targetCode);
+  return promoPass?.passId
+    ? normalizePromoVerificationResult(promoPass)
+    : verifyCardByCode(targetCode);
+}
 
 export default function CardVerify() {
   const { places: allPlaces } = usePlaces();
   const params = useParams();
   const prefill = params.cardId ? decodeURIComponent(params.cardId) : "";
 
-  // Get QR code from URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const qrFromUrl = urlParams.get("qr");
+  const parseQrFromLocation = () => {
+    const rawSearch = window.location.search || "";
+    const urlParams = new URLSearchParams(rawSearch);
+    const qrParam = urlParams.get("qr");
+
+    if (qrParam) {
+      return normalizeQrCode(qrParam);
+    }
+
+    const rawValue = rawSearch.replace(/^\?/, "").trim();
+    if (rawValue && !rawValue.includes("=")) {
+      return normalizeQrCode(rawValue);
+    }
+
+    return "";
+  };
+
+  const qrFromUrl = parseQrFromLocation();
 
   const [qrCode, setQrCode] = useState(prefill || qrFromUrl || "");
   const [loading, setLoading] = useState(false);
-  const [autoVerified, setAutoVerified] = useState(false);
   const [isVendorView, setIsVendorView] = useState(false);
   const [showRedemptionModal, setShowRedemptionModal] = useState(false);
   const [redemptionForm] = Form.useForm();
@@ -55,7 +110,26 @@ export default function CardVerify() {
     if (qrFromUrl && qrFromUrl.trim()) {
       setIsVendorView(true);
       setQrCode(qrFromUrl);
-      verifyQRCode(qrFromUrl);
+
+      const runAutoVerify = async () => {
+        setLoading(true);
+        setVerificationResult(null);
+        setRedemptionResult(null);
+
+        try {
+          const result = await getVerificationResultForCode(qrFromUrl);
+          setVerificationResult(result);
+        } catch {
+          setVerificationResult({
+            valid: false,
+            error: "Failed to verify QR code. Please try again.",
+          });
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      runAutoVerify();
     }
   }, [qrFromUrl]);
 
@@ -104,13 +178,13 @@ export default function CardVerify() {
 
   const canonical = absUrl(
     params.cardId
-      ? `/card/verify/${encodeURIComponent(prefill)}`
-      : "/card/verify",
+      ? `/verify/${encodeURIComponent(prefill)}`
+      : "/verify",
   );
 
   // QR Code verification function
   const verifyQRCode = async (codeToVerify = null) => {
-    const targetCode = codeToVerify || qrCode;
+    const targetCode = normalizeQrCode(codeToVerify || qrCode);
     if (!targetCode) {
       setVerificationResult({
         valid: false,
@@ -124,9 +198,9 @@ export default function CardVerify() {
     setRedemptionResult(null);
 
     try {
-      const result = verifyCardByCode(targetCode);
+      const result = await getVerificationResultForCode(targetCode);
       setVerificationResult(result);
-    } catch (error) {
+    } catch {
       setVerificationResult({
         valid: false,
         error: "Failed to verify QR code. Please try again.",

@@ -12,10 +12,130 @@ import QRCodeLib from "qrcode";
 import { sendPassEmailViaFunction } from "../services/emailService";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
-import { verifyPayment } from "../services/stripe";
+import { getPromoPurchaseBySession, verifyPayment } from "../services/stripe";
 import { issuePurchasedCard, normalizeQrCode } from "../app/cardStore";
+import { trackPassPurchase } from "../analytics";
 
 const { Title, Paragraph, Text } = Typography;
+const PURCHASE_TRACKED_STORAGE_PREFIX = "ahangama_purchase_tracked";
+const LEGACY_DELIVERY_STORAGE_PREFIX = "ahangama_legacy_delivery";
+
+const calculateValidityDays = (startDate, expiryDate, fallback = 0) => {
+  const start = new Date(startDate || 0);
+  const end = new Date(expiryDate || 0);
+
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    return fallback;
+  }
+
+  return Math.max(
+    fallback,
+    Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)),
+  );
+};
+
+const buildVerifyUrl = (qrCode) =>
+  `https://ahangama.com/verify?${encodeURIComponent(qrCode || "")}`;
+
+const normalizePromoPurchaseData = (data) => {
+  const purchaseDate = data.createdAt || new Date().toISOString();
+  const startDate = data.startDate || purchaseDate;
+  const expiryDate = data.expiryDate || purchaseDate;
+  const validityDays = calculateValidityDays(
+    startDate,
+    expiryDate,
+    Number(data.validityDays || 0),
+  );
+
+  return {
+    qrCode: normalizeQrCode(data.passId),
+    productName: data.productName || "Ahangama Pass",
+    customerName:
+      data.customerName || data.customerEmail?.split("@")[0] || "Guest",
+    customerEmail: data.customerEmail || "",
+    customerPhone: data.customerPhone || "",
+    validityDays,
+    purchaseDate,
+    startDate,
+    expiryDate,
+    flowType: "promo",
+    promoCode: data.promoCode || "",
+    venueSlug: data.venueSlug || "",
+    priceUsd: data.chargedPriceUsd || data.listPriceUsd || "0",
+    chargedPriceUsd: data.chargedPriceUsd || "0",
+    listPriceUsd: data.listPriceUsd || "0",
+    discountUsd: data.discountUsd || "0",
+    passUrl: data.passUrl || "",
+    passkitUrl: data.passkitUrl || "",
+  };
+};
+
+const shouldTrackPurchase = (sessionId) => {
+  if (typeof window === "undefined") {
+    return true;
+  }
+
+  try {
+    const storageKey = `${PURCHASE_TRACKED_STORAGE_PREFIX}:${sessionId}`;
+
+    if (window.sessionStorage.getItem(storageKey)) {
+      return false;
+    }
+
+    window.sessionStorage.setItem(storageKey, "1");
+    return true;
+  } catch {
+    return true;
+  }
+};
+
+const shouldSendLegacyDelivery = (sessionId) => {
+  if (typeof window === "undefined") {
+    return true;
+  }
+
+  try {
+    const storageKey = `${LEGACY_DELIVERY_STORAGE_PREFIX}:${sessionId}`;
+
+    if (window.sessionStorage.getItem(storageKey)) {
+      return false;
+    }
+
+    window.sessionStorage.setItem(storageKey, "1");
+    return true;
+  } catch {
+    return true;
+  }
+};
+
+const isInvalidSessionId = (sessionId) => {
+  const normalized = String(sessionId || "").trim();
+
+  return (
+    !normalized ||
+    normalized.includes("CHECKOUT_SESSION_ID") ||
+    normalized.startsWith("{") ||
+    normalized.startsWith("%7B")
+  );
+};
+
+const waitForPromoPurchase = async (sessionId, attempts = 5, delayMs = 1200) => {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    const promoPurchase = await getPromoPurchaseBySession(sessionId);
+
+    if (promoPurchase?.passId) {
+      return promoPurchase;
+    }
+
+    if (attempt < attempts - 1) {
+      await new Promise((resolve) => {
+        window.setTimeout(resolve, delayMs);
+      });
+    }
+  }
+
+  return null;
+};
 
 const generatePassPDF = async (
   paymentData,
@@ -30,12 +150,11 @@ const generatePassPDF = async (
   });
 
   const pageWidth = 105;
-  const pageHeight = 160;
   const margin = 8;
 
   // Generate QR Code as data URL
   const qrCodeDataUrl = await QRCodeLib.toDataURL(
-    `https://ahangama.com/card/verify?qr=${paymentData.qrCode}`,
+    `https://ahangama.com/verify?${encodeURIComponent(paymentData.qrCode)}`,
     {
       width: 120,
       margin: 1,
@@ -208,7 +327,6 @@ const generatePassPDF = async (
 
   if (shouldEmail) {
     // Return PDF as base64 for emailing
-    const pdfBuffer = pdf.output("arraybuffer");
     const pdfBase64 = pdf.output("datauristring").split(",")[1];
     return { pdfBase64, filename };
   }
@@ -240,12 +358,42 @@ export default function PaymentSuccess() {
       return;
     }
 
+    if (isInvalidSessionId(sessionId)) {
+      setError(
+        "Invalid checkout session. Please start a fresh checkout from the promo page.",
+      );
+      setLoading(false);
+      return;
+    }
+
     const verifyAndLoadPayment = async () => {
       try {
+        const promoPurchase = await waitForPromoPurchase(sessionId);
+
+        if (promoPurchase?.passId) {
+          const normalizedPromoData = normalizePromoPurchaseData(promoPurchase);
+
+          if (shouldTrackPurchase(sessionId)) {
+            trackPassPurchase({
+              sessionId,
+              paymentData: normalizedPromoData,
+            });
+          }
+
+          setPaymentData(normalizedPromoData);
+          setEmailSent(promoPurchase.customerEmailStatus === "sent");
+          setEmailError(
+            promoPurchase.customerEmailStatus === "failed"
+              ? "Email delivery failed."
+              : null,
+          );
+          return;
+        }
+
         const data = await verifyPayment(sessionId);
         const normalizedData = {
           ...data,
-          qrCode: normalizeQrCode(data.qrCode),
+          qrCode: normalizeQrCode(data.passId || data.qrCode),
           customerName:
             data.customerName || data.customerEmail?.split("@")[0] || "Guest",
           purchaseDate: data.purchaseDate || new Date().toISOString(),
@@ -253,15 +401,44 @@ export default function PaymentSuccess() {
             data.startDate || data.purchaseDate || new Date().toISOString(),
         };
 
+        if (normalizedData.flowType === "promo" && normalizedData.passId) {
+          if (shouldTrackPurchase(sessionId)) {
+            trackPassPurchase({
+              sessionId,
+              paymentData: normalizedData,
+            });
+          }
+
+          setPaymentData(normalizedData);
+          setEmailSent(normalizedData.customerEmailStatus === "sent");
+          setEmailError(
+            normalizedData.customerEmailStatus === "failed"
+              ? "Email delivery failed."
+              : null,
+          );
+          return;
+        }
+
         issuePurchasedCard({
           ...normalizedData,
           sessionId,
         });
 
+        if (shouldTrackPurchase(sessionId)) {
+          trackPassPurchase({
+            sessionId,
+            paymentData: normalizedData,
+          });
+        }
+
         setPaymentData(normalizedData);
 
         // Auto-send email with PDF
-        await sendPassPDF(normalizedData);
+        if (shouldSendLegacyDelivery(sessionId)) {
+          await sendPassPDF(normalizedData);
+        } else {
+          navigate(`/card/pass/${normalizedData.qrCode}`);
+        }
       } catch (err) {
         setError(err.message);
       } finally {
@@ -297,7 +474,7 @@ export default function PaymentSuccess() {
     };
 
     verifyAndLoadPayment();
-  }, [sessionId]);
+  }, [navigate, sessionId]);
 
   if (loading) {
     return (
@@ -371,7 +548,7 @@ export default function PaymentSuccess() {
           }}
         >
           <QRCode
-            value={paymentData.qrCode}
+            value={buildVerifyUrl(paymentData.qrCode)}
             size={200}
             style={{ marginBottom: 16 }}
           />
@@ -466,7 +643,11 @@ export default function PaymentSuccess() {
           <Button
             type="primary"
             size="large"
-            href={`/card/pass/${paymentData.qrCode}`}
+            href={
+              paymentData.passkitUrl ||
+              paymentData.passUrl ||
+              `/card/pass/${paymentData.qrCode}`
+            }
             style={{
               marginRight: 8,
               marginBottom: 8,

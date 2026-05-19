@@ -2,7 +2,7 @@ const ATTRIBUTION_STORAGE_KEY = "ahangama_pass_attribution";
 
 export const PASS_CTA_BASE_URL = "https://pass.ahangama.com";
 
-const ATTRIBUTION_KEYS = [
+export const PASS_ATTRIBUTION_KEYS = [
   "utm_source",
   "utm_medium",
   "utm_campaign",
@@ -13,7 +13,7 @@ const ATTRIBUTION_KEYS = [
 const hasValue = (value) => typeof value === "string" && value.length > 0;
 
 const sanitizeAttribution = (attribution = {}) =>
-  ATTRIBUTION_KEYS.reduce((result, key) => {
+  PASS_ATTRIBUTION_KEYS.reduce((result, key) => {
     if (hasValue(attribution[key])) {
       result[key] = attribution[key];
     }
@@ -22,13 +22,13 @@ const sanitizeAttribution = (attribution = {}) =>
   }, {});
 
 const hasAttribution = (attribution = {}) =>
-  ATTRIBUTION_KEYS.some((key) => hasValue(attribution[key]));
+  PASS_ATTRIBUTION_KEYS.some((key) => hasValue(attribution[key]));
 
 export const getPassAttributionFromSearch = (search = "") => {
   const params = new URLSearchParams(search);
 
   return sanitizeAttribution(
-    ATTRIBUTION_KEYS.reduce((result, key) => {
+    PASS_ATTRIBUTION_KEYS.reduce((result, key) => {
       const value = params.get(key);
 
       if (value !== null) {
@@ -79,7 +79,9 @@ const writeStoredPassAttribution = (attribution = {}) => {
       ATTRIBUTION_STORAGE_KEY,
       JSON.stringify(sanitizedAttribution),
     );
-  } catch {}
+  } catch {
+    return sanitizedAttribution;
+  }
 
   return sanitizedAttribution;
 };
@@ -125,7 +127,7 @@ export const buildPassCtaUrl = (destinationUrl = PASS_CTA_BASE_URL) => {
       ? new URL(destinationUrl)
       : new URL(destinationUrl, window.location.origin);
 
-    ATTRIBUTION_KEYS.forEach((key) => {
+    PASS_ATTRIBUTION_KEYS.forEach((key) => {
       if (hasValue(attribution[key])) {
         url.searchParams.set(key, attribution[key]);
       }

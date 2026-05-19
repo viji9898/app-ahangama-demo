@@ -30,8 +30,51 @@ import QRCodeLib from "qrcode";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { verifyCardByCode } from "../app/cardStore";
+import { getPromoPassById } from "../services/stripe";
 
 const { Title, Paragraph, Text } = Typography;
+
+const calculateValidityDays = (startDate, expiryDate, fallback = 0) => {
+  const start = new Date(startDate || 0);
+  const end = new Date(expiryDate || 0);
+
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    return fallback;
+  }
+
+  return Math.max(
+    fallback,
+    Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)),
+  );
+};
+
+const isWebhookPromoPassId = (passId) =>
+  /^AHG-[A-F0-9]{12}$/.test(String(passId || "").trim());
+
+const normalizePromoPassData = (data) => {
+  const purchaseDate = data.purchaseDate || data.startDate || new Date().toISOString();
+  const startDate = data.startDate || purchaseDate;
+  const expiryDate = data.expiryDate || purchaseDate;
+
+  return {
+    qrCode: data.passId,
+    productName: data.productName || "Ahangama Pass",
+    customerName:
+      data.customerName || data.customerEmail?.split("@")[0] || "Guest",
+    customerEmail: data.customerEmail || "",
+    customerPhone: data.customerPhone || "",
+    validityDays: calculateValidityDays(startDate, expiryDate, 0),
+    purchaseDate,
+    expiryDate,
+    status: data.status || "active",
+    remainingDays: Math.max(
+      0,
+      Math.ceil((new Date(expiryDate) - new Date()) / (1000 * 60 * 60 * 24)),
+    ),
+    passUrl: data.passUrl || "",
+    passkitUrl: data.passkitUrl || "",
+  };
+};
 
 const CardPass = () => {
   const { cardId } = useParams();
@@ -44,51 +87,63 @@ const CardPass = () => {
   const qrCode = cardId;
 
   useEffect(() => {
-    if (!qrCode) {
-      setError("No pass code provided");
-      setLoading(false);
-      return;
-    }
-
-    try {
-      const result = verifyCardByCode(qrCode);
-
-      if (!result.purchase) {
-        setError(result.error || "Invalid pass code");
+    const loadPass = async () => {
+      if (!qrCode) {
+        setError("No pass code provided");
         setLoading(false);
         return;
       }
 
-      const purchase = result.purchase;
-      const nextPassData = {
-        qrCode: purchase.qrCode,
-        productName: purchase.productName,
-        customerName: purchase.customerName,
-        customerEmail: purchase.customerEmail,
-        customerPhone: purchase.customerPhone,
-        validityDays: purchase.validityDays,
-        purchaseDate: purchase.purchaseDate,
-        expiryDate: purchase.expiryDate,
-        status: result.valid && !result.expired ? "active" : "expired",
-        remainingDays: Math.max(
-          0,
-          Math.ceil(
-            (new Date(purchase.expiryDate) - new Date()) /
-              (1000 * 60 * 60 * 24),
-          ),
-        ),
-      };
+      try {
+        const promoPass = isWebhookPromoPassId(qrCode)
+          ? await getPromoPassById(qrCode)
+          : null;
 
-      setPassData(nextPassData);
-      if (!result.valid) {
-        setError(result.error || "This pass has expired.");
+        if (promoPass?.passId) {
+          setPassData(normalizePromoPassData(promoPass));
+          return;
+        }
+
+        const result = verifyCardByCode(qrCode);
+
+        if (!result.purchase) {
+          setError(result.error || "Invalid pass code");
+          return;
+        }
+
+        const purchase = result.purchase;
+        const nextPassData = {
+          qrCode: purchase.qrCode,
+          productName: purchase.productName,
+          customerName: purchase.customerName,
+          customerEmail: purchase.customerEmail,
+          customerPhone: purchase.customerPhone,
+          validityDays: purchase.validityDays,
+          purchaseDate: purchase.purchaseDate,
+          expiryDate: purchase.expiryDate,
+          status: result.valid && !result.expired ? "active" : "expired",
+          remainingDays: Math.max(
+            0,
+            Math.ceil(
+              (new Date(purchase.expiryDate) - new Date()) /
+                (1000 * 60 * 60 * 24),
+            ),
+          ),
+        };
+
+        setPassData(nextPassData);
+        if (!result.valid) {
+          setError(result.error || "This pass has expired.");
+        }
+      } catch (err) {
+        console.error("Error loading pass data:", err);
+        setError("Failed to load pass data");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error("Error loading pass data:", err);
-      setError("Failed to load pass data");
-    } finally {
-      setLoading(false);
-    }
+    };
+
+    loadPass();
   }, [qrCode]);
 
   const handleWhatsAppContact = () => {
@@ -115,12 +170,11 @@ const CardPass = () => {
     });
 
     const pageWidth = 105;
-    const pageHeight = 160;
     const margin = 8;
 
     // Generate QR Code as data URL
     const qrCodeDataUrl = await QRCodeLib.toDataURL(
-      `https://ahangama.com/card/verify?qr=${passData.qrCode}`,
+      `https://ahangama.com/verify?${encodeURIComponent(passData.qrCode)}`,
       {
         width: 120,
         margin: 1,
@@ -322,14 +376,6 @@ const CardPass = () => {
     );
   }
 
-  const isExpired = new Date() > new Date(passData.expiryDate);
-  const remainingDays = Math.max(
-    0,
-    Math.ceil(
-      (new Date(passData.expiryDate) - new Date()) / (1000 * 60 * 60 * 24),
-    ),
-  );
-
   return (
     <>
       <Seo
@@ -426,7 +472,7 @@ const CardPass = () => {
                         }}
                       >
                         <QRCode
-                          value={`https://ahangama.com/card/verify?qr=${passData.qrCode}`}
+                          value={`https://ahangama.com/verify?${encodeURIComponent(passData.qrCode)}`}
                           size={200}
                         />
                       </div>

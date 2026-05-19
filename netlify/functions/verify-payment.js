@@ -1,10 +1,58 @@
 import Stripe from "stripe";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
+import { sendPromoNotifications } from "../../lib/promo-purchase-fulfillment.js";
+import { syncPromoPurchaseFromSession } from "../../lib/promo-purchase-sync.js";
 import { getStripeKey } from "../../lib/stripe-config.js";
 
 const stripe = new Stripe(getStripeKey());
 
-export const handler = async (event, context) => {
+async function resolveStripeReceiptUrl(session) {
+  const paymentIntentId =
+    typeof session.payment_intent === "string"
+      ? session.payment_intent
+      : session.payment_intent?.id || null;
+
+  const latestChargeReceiptUrl =
+    session.payment_intent?.latest_charge?.receipt_url || null;
+
+  if (latestChargeReceiptUrl) {
+    return latestChargeReceiptUrl;
+  }
+
+  if (!paymentIntentId) {
+    return null;
+  }
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId, {
+      expand: ["latest_charge"],
+    });
+
+    return paymentIntent.latest_charge?.receipt_url || null;
+  } catch (error) {
+    console.error("Failed to resolve Stripe receipt URL:", error);
+    return null;
+  }
+}
+
+function isInvalidSessionId(sessionId) {
+  const normalized = String(sessionId || "").trim();
+
+  return (
+    !normalized ||
+    normalized.includes("CHECKOUT_SESSION_ID") ||
+    normalized.startsWith("{") ||
+    normalized.startsWith("%7B")
+  );
+}
+
+function getResolvedValidityDays(session) {
+  return session.metadata.flowType === "promo"
+    ? 30
+    : parseInt(session.metadata.validityDays);
+}
+
+export const handler = async (event) => {
   const headers = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -35,6 +83,18 @@ export const handler = async (event, context) => {
       };
     }
 
+    if (isInvalidSessionId(sessionId)) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({
+          error: "Invalid session ID",
+          details:
+            "Received Stripe placeholder instead of a real checkout session id. Start a fresh checkout.",
+        }),
+      };
+    }
+
     // Environment validation
     try {
       getStripeKey();
@@ -58,6 +118,17 @@ export const handler = async (event, context) => {
             .substring(0, 8)
             .toUpperCase()}`,
           priceUsd: CARD_PRODUCTS.standard.priceUsd,
+          listPriceUsd: CARD_PRODUCTS.standard.priceUsd,
+          chargedPriceUsd: CARD_PRODUCTS.standard.priceUsd,
+          flowType: "standard",
+          ctaLocation: "",
+          venueSlug: "",
+          promoCode: "",
+          utmSource: "",
+          utmMedium: "",
+          utmCampaign: "",
+          utmContent: "",
+          utmTerm: "",
           maxPeople: CARD_PRODUCTS.standard.maxPeople,
           validityDays: 15,
           purchaseDate: new Date().toISOString(),
@@ -80,18 +151,30 @@ export const handler = async (event, context) => {
     }
 
     const product = CARD_PRODUCTS[session.metadata.productId];
-    const qrCodeId = `AHG-${product.qrId}-${sessionId
-      .substring(0, 8)
-      .toUpperCase()}`;
+    const isPromoFlow = session.metadata.flowType === "promo";
+    let promoPurchase = isPromoFlow
+      ? await syncPromoPurchaseFromSession(session, {
+          headers: event.headers || {},
+        resolveStripeReceiptUrl,
+        })
+      : null;
+
+    if (promoPurchase?.fulfillmentStatus === "payment_confirmed") {
+      promoPurchase = await sendPromoNotifications(promoPurchase);
+    }
+
+    const qrCodeId = promoPurchase?.passId
+      ? promoPurchase.passId
+      : `AHG-${product.qrId}-${sessionId.substring(0, 8).toUpperCase()}`;
 
     // Calculate dates based on start date from metadata
     const startDate = session.metadata.startDate
       ? new Date(session.metadata.startDate)
       : new Date();
 
+    const validityDays = getResolvedValidityDays(session);
     const expiryDate = new Date(
-      startDate.getTime() +
-        parseInt(session.metadata.validityDays) * 24 * 60 * 60 * 1000,
+      startDate.getTime() + validityDays * 24 * 60 * 60 * 1000,
     );
 
     const responseData = {
@@ -102,11 +185,29 @@ export const handler = async (event, context) => {
       customerPhone: session.metadata.customerPhone,
       qrCode: qrCodeId,
       priceUsd: (session.amount_total / 100).toString(),
+      listPriceUsd: session.metadata.listPriceUsd || "",
+      chargedPriceUsd:
+        session.metadata.chargedPriceUsd || (session.amount_total / 100).toString(),
+      flowType: session.metadata.flowType || "standard",
+      ctaLocation: session.metadata.ctaLocation || "",
+      venueSlug: session.metadata.venueSlug || "",
+      promoCode: session.metadata.promoCode || "",
+      utmSource: session.metadata.utmSource || "",
+      utmMedium: session.metadata.utmMedium || "",
+      utmCampaign: session.metadata.utmCampaign || "",
+      utmContent: session.metadata.utmContent || "",
+      utmTerm: session.metadata.utmTerm || "",
       maxPeople: parseInt(session.metadata.maxPeople || "1"),
-      validityDays: parseInt(session.metadata.validityDays),
+      validityDays,
       purchaseDate: new Date().toISOString(),
       startDate: startDate.toISOString(),
       expiryDate: expiryDate.toISOString(),
+      passId: promoPurchase?.passId || "",
+      passUrl: promoPurchase?.passUrl || "",
+      passkitUrl: promoPurchase?.passkitUrl || "",
+      customerEmailStatus: promoPurchase?.customerEmailStatus || "",
+      venueEmailStatus: promoPurchase?.venueEmailStatus || "",
+      teamEmailStatus: promoPurchase?.teamEmailStatus || "",
     };
 
     return {

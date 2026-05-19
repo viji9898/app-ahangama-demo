@@ -11,8 +11,12 @@ import { useParams } from "react-router-dom";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { trackQrEvent } from "../analytics";
-import { getPrPromotion } from "../data/prPromotions";
+import {
+  getPrPromoCheckoutContext,
+  getPrPromotion,
+} from "../data/prPromotions";
 import { calculatePromoReceipt, formatCurrency } from "../lib/promoReceipt";
+import { createCheckoutSession } from "../services/stripe";
 import coffeeIcon from "../assets/receipt_icons/coffee.svg";
 import pastryIcon from "../assets/receipt_icons/pastry.svg";
 import postcardsIcon from "../assets/receipt_icons/postcards.svg";
@@ -99,6 +103,10 @@ function normalizeOffers(venue) {
 
 function buildPurchaseUrl(slug, promoCode) {
   const params = new URLSearchParams({
+    flow: "promo",
+    venue: slug,
+    product: "week",
+    cta: "conversion",
     utm_source: "qr",
     utm_medium: "offline",
     utm_campaign: "qr_venue_conversion",
@@ -106,7 +114,7 @@ function buildPurchaseUrl(slug, promoCode) {
     promo: promoCode,
   });
 
-  return `https://pass.ahangama.com?${params.toString()}`;
+  return `https://pass.ahangama.com/card?${params.toString()}`;
 }
 
 function LoadingState() {
@@ -179,7 +187,8 @@ function EmptyState({ slug }) {
   );
 }
 
-function ReceiptSection({ promotion, purchaseUrl, onPassClick, venueName }) {
+function ReceiptSection({ promotion, onPassClick, venueName }) {
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
   const { conversion, receipt, trustPoints } = promotion;
   const summary = calculatePromoReceipt(receipt.items, receipt.promoPrice);
   const brandTitle = normalizeText(venueName)
@@ -292,8 +301,16 @@ function ReceiptSection({ promotion, purchaseUrl, onPassClick, venueName }) {
           className="qr-receiptButton"
           size="large"
           block
-          href={purchaseUrl}
-          onClick={() => onPassClick("conversion")}
+          loading={checkoutLoading}
+          onClick={async () => {
+            setCheckoutLoading(true);
+
+            try {
+              await onPassClick("conversion");
+            } finally {
+              setCheckoutLoading(false);
+            }
+          }}
         >
           <span>{conversion.buttonText}</span>
           <ArrowRightOutlined />
@@ -376,6 +393,10 @@ export default function VenueQrLandingPage() {
     [slug, venue],
   );
   const purchaseUrl = buildPurchaseUrl(slug, promotion.conversion.codeValue);
+  const promoCheckoutContext = useMemo(
+    () => getPrPromoCheckoutContext(slug, promotion.conversion.codeValue),
+    [promotion.conversion.codeValue, slug],
+  );
 
   const analyticsPayload = useMemo(
     () => ({
@@ -402,7 +423,7 @@ export default function VenueQrLandingPage() {
     trackedViewRef.current = false;
   }, [slug]);
 
-  const handlePassClick = (location) => {
+  const handlePassClick = async (location) => {
     if (!venue) return;
 
     trackQrEvent("qr_pass_cta_click", {
@@ -410,6 +431,32 @@ export default function VenueQrLandingPage() {
       cta_location: location,
       destination_url: purchaseUrl,
     });
+
+    if (!promoCheckoutContext) {
+      window.location.href = purchaseUrl;
+      return;
+    }
+
+    await createCheckoutSession(
+      "week",
+      {
+        name: "",
+        email: "",
+        phone: "",
+        startDate: new Date().toISOString().split("T")[0],
+      },
+      {
+        promoContext: promoCheckoutContext,
+        ctaLocation: `qr_${location}`,
+        attribution: {
+          utm_source: "qr",
+          utm_medium: "offline",
+          utm_campaign: "qr_venue_conversion",
+          utm_content: venue.slug,
+        },
+        cancelUrl: `/qr/${venue.slug}`,
+      },
+    );
   };
 
   const handleRetry = () => {
@@ -464,7 +511,6 @@ export default function VenueQrLandingPage() {
 
           <ReceiptSection
             promotion={promotion}
-            purchaseUrl={purchaseUrl}
             onPassClick={handlePassClick}
             venueName={venue.name}
           />

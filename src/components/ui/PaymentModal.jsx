@@ -19,11 +19,18 @@ import { createCheckoutSession } from "../../services/stripe";
 
 const { Text } = Typography;
 
-export default function PaymentModal({ visible, onCancel, product }) {
+export default function PaymentModal({
+  visible,
+  onCancel,
+  product,
+  promoContext = null,
+  ctaLocation = null,
+}) {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [startDate, setStartDate] = useState(dayjs());
+  const displayPrice = promoContext?.promoPrice ?? product?.priceUsd;
 
   // Calculate end date based on start date and product validity
   const endDate = startDate?.add(product?.validityDays || 30, "day");
@@ -38,6 +45,9 @@ export default function PaymentModal({ visible, onCancel, product }) {
         email: values.email,
         phone: values.phone,
         startDate: startDate.format("YYYY-MM-DD"),
+      }, {
+        promoContext,
+        ctaLocation,
       });
     } catch (err) {
       setError(err.message);
@@ -66,8 +76,9 @@ export default function PaymentModal({ visible, onCancel, product }) {
             </Text>
             <br />
             <Text style={{ fontSize: 24, fontWeight: "600", color: "#1890ff" }}>
-              ${product.priceUsd}
+              ${displayPrice}
             </Text>
+            {promoContext ? <Text type="secondary"> • promo {promoContext.promoCode}</Text> : null}
             <Text type="secondary">
               {" "}
               • {product.validityDays} days • {product.maxPeople}{" "}
@@ -204,7 +215,7 @@ export default function PaymentModal({ visible, onCancel, product }) {
           >
             {loading
               ? "Processing..."
-              : `Pay $${product?.priceUsd} with Stripe`}
+              : `Pay $${displayPrice} with Stripe`}
           </Button>
         </Form.Item>
       </Form>
