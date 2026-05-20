@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "seo:gen": "node scripts/generate-seo.mjs"
+    "seo:gen": "node scripts/generate-seo.mjs",
+    "email:test:promo": "node test-promo-emails.js"
   },
   "dependencies": {
     "@mapbox/search-js-react": "^1.5.1",

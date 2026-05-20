@@ -80,6 +80,32 @@ Before testing promo flows:
 - apply [migrations/001_create_promo_purchases.sql](/Users/viji/DevEnv/ahangama-app/migrations/001_create_promo_purchases.sql) to the promo database
 - configure Stripe, SendGrid, and PassKit variables
 
+## Email Template Testing
+
+The promo email test script expects `SENDGRID_API_KEY` in your shell or in one of these local env files at the repo root:
+
+- `.env`
+- `.env.local`
+- `.env.development`
+- `.env.development.local`
+
+To send promo email template tests locally through SendGrid, use:
+
+```bash
+node scripts/test-promo-emails.js --customer
+node scripts/test-promo-emails.js --team
+node scripts/test-promo-emails.js --venue
+node scripts/test-promo-emails.js --all
+```
+
+You can also run a one-off command without editing env files:
+
+```bash
+SENDGRID_API_KEY=your_sendgrid_key node test-promo-emails.js --all
+```
+
+All test sends from this script are overridden to `viji@viji.com` so you can safely review the customer purchase email, the team purchase email, and the venue redemption email layouts in one inbox.
+
 ## Next Read
 
 For the full end-to-end workflow including QR scan, checkout, webhook, fallback verification, emails, PassKit, UTM propagation, GA4 tracking, and verify-page behavior, read:
