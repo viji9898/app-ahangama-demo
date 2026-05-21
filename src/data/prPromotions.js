@@ -301,7 +301,7 @@ export const PR_PROMOTIONS = {
       promoPrice: 1,
     },
     conversion: {
-      codeValue: "VIJI50",
+      codeValue: "KALAGE50",
     },
   },
 };
