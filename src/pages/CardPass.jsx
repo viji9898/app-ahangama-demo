@@ -100,6 +100,7 @@ const normalizePromoPassData = (data) => {
     ),
     redemptionCount: Number(data.redemptionCount || 0),
     isRedeemedAtVenue: Boolean(data.isRedeemedAtVenue),
+    redemptionNumber: data.redemptionNumber || "",
     redemptionVenueSlug: data.redemptionVenueSlug || "",
     redeemedAt: data.redeemedAt || null,
     redemptions: Array.isArray(data.redemptions) ? data.redemptions : [],
@@ -126,6 +127,7 @@ const normalizeLocalPassData = (purchase, result) => ({
   ),
   redemptionCount: Number(purchase.redemptionCount || 0),
   isRedeemedAtVenue: Boolean(purchase.isRedeemedAtVenue),
+  redemptionNumber: purchase.redemptionNumber || "",
   redemptionVenueSlug: purchase.redemptionVenueSlug || "",
   redeemedAt: purchase.redeemedAt || null,
   redemptions: [],
@@ -626,6 +628,11 @@ const CardPass = () => {
                             {redemption.offerUsed ? (
                               <div className="qr-passHistoryMeta">
                                 Offer used: {redemption.offerUsed}
+                              </div>
+                            ) : null}
+                            {redemption.redemptionNumber ? (
+                              <div className="qr-passHistoryMeta">
+                                Redemption No: {redemption.redemptionNumber}
                               </div>
                             ) : null}
                             {redemption.redemptionType ? (

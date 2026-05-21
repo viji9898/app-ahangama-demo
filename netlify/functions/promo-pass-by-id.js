@@ -78,6 +78,7 @@ export const handler = async (event) => {
         redemptionCount: redemptions.length,
         isRedeemedAtVenue: Boolean(venueRedemption),
         redeemedAt: venueRedemption?.redeemedAt || null,
+        redemptionNumber: venueRedemption?.redemptionNumber || null,
         redemptionVenueSlug: venueRedemption?.venueSlug || purchase.venueSlug,
         redemptions,
       }),

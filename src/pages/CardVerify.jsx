@@ -71,6 +71,7 @@ const normalizePromoVerificationResult = (purchase) => {
       redemptionCount: Number(purchase.redemptionCount || 0),
       isPromo: true,
       isRedeemedAtVenue: alreadyRedeemed,
+      redemptionNumber: purchase.redemptionNumber || "",
       redemptionVenueSlug:
         purchase.redemptionVenueSlug || purchase.venueSlug || "",
       redeemedAt: purchase.redeemedAt || null,
@@ -83,6 +84,17 @@ async function getVerificationResultForCode(targetCode) {
   return promoPass?.passId
     ? normalizePromoVerificationResult(promoPass)
     : verifyCardByCode(targetCode);
+}
+
+function buildRedemptionAlertDescription(redemptionResult) {
+  const baseMessage = redemptionResult?.message || "Pass redeemed successfully.";
+  const redemptionNumber = redemptionResult?.redemption?.redemptionNumber;
+
+  if (!redemptionNumber) {
+    return baseMessage;
+  }
+
+  return `${baseMessage} Redemption No: ${redemptionNumber}`;
 }
 
 export default function CardVerify() {
@@ -358,7 +370,7 @@ export default function CardVerify() {
               {redemptionResult.success ? (
                 <Alert
                   message="Pass Redeemed Successfully!"
-                  description={redemptionResult.message}
+                  description={buildRedemptionAlertDescription(redemptionResult)}
                   type="success"
                   showIcon
                   closable
@@ -633,7 +645,7 @@ export default function CardVerify() {
                         }
                         description={
                           redemptionResult.success
-                            ? redemptionResult.message
+                            ? buildRedemptionAlertDescription(redemptionResult)
                             : redemptionResult.error ||
                               "Unable to redeem this pass."
                         }
@@ -736,6 +748,11 @@ export default function CardVerify() {
                         {new Date(
                           verificationResult.purchase.redeemedAt,
                         ).toLocaleString()}
+                      </div>
+                    ) : null}
+                    {verificationResult.purchase?.redemptionNumber ? (
+                      <div className="qr-verifyStatusMeta">
+                        Redemption No: {verificationResult.purchase.redemptionNumber}
                       </div>
                     ) : null}
 

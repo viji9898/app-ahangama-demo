@@ -4,9 +4,15 @@ import {
   getPromoRedemptionByPassAndVenue,
 } from "../../lib/promo-purchases-db.js";
 import { sendPromoRedemptionVenueEmail } from "../../lib/promo-purchase-emails.js";
+import { PLACES } from "../../src/data/places.js";
 import { getPrPromotion } from "../../src/data/prPromotions.js";
 
 const DEMO_VENDOR_PIN = "1234";
+
+function resolveVenueName(venueSlug, fallbackName) {
+  const place = PLACES.find((entry) => entry.slug === venueSlug);
+  return fallbackName || place?.name || venueSlug || "Venue";
+}
 
 export const handler = async (event) => {
   const headers = {
@@ -123,7 +129,7 @@ export const handler = async (event) => {
     const redemption = await createPromoRedemption({
       passId: purchase.passId,
       venueSlug: purchase.venueSlug,
-      venueName: venueName || purchase.venueSlug,
+      venueName: resolveVenueName(purchase.venueSlug, venueName),
       redemptionType,
       offerUsed,
       redeemedBy: "promo-verify",
