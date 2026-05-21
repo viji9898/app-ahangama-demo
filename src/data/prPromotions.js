@@ -284,12 +284,33 @@ export const PR_PROMOTIONS = {
       codeValue: "LIVINGG50",
     },
   },
+  kalage: {
+    venueEmail: "hello@viji.com",
+    receipt: {
+      title: "YOUR ORDER",
+      currency: "USD",
+      items: [
+        {
+          icon: "postcards",
+          label: "Postcards",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 2,
+          unitPrice: 1,
+        },
+      ],
+      promoPrice: 1,
+    },
+    conversion: {
+      codeValue: "VIJI50",
+    },
+  },
 };
 
 const PR_PROMOTION_ALIASES = {
   "coconut-c": "coconut",
   "living-r-c-s": "living",
   "tahini-f": "tahini",
+  kalage: "kalage",
 };
 
 export function resolvePrPromotionSlug(slug) {
