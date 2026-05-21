@@ -139,7 +139,7 @@ export const PR_PROMOTIONS = {
           label: "Yoga classes",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 3,
-          unitPrice: 9.31,
+          unitPrice: 9.22,
         },
         {
           icon: "postcards",
