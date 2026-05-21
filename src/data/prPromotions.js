@@ -174,14 +174,14 @@ export const PR_PROMOTIONS = {
           label: "Yoga mat",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 9.31,
+          unitPrice: 9,
         },
         {
           icon: "pilates-class",
           label: "Pilates class",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 9.31,
+          unitPrice: 8.66,
         },
         {
           icon: "postcards",
@@ -252,22 +252,16 @@ export const PR_PROMOTIONS = {
           label: "Any Beverage",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 4.09,
+          unitPrice: 4,
         },
         {
           icon: "gift",
           label: "Homemade Cookie ",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 4.09,
+          unitPrice: 4,
         },
-        {
-          icon: "gift",
-          label: "Banana cake slice ",
-          subtitle: DEFAULT_ITEM_SUBTITLE,
-          quantity: 1,
-          unitPrice: 3.07,
-        },
+
         {
           icon: "postcards",
           label: "Postcards",
