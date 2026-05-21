@@ -154,6 +154,31 @@ const waitForPromoPurchase = async (
   return null;
 };
 
+const applyPromoPurchaseToState = (
+  promoPurchase,
+  sessionId,
+  setPaymentData,
+  setEmailSent,
+  setEmailError,
+) => {
+  const normalizedPromoData = normalizePromoPurchaseData(promoPurchase);
+
+  if (shouldTrackPurchase(sessionId)) {
+    trackPassPurchase({
+      sessionId,
+      paymentData: normalizedPromoData,
+    });
+  }
+
+  setPaymentData(normalizedPromoData);
+  setEmailSent(promoPurchase.customerEmailStatus === "sent");
+  setEmailError(
+    promoPurchase.customerEmailStatus === "failed"
+      ? "Email delivery failed."
+      : null,
+  );
+};
+
 const generatePassPDF = async (
   paymentData,
   shouldDownload = true,
@@ -388,21 +413,12 @@ export default function PaymentSuccess() {
         const promoPurchase = await waitForPromoPurchase(sessionId);
 
         if (promoPurchase?.passId) {
-          const normalizedPromoData = normalizePromoPurchaseData(promoPurchase);
-
-          if (shouldTrackPurchase(sessionId)) {
-            trackPassPurchase({
-              sessionId,
-              paymentData: normalizedPromoData,
-            });
-          }
-
-          setPaymentData(normalizedPromoData);
-          setEmailSent(promoPurchase.customerEmailStatus === "sent");
-          setEmailError(
-            promoPurchase.customerEmailStatus === "failed"
-              ? "Email delivery failed."
-              : null,
+          applyPromoPurchaseToState(
+            promoPurchase,
+            sessionId,
+            setPaymentData,
+            setEmailSent,
+            setEmailError,
           );
           return;
         }
@@ -457,6 +473,23 @@ export default function PaymentSuccess() {
           navigate(`/card/pass/${normalizedData.qrCode}`);
         }
       } catch (err) {
+        const fallbackPromoPurchase = await waitForPromoPurchase(
+          sessionId,
+          3,
+          1500,
+        );
+
+        if (fallbackPromoPurchase?.passId) {
+          applyPromoPurchaseToState(
+            fallbackPromoPurchase,
+            sessionId,
+            setPaymentData,
+            setEmailSent,
+            setEmailError,
+          );
+          return;
+        }
+
         setError(err.message);
       } finally {
         setLoading(false);

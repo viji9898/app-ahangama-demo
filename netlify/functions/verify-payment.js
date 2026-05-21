@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
 import { sendPromoNotifications } from "../../lib/promo-purchase-fulfillment.js";
+import { updatePromoPurchaseDeliveryStatus } from "../../lib/promo-purchases-db.js";
 import { syncPromoPurchaseFromSession } from "../../lib/promo-purchase-sync.js";
 import { getStripeKey } from "../../lib/stripe-config.js";
 
@@ -163,7 +164,18 @@ export const handler = async (event) => {
       : null;
 
     if (promoPurchase?.fulfillmentStatus === "payment_confirmed") {
-      promoPurchase = await sendPromoNotifications(promoPurchase);
+      try {
+        promoPurchase = await sendPromoNotifications(promoPurchase);
+      } catch (error) {
+        console.error("Promo notification fulfillment failed:", error);
+
+        promoPurchase = await updatePromoPurchaseDeliveryStatus(
+          promoPurchase.stripeSessionId,
+          {
+            fulfillmentStatus: "email_failed",
+          },
+        );
+      }
     }
 
     const qrCodeId = promoPurchase?.passId
