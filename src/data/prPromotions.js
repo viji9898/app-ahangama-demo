@@ -61,21 +61,21 @@ export const PR_PROMOTIONS = {
           label: "Any coffee",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 3.5,
+          unitPrice: 6.05,
         },
         {
           icon: "pastry",
           label: "Any pastry",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 4,
+          unitPrice: 4.36,
         },
         {
           icon: "postcards",
           label: "Postcards",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 2,
-          unitPrice: 2,
+          unitPrice: 2.17,
         },
         {
           icon: "pass",
@@ -86,7 +86,7 @@ export const PR_PROMOTIONS = {
           showDividerBefore: true,
         },
       ],
-      promoPrice: 18,
+      promoPrice: 22,
     },
     conversion: {
       codeValue: "KAFFI60",
@@ -99,19 +99,13 @@ export const PR_PROMOTIONS = {
       currency: "USD",
       items: [
         {
-          icon: "coffee",
-          label: "Pickleball access",
+          icon: "gift",
+          label: "Pickle ball Upto to 4 players",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 8,
+          unitPrice: 23,
         },
-        {
-          icon: "pastry",
-          label: "Wellness perk",
-          subtitle: DEFAULT_ITEM_SUBTITLE,
-          quantity: 1,
-          unitPrice: 6,
-        },
+
         {
           icon: "postcards",
           label: "Postcards",
@@ -128,7 +122,7 @@ export const PR_PROMOTIONS = {
           showDividerBefore: true,
         },
       ],
-      promoPrice: 18,
+      promoPrice: 22,
     },
     conversion: {
       codeValue: "COCO60",
@@ -218,19 +212,13 @@ export const PR_PROMOTIONS = {
       currency: "USD",
       items: [
         {
-          icon: "coffee",
-          label: "Stay credit",
+          icon: "gift",
+          label: "Sauna + Ice bath",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 10,
+          unitPrice: 15,
         },
-        {
-          icon: "pastry",
-          label: "Boutique villa benefit",
-          subtitle: DEFAULT_ITEM_SUBTITLE,
-          quantity: 1,
-          unitPrice: 5,
-        },
+
         {
           icon: "postcards",
           label: "Postcards",
@@ -247,7 +235,7 @@ export const PR_PROMOTIONS = {
           showDividerBefore: true,
         },
       ],
-      promoPrice: 15,
+      promoPrice: 22,
     },
     conversion: {
       codeValue: "MANA50",
@@ -261,17 +249,24 @@ export const PR_PROMOTIONS = {
       items: [
         {
           icon: "coffee",
-          label: "Coffee and brunch credit",
+          label: "Any Beverage",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 8,
+          unitPrice: 4.09,
         },
         {
-          icon: "pastry",
-          label: "Menu perk",
+          icon: "gift",
+          label: "Homemade Cookie ",
           subtitle: DEFAULT_ITEM_SUBTITLE,
           quantity: 1,
-          unitPrice: 4,
+          unitPrice: 4.09,
+        },
+        {
+          icon: "gift",
+          label: "Banana cake slice ",
+          subtitle: DEFAULT_ITEM_SUBTITLE,
+          quantity: 1,
+          unitPrice: 3.07,
         },
         {
           icon: "postcards",
@@ -289,7 +284,7 @@ export const PR_PROMOTIONS = {
           showDividerBefore: true,
         },
       ],
-      promoPrice: 15,
+      promoPrice: 22,
     },
     conversion: {
       codeValue: "LIVINGG50",
@@ -298,6 +293,8 @@ export const PR_PROMOTIONS = {
 };
 
 const PR_PROMOTION_ALIASES = {
+  "coconut-c": "coconut",
+  "living-r-c-s": "living",
   "tahini-f": "tahini",
 };
 

@@ -28,6 +28,7 @@ import pilatesPoseIcon from "../assets/receipt_icons/pilates-pose.svg";
 
 const RECEIPT_ICON_MAP = {
   coffee: coffeeIcon,
+  gift: giftIcon,
   pastry: pastryIcon,
   postcards: postcardsIcon,
   pass: passIcon,
