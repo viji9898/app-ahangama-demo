@@ -89,6 +89,11 @@ export const trackPassPurchase = ({ sessionId, paymentData }) => {
   const value = Number(
     paymentData?.chargedPriceUsd || paymentData?.priceUsd || 0,
   );
+  const qrVenue =
+    paymentData?.qrVenue || paymentData?.venueSlug || attribution.utm_content || "";
+  const qrLandingPage =
+    paymentData?.qrLandingPage || (qrVenue ? `/qr/${qrVenue}` : "");
+  const promoType = paymentData?.promoType || paymentData?.promoCode || "";
 
   window.gtag("event", "purchase", {
     transaction_id: sessionId,
@@ -101,6 +106,9 @@ export const trackPassPurchase = ({ sessionId, paymentData }) => {
     flow_type: paymentData?.flowType || "standard",
     cta_location: paymentData?.ctaLocation || "unknown",
     venue_slug: paymentData?.venueSlug || "",
+    ...(qrVenue ? { qr_venue: qrVenue } : {}),
+    ...(qrLandingPage ? { qr_landing_page: qrLandingPage } : {}),
+    ...(promoType ? { promo_type: promoType } : {}),
     ...(paymentData?.promoCode ? { coupon: paymentData.promoCode } : {}),
     ...(attribution.utm_source ? { utm_source: attribution.utm_source } : {}),
     ...(attribution.utm_medium ? { utm_medium: attribution.utm_medium } : {}),
