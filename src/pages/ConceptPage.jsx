@@ -2,10 +2,16 @@ import React from "react";
 import { Card, Col, Progress, Row, Space, Tag, Typography } from "antd";
 import {
   AimOutlined,
+  ApartmentOutlined,
+  DeploymentUnitOutlined,
+  EnvironmentOutlined,
   FlagOutlined,
   FundOutlined,
+  NodeIndexOutlined,
+  PictureOutlined,
   RocketOutlined,
   TeamOutlined,
+  TrophyOutlined,
 } from "@ant-design/icons";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -16,75 +22,156 @@ const { Paragraph, Text, Title } = Typography;
 const sections = [
   { id: "overview", label: "Overview", hint: "Project snapshot" },
   { id: "why", label: "Why This Exists", hint: "Problem and opportunity" },
-  { id: "product", label: "Product", hint: "What the pass is" },
+  { id: "products", label: "Products", hint: "Free vs Premium" },
   { id: "objectives", label: "Objectives", hint: "What success looks like" },
-  { id: "workstreams", label: "Workstreams", hint: "What needs doing now" },
-  { id: "milestones", label: "Milestones", hint: "Shipped and next" },
+  { id: "workstreams", label: "Workstreams", hint: "Current priorities" },
+  { id: "milestones", label: "Milestones", hint: "Shipped / In Progress / Next" },
+  { id: "distribution", label: "Distribution", hint: "Growth channels" },
+  { id: "guide", label: "Guide 26/27", hint: "Editorial direction" },
+  { id: "touchpoints", label: "Physical Touchpoints", hint: "QR stands and physical branding" },
   { id: "owners", label: "Owners", hint: "Who is accountable" },
+  { id: "kpis", label: "KPIs", hint: "Metrics and reporting" },
   { id: "questions", label: "Open Questions", hint: "Decisions still needed" },
 ];
 
-const kpis = [
+const objectiveCards = [
   {
-    label: "Partner venues live",
-    value: "25+",
-    note: "Target for the first strong network effect point.",
+    label: "Partner Venues",
+    value: "100+",
+    note: "A network large enough to make the pass feel everywhere.",
   },
   {
-    label: "Active pass usage rate",
-    value: "60%+",
-    note: "Buyers should redeem quickly enough to feel immediate value.",
+    label: "Free Pass Users",
+    value: "5,000+",
+    note: "Audience scale for distribution, retention, and upsell.",
   },
   {
-    label: "Purchase to first redemption",
-    value: "< 48h",
-    note: "The product should pay back its promise within two days.",
+    label: "Premium Pass Sales",
+    value: "200/mo",
+    note: "The first recurring benchmark for premium product demand.",
+  },
+  {
+    label: "First Redemption Time",
+    value: "<48h",
+    note: "The product should prove value almost immediately after purchase.",
+  },
+  {
+    label: "QR Scans",
+    value: "Up only",
+    note: "Physical and digital touchpoints should show weekly acquisition growth.",
+  },
+  {
+    label: "Goal",
+    value: "Iconic",
+    note: "Become the most recognizable tourism product in Ahangama.",
+  },
+];
+
+const productCards = [
+  {
+    title: "Free Ahangama Pass",
+    subtitle: "Perks & privileges across Ahangama",
+    bullets: [
+      "Free digital pass",
+      "Unlocks benefits at venues",
+      "Used for customer acquisition",
+      "Captures WhatsApp and email",
+      "Distributed through QR codes and hotels",
+      "Builds audience and retargeting capability",
+    ],
+    metrics: ["Signups", "QR scans", "WhatsApp opt-ins", "Venue engagement"],
+  },
+  {
+    title: "Premium Experience Pass",
+    subtitle: "Curated bundled experiences",
+    bullets: [
+      "Paid product inspired by Go City",
+      "Bundle of experiences at discounted pricing",
+      'Focused on "10 Must Do Things in Ahangama"',
+      "Includes wellness, surf, food, transport, and lifestyle experiences",
+    ],
+    examples: [
+      "Surf lesson",
+      "Yoga class",
+      "Ice bath",
+      "Specialty coffee",
+      "Cocktail",
+      "Tuk tuk rental",
+      "Massage",
+      "Coworking day pass",
+      "Cooking class",
+      "Tea tin collectible",
+    ],
+    metrics: ["Pass sales", "Redemption rate", "Revenue", "Experience usage"],
   },
 ];
 
 const workstreams = [
   {
-    title: "Product & redemption flow",
+    title: "Venue & Partner Network",
     status: "In Progress",
-    focus:
-      "Make the pass purchase, delivery, verification, and redemption journey reliable and easy for staff and customers.",
     needs: [
-      "Tighten the onboarding-to-redemption experience",
-      "Reduce edge-case friction on payment success and wallet delivery",
-      "Make staff verification flows faster and harder to misuse",
+      "Increase venue count",
+      "Improve onboarding",
+      "Build anchor partnerships",
+      "Define venue standards",
     ],
   },
   {
-    title: "Partner network quality",
+    title: "Experience Curation",
     status: "In Progress",
-    focus:
-      "Grow the partner set deliberately, with offers that are worth buying the pass for.",
     needs: [
-      "Define offer standards and venue qualification rules",
-      "Prioritize anchor venues by category and influence",
-      "Clarify onboarding and reporting expectations for partners",
+      'Curate "10 Must Do Things"',
+      "Negotiate experiences",
+      "Create premium bundles",
+      "Improve storytelling",
     ],
   },
   {
-    title: "Growth & narrative",
+    title: "Ahangama Guide 2026/27",
     status: "Next",
-    focus:
-      "Make the pass easy to understand in one screen and measurable across channels.",
     needs: [
-      "Clarify why the pass is compelling beyond discounts",
-      "Refine QR and campaign funnels",
-      "Align offer framing across site, QR pages, and checkout",
+      "Build digital guide",
+      "Editorial recommendations",
+      "Maps",
+      "Local insights",
+      "Downloadable guidebook",
     ],
   },
   {
-    title: "Ops & analytics",
+    title: "Distribution & Partnerships",
     status: "Next",
-    focus:
-      "Create operational confidence in reporting, support, and milestone tracking.",
     needs: [
-      "Keep purchase attribution consistent through to GA4 purchase events",
-      "Define owner-level review rhythms",
-      "Create one reliable view of milestones and current blockers",
+      "Hotels",
+      "Villas",
+      "OTAs",
+      "Tourist board",
+      "Travel agents",
+      "Influencers",
+      "Google Ads",
+    ],
+  },
+  {
+    title: "Physical Touchpoints",
+    status: "Planning",
+    needs: [
+      "QR stands",
+      "Posters",
+      "Plastic displays",
+      "Counter cards",
+      "Maps",
+      "Postcards",
+    ],
+  },
+  {
+    title: "Analytics & Operations",
+    status: "In Progress",
+    needs: [
+      "Funnel tracking",
+      "Redemption analytics",
+      "QR attribution",
+      "Revenue tracking",
+      "Partner reporting",
     ],
   },
 ];
@@ -93,57 +180,136 @@ const milestones = [
   {
     phase: "Shipped",
     items: [
-      "Core pass purchase and verification flow",
-      "Promo QR landing experiments",
-      "Email and digital wallet delivery",
+      "Stripe checkout",
+      "Wallet pass",
+      "QR landing pages",
+      "Initial partner onboarding",
+      "Venue tracking",
     ],
   },
   {
     phase: "In Progress",
     items: [
-      "Reliable promo funnel measurement",
-      "Cleaner internal visibility on milestones and responsibilities",
-      "Offer quality and partner rollout standards",
+      "Free pass rollout",
+      "Experience negotiations",
+      "QR stand deployment",
+      "Guide planning",
+      "Distribution partnerships",
     ],
   },
   {
     phase: "Next",
     items: [
-      "Sharpen the core product story for team and partners",
-      "Turn milestone tracking into a weekly operating rhythm",
-      "Define launch criteria for a stronger public push",
+      "100+ venue rollout",
+      "OTA partnerships",
+      "Paid acquisition",
+      "Ahangama Guide launch",
+      "Reseller network",
     ],
   },
+];
+
+const distributionChannels = [
+  "Hotels",
+  "Villas",
+  "Hostels",
+  "Surf Camps",
+  "Travel Agents",
+  "Tour Operators",
+  "OTAs",
+  "Google Ads",
+  "Instagram",
+  "WhatsApp",
+  "QR Stands",
+  "Tourist Board",
+];
+
+const acquisitionFlow = [
+  "QR Scan",
+  "Free Pass Signup",
+  "WhatsApp Capture",
+  "Local Discovery",
+  "Premium Pass Upsell",
+];
+
+const guidePillars = [
+  "Cafes",
+  "Surf",
+  "Wellness",
+  "Sunset spots",
+  "Remote work",
+  "Nature",
+  "Culture",
+  "Hidden gems",
+  "Day itineraries",
+  "Local recommendations",
+];
+
+const guideOutputs = [
+  "Digital Guide",
+  "Printed Guide",
+  "Instagram Editorial",
+  "PDF Download",
+  "Interactive Map",
+];
+
+const touchpoints = [
+  "QR code plastic stands",
+  "Cafe counter displays",
+  "Posters",
+  "Table cards",
+  "Tote bags",
+  "Postcards",
+  "Stickers",
+  "Hotel room cards",
 ];
 
 const owners = [
   {
     stream: "Product",
-    owner: "Product lead",
-    responsibility: "Customer journey, redemption UX, pass reliability",
+    owner: "Product",
+    responsibility: "Owns UX, checkout, wallet pass, redemption",
   },
   {
     stream: "Partnerships",
-    owner: "Partnership lead",
-    responsibility: "Venue quality, offers, partner onboarding",
+    owner: "Partnerships",
+    responsibility: "Owns venues, onboarding, commercial agreements",
   },
   {
     stream: "Growth",
-    owner: "Growth lead",
-    responsibility: "Messaging, campaign structure, QR acquisition",
+    owner: "Growth",
+    responsibility: "Owns QR acquisition, ads, WhatsApp funnel",
+  },
+  {
+    stream: "Content & Guide",
+    owner: "Content & Guide",
+    responsibility: "Owns editorial, storytelling, photography",
   },
   {
     stream: "Operations & analytics",
-    owner: "Ops / analytics lead",
-    responsibility: "Reporting trust, KPI reviews, support feedback loop",
+    owner: "Operations & Analytics",
+    responsibility: "Owns reporting, KPIs, support systems",
   },
 ];
 
+const dashboardKpis = [
+  { label: "Weekly QR scans", value: "1,240", progress: 72 },
+  { label: "Free pass conversions", value: "18%", progress: 58 },
+  { label: "Premium pass conversions", value: "3.6%", progress: 41 },
+  { label: "Active venues", value: "34", progress: 34 },
+  { label: "Top performing venues", value: "Kaffi / Pura / Living", progress: 80 },
+  { label: "WhatsApp subscribers", value: "2,180", progress: 64 },
+  { label: "Revenue", value: "$4.8k", progress: 52 },
+  { label: "Redemption volume", value: "312", progress: 49 },
+];
+
 const openQuestions = [
-  "What is the clearest one-line value proposition for the pass today?",
-  "Which partner categories are essential for the product to feel complete?",
-  "What launch milestone tells us the pass is ready for a broader push?",
-  "Which metrics should be reviewed weekly, and who owns each one?",
+  "What are the flagship experiences?",
+  "What pricing model works best?",
+  "Which venues are anchor partners?",
+  "How should the guide be monetized?",
+  "How do we maintain curation quality while scaling?",
+  "What makes the pass iconic?",
 ];
 
 function SectionCard({ id, eyebrow, title, children }) {
@@ -185,9 +351,7 @@ export default function ConceptPage() {
                   A focused workspace for aligning the product, the team, and the next milestones.
                 </Title>
                 <Paragraph className="concept-heroCopy">
-                  This page should act as the team's shared operating view: what
-                  the product is, why it matters, what success looks like, and
-                  what needs attention now.
+                  This workspace acts as the shared operating layer for Ahangama Pass — aligning product, partnerships, growth, distribution, and execution.
                 </Paragraph>
                 <Space wrap size={[10, 10]}>
                   <Tag className="concept-pill">Internal only</Tag>
@@ -199,20 +363,32 @@ export default function ConceptPage() {
               <div className="concept-focusPanel">
                 <Text className="concept-focusLabel">Current focus</Text>
                 <Title level={4} className="concept-focusTitle">
-                  Make the pass clearly valuable, operationally reliable, and easy for the team to steer.
+                  Strategic focus
                 </Title>
                 <div className="concept-focusList">
                   <div className="concept-focusItem">
                     <RocketOutlined />
-                    <span>Clarify the pass story and core promise</span>
+                    <span>Clarify Free vs Premium positioning</span>
                   </div>
                   <div className="concept-focusItem">
                     <AimOutlined />
-                    <span>Focus workstreams around activation and partner quality</span>
+                    <span>Increase partner venue count</span>
                   </div>
                   <div className="concept-focusItem">
                     <FundOutlined />
-                    <span>Make milestones and KPI ownership visible every week</span>
+                    <span>Curate flagship experiences</span>
+                  </div>
+                  <div className="concept-focusItem">
+                    <TrophyOutlined />
+                    <span>Build Ahangama Guide 2026/27</span>
+                  </div>
+                  <div className="concept-focusItem">
+                    <DeploymentUnitOutlined />
+                    <span>Expand distribution channels</span>
+                  </div>
+                  <div className="concept-focusItem">
+                    <NodeIndexOutlined />
+                    <span>Roll out QR touchpoints across Ahangama</span>
                   </div>
                 </div>
               </div>
@@ -228,13 +404,13 @@ export default function ConceptPage() {
               <Col xs={24} md={8}>
                 <div className="concept-summaryStat">
                   <Text className="concept-summaryLabel">Primary job</Text>
-                  <strong>Turn the pass into a repeatable product</strong>
+                  <strong>Turn the pass into a scalable tourism product</strong>
                 </div>
               </Col>
               <Col xs={24} md={8}>
                 <div className="concept-summaryStat">
                   <Text className="concept-summaryLabel">Decision rhythm</Text>
-                  <strong>Use this page in weekly planning</strong>
+                  <strong>Used in weekly planning and team alignment</strong>
                 </div>
               </Col>
             </Row>
@@ -242,67 +418,63 @@ export default function ConceptPage() {
         </section>
 
         <SectionCard id="why" eyebrow="Why this exists" title="Why the project matters">
-          <Row gutter={[20, 20]}>
-            <Col xs={24} lg={12}>
-              <Paragraph className="concept-bodyCopy">
-                The Ahangama Pass should not just be a discount card. It should
-                be a compact product that helps people discover trusted local
-                venues, feel immediate value after purchase, and build a real
-                connection between partner businesses and quality visitors.
-              </Paragraph>
-            </Col>
-            <Col xs={24} lg={12}>
-              <Paragraph className="concept-bodyCopy">
-                The team needs a shared frame for what the pass is becoming,
-                what outcomes matter, and where attention should go next. This
-                workspace exists to keep product, partnerships, growth, and ops
-                aligned around that.
-              </Paragraph>
-            </Col>
-          </Row>
+          <Paragraph className="concept-bodyCopy">
+            The Ahangama Pass should become more than a discount product. It should act as the tourism operating layer for Ahangama — helping visitors discover trusted places, helping venues acquire customers, and helping the destination feel connected.
+          </Paragraph>
+          <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+            The opportunity is to create a product that combines discovery, experiences, commerce, storytelling, and distribution into one recognizable ecosystem.
+          </Paragraph>
         </SectionCard>
 
-        <SectionCard id="product" eyebrow="Product" title="What the Ahangama Pass is">
+        <SectionCard id="products" eyebrow="Products" title="Free vs Premium">
           <Row gutter={[20, 20]}>
-            <Col xs={24} md={8}>
-              <Card className="concept-card concept-subCard" bordered={false}>
-                <Title level={4}>Core promise</Title>
-                <Paragraph className="concept-bodyCopy">
-                  One pass that gives visitors immediate value across a curated
-                  set of local venues and experiences.
-                </Paragraph>
-              </Card>
-            </Col>
-            <Col xs={24} md={8}>
-              <Card className="concept-card concept-subCard" bordered={false}>
-                <Title level={4}>Who it serves</Title>
-                <Paragraph className="concept-bodyCopy">
-                  Independent travelers, longer-stay visitors, and anyone who
-                  wants a trusted shortcut into the best of Ahangama.
-                </Paragraph>
-              </Card>
-            </Col>
-            <Col xs={24} md={8}>
-              <Card className="concept-card concept-subCard" bordered={false}>
-                <Title level={4}>How it works</Title>
-                <Paragraph className="concept-bodyCopy">
-                  Purchase the pass, receive digital delivery, redeem with staff
-                  at partner venues, and experience value quickly.
-                </Paragraph>
-              </Card>
-            </Col>
+            {productCards.map((product) => (
+              <Col xs={24} lg={12} key={product.title}>
+                <Card className="concept-card concept-productCard" bordered={false}>
+                  <Text className="concept-sectionEyebrow">{product.subtitle}</Text>
+                  <Title level={3} className="concept-productTitle">
+                    {product.title}
+                  </Title>
+                  <ul className="concept-list concept-listSpacious">
+                    {product.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                  {product.examples ? (
+                    <>
+                      <Text className="concept-miniLabel">Example experiences</Text>
+                      <div className="concept-chipGrid">
+                        {product.examples.map((example) => (
+                          <span className="concept-chip" key={example}>
+                            {example}
+                          </span>
+                        ))}
+                      </div>
+                    </>
+                  ) : null}
+                  <Text className="concept-miniLabel">Key metrics</Text>
+                  <div className="concept-chipGrid">
+                    {product.metrics.map((metric) => (
+                      <span className="concept-chip concept-chipStrong" key={metric}>
+                        {metric}
+                      </span>
+                    ))}
+                  </div>
+                </Card>
+              </Col>
+            ))}
           </Row>
         </SectionCard>
 
         <SectionCard id="objectives" eyebrow="Objectives" title="What success looks like">
           <Row gutter={[20, 20]}>
-            {kpis.map((kpi) => (
-              <Col xs={24} md={8} key={kpi.label}>
+            {objectiveCards.map((kpi) => (
+              <Col xs={24} md={12} xl={8} key={kpi.label}>
                 <Card className="concept-card concept-kpiCard" bordered={false}>
                   <Text className="concept-kpiLabel">{kpi.label}</Text>
                   <div className="concept-kpiValue">{kpi.value}</div>
                   <Paragraph className="concept-kpiNote">{kpi.note}</Paragraph>
-                  <Progress percent={64} showInfo={false} strokeColor="#345c53" />
+                  <Progress percent={kpi.value === "Iconic" ? 82 : 64} showInfo={false} strokeColor="#345c53" />
                 </Card>
               </Col>
             ))}
@@ -312,13 +484,12 @@ export default function ConceptPage() {
         <SectionCard id="workstreams" eyebrow="Current priorities" title="Workstreams">
           <Row gutter={[20, 20]}>
             {workstreams.map((stream) => (
-              <Col xs={24} lg={12} key={stream.title}>
+              <Col xs={24} lg={12} xl={8} key={stream.title}>
                 <Card className="concept-card concept-workstreamCard" bordered={false}>
                   <div className="concept-workstreamHeader">
                     <Title level={4}>{stream.title}</Title>
                     <Tag className="concept-statusPill">{stream.status}</Tag>
                   </div>
-                  <Paragraph className="concept-bodyCopy">{stream.focus}</Paragraph>
                   <ul className="concept-list">
                     {stream.needs.map((item) => (
                       <li key={item}>{item}</li>
@@ -328,6 +499,87 @@ export default function ConceptPage() {
               </Col>
             ))}
           </Row>
+        </SectionCard>
+
+        <SectionCard id="distribution" eyebrow="Distribution" title="Growth channels">
+          <Row gutter={[20, 20]}>
+            <Col xs={24} xl={15}>
+              <Card className="concept-card concept-subCard" bordered={false}>
+                <div className="concept-distributionGrid">
+                  {distributionChannels.map((channel) => (
+                    <div className="concept-channelCard" key={channel}>
+                      {channel}
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} xl={9}>
+              <Card className="concept-card concept-subCard" bordered={false}>
+                <Text className="concept-miniLabel">Customer acquisition flow</Text>
+                <div className="concept-flowSteps">
+                  {acquisitionFlow.map((step, index) => (
+                    <React.Fragment key={step}>
+                      <div className="concept-flowStep">{step}</div>
+                      {index < acquisitionFlow.length - 1 ? (
+                        <div className="concept-flowArrow">→</div>
+                      ) : null}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </Card>
+            </Col>
+          </Row>
+        </SectionCard>
+
+        <SectionCard id="guide" eyebrow="Guide 26/27" title="Ahangama Guide 2026/27">
+          <Row gutter={[20, 20]}>
+            <Col xs={24} xl={15}>
+              <Card className="concept-card concept-subCard" bordered={false}>
+                <Text className="concept-guideSubhead">The definitive guide to Ahangama.</Text>
+                <div className="concept-chipGrid">
+                  {guidePillars.map((pillar) => (
+                    <span className="concept-chip" key={pillar}>
+                      {pillar}
+                    </span>
+                  ))}
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} xl={9}>
+              <Card className="concept-card concept-guideOutputCard" bordered={false}>
+                <div className="concept-guideOutputHeader">
+                  <PictureOutlined />
+                  <Title level={4}>Editorial outputs</Title>
+                </div>
+                <div className="concept-outputList">
+                  {guideOutputs.map((output) => (
+                    <div className="concept-outputItem" key={output}>
+                      {output}
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </Col>
+          </Row>
+        </SectionCard>
+
+        <SectionCard id="touchpoints" eyebrow="Physical touchpoints" title="QR stands and physical branding">
+          <Row gutter={[16, 16]}>
+            {touchpoints.map((item) => (
+              <Col xs={12} md={8} xl={6} key={item}>
+                <Card className="concept-card concept-touchpointCard" bordered={false}>
+                  <div className="concept-touchpointMock">
+                    <EnvironmentOutlined />
+                  </div>
+                  <Text className="concept-touchpointLabel">{item}</Text>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+          <Paragraph className="concept-bodyCopy concept-sectionNote">
+            The physical layer is critical. Visitors should constantly encounter the Ahangama Pass throughout the town.
+          </Paragraph>
         </SectionCard>
 
         <SectionCard id="milestones" eyebrow="Milestones" title="Progress and next steps">
@@ -365,6 +617,20 @@ export default function ConceptPage() {
                   <Paragraph className="concept-bodyCopy">
                     {entry.responsibility}
                   </Paragraph>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </SectionCard>
+
+        <SectionCard id="kpis" eyebrow="KPIs" title="Metrics and reporting">
+          <Row gutter={[16, 16]}>
+            {dashboardKpis.map((metric) => (
+              <Col xs={24} md={12} xl={6} key={metric.label}>
+                <Card className="concept-card concept-dashboardCard" bordered={false}>
+                  <Text className="concept-kpiLabel">{metric.label}</Text>
+                  <div className="concept-dashboardValue">{metric.value}</div>
+                  <Progress percent={metric.progress} showInfo={false} strokeColor="#2e5c53" />
                 </Card>
               </Col>
             ))}

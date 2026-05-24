@@ -19,6 +19,7 @@
   top: 0;
   height: 100vh;
   padding: 22px 18px;
+  overflow-y: auto;
 }
 
 .concept-sidebarInner {
@@ -26,6 +27,7 @@
   flex-direction: column;
   gap: 22px;
   height: 100%;
+  min-height: max-content;
 }
 
 .concept-brandBlock {
@@ -187,9 +189,13 @@
 .concept-cardSection .ant-card-body,
 .concept-subCard .ant-card-body,
 .concept-kpiCard .ant-card-body,
+.concept-productCard .ant-card-body,
 .concept-workstreamCard .ant-card-body,
 .concept-milestoneCard .ant-card-body,
-.concept-ownerCard .ant-card-body {
+.concept-ownerCard .ant-card-body,
+.concept-dashboardCard .ant-card-body,
+.concept-touchpointCard .ant-card-body,
+.concept-guideOutputCard .ant-card-body {
   padding: 24px !important;
 }
 
@@ -277,6 +283,137 @@
   margin-bottom: 10px;
 }
 
+.concept-dashboardValue {
+  font-size: 26px;
+  line-height: 1.15;
+  color: #1f241f;
+  margin: 8px 0 14px;
+  font-weight: 700;
+}
+
+.concept-productTitle {
+  margin-top: 6px !important;
+  margin-bottom: 14px !important;
+}
+
+.concept-miniLabel,
+.concept-guideSubhead,
+.concept-touchpointLabel {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b6e67;
+}
+
+.concept-miniLabel {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.concept-guideSubhead {
+  margin-bottom: 14px;
+}
+
+.concept-chipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.concept-chip {
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  color: #384139;
+  font-size: 13px;
+}
+
+.concept-chipStrong {
+  background: rgba(52, 92, 83, 0.12);
+}
+
+.concept-distributionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.concept-channelCard,
+.concept-outputItem,
+.concept-flowStep {
+  padding: 14px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  background: rgba(255, 255, 255, 0.66);
+  color: #26302a;
+  text-align: center;
+  font-weight: 600;
+}
+
+.concept-flowSteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.concept-flowArrow {
+  color: #345c53;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.concept-guideOutputHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.concept-guideOutputHeader .anticon {
+  color: #345c53;
+  font-size: 20px;
+}
+
+.concept-outputList {
+  display: grid;
+  gap: 10px;
+}
+
+.concept-touchpointCard {
+  height: 100%;
+}
+
+.concept-touchpointMock {
+  height: 120px;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(52, 92, 83, 0.18), rgba(21, 37, 31, 0.08)),
+    rgba(255, 255, 255, 0.58);
+  border: 1px dashed rgba(31, 36, 31, 0.18);
+}
+
+.concept-touchpointMock .anticon {
+  font-size: 28px;
+  color: #345c53;
+}
+
+.concept-touchpointLabel {
+  color: #384139;
+  line-height: 1.5;
+}
+
+.concept-sectionNote {
+  margin-top: 16px !important;
+  margin-bottom: 0 !important;
+}
+
 .concept-workstreamHeader,
 .concept-ownerHeader,
 .concept-milestoneHeader {
@@ -343,14 +480,22 @@
   .concept-cardSection .ant-card-body,
   .concept-subCard .ant-card-body,
   .concept-kpiCard .ant-card-body,
+  .concept-productCard .ant-card-body,
   .concept-workstreamCard .ant-card-body,
   .concept-milestoneCard .ant-card-body,
-  .concept-ownerCard .ant-card-body {
+  .concept-ownerCard .ant-card-body,
+  .concept-dashboardCard .ant-card-body,
+  .concept-touchpointCard .ant-card-body,
+  .concept-guideOutputCard .ant-card-body {
     padding: 20px !important;
   }
 
   .concept-heroTitle {
     max-width: none;
     font-size: 38px !important;
+  }
+
+  .concept-distributionGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
