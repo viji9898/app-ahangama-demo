@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import HomeV2 from "../pages/HomeV2";
 import HomeMobile from "../pages/HomeMobile";
 import About from "../pages/About";
+import ConceptPage from "../pages/ConceptPage";
 import Partners from "../pages/Partners";
 import PlaceDetail from "../pages/PlaceDetail";
 import CategoryIndex from "../pages/CategoryIndex";
@@ -37,6 +38,7 @@ const routes = [
   { path: "/qr/:slug", element: <VenueQrLandingPage /> },
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
+  { path: "/concept", element: <ConceptPage /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },
