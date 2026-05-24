@@ -190,6 +190,7 @@
 .concept-subCard .ant-card-body,
 .concept-kpiCard .ant-card-body,
 .concept-productCard .ant-card-body,
+.concept-teamCard .ant-card-body,
 .concept-workstreamCard .ant-card-body,
 .concept-milestoneCard .ant-card-body,
 .concept-ownerCard .ant-card-body,
@@ -289,6 +290,79 @@
   color: #1f241f;
   margin: 8px 0 14px;
   font-weight: 700;
+}
+
+.concept-teamHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.concept-teamName {
+  margin: 0 0 2px !important;
+}
+
+.concept-teamRole {
+  color: #5f655e;
+}
+
+.concept-teamSummary {
+  min-height: 96px;
+}
+
+.concept-teamFocusBox,
+.concept-modalBlock {
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.concept-teamFocusText {
+  color: #26302a;
+  font-weight: 600;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.concept-teamButton {
+  margin-top: 16px;
+  width: 100%;
+  height: 42px;
+  border-radius: 12px !important;
+}
+
+.concept-teamModal .ant-modal-content {
+  border-radius: 24px;
+  overflow: hidden;
+  background: #f7f2ea;
+}
+
+.concept-teamModal .ant-modal-body {
+  padding: 22px;
+}
+
+.concept-teamModalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.concept-teamModalHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.concept-teamModalTitle {
+  margin: 4px 0 0 !important;
+}
+
+.concept-modalFocusBlock {
+  background: linear-gradient(135deg, rgba(52, 92, 83, 0.11), rgba(255, 255, 255, 0.74));
 }
 
 .concept-productTitle {
@@ -481,6 +555,7 @@
   .concept-subCard .ant-card-body,
   .concept-kpiCard .ant-card-body,
   .concept-productCard .ant-card-body,
+  .concept-teamCard .ant-card-body,
   .concept-workstreamCard .ant-card-body,
   .concept-milestoneCard .ant-card-body,
   .concept-ownerCard .ant-card-body,
@@ -497,5 +572,13 @@
 
   .concept-distributionGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .concept-teamSummary {
+    min-height: 0;
+  }
+
+  .concept-teamModalHeader {
+    flex-direction: column;
   }
 }

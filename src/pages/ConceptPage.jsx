@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, Col, Progress, Row, Space, Tag, Typography } from "antd";
+import React, { useState } from "react";
+import { Button, Card, Col, Modal, Progress, Row, Space, Tag, Typography } from "antd";
 import {
   AimOutlined,
   ApartmentOutlined,
@@ -29,6 +29,7 @@ const sections = [
   { id: "distribution", label: "Distribution", hint: "Growth channels" },
   { id: "guide", label: "Guide 26/27", hint: "Editorial direction" },
   { id: "touchpoints", label: "Physical Touchpoints", hint: "QR stands and physical branding" },
+  { id: "team", label: "Team & Responsibilities", hint: "Who owns what day to day" },
   { id: "owners", label: "Owners", hint: "Who is accountable" },
   { id: "kpis", label: "KPIs", hint: "Metrics and reporting" },
   { id: "questions", label: "Open Questions", hint: "Decisions still needed" },
@@ -264,6 +265,189 @@ const touchpoints = [
   "Hotel room cards",
 ];
 
+const teamMembers = [
+  {
+    name: "Viji",
+    role: "Founder / Strategy",
+    category: "Strategy",
+    focusArea: "Vision, monetization, and flagship product direction",
+    summary:
+      "Vision, product direction, monetization, partnerships, and overall strategy.",
+    overview:
+      "Shapes the long-term direction of Ahangama Pass, defines what the product should become, and aligns revenue, product, partnerships, and destination strategy.",
+    responsibilities: [
+      "Set strategic direction for Free vs Premium products",
+      "Define monetization model and flagship experiences",
+      "Lead senior partnerships and destination positioning",
+      "Decide what gets prioritized across product and growth",
+    ],
+    weeklyPriorities: [
+      "Review workstream progress and unblock key decisions",
+      "Advance high-leverage partnerships",
+      "Refine the pass narrative and positioning",
+    ],
+    kpis: [
+      "Partner venue growth",
+      "Premium pass sales trajectory",
+      "Revenue growth",
+      "Strategic milestone completion",
+    ],
+    dependencies: ["Veronika", "Vishmi", "Minosha"],
+    next30Days:
+      "Lock product positioning, define flagship experiences, and align the next launch milestones across partnerships, distribution, and growth.",
+  },
+  {
+    name: "Veronika",
+    role: "Operations & Executive Coordination",
+    category: "Operations",
+    focusArea: "Rhythm, follow-through, and accountability",
+    summary:
+      "Coordinates follow-ups, timelines, meetings, task tracking, accountability, and functions as PA.",
+    overview:
+      "Keeps the operating system moving by ensuring decisions become actions, meetings become follow-ups, and workstreams stay coordinated across the team.",
+    responsibilities: [
+      "Coordinate timelines, meetings, and action lists",
+      "Track progress against current workstreams and milestones",
+      "Ensure follow-ups happen across the team",
+      "Support executive coordination and planning",
+    ],
+    weeklyPriorities: [
+      "Update the operating page and milestone status",
+      "Run follow-up loops after team meetings",
+      "Escalate blockers that are stalling progress",
+    ],
+    kpis: [
+      "Task completion rate",
+      "Milestone update consistency",
+      "Meeting-to-action follow-through",
+      "Blocker resolution speed",
+    ],
+    dependencies: ["Viji", "Vishmi", "Courtney"],
+    next30Days:
+      "Create a tighter weekly operating cadence with cleaner accountability on milestones, owners, and overdue actions.",
+  },
+  {
+    name: "Vishmi",
+    role: "Partnerships & Distribution Lead",
+    category: "Partnerships",
+    focusArea: "Venue growth, onboarding, and physical distribution",
+    summary:
+      "Signs up partners, manages partner relationships, handles venue onboarding, QR stand distribution, and postcard sales.",
+    overview:
+      "Owns the commercial and relationship layer that gets Ahangama Pass into more venues, touchpoints, and local distribution channels.",
+    responsibilities: [
+      "Acquire and onboard partner venues",
+      "Manage venue relationships and quality standards",
+      "Coordinate QR stand distribution and postcard sales",
+      "Grow distribution across hospitality and in-town touchpoints",
+    ],
+    weeklyPriorities: [
+      "Sign and onboard new venues",
+      "Check venue activation and QR stand placement",
+      "Identify anchor partners in priority categories",
+    ],
+    kpis: [
+      "New partner signups",
+      "Active venue count",
+      "Venue activation rate",
+      "Physical distribution footprint",
+    ],
+    dependencies: ["Viji", "Minosha", "Ishaq"],
+    next30Days:
+      "Increase partner venue count, deploy more QR stands, and tighten partner onboarding so every signed venue becomes an active pass touchpoint.",
+  },
+  {
+    name: "Minosha",
+    role: "Merchandise & Brand Operations",
+    category: "Merchandise",
+    focusArea: "Physical products, suppliers, and branded rollouts",
+    summary:
+      "Manages tea tins, merchandise, creative work for postcards, promotions, supplier coordination, and product launches.",
+    overview:
+      "Owns the merchandise and branded-product layer that makes Ahangama Pass tangible through collectables, physical collateral, and launch execution.",
+    responsibilities: [
+      "Manage tea tins and merchandise development",
+      "Coordinate postcard and promo product production",
+      "Work with suppliers on timelines and quality",
+      "Support physical product launches and branded assets",
+    ],
+    weeklyPriorities: [
+      "Track supplier timelines and stock readiness",
+      "Coordinate postcard and merchandise creative execution",
+      "Prepare launch-ready physical assets",
+    ],
+    kpis: [
+      "Merchandise readiness",
+      "Supplier delivery reliability",
+      "Launch asset completion",
+      "Postcard / merchandise sales",
+    ],
+    dependencies: ["Viji", "Vishmi", "Ishaq"],
+    next30Days:
+      "Stabilize merchandise operations, support postcard-led distribution, and prepare branded physical products that strengthen the pass identity.",
+  },
+  {
+    name: "Ishaq",
+    role: "Digital Design & Campaign Graphics",
+    category: "Creative",
+    focusArea: "Campaign visuals and in-market creative consistency",
+    summary:
+      "Creates Instagram graphics, digital campaign assets, promotional visuals, QR stand graphics, and social templates.",
+    overview:
+      "Owns the visual communication layer for Ahangama Pass across digital growth, QR distribution, partner collateral, and social campaign assets.",
+    responsibilities: [
+      "Create campaign visuals for paid and organic channels",
+      "Design QR stand and promo display graphics",
+      "Build reusable social and campaign templates",
+      "Keep the brand visually consistent across touchpoints",
+    ],
+    weeklyPriorities: [
+      "Produce campaign assets for growth pushes",
+      "Support physical touchpoint design rollout",
+      "Refresh reusable social templates",
+    ],
+    kpis: [
+      "Creative delivery velocity",
+      "Campaign asset readiness",
+      "Brand consistency across touchpoints",
+      "Support responsiveness to growth needs",
+    ],
+    dependencies: ["Vishmi", "Minosha", "Courtney"],
+    next30Days:
+      "Strengthen the visual system for QR stands, social campaigns, and pass promotions so the brand feels more consistent and recognizable.",
+  },
+  {
+    name: "Courtney",
+    role: "Social Media Manager",
+    category: "Social",
+    focusArea: "Publishing rhythm, engagement, and campaign coordination",
+    summary:
+      "Manages social media publishing, scheduling, community engagement, content planning, and campaign coordination.",
+    overview:
+      "Owns the publishing and audience engagement layer that turns strategy, creative, and offers into a consistent social presence and campaign output.",
+    responsibilities: [
+      "Manage publishing calendar and scheduling",
+      "Coordinate campaign rollouts across channels",
+      "Handle community engagement and response loops",
+      "Translate team priorities into social content plans",
+    ],
+    weeklyPriorities: [
+      "Schedule and publish planned content",
+      "Coordinate campaign timing with design and partnerships",
+      "Track engagement trends and community signals",
+    ],
+    kpis: [
+      "Posting consistency",
+      "Engagement rate",
+      "Campaign execution quality",
+      "Audience growth and response rate",
+    ],
+    dependencies: ["Ishaq", "Viji", "Veronika"],
+    next30Days:
+      "Create a more intentional publishing rhythm that supports Free Pass acquisition, premium storytelling, and the Guide 26/27 editorial rollout.",
+  },
+];
+
 const owners = [
   {
     stream: "Product",
@@ -328,6 +512,7 @@ function SectionCard({ id, eyebrow, title, children }) {
 
 export default function ConceptPage() {
   const canonical = absUrl("/concept");
+  const [selectedMember, setSelectedMember] = useState(null);
 
   return (
     <>
@@ -582,6 +767,54 @@ export default function ConceptPage() {
           </Paragraph>
         </SectionCard>
 
+        <SectionCard
+          id="team"
+          eyebrow="Team & responsibilities"
+          title="Team & Responsibilities"
+        >
+          <Paragraph className="concept-bodyCopy">
+            Clear ownership across partnerships, operations, creative, social, merchandise, and strategy.
+          </Paragraph>
+          <Paragraph className="concept-bodyCopy" style={{ marginBottom: 24 }}>
+            This section helps the team understand who owns what and how each role contributes to the Ahangama Pass ecosystem.
+          </Paragraph>
+
+          <Row gutter={[20, 20]}>
+            {teamMembers.map((member) => (
+              <Col xs={24} md={12} xl={8} key={member.name}>
+                <Card className="concept-card concept-teamCard" bordered={false}>
+                  <div className="concept-teamHeader">
+                    <div>
+                      <Title level={4} className="concept-teamName">
+                        {member.name}
+                      </Title>
+                      <Text className="concept-teamRole">{member.role}</Text>
+                    </div>
+                    <Tag className="concept-statusPill">{member.category}</Tag>
+                  </div>
+
+                  <Paragraph className="concept-bodyCopy concept-teamSummary">
+                    {member.summary}
+                  </Paragraph>
+
+                  <div className="concept-teamFocusBox">
+                    <Text className="concept-miniLabel">Key focus area</Text>
+                    <div className="concept-teamFocusText">{member.focusArea}</div>
+                  </div>
+
+                  <Button
+                    type="default"
+                    className="concept-teamButton"
+                    onClick={() => setSelectedMember(member)}
+                  >
+                    View Role Details
+                  </Button>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </SectionCard>
+
         <SectionCard id="milestones" eyebrow="Milestones" title="Progress and next steps">
           <Row gutter={[20, 20]}>
             {milestones.map((milestone) => (
@@ -646,6 +879,89 @@ export default function ConceptPage() {
             </ul>
           </Card>
         </SectionCard>
+
+        <Modal
+          open={Boolean(selectedMember)}
+          onCancel={() => setSelectedMember(null)}
+          footer={null}
+          width={760}
+          centered
+          title={null}
+          className="concept-teamModal"
+        >
+          {selectedMember ? (
+            <div className="concept-teamModalContent">
+              <div className="concept-teamModalHeader">
+                <div>
+                  <Text className="concept-sectionEyebrow">{selectedMember.category}</Text>
+                  <Title level={3} className="concept-teamModalTitle">
+                    {selectedMember.name} — {selectedMember.role}
+                  </Title>
+                </div>
+                <Tag className="concept-statusPill">Next 30 days</Tag>
+              </div>
+
+              <div className="concept-modalBlock">
+                <Text className="concept-miniLabel">Role overview</Text>
+                <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+                  {selectedMember.overview}
+                </Paragraph>
+              </div>
+
+              <Row gutter={[16, 16]}>
+                <Col xs={24} md={12}>
+                  <div className="concept-modalBlock">
+                    <Text className="concept-miniLabel">Key responsibilities</Text>
+                    <ul className="concept-list concept-listSpacious">
+                      {selectedMember.responsibilities.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </Col>
+                <Col xs={24} md={12}>
+                  <div className="concept-modalBlock">
+                    <Text className="concept-miniLabel">Weekly priorities</Text>
+                    <ul className="concept-list concept-listSpacious">
+                      {selectedMember.weeklyPriorities.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </Col>
+                <Col xs={24} md={12}>
+                  <div className="concept-modalBlock">
+                    <Text className="concept-miniLabel">KPIs / success metrics</Text>
+                    <ul className="concept-list concept-listSpacious">
+                      {selectedMember.kpis.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </Col>
+                <Col xs={24} md={12}>
+                  <div className="concept-modalBlock">
+                    <Text className="concept-miniLabel">Dependencies</Text>
+                    <div className="concept-chipGrid">
+                      {selectedMember.dependencies.map((item) => (
+                        <span className="concept-chip" key={item}>
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+
+              <div className="concept-modalBlock concept-modalFocusBlock">
+                <Text className="concept-miniLabel">Current focus for the next 30 days</Text>
+                <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+                  {selectedMember.next30Days}
+                </Paragraph>
+              </div>
+            </div>
+          ) : null}
+        </Modal>
       </ConceptWorkspaceLayout>
     </>
   );

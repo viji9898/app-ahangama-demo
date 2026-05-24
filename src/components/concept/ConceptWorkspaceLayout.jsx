@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Drawer, Space, Tag, Typography } from "antd";
+import { Button, Drawer, Space, Tag, Tooltip, Typography } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import "../../styles/concept-workspace.css";
 
@@ -38,18 +38,25 @@ function ConceptSidebar({ sections, activeSection, onSelect }) {
           const isActive = section.id === activeSection;
 
           return (
-            <button
+            <Tooltip
               key={section.id}
-              className={`concept-navItem${isActive ? " is-active" : ""}`}
-              type="button"
-              onClick={() => onSelect(section.id)}
+              title={section.hint}
+              placement="right"
+              mouseEnterDelay={0.15}
             >
-              <span className="concept-navIndex">{`0${index + 1}`.slice(-2)}</span>
-              <span className="concept-navText">
-                <span className="concept-navLabel">{section.label}</span>
-                <span className="concept-navHint">{section.hint}</span>
-              </span>
-            </button>
+              <button
+                className={`concept-navItem${isActive ? " is-active" : ""}`}
+                type="button"
+                onClick={() => onSelect(section.id)}
+                aria-label={`${section.label}: ${section.hint}`}
+              >
+                <span className="concept-navIndex">{`0${index + 1}`.slice(-2)}</span>
+                <span className="concept-navText">
+                  <span className="concept-navLabel">{section.label}</span>
+                  <span className="concept-navHint">{section.hint}</span>
+                </span>
+              </button>
+            </Tooltip>
           );
         })}
       </nav>
