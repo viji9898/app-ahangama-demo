@@ -40,7 +40,9 @@ function BlogSidebar({ posts, activeSlug, onSelect }) {
                 onClick={() => onSelect(post.slug)}
                 aria-label={post.title}
               >
-                <span className="blog-navIndex">{`0${index + 1}`.slice(-2)}</span>
+                <span className="blog-navIndex">
+                  {`0${index + 1}`.slice(-2)}
+                </span>
                 <span className="blog-navText">
                   <span className="blog-navLabel">{post.title}</span>
                   <span className="blog-navHint">{post.category}</span>
@@ -90,7 +92,9 @@ export default function BlogWorkspaceLayout({
               Posts
             </Button>
             <div>
-              <Text className="blog-topbarLabel">Ahangama stories and guides</Text>
+              <Text className="blog-topbarLabel">
+                Ahangama stories and guides
+              </Text>
               <div className="blog-topbarStatusRow">
                 <Tag className="blog-statusTag">
                   {activePost?.category || "Blog"}

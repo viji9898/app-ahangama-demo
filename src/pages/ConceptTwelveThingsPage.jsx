@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Card,
-  Col,
-  Divider,
-  List,
-  Row,
-  Space,
-  Tag,
-  Typography,
-} from "antd";
+import { Card, Col, Divider, List, Row, Space, Tag, Typography } from "antd";
 import {
   CameraOutlined,
   CheckCircleOutlined,
@@ -35,8 +26,16 @@ const sections = [
   { id: "faizan", label: "Faizan", hint: "Visual & Guide Lead" },
   { id: "ishaq", label: "Ishaq", hint: "Instagram & Promotion Lead" },
   { id: "minosha", label: "Minosha", hint: "Partnerships & Discovery" },
-  { id: "blog-strategy", label: "Blog Strategy", hint: "One post per experience" },
-  { id: "launch-goal", label: "Launch Goal", hint: "What success must look like" },
+  {
+    id: "blog-strategy",
+    label: "Blog Strategy",
+    hint: "One post per experience",
+  },
+  {
+    id: "launch-goal",
+    label: "Launch Goal",
+    hint: "What success must look like",
+  },
 ];
 
 const shortcutActions = [
@@ -62,6 +61,12 @@ const shortcutActions = [
     key: "premium-pass",
     label: "Premium Pass",
     href: "/concept/premium-pass",
+    isActive: false,
+  },
+  {
+    key: "blog-strategy",
+    label: "Blog Strategy",
+    href: "/concept/blog-strategy",
     isActive: false,
   },
 ];
@@ -241,10 +246,15 @@ export default function ConceptTwelveThingsPage() {
         shortcutActions={shortcutActions}
       >
         <section id="overview" className="concept-heroSection concept-section">
-          <Card className="concept-card concept-heroCard concept-strategyHero" bordered={false}>
+          <Card
+            className="concept-card concept-heroCard concept-strategyHero"
+            bordered={false}
+          >
             <div className="concept-heroGrid">
               <div>
-                <Text className="concept-heroEyebrow">12 Must Do Things in Ahangama</Text>
+                <Text className="concept-heroEyebrow">
+                  12 Must Do Things in Ahangama
+                </Text>
                 <Title className="concept-heroTitle">
                   One central idea should now drive the entire platform.
                 </Title>
@@ -278,7 +288,11 @@ export default function ConceptTwelveThingsPage() {
           </Card>
         </section>
 
-        <SectionCard id="focus" eyebrow="Central idea" title="Everything must support 12 Must Do Things in Ahangama">
+        <SectionCard
+          id="focus"
+          eyebrow="Central idea"
+          title="Everything must support 12 Must Do Things in Ahangama"
+        >
           <Paragraph className="concept-bodyCopy">
             Moving forward, the website, Instagram, blog content, guide, QR
             touchpoints, Ahangama Pass, promotions, and bundled experiences
@@ -306,10 +320,19 @@ export default function ConceptTwelveThingsPage() {
             <Paragraph className="concept-bodyCopy">{lead.summary}</Paragraph>
             <Row gutter={[18, 18]}>
               <Col xs={24} md={11}>
-                <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                  <Space align="center" size={10} className="concept-strategySubHeader">
+                <Card
+                  className="concept-card concept-subCard concept-strategySubCard"
+                  bordered={false}
+                >
+                  <Space
+                    align="center"
+                    size={10}
+                    className="concept-strategySubHeader"
+                  >
                     {lead.icon}
-                    <Text className="concept-sectionEyebrow">Key deliverables</Text>
+                    <Text className="concept-sectionEyebrow">
+                      Key deliverables
+                    </Text>
                   </Space>
                   <List
                     dataSource={lead.deliverables}
@@ -319,8 +342,15 @@ export default function ConceptTwelveThingsPage() {
                 </Card>
               </Col>
               <Col xs={24} md={13}>
-                <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                  <Space align="center" size={10} className="concept-strategySubHeader">
+                <Card
+                  className="concept-card concept-subCard concept-strategySubCard"
+                  bordered={false}
+                >
+                  <Space
+                    align="center"
+                    size={10}
+                    className="concept-strategySubHeader"
+                  >
                     <TeamOutlined />
                     <Text className="concept-sectionEyebrow">Focus areas</Text>
                   </Space>
@@ -335,7 +365,11 @@ export default function ConceptTwelveThingsPage() {
           </SectionCard>
         ))}
 
-        <SectionCard id="blog-strategy" eyebrow="Entire team" title="Blog Strategy">
+        <SectionCard
+          id="blog-strategy"
+          eyebrow="Entire team"
+          title="Blog Strategy"
+        >
           <Paragraph className="concept-bodyCopy">
             The blog system now needs one post for every experience or venue.
             The goal is tourism discovery content that ranks on Google, feels
@@ -345,8 +379,15 @@ export default function ConceptTwelveThingsPage() {
 
           <Row gutter={[18, 18]}>
             <Col xs={24} md={12}>
-              <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                <Space align="center" size={10} className="concept-strategySubHeader">
+              <Card
+                className="concept-card concept-subCard concept-strategySubCard"
+                bordered={false}
+              >
+                <Space
+                  align="center"
+                  size={10}
+                  className="concept-strategySubHeader"
+                >
                   <ReadOutlined />
                   <Text className="concept-sectionEyebrow">Example posts</Text>
                 </Space>
@@ -358,10 +399,19 @@ export default function ConceptTwelveThingsPage() {
               </Card>
             </Col>
             <Col xs={24} md={12}>
-              <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                <Space align="center" size={10} className="concept-strategySubHeader">
+              <Card
+                className="concept-card concept-subCard concept-strategySubCard"
+                bordered={false}
+              >
+                <Space
+                  align="center"
+                  size={10}
+                  className="concept-strategySubHeader"
+                >
                   <GlobalOutlined />
-                  <Text className="concept-sectionEyebrow">Content requirements</Text>
+                  <Text className="concept-sectionEyebrow">
+                    Content requirements
+                  </Text>
                 </Space>
                 <List
                   dataSource={[
@@ -379,7 +429,11 @@ export default function ConceptTwelveThingsPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="launch-goal" eyebrow="Final goal" title="What launch must deliver">
+        <SectionCard
+          id="launch-goal"
+          eyebrow="Final goal"
+          title="What launch must deliver"
+        >
           <Paragraph className="concept-bodyCopy">
             By launch, this should not feel like a messy pass product with too
             many scattered offers. It should feel like a curated tourism
@@ -391,11 +445,17 @@ export default function ConceptTwelveThingsPage() {
           <Row gutter={[16, 16]}>
             {launchGoals.map((goal) => (
               <Col xs={24} sm={12} md={8} key={goal}>
-                <Card className="concept-card concept-subCard concept-strategyGoalCard" bordered={false}>
+                <Card
+                  className="concept-card concept-subCard concept-strategyGoalCard"
+                  bordered={false}
+                >
                   <div className="concept-strategyGoalIcon">
                     <FileTextOutlined />
                   </div>
-                  <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+                  <Paragraph
+                    className="concept-bodyCopy"
+                    style={{ marginBottom: 0 }}
+                  >
                     {goal}
                   </Paragraph>
                 </Card>

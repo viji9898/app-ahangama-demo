@@ -11,7 +11,7 @@ const placesPath = path.join(__dirname, "..", "src", "data", "places.js");
 const outDir = path.join(__dirname, "..", "public");
 const siteUrl = (process.env.VITE_SITE_URL || "http://localhost:5173").replace(
   /\/$/,
-  ""
+  "",
 );
 
 // Simple, safe-ish import of your ES module data in Node
@@ -59,7 +59,7 @@ function buildSitemap(urls) {
     <lastmod>${xmlEscape(lastmod)}</lastmod>
     <changefreq>${xmlEscape(changefreq)}</changefreq>
     <priority>${xmlEscape(priority)}</priority>
-  </url>`
+  </url>`,
     )
     .join("");
 
@@ -119,11 +119,13 @@ Sitemap: ${sitemap}
 
   // Deduplicate
   const seen = new Set();
-  const urls = [...staticRoutes, ...dynamicRoutes, ...blogRoutes].filter((u) => {
-    if (seen.has(u.loc)) return false;
-    seen.add(u.loc);
-    return true;
-  });
+  const urls = [...staticRoutes, ...dynamicRoutes, ...blogRoutes].filter(
+    (u) => {
+      if (seen.has(u.loc)) return false;
+      seen.add(u.loc);
+      return true;
+    },
+  );
 
   const sitemapXml = buildSitemap(urls);
   fs.writeFileSync(path.join(outDir, "sitemap.xml"), sitemapXml, "utf8");
@@ -133,7 +135,7 @@ Sitemap: ${sitemap}
 
   console.log(`✅ Generated public/sitemap.xml (${urls.length} URLs)`);
   console.log(
-    `✅ Generated public/robots.txt (Sitemap: ${siteUrl}/sitemap.xml)`
+    `✅ Generated public/robots.txt (Sitemap: ${siteUrl}/sitemap.xml)`,
   );
 })().catch((err) => {
   console.error("❌ SEO generation failed:", err);

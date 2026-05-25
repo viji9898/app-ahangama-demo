@@ -15,7 +15,12 @@ function scrollToSection(sectionId) {
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function ConceptSidebar({ sections, activeSection, onSelect, shortcutActions }) {
+function ConceptSidebar({
+  sections,
+  activeSection,
+  onSelect,
+  shortcutActions,
+}) {
   return (
     <div className="concept-sidebarInner">
       <div className="concept-brandBlock">
@@ -64,7 +69,9 @@ function ConceptSidebar({ sections, activeSection, onSelect, shortcutActions }) 
                 onClick={() => onSelect(section.id)}
                 aria-label={`${section.label}: ${section.hint}`}
               >
-                <span className="concept-navIndex">{`0${index + 1}`.slice(-2)}</span>
+                <span className="concept-navIndex">
+                  {`0${index + 1}`.slice(-2)}
+                </span>
                 <span className="concept-navText">
                   <span className="concept-navLabel">{section.label}</span>
                   <span className="concept-navHint">{section.hint}</span>
@@ -105,7 +112,9 @@ export default function ConceptWorkspaceLayout({
       (entries) => {
         const visibleEntry = entries
           .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+          .sort(
+            (left, right) => right.intersectionRatio - left.intersectionRatio,
+          )[0];
 
         if (visibleEntry?.target?.id) {
           setActiveSection(visibleEntry.target.id);
@@ -153,7 +162,9 @@ export default function ConceptWorkspaceLayout({
               <Text className="concept-topbarLabel">Project workspace</Text>
               <div className="concept-topbarStatusRow">
                 <Tag className="concept-statusTag">{status}</Tag>
-                <Text className="concept-topbarMeta">Updated {lastUpdated}</Text>
+                <Text className="concept-topbarMeta">
+                  Updated {lastUpdated}
+                </Text>
               </div>
             </div>
           </Space>

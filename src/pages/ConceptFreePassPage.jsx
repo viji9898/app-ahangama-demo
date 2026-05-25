@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Card,
-  Col,
-  Divider,
-  List,
-  Row,
-  Space,
-  Tag,
-  Typography,
-} from "antd";
+import { Card, Col, Divider, List, Row, Space, Tag, Typography } from "antd";
 import {
   CheckCircleOutlined,
   CompassOutlined,
@@ -36,8 +27,16 @@ const sections = [
   { id: "faizan", label: "Faizan", hint: "Visual identity and UX" },
   { id: "ishaq", label: "Ishaq", hint: "Acquisition and Instagram growth" },
   { id: "minosha", label: "Minosha", hint: "Partnerships and ecosystem ops" },
-  { id: "veronika", label: "Veronika", hint: "Coordination and accountability" },
-  { id: "blog-strategy", label: "Content", hint: "Blog and discovery strategy" },
+  {
+    id: "veronika",
+    label: "Veronika",
+    hint: "Coordination and accountability",
+  },
+  {
+    id: "blog-strategy",
+    label: "Content",
+    hint: "Blog and discovery strategy",
+  },
   { id: "main-goal", label: "Main Goal", hint: "What the free pass really is" },
 ];
 
@@ -64,6 +63,12 @@ const shortcutActions = [
     key: "premium-pass",
     label: "Premium Pass",
     href: "/concept/premium-pass",
+    isActive: false,
+  },
+  {
+    key: "blog-strategy",
+    label: "Blog Strategy",
+    href: "/concept/blog-strategy",
     isActive: false,
   },
 ];
@@ -276,16 +281,20 @@ export default function ConceptFreePassPage() {
         shortcutActions={shortcutActions}
       >
         <section id="overview" className="concept-heroSection concept-section">
-          <Card className="concept-card concept-heroCard concept-strategyHero" bordered={false}>
+          <Card
+            className="concept-card concept-heroCard concept-strategyHero"
+            bordered={false}
+          >
             <div className="concept-heroGrid">
               <div>
                 <Text className="concept-heroEyebrow">Free Ahangama Pass</Text>
                 <Title className="concept-heroTitle">
-                  This is not a discount card. It is the front door to the ecosystem.
+                  This is not a discount card. It is the front door to the
+                  ecosystem.
                 </Title>
                 <Paragraph className="concept-heroCopy">
-                  The Free Ahangama Pass should rapidly onboard tourists into the
-                  Ahangama ecosystem through a frictionless mobile-first
+                  The Free Ahangama Pass should rapidly onboard tourists into
+                  the Ahangama ecosystem through a frictionless mobile-first
                   experience and then move them toward recommendations,
                   engagement, and premium products.
                 </Paragraph>
@@ -297,7 +306,9 @@ export default function ConceptFreePassPage() {
               </div>
 
               <div className="concept-focusPanel concept-strategyPanel">
-                <Text className="concept-focusLabel">What the free pass is</Text>
+                <Text className="concept-focusLabel">
+                  What the free pass is
+                </Text>
                 <Title level={4} className="concept-focusTitle">
                   The funnel matters most
                 </Title>
@@ -314,11 +325,15 @@ export default function ConceptFreePassPage() {
           </Card>
         </section>
 
-        <SectionCard id="funnel" eyebrow="Execution funnel" title="Everything should support the Free Pass journey">
+        <SectionCard
+          id="funnel"
+          eyebrow="Execution funnel"
+          title="Everything should support the Free Pass journey"
+        >
           <Paragraph className="concept-bodyCopy">
             Every QR scan, Instagram impression, hotel touchpoint, and content
-            asset should move travelers through the same funnel: discover,
-            sign up, receive the wallet pass, enter WhatsApp onboarding, get
+            asset should move travelers through the same funnel: discover, sign
+            up, receive the wallet pass, enter WhatsApp onboarding, get
             recommendations, stay engaged, and naturally see premium upsells.
           </Paragraph>
 
@@ -357,10 +372,19 @@ export default function ConceptFreePassPage() {
             <Paragraph className="concept-bodyCopy">{lead.summary}</Paragraph>
             <Row gutter={[18, 18]}>
               <Col xs={24} md={11}>
-                <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                  <Space align="center" size={10} className="concept-strategySubHeader">
+                <Card
+                  className="concept-card concept-subCard concept-strategySubCard"
+                  bordered={false}
+                >
+                  <Space
+                    align="center"
+                    size={10}
+                    className="concept-strategySubHeader"
+                  >
                     {lead.icon}
-                    <Text className="concept-sectionEyebrow">Responsibilities</Text>
+                    <Text className="concept-sectionEyebrow">
+                      Responsibilities
+                    </Text>
                   </Space>
                   <List
                     dataSource={lead.responsibilities}
@@ -370,8 +394,15 @@ export default function ConceptFreePassPage() {
                 </Card>
               </Col>
               <Col xs={24} md={13}>
-                <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                  <Space align="center" size={10} className="concept-strategySubHeader">
+                <Card
+                  className="concept-card concept-subCard concept-strategySubCard"
+                  bordered={false}
+                >
+                  <Space
+                    align="center"
+                    size={10}
+                    className="concept-strategySubHeader"
+                  >
                     <CompassOutlined />
                     <Text className="concept-sectionEyebrow">Focus</Text>
                   </Space>
@@ -386,20 +417,33 @@ export default function ConceptFreePassPage() {
           </SectionCard>
         ))}
 
-        <SectionCard id="blog-strategy" eyebrow="Entire team" title="Blog & Content Strategy">
+        <SectionCard
+          id="blog-strategy"
+          eyebrow="Entire team"
+          title="Blog & Content Strategy"
+        >
           <Paragraph className="concept-bodyCopy">
             The content system should support discovery first and move travelers
             naturally into the Free Pass funnel. That means one blog post per
-            venue, one per experience, strong destination content, and a
-            visible path into signups, trust, and authority.
+            venue, one per experience, strong destination content, and a visible
+            path into signups, trust, and authority.
           </Paragraph>
 
           <Row gutter={[18, 18]}>
             <Col xs={24} md={12}>
-              <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                <Space align="center" size={10} className="concept-strategySubHeader">
+              <Card
+                className="concept-card concept-subCard concept-strategySubCard"
+                bordered={false}
+              >
+                <Space
+                  align="center"
+                  size={10}
+                  className="concept-strategySubHeader"
+                >
                   <ReadOutlined />
-                  <Text className="concept-sectionEyebrow">Example content</Text>
+                  <Text className="concept-sectionEyebrow">
+                    Example content
+                  </Text>
                 </Space>
                 <List
                   dataSource={contentExamples}
@@ -409,10 +453,19 @@ export default function ConceptFreePassPage() {
               </Card>
             </Col>
             <Col xs={24} md={12}>
-              <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                <Space align="center" size={10} className="concept-strategySubHeader">
+              <Card
+                className="concept-card concept-subCard concept-strategySubCard"
+                bordered={false}
+              >
+                <Space
+                  align="center"
+                  size={10}
+                  className="concept-strategySubHeader"
+                >
                   <GlobalOutlined />
-                  <Text className="concept-sectionEyebrow">Content requirements</Text>
+                  <Text className="concept-sectionEyebrow">
+                    Content requirements
+                  </Text>
                 </Space>
                 <List
                   dataSource={contentRequirements}
@@ -424,7 +477,11 @@ export default function ConceptFreePassPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="main-goal" eyebrow="Main goal" title="Discover Ahangama Better">
+        <SectionCard
+          id="main-goal"
+          eyebrow="Main goal"
+          title="Discover Ahangama Better"
+        >
           <Paragraph className="concept-bodyCopy">
             The free pass should make the brand feel like a tourism discovery
             platform, a communication layer with tourists, a recommendation
@@ -435,11 +492,17 @@ export default function ConceptFreePassPage() {
           <Row gutter={[16, 16]}>
             {mainGoals.map((goal) => (
               <Col xs={24} sm={12} md={8} key={goal}>
-                <Card className="concept-card concept-subCard concept-strategyGoalCard" bordered={false}>
+                <Card
+                  className="concept-card concept-subCard concept-strategyGoalCard"
+                  bordered={false}
+                >
                   <div className="concept-strategyGoalIcon">
                     <FileTextOutlined />
                   </div>
-                  <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+                  <Paragraph
+                    className="concept-bodyCopy"
+                    style={{ marginBottom: 0 }}
+                  >
                     {goal}
                   </Paragraph>
                 </Card>
@@ -464,7 +527,9 @@ export default function ConceptFreePassPage() {
                 <WalletOutlined />
                 <div>
                   <Text className="concept-summaryLabel">Product layer</Text>
-                  <strong>Wallet pass, guide, onboarding, recommendations</strong>
+                  <strong>
+                    Wallet pass, guide, onboarding, recommendations
+                  </strong>
                 </div>
               </div>
             </Col>
@@ -473,7 +538,9 @@ export default function ConceptFreePassPage() {
                 <MessageOutlined />
                 <div>
                   <Text className="concept-summaryLabel">Long-term brand</Text>
-                  <strong>Relationships, trust, communication, premium upsells</strong>
+                  <strong>
+                    Relationships, trust, communication, premium upsells
+                  </strong>
                 </div>
               </div>
             </Col>

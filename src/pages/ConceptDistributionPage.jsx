@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Card,
-  Col,
-  Divider,
-  List,
-  Row,
-  Space,
-  Tag,
-  Typography,
-} from "antd";
+import { Card, Col, Divider, List, Row, Space, Tag, Typography } from "antd";
 import {
   ApartmentOutlined,
   CheckCircleOutlined,
@@ -31,14 +22,42 @@ const { Paragraph, Text, Title } = Typography;
 const sections = [
   { id: "overview", label: "Overview", hint: "Why distribution matters" },
   { id: "objectives", label: "Objectives", hint: "Core distribution goals" },
-  { id: "veronika", label: "Veronika", hint: "Distribution coordination and CRM" },
-  { id: "vishmi", label: "Vishmi", hint: "Hotels, venues and tourism partners" },
+  {
+    id: "veronika",
+    label: "Veronika",
+    hint: "Distribution coordination and CRM",
+  },
+  {
+    id: "vishmi",
+    label: "Vishmi",
+    hint: "Hotels, venues and tourism partners",
+  },
   { id: "ishaq", label: "Ishaq", hint: "Social and influencer distribution" },
-  { id: "minosha", label: "Minosha", hint: "Community and collaboration channels" },
-  { id: "jessica", label: "Jessica", hint: "Outreach and communication support" },
-  { id: "communication", label: "Communication", hint: "Recurring partner systems" },
-  { id: "database", label: "Database", hint: "Centralized relationship tracking" },
-  { id: "final-goal", label: "Final Goal", hint: "How channels feed the funnel" },
+  {
+    id: "minosha",
+    label: "Minosha",
+    hint: "Community and collaboration channels",
+  },
+  {
+    id: "jessica",
+    label: "Jessica",
+    hint: "Outreach and communication support",
+  },
+  {
+    id: "communication",
+    label: "Communication",
+    hint: "Recurring partner systems",
+  },
+  {
+    id: "database",
+    label: "Database",
+    hint: "Centralized relationship tracking",
+  },
+  {
+    id: "final-goal",
+    label: "Final Goal",
+    hint: "How channels feed the funnel",
+  },
 ];
 
 const shortcutActions = [
@@ -64,6 +83,12 @@ const shortcutActions = [
     key: "premium-pass",
     label: "Premium Pass",
     href: "/concept/premium-pass",
+    isActive: false,
+  },
+  {
+    key: "blog-strategy",
+    label: "Blog Strategy",
+    href: "/concept/blog-strategy",
     isActive: false,
   },
 ];
@@ -307,12 +332,18 @@ export default function ConceptDistributionPage() {
         shortcutActions={shortcutActions}
       >
         <section id="overview" className="concept-heroSection concept-section">
-          <Card className="concept-card concept-heroCard concept-strategyHero" bordered={false}>
+          <Card
+            className="concept-card concept-heroCard concept-strategyHero"
+            bordered={false}
+          >
             <div className="concept-heroGrid">
               <div>
-                <Text className="concept-heroEyebrow">Distribution & Growth Channels</Text>
+                <Text className="concept-heroEyebrow">
+                  Distribution & Growth Channels
+                </Text>
                 <Title className="concept-heroTitle">
-                  The Free Ahangama Pass only works if distribution systems are strong.
+                  The Free Ahangama Pass only works if distribution systems are
+                  strong.
                 </Title>
                 <Paragraph className="concept-heroCopy">
                   This is not just marketing. The team is building a tourism
@@ -345,7 +376,11 @@ export default function ConceptDistributionPage() {
           </Card>
         </section>
 
-        <SectionCard id="objectives" eyebrow="Core objectives" title="What distribution needs to do now">
+        <SectionCard
+          id="objectives"
+          eyebrow="Core objectives"
+          title="What distribution needs to do now"
+        >
           <Paragraph className="concept-bodyCopy">
             Distribution needs operational ownership, recurring communication,
             comprehensive relationship tracking, and consistent partner
@@ -388,10 +423,19 @@ export default function ConceptDistributionPage() {
             <Paragraph className="concept-bodyCopy">{lead.summary}</Paragraph>
             <Row gutter={[18, 18]}>
               <Col xs={24} md={11}>
-                <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                  <Space align="center" size={10} className="concept-strategySubHeader">
+                <Card
+                  className="concept-card concept-subCard concept-strategySubCard"
+                  bordered={false}
+                >
+                  <Space
+                    align="center"
+                    size={10}
+                    className="concept-strategySubHeader"
+                  >
                     {lead.icon}
-                    <Text className="concept-sectionEyebrow">Responsibilities</Text>
+                    <Text className="concept-sectionEyebrow">
+                      Responsibilities
+                    </Text>
                   </Space>
                   <List
                     dataSource={lead.responsibilities}
@@ -401,10 +445,19 @@ export default function ConceptDistributionPage() {
                 </Card>
               </Col>
               <Col xs={24} md={13}>
-                <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                  <Space align="center" size={10} className="concept-strategySubHeader">
+                <Card
+                  className="concept-card concept-subCard concept-strategySubCard"
+                  bordered={false}
+                >
+                  <Space
+                    align="center"
+                    size={10}
+                    className="concept-strategySubHeader"
+                  >
                     <TeamOutlined />
-                    <Text className="concept-sectionEyebrow">Deliverables and goals</Text>
+                    <Text className="concept-sectionEyebrow">
+                      Deliverables and goals
+                    </Text>
                   </Space>
                   <List
                     dataSource={lead.deliverables}
@@ -417,20 +470,33 @@ export default function ConceptDistributionPage() {
           </SectionCard>
         ))}
 
-        <SectionCard id="communication" eyebrow="Communication system" title="Recurring communication keeps the network active">
+        <SectionCard
+          id="communication"
+          eyebrow="Communication system"
+          title="Recurring communication keeps the network active"
+        >
           <Paragraph className="concept-bodyCopy">
             Every distribution channel needs regular contact. The system should
             not depend on ad hoc follow-up. It should be scheduled, owned, and
-            easy to execute through WhatsApp newsletters, email newsletters,
-            and bi-weekly check-ins.
+            easy to execute through WhatsApp newsletters, email newsletters, and
+            bi-weekly check-ins.
           </Paragraph>
 
           <Row gutter={[18, 18]}>
             <Col xs={24} md={8}>
-              <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                <Space align="center" size={10} className="concept-strategySubHeader">
+              <Card
+                className="concept-card concept-subCard concept-strategySubCard"
+                bordered={false}
+              >
+                <Space
+                  align="center"
+                  size={10}
+                  className="concept-strategySubHeader"
+                >
                   <MessageOutlined />
-                  <Text className="concept-sectionEyebrow">WhatsApp newsletters</Text>
+                  <Text className="concept-sectionEyebrow">
+                    WhatsApp newsletters
+                  </Text>
                 </Space>
                 <List
                   dataSource={whatsappNewsletter}
@@ -440,10 +506,19 @@ export default function ConceptDistributionPage() {
               </Card>
             </Col>
             <Col xs={24} md={8}>
-              <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                <Space align="center" size={10} className="concept-strategySubHeader">
+              <Card
+                className="concept-card concept-subCard concept-strategySubCard"
+                bordered={false}
+              >
+                <Space
+                  align="center"
+                  size={10}
+                  className="concept-strategySubHeader"
+                >
                   <MailOutlined />
-                  <Text className="concept-sectionEyebrow">Email newsletters</Text>
+                  <Text className="concept-sectionEyebrow">
+                    Email newsletters
+                  </Text>
                 </Space>
                 <List
                   dataSource={emailNewsletter}
@@ -453,10 +528,19 @@ export default function ConceptDistributionPage() {
               </Card>
             </Col>
             <Col xs={24} md={8}>
-              <Card className="concept-card concept-subCard concept-strategySubCard" bordered={false}>
-                <Space align="center" size={10} className="concept-strategySubHeader">
+              <Card
+                className="concept-card concept-subCard concept-strategySubCard"
+                bordered={false}
+              >
+                <Space
+                  align="center"
+                  size={10}
+                  className="concept-strategySubHeader"
+                >
                   <ScheduleOutlined />
-                  <Text className="concept-sectionEyebrow">Bi-weekly check-ins</Text>
+                  <Text className="concept-sectionEyebrow">
+                    Bi-weekly check-ins
+                  </Text>
                 </Space>
                 <List
                   dataSource={biWeeklyCheckins}
@@ -468,13 +552,17 @@ export default function ConceptDistributionPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="database" eyebrow="Centralized database" title="Every relationship needs to be owned and tracked">
+        <SectionCard
+          id="database"
+          eyebrow="Centralized database"
+          title="Every relationship needs to be owned and tracked"
+        >
           <Paragraph className="concept-bodyCopy">
             The distribution database should become the central source of truth
-            across hotels, villas, cafes, wellness studios, creators,
-            operators, concierge contacts, and community partners. Every
-            relationship should be categorized, assigned an owner, tracked, and
-            followed up regularly.
+            across hotels, villas, cafes, wellness studios, creators, operators,
+            concierge contacts, and community partners. Every relationship
+            should be categorized, assigned an owner, tracked, and followed up
+            regularly.
           </Paragraph>
 
           <Row gutter={[16, 16]}>
@@ -489,23 +577,32 @@ export default function ConceptDistributionPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="final-goal" eyebrow="Final goal" title="Every distribution channel should feed the Free Ahangama Pass">
+        <SectionCard
+          id="final-goal"
+          eyebrow="Final goal"
+          title="Every distribution channel should feed the Free Ahangama Pass"
+        >
           <Paragraph className="concept-bodyCopy">
             The full system should feed into the same chain: Free Ahangama Pass,
-            then recommendations, engagement, premium experiences, and
-            commerce. That is how distribution becomes an acquisition layer,
-            communication layer, discovery layer, and commerce layer for
-            Ahangama tourism.
+            then recommendations, engagement, premium experiences, and commerce.
+            That is how distribution becomes an acquisition layer, communication
+            layer, discovery layer, and commerce layer for Ahangama tourism.
           </Paragraph>
 
           <Row gutter={[16, 16]}>
             {finalLayers.map((layer) => (
               <Col xs={24} sm={12} md={12} key={layer}>
-                <Card className="concept-card concept-subCard concept-strategyGoalCard" bordered={false}>
+                <Card
+                  className="concept-card concept-subCard concept-strategyGoalCard"
+                  bordered={false}
+                >
                   <div className="concept-strategyGoalIcon">
                     <GlobalOutlined />
                   </div>
-                  <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+                  <Paragraph
+                    className="concept-bodyCopy"
+                    style={{ marginBottom: 0 }}
+                  >
                     {layer}
                   </Paragraph>
                 </Card>

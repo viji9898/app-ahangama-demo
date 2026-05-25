@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Card,
-  Col,
-  Divider,
-  List,
-  Row,
-  Space,
-  Tag,
-  Typography,
-} from "antd";
+import { Card, Col, Divider, List, Row, Space, Tag, Typography } from "antd";
 import {
   CheckCircleOutlined,
   CompassOutlined,
@@ -62,6 +53,12 @@ const shortcutActions = [
     label: "Premium Pass",
     href: "/concept/premium-pass",
     isActive: true,
+  },
+  {
+    key: "blog-strategy",
+    label: "Blog Strategy",
+    href: "/concept/blog-strategy",
+    isActive: false,
   },
 ];
 
@@ -187,13 +184,17 @@ export default function ConceptPremiumPassPage() {
       >
         <section className="concept-strategyHero">
           <div>
-            <Text className="concept-sectionEyebrow">Premium Experience Pass</Text>
-            <Title className="concept-heroTitle">A curated paid product, not just a discount stack.</Title>
+            <Text className="concept-sectionEyebrow">
+              Premium Experience Pass
+            </Text>
+            <Title className="concept-heroTitle">
+              A curated paid product, not just a discount stack.
+            </Title>
             <Paragraph className="concept-bodyCopy concept-heroParagraph">
-              The Premium Experience Pass is the monetization layer that sits on top
-              of the Free Ahangama Pass. Its role is to convert high-intent travelers
-              into buyers of curated Ahangama experiences by packaging the best parts
-              of the town into one intentional, bookable product.
+              The Premium Experience Pass is the monetization layer that sits on
+              top of the Free Ahangama Pass. Its role is to convert high-intent
+              travelers into buyers of curated Ahangama experiences by packaging
+              the best parts of the town into one intentional, bookable product.
             </Paragraph>
           </div>
 
@@ -204,13 +205,18 @@ export default function ConceptPremiumPassPage() {
           </Space>
         </section>
 
-        <SectionCard id="overview" eyebrow="Overview" title="What this product is meant to do">
+        <SectionCard
+          id="overview"
+          eyebrow="Overview"
+          title="What this product is meant to do"
+        >
           <Paragraph className="concept-bodyCopy">
             The premium pass should turn Ahangama discovery into a purchaseable,
-            high-value experience layer. It is not the acquisition engine. The free
-            pass handles audience growth and relationship capture; the premium pass is
-            the paid offer that converts that audience into experiences, bundles,
-            revenue, and a stronger sense of destination curation.
+            high-value experience layer. It is not the acquisition engine. The
+            free pass handles audience growth and relationship capture; the
+            premium pass is the paid offer that converts that audience into
+            experiences, bundles, revenue, and a stronger sense of destination
+            curation.
           </Paragraph>
 
           <Row gutter={[16, 16]}>
@@ -227,19 +233,23 @@ export default function ConceptPremiumPassPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="product" eyebrow="Product" title="The core premium-pass proposition">
+        <SectionCard
+          id="product"
+          eyebrow="Product"
+          title="The core premium-pass proposition"
+        >
           <Row gutter={[16, 16]}>
             <Col xs={24} lg={14}>
               <Paragraph className="concept-bodyCopy">
-                The product framing already exists in the concept workspace: a paid,
-                Go City-inspired bundle of curated Ahangama experiences offered at a
-                discounted package price. The job now is to make that framing feel
-                coherent, iconic, and operationally real.
+                The product framing already exists in the concept workspace: a
+                paid, Go City-inspired bundle of curated Ahangama experiences
+                offered at a discounted package price. The job now is to make
+                that framing feel coherent, iconic, and operationally real.
               </Paragraph>
               <Paragraph className="concept-bodyCopy">
                 This should feel like the best version of Ahangama in one pass,
-                combining discovery, convenience, and curation. If it looks like a
-                loose stack of venue discounts, the product will underperform.
+                combining discovery, convenience, and curation. If it looks like
+                a loose stack of venue discounts, the product will underperform.
               </Paragraph>
             </Col>
             <Col xs={24} lg={10}>
@@ -250,8 +260,8 @@ export default function ConceptPremiumPassPage() {
                     <Text strong>Product role</Text>
                   </Space>
                   <Text className="concept-bodyCopy">
-                    The paid tier that monetizes traveler intent after the free pass has
-                    already built discovery, trust, and engagement.
+                    The paid tier that monetizes traveler intent after the free
+                    pass has already built discovery, trust, and engagement.
                   </Text>
                 </Space>
               </Card>
@@ -259,12 +269,17 @@ export default function ConceptPremiumPassPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="bundles" eyebrow="Bundles" title="What belongs inside the premium pass">
+        <SectionCard
+          id="bundles"
+          eyebrow="Bundles"
+          title="What belongs inside the premium pass"
+        >
           <Paragraph className="concept-bodyCopy">
-            The existing concept page already points to the kinds of inclusions that
-            make this product compelling. The bundle should balance iconic activities,
-            daily rituals, and lifestyle utilities so travelers feel they are buying a
-            better version of the town, not a single-category offer.
+            The existing concept page already points to the kinds of inclusions
+            that make this product compelling. The bundle should balance iconic
+            activities, daily rituals, and lifestyle utilities so travelers feel
+            they are buying a better version of the town, not a single-category
+            offer.
           </Paragraph>
 
           <List
@@ -283,19 +298,25 @@ export default function ConceptPremiumPassPage() {
           />
         </SectionCard>
 
-        <SectionCard id="funnel" eyebrow="Funnel" title="How the premium pass should be sold">
+        <SectionCard
+          id="funnel"
+          eyebrow="Funnel"
+          title="How the premium pass should be sold"
+        >
           <Paragraph className="concept-bodyCopy">
             The repository already defines the free pass as the entry point into
-            premium products. That makes the premium pass a downstream conversion
-            product, not a standalone first-touch campaign. The funnel should look
-            like this:
+            premium products. That makes the premium pass a downstream
+            conversion product, not a standalone first-touch campaign. The
+            funnel should look like this:
           </Paragraph>
 
           <Row gutter={[16, 16]}>
             {funnelSteps.map((step, index) => (
               <Col xs={24} md={12} key={step}>
                 <Card className="concept-strategySubCard" bordered={false}>
-                  <Text className="concept-sectionEyebrow">Step {index + 1}</Text>
+                  <Text className="concept-sectionEyebrow">
+                    Step {index + 1}
+                  </Text>
                   <Title level={4} className="concept-strategySubHeader">
                     {step}
                   </Title>
@@ -305,7 +326,11 @@ export default function ConceptPremiumPassPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="operations" eyebrow="Operations" title="What must exist before this can scale">
+        <SectionCard
+          id="operations"
+          eyebrow="Operations"
+          title="What must exist before this can scale"
+        >
           <Row gutter={[16, 16]}>
             {operationalNeeds.map((item) => (
               <Col xs={24} md={8} key={item.title}>
@@ -335,11 +360,11 @@ export default function ConceptPremiumPassPage() {
           <Row gutter={[16, 16]}>
             <Col xs={24} lg={14}>
               <Paragraph className="concept-bodyCopy">
-                Pricing should be simple enough to understand quickly and strong enough
-                to make the bundle feel valuable against buying the experiences one by
-                one. The discount matters, but the real commercial advantage is that
-                the product saves decision-making time and makes Ahangama feel easier to
-                experience.
+                Pricing should be simple enough to understand quickly and strong
+                enough to make the bundle feel valuable against buying the
+                experiences one by one. The discount matters, but the real
+                commercial advantage is that the product saves decision-making
+                time and makes Ahangama feel easier to experience.
               </Paragraph>
             </Col>
             <Col xs={24} lg={10}>
@@ -357,7 +382,11 @@ export default function ConceptPremiumPassPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="kpis" eyebrow="KPIs" title="Signals this strategy is working">
+        <SectionCard
+          id="kpis"
+          eyebrow="KPIs"
+          title="Signals this strategy is working"
+        >
           <Row gutter={[16, 16]}>
             {kpis.map((metric) => (
               <Col xs={24} md={12} key={metric.label}>
@@ -366,19 +395,25 @@ export default function ConceptPremiumPassPage() {
                   <Title level={3} className="concept-strategySubHeader">
                     {metric.value}
                   </Title>
-                  <Paragraph className="concept-bodyCopy">{metric.note}</Paragraph>
+                  <Paragraph className="concept-bodyCopy">
+                    {metric.note}
+                  </Paragraph>
                 </Card>
               </Col>
             ))}
           </Row>
         </SectionCard>
 
-        <SectionCard id="launch-goal" eyebrow="Launch Goal" title="What success must feel like">
+        <SectionCard
+          id="launch-goal"
+          eyebrow="Launch Goal"
+          title="What success must feel like"
+        >
           <Paragraph className="concept-bodyCopy">
-            The premium pass should launch as the clearest proof that Ahangama can be
-            productized as a curated destination experience. It should feel iconic,
-            easy to explain, easy to buy, and clearly better than assembling the same
-            experience manually.
+            The premium pass should launch as the clearest proof that Ahangama
+            can be productized as a curated destination experience. It should
+            feel iconic, easy to explain, easy to buy, and clearly better than
+            assembling the same experience manually.
           </Paragraph>
 
           <Row gutter={[16, 16]}>
@@ -389,8 +424,8 @@ export default function ConceptPremiumPassPage() {
                   Flagship offer
                 </Title>
                 <Paragraph className="concept-bodyCopy">
-                  A product people can immediately understand as the paid centerpiece of
-                  the Ahangama platform.
+                  A product people can immediately understand as the paid
+                  centerpiece of the Ahangama platform.
                 </Paragraph>
               </Card>
             </Col>
@@ -401,8 +436,8 @@ export default function ConceptPremiumPassPage() {
                   Real conversions
                 </Title>
                 <Paragraph className="concept-bodyCopy">
-                  Enough buyer demand and redemption activity to prove the upsell model
-                  works beyond concept-stage planning.
+                  Enough buyer demand and redemption activity to prove the
+                  upsell model works beyond concept-stage planning.
                 </Paragraph>
               </Card>
             </Col>
@@ -413,8 +448,9 @@ export default function ConceptPremiumPassPage() {
                   Destination signal
                 </Title>
                 <Paragraph className="concept-bodyCopy">
-                  A stronger claim that Ahangama is not only a place to discover, but a
-                  place that can package and sell its best experiences intentionally.
+                  A stronger claim that Ahangama is not only a place to
+                  discover, but a place that can package and sell its best
+                  experiences intentionally.
                 </Paragraph>
               </Card>
             </Col>
