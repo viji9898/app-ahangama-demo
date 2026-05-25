@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   Button,
   Card,
@@ -33,6 +34,8 @@ import {
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import ConceptWorkspaceLayout from "../components/concept/ConceptWorkspaceLayout";
+import ConceptTwelveThingsPage from "./ConceptTwelveThingsPage";
+import NotFound from "../NotFound";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -869,9 +872,19 @@ function SectionCard({ id, eyebrow, title, children }) {
 }
 
 export default function ConceptPage() {
-  const canonical = absUrl("/concept");
+  const { slug } = useParams();
   const [selectedMember, setSelectedMember] = useState(null);
   const [freePassModalOpen, setFreePassModalOpen] = useState(false);
+
+  if (slug === "12-things") {
+    return <ConceptTwelveThingsPage />;
+  }
+
+  if (slug) {
+    return <NotFound />;
+  }
+
+  const canonical = absUrl("/concept");
 
   return (
     <>
@@ -885,6 +898,14 @@ export default function ConceptPage() {
         sections={sections}
         status="Active planning"
         lastUpdated="May 2026"
+        shortcutActions={[
+          {
+            key: "12-things",
+            label: "12 Things",
+            href: "/concept/12-things",
+            isActive: false,
+          },
+        ]}
       >
         <section id="overview" className="concept-heroSection concept-section">
           <Card className="concept-card concept-heroCard" bordered={false}>

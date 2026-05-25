@@ -15,7 +15,7 @@ function scrollToSection(sectionId) {
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function ConceptSidebar({ sections, activeSection, onSelect }) {
+function ConceptSidebar({ sections, activeSection, onSelect, shortcutActions }) {
   return (
     <div className="concept-sidebarInner">
       <div className="concept-brandBlock">
@@ -32,6 +32,20 @@ function ConceptSidebar({ sections, activeSection, onSelect }) {
         <Tag className="concept-metaTag">Concept</Tag>
         <Tag className="concept-metaTag">Team Alignment</Tag>
       </div>
+
+      {shortcutActions.length ? (
+        <div className="concept-shortcutRow">
+          {shortcutActions.map((action) => (
+            <a
+              key={action.key}
+              href={action.href}
+              className={`concept-shortcutButton${action.isActive ? " is-active" : ""}`}
+            >
+              {action.label}
+            </a>
+          ))}
+        </div>
+      ) : null}
 
       <nav className="concept-nav" aria-label="Concept page sections">
         {sections.map((section, index) => {
@@ -69,6 +83,7 @@ export default function ConceptWorkspaceLayout({
   children,
   status = "Planning",
   lastUpdated = "Today",
+  shortcutActions = [],
 }) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || "");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -120,6 +135,7 @@ export default function ConceptWorkspaceLayout({
           sections={sections}
           activeSection={activeSection}
           onSelect={handleSelectSection}
+          shortcutActions={shortcutActions}
         />
       </aside>
 
@@ -158,6 +174,7 @@ export default function ConceptWorkspaceLayout({
           sections={sections}
           activeSection={activeSection}
           onSelect={handleSelectSection}
+          shortcutActions={shortcutActions}
         />
       </Drawer>
     </div>

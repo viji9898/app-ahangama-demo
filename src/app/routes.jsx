@@ -42,6 +42,7 @@ const routes = [
   { path: "/blogs", element: <BlogsPage /> },
   { path: "/blogs/:slug", element: <BlogsPage /> },
   { path: "/concept", element: <ConceptPage /> },
+  { path: "/concept/:slug", element: <ConceptPage /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },
