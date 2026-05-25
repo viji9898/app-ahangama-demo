@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ---- EDIT THIS if your repo structure differs ----
+const blogsPath = path.join(__dirname, "..", "src", "data", "blogs.js");
 const placesPath = path.join(__dirname, "..", "src", "data", "places.js");
 const outDir = path.join(__dirname, "..", "public");
 const siteUrl = (process.env.VITE_SITE_URL || "http://localhost:5173").replace(
@@ -17,6 +18,11 @@ const siteUrl = (process.env.VITE_SITE_URL || "http://localhost:5173").replace(
 async function loadPlaces() {
   const mod = await import(pathToFileUrl(placesPath));
   return mod.PLACES || [];
+}
+
+async function loadBlogs() {
+  const mod = await import(pathToFileUrl(blogsPath));
+  return mod.BLOG_POSTS || [];
 }
 
 function pathToFileUrl(p) {
@@ -75,12 +81,14 @@ Sitemap: ${sitemap}
 (async () => {
   ensureDir(outDir);
 
+  const BLOG_POSTS = await loadBlogs();
   const PLACES = await loadPlaces();
 
   // Core routes (add more as you build)
   const staticRoutes = [
     { loc: `${siteUrl}/`, changefreq: "weekly", priority: "1.0" },
     { loc: `${siteUrl}/search`, changefreq: "weekly", priority: "0.8" },
+    { loc: `${siteUrl}/blogs`, changefreq: "weekly", priority: "0.8" },
     {
       loc: `${siteUrl}/partners-knowledge`,
       changefreq: "daily",
@@ -102,9 +110,16 @@ Sitemap: ${sitemap}
     priority: "0.7",
   }));
 
+  const blogRoutes = BLOG_POSTS.map((post) => ({
+    loc: `${siteUrl}/blogs/${post.slug}`,
+    changefreq: "monthly",
+    priority: "0.7",
+    lastmod: post.publishDate,
+  }));
+
   // Deduplicate
   const seen = new Set();
-  const urls = [...staticRoutes, ...dynamicRoutes].filter((u) => {
+  const urls = [...staticRoutes, ...dynamicRoutes, ...blogRoutes].filter((u) => {
     if (seen.has(u.loc)) return false;
     seen.add(u.loc);
     return true;
