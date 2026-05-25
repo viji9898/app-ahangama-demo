@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Breadcrumb, Button, Card, Col, Row, Tag, Typography } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
@@ -644,6 +644,10 @@ export default function BlogsPage() {
 	const activePost = slug ? getBlogPostBySlug(slug) : null;
 	const isNotFound = Boolean(slug && !activePost);
 	const isCollectionHome = !slug;
+
+	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: "auto" });
+	}, [slug]);
 
 	const handleSelectPost = (nextSlug) => {
 		navigate(`/blogs/${nextSlug}`);
