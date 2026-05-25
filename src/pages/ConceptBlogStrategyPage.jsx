@@ -59,6 +59,12 @@ const shortcutActions = [
     href: "/concept/blog-strategy",
     isActive: true,
   },
+  {
+    key: "guide-26-27",
+    label: "Guide 26/27",
+    href: "/concept/guide-26-27",
+    isActive: false,
+  },
 ];
 
 const editorialPrinciples = [

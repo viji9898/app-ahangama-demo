@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Drawer, Space, Tag, Tooltip, Typography } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
+import { useLocation } from "react-router-dom";
 import "../../styles/concept-workspace.css";
 
 const { Text, Title } = Typography;
@@ -31,11 +32,6 @@ function ConceptSidebar({
             Ahangama Pass
           </Title>
         </div>
-      </div>
-
-      <div className="concept-sidebarMeta">
-        <Tag className="concept-metaTag">Concept</Tag>
-        <Tag className="concept-metaTag">Team Alignment</Tag>
       </div>
 
       {shortcutActions.length ? (
@@ -92,8 +88,18 @@ export default function ConceptWorkspaceLayout({
   lastUpdated = "Today",
   shortcutActions = [],
 }) {
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState(sections[0]?.id || "");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const conceptShortcutActions = [
+    {
+      key: "concept-home",
+      label: "Index",
+      href: "/concept",
+      isActive: location.pathname === "/concept",
+    },
+    ...shortcutActions,
+  ];
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -144,7 +150,7 @@ export default function ConceptWorkspaceLayout({
           sections={sections}
           activeSection={activeSection}
           onSelect={handleSelectSection}
-          shortcutActions={shortcutActions}
+          shortcutActions={conceptShortcutActions}
         />
       </aside>
 
@@ -185,7 +191,7 @@ export default function ConceptWorkspaceLayout({
           sections={sections}
           activeSection={activeSection}
           onSelect={handleSelectSection}
-          shortcutActions={shortcutActions}
+          shortcutActions={conceptShortcutActions}
         />
       </Drawer>
     </div>

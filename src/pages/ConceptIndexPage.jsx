@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Col, Row, Space, Tag, Typography } from "antd";
 import {
+  BookOutlined,
   DeploymentUnitOutlined,
   EditOutlined,
   FileTextOutlined,
@@ -28,6 +29,8 @@ const strategyRoutes = [
     title: "12 Things",
     href: "/concept/12-things",
     icon: <StarOutlined />,
+    owner: "Vishmi + Faizan",
+    status: "In progress",
     summary:
       "The curated experience shortlist that shapes the destination story and what should be recommended first.",
     tags: ["Curation", "Destination story", "Experience shortlist"],
@@ -37,6 +40,8 @@ const strategyRoutes = [
     title: "Free Pass",
     href: "/concept/free-pass",
     icon: <GiftOutlined />,
+    owner: "Veronika + Ishaq",
+    status: "Active planning",
     summary:
       "The acquisition engine that captures travelers, builds direct communication channels, and feeds the funnel.",
     tags: ["Acquisition", "WhatsApp", "Wallet pass"],
@@ -46,6 +51,8 @@ const strategyRoutes = [
     title: "Distribution",
     href: "/concept/distribution",
     icon: <DeploymentUnitOutlined />,
+    owner: "Veronika",
+    status: "Active planning",
     summary:
       "The partner and channel system that keeps hotels, venues, creators, and outbound communications active.",
     tags: ["Partners", "CRM", "Growth channels"],
@@ -55,6 +62,8 @@ const strategyRoutes = [
     title: "Premium Pass",
     href: "/concept/premium-pass",
     icon: <WalletOutlined />,
+    owner: "Viji",
+    status: "Planned",
     summary:
       "The paid product layer that turns curated Ahangama experiences into a coherent, monetizable bundle.",
     tags: ["Monetization", "Bundles", "Upsell"],
@@ -64,9 +73,22 @@ const strategyRoutes = [
     title: "Blog Strategy",
     href: "/concept/blog-strategy",
     icon: <EditOutlined />,
+    owner: "Courtney + Ishaq",
+    status: "In progress",
     summary:
       "The editorial system that makes the destination searchable, trustworthy, and reusable across guide, blog, QR, and social.",
     tags: ["Editorial", "SEO", "Guide 26/27"],
+  },
+  {
+    key: "guide-26-27",
+    title: "Guide 26/27",
+    href: "/concept/guide-26-27",
+    icon: <BookOutlined />,
+    owner: "Faizan",
+    status: "Planned",
+    summary:
+      "The definitive Ahangama guide product spanning web, PDF, print, social, and pass-led discovery.",
+    tags: ["Guide", "Editorial product", "Destination trust"],
   },
 ];
 
@@ -94,6 +116,12 @@ const systemCards = [
     icon: <ReadOutlined />,
     body:
       "Blog Strategy turns raw recommendations into destination credibility, searchable stories, and reusable guide assets.",
+  },
+  {
+    title: "Guide product",
+    icon: <BookOutlined />,
+    body:
+      "Guide 26/27 packages the strongest destination knowledge into a clear editorial artifact that can live across formats and touchpoints.",
   },
   {
     title: "Monetization",
@@ -132,7 +160,7 @@ export default function ConceptIndexPage() {
             <Paragraph className="concept-bodyCopy concept-heroParagraph">
               `/concept` should work as the index for the internal strategy pages,
               not as a long undifferentiated workspace. This page gives the team a
-              clean starting point for the five strategy routes that now define the
+              clean starting point for the six strategy routes that now define the
               main operating layers of the Ahangama Pass project.
             </Paragraph>
           </div>
@@ -159,6 +187,10 @@ export default function ConceptIndexPage() {
                       <Title level={4} className="concept-strategySubHeader">
                         {route.title}
                       </Title>
+                    </Space>
+                    <Space wrap size={[8, 8]}>
+                      <Tag className="concept-pillTag">Owner: {route.owner}</Tag>
+                      <Tag className="concept-pillTag">{route.status}</Tag>
                     </Space>
                     <Paragraph className="concept-bodyCopy">{route.summary}</Paragraph>
                     <Space wrap>
