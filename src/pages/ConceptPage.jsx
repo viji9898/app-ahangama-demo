@@ -36,6 +36,7 @@ import { absUrl } from "../app/siteUrl";
 import ConceptWorkspaceLayout from "../components/concept/ConceptWorkspaceLayout";
 import ConceptDistributionPage from "./ConceptDistributionPage";
 import ConceptFreePassPage from "./ConceptFreePassPage";
+import ConceptPremiumPassPage from "./ConceptPremiumPassPage";
 import ConceptTwelveThingsPage from "./ConceptTwelveThingsPage";
 import NotFound from "../NotFound";
 
@@ -890,6 +891,10 @@ export default function ConceptPage() {
     return <ConceptDistributionPage />;
   }
 
+  if (slug === "premium-pass") {
+    return <ConceptPremiumPassPage />;
+  }
+
   if (slug) {
     return <NotFound />;
   }
@@ -925,6 +930,12 @@ export default function ConceptPage() {
             key: "distribution",
             label: "Distribution",
             href: "/concept/distribution",
+            isActive: false,
+          },
+          {
+            key: "premium-pass",
+            label: "Premium Pass",
+            href: "/concept/premium-pass",
             isActive: false,
           },
         ]}

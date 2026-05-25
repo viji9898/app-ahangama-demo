@@ -60,6 +60,12 @@ const shortcutActions = [
     href: "/concept/distribution",
     isActive: true,
   },
+  {
+    key: "premium-pass",
+    label: "Premium Pass",
+    href: "/concept/premium-pass",
+    isActive: false,
+  },
 ];
 
 const ecosystemPrinciples = [
