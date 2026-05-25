@@ -34,6 +34,7 @@ import {
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import ConceptWorkspaceLayout from "../components/concept/ConceptWorkspaceLayout";
+import ConceptFreePassPage from "./ConceptFreePassPage";
 import ConceptTwelveThingsPage from "./ConceptTwelveThingsPage";
 import NotFound from "../NotFound";
 
@@ -880,6 +881,10 @@ export default function ConceptPage() {
     return <ConceptTwelveThingsPage />;
   }
 
+  if (slug === "free-pass") {
+    return <ConceptFreePassPage />;
+  }
+
   if (slug) {
     return <NotFound />;
   }
@@ -903,6 +908,12 @@ export default function ConceptPage() {
             key: "12-things",
             label: "12 Things",
             href: "/concept/12-things",
+            isActive: false,
+          },
+          {
+            key: "free-pass",
+            label: "Free Pass",
+            href: "/concept/free-pass",
             isActive: false,
           },
         ]}
