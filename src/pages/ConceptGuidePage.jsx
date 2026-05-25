@@ -25,7 +25,11 @@ const sections = [
   { id: "formats", label: "Formats", hint: "Guide outputs" },
   { id: "content", label: "Content", hint: "What goes inside" },
   { id: "ownership", label: "Ownership", hint: "Who drives the guide" },
-  { id: "distribution", label: "Distribution", hint: "Where the guide should live" },
+  {
+    id: "distribution",
+    label: "Distribution",
+    hint: "Where the guide should live",
+  },
   { id: "goal", label: "Main Goal", hint: "What success should produce" },
 ];
 
@@ -98,26 +102,22 @@ const ownershipCards = [
   {
     title: "Vishmi",
     icon: <CompassOutlined />,
-    body:
-      "Provide the strongest venue and experience shortlist so the guide reflects genuinely memorable Ahangama recommendations.",
+    body: "Provide the strongest venue and experience shortlist so the guide reflects genuinely memorable Ahangama recommendations.",
   },
   {
     title: "Faizan",
     icon: <CameraOutlined />,
-    body:
-      "Build the visual system for guide layouts, experience cards, and the overall editorial world around the guide.",
+    body: "Build the visual system for guide layouts, experience cards, and the overall editorial world around the guide.",
   },
   {
     title: "Blog Strategy",
     icon: <FileTextOutlined />,
-    body:
-      "Supply the story layer that turns individual experiences into written recommendations and reusable editorial modules.",
+    body: "Supply the story layer that turns individual experiences into written recommendations and reusable editorial modules.",
   },
   {
     title: "Distribution",
     icon: <QrcodeOutlined />,
-    body:
-      "Ensure the guide is not passive content by pushing it through QR touchpoints, partners, email, and WhatsApp channels.",
+    body: "Ensure the guide is not passive content by pushing it through QR touchpoints, partners, email, and WhatsApp channels.",
   },
 ];
 
@@ -183,12 +183,13 @@ export default function ConceptGuidePage() {
           <div>
             <Text className="concept-sectionEyebrow">Guide 26/27</Text>
             <Title className="concept-heroTitle">
-              The guide should become the definitive editorial product for Ahangama.
+              The guide should become the definitive editorial product for
+              Ahangama.
             </Title>
             <Paragraph className="concept-bodyCopy concept-heroParagraph">
-              The guide is where destination curation, editorial storytelling, and
-              product clarity come together. It should make Ahangama easier to
-              understand, easier to trust, and easier to navigate across web,
+              The guide is where destination curation, editorial storytelling,
+              and product clarity come together. It should make Ahangama easier
+              to understand, easier to trust, and easier to navigate across web,
               print, social, and pass-led discovery.
             </Paragraph>
           </div>
@@ -200,12 +201,16 @@ export default function ConceptGuidePage() {
           </Space>
         </section>
 
-        <SectionCard id="overview" eyebrow="Overview" title="Why the guide needs its own route">
+        <SectionCard
+          id="overview"
+          eyebrow="Overview"
+          title="Why the guide needs its own route"
+        >
           <Paragraph className="concept-bodyCopy">
-            The guide already shows up across the concept system, but it was only
-            being referenced as a supporting theme. Giving it its own route turns it
-            into a concrete strategic product with clear purpose, outputs, and
-            ownership.
+            The guide already shows up across the concept system, but it was
+            only being referenced as a supporting theme. Giving it its own route
+            turns it into a concrete strategic product with clear purpose,
+            outputs, and ownership.
           </Paragraph>
 
           <Row gutter={[16, 16]}>
@@ -222,12 +227,16 @@ export default function ConceptGuidePage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="positioning" eyebrow="Positioning" title="What the guide should feel like">
+        <SectionCard
+          id="positioning"
+          eyebrow="Positioning"
+          title="What the guide should feel like"
+        >
           <Paragraph className="concept-bodyCopy">
-            This should not feel like a list of promotions. It should feel like a
-            premium, modern Sri Lanka travel guide built around the strongest local
-            experiences and recommendations. The guide has to create trust first,
-            then support product discovery and conversion.
+            This should not feel like a list of promotions. It should feel like
+            a premium, modern Sri Lanka travel guide built around the strongest
+            local experiences and recommendations. The guide has to create trust
+            first, then support product discovery and conversion.
           </Paragraph>
           <Card className="concept-strategyGoalCard" bordered={false}>
             <Space align="center">
@@ -242,7 +251,11 @@ export default function ConceptGuidePage() {
           </Card>
         </SectionCard>
 
-        <SectionCard id="formats" eyebrow="Formats" title="Outputs the guide should power">
+        <SectionCard
+          id="formats"
+          eyebrow="Formats"
+          title="Outputs the guide should power"
+        >
           <List
             grid={{ gutter: 16, xs: 1, md: 2 }}
             dataSource={guideFormats}
@@ -259,11 +272,16 @@ export default function ConceptGuidePage() {
           />
         </SectionCard>
 
-        <SectionCard id="content" eyebrow="Content" title="What the guide should actually contain">
+        <SectionCard
+          id="content"
+          eyebrow="Content"
+          title="What the guide should actually contain"
+        >
           <Paragraph className="concept-bodyCopy">
-            The guide should organize Ahangama clearly across the key categories that
-            matter to visitors. That gives the editorial system a stable structure and
-            keeps the guide useful across digital and physical formats.
+            The guide should organize Ahangama clearly across the key categories
+            that matter to visitors. That gives the editorial system a stable
+            structure and keeps the guide useful across digital and physical
+            formats.
           </Paragraph>
           <div className="concept-chipGrid">
             {contentPillars.map((item) => (
@@ -274,7 +292,11 @@ export default function ConceptGuidePage() {
           </div>
         </SectionCard>
 
-        <SectionCard id="ownership" eyebrow="Ownership" title="Which workstreams feed the guide">
+        <SectionCard
+          id="ownership"
+          eyebrow="Ownership"
+          title="Which workstreams feed the guide"
+        >
           <Row gutter={[16, 16]}>
             {ownershipCards.map((item) => (
               <Col xs={24} md={12} key={item.title}>
@@ -285,14 +307,20 @@ export default function ConceptGuidePage() {
                       {item.title}
                     </Title>
                   </Space>
-                  <Paragraph className="concept-bodyCopy">{item.body}</Paragraph>
+                  <Paragraph className="concept-bodyCopy">
+                    {item.body}
+                  </Paragraph>
                 </Card>
               </Col>
             ))}
           </Row>
         </SectionCard>
 
-        <SectionCard id="distribution" eyebrow="Distribution" title="Where the guide should live">
+        <SectionCard
+          id="distribution"
+          eyebrow="Distribution"
+          title="Where the guide should live"
+        >
           <Row gutter={[16, 16]}>
             {distributionChannels.map((channel) => (
               <Col xs={24} md={12} key={channel.title}>
@@ -312,11 +340,16 @@ export default function ConceptGuidePage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="goal" eyebrow="Main Goal" title="What success should produce">
+        <SectionCard
+          id="goal"
+          eyebrow="Main Goal"
+          title="What success should produce"
+        >
           <Paragraph className="concept-bodyCopy">
             Guide 26/27 should become the clearest destination artifact in the
-            Ahangama system: something people can search, save, share, print, and use
-            as a trusted entry point into the town and the pass ecosystem.
+            Ahangama system: something people can search, save, share, print,
+            and use as a trusted entry point into the town and the pass
+            ecosystem.
           </Paragraph>
 
           <Row gutter={[16, 16]}>
@@ -327,7 +360,8 @@ export default function ConceptGuidePage() {
                   Trusted destination guide
                 </Title>
                 <Paragraph className="concept-bodyCopy">
-                  A guide people rely on to understand where to go and what matters.
+                  A guide people rely on to understand where to go and what
+                  matters.
                 </Paragraph>
               </Card>
             </Col>
@@ -338,7 +372,8 @@ export default function ConceptGuidePage() {
                   Reusable editorial infrastructure
                 </Title>
                 <Paragraph className="concept-bodyCopy">
-                  A structure that feeds blog, social, QR, and future guide updates.
+                  A structure that feeds blog, social, QR, and future guide
+                  updates.
                 </Paragraph>
               </Card>
             </Col>
@@ -349,7 +384,8 @@ export default function ConceptGuidePage() {
                   Stronger product ecosystem
                 </Title>
                 <Paragraph className="concept-bodyCopy">
-                  A guide that improves both discovery and conversion into pass-driven experiences.
+                  A guide that improves both discovery and conversion into
+                  pass-driven experiences.
                 </Paragraph>
               </Card>
             </Col>

@@ -20,7 +20,11 @@ const { Paragraph, Text, Title } = Typography;
 const sections = [
   { id: "overview", label: "Overview", hint: "What this index is for" },
   { id: "routes", label: "Strategy Routes", hint: "Jump to each workspace" },
-  { id: "system", label: "System", hint: "How the strategy pages fit together" },
+  {
+    id: "system",
+    label: "System",
+    hint: "How the strategy pages fit together",
+  },
 ];
 
 const strategyRoutes = [
@@ -96,38 +100,32 @@ const systemCards = [
   {
     title: "Discovery and curation",
     icon: <StarOutlined />,
-    body:
-      "12 Things defines what matters most in Ahangama, giving the rest of the system a clear editorial and product spine.",
+    body: "12 Things defines what matters most in Ahangama, giving the rest of the system a clear editorial and product spine.",
   },
   {
     title: "Acquisition and retention",
     icon: <GiftOutlined />,
-    body:
-      "The Free Pass captures travelers and starts the owned relationship layer through WhatsApp, email, and wallet-based recall.",
+    body: "The Free Pass captures travelers and starts the owned relationship layer through WhatsApp, email, and wallet-based recall.",
   },
   {
     title: "Distribution and reach",
     icon: <DeploymentUnitOutlined />,
-    body:
-      "Distribution ensures the pass and content are present across partners, physical touchpoints, newsletters, and creator channels.",
+    body: "Distribution ensures the pass and content are present across partners, physical touchpoints, newsletters, and creator channels.",
   },
   {
     title: "Story and trust",
     icon: <ReadOutlined />,
-    body:
-      "Blog Strategy turns raw recommendations into destination credibility, searchable stories, and reusable guide assets.",
+    body: "Blog Strategy turns raw recommendations into destination credibility, searchable stories, and reusable guide assets.",
   },
   {
     title: "Guide product",
     icon: <BookOutlined />,
-    body:
-      "Guide 26/27 packages the strongest destination knowledge into a clear editorial artifact that can live across formats and touchpoints.",
+    body: "Guide 26/27 packages the strongest destination knowledge into a clear editorial artifact that can live across formats and touchpoints.",
   },
   {
     title: "Monetization",
     icon: <WalletOutlined />,
-    body:
-      "Premium Pass converts high-intent travelers into buyers of curated Ahangama experiences instead of loose one-off offers.",
+    body: "Premium Pass converts high-intent travelers into buyers of curated Ahangama experiences instead of loose one-off offers.",
   },
 ];
 
@@ -158,10 +156,10 @@ export default function ConceptIndexPage() {
               One entry point into the full Ahangama strategy system.
             </Title>
             <Paragraph className="concept-bodyCopy concept-heroParagraph">
-              `/concept` should work as the index for the internal strategy pages,
-              not as a long undifferentiated workspace. This page gives the team a
-              clean starting point for the six strategy routes that now define the
-              main operating layers of the Ahangama Pass project.
+              `/concept` should work as the index for the internal strategy
+              pages, not as a long undifferentiated workspace. This page gives
+              the team a clean starting point for the six strategy routes that
+              now define the main operating layers of the Ahangama Pass project.
             </Paragraph>
           </div>
 
@@ -181,18 +179,28 @@ export default function ConceptIndexPage() {
             <Row gutter={[16, 16]}>
               {strategyRoutes.map((route) => (
                 <Col xs={24} md={12} xl={8} key={route.key}>
-                  <Card className="concept-strategyGoalCard" bordered={false} hoverable>
+                  <Card
+                    className="concept-strategyGoalCard"
+                    bordered={false}
+                    hoverable
+                  >
                     <Space align="center">
-                      <span className="concept-strategyGoalIcon">{route.icon}</span>
+                      <span className="concept-strategyGoalIcon">
+                        {route.icon}
+                      </span>
                       <Title level={4} className="concept-strategySubHeader">
                         {route.title}
                       </Title>
                     </Space>
                     <Space wrap size={[8, 8]}>
-                      <Tag className="concept-pillTag">Owner: {route.owner}</Tag>
+                      <Tag className="concept-pillTag">
+                        Owner: {route.owner}
+                      </Tag>
                       <Tag className="concept-pillTag">{route.status}</Tag>
                     </Space>
-                    <Paragraph className="concept-bodyCopy">{route.summary}</Paragraph>
+                    <Paragraph className="concept-bodyCopy">
+                      {route.summary}
+                    </Paragraph>
                     <Space wrap>
                       {route.tags.map((tag) => (
                         <Tag className="concept-pillTag" key={tag}>
@@ -217,39 +225,53 @@ export default function ConceptIndexPage() {
               How the pages fit together
             </Title>
             <Paragraph className="concept-bodyCopy">
-              The strategy routes are not separate ideas. They form one connected
-              operating system: curate the right experiences, capture the right
-              travelers, distribute the product broadly, tell the story well, and
-              convert the strongest intent into premium products.
+              The strategy routes are not separate ideas. They form one
+              connected operating system: curate the right experiences, capture
+              the right travelers, distribute the product broadly, tell the
+              story well, and convert the strongest intent into premium
+              products.
             </Paragraph>
             <Row gutter={[16, 16]}>
               {systemCards.map((item) => (
                 <Col xs={24} md={12} xl={8} key={item.title}>
                   <Card className="concept-strategySubCard" bordered={false}>
                     <Space align="center">
-                      <span className="concept-strategyGoalIcon">{item.icon}</span>
+                      <span className="concept-strategyGoalIcon">
+                        {item.icon}
+                      </span>
                       <Title level={4} className="concept-strategySubHeader">
                         {item.title}
                       </Title>
                     </Space>
-                    <Paragraph className="concept-bodyCopy">{item.body}</Paragraph>
+                    <Paragraph className="concept-bodyCopy">
+                      {item.body}
+                    </Paragraph>
                   </Card>
                 </Col>
               ))}
             </Row>
-            <Card className="concept-strategyGoalCard" bordered={false} style={{ marginTop: 16 }}>
+            <Card
+              className="concept-strategyGoalCard"
+              bordered={false}
+              style={{ marginTop: 16 }}
+            >
               <Space align="center">
                 <RocketOutlined className="concept-strategyGoalIcon" />
                 <div>
                   <Text className="concept-sectionEyebrow">Operating rule</Text>
                   <Title level={4} className="concept-strategySubHeader">
-                    Use `/concept` as the map, then work inside the specific route.
+                    Use `/concept` as the map, then work inside the specific
+                    route.
                   </Title>
                 </div>
               </Space>
-              <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
-                This keeps the strategy system clearer: the index explains the structure,
-                and each slugged page holds the detailed working brief for that slice.
+              <Paragraph
+                className="concept-bodyCopy"
+                style={{ marginBottom: 0 }}
+              >
+                This keeps the strategy system clearer: the index explains the
+                structure, and each slugged page holds the detailed working
+                brief for that slice.
               </Paragraph>
             </Card>
           </Card>
