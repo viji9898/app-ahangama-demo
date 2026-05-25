@@ -381,6 +381,288 @@
   margin: 4px 0 0 !important;
 }
 
+.concept-productCardAction {
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.concept-productCardAction:hover,
+.concept-productCardAction:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 40px rgba(31, 36, 31, 0.1) !important;
+}
+
+.concept-productCardPrompt {
+  display: inline-block;
+  margin-top: 18px;
+  color: #345c53 !important;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.concept-acquisitionModal .ant-modal-content {
+  border-radius: 24px;
+  overflow: hidden;
+  background: #f7f2ea;
+}
+
+.concept-acquisitionModal .ant-modal-body {
+  padding: 22px;
+}
+
+.concept-acquisitionModalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.concept-acquisitionModalTitle,
+.concept-acquisitionBlockTitle {
+  margin: 8px 0 14px !important;
+}
+
+.concept-acquisitionHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+  gap: 18px;
+}
+
+.concept-acquisitionLead {
+  margin-bottom: 0 !important;
+  max-width: 62ch;
+}
+
+.concept-acquisitionVisuals {
+  display: grid;
+  gap: 14px;
+}
+
+.concept-phoneMock,
+.concept-acquisitionMiniCard,
+.concept-acquisitionBlock,
+.concept-acquisitionQuoteCard {
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.concept-phoneHeader,
+.concept-miniVisualHeader,
+.concept-acquisitionBlockHeader,
+.concept-acquisitionChannelHeader,
+.concept-acquisitionPhaseHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.concept-acquisitionBlockHeader {
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.concept-phonePassFace {
+  margin-top: 14px;
+  border-radius: 22px;
+  min-height: 220px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(160deg, #294c45 0%, #15251f 100%);
+  color: #eef4ef;
+}
+
+.concept-phonePassFace .ant-typography,
+.concept-phonePassEyebrow,
+.concept-phonePassMeta span {
+  color: inherit !important;
+}
+
+.concept-phonePassEyebrow {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.concept-phonePassFace .ant-typography {
+  margin: 12px 0 18px !important;
+}
+
+.concept-phonePassMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.concept-phonePassMeta span {
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 12px;
+}
+
+.concept-acquisitionMiniGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.concept-miniVisualHeader .anticon,
+.concept-acquisitionChannelHeader .anticon,
+.concept-signupStepIcon .anticon,
+.concept-miniFlowList .anticon {
+  color: #345c53;
+  font-size: 18px;
+}
+
+.concept-messageStack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.concept-messageBubble {
+  max-width: 88%;
+  padding: 12px 14px;
+  border-radius: 18px 18px 18px 8px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  color: #304037;
+  line-height: 1.5;
+}
+
+.concept-messageBubble.is-brand {
+  align-self: flex-end;
+  border-radius: 18px 18px 8px 18px;
+  background: rgba(52, 92, 83, 0.14);
+}
+
+.concept-miniFlowList {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.concept-miniFlowList > div {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  font-weight: 600;
+  color: #26302a;
+}
+
+.concept-acquisitionPurposeCard,
+.concept-acquisitionChannelCard,
+.concept-acquisitionPhaseCard,
+.concept-acquisitionBlock {
+  height: 100%;
+}
+
+.concept-acquisitionMetaBlock + .concept-acquisitionMetaBlock {
+  margin-top: 12px;
+}
+
+.concept-acquisitionMetaBlock .concept-miniLabel {
+  margin-top: 0;
+}
+
+.concept-acquisitionMetaBlock .ant-typography {
+  margin-bottom: 0 !important;
+}
+
+.concept-funnelRail {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.concept-funnelStep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  color: #26302a;
+  font-weight: 600;
+}
+
+.concept-funnelStepIndex,
+.concept-acquisitionPhaseIndex,
+.concept-signupStepIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: rgba(52, 92, 83, 0.12);
+  color: #345c53;
+  font-weight: 700;
+}
+
+.concept-funnelConnector {
+  width: 2px;
+  height: 18px;
+  margin-left: 17px;
+  background: linear-gradient(180deg, rgba(52, 92, 83, 0.32), rgba(52, 92, 83, 0));
+}
+
+.concept-signupSteps {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.concept-signupStep {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(31, 36, 31, 0.08);
+}
+
+.concept-acquisitionTimeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.concept-acquisitionPhaseHeader {
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.concept-acquisitionQuoteCard {
+  background: linear-gradient(160deg, #294c45 0%, #15251f 100%);
+}
+
+.concept-acquisitionQuoteCard .concept-miniLabel,
+.concept-acquisitionQuote {
+  color: #eef4ef !important;
+}
+
+.concept-acquisitionQuote {
+  margin: 12px 0 0;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
 .concept-modalFocusBlock {
   background: linear-gradient(135deg, rgba(52, 92, 83, 0.11), rgba(255, 255, 255, 0.74));
 }
@@ -561,6 +843,11 @@
   .concept-heroGrid {
     grid-template-columns: 1fr;
   }
+
+  .concept-acquisitionHero,
+  .concept-acquisitionTimeline {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -592,6 +879,15 @@
 
   .concept-distributionGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .concept-acquisitionMiniGrid,
+  .concept-signupStep {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-phonePassFace {
+    min-height: 0;
   }
 
   .concept-teamSummary {

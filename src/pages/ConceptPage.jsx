@@ -13,15 +13,22 @@ import {
 import {
   AimOutlined,
   ApartmentOutlined,
+  AppleOutlined,
+  ArrowDownOutlined,
   DeploymentUnitOutlined,
   EnvironmentOutlined,
   FlagOutlined,
   FundOutlined,
+  GlobalOutlined,
+  MessageOutlined,
+  MobileOutlined,
   NodeIndexOutlined,
   PictureOutlined,
+  QrcodeOutlined,
   RocketOutlined,
   TeamOutlined,
   TrophyOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -285,6 +292,241 @@ const touchpoints = [
   "Postcards",
   "Stickers",
   "Hotel room cards",
+];
+
+const freePassPurposeCards = [
+  {
+    title: "Acquire Travelers",
+    description:
+      "Use the free pass to rapidly onboard tourists arriving in Ahangama through QR codes, hotels, social media, cafes and partnerships.",
+  },
+  {
+    title: "Capture User Information",
+    description:
+      "Collect traveler information to build direct communication and long-term audience ownership.",
+    bullets: [
+      "Name",
+      "Email",
+      "WhatsApp number",
+      "Nationality",
+      "Travel dates",
+    ],
+  },
+  {
+    title: "Capture Intent & Interests",
+    description:
+      "Track traveler interests to power personalized recommendations and premium upsells.",
+    bullets: [
+      "Surf",
+      "Wellness",
+      "Food",
+      "Coworking",
+      "Nightlife",
+      "Experiences",
+    ],
+  },
+  {
+    title: "Build Direct Communication Channels",
+    description:
+      "Use WhatsApp and email as the primary communication layer with tourists.",
+    bullets: [
+      "Recommendations",
+      "Guides",
+      "Event updates",
+      "Offers",
+      "Premium upgrades",
+      "Concierge support",
+    ],
+  },
+  {
+    title: "Upsell Premium Products",
+    description:
+      "The free pass acts as the entry point into the sales funnel for premium products and services.",
+    bullets: [
+      "Premium Passes",
+      "Experience Bundles",
+      "Wellness Packs",
+      "Merchandise",
+      "Concierge Services",
+      "Events",
+      "Tea Tins",
+      "Tote Bags",
+    ],
+  },
+];
+
+const freePassFunnelSteps = [
+  "QR Code / Instagram / Hotel",
+  "Free Ahangama Pass Signup",
+  "WhatsApp + Wallet Pass",
+  "Guide + Recommendations",
+  "Behavior Tracking + Engagement",
+  "Premium Pass Upsells",
+  "Experiences + Merchandise + Concierge",
+];
+
+const freePassChannels = [
+  {
+    name: "Instagram",
+    purpose: "Drive discovery and pre-arrival interest.",
+    acquisitionIntent: "Inspiration and trip planning.",
+    touristType: "Social-first travelers and planners.",
+  },
+  {
+    name: "QR Codes at Venues",
+    purpose: "Convert in-town foot traffic into signups.",
+    acquisitionIntent: "Instant local discovery.",
+    touristType: "Visitors already exploring Ahangama.",
+  },
+  {
+    name: "Hotels & Villas",
+    purpose: "Make the pass part of the guest arrival journey.",
+    acquisitionIntent: "Convenience and trusted orientation.",
+    touristType: "Leisure travelers and short-stay guests.",
+  },
+  {
+    name: "Surf Camps",
+    purpose: "Capture highly active, experience-led audiences.",
+    acquisitionIntent: "Lifestyle participation and local relevance.",
+    touristType: "Surf travelers and group stays.",
+  },
+  {
+    name: "Cafes",
+    purpose: "Use daily dwell points as acquisition surfaces.",
+    acquisitionIntent: "Casual discovery while in town.",
+    touristType: "Remote workers, explorers, repeat visitors.",
+  },
+  {
+    name: "Wellness Studios",
+    purpose: "Reach high-intent wellness and lifestyle segments.",
+    acquisitionIntent: "Curated lifestyle discovery.",
+    touristType: "Retreat travelers and wellness visitors.",
+  },
+  {
+    name: "Tour Operators",
+    purpose: "Bundle the pass into trip itineraries.",
+    acquisitionIntent: "Trust, planning, and convenience.",
+    touristType: "Short-stay and structured-trip travelers.",
+  },
+  {
+    name: "Airport Transfers",
+    purpose: "Acquire tourists at the moment of arrival.",
+    acquisitionIntent: "First-touch onboarding.",
+    touristType: "New arrivals entering destination mode.",
+  },
+  {
+    name: "OTAs",
+    purpose: "Insert the pass into booking flows.",
+    acquisitionIntent: "Pre-arrival engagement.",
+    touristType: "International visitors planning ahead.",
+  },
+  {
+    name: "Influencers & Creators",
+    purpose: "Drive reach through trusted destination storytelling.",
+    acquisitionIntent: "Social proof and aspiration.",
+    touristType: "Trend-aware visitors following creators.",
+  },
+  {
+    name: "WhatsApp Sharing",
+    purpose: "Turn signups into peer-to-peer distribution.",
+    acquisitionIntent: "Referrals and group coordination.",
+    touristType: "Groups, couples, and friend networks.",
+  },
+  {
+    name: "Ahangama Guide 2026/27",
+    purpose: "Use editorial content as acquisition and retention fuel.",
+    acquisitionIntent: "Discovery, curation, and trusted recommendations.",
+    touristType: "Visitors seeking deeper local guidance.",
+  },
+];
+
+const freePassSignupSteps = [
+  {
+    step: "Step 1",
+    title: "Scan QR code",
+    description:
+      "Traveler scans a code from a venue, hotel, creator asset, or physical touchpoint.",
+    icon: <QrcodeOutlined />,
+  },
+  {
+    step: "Step 2",
+    title: "Get the Ahangama Pass Free",
+    description:
+      "A clean landing page explains the value and starts a frictionless mobile-first signup flow.",
+    icon: <MobileOutlined />,
+  },
+  {
+    step: "Step 3",
+    title: "Capture name, WhatsApp, and email",
+    description:
+      "Collect the minimum core data needed to start a direct traveler relationship.",
+    icon: <TeamOutlined />,
+  },
+  {
+    step: "Step 4",
+    title: "Instant pass delivery",
+    description:
+      "Deliver via Apple Wallet and begin WhatsApp onboarding immediately.",
+    icon: <AppleOutlined />,
+  },
+  {
+    step: "Step 5",
+    title: "Personalized recommendations begin",
+    description:
+      "Use interests and behavior to trigger recommendations, engagement, and upsells.",
+    icon: <MessageOutlined />,
+  },
+];
+
+const freePassMilestones = [
+  {
+    phase: "Phase 1 — Foundation",
+    items: [
+      "Finalize free pass UX",
+      "Build signup flow",
+      "Wallet integration",
+      "WhatsApp onboarding",
+      "QR infrastructure",
+    ],
+  },
+  {
+    phase: "Phase 2 — Distribution",
+    items: [
+      "100 QR stands deployed",
+      "50 hotels onboarded",
+      "100 venues onboarded",
+      "Tour operator partnerships",
+    ],
+  },
+  {
+    phase: "Phase 3 — Engagement",
+    items: [
+      "Launch WhatsApp AI",
+      "Personalized recommendations",
+      "Ahangama Guide integration",
+      "User segmentation",
+    ],
+  },
+  {
+    phase: "Phase 4 — Monetization",
+    items: [
+      "Launch Premium Passes",
+      "Experience bundles",
+      "Merchandise integration",
+      "Concierge services",
+    ],
+  },
+];
+
+const freePassKpis = [
+  { label: "Free pass signups", value: "5,000+", note: "Top-of-funnel audience growth" },
+  { label: "WhatsApp opt-ins", value: "70%+", note: "Direct owned communication" },
+  { label: "Wallet installs", value: "60%+", note: "Pass retention and recall" },
+  { label: "QR scans", value: "Weekly up", note: "Acquisition velocity across touchpoints" },
+  { label: "Premium conversion rate", value: "3-5%", note: "Upsell effectiveness from free users" },
+  { label: "Merchandise purchases", value: "Track", note: "Commerce expansion beyond passes" },
+  { label: "Partner growth", value: "100+", note: "Distribution and destination density" },
+  { label: "User engagement rate", value: "High intent", note: "Repeat opens, clicks, and interactions" },
 ];
 
 const teamMembers = [
@@ -629,6 +871,7 @@ function SectionCard({ id, eyebrow, title, children }) {
 export default function ConceptPage() {
   const canonical = absUrl("/concept");
   const [selectedMember, setSelectedMember] = useState(null);
+  const [freePassModalOpen, setFreePassModalOpen] = useState(false);
 
   return (
     <>
@@ -744,8 +987,42 @@ export default function ConceptPage() {
             {productCards.map((product) => (
               <Col xs={24} lg={12} key={product.title}>
                 <Card
-                  className="concept-card concept-productCard"
+                  className={`concept-card concept-productCard${
+                    product.title === "Free Ahangama Pass"
+                      ? " concept-productCardAction"
+                      : ""
+                  }`}
                   bordered={false}
+                  hoverable={product.title === "Free Ahangama Pass"}
+                  onClick={
+                    product.title === "Free Ahangama Pass"
+                      ? () => setFreePassModalOpen(true)
+                      : undefined
+                  }
+                  onKeyDown={
+                    product.title === "Free Ahangama Pass"
+                      ? (event) => {
+                          if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                          ) {
+                            event.preventDefault();
+                            setFreePassModalOpen(true);
+                          }
+                        }
+                      : undefined
+                  }
+                  role={
+                    product.title === "Free Ahangama Pass"
+                      ? "button"
+                      : undefined
+                  }
+                  tabIndex={product.title === "Free Ahangama Pass" ? 0 : undefined}
+                  aria-label={
+                    product.title === "Free Ahangama Pass"
+                      ? "Open Free Ahangama Pass strategy details"
+                      : undefined
+                  }
                 >
                   <Text className="concept-sectionEyebrow">
                     {product.subtitle}
@@ -783,6 +1060,11 @@ export default function ConceptPage() {
                       </span>
                     ))}
                   </div>
+                  {product.title === "Free Ahangama Pass" ? (
+                    <Text className="concept-productCardPrompt">
+                      Open acquisition engine details
+                    </Text>
+                  ) : null}
                 </Card>
               </Col>
             ))}
@@ -1087,6 +1369,262 @@ export default function ConceptPage() {
             </ul>
           </Card>
         </SectionCard>
+
+        <Modal
+          open={freePassModalOpen}
+          onCancel={() => setFreePassModalOpen(false)}
+          footer={null}
+          width={1120}
+          centered
+          title={null}
+          className="concept-acquisitionModal"
+        >
+          <div className="concept-acquisitionModalContent">
+            <div className="concept-acquisitionHero">
+              <div>
+                <Text className="concept-sectionEyebrow">Free Ahangama Pass</Text>
+                <Title level={2} className="concept-acquisitionModalTitle">
+                  The acquisition engine powering the Ahangama ecosystem.
+                </Title>
+                <Paragraph className="concept-bodyCopy concept-acquisitionLead">
+                  The Free Ahangama Pass is designed to onboard travelers into
+                  the Ahangama platform through a frictionless mobile-first
+                  experience. The objective is to build a direct relationship
+                  with tourists, understand traveler behavior and intent, and
+                  guide users toward premium experiences, merchandise,
+                  concierge services and curated travel products.
+                </Paragraph>
+              </div>
+
+              <div className="concept-acquisitionVisuals">
+                <div className="concept-phoneMock">
+                  <div className="concept-phoneHeader">
+                    <Text className="concept-miniLabel">Mobile pass mockup</Text>
+                    <Tag className="concept-statusPill">Wallet ready</Tag>
+                  </div>
+                  <div className="concept-phonePassFace">
+                    <Text className="concept-phonePassEyebrow">Ahangama Pass</Text>
+                    <Title level={4}>
+                      Free access to perks, discovery, and local guidance
+                    </Title>
+                    <div className="concept-phonePassMeta">
+                      <span>QR activated</span>
+                      <span>WhatsApp linked</span>
+                      <span>Guide enabled</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="concept-acquisitionMiniGrid">
+                  <div className="concept-acquisitionMiniCard">
+                    <div className="concept-miniVisualHeader">
+                      <WhatsAppOutlined />
+                      <Text className="concept-miniLabel">WhatsApp onboarding flow</Text>
+                    </div>
+                    <div className="concept-messageStack">
+                      <div className="concept-messageBubble is-brand">
+                        Welcome to Ahangama Pass
+                      </div>
+                      <div className="concept-messageBubble">
+                        Save your pass and unlock curated recommendations.
+                      </div>
+                      <div className="concept-messageBubble">
+                        Reply with surf, wellness, food or nightlife.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="concept-acquisitionMiniCard">
+                    <div className="concept-miniVisualHeader">
+                      <QrcodeOutlined />
+                      <Text className="concept-miniLabel">QR scan flow diagram</Text>
+                    </div>
+                    <div className="concept-miniFlowList">
+                      <div>Scan</div>
+                      <ArrowDownOutlined />
+                      <div>Signup</div>
+                      <ArrowDownOutlined />
+                      <div>Wallet</div>
+                      <ArrowDownOutlined />
+                      <div>Engage</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Row gutter={[16, 16]}>
+              {freePassPurposeCards.map((card) => (
+                <Col xs={24} md={12} xl={8} key={card.title}>
+                  <Card className="concept-card concept-acquisitionPurposeCard" bordered={false}>
+                    <Title level={4}>{card.title}</Title>
+                    <Paragraph className="concept-bodyCopy">
+                      {card.description}
+                    </Paragraph>
+                    {card.bullets ? (
+                      <div className="concept-chipGrid">
+                        {card.bullets.map((item) => (
+                          <span className="concept-chip" key={item}>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+
+            <Row gutter={[16, 16]}>
+              <Col xs={24} xl={10}>
+                <div className="concept-acquisitionBlock">
+                  <Text className="concept-miniLabel">Funnel diagram</Text>
+                  <Title level={3} className="concept-acquisitionBlockTitle">
+                    From scan to commerce
+                  </Title>
+                  <div className="concept-funnelRail">
+                    {freePassFunnelSteps.map((step, index) => (
+                      <React.Fragment key={step}>
+                        <div className="concept-funnelStep">
+                          <span className="concept-funnelStepIndex">
+                            {index + 1}
+                          </span>
+                          <span>{step}</span>
+                        </div>
+                        {index < freePassFunnelSteps.length - 1 ? (
+                          <div className="concept-funnelConnector" />
+                        ) : null}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              </Col>
+
+              <Col xs={24} xl={14}>
+                <div className="concept-acquisitionBlock">
+                  <Text className="concept-miniLabel">User signup flow</Text>
+                  <Title level={3} className="concept-acquisitionBlockTitle">
+                    Mobile-first onboarding
+                  </Title>
+                  <div className="concept-signupSteps">
+                    {freePassSignupSteps.map((step) => (
+                      <div className="concept-signupStep" key={step.step}>
+                        <div className="concept-signupStepIcon">{step.icon}</div>
+                        <div>
+                          <Text className="concept-sectionEyebrow">{step.step}</Text>
+                          <Title level={4}>{step.title}</Title>
+                          <Paragraph className="concept-bodyCopy">
+                            {step.description}
+                          </Paragraph>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Col>
+            </Row>
+
+            <div className="concept-acquisitionBlockHeader">
+              <div>
+                <Text className="concept-miniLabel">
+                  Distribution & acquisition channels
+                </Text>
+                <Title level={3} className="concept-acquisitionBlockTitle">
+                  Where the free pass reaches tourists
+                </Title>
+              </div>
+            </div>
+
+            <Row gutter={[16, 16]}>
+              {freePassChannels.map((channel) => (
+                <Col xs={24} md={12} xl={8} key={channel.name}>
+                  <Card className="concept-card concept-acquisitionChannelCard" bordered={false}>
+                    <div className="concept-acquisitionChannelHeader">
+                      <GlobalOutlined />
+                      <Title level={4}>{channel.name}</Title>
+                    </div>
+                    <div className="concept-acquisitionMetaBlock">
+                      <Text className="concept-miniLabel">Purpose</Text>
+                      <Paragraph className="concept-bodyCopy">
+                        {channel.purpose}
+                      </Paragraph>
+                    </div>
+                    <div className="concept-acquisitionMetaBlock">
+                      <Text className="concept-miniLabel">Acquisition intent</Text>
+                      <Paragraph className="concept-bodyCopy">
+                        {channel.acquisitionIntent}
+                      </Paragraph>
+                    </div>
+                    <div className="concept-acquisitionMetaBlock">
+                      <Text className="concept-miniLabel">Type of tourist reached</Text>
+                      <Paragraph className="concept-bodyCopy">
+                        {channel.touristType}
+                      </Paragraph>
+                    </div>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+
+            <div className="concept-acquisitionBlockHeader">
+              <div>
+                <Text className="concept-miniLabel">Milestones to launch & scale</Text>
+                <Title level={3} className="concept-acquisitionBlockTitle">
+                  Build the engine, then monetize it
+                </Title>
+              </div>
+            </div>
+
+            <div className="concept-acquisitionTimeline">
+              {freePassMilestones.map((phase, index) => (
+                <Card className="concept-card concept-acquisitionPhaseCard" bordered={false} key={phase.phase}>
+                  <div className="concept-acquisitionPhaseHeader">
+                    <div className="concept-acquisitionPhaseIndex">
+                      0{index + 1}
+                    </div>
+                    <Title level={4}>{phase.phase}</Title>
+                  </div>
+                  <ul className="concept-list">
+                    {phase.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </Card>
+              ))}
+            </div>
+
+            <div className="concept-acquisitionBlockHeader">
+              <div>
+                <Text className="concept-miniLabel">KPI section</Text>
+                <Title level={3} className="concept-acquisitionBlockTitle">
+                  Core acquisition and monetization metrics
+                </Title>
+              </div>
+            </div>
+
+            <Row gutter={[16, 16]}>
+              {freePassKpis.map((item) => (
+                <Col xs={24} sm={12} xl={6} key={item.label}>
+                  <Card className="concept-card concept-dashboardCard" bordered={false}>
+                    <Text className="concept-kpiLabel">{item.label}</Text>
+                    <div className="concept-dashboardValue">{item.value}</div>
+                    <Paragraph className="concept-kpiNote">{item.note}</Paragraph>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+
+            <div className="concept-acquisitionQuoteCard">
+              <Text className="concept-miniLabel">Strategic insight</Text>
+              <blockquote className="concept-acquisitionQuote">
+                We are not building a discount card.
+                <br />
+                We are building the discovery, communication and commerce layer
+                for Ahangama tourism.
+              </blockquote>
+            </div>
+          </div>
+        </Modal>
 
         <Modal
           open={Boolean(selectedMember)}
