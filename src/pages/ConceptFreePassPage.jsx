@@ -54,6 +54,12 @@ const shortcutActions = [
     href: "/concept/free-pass",
     isActive: true,
   },
+  {
+    key: "distribution",
+    label: "Distribution",
+    href: "/concept/distribution",
+    isActive: false,
+  },
 ];
 
 const passRoles = [

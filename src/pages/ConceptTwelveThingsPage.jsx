@@ -52,6 +52,12 @@ const shortcutActions = [
     href: "/concept/free-pass",
     isActive: false,
   },
+  {
+    key: "distribution",
+    label: "Distribution",
+    href: "/concept/distribution",
+    isActive: false,
+  },
 ];
 
 const strategyChannels = [
