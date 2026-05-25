@@ -9,7 +9,9 @@ export const BLOG_POSTS = [
 		description:
 			"A long-form editorial guide to the best experiences in Ahangama for 2026, from wellness and dining to creative workshops, river journeys, and slow coastal living.",
 		publishDate: "2026-05-25",
-		author: "ahangama.com editorial",
+		author: "Maya Perera",
+		authorType: "Person",
+		authorRole: "Long-stay visitor from Colombo",
 		readingTime: "12 min read",
 		category: "2026 Guide",
 		heroImage:
@@ -218,7 +220,9 @@ export const BLOG_POSTS = [
 		description:
 			"Discover why Ahangama feels like more than a surf town right now, blending wellness, creativity, nightlife, remote work, boutique culture, and tropical slow living into one of Sri Lanka's most compelling coastal destinations.",
 		publishDate: "2026-05-24",
-		author: "ahangama.com editorial",
+		author: "Leo Hart",
+		authorType: "Person",
+		authorRole: "Returning surf traveler from Melbourne",
 		readingTime: "10 min read",
 		category: "Editorial Feature",
 		editorialType: "coastal-town-story",
@@ -362,7 +366,9 @@ export const BLOG_POSTS = [
 		description:
 			"Discover how to structure a slower, better trip through Ahangama with local timing, neighborhood texture, and a more intentional pace.",
 		publishDate: "2026-05-20",
-		author: "ahangama.com editorial",
+		author: "Sofia Raman",
+		authorType: "Person",
+		authorRole: "Slow-travel writer visiting for a month",
 		readingTime: "6 min read",
 		category: "Travel guide",
 		sections: [
@@ -403,7 +409,9 @@ export const BLOG_POSTS = [
 		description:
 			"A first-time visitor's guide to Ahangama, with a practical framework for choosing the right stay, food rhythm, and restorative experiences.",
 		publishDate: "2026-05-14",
-		author: "ahangama.com editorial",
+		author: "Daniel Moss",
+		authorType: "Person",
+		authorRole: "First-time visitor from London",
 		readingTime: "7 min read",
 		category: "Visitor guide",
 		sections: [
@@ -444,7 +452,9 @@ export const BLOG_POSTS = [
 		description:
 			"Plan a more natural day in Ahangama with a loose framework that leaves room for surf, food, local browsing, and late-afternoon changes.",
 		publishDate: "2026-05-08",
-		author: "ahangama.com editorial",
+		author: "Anika De Silva",
+		authorType: "Person",
+		authorRole: "Weekend traveler from Colombo",
 		readingTime: "5 min read",
 		category: "Itinerary",
 		sections: [

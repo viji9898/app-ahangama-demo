@@ -27,6 +27,132 @@ function EditorialImage({ src, alt, className = "" }) {
 	);
 }
 
+function BlogCollectionHome({ posts, onSelectPost }) {
+	const [featuredPost, ...otherPosts] = posts;
+	const recentPosts = otherPosts.slice(0, 4);
+
+	return (
+		<article className="blog-homePage">
+			<section className="blog-homeHero blog-card">
+				<div className="blog-homeHeroCopy">
+					<Text className="blog-articleEyebrow">Visitor journals</Text>
+					<Title level={1} className="blog-homeTitle">
+						Ahangama stories told by the people who actually stayed, surfed,
+						wandered, and came back.
+					</Title>
+					<Paragraph className="blog-homeLead">
+						This is a growing collection of real visitor notes, first-trip
+						reflections, repeat-stay rituals, and slow south coast itineraries.
+						Instead of polished tourism copy, the focus here is on how Ahangama
+						really feels once you spend time in it.
+					</Paragraph>
+					<div className="blog-homeMetaRow">
+						<Tag className="blog-pill">{`${posts.length} stories`}</Tag>
+						<Tag className="blog-pill">Visitor experiences</Tag>
+						<Tag className="blog-pill">Surf, stays, food, wellness</Tag>
+					</div>
+				</div>
+				<div className="blog-homeHeroVisual">
+					<EditorialImage
+						src={featuredPost.heroImage || featuredPost.introImage}
+						alt={featuredPost.title}
+						className="blog-homeHeroImage"
+					/>
+				</div>
+			</section>
+
+			<section className="blog-homeFeature">
+				<div className="blog-homeFeatureHeader">
+					<Text className="blog-articleEyebrow">Featured story</Text>
+					<Title level={2} className="blog-homeSectionTitle">
+						Start with the story people keep sending to each other
+					</Title>
+				</div>
+
+				<button
+					type="button"
+					className="blog-homeFeatureCard blog-card"
+					onClick={() => onSelectPost(featuredPost.slug)}
+				>
+					<div className="blog-homeFeatureMedia">
+						<EditorialImage
+							src={featuredPost.heroImage || featuredPost.introImage}
+							alt={featuredPost.title}
+						/>
+					</div>
+					<div className="blog-homeFeatureBody">
+						<Text className="blog-articleEyebrow">{featuredPost.category}</Text>
+						<Title level={2} className="blog-homeCardTitle">
+							{featuredPost.title}
+						</Title>
+						<Paragraph className="blog-homeCardCopy">
+							{featuredPost.excerpt}
+						</Paragraph>
+						<div className="blog-homeByline">
+							<Text>{featuredPost.author}</Text>
+							<Text>{featuredPost.authorRole}</Text>
+							<Text>
+								{formatDate(featuredPost.publishDate)} · {featuredPost.readingTime}
+							</Text>
+						</div>
+						<Button className="blog-primaryButton">Read story</Button>
+					</div>
+				</button>
+			</section>
+
+			<section className="blog-homeGridSection">
+				<div className="blog-homeFeatureHeader">
+					<Text className="blog-articleEyebrow">Latest voices</Text>
+					<Title level={2} className="blog-homeSectionTitle">
+						Dispatches, return visits, and first impressions from Ahangama
+					</Title>
+				</div>
+
+				<div className="blog-homeGrid">
+					{recentPosts.map((post) => (
+						<button
+							key={post.slug}
+							type="button"
+							className="blog-homeStoryCard blog-card"
+							onClick={() => onSelectPost(post.slug)}
+						>
+							<EditorialImage
+								src={post.introImage || post.heroImage}
+								alt={post.title}
+								className="blog-homeStoryImage"
+							/>
+							<div className="blog-homeStoryBody">
+								<Text className="blog-articleEyebrow">{post.category}</Text>
+								<Title level={3} className="blog-homeStoryTitle">
+									{post.title}
+								</Title>
+								<Paragraph className="blog-homeStoryExcerpt">
+									{post.excerpt}
+								</Paragraph>
+								<div className="blog-homeStoryMeta">
+									<Text>{post.author}</Text>
+									<Text>{post.authorRole}</Text>
+								</div>
+							</div>
+						</button>
+					))}
+				</div>
+			</section>
+
+			<section className="blog-homeManifesto blog-card">
+				<Text className="blog-articleEyebrow">What this collection is</Text>
+				<Paragraph className="blog-homeManifestoCopy">
+					These posts are meant to feel personal. Some are written like a guide,
+					some like a diary entry, some like advice passed between friends after
+					a few days on the south coast. Over time, this page should read less
+					like a brand newsroom and more like a shelf of lived Ahangama
+					experiences.
+				</Paragraph>
+			</section>
+		</article>
+	);
+}
+
 function ExperienceSection({ experience }) {
 	const layoutClass = `blog-experience blog-experience--${experience.layout}`;
 
@@ -515,8 +641,9 @@ export default function BlogsPage() {
 	const navigate = useNavigate();
 	const { slug } = useParams();
 	const defaultPost = BLOG_POSTS[0] || null;
-	const activePost = slug ? getBlogPostBySlug(slug) : defaultPost;
+	const activePost = slug ? getBlogPostBySlug(slug) : null;
 	const isNotFound = Boolean(slug && !activePost);
+	const isCollectionHome = !slug;
 
 	const handleSelectPost = (nextSlug) => {
 		navigate(`/blogs/${nextSlug}`);
@@ -543,7 +670,7 @@ export default function BlogsPage() {
 					url: canonical,
 					articleSection: activePost.category,
 					author: {
-						"@type": "Organization",
+						"@type": activePost.authorType || "Person",
 						name: activePost.author,
 					},
 					publisher: {
@@ -559,12 +686,12 @@ export default function BlogsPage() {
 				title={
 					slug && activePost
 						? `${activePost.title} — Ahangama Blogs`
-						: "Ahangama Blogs — Stories, Guides, and Local Articles"
+						: "Ahangama Blogs — Real Visitor Stories, Guides, and Experiences"
 				}
 				description={
 					slug && activePost
 						? activePost.description
-						: "Editorial guides, local stories, and practical travel articles about Ahangama."
+						: "A collection of Ahangama blog posts shaped by real visitor experiences, return trips, slow stays, surf mornings, food notes, and local discoveries."
 				}
 				canonical={canonical}
 				jsonLd={jsonLd}
@@ -572,11 +699,13 @@ export default function BlogsPage() {
 
 			<BlogWorkspaceLayout
 				posts={BLOG_POSTS}
-				activeSlug={activePost?.slug || defaultPost.slug}
+				activeSlug={activePost?.slug || null}
 				onSelectPost={handleSelectPost}
-				lastUpdated={formatDate((activePost || defaultPost).publishDate)}
+				lastUpdated={formatDate(defaultPost.publishDate)}
 			>
-				{isNotFound ? (
+				{isCollectionHome ? (
+					<BlogCollectionHome posts={BLOG_POSTS} onSelectPost={handleSelectPost} />
+				) : isNotFound ? (
 					<Card className="blog-card blog-emptyCard" bordered={false}>
 						<Text className="blog-articleEyebrow">Blogs</Text>
 						<Title level={1} className="blog-articleTitle">
