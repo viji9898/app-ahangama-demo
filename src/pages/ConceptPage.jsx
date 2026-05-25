@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Modal, Progress, Row, Space, Tag, Typography } from "antd";
+import {
+  Button,
+  Card,
+  Col,
+  Modal,
+  Progress,
+  Row,
+  Space,
+  Tag,
+  Typography,
+} from "antd";
 import {
   AimOutlined,
   ApartmentOutlined,
@@ -25,11 +35,23 @@ const sections = [
   { id: "products", label: "Products", hint: "Free vs Premium" },
   { id: "objectives", label: "Objectives", hint: "What success looks like" },
   { id: "workstreams", label: "Workstreams", hint: "Current priorities" },
-  { id: "milestones", label: "Milestones", hint: "Shipped / In Progress / Next" },
+  {
+    id: "milestones",
+    label: "Milestones",
+    hint: "Shipped / In Progress / Next",
+  },
   { id: "distribution", label: "Distribution", hint: "Growth channels" },
   { id: "guide", label: "Guide 26/27", hint: "Editorial direction" },
-  { id: "touchpoints", label: "Physical Touchpoints", hint: "QR stands and physical branding" },
-  { id: "team", label: "Team & Responsibilities", hint: "Who owns what day to day" },
+  {
+    id: "touchpoints",
+    label: "Physical Touchpoints",
+    hint: "QR stands and physical branding",
+  },
+  {
+    id: "team",
+    label: "Team & Responsibilities",
+    hint: "Who owns what day to day",
+  },
   { id: "owners", label: "Owners", hint: "Who is accountable" },
   { id: "kpis", label: "KPIs", hint: "Metrics and reporting" },
   { id: "questions", label: "Open Questions", hint: "Decisions still needed" },
@@ -417,6 +439,36 @@ const teamMembers = [
       "Strengthen the visual system for QR stands, social campaigns, and pass promotions so the brand feels more consistent and recognizable.",
   },
   {
+    name: "Faizan",
+    role: "Creative Director & Design Lead",
+    category: "Creative Leadership",
+    focusArea: "Creative direction, visual systems, campaign design",
+    summary:
+      "Leads the visual identity of Ahangama Pass including QR stands, postcards, promotional graphics, campaigns and brand design systems.",
+    overview:
+      "Owns the higher-level creative direction for Ahangama Pass, ensuring the brand system, campaign language, and in-market visuals feel consistent, deliberate, and recognizable.",
+    responsibilities: [
+      "Lead the overall visual identity and creative direction of Ahangama Pass",
+      "Define brand systems for QR stands, postcards, campaigns, and promo materials",
+      "Guide campaign design quality across digital and physical touchpoints",
+      "Align creative execution across design contributors and rollout needs",
+    ],
+    weeklyPriorities: [
+      "Review and direct campaign visuals and brand outputs",
+      "Refine reusable design systems for recurring pass materials",
+      "Support high-priority launches with senior creative input",
+    ],
+    kpis: [
+      "Brand consistency across touchpoints",
+      "Campaign creative readiness",
+      "Creative approval speed",
+      "Quality of design-system adoption",
+    ],
+    dependencies: ["Viji", "Ishaq", "Minosha"],
+    next30Days:
+      "Tighten the Ahangama Pass visual system so campaigns, QR stands, and printed materials all feel part of one stronger and more recognizable brand language.",
+  },
+  {
     name: "Courtney",
     role: "Social Media Manager",
     category: "Social",
@@ -445,6 +497,66 @@ const teamMembers = [
     dependencies: ["Ishaq", "Viji", "Veronika"],
     next30Days:
       "Create a more intentional publishing rhythm that supports Free Pass acquisition, premium storytelling, and the Guide 26/27 editorial rollout.",
+  },
+  {
+    name: "Bharshi",
+    role: "Accounts Management",
+    category: "Finance",
+    focusArea: "Accounts, reporting, financial administration",
+    summary:
+      "Handles company accounts, bookkeeping, financial tracking, payment coordination and operational finance management.",
+    overview:
+      "Owns day-to-day financial administration so company records, payments, and tracking stay accurate, current, and usable for operational decision-making.",
+    responsibilities: [
+      "Manage bookkeeping and company account records",
+      "Track payments, expenses, and financial admin workflows",
+      "Coordinate operational finance requirements across the business",
+      "Support recurring financial reporting and reconciliation",
+    ],
+    weeklyPriorities: [
+      "Keep bookkeeping and payment records up to date",
+      "Track outstanding financial actions and reconciliations",
+      "Prepare current reporting inputs for leadership review",
+    ],
+    kpis: [
+      "Accuracy of financial records",
+      "Reporting timeliness",
+      "Payment coordination reliability",
+      "Reconciliation completion rate",
+    ],
+    dependencies: ["Viji", "Veronika", "Vijayanthi"],
+    next30Days:
+      "Stabilize reporting and payment coordination so the business has cleaner visibility into operational finance and current account status.",
+  },
+  {
+    name: "Vijayanthi",
+    role: "Financial Systems Contractor",
+    category: "Finance",
+    focusArea: "Financial systems, process setup, accounting operations",
+    summary:
+      "Supports financial operations and setup of accounting systems, workflows, financial structures and reporting processes.",
+    overview:
+      "Supports the financial infrastructure behind Ahangama Pass by setting up systems, workflows, and reporting structures that make finance operations more scalable and reliable.",
+    responsibilities: [
+      "Set up accounting systems and operational finance workflows",
+      "Define reporting structures and process standards",
+      "Support financial operations with systems-level improvements",
+      "Help formalize finance workflows for scale and consistency",
+    ],
+    weeklyPriorities: [
+      "Improve accounting workflows and reporting structure",
+      "Review systems gaps affecting finance operations",
+      "Coordinate setup changes with accounts management needs",
+    ],
+    kpis: [
+      "Finance workflow completion",
+      "Reporting process reliability",
+      "System setup progress",
+      "Operational finance efficiency",
+    ],
+    dependencies: ["Bharshi", "Viji", "Veronika"],
+    next30Days:
+      "Put stronger accounting systems and reporting workflows in place so finance operations are easier to manage, review, and scale.",
   },
 ];
 
@@ -481,7 +593,11 @@ const dashboardKpis = [
   { label: "Free pass conversions", value: "18%", progress: 58 },
   { label: "Premium pass conversions", value: "3.6%", progress: 41 },
   { label: "Active venues", value: "34", progress: 34 },
-  { label: "Top performing venues", value: "Kaffi / Pura / Living", progress: 80 },
+  {
+    label: "Top performing venues",
+    value: "Kaffi / Pura / Living",
+    progress: 80,
+  },
   { label: "WhatsApp subscribers", value: "2,180", progress: 64 },
   { label: "Revenue", value: "$4.8k", progress: 52 },
   { label: "Redemption volume", value: "312", progress: 49 },
@@ -533,10 +649,13 @@ export default function ConceptPage() {
               <div>
                 <Text className="concept-heroEyebrow">Ahangama Pass</Text>
                 <Title className="concept-heroTitle">
-                  A focused workspace for aligning the product, the team, and the next milestones.
+                  A focused workspace for aligning the product, the team, and
+                  the next milestones.
                 </Title>
                 <Paragraph className="concept-heroCopy">
-                  This workspace acts as the shared operating layer for Ahangama Pass — aligning product, partnerships, growth, distribution, and execution.
+                  This workspace acts as the shared operating layer for Ahangama
+                  Pass — aligning product, partnerships, growth, distribution,
+                  and execution.
                 </Paragraph>
                 <Space wrap size={[10, 10]}>
                   <Tag className="concept-pill">Internal only</Tag>
@@ -602,12 +721,21 @@ export default function ConceptPage() {
           </Card>
         </section>
 
-        <SectionCard id="why" eyebrow="Why this exists" title="Why the project matters">
+        <SectionCard
+          id="why"
+          eyebrow="Why this exists"
+          title="Why the project matters"
+        >
           <Paragraph className="concept-bodyCopy">
-            The Ahangama Pass should become more than a discount product. It should act as the tourism operating layer for Ahangama — helping visitors discover trusted places, helping venues acquire customers, and helping the destination feel connected.
+            The Ahangama Pass should become more than a discount product. It
+            should act as the tourism operating layer for Ahangama — helping
+            visitors discover trusted places, helping venues acquire customers,
+            and helping the destination feel connected.
           </Paragraph>
           <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
-            The opportunity is to create a product that combines discovery, experiences, commerce, storytelling, and distribution into one recognizable ecosystem.
+            The opportunity is to create a product that combines discovery,
+            experiences, commerce, storytelling, and distribution into one
+            recognizable ecosystem.
           </Paragraph>
         </SectionCard>
 
@@ -615,8 +743,13 @@ export default function ConceptPage() {
           <Row gutter={[20, 20]}>
             {productCards.map((product) => (
               <Col xs={24} lg={12} key={product.title}>
-                <Card className="concept-card concept-productCard" bordered={false}>
-                  <Text className="concept-sectionEyebrow">{product.subtitle}</Text>
+                <Card
+                  className="concept-card concept-productCard"
+                  bordered={false}
+                >
+                  <Text className="concept-sectionEyebrow">
+                    {product.subtitle}
+                  </Text>
                   <Title level={3} className="concept-productTitle">
                     {product.title}
                   </Title>
@@ -627,7 +760,9 @@ export default function ConceptPage() {
                   </ul>
                   {product.examples ? (
                     <>
-                      <Text className="concept-miniLabel">Example experiences</Text>
+                      <Text className="concept-miniLabel">
+                        Example experiences
+                      </Text>
                       <div className="concept-chipGrid">
                         {product.examples.map((example) => (
                           <span className="concept-chip" key={example}>
@@ -640,7 +775,10 @@ export default function ConceptPage() {
                   <Text className="concept-miniLabel">Key metrics</Text>
                   <div className="concept-chipGrid">
                     {product.metrics.map((metric) => (
-                      <span className="concept-chip concept-chipStrong" key={metric}>
+                      <span
+                        className="concept-chip concept-chipStrong"
+                        key={metric}
+                      >
                         {metric}
                       </span>
                     ))}
@@ -651,7 +789,11 @@ export default function ConceptPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="objectives" eyebrow="Objectives" title="What success looks like">
+        <SectionCard
+          id="objectives"
+          eyebrow="Objectives"
+          title="What success looks like"
+        >
           <Row gutter={[20, 20]}>
             {objectiveCards.map((kpi) => (
               <Col xs={24} md={12} xl={8} key={kpi.label}>
@@ -659,18 +801,29 @@ export default function ConceptPage() {
                   <Text className="concept-kpiLabel">{kpi.label}</Text>
                   <div className="concept-kpiValue">{kpi.value}</div>
                   <Paragraph className="concept-kpiNote">{kpi.note}</Paragraph>
-                  <Progress percent={kpi.value === "Iconic" ? 82 : 64} showInfo={false} strokeColor="#345c53" />
+                  <Progress
+                    percent={kpi.value === "Iconic" ? 82 : 64}
+                    showInfo={false}
+                    strokeColor="#345c53"
+                  />
                 </Card>
               </Col>
             ))}
           </Row>
         </SectionCard>
 
-        <SectionCard id="workstreams" eyebrow="Current priorities" title="Workstreams">
+        <SectionCard
+          id="workstreams"
+          eyebrow="Current priorities"
+          title="Workstreams"
+        >
           <Row gutter={[20, 20]}>
             {workstreams.map((stream) => (
               <Col xs={24} lg={12} xl={8} key={stream.title}>
-                <Card className="concept-card concept-workstreamCard" bordered={false}>
+                <Card
+                  className="concept-card concept-workstreamCard"
+                  bordered={false}
+                >
                   <div className="concept-workstreamHeader">
                     <Title level={4}>{stream.title}</Title>
                     <Tag className="concept-statusPill">{stream.status}</Tag>
@@ -686,7 +839,11 @@ export default function ConceptPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="distribution" eyebrow="Distribution" title="Growth channels">
+        <SectionCard
+          id="distribution"
+          eyebrow="Distribution"
+          title="Growth channels"
+        >
           <Row gutter={[20, 20]}>
             <Col xs={24} xl={15}>
               <Card className="concept-card concept-subCard" bordered={false}>
@@ -701,7 +858,9 @@ export default function ConceptPage() {
             </Col>
             <Col xs={24} xl={9}>
               <Card className="concept-card concept-subCard" bordered={false}>
-                <Text className="concept-miniLabel">Customer acquisition flow</Text>
+                <Text className="concept-miniLabel">
+                  Customer acquisition flow
+                </Text>
                 <div className="concept-flowSteps">
                   {acquisitionFlow.map((step, index) => (
                     <React.Fragment key={step}>
@@ -717,11 +876,17 @@ export default function ConceptPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="guide" eyebrow="Guide 26/27" title="Ahangama Guide 2026/27">
+        <SectionCard
+          id="guide"
+          eyebrow="Guide 26/27"
+          title="Ahangama Guide 2026/27"
+        >
           <Row gutter={[20, 20]}>
             <Col xs={24} xl={15}>
               <Card className="concept-card concept-subCard" bordered={false}>
-                <Text className="concept-guideSubhead">The definitive guide to Ahangama.</Text>
+                <Text className="concept-guideSubhead">
+                  The definitive guide to Ahangama.
+                </Text>
                 <div className="concept-chipGrid">
                   {guidePillars.map((pillar) => (
                     <span className="concept-chip" key={pillar}>
@@ -732,7 +897,10 @@ export default function ConceptPage() {
               </Card>
             </Col>
             <Col xs={24} xl={9}>
-              <Card className="concept-card concept-guideOutputCard" bordered={false}>
+              <Card
+                className="concept-card concept-guideOutputCard"
+                bordered={false}
+              >
                 <div className="concept-guideOutputHeader">
                   <PictureOutlined />
                   <Title level={4}>Editorial outputs</Title>
@@ -749,11 +917,18 @@ export default function ConceptPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="touchpoints" eyebrow="Physical touchpoints" title="QR stands and physical branding">
+        <SectionCard
+          id="touchpoints"
+          eyebrow="Physical touchpoints"
+          title="QR stands and physical branding"
+        >
           <Row gutter={[16, 16]}>
             {touchpoints.map((item) => (
               <Col xs={12} md={8} xl={6} key={item}>
-                <Card className="concept-card concept-touchpointCard" bordered={false}>
+                <Card
+                  className="concept-card concept-touchpointCard"
+                  bordered={false}
+                >
                   <div className="concept-touchpointMock">
                     <EnvironmentOutlined />
                   </div>
@@ -763,7 +938,8 @@ export default function ConceptPage() {
             ))}
           </Row>
           <Paragraph className="concept-bodyCopy concept-sectionNote">
-            The physical layer is critical. Visitors should constantly encounter the Ahangama Pass throughout the town.
+            The physical layer is critical. Visitors should constantly encounter
+            the Ahangama Pass throughout the town.
           </Paragraph>
         </SectionCard>
 
@@ -773,16 +949,21 @@ export default function ConceptPage() {
           title="Team & Responsibilities"
         >
           <Paragraph className="concept-bodyCopy">
-            Clear ownership across partnerships, operations, creative, social, merchandise, and strategy.
+            Clear ownership across partnerships, operations, creative, social,
+            merchandise, and strategy.
           </Paragraph>
           <Paragraph className="concept-bodyCopy" style={{ marginBottom: 24 }}>
-            This section helps the team understand who owns what and how each role contributes to the Ahangama Pass ecosystem.
+            This section helps the team understand who owns what and how each
+            role contributes to the Ahangama Pass ecosystem.
           </Paragraph>
 
           <Row gutter={[20, 20]}>
             {teamMembers.map((member) => (
-              <Col xs={24} md={12} xl={8} key={member.name}>
-                <Card className="concept-card concept-teamCard" bordered={false}>
+              <Col xs={24} key={member.name}>
+                <Card
+                  className="concept-card concept-teamCard"
+                  bordered={false}
+                >
                   <div className="concept-teamHeader">
                     <div>
                       <Title level={4} className="concept-teamName">
@@ -799,7 +980,9 @@ export default function ConceptPage() {
 
                   <div className="concept-teamFocusBox">
                     <Text className="concept-miniLabel">Key focus area</Text>
-                    <div className="concept-teamFocusText">{member.focusArea}</div>
+                    <div className="concept-teamFocusText">
+                      {member.focusArea}
+                    </div>
                   </div>
 
                   <Button
@@ -815,11 +998,18 @@ export default function ConceptPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="milestones" eyebrow="Milestones" title="Progress and next steps">
+        <SectionCard
+          id="milestones"
+          eyebrow="Milestones"
+          title="Progress and next steps"
+        >
           <Row gutter={[20, 20]}>
             {milestones.map((milestone) => (
               <Col xs={24} md={8} key={milestone.phase}>
-                <Card className="concept-card concept-milestoneCard" bordered={false}>
+                <Card
+                  className="concept-card concept-milestoneCard"
+                  bordered={false}
+                >
                   <div className="concept-milestoneHeader">
                     <FlagOutlined />
                     <Title level={4}>{milestone.phase}</Title>
@@ -835,11 +1025,18 @@ export default function ConceptPage() {
           </Row>
         </SectionCard>
 
-        <SectionCard id="owners" eyebrow="Accountability" title="Owners and responsibilities">
+        <SectionCard
+          id="owners"
+          eyebrow="Accountability"
+          title="Owners and responsibilities"
+        >
           <Row gutter={[20, 20]}>
             {owners.map((entry) => (
               <Col xs={24} md={12} key={entry.stream}>
-                <Card className="concept-card concept-ownerCard" bordered={false}>
+                <Card
+                  className="concept-card concept-ownerCard"
+                  bordered={false}
+                >
                   <div className="concept-ownerHeader">
                     <TeamOutlined />
                     <div>
@@ -860,17 +1057,28 @@ export default function ConceptPage() {
           <Row gutter={[16, 16]}>
             {dashboardKpis.map((metric) => (
               <Col xs={24} md={12} xl={6} key={metric.label}>
-                <Card className="concept-card concept-dashboardCard" bordered={false}>
+                <Card
+                  className="concept-card concept-dashboardCard"
+                  bordered={false}
+                >
                   <Text className="concept-kpiLabel">{metric.label}</Text>
                   <div className="concept-dashboardValue">{metric.value}</div>
-                  <Progress percent={metric.progress} showInfo={false} strokeColor="#2e5c53" />
+                  <Progress
+                    percent={metric.progress}
+                    showInfo={false}
+                    strokeColor="#2e5c53"
+                  />
                 </Card>
               </Col>
             ))}
           </Row>
         </SectionCard>
 
-        <SectionCard id="questions" eyebrow="Open questions" title="Decisions still needed">
+        <SectionCard
+          id="questions"
+          eyebrow="Open questions"
+          title="Decisions still needed"
+        >
           <Card className="concept-card concept-subCard" bordered={false}>
             <ul className="concept-list concept-listSpacious">
               {openQuestions.map((question) => (
@@ -893,7 +1101,9 @@ export default function ConceptPage() {
             <div className="concept-teamModalContent">
               <div className="concept-teamModalHeader">
                 <div>
-                  <Text className="concept-sectionEyebrow">{selectedMember.category}</Text>
+                  <Text className="concept-sectionEyebrow">
+                    {selectedMember.category}
+                  </Text>
                   <Title level={3} className="concept-teamModalTitle">
                     {selectedMember.name} — {selectedMember.role}
                   </Title>
@@ -903,7 +1113,10 @@ export default function ConceptPage() {
 
               <div className="concept-modalBlock">
                 <Text className="concept-miniLabel">Role overview</Text>
-                <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+                <Paragraph
+                  className="concept-bodyCopy"
+                  style={{ marginBottom: 0 }}
+                >
                   {selectedMember.overview}
                 </Paragraph>
               </div>
@@ -911,7 +1124,9 @@ export default function ConceptPage() {
               <Row gutter={[16, 16]}>
                 <Col xs={24} md={12}>
                   <div className="concept-modalBlock">
-                    <Text className="concept-miniLabel">Key responsibilities</Text>
+                    <Text className="concept-miniLabel">
+                      Key responsibilities
+                    </Text>
                     <ul className="concept-list concept-listSpacious">
                       {selectedMember.responsibilities.map((item) => (
                         <li key={item}>{item}</li>
@@ -931,7 +1146,9 @@ export default function ConceptPage() {
                 </Col>
                 <Col xs={24} md={12}>
                   <div className="concept-modalBlock">
-                    <Text className="concept-miniLabel">KPIs / success metrics</Text>
+                    <Text className="concept-miniLabel">
+                      KPIs / success metrics
+                    </Text>
                     <ul className="concept-list concept-listSpacious">
                       {selectedMember.kpis.map((item) => (
                         <li key={item}>{item}</li>
@@ -954,8 +1171,13 @@ export default function ConceptPage() {
               </Row>
 
               <div className="concept-modalBlock concept-modalFocusBlock">
-                <Text className="concept-miniLabel">Current focus for the next 30 days</Text>
-                <Paragraph className="concept-bodyCopy" style={{ marginBottom: 0 }}>
+                <Text className="concept-miniLabel">
+                  Current focus for the next 30 days
+                </Text>
+                <Paragraph
+                  className="concept-bodyCopy"
+                  style={{ marginBottom: 0 }}
+                >
                   {selectedMember.next30Days}
                 </Paragraph>
               </div>
