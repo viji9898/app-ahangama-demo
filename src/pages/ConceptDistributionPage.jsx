@@ -80,6 +80,12 @@ const shortcutActions = [
     isActive: true,
   },
   {
+    key: "hotel-distribution",
+    label: "Hotels & Airbnb",
+    href: "/concept/hotel-distribution",
+    isActive: false,
+  },
+  {
     key: "plastic-stands",
     label: "Plastic Stands",
     href: "/concept/plastic-stands",

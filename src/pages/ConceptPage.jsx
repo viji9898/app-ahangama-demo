@@ -5,6 +5,7 @@ import ConceptBlogStrategyPage from "./ConceptBlogStrategyPage";
 import ConceptDistributionPage from "./ConceptDistributionPage";
 import ConceptFreePassPage from "./ConceptFreePassPage";
 import ConceptGuidePage from "./ConceptGuidePage";
+import ConceptHotelDistributionPage from "./ConceptHotelDistributionPage";
 import ConceptIndexPage from "./ConceptIndexPage";
 import ConceptPlasticStandsPage from "./ConceptPlasticStandsPage";
 import ConceptPremiumPassPage from "./ConceptPremiumPassPage";
@@ -27,6 +28,10 @@ export default function ConceptPage() {
 
   if (slug === "distribution") {
     return <ConceptDistributionPage />;
+  }
+
+  if (slug === "hotel-distribution") {
+    return <ConceptHotelDistributionPage />;
   }
 
   if (slug === "plastic-stands") {

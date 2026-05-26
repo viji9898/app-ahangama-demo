@@ -298,7 +298,11 @@
 
 .concept-plasticCard,
 .concept-plasticObjectiveCard,
-.concept-plasticMatrixCard {
+.concept-plasticMatrixCard,
+.concept-hotelTypeCard,
+.concept-hotelBenefitCard,
+.concept-hotelToolkitCard,
+.concept-hotelKpiCard {
   height: 100%;
 }
 
@@ -1068,6 +1072,155 @@
   font-weight: 600;
 }
 
+.concept-hotelColumns {
+  margin-bottom: 18px;
+}
+
+.concept-hotelSectionCard,
+.concept-hotelInsightCard,
+.concept-hotelMockCard {
+  height: 100%;
+}
+
+.concept-hotelTypeCard,
+.concept-hotelBenefitCard,
+.concept-hotelToolkitCard,
+.concept-hotelKpiCard {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.concept-hotelTypeCard:hover,
+.concept-hotelBenefitCard:hover,
+.concept-hotelToolkitCard:hover,
+.concept-hotelKpiCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 40px rgba(31, 36, 31, 0.1) !important;
+}
+
+.concept-hotelTypeMock,
+.concept-hotelMockFrame {
+  min-height: 160px;
+}
+
+.concept-hotelTable .ant-table {
+  background: transparent;
+}
+
+.concept-tableShell {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.concept-hotelTable .ant-table-container {
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.concept-hotelTable .ant-table-thead > tr > th {
+  background: rgba(247, 242, 234, 0.96) !important;
+  color: #1f241f;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.concept-hotelTable .ant-table-tbody > tr > td {
+  background: rgba(255, 255, 255, 0.72);
+  color: #384139;
+}
+
+.concept-hotelWorkflowShell {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(31, 36, 31, 0.08);
+}
+
+.concept-hotelFlowSteps {
+  margin-top: 10px;
+}
+
+.concept-hotelInsightCard {
+  margin-top: 16px;
+  background: linear-gradient(160deg, rgba(52, 92, 83, 0.11), rgba(255, 255, 255, 0.78)) !important;
+}
+
+.concept-hotelInsightQuote {
+  max-width: 26ch;
+  color: #1f241f;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.02;
+}
+
+.concept-hotelCollapse {
+  background: transparent !important;
+}
+
+.concept-hotelCollapse .ant-collapse-item {
+  margin-bottom: 12px;
+  border: 1px solid rgba(31, 36, 31, 0.08) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.concept-hotelCollapse .ant-collapse-header {
+  align-items: center !important;
+}
+
+.concept-hotelCollapseLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.concept-hotelMockCard {
+  display: grid;
+  gap: 12px;
+}
+
+.concept-hotelTouchpointImageBlock {
+  margin-top: 22px;
+}
+
+.concept-hotelTouchpointImage,
+.concept-hotelTouchpointImage .ant-image,
+.concept-hotelTouchpointImage .ant-image-img {
+  display: block;
+  width: 100%;
+}
+
+.concept-hotelTouchpointImage .ant-image-img {
+  border-radius: 24px;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  box-shadow: 0 20px 44px rgba(31, 36, 31, 0.08);
+}
+
+.concept-hotelLinkList {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.concept-hotelVisionLead {
+  max-width: 70ch;
+  color: rgba(238, 244, 239, 0.88) !important;
+}
+
+.concept-hotelVisionGrid {
+  margin: 20px 0 26px;
+}
+
+.concept-hotelQuoteBlock {
+  margin-top: 14px;
+}
+
 .concept-guideSubhead {
   margin-bottom: 14px;
 }
@@ -1271,6 +1424,11 @@
   .concept-placementRow .concept-placementCell:nth-child(4)::before {
     content: "Intent";
   }
+
+  .concept-hotelCollapseLabel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1336,5 +1494,9 @@
   .concept-keyInsightQuote {
     max-width: none;
     font-size: 34px;
+  }
+
+  .concept-hotelInsightQuote {
+    font-size: 30px;
   }
 }
