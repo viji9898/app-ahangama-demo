@@ -6,6 +6,7 @@ import {
   EditOutlined,
   FileTextOutlined,
   GiftOutlined,
+  QrcodeOutlined,
   ReadOutlined,
   RocketOutlined,
   StarOutlined,
@@ -62,6 +63,17 @@ const strategyRoutes = [
     tags: ["Partners", "CRM", "Growth channels"],
   },
   {
+    key: "plastic-stands",
+    title: "Plastic Stands",
+    href: "/concept/plastic-stands",
+    icon: <QrcodeOutlined />,
+    owner: "Faizan + Veronika",
+    status: "Active planning",
+    summary:
+      "The physical QR stand system that turns venue foot traffic into pass signups, WhatsApp leads, and future premium conversion.",
+    tags: ["Offline to online", "QR stands", "Venue infrastructure"],
+  },
+  {
     key: "premium-pass",
     title: "Premium Pass",
     href: "/concept/premium-pass",
@@ -113,6 +125,11 @@ const systemCards = [
     body: "Distribution ensures the pass and content are present across partners, physical touchpoints, newsletters, and creator channels.",
   },
   {
+    title: "Offline conversion infrastructure",
+    icon: <QrcodeOutlined />,
+    body: "Plastic Stands turn real-world venue attention into a measurable acquisition layer across cafes, hotels, surf shops, coworking desks, and wellness partners.",
+  },
+  {
     title: "Story and trust",
     icon: <ReadOutlined />,
     body: "Blog Strategy turns raw recommendations into destination credibility, searchable stories, and reusable guide assets.",
@@ -158,7 +175,7 @@ export default function ConceptIndexPage() {
             <Paragraph className="concept-bodyCopy concept-heroParagraph">
               `/concept` should work as the index for the internal strategy
               pages, not as a long undifferentiated workspace. This page gives
-              the team a clean starting point for the six strategy routes that
+              the team a clean starting point for the seven strategy routes that
               now define the main operating layers of the Ahangama Pass project.
             </Paragraph>
           </div>

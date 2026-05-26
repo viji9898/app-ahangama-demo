@@ -296,6 +296,12 @@
   gap: 12px;
 }
 
+.concept-plasticCard,
+.concept-plasticObjectiveCard,
+.concept-plasticMatrixCard {
+  height: 100%;
+}
+
 .concept-strategyGoalIcon {
   width: 42px;
   height: 42px;
@@ -333,6 +339,28 @@
   padding: 20px;
   background: linear-gradient(160deg, #294c45 0%, #15251f 100%);
   color: #eef4ef;
+}
+
+.concept-plasticStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.concept-plasticStatCard {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.concept-plasticStatCard .anticon {
+  margin-top: 4px;
+  font-size: 18px;
 }
 
 .concept-focusPanel .concept-focusLabel,
@@ -801,6 +829,245 @@
   margin-bottom: 10px;
 }
 
+.concept-plasticList {
+  display: grid;
+  gap: 10px;
+}
+
+.concept-plasticListItem {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: #4f554f;
+  line-height: 1.6;
+}
+
+.concept-plasticListItem .anticon {
+  color: #345c53;
+  margin-top: 5px;
+}
+
+.concept-plasticQuoteBlock {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(52, 92, 83, 0.12), rgba(255, 255, 255, 0.74));
+  border: 1px solid rgba(31, 36, 31, 0.08);
+}
+
+.concept-plasticQuote {
+  margin: 6px 0 0;
+  color: #1f241f;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.concept-plasticMockArea {
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px dashed rgba(31, 36, 31, 0.18);
+  background: rgba(255, 255, 255, 0.54);
+}
+
+.concept-walletMockArea {
+  display: grid;
+  gap: 14px;
+}
+
+.concept-walletLogoRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.concept-walletLogoPill,
+.concept-placementTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+  color: #1f241f;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.concept-placementTagStrong {
+  background: rgba(52, 92, 83, 0.12);
+  border-color: rgba(52, 92, 83, 0.16);
+  color: #23463f;
+}
+
+.concept-qrMockWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.concept-qrMockBox {
+  width: min(100%, 260px);
+  aspect-ratio: 1;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 10px;
+  border: 1px dashed rgba(31, 36, 31, 0.18);
+  background: linear-gradient(135deg, rgba(52, 92, 83, 0.14), rgba(255, 255, 255, 0.78));
+}
+
+.concept-qrMockBox .anticon,
+.concept-plasticMockupFrame .anticon {
+  font-size: 34px;
+  color: #345c53;
+}
+
+.concept-editorialColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.concept-plasticGuardrails {
+  display: grid;
+  gap: 12px;
+}
+
+.concept-plasticMockupFrame {
+  height: 170px;
+  border-radius: 22px;
+  margin-bottom: 14px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(52, 92, 83, 0.18), rgba(21, 37, 31, 0.08)),
+    rgba(255, 255, 255, 0.58);
+  border: 1px dashed rgba(31, 36, 31, 0.18);
+}
+
+.concept-plasticImageGallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.concept-plasticImageTile {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 14px 30px rgba(31, 36, 31, 0.08);
+}
+
+.concept-plasticImage,
+.concept-plasticImage .ant-image,
+.concept-plasticImage .ant-image-img {
+  display: block;
+  width: 100%;
+}
+
+.concept-plasticImage .ant-image-img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.concept-plasticMockupMeta {
+  display: grid;
+  gap: 4px;
+}
+
+.concept-plasticMockupMeta .concept-miniLabel {
+  margin: 0;
+}
+
+.concept-plasticObjectiveCard {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.concept-plasticObjectiveCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 40px rgba(31, 36, 31, 0.1) !important;
+}
+
+.concept-plasticMatrixCard {
+  border-radius: 20px !important;
+  border: 1px solid rgba(31, 36, 31, 0.08) !important;
+  background: rgba(255, 255, 255, 0.58) !important;
+}
+
+.concept-plasticMatrixCard .ant-card-body {
+  padding: 10px !important;
+}
+
+.concept-placementHeader,
+.concept-placementRow {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.3fr) repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: center;
+}
+
+.concept-placementHeader {
+  padding: 14px 16px;
+  color: #6b6e67;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.concept-placementRow {
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+.concept-placementRow + .concept-placementRow {
+  border-top: 1px solid rgba(31, 36, 31, 0.08);
+}
+
+.concept-placementRow:hover {
+  background: rgba(52, 92, 83, 0.05);
+}
+
+.concept-placementCell {
+  display: flex;
+  align-items: center;
+}
+
+.concept-placementName {
+  gap: 10px;
+  color: #1f241f;
+  font-weight: 600;
+}
+
+.concept-placementName .anticon {
+  color: #345c53;
+}
+
+.concept-keyInsightCard {
+  background: linear-gradient(160deg, #233f39 0%, #15251f 100%) !important;
+}
+
+.concept-keyInsightCard .concept-sectionEyebrow {
+  color: rgba(238, 244, 239, 0.68);
+}
+
+.concept-keyInsightQuote {
+  margin: 0;
+  max-width: 20ch;
+  color: #eef4ef;
+  font-size: clamp(30px, 5vw, 54px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
 .concept-guideSubhead {
   margin-bottom: 14px;
 }
@@ -958,9 +1225,51 @@
     grid-template-columns: 1fr;
   }
 
+  .concept-editorialColumns,
+  .concept-placementHeader,
+  .concept-placementRow {
+    grid-template-columns: 1fr;
+  }
+
   .concept-acquisitionHero,
   .concept-acquisitionTimeline {
     grid-template-columns: 1fr;
+  }
+
+  .concept-placementHeader {
+    display: none;
+  }
+
+  .concept-placementRow {
+    gap: 10px;
+  }
+
+  .concept-placementRow + .concept-placementRow {
+    margin-top: 10px;
+    border-top: 0;
+  }
+
+  .concept-placementCell {
+    justify-content: space-between;
+  }
+
+  .concept-placementCell::before {
+    color: #6b6e67;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .concept-placementRow .concept-placementCell:nth-child(2)::before {
+    content: "Visibility";
+  }
+
+  .concept-placementRow .concept-placementCell:nth-child(3)::before {
+    content: "Conversion";
+  }
+
+  .concept-placementRow .concept-placementCell:nth-child(4)::before {
+    content: "Intent";
   }
 }
 
@@ -991,6 +1300,14 @@
     font-size: 38px !important;
   }
 
+  .concept-plasticStatsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-plasticImageGallery {
+    grid-template-columns: 1fr;
+  }
+
   .concept-distributionGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1014,5 +1331,10 @@
 
   .concept-teamModalHeader {
     flex-direction: column;
+  }
+
+  .concept-keyInsightQuote {
+    max-width: none;
+    font-size: 34px;
   }
 }

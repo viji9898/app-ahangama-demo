@@ -6,6 +6,7 @@ import ConceptDistributionPage from "./ConceptDistributionPage";
 import ConceptFreePassPage from "./ConceptFreePassPage";
 import ConceptGuidePage from "./ConceptGuidePage";
 import ConceptIndexPage from "./ConceptIndexPage";
+import ConceptPlasticStandsPage from "./ConceptPlasticStandsPage";
 import ConceptPremiumPassPage from "./ConceptPremiumPassPage";
 import ConceptTwelveThingsPage from "./ConceptTwelveThingsPage";
 
@@ -26,6 +27,10 @@ export default function ConceptPage() {
 
   if (slug === "distribution") {
     return <ConceptDistributionPage />;
+  }
+
+  if (slug === "plastic-stands") {
+    return <ConceptPlasticStandsPage />;
   }
 
   if (slug === "premium-pass") {

@@ -60,6 +60,12 @@ const shortcutActions = [
     isActive: false,
   },
   {
+    key: "plastic-stands",
+    label: "Plastic Stands",
+    href: "/concept/plastic-stands",
+    isActive: false,
+  },
+  {
     key: "premium-pass",
     label: "Premium Pass",
     href: "/concept/premium-pass",
