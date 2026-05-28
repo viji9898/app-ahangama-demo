@@ -13,7 +13,7 @@ const sections = [
   { id: "overview", label: "Overview", hint: "What this product is" },
   { id: "who", label: "Who it’s for", hint: "Best-fit travelers" },
   { id: "how", label: "How it works", hint: "Use the shortlist" },
-  { id: "pricing", label: "Pricing", hint: "Free content" },
+  { id: "pricing", label: "Pricing", hint: "$49–79 USD" },
   { id: "cta", label: "Next steps", hint: "Open experiences" },
 ];
 
@@ -41,7 +41,7 @@ export default function ProductTwelveMustDoThingsPage() {
       <ProductsWorkspaceLayout
         products={PRODUCTS_CATALOG}
         sections={sections}
-        status="Curated shortlist"
+        status="Experience bundle"
         lastUpdated="May 2026"
       >
         <section id="overview" className="concept-section">
@@ -50,16 +50,17 @@ export default function ProductTwelveMustDoThingsPage() {
               <div>
                 <Text className="concept-heroEyebrow">12 Must Do Things</Text>
                 <Title className="concept-heroTitle">
-                  A curated shortlist for Ahangama.
+                  The curated Ahangama experience bundle.
                 </Title>
                 <Paragraph className="concept-bodyCopy concept-heroParagraph">
-                  This product is the “spine” of discovery: a focused set of
-                  experiences that represent the best of Ahangama.
+                  A premium experience product inspired by city attraction
+                  passes — bundling the best activities, wellness, food,
+                  movement, and local culture into one curated package.
                 </Paragraph>
                 <Space wrap>
                   <Tag className="concept-pill">Curated</Tag>
-                  <Tag className="concept-pill">Fast planning</Tag>
-                  <Tag className="concept-pill">Discovery</Tag>
+                  <Tag className="concept-pill">Bundle</Tag>
+                  <Tag className="concept-pill">Best of Ahangama</Tag>
                 </Space>
               </div>
 
@@ -137,11 +138,11 @@ export default function ProductTwelveMustDoThingsPage() {
           <Card className="concept-card concept-cardSection" bordered={false}>
             <Text className="concept-sectionEyebrow">Pricing</Text>
             <Title level={2} className="concept-sectionTitle">
-              Free
+              $49–79 USD
             </Title>
             <Paragraph className="concept-bodyCopy">
-              The 12 Must Do Things shortlist is free to browse. It’s designed
-              to help you plan faster and discover higher-quality experiences.
+              The bundle is designed as a curated package with exclusive
+              pricing across multiple partner venues.
             </Paragraph>
           </Card>
         </section>
