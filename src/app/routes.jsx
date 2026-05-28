@@ -5,6 +5,8 @@ import HomeMobile from "../pages/HomeMobile";
 import About from "../pages/About";
 import BlogsPage from "../pages/BlogsPage";
 import ConceptPage from "../pages/ConceptPage";
+import ProductsIndexPage from "../pages/ProductsIndexPage";
+import ProductPage from "../pages/ProductPage";
 import Partners from "../pages/Partners";
 import PlaceDetail from "../pages/PlaceDetail";
 import CategoryIndex from "../pages/CategoryIndex";
@@ -45,6 +47,8 @@ const routes = [
   { path: "/blogs/:slug", element: <BlogsPage /> },
   { path: "/concept", element: <ConceptPage /> },
   { path: "/concept/:slug", element: <ConceptPage /> },
+  { path: "/products", element: <ProductsIndexPage /> },
+  { path: "/product/:slug", element: <ProductPage /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },
