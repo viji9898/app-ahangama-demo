@@ -84,7 +84,10 @@ function venuesApiPlugin() {
           }
         }
 
-        if (!req.url?.startsWith("/api/venues")) {
+        if (
+          !req.url?.startsWith("/api/venues") &&
+          !req.url?.startsWith("/api/venue-logos")
+        ) {
           next();
           return;
         }
@@ -107,6 +110,21 @@ function venuesApiPlugin() {
 
           res.statusCode = 200;
           res.setHeader("Content-Type", "application/json");
+
+          if (req.url.startsWith("/api/venue-logos")) {
+            const logos = venues
+              .filter((venue) => venue && venue.logo)
+              .map((venue) => ({
+                id: venue.id,
+                slug: venue.slug,
+                name: venue.name,
+                logo: venue.logo,
+              }));
+
+            res.end(JSON.stringify({ ok: true, logos }));
+            return;
+          }
+
           res.end(JSON.stringify({ ok: true, venues }));
         } catch (error) {
           res.statusCode = 500;

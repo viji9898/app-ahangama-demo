@@ -25,6 +25,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/venue-logos"
+  to = "/.netlify/functions/api-venue-logos"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

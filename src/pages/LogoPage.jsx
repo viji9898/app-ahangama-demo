@@ -1,18 +1,52 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Alert, Spin, Tooltip } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
-import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 
 export default function LogoPage() {
-  const { places, loading, error } = usePlaces();
+  const [logos, setLogos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+
+    setLoading(true);
+    setError(null);
+
+    fetch("/api/venue-logos")
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load logos: ${response.status}`);
+        }
+
+        const payload = await response.json();
+        if (!payload.ok) {
+          throw new Error(payload.error || "Failed to load logos");
+        }
+
+        return Array.isArray(payload.logos) ? payload.logos : [];
+      })
+      .then((items) => {
+        if (!active) return;
+        setLogos(items);
+        setLoading(false);
+      })
+      .catch((nextError) => {
+        if (!active) return;
+        setError(nextError);
+        setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const venuesWithLogos = useMemo(() => {
-    return (Array.isArray(places) ? places : []).filter(
-      (venue) => venue && venue.logo,
-    );
-  }, [places]);
+    return (Array.isArray(logos) ? logos : []).filter((venue) => venue?.logo);
+  }, [logos]);
 
   return (
     <SiteLayout>
