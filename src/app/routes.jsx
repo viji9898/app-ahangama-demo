@@ -11,6 +11,7 @@ import CategoryIndex from "../pages/CategoryIndex";
 import NotFound from "../NotFound";
 import { CATEGORIES } from "../data/categories";
 import SearchPage from "../pages/SearchPage";
+import LogoPage from "../pages/LogoPage";
 import CardLanding from "../pages/CardLanding";
 import CardBuy from "../pages/CardBuy";
 import CardTerms from "../pages/CardTerms";
@@ -39,6 +40,7 @@ const routes = [
   { path: "/qr/:slug", element: <VenueQrLandingPage /> },
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
+  { path: "/logo", element: <LogoPage /> },
   { path: "/blogs", element: <BlogsPage /> },
   { path: "/blogs/:slug", element: <BlogsPage /> },
   { path: "/concept", element: <ConceptPage /> },
