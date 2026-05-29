@@ -38,30 +38,22 @@ function ProductsSidebar({
 
       <div>
         <Text className="concept-sectionEyebrow">Product list</Text>
-        <nav className="concept-nav" aria-label="Products">
-          {products.map((product, index) => {
+        <nav className="concept-nav concept-navProducts" aria-label="Products">
+          {products.map((product) => {
             const isActive = product.slug === activeProductSlug;
 
             return (
-              <Tooltip
+              <button
                 key={product.key}
-                title={product.description}
-                placement="right"
-                mouseEnterDelay={0.15}
+                className={`concept-navItem${isActive ? " is-active" : ""}`}
+                type="button"
+                onClick={() => onSelectProduct(product.href)}
+                aria-label={product.title}
               >
-                <button
-                  className={`concept-navItem${isActive ? " is-active" : ""}`}
-                  type="button"
-                  onClick={() => onSelectProduct(product.href)}
-                  aria-label={`${product.navLabel}: ${product.description}`}
-                >
-                  <span className="concept-navIndex">{`0${index + 1}`.slice(-2)}</span>
-                  <span className="concept-navText">
-                    <span className="concept-navLabel">{product.navLabel}</span>
-                    <span className="concept-navHint">{product.description}</span>
-                  </span>
-                </button>
-              </Tooltip>
+                <span className="concept-navText">
+                  <span className="concept-navLabel">{product.title}</span>
+                </span>
+              </button>
             );
           })}
         </nav>

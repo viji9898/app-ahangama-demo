@@ -143,6 +143,17 @@
   color: #384139;
 }
 
+.concept-navProducts .concept-navItem {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+
+.concept-navProducts .concept-navLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .concept-navItem:hover,
 .concept-navItem.is-active {
   background: rgba(52, 92, 83, 0.1);
