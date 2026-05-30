@@ -31,6 +31,7 @@ import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 import HomeDesktop from "../pages/HomeDesktop";
 import Resellers from "../pages/Resellers";
+import TwelveThingsPage from "../pages/TwelveThingsPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import ExternalRedirect from "./ExternalRedirect";
 
@@ -41,6 +42,7 @@ const routes = [
   { path: "/home-desktop", element: <HomeDesktop /> },
   { path: "/qr/:slug", element: <VenueQrLandingPage /> },
   { path: "/", element: <Home /> },
+  { path: "/12-things", element: <TwelveThingsPage /> },
   { path: "/about", element: <About /> },
   { path: "/logo", element: <LogoPage /> },
   { path: "/blogs", element: <BlogsPage /> },
