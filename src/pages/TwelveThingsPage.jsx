@@ -131,37 +131,185 @@ const experiences = [
   },
 ];
 
-function PlaceholderImage({ label, tall = false }) {
+const PLACEHOLDER_VARIANTS = [
+  {
+    frame: "linear-gradient(135deg, rgba(222,205,182,0.95) 0%, rgba(245,236,222,0.95) 100%)",
+    accent: "#7C5A43",
+    shape: "circle",
+    align: "flex-end",
+  },
+  {
+    frame: "linear-gradient(135deg, rgba(203,220,214,0.92) 0%, rgba(244,248,244,0.96) 100%)",
+    accent: "#43655B",
+    shape: "panel",
+    align: "center",
+  },
+  {
+    frame: "linear-gradient(135deg, rgba(233,220,198,0.94) 0%, rgba(251,245,235,0.98) 100%)",
+    accent: "#9A6B2F",
+    shape: "stripe",
+    align: "flex-start",
+  },
+  {
+    frame: "linear-gradient(135deg, rgba(215,208,225,0.90) 0%, rgba(247,244,250,0.98) 100%)",
+    accent: "#61517F",
+    shape: "stack",
+    align: "center",
+  },
+];
+
+function getPlaceholderVariant(index) {
+  return PLACEHOLDER_VARIANTS[index % PLACEHOLDER_VARIANTS.length];
+}
+
+function PlaceholderArtwork({ variant }) {
+  if (variant.shape === "circle") {
+    return (
+      <div
+        style={{
+          width: "78%",
+          aspectRatio: "4 / 5",
+          borderRadius: 999,
+          background: `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.72), transparent 30%), linear-gradient(180deg, ${variant.accent} 0%, rgba(255,255,255,0.18) 100%)`,
+          border: "1px solid rgba(255,255,255,0.45)",
+          boxShadow: "0 24px 40px rgba(47,62,58,0.14)",
+        }}
+      />
+    );
+  }
+
+  if (variant.shape === "panel") {
+    return (
+      <div style={{ width: "86%", display: "grid", gap: 10 }}>
+        <div
+          style={{
+            height: 150,
+            borderRadius: 28,
+            background: `linear-gradient(135deg, ${variant.accent} 0%, rgba(255,255,255,0.2) 100%)`,
+            boxShadow: "0 24px 40px rgba(47,62,58,0.12)",
+          }}
+        />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.35fr", gap: 10 }}>
+          <div
+            style={{
+              height: 110,
+              borderRadius: 22,
+              background: "rgba(255,255,255,0.58)",
+              border: "1px solid rgba(47,62,58,0.08)",
+            }}
+          />
+          <div
+            style={{
+              height: 110,
+              borderRadius: 22,
+              background: `linear-gradient(180deg, rgba(255,255,255,0.25) 0%, ${variant.accent} 100%)`,
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (variant.shape === "stripe") {
+    return (
+      <div style={{ width: "88%", display: "grid", gap: 10 }}>
+        <div
+          style={{
+            height: 210,
+            borderRadius: 26,
+            background: `linear-gradient(90deg, ${variant.accent} 0%, ${variant.accent} 22%, rgba(255,255,255,0.28) 22%, rgba(255,255,255,0.28) 42%, rgba(255,255,255,0.72) 42%, rgba(255,255,255,0.72) 100%)`,
+            boxShadow: "0 24px 40px rgba(47,62,58,0.10)",
+          }}
+        />
+        <div
+          style={{
+            width: "52%",
+            height: 58,
+            borderRadius: 999,
+            background: `linear-gradient(90deg, rgba(255,255,255,0.85), ${variant.accent})`,
+          }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ width: "84%", position: "relative", height: 240 }}>
+      <div
+        style={{
+          position: "absolute",
+          inset: "0 0 54px 42px",
+          borderRadius: 26,
+          background: `linear-gradient(135deg, ${variant.accent} 0%, rgba(255,255,255,0.2) 100%)`,
+          boxShadow: "0 24px 40px rgba(47,62,58,0.10)",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: "58px 42px 0 0",
+          borderRadius: 26,
+          background: "rgba(255,255,255,0.74)",
+          border: "1px solid rgba(47,62,58,0.08)",
+        }}
+      />
+    </div>
+  );
+}
+
+function PlaceholderImage({ label, tall = false, variant, compact = false }) {
   return (
     <div
       style={{
-        minHeight: tall ? 360 : 280,
+        minHeight: compact ? 220 : tall ? 360 : 280,
         borderRadius: 24,
         border: "1px dashed rgba(47,62,58,0.24)",
-        background:
-          "linear-gradient(135deg, rgba(229,218,202,0.65) 0%, rgba(247,240,231,0.95) 100%)",
+        background: variant.frame,
         display: "flex",
-        alignItems: "center",
+        alignItems: variant.align,
         justifyContent: "center",
         padding: 24,
-        textAlign: "center",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div>
+      <div
+        style={{
+          position: "absolute",
+          inset: 18,
+          borderRadius: 20,
+          border: "1px solid rgba(255,255,255,0.28)",
+          pointerEvents: "none",
+        }}
+      />
+      <PlaceholderArtwork variant={variant} />
+      <div
+        style={{
+          position: "absolute",
+          left: 18,
+          right: 18,
+          bottom: 18,
+          padding: "10px 12px",
+          borderRadius: 16,
+          background: "rgba(255,251,245,0.84)",
+          border: "1px solid rgba(47,62,58,0.08)",
+          textAlign: "left",
+        }}
+      >
         <Text
           style={{
             display: "block",
-            color: "#2F3E3A",
-            fontSize: 12,
+            color: variant.accent,
+            fontSize: 11,
             fontWeight: 700,
             textTransform: "uppercase",
             letterSpacing: 1.4,
-            marginBottom: 8,
+            marginBottom: 6,
           }}
         >
           Image Placeholder
         </Text>
-        <Text style={{ color: "#6A655E", fontSize: 15 }}>{label}</Text>
+        <Text style={{ color: "#5F5A53", fontSize: 14 }}>{label}</Text>
       </div>
     </div>
   );
@@ -170,6 +318,7 @@ function PlaceholderImage({ label, tall = false }) {
 export default function TwelveThingsPage() {
   const canonical = absUrl("/12-things");
   const passCtaUrl = buildPassCtaUrl();
+  const heroVariant = PLACEHOLDER_VARIANTS[2];
 
   return (
     <SiteLayout>
@@ -206,7 +355,12 @@ export default function TwelveThingsPage() {
 
                   <Title
                     level={1}
-                    style={{ marginTop: 0, marginBottom: 12, fontSize: 42, lineHeight: 1.02 }}
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 12,
+                      fontSize: 42,
+                      lineHeight: 1.02,
+                    }}
                   >
                     12 Things to Do in Ahangama in Two Weeks (or Less)
                   </Title>
@@ -234,7 +388,11 @@ export default function TwelveThingsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       icon={<ArrowRightOutlined />}
-                      style={{ borderRadius: 999, background: "#2F3E3A", borderColor: "#2F3E3A" }}
+                      style={{
+                        borderRadius: 999,
+                        background: "#2F3E3A",
+                        borderColor: "#2F3E3A",
+                      }}
                     >
                       Get The Ahangama Pass
                     </Button>
@@ -249,7 +407,11 @@ export default function TwelveThingsPage() {
                 </Col>
 
                 <Col xs={24} xl={10}>
-                  <PlaceholderImage label="Hero image placeholder" tall />
+                  <PlaceholderImage
+                    label="Hero image placeholder"
+                    tall
+                    variant={heroVariant}
+                  />
                 </Col>
               </Row>
             </Card>
@@ -257,13 +419,25 @@ export default function TwelveThingsPage() {
 
           <div style={{ marginBottom: 28 }}>
             <Card
-              style={{ borderRadius: 22, border: "1px solid rgba(47,62,58,0.08)" }}
+              style={{
+                borderRadius: 22,
+                border: "1px solid rgba(47,62,58,0.08)",
+              }}
               bodyStyle={{ padding: 22 }}
             >
               <Space align="start" size={12}>
-                <CompassOutlined style={{ fontSize: 20, color: "#8B5A3C", marginTop: 4 }} />
+                <CompassOutlined
+                  style={{ fontSize: 20, color: "#8B5A3C", marginTop: 4 }}
+                />
                 <div>
-                  <Text style={{ display: "block", color: "#2F3E3A", fontWeight: 700, marginBottom: 6 }}>
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#2F3E3A",
+                      fontWeight: 700,
+                      marginBottom: 6,
+                    }}
+                  >
                     A compact orientation
                   </Text>
                   <Paragraph style={{ margin: 0, color: "#5C5953" }}>
@@ -280,6 +454,8 @@ export default function TwelveThingsPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
             {experiences.map((item, index) => {
               const reverse = index % 2 === 1;
+              const variant = getPlaceholderVariant(index);
+              const compact = index >= 6;
 
               return (
                 <Card
@@ -287,7 +463,8 @@ export default function TwelveThingsPage() {
                   style={{
                     borderRadius: 26,
                     border: "1px solid rgba(47,62,58,0.08)",
-                    background: "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
+                    background:
+                      "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
                   }}
                   bodyStyle={{ padding: 24 }}
                 >
@@ -297,7 +474,12 @@ export default function TwelveThingsPage() {
                     style={{ flexDirection: reverse ? "row-reverse" : "row" }}
                   >
                     <Col xs={24} lg={10}>
-                      <PlaceholderImage label={item.imageLabel} tall={index < 2} />
+                      <PlaceholderImage
+                        label={item.imageLabel}
+                        tall={index < 2}
+                        compact={compact}
+                        variant={variant}
+                      />
                     </Col>
                     <Col xs={24} lg={14}>
                       <Text
@@ -313,13 +495,20 @@ export default function TwelveThingsPage() {
                       >
                         {item.number}
                       </Text>
-                      <Title level={2} style={{ marginTop: 0, marginBottom: 14 }}>
+                      <Title
+                        level={2}
+                        style={{ marginTop: 0, marginBottom: 14 }}
+                      >
                         {item.title}
                       </Title>
                       {item.body.map((paragraph) => (
                         <Paragraph
                           key={paragraph}
-                          style={{ fontSize: 16, lineHeight: 1.8, color: "#55514B" }}
+                          style={{
+                            fontSize: 16,
+                            lineHeight: 1.8,
+                            color: "#55514B",
+                          }}
                         >
                           {paragraph}
                         </Paragraph>
@@ -358,15 +547,34 @@ export default function TwelveThingsPage() {
                   <Title level={2} style={{ color: "#FFF8F0", marginTop: 0 }}>
                     Written by Urvashi
                   </Title>
-                  <Paragraph style={{ color: "rgba(255,248,240,0.86)", fontSize: 16, lineHeight: 1.8 }}>
+                  <Paragraph
+                    style={{
+                      color: "rgba(255,248,240,0.86)",
+                      fontSize: 16,
+                      lineHeight: 1.8,
+                    }}
+                  >
                     Sri Lankan local, proud South Coast migrant, and part of the
                     Ahangama Team.
                   </Paragraph>
-                  <Paragraph style={{ color: "rgba(255,248,240,0.86)", fontSize: 16, lineHeight: 1.8 }}>
-                    We only recommend places we'd genuinely tell a friend
-                    about. That's it.
+                  <Paragraph
+                    style={{
+                      color: "rgba(255,248,240,0.86)",
+                      fontSize: 16,
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    We only recommend places we'd genuinely tell a friend about.
+                    That's it.
                   </Paragraph>
-                  <Paragraph style={{ color: "rgba(255,248,240,0.86)", fontSize: 16, lineHeight: 1.8, marginBottom: 0 }}>
+                  <Paragraph
+                    style={{
+                      color: "rgba(255,248,240,0.86)",
+                      fontSize: 16,
+                      lineHeight: 1.8,
+                      marginBottom: 0,
+                    }}
+                  >
                     To unlock every perk, discount and freebie in this guide,
                     grab The Ahangama Pass; from $30, it pays for itself fast.
                     It also gets you onto the Ahangama Collectibles Trail:
@@ -378,13 +586,29 @@ export default function TwelveThingsPage() {
 
                 <Col xs={24} lg={8}>
                   <Card
-                    style={{ borderRadius: 22, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}
+                    style={{
+                      borderRadius: 22,
+                      background: "rgba(255,255,255,0.08)",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                    }}
                     bodyStyle={{ padding: 20 }}
                   >
-                    <Text style={{ display: "block", color: "#FFF8F0", fontWeight: 700, marginBottom: 12 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#FFF8F0",
+                        fontWeight: 700,
+                        marginBottom: 12,
+                      }}
+                    >
                       The Ahangama Pass
                     </Text>
-                    <Paragraph style={{ color: "rgba(255,248,240,0.78)", marginBottom: 18 }}>
+                    <Paragraph
+                      style={{
+                        color: "rgba(255,248,240,0.78)",
+                        marginBottom: 18,
+                      }}
+                    >
                       Unlock discounts, freebies, and collectibles across the
                       experiences in this guide.
                     </Paragraph>
@@ -396,7 +620,12 @@ export default function TwelveThingsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       icon={<ArrowRightOutlined />}
-                      style={{ borderRadius: 999, background: "#FFF8F0", color: "#2F3E3A", borderColor: "#FFF8F0" }}
+                      style={{
+                        borderRadius: 999,
+                        background: "#FFF8F0",
+                        color: "#2F3E3A",
+                        borderColor: "#FFF8F0",
+                      }}
                     >
                       Get The Pass
                     </Button>

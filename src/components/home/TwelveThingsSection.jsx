@@ -101,42 +101,48 @@ const EXPERIENCE_CONTENT = {
     title: "Co-working & Concept Store Experience",
     summary:
       "Work, browse, connect, and slow down in a beautifully designed lifestyle space that blends productivity with Ahangama's coastal creative culture.",
-    passOffer: "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
+    passOffer:
+      "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
     perk: "Includes 2 postcards and a complimentary tea tin.",
   },
   "yiva-essentials": {
     title: "Shopping Experience",
     summary:
       "Explore a curated concept store of coastal-inspired lifestyle pieces, design objects, and essentials shaped by Ahangama's creative spirit.",
-    passOffer: "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
+    passOffer:
+      "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
     perk: "Includes 2 postcards, a tea tin, and an extra gift on purchases above LKR 15,000.",
   },
   "hakuna-matata-ahangama": {
     title: "Beach Party & Sunset Experience",
     summary:
       "Golden sunsets, music, cocktails, and oceanfront energy come together in one of Ahangama's most social coastal evening settings.",
-    passOffer: "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
+    passOffer:
+      "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
     perk: "Includes 2 cultural postcards and a tropical tea tin.",
   },
   "qamar-by-zan": {
     title: "Design Your Own Jewellery Experience",
     summary:
       "Create a personalized jewelry piece in a guided studio session that turns coastal inspiration into something you can wear home.",
-    passOffer: "Unlock up to 70% savings on the personalized jewelry experience.",
+    passOffer:
+      "Unlock up to 70% savings on the personalized jewelry experience.",
     perk: "A keepsake-led creative session with strong pass value.",
   },
   "global-surf-lodge": {
     title: "Surf Camp Experience",
     summary:
       "A relaxed Kabalana surf camp with daily group sessions, coaching, board access, and a welcoming route into Sri Lanka's surf lifestyle.",
-    passOffer: "Enjoy 10% savings on daily surf packages with the Ahangama Pass.",
+    passOffer:
+      "Enjoy 10% savings on daily surf packages with the Ahangama Pass.",
     perk: "Includes 2 postcards with your experience.",
   },
   gusta: {
     title: "Speciality Grocery Experience",
     summary:
       "Browse premium pantry goods, artisanal finds, and locally inspired essentials in a beautifully designed retail space in central Ahangama.",
-    passOffer: "Enjoy 5-10% savings on selected specialty grocery items with the Ahangama Pass.",
+    passOffer:
+      "Enjoy 5-10% savings on selected specialty grocery items with the Ahangama Pass.",
     perk: "Includes 2 postcards with your purchase.",
   },
 };
@@ -150,7 +156,9 @@ function normalizeTag(value) {
 }
 
 function hasTwelveThingsTag(place) {
-  return (place.bestFor || []).some((entry) => normalizeTag(entry) === TAG_SLUG);
+  return (place.bestFor || []).some(
+    (entry) => normalizeTag(entry) === TAG_SLUG,
+  );
 }
 
 function getSortScore(place) {
@@ -163,7 +171,9 @@ function getSortScore(place) {
 }
 
 function getDetailHref(place) {
-  const normalizedCategory = String(place.category || "").trim().toLowerCase();
+  const normalizedCategory = String(place.category || "")
+    .trim()
+    .toLowerCase();
   const basePath = CATEGORY_BASE_PATHS[normalizedCategory];
 
   if (basePath && place.slug) {
@@ -174,7 +184,9 @@ function getDetailHref(place) {
 }
 
 function getVisibleTags(place) {
-  return (place.bestFor || []).filter((entry) => normalizeTag(entry) !== TAG_SLUG);
+  return (place.bestFor || []).filter(
+    (entry) => normalizeTag(entry) !== TAG_SLUG,
+  );
 }
 
 function getCuratedIndex(place) {
@@ -255,7 +267,7 @@ export default function TwelveThingsSection() {
         if (scoreDiff !== 0) return scoreDiff;
         return String(left.name || "").localeCompare(String(right.name || ""));
       })
-      .slice(0, MAX_ITEMS)
+      .slice(0, MAX_ITEMS);
   }, [allPlaces]);
 
   if (!places.length) return null;
@@ -269,7 +281,9 @@ export default function TwelveThingsSection() {
       selectedPlace.excerpt ||
       "Part of the curated 12-things-to-do shortlist in Ahangama."
     : "";
-  const selectedDetailHref = selectedPlace ? getDetailHref(selectedPlace) : null;
+  const selectedDetailHref = selectedPlace
+    ? getDetailHref(selectedPlace)
+    : null;
   const selectedTags = selectedPlace ? getVisibleTags(selectedPlace) : [];
   const selectedImage = selectedPlace?.image || selectedPlace?.logo;
 
@@ -454,7 +468,14 @@ export default function TwelveThingsSection() {
                 gap: 12,
               }}
             >
-              <Text style={{ color: "#8A7E6D", fontSize: 12, letterSpacing: 1, textTransform: "uppercase" }}>
+              <Text
+                style={{
+                  color: "#8A7E6D",
+                  fontSize: 12,
+                  letterSpacing: 1,
+                  textTransform: "uppercase",
+                }}
+              >
                 Step {stepNumber}
               </Text>
               <Text style={{ color: "#7A746B", fontSize: 12 }}>
@@ -462,7 +483,8 @@ export default function TwelveThingsSection() {
               </Text>
             </div>
 
-            {(typeof place.stars === "number" || typeof place.reviews === "number") && (
+            {(typeof place.stars === "number" ||
+              typeof place.reviews === "number") && (
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 {typeof place.stars === "number" ? (
                   <>
@@ -520,7 +542,9 @@ export default function TwelveThingsSection() {
                   {curatedContent.passOffer}
                 </Text>
                 {curatedContent.perk ? (
-                  <Text style={{ color: "#7A746B", display: "block", marginTop: 4 }}>
+                  <Text
+                    style={{ color: "#7A746B", display: "block", marginTop: 4 }}
+                  >
                     {curatedContent.perk}
                   </Text>
                 ) : null}
@@ -602,7 +626,7 @@ export default function TwelveThingsSection() {
                 <Button
                   type="primary"
                   size="large"
-                  href="/product/12-must-do-things"
+                  href="/12-things"
                   icon={<ArrowRightOutlined />}
                   style={{
                     borderRadius: 999,
@@ -634,7 +658,11 @@ export default function TwelveThingsSection() {
             if (!rowItems.length) return null;
 
             return (
-              <Row gutter={[18, 18]} key={`editorial-row-${rowIndex}`} align="stretch">
+              <Row
+                gutter={[18, 18]}
+                key={`editorial-row-${rowIndex}`}
+                align="stretch"
+              >
                 {rowItems}
               </Row>
             );
@@ -683,12 +711,30 @@ export default function TwelveThingsSection() {
                   }}
                 >
                   <Space wrap size={[6, 6]}>
-                    <Tag style={{ borderRadius: 999 }}>{selectedPlace.category || "Ahangama"}</Tag>
-                    {selectedPlace.area ? <Tag style={{ borderRadius: 999 }}>{selectedPlace.area}</Tag> : null}
-                    {selectedPlace.price ? <Tag style={{ borderRadius: 999 }}>{selectedPlace.price}</Tag> : null}
+                    <Tag style={{ borderRadius: 999 }}>
+                      {selectedPlace.category || "Ahangama"}
+                    </Tag>
+                    {selectedPlace.area ? (
+                      <Tag style={{ borderRadius: 999 }}>
+                        {selectedPlace.area}
+                      </Tag>
+                    ) : null}
+                    {selectedPlace.price ? (
+                      <Tag style={{ borderRadius: 999 }}>
+                        {selectedPlace.price}
+                      </Tag>
+                    ) : null}
                   </Space>
 
-                  <Title level={2} style={{ margin: 0, color: "#2F3E3A", fontSize: 28, lineHeight: 1.1 }}>
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#2F3E3A",
+                      fontSize: 28,
+                      lineHeight: 1.1,
+                    }}
+                  >
                     {selectedPlace.name}
                   </Title>
                   {selectedContent?.title ? (
@@ -697,11 +743,16 @@ export default function TwelveThingsSection() {
                     </Text>
                   ) : null}
 
-                  {(typeof selectedPlace.stars === "number" || typeof selectedPlace.reviews === "number") && (
-                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  {(typeof selectedPlace.stars === "number" ||
+                    typeof selectedPlace.reviews === "number") && (
+                    <div
+                      style={{ display: "flex", alignItems: "center", gap: 6 }}
+                    >
                       {typeof selectedPlace.stars === "number" ? (
                         <>
-                          <span style={{ color: "#FFD700", fontSize: 16 }}>★</span>
+                          <span style={{ color: "#FFD700", fontSize: 16 }}>
+                            ★
+                          </span>
                           <Text style={{ color: "#2F3E3A", fontWeight: 600 }}>
                             {selectedPlace.stars.toFixed(1)}
                           </Text>
@@ -715,7 +766,9 @@ export default function TwelveThingsSection() {
                     </div>
                   )}
 
-                  <Paragraph style={{ color: "#4F4A42", fontSize: 14, margin: 0 }}>
+                  <Paragraph
+                    style={{ color: "#4F4A42", fontSize: 14, margin: 0 }}
+                  >
                     {selectedSummary}
                   </Paragraph>
                 </div>
@@ -748,7 +801,9 @@ export default function TwelveThingsSection() {
                   {selectedContent.passOffer}
                 </Text>
                 {selectedContent.perk ? (
-                  <Text style={{ color: "#7A746B", display: "block", marginTop: 4 }}>
+                  <Text
+                    style={{ color: "#7A746B", display: "block", marginTop: 4 }}
+                  >
                     {selectedContent.perk}
                   </Text>
                 ) : null}
@@ -757,43 +812,102 @@ export default function TwelveThingsSection() {
 
             <Row gutter={[12, 12]}>
               <Col xs={24} lg={12}>
-                <Card style={{ borderRadius: 14, height: "100%" }} bodyStyle={{ padding: 14 }}>
-                  <Text strong style={{ display: "block", marginBottom: 8, color: "#2F3E3A" }}>
+                <Card
+                  style={{ borderRadius: 14, height: "100%" }}
+                  bodyStyle={{ padding: 14 }}
+                >
+                  <Text
+                    strong
+                    style={{
+                      display: "block",
+                      marginBottom: 8,
+                      color: "#2F3E3A",
+                    }}
+                  >
                     Venue details
                   </Text>
                   {selectedPlace.hours ? (
-                    <Text style={{ display: "block", color: "#5B564E", marginBottom: 5, fontSize: 13 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#5B564E",
+                        marginBottom: 5,
+                        fontSize: 13,
+                      }}
+                    >
                       <strong>Hours:</strong> {selectedPlace.hours}
                     </Text>
                   ) : null}
                   {selectedPlace.cardPerk ? (
-                    <Text style={{ display: "block", color: "#5B564E", marginBottom: 5, fontSize: 13 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#5B564E",
+                        marginBottom: 5,
+                        fontSize: 13,
+                      }}
+                    >
                       <strong>Card perk:</strong> {selectedPlace.cardPerk}
                     </Text>
                   ) : null}
                   {selectedPlace.offer ? (
-                    <Text style={{ display: "block", color: "#5B564E", marginBottom: 5, fontSize: 13 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#5B564E",
+                        marginBottom: 5,
+                        fontSize: 13,
+                      }}
+                    >
                       <strong>Offer:</strong> {selectedPlace.offer}
                     </Text>
                   ) : null}
                   {selectedPlace.howToClaim ? (
-                    <Text style={{ display: "block", color: "#5B564E", marginBottom: 5, fontSize: 13 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#5B564E",
+                        marginBottom: 5,
+                        fontSize: 13,
+                      }}
+                    >
                       <strong>How to claim:</strong> {selectedPlace.howToClaim}
                     </Text>
                   ) : null}
                   {selectedPlace.restrictions ? (
-                    <Text style={{ display: "block", color: "#5B564E", fontSize: 13 }}>
-                      <strong>Restrictions:</strong> {selectedPlace.restrictions}
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#5B564E",
+                        fontSize: 13,
+                      }}
+                    >
+                      <strong>Restrictions:</strong>{" "}
+                      {selectedPlace.restrictions}
                     </Text>
                   ) : null}
                 </Card>
               </Col>
               <Col xs={24} lg={12}>
-                <Card style={{ borderRadius: 14, height: "100%" }} bodyStyle={{ padding: 14 }}>
-                  <Text strong style={{ display: "block", marginBottom: 8, color: "#2F3E3A" }}>
+                <Card
+                  style={{ borderRadius: 14, height: "100%" }}
+                  bodyStyle={{ padding: 14 }}
+                >
+                  <Text
+                    strong
+                    style={{
+                      display: "block",
+                      marginBottom: 8,
+                      color: "#2F3E3A",
+                    }}
+                  >
                     Contact and links
                   </Text>
-                  <Space direction="vertical" size={8} style={{ width: "100%" }}>
+                  <Space
+                    direction="vertical"
+                    size={8}
+                    style={{ width: "100%" }}
+                  >
                     {selectedPlace.mapUrl ? (
                       <Button
                         icon={<EnvironmentOutlined />}
@@ -806,7 +920,10 @@ export default function TwelveThingsSection() {
                       </Button>
                     ) : null}
                     {selectedDetailHref ? (
-                      <Button href={selectedDetailHref} style={{ borderRadius: 999, width: "100%", height: 34 }}>
+                      <Button
+                        href={selectedDetailHref}
+                        style={{ borderRadius: 999, width: "100%", height: 34 }}
+                      >
                         Open venue page
                       </Button>
                     ) : null}
