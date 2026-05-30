@@ -15,7 +15,6 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import { CATEGORIES } from "../data/categories";
 import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
 import PassUnlocksSection from "../components/home/PassUnlocksSection";
@@ -23,6 +22,7 @@ import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
+import TwelveThingsSection from "../components/home/TwelveThingsSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
 import ComingSoonSection from "../components/home/ComingSoonSection";
@@ -33,35 +33,6 @@ export default function Home() {
   const { places, loading } = usePlaces();
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
-  const categories = CATEGORIES.filter((c) =>
-    ["eat", "stays", "wellness", "culture"].includes(c.key),
-  );
-
-  const handleFreeGuideClick = () => {
-    if (window.gtag) {
-      window.gtag("event", "click_free_guide_whatsapp", {
-        guide: "ahangama_free_guide",
-        source: "website",
-        page: window.location.pathname,
-      });
-    }
-
-    window.open(
-      "https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide",
-      "_blank",
-    );
-  };
-
-  // Quick “featured” picks from your arrays (first items per category)
-  const eat = places.find(
-    (p) => p.destinationSlug === "ahangama" && p.category === "eat",
-  );
-  const stays = places.find(
-    (p) => p.destinationSlug === "ahangama" && p.category === "stays",
-  );
-  const wellness = places.find(
-    (p) => p.destinationSlug === "ahangama" && p.category === "wellness",
-  );
 
   const heroImage =
     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-2.jpg";
@@ -285,6 +256,10 @@ export default function Home() {
 
           <div style={{ marginTop: 24 }}>
             <HomeGoogleMapSection />
+          </div>
+
+          <div style={{ marginTop: 24 }}>
+            <TwelveThingsSection />
           </div>
 
           {/* FREE GUIDE CTA */}
