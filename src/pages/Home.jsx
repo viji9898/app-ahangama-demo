@@ -449,6 +449,117 @@ export default function Home() {
             </Card>
           </div>
 
+          <div style={{ marginTop: sectionSpacing }}>
+            <Card
+              style={{
+                borderRadius: 26,
+                border: "1px solid rgba(32,30,27,0.08)",
+                background:
+                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
+                overflow: "hidden",
+                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
+              }}
+              bodyStyle={{ padding: 28 }}
+            >
+              <Row gutter={[20, 20]} align="middle">
+                <Col xs={24} xl={16}>
+                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Personal Story
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Perfect Day
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Wellness + Surf
+                    </Tag>
+                  </Space>
+
+                  <Title
+                    level={2}
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 12,
+                      color: "#1F1D1A",
+                      lineHeight: 1.08,
+                      letterSpacing: -0.02,
+                    }}
+                  >
+                    Perfect Day in Ahangama - Denitsa
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginBottom: 18,
+                      color: "#5F574E",
+                      fontSize: 16,
+                      lineHeight: 1.75,
+                      maxWidth: 760,
+                    }}
+                  >
+                    Start the day with an amazing reformer workout at Pura
+                    Pilates and, if you feel a little extra, add a mat class
+                    too. Then head downstairs to Oyame for a super-yummy
+                    breakfast and coffee before jumping on the bike you just
+                    rented and heading off for a surf lesson. It might take a
+                    few tries, but it is genuinely fun. In between, you can add
+                    a massage or a workshop. Later, grab some snacks, meet your
+                    friends at Rollington, maybe get a bit of work done, and
+                    then book your accommodation for the night with Hangama. The
+                    best sunset is at the Lighthouse.
+                  </Paragraph>
+
+                  <Button
+                    type="primary"
+                    href="https://www.instagram.com/denitsaloves/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    icon={<ArrowRightOutlined />}
+                    style={{
+                      borderRadius: 999,
+                      height: 44,
+                      paddingInline: 18,
+                      boxShadow: "none",
+                    }}
+                  >
+                    View Denitsa&apos;s Instagram
+                  </Button>
+                </Col>
+
+                <Col xs={24} xl={8}>
+                  <div
+                    style={{
+                      maxWidth: 320,
+                      margin: "0 auto",
+                      aspectRatio: "4 / 5",
+                      borderRadius: 22,
+                      overflow: "hidden",
+                      border: "1px solid rgba(32,30,27,0.08)",
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
+                      boxShadow: "0 12px 28px rgba(32,30,27,0.08)",
+                    }}
+                  >
+                    <video
+                      src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      controls
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </div>
+
           <div style={{ marginTop: 20 }}>
             <Card
               style={{
