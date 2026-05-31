@@ -25,7 +25,6 @@ import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import GettingAroundSection from "../components/home/GettingAroundSection";
-import TwelveThingsSection from "../components/home/TwelveThingsSection";
 import WellnessGuideSection from "../components/home/WellnessGuideSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
@@ -545,10 +544,6 @@ export default function Home() {
                 </Col>
               </Row>
             </Card>
-          </div>
-
-          <div style={{ marginTop: sectionSpacing }}>
-            <TwelveThingsSection />
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
