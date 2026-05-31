@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { Button, Card, Grid, Typography } from "antd";
 import {
   ArrowRightOutlined,
@@ -17,6 +17,8 @@ import {
 
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
+const MOBILE_LOAD_MORE_STEP = 4;
+const DESKTOP_LOAD_MORE_STEP = 8;
 
 function OfferPills({ place }) {
   const offerTags = Array.isArray(place.offers)
@@ -165,12 +167,49 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   const railRef = useRef(null);
   const screens = useBreakpoint();
   const isMobile = !screens.md;
+  const loadMoreStep = isMobile ? MOBILE_LOAD_MORE_STEP : DESKTOP_LOAD_MORE_STEP;
 
-  const visiblePlaces = useMemo(
-    () =>
-      getPassPlaces(allPlaces, destinationSlug).slice(0, MAX_HOME_PASS_VENUES),
+  const passPlaces = useMemo(
+    () => getPassPlaces(allPlaces, destinationSlug),
     [allPlaces, destinationSlug],
   );
+
+  const visiblePlacesKey = `${destinationSlug}:${passPlaces.length}`;
+  const [loadState, setLoadState] = useState({
+    key: visiblePlacesKey,
+    count: MAX_HOME_PASS_VENUES,
+  });
+  const visibleCount =
+    loadState.key === visiblePlacesKey ? loadState.count : MAX_HOME_PASS_VENUES;
+  const hasMorePlaces = visibleCount < passPlaces.length;
+
+  const visiblePlaces = useMemo(
+    () => passPlaces.slice(0, visibleCount),
+    [passPlaces, visibleCount],
+  );
+
+  function loadMorePlaces() {
+    setLoadState((current) => {
+      const nextCount =
+        current.key === visiblePlacesKey ? current.count : MAX_HOME_PASS_VENUES;
+
+      return {
+        key: visiblePlacesKey,
+        count: Math.min(nextCount + loadMoreStep, passPlaces.length),
+      };
+    });
+  }
+
+  function handleRailScroll(event) {
+    const rail = event.currentTarget;
+    if (!rail) return;
+    if (visibleCount >= passPlaces.length) return;
+
+    const remainingScroll = rail.scrollWidth - rail.clientWidth - rail.scrollLeft;
+    if (remainingScroll <= 240) {
+      loadMorePlaces();
+    }
+  }
 
   function scrollRail(direction) {
     if (!railRef.current) return;
@@ -240,6 +279,21 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
               }}
             >
               Enjoy perks with these partners.
+            </Text>
+            <Text
+              style={{
+                display: "block",
+                marginTop: 8,
+                color: hasMorePlaces ? "#8B7B63" : "#A49787",
+                fontSize: 12,
+                letterSpacing: 0.2,
+              }}
+            >
+              {hasMorePlaces
+                ? isMobile
+                  ? "Swipe across to reveal more partners."
+                  : "Scroll or use the arrows to reveal more partners."
+                : "All available partner venues are loaded."}
             </Text>
           </div>
 
@@ -312,8 +366,38 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
       </div>
 
       <div style={{ padding: isMobile ? "0 20px 20px" : "0 26px 26px" }}>
+        {hasMorePlaces ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: isMobile ? "flex-start" : "flex-end",
+              marginBottom: 10,
+            }}
+          >
+            <div
+              style={{
+                borderRadius: 999,
+                padding: "6px 12px",
+                background: "rgba(243,236,217,0.8)",
+                border: "1px solid rgba(176,142,98,0.18)",
+              }}
+            >
+              <Text
+                style={{
+                  color: "#7A6850",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  letterSpacing: 0.3,
+                }}
+              >
+                {isMobile ? "More venues load as you swipe" : "More venues load as you scroll"}
+              </Text>
+            </div>
+          </div>
+        ) : null}
         <div
           ref={railRef}
+          onScroll={handleRailScroll}
           style={{
             display: "flex",
             gap: isMobile ? 14 : 18,
