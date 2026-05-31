@@ -1,15 +1,13 @@
 import React from "react";
-import { Typography, Button, Spin } from "antd";
-import { QrcodeOutlined } from "@ant-design/icons";
+import { Typography, Spin } from "antd";
 import { usePlaces } from "../../app/placesContext";
 import { trackPassCtaClick } from "../../analytics";
-import { buildPassCtaUrl } from "../../lib/passAttribution";
+import ahangamaPassLogo from "../../assets/ahangama-pass-logo.png";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function HeroSectionMobile({ heroImage }) {
   const { places, loading } = usePlaces();
-  const passCtaUrl = buildPassCtaUrl();
 
   return (
     <div className="ahg-hero" style={{ marginBottom: 0 }}>
@@ -88,45 +86,32 @@ export default function HeroSectionMobile({ heroImage }) {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            gap: "16px",
+            justifyContent: "center",
             marginBottom: "24px",
           }}
         >
-          {/* <Button
-            type="primary"
-            size="large"
-            href="/eat"
-            icon={<ArrowRightOutlined />}
-            block
-            style={{
-              borderRadius: "10px",
-              height: "48px",
-              fontWeight: "600",
-              fontSize: "16px",
-            }}
-          >
-            Start exploring
-          </Button> */}
-          <Button
-            size="large"
-            href={passCtaUrl}
-            icon={<QrcodeOutlined />}
-            block
+          <a
+            href="https://pass.ahangama.com"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => {
               trackPassCtaClick({
-                ctaLocation: "hero",
-                destinationUrl: passCtaUrl,
+                ctaLocation: "hero_logo_mobile",
+                destinationUrl: "https://pass.ahangama.com",
               });
             }}
-            style={{
-              borderRadius: "999px",
-              height: "44px",
-              fontWeight: "600",
-            }}
+            style={{ display: "inline-flex", alignItems: "center" }}
           >
-            Get the Card
-          </Button>
+            <img
+              src={ahangamaPassLogo}
+              alt="Ahangama Pass"
+              style={{
+                display: "block",
+                height: "48px",
+                width: "auto",
+              }}
+            />
+          </a>
         </div>
 
         <div

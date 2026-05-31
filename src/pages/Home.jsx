@@ -29,6 +29,7 @@ import WellnessGuideSection from "../components/home/WellnessGuideSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
 import { shouldShowPlace } from "../data/placeStatus";
+import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -245,25 +246,31 @@ export default function Home() {
                           experience the best of Ahangama.
                         </Paragraph>
 
-                        <Space wrap size={14}>
-                          <Button
-                            type="primary"
-                            size="large"
-                            href="/12-things"
-                            icon={<ArrowRightOutlined />}
+                        <a
+                          href="https://pass.ahangama.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            trackPassCtaClick({
+                              ctaLocation: "hero_logo",
+                              destinationUrl: "https://pass.ahangama.com",
+                            });
+                          }}
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          <img
+                            src={ahangamaPassLogo}
+                            alt="Ahangama Pass"
                             style={{
+                              display: "block",
                               height: 54,
-                              paddingInline: 28,
-                              borderRadius: 16,
-                              background: "#201E1B",
-                              borderColor: "#201E1B",
-                              boxShadow: "none",
-                              fontWeight: 600,
+                              width: "auto",
                             }}
-                          >
-                            Explore the Guide
-                          </Button>
-                        </Space>
+                          />
+                        </a>
                       </div>
 
                       <div
