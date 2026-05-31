@@ -32,6 +32,7 @@ import { shouldShowPlace } from "../data/placeStatus";
 import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
+import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -443,6 +444,107 @@ export default function Home() {
                       backgroundPosition: "center",
                     }}
                   />
+                </Col>
+              </Row>
+            </Card>
+          </div>
+
+          <div style={{ marginTop: 20 }}>
+            <Card
+              style={{
+                borderRadius: 24,
+                border: "1px solid rgba(32,30,27,0.08)",
+                background:
+                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
+                overflow: "hidden",
+                boxShadow: "0 12px 28px rgba(32,30,27,0.05)",
+              }}
+              bodyStyle={{ padding: 24 }}
+            >
+              <Row gutter={[18, 18]} align="middle">
+                <Col xs={24} xl={15}>
+                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Pass Guide
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Wallet Ready
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Savings + Perks
+                    </Tag>
+                  </Space>
+
+                  <Title
+                    level={3}
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 12,
+                      color: "#1F1D1A",
+                      lineHeight: 1.08,
+                      letterSpacing: -0.02,
+                    }}
+                  >
+                    What is the Ahangama Pass?
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginBottom: 18,
+                      color: "#5F574E",
+                      fontSize: 15,
+                      lineHeight: 1.75,
+                      maxWidth: 700,
+                    }}
+                  >
+                    A simple local access pass you keep in Apple Wallet or
+                    Google Wallet for partner perks, curated recommendations,
+                    and extras that can add up fast, including tea tins,
+                    postcards, and member savings across Ahangama.
+                  </Paragraph>
+
+                  <Button
+                    type="primary"
+                    href="/what-is-ahangama-pass"
+                    icon={<ArrowRightOutlined />}
+                    style={{
+                      borderRadius: 999,
+                      height: 42,
+                      paddingInline: 18,
+                      boxShadow: "none",
+                    }}
+                  >
+                    Read the guide
+                  </Button>
+                </Col>
+
+                <Col xs={24} xl={9}>
+                  <div
+                    style={{
+                      minHeight: 220,
+                      borderRadius: 20,
+                      border: "1px solid rgba(32,30,27,0.08)",
+                      background:
+                        "radial-gradient(circle at top, rgba(255,255,255,0.78) 0%, rgba(239,231,218,0.96) 42%, rgba(227,216,201,0.98) 100%)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: 18,
+                    }}
+                  >
+                    <img
+                      src={heroPassAppleWallet}
+                      alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
+                      style={{
+                        display: "block",
+                        maxWidth: "100%",
+                        maxHeight: 210,
+                        width: "auto",
+                        height: "auto",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </div>
                 </Col>
               </Row>
             </Card>
