@@ -97,7 +97,7 @@ function PassVenueCard({ place, isMobile }) {
                 marginBottom: 12,
                 borderRadius: 14,
                 background: "rgba(255,255,255,0.92)",
-                  border: "1px solid rgba(32,30,27,0.08)",
+                border: "1px solid rgba(32,30,27,0.08)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -184,7 +184,8 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
       style={{
         borderRadius: 28,
         border: "1px solid rgba(32,30,27,0.08)",
-        background: "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(246,240,231,0.98) 100%)",
+        background:
+          "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(246,240,231,0.98) 100%)",
         boxShadow: "0 18px 40px rgba(32,30,27,0.05)",
         overflow: "hidden",
       }}
@@ -229,7 +230,7 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 lineHeight: isMobile ? 1.08 : undefined,
               }}
             >
-                Ahangama Pass Holders
+              Ahangama Pass Holders
             </Title>
             <Text
               style={{

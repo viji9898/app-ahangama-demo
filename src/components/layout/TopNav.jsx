@@ -18,19 +18,7 @@ export default function TopNav() {
   const isMobile = !screens.md;
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  const navItems = useMemo(
-    () => [
-      { label: "Eat & Drink", to: "/eat" },
-      { label: "Stays", to: "/stays" },
-      { label: "Experiences", to: "/12-things" },
-      { label: "Surf", to: "/12-things" },
-      { label: "Wellness", to: "/wellness" },
-      { label: "Guides", to: "/blogs" },
-      { label: "Local Life", to: "/master-index" },
-      { label: "Offers", to: "/offers" },
-    ],
-    [],
-  );
+  const navItems = useMemo(() => [{ label: "Offers", to: "/offers" }], []);
 
   const isActive = (to) => {
     if (to === "/") return loc.pathname === "/";
@@ -112,7 +100,7 @@ export default function TopNav() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
+                  justifyContent: "flex-end",
                   gap: 20,
                   flex: 1,
                   minWidth: 0,

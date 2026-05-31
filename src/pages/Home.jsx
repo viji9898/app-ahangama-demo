@@ -30,6 +30,8 @@ import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
 import { shouldShowPlace } from "../data/placeStatus";
 import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
+import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
+import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -411,8 +413,8 @@ export default function Home() {
                     and still slightly useful: enough time to work a little,
                     train a little, recover properly, and still keep the town
                     feeling light. So I based the whole trip at Samba and built
-                    the days around the live pass partners that actually
-                    improve that kind of stay.
+                    the days around the live pass partners that actually improve
+                    that kind of stay.
                   </Paragraph>
 
                   <Button
@@ -777,11 +779,38 @@ export default function Home() {
                   <Title level={3} style={{ marginTop: 0, marginBottom: 8 }}>
                     The Ahangama Card
                   </Title>
-                  <Paragraph style={{ marginBottom: 0, color: "#5F574E" }}>
+                  <Paragraph style={{ marginBottom: 14, color: "#5F574E" }}>
                     Built for people staying more than a few days. Simple vendor
                     verification, real perks, and a curated venue list that
                     grows over time.
                   </Paragraph>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 10,
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={addToAppleWalletLogo}
+                      alt="Add to Apple Wallet"
+                      style={{
+                        display: "block",
+                        height: 40,
+                        width: "auto",
+                      }}
+                    />
+                    <img
+                      src={addToGoogleWalletLogo}
+                      alt="Add to Google Wallet"
+                      style={{
+                        display: "block",
+                        height: 40,
+                        width: "auto",
+                      }}
+                    />
+                  </div>
                 </Col>
                 <Col xs={24} md={8}>
                   <Button

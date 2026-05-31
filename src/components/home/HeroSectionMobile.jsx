@@ -79,8 +79,8 @@ export default function HeroSectionMobile({ heroImage }) {
             color: "#49443D",
           }}
         >
-          Local recommendations, hidden gems and editorial picks to help you
-          eat well, stay well, surf more and experience the best of Ahangama.
+          Local recommendations, hidden gems and editorial picks to help you eat
+          well, stay well, surf more and experience the best of Ahangama.
         </Paragraph>
 
         <div
