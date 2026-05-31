@@ -5,6 +5,9 @@ import {
   CoffeeOutlined,
   HomeOutlined,
   CompassOutlined,
+  EnvironmentOutlined,
+  HeartOutlined,
+  LaptopOutlined,
   QrcodeOutlined,
   ArrowRightOutlined,
   ThunderboltOutlined,
@@ -29,12 +32,18 @@ import HeroSectionMobile from "../components/home/HeroSectionMobile";
 const { Title, Paragraph, Text } = Typography;
 
 export default function Home() {
-  const { places, loading } = usePlaces();
+  const { loading } = usePlaces();
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
 
   const heroImage =
-    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-2.jpg";
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg";
+  const guideHighlights = [
+    { key: "coffee", icon: <CoffeeOutlined />, label: "Great coffee" },
+    { key: "work", icon: <LaptopOutlined />, label: "Work friendly" },
+    { key: "healthy", icon: <HeartOutlined />, label: "Healthy options" },
+    { key: "views", icon: <CompassOutlined />, label: "Ocean views" },
+  ];
 
   return (
     <SiteLayout>
@@ -123,128 +132,186 @@ export default function Home() {
         <div className="dm-wrap">
           {/* Desktop version */}
           <div className="desktop-only" style={{ display: "block" }}>
-            <div className="ahg-hero">
-              <div className="ahg-heroInner">
-                <Row gutter={[16, 16]} align="middle">
-                  <Col xs={24} md={13}>
-                    <div className="ahg-pillRow">
-                      <Tag className="ahg-pill" icon={<ThunderboltOutlined />}>
-                        Curated
-                      </Tag>
-                      <Tag className="ahg-pill">FIT-friendly</Tag>
-                      <Tag className="ahg-pill">Long-stay</Tag>
-                      <Tag className="ahg-pill" icon={<QrcodeOutlined />}>
-                        Discount card
-                      </Tag>
-                    </div>
+            <div
+              className="ahg-hero"
+              style={{
+                borderRadius: 30,
+                background: "#f7f2ea",
+                boxShadow: "0 24px 60px rgba(47,62,58,0.08)",
+              }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  overflow: "hidden",
+                  minHeight: 620,
+                }}
+              >
+                <Row gutter={0} align="stretch">
+                  <Col xs={24} xl={10}>
+                    <div
+                      style={{
+                        position: "relative",
+                        zIndex: 2,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        minHeight: 620,
+                        padding: "88px 56px 44px",
+                        background:
+                          "linear-gradient(90deg, rgba(249,245,239,0.99) 0%, rgba(249,245,239,0.96) 70%, rgba(249,245,239,0.58) 100%)",
+                      }}
+                    >
+                      <div>
+                        <Text
+                          style={{
+                            display: "block",
+                            marginBottom: 20,
+                            color: "#B08E62",
+                            fontSize: 13,
+                            fontWeight: 700,
+                            letterSpacing: 2.2,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          The Ahangama Guide
+                        </Text>
 
-                    <Title className="ahg-h1">
-                      Privileges & Discounts
-                      <br />
-                      <small>Ahangama Guide </small>
-                    </Title>
+                        <Title
+                          style={{
+                            margin: 0,
+                            color: "#201E1B",
+                            fontSize: 86,
+                            lineHeight: 0.9,
+                            fontWeight: 500,
+                            letterSpacing: -2.6,
+                            fontFamily:
+                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                          }}
+                        >
+                          <span style={{ whiteSpace: "nowrap" }}>
+                            Your guide to
+                          </span>
+                          <br />
+                          <span style={{ whiteSpace: "nowrap" }}>
+                            Ahangama
+                          </span>
+                        </Title>
 
-                    <Paragraph className="ahg-sub">
-                      A <strong>$30 card</strong> that unlocks local discounts &
-                      privileges
-                    </Paragraph>
+                        <Paragraph
+                          style={{
+                            marginTop: 26,
+                            marginBottom: 34,
+                            maxWidth: 470,
+                            color: "#49443D",
+                            fontSize: 18,
+                            lineHeight: 1.65,
+                          }}
+                        >
+                          Local recommendations, hidden gems and editorial picks
+                          to help you eat well, stay well, surf more and
+                          experience the best of Ahangama.
+                        </Paragraph>
 
-                    <Space wrap size={10}>
-                      {/* <Button
-                        type="primary"
-                        size="large"
-                        href="/search"
-                        icon={<ArrowRightOutlined />}
-                      >
-                        Start exploring
-                      </Button> */}
-                      <Button
-                        size="large"
-                        href={passCtaUrl}
-                        icon={<QrcodeOutlined />}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => {
-                          trackPassCtaClick({
-                            ctaLocation: "home_hero_card",
-                            destinationUrl: passCtaUrl,
-                          });
-                        }}
-                      >
-                        Get the Card
-                      </Button>
-                      {/* <Button size="large" href="/search">
-                        Search everything
-                      </Button> */}
-                    </Space>
-
-                    <div className="ahg-metrics">
-                      {/* <div className="ahg-metric">
-                        <Text type="secondary">Categories</Text>
-                        <div className="ahg-metricVal">4</div>
-                      </div> */}
-                      <div className="ahg-metric">
-                        <Text type="secondary">Partners</Text>
-                        <div className="ahg-metricVal">
-                          {loading ? (
-                            <Spin size="small" />
-                          ) : (
-                            places.filter(
-                              (p) => p.destinationSlug === "ahangama",
-                            ).length
-                          )}
-                        </div>
-                      </div>
-                      <div className="ahg-metric">
-                        <Text type="secondary">Card</Text>
-                        <div className="ahg-metricVal">From $30</div>
-                      </div>
-                    </div>
-                  </Col>
-
-                  <Col xs={24} md={11}>
-                    <div className="ahg-heroMedia">
-                      <div className="ahg-heroImg" />
-                      <div className="ahg-heroOverlay">
-                        <div className="ahg-overlayTop">
-                          <Text strong style={{ color: "#fff" }}>
-                            {/* This week in Ahangama */}
-                          </Text>
-                          <Text
+                        <Space wrap size={14}>
+                          <Button
+                            type="primary"
+                            size="large"
+                            href="/12-things"
+                            icon={<ArrowRightOutlined />}
                             style={{
-                              color: "rgba(255,255,255,0.75)",
-                              fontSize: 12,
+                              height: 54,
+                              paddingInline: 28,
+                              borderRadius: 16,
+                              background: "#201E1B",
+                              borderColor: "#201E1B",
+                              boxShadow: "none",
+                              fontWeight: 600,
                             }}
                           >
-                            {/* (Placeholder spotlight) */}
-                          </Text>
-                        </div>
-                        {/* <div className="ahg-overlayBottom">
-                          <Space wrap size={[6, 6]}>
-                            <Tag
-                              className="ahg-overlayTag"
-                              icon={<CoffeeOutlined />}
+                            Explore the Guide
+                          </Button>
+                        </Space>
+                      </div>
+
+                      <div
+                        style={{
+                          display: "flex",
+                          flexWrap: "nowrap",
+                          justifyContent: "space-between",
+                          gap: 14,
+                          paddingTop: 18,
+                        }}
+                      >
+                        {guideHighlights.map((item) => (
+                          <div
+                            key={item.key}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 8,
+                              color: "#2F2B26",
+                              minWidth: "fit-content",
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 22,
+                                height: 22,
+                                fontSize: 16,
+                                color: "#2F2B26",
+                              }}
                             >
-                              Best coffee mornings
-                            </Tag>
-                            <Tag
-                              className="ahg-overlayTag"
-                              icon={<CompassOutlined />}
+                              {item.icon}
+                            </span>
+                            <Text
+                              style={{
+                                color: "#3A342E",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: 0.3,
+                                textTransform: "uppercase",
+                                whiteSpace: "nowrap",
+                              }}
                             >
-                              Sunset experience
-                            </Tag>
-                            <Tag
-                              className="ahg-overlayTag"
-                              icon={<HomeOutlined />}
-                            >
-                              Long-stay pick
-                            </Tag>
-                          </Space>
-                        </div> */}
+                              {item.label}
+                            </Text>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </Col>
+
+                  <Col xs={24} xl={14}>
+                    <div
+                      style={{
+                        minHeight: 620,
+                        backgroundImage: `linear-gradient(90deg, rgba(249,245,239,0.98) 0%, rgba(249,245,239,0.9) 10%, rgba(249,245,239,0.56) 22%, rgba(249,245,239,0.16) 34%, rgba(0,0,0,0.12) 100%), url(${heroImage})`,
+                        backgroundSize: "cover, cover",
+                        backgroundPosition: "center, center center",
+                        backgroundRepeat: "no-repeat, no-repeat",
+                        filter: "saturate(0.96) contrast(1.02)",
+                      }}
+                    />
+                  </Col>
                 </Row>
+
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    left: "35%",
+                    width: 300,
+                    background:
+                      "linear-gradient(90deg, rgba(249,245,239,0.98) 0%, rgba(249,245,239,0.64) 42%, rgba(249,245,239,0.12) 82%, rgba(249,245,239,0) 100%)",
+                    filter: "blur(28px)",
+                    pointerEvents: "none",
+                  }}
+                />
               </div>
             </div>
           </div>
