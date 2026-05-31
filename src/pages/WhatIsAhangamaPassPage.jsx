@@ -72,20 +72,68 @@ export default function WhatIsAhangamaPassPage() {
                   style={{
                     height: "100%",
                     minHeight: 420,
-                    background: "#efe7da",
+                    background:
+                      "radial-gradient(circle at top, rgba(255,255,255,0.78) 0%, rgba(239,231,218,0.96) 42%, rgba(227,216,201,0.98) 100%)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "clamp(24px, 4vw, 40px)",
                   }}
                 >
-                  <img
-                    src={heroPassAppleWallet}
-                    alt="Ahangama Pass shown alongside Apple Wallet and Google Wallet"
+                  <div
                     style={{
-                      display: "block",
-                      width: "100%",
-                      height: "100%",
-                      minHeight: 420,
-                      objectFit: "cover",
+                      position: "relative",
+                      width: "min(100%, 280px)",
+                      aspectRatio: "390 / 844",
+                      borderRadius: 42,
+                      padding: 10,
+                      background:
+                        "linear-gradient(180deg, #2b2a28 0%, #111 45%, #2f2d2a 100%)",
+                      boxShadow:
+                        "0 30px 60px rgba(32,30,27,0.18), inset 0 1px 0 rgba(255,255,255,0.14)",
                     }}
-                  />
+                  >
+                    <div
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute",
+                        top: 18,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width: "36%",
+                        height: 24,
+                        borderRadius: 999,
+                        background: "#0d0d0d",
+                        zIndex: 2,
+                      }}
+                    />
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: 34,
+                        overflow: "hidden",
+                        background:
+                          "linear-gradient(180deg, rgba(251,248,242,1) 0%, rgba(242,236,227,1) 100%)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "18px 12px 14px",
+                      }}
+                    >
+                      <img
+                        src={heroPassAppleWallet}
+                        alt="Ahangama Pass shown inside an iPhone frame with Apple Wallet and Google Wallet branding"
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                          objectPosition: "center center",
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </Col>
               <Col xs={24} lg={13}>
