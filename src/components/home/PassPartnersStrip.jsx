@@ -239,62 +239,101 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             gap: isMobile ? 16 : 18,
           }}
         >
-          <div>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
-                gap: 10,
-                marginBottom: 8,
+                alignItems: "flex-start",
+                justifyContent: "space-between",
+                gap: 12,
               }}
             >
-              <Text
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 8,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "#B08E62",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: 1.4,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Pass Partners
+                  </Text>
+                </div>
+                <Title
+                  level={2}
+                  style={{
+                    margin: 0,
+                    color: "#1F1D1A",
+                    fontSize: isMobile ? 32 : undefined,
+                    lineHeight: isMobile ? 1.08 : undefined,
+                  }}
+                >
+                  Ahangama Pass Holders
+                </Title>
+                <Text
+                  style={{
+                    color: "#6D655C",
+                    fontSize: isMobile ? 13 : 14,
+                    lineHeight: isMobile ? 1.6 : undefined,
+                  }}
+                >
+                  Enjoy perks with these partners.
+                </Text>
+                <Text
+                  style={{
+                    display: "block",
+                    marginTop: 8,
+                    color: hasMorePlaces ? "#8B7B63" : "#A49787",
+                    fontSize: 12,
+                    letterSpacing: 0.2,
+                  }}
+                >
+                  {hasMorePlaces
+                    ? isMobile
+                      ? "Swipe across to reveal more partners."
+                      : "Scroll or use the arrows to reveal more partners."
+                    : "All available partner venues are loaded."}
+                </Text>
+              </div>
+
+              <a
+                href={passCtaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackPassCtaClick({
+                    ctaLocation: "pass_partners_strip",
+                    destinationUrl: passCtaUrl,
+                  });
+                }}
                 style={{
-                  color: "#B08E62",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.4,
-                  textTransform: "uppercase",
+                  flexShrink: 0,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "flex-start",
                 }}
               >
-                Pass Partners
-              </Text>
+                <img
+                  src={ahangamaPassLogo}
+                  alt="Ahangama Pass"
+                  style={{
+                    display: "block",
+                    height: isMobile ? 30 : 34,
+                    width: "auto",
+                  }}
+                />
+              </a>
             </div>
-            <Title
-              level={2}
-              style={{
-                margin: 0,
-                color: "#1F1D1A",
-                fontSize: isMobile ? 32 : undefined,
-                lineHeight: isMobile ? 1.08 : undefined,
-              }}
-            >
-              Ahangama Pass Holders
-            </Title>
-            <Text
-              style={{
-                color: "#6D655C",
-                fontSize: isMobile ? 13 : 14,
-                lineHeight: isMobile ? 1.6 : undefined,
-              }}
-            >
-              Enjoy perks with these partners.
-            </Text>
-            <Text
-              style={{
-                display: "block",
-                marginTop: 8,
-                color: hasMorePlaces ? "#8B7B63" : "#A49787",
-                fontSize: 12,
-                letterSpacing: 0.2,
-              }}
-            >
-              {hasMorePlaces
-                ? isMobile
-                  ? "Swipe across to reveal more partners."
-                  : "Scroll or use the arrows to reveal more partners."
-                : "All available partner venues are loaded."}
-            </Text>
           </div>
 
           <div
@@ -334,33 +373,6 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             >
               Full list
             </Button>
-            <a
-              href={passCtaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                trackPassCtaClick({
-                  ctaLocation: "pass_partners_strip",
-                  destinationUrl: passCtaUrl,
-                });
-              }}
-              style={{
-                width: isMobile ? "100%" : "auto",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={ahangamaPassLogo}
-                alt="Ahangama Pass"
-                style={{
-                  display: "block",
-                  height: 44,
-                  width: "auto",
-                }}
-              />
-            </a>
           </div>
         </div>
       </div>
