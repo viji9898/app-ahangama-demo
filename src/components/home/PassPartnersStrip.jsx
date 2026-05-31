@@ -167,7 +167,9 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   const railRef = useRef(null);
   const screens = useBreakpoint();
   const isMobile = !screens.md;
-  const loadMoreStep = isMobile ? MOBILE_LOAD_MORE_STEP : DESKTOP_LOAD_MORE_STEP;
+  const loadMoreStep = isMobile
+    ? MOBILE_LOAD_MORE_STEP
+    : DESKTOP_LOAD_MORE_STEP;
 
   const passPlaces = useMemo(
     () => getPassPlaces(allPlaces, destinationSlug),
@@ -205,7 +207,8 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
     if (!rail) return;
     if (visibleCount >= passPlaces.length) return;
 
-    const remainingScroll = rail.scrollWidth - rail.clientWidth - rail.scrollLeft;
+    const remainingScroll =
+      rail.scrollWidth - rail.clientWidth - rail.scrollLeft;
     if (remainingScroll <= 240) {
       loadMorePlaces();
     }
@@ -413,34 +416,39 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 alignItems: isMobile ? "stretch" : "center",
               }}
             >
-            {!isMobile ? (
-              <div style={{ display: "flex", gap: 10 }}>
-                <Button
-                  aria-label="Scroll pass partners left"
-                  icon={<LeftOutlined />}
-                  onClick={() => scrollRail(-1)}
-                  style={{ borderRadius: 999, width: 44, height: 44 }}
-                />
-                <Button
-                  aria-label="Scroll pass partners right"
-                  icon={<RightOutlined />}
-                  onClick={() => scrollRail(1)}
-                  style={{ borderRadius: 999, width: 44, height: 44 }}
-                />
-              </div>
-            ) : null}
-            <Button
-              href={FULL_LIST_PATH}
-              icon={<ArrowRightOutlined />}
-              style={{
-                borderRadius: 999,
-                height: 44,
-                paddingInline: 18,
-                width: isMobile ? "100%" : "auto",
-              }}
-            >
-              Full list
-            </Button>
+              {!isMobile ? (
+                <div style={{ display: "flex", gap: 10 }}>
+                  <Button
+                    aria-label="Scroll pass partners left"
+                    icon={<LeftOutlined />}
+                    onClick={() => scrollRail(-1)}
+                    style={{ borderRadius: 999, width: 44, height: 44 }}
+                  />
+                  <Button
+                    aria-label="Scroll pass partners right"
+                    icon={<RightOutlined />}
+                    onClick={() => scrollRail(1)}
+                    style={{ borderRadius: 999, width: 44, height: 44 }}
+                  />
+                </div>
+              ) : null}
+              <Button
+                type="primary"
+                href={FULL_LIST_PATH}
+                icon={<ArrowRightOutlined />}
+                style={{
+                  borderRadius: 999,
+                  height: 44,
+                  paddingInline: 18,
+                  width: isMobile ? "100%" : "auto",
+                  background: "#2F3E3A",
+                  borderColor: "#2F3E3A",
+                  color: "#FFFFFF",
+                  boxShadow: "none",
+                }}
+              >
+                Full list
+              </Button>
             </div>
           </div>
         </div>
