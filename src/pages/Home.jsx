@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Card, Row, Col, Typography, Button, Space, Spin, Tag } from "antd";
 import QRCode from "react-qr-code";
 import {
@@ -29,11 +29,27 @@ import TwelveThingsSection from "../components/home/TwelveThingsSection";
 import WellnessGuideSection from "../components/home/WellnessGuideSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
+import { shouldShowPlace } from "../data/placeStatus";
 
 const { Title, Paragraph, Text } = Typography;
 
+const TWELVE_THINGS_ORDER = [
+  "pura",
+  "gik-bike-rentals",
+  "coconut-c",
+  "frostys-recovery-centre-hangout",
+  "kumbuk-community",
+  "spa-station-midigama",
+  "sarana-ahangama",
+  "palm-and-paint",
+  "living-r-c-s",
+  "yiva-essentials",
+  "hakuna-matata-ahangama",
+  "qamar-by-zan",
+];
+
 export default function Home() {
-  const { loading } = usePlaces();
+  const { loading, places } = usePlaces();
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
   const sectionSpacing = 32;
@@ -46,6 +62,23 @@ export default function Home() {
     { key: "healthy", icon: <HeartOutlined />, label: "Healthy options" },
     { key: "views", icon: <CompassOutlined />, label: "Ocean views" },
   ];
+  const twelveThingsMosaic = useMemo(() => {
+    const placesBySlug = new Map(
+      (places || [])
+        .filter((place) => place.destinationSlug === "ahangama")
+        .filter((place) => shouldShowPlace(place))
+        .map((place) => [place.slug, place]),
+    );
+
+    return TWELVE_THINGS_ORDER.map((slug) => placesBySlug.get(slug))
+      .filter(Boolean)
+      .map((place) => ({
+        slug: place.slug,
+        image: place.image || place.logo || heroImage,
+        name: place.name,
+      }));
+  }, [places, heroImage]);
+
   return (
     <SiteLayout>
       <Seo
@@ -482,12 +515,33 @@ export default function Home() {
                     style={{
                       minHeight: 240,
                       borderRadius: 22,
-                      backgroundImage:
-                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.22) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
+                      padding: 10,
+                      background: "rgba(255,255,255,0.58)",
+                      border: "1px solid rgba(32,30,27,0.08)",
                     }}
-                  />
+                  >
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                        gap: 8,
+                      }}
+                    >
+                      {twelveThingsMosaic.map((item) => (
+                        <div
+                          key={item.slug}
+                          title={item.name}
+                          style={{
+                            aspectRatio: "1 / 1",
+                            borderRadius: 12,
+                            backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${item.image})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </Card>
