@@ -212,35 +212,7 @@ export default function TopNav() {
                 }}
               />
             </Space>
-          ) : (
-            <a
-              href={passCtaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                trackPassCtaClick({
-                  ctaLocation: "top_nav",
-                  destinationUrl: passCtaUrl,
-                });
-              }}
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={ahangamaPassLogo}
-                alt="Ahangama Pass"
-                style={{
-                  display: "block",
-                  height: 44,
-                  width: "auto",
-                }}
-              />
-            </a>
-          )}
+          ) : null}
         </div>
       </header>
 
