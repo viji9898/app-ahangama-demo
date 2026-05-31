@@ -424,93 +424,6 @@ export default function Home() {
               bodyStyle={{ padding: 28 }}
             >
               <Row gutter={[20, 20]} align="middle">
-                <Col xs={24} xl={16}>
-                  <div style={featureTagRailStyle}>
-                    <Tag style={featureTagStyle}>
-                      Personal Story
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      3-Day Ahangama Guide
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      Wellness + Coworking
-                    </Tag>
-                  </div>
-
-                  <Title
-                    level={2}
-                    style={{
-                      marginTop: 0,
-                      marginBottom: 12,
-                      color: "#1F1D1A",
-                      lineHeight: 1.08,
-                      letterSpacing: -0.02,
-                    }}
-                  >
-                    3 Days in Ahangama: My Wellness Stay at Samba
-                  </Title>
-
-                  <Paragraph
-                    style={{
-                      marginBottom: 18,
-                      color: "#5F574E",
-                      fontSize: 16,
-                      lineHeight: 1.75,
-                      maxWidth: 760,
-                    }}
-                  >
-                    I wanted three days in Ahangama that felt personal, soft,
-                    and still slightly useful: enough time to work a little,
-                    train a little, recover properly, and still keep the town
-                    feeling light. So I based the whole trip at Samba and built
-                    the days around the live pass partners that actually improve
-                    that kind of stay.
-                  </Paragraph>
-
-                  <Button
-                    type="primary"
-                    href="/3-days-in-ahangama"
-                    icon={<ArrowRightOutlined />}
-                    style={{
-                      borderRadius: 999,
-                      height: 44,
-                      paddingInline: 18,
-                      boxShadow: "none",
-                    }}
-                  >
-                    Read the story
-                  </Button>
-                </Col>
-
-                <Col xs={24} xl={8}>
-                  <div
-                    style={{
-                      minHeight: 240,
-                      borderRadius: 22,
-                      backgroundImage:
-                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.22) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  />
-                </Col>
-              </Row>
-            </Card>
-          </div>
-
-          <div style={{ marginTop: sectionSpacing }}>
-            <Card
-              style={{
-                borderRadius: 26,
-                border: "1px solid rgba(32,30,27,0.08)",
-                background:
-                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
-                overflow: "hidden",
-                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
-              }}
-              bodyStyle={{ padding: 28 }}
-            >
-              <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={8}>
                   <div
                     style={{
@@ -681,6 +594,93 @@ export default function Home() {
                   >
                     View Denitsa&apos;s Instagram
                   </Button>
+                </Col>
+              </Row>
+            </Card>
+          </div>
+
+          <div style={{ marginTop: sectionSpacing }}>
+            <Card
+              style={{
+                borderRadius: 26,
+                border: "1px solid rgba(32,30,27,0.08)",
+                background:
+                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
+                overflow: "hidden",
+                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
+              }}
+              bodyStyle={{ padding: 28 }}
+            >
+              <Row gutter={[20, 20]} align="middle">
+                <Col xs={24} xl={16}>
+                  <div style={featureTagRailStyle}>
+                    <Tag style={featureTagStyle}>
+                      Personal Story
+                    </Tag>
+                    <Tag style={featureTagStyle}>
+                      3-Day Ahangama Guide
+                    </Tag>
+                    <Tag style={featureTagStyle}>
+                      Wellness + Coworking
+                    </Tag>
+                  </div>
+
+                  <Title
+                    level={2}
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 12,
+                      color: "#1F1D1A",
+                      lineHeight: 1.08,
+                      letterSpacing: -0.02,
+                    }}
+                  >
+                    3 Days in Ahangama: My Wellness Stay at Samba
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginBottom: 18,
+                      color: "#5F574E",
+                      fontSize: 16,
+                      lineHeight: 1.75,
+                      maxWidth: 760,
+                    }}
+                  >
+                    I wanted three days in Ahangama that felt personal, soft,
+                    and still slightly useful: enough time to work a little,
+                    train a little, recover properly, and still keep the town
+                    feeling light. So I based the whole trip at Samba and built
+                    the days around the live pass partners that actually improve
+                    that kind of stay.
+                  </Paragraph>
+
+                  <Button
+                    type="primary"
+                    href="/3-days-in-ahangama"
+                    icon={<ArrowRightOutlined />}
+                    style={{
+                      borderRadius: 999,
+                      height: 44,
+                      paddingInline: 18,
+                      boxShadow: "none",
+                    }}
+                  >
+                    Read the story
+                  </Button>
+                </Col>
+
+                <Col xs={24} xl={8}>
+                  <div
+                    style={{
+                      minHeight: 240,
+                      borderRadius: 22,
+                      backgroundImage:
+                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.22) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  />
                 </Col>
               </Row>
             </Card>

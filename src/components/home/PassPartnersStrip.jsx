@@ -306,6 +306,48 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 </Text>
               </div>
 
+              {isMobile ? (
+                <a
+                  href={passCtaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackPassCtaClick({
+                      ctaLocation: "pass_partners_strip",
+                      destinationUrl: passCtaUrl,
+                    });
+                  }}
+                  style={{
+                    flexShrink: 0,
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <img
+                    src={ahangamaPassLogo}
+                    alt="Ahangama Pass"
+                    style={{
+                      display: "block",
+                      height: 30,
+                      width: "auto",
+                    }}
+                  />
+                </a>
+              ) : null}
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "column",
+              gap: 10,
+              width: isMobile ? "100%" : "auto",
+              alignItems: isMobile ? "stretch" : "flex-end",
+            }}
+          >
+            {!isMobile ? (
               <a
                 href={passCtaUrl}
                 target="_blank"
@@ -317,10 +359,9 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                   });
                 }}
                 style={{
-                  flexShrink: 0,
                   display: "flex",
                   justifyContent: "flex-end",
-                  alignItems: "flex-start",
+                  alignItems: "center",
                 }}
               >
                 <img
@@ -328,23 +369,22 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                   alt="Ahangama Pass"
                   style={{
                     display: "block",
-                    height: isMobile ? 30 : 34,
+                    height: 34,
                     width: "auto",
                   }}
                 />
               </a>
-            </div>
-          </div>
+            ) : null}
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              gap: 10,
-              width: isMobile ? "100%" : "auto",
-              alignItems: isMobile ? "stretch" : "center",
-            }}
-          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+                gap: 10,
+                width: isMobile ? "100%" : "auto",
+                alignItems: isMobile ? "stretch" : "center",
+              }}
+            >
             {!isMobile ? (
               <div style={{ display: "flex", gap: 10 }}>
                 <Button
@@ -373,6 +413,7 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             >
               Full list
             </Button>
+            </div>
           </div>
         </div>
       </div>
