@@ -63,6 +63,7 @@ const routes = [
     path: "/The-Ultimate-Wellness-Guide-to-Ahangama:-Yoga-Gyms-Pilates-Ice-Baths-Spas",
     element: <UltimateWellnessGuidePage />,
   },
+  { path: "/offers", element: <FullListPage /> },
   { path: "/full-list", element: <FullListPage /> },
   { path: "/12-things", element: <TwelveThingsPage /> },
   { path: "/about", element: <About /> },
