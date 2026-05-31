@@ -408,6 +408,92 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
+            <Card
+              style={{
+                borderRadius: 26,
+                border: "1px solid rgba(32,30,27,0.08)",
+                background:
+                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
+                overflow: "hidden",
+                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
+              }}
+              bodyStyle={{ padding: 28 }}
+            >
+              <Row gutter={[20, 20]} align="middle">
+                <Col xs={24} xl={16}>
+                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Editorial Guide
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      12 Things to Do
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Experiences + Local Favourites
+                    </Tag>
+                  </Space>
+
+                  <Title
+                    level={2}
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 12,
+                      color: "#1F1D1A",
+                      lineHeight: 1.08,
+                      letterSpacing: -0.02,
+                    }}
+                  >
+                    12 Things to Do in Ahangama
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginBottom: 18,
+                      color: "#5F574E",
+                      fontSize: 16,
+                      lineHeight: 1.75,
+                      maxWidth: 760,
+                    }}
+                  >
+                    A more editorial way to explore Ahangama: twelve standout
+                    experiences across wellness, adventure, food, shopping, and
+                    slow coastal rituals. It is the guide to open when you want
+                    a better feel for what is actually worth doing while you are
+                    here.
+                  </Paragraph>
+
+                  <Button
+                    type="primary"
+                    href="/12-things"
+                    icon={<ArrowRightOutlined />}
+                    style={{
+                      borderRadius: 999,
+                      height: 44,
+                      paddingInline: 18,
+                      boxShadow: "none",
+                    }}
+                  >
+                    Read the guide
+                  </Button>
+                </Col>
+
+                <Col xs={24} xl={8}>
+                  <div
+                    style={{
+                      minHeight: 240,
+                      borderRadius: 22,
+                      backgroundImage:
+                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.22) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  />
+                </Col>
+              </Row>
+            </Card>
+          </div>
+
+          <div style={{ marginTop: sectionSpacing }}>
             <TwelveThingsSection />
           </div>
 
