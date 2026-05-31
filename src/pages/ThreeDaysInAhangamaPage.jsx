@@ -26,7 +26,7 @@ const daySections = [
       {
         label: "Morning",
         body:
-          "I based the trip at Samba on the beach road because it immediately solves two things at once: you are staying somewhere with real energy around it, and you are already close to the food-and-work rhythm that makes Ahangama easy. The live venue data positions Samba as a beach-road staple with strong reviews, and for this itinerary I am pricing in a stronger 20% saving on the stay, plus the kind of extra perks that make the place feel generous rather than gimmicky: a free coffee with a brunch order and a free dessert for dinner for two.",
+          "I based the trip at Samba on the beach road because it immediately solves two things at once: you are staying somewhere with real energy around it, and you are already close to the food-and-work rhythm that makes Ahangama easy. The live venue data positions Samba as a beach-road staple with strong reviews, and for this itinerary I am pricing in a stronger 20% saving on the stay, plus the kind of extra perks that make the place feel generous rather than gimmicky: a free coffee with a brunch order, a free dessert for dinner for two, and the added welcome-gift value of 5 postcards and 2 tea tins through the pass.",
       },
       {
         label: "Afternoon",
@@ -43,6 +43,7 @@ const daySections = [
     aside: [
       "Samba stay saving: 20% off the room cost in this itinerary.",
       "Samba stay perk: 1 free coffee with a brunch menu order.",
+      "Pass gift value: 5 postcards at LKR 700 each and 2 tea tins at LKR 4,000 each.",
       "Colive perk: buy one get one free coworking.",
     ],
   },
@@ -110,7 +111,7 @@ const quickReference = [
   {
     label: "Stay",
     value: "Samba",
-    note: "20% stay saving in this itinerary, plus coffee and dinner perks.",
+    note: "20% stay saving in this itinerary, plus coffee, dinner, postcards, and tea tin perks.",
   },
   {
     label: "Coworking base",
@@ -145,6 +146,13 @@ const costRows = [
     assumption: "Estimated at LKR 18,000 per night",
     cost: 36000,
     savings: 7200,
+  },
+  {
+    item: "Pass welcome gifts",
+    assumption:
+      "5 postcards valued at LKR 700 each and 2 tea tins valued at LKR 4,000 each",
+    cost: 11500,
+    savings: 11500,
   },
   {
     item: "2 coworking sessions at Colive",
