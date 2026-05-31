@@ -125,6 +125,34 @@ export default function GettingAroundSection() {
               scooter rentals and tuk-tuk pricing to airport transfers, Galle
               day trips, and when it makes sense to book a car instead.
             </Paragraph>
+            <div
+              style={{
+                marginTop: 14,
+                display: "flex",
+                justifyContent: "flex-start",
+              }}
+            >
+              <Button
+                size="large"
+                href="https://wa.me/94777908790?text=Hi%2C%20need%20help%20booking%20transport."
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  borderRadius: 999,
+                  height: 42,
+                  paddingInline: 18,
+                  width: isMobile ? "100%" : "auto",
+                  background: "rgba(255,255,255,0.72)",
+                  borderColor: "rgba(47,62,58,0.14)",
+                  color: "#5B564E",
+                  boxShadow: "none",
+                  fontWeight: 500,
+                  fontSize: 14,
+                }}
+              >
+                Need help booking transport?
+              </Button>
+            </div>
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <div
