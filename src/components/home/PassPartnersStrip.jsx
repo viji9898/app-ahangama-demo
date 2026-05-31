@@ -304,6 +304,34 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                       : "Scroll or use the arrows to reveal more partners."
                     : "All available partner venues are loaded."}
                 </Text>
+                <div
+                  style={{
+                    marginTop: 14,
+                    display: "flex",
+                    justifyContent: "flex-start",
+                  }}
+                >
+                  <Button
+                    size="large"
+                    href="https://wa.me/94777908790?text=Hi%2C%20I%20have%20a%20question%20about%20Ahangama%20Pass%20partners%20and%20perks."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      borderRadius: 999,
+                      height: 42,
+                      paddingInline: 18,
+                      width: isMobile ? "100%" : "auto",
+                      background: "rgba(255,255,255,0.72)",
+                      borderColor: "rgba(31,29,26,0.12)",
+                      color: "#6D655C",
+                      boxShadow: "none",
+                      fontWeight: 500,
+                      fontSize: 14,
+                    }}
+                  >
+                    Have any questions?
+                  </Button>
+                </div>
               </div>
 
               {isMobile ? (
