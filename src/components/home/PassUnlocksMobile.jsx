@@ -103,24 +103,6 @@ function MobilePlaceCard({ p }) {
 
   const offerTags = parseOfferTags(p.offer);
 
-  const getTagColors = (category) => {
-    if (category === "stays") {
-      return { background: "#fff4e6", color: "#d46b08" };
-    }
-    if (category === "wellness") {
-      return { background: "#f6f0ff", color: "#8B5A96" };
-    }
-    if (category === "culture") {
-      return { background: "#e6f7ff", color: "#1890ff" };
-    }
-    if (category === "retail") {
-      return { background: "#f0e6ff", color: "#9c5a95" };
-    }
-    return { background: "#e8f5e8", color: "#2d5016" };
-  };
-
-  const tagColors = getTagColors(p.category);
-
   return (
     <div
       onClick={() =>
@@ -392,7 +374,7 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
                 lineHeight: "1.2",
               }}
             >
-              Your Pass Unlocks
+              Ahangama Pass Holders
             </Title>
             <Text
               style={{
@@ -402,7 +384,7 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
                 lineHeight: "1.2",
               }}
             >
-              {passPlaces.length} deals available
+              Enjoy perks with these partners.
             </Text>
           </div>
         </div>

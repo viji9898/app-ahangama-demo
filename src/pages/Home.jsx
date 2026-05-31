@@ -25,11 +25,14 @@ import PassUnlocksMobile from "../components/home/PassUnlocksMobile";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
+import GettingAroundSection from "../components/home/GettingAroundSection";
 import TwelveThingsSection from "../components/home/TwelveThingsSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
 
 const { Title, Paragraph, Text } = Typography;
+
+const MAX_EDITORIAL_PICKS = 5;
 
 export default function Home() {
   const { loading } = usePlaces();
@@ -43,6 +46,49 @@ export default function Home() {
     { key: "work", icon: <LaptopOutlined />, label: "Work friendly" },
     { key: "healthy", icon: <HeartOutlined />, label: "Healthy options" },
     { key: "views", icon: <CompassOutlined />, label: "Ocean views" },
+  ];
+  const editorialPicks = [
+    {
+      key: "surf",
+      label: "12 Must Things in Ahangama",
+      href: "/12-things",
+      image:
+        "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      key: "eat",
+      label: "Eat & Drink",
+      href: "/eat",
+      image: heroImage,
+    },
+    {
+      key: "stays",
+      label: "Stays",
+      href: "/stays",
+      image:
+        "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      key: "wellness",
+      label: "Wellness",
+      href: "/wellness",
+      image:
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      key: "local-life",
+      label: "Local Life",
+      href: "/master-index",
+      image:
+        "https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      key: "maps",
+      label: "Maps & Itineraries",
+      href: "/12-things",
+      image:
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+    },
   ];
 
   return (
@@ -321,11 +367,144 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 24 }}>
+            <div
+              style={{
+                borderRadius: 28,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background:
+                  "linear-gradient(180deg, rgba(255,253,249,0.98) 0%, rgba(247,242,234,0.94) 100%)",
+                boxShadow: "0 18px 40px rgba(47,62,58,0.05)",
+                padding: "28px 28px 30px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 16,
+                  marginBottom: 20,
+                }}
+              >
+                <div>
+                  <Text
+                    style={{
+                      display: "block",
+                      marginBottom: 8,
+                      color: "#B08E62",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: 2,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Editor&apos;s Picks
+                  </Text>
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#201E1B",
+                      fontSize: 28,
+                      lineHeight: 1.1,
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    Discover the best of Ahangama
+                  </Title>
+                </div>
+
+                <a
+                  href="/blogs"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    color: "#9F7D56",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  View all guides
+                  <ArrowRightOutlined />
+                </a>
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                  gap: 18,
+                }}
+              >
+                {editorialPicks.slice(0, MAX_EDITORIAL_PICKS).map((item) => (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      minHeight: 202,
+                      borderRadius: 18,
+                      overflow: "hidden",
+                      textDecoration: "none",
+                      backgroundImage: `linear-gradient(180deg, rgba(24,20,14,0.02) 0%, rgba(24,20,14,0.52) 100%), url(${item.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      boxShadow: "0 14px 28px rgba(47,62,58,0.10)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        borderRadius: 18,
+                        border: "1px solid rgba(255,255,255,0.12)",
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: 18,
+                        right: 18,
+                        bottom: 16,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          display: "block",
+                          color: "#FFF8F0",
+                          fontSize: 15,
+                          fontWeight: 700,
+                          lineHeight: 1.15,
+                          letterSpacing: 0.5,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {item.label}
+                      </Text>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 24 }}>
             <HomeGoogleMapSection />
           </div>
 
           <div style={{ marginTop: 24 }}>
             <TwelveThingsSection />
+          </div>
+
+          <div style={{ marginTop: 24 }}>
+            <GettingAroundSection />
           </div>
 
           {/* FREE GUIDE CTA */}

@@ -310,10 +310,10 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
   const mapRef = useRef(null);
   const markersRef = useRef([]);
 
-  const [view, setView] = useState("List");
-  const [q, setQ] = useState("");
+  const [view] = useState("List");
+  const [q] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all"); // multi-select
-  const [selected, setSelected] = useState(null);
+  const [, setSelected] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const passPlaces = useMemo(() => {
@@ -476,24 +476,6 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
     });
   }, [mappable, mapLoaded, view]);
 
-  // Helper function to get category colors (same as before)
-  const getCategoryColor = (category) => {
-    const colors = {
-      eat: "#c46a3a",
-      stays: "#6b7c5a",
-      experiences: "#3e5f73",
-      surf: "#3e5f73",
-      wellness: "#7a6a86",
-      culture: "#7a6a86",
-      "work-long-stays": "#6b7c5a",
-      "getting-around": "#4f6f86",
-      "shops-essentials": "#6b6f6a",
-      retail: "#9c5a95",
-      community: "#4f6f86",
-    };
-    return colors[category] || "#4f6f86";
-  };
-
   return (
     <Card
       className="pu-shell"
@@ -522,11 +504,11 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
               className="pu-h"
               style={{ margin: 0, color: "#8B4513" }}
             >
-              Your Pass Unlocks
+              Ahangama Pass Holders
             </Title>
           </div>
           <Text type="secondary" style={{ fontSize: "14px", color: "#666" }}>
-            Real savings at places we'd recommend to friends ✨
+            Enjoy perks with these partners.
           </Text>
         </Col>
 
