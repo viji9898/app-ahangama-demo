@@ -28,6 +28,7 @@ import GettingAroundSection from "../components/home/GettingAroundSection";
 import WellnessGuideSection from "../components/home/WellnessGuideSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
+import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -51,11 +52,35 @@ const TWELVE_THINGS_ORDER = [
   "qamar-by-zan",
 ];
 
+const DENITSA_PLACE_ORDER = [
+  "pura",
+  "oyummy",
+  "lighthouse",
+  "rollingpin-bakery",
+];
+
 export default function Home() {
   const { loading, places } = usePlaces();
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
   const sectionSpacing = 32;
+  const featureTagRailStyle = {
+    display: "flex",
+    gap: 8,
+    flexWrap: "nowrap",
+    overflowX: "auto",
+    paddingBottom: 4,
+    marginBottom: 12,
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+  };
+  const featureTagStyle = {
+    borderRadius: 999,
+    padding: "6px 12px",
+    flex: "0 0 auto",
+    marginInlineEnd: 0,
+    whiteSpace: "nowrap",
+  };
 
   const heroImage =
     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg";
@@ -81,6 +106,30 @@ export default function Home() {
         name: place.name,
       }));
   }, [places, heroImage]);
+  const denitsaPlaces = useMemo(() => {
+    const livePlacesBySlug = new Map(
+      (places || [])
+        .filter((place) => place.destinationSlug === "ahangama")
+        .filter((place) => shouldShowPlace(place))
+        .map((place) => [place.slug, place]),
+    );
+    const fallbackPlacesBySlug = new Map(
+      PLACES.filter((place) => place.destinationSlug === "ahangama").map(
+        (place) => [place.slug, place],
+      ),
+    );
+
+    return DENITSA_PLACE_ORDER.map(
+      (slug) => livePlacesBySlug.get(slug) || fallbackPlacesBySlug.get(slug),
+    )
+      .filter((place) => place && place.mapUrl)
+      .map((place) => ({
+        slug: place.slug,
+        name: place.name,
+        logo: place.logo || place.image,
+        mapUrl: place.mapUrl,
+      }));
+  }, [places]);
 
   return (
     <SiteLayout>
@@ -134,17 +183,17 @@ export default function Home() {
                     display: "block",
                     marginBottom: "12px",
                   }}
-                >
-                  This is a demonstration website. All venue information,
+                    <div style={featureTagRailStyle}>
+                      <Tag style={featureTagStyle}>
                   pricing, and data shown are for testing purposes only and may
                   not reflect actual businesses or services.
-                </Text>
+                      <Tag style={featureTagStyle}>
                 <Button
                   type="primary"
-                  icon={<WhatsAppOutlined />}
+                      <Tag style={featureTagStyle}>
                   size="small"
                   style={{
-                    backgroundColor: "#25D366",
+                    </div>
                     borderColor: "#25D366",
                     borderRadius: "6px",
                     fontSize: "12px",
@@ -376,17 +425,17 @@ export default function Home() {
             >
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={16}>
-                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                  <div style={featureTagRailStyle}>
+                    <Tag style={featureTagStyle}>
                       Personal Story
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       3-Day Ahangama Guide
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       Wellness + Coworking
                     </Tag>
-                  </Space>
+                  </div>
 
                   <Title
                     level={2}
@@ -494,17 +543,17 @@ export default function Home() {
                 </Col>
 
                 <Col xs={24} xl={16}>
-                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                  <div style={featureTagRailStyle}>
+                    <Tag style={featureTagStyle}>
                       Personal Story
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       Perfect Day
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       Wellness + Surf
                     </Tag>
-                  </Space>
+                  </div>
 
                   <Title
                     level={2}
@@ -540,6 +589,83 @@ export default function Home() {
                     best sunset is at the Lighthouse.
                   </Paragraph>
 
+                  {denitsaPlaces.length ? (
+                    <div style={{ marginBottom: 18 }}>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 10,
+                          color: "#7A7065",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          letterSpacing: 1.2,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Places mentioned in the video
+                      </Text>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 10,
+                        }}
+                      >
+                        {denitsaPlaces.map((place) => (
+                          <a
+                            key={place.slug}
+                            href={place.mapUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${place.name} on Google Maps`}
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 10,
+                              padding: "8px 12px",
+                              borderRadius: 999,
+                              border: "1px solid rgba(32,30,27,0.08)",
+                              background: "rgba(255,255,255,0.72)",
+                              textDecoration: "none",
+                              color: "#3F3A34",
+                            }}
+                          >
+                            <img
+                              src={place.logo}
+                              alt={place.name}
+                              style={{
+                                width: 28,
+                                height: 28,
+                                borderRadius: 999,
+                                objectFit: "cover",
+                                display: "block",
+                                border: "1px solid rgba(32,30,27,0.08)",
+                                background: "#fff",
+                              }}
+                            />
+                            <span
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                lineHeight: 1.15,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  fontSize: 13,
+                                  fontWeight: 700,
+                                  color: "#2F2A24",
+                                }}
+                              >
+                                {place.name}
+                              </span>
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+
                   <Button
                     type="primary"
                     href="https://www.instagram.com/denitsaloves/"
@@ -574,17 +700,17 @@ export default function Home() {
             >
               <Row gutter={[18, 18]} align="middle">
                 <Col xs={24} xl={15}>
-                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                  <div style={featureTagRailStyle}>
+                    <Tag style={featureTagStyle}>
                       Pass Guide
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       Wallet Ready
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       Savings + Perks
                     </Tag>
-                  </Space>
+                  </div>
 
                   <Title
                     level={3}
@@ -675,17 +801,17 @@ export default function Home() {
             >
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={16}>
-                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                  <div style={featureTagRailStyle}>
+                    <Tag style={featureTagStyle}>
                       Editorial Guide
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       12 Things to Do
                     </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                    <Tag style={featureTagStyle}>
                       Experiences + Local Favourites
                     </Tag>
-                  </Space>
+                  </div>
 
                   <Title
                     level={2}
