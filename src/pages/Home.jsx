@@ -25,7 +25,6 @@ import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import TwelveThingsSection from "../components/home/TwelveThingsSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
-import ComingSoonSection from "../components/home/ComingSoonSection";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -459,11 +458,6 @@ export default function Home() {
                 {/* Mobile version */}
                 <div className="mobile-only" style={{ display: "none" }}>
                   <PassUnlocksMobile destinationSlug="ahangama" />
-                </div>
-
-                {/* Coming Soon Section */}
-                <div style={{ marginTop: 0 }}>
-                  <ComingSoonSection />
                 </div>
               </>
             )}
