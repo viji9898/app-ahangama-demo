@@ -7,10 +7,10 @@ const { Content } = Layout;
 
 export default function SiteLayout({ children }) {
   return (
-    <Layout style={{ minHeight: "100vh", background: "#f5f5f5" }}>
+    <Layout style={{ minHeight: "100vh", background: "transparent" }}>
       <TopNav />
-      <Content style={{ padding: 16 }}>
-        <div style={{ maxWidth: 1140, margin: "0 auto" }}>{children}</div>
+      <Content style={{ padding: "24px 16px 0" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto" }}>{children}</div>
       </Content>
       <FooterBar />
     </Layout>

@@ -73,9 +73,9 @@ function PassVenueCard({ place, isMobile }) {
           height: "100%",
           borderRadius: 20,
           overflow: "hidden",
-          border: "1px solid rgba(47,62,58,0.08)",
-          background: "#fffdf9",
-          boxShadow: "0 12px 26px rgba(47,62,58,0.08)",
+          border: "1px solid rgba(32,30,27,0.08)",
+          background: "rgba(251,248,242,0.92)",
+          boxShadow: "0 12px 28px rgba(32,30,27,0.06)",
         }}
       >
         <div
@@ -97,7 +97,7 @@ function PassVenueCard({ place, isMobile }) {
                 marginBottom: 12,
                 borderRadius: 14,
                 background: "rgba(255,255,255,0.92)",
-                border: "1px solid rgba(47,62,58,0.08)",
+                  border: "1px solid rgba(32,30,27,0.08)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -133,7 +133,7 @@ function PassVenueCard({ place, isMobile }) {
             style={{
               marginTop: 8,
               marginBottom: 8,
-              color: "#2F3E3A",
+              color: "#1F1D1A",
               fontSize: isMobile ? 20 : undefined,
             }}
           >
@@ -144,6 +144,7 @@ function PassVenueCard({ place, isMobile }) {
               color: "#5C5953",
               marginBottom: 0,
               minHeight: isMobile ? 0 : 66,
+              lineHeight: 1.72,
             }}
           >
             {place.excerpt ||
@@ -182,9 +183,9 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
     <div
       style={{
         borderRadius: 28,
-        border: "1px solid rgba(47,62,58,0.08)",
-        background: "linear-gradient(180deg, #fffdf9 0%, #f7f1e7 100%)",
-        boxShadow: "0 18px 40px rgba(47,62,58,0.05)",
+        border: "1px solid rgba(32,30,27,0.08)",
+        background: "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(246,240,231,0.98) 100%)",
+        boxShadow: "0 18px 40px rgba(32,30,27,0.05)",
         overflow: "hidden",
       }}
     >
@@ -204,22 +205,32 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
-                marginBottom: 6,
+                marginBottom: 8,
               }}
             >
-              <span style={{ fontSize: 20 }}>🎁</span>
-                <Title
-                  level={2}
-                  style={{
-                    margin: 0,
-                    color: "#8B4513",
-                    fontSize: isMobile ? 32 : undefined,
-                    lineHeight: isMobile ? 1.08 : undefined,
-                  }}
-                >
-                Ahangama Pass Holders
-              </Title>
+              <Text
+                style={{
+                  color: "#B08E62",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.4,
+                  textTransform: "uppercase",
+                }}
+              >
+                Pass Partners
+              </Text>
             </div>
+            <Title
+              level={2}
+              style={{
+                margin: 0,
+                color: "#1F1D1A",
+                fontSize: isMobile ? 32 : undefined,
+                lineHeight: isMobile ? 1.08 : undefined,
+              }}
+            >
+                Ahangama Pass Holders
+            </Title>
             <Text
               style={{
                 color: "#6D655C",
@@ -285,9 +296,10 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 height: 44,
                 paddingInline: 18,
                 width: isMobile ? "100%" : "auto",
-                background: "linear-gradient(135deg, #FFD700, #FFA500)",
-                border: "none",
+                border: "1px solid rgba(176,142,98,0.18)",
+                background: "#e8d7ba",
                 boxShadow: "none",
+                color: "#1F1D1A",
               }}
             >
               Get your Pass

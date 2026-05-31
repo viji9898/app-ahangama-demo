@@ -11,20 +11,20 @@ export default function FooterBar() {
   return (
     <div
       style={{
-        background: "var(--bg-sand, #f4f1ec)",
-        padding: "32px 16px 24px 16px",
-        marginTop: "48px",
+        background: "transparent",
+        padding: "56px 16px 28px 16px",
+        marginTop: "72px",
       }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         {/* Main Footer Card */}
         <div
           style={{
-            background: "var(--bg-card, #faf8f4)",
-            borderRadius: "22px",
-            padding: "32px",
-            border: "1px solid rgba(31, 42, 36, 0.08)",
-            boxShadow: "0 12px 32px rgba(31, 42, 36, 0.08)",
+            background: "var(--editorial-surface, #fbf8f2)",
+            borderRadius: "28px",
+            padding: "36px",
+            border: "1px solid var(--editorial-line, rgba(32, 30, 27, 0.08))",
+            boxShadow: "var(--editorial-shadow-soft, 0 10px 24px rgba(32, 30, 27, 0.06))",
             marginBottom: "24px",
           }}
         >
@@ -35,11 +35,14 @@ export default function FooterBar() {
                   <Text
                     strong
                     style={{
-                      fontSize: "24px",
+                      fontSize: "28px",
                       color: "var(--ink-primary, #1f2a24)",
                       display: "block",
-                      marginBottom: "8px",
-                      fontWeight: 700,
+                      marginBottom: "10px",
+                      fontWeight: 600,
+                      letterSpacing: "0.02em",
+                      fontFamily:
+                        '"Cormorant Garamond", "Libre Baskerville", Georgia, serif',
                     }}
                   >
                     ahangama.com
@@ -47,8 +50,8 @@ export default function FooterBar() {
                   <Text
                     style={{
                       color: "var(--ink-muted, #6b6f6a)",
-                      fontSize: "16px",
-                      lineHeight: "1.6",
+                      fontSize: "15px",
+                      lineHeight: "1.8",
                     }}
                   >
                     Curated destination guides + local privileges for
@@ -64,8 +67,10 @@ export default function FooterBar() {
                   strong
                   style={{
                     color: "var(--ink-primary, #1f2a24)",
-                    fontSize: "16px",
+                    fontSize: "13px",
                     fontWeight: 600,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
                   }}
                 >
                   Quick Links
@@ -83,6 +88,7 @@ export default function FooterBar() {
                       color: "var(--ink-muted, #6b6f6a)",
                       textDecoration: "none",
                       fontSize: "15px",
+                      letterSpacing: "0.01em",
                       transition: "color 0.3s ease",
                     }}
                     onMouseEnter={(e) =>
@@ -172,8 +178,10 @@ export default function FooterBar() {
                   strong
                   style={{
                     color: "var(--ink-primary, #1f2a24)",
-                    fontSize: "16px",
+                    fontSize: "13px",
                     fontWeight: 600,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
                   }}
                 >
                   Connect
@@ -184,10 +192,10 @@ export default function FooterBar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    background: "transparent",
-                    border: "1px solid rgba(31, 42, 36, 0.12)",
-                    color: "var(--ink-muted, #6b6f6a)",
-                    borderRadius: "16px",
+                    background: "rgba(255,255,255,0.58)",
+                    border: "1px solid rgba(31, 42, 36, 0.1)",
+                    color: "var(--ink-primary, #1f2a24)",
+                    borderRadius: "999px",
                     height: "44px",
                     fontSize: "15px",
                     transition: "all 0.3s ease",
@@ -221,27 +229,26 @@ export default function FooterBar() {
                     });
                   }}
                   style={{
-                    background: "var(--ocean-blue, #4f6f86)",
-                    border: "none",
-                    borderRadius: "16px",
+                    background: "#1f1d1a",
+                    border: "1px solid rgba(31, 29, 26, 0.12)",
+                    borderRadius: "999px",
                     height: "44px",
                     fontSize: "15px",
                     fontWeight: "600",
                     transition: "all 0.3s ease",
-                    boxShadow: "0 4px 12px rgba(79, 111, 134, 0.25)",
+                    boxShadow: "0 8px 18px rgba(31, 29, 26, 0.12)",
                   }}
                   onMouseEnter={(e) => {
-                    e.target.style.background =
-                      "var(--ocean-blue-hover, #435f73)";
+                    e.target.style.background = "#2a2723";
                     e.target.style.transform = "translateY(-1px)";
                     e.target.style.boxShadow =
-                      "0 6px 20px rgba(79, 111, 134, 0.35)";
+                      "0 10px 20px rgba(31, 29, 26, 0.18)";
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.background = "var(--ocean-blue, #4f6f86)";
+                    e.target.style.background = "#1f1d1a";
                     e.target.style.transform = "translateY(0)";
                     e.target.style.boxShadow =
-                      "0 4px 12px rgba(79, 111, 134, 0.25)";
+                      "0 8px 18px rgba(31, 29, 26, 0.12)";
                   }}
                 >
                   Get the Card

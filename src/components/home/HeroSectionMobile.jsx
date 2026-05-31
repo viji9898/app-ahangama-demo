@@ -17,10 +17,10 @@ export default function HeroSectionMobile({ heroImage }) {
       {heroImage && (
         <div
           style={{
-            marginBottom: "16px",
-            borderRadius: "0px",
+            marginBottom: "20px",
+            borderRadius: "22px",
             overflow: "hidden",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            boxShadow: "0 16px 32px rgba(32, 30, 27, 0.08)",
           }}
         >
           <img
@@ -36,7 +36,7 @@ export default function HeroSectionMobile({ heroImage }) {
         </div>
       )}
 
-      <div className="ahg-heroInner" style={{ padding: "0 16px" }}>
+      <div className="ahg-heroInner" style={{ padding: "0 4px" }}>
         <Text
           style={{
             display: "block",
@@ -120,9 +120,9 @@ export default function HeroSectionMobile({ heroImage }) {
               });
             }}
             style={{
-              borderRadius: "10px",
+              borderRadius: "999px",
               height: "44px",
-              fontWeight: "500",
+              fontWeight: "600",
             }}
           >
             Get the Card
@@ -134,9 +134,10 @@ export default function HeroSectionMobile({ heroImage }) {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: "24px",
-            marginTop: "16px",
-            marginBottom: "16px",
+            gap: "16px",
+            marginTop: "12px",
+            marginBottom: "8px",
+            flexWrap: "wrap",
           }}
         >
           <div className="ahg-metric" style={{ textAlign: "center" }}>

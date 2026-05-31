@@ -36,6 +36,7 @@ export default function Home() {
   const { loading } = usePlaces();
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
+  const sectionSpacing = 32;
 
   const heroImage =
     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg";
@@ -318,16 +319,17 @@ export default function Home() {
             <HeroSectionMobile heroImage={heroImage} />
           </div>
 
-          <div style={{ marginTop: 24 }}>
+          <div style={{ marginTop: sectionSpacing }}>
             <Card
               style={{
                 borderRadius: 26,
-                border: "1px solid rgba(47,62,58,0.08)",
+                border: "1px solid rgba(32,30,27,0.08)",
                 background:
-                  "linear-gradient(135deg, rgba(248,242,233,0.98) 0%, rgba(255,252,246,0.98) 100%)",
+                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
                 overflow: "hidden",
+                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
               }}
-              bodyStyle={{ padding: 24 }}
+              bodyStyle={{ padding: 28 }}
             >
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={16}>
@@ -348,8 +350,9 @@ export default function Home() {
                     style={{
                       marginTop: 0,
                       marginBottom: 12,
-                      color: "#2F3E3A",
+                      color: "#1F1D1A",
                       lineHeight: 1.08,
+                      letterSpacing: -0.02,
                     }}
                   >
                     3 Days in Ahangama: My Wellness Stay at Samba
@@ -358,7 +361,7 @@ export default function Home() {
                   <Paragraph
                     style={{
                       marginBottom: 18,
-                      color: "#5C5953",
+                      color: "#5F574E",
                       fontSize: 16,
                       lineHeight: 1.75,
                       maxWidth: 760,
@@ -380,8 +383,6 @@ export default function Home() {
                       borderRadius: 999,
                       height: 44,
                       paddingInline: 18,
-                      background: "#2F3E3A",
-                      borderColor: "#2F3E3A",
                       boxShadow: "none",
                     }}
                   >
@@ -395,7 +396,7 @@ export default function Home() {
                       minHeight: 240,
                       borderRadius: 22,
                       backgroundImage:
-                        "linear-gradient(180deg, rgba(18,25,24,0.05) 0%, rgba(18,25,24,0.34) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp)",
+                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.22) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp)",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
@@ -405,20 +406,20 @@ export default function Home() {
             </Card>
           </div>
 
-          <div style={{ marginTop: 24 }}>
+          <div style={{ marginTop: sectionSpacing }}>
             <TwelveThingsSection />
           </div>
 
-          <div style={{ marginTop: 24 }}>
+          <div style={{ marginTop: sectionSpacing }}>
             <GettingAroundSection />
           </div>
 
-          <div style={{ marginTop: 24 }}>
+          <div style={{ marginTop: sectionSpacing }}>
             <WellnessGuideSection />
           </div>
 
           {/* FREE GUIDE CTA */}
-          <div style={{ marginTop: 24 }}>
+          <div style={{ marginTop: sectionSpacing }}>
             {/* Desktop version */}
             {/* <div className="desktop-only" style={{ display: "block" }}>
               <Card
@@ -580,14 +581,14 @@ export default function Home() {
               <HomeMapSectionMobile />
             </div> */}
           </div>
-          <div style={{ marginTop: 16 }}>
+          <div style={{ marginTop: sectionSpacing - 8 }}>
             {loading ? (
               <Card
                 style={{
                   borderRadius: 18,
-                  border: "1px solid rgba(0,0,0,0.06)",
+                  border: "1px solid rgba(32,30,27,0.08)",
                   background:
-                    "linear-gradient(135deg, rgba(255,248,220,0.25) 0%, rgba(255,255,255,0.95) 100%)",
+                    "linear-gradient(180deg, rgba(251,248,242,0.96) 0%, rgba(247,243,236,0.96) 100%)",
                 }}
                 bodyStyle={{ padding: 32 }}
               >
@@ -612,23 +613,28 @@ export default function Home() {
             )}
           </div>
 
-          <div style={{ marginTop: 24 }}>
+          <div style={{ marginTop: sectionSpacing }}>
             <HomeGoogleMapSection />
           </div>
 
           {/* CARD CTA */}
-          <div style={{ marginTop: 16 }}>
+          <div style={{ marginTop: sectionSpacing - 8 }}>
             <Card
               className="ahg-cardCta"
-              style={{ borderRadius: 18, border: "1px solid rgba(0,0,0,0.06)" }}
-              bodyStyle={{ padding: 18 }}
+              style={{
+                borderRadius: 22,
+                border: "1px solid rgba(32,30,27,0.08)",
+                background:
+                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(246,240,231,0.98) 100%)",
+              }}
+              bodyStyle={{ padding: 24 }}
             >
               <Row gutter={[16, 16]} align="middle">
                 <Col xs={24} md={16}>
-                  <Title level={3} style={{ marginTop: 0, marginBottom: 6 }}>
+                  <Title level={3} style={{ marginTop: 0, marginBottom: 8 }}>
                     The Ahangama Card
                   </Title>
-                  <Paragraph style={{ marginBottom: 0 }}>
+                  <Paragraph style={{ marginBottom: 0, color: "#5F574E" }}>
                     Built for people staying more than a few days. Simple vendor
                     verification, real perks, and a curated venue list that
                     grows over time.
