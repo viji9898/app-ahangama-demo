@@ -3,12 +3,12 @@ import { Button, Card, Grid, Typography } from "antd";
 import {
   ArrowRightOutlined,
   LeftOutlined,
-  QrcodeOutlined,
   RightOutlined,
 } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
 import { trackPassCtaClick } from "../../analytics";
 import { buildPassCtaUrl } from "../../lib/passAttribution";
+import ahangamaPassLogo from "../../assets/ahangama-pass-logo.png";
 import {
   FULL_LIST_PATH,
   getPassPlaces,
@@ -279,12 +279,10 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             >
               Full list
             </Button>
-            <Button
-              type="primary"
+            <a
               href={passCtaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              icon={<QrcodeOutlined />}
               onClick={() => {
                 trackPassCtaClick({
                   ctaLocation: "pass_partners_strip",
@@ -292,18 +290,22 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 });
               }}
               style={{
-                borderRadius: 999,
-                height: 44,
-                paddingInline: 18,
                 width: isMobile ? "100%" : "auto",
-                border: "1px solid rgba(176,142,98,0.18)",
-                background: "#e8d7ba",
-                boxShadow: "none",
-                color: "#1F1D1A",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              Get your Pass
-            </Button>
+              <img
+                src={ahangamaPassLogo}
+                alt="Ahangama Pass"
+                style={{
+                  display: "block",
+                  height: 44,
+                  width: "auto",
+                }}
+              />
+            </a>
           </div>
         </div>
       </div>

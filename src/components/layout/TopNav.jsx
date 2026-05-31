@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { trackPassCtaClick } from "../../analytics";
 import { buildPassCtaUrl } from "../../lib/passAttribution";
 import palmTreeIcon from "../../assets/receipt_icons/palm-tree-icon.svg";
+import ahangamaPassLogo from "../../assets/ahangama-pass-logo.png";
 
 const { Text } = Typography;
 const { useBreakpoint } = Grid;
@@ -170,7 +171,7 @@ export default function TopNav() {
 
           {isDesktop ? (
             <Space size={14} align="center" style={{ flexShrink: 0 }}>
-              <Button
+              <a
                 href={passCtaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -181,19 +182,20 @@ export default function TopNav() {
                   });
                 }}
                 style={{
-                  height: 52,
-                  paddingInline: 26,
-                  borderRadius: 999,
-                  border: "1px solid rgba(176,142,98,0.18)",
-                  background: "#e8d7ba",
-                  color: "#1F1D1A",
-                  boxShadow: "0 8px 20px rgba(176,142,98,0.14)",
-                  fontWeight: 700,
-                  fontSize: 15,
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
-                Ahangama Pass
-              </Button>
+                <img
+                  src={ahangamaPassLogo}
+                  alt="Ahangama Pass"
+                  style={{
+                    display: "block",
+                    height: 52,
+                    width: "auto",
+                  }}
+                />
+              </a>
 
               <Link
                 to="/offers"
@@ -223,7 +225,7 @@ export default function TopNav() {
               />
             </Space>
           ) : (
-            <Button
+            <a
               href={passCtaUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -235,18 +237,21 @@ export default function TopNav() {
               }}
               style={{
                 width: "100%",
-                height: 44,
-                borderRadius: 999,
-                border: "1px solid rgba(176,142,98,0.18)",
-                background: "#e8d7ba",
-                color: "#1F1D1A",
-                boxShadow: "0 8px 18px rgba(176,142,98,0.14)",
-                fontWeight: 700,
-                fontSize: 14,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              Ahangama Pass
-            </Button>
+              <img
+                src={ahangamaPassLogo}
+                alt="Ahangama Pass"
+                style={{
+                  display: "block",
+                  height: 44,
+                  width: "auto",
+                }}
+              />
+            </a>
           )}
         </div>
       </header>
