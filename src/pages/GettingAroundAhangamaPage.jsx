@@ -373,35 +373,53 @@ export default function GettingAroundAhangamaPage() {
           >
             <Row gutter={[24, 24]} align="middle">
               <Col xs={24} lg={16}>
-                <Text
+                <div
                   style={{
-                    display: "block",
-                    color: "rgba(255,247,240,0.72)",
-                    textTransform: "uppercase",
-                    letterSpacing: 1.5,
-                    fontSize: 12,
-                    marginBottom: 10,
+                    borderRadius: 24,
+                    padding: 20,
+                    background: "#FFF8F0",
+                    border: "1px solid rgba(47,62,58,0.08)",
+                    boxShadow: "0 10px 24px rgba(18,24,22,0.12)",
                   }}
                 >
-                  Final note
-                </Text>
-                <Title level={2} style={{ color: "#FFF8F0", marginTop: 0 }}>
-                  What to recommend in one sentence
-                </Title>
-                <Paragraph
-                  style={{
-                    color: "rgba(255,248,240,0.86)",
-                    fontSize: 16,
-                    lineHeight: 1.8,
-                    marginBottom: 0,
-                  }}
-                >
-                  For local freedom, rent a scooter. For airport pickups and
-                  luggage-heavy travel, pre-book a private transfer. For longer
-                  south-coast runs to places like Galle or Hiriketiya, a car or
-                  driver usually makes more sense than pretending a scooter is
-                  still the easy option.
-                </Paragraph>
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#6B5A4E",
+                      textTransform: "uppercase",
+                      letterSpacing: 1.5,
+                      fontSize: 12,
+                      marginBottom: 10,
+                    }}
+                  >
+                    Final note
+                  </Text>
+                  <Title
+                    level={2}
+                    style={{
+                      color: "#2F3E3A",
+                      marginTop: 0,
+                      marginBottom: 12,
+                      lineHeight: 1.12,
+                    }}
+                  >
+                    What to recommend in one sentence
+                  </Title>
+                  <Paragraph
+                    style={{
+                      color: "#2F3E3A",
+                      fontSize: 16,
+                      lineHeight: 1.8,
+                      marginBottom: 0,
+                    }}
+                  >
+                    For local freedom, rent a scooter. For airport pickups and
+                    luggage-heavy travel, pre-book a private transfer. For
+                    longer south-coast runs to places like Galle or Hiriketiya,
+                    a car or driver usually makes more sense than pretending a
+                    scooter is still the easy option.
+                  </Paragraph>
+                </div>
               </Col>
               <Col xs={24} lg={8}>
                 <Button

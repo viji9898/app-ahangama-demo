@@ -542,71 +542,85 @@ export default function TwelveThingsPage() {
             >
               <Row gutter={[24, 24]} align="middle">
                 <Col xs={24} lg={16}>
-                  <Text
+                  <div
                     style={{
-                      display: "block",
-                      color: "rgba(255,247,240,0.72)",
-                      textTransform: "uppercase",
-                      letterSpacing: 1.5,
-                      fontSize: 12,
-                      marginBottom: 10,
+                      borderRadius: 24,
+                      padding: 20,
+                      background: "#FFF8F0",
+                      border: "1px solid rgba(47,62,58,0.08)",
+                      boxShadow: "0 10px 24px rgba(18,24,22,0.12)",
                     }}
                   >
-                    A Note From Your Guide
-                  </Text>
-                  <Title level={2} style={{ color: "#FFF8F0", marginTop: 0 }}>
-                    Written by Urvashi
-                  </Title>
-                  <Paragraph
-                    style={{
-                      color: "rgba(255,248,240,0.86)",
-                      fontSize: 16,
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    Sri Lankan local, proud South Coast migrant, and part of the
-                    Ahangama Team.
-                  </Paragraph>
-                  <Paragraph
-                    style={{
-                      color: "rgba(255,248,240,0.86)",
-                      fontSize: 16,
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    We only recommend places we'd genuinely tell a friend about.
-                    That's it.
-                  </Paragraph>
-                  <Paragraph
-                    style={{
-                      color: "rgba(255,248,240,0.86)",
-                      fontSize: 16,
-                      lineHeight: 1.8,
-                      marginBottom: 0,
-                    }}
-                  >
-                    To unlock every perk, discount and freebie in this guide,
-                    grab The Ahangama Pass; from $30, it pays for itself fast.
-                    It also gets you onto the Ahangama Collectibles Trail:
-                    exclusive tea tins, postcards and collectible sticker cards
-                    from select partner spots along the way. Free for a limited
-                    time.
-                  </Paragraph>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#6B5A4E",
+                        textTransform: "uppercase",
+                        letterSpacing: 1.5,
+                        fontSize: 12,
+                        marginBottom: 10,
+                      }}
+                    >
+                      A Note From Your Guide
+                    </Text>
+                    <Title
+                      level={2}
+                      style={{ color: "#2F3E3A", marginTop: 0, marginBottom: 12 }}
+                    >
+                      Written by Urvashi
+                    </Title>
+                    <Paragraph
+                      style={{
+                        color: "#2F3E3A",
+                        fontSize: 16,
+                        lineHeight: 1.8,
+                      }}
+                    >
+                      Sri Lankan local, proud South Coast migrant, and part of the
+                      Ahangama Team.
+                    </Paragraph>
+                    <Paragraph
+                      style={{
+                        color: "#2F3E3A",
+                        fontSize: 16,
+                        lineHeight: 1.8,
+                      }}
+                    >
+                      We only recommend places we'd genuinely tell a friend about.
+                      That's it.
+                    </Paragraph>
+                    <Paragraph
+                      style={{
+                        color: "#2F3E3A",
+                        fontSize: 16,
+                        lineHeight: 1.8,
+                        marginBottom: 0,
+                      }}
+                    >
+                      To unlock every perk, discount and freebie in this guide,
+                      grab The Ahangama Pass; from $30, it pays for itself fast.
+                      It also gets you onto the Ahangama Collectibles Trail:
+                      exclusive tea tins, postcards and collectible sticker cards
+                      from select partner spots along the way. Free for a limited
+                      time.
+                    </Paragraph>
+                  </div>
                 </Col>
 
                 <Col xs={24} lg={8}>
                   <Card
                     style={{
                       borderRadius: 22,
-                      background: "rgba(255,255,255,0.08)",
-                      border: "1px solid rgba(255,255,255,0.12)",
+                      background: "#FFF8F0",
+                      border: "1px solid rgba(47,62,58,0.08)",
+                      boxShadow: "0 10px 24px rgba(18,24,22,0.12)",
                     }}
                     bodyStyle={{ padding: 20 }}
                   >
                     <Text
                       style={{
                         display: "block",
-                        color: "#FFF8F0",
+                        color: "#2F3E3A",
                         fontWeight: 700,
                         marginBottom: 12,
                       }}
@@ -615,7 +629,7 @@ export default function TwelveThingsPage() {
                     </Text>
                     <Paragraph
                       style={{
-                        color: "rgba(255,248,240,0.78)",
+                        color: "#2F3E3A",
                         marginBottom: 18,
                       }}
                     >
