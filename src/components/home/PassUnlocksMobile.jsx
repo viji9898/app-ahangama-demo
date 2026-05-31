@@ -23,6 +23,7 @@ import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
 const { Title, Text } = Typography;
+const MAX_VISIBLE_VENUES = 8;
 
 const CATEGORY_LABELS = {
   eat: "Eat & Drink",
@@ -326,6 +327,11 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
       });
   }, [allPlaces, destinationSlug, selectedCats]);
 
+  const visiblePassPlaces = useMemo(
+    () => passPlaces.slice(0, MAX_VISIBLE_VENUES),
+    [passPlaces],
+  );
+
   const catsAvailable = useMemo(() => {
     const set = new Set(
       allPlaces
@@ -495,7 +501,7 @@ export default function PassUnlocksMobile({ destinationSlug = "ahangama" }) {
             </Text>
           </div>
         ) : (
-          passPlaces.map((p, index) => (
+          visiblePassPlaces.map((p, index) => (
             <MobilePlaceCard
               key={p.id || p.slug || `${p.name}-${index}`}
               p={p}

@@ -2,61 +2,60 @@ import React, { useRef } from "react";
 import { Button, Card, Row, Space, Tag, Typography } from "antd";
 import {
   ArrowRightOutlined,
-  CarOutlined,
-  EnvironmentOutlined,
+  HeartOutlined,
   LeftOutlined,
   RightOutlined,
 } from "@ant-design/icons";
 
 const { Paragraph, Text, Title } = Typography;
 
-const GUIDE_PATH =
-  "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
+export const WELLNESS_GUIDE_PATH =
+  "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
 
 const cards = [
   {
-    key: "gik",
-    title: "GIK Bike Rentals",
+    key: "pura",
+    title: "Pura Pilates",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg",
-    copy: "Rental-led option for scooters, bikes, and independent day-to-day movement around Ahangama.",
-    pricing: "Recommended: LKR 2,500-4,500 per day",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+    copy: "The clearest Pilates-led stop in Ahangama for mobility, structure, and keeping your routine intact between surf sessions.",
+    label: "Pilates & mobility",
   },
   {
-    key: "happy-tours",
-    title: "Happy Tours",
+    key: "senses",
+    title: "Senses",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/happy_tours.jpeg",
-    copy: "Convenience-first local transport support for simple rides, short planning help, and nearby moves.",
-    pricing: "Recommended: LKR 500-1,500 in-town hops",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/senses.jpg",
+    copy: "A yoga and mindfulness pick for travelers who want calmer mornings, guided movement, and a more retreat-like pace.",
+    label: "Yoga & mindfulness",
   },
   {
-    key: "nova",
-    title: "Nova Rent a Car",
+    key: "frostys",
+    title: "Frosty's",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/nova_rental.jpeg",
-    copy: "Best fit for Galle day trips, Hiriketiya runs, and longer south-coast travel where a car makes more sense than a scooter.",
-    pricing: "Recommended: LKR 12,000-20,000+ per day",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/frostys.jpeg",
+    copy: "A recovery-first anchor for ice baths, post-surf reset sessions, and the social side of wellness in Kabalana.",
+    label: "Ice baths & recovery",
   },
   {
-    key: "scooty",
-    title: "Scooty Rental & Taxi Service",
+    key: "krish",
+    title: "Krish Combat & Fitness",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/scooty_rental_and_taxi.jpeg",
-    copy: "Strong local-mobility choice for scooter-led stays, quick surf checks, and easy movement around town.",
-    pricing: "Recommended: LKR 2,500-4,500 per day",
+      "https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/krish-combat-fitness/image.jpg",
+    copy: "A stronger fit for gym access, training blocks, martial arts, and visitors who want wellness to include hard sessions too.",
+    label: "Gym & training",
   },
   {
-    key: "airport",
-    title: "Taxi and Transport Tours",
+    key: "aksaaya",
+    title: "Aksaaya Ayurveda Wellness Spa",
     image:
-      "https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taxi-and-transport-tours/image.jpg",
-    copy: "Clearest airport-transfer and private-trip specialist in the current Ahangama transport set.",
-    pricing: "Recommended: LKR 18,000-30,000 airport transfer",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+34aksaaya_ayurveda.webp",
+    copy: "Traditional Ayurveda and massage in a calmer, treatment-led format when restoration matters more than intensity.",
+    label: "Spa & Ayurveda",
   },
 ];
 
-export default function GettingAroundSection() {
+export default function WellnessGuideSection() {
   const railRef = useRef(null);
 
   function scrollRail(direction) {
@@ -73,7 +72,7 @@ export default function GettingAroundSection() {
       style={{
         borderRadius: 28,
         border: "1px solid rgba(47,62,58,0.08)",
-        background: "linear-gradient(180deg, #fffdf9 0%, #f6efe5 100%)",
+        background: "linear-gradient(180deg, #fffdf9 0%, #eef4ef 100%)",
         boxShadow: "0 18px 40px rgba(47,62,58,0.05)",
         overflow: "hidden",
       }}
@@ -83,39 +82,40 @@ export default function GettingAroundSection() {
           <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
             New Guide
           </Tag>
-          <Text style={{ color: "#7A746B", fontSize: 13 }}>
-            Practical transport editorial
+          <Text style={{ color: "#6E756E", fontSize: 13 }}>
+            Editorial wellness shortlist
           </Text>
         </Space>
 
         <Row gutter={[18, 18]} align="middle" justify="space-between">
           <div style={{ flex: 1, minWidth: 0 }}>
             <Title level={2} style={{ margin: 0, color: "#2F3E3A" }}>
-              Getting Around Ahangama: Scooters, Tuk Tuks & Airport Transfers
+              The Ultimate Wellness Guide to Ahangama: Yoga, Gyms, Pilates, Ice
+              Baths & Spas
             </Title>
             <Paragraph
               style={{
                 margin: "10px 0 0",
-                color: "#5B564E",
+                color: "#556057",
                 fontSize: 15,
-                maxWidth: 760,
+                maxWidth: 780,
               }}
             >
-              A practical guide to how transport actually works here, from
-              scooter rentals and tuk-tuk pricing to airport transfers, Galle
-              day trips, and when it makes sense to book a car instead.
+              A practical editorial guide to the places that shape Ahangama's
+              wellness rhythm, from yoga shalas and Pilates studios to serious
+              recovery stops, training spaces, and slower spa afternoons.
             </Paragraph>
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <Space size={10} wrap>
               <Button
-                aria-label="Scroll transport cards left"
+                aria-label="Scroll wellness cards left"
                 icon={<LeftOutlined />}
                 onClick={() => scrollRail(-1)}
                 style={{ borderRadius: 999 }}
               />
               <Button
-                aria-label="Scroll transport cards right"
+                aria-label="Scroll wellness cards right"
                 icon={<RightOutlined />}
                 onClick={() => scrollRail(1)}
                 style={{ borderRadius: 999 }}
@@ -123,7 +123,7 @@ export default function GettingAroundSection() {
               <Button
                 type="primary"
                 size="large"
-                href={GUIDE_PATH}
+                href={WELLNESS_GUIDE_PATH}
                 icon={<ArrowRightOutlined />}
                 style={{
                   borderRadius: 999,
@@ -175,7 +175,7 @@ export default function GettingAroundSection() {
                 }}
               >
                 <a
-                  href={GUIDE_PATH}
+                  href={WELLNESS_GUIDE_PATH}
                   style={{
                     display: "block",
                     color: "inherit",
@@ -193,21 +193,17 @@ export default function GettingAroundSection() {
                   />
                   <div style={{ padding: 18 }}>
                     <Space align="center" size={8} style={{ marginBottom: 10 }}>
-                      {card.key === "airport" ? (
-                        <EnvironmentOutlined style={{ color: "#8B5A3C" }} />
-                      ) : (
-                        <CarOutlined style={{ color: "#8B5A3C" }} />
-                      )}
+                      <HeartOutlined style={{ color: "#6F8A74" }} />
                       <Text
                         style={{
-                          color: "#8B5A3C",
+                          color: "#6F8A74",
                           fontSize: 12,
                           fontWeight: 700,
                           textTransform: "uppercase",
                           letterSpacing: 1.3,
                         }}
                       >
-                        Recommended pricing
+                        {card.label}
                       </Text>
                     </Space>
                     <Title
@@ -225,14 +221,11 @@ export default function GettingAroundSection() {
                       style={{
                         color: "#59534B",
                         minHeight: 96,
-                        marginBottom: 10,
+                        marginBottom: 0,
                       }}
                     >
                       {card.copy}
                     </Paragraph>
-                    <Text style={{ color: "#2F3E3A", fontWeight: 700 }}>
-                      {card.pricing}
-                    </Text>
                   </div>
                 </a>
               </Card>

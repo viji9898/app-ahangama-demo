@@ -33,6 +33,8 @@ import HomeDesktop from "../pages/HomeDesktop";
 import Resellers from "../pages/Resellers";
 import GettingAroundAhangamaPage from "../pages/GettingAroundAhangamaPage";
 import TwelveThingsPage from "../pages/TwelveThingsPage";
+import FullListPage from "../pages/FullListPage";
+import UltimateWellnessGuidePage from "../pages/UltimateWellnessGuidePage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import ExternalRedirect from "./ExternalRedirect";
 
@@ -51,6 +53,15 @@ const routes = [
     path: "/Getting-Around-Ahangama-Scooters,-Tuk-Tuks-Airport-Transfers",
     element: <GettingAroundAhangamaPage />,
   },
+  {
+    path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    element: <UltimateWellnessGuidePage />,
+  },
+  {
+    path: "/The-Ultimate-Wellness-Guide-to-Ahangama:-Yoga-Gyms-Pilates-Ice-Baths-Spas",
+    element: <UltimateWellnessGuidePage />,
+  },
+  { path: "/full-list", element: <FullListPage /> },
   { path: "/12-things", element: <TwelveThingsPage /> },
   { path: "/about", element: <About /> },
   { path: "/logo", element: <LogoPage /> },

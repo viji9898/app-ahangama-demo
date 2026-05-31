@@ -1,115 +1,144 @@
 import React from "react";
-import { Button, Card, Col, Divider, Row, Space, Tag, Typography } from "antd";
 import {
   ArrowRightOutlined,
-  CarOutlined,
-  EnvironmentOutlined,
+  HeartOutlined,
   SafetyCertificateOutlined,
 } from "@ant-design/icons";
+import { Button, Card, Col, Divider, Row, Space, Tag, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { buildPassCtaUrl } from "../lib/passAttribution";
+import { WELLNESS_GUIDE_PATH } from "../components/home/WellnessGuideSection";
 
 const { Paragraph, Text, Title } = Typography;
 
-const GUIDE_PATH =
-  "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
-
-const transportSections = [
+const wellnessSections = [
   {
     number: "01",
-    title: "Scooters are still the default for everyday Ahangama movement",
+    title: "Yoga in Ahangama is less about trend and more about rhythm",
     body: [
-      "If you are staying in Ahangama for more than a day or two, a scooter is usually the simplest way to get around. It gives you quick access to surf breaks, cafes, supermarkets, and the neighboring beaches without having to negotiate every short ride.",
-      "The live transport entries in the database point clearly in this direction: GIK Bike Rentals and Scooty Rental & Taxi Service are the strongest local rental-led options, both framed around flexibility, local exploring, and easy everyday movement.",
+      "The best yoga choices in Ahangama are the ones that match the pace of your stay. If you want slower mornings and a retreat-like tone, Senses, Shramalaya, and The Nuga House are the clearest fits in the current live venue set.",
+      "These are the places that make sense when the brief is simple: move well, breathe properly, and let the day start softer than a surf alarm. They are less about high-volume class hopping and more about building a daily ritual that feels sustainable for a week or two on the coast.",
     ],
-    pricing: [
-      "Recommended: LKR 2,500-4,500 per day for a standard scooter in season.",
-      "Good monthly-style long-stay discussions should generally come in below stacked daily pricing.",
+    asideTitle: "Best yoga-led picks",
+    aside: [
+      "Senses for mindful classes and wellness treatments.",
+      "Shramalaya for yoga, meditation, and a retreat tone.",
+      "The Nuga House for slower routines and gentle movement.",
     ],
   },
   {
     number: "02",
-    title: "Tuk-tuks are better for quick local hops than all-day dependence",
+    title: "Pilates and mobility are the cleanest answer for surf-heavy stays",
     body: [
-      "For travelers who do not want to self-drive, tuk-tuks and local taxi-style rides are the practical fallback. They are best used for station pickups, dinner runs, rainy-day movement, or short in-town hops.",
-      "Happy Tours appears in the DB as a convenience-first transport option for local trips and travel support, while Taxi and Transport Tours is the stronger fit when the journey matters more than the hop itself.",
+      "If the goal is to balance surfing with better posture, mobility, and some structure, Pura Pilates is the standout name. It feels like the right recommendation for visitors who want wellness to be part of performance, not just a recovery add-on.",
+      "Pilates also works especially well in Ahangama because it does not need to compete with the rest of your trip. It sits neatly between surf sessions, co-working blocks, and dinners out, and it makes more sense than overcomplicating your routine with too many different classes in one week.",
     ],
-    pricing: [
-      "Recommended: LKR 500-1,500 for short in-town or nearby hops, depending on time and distance.",
-      "Once the journey becomes multi-stop or inter-town, fixed private pricing usually makes more sense than repeated short-ride logic.",
+    asideTitle: "Best fit",
+    aside: [
+      "Pura Pilates for structured sessions focused on mobility and strength.",
+      "Coconut Court if you want movement with a more social, active-lifestyle feel.",
     ],
   },
   {
     number: "03",
-    title: "Airport transfers should feel fixed, clear, and pre-agreed",
+    title:
+      "Gyms and harder sessions matter more here than most short guides admit",
     body: [
-      "The database gives one very clear airport-transfer specialist: Taxi and Transport Tours. Its live description explicitly covers airport pickups, local rides, private day tours, and long-distance travel across the island, and it is marked as available 24/7.",
-      "For a blog guide, this is the cleanest operator to mention when talking about arriving late, traveling with boards or luggage, or avoiding the friction of arranging a ride after landing.",
+      "Ahangama is often marketed as soft wellness only, but plenty of people still want real training while they are here. Krish Combat & Fitness is the strongest match in the current set for gym access, private classes, and more disciplined physical work.",
+      "That matters for longer stays. If you are here for two weeks or more, wellness usually stops meaning only massages and yoga. It starts meaning consistency, strength work, and keeping your body feeling capable enough to actually enjoy the trip.",
     ],
-    pricing: [
-      "Recommended: LKR 18,000-30,000 for airport transfers depending on vehicle type, surfboards, and time of travel.",
-      "Late-night, larger-vehicle, or luggage-heavy trips should sit toward the upper end of that window.",
+    asideTitle: "Training-focused option",
+    aside: [
+      "Krish Combat & Fitness for gym sessions, martial arts, and day-pass energy.",
+      "Use it when you want wellness to include effort, not just recovery.",
     ],
   },
   {
     number: "04",
-    title: "For Galle, Hiriketiya, and longer south-coast trips, cars win",
+    title:
+      "Recovery culture is real now: ice baths, steam, and reset sessions are part of the town's identity",
     body: [
-      "The DB does not explicitly name Galle or Hiriketiya inside the transport descriptions, but the role split is still clear. Nova Rent a Car is the best long-distance self-drive option because it is framed around car rentals, road trips, and exploring beyond Ahangama.",
-      "If the piece is advising readers on comfort, luggage, weather protection, or simply not wanting to ride a scooter for a longer coastal move, Nova and Taxi and Transport Tours are the strongest names to use.",
+      "The recovery side of Ahangama has become more defined, and Frosty's is the most obvious entry point if you want that world without ceremony. It is practical, social, and easy to plug into after surfing or training. Banya Steam House takes the mood in a more niche, slower direction, with a stronger emphasis on steam and restoration.",
+      "This is the category for people who want a wellness afternoon without needing it to feel spiritual or luxurious. It is about nervous-system reset, easing soreness, and making the next surf or workday feel better than the previous one.",
     ],
-    pricing: [
-      "Recommended: LKR 8,000-15,000 for a private one-way south-coast transfer depending on route and vehicle.",
-      "Recommended: LKR 12,000-20,000+ per day for car hire or longer private vehicle use.",
+    asideTitle: "Recovery picks",
+    aside: [
+      "Frosty's for ice-bath and recovery-led sessions.",
+      "Banya Steam House for steam and slower restorative time.",
+      "Spa Station Midigama is also a strong nearby massage-and-recovery stop even though it sits outside the editorial_wellness tag set.",
     ],
   },
   {
     number: "05",
-    title: "The strongest transport DB entries right now",
+    title:
+      "Spas and Ayurveda are where Ahangama shifts from active wellness to restoration",
     body: [
-      "GIK Bike Rentals: rental-led, strong for scooters and local freedom, with tags that also reference airport and tuk-tuk related movement.",
-      "Scooty Rental & Taxi Service: highest review count in the set, very strong for scooter-led day-to-day mobility.",
-      "Taxi and Transport Tours: strongest airport-transfer and private-trip entry, with 24/7 hours in the DB.",
-      "Nova Rent a Car: best car-rental and road-trip positioning for travel beyond Ahangama.",
-      "Happy Tours: best described as practical local travel support when convenience matters more than self-drive independence.",
+      "When the mood is less about training and more about feeling repaired, the strongest names are Aksaaya Ayurveda Wellness Spa, Sarana, White Lotus Spa & Wellness, and Ayurveda Palm Garden Resort. Each one leans toward a different version of reset, from traditional treatments to more polished resort-style calm.",
+      "This is the lane to recommend when someone is arriving tired, needs a mid-trip reset, or wants one anchor experience that makes the holiday feel slower and more intentional. In practical terms, these are also the easiest venues to recommend to couples, parents, and visitors who are not building their trip around surfing.",
     ],
-    pricing: [
-      "Card-linked offers in the DB range from 10% off transport options up to 20% off scooter rentals, with one rental record also carrying a 25% scooter offer field.",
+    asideTitle: "Spa-led shortlist",
+    aside: [
+      "Aksaaya for traditional Ayurveda and high-trust treatments.",
+      "Sarana for premium spa-style wellness sessions.",
+      "White Lotus for a more luxurious retreat tone.",
+      "Ayurveda Palm Garden Resort for stay-led wellness immersion.",
+    ],
+  },
+  {
+    number: "06",
+    title: "The best wellness itinerary is mixed, not maximal",
+    body: [
+      "The mistake most visitors make is trying to do too much: yoga every day, surfing every day, treatments every day, and then wondering why the whole trip feels oddly tiring. Ahangama works better when you mix categories. One or two active sessions, one recovery block, one spa treatment, and a few slower mornings usually gives the best result.",
+      "That is what makes this place strong. You can train, stretch, recover, socialize, and still keep the trip feeling light. The best wellness guide is not a list of the most options. It is a guide to choosing the right rhythm for the version of Ahangama you actually want.",
+    ],
+    asideTitle: "Simple weekly mix",
+    aside: [
+      "2 yoga or Pilates sessions.",
+      "1 gym or training block.",
+      "1 ice bath or steam recovery session.",
+      "1 massage, Ayurveda, or spa treatment.",
     ],
   },
 ];
 
 const quickReference = [
   {
-    label: "Best for local freedom",
-    value: "GIK Bike Rentals, Scooty Rental & Taxi Service",
+    label: "Best for yoga",
+    value: "Senses, Shramalaya, The Nuga House",
   },
   {
-    label: "Best for airport transfers",
-    value: "Taxi and Transport Tours",
+    label: "Best for Pilates",
+    value: "Pura Pilates",
   },
   {
-    label: "Best for Galle or Hiriketiya runs",
-    value: "Nova Rent a Car or private transfer",
+    label: "Best for gym sessions",
+    value: "Krish Combat & Fitness",
   },
   {
-    label: "Typical entry pricing",
-    value:
-      "Scooters from LKR 2,500-4,500/day, airport transfers from LKR 18,000+",
+    label: "Best for recovery",
+    value: "Frosty's, Banya Steam House",
+  },
+  {
+    label: "Best for spa and Ayurveda",
+    value: "Aksaaya, Sarana, White Lotus, Ayurveda Palm Garden Resort",
+  },
+  {
+    label: "Best for active-social wellness",
+    value: "Coconut Court",
   },
 ];
 
-export default function GettingAroundAhangamaPage() {
-  const canonical = absUrl(GUIDE_PATH);
+export default function UltimateWellnessGuidePage() {
+  const canonical = absUrl(WELLNESS_GUIDE_PATH);
   const passCtaUrl = buildPassCtaUrl();
 
   return (
     <SiteLayout>
       <Seo
-        title="Getting Around Ahangama: Scooters, Tuk Tuks & Airport Transfers"
-        description="A practical Ahangama transport guide covering scooters, tuk-tuks, airport transfers, Galle trips, Hiriketiya runs, and recommended pricing ranges."
+        title="The Ultimate Wellness Guide to Ahangama: Yoga, Gyms, Pilates, Ice Baths & Spas"
+        description="A full editorial guide to Ahangama wellness, covering yoga, gyms, Pilates, ice baths, recovery spaces, Ayurveda, spas, and the best places for each style of stay."
         canonical={canonical}
       />
 
@@ -121,7 +150,7 @@ export default function GettingAroundAhangamaPage() {
               borderRadius: 30,
               border: "1px solid rgba(47,62,58,0.08)",
               background:
-                "linear-gradient(135deg, rgba(245,236,225,0.94) 0%, rgba(255,251,245,0.98) 100%)",
+                "linear-gradient(135deg, rgba(233,242,235,0.96) 0%, rgba(255,251,245,0.98) 100%)",
               overflow: "hidden",
               marginBottom: 28,
             }}
@@ -131,10 +160,10 @@ export default function GettingAroundAhangamaPage() {
               <Col xs={24} xl={14}>
                 <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
                   <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
-                    Transport Guide
+                    Wellness Guide
                   </Tag>
                   <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
-                    Ahangama Logistics
+                    Ahangama Editorial
                   </Tag>
                 </Space>
 
@@ -147,8 +176,8 @@ export default function GettingAroundAhangamaPage() {
                     lineHeight: 1.03,
                   }}
                 >
-                  Getting Around Ahangama: Scooters, Tuk Tuks & Airport
-                  Transfers
+                  The Ultimate Wellness Guide to Ahangama: Yoga, Gyms, Pilates,
+                  Ice Baths & Spas
                 </Title>
 
                 <Paragraph
@@ -159,10 +188,10 @@ export default function GettingAroundAhangamaPage() {
                     marginBottom: 18,
                   }}
                 >
-                  The practical version of the transport guide: when to rent a
-                  scooter, when to book a tuk-tuk, when to take a car to Galle
-                  or Hiriketiya, and what pricing ranges are still reasonable on
-                  the south coast.
+                  The practical editorial version of Ahangama wellness: where to
+                  go for yoga, where to train properly, where to recover after
+                  surfing, and which spa or Ayurveda stops are actually worth
+                  building a slower day around.
                 </Paragraph>
 
                 <Space wrap size={12}>
@@ -190,7 +219,7 @@ export default function GettingAroundAhangamaPage() {
                     minHeight: 360,
                     borderRadius: 24,
                     backgroundImage:
-                      "linear-gradient(180deg, rgba(18,25,24,0.05) 0%, rgba(18,25,24,0.34) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/scooty_rental_and_taxi.jpeg)",
+                      "linear-gradient(180deg, rgba(18,25,24,0.05) 0%, rgba(18,25,24,0.34) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -209,7 +238,7 @@ export default function GettingAroundAhangamaPage() {
           >
             <Space align="start" size={12}>
               <SafetyCertificateOutlined
-                style={{ fontSize: 20, color: "#8B5A3C", marginTop: 4 }}
+                style={{ fontSize: 20, color: "#6F8A74", marginTop: 4 }}
               />
               <div>
                 <Text
@@ -220,14 +249,13 @@ export default function GettingAroundAhangamaPage() {
                     marginBottom: 6,
                   }}
                 >
-                  Recommended pricing note
+                  Guide note
                 </Text>
                 <Paragraph style={{ margin: 0, color: "#5C5953" }}>
-                  The pricing ranges on this page are editorial guide rails for
-                  blog readers, not direct quotes from the venues table. The
-                  live DB mainly stores pricing as budget or mid-range bands
-                  plus discount offers, so these numbers are best used as
-                  realistic planning ranges rather than fixed tariffs.
+                  This page is grounded in the current live venues tagged under
+                  `editorial_wellness` in Ahangama, then shaped into an
+                  editorial guide that helps readers choose the right type of
+                  session rather than simply listing every possible option.
                 </Paragraph>
               </div>
             </Space>
@@ -235,21 +263,21 @@ export default function GettingAroundAhangamaPage() {
 
           <Row gutter={[20, 20]} style={{ marginBottom: 28 }}>
             {quickReference.map((item) => (
-              <Col xs={24} md={12} key={item.label}>
+              <Col xs={24} md={12} lg={8} key={item.label}>
                 <Card
                   style={{
                     height: "100%",
                     borderRadius: 22,
                     border: "1px solid rgba(47,62,58,0.08)",
                     background:
-                      "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
+                      "linear-gradient(180deg, #fffdf9 0%, #f2f7f2 100%)",
                   }}
                   bodyStyle={{ padding: 22 }}
                 >
                   <Text
                     style={{
                       display: "block",
-                      color: "#8B5A3C",
+                      color: "#6F8A74",
                       fontSize: 12,
                       fontWeight: 700,
                       marginBottom: 8,
@@ -275,14 +303,14 @@ export default function GettingAroundAhangamaPage() {
           </Row>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            {transportSections.map((section) => (
+            {wellnessSections.map((section) => (
               <Card
                 key={section.number}
                 style={{
                   borderRadius: 24,
                   border: "1px solid rgba(47,62,58,0.08)",
                   background:
-                    "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
+                    "linear-gradient(180deg, #fffdf9 0%, #f4f8f4 100%)",
                 }}
                 bodyStyle={{ padding: 24 }}
               >
@@ -291,7 +319,7 @@ export default function GettingAroundAhangamaPage() {
                     <Text
                       style={{
                         display: "block",
-                        color: "#8B5A3C",
+                        color: "#6F8A74",
                         fontSize: 12,
                         fontWeight: 700,
                         marginBottom: 10,
@@ -331,20 +359,20 @@ export default function GettingAroundAhangamaPage() {
                         size={8}
                         style={{ marginBottom: 10 }}
                       >
-                        <CarOutlined style={{ color: "#8B5A3C" }} />
+                        <HeartOutlined style={{ color: "#6F8A74" }} />
                         <Text
                           style={{
-                            color: "#8B5A3C",
+                            color: "#6F8A74",
                             fontSize: 12,
                             fontWeight: 700,
                             textTransform: "uppercase",
                             letterSpacing: 1.2,
                           }}
                         >
-                          Recommended pricing
+                          {section.asideTitle}
                         </Text>
                       </Space>
-                      {section.pricing.map((item) => (
+                      {section.aside.map((item) => (
                         <Paragraph
                           key={item}
                           style={{ marginBottom: 10, color: "#59534B" }}
@@ -366,7 +394,7 @@ export default function GettingAroundAhangamaPage() {
               borderRadius: 28,
               border: "1px solid rgba(47,62,58,0.08)",
               background:
-                "linear-gradient(135deg, rgba(47,62,58,0.98) 0%, rgba(78,55,42,0.98) 100%)",
+                "linear-gradient(135deg, rgba(47,62,58,0.98) 0%, rgba(88,110,92,0.98) 100%)",
               marginBottom: 36,
             }}
             bodyStyle={{ padding: 28 }}
@@ -396,11 +424,10 @@ export default function GettingAroundAhangamaPage() {
                     marginBottom: 0,
                   }}
                 >
-                  For local freedom, rent a scooter. For airport pickups and
-                  luggage-heavy travel, pre-book a private transfer. For longer
-                  south-coast runs to places like Galle or Hiriketiya, a car or
-                  driver usually makes more sense than pretending a scooter is
-                  still the easy option.
+                  If you want the best version of wellness in Ahangama, mix one
+                  or two strong movement sessions with one real recovery block
+                  and one slower spa or Ayurveda stop instead of trying to turn
+                  every day into a full retreat schedule.
                 </Paragraph>
               </Col>
               <Col xs={24} lg={8}>

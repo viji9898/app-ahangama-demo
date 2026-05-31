@@ -24,6 +24,7 @@ import { shouldShowPlace } from "../../data/placeStatus";
 import PlaceStatusTag from "../ui/PlaceStatusTag";
 
 const { Title, Text, Paragraph } = Typography;
+const MAX_VISIBLE_VENUES = 8;
 
 const DEFAULT_CENTER = { lat: 5.9699, lng: 80.3666 }; // Ahangama-ish
 
@@ -361,6 +362,10 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
     () => passPlaces.filter((p) => !!p._latlng),
     [passPlaces],
   );
+  const visiblePassPlaces = useMemo(
+    () => passPlaces.slice(0, MAX_VISIBLE_VENUES),
+    [passPlaces],
+  );
   const center = mappable[0]?._latlng || DEFAULT_CENTER;
 
   // Single selection - no toggle function needed
@@ -630,7 +635,8 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
 
               <div>
                 <Text type="secondary" style={{ fontSize: "11px" }}>
-                  Showing {passPlaces.length} places
+                  Showing {visiblePassPlaces.length} of {passPlaces.length}{" "}
+                  places
                 </Text>
               </div>
             </div>
@@ -661,7 +667,7 @@ export default function PassUnlocksSection({ destinationSlug = "ahangama" }) {
               </div>
             </Col>
           ) : (
-            passPlaces.map((p) => (
+            visiblePassPlaces.map((p) => (
               <Col
                 xs={24}
                 sm={12}

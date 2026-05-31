@@ -133,25 +133,29 @@ const experiences = [
 
 const PLACEHOLDER_VARIANTS = [
   {
-    frame: "linear-gradient(135deg, rgba(222,205,182,0.95) 0%, rgba(245,236,222,0.95) 100%)",
+    frame:
+      "linear-gradient(135deg, rgba(222,205,182,0.95) 0%, rgba(245,236,222,0.95) 100%)",
     accent: "#7C5A43",
     shape: "circle",
     align: "flex-end",
   },
   {
-    frame: "linear-gradient(135deg, rgba(203,220,214,0.92) 0%, rgba(244,248,244,0.96) 100%)",
+    frame:
+      "linear-gradient(135deg, rgba(203,220,214,0.92) 0%, rgba(244,248,244,0.96) 100%)",
     accent: "#43655B",
     shape: "panel",
     align: "center",
   },
   {
-    frame: "linear-gradient(135deg, rgba(233,220,198,0.94) 0%, rgba(251,245,235,0.98) 100%)",
+    frame:
+      "linear-gradient(135deg, rgba(233,220,198,0.94) 0%, rgba(251,245,235,0.98) 100%)",
     accent: "#9A6B2F",
     shape: "stripe",
     align: "flex-start",
   },
   {
-    frame: "linear-gradient(135deg, rgba(215,208,225,0.90) 0%, rgba(247,244,250,0.98) 100%)",
+    frame:
+      "linear-gradient(135deg, rgba(215,208,225,0.90) 0%, rgba(247,244,250,0.98) 100%)",
     accent: "#61517F",
     shape: "stack",
     align: "center",
@@ -189,7 +193,13 @@ function PlaceholderArtwork({ variant }) {
             boxShadow: "0 24px 40px rgba(47,62,58,0.12)",
           }}
         />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.35fr", gap: 10 }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1.35fr",
+            gap: 10,
+          }}
+        >
           <div
             style={{
               height: 110,

@@ -1,10 +1,6 @@
 import React from "react";
-import { Typography, Button, Space, Spin, Tag } from "antd";
-import {
-  QrcodeOutlined,
-  ArrowRightOutlined,
-  ThunderboltOutlined,
-} from "@ant-design/icons";
+import { Typography, Button, Spin } from "antd";
+import { QrcodeOutlined } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
 import { trackPassCtaClick } from "../../analytics";
 import { buildPassCtaUrl } from "../../lib/passAttribution";
@@ -41,64 +37,52 @@ export default function HeroSectionMobile({ heroImage }) {
       )}
 
       <div className="ahg-heroInner" style={{ padding: "0 16px" }}>
-        <div className="ahg-pillRow" style={{ marginBottom: "16px" }}>
-          <Tag
-            className="ahg-pill"
-            icon={<ThunderboltOutlined />}
-            style={{
-              fontSize: "11px",
-              padding: "4px 8px",
-            }}
-          >
-            Curated
-          </Tag>
-          <Tag
-            className="ahg-pill"
-            style={{
-              fontSize: "11px",
-              padding: "4px 8px",
-            }}
-          >
-            FIT-friendly
-          </Tag>
-          <Tag
-            className="ahg-pill"
-            icon={<QrcodeOutlined />}
-            style={{
-              fontSize: "11px",
-              padding: "4px 8px",
-            }}
-          >
-            Discount card
-          </Tag>
-        </div>
+        <Text
+          style={{
+            display: "block",
+            marginBottom: 16,
+            color: "#B08E62",
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: 2,
+            textTransform: "uppercase",
+            textAlign: "center",
+          }}
+        >
+          The Ahangama Guide
+        </Text>
 
         <Title
           className="ahg-h1"
           style={{
-            fontSize: "28px",
-            lineHeight: 1.2,
+            fontSize: "40px",
+            lineHeight: 0.95,
             marginBottom: "16px",
             textAlign: "center",
+            color: "#201E1B",
+            fontWeight: 500,
+            letterSpacing: -1.2,
+            fontFamily:
+              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
           }}
         >
-          Privileges & Discounts
+          <span style={{ whiteSpace: "nowrap" }}>Your guide to</span>
           <br />
-          <small>Ahangama Guide</small>
+          <span style={{ whiteSpace: "nowrap" }}>Ahangama</span>
         </Title>
 
         <Paragraph
           className="ahg-sub"
           style={{
             fontSize: "16px",
-            lineHeight: 1.5,
+            lineHeight: 1.6,
             marginBottom: "20px",
             textAlign: "center",
-            color: "#5A6C7D",
+            color: "#49443D",
           }}
         >
-          From <strong>$30 card</strong> that unlocks local discounts &
-          privileges
+          Local recommendations, hidden gems and editorial picks to help you
+          eat well, stay well, surf more and experience the best of Ahangama.
         </Paragraph>
 
         <div
