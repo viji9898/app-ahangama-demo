@@ -462,6 +462,37 @@ export default function Home() {
               bodyStyle={{ padding: 28 }}
             >
               <Row gutter={[20, 20]} align="middle">
+                <Col xs={24} xl={8}>
+                  <div
+                    style={{
+                      maxWidth: 320,
+                      margin: "0 auto",
+                      aspectRatio: "4 / 5",
+                      borderRadius: 22,
+                      overflow: "hidden",
+                      border: "1px solid rgba(32,30,27,0.08)",
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
+                      boxShadow: "0 12px 28px rgba(32,30,27,0.08)",
+                    }}
+                  >
+                    <video
+                      src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      controls
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                </Col>
+
                 <Col xs={24} xl={16}>
                   <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
                     <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
@@ -524,37 +555,6 @@ export default function Home() {
                   >
                     View Denitsa&apos;s Instagram
                   </Button>
-                </Col>
-
-                <Col xs={24} xl={8}>
-                  <div
-                    style={{
-                      maxWidth: 320,
-                      margin: "0 auto",
-                      aspectRatio: "4 / 5",
-                      borderRadius: 22,
-                      overflow: "hidden",
-                      border: "1px solid rgba(32,30,27,0.08)",
-                      background:
-                        "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
-                      boxShadow: "0 12px 28px rgba(32,30,27,0.08)",
-                    }}
-                  >
-                    <video
-                      src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      controls
-                      style={{
-                        display: "block",
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
                 </Col>
               </Row>
             </Card>
