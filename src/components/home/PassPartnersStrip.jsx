@@ -1,5 +1,5 @@
 import React, { useMemo, useRef } from "react";
-import { Button, Card, Space, Typography } from "antd";
+import { Button, Card, Grid, Typography } from "antd";
 import {
   ArrowRightOutlined,
   LeftOutlined,
@@ -16,6 +16,7 @@ import {
 } from "../../lib/passPartners";
 
 const { Paragraph, Text, Title } = Typography;
+const { useBreakpoint } = Grid;
 
 function OfferPills({ place }) {
   const offerTags = Array.isArray(place.offers)
@@ -54,7 +55,7 @@ function OfferPills({ place }) {
   );
 }
 
-function PassVenueCard({ place }) {
+function PassVenueCard({ place, isMobile }) {
   return (
     <a
       href={place.slug ? `/${place.category}/${place.slug}` : FULL_LIST_PATH}
@@ -79,7 +80,7 @@ function PassVenueCard({ place }) {
       >
         <div
           style={{
-            height: 190,
+            height: isMobile ? 176 : 190,
             backgroundImage: place.image
               ? `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.35) 100%), url(${place.image})`
               : "linear-gradient(135deg, #e9ddc8 0%, #cbb89b 100%)",
@@ -87,7 +88,7 @@ function PassVenueCard({ place }) {
             backgroundPosition: "center",
           }}
         />
-        <div style={{ padding: 18 }}>
+        <div style={{ padding: isMobile ? 16 : 18 }}>
           {place.logo ? (
             <div
               style={{
@@ -129,12 +130,21 @@ function PassVenueCard({ place }) {
           </Text>
           <Title
             level={4}
-            style={{ marginTop: 8, marginBottom: 8, color: "#2F3E3A" }}
+            style={{
+              marginTop: 8,
+              marginBottom: 8,
+              color: "#2F3E3A",
+              fontSize: isMobile ? 20 : undefined,
+            }}
           >
             {place.name}
           </Title>
           <Paragraph
-            style={{ color: "#5C5953", marginBottom: 0, minHeight: 66 }}
+            style={{
+              color: "#5C5953",
+              marginBottom: 0,
+              minHeight: isMobile ? 0 : 66,
+            }}
           >
             {place.excerpt ||
               place.description ||
@@ -152,6 +162,8 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   const { places: allPlaces } = usePlaces();
   const passCtaUrl = buildPassCtaUrl();
   const railRef = useRef(null);
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
 
   const visiblePlaces = useMemo(
     () =>
@@ -176,14 +188,14 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
         overflow: "hidden",
       }}
     >
-      <div style={{ padding: 26 }}>
+      <div style={{ padding: isMobile ? 20 : 26 }}>
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "stretch" : "center",
             justifyContent: "space-between",
-            gap: 18,
+            gap: isMobile ? 16 : 18,
           }}
         >
           <div>
@@ -196,32 +208,63 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
               }}
             >
               <span style={{ fontSize: 20 }}>🎁</span>
-              <Title level={2} style={{ margin: 0, color: "#8B4513" }}>
+                <Title
+                  level={2}
+                  style={{
+                    margin: 0,
+                    color: "#8B4513",
+                    fontSize: isMobile ? 32 : undefined,
+                    lineHeight: isMobile ? 1.08 : undefined,
+                  }}
+                >
                 Ahangama Pass Holders
               </Title>
             </div>
-            <Text style={{ color: "#6D655C", fontSize: 14 }}>
+            <Text
+              style={{
+                color: "#6D655C",
+                fontSize: isMobile ? 13 : 14,
+                lineHeight: isMobile ? 1.6 : undefined,
+              }}
+            >
               Enjoy perks with these partners.
             </Text>
           </div>
 
-          <Space size={10} wrap>
-            <Button
-              aria-label="Scroll pass partners left"
-              icon={<LeftOutlined />}
-              onClick={() => scrollRail(-1)}
-              style={{ borderRadius: 999 }}
-            />
-            <Button
-              aria-label="Scroll pass partners right"
-              icon={<RightOutlined />}
-              onClick={() => scrollRail(1)}
-              style={{ borderRadius: 999 }}
-            />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              gap: 10,
+              width: isMobile ? "100%" : "auto",
+              alignItems: isMobile ? "stretch" : "center",
+            }}
+          >
+            {!isMobile ? (
+              <div style={{ display: "flex", gap: 10 }}>
+                <Button
+                  aria-label="Scroll pass partners left"
+                  icon={<LeftOutlined />}
+                  onClick={() => scrollRail(-1)}
+                  style={{ borderRadius: 999, width: 44, height: 44 }}
+                />
+                <Button
+                  aria-label="Scroll pass partners right"
+                  icon={<RightOutlined />}
+                  onClick={() => scrollRail(1)}
+                  style={{ borderRadius: 999, width: 44, height: 44 }}
+                />
+              </div>
+            ) : null}
             <Button
               href={FULL_LIST_PATH}
               icon={<ArrowRightOutlined />}
-              style={{ borderRadius: 999, height: 44, paddingInline: 18 }}
+              style={{
+                borderRadius: 999,
+                height: 44,
+                paddingInline: 18,
+                width: isMobile ? "100%" : "auto",
+              }}
             >
               Full list
             </Button>
@@ -241,6 +284,7 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 borderRadius: 999,
                 height: 44,
                 paddingInline: 18,
+                width: isMobile ? "100%" : "auto",
                 background: "linear-gradient(135deg, #FFD700, #FFA500)",
                 border: "none",
                 boxShadow: "none",
@@ -248,16 +292,16 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             >
               Get your Pass
             </Button>
-          </Space>
+          </div>
         </div>
       </div>
 
-      <div style={{ padding: "0 26px 26px" }}>
+      <div style={{ padding: isMobile ? "0 20px 20px" : "0 26px 26px" }}>
         <div
           ref={railRef}
           style={{
             display: "flex",
-            gap: 18,
+            gap: isMobile ? 14 : 18,
             overflowX: "auto",
             paddingBottom: 8,
             scrollSnapType: "x proximity",
@@ -269,11 +313,14 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             <div
               key={place.id || place.slug || place.name}
               style={{
-                flex: "0 0 clamp(220px, calc((100% - 54px) / 3.5), 320px)",
+                flex: isMobile
+                  ? "0 0 82vw"
+                  : "0 0 clamp(220px, calc((100% - 54px) / 3.5), 320px)",
+                maxWidth: isMobile ? 320 : undefined,
                 scrollSnapAlign: "start",
               }}
             >
-              <PassVenueCard place={place} />
+              <PassVenueCard place={place} isMobile={isMobile} />
             </div>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Button, Card, Row, Space, Tag, Typography } from "antd";
+import { Button, Card, Grid, Space, Tag, Typography } from "antd";
 import {
   ArrowRightOutlined,
   HeartOutlined,
@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 
 const { Paragraph, Text, Title } = Typography;
+const { useBreakpoint } = Grid;
 
 export const WELLNESS_GUIDE_PATH =
   "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
@@ -57,6 +58,8 @@ const cards = [
 
 export default function WellnessGuideSection() {
   const railRef = useRef(null);
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
 
   function scrollRail(direction) {
     if (!railRef.current) return;
@@ -77,7 +80,7 @@ export default function WellnessGuideSection() {
         overflow: "hidden",
       }}
     >
-      <div style={{ padding: 26 }}>
+      <div style={{ padding: isMobile ? 20 : 26 }}>
         <Space wrap size={[10, 10]} style={{ marginBottom: 10 }}>
           <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
             New Guide
@@ -87,9 +90,25 @@ export default function WellnessGuideSection() {
           </Text>
         </Space>
 
-        <Row gutter={[18, 18]} align="middle" justify="space-between">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "stretch" : "center",
+            justifyContent: "space-between",
+            gap: isMobile ? 18 : 24,
+          }}
+        >
           <div style={{ flex: 1, minWidth: 0 }}>
-            <Title level={2} style={{ margin: 0, color: "#2F3E3A" }}>
+            <Title
+              level={2}
+              style={{
+                margin: 0,
+                color: "#2F3E3A",
+                fontSize: isMobile ? 34 : undefined,
+                lineHeight: isMobile ? 1.08 : undefined,
+              }}
+            >
               The Ultimate Wellness Guide to Ahangama: Yoga, Gyms, Pilates, Ice
               Baths & Spas
             </Title>
@@ -97,7 +116,8 @@ export default function WellnessGuideSection() {
               style={{
                 margin: "10px 0 0",
                 color: "#556057",
-                fontSize: 15,
+                fontSize: isMobile ? 14 : 15,
+                lineHeight: isMobile ? 1.6 : undefined,
                 maxWidth: 780,
               }}
             >
@@ -107,19 +127,37 @@ export default function WellnessGuideSection() {
             </Paragraph>
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Space size={10} wrap>
-              <Button
-                aria-label="Scroll wellness cards left"
-                icon={<LeftOutlined />}
-                onClick={() => scrollRail(-1)}
-                style={{ borderRadius: 999 }}
-              />
-              <Button
-                aria-label="Scroll wellness cards right"
-                icon={<RightOutlined />}
-                onClick={() => scrollRail(1)}
-                style={{ borderRadius: 999 }}
-              />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+                gap: 10,
+                width: isMobile ? "100%" : "auto",
+                alignItems: isMobile ? "stretch" : "center",
+              }}
+            >
+              {!isMobile ? (
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 10,
+                    justifyContent: "flex-start",
+                  }}
+                >
+                  <Button
+                    aria-label="Scroll wellness cards left"
+                    icon={<LeftOutlined />}
+                    onClick={() => scrollRail(-1)}
+                    style={{ borderRadius: 999, width: 44, height: 44 }}
+                  />
+                  <Button
+                    aria-label="Scroll wellness cards right"
+                    icon={<RightOutlined />}
+                    onClick={() => scrollRail(1)}
+                    style={{ borderRadius: 999, width: 44, height: 44 }}
+                  />
+                </div>
+              ) : null}
               <Button
                 type="primary"
                 size="large"
@@ -129,6 +167,7 @@ export default function WellnessGuideSection() {
                   borderRadius: 999,
                   height: 44,
                   paddingInline: 18,
+                  width: isMobile ? "100%" : "auto",
                   background: "#2F3E3A",
                   borderColor: "#2F3E3A",
                   boxShadow: "none",
@@ -136,17 +175,17 @@ export default function WellnessGuideSection() {
               >
                 View full guide
               </Button>
-            </Space>
+            </div>
           </div>
-        </Row>
+        </div>
       </div>
 
-      <div style={{ padding: "0 26px 26px" }}>
+      <div style={{ padding: isMobile ? "0 20px 20px" : "0 26px 26px" }}>
         <div
           ref={railRef}
           style={{
             display: "flex",
-            gap: 18,
+            gap: isMobile ? 14 : 18,
             overflowX: "auto",
             paddingBottom: 8,
             scrollSnapType: "x proximity",
@@ -158,7 +197,10 @@ export default function WellnessGuideSection() {
             <div
               key={card.key}
               style={{
-                flex: "0 0 clamp(220px, calc((100% - 54px) / 3.5), 320px)",
+                flex: isMobile
+                  ? "0 0 82vw"
+                  : "0 0 clamp(220px, calc((100% - 54px) / 3.5), 320px)",
+                maxWidth: isMobile ? 320 : undefined,
                 scrollSnapAlign: "start",
               }}
             >
@@ -185,13 +227,13 @@ export default function WellnessGuideSection() {
                 >
                   <div
                     style={{
-                      height: 220,
+                      height: isMobile ? 190 : 220,
                       backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.42) 100%), url(${card.image})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
                   />
-                  <div style={{ padding: 18 }}>
+                  <div style={{ padding: isMobile ? 16 : 18 }}>
                     <Space align="center" size={8} style={{ marginBottom: 10 }}>
                       <HeartOutlined style={{ color: "#6F8A74" }} />
                       <Text
@@ -212,7 +254,7 @@ export default function WellnessGuideSection() {
                         marginTop: 0,
                         marginBottom: 10,
                         color: "#2F3E3A",
-                        fontSize: 22,
+                        fontSize: isMobile ? 20 : 22,
                       }}
                     >
                       {card.title}
@@ -220,7 +262,7 @@ export default function WellnessGuideSection() {
                     <Paragraph
                       style={{
                         color: "#59534B",
-                        minHeight: 96,
+                        minHeight: isMobile ? 0 : 96,
                         marginBottom: 0,
                       }}
                     >
