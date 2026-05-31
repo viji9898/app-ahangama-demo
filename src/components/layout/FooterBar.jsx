@@ -188,7 +188,7 @@ export default function FooterBar() {
                 </Text>
                 <Button
                   block
-                  href="https://www.instagram.com/ahan.gama/"
+                  href="https://www.instagram.com/ahangama.pass"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{

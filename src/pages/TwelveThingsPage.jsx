@@ -5,6 +5,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { buildPassCtaUrl } from "../lib/passAttribution";
+import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -391,21 +392,18 @@ export default function TwelveThingsPage() {
                   </Paragraph>
 
                   <Space wrap size={12}>
-                    <Button
-                      type="primary"
-                      size="large"
+                    <a
                       href={passCtaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      icon={<ArrowRightOutlined />}
-                      style={{
-                        borderRadius: 999,
-                        background: "#2F3E3A",
-                        borderColor: "#2F3E3A",
-                      }}
+                      style={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      Get The Ahangama Pass
-                    </Button>
+                      <img
+                        src={ahangamaPassLogo}
+                        alt="Ahangama Pass"
+                        style={{ display: "block", height: 52, width: "auto" }}
+                      />
+                    </a>
                     <Button
                       size="large"
                       href="#guide-note"
@@ -636,23 +634,22 @@ export default function TwelveThingsPage() {
                       Unlock discounts, freebies, and collectibles across the
                       experiences in this guide.
                     </Paragraph>
-                    <Button
-                      type="primary"
-                      block
-                      size="large"
+                    <a
                       href={passCtaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      icon={<ArrowRightOutlined />}
                       style={{
-                        borderRadius: 999,
-                        background: "#FFF8F0",
-                        color: "#2F3E3A",
-                        borderColor: "#FFF8F0",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
                     >
-                      Get The Pass
-                    </Button>
+                      <img
+                        src={ahangamaPassLogo}
+                        alt="Ahangama Pass"
+                        style={{ display: "block", height: 52, width: "auto" }}
+                      />
+                    </a>
                   </Card>
                 </Col>
               </Row>

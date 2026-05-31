@@ -5,11 +5,13 @@ import {
   CarOutlined,
   EnvironmentOutlined,
   SafetyCertificateOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { buildPassCtaUrl } from "../lib/passAttribution";
+import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -104,6 +106,8 @@ const quickReference = [
 export default function GettingAroundAhangamaPage() {
   const canonical = absUrl(GUIDE_PATH);
   const passCtaUrl = buildPassCtaUrl();
+  const whatsappHelpUrl =
+    "https://wa.me/94777908790?text=Hi%20Ahangama%20-%20I%20need%20help%20with%20books%2C%20stays%2C%20experiences%2C%20transport%2C%20or%20local%20advice.";
 
   return (
     <SiteLayout>
@@ -165,23 +169,18 @@ export default function GettingAroundAhangamaPage() {
                   the south coast.
                 </Paragraph>
 
-                <Space wrap size={12}>
-                  <Button
-                    type="primary"
-                    size="large"
-                    href={passCtaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    icon={<ArrowRightOutlined />}
-                    style={{
-                      borderRadius: 999,
-                      background: "#2F3E3A",
-                      borderColor: "#2F3E3A",
-                    }}
-                  >
-                    Get The Ahangama Pass
-                  </Button>
-                </Space>
+                <a
+                  href={passCtaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  <img
+                    src={ahangamaPassLogo}
+                    alt="Ahangama Pass"
+                    style={{ display: "block", height: 52, width: "auto" }}
+                  />
+                </a>
               </Col>
 
               <Col xs={24} xl={10}>
@@ -359,6 +358,64 @@ export default function GettingAroundAhangamaPage() {
             ))}
           </div>
 
+          <a
+            href={whatsappHelpUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "block",
+              textDecoration: "none",
+              marginTop: 24,
+              marginBottom: 8,
+            }}
+          >
+            <Card
+              style={{
+                borderRadius: 18,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background: "linear-gradient(180deg, #fffdf9 0%, #f6efe6 100%)",
+                boxShadow: "0 8px 18px rgba(18,24,22,0.05)",
+              }}
+              bodyStyle={{ padding: "12px 16px" }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 14,
+                  minHeight: 50,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    minWidth: 0,
+                  }}
+                >
+                  <WhatsAppOutlined
+                    style={{ color: "#2F8F5B", fontSize: 20, flexShrink: 0 }}
+                  />
+                  <Text
+                    style={{
+                      color: "#3D3832",
+                      fontSize: 14,
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    Need help with bookings, stays, experiences, transport, or
+                    local insight? Drop us a WhatsApp on +94 77 790 8790.
+                  </Text>
+                </div>
+                <ArrowRightOutlined
+                  style={{ color: "#8B5A3C", fontSize: 16, flexShrink: 0 }}
+                />
+              </div>
+            </Card>
+          </a>
+
           <Divider style={{ margin: "32px 0" }} />
 
           <Card
@@ -422,23 +479,22 @@ export default function GettingAroundAhangamaPage() {
                 </div>
               </Col>
               <Col xs={24} lg={8}>
-                <Button
-                  type="primary"
-                  block
-                  size="large"
+                <a
                   href={passCtaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  icon={<ArrowRightOutlined />}
                   style={{
-                    borderRadius: 999,
-                    background: "#FFF8F0",
-                    color: "#2F3E3A",
-                    borderColor: "#FFF8F0",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  Get The Pass
-                </Button>
+                  <img
+                    src={ahangamaPassLogo}
+                    alt="Ahangama Pass"
+                    style={{ display: "block", height: 52, width: "auto" }}
+                  />
+                </a>
               </Col>
             </Row>
           </Card>
