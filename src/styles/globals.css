@@ -3452,13 +3452,13 @@
 }
 
 /* Responsive display utilities */
-@media (min-width: 769px) {
+@media (min-width: 451px) {
   .mobile-only {
     display: none !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 450px) {
   .desktop-only {
     display: none !important;
   }

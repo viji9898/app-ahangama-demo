@@ -149,7 +149,7 @@ export default function Home() {
                 }}
               >
                 <Row gutter={0} align="stretch">
-                  <Col xs={24} xl={10}>
+                  <Col xs={24} lg={11} xl={10}>
                     <div
                       style={{
                         position: "relative",
@@ -157,8 +157,9 @@ export default function Home() {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
-                        minHeight: 620,
-                        padding: "88px 56px 44px",
+                        minHeight: "clamp(520px, 56vw, 620px)",
+                        padding:
+                          "clamp(52px, 7vw, 88px) clamp(28px, 4.5vw, 56px) 44px",
                         background:
                           "linear-gradient(90deg, rgba(249,245,239,0.99) 0%, rgba(249,245,239,0.96) 70%, rgba(249,245,239,0.58) 100%)",
                       }}
@@ -182,7 +183,7 @@ export default function Home() {
                           style={{
                             margin: 0,
                             color: "#201E1B",
-                            fontSize: 86,
+                            fontSize: "clamp(62px, 7.2vw, 86px)",
                             lineHeight: 0.9,
                             fontWeight: 500,
                             letterSpacing: -2.6,
@@ -201,9 +202,9 @@ export default function Home() {
                           style={{
                             marginTop: 26,
                             marginBottom: 34,
-                            maxWidth: 470,
+                            maxWidth: 430,
                             color: "#49443D",
-                            fontSize: 18,
+                            fontSize: "clamp(16px, 1.65vw, 18px)",
                             lineHeight: 1.65,
                           }}
                         >
@@ -284,10 +285,10 @@ export default function Home() {
                     </div>
                   </Col>
 
-                  <Col xs={24} xl={14}>
+                  <Col xs={24} lg={13} xl={14}>
                     <div
                       style={{
-                        minHeight: 620,
+                        minHeight: "clamp(520px, 56vw, 620px)",
                         backgroundImage: `linear-gradient(90deg, rgba(249,245,239,0.98) 0%, rgba(249,245,239,0.9) 10%, rgba(249,245,239,0.56) 22%, rgba(249,245,239,0.16) 34%, rgba(0,0,0,0.12) 100%), url(${heroImage})`,
                         backgroundSize: "cover, cover",
                         backgroundPosition: "center, center center",
