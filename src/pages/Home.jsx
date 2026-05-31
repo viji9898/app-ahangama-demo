@@ -64,22 +64,70 @@ export default function Home() {
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
   const sectionSpacing = 32;
+  const editorialSerifFont =
+    '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
   const featureTagRailStyle = {
     display: "flex",
     gap: 8,
-    flexWrap: "nowrap",
-    overflowX: "auto",
+    flexWrap: "wrap",
     paddingBottom: 4,
-    marginBottom: 12,
+    marginBottom: 14,
     scrollbarWidth: "none",
     msOverflowStyle: "none",
   };
   const featureTagStyle = {
     borderRadius: 999,
-    padding: "6px 12px",
+    padding: "6px 10px",
     flex: "0 0 auto",
     marginInlineEnd: 0,
     whiteSpace: "nowrap",
+    background: "rgba(255,255,255,0.46)",
+    border: "1px solid rgba(32,30,27,0.08)",
+    color: "#8B7B63",
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: 1.2,
+    textTransform: "uppercase",
+  };
+  const editorialCardStyle = {
+    borderRadius: 30,
+    border: "1px solid rgba(32,30,27,0.08)",
+    background:
+      "linear-gradient(180deg, rgba(244,241,236,0.98) 0%, rgba(249,245,239,0.98) 100%)",
+    overflow: "hidden",
+    boxShadow: "0 18px 40px rgba(32,30,27,0.05)",
+  };
+  const editorialEyebrowStyle = {
+    display: "block",
+    marginBottom: 10,
+    color: "#B08E62",
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: 1.6,
+    textTransform: "uppercase",
+  };
+  const editorialTitleStyle = {
+    marginTop: 0,
+    marginBottom: 12,
+    color: "#1F1D1A",
+    lineHeight: 1.02,
+    letterSpacing: -0.02,
+    fontFamily: editorialSerifFont,
+  };
+  const editorialCopyStyle = {
+    marginBottom: 20,
+    color: "#5F574E",
+    fontSize: 16,
+    lineHeight: 1.8,
+    maxWidth: 760,
+  };
+  const editorialPrimaryButtonStyle = {
+    borderRadius: 999,
+    height: 44,
+    paddingInline: 18,
+    boxShadow: "none",
+    background: "#2F3E3A",
+    borderColor: "#2F3E3A",
   };
 
   const heroImage =
@@ -413,15 +461,8 @@ export default function Home() {
 
           <div style={{ marginTop: sectionSpacing }}>
             <Card
-              style={{
-                borderRadius: 26,
-                border: "1px solid rgba(32,30,27,0.08)",
-                background:
-                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
-                overflow: "hidden",
-                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
-              }}
-              bodyStyle={{ padding: 28 }}
+              style={editorialCardStyle}
+              bodyStyle={{ padding: 32 }}
             >
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={8}>
@@ -430,12 +471,12 @@ export default function Home() {
                       maxWidth: 320,
                       margin: "0 auto",
                       aspectRatio: "4 / 5",
-                      borderRadius: 22,
+                      borderRadius: 26,
                       overflow: "hidden",
                       border: "1px solid rgba(32,30,27,0.08)",
                       background:
                         "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
-                      boxShadow: "0 12px 28px rgba(32,30,27,0.08)",
+                      boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
                     }}
                   >
                     <video
@@ -456,6 +497,7 @@ export default function Home() {
                 </Col>
 
                 <Col xs={24} xl={16}>
+                  <Text style={editorialEyebrowStyle}>Travel Notes</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>
                       Personal Story
@@ -470,25 +512,13 @@ export default function Home() {
 
                   <Title
                     level={2}
-                    style={{
-                      marginTop: 0,
-                      marginBottom: 12,
-                      color: "#1F1D1A",
-                      lineHeight: 1.08,
-                      letterSpacing: -0.02,
-                    }}
+                    style={editorialTitleStyle}
                   >
                     Perfect Day in Ahangama - Denitsa
                   </Title>
 
                   <Paragraph
-                    style={{
-                      marginBottom: 18,
-                      color: "#5F574E",
-                      fontSize: 16,
-                      lineHeight: 1.75,
-                      maxWidth: 760,
-                    }}
+                    style={editorialCopyStyle}
                   >
                     Start the day with an amazing reformer workout at Pura
                     Pilates and, if you feel a little extra, add a mat class
@@ -585,12 +615,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={<ArrowRightOutlined />}
-                    style={{
-                      borderRadius: 999,
-                      height: 44,
-                      paddingInline: 18,
-                      boxShadow: "none",
-                    }}
+                    style={editorialPrimaryButtonStyle}
                   >
                     View Denitsa&apos;s Instagram
                   </Button>
@@ -601,18 +626,12 @@ export default function Home() {
 
           <div style={{ marginTop: sectionSpacing }}>
             <Card
-              style={{
-                borderRadius: 26,
-                border: "1px solid rgba(32,30,27,0.08)",
-                background:
-                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
-                overflow: "hidden",
-                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
-              }}
-              bodyStyle={{ padding: 28 }}
+              style={editorialCardStyle}
+              bodyStyle={{ padding: 32 }}
             >
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={16}>
+                  <Text style={editorialEyebrowStyle}>From the Journal</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>
                       Personal Story
@@ -627,25 +646,13 @@ export default function Home() {
 
                   <Title
                     level={2}
-                    style={{
-                      marginTop: 0,
-                      marginBottom: 12,
-                      color: "#1F1D1A",
-                      lineHeight: 1.08,
-                      letterSpacing: -0.02,
-                    }}
+                    style={editorialTitleStyle}
                   >
                     3 Days in Ahangama: My Wellness Stay at Samba
                   </Title>
 
                   <Paragraph
-                    style={{
-                      marginBottom: 18,
-                      color: "#5F574E",
-                      fontSize: 16,
-                      lineHeight: 1.75,
-                      maxWidth: 760,
-                    }}
+                    style={editorialCopyStyle}
                   >
                     I wanted three days in Ahangama that felt personal, soft,
                     and still slightly useful: enough time to work a little,
@@ -659,12 +666,7 @@ export default function Home() {
                     type="primary"
                     href="/3-days-in-ahangama"
                     icon={<ArrowRightOutlined />}
-                    style={{
-                      borderRadius: 999,
-                      height: 44,
-                      paddingInline: 18,
-                      boxShadow: "none",
-                    }}
+                    style={editorialPrimaryButtonStyle}
                   >
                     Read the story
                   </Button>
@@ -673,12 +675,13 @@ export default function Home() {
                 <Col xs={24} xl={8}>
                   <div
                     style={{
-                      minHeight: 240,
-                      borderRadius: 22,
+                      minHeight: 260,
+                      borderRadius: 26,
                       backgroundImage:
                         "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.22) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp)",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
+                      boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
                     }}
                   />
                 </Col>
@@ -688,18 +691,12 @@ export default function Home() {
 
           <div style={{ marginTop: 20 }}>
             <Card
-              style={{
-                borderRadius: 24,
-                border: "1px solid rgba(32,30,27,0.08)",
-                background:
-                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
-                overflow: "hidden",
-                boxShadow: "0 12px 28px rgba(32,30,27,0.05)",
-              }}
-              bodyStyle={{ padding: 24 }}
+              style={editorialCardStyle}
+              bodyStyle={{ padding: 30 }}
             >
               <Row gutter={[18, 18]} align="middle">
                 <Col xs={24} xl={15}>
+                  <Text style={editorialEyebrowStyle}>Field Guide</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>
                       Pass Guide
@@ -714,25 +711,13 @@ export default function Home() {
 
                   <Title
                     level={3}
-                    style={{
-                      marginTop: 0,
-                      marginBottom: 12,
-                      color: "#1F1D1A",
-                      lineHeight: 1.08,
-                      letterSpacing: -0.02,
-                    }}
+                    style={{ ...editorialTitleStyle, fontSize: 38 }}
                   >
                     What is the Ahangama Pass?
                   </Title>
 
                   <Paragraph
-                    style={{
-                      marginBottom: 18,
-                      color: "#5F574E",
-                      fontSize: 15,
-                      lineHeight: 1.75,
-                      maxWidth: 700,
-                    }}
+                    style={{ ...editorialCopyStyle, fontSize: 15, maxWidth: 700 }}
                   >
                     A simple local access pass you keep in Apple Wallet or
                     Google Wallet for partner perks, curated recommendations,
@@ -744,12 +729,7 @@ export default function Home() {
                     type="primary"
                     href="/what-is-ahangama-pass"
                     icon={<ArrowRightOutlined />}
-                    style={{
-                      borderRadius: 999,
-                      height: 42,
-                      paddingInline: 18,
-                      boxShadow: "none",
-                    }}
+                    style={editorialPrimaryButtonStyle}
                   >
                     Read the guide
                   </Button>
@@ -758,8 +738,8 @@ export default function Home() {
                 <Col xs={24} xl={9}>
                   <div
                     style={{
-                      minHeight: 220,
-                      borderRadius: 20,
+                      minHeight: 240,
+                      borderRadius: 24,
                       border: "1px solid rgba(32,30,27,0.08)",
                       background:
                         "radial-gradient(circle at top, rgba(255,255,255,0.78) 0%, rgba(239,231,218,0.96) 42%, rgba(227,216,201,0.98) 100%)",
@@ -789,18 +769,12 @@ export default function Home() {
 
           <div style={{ marginTop: sectionSpacing }}>
             <Card
-              style={{
-                borderRadius: 26,
-                border: "1px solid rgba(32,30,27,0.08)",
-                background:
-                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(247,243,236,0.98) 100%)",
-                overflow: "hidden",
-                boxShadow: "0 14px 32px rgba(32,30,27,0.05)",
-              }}
-              bodyStyle={{ padding: 28 }}
+              style={editorialCardStyle}
+              bodyStyle={{ padding: 32 }}
             >
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={16}>
+                  <Text style={editorialEyebrowStyle}>Editorial Guide</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>
                       Editorial Guide
@@ -815,25 +789,13 @@ export default function Home() {
 
                   <Title
                     level={2}
-                    style={{
-                      marginTop: 0,
-                      marginBottom: 12,
-                      color: "#1F1D1A",
-                      lineHeight: 1.08,
-                      letterSpacing: -0.02,
-                    }}
+                    style={editorialTitleStyle}
                   >
                     12 Things to Do in Ahangama
                   </Title>
 
                   <Paragraph
-                    style={{
-                      marginBottom: 18,
-                      color: "#5F574E",
-                      fontSize: 16,
-                      lineHeight: 1.75,
-                      maxWidth: 760,
-                    }}
+                    style={editorialCopyStyle}
                   >
                     A more editorial way to explore Ahangama: twelve standout
                     experiences across wellness, adventure, food, shopping, and
@@ -846,12 +808,7 @@ export default function Home() {
                     type="primary"
                     href="/12-things"
                     icon={<ArrowRightOutlined />}
-                    style={{
-                      borderRadius: 999,
-                      height: 44,
-                      paddingInline: 18,
-                      boxShadow: "none",
-                    }}
+                    style={editorialPrimaryButtonStyle}
                   >
                     Read the guide
                   </Button>
@@ -860,11 +817,12 @@ export default function Home() {
                 <Col xs={24} xl={8}>
                   <div
                     style={{
-                      minHeight: 240,
-                      borderRadius: 22,
-                      padding: 10,
+                      minHeight: 248,
+                      borderRadius: 26,
+                      padding: 12,
                       background: "rgba(255,255,255,0.58)",
                       border: "1px solid rgba(32,30,27,0.08)",
+                      boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
                     }}
                   >
                     <div
@@ -1105,20 +1063,19 @@ export default function Home() {
           <div style={{ marginTop: sectionSpacing - 8 }}>
             <Card
               className="ahg-cardCta"
-              style={{
-                borderRadius: 22,
-                border: "1px solid rgba(32,30,27,0.08)",
-                background:
-                  "linear-gradient(180deg, rgba(251,248,242,0.98) 0%, rgba(246,240,231,0.98) 100%)",
-              }}
-              bodyStyle={{ padding: 24 }}
+              style={editorialCardStyle}
+              bodyStyle={{ padding: 30 }}
             >
               <Row gutter={[16, 16]} align="middle">
                 <Col xs={24} md={16}>
-                  <Title level={3} style={{ marginTop: 0, marginBottom: 8 }}>
+                  <Text style={editorialEyebrowStyle}>Pass Access</Text>
+                  <Title
+                    level={3}
+                    style={{ ...editorialTitleStyle, marginBottom: 10, fontSize: 38 }}
+                  >
                     The Ahangama Card
                   </Title>
-                  <Paragraph style={{ marginBottom: 14, color: "#5F574E" }}>
+                  <Paragraph style={{ ...editorialCopyStyle, marginBottom: 16, fontSize: 15 }}>
                     Built for people staying more than a few days. Simple vendor
                     verification, real perks, and a curated venue list that
                     grows over time.
@@ -1166,6 +1123,7 @@ export default function Home() {
                         destinationUrl: passCtaUrl,
                       });
                     }}
+                    style={{ ...editorialPrimaryButtonStyle, width: "100%" }}
                   >
                     Get the Card
                   </Button>

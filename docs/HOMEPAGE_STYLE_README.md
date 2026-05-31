@@ -5,6 +5,10 @@ This document describes the current visual system of the site based on the homep
 ## Source files
 
 - `src/pages/Home.jsx`
+- `src/components/layout/FooterBar.jsx`
+- `src/components/home/GettingAroundSection.jsx`
+- `src/components/home/WellnessGuideSection.jsx`
+- `src/components/home/PassPartnersStrip.jsx`
 - `src/components/home/HeroSectionMobile.jsx`
 - `src/components/layout/TopNav.jsx`
 - `src/components/layout/SiteLayout.jsx`
@@ -19,6 +23,33 @@ The site uses a warm editorial travel-magazine look rather than a startup or app
 - Contrast: soft overall, with dark ink used for hierarchy and calls to action
 - Shape language: rounded cards, pill buttons, soft shadows, large hero radii
 - Composition: generous whitespace, wide wrappers, strong hero typography, restrained accent colors
+
+## Editorial north star
+
+The current direction should feel like the back pages of a premium travel magazine, not a SaaS product, tourism portal, or dashboard.
+
+Use these references as the mental model:
+
+- Monocle
+- Cereal Magazine
+- Suitcase Magazine
+- Kinfolk
+- High-end independent travel publications
+
+When designing or editing homepage sections, optimize for:
+
+- editorial hierarchy over widget hierarchy
+- serif-led feature titles rather than generic UI headings
+- quiet luxury rather than loud conversion styling
+- discoverability through composition and copy, not badges and hard-sell UI
+- soft, premium surfaces instead of stark white cards
+
+Do not introduce:
+
+- corporate multi-column footer patterns
+- app-dashboard filter bars unless the section genuinely needs them
+- bright marketing gradients or glossy button treatments
+- dense navigation blocks pretending to be editorial content
 
 ## Layout shell
 
@@ -79,6 +110,15 @@ Use it for:
 - Navbar wordmark
 - Large editorial titles
 - Footer brand treatments
+- Homepage story modules like `Perfect Day in Ahangama`, `3 Days in Ahangama`, `What is the Ahangama Pass?`, and `12 Things to Do in Ahangama`
+
+### Editorial serif fallback used in newer sections
+
+Some of the newer homepage and footer work also uses:
+
+`"Cormorant Garamond", "Libre Baskerville", Georgia, serif`
+
+This is acceptable for newer editorial modules. If touching an existing section, preserve the current serif stack already used in that section rather than mixing multiple new serif recipes.
 
 ### Body / UI text
 
@@ -114,6 +154,16 @@ These are the current homepage values worth reusing.
 - Card paragraph: `16px`, line-height `1.75`, color `#5F574E`
 - Tags / pills: compact, rounded, uppercase-adjacent feel, generally `11px` to `13px`
 
+### Editorial module typography
+
+This is the current preferred recipe for feature modules and footer blocks.
+
+- Eyebrow / metadata label: `11px`, `700`, `letterSpacing: 1.6`, uppercase, color `#B08E62`
+- Metadata chips: `11px`, `700`, uppercase, color `#8B7B63`, with subtle cream/white background
+- Major editorial title: serif, dark ink, line-height close to `1.02`
+- Editorial body copy: `15px` to `16px`, line-height `1.75` to `1.8`, color `#5F574E` or `#6D655C`
+- Bottom-bar or utility metadata: `12px`, restrained letter spacing, muted brown-gray
+
 ## Spacing system
 
 The homepage uses relatively restrained but consistent spacing.
@@ -132,7 +182,9 @@ The site consistently uses rounded geometry.
 
 - Hero outer radius: `30px`
 - Large cards: `26px`
+- New editorial cards / footer shell: `28px` to `36px`
 - Secondary panels / media blocks: `22px`
+- Editorial media blocks: `24px` to `26px`
 - Large token in globals: `--dm-radius-xl: 26px`
 - Medium token in globals: `--dm-radius-lg: 18px`
 - Small token in globals: `--dm-radius-md: 14px`
@@ -152,6 +204,26 @@ Current homepage CTA styling uses:
 - Border: usually matching fill or removed
 - Shadow: `none`
 - Weight: `600`
+
+### Editorial CTA recipe
+
+For the newer homepage story modules and footer:
+
+- Height: `42px` to `48px`
+- Radius: `999px`
+- Background: `#2F3E3A`
+- Border: `#2F3E3A`
+- Text color: `#FFFFFF`
+- Shadow: `none`
+
+Use this for:
+
+- `Read the story`
+- `Read the guide`
+- `Subscribe`
+- `Get the Card`
+
+If a CTA is intentionally secondary, use a light cream/white translucent button with muted brown-gray text rather than default Ant secondary styling.
 
 ### Pass logo treatment
 
@@ -177,6 +249,38 @@ Used for editorial cards like `3 Days in Ahangama` and `12 Things to Do in Ahang
 - Shadow: `0 14px 32px rgba(32,30,27,0.05)`
 - Body padding: `28px`
 
+### Current editorial feature recipe
+
+This is now the preferred recipe for homepage editorial modules and the footer shell.
+
+- Border: `1px solid rgba(32,30,27,0.08)`
+- Background: `linear-gradient(180deg, rgba(244,241,236,0.98) 0%, rgba(249,245,239,0.98) 100%)`
+- Shadow: `0 18px 40px rgba(32,30,27,0.05)`
+- Outer radius: `30px` for major modules
+- Inner media radius: `24px` to `26px`
+- Padding: `30px` to `40px` depending on module scale
+
+Use this for:
+
+- homepage editorial story cards
+- the editorial footer shell
+- premium narrative CTAs that are part of content rather than utility UI
+
+Avoid reverting new editorial sections back to the older flatter `26px / 28px` card recipe unless you are working inside an untouched older module and intentionally preserving that look.
+
+### Footer-specific recipe
+
+The footer is now a major editorial surface, not a standard utility footer.
+
+- Outer background: transparent page background
+- Footer shell: warm off-white `#F4F1EC`
+- Outer radius: `28px` mobile, `36px` desktop
+- Shadow: `0 18px 44px rgba(32,30,27,0.05)`
+- Internal sections separated by subtle top borders only
+- Use editorial blocks, lists, and story cards rather than columns of corporate links
+
+The footer should feel like the final pages of a travel publication.
+
 ### Hero card recipe
 
 - Outer radius: `30px`
@@ -192,6 +296,8 @@ Used for editorial cards like `3 Days in Ahangama` and `12 Things to Do in Ahang
 - Hero image blocks keep rounded corners and restrained shadow depth
 - Mosaic or collage layouts are acceptable when they support an editorial story
 - Avoid harsh borders or high-contrast drop shadows around images
+- Video and image panels should feel like story art direction, not media widgets
+- Imagery containers in editorial modules should usually be larger, softer, and more atmospheric than utility cards
 
 ## Responsive behavior
 
@@ -208,6 +314,24 @@ Used for editorial cards like `3 Days in Ahangama` and `12 Things to Do in Ahang
 - Pass CTA becomes centered logo treatment
 - Metrics wrap and center below the logo
 - Navbar becomes a stacked shell with condensed controls
+- Editorial buttons should generally become full width when they sit alone in a mobile column
+- Footer editorial blocks should stack vertically with generous spacing rather than compressing into small columns
+- Discovery links can become a two-column text grid on mobile
+
+## Homepage editorial sections to treat as the source of truth
+
+For the current visual direction, these modules are the strongest references:
+
+- `Perfect Day in Ahangama - Denitsa` in `src/pages/Home.jsx`
+- `3 Days in Ahangama: My Wellness Stay at Samba` in `src/pages/Home.jsx`
+- `What is the Ahangama Pass?` in `src/pages/Home.jsx`
+- `12 Things to Do in Ahangama` in `src/pages/Home.jsx`
+- `GettingAroundSection.jsx`
+- `WellnessGuideSection.jsx`
+- `PassPartnersStrip.jsx`
+- `FooterBar.jsx`
+
+When creating a new homepage section, copy the feel of one of these before inventing a new visual pattern.
 
 ## Styling principles to keep
 
@@ -219,6 +343,9 @@ Used for editorial cards like `3 Days in Ahangama` and `12 Things to Do in Ahang
 - Keep buttons visually restrained; avoid glossy or overly app-like treatment
 - Use inline styles for page-specific visual tuning when that is already the pattern
 - Use `globals.css` tokens and shared classes for system-level consistency
+- Make sections feel like pages or spreads from a magazine, not components from a UI kit
+- Use metadata labels, story framing, and image composition to create hierarchy
+- Keep link groups elegant and text-led rather than boxed and over-structured
 
 ## Styling principles to avoid
 
@@ -229,6 +356,10 @@ Used for editorial cards like `3 Days in Ahangama` and `12 Things to Do in Ahang
 - Generic blue primary buttons that ignore the ink-and-cream system
 - Overusing purple, especially outside wellness contexts
 - Introducing a new font stack without aligning the rest of the homepage
+- Corporate footers with many equal-weight link columns
+- Generic product-card grids when the content should read as editorial
+- Over-badging, over-labeling, or using too many app-like pills in one module
+- Hard conversion UX in sections that are meant to feel narrative and premium
 
 ## Suggested default recipe for new homepage-like sections
 
@@ -236,13 +367,23 @@ If you need to add a new section that feels native to the current homepage, star
 
 - Wrapper inside `.dm-canvas > .dm-wrap`
 - Top margin: `32px`
-- Card radius: `26px`
-- Card padding: `24px` to `28px`
+- Major card radius: `30px`
+- Card padding: `30px` to `32px`
 - Border: `1px solid rgba(32,30,27,0.08)`
-- Background: warm cream gradient surface
-- Title: dark ink, serif only if it is a major editorial moment
-- Supporting copy: `16px`, line-height `1.7` to `1.8`, muted brown-gray
-- CTA: ink button or pass logo, depending on the destination
+- Background: `linear-gradient(180deg, rgba(244,241,236,0.98) 0%, rgba(249,245,239,0.98) 100%)`
+- Eyebrow: `11px`, uppercase, gold-brown metadata style
+- Title: serif, dark ink, line-height around `1.02`
+- Supporting copy: `15px` to `16px`, line-height `1.75` to `1.8`, muted brown-gray
+- CTA: dark editorial pill button or pass logo, depending on the destination
+- Media block: `24px` to `26px` radius with soft overlay or warm translucent background
+
+## Implementation note
+
+The current system is still mostly inline-style driven. For consistency:
+
+- reuse the exact values already established in `Home.jsx`, `FooterBar.jsx`, `GettingAroundSection.jsx`, `WellnessGuideSection.jsx`, and `PassPartnersStrip.jsx`
+- prefer copying an existing editorial section and adapting content over inventing a new component recipe
+- if you later centralize tokens, preserve the visual output first and refactor second
 
 ## Maintenance notes
 

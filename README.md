@@ -9,6 +9,7 @@ This repository powers:
 
 Primary docs:
 
+- [docs/HOMEPAGE_STYLE_README.md](/Users/viji/DevEnv/ahangama-app/docs/HOMEPAGE_STYLE_README.md)
 - [docs/pass-workflow.md](/Users/viji/DevEnv/ahangama-app/docs/pass-workflow.md)
 - [STRIPE_ENVIRONMENTS.md](/Users/viji/DevEnv/ahangama-app/STRIPE_ENVIRONMENTS.md)
 
