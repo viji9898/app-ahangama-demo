@@ -35,6 +35,7 @@ import GettingAroundAhangamaPage from "../pages/GettingAroundAhangamaPage";
 import TwelveThingsPage from "../pages/TwelveThingsPage";
 import FullListPage from "../pages/FullListPage";
 import UltimateWellnessGuidePage from "../pages/UltimateWellnessGuidePage";
+import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import ExternalRedirect from "./ExternalRedirect";
 
@@ -57,6 +58,7 @@ const routes = [
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
     element: <UltimateWellnessGuidePage />,
   },
+  { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
   {
     path: "/The-Ultimate-Wellness-Guide-to-Ahangama:-Yoga-Gyms-Pilates-Ice-Baths-Spas",
     element: <UltimateWellnessGuidePage />,

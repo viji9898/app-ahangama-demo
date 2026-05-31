@@ -319,6 +319,93 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 24 }}>
+            <Card
+              style={{
+                borderRadius: 26,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background:
+                  "linear-gradient(135deg, rgba(248,242,233,0.98) 0%, rgba(255,252,246,0.98) 100%)",
+                overflow: "hidden",
+              }}
+              bodyStyle={{ padding: 24 }}
+            >
+              <Row gutter={[20, 20]} align="middle">
+                <Col xs={24} xl={16}>
+                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Personal Story
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      3-Day Ahangama Guide
+                    </Tag>
+                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
+                      Wellness + Coworking
+                    </Tag>
+                  </Space>
+
+                  <Title
+                    level={2}
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 12,
+                      color: "#2F3E3A",
+                      lineHeight: 1.08,
+                    }}
+                  >
+                    3 Days in Ahangama: My Wellness Stay at Samba
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginBottom: 18,
+                      color: "#5C5953",
+                      fontSize: 16,
+                      lineHeight: 1.75,
+                      maxWidth: 760,
+                    }}
+                  >
+                    I wanted three days in Ahangama that felt personal, soft,
+                    and still slightly useful: enough time to work a little,
+                    train a little, recover properly, and still keep the town
+                    feeling light. So I based the whole trip at Samba and built
+                    the days around the live pass partners that actually
+                    improve that kind of stay.
+                  </Paragraph>
+
+                  <Button
+                    type="primary"
+                    href="/3-days-in-ahangama"
+                    icon={<ArrowRightOutlined />}
+                    style={{
+                      borderRadius: 999,
+                      height: 44,
+                      paddingInline: 18,
+                      background: "#2F3E3A",
+                      borderColor: "#2F3E3A",
+                      boxShadow: "none",
+                    }}
+                  >
+                    Read the story
+                  </Button>
+                </Col>
+
+                <Col xs={24} xl={8}>
+                  <div
+                    style={{
+                      minHeight: 240,
+                      borderRadius: 22,
+                      backgroundImage:
+                        "linear-gradient(180deg, rgba(18,25,24,0.05) 0%, rgba(18,25,24,0.34) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  />
+                </Col>
+              </Row>
+            </Card>
+          </div>
+
+          <div style={{ marginTop: 24 }}>
             <TwelveThingsSection />
           </div>
 
