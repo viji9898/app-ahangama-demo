@@ -447,35 +447,6 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
       </div>
 
       <div style={{ padding: isMobile ? "0 20px 20px" : "0 26px 26px" }}>
-        {hasMorePlaces ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: isMobile ? "flex-start" : "flex-end",
-              marginBottom: 10,
-            }}
-          >
-            <div
-              style={{
-                borderRadius: 999,
-                padding: "6px 12px",
-                background: "rgba(243,236,217,0.8)",
-                border: "1px solid rgba(176,142,98,0.18)",
-              }}
-            >
-              <Text
-                style={{
-                  color: "#7A6850",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  letterSpacing: 0.3,
-                }}
-              >
-                {isMobile ? "More venues load as you swipe" : "More venues load as you scroll"}
-              </Text>
-            </div>
-          </div>
-        ) : null}
         <div
           ref={railRef}
           onScroll={handleRailScroll}
