@@ -116,6 +116,20 @@ const THREE_DAYS_FEATURED_PLACES = [
   "Kaffi",
 ];
 
+const TWELVE_THINGS_GUIDE_META = [
+  "12 Experiences",
+  "5 Categories",
+  "Updated Monthly",
+  "Most Read Guide",
+];
+
+const TWELVE_THINGS_GUIDE_PREVIEW = [
+  "Sauna & Ice Bath",
+  "Self Drive Tuk Tuk",
+  "Pickleball",
+  "Lighthouse Sunset",
+];
+
 export default function Home() {
   const { loading, places } = usePlaces();
   const canonical = absUrl("/");
@@ -1436,8 +1450,8 @@ export default function Home() {
 
           <div style={{ marginTop: sectionSpacing }}>
             <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
-              <Row gutter={[20, 20]} align="middle">
-                <Col xs={24} xl={16}>
+              <Row gutter={[28, 28]} align="middle">
+                <Col xs={24} xl={14}>
                   <Text style={editorialEyebrowStyle}>Editorial Guide</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>Editorial Guide</Tag>
@@ -1447,11 +1461,49 @@ export default function Home() {
                     </Tag>
                   </div>
 
-                  <Title level={2} style={editorialTitleStyle}>
+                  <Title
+                    level={2}
+                    style={{
+                      ...editorialTitleStyle,
+                      marginBottom: 14,
+                      fontSize: "clamp(36px, 3.5vw, 54px)",
+                      lineHeight: 0.96,
+                    }}
+                  >
                     12 Things to Do in Ahangama
                   </Title>
 
-                  <Paragraph style={editorialCopyStyle}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 10,
+                      marginBottom: 18,
+                    }}
+                  >
+                    {TWELVE_THINGS_GUIDE_META.map((item) => (
+                      <Text
+                        key={item}
+                        style={{
+                          color: "#8B7B63",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          letterSpacing: 1.5,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {item}
+                      </Text>
+                    ))}
+                  </div>
+
+                  <Paragraph
+                    style={{
+                      ...editorialCopyStyle,
+                      maxWidth: 680,
+                      marginBottom: 20,
+                    }}
+                  >
                     A more editorial way to explore Ahangama: twelve standout
                     experiences across wellness, adventure, food, shopping, and
                     slow coastal rituals. It is the guide to open when you want
@@ -1459,20 +1511,107 @@ export default function Home() {
                     here.
                   </Paragraph>
 
-                  <Button
-                    type="primary"
-                    href="/12-things"
-                    icon={<ArrowRightOutlined />}
-                    style={editorialPrimaryButtonStyle}
-                  >
-                    Read the guide
-                  </Button>
-                </Col>
-
-                <Col xs={24} xl={8}>
                   <div
                     style={{
-                      minHeight: 248,
+                      display: "grid",
+                      gridTemplateColumns: "minmax(0, 1fr) minmax(240px, 300px)",
+                      gap: 28,
+                      alignItems: "start",
+                    }}
+                  >
+                    <div>
+                      <Text style={editorialEyebrowStyle}>Editor&apos;s Note</Text>
+                      <Paragraph
+                        style={{
+                          marginBottom: 0,
+                          color: "#5F574E",
+                          fontSize: 15,
+                          lineHeight: 1.78,
+                        }}
+                      >
+                        If somebody asked us what to do in Ahangama for the
+                        first time, this is where we&apos;d send them.
+                      </Paragraph>
+                    </div>
+
+                    <div>
+                      <Text style={editorialEyebrowStyle}>Inside This Guide</Text>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 12,
+                          paddingTop: 14,
+                          borderTop: "1px solid rgba(32,30,27,0.08)",
+                        }}
+                      >
+                        {TWELVE_THINGS_GUIDE_PREVIEW.map((item, index) => (
+                          <div
+                            key={item}
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "32px minmax(0, 1fr)",
+                              gap: 10,
+                              alignItems: "baseline",
+                            }}
+                          >
+                            <Text
+                              style={{
+                                color: "#8B7B63",
+                                fontSize: 12,
+                                fontWeight: 700,
+                                letterSpacing: 1.1,
+                              }}
+                            >
+                              {String(index + 1).padStart(2, "0")}
+                            </Text>
+                            <Text
+                              style={{
+                                color: "#2F2A24",
+                                fontSize: 16,
+                                lineHeight: 1.45,
+                              }}
+                            >
+                              {item}
+                            </Text>
+                          </div>
+                        ))}
+                        <Text
+                          style={{
+                            paddingTop: 2,
+                            color: "#8B7B63",
+                            fontSize: 12,
+                            fontWeight: 700,
+                            letterSpacing: 1.2,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          + 8 More Experiences
+                        </Text>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: 28 }}>
+                    <a
+                      href="/12-things"
+                      style={{
+                        color: "#2F3E3A",
+                        textDecoration: "none",
+                        fontSize: 16,
+                        fontWeight: 600,
+                        letterSpacing: 0.1,
+                      }}
+                    >
+                      Explore All 12 Experiences <ArrowRightOutlined />
+                    </a>
+                  </div>
+                </Col>
+
+                <Col xs={24} xl={10}>
+                  <div
+                    style={{
+                      minHeight: 300,
                       borderRadius: 26,
                       padding: 12,
                       background: "rgba(255,255,255,0.58)",
@@ -1488,19 +1627,37 @@ export default function Home() {
                       }}
                     >
                       {twelveThingsMosaic.map((item) => (
-                        <div
+                        <a
                           key={item.slug}
+                          href="/12-things"
                           title={item.name}
+                          aria-label={`Open 12 Things guide from ${item.name}`}
                           style={{
+                            display: "block",
                             aspectRatio: "1 / 1",
                             borderRadius: 12,
                             backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${item.image})`,
                             backgroundSize: "cover",
                             backgroundPosition: "center",
+                            textDecoration: "none",
+                            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.12)",
                           }}
                         />
                       ))}
                     </div>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginTop: 12,
+                        color: "#8B7B63",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: 1.2,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Open any tile to enter the guide
+                    </Text>
                   </div>
                 </Col>
               </Row>
