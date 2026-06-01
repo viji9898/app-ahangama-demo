@@ -313,112 +313,156 @@ export default function Home() {
                           "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
                       }}
                     >
-                      <Row gutter={[40, 32]} align="top">
-                        <Col xs={24} xl={13}>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexWrap: "wrap",
-                              gap: 12,
-                              marginBottom: 18,
-                            }}
-                          >
-                            {[
-                              "Issue 2026 / 27",
-                              "The Ahangama Guide",
-                              "Updated Weekly",
-                              "Local Editorial Team",
-                            ].map((item) => (
-                              <Text
-                                key={item}
-                                style={{
-                                  color: "#8B7B63",
-                                  fontSize: 11,
-                                  fontWeight: 700,
-                                  letterSpacing: 1.6,
-                                  textTransform: "uppercase",
-                                }}
-                              >
-                                {item}
-                              </Text>
-                            ))}
-                          </div>
-
-                          <Text style={editorialEyebrowStyle}>Cover Story</Text>
-
-                          <Title
-                            style={{
-                              margin: 0,
-                              color: "#201E1B",
-                              fontSize: "clamp(54px, 6vw, 76px)",
-                              lineHeight: 0.92,
-                              fontWeight: 500,
-                              letterSpacing: -2.1,
-                              fontFamily:
-                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                            }}
-                          >
-                            The Ahangama Guide
-                          </Title>
-
-                          <Text style={editorialEyebrowStyle}>
-                            From the Editor
-                          </Text>
-
-                          <Paragraph
-                            style={{
-                              marginTop: 24,
-                              marginBottom: 22,
-                              maxWidth: 520,
-                              color: "#49443D",
-                              fontSize: "clamp(16px, 1.45vw, 19px)",
-                              lineHeight: 1.72,
-                            }}
-                          >
-                            A curated guide to cafes, stays, wellness, surf, food
-                            and local experiences across Ahangama. Written and
-                            updated by a local team who live here.
-                          </Paragraph>
-
-                        </Col>
-
+                      <Row gutter={[40, 32]} align="stretch">
                         <Col xs={24} xl={11}>
                           <div
                             style={{
-                              display: "grid",
-                              gridTemplateColumns: "minmax(0, 220px)",
-                              gap: 24,
-                              marginBottom: 30,
-                              maxWidth: 560,
+                              minHeight: "100%",
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "center",
                             }}
                           >
-                            <div>
-                              <Text style={editorialEyebrowStyle}>
-                                Member Benefits
-                              </Text>
-                              <a
-                                href={passCtaUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => {
-                                  trackPassCtaClick({
-                                    ctaLocation: "hero_text_link",
-                                    destinationUrl: passCtaUrl,
-                                  });
-                                }}
-                                style={{
-                                  color: "#8B7B63",
-                                  textDecoration: "none",
-                                  fontSize: 16,
-                                  fontWeight: 600,
-                                  lineHeight: 1.55,
-                                }}
-                              >
-                                Get the Ahangama Pass <ArrowRightOutlined />
-                              </a>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 12,
+                                marginBottom: 18,
+                              }}
+                            >
+                              {[
+                                "Issue 2026 / 27",
+                                "The Ahangama Guide",
+                                "Updated Weekly",
+                                "Local Editorial Team",
+                              ].map((item) => (
+                                <Text
+                                  key={item}
+                                  style={{
+                                    color: "#8B7B63",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    letterSpacing: 1.6,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  {item}
+                                </Text>
+                              ))}
+                            </div>
+
+                            <Text style={editorialEyebrowStyle}>Cover Story</Text>
+
+                            <Title
+                              style={{
+                                margin: 0,
+                                color: "#201E1B",
+                                fontSize: "clamp(54px, 6vw, 76px)",
+                                lineHeight: 0.92,
+                                fontWeight: 500,
+                                letterSpacing: -2.1,
+                                fontFamily:
+                                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                              }}
+                            >
+                              The Ahangama Guide
+                            </Title>
+
+                            <Text style={editorialEyebrowStyle}>
+                              From the Editor
+                            </Text>
+
+                            <Paragraph
+                              style={{
+                                marginTop: 24,
+                                marginBottom: 22,
+                                maxWidth: 520,
+                                color: "#49443D",
+                                fontSize: "clamp(16px, 1.45vw, 19px)",
+                                lineHeight: 1.72,
+                              }}
+                            >
+                              A curated guide to cafes, stays, wellness, surf, food
+                              and local experiences across Ahangama. Written and
+                              updated by a local team who live here.
+                            </Paragraph>
+
+                            <div
+                              style={{
+                                display: "grid",
+                                gridTemplateColumns: "minmax(0, 220px)",
+                                gap: 24,
+                                maxWidth: 560,
+                              }}
+                            >
+                              <div>
+                                <Text style={editorialEyebrowStyle}>
+                                  Member Benefits
+                                </Text>
+                                <a
+                                  href={passCtaUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={() => {
+                                    trackPassCtaClick({
+                                      ctaLocation: "hero_text_link",
+                                      destinationUrl: passCtaUrl,
+                                    });
+                                  }}
+                                  style={{
+                                    color: "#8B7B63",
+                                    textDecoration: "none",
+                                    fontSize: 16,
+                                    fontWeight: 600,
+                                    lineHeight: 1.55,
+                                  }}
+                                >
+                                  Get the Ahangama Pass <ArrowRightOutlined />
+                                </a>
+                              </div>
                             </div>
                           </div>
+                        </Col>
 
+                        <Col xs={24} xl={13}>
+                          <div
+                            style={{
+                              position: "relative",
+                              minHeight: "100%",
+                              height: "100%",
+                              display: "flex",
+                              alignItems: "stretch",
+                              justifyContent: "flex-end",
+                              overflow: "hidden",
+                              borderRadius: 28,
+                            }}
+                          >
+                            <div
+                              aria-hidden="true"
+                              style={{
+                                position: "absolute",
+                                inset: 0,
+                                background:
+                                  "linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.98) 14%, rgba(255,255,255,0.92) 26%, rgba(255,255,255,0.74) 40%, rgba(255,255,255,0) 60%)",
+                                pointerEvents: "none",
+                                zIndex: 2,
+                              }}
+                            />
+                            <img
+                              src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg"
+                              alt="Ahangama coastline editorial hero"
+                              style={{
+                                position: "relative",
+                                zIndex: 1,
+                                display: "block",
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: "right center",
+                              }}
+                            />
+                          </div>
                         </Col>
                       </Row>
                     </div>
