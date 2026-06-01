@@ -9,19 +9,10 @@ function BlogSidebar({ issueItems, activeSlug, onSelect }) {
   return (
     <div className="blog-sidebarInner">
       <div className="blog-brandBlock">
-        <div className="blog-brandMark">AS</div>
         <div>
           <Text className="blog-eyebrow">Ahangama Stories</Text>
-          <Title level={4} className="blog-brandTitle">
-            Issue Index
-          </Title>
         </div>
       </div>
-
-      <Text className="blog-sidebarIntro">
-        A more editorial contents page of slow guides, visitor journals, local
-        profiles, and travel features from Ahangama.
-      </Text>
 
       <div className="blog-sidebarSectionHeader">
         <Text className="blog-sidebarSectionLabel">Contents</Text>
@@ -122,7 +113,7 @@ export default function BlogWorkspaceLayout({
               icon={<MenuOutlined />}
               onClick={() => setMobileNavOpen(true)}
             >
-              Issue Index
+              Stories
             </Button>
             <div>
               <Text className="blog-topbarLabel">Ahangama Stories</Text>

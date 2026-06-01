@@ -459,6 +459,93 @@ export const BLOG_POSTS = [
     ],
   },
   {
+    id: "getting-around-ahangama-guide",
+    slug: "getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
+    title: "Getting Around Ahangama: Scooters, Tuk Tuks & Airport Transfers",
+    shortTitle: "Getting Around Ahangama",
+    excerpt:
+      "A practical Ahangama transport guide covering scooters, tuk-tuks, airport transfers, Galle trips, Hiriketiya runs, and realistic pricing ranges.",
+    description:
+      "A practical Ahangama transport guide covering scooters, tuk-tuks, airport transfers, Galle trips, Hiriketiya runs, and recommended pricing ranges.",
+    publishDate: "2026-06-01",
+    author: "Ahangama Editorial",
+    authorType: "Organization",
+    authorRole: "Local journal",
+    readingTime: "7 min read",
+    category: "Transport guide",
+    heroImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/scooty_rental_and_taxi.jpeg",
+    sections: [
+      {
+        heading: "Use the right transport for the right kind of day",
+        paragraphs: [
+          "The practical version of getting around Ahangama starts with a simple rule: use the vehicle that matches the shape of the day. Scooters are best for everyday local freedom, tuk-tuks are stronger for short hops, and airport or longer south-coast runs work better when they are pre-booked properly.",
+          "Pricing in this guide should be read as realistic planning ranges rather than fixed tariffs. The live venue data tends to store transport as budget or mid-range categories with card-linked offers, so the numbers below are editorial guide rails for visitors rather than direct quotes from the table.",
+        ],
+        bullets: [
+          "Best for local freedom: GIK Bike Rentals, Scooty Rental & Taxi Service.",
+          "Best for airport transfers: Taxi and Transport Tours.",
+          "Best for longer coastal runs: Nova Rent a Car or a private driver.",
+          "Typical starting point: scooters from LKR 2,500-4,500/day, airport transfers from LKR 18,000+.",
+        ],
+      },
+      {
+        heading: "Scooters are still the default for everyday Ahangama movement",
+        paragraphs: [
+          "If you are staying in Ahangama for more than a day or two, a scooter is usually the simplest way to move. It gives you flexible access to surf breaks, cafes, supermarkets, and neighboring beaches without having to negotiate every short trip.",
+          "The transport entries in the current data point clearly in that direction. GIK Bike Rentals and Scooty Rental & Taxi Service are the strongest rental-led names, both framed around flexibility, local exploring, and easy day-to-day movement.",
+        ],
+        bullets: [
+          "Recommended: LKR 2,500-4,500 per day for a standard scooter in season.",
+          "Longer stays should usually negotiate below stacked daily pricing.",
+        ],
+      },
+      {
+        heading: "Tuk-tuks are best for short local hops, not full-day dependence",
+        paragraphs: [
+          "For visitors who do not want to self-drive, tuk-tuks and local taxi-style rides are the practical fallback. They work best for station pickups, rainy-day movements, dinner runs, and quick trips across town rather than acting as the foundation for every hour of the day.",
+          "Happy Tours reads in the data as a convenience-first option for local trips and travel support, while Taxi and Transport Tours is the stronger fit when the journey matters more than the hop itself.",
+        ],
+        bullets: [
+          "Recommended: LKR 500-1,500 for short in-town or nearby hops, depending on time and distance.",
+          "For multi-stop or inter-town movement, fixed private pricing usually makes more sense than repeated short-ride logic.",
+        ],
+      },
+      {
+        heading: "Airport transfers should feel fixed, clear, and pre-agreed",
+        paragraphs: [
+          "The clearest airport-transfer specialist in the live data is Taxi and Transport Tours. Its description explicitly covers airport pickups, local rides, private day tours, and long-distance travel, and it is marked as available 24/7.",
+          "That makes it the most sensible name to mention for late arrivals, luggage-heavy travel, surfboards, or anyone who simply does not want friction after landing.",
+        ],
+        bullets: [
+          "Recommended: LKR 18,000-30,000 for airport transfers depending on vehicle type, boards, and time of travel.",
+          "Late-night or larger-vehicle bookings should sit toward the upper end of that range.",
+        ],
+      },
+      {
+        heading: "For Galle, Hiriketiya, and longer south-coast runs, cars usually win",
+        paragraphs: [
+          "The transport descriptions do not always explicitly call out every destination, but the positioning is still clear. Nova Rent a Car is the strongest self-drive option because it is framed around car rentals, road trips, and exploring beyond Ahangama.",
+          "If the question is comfort, weather protection, luggage, or simply not wanting to do a longer coast run on a scooter, Nova and Taxi and Transport Tours are the cleanest recommendations to make.",
+        ],
+        bullets: [
+          "Recommended: LKR 8,000-15,000 for a private one-way south-coast transfer depending on route and vehicle.",
+          "Recommended: LKR 12,000-20,000+ per day for car hire or longer private vehicle use.",
+        ],
+      },
+      {
+        heading: "The strongest transport entries in the database right now",
+        paragraphs: [
+          "GIK Bike Rentals is the clearest scooter-led option for flexible local movement, and Scooty Rental & Taxi Service remains one of the strongest day-to-day names in the set by review count and practical use case.",
+          "Taxi and Transport Tours is the strongest airport-transfer and private-trip entry, Nova Rent a Car is the clearest car-rental option for travel beyond town, and Happy Tours is best described as straightforward local travel support when convenience matters more than self-drive independence.",
+        ],
+        bullets: [
+          "Card-linked transport offers in the data range from 10% off up to 20% off scooter rentals, with one record carrying a 25% scooter offer field.",
+        ],
+      },
+    ],
+  },
+  {
     id: "why-ahangama-most-interesting-coastal-town",
     slug: "why-ahangama-might-be-sri-lankas-most-interesting-coastal-town-right-now",
     title:

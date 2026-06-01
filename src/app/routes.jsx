@@ -31,7 +31,6 @@ import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
 import HomeDesktop from "../pages/HomeDesktop";
 import Resellers from "../pages/Resellers";
-import GettingAroundAhangamaPage from "../pages/GettingAroundAhangamaPage";
 import TwelveThingsPage from "../pages/TwelveThingsPage";
 import FullListPage from "../pages/FullListPage";
 import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
@@ -42,6 +41,9 @@ import ExternalRedirect from "./ExternalRedirect";
 const WELLNESS_GUIDE_BLOG_PATH =
   "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
 
+const GETTING_AROUND_BLOG_PATH =
+  "/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
+
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 const routes = [
   { path: "/home-v-2", element: <HomeV2 /> },
@@ -51,11 +53,11 @@ const routes = [
   { path: "/", element: <Home /> },
   {
     path: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
-    element: <GettingAroundAhangamaPage />,
+    element: <ExternalRedirect to={GETTING_AROUND_BLOG_PATH} />,
   },
   {
     path: "/Getting-Around-Ahangama-Scooters,-Tuk-Tuks-Airport-Transfers",
-    element: <GettingAroundAhangamaPage />,
+    element: <ExternalRedirect to={GETTING_AROUND_BLOG_PATH} />,
   },
   { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
   {

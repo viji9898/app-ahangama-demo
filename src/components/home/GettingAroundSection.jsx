@@ -6,7 +6,7 @@ const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
 
 const GUIDE_PATH =
-  "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
+  "/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
 
 const transportBlocks = [
   {

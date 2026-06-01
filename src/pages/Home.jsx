@@ -25,8 +25,6 @@ import PassPartnersStrip from "../components/home/PassPartnersStrip";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
-import GettingAroundSection from "../components/home/GettingAroundSection";
-import WellnessGuideSection from "../components/home/WellnessGuideSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
@@ -906,7 +904,7 @@ export default function Home() {
                     </div>
 
                     <a
-                      href="/getting-around-ahangama-scooters-tuk-tuks-airport-transfers"
+                      href="/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers"
                       style={{
                         color: "#2F3E3A",
                         textDecoration: "none",
@@ -1479,14 +1477,6 @@ export default function Home() {
                 </Card>
               </Col>
             </Row>
-          </div>
-
-          <div style={{ marginTop: sectionSpacing }}>
-            <GettingAroundSection />
-          </div>
-
-          <div style={{ marginTop: sectionSpacing }}>
-            <WellnessGuideSection />
           </div>
 
           {/* FREE GUIDE CTA */}
