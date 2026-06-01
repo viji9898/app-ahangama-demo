@@ -433,7 +433,13 @@ export default function Home() {
             <HeroSectionMobile />
           </div>
 
-          <div style={{ marginTop: sectionSpacing }}>
+          <div
+            style={{
+              marginTop: sectionSpacing,
+              paddingTop: 24,
+              borderTop: "1px solid rgba(32,30,27,0.08)",
+            }}
+          >
             <Row className="story-teasers-row" gutter={[24, 24]} align="stretch">
               <Col xs={24} sm={12} xl={12}>
                 <Card
