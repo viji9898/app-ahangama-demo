@@ -791,8 +791,6 @@ export default function Home() {
                   style={{ ...editorialCardStyle, height: "100%" }}
                   bodyStyle={{ padding: 30, height: "100%" }}
                 >
-                  <Row className="pass-guide-row" gutter={[18, 18]} align="middle">
-                    <Col xs={14} xl={15}>
                   <Text style={editorialEyebrowStyle}>Field Guide</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>Pass Guide</Tag>
@@ -800,6 +798,8 @@ export default function Home() {
                     <Tag style={featureTagStyle}>Savings + Perks</Tag>
                   </div>
 
+                  <Row className="pass-guide-row" gutter={[18, 18]} align="middle">
+                    <Col xs={14} xl={15}>
                   <Title
                     level={3}
                     className="pass-guide-title"
