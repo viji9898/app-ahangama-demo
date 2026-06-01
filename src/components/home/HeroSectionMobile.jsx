@@ -255,6 +255,41 @@ export default function HeroSectionMobile() {
                 textTransform: "uppercase",
               }}
             >
+              Member Benefits
+            </Text>
+            <a
+              href="https://pass.ahangama.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackPassCtaClick({
+                  ctaLocation: "hero_text_link_mobile",
+                  destinationUrl: "https://pass.ahangama.com",
+                });
+              }}
+              style={{
+                color: "#8B7B63",
+                textDecoration: "none",
+                fontSize: 16,
+                fontWeight: 600,
+              }}
+            >
+              Get the Ahangama Pass <ArrowRightOutlined />
+            </a>
+          </div>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                color: "#B08E62",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 1.6,
+                textTransform: "uppercase",
+              }}
+            >
               Start Exploring
             </Text>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -292,41 +327,6 @@ export default function HeroSectionMobile() {
                 Open the map <ArrowRightOutlined />
               </a>
             </div>
-          </div>
-
-          <div>
-            <Text
-              style={{
-                display: "block",
-                marginBottom: 10,
-                color: "#B08E62",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: 1.6,
-                textTransform: "uppercase",
-              }}
-            >
-              Member Benefits
-            </Text>
-            <a
-              href="https://pass.ahangama.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                trackPassCtaClick({
-                  ctaLocation: "hero_text_link_mobile",
-                  destinationUrl: "https://pass.ahangama.com",
-                });
-              }}
-              style={{
-                color: "#8B7B63",
-                textDecoration: "none",
-                fontSize: 16,
-                fontWeight: 600,
-              }}
-            >
-              Get the Ahangama Pass <ArrowRightOutlined />
-            </a>
           </div>
         </div>
       </div>
