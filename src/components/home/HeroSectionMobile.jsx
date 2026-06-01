@@ -7,7 +7,7 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 
 const { Title, Paragraph, Text } = Typography;
 
-export default function HeroSectionMobile({ heroImage }) {
+export default function HeroSectionMobile() {
   const { places, loading } = usePlaces();
   const liveAhangamaPlaces = (places || [])
     .filter((place) => place.destinationSlug === "ahangama")
@@ -63,55 +63,6 @@ export default function HeroSectionMobile({ heroImage }) {
         padding: "24px 0 4px",
       }}
     >
-      {/* Hero Image */}
-      {heroImage && (
-        <div
-          style={{
-            marginBottom: "18px",
-            borderRadius: "14px",
-            overflow: "hidden",
-            boxShadow: "0 18px 38px rgba(32, 30, 27, 0.08)",
-          }}
-        >
-          <img
-            src={heroImage}
-            alt="Ahangama"
-            style={{
-              width: "100%",
-              height: "290px",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
-        </div>
-      )}
-
-      <div style={{ marginBottom: 20 }}>
-        <Text
-          style={{
-            display: "block",
-            color: "#8B7B63",
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: 1.5,
-            textTransform: "uppercase",
-          }}
-        >
-          Image Caption
-        </Text>
-        <Paragraph
-          style={{
-            marginTop: 6,
-            marginBottom: 0,
-            color: "#5F574E",
-            fontSize: 14,
-            lineHeight: 1.65,
-          }}
-        >
-          Morning coffee and a slower start to the day in Ahangama.
-        </Paragraph>
-      </div>
-
       <div className="ahg-heroInner" style={{ padding: "0 4px" }}>
         <div
           style={{
@@ -375,59 +326,6 @@ export default function HeroSectionMobile({ heroImage }) {
               </div>
             </div>
           ))}
-        </div>
-
-        <div style={{ marginBottom: 22 }}>
-          <Text
-            style={{
-              display: "block",
-              marginBottom: 10,
-              color: "#B08E62",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: 1.6,
-              textTransform: "uppercase",
-            }}
-          >
-            Featured This Week
-          </Text>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <Title
-              level={4}
-              style={{
-                marginTop: 0,
-                marginBottom: 4,
-                color: "#1F1D1A",
-                fontSize: 28,
-                lineHeight: 1.04,
-                fontFamily:
-                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-              }}
-            >
-              Morning at Kaffi
-            </Title>
-            <Paragraph
-              style={{
-                marginBottom: 4,
-                color: "#5F574E",
-                fontSize: 15,
-                lineHeight: 1.72,
-              }}
-            >
-              One of our favourite spots for coffee, breakfast and ocean views.
-            </Paragraph>
-            <a
-              href="/eat"
-              style={{
-                color: "#2F3E3A",
-                textDecoration: "none",
-                fontSize: 15,
-                fontWeight: 600,
-              }}
-            >
-              Read Story <ArrowRightOutlined />
-            </a>
-          </div>
         </div>
 
         <div style={{ display: "grid", gap: 18 }}>

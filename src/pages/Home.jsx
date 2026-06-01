@@ -243,23 +243,6 @@ export default function Home() {
       href: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
     },
   ];
-  const heroCurrentIssue = {
-    month: "June 2026",
-    title: "The Wellness Edition",
-    highlights: [
-      "Best Wellness Spots",
-      "Hidden Beaches",
-      "New Openings",
-      "Local Recommendations",
-    ],
-  };
-  const heroEditorsPicks = [
-    "Kaffi",
-    "Frosty's",
-    "Pura Pilates",
-    "Lighthouse Ahangama",
-  ];
-
   return (
     <SiteLayout>
       <Seo
@@ -364,7 +347,7 @@ export default function Home() {
                 }}
               >
                 <Row gutter={0} align="stretch">
-                  <Col xs={24} lg={14} xl={14}>
+                  <Col xs={24} lg={24} xl={24}>
                     <div
                       style={{
                         position: "relative",
@@ -629,199 +612,13 @@ export default function Home() {
                     </div>
                   </Col>
 
-                  <Col xs={24} lg={10} xl={10}>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 18,
-                        minHeight: "clamp(620px, 64vw, 720px)",
-                        padding: "28px 28px 26px 0",
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "grid",
-                          gridTemplateColumns:
-                            "minmax(0, 1.15fr) minmax(0, 0.85fr)",
-                          gap: 14,
-                        }}
-                      >
-                        <div
-                          style={{
-                            padding: 18,
-                            borderRadius: 22,
-                            background: "rgba(255,255,255,0.48)",
-                            border: "1px solid rgba(32,30,27,0.08)",
-                          }}
-                        >
-                          <Text
-                            style={{
-                              display: "block",
-                              color: "#8B7B63",
-                              fontSize: 11,
-                              fontWeight: 700,
-                              letterSpacing: 1.5,
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            {heroCurrentIssue.month}
-                          </Text>
-                          <Text
-                            style={{ ...editorialEyebrowStyle, marginTop: 8 }}
-                          >
-                            Current Issue
-                          </Text>
-                          <Title
-                            level={4}
-                            style={{
-                              marginTop: 0,
-                              marginBottom: 12,
-                              color: "#1F1D1A",
-                              fontFamily: editorialSerifFont,
-                              fontSize: 28,
-                              lineHeight: 1.02,
-                            }}
-                          >
-                            {heroCurrentIssue.title}
-                          </Title>
-                          <Text
-                            style={{
-                              display: "block",
-                              marginBottom: 8,
-                              color: "#8B7B63",
-                              fontSize: 11,
-                              fontWeight: 700,
-                              letterSpacing: 1.5,
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Featuring
-                          </Text>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: 6,
-                            }}
-                          >
-                            {heroCurrentIssue.highlights.map((item) => (
-                              <Text
-                                key={item}
-                                style={{
-                                  color: "#5F574E",
-                                  fontSize: 14,
-                                  lineHeight: 1.6,
-                                }}
-                              >
-                                • {item}
-                              </Text>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div
-                          style={{
-                            padding: 18,
-                            borderRadius: 22,
-                            background: "rgba(255,255,255,0.38)",
-                            border: "1px solid rgba(32,30,27,0.08)",
-                          }}
-                        >
-                          <Text style={editorialEyebrowStyle}>
-                            Editor&apos;s Picks
-                          </Text>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: 10,
-                            }}
-                          >
-                            {heroEditorsPicks.map((item) => (
-                              <Text
-                                key={item}
-                                style={{
-                                  color: "#2F3E3A",
-                                  fontSize: 15,
-                                  lineHeight: 1.45,
-                                }}
-                              >
-                                • {item}
-                              </Text>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div
-                        style={{
-                          flex: 1,
-                          minHeight: 420,
-                          borderRadius: 12,
-                          backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${heroImage})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center center",
-                          backgroundRepeat: "no-repeat",
-                          filter: "saturate(0.94) contrast(1.01)",
-                          boxShadow: "0 20px 44px rgba(32,30,27,0.08)",
-                        }}
-                      />
-
-                      <div
-                        style={{
-                          paddingTop: 4,
-                          borderTop: "1px solid rgba(32,30,27,0.08)",
-                        }}
-                      >
-                        <Text style={editorialEyebrowStyle}>
-                          Featured This Week
-                        </Text>
-                        <Title
-                          level={4}
-                          style={{
-                            marginTop: 0,
-                            marginBottom: 8,
-                            color: "#1F1D1A",
-                            fontFamily: editorialSerifFont,
-                            fontSize: 30,
-                            lineHeight: 1.04,
-                          }}
-                        >
-                          Morning at Kaffi
-                        </Title>
-                        <Paragraph
-                          style={{
-                            marginBottom: 10,
-                            color: "#5F574E",
-                            fontSize: 15,
-                            lineHeight: 1.72,
-                          }}
-                        >
-                          One of our favourite spots for coffee, breakfast and
-                          ocean views.
-                        </Paragraph>
-                        <a
-                          href="/eat"
-                          style={{
-                            color: "#2F3E3A",
-                            textDecoration: "none",
-                            fontSize: 15,
-                            fontWeight: 600,
-                          }}
-                        >
-                          Read Story <ArrowRightOutlined />
-                        </a>
-                      </div>
-                    </div>
-                  </Col>
                 </Row>
               </div>
             </div>
           </div>
           {/* Mobile version */}
           <div className="mobile-only" style={{ display: "none" }}>
-            <HeroSectionMobile heroImage={heroImage} />
+            <HeroSectionMobile />
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
