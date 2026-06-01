@@ -6,7 +6,7 @@ const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
 
 export const WELLNESS_GUIDE_PATH =
-  "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
+  "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
 
 const wellnessGlance = [
   { label: "Yoga Studios", value: "8+" },

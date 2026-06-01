@@ -34,11 +34,13 @@ import Resellers from "../pages/Resellers";
 import GettingAroundAhangamaPage from "../pages/GettingAroundAhangamaPage";
 import TwelveThingsPage from "../pages/TwelveThingsPage";
 import FullListPage from "../pages/FullListPage";
-import UltimateWellnessGuidePage from "../pages/UltimateWellnessGuidePage";
 import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import ExternalRedirect from "./ExternalRedirect";
+
+const WELLNESS_GUIDE_BLOG_PATH =
+  "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 const routes = [
@@ -55,14 +57,14 @@ const routes = [
     path: "/Getting-Around-Ahangama-Scooters,-Tuk-Tuks-Airport-Transfers",
     element: <GettingAroundAhangamaPage />,
   },
-  {
-    path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
-    element: <UltimateWellnessGuidePage />,
-  },
   { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
   {
+    path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
+  },
+  {
     path: "/The-Ultimate-Wellness-Guide-to-Ahangama:-Yoga-Gyms-Pilates-Ice-Baths-Spas",
-    element: <UltimateWellnessGuidePage />,
+    element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: "/offers", element: <FullListPage /> },

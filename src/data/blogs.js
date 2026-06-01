@@ -352,6 +352,113 @@ export const BLOG_POSTS = [
     ],
   },
   {
+    id: "ultimate-wellness-guide-ahangama",
+    slug: "the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    title:
+      "The Ultimate Wellness Guide to Ahangama: Yoga, Gyms, Pilates, Ice Baths & Spas",
+    shortTitle: "Ultimate Wellness Guide",
+    excerpt:
+      "A practical editorial guide to Ahangama wellness, from yoga and Pilates to recovery spaces, gyms, Ayurveda, and spa-led reset days.",
+    description:
+      "A full editorial guide to Ahangama wellness, covering yoga, gyms, Pilates, ice baths, recovery spaces, Ayurveda, spas, and the best places for each style of stay.",
+    publishDate: "2026-06-01",
+    author: "Ahangama Editorial",
+    authorType: "Organization",
+    authorRole: "Local journal",
+    readingTime: "8 min read",
+    category: "Wellness guide",
+    heroImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+    sections: [
+      {
+        heading: "Start with the kind of wellness rhythm you actually want",
+        paragraphs: [
+          "The best version of wellness in Ahangama is rarely the most maximal one. The town works best when you decide early whether your stay is about slower mornings, surf recovery, structured training, or one proper reset somewhere in the middle of the trip.",
+          "This matters because wellness here is broad. Yoga, Pilates, cold immersion, spa treatments, steam, massage, gym work, and Ayurveda all exist within a small stretch of coastline. The real question is not what exists. It is what rhythm suits the version of Ahangama you want to live in for a few days or a few weeks.",
+        ],
+        bullets: [
+          "Best for yoga: Senses, Shramalaya, The Nuga House.",
+          "Best for Pilates: Pura Pilates.",
+          "Best for gym sessions: Krish Combat & Fitness.",
+          "Best for recovery: Frosty's, Banya Steam House.",
+          "Best for spa and Ayurveda: Aksaaya, Sarana, White Lotus, Ayurveda Palm Garden Resort.",
+        ],
+      },
+      {
+        heading: "Yoga in Ahangama is about tone more than trend",
+        paragraphs: [
+          "The strongest yoga recommendations in Ahangama are the ones that match a slower pace of stay. If you want retreat energy, softer mornings, and a more grounded start to the day, Senses, Shramalaya, and The Nuga House are the clearest names in the current live set.",
+          "These are not just places to collect classes. They work best when they become part of a routine: wake early, move well, eat lightly, and let the rest of the day stay open rather than forcing every hour into a program.",
+        ],
+        bullets: [
+          "Senses for mindful classes and wellness treatments.",
+          "Shramalaya for yoga, meditation, and a retreat tone.",
+          "The Nuga House for gentle movement and slower routines.",
+        ],
+      },
+      {
+        heading: "Pilates and mobility are often the smartest choice for surf-heavy stays",
+        paragraphs: [
+          "If the goal is to support surfing with better mobility, posture, and strength, Pura Pilates is still the standout recommendation. It makes sense for visitors who want wellness to feel useful and structured rather than purely indulgent.",
+          "Pilates also suits Ahangama because it integrates neatly into the day. It sits well between surf, co-working, breakfast stops, and evening plans, which makes it one of the easiest categories to recommend to repeat visitors and longer stays.",
+        ],
+        bullets: [
+          "Pura Pilates for reformer-led structure and strength.",
+          "Coconut Court if you want movement with a more active-social feel.",
+        ],
+      },
+      {
+        heading: "Do not ignore the gym and harder-training side of the town",
+        paragraphs: [
+          "Ahangama is often described through soft wellness alone, but that misses a growing part of the destination. Many longer-stay visitors still want real physical training while they are here, and Krish Combat & Fitness is the clearest fit for that version of the trip.",
+          "This becomes more relevant the longer you stay. After a week, wellness usually stops meaning only massage and yoga. It starts meaning consistency, good movement, and feeling physically capable enough to enjoy everything else properly.",
+        ],
+        bullets: [
+          "Krish Combat & Fitness for gym access and more disciplined sessions.",
+          "Use it when you want wellness to include effort, not only recovery.",
+        ],
+      },
+      {
+        heading: "Recovery culture is now part of Ahangama's identity",
+        paragraphs: [
+          "The recovery side of town has become much more defined, and Frosty's remains the easiest entry point if you want cold immersion and practical post-surf reset sessions without too much ceremony. Banya Steam House offers a slower, more niche version of that mood through steam and restoration.",
+          "This category works best for visitors who want a wellness afternoon that feels functional rather than performative. It is about easing soreness, regulating energy, and making the next session in the water or the next workday feel noticeably better.",
+        ],
+        bullets: [
+          "Frosty's for ice-bath and recovery-led sessions.",
+          "Banya Steam House for steam and restorative time.",
+          "Spa Station Midigama as a nearby massage-and-recovery stop.",
+        ],
+      },
+      {
+        heading: "Spa and Ayurveda are where the town shifts into restoration mode",
+        paragraphs: [
+          "When someone needs to feel repaired rather than activated, the strongest names are Aksaaya Ayurveda Wellness Spa, Sarana, White Lotus Spa & Wellness, and Ayurveda Palm Garden Resort. Each offers a different interpretation of reset, from traditional treatment culture to more polished resort calm.",
+          "These are also the easiest recommendations when the trip is less about surfing and more about arriving tired, traveling as a couple, or giving the stay one quieter anchor experience that changes its pace.",
+        ],
+        bullets: [
+          "Aksaaya for traditional Ayurveda and high-trust treatments.",
+          "Sarana for premium spa-style sessions.",
+          "White Lotus for a more luxurious retreat tone.",
+          "Ayurveda Palm Garden Resort for stay-led wellness immersion.",
+        ],
+      },
+      {
+        heading: "The best wellness itinerary is mixed, not maximal",
+        paragraphs: [
+          "The common mistake is trying to do too much: yoga every morning, surf every day, treatments on top, and then wondering why the trip feels strangely tiring. Ahangama works better when you mix categories and leave room for actual rest.",
+          "That is what makes the town strong. You can train, stretch, recover, socialize, and still keep the whole trip feeling light. The right guide is not one that gives you the most options. It is one that helps you find the right rhythm.",
+        ],
+        bullets: [
+          "2 yoga or Pilates sessions.",
+          "1 gym or training block.",
+          "1 ice bath or steam recovery session.",
+          "1 massage, Ayurveda, or spa treatment.",
+        ],
+      },
+    ],
+  },
+  {
     id: "why-ahangama-most-interesting-coastal-town",
     slug: "why-ahangama-might-be-sri-lankas-most-interesting-coastal-town-right-now",
     title:

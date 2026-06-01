@@ -20,7 +20,7 @@ const editorialStories = [
     title: "Ultimate Wellness Guide",
     excerpt:
       "The yoga studios, recovery rituals, ice baths, gyms, and quiet reset spots worth building a stay around.",
-    href: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
   },
   {
     label: "Field Notes",
@@ -74,7 +74,7 @@ const discoveryLinks = [
   { label: "Experiences", href: "/12-things" },
   {
     label: "Wellness",
-    href: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
   },
   { label: "Surf", href: "/12-things" },
   { label: "Food", href: "/eat" },
