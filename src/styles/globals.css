@@ -3480,12 +3480,16 @@
 }
 
 @media (max-width: 768px) {
+  .story-teasers-row {
+    row-gap: 14px !important;
+  }
+
   .perfect-day-card .ant-card-body {
-    padding: 22px !important;
+    padding: 16px !important;
   }
 
   .perfect-day-row {
-    row-gap: 20px !important;
+    row-gap: 14px !important;
   }
 
   .perfect-day-media {
@@ -3503,55 +3507,63 @@
   }
 
   .perfect-day-title {
-    font-size: clamp(30px, 10vw, 42px) !important;
-    margin-bottom: 12px !important;
+    font-size: clamp(20px, 4.3vw, 28px) !important;
+    margin-bottom: 10px !important;
   }
 
   .perfect-day-excerpt {
-    margin-bottom: 14px !important;
+    margin-bottom: 12px !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
   }
 
   .perfect-day-chip-group {
-    margin-bottom: 14px !important;
+    margin-bottom: 12px !important;
   }
 
   .perfect-day-chip {
-    padding: 7px 10px !important;
-    font-size: 12px !important;
+    padding: 6px 8px !important;
+    font-size: 11px !important;
   }
 
   .perfect-day-cta {
     margin-top: 2px !important;
   }
 
+  .perfect-day-cta a {
+    font-size: 14px !important;
+  }
+
   .three-days-card .ant-card-body {
-    padding: 22px !important;
+    padding: 16px !important;
   }
 
   .three-days-row {
-    row-gap: 20px !important;
+    row-gap: 14px !important;
   }
 
   .three-days-title {
-    margin-bottom: 12px !important;
-    font-size: clamp(30px, 7vw, 42px) !important;
+    margin-bottom: 10px !important;
+    font-size: clamp(20px, 4.3vw, 28px) !important;
   }
 
   .three-days-excerpt {
-    margin-bottom: 16px !important;
+    margin-bottom: 12px !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
   }
 
   .three-days-chip-group {
-    margin-bottom: 16px !important;
+    margin-bottom: 12px !important;
   }
 
   .three-days-chip {
-    padding: 7px 10px !important;
-    font-size: 12px !important;
+    padding: 6px 8px !important;
+    font-size: 11px !important;
   }
 
   .three-days-media {
-    min-height: 360px !important;
+    min-height: 240px !important;
     background-position: center !important;
   }
 
@@ -3563,25 +3575,39 @@
   .three-days-hashtags {
     gap: 8px !important;
     padding: 0 14px 14px !important;
-    margin-top: 230px !important;
+    margin-top: 122px !important;
+  }
+
+  .three-days-cta a {
+    font-size: 14px !important;
   }
 }
 
 @media (max-width: 450px) {
   .perfect-day-card .ant-card-body {
-    padding: 18px !important;
+    padding: 12px !important;
   }
 
   .three-days-card .ant-card-body {
-    padding: 18px !important;
+    padding: 12px !important;
+  }
+
+  .perfect-day-title,
+  .three-days-title {
+    font-size: clamp(17px, 5vw, 22px) !important;
+  }
+
+  .perfect-day-excerpt,
+  .three-days-excerpt {
+    font-size: 12px !important;
   }
 
   .three-days-media {
-    min-height: 320px !important;
+    min-height: 200px !important;
   }
 
   .three-days-hashtags {
-    margin-top: 202px !important;
+    margin-top: 94px !important;
   }
 }
 

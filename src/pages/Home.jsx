@@ -826,7 +826,7 @@ export default function Home() {
 
           <div style={{ marginTop: sectionSpacing }}>
             <Row className="story-teasers-row" gutter={[24, 24]} align="stretch">
-              <Col xs={24} xl={12}>
+              <Col xs={12} xl={12}>
                 <Card
                   className="perfect-day-card"
                   style={{ ...editorialCardStyle, height: "100%" }}
@@ -1007,7 +1007,7 @@ export default function Home() {
                 </Card>
               </Col>
 
-              <Col xs={24} xl={12}>
+              <Col xs={12} xl={12}>
                 <Card
                   className="three-days-card"
                   style={{ ...editorialCardStyle, height: "100%" }}
