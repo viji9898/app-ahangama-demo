@@ -826,14 +826,14 @@ export default function Home() {
 
           <div style={{ marginTop: sectionSpacing }}>
             <Row className="story-teasers-row" gutter={[24, 24]} align="stretch">
-              <Col xs={12} xl={12}>
+              <Col xs={24} sm={12} xl={12}>
                 <Card
                   className="perfect-day-card"
                   style={{ ...editorialCardStyle, height: "100%" }}
                   bodyStyle={{ padding: 32, height: "100%" }}
                 >
                   <Row className="perfect-day-row" gutter={[28, 28]} align="top">
-                    <Col xs={24} xl={10}>
+                    <Col xs={{ span: 12, order: 1 }} xl={{ span: 10, order: 1 }}>
                       <div
                         className="perfect-day-media"
                         style={{
@@ -919,7 +919,7 @@ export default function Home() {
                       </div>
                     </Col>
 
-                    <Col xs={24} xl={14}>
+                    <Col xs={{ span: 12, order: 2 }} xl={{ span: 14, order: 2 }}>
                       <Title
                         level={2}
                         className="perfect-day-title"
@@ -1007,7 +1007,7 @@ export default function Home() {
                 </Card>
               </Col>
 
-              <Col xs={12} xl={12}>
+              <Col xs={24} sm={12} xl={12}>
                 <Card
                   className="three-days-card"
                   style={{ ...editorialCardStyle, height: "100%" }}
@@ -1168,9 +1168,15 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <Card style={editorialCardStyle} bodyStyle={{ padding: 30 }}>
-              <Row gutter={[18, 18]} align="middle">
-                <Col xs={24} xl={15}>
+            <Row className="guide-cards-row" gutter={[24, 24]} align="stretch">
+              <Col xs={12} xl={12}>
+                <Card
+                  className="pass-guide-card"
+                  style={{ ...editorialCardStyle, height: "100%" }}
+                  bodyStyle={{ padding: 30, height: "100%" }}
+                >
+                  <Row className="pass-guide-row" gutter={[18, 18]} align="middle">
+                    <Col xs={24} xl={15}>
                   <Text style={editorialEyebrowStyle}>Field Guide</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>Pass Guide</Tag>
@@ -1180,12 +1186,14 @@ export default function Home() {
 
                   <Title
                     level={3}
+                    className="pass-guide-title"
                     style={{ ...editorialTitleStyle, fontSize: 38 }}
                   >
                     What is the Ahangama Pass?
                   </Title>
 
                   <Paragraph
+                    className="pass-guide-excerpt"
                     style={{
                       ...editorialCopyStyle,
                       fontSize: 15,
@@ -1206,22 +1214,23 @@ export default function Home() {
                   >
                     Read the guide
                   </Button>
-                </Col>
+                    </Col>
 
-                <Col xs={24} xl={9}>
-                  <div
-                    style={{
-                      minHeight: 240,
-                      borderRadius: 24,
-                      border: "1px solid rgba(32,30,27,0.08)",
-                      background:
-                        "radial-gradient(circle at top, rgba(255,255,255,0.78) 0%, rgba(239,231,218,0.96) 42%, rgba(227,216,201,0.98) 100%)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: 18,
-                    }}
-                  >
+                    <Col xs={24} xl={9}>
+                      <div
+                        className="pass-guide-media"
+                        style={{
+                          minHeight: 240,
+                          borderRadius: 24,
+                          border: "1px solid rgba(32,30,27,0.08)",
+                          background:
+                            "radial-gradient(circle at top, rgba(255,255,255,0.78) 0%, rgba(239,231,218,0.96) 42%, rgba(227,216,201,0.98) 100%)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          padding: 18,
+                        }}
+                      >
                     <img
                       src={heroPassAppleWallet}
                       alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
@@ -1234,16 +1243,20 @@ export default function Home() {
                         objectFit: "contain",
                       }}
                     />
-                  </div>
-                </Col>
-              </Row>
-            </Card>
-          </div>
+                      </div>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
 
-          <div style={{ marginTop: sectionSpacing }}>
-            <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
-              <Row gutter={[28, 28]} align="middle">
-                <Col xs={24} xl={14}>
+              <Col xs={12} xl={12}>
+                <Card
+                  className="twelve-things-card"
+                  style={{ ...editorialCardStyle, height: "100%" }}
+                  bodyStyle={{ padding: 32, height: "100%" }}
+                >
+                  <Row className="twelve-things-row" gutter={[28, 28]} align="middle">
+                    <Col xs={24} xl={14}>
                   <Text style={editorialEyebrowStyle}>Editorial Guide</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>Editorial Guide</Tag>
@@ -1255,6 +1268,7 @@ export default function Home() {
 
                   <Title
                     level={2}
+                    className="twelve-things-title"
                     style={{
                       ...editorialTitleStyle,
                       marginBottom: 14,
@@ -1266,6 +1280,7 @@ export default function Home() {
                   </Title>
 
                   <div
+                    className="twelve-things-meta"
                     style={{
                       display: "flex",
                       flexWrap: "wrap",
@@ -1290,6 +1305,7 @@ export default function Home() {
                   </div>
 
                   <Paragraph
+                    className="twelve-things-excerpt"
                     style={{
                       ...editorialCopyStyle,
                       maxWidth: 680,
@@ -1304,6 +1320,7 @@ export default function Home() {
                   </Paragraph>
 
                   <div
+                    className="twelve-things-detail-grid"
                     style={{
                       display: "grid",
                       gridTemplateColumns:
@@ -1389,7 +1406,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div style={{ marginTop: 28 }}>
+                  <div className="twelve-things-cta" style={{ marginTop: 28 }}>
                     <a
                       href="/12-things"
                       style={{
@@ -1403,20 +1420,22 @@ export default function Home() {
                       Explore All 12 Experiences <ArrowRightOutlined />
                     </a>
                   </div>
-                </Col>
+                    </Col>
 
-                <Col xs={24} xl={10}>
-                  <div
-                    style={{
-                      minHeight: 300,
-                      borderRadius: 26,
-                      padding: 12,
-                      background: "rgba(255,255,255,0.58)",
-                      border: "1px solid rgba(32,30,27,0.08)",
-                      boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
-                    }}
-                  >
+                    <Col xs={24} xl={10}>
+                      <div
+                        className="twelve-things-media"
+                        style={{
+                          minHeight: 300,
+                          borderRadius: 26,
+                          padding: 12,
+                          background: "rgba(255,255,255,0.58)",
+                          border: "1px solid rgba(32,30,27,0.08)",
+                          boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
+                        }}
+                      >
                     <div
+                      className="twelve-things-mosaic"
                       style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
@@ -1443,6 +1462,7 @@ export default function Home() {
                       ))}
                     </div>
                     <Text
+                      className="twelve-things-caption"
                       style={{
                         display: "block",
                         marginTop: 12,
@@ -1455,10 +1475,12 @@ export default function Home() {
                     >
                       Open any tile to enter the guide
                     </Text>
-                  </div>
-                </Col>
-              </Row>
-            </Card>
+                      </div>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+            </Row>
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>

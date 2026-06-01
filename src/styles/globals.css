@@ -3484,6 +3484,10 @@
     row-gap: 14px !important;
   }
 
+  .guide-cards-row {
+    row-gap: 14px !important;
+  }
+
   .perfect-day-card .ant-card-body {
     padding: 16px !important;
   }
@@ -3581,6 +3585,62 @@
   .three-days-cta a {
     font-size: 14px !important;
   }
+
+  .pass-guide-card .ant-card-body,
+  .twelve-things-card .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .pass-guide-row,
+  .twelve-things-row {
+    row-gap: 14px !important;
+  }
+
+  .pass-guide-title,
+  .twelve-things-title {
+    font-size: clamp(20px, 4.3vw, 28px) !important;
+    margin-bottom: 10px !important;
+  }
+
+  .pass-guide-excerpt,
+  .twelve-things-excerpt {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .pass-guide-media {
+    min-height: 180px !important;
+    padding: 12px !important;
+  }
+
+  .twelve-things-meta {
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .twelve-things-detail-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  .twelve-things-media {
+    min-height: 220px !important;
+    padding: 10px !important;
+  }
+
+  .twelve-things-mosaic {
+    gap: 6px !important;
+  }
+
+  .twelve-things-caption {
+    font-size: 11px !important;
+    margin-top: 10px !important;
+  }
+
+  .twelve-things-cta a {
+    font-size: 14px !important;
+  }
 }
 
 @media (max-width: 450px) {
@@ -3593,17 +3653,36 @@
   }
 
   .perfect-day-title,
-  .three-days-title {
+  .three-days-title,
+  .pass-guide-title,
+  .twelve-things-title {
     font-size: clamp(17px, 5vw, 22px) !important;
   }
 
   .perfect-day-excerpt,
-  .three-days-excerpt {
+  .three-days-excerpt,
+  .pass-guide-excerpt,
+  .twelve-things-excerpt {
     font-size: 12px !important;
+  }
+
+  .pass-guide-card .ant-card-body,
+  .twelve-things-card .ant-card-body {
+    padding: 12px !important;
+  }
+
+  .pass-guide-media {
+    min-height: 150px !important;
+    padding: 10px !important;
   }
 
   .three-days-media {
     min-height: 200px !important;
+  }
+
+  .twelve-things-media {
+    min-height: 176px !important;
+    padding: 8px !important;
   }
 
   .three-days-hashtags {
