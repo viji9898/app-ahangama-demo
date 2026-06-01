@@ -66,16 +66,16 @@ export default function WhatIsAhangamaPassPage() {
             }}
           >
             <Row gutter={0} align="stretch">
-              <Col xs={24} lg={11}>
+              <Col xs={10} lg={11}>
                 <div
                   style={{
                     height: "100%",
-                    minHeight: 420,
+                    minHeight: "clamp(280px, 40vw, 420px)",
                     background: "#FFFFFF",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    padding: "clamp(24px, 4vw, 40px)",
+                    padding: "clamp(12px, 3vw, 40px)",
                   }}
                 >
                   <div
@@ -133,10 +133,10 @@ export default function WhatIsAhangamaPassPage() {
                   </div>
                 </div>
               </Col>
-              <Col xs={24} lg={13}>
+              <Col xs={14} lg={13}>
                 <div
                   style={{
-                    padding: "clamp(28px, 4vw, 52px)",
+                    padding: "clamp(18px, 3vw, 52px)",
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
@@ -163,7 +163,7 @@ export default function WhatIsAhangamaPassPage() {
                       color: "#201E1B",
                       fontFamily:
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                      fontSize: "clamp(42px, 5vw, 64px)",
+                      fontSize: "clamp(24px, 5vw, 64px)",
                       lineHeight: 0.96,
                       fontWeight: 500,
                     }}
@@ -175,7 +175,7 @@ export default function WhatIsAhangamaPassPage() {
                     style={{
                       maxWidth: 560,
                       color: "#49443D",
-                      fontSize: 18,
+                      fontSize: "clamp(14px, 2.2vw, 18px)",
                       lineHeight: 1.7,
                       marginBottom: 22,
                     }}
