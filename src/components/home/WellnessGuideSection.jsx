@@ -96,8 +96,8 @@ export default function WellnessGuideSection() {
                 maxWidth: 470,
               }}
             >
-              A practical guide to yoga, Pilates, fitness, recovery and
-              wellness across Ahangama.
+              A practical guide to yoga, Pilates, fitness, recovery and wellness
+              across Ahangama.
             </Paragraph>
             <Paragraph
               style={{
@@ -270,8 +270,8 @@ export default function WellnessGuideSection() {
                   lineHeight: 1.7,
                 }}
               >
-                Ahangama&apos;s wellness scene is strongest when you read it as a
-                mix of categories rather than a checklist of treatments. The
+                Ahangama&apos;s wellness scene is strongest when you read it as
+                a mix of categories rather than a checklist of treatments. The
                 best stays usually combine one anchor place with a few lighter
                 supporting rituals.
               </Paragraph>
@@ -340,7 +340,6 @@ export default function WellnessGuideSection() {
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </div>
