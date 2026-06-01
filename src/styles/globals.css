@@ -3480,20 +3480,54 @@
 }
 
 @media (max-width: 768px) {
-  .perfect-day-title {
-    font-size: clamp(30px, 10vw, 42px) !important;
+  .perfect-day-card .ant-card-body {
+    padding: 22px !important;
   }
 
-  .perfect-day-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 22px !important;
+  .perfect-day-row {
+    row-gap: 20px !important;
+  }
+
+  .perfect-day-media {
+    max-width: none !important;
+    gap: 0 !important;
+  }
+
+  .perfect-day-tags {
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .perfect-day-hashtags {
+    gap: 8px !important;
+  }
+
+  .perfect-day-title {
+    font-size: clamp(30px, 10vw, 42px) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .perfect-day-excerpt {
+    margin-bottom: 14px !important;
+  }
+
+  .perfect-day-chip-group {
+    margin-bottom: 14px !important;
+  }
+
+  .perfect-day-chip {
+    padding: 7px 10px !important;
+    font-size: 12px !important;
+  }
+
+  .perfect-day-cta {
+    margin-top: 2px !important;
   }
 }
 
 @media (max-width: 450px) {
-  .perfect-day-timeline-row {
-    grid-template-columns: 84px minmax(0, 1fr) !important;
-    gap: 12px !important;
+  .perfect-day-card .ant-card-body {
+    padding: 18px !important;
   }
 }
 

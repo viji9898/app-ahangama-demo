@@ -52,46 +52,25 @@ const TWELVE_THINGS_ORDER = [
   "qamar-by-zan",
 ];
 
-const DENITSA_FEATURED_PLACES = [
-  {
-    slug: "pura",
-    categoryLabel: "Wellness",
-  },
-  {
-    slug: "oyummy",
-    categoryLabel: "Breakfast",
-  },
-  {
-    slug: "rollingpin-bakery",
-    categoryLabel: "Food",
-  },
-  {
-    slug: "lighthouse",
-    categoryLabel: "Sunset Spot",
-  },
+const DENITSA_STORY_TAGS = [
+  "Ahangama",
+  "Personal Story",
+  "Digital Nomad",
+  "Wellness + Surf",
 ];
 
-const DENITSA_DAY_TIMELINE = [
-  {
-    label: "Morning",
-    entries: ["Reformer Pilates at Pura Pilates", "Breakfast at Oyummy"],
-  },
-  {
-    label: "Afternoon",
-    entries: ["Surf lesson", "Massage or workshop"],
-  },
-  {
-    label: "Evening",
-    entries: ["Rollinpin Bakery", "Sunset at Lighthouse", "Stay at Hangama"],
-  },
-];
-
-const DENITSA_DAY_REASONS = [
-  "Wellness focused",
-  "Great for solo travellers",
+const DENITSA_DAY_CHIPS = [
+  "Wellness Focused",
+  "Solo Friendly",
   "Walkable",
-  "Ideal for 2-4 days",
-  "Budget friendly",
+  "2-4 Day Stay",
+];
+
+const DENITSA_FEATURED_PLACES = [
+  "Pura Pilates",
+  "Oyummy",
+  "Rollingpin",
+  "Lighthouse",
 ];
 
 const THREE_DAYS_STORY_META = [
@@ -219,32 +198,6 @@ export default function Home() {
         name: place.name,
       }));
   }, [places, heroImage]);
-  const denitsaPlaces = useMemo(() => {
-    const livePlacesBySlug = new Map(
-      (places || [])
-        .filter((place) => place.destinationSlug === "ahangama")
-        .filter((place) => shouldShowPlace(place))
-        .map((place) => [place.slug, place]),
-    );
-    const fallbackPlacesBySlug = new Map(
-      PLACES.filter((place) => place.destinationSlug === "ahangama").map(
-        (place) => [place.slug, place],
-      ),
-    );
-
-    return DENITSA_FEATURED_PLACES.map(({ slug, categoryLabel }) => ({
-      place: livePlacesBySlug.get(slug) || fallbackPlacesBySlug.get(slug),
-      categoryLabel,
-    }))
-      .filter(({ place }) => place && place.mapUrl)
-      .map(({ place, categoryLabel }) => ({
-        slug: place.slug,
-        name: place.name,
-        logo: place.logo || place.image,
-        mapUrl: place.mapUrl,
-        categoryLabel,
-      }));
-  }, [places]);
   const liveAhangamaPlaces = useMemo(
     () =>
       (places || [])
@@ -872,10 +825,15 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
-            <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
-              <Row gutter={[28, 28]} align="top">
+            <Card
+              className="perfect-day-card"
+              style={editorialCardStyle}
+              bodyStyle={{ padding: 32 }}
+            >
+              <Row className="perfect-day-row" gutter={[28, 28]} align="top">
                 <Col xs={24} xl={10}>
                   <div
+                    className="perfect-day-media"
                     style={{
                       display: "flex",
                       flexDirection: "column",
@@ -884,6 +842,30 @@ export default function Home() {
                       margin: "0 auto",
                     }}
                   >
+                    <div
+                      className="perfect-day-tags"
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 10,
+                      }}
+                    >
+                      {DENITSA_STORY_TAGS.map((item) => (
+                        <Text
+                          key={item}
+                          style={{
+                            color: "#8B7B63",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.5,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {item}
+                        </Text>
+                      ))}
+                    </div>
+
                     <div
                       style={{
                         aspectRatio: "4 / 5",
@@ -910,290 +892,101 @@ export default function Home() {
                       />
                     </div>
 
-                    <div>
-                      <Text style={editorialEyebrowStyle}>Watch the Story</Text>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 8,
-                          color: "#1F1D1A",
-                          fontSize: 18,
-                          fontWeight: 600,
-                        }}
-                      >
-                        1 min 24 sec
-                      </Text>
-                      <Paragraph
-                        style={{
-                          marginBottom: 0,
-                          color: "#5F574E",
-                          fontSize: 15,
-                          lineHeight: 1.72,
-                        }}
-                      >
-                        Denitsa shares her favourite day in Ahangama.
-                      </Paragraph>
+                    <div
+                      className="perfect-day-hashtags"
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 10,
+                      }}
+                    >
+                      {DENITSA_DAY_CHIPS.map((item) => (
+                        <Text
+                          key={item}
+                          style={{
+                            color: "#8B7B63",
+                            fontSize: 12,
+                            fontWeight: 600,
+                            lineHeight: 1.2,
+                          }}
+                        >
+                          #{item}
+                        </Text>
+                      ))}
                     </div>
                   </div>
                 </Col>
 
                 <Col xs={24} xl={14}>
-                  <Text style={editorialEyebrowStyle}>Editorial Series</Text>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: 10,
-                      marginBottom: 18,
-                    }}
-                  >
-                    {[
-                      "Denitsa",
-                      "Digital Nomad",
-                      "3 Months In Ahangama",
-                      "Wellness + Surf",
-                    ].map((item) => (
-                      <Text
-                        key={item}
-                        style={{
-                          color: "#8B7B63",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: 1.5,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {item}
-                      </Text>
-                    ))}
-                  </div>
-
                   <Title
                     level={2}
                     className="perfect-day-title"
                     style={{
                       ...editorialTitleStyle,
-                      marginBottom: 18,
-                      fontSize: "clamp(38px, 4vw, 54px)",
+                      marginBottom: 14,
+                      fontSize: "clamp(29px, 3vw, 41px)",
                       lineHeight: 0.94,
                     }}
                   >
                     Perfect Day in Ahangama
                   </Title>
 
-                  <div
-                    className="perfect-day-grid"
+                  <Paragraph
+                    className="perfect-day-excerpt"
                     style={{
-                      display: "grid",
-                      gridTemplateColumns:
-                        "minmax(0, 1.2fr) minmax(240px, 0.8fr)",
-                      gap: 28,
-                      alignItems: "start",
+                      marginBottom: 16,
+                      color: "#5F574E",
+                      fontSize: 16,
+                      lineHeight: 1.7,
+                      maxWidth: 560,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
-                    <div>
-                      <Text style={editorialEyebrowStyle}>
-                        The Day, Hour by Hour
-                      </Text>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          borderTop: "1px solid rgba(32,30,27,0.08)",
-                        }}
-                      >
-                        {DENITSA_DAY_TIMELINE.map((block) => (
-                          <div
-                            key={block.label}
-                            className="perfect-day-timeline-row"
-                            style={{
-                              display: "grid",
-                              gridTemplateColumns: "116px minmax(0, 1fr)",
-                              gap: 18,
-                              padding: "18px 0",
-                              borderBottom: "1px solid rgba(32,30,27,0.08)",
-                            }}
-                          >
-                            <Text
-                              style={{
-                                color: "#8B7B63",
-                                fontSize: 11,
-                                fontWeight: 700,
-                                letterSpacing: 1.5,
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              {block.label}
-                            </Text>
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: 10,
-                              }}
-                            >
-                              {block.entries.map((entry) => (
-                                <Text
-                                  key={entry}
-                                  style={{
-                                    color: "#2F2A24",
-                                    fontSize: 17,
-                                    lineHeight: 1.55,
-                                  }}
-                                >
-                                  • {entry}
-                                </Text>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    Pilates, surf, coffee, a slow afternoon and sunset at
+                    Lighthouse. Denitsa shares how she would spend a perfect
+                    day in Ahangama.
+                  </Paragraph>
 
-                    <div>
-                      <Text style={editorialEyebrowStyle}>
-                        Why This Day Works
-                      </Text>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 12,
-                          padding: "16px 18px",
-                          borderRadius: 22,
-                          background: "rgba(255,255,255,0.5)",
-                          border: "1px solid rgba(32,30,27,0.08)",
-                        }}
-                      >
-                        {DENITSA_DAY_REASONS.map((item) => (
-                          <div
-                            key={item}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 10,
-                              color: "#2F3E3A",
-                              fontSize: 15,
-                              lineHeight: 1.45,
-                            }}
-                          >
-                            <CheckOutlined style={{ color: "#8B7B63" }} />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
+                  <div className="perfect-day-chip-group" style={{ marginBottom: 20 }}>
+                    <Text style={editorialEyebrowStyle}>Places Featured</Text>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 10,
+                      }}
+                    >
+                      {DENITSA_FEATURED_PLACES.map((item) => (
+                        <span
+                          key={item}
+                          className="perfect-day-chip"
+                          style={{
+                            padding: "8px 12px",
+                            borderRadius: 999,
+                            border: "1px solid rgba(32,30,27,0.08)",
+                            background: "rgba(255,255,255,0.32)",
+                            color: "#2F2A24",
+                            fontSize: 13,
+                            fontWeight: 600,
+                            lineHeight: 1,
+                          }}
+                        >
+                          {item}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
-                  {denitsaPlaces.length ? (
-                    <div style={{ marginTop: 28, marginBottom: 24 }}>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 12,
-                          color: "#B08E62",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: 1.6,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        Places Featured
-                      </Text>
-                      <div
-                        style={{
-                          display: "grid",
-                          gridTemplateColumns:
-                            "repeat(auto-fit, minmax(180px, 1fr))",
-                          gap: 14,
-                        }}
-                      >
-                        {denitsaPlaces.map((place) => (
-                          <a
-                            key={place.slug}
-                            href={place.mapUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${place.name} on Google Maps`}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 14,
-                              padding: "4px 0",
-                              textDecoration: "none",
-                              color: "#3F3A34",
-                            }}
-                          >
-                            <img
-                              src={place.logo}
-                              alt={place.name}
-                              style={{
-                                width: 44,
-                                height: 44,
-                                borderRadius: 14,
-                                objectFit: "cover",
-                                display: "block",
-                                border: "1px solid rgba(32,30,27,0.08)",
-                                background: "#fff",
-                              }}
-                            />
-                            <span
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                lineHeight: 1.15,
-                              }}
-                            >
-                              <span
-                                style={{
-                                  fontSize: 15,
-                                  fontWeight: 700,
-                                  color: "#2F2A24",
-                                }}
-                              >
-                                {place.name}
-                              </span>
-                              <span
-                                style={{
-                                  marginTop: 6,
-                                  color: "#8B7B63",
-                                  fontSize: 11,
-                                  fontWeight: 700,
-                                  letterSpacing: 1.2,
-                                  textTransform: "uppercase",
-                                }}
-                              >
-                                {place.categoryLabel}
-                              </span>
-                            </span>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ) : null}
-
                   <div
+                    className="perfect-day-cta"
                     style={{
                       display: "flex",
-                      flexWrap: "wrap",
-                      gap: 12,
                       alignItems: "center",
                     }}
                   >
-                    <a
-                      href="https://www.instagram.com/denitsaloves/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        color: "#2F3E3A",
-                        textDecoration: "none",
-                        fontSize: 16,
-                        fontWeight: 600,
-                        letterSpacing: 0.1,
-                      }}
-                    >
-                      View Denitsa&apos;s Instagram <ArrowRightOutlined />
-                    </a>
                     <a
                       href="/blogs"
                       style={{
@@ -1204,7 +997,7 @@ export default function Home() {
                         letterSpacing: 0.1,
                       }}
                     >
-                      Explore All Perfect Days <ArrowRightOutlined />
+                      Read Story <ArrowRightOutlined />
                     </a>
                   </div>
                 </Col>
