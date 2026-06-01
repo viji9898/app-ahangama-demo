@@ -30,7 +30,6 @@ import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import HeroSectionMobile from "../components/home/HeroSectionMobile";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
-import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
@@ -132,12 +131,6 @@ export default function Home() {
 
   const heroImage =
     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg";
-  const guideHighlights = [
-    { key: "coffee", icon: <CoffeeOutlined />, label: "Great coffee" },
-    { key: "work", icon: <LaptopOutlined />, label: "Work friendly" },
-    { key: "healthy", icon: <HeartOutlined />, label: "Healthy options" },
-    { key: "views", icon: <CompassOutlined />, label: "Ocean views" },
-  ];
   const twelveThingsMosaic = useMemo(() => {
     const placesBySlug = new Map(
       (places || [])
@@ -178,6 +171,67 @@ export default function Home() {
         mapUrl: place.mapUrl,
       }));
   }, [places]);
+  const liveAhangamaPlaces = useMemo(
+    () =>
+      (places || [])
+        .filter((place) => place.destinationSlug === "ahangama")
+        .filter((place) => shouldShowPlace(place)),
+    [places],
+  );
+  const heroStats = useMemo(
+    () => [
+      {
+        label: "Places",
+        value: loading ? "..." : String(liveAhangamaPlaces.length),
+      },
+      {
+        label: "Cafes",
+        value: loading
+          ? "..."
+          : String(
+              liveAhangamaPlaces.filter((place) => place.category === "eat")
+                .length,
+            ),
+      },
+      { label: "Beaches", value: "14" },
+      {
+        label: "Wellness Spots",
+        value: loading
+          ? "..."
+          : String(
+              liveAhangamaPlaces.filter(
+                (place) => place.category === "wellness",
+              ).length,
+            ),
+      },
+      { label: "Pass Perks", value: "100+" },
+    ],
+    [liveAhangamaPlaces, loading],
+  );
+  const featuredHeroStories = [
+    { label: "Best Cafes To Work From", href: "/eat" },
+    { label: "12 Must Do Things", href: "/12-things" },
+    {
+      label: "Ultimate Wellness Guide",
+      href: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    },
+  ];
+  const heroCurrentIssue = {
+    month: "June 2026",
+    title: "The Wellness Edition",
+    highlights: [
+      "Best Wellness Spots",
+      "Hidden Beaches",
+      "New Openings",
+      "Local Recommendations",
+    ],
+  };
+  const heroEditorsPicks = [
+    "Kaffi",
+    "Frosty's",
+    "Pura Pilates",
+    "Lighthouse Ahangama",
+  ];
 
   return (
     <SiteLayout>
@@ -269,20 +323,21 @@ export default function Home() {
             <div
               className="ahg-hero"
               style={{
-                borderRadius: 30,
-                background: "#f7f2ea",
-                boxShadow: "0 24px 60px rgba(47,62,58,0.08)",
+                borderRadius: 34,
+                background:
+                  "linear-gradient(180deg, rgba(244,241,236,0.98) 0%, rgba(249,245,239,0.98) 100%)",
+                boxShadow: "0 26px 64px rgba(47,62,58,0.08)",
               }}
             >
               <div
                 style={{
                   position: "relative",
                   overflow: "hidden",
-                  minHeight: 620,
+                  minHeight: 720,
                 }}
               >
                 <Row gutter={0} align="stretch">
-                  <Col xs={24} lg={11} xl={10}>
+                  <Col xs={24} lg={14} xl={14}>
                     <div
                       style={{
                         position: "relative",
@@ -290,130 +345,241 @@ export default function Home() {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
-                        minHeight: "clamp(520px, 56vw, 620px)",
+                        minHeight: "clamp(620px, 64vw, 720px)",
                         padding:
-                          "clamp(52px, 7vw, 88px) clamp(28px, 4.5vw, 56px) 44px",
-                        background:
-                          "linear-gradient(90deg, rgba(249,245,239,0.99) 0%, rgba(249,245,239,0.96) 70%, rgba(249,245,239,0.58) 100%)",
+                          "clamp(58px, 7vw, 92px) clamp(32px, 4.8vw, 72px) 52px",
                       }}
                     >
                       <div>
-                        <Text
+                        <div
                           style={{
-                            display: "block",
-                            marginBottom: 20,
-                            color: "#B08E62",
-                            fontSize: 13,
-                            fontWeight: 700,
-                            letterSpacing: 2.2,
-                            textTransform: "uppercase",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: 12,
+                            marginBottom: 18,
                           }}
                         >
-                          The Ahangama Guide
-                        </Text>
+                          {[
+                            "Issue 2026 / 27",
+                            "The Ahangama Guide",
+                            "Updated Weekly",
+                            "Local Editorial Team",
+                          ].map((item) => (
+                            <Text
+                              key={item}
+                              style={{
+                                color: "#8B7B63",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: 1.6,
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              {item}
+                            </Text>
+                          ))}
+                        </div>
+
+                        <Text style={editorialEyebrowStyle}>Cover Story</Text>
 
                         <Title
                           style={{
                             margin: 0,
                             color: "#201E1B",
-                            fontSize: "clamp(62px, 7.2vw, 86px)",
-                            lineHeight: 0.9,
+                            fontSize: "clamp(54px, 6vw, 76px)",
+                            lineHeight: 0.92,
                             fontWeight: 500,
-                            letterSpacing: -2.6,
+                            letterSpacing: -2.1,
                             fontFamily:
                               '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                           }}
                         >
-                          <span style={{ whiteSpace: "nowrap" }}>
-                            Your guide to
-                          </span>
-                          <br />
-                          <span style={{ whiteSpace: "nowrap" }}>Ahangama</span>
+                          The Ahangama Guide
                         </Title>
 
                         <Paragraph
                           style={{
-                            marginTop: 26,
-                            marginBottom: 34,
-                            maxWidth: 430,
+                            marginTop: 24,
+                            marginBottom: 22,
+                            maxWidth: 520,
                             color: "#49443D",
-                            fontSize: "clamp(16px, 1.65vw, 18px)",
-                            lineHeight: 1.65,
+                            fontSize: "clamp(16px, 1.45vw, 19px)",
+                            lineHeight: 1.72,
                           }}
                         >
-                          Local recommendations, hidden gems and editorial picks
-                          to help you eat well, stay well, surf more and
-                          experience the best of Ahangama.
+                          A curated guide to cafes, stays, wellness, surf, food
+                          and local experiences across Ahangama. Written and
+                          updated by a local team who live here.
                         </Paragraph>
 
-                        <a
-                          href="https://pass.ahangama.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => {
-                            trackPassCtaClick({
-                              ctaLocation: "hero_logo",
-                              destinationUrl: "https://pass.ahangama.com",
-                            });
-                          }}
+                        <div
                           style={{
-                            display: "inline-flex",
-                            alignItems: "center",
+                            maxWidth: 520,
+                            marginBottom: 28,
+                            paddingTop: 18,
+                            borderTop: "1px solid rgba(32,30,27,0.08)",
                           }}
                         >
-                          <img
-                            src={ahangamaPassLogo}
-                            alt="Ahangama Pass"
+                          <Text style={editorialEyebrowStyle}>From the Editor</Text>
+                          <Paragraph
                             style={{
-                              display: "block",
-                              height: 54,
-                              width: "auto",
+                              marginBottom: 0,
+                              color: "#5F574E",
+                              fontSize: 15,
+                              lineHeight: 1.78,
                             }}
-                          />
-                        </a>
+                          >
+                            Ahangama has transformed from a quiet surf town into
+                            one of Sri Lanka&apos;s most interesting destinations.
+                            This guide exists to help visitors discover the
+                            places, people and experiences that make it special.
+                          </Paragraph>
+                        </div>
+
+                        <div style={{ maxWidth: 520, marginBottom: 30 }}>
+                          <Text style={editorialEyebrowStyle}>Featured This Week</Text>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 10,
+                            }}
+                          >
+                            {featuredHeroStories.map((story) => (
+                              <a
+                                key={story.label}
+                                href={story.href}
+                                style={{
+                                  color: "#2F3E3A",
+                                  textDecoration: "none",
+                                  fontSize: 18,
+                                  lineHeight: 1.45,
+                                }}
+                              >
+                                {story.label} <ArrowRightOutlined />
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "minmax(0, 1fr) minmax(180px, 220px)",
+                            gap: 24,
+                            maxWidth: 560,
+                          }}
+                        >
+                          <div>
+                            <Text style={editorialEyebrowStyle}>Start Exploring</Text>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 10,
+                              }}
+                            >
+                              <a
+                                href="/12-things"
+                                style={{
+                                  color: "#2F3E3A",
+                                  textDecoration: "none",
+                                  fontSize: 16,
+                                  fontWeight: 600,
+                                }}
+                              >
+                                Read the guide <ArrowRightOutlined />
+                              </a>
+                              <a
+                                href="/search"
+                                style={{
+                                  color: "#2F3E3A",
+                                  textDecoration: "none",
+                                  fontSize: 16,
+                                  fontWeight: 500,
+                                }}
+                              >
+                                Browse places <ArrowRightOutlined />
+                              </a>
+                              <a
+                                href="/map"
+                                style={{
+                                  color: "#2F3E3A",
+                                  textDecoration: "none",
+                                  fontSize: 16,
+                                  fontWeight: 500,
+                                }}
+                              >
+                                Open the map <ArrowRightOutlined />
+                              </a>
+                            </div>
+                          </div>
+                          <div>
+                            <Text style={editorialEyebrowStyle}>Member Benefits</Text>
+                            <a
+                              href={passCtaUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => {
+                                trackPassCtaClick({
+                                  ctaLocation: "hero_text_link",
+                                  destinationUrl: passCtaUrl,
+                                });
+                              }}
+                              style={{
+                                color: "#8B7B63",
+                                textDecoration: "none",
+                                fontSize: 16,
+                                fontWeight: 600,
+                                lineHeight: 1.55,
+                              }}
+                            >
+                              Get the Ahangama Pass <ArrowRightOutlined />
+                            </a>
+                          </div>
+                        </div>
                       </div>
 
                       <div
                         style={{
-                          display: "flex",
-                          flexWrap: "nowrap",
-                          justifyContent: "space-between",
-                          gap: 14,
-                          paddingTop: 18,
+                          display: "grid",
+                          gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+                          gap: 18,
+                          paddingTop: 26,
+                          borderTop: "1px solid rgba(32,30,27,0.08)",
                         }}
                       >
-                        {guideHighlights.map((item) => (
+                        <div style={{ gridColumn: "1 / -1", marginBottom: -2 }}>
+                          <Text style={editorialEyebrowStyle}>Destination Index</Text>
+                        </div>
+                        {heroStats.map((item) => (
                           <div
-                            key={item.key}
+                            key={item.label}
                             style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 8,
-                              color: "#2F2B26",
-                              minWidth: "fit-content",
+                              minWidth: 0,
                             }}
                           >
-                            <span
-                              style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                width: 22,
-                                height: 22,
-                                fontSize: 16,
-                                color: "#2F2B26",
-                              }}
-                            >
-                              {item.icon}
-                            </span>
                             <Text
                               style={{
-                                color: "#3A342E",
+                                display: "block",
+                                marginBottom: 2,
+                                color: "#8B7B63",
                                 fontSize: 11,
                                 fontWeight: 700,
-                                letterSpacing: 0.3,
+                                letterSpacing: 1.5,
                                 textTransform: "uppercase",
-                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              {item.value}
+                            </Text>
+                            <Text
+                              style={{
+                                display: "block",
+                                color: "#1F1D1A",
+                                fontSize: 12,
+                                fontWeight: 700,
+                                letterSpacing: 1.3,
+                                textTransform: "uppercase",
                               }}
                             >
                               {item.label}
@@ -424,33 +590,166 @@ export default function Home() {
                     </div>
                   </Col>
 
-                  <Col xs={24} lg={13} xl={14}>
+                  <Col xs={24} lg={10} xl={10}>
                     <div
                       style={{
-                        minHeight: "clamp(520px, 56vw, 620px)",
-                        backgroundImage: `linear-gradient(90deg, rgba(249,245,239,0.98) 0%, rgba(249,245,239,0.9) 10%, rgba(249,245,239,0.56) 22%, rgba(249,245,239,0.16) 34%, rgba(0,0,0,0.12) 100%), url(${heroImage})`,
-                        backgroundSize: "cover, cover",
-                        backgroundPosition: "center, center center",
-                        backgroundRepeat: "no-repeat, no-repeat",
-                        filter: "saturate(0.96) contrast(1.02)",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 18,
+                        minHeight: "clamp(620px, 64vw, 720px)",
+                        padding: "28px 28px 26px 0",
                       }}
-                    />
+                    >
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: "minmax(0, 1.15fr) minmax(0, 0.85fr)",
+                          gap: 14,
+                        }}
+                      >
+                        <div
+                          style={{
+                            padding: 18,
+                            borderRadius: 22,
+                            background: "rgba(255,255,255,0.48)",
+                            border: "1px solid rgba(32,30,27,0.08)",
+                          }}
+                        >
+                          <Text
+                            style={{
+                              display: "block",
+                              color: "#8B7B63",
+                              fontSize: 11,
+                              fontWeight: 700,
+                              letterSpacing: 1.5,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {heroCurrentIssue.month}
+                          </Text>
+                          <Text style={{ ...editorialEyebrowStyle, marginTop: 8 }}>
+                            Current Issue
+                          </Text>
+                          <Title
+                            level={4}
+                            style={{
+                              marginTop: 0,
+                              marginBottom: 12,
+                              color: "#1F1D1A",
+                              fontFamily: editorialSerifFont,
+                              fontSize: 28,
+                              lineHeight: 1.02,
+                            }}
+                          >
+                            {heroCurrentIssue.title}
+                          </Title>
+                          <Text
+                            style={{
+                              display: "block",
+                              marginBottom: 8,
+                              color: "#8B7B63",
+                              fontSize: 11,
+                              fontWeight: 700,
+                              letterSpacing: 1.5,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Featuring
+                          </Text>
+                          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                            {heroCurrentIssue.highlights.map((item) => (
+                              <Text
+                                key={item}
+                                style={{ color: "#5F574E", fontSize: 14, lineHeight: 1.6 }}
+                              >
+                                • {item}
+                              </Text>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div
+                          style={{
+                            padding: 18,
+                            borderRadius: 22,
+                            background: "rgba(255,255,255,0.38)",
+                            border: "1px solid rgba(32,30,27,0.08)",
+                          }}
+                        >
+                          <Text style={editorialEyebrowStyle}>Editor&apos;s Picks</Text>
+                          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                            {heroEditorsPicks.map((item) => (
+                              <Text
+                                key={item}
+                                style={{ color: "#2F3E3A", fontSize: 15, lineHeight: 1.45 }}
+                              >
+                                • {item}
+                              </Text>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        style={{
+                          flex: 1,
+                          minHeight: 420,
+                          borderRadius: 12,
+                          backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${heroImage})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center center",
+                          backgroundRepeat: "no-repeat",
+                          filter: "saturate(0.94) contrast(1.01)",
+                          boxShadow: "0 20px 44px rgba(32,30,27,0.08)",
+                        }}
+                      />
+
+                      <div
+                        style={{
+                          paddingTop: 4,
+                          borderTop: "1px solid rgba(32,30,27,0.08)",
+                        }}
+                      >
+                        <Text style={editorialEyebrowStyle}>Featured This Week</Text>
+                        <Title
+                          level={4}
+                          style={{
+                            marginTop: 0,
+                            marginBottom: 8,
+                            color: "#1F1D1A",
+                            fontFamily: editorialSerifFont,
+                            fontSize: 30,
+                            lineHeight: 1.04,
+                          }}
+                        >
+                          Morning at Kaffi
+                        </Title>
+                        <Paragraph
+                          style={{
+                            marginBottom: 10,
+                            color: "#5F574E",
+                            fontSize: 15,
+                            lineHeight: 1.72,
+                          }}
+                        >
+                          One of our favourite spots for coffee, breakfast and
+                          ocean views.
+                        </Paragraph>
+                        <a
+                          href="/eat"
+                          style={{
+                            color: "#2F3E3A",
+                            textDecoration: "none",
+                            fontSize: 15,
+                            fontWeight: 600,
+                          }}
+                        >
+                          Read Story <ArrowRightOutlined />
+                        </a>
+                      </div>
+                    </div>
                   </Col>
                 </Row>
-
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    left: "35%",
-                    width: 300,
-                    background:
-                      "linear-gradient(90deg, rgba(249,245,239,0.98) 0%, rgba(249,245,239,0.64) 42%, rgba(249,245,239,0.12) 82%, rgba(249,245,239,0) 100%)",
-                    filter: "blur(28px)",
-                    pointerEvents: "none",
-                  }}
-                />
               </div>
             </div>
           </div>
