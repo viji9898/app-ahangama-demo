@@ -198,43 +198,6 @@ export default function Home() {
         name: place.name,
       }));
   }, [places, heroImage]);
-  const liveAhangamaPlaces = useMemo(
-    () =>
-      (places || [])
-        .filter((place) => place.destinationSlug === "ahangama")
-        .filter((place) => shouldShowPlace(place)),
-    [places],
-  );
-  const heroStats = useMemo(
-    () => [
-      {
-        label: "Places",
-        value: loading ? "..." : String(liveAhangamaPlaces.length),
-      },
-      {
-        label: "Cafes",
-        value: loading
-          ? "..."
-          : String(
-              liveAhangamaPlaces.filter((place) => place.category === "eat")
-                .length,
-            ),
-      },
-      { label: "Beaches", value: "14" },
-      {
-        label: "Wellness Spots",
-        value: loading
-          ? "..."
-          : String(
-              liveAhangamaPlaces.filter(
-                (place) => place.category === "wellness",
-              ).length,
-            ),
-      },
-      { label: "Pass Perks", value: "100+" },
-    ],
-    [liveAhangamaPlaces, loading],
-  );
   const featuredHeroStories = [
     { label: "Best Cafes To Work From", href: "/eat" },
     { label: "12 Must Do Things", href: "/12-things" },
@@ -360,135 +323,79 @@ export default function Home() {
                           "clamp(58px, 7vw, 92px) clamp(32px, 4.8vw, 72px) 52px",
                       }}
                     >
-                      <div>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: 12,
-                            marginBottom: 18,
-                          }}
-                        >
-                          {[
-                            "Issue 2026 / 27",
-                            "The Ahangama Guide",
-                            "Updated Weekly",
-                            "Local Editorial Team",
-                          ].map((item) => (
-                            <Text
-                              key={item}
-                              style={{
-                                color: "#8B7B63",
-                                fontSize: 11,
-                                fontWeight: 700,
-                                letterSpacing: 1.6,
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              {item}
-                            </Text>
-                          ))}
-                        </div>
-
-                        <Text style={editorialEyebrowStyle}>Cover Story</Text>
-
-                        <Title
-                          style={{
-                            margin: 0,
-                            color: "#201E1B",
-                            fontSize: "clamp(54px, 6vw, 76px)",
-                            lineHeight: 0.92,
-                            fontWeight: 500,
-                            letterSpacing: -2.1,
-                            fontFamily:
-                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                          }}
-                        >
-                          The Ahangama Guide
-                        </Title>
-
-                        <Paragraph
-                          style={{
-                            marginTop: 24,
-                            marginBottom: 22,
-                            maxWidth: 520,
-                            color: "#49443D",
-                            fontSize: "clamp(16px, 1.45vw, 19px)",
-                            lineHeight: 1.72,
-                          }}
-                        >
-                          A curated guide to cafes, stays, wellness, surf, food
-                          and local experiences across Ahangama. Written and
-                          updated by a local team who live here.
-                        </Paragraph>
-
-                        <div
-                          style={{
-                            maxWidth: 520,
-                            marginBottom: 28,
-                            paddingTop: 18,
-                            borderTop: "1px solid rgba(32,30,27,0.08)",
-                          }}
-                        >
-                          <Text style={editorialEyebrowStyle}>
-                            From the Editor
-                          </Text>
-                          <Paragraph
-                            style={{
-                              marginBottom: 0,
-                              color: "#5F574E",
-                              fontSize: 15,
-                              lineHeight: 1.78,
-                            }}
-                          >
-                            Ahangama has transformed from a quiet surf town into
-                            one of Sri Lanka&apos;s most interesting
-                            destinations. This guide exists to help visitors
-                            discover the places, people and experiences that
-                            make it special.
-                          </Paragraph>
-                        </div>
-
-                        <div style={{ maxWidth: 520, marginBottom: 30 }}>
-                          <Text style={editorialEyebrowStyle}>
-                            Featured This Week
-                          </Text>
+                      <Row gutter={[40, 32]} align="top">
+                        <Col xs={24} xl={13}>
                           <div
                             style={{
                               display: "flex",
-                              flexDirection: "column",
-                              gap: 10,
+                              flexWrap: "wrap",
+                              gap: 12,
+                              marginBottom: 18,
                             }}
                           >
-                            {featuredHeroStories.map((story) => (
-                              <a
-                                key={story.label}
-                                href={story.href}
+                            {[
+                              "Issue 2026 / 27",
+                              "The Ahangama Guide",
+                              "Updated Weekly",
+                              "Local Editorial Team",
+                            ].map((item) => (
+                              <Text
+                                key={item}
                                 style={{
-                                  color: "#2F3E3A",
-                                  textDecoration: "none",
-                                  fontSize: 18,
-                                  lineHeight: 1.45,
+                                  color: "#8B7B63",
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  letterSpacing: 1.6,
+                                  textTransform: "uppercase",
                                 }}
                               >
-                                {story.label} <ArrowRightOutlined />
-                              </a>
+                                {item}
+                              </Text>
                             ))}
                           </div>
-                        </div>
 
-                        <div
-                          style={{
-                            display: "grid",
-                            gridTemplateColumns:
-                              "minmax(0, 1fr) minmax(180px, 220px)",
-                            gap: 24,
-                            maxWidth: 560,
-                          }}
-                        >
-                          <div>
+                          <Text style={editorialEyebrowStyle}>Cover Story</Text>
+
+                          <Title
+                            style={{
+                              margin: 0,
+                              color: "#201E1B",
+                              fontSize: "clamp(54px, 6vw, 76px)",
+                              lineHeight: 0.92,
+                              fontWeight: 500,
+                              letterSpacing: -2.1,
+                              fontFamily:
+                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                            }}
+                          >
+                            The Ahangama Guide
+                          </Title>
+
+                          <Text style={editorialEyebrowStyle}>
+                            From the Editor
+                          </Text>
+
+                          <Paragraph
+                            style={{
+                              marginTop: 24,
+                              marginBottom: 22,
+                              maxWidth: 520,
+                              color: "#49443D",
+                              fontSize: "clamp(16px, 1.45vw, 19px)",
+                              lineHeight: 1.72,
+                            }}
+                          >
+                            A curated guide to cafes, stays, wellness, surf, food
+                            and local experiences across Ahangama. Written and
+                            updated by a local team who live here.
+                          </Paragraph>
+
+                        </Col>
+
+                        <Col xs={24} xl={11}>
+                          <div style={{ maxWidth: 520, marginBottom: 30 }}>
                             <Text style={editorialEyebrowStyle}>
-                              Start Exploring
+                              Featured This Week
                             </Text>
                             <div
                               style={{
@@ -497,118 +404,108 @@ export default function Home() {
                                 gap: 10,
                               }}
                             >
-                              <a
-                                href="/12-things"
+                              {featuredHeroStories.map((story) => (
+                                <a
+                                  key={story.label}
+                                  href={story.href}
+                                  style={{
+                                    color: "#2F3E3A",
+                                    textDecoration: "none",
+                                    fontSize: 18,
+                                    lineHeight: 1.45,
+                                  }}
+                                >
+                                  {story.label} <ArrowRightOutlined />
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns:
+                                "minmax(0, 1fr) minmax(180px, 220px)",
+                              gap: 24,
+                              marginBottom: 30,
+                              maxWidth: 560,
+                            }}
+                          >
+                            <div>
+                              <Text style={editorialEyebrowStyle}>
+                                Start Exploring
+                              </Text>
+                              <div
                                 style={{
-                                  color: "#2F3E3A",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  gap: 10,
+                                }}
+                              >
+                                <a
+                                  href="/12-things"
+                                  style={{
+                                    color: "#2F3E3A",
+                                    textDecoration: "none",
+                                    fontSize: 16,
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  Read the guide <ArrowRightOutlined />
+                                </a>
+                                <a
+                                  href="/search"
+                                  style={{
+                                    color: "#2F3E3A",
+                                    textDecoration: "none",
+                                    fontSize: 16,
+                                    fontWeight: 500,
+                                  }}
+                                >
+                                  Browse places <ArrowRightOutlined />
+                                </a>
+                                <a
+                                  href="/map"
+                                  style={{
+                                    color: "#2F3E3A",
+                                    textDecoration: "none",
+                                    fontSize: 16,
+                                    fontWeight: 500,
+                                  }}
+                                >
+                                  Open the map <ArrowRightOutlined />
+                                </a>
+                              </div>
+                            </div>
+                            <div>
+                              <Text style={editorialEyebrowStyle}>
+                                Member Benefits
+                              </Text>
+                              <a
+                                href={passCtaUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => {
+                                  trackPassCtaClick({
+                                    ctaLocation: "hero_text_link",
+                                    destinationUrl: passCtaUrl,
+                                  });
+                                }}
+                                style={{
+                                  color: "#8B7B63",
                                   textDecoration: "none",
                                   fontSize: 16,
                                   fontWeight: 600,
+                                  lineHeight: 1.55,
                                 }}
                               >
-                                Read the guide <ArrowRightOutlined />
-                              </a>
-                              <a
-                                href="/search"
-                                style={{
-                                  color: "#2F3E3A",
-                                  textDecoration: "none",
-                                  fontSize: 16,
-                                  fontWeight: 500,
-                                }}
-                              >
-                                Browse places <ArrowRightOutlined />
-                              </a>
-                              <a
-                                href="/map"
-                                style={{
-                                  color: "#2F3E3A",
-                                  textDecoration: "none",
-                                  fontSize: 16,
-                                  fontWeight: 500,
-                                }}
-                              >
-                                Open the map <ArrowRightOutlined />
+                                Get the Ahangama Pass <ArrowRightOutlined />
                               </a>
                             </div>
                           </div>
-                          <div>
-                            <Text style={editorialEyebrowStyle}>
-                              Member Benefits
-                            </Text>
-                            <a
-                              href={passCtaUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => {
-                                trackPassCtaClick({
-                                  ctaLocation: "hero_text_link",
-                                  destinationUrl: passCtaUrl,
-                                });
-                              }}
-                              style={{
-                                color: "#8B7B63",
-                                textDecoration: "none",
-                                fontSize: 16,
-                                fontWeight: 600,
-                                lineHeight: 1.55,
-                              }}
-                            >
-                              Get the Ahangama Pass <ArrowRightOutlined />
-                            </a>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div
-                        style={{
-                          display: "grid",
-                          gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
-                          gap: 18,
-                          paddingTop: 26,
-                          borderTop: "1px solid rgba(32,30,27,0.08)",
-                        }}
-                      >
-                        <div style={{ gridColumn: "1 / -1", marginBottom: -2 }}>
-                          <Text style={editorialEyebrowStyle}>
-                            Destination Index
-                          </Text>
-                        </div>
-                        {heroStats.map((item) => (
-                          <div
-                            key={item.label}
-                            style={{
-                              minWidth: 0,
-                            }}
-                          >
-                            <Text
-                              style={{
-                                display: "block",
-                                marginBottom: 2,
-                                color: "#8B7B63",
-                                fontSize: 11,
-                                fontWeight: 700,
-                                letterSpacing: 1.5,
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              {item.value}
-                            </Text>
-                            <Text
-                              style={{
-                                display: "block",
-                                color: "#1F1D1A",
-                                fontSize: 12,
-                                fontWeight: 700,
-                                letterSpacing: 1.3,
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              {item.label}
-                            </Text>
-                          </div>
-                        ))}
-                      </div>
+                        </Col>
+                      </Row>
                     </div>
                   </Col>
 

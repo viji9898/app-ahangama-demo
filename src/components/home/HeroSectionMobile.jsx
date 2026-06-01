@@ -1,43 +1,11 @@
 import React from "react";
-import { Typography, Spin } from "antd";
-import { usePlaces } from "../../app/placesContext";
+import { Typography } from "antd";
 import { trackPassCtaClick } from "../../analytics";
-import { shouldShowPlace } from "../../data/placeStatus";
 import { ArrowRightOutlined } from "@ant-design/icons";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function HeroSectionMobile() {
-  const { places, loading } = usePlaces();
-  const liveAhangamaPlaces = (places || [])
-    .filter((place) => place.destinationSlug === "ahangama")
-    .filter((place) => shouldShowPlace(place));
-  const heroStats = [
-    {
-      label: "Places",
-      value: loading ? "..." : String(liveAhangamaPlaces.length),
-    },
-    {
-      label: "Cafes",
-      value: loading
-        ? "..."
-        : String(
-            liveAhangamaPlaces.filter((place) => place.category === "eat")
-              .length,
-          ),
-    },
-    { label: "Beaches", value: "14" },
-    {
-      label: "Wellness Spots",
-      value: loading
-        ? "..."
-        : String(
-            liveAhangamaPlaces.filter((place) => place.category === "wellness")
-              .length,
-          ),
-    },
-    { label: "Pass Perks", value: "100+" },
-  ];
   const currentIssue = {
     month: "June 2026",
     title: "The Wellness Edition",
@@ -272,60 +240,6 @@ export default function HeroSectionMobile() {
               </Text>
             ))}
           </div>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "16px 18px",
-            marginBottom: "22px",
-            paddingTop: 18,
-            borderTop: "1px solid rgba(32,30,27,0.08)",
-          }}
-        >
-          <div style={{ width: "100%", marginBottom: -2 }}>
-            <Text
-              style={{
-                display: "block",
-                color: "#B08E62",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: 1.6,
-                textTransform: "uppercase",
-              }}
-            >
-              Destination Index
-            </Text>
-          </div>
-          {heroStats.map((item) => (
-            <div key={item.label} style={{ minWidth: 88 }}>
-              <Text
-                style={{
-                  display: "block",
-                  color: "#1F1D1A",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.1,
-                  textTransform: "uppercase",
-                }}
-              >
-                {item.value === "..." ? <Spin size="small" /> : item.value}
-              </Text>
-              <div
-                style={{
-                  marginTop: 4,
-                  color: "#8B7B63",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.3,
-                  textTransform: "uppercase",
-                }}
-              >
-                {item.label}
-              </div>
-            </div>
-          ))}
         </div>
 
         <div style={{ display: "grid", gap: 18 }}>
