@@ -792,7 +792,7 @@ export default function Home() {
                   bodyStyle={{ padding: 30, height: "100%" }}
                 >
                   <Row className="pass-guide-row" gutter={[18, 18]} align="middle">
-                    <Col xs={24} xl={15}>
+                    <Col xs={14} xl={15}>
                   <Text style={editorialEyebrowStyle}>Field Guide</Text>
                   <div style={featureTagRailStyle}>
                     <Tag style={featureTagStyle}>Pass Guide</Tag>
@@ -832,7 +832,7 @@ export default function Home() {
                   </Button>
                     </Col>
 
-                    <Col xs={24} xl={9}>
+                    <Col xs={10} xl={9}>
                       <div
                         className="pass-guide-media"
                         style={{
