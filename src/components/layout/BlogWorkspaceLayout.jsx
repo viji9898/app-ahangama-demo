@@ -1,54 +1,61 @@
 import React, { useState } from "react";
-import { Button, Drawer, Space, Tag, Tooltip, Typography } from "antd";
+import { Button, Drawer, Typography } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import "../../styles/blog-workspace.css";
 
 const { Text, Title } = Typography;
 
-function BlogSidebar({ posts, activeSlug, onSelect }) {
+function BlogSidebar({ issueItems, activeSlug, onSelect }) {
   return (
     <div className="blog-sidebarInner">
       <div className="blog-brandBlock">
-        <div className="blog-brandMark">BL</div>
+        <div className="blog-brandMark">AS</div>
         <div>
-          <Text className="blog-eyebrow">Editorial Collection</Text>
+          <Text className="blog-eyebrow">Ahangama Stories</Text>
           <Title level={4} className="blog-brandTitle">
-            Ahangama Blogs
+            Issue Index
           </Title>
         </div>
       </div>
 
-      <div className="blog-sidebarMeta">
-        <Tag className="blog-metaTag">Local Guides</Tag>
-        <Tag className="blog-metaTag">SEO Articles</Tag>
+      <Text className="blog-sidebarIntro">
+        A more editorial contents page of slow guides, visitor journals, local
+        profiles, and travel features from Ahangama.
+      </Text>
+
+      <div className="blog-sidebarSectionHeader">
+        <Text className="blog-sidebarSectionLabel">Contents</Text>
+        <Text className="blog-sidebarSectionCount">
+          {`${issueItems.length}`.padStart(2, "0")} stories
+        </Text>
       </div>
 
-      <nav className="blog-nav" aria-label="Blog posts">
-        {posts.map((post, index) => {
-          const isActive = post.slug === activeSlug;
+      <nav className="blog-contentsList" aria-label="Story index">
+        {issueItems.map((item) => {
+          const isActive = item.slug === activeSlug;
 
           return (
-            <Tooltip
-              key={post.slug}
-              title={`${post.category} · ${post.readingTime}`}
-              placement="right"
-              mouseEnterDelay={0.15}
+            <button
+              key={item.slug}
+              className={`blog-contentsItem${isActive ? " is-active" : ""}`}
+              type="button"
+              onClick={() => onSelect(item.slug)}
+              aria-label={item.title}
             >
-              <button
-                className={`blog-navItem${isActive ? " is-active" : ""}`}
-                type="button"
-                onClick={() => onSelect(post.slug)}
-                aria-label={post.title}
-              >
-                <span className="blog-navIndex">
-                  {`0${index + 1}`.slice(-2)}
-                </span>
-                <span className="blog-navText">
-                  <span className="blog-navLabel">{post.title}</span>
-                  <span className="blog-navHint">{post.category}</span>
-                </span>
-              </button>
-            </Tooltip>
+              <span className="blog-contentsNumber">{item.number}</span>
+              <span className="blog-contentsThumbWrap">
+                <img
+                  className="blog-contentsThumb"
+                  src={item.thumbnail}
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <span className="blog-contentsMeta">
+                <span className="blog-contentsCategory">{item.category}</span>
+                <span className="blog-contentsTitle">{item.title}</span>
+              </span>
+            </button>
           );
         })}
       </nav>
@@ -56,15 +63,41 @@ function BlogSidebar({ posts, activeSlug, onSelect }) {
   );
 }
 
+function BlogFilterBar({ filters, activeFilter, onSelectFilter }) {
+  return (
+    <div className="blog-filterBar" role="tablist" aria-label="Story filters">
+      {filters.map((filter) => {
+        const isActive = filter.key === activeFilter;
+
+        return (
+          <button
+            key={filter.key}
+            type="button"
+            className={`blog-filterChip${isActive ? " is-active" : ""}`}
+            onClick={() => onSelectFilter(filter.key)}
+          >
+            {filter.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function BlogWorkspaceLayout({
-  posts,
+  issueItems,
+  filteredIssueItems,
   activeSlug,
+  filters,
+  activeFilter,
+  onSelectFilter,
   onSelectPost,
   lastUpdated,
   children,
 }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const activePost = posts.find((post) => post.slug === activeSlug) || null;
+  const activePost =
+    issueItems.find((post) => post.slug === activeSlug) || null;
 
   const handleSelectPost = (slug) => {
     setMobileNavOpen(false);
@@ -75,7 +108,7 @@ export default function BlogWorkspaceLayout({
     <div className="blog-shell">
       <aside className="blog-sidebar blog-sidebarDesktop">
         <BlogSidebar
-          posts={posts}
+          issueItems={filteredIssueItems}
           activeSlug={activeSlug}
           onSelect={handleSelectPost}
         />
@@ -83,26 +116,31 @@ export default function BlogWorkspaceLayout({
 
       <div className="blog-mainPane">
         <header className="blog-topbar">
-          <Space size={12} align="center">
+          <div className="blog-topbarRow">
             <Button
               className="blog-menuButton"
               icon={<MenuOutlined />}
               onClick={() => setMobileNavOpen(true)}
             >
-              Posts
+              Issue Index
             </Button>
             <div>
-              <Text className="blog-topbarLabel">
-                Ahangama stories and guides
-              </Text>
+              <Text className="blog-topbarLabel">Ahangama Stories</Text>
               <div className="blog-topbarStatusRow">
-                <Tag className="blog-statusTag">
-                  {activePost?.category || "Blog"}
-                </Tag>
+                <Text className="blog-topbarCategory">
+                  {activePost?.category || "Editorial archive"}
+                </Text>
+                <span className="blog-topbarDivider" />
                 <Text className="blog-topbarMeta">Updated {lastUpdated}</Text>
               </div>
             </div>
-          </Space>
+          </div>
+
+          <BlogFilterBar
+            filters={filters}
+            activeFilter={activeFilter}
+            onSelectFilter={onSelectFilter}
+          />
         </header>
 
         <main className="blog-content">{children}</main>
@@ -117,7 +155,7 @@ export default function BlogWorkspaceLayout({
         title={null}
       >
         <BlogSidebar
-          posts={posts}
+          issueItems={filteredIssueItems}
           activeSlug={activeSlug}
           onSelect={handleSelectPost}
         />

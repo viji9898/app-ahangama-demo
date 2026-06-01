@@ -163,7 +163,8 @@ const TRANSPORT_CURRENCY_FORMATTERS = {
 function formatTransportRange(item, currency) {
   const rate = TRANSPORT_EXCHANGE_RATES[currency] || 1;
   const formatter =
-    TRANSPORT_CURRENCY_FORMATTERS[currency] || TRANSPORT_CURRENCY_FORMATTERS.LKR;
+    TRANSPORT_CURRENCY_FORMATTERS[currency] ||
+    TRANSPORT_CURRENCY_FORMATTERS.LKR;
   const min = Math.round(item.minLkr * rate);
   const max = Math.round(item.maxLkr * rate);
   const formattedRange =
@@ -567,8 +568,15 @@ export default function Home() {
                     style={{ ...editorialCardStyle, height: "100%" }}
                     bodyStyle={{ padding: 32, height: "100%" }}
                   >
-                    <Row className="perfect-day-row" gutter={[28, 28]} align="top">
-                      <Col xs={{ span: 12, order: 1 }} xl={{ span: 10, order: 1 }}>
+                    <Row
+                      className="perfect-day-row"
+                      gutter={[28, 28]}
+                      align="top"
+                    >
+                      <Col
+                        xs={{ span: 12, order: 1 }}
+                        xl={{ span: 10, order: 1 }}
+                      >
                         <div
                           className="perfect-day-media"
                           style={{
@@ -655,7 +663,10 @@ export default function Home() {
                         </div>
                       </Col>
 
-                      <Col xs={{ span: 12, order: 2 }} xl={{ span: 14, order: 2 }}>
+                      <Col
+                        xs={{ span: 12, order: 2 }}
+                        xl={{ span: 14, order: 2 }}
+                      >
                         <Title
                           level={2}
                           className="perfect-day-title"
@@ -684,12 +695,17 @@ export default function Home() {
                           }}
                         >
                           Pilates, surf, coffee, a slow afternoon and sunset at
-                          Lighthouse. Denitsa shares how she would spend a perfect
-                          day in Ahangama.
+                          Lighthouse. Denitsa shares how she would spend a
+                          perfect day in Ahangama.
                         </Paragraph>
 
-                        <div className="perfect-day-chip-group" style={{ marginBottom: 14 }}>
-                          <Text style={editorialEyebrowStyle}>Places Featured</Text>
+                        <div
+                          className="perfect-day-chip-group"
+                          style={{ marginBottom: 14 }}
+                        >
+                          <Text style={editorialEyebrowStyle}>
+                            Places Featured
+                          </Text>
                           <div
                             style={{
                               display: "flex",
@@ -703,7 +719,11 @@ export default function Home() {
                                 className="perfect-day-chip"
                                 href={item.mapUrl || undefined}
                                 target={item.mapUrl ? "_blank" : undefined}
-                                rel={item.mapUrl ? "noopener noreferrer" : undefined}
+                                rel={
+                                  item.mapUrl
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
                                 aria-label={
                                   item.mapUrl
                                     ? `Open ${item.label} in Google Maps`
@@ -740,7 +760,8 @@ export default function Home() {
                                   style={{
                                     display: "inline-block",
                                     paddingBottom: 2,
-                                    borderBottom: "1px solid rgba(47,42,36,0.42)",
+                                    borderBottom:
+                                      "1px solid rgba(47,42,36,0.42)",
                                     fontSize: 12,
                                     letterSpacing: 0.08,
                                   }}
@@ -796,45 +817,45 @@ export default function Home() {
                       Simple transport options and local costs.
                     </Title>
 
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          gap: 6,
-                          marginBottom: 12,
-                        }}
-                      >
-                        {TRANSPORT_CURRENCIES.map((currency) => {
-                          const isActive = transportCurrency === currency;
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        gap: 6,
+                        marginBottom: 12,
+                      }}
+                    >
+                      {TRANSPORT_CURRENCIES.map((currency) => {
+                        const isActive = transportCurrency === currency;
 
-                          return (
-                            <Button
-                              key={currency}
-                              size="small"
-                              type="text"
-                              onClick={() => setTransportCurrency(currency)}
-                              style={{
-                                height: 26,
-                                paddingInline: 8,
-                                borderRadius: 999,
-                                border: isActive
-                                  ? "1px solid rgba(47,62,58,0.18)"
-                                  : "1px solid transparent",
-                                background: isActive
-                                  ? "rgba(47,62,58,0.06)"
-                                  : "transparent",
-                                color: isActive ? "#2F3E3A" : "#8B7B63",
-                                fontSize: 11,
-                                fontWeight: 700,
-                                letterSpacing: 0.8,
-                                boxShadow: "none",
-                              }}
-                            >
-                              {currency}
-                            </Button>
-                          );
-                        })}
-                      </div>
+                        return (
+                          <Button
+                            key={currency}
+                            size="small"
+                            type="text"
+                            onClick={() => setTransportCurrency(currency)}
+                            style={{
+                              height: 26,
+                              paddingInline: 8,
+                              borderRadius: 999,
+                              border: isActive
+                                ? "1px solid rgba(47,62,58,0.18)"
+                                : "1px solid transparent",
+                              background: isActive
+                                ? "rgba(47,62,58,0.06)"
+                                : "transparent",
+                              color: isActive ? "#2F3E3A" : "#8B7B63",
+                              fontSize: 11,
+                              fontWeight: 700,
+                              letterSpacing: 0.8,
+                              boxShadow: "none",
+                            }}
+                          >
+                            {currency}
+                          </Button>
+                        );
+                      })}
+                    </div>
 
                     <div
                       style={{
@@ -853,7 +874,9 @@ export default function Home() {
                             alignItems: "center",
                             padding: "14px 0",
                             borderTop:
-                              index === 0 ? "1px solid rgba(32,30,27,0.08)" : "none",
+                              index === 0
+                                ? "1px solid rgba(32,30,27,0.08)"
+                                : "none",
                             borderBottom: "1px solid rgba(32,30,27,0.08)",
                           }}
                         >
@@ -921,7 +944,9 @@ export default function Home() {
                         />
                       </Col>
                       <Col xs={14} sm={15}>
-                        <Text style={editorialEyebrowStyle}>3 Days in Ahangama</Text>
+                        <Text style={editorialEyebrowStyle}>
+                          3 Days in Ahangama
+                        </Text>
                         <Title
                           level={3}
                           className="three-days-title"
@@ -1179,42 +1204,47 @@ export default function Home() {
                     <Tag style={featureTagStyle}>Savings + Perks</Tag>
                   </div>
 
-                  <Row className="pass-guide-row" gutter={[18, 18]} align="middle">
+                  <Row
+                    className="pass-guide-row"
+                    gutter={[18, 18]}
+                    align="middle"
+                  >
                     <Col xs={14} xl={15}>
-                  <Title
-                    level={3}
-                    className="pass-guide-title"
-                    style={{ ...editorialTitleStyle, fontSize: 38 }}
-                  >
-                    What is the Ahangama Pass?
-                  </Title>
+                      <Title
+                        level={3}
+                        className="pass-guide-title"
+                        style={{ ...editorialTitleStyle, fontSize: 38 }}
+                      >
+                        What is the Ahangama Pass?
+                      </Title>
 
-                  <Paragraph
-                    className="pass-guide-excerpt"
-                    style={{
-                      ...editorialCopyStyle,
-                      fontSize: 15,
-                      maxWidth: 700,
-                    }}
-                  >
-                    A simple local access pass you keep in Apple Wallet or
-                    Google Wallet for partner perks, curated recommendations,
-                    and extras that can add up fast, including tea tins,
-                    postcards, and member savings across Ahangama.
-                  </Paragraph>
+                      <Paragraph
+                        className="pass-guide-excerpt"
+                        style={{
+                          ...editorialCopyStyle,
+                          fontSize: 15,
+                          maxWidth: 700,
+                        }}
+                      >
+                        A simple local access pass you keep in Apple Wallet or
+                        Google Wallet for partner perks, curated
+                        recommendations, and extras that can add up fast,
+                        including tea tins, postcards, and member savings across
+                        Ahangama.
+                      </Paragraph>
 
-                  <a
-                    href="/what-is-ahangama-pass"
-                    style={{
-                      color: "#2F3E3A",
-                      textDecoration: "none",
-                      fontSize: 16,
-                      fontWeight: 600,
-                      letterSpacing: 0.1,
-                    }}
-                  >
-                    Tell me more <ArrowRightOutlined />
-                  </a>
+                      <a
+                        href="/what-is-ahangama-pass"
+                        style={{
+                          color: "#2F3E3A",
+                          textDecoration: "none",
+                          fontSize: 16,
+                          fontWeight: 600,
+                          letterSpacing: 0.1,
+                        }}
+                      >
+                        Tell me more <ArrowRightOutlined />
+                      </a>
                     </Col>
 
                     <Col xs={10} xl={9}>
@@ -1231,18 +1261,18 @@ export default function Home() {
                           padding: 18,
                         }}
                       >
-                    <img
-                      src={heroPassAppleWallet}
-                      alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
-                      style={{
-                        display: "block",
-                        maxWidth: "100%",
-                        maxHeight: 210,
-                        width: "auto",
-                        height: "auto",
-                        objectFit: "contain",
-                      }}
-                    />
+                        <img
+                          src={heroPassAppleWallet}
+                          alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
+                          style={{
+                            display: "block",
+                            maxWidth: "100%",
+                            maxHeight: 210,
+                            width: "auto",
+                            height: "auto",
+                            objectFit: "contain",
+                          }}
+                        />
                       </div>
                     </Col>
                   </Row>
@@ -1255,126 +1285,141 @@ export default function Home() {
                   style={{ ...editorialCardStyle, height: "100%" }}
                   bodyStyle={{ padding: 32, height: "100%" }}
                 >
-                  <Row className="twelve-things-row" gutter={[28, 28]} align="middle">
-                    <Col xs={{ span: 12, order: 2 }} xl={{ span: 14, order: 1 }}>
-                  <Title
-                    level={2}
-                    className="twelve-things-title"
-                    style={{
-                      ...editorialTitleStyle,
-                      marginBottom: 14,
-                      fontSize: "clamp(36px, 3.5vw, 54px)",
-                      lineHeight: 0.96,
-                    }}
+                  <Row
+                    className="twelve-things-row"
+                    gutter={[28, 28]}
+                    align="middle"
                   >
-                    12 Things to Do in Ahangama
-                  </Title>
-
-                  <div
-                    className="twelve-things-meta"
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: 10,
-                      marginBottom: 18,
-                    }}
-                  >
-                    {TWELVE_THINGS_GUIDE_META.map((item) => (
-                      <Text
-                        key={item}
+                    <Col
+                      xs={{ span: 12, order: 2 }}
+                      xl={{ span: 14, order: 1 }}
+                    >
+                      <Title
+                        level={2}
+                        className="twelve-things-title"
                         style={{
-                          color: "#8B7B63",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: 1.5,
-                          textTransform: "uppercase",
+                          ...editorialTitleStyle,
+                          marginBottom: 14,
+                          fontSize: "clamp(36px, 3.5vw, 54px)",
+                          lineHeight: 0.96,
                         }}
                       >
-                        {item}
-                      </Text>
-                    ))}
-                  </div>
+                        12 Things to Do in Ahangama
+                      </Title>
 
-                  <div
-                    className="twelve-things-excerpt"
-                    style={{
-                      maxWidth: 420,
-                      marginBottom: 20,
-                    }}
-                  >
-                    <Text style={editorialEyebrowStyle}>Inside This Guide</Text>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 12,
-                        paddingTop: 14,
-                        borderTop: "1px solid rgba(32,30,27,0.08)",
-                      }}
-                    >
-                      {TWELVE_THINGS_GUIDE_PREVIEW.map((item, index) => (
-                        <div
-                          key={item}
-                          style={{
-                            display: "grid",
-                            gridTemplateColumns: "32px minmax(0, 1fr)",
-                            gap: 10,
-                            alignItems: "baseline",
-                          }}
-                        >
+                      <div
+                        className="twelve-things-meta"
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 10,
+                          marginBottom: 18,
+                        }}
+                      >
+                        {TWELVE_THINGS_GUIDE_META.map((item) => (
                           <Text
+                            key={item}
                             style={{
                               color: "#8B7B63",
-                              fontSize: 12,
+                              fontSize: 11,
                               fontWeight: 700,
-                              letterSpacing: 1.1,
-                            }}
-                          >
-                            {String(index + 1).padStart(2, "0")}
-                          </Text>
-                          <Text
-                            style={{
-                              color: "#2F2A24",
-                              fontSize: 16,
-                              lineHeight: 1.45,
+                              letterSpacing: 1.5,
+                              textTransform: "uppercase",
                             }}
                           >
                             {item}
                           </Text>
-                        </div>
-                      ))}
-                      <Text
+                        ))}
+                      </div>
+
+                      <div
+                        className="twelve-things-excerpt"
                         style={{
-                          paddingTop: 2,
-                          color: "#8B7B63",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          letterSpacing: 1.2,
-                          textTransform: "uppercase",
+                          maxWidth: 420,
+                          marginBottom: 20,
                         }}
                       >
-                        + 8 More Experiences
-                      </Text>
-                    </div>
-                  </div>
+                        <Text style={editorialEyebrowStyle}>
+                          Inside This Guide
+                        </Text>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 12,
+                            paddingTop: 14,
+                            borderTop: "1px solid rgba(32,30,27,0.08)",
+                          }}
+                        >
+                          {TWELVE_THINGS_GUIDE_PREVIEW.map((item, index) => (
+                            <div
+                              key={item}
+                              style={{
+                                display: "grid",
+                                gridTemplateColumns: "32px minmax(0, 1fr)",
+                                gap: 10,
+                                alignItems: "baseline",
+                              }}
+                            >
+                              <Text
+                                style={{
+                                  color: "#8B7B63",
+                                  fontSize: 12,
+                                  fontWeight: 700,
+                                  letterSpacing: 1.1,
+                                }}
+                              >
+                                {String(index + 1).padStart(2, "0")}
+                              </Text>
+                              <Text
+                                style={{
+                                  color: "#2F2A24",
+                                  fontSize: 16,
+                                  lineHeight: 1.45,
+                                }}
+                              >
+                                {item}
+                              </Text>
+                            </div>
+                          ))}
+                          <Text
+                            style={{
+                              paddingTop: 2,
+                              color: "#8B7B63",
+                              fontSize: 12,
+                              fontWeight: 700,
+                              letterSpacing: 1.2,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            + 8 More Experiences
+                          </Text>
+                        </div>
+                      </div>
 
-                  <div className="twelve-things-cta" style={{ marginTop: 28 }}>
-                    <a
-                      href="/12-things"
-                      style={{
-                        color: "#2F3E3A",
-                        textDecoration: "none",
-                        fontSize: 16,
-                        fontWeight: 600,
-                        letterSpacing: 0.1,
-                      }}
-                    >
-                      Explore All 12 Experiences <ArrowRightOutlined />
-                    </a>
-                  </div>
+                      <div
+                        className="twelve-things-cta"
+                        style={{ marginTop: 28 }}
+                      >
+                        <a
+                          href="/12-things"
+                          style={{
+                            color: "#2F3E3A",
+                            textDecoration: "none",
+                            fontSize: 16,
+                            fontWeight: 600,
+                            letterSpacing: 0.1,
+                          }}
+                        >
+                          Explore All 12 Experiences <ArrowRightOutlined />
+                        </a>
+                      </div>
                     </Col>
 
-                    <Col xs={{ span: 12, order: 1 }} xl={{ span: 10, order: 2 }}>
+                    <Col
+                      xs={{ span: 12, order: 1 }}
+                      xl={{ span: 10, order: 2 }}
+                    >
                       <div
                         className="twelve-things-media"
                         style={{
@@ -1386,47 +1431,48 @@ export default function Home() {
                           boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
                         }}
                       >
-                    <div
-                      className="twelve-things-mosaic"
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                        gap: 8,
-                      }}
-                    >
-                      {twelveThingsMosaic.map((item) => (
-                        <a
-                          key={item.slug}
-                          href="/12-things"
-                          title={item.name}
-                          aria-label={`Open 12 Things guide from ${item.name}`}
+                        <div
+                          className="twelve-things-mosaic"
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                            gap: 8,
+                          }}
+                        >
+                          {twelveThingsMosaic.map((item) => (
+                            <a
+                              key={item.slug}
+                              href="/12-things"
+                              title={item.name}
+                              aria-label={`Open 12 Things guide from ${item.name}`}
+                              style={{
+                                display: "block",
+                                aspectRatio: "1 / 1",
+                                borderRadius: 12,
+                                backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${item.image})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                textDecoration: "none",
+                                boxShadow:
+                                  "inset 0 0 0 1px rgba(255,255,255,0.12)",
+                              }}
+                            />
+                          ))}
+                        </div>
+                        <Text
+                          className="twelve-things-caption"
                           style={{
                             display: "block",
-                            aspectRatio: "1 / 1",
-                            borderRadius: 12,
-                            backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${item.image})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            textDecoration: "none",
-                            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.12)",
+                            marginTop: 12,
+                            color: "#8B7B63",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.2,
+                            textTransform: "uppercase",
                           }}
-                        />
-                      ))}
-                    </div>
-                    <Text
-                      className="twelve-things-caption"
-                      style={{
-                        display: "block",
-                        marginTop: 12,
-                        color: "#8B7B63",
-                        fontSize: 11,
-                        fontWeight: 700,
-                        letterSpacing: 1.2,
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Open any tile to enter the guide
-                    </Text>
+                        >
+                          Open any tile to enter the guide
+                        </Text>
                       </div>
                     </Col>
                   </Row>
@@ -1669,8 +1715,8 @@ export default function Home() {
                       fontSize: 15,
                     }}
                   >
-                    Your key to local perks, member-only offers and
-                    experiences across Ahangama.
+                    Your key to local perks, member-only offers and experiences
+                    across Ahangama.
                   </Paragraph>
                   <div
                     style={{

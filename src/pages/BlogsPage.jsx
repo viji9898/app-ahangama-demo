@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Breadcrumb, Button, Card, Col, Row, Tag, Typography } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
@@ -15,8 +15,110 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
   year: "numeric",
 });
 
+const STORY_FILTERS = [
+  { key: "all", label: "All Stories" },
+  { key: "guides", label: "Guides" },
+  { key: "local-profiles", label: "Local Profiles" },
+  { key: "visitor-journals", label: "Visitor Journals" },
+  { key: "food-drink", label: "Food & Drink" },
+  { key: "wellness", label: "Wellness" },
+  { key: "transport", label: "Transport" },
+  { key: "pass-guides", label: "Pass Guides" },
+];
+
+const MUKTI_FEATURE_IMAGE =
+  "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80";
+
+const ISSUE_INDEX = [
+  {
+    number: "01",
+    slug: "12-must-do-things-in-ahangama-2026-guide",
+    category: "FEATURE GUIDE",
+    title: "12 Must-Do Things in Ahangama",
+    filters: ["guides", "food-drink", "wellness", "transport", "pass-guides"],
+    articleIssue: "ISSUE 01",
+  },
+  {
+    number: "02",
+    slug: "perfect-day-in-ahangama",
+    category: "VISITOR JOURNAL",
+    title: "Perfect Day in Ahangama",
+    filters: ["visitor-journals", "food-drink", "wellness"],
+    articleIssue: "ISSUE 02",
+  },
+  {
+    number: "03",
+    slug: "mukti-studio-and-the-new-face-of-ahangama",
+    category: "LOCAL PROFILE",
+    title: "Mukti Studio and the New Face of Ahangama",
+    filters: ["local-profiles"],
+    articleIssue: "ISSUE 01",
+    thumbnail: MUKTI_FEATURE_IMAGE,
+  },
+  {
+    number: "04",
+    slug: "why-ahangama-might-be-sri-lankas-most-interesting-coastal-town-right-now",
+    category: "OPINION",
+    title:
+      "Why Ahangama Might Be Sri Lanka's Most Interesting Coastal Town Right Now",
+    filters: ["guides", "food-drink", "wellness", "pass-guides"],
+    articleIssue: "ISSUE 04",
+  },
+  {
+    number: "05",
+    slug: "why-ahangama-works-best-when-you-explore-it-slowly",
+    category: "TRAVEL FEATURE",
+    title: "Why Ahangama Works Best When You Explore It Slowly",
+    filters: ["guides", "food-drink", "wellness"],
+    articleIssue: "ISSUE 05",
+  },
+  {
+    number: "06",
+    slug: "ahangama-for-first-time-visitors-where-to-eat-stay-and-reset",
+    category: "VISITOR GUIDE",
+    title: "Ahangama for First-Time Visitors",
+    filters: ["guides", "food-drink", "wellness", "pass-guides"],
+    articleIssue: "ISSUE 06",
+  },
+  {
+    number: "07",
+    slug: "the-best-way-to-use-a-day-in-ahangama-without-overplanning-it",
+    category: "ITINERARY",
+    title: "The Best Way to Use a Day in Ahangama Without Overplanning It",
+    filters: ["guides", "food-drink"],
+    articleIssue: "ISSUE 07",
+  },
+];
+
+const READ_NEXT_SLUGS = [
+  "perfect-day-in-ahangama",
+  "12-must-do-things-in-ahangama-2026-guide",
+  "ahangama-for-first-time-visitors-where-to-eat-stay-and-reset",
+];
+
 function formatDate(value) {
   return dateFormatter.format(new Date(value));
+}
+
+function buildIssueItems() {
+  return ISSUE_INDEX.map((item) => {
+    const post = getBlogPostBySlug(item.slug);
+
+    if (!post) {
+      return null;
+    }
+
+    return {
+      ...item,
+      post,
+      thumbnail:
+        item.thumbnail ||
+        post.introImage ||
+        post.heroImage ||
+        MUKTI_FEATURE_IMAGE,
+      filters: ["all", ...(item.filters || [])],
+    };
+  }).filter(Boolean);
 }
 
 function EditorialImage({ src, alt, className = "" }) {
@@ -27,128 +129,105 @@ function EditorialImage({ src, alt, className = "" }) {
   );
 }
 
-function BlogCollectionHome({ posts, onSelectPost }) {
-  const [featuredPost, ...otherPosts] = posts;
-  const recentPosts = otherPosts.slice(0, 4);
+function StoriesArchiveHome({ issueItems, onSelectPost, activeFilterLabel }) {
+  const [leadStory, ...otherStories] = issueItems;
+
+  if (!leadStory) {
+    return (
+      <Card className="blog-card blog-emptyCard" bordered={false}>
+        <Text className="blog-articleEyebrow">Ahangama Stories</Text>
+        <Title level={1} className="blog-articleTitle">
+          No stories in this section yet
+        </Title>
+      </Card>
+    );
+  }
 
   return (
-    <article className="blog-homePage">
-      <section className="blog-homeHero blog-card">
-        <div className="blog-homeHeroCopy">
-          <Text className="blog-articleEyebrow">Visitor journals</Text>
-          <Title level={1} className="blog-homeTitle">
-            Ahangama stories told by the people who actually stayed, surfed,
-            wandered, and came back.
+    <article className="stories-archive">
+      <section className="stories-archiveHero blog-card">
+        <div className="stories-archiveLeadCopy">
+          <Text className="blog-articleEyebrow">Ahangama Stories</Text>
+          <Title level={1} className="stories-archiveTitle">
+            A travel publication style archive of Ahangama features, journals,
+            local profiles, and slower guides.
           </Title>
-          <Paragraph className="blog-homeLead">
-            This is a growing collection of real visitor notes, first-trip
-            reflections, repeat-stay rituals, and slow south coast itineraries.
-            Instead of polished tourism copy, the focus here is on how Ahangama
-            really feels once you spend time in it.
+          <Paragraph className="stories-archiveLead">
+            Built more like a magazine contents page than a blog, this archive
+            brings together visitor journals, local profiles, field notes, and
+            editorial travel features from across Ahangama.
           </Paragraph>
-          <div className="blog-homeMetaRow">
-            <Tag className="blog-pill">{`${posts.length} stories`}</Tag>
-            <Tag className="blog-pill">Visitor experiences</Tag>
-            <Tag className="blog-pill">Surf, stays, food, wellness</Tag>
+          <div className="stories-archiveMetaRow">
+            <span className="stories-archiveMetaPill">{activeFilterLabel}</span>
+            <span className="stories-archiveMetaPill">
+              {`${issueItems.length}`.padStart(2, "0")} stories
+            </span>
+            <span className="stories-archiveMetaPill">Editorial archive</span>
           </div>
-        </div>
-        <div className="blog-homeHeroVisual">
-          <EditorialImage
-            src={featuredPost.heroImage || featuredPost.introImage}
-            alt={featuredPost.title}
-            className="blog-homeHeroImage"
-          />
-        </div>
-      </section>
-
-      <section className="blog-homeFeature">
-        <div className="blog-homeFeatureHeader">
-          <Text className="blog-articleEyebrow">Featured story</Text>
-          <Title level={2} className="blog-homeSectionTitle">
-            Start with the story people keep sending to each other
-          </Title>
         </div>
 
         <button
           type="button"
-          className="blog-homeFeatureCard blog-card"
-          onClick={() => onSelectPost(featuredPost.slug)}
+          className="stories-archiveLeadCard"
+          onClick={() => onSelectPost(leadStory.slug)}
         >
-          <div className="blog-homeFeatureMedia">
-            <EditorialImage
-              src={featuredPost.heroImage || featuredPost.introImage}
-              alt={featuredPost.title}
-            />
-          </div>
-          <div className="blog-homeFeatureBody">
-            <Text className="blog-articleEyebrow">{featuredPost.category}</Text>
-            <Title level={2} className="blog-homeCardTitle">
-              {featuredPost.title}
+          <EditorialImage
+            src={leadStory.thumbnail}
+            alt={leadStory.title}
+            className="stories-archiveLeadImage"
+          />
+          <div className="stories-archiveLeadBody">
+            <Text className="stories-archiveLeadKicker">
+              {leadStory.number} {leadStory.category}
+            </Text>
+            <Title level={2} className="stories-archiveLeadTitle">
+              {leadStory.title}
             </Title>
-            <Paragraph className="blog-homeCardCopy">
-              {featuredPost.excerpt}
+            <Paragraph className="stories-archiveLeadExcerpt">
+              {leadStory.post.excerpt}
             </Paragraph>
-            <div className="blog-homeByline">
-              <Text>{featuredPost.author}</Text>
-              <Text>{featuredPost.authorRole}</Text>
-              <Text>
-                {formatDate(featuredPost.publishDate)} ·{" "}
-                {featuredPost.readingTime}
-              </Text>
-            </div>
-            <Button className="blog-primaryButton">Read story</Button>
+            <span className="stories-archiveLeadLink">Open feature</span>
           </div>
         </button>
       </section>
 
-      <section className="blog-homeGridSection">
-        <div className="blog-homeFeatureHeader">
-          <Text className="blog-articleEyebrow">Latest voices</Text>
-          <Title level={2} className="blog-homeSectionTitle">
-            Dispatches, return visits, and first impressions from Ahangama
-          </Title>
+      <section className="stories-archiveGridSection">
+        <div className="stories-archiveGridHeader">
+          <div>
+            <Text className="blog-articleEyebrow">Issue archive</Text>
+            <Title level={2} className="stories-archiveSectionTitle">
+              Browse the current issue index
+            </Title>
+          </div>
         </div>
 
-        <div className="blog-homeGrid">
-          {recentPosts.map((post) => (
+        <div className="stories-archiveGrid">
+          {otherStories.map((story) => (
             <button
-              key={post.slug}
+              key={story.slug}
               type="button"
-              className="blog-homeStoryCard blog-card"
-              onClick={() => onSelectPost(post.slug)}
+              className="stories-archiveCard"
+              onClick={() => onSelectPost(story.slug)}
             >
-              <EditorialImage
-                src={post.introImage || post.heroImage}
-                alt={post.title}
-                className="blog-homeStoryImage"
-              />
-              <div className="blog-homeStoryBody">
-                <Text className="blog-articleEyebrow">{post.category}</Text>
-                <Title level={3} className="blog-homeStoryTitle">
-                  {post.title}
+              <img src={story.thumbnail} alt="" aria-hidden="true" />
+              <div className="stories-archiveCardBody">
+                <Text className="stories-archiveCardKicker">
+                  {story.number} {story.category}
+                </Text>
+                <Title level={3} className="stories-archiveCardTitle">
+                  {story.title}
                 </Title>
-                <Paragraph className="blog-homeStoryExcerpt">
-                  {post.excerpt}
+                <Paragraph className="stories-archiveCardExcerpt">
+                  {story.post.excerpt}
                 </Paragraph>
-                <div className="blog-homeStoryMeta">
-                  <Text>{post.author}</Text>
-                  <Text>{post.authorRole}</Text>
+                <div className="stories-archiveCardMeta">
+                  <Text>{formatDate(story.post.publishDate)}</Text>
+                  <Text>{story.post.readingTime}</Text>
                 </div>
               </div>
             </button>
           ))}
         </div>
-      </section>
-
-      <section className="blog-homeManifesto blog-card">
-        <Text className="blog-articleEyebrow">What this collection is</Text>
-        <Paragraph className="blog-homeManifestoCopy">
-          These posts are meant to feel personal. Some are written like a guide,
-          some like a diary entry, some like advice passed between friends after
-          a few days on the south coast. Over time, this page should read less
-          like a brand newsroom and more like a shelf of lived Ahangama
-          experiences.
-        </Paragraph>
       </section>
     </article>
   );
@@ -739,13 +818,191 @@ function PlainStoryPost({ post }) {
   );
 }
 
+function EditorialMetaHeader({ issueItem, standfirst }) {
+  return (
+    <header className="blog-featureHeader">
+      <Breadcrumb className="blog-breadcrumb">
+        <Breadcrumb.Item>
+          <a href="/">Ahangama</a>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <a href="/blogs">Stories</a>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>{issueItem.title}</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Text className="blog-featureKicker">
+        {`AHANGAMA STORIES / ${issueItem.category} / ${issueItem.articleIssue}`}
+      </Text>
+      <Title level={1} className="blog-featureTitle">
+        {issueItem.title}
+      </Title>
+      <Paragraph className="blog-featureStandfirst">{standfirst}</Paragraph>
+      <div className="blog-featureMeta">
+        <Text>{formatDate(issueItem.post.publishDate)}</Text>
+        <span className="blog-topbarDivider" />
+        <Text>{issueItem.post.readingTime}</Text>
+        <span className="blog-topbarDivider" />
+        <Text>{issueItem.post.author}</Text>
+      </div>
+      <Text className="blog-featureByline">Written by Ahangama.com</Text>
+    </header>
+  );
+}
+
+function ReadNextCards({ issueItems, onSelectPost }) {
+  const cards = READ_NEXT_SLUGS.map((slugValue) =>
+    issueItems.find((item) => item.slug === slugValue),
+  ).filter(Boolean);
+
+  return (
+    <section className="blog-readNextSection">
+      <Text className="blog-featureKicker">Read Next</Text>
+      <div className="blog-readNextGrid">
+        {cards.map((item) => (
+          <button
+            key={item.slug}
+            type="button"
+            className="blog-readNextCard"
+            onClick={() => onSelectPost(item.slug)}
+          >
+            <img src={item.thumbnail} alt="" aria-hidden="true" />
+            <div className="blog-readNextBody">
+              <Text className="blog-readNextKicker">{item.category}</Text>
+              <Title level={3} className="blog-readNextTitle">
+                {item.title}
+              </Title>
+            </div>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MuktiFeaturePost({ post, issueItem, issueItems, onSelectPost }) {
+  const [studioName, location, hours, instagram, whyGo] = post.visitDetails;
+
+  return (
+    <article className="blog-featureArticle">
+      <EditorialMetaHeader issueItem={issueItem} standfirst={post.excerpt} />
+
+      <section className="blog-featureBody">
+        <Paragraph className="blog-featureIntro">{post.bodyParagraphs[0]}</Paragraph>
+
+        <blockquote className="blog-featurePullQuote">
+          "At first glance it is a clothing store. Look closer and it becomes
+          part creative studio, part community project, part social enterprise."
+        </blockquote>
+
+        <figure className="blog-featureImageBlock">
+          <EditorialImage src={MUKTI_FEATURE_IMAGE} alt={post.title} />
+          <figcaption className="blog-featureCaption">
+            Mukti Studio reflects the new blend of design, community, and slow
+            entrepreneurship shaping Ahangama.
+          </figcaption>
+        </figure>
+
+        <section className="blog-featureSection">
+          <Text className="blog-featureSectionLabel">Section</Text>
+          <Title level={2} className="blog-featureSectionTitle">
+            A Studio Built Around Community
+          </Title>
+          {post.bodyParagraphs.slice(1, 7).map((paragraph) => (
+            <Paragraph key={paragraph} className="blog-featureCopy">
+              {paragraph}
+            </Paragraph>
+          ))}
+        </section>
+
+        <section className="blog-featureSection">
+          <Text className="blog-featureSectionLabel">Section</Text>
+          <Title level={2} className="blog-featureSectionTitle">
+            Why It Matters
+          </Title>
+          {post.bodyParagraphs.slice(7).map((paragraph) => (
+            <Paragraph key={paragraph} className="blog-featureCopy">
+              {paragraph}
+            </Paragraph>
+          ))}
+        </section>
+
+        <aside className="blog-fieldNotes">
+          <Text className="blog-featureKicker">Field Notes</Text>
+          <Title level={3} className="blog-fieldNotesTitle">
+            {studioName}
+          </Title>
+          <div className="blog-fieldNotesGrid">
+            <div>
+              <Text className="blog-fieldNotesLabel">Location</Text>
+              <Paragraph className="blog-fieldNotesValue">{location}</Paragraph>
+            </div>
+            <div>
+              <Text className="blog-fieldNotesLabel">Open daily</Text>
+              <Paragraph className="blog-fieldNotesValue">
+                {hours.replace("Open daily from ", "")}
+              </Paragraph>
+            </div>
+            <div>
+              <Text className="blog-fieldNotesLabel">Instagram</Text>
+              <Paragraph className="blog-fieldNotesValue">
+                {instagram.replace("Instagram: ", "")}
+              </Paragraph>
+            </div>
+            <div>
+              <Text className="blog-fieldNotesLabel">Why go</Text>
+              <Paragraph className="blog-fieldNotesValue">
+                {whyGo.replace("What to expect: ", "")}
+              </Paragraph>
+            </div>
+          </div>
+          <div className="blog-fieldNotesActions">
+            <a
+              href="https://www.instagram.com/studio.mukti"
+              target="_blank"
+              rel="noreferrer"
+              className="blog-fieldNotesLink"
+            >
+              Open Instagram →
+            </a>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Mukti%20Studio%20Ahangama"
+              target="_blank"
+              rel="noreferrer"
+              className="blog-fieldNotesLink"
+            >
+              Open Map →
+            </a>
+          </div>
+        </aside>
+      </section>
+
+      <ReadNextCards issueItems={issueItems} onSelectPost={onSelectPost} />
+    </article>
+  );
+}
+
 export default function BlogsPage() {
   const navigate = useNavigate();
   const { slug } = useParams();
+  const [activeFilter, setActiveFilter] = useState("all");
+  const issueItems = useMemo(() => buildIssueItems(), []);
   const defaultPost = BLOG_POSTS[0] || null;
   const activePost = slug ? getBlogPostBySlug(slug) : null;
   const isNotFound = Boolean(slug && !activePost);
   const isCollectionHome = !slug;
+  const filteredIssueItems = useMemo(() => {
+    if (activeFilter === "all") {
+      return issueItems;
+    }
+
+    return issueItems.filter((item) => item.filters.includes(activeFilter));
+  }, [activeFilter, issueItems]);
+  const activeIssueItem =
+    issueItems.find((item) => item.slug === activePost?.slug) || null;
+  const activeFilterLabel =
+    STORY_FILTERS.find((filter) => filter.key === activeFilter)?.label ||
+    "All Stories";
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -805,15 +1062,20 @@ export default function BlogsPage() {
       />
 
       <BlogWorkspaceLayout
-        posts={BLOG_POSTS}
+        issueItems={issueItems}
+        filteredIssueItems={filteredIssueItems}
         activeSlug={activePost?.slug || null}
+        filters={STORY_FILTERS}
+        activeFilter={activeFilter}
+        onSelectFilter={setActiveFilter}
         onSelectPost={handleSelectPost}
         lastUpdated={formatDate(defaultPost.publishDate)}
       >
         {isCollectionHome ? (
-          <BlogCollectionHome
-            posts={BLOG_POSTS}
+          <StoriesArchiveHome
+            issueItems={filteredIssueItems}
             onSelectPost={handleSelectPost}
+            activeFilterLabel={activeFilterLabel}
           />
         ) : isNotFound ? (
           <Card className="blog-card blog-emptyCard" bordered={false}>
@@ -829,6 +1091,14 @@ export default function BlogsPage() {
               Back to blogs
             </Button>
           </Card>
+        ) : activePost.slug === "mukti-studio-and-the-new-face-of-ahangama" &&
+          activeIssueItem ? (
+          <MuktiFeaturePost
+            post={activePost}
+            issueItem={activeIssueItem}
+            issueItems={issueItems}
+            onSelectPost={handleSelectPost}
+          />
         ) : activePost.editorialType === "plain-story" ? (
           <PlainStoryPost post={activePost} />
         ) : activePost.editorialType === "coastal-town-story" ||

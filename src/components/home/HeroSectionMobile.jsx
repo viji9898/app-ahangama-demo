@@ -158,7 +158,6 @@ export default function HeroSectionMobile() {
               Get the Ahangama Pass <ArrowRightOutlined />
             </a>
           </div>
-
         </div>
       </div>
     </div>

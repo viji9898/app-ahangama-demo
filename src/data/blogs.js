@@ -272,8 +272,7 @@ export const BLOG_POSTS = [
           "After Pilates, I usually want somewhere easy for breakfast or coffee rather than anything heavy. That is where places like Oyummy and Rollingpin come in. They make the morning feel social and light, without pulling the whole day into a fixed timetable.",
           "From there, the best move is usually to avoid over-structuring the afternoon. A little surf, a walk, a long coffee, or just time near the beach tends to create a better day than trying to collect too many stops.",
         ],
-        quote:
-          "Ahangama always feels best when the plan softens after lunch.",
+        quote: "Ahangama always feels best when the plan softens after lunch.",
       },
       {
         eyebrow: "Evening note",
@@ -634,7 +633,9 @@ export const BLOG_POSTS = [
 ];
 
 export function getBlogPostBySlug(slug) {
-  const normalizedSlug = String(slug || "").trim().toLowerCase();
+  const normalizedSlug = String(slug || "")
+    .trim()
+    .toLowerCase();
 
   return (
     BLOG_POSTS.find((post) => post.slug.toLowerCase() === normalizedSlug) ||
