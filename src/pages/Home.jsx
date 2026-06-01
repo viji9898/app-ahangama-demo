@@ -102,6 +102,25 @@ const THREE_DAYS_FEATURED_PLACES = [
   "Kaffi",
 ];
 
+const GETTING_AROUND_PREVIEW = [
+  {
+    label: "Scooter",
+    cost: "LKR 2,500 - 4,500 / day",
+  },
+  {
+    label: "Tuk Tuk",
+    cost: "LKR 500 - 1,500 / ride",
+  },
+  {
+    label: "Airport Transfer",
+    cost: "LKR 15,000 - 20,000",
+  },
+  {
+    label: "Car with Driver",
+    cost: "LKR 12,000 - 20,000 / day",
+  },
+];
+
 const TWELVE_THINGS_GUIDE_META = [
   "12 Experiences",
   "5 Categories",
@@ -493,205 +512,282 @@ export default function Home() {
           >
             <Row gutter={[24, 24]} align="stretch">
               <Col xs={24} xl={14}>
-                <Card
-                  className="perfect-day-card"
-                  style={{ ...editorialCardStyle, height: "100%" }}
-                  bodyStyle={{ padding: 32, height: "100%" }}
-                >
-                  <Row className="perfect-day-row" gutter={[28, 28]} align="top">
-                    <Col xs={{ span: 12, order: 1 }} xl={{ span: 10, order: 1 }}>
-                      <div
-                        className="perfect-day-media"
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 16,
-                          maxWidth: 420,
-                          margin: "0 auto",
-                        }}
-                      >
+                <div style={{ display: "grid", gap: 20, height: "100%" }}>
+                  <Card
+                    className="perfect-day-card"
+                    style={{ ...editorialCardStyle, height: "100%" }}
+                    bodyStyle={{ padding: 32, height: "100%" }}
+                  >
+                    <Row className="perfect-day-row" gutter={[28, 28]} align="top">
+                      <Col xs={{ span: 12, order: 1 }} xl={{ span: 10, order: 1 }}>
                         <div
-                          className="perfect-day-tags"
+                          className="perfect-day-media"
                           style={{
                             display: "flex",
-                            flexWrap: "wrap",
-                            gap: 10,
+                            flexDirection: "column",
+                            gap: 16,
+                            maxWidth: 420,
+                            margin: "0 auto",
                           }}
                         >
-                          {DENITSA_STORY_TAGS.map((item) => (
-                            <Text
-                              key={item}
+                          <div
+                            className="perfect-day-tags"
+                            style={{
+                              display: "flex",
+                              flexWrap: "wrap",
+                              gap: 10,
+                            }}
+                          >
+                            {DENITSA_STORY_TAGS.map((item) => (
+                              <Text
+                                key={item}
+                                style={{
+                                  color: "#8B7B63",
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  letterSpacing: 1.5,
+                                  textTransform: "uppercase",
+                                }}
+                              >
+                                {item}
+                              </Text>
+                            ))}
+                          </div>
+
+                          <div
+                            style={{
+                              aspectRatio: "4 / 4.35",
+                              borderRadius: 26,
+                              overflow: "hidden",
+                              border: "1px solid rgba(32,30,27,0.08)",
+                              background:
+                                "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
+                              boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
+                            }}
+                          >
+                            <video
+                              src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
+                              controls
+                              muted
+                              loop
+                              autoPlay
+                              playsInline
                               style={{
-                                color: "#8B7B63",
-                                fontSize: 11,
-                                fontWeight: 700,
-                                letterSpacing: 1.5,
-                                textTransform: "uppercase",
+                                display: "block",
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
                               }}
-                            >
-                              {item}
-                            </Text>
-                          ))}
+                            />
+                          </div>
+
+                          <div
+                            className="perfect-day-hashtags"
+                            style={{
+                              display: "flex",
+                              flexWrap: "wrap",
+                              gap: 10,
+                            }}
+                          >
+                            {DENITSA_DAY_CHIPS.map((item) => (
+                              <Text
+                                key={item}
+                                style={{
+                                  color: "#8B7B63",
+                                  fontSize: 12,
+                                  fontWeight: 600,
+                                  lineHeight: 1.2,
+                                }}
+                              >
+                                #{item}
+                              </Text>
+                            ))}
+                          </div>
+                        </div>
+                      </Col>
+
+                      <Col xs={{ span: 12, order: 2 }} xl={{ span: 14, order: 2 }}>
+                        <Title
+                          level={2}
+                          className="perfect-day-title"
+                          style={{
+                            ...editorialTitleStyle,
+                            marginBottom: 10,
+                            fontSize: "clamp(29px, 3vw, 41px)",
+                            lineHeight: 0.94,
+                          }}
+                        >
+                          Perfect Day in Ahangama
+                        </Title>
+
+                        <Paragraph
+                          className="perfect-day-excerpt"
+                          style={{
+                            marginBottom: 12,
+                            color: "#5F574E",
+                            fontSize: 16,
+                            lineHeight: 1.7,
+                            maxWidth: 560,
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                          }}
+                        >
+                          Pilates, surf, coffee, a slow afternoon and sunset at
+                          Lighthouse. Denitsa shares how she would spend a perfect
+                          day in Ahangama.
+                        </Paragraph>
+
+                        <div className="perfect-day-chip-group" style={{ marginBottom: 14 }}>
+                          <Text style={editorialEyebrowStyle}>Places Featured</Text>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexWrap: "wrap",
+                              gap: 10,
+                            }}
+                          >
+                            {denitsaFeaturedPlaces.map((item) => (
+                              <a
+                                key={item.label}
+                                className="perfect-day-chip"
+                                href={item.mapUrl || undefined}
+                                target={item.mapUrl ? "_blank" : undefined}
+                                rel={item.mapUrl ? "noopener noreferrer" : undefined}
+                                aria-label={
+                                  item.mapUrl
+                                    ? `Open ${item.label} in Google Maps`
+                                    : item.label
+                                }
+                                style={{
+                                  display: "inline-flex",
+                                  flexDirection: "column",
+                                  alignItems: "center",
+                                  gap: 8,
+                                  color: "#2F2A24",
+                                  fontSize: 13,
+                                  fontWeight: 600,
+                                  lineHeight: 1,
+                                  textDecoration: "none",
+                                  cursor: item.mapUrl ? "pointer" : "default",
+                                }}
+                              >
+                                {item.logo ? (
+                                  <img
+                                    src={item.logo}
+                                    alt=""
+                                    aria-hidden="true"
+                                    style={{
+                                      width: 50,
+                                      height: 50,
+                                      borderRadius: 999,
+                                      objectFit: "cover",
+                                      flex: "0 0 auto",
+                                    }}
+                                  />
+                                ) : null}
+                                <span
+                                  style={{
+                                    display: "inline-block",
+                                    paddingBottom: 2,
+                                    borderBottom: "1px solid rgba(47,42,36,0.42)",
+                                    fontSize: 12,
+                                    letterSpacing: 0.08,
+                                  }}
+                                >
+                                  {item.label}
+                                </span>
+                              </a>
+                            ))}
+                          </div>
                         </div>
 
                         <div
+                          className="perfect-day-cta"
                           style={{
-                            aspectRatio: "4 / 5",
-                            borderRadius: 26,
-                            overflow: "hidden",
-                            border: "1px solid rgba(32,30,27,0.08)",
-                            background:
-                              "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
-                            boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
+                            display: "flex",
+                            alignItems: "center",
                           }}
                         >
-                          <video
-                            src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
-                            controls
-                            muted
-                            loop
-                            autoPlay
-                            playsInline
+                          <a
+                            href="/blogs"
+                            style={{
+                              color: "#2F3E3A",
+                              textDecoration: "none",
+                              fontSize: 16,
+                              fontWeight: 600,
+                              letterSpacing: 0.1,
+                            }}
+                          >
+                            Read Story <ArrowRightOutlined />
+                          </a>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Card>
+
+                  <Card
+                    className="pass-guide-card"
+                    style={editorialCardStyle}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <Row gutter={[18, 18]} align="middle">
+                      <Col xs={10} sm={9}>
+                        <div
+                          className="pass-guide-media"
+                          style={{
+                            minHeight: 146,
+                            borderRadius: 18,
+                            border: "1px solid rgba(32,30,27,0.08)",
+                            background: "#FFFFFF",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: 14,
+                          }}
+                        >
+                          <img
+                            src={heroPassAppleWallet}
+                            alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
                             style={{
                               display: "block",
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
+                              maxWidth: "100%",
+                              maxHeight: 130,
+                              width: "auto",
+                              height: "auto",
+                              objectFit: "contain",
                             }}
                           />
                         </div>
-
-                        <div
-                          className="perfect-day-hashtags"
+                      </Col>
+                      <Col xs={14} sm={15}>
+                        <Text style={editorialEyebrowStyle}>Ahangama Pass</Text>
+                        <Title
+                          level={3}
+                          className="pass-guide-title"
                           style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: 10,
+                            ...editorialTitleStyle,
+                            marginBottom: 10,
+                            fontSize: "clamp(28px, 2.2vw, 36px)",
+                            lineHeight: 0.96,
                           }}
                         >
-                          {DENITSA_DAY_CHIPS.map((item) => (
-                            <Text
-                              key={item}
-                              style={{
-                                color: "#8B7B63",
-                                fontSize: 12,
-                                fontWeight: 600,
-                                lineHeight: 1.2,
-                              }}
-                            >
-                              #{item}
-                            </Text>
-                          ))}
-                        </div>
-                      </div>
-                    </Col>
-
-                    <Col xs={{ span: 12, order: 2 }} xl={{ span: 14, order: 2 }}>
-                      <Title
-                        level={2}
-                        className="perfect-day-title"
-                        style={{
-                          ...editorialTitleStyle,
-                          marginBottom: 14,
-                          fontSize: "clamp(29px, 3vw, 41px)",
-                          lineHeight: 0.94,
-                        }}
-                      >
-                        Perfect Day in Ahangama
-                      </Title>
-
-                      <Paragraph
-                        className="perfect-day-excerpt"
-                        style={{
-                          marginBottom: 16,
-                          color: "#5F574E",
-                          fontSize: 16,
-                          lineHeight: 1.7,
-                          maxWidth: 560,
-                          display: "-webkit-box",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                        }}
-                      >
-                        Pilates, surf, coffee, a slow afternoon and sunset at
-                        Lighthouse. Denitsa shares how she would spend a perfect
-                        day in Ahangama.
-                      </Paragraph>
-
-                      <div className="perfect-day-chip-group" style={{ marginBottom: 20 }}>
-                        <Text style={editorialEyebrowStyle}>Places Featured</Text>
-                        <div
+                          What is the Ahangama Pass?
+                        </Title>
+                        <Paragraph
+                          className="pass-guide-excerpt"
                           style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: 10,
+                            marginBottom: 14,
+                            color: "#5F574E",
+                            fontSize: 16,
+                            lineHeight: 1.7,
                           }}
                         >
-                          {denitsaFeaturedPlaces.map((item) => (
-                            <a
-                              key={item.label}
-                              className="perfect-day-chip"
-                              href={item.mapUrl || undefined}
-                              target={item.mapUrl ? "_blank" : undefined}
-                              rel={item.mapUrl ? "noopener noreferrer" : undefined}
-                              aria-label={
-                                item.mapUrl
-                                  ? `Open ${item.label} in Google Maps`
-                                  : item.label
-                              }
-                              style={{
-                                display: "inline-flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                gap: 8,
-                                color: "#2F2A24",
-                                fontSize: 13,
-                                fontWeight: 600,
-                                lineHeight: 1,
-                                textDecoration: "none",
-                                cursor: item.mapUrl ? "pointer" : "default",
-                              }}
-                            >
-                              {item.logo ? (
-                                <img
-                                  src={item.logo}
-                                  alt=""
-                                  aria-hidden="true"
-                                  style={{
-                                    width: 50,
-                                    height: 50,
-                                    borderRadius: 999,
-                                    objectFit: "cover",
-                                    flex: "0 0 auto",
-                                  }}
-                                />
-                              ) : null}
-                              <span
-                                style={{
-                                  display: "inline-block",
-                                  paddingBottom: 2,
-                                  borderBottom: "1px solid rgba(47,42,36,0.42)",
-                                  fontSize: 12,
-                                  letterSpacing: 0.08,
-                                }}
-                              >
-                                {item.label}
-                              </span>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div
-                        className="perfect-day-cta"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
+                          Unlock perks across 100+ local places.
+                        </Paragraph>
                         <a
-                          href="/blogs"
+                          href="/what-is-ahangama-pass"
                           style={{
                             color: "#2F3E3A",
                             textDecoration: "none",
@@ -700,12 +796,12 @@ export default function Home() {
                             letterSpacing: 0.1,
                           }}
                         >
-                          Read Story <ArrowRightOutlined />
+                          Learn More <ArrowRightOutlined />
                         </a>
-                      </div>
-                    </Col>
-                  </Row>
-                </Card>
+                      </Col>
+                    </Row>
+                  </Card>
+                </div>
               </Col>
 
               <Col xs={24} xl={10}>
