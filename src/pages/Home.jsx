@@ -1119,12 +1119,7 @@ export default function Home() {
                               display: "flex",
                               alignItems: "center",
                               gap: 14,
-                              minHeight: 92,
-                              padding: "16px 18px",
-                              borderRadius: 22,
-                              border: "1px solid rgba(32,30,27,0.08)",
-                              background: "rgba(255,255,255,0.72)",
-                              boxShadow: "0 12px 28px rgba(32,30,27,0.04)",
+                              padding: "4px 0",
                               textDecoration: "none",
                               color: "#3F3A34",
                             }}
@@ -1185,31 +1180,32 @@ export default function Home() {
                       alignItems: "center",
                     }}
                   >
-                    <Button
-                      type="primary"
+                    <a
                       href="https://www.instagram.com/denitsaloves/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      icon={<ArrowRightOutlined />}
-                      style={editorialPrimaryButtonStyle}
-                    >
-                      View Denitsa&apos;s Instagram
-                    </Button>
-                    <Button
-                      href="/blogs"
-                      icon={<ArrowRightOutlined />}
                       style={{
-                        borderRadius: 999,
-                        height: 44,
-                        paddingInline: 18,
-                        borderColor: "rgba(32,30,27,0.12)",
                         color: "#2F3E3A",
-                        background: "rgba(255,255,255,0.62)",
-                        boxShadow: "none",
+                        textDecoration: "none",
+                        fontSize: 16,
+                        fontWeight: 600,
+                        letterSpacing: 0.1,
                       }}
                     >
-                      Explore All Perfect Days
-                    </Button>
+                      View Denitsa&apos;s Instagram <ArrowRightOutlined />
+                    </a>
+                    <a
+                      href="/blogs"
+                      style={{
+                        color: "#2F3E3A",
+                        textDecoration: "none",
+                        fontSize: 16,
+                        fontWeight: 600,
+                        letterSpacing: 0.1,
+                      }}
+                    >
+                      Explore All Perfect Days <ArrowRightOutlined />
+                    </a>
                   </div>
                 </Col>
               </Row>
