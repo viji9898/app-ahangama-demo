@@ -3479,6 +3479,17 @@
   }
 }
 
+@media (max-width: 991px) {
+  .guide-cards-row {
+    row-gap: 18px !important;
+  }
+
+  .twelve-things-detail-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .story-teasers-row {
     row-gap: 14px !important;

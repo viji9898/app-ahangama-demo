@@ -1169,7 +1169,7 @@ export default function Home() {
 
           <div style={{ marginTop: 20 }}>
             <Row className="guide-cards-row" gutter={[24, 24]} align="stretch">
-              <Col xs={12} xl={12}>
+              <Col xs={24} lg={12}>
                 <Card
                   className="pass-guide-card"
                   style={{ ...editorialCardStyle, height: "100%" }}
@@ -1249,23 +1249,14 @@ export default function Home() {
                 </Card>
               </Col>
 
-              <Col xs={12} xl={12}>
+              <Col xs={24} lg={12}>
                 <Card
                   className="twelve-things-card"
                   style={{ ...editorialCardStyle, height: "100%" }}
                   bodyStyle={{ padding: 32, height: "100%" }}
                 >
                   <Row className="twelve-things-row" gutter={[28, 28]} align="middle">
-                    <Col xs={24} xl={14}>
-                  <Text style={editorialEyebrowStyle}>Editorial Guide</Text>
-                  <div style={featureTagRailStyle}>
-                    <Tag style={featureTagStyle}>Editorial Guide</Tag>
-                    <Tag style={featureTagStyle}>12 Things to Do</Tag>
-                    <Tag style={featureTagStyle}>
-                      Experiences + Local Favourites
-                    </Tag>
-                  </div>
-
+                    <Col xs={{ span: 12, order: 2 }} xl={{ span: 14, order: 1 }}>
                   <Title
                     level={2}
                     className="twelve-things-title"
@@ -1304,105 +1295,66 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <Paragraph
+                  <div
                     className="twelve-things-excerpt"
                     style={{
-                      ...editorialCopyStyle,
-                      maxWidth: 680,
+                      maxWidth: 420,
                       marginBottom: 20,
                     }}
                   >
-                    A more editorial way to explore Ahangama: twelve standout
-                    experiences across wellness, adventure, food, shopping, and
-                    slow coastal rituals. It is the guide to open when you want
-                    a better feel for what is actually worth doing while you are
-                    here.
-                  </Paragraph>
-
-                  <div
-                    className="twelve-things-detail-grid"
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns:
-                        "minmax(0, 1fr) minmax(240px, 300px)",
-                      gap: 28,
-                      alignItems: "start",
-                    }}
-                  >
-                    <div>
-                      <Text style={editorialEyebrowStyle}>
-                        Editor&apos;s Note
-                      </Text>
-                      <Paragraph
-                        style={{
-                          marginBottom: 0,
-                          color: "#5F574E",
-                          fontSize: 15,
-                          lineHeight: 1.78,
-                        }}
-                      >
-                        If somebody asked us what to do in Ahangama for the
-                        first time, this is where we&apos;d send them.
-                      </Paragraph>
-                    </div>
-
-                    <div>
-                      <Text style={editorialEyebrowStyle}>
-                        Inside This Guide
-                      </Text>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 12,
-                          paddingTop: 14,
-                          borderTop: "1px solid rgba(32,30,27,0.08)",
-                        }}
-                      >
-                        {TWELVE_THINGS_GUIDE_PREVIEW.map((item, index) => (
-                          <div
-                            key={item}
-                            style={{
-                              display: "grid",
-                              gridTemplateColumns: "32px minmax(0, 1fr)",
-                              gap: 10,
-                              alignItems: "baseline",
-                            }}
-                          >
-                            <Text
-                              style={{
-                                color: "#8B7B63",
-                                fontSize: 12,
-                                fontWeight: 700,
-                                letterSpacing: 1.1,
-                              }}
-                            >
-                              {String(index + 1).padStart(2, "0")}
-                            </Text>
-                            <Text
-                              style={{
-                                color: "#2F2A24",
-                                fontSize: 16,
-                                lineHeight: 1.45,
-                              }}
-                            >
-                              {item}
-                            </Text>
-                          </div>
-                        ))}
-                        <Text
+                    <Text style={editorialEyebrowStyle}>Inside This Guide</Text>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 12,
+                        paddingTop: 14,
+                        borderTop: "1px solid rgba(32,30,27,0.08)",
+                      }}
+                    >
+                      {TWELVE_THINGS_GUIDE_PREVIEW.map((item, index) => (
+                        <div
+                          key={item}
                           style={{
-                            paddingTop: 2,
-                            color: "#8B7B63",
-                            fontSize: 12,
-                            fontWeight: 700,
-                            letterSpacing: 1.2,
-                            textTransform: "uppercase",
+                            display: "grid",
+                            gridTemplateColumns: "32px minmax(0, 1fr)",
+                            gap: 10,
+                            alignItems: "baseline",
                           }}
                         >
-                          + 8 More Experiences
-                        </Text>
-                      </div>
+                          <Text
+                            style={{
+                              color: "#8B7B63",
+                              fontSize: 12,
+                              fontWeight: 700,
+                              letterSpacing: 1.1,
+                            }}
+                          >
+                            {String(index + 1).padStart(2, "0")}
+                          </Text>
+                          <Text
+                            style={{
+                              color: "#2F2A24",
+                              fontSize: 16,
+                              lineHeight: 1.45,
+                            }}
+                          >
+                            {item}
+                          </Text>
+                        </div>
+                      ))}
+                      <Text
+                        style={{
+                          paddingTop: 2,
+                          color: "#8B7B63",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          letterSpacing: 1.2,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        + 8 More Experiences
+                      </Text>
                     </div>
                   </div>
 
@@ -1422,7 +1374,7 @@ export default function Home() {
                   </div>
                     </Col>
 
-                    <Col xs={24} xl={10}>
+                    <Col xs={{ span: 12, order: 1 }} xl={{ span: 10, order: 2 }}>
                       <div
                         className="twelve-things-media"
                         style={{
