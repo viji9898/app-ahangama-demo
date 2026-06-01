@@ -1,12 +1,6 @@
-import React, { useRef } from "react";
-import { Button, Card, Grid, Space, Tag, Typography } from "antd";
-import {
-  ArrowRightOutlined,
-  CarOutlined,
-  EnvironmentOutlined,
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+import React from "react";
+import { Grid, Typography } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
@@ -14,302 +8,456 @@ const { useBreakpoint } = Grid;
 const GUIDE_PATH =
   "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
 
-const cards = [
+const transportBlocks = [
   {
-    key: "gik",
-    title: "GIK Bike Rentals",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg",
-    copy: "Rental-led option for scooters, bikes, and independent day-to-day movement around Ahangama.",
-    pricing: "Recommended: LKR 2,500-4,500 per day",
+    title: "Airport Transfers",
+    time: "2.5-3 Hours",
+    cost: "LKR 15,000-20,000",
+    bestFor: ["First arrivals", "Families", "Luggage"],
+    providers: ["Happy Tours", "Nova Rent a Car"],
+    note: "Usually the easiest option after a long flight. Most visitors arrange this before arriving in Sri Lanka.",
   },
   {
-    key: "happy-tours",
-    title: "Happy Tours",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/happy_tours.jpeg",
-    copy: "Convenience-first local transport support for simple rides, short planning help, and nearby moves.",
-    pricing: "Recommended: LKR 500-1,500 in-town hops",
+    title: "Scooter Rental",
+    cost: "LKR 2,500-4,500/day",
+    bestFor: ["Beach hopping", "Surf checks", "Cafes"],
+    providers: ["GIK Bike Rentals", "Scooty Rent Service"],
+    note: "The most popular way to explore Ahangama and the easiest way to move between beaches through the day.",
   },
   {
-    key: "nova",
-    title: "Nova Rent a Car",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/nova_rental.jpeg",
-    copy: "Best fit for Galle day trips, Hiriketiya runs, and longer south-coast travel where a car makes more sense than a scooter.",
-    pricing: "Recommended: LKR 12,000-20,000+ per day",
+    title: "Tuk Tuks",
+    cost: "LKR 500-1,500/ride",
+    bestFor: ["Short stays", "Evenings", "Local trips"],
+    providers: ["Happy Tours"],
+    note: "Ideal for visitors staying only one or two days, or for evenings when you do not want to drive back.",
   },
   {
-    key: "scooty",
-    title: "Scooty Rental & Taxi Service",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/scooty_rental_and_taxi.jpeg",
-    copy: "Strong local-mobility choice for scooter-led stays, quick surf checks, and easy movement around town.",
-    pricing: "Recommended: LKR 2,500-4,500 per day",
-  },
-  {
-    key: "airport",
-    title: "Taxi and Transport Tours",
-    image:
-      "https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taxi-and-transport-tours/image.jpg",
-    copy: "Clearest airport-transfer and private-trip specialist in the current Ahangama transport set.",
-    pricing: "Recommended: LKR 18,000-30,000 airport transfer",
+    title: "Car Rental",
+    cost: "LKR 12,000-20,000/day",
+    bestFor: ["Families", "Galle trips", "Longer journeys"],
+    providers: ["Nova Rent a Car"],
+    note: "Worth considering if travelling with children or planning longer day trips beyond Ahangama.",
   },
 ];
 
 export default function GettingAroundSection() {
-  const railRef = useRef(null);
   const screens = useBreakpoint();
   const isMobile = !screens.md;
 
-  function scrollRail(direction) {
-    if (!railRef.current) return;
-
-    railRef.current.scrollBy({
-      left: direction * 320,
-      behavior: "smooth",
-    });
-  }
-
   return (
-    <div
+    <section
       style={{
         borderRadius: 28,
-        border: "1px solid rgba(47,62,58,0.08)",
-        background: "linear-gradient(180deg, #fffdf9 0%, #f6efe5 100%)",
-        boxShadow: "0 18px 40px rgba(47,62,58,0.05)",
+        border: "1px solid rgba(47,62,58,0.06)",
+        background:
+          "linear-gradient(180deg, rgba(255,253,249,0.97) 0%, rgba(246,239,229,0.92) 100%)",
+        boxShadow: "0 18px 36px rgba(47,62,58,0.04)",
         overflow: "hidden",
       }}
     >
-      <div style={{ padding: isMobile ? 20 : 26 }}>
-        <Space wrap size={[10, 10]} style={{ marginBottom: 10 }}>
-          <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
-            New Guide
-          </Tag>
-          <Text style={{ color: "#7A746B", fontSize: 13 }}>
-            Practical transport editorial
-          </Text>
-        </Space>
-
+      <div style={{ padding: isMobile ? 22 : 34 }}>
         <div
           style={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: isMobile ? "stretch" : "center",
-            justifyContent: "space-between",
-            gap: isMobile ? 18 : 24,
+            display: "grid",
+            gridTemplateColumns: isMobile
+              ? "minmax(0, 1fr)"
+              : "minmax(0, 1.4fr) minmax(220px, 0.6fr)",
+            gap: isMobile ? 20 : 36,
+            alignItems: "end",
+            paddingBottom: isMobile ? 20 : 24,
+            borderBottom: "1px solid rgba(47,62,58,0.1)",
           }}
         >
-          <div style={{ flex: 1, minWidth: 0 }}>
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 12,
+                color: "#8B5A3C",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 1.8,
+                textTransform: "uppercase",
+              }}
+            >
+              Getting Around / Guidebook Notes
+            </Text>
             <Title
               level={2}
               style={{
                 margin: 0,
                 color: "#2F3E3A",
-                fontSize: isMobile ? 36 : undefined,
-                lineHeight: isMobile ? 1.08 : undefined,
+                fontSize: isMobile ? 34 : 46,
+                lineHeight: isMobile ? 1.08 : 1.02,
+                fontFamily:
+                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                letterSpacing: "-0.02em",
+                maxWidth: 760,
               }}
             >
               Getting Around Ahangama: Scooters, Tuk Tuks & Airport Transfers
             </Title>
             <Paragraph
               style={{
-                margin: "10px 0 0",
+                margin: "14px 0 0",
                 color: "#5B564E",
-                fontSize: isMobile ? 14 : 15,
-                lineHeight: isMobile ? 1.6 : undefined,
-                maxWidth: 760,
+                fontSize: isMobile ? 14 : 16,
+                lineHeight: 1.78,
+                maxWidth: 700,
               }}
             >
-              A practical guide to how transport actually works here, from
-              scooter rentals and tuk-tuk pricing to airport transfers, Galle
-              day trips, and when it makes sense to book a car instead.
+              A practical editorial guide to how transport actually works here,
+              including when to rent a scooter, when tuk tuks are enough, what
+              airport transfers usually cost, and which local providers we
+              would actually recommend.
             </Paragraph>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: isMobile ? "flex-start" : "flex-end",
+              alignItems: "flex-end",
+            }}
+          >
+            <a
+              href={GUIDE_PATH}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                color: "#2F3E3A",
+                textDecoration: "none",
+                fontSize: 14,
+                fontWeight: 600,
+                letterSpacing: "0.01em",
+                textTransform: "uppercase",
+              }}
+            >
+              View full guide <ArrowRightOutlined />
+            </a>
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile
+              ? "minmax(0, 1fr)"
+              : "minmax(0, 1.34fr) minmax(260px, 0.66fr)",
+            gap: isMobile ? 28 : 44,
+            paddingTop: isMobile ? 24 : 30,
+          }}
+        >
+          <div>
             <div
               style={{
-                marginTop: 14,
-                display: "flex",
-                justifyContent: "flex-start",
+                display: "grid",
+                gridTemplateColumns: isMobile
+                  ? "minmax(0, 1fr)"
+                  : "repeat(2, minmax(0, 1fr))",
+                columnGap: isMobile ? 0 : 28,
+                rowGap: isMobile ? 24 : 28,
               }}
             >
-              <Button
-                size="large"
-                href="https://wa.me/94777908790?text=Hi%2C%20need%20help%20booking%20transport."
+              {transportBlocks.map((item) => (
+                <article
+                  key={item.title}
+                  style={{
+                    paddingBottom: isMobile ? 22 : 26,
+                    borderBottom: "1px solid rgba(47,62,58,0.1)",
+                  }}
+                >
+                  <Text
+                    style={{
+                      display: "block",
+                      marginBottom: 14,
+                      color: "#8B5A3C",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: 1.8,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {item.title}
+                  </Text>
+
+                  {item.time ? (
+                    <div style={{ marginBottom: 18 }}>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 4,
+                          color: "#7A746B",
+                          fontSize: 10,
+                          fontWeight: 700,
+                          letterSpacing: 1.5,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Travel Time
+                      </Text>
+                      <Text
+                        style={{
+                          display: "block",
+                          color: "#2F3E3A",
+                          fontSize: isMobile ? 28 : 34,
+                          lineHeight: 1,
+                          fontWeight: 600,
+                          fontFamily:
+                            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                          letterSpacing: "-0.02em",
+                        }}
+                      >
+                        {item.time}
+                      </Text>
+                    </div>
+                  ) : null}
+
+                  <div style={{ marginBottom: 18 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 4,
+                        color: "#7A746B",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: 1.5,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Typical Cost
+                    </Text>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#2F3E3A",
+                        fontSize: isMobile ? 30 : 38,
+                        lineHeight: 0.96,
+                        fontWeight: 600,
+                        fontFamily:
+                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                        letterSpacing: "-0.025em",
+                      }}
+                    >
+                      {item.cost}
+                    </Text>
+                  </div>
+
+                  <div style={{ marginBottom: 18 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 8,
+                        color: "#7A746B",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: 1.5,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Best For
+                    </Text>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                      {item.bestFor.map((point) => (
+                        <Text
+                          key={point}
+                          style={{ color: "#2F3E3A", fontSize: 14, lineHeight: 1.5 }}
+                        >
+                          ✓ {point}
+                        </Text>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ marginBottom: 18 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 8,
+                        color: "#7A746B",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: 1.5,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Recommended Providers
+                    </Text>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                      {item.providers.map((provider) => (
+                        <Text
+                          key={provider}
+                          style={{ color: "#5B564E", fontSize: 14, lineHeight: 1.5 }}
+                        >
+                          {provider}
+                        </Text>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 8,
+                        color: "#7A746B",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: 1.5,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Editorial Note
+                    </Text>
+                    <Paragraph
+                      style={{
+                        margin: 0,
+                        color: "#4E4942",
+                        fontSize: 14,
+                        lineHeight: 1.75,
+                        maxWidth: 340,
+                      }}
+                    >
+                      {item.note}
+                    </Paragraph>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <aside
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 24,
+            }}
+          >
+            <div
+              style={{
+                paddingTop: 2,
+                borderTop: "1px solid rgba(47,62,58,0.1)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginTop: 16,
+                  marginBottom: 12,
+                  color: "#8B5A3C",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.8,
+                  textTransform: "uppercase",
+                }}
+              >
+                Good To Know
+              </Text>
+              <Paragraph
+                style={{
+                  margin: 0,
+                  color: "#4E4942",
+                  fontSize: 15,
+                  lineHeight: 1.8,
+                  fontFamily:
+                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                }}
+              >
+                Most beaches, cafes and surf breaks in Ahangama are within a
+                5-10 minute scooter ride of each other, and most scooter rental
+                companies will deliver directly to your accommodation.
+              </Paragraph>
+            </div>
+
+            <div
+              style={{
+                paddingTop: 18,
+                borderTop: "1px solid rgba(47,62,58,0.1)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 12,
+                  color: "#8B5A3C",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.8,
+                  textTransform: "uppercase",
+                }}
+              >
+                Local Insight
+              </Text>
+              <Paragraph
+                style={{
+                  margin: 0,
+                  color: "#2F3E3A",
+                  fontSize: isMobile ? 22 : 28,
+                  lineHeight: 1.18,
+                  fontFamily:
+                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                "Most visitors staying longer than three days rent scooters.
+                Short-stay visitors usually rely on tuk tuks."
+              </Paragraph>
+            </div>
+
+            <div
+              style={{
+                paddingTop: 18,
+                borderTop: "1px solid rgba(47,62,58,0.1)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 12,
+                  color: "#8B5A3C",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.8,
+                  textTransform: "uppercase",
+                }}
+              >
+                Need Help Getting Around?
+              </Text>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                {["Transfers", "Scooters", "Tuk Tuks", "Day Trips"].map(
+                  (item) => (
+                    <Text
+                      key={item}
+                      style={{ color: "#2F3E3A", fontSize: 14, lineHeight: 1.5 }}
+                    >
+                      ✓ {item}
+                    </Text>
+                  ),
+                )}
+              </div>
+              <a
+                href="https://wa.me/94777908790?text=Hi%2C%20need%20help%20getting%20around%20Ahangama."
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  borderRadius: 999,
-                  height: 42,
-                  paddingInline: 18,
-                  width: isMobile ? "100%" : "auto",
-                  background: "rgba(255,255,255,0.72)",
-                  borderColor: "rgba(47,62,58,0.14)",
-                  color: "#5B564E",
-                  boxShadow: "none",
-                  fontWeight: 500,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginTop: 14,
+                  color: "#2F3E3A",
+                  textDecoration: "none",
                   fontSize: 14,
+                  fontWeight: 600,
+                  textTransform: "uppercase",
                 }}
               >
-                Need help booking transport?
-              </Button>
+                WhatsApp Us <ArrowRightOutlined />
+              </a>
             </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: isMobile ? "column" : "row",
-                gap: 10,
-                width: isMobile ? "100%" : "auto",
-                alignItems: isMobile ? "stretch" : "center",
-              }}
-            >
-              {!isMobile ? (
-                <div
-                  style={{
-                    display: "flex",
-                    gap: 10,
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  <Button
-                    aria-label="Scroll transport cards left"
-                    icon={<LeftOutlined />}
-                    onClick={() => scrollRail(-1)}
-                    style={{ borderRadius: 999, width: 44, height: 44 }}
-                  />
-                  <Button
-                    aria-label="Scroll transport cards right"
-                    icon={<RightOutlined />}
-                    onClick={() => scrollRail(1)}
-                    style={{ borderRadius: 999, width: 44, height: 44 }}
-                  />
-                </div>
-              ) : null}
-              <Button
-                type="primary"
-                size="large"
-                href={GUIDE_PATH}
-                icon={<ArrowRightOutlined />}
-                style={{
-                  borderRadius: 999,
-                  height: 44,
-                  paddingInline: 18,
-                  width: isMobile ? "100%" : "auto",
-                  background: "#2F3E3A",
-                  borderColor: "#2F3E3A",
-                  boxShadow: "none",
-                }}
-              >
-                View full guide
-              </Button>
-            </div>
-          </div>
+          </aside>
         </div>
       </div>
-
-      <div style={{ padding: isMobile ? "0 20px 20px" : "0 26px 26px" }}>
-        <div
-          ref={railRef}
-          style={{
-            display: "flex",
-            gap: isMobile ? 14 : 18,
-            overflowX: "auto",
-            paddingBottom: 8,
-            scrollSnapType: "x proximity",
-            WebkitOverflowScrolling: "touch",
-            scrollbarWidth: "thin",
-          }}
-        >
-          {cards.map((card) => (
-            <div
-              key={card.key}
-              style={{
-                flex: isMobile
-                  ? "0 0 82vw"
-                  : "0 0 clamp(220px, calc((100% - 54px) / 3.5), 320px)",
-                maxWidth: isMobile ? 320 : undefined,
-                scrollSnapAlign: "start",
-              }}
-            >
-              <Card
-                hoverable
-                bodyStyle={{ padding: 0 }}
-                style={{
-                  height: "100%",
-                  borderRadius: 22,
-                  overflow: "hidden",
-                  border: "1px solid rgba(47,62,58,0.08)",
-                  background: "#fffaf3",
-                  boxShadow: "0 14px 28px rgba(47,62,58,0.08)",
-                }}
-              >
-                <a
-                  href={GUIDE_PATH}
-                  style={{
-                    display: "block",
-                    color: "inherit",
-                    textDecoration: "none",
-                    height: "100%",
-                  }}
-                >
-                  <div
-                    style={{
-                      height: isMobile ? 190 : 220,
-                      backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.42) 100%), url(${card.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  />
-                  <div style={{ padding: isMobile ? 16 : 18 }}>
-                    <Space align="center" size={8} style={{ marginBottom: 10 }}>
-                      {card.key === "airport" ? (
-                        <EnvironmentOutlined style={{ color: "#8B5A3C" }} />
-                      ) : (
-                        <CarOutlined style={{ color: "#8B5A3C" }} />
-                      )}
-                      <Text
-                        style={{
-                          color: "#8B5A3C",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          textTransform: "uppercase",
-                          letterSpacing: 1.3,
-                        }}
-                      >
-                        Recommended pricing
-                      </Text>
-                    </Space>
-                    <Title
-                      level={3}
-                      style={{
-                        marginTop: 0,
-                        marginBottom: 10,
-                        color: "#2F3E3A",
-                        fontSize: isMobile ? 20 : 22,
-                      }}
-                    >
-                      {card.title}
-                    </Title>
-                    <Paragraph
-                      style={{
-                        color: "#59534B",
-                        minHeight: isMobile ? 0 : 96,
-                        marginBottom: 10,
-                      }}
-                    >
-                      {card.copy}
-                    </Paragraph>
-                    <Text style={{ color: "#2F3E3A", fontWeight: 700 }}>
-                      {card.pricing}
-                    </Text>
-                  </div>
-                </a>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }
