@@ -126,13 +126,15 @@ const GETTING_AROUND_PREVIEW = [
   },
 ];
 
-const TRANSPORT_CURRENCIES = ["LKR", "USD", "EUR", "GBP"];
+const TRANSPORT_CURRENCIES = ["LKR", "USD", "EUR", "GBP", "INR", "CNY"];
 
 const TRANSPORT_EXCHANGE_RATES = {
   LKR: 1,
   USD: 0.0033,
   EUR: 0.003,
   GBP: 0.0025,
+  INR: 0.27,
+  CNY: 0.024,
 };
 
 const TRANSPORT_CURRENCY_FORMATTERS = {
@@ -154,6 +156,16 @@ const TRANSPORT_CURRENCY_FORMATTERS = {
   GBP: new Intl.NumberFormat("en-GB", {
     style: "currency",
     currency: "GBP",
+    maximumFractionDigits: 0,
+  }),
+  INR: new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0,
+  }),
+  CNY: new Intl.NumberFormat("zh-CN", {
+    style: "currency",
+    currency: "CNY",
     maximumFractionDigits: 0,
   }),
 };
