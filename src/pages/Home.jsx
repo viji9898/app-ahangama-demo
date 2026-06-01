@@ -1623,9 +1623,8 @@ export default function Home() {
                       fontSize: 15,
                     }}
                   >
-                    Built for people staying more than a few days. Simple vendor
-                    verification, real perks, and a curated venue list that
-                    grows over time.
+                    Your key to local perks, member-only offers and
+                    experiences across Ahangama.
                   </Paragraph>
                   <div
                     style={{

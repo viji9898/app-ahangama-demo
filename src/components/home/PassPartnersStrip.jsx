@@ -2,24 +2,23 @@ import React, { useMemo } from "react";
 import { Grid, Typography } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
-import { trackPassCtaClick } from "../../analytics";
-import { buildPassCtaUrl } from "../../lib/passAttribution";
 import { FULL_LIST_PATH, getPassPlaces } from "../../lib/passPartners";
 
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
 
-const MAX_MOSAIC_LOGOS = 48;
+const MAX_MOSAIC_LOGOS = 36;
 
 const FEATURED_PERKS = [
-  "Food & Drink Savings",
-  "Wellness Benefits",
-  "Retail Offers",
-  "Free Extras",
+  "Food & Drink",
+  "Wellness",
+  "Stays",
+  "Surf",
+  "Retail",
+  "Experiences",
   "Accommodation Perks",
+  "Free Extras",
 ];
-
-const CATEGORY_LINE = "Cafes · Wellness · Stays · Surf · Retail · Experiences";
 
 const editorialCtaStyle = {
   display: "inline-flex",
@@ -27,10 +26,10 @@ const editorialCtaStyle = {
   gap: 8,
   color: "#2F3E3A",
   textDecoration: "none",
-  fontSize: 14,
+  fontSize: 15,
   fontWeight: 600,
   letterSpacing: "0.01em",
-  textTransform: "uppercase",
+  whiteSpace: "nowrap",
 };
 
 function MosaicTile({ partner }) {
@@ -41,17 +40,17 @@ function MosaicTile({ partner }) {
         alignItems: "center",
         justifyContent: "center",
         padding: 2,
-        minHeight: 54,
+        minHeight: 44,
       }}
     >
       <img
         src={partner.logo}
         alt={`${partner.name} logo`}
         style={{
-          width: 50,
-          height: 50,
+          width: 42,
+          height: 42,
           objectFit: "contain",
-          filter: "grayscale(1) contrast(0.88) opacity(0.82)",
+          filter: "grayscale(1) contrast(0.9) opacity(0.82)",
         }}
       />
     </div>
@@ -60,7 +59,6 @@ function MosaicTile({ partner }) {
 
 export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   const { places: allPlaces } = usePlaces();
-  const passCtaUrl = buildPassCtaUrl();
   const screens = useBreakpoint();
   const isMobile = !screens.md;
 
@@ -78,19 +76,21 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   return (
     <section
       style={{
-        borderRadius: 28,
+        borderRadius: 30,
         border: "1px solid rgba(32,30,27,0.08)",
-        background:
-          "linear-gradient(180deg, rgba(252,249,244,0.98) 0%, rgba(247,242,235,0.98) 100%)",
-        boxShadow: "0 18px 40px rgba(32,30,27,0.04)",
+        background: "#FFFFFF",
+        boxShadow: "0 10px 28px rgba(32,30,27,0.035)",
         overflow: "hidden",
       }}
     >
       <div style={{ padding: isMobile ? 22 : 30 }}>
         <div
           style={{
-            display: "grid",
-            gap: isMobile ? 18 : 20,
+            display: "flex",
+            alignItems: isMobile ? "flex-start" : "center",
+            justifyContent: "space-between",
+            gap: 18,
+            flexDirection: isMobile ? "column" : "row",
           }}
         >
           <div style={{ maxWidth: 760 }}>
@@ -136,7 +136,7 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             <Text
               style={{
                 display: "block",
-                marginTop: 14,
+                marginTop: 12,
                 color: "#7A6F63",
                 fontSize: 13,
                 lineHeight: 1.6,
@@ -146,23 +146,9 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
             </Text>
           </div>
 
-          <div
-            style={{
-              paddingTop: isMobile ? 4 : 0,
-            }}
-          >
-            <Text
-              style={{
-                color: "#8A7A68",
-                fontSize: 12,
-                lineHeight: 1.55,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-              }}
-            >
-              {CATEGORY_LINE}
-            </Text>
-          </div>
+          <a href={FULL_LIST_PATH} style={editorialCtaStyle}>
+            View all partners <ArrowRightOutlined />
+          </a>
         </div>
       </div>
 
@@ -170,17 +156,19 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
         {mosaicPartners.length ? (
           <div
             style={{
-              marginTop: 6,
-              marginBottom: isMobile ? 18 : 22,
-              padding: isMobile ? "6px 0 2px" : "10px 0 4px",
+              marginTop: 2,
+              marginBottom: isMobile ? 18 : 18,
+              padding: isMobile ? "2px 0 0" : "6px 0 0",
             }}
           >
             <div
               style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: 2.5,
+                display: "grid",
+                gridTemplateColumns: isMobile
+                  ? "repeat(6, minmax(0, 1fr))"
+                  : "repeat(18, minmax(0, 1fr))",
+                columnGap: isMobile ? 6 : 8,
+                rowGap: isMobile ? 10 : 12,
                 alignItems: "center",
               }}
             >
@@ -191,107 +179,37 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 />
               ))}
             </div>
-            <Text
-              style={{
-                display: "block",
-                marginTop: 10,
-                color: "#8A7A68",
-                fontSize: 11,
-                fontWeight: 600,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                textAlign: "center",
-              }}
-            >
-              + 100 more partners
-            </Text>
           </div>
         ) : null}
 
         <div
           style={{
-            display: "grid",
-            gap: 18,
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 10,
             marginTop: 8,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 10,
-            }}
-          >
-            {FEATURED_PERKS.map((perk) => (
-              <span
-                key={perk}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  minHeight: 36,
-                  padding: "8px 14px",
-                  borderRadius: 999,
-                  border: "1px solid rgba(32,30,27,0.08)",
-                  background: "rgba(255,252,246,0.9)",
-                  color: "#5E584F",
-                  fontSize: 12,
-                  fontWeight: 600,
-                  letterSpacing: "0.02em",
-                }}
-              >
-                {perk}
-              </span>
-            ))}
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              alignItems: isMobile ? "stretch" : "center",
-              justifyContent: "space-between",
-              gap: 12,
-            }}
-          >
-            <div
+          {FEATURED_PERKS.map((perk) => (
+            <span
+              key={perk}
               style={{
-                display: "flex",
-                flexDirection: isMobile ? "column" : "row",
-                alignItems: isMobile ? "stretch" : "center",
-                gap: isMobile ? 12 : 18,
+                display: "inline-flex",
+                alignItems: "center",
+                minHeight: 34,
+                padding: "8px 16px",
+                borderRadius: 999,
+                border: "1px solid rgba(32,30,27,0.06)",
+                background: "rgba(255,255,255,0.72)",
+                color: "#5E584F",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.01em",
               }}
             >
-              <a href={FULL_LIST_PATH} style={editorialCtaStyle}>
-                View Full Partner List <ArrowRightOutlined />
-              </a>
-
-              <a
-                href={passCtaUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  trackPassCtaClick({
-                    ctaLocation: "pass_partners_strip",
-                    destinationUrl: passCtaUrl,
-                  });
-                }}
-                style={editorialCtaStyle}
-              >
-                Get The Ahangama Pass <ArrowRightOutlined />
-              </a>
-            </div>
-
-            <Text
-              style={{
-                color: "#71695F",
-                fontSize: 13,
-                lineHeight: 1.6,
-                maxWidth: 360,
-              }}
-            >
-              See all participating venues, perks and how to claim them.
-            </Text>
-          </div>
+              {perk}
+            </span>
+          ))}
         </div>
       </div>
     </section>
