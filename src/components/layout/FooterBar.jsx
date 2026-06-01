@@ -9,11 +9,11 @@ const SERIF_FONT = '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
 
 const editorialStories = [
   {
-    label: "Work Guide",
-    title: "Best Cafes to Work From in Ahangama",
+    label: "FASHION",
+    title: "Mukti Studio and the New Face of Ahangama",
     excerpt:
-      "Design-led cafes, strong coffee, and the sort of corners that make a half day of work feel slower and better.",
-    href: "/eat",
+      "A thoughtful look at one of Ahangama's most community-driven creative businesses and the people shaping its next chapter.",
+    href: "/blogs/mukti-studio-and-the-new-face-of-ahangama",
   },
   {
     label: "Wellness Guide",
