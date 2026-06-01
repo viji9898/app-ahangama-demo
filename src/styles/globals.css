@@ -3523,11 +3523,65 @@
   .perfect-day-cta {
     margin-top: 2px !important;
   }
+
+  .three-days-card .ant-card-body {
+    padding: 22px !important;
+  }
+
+  .three-days-row {
+    row-gap: 20px !important;
+  }
+
+  .three-days-title {
+    margin-bottom: 12px !important;
+    font-size: clamp(30px, 7vw, 42px) !important;
+  }
+
+  .three-days-excerpt {
+    margin-bottom: 16px !important;
+  }
+
+  .three-days-chip-group {
+    margin-bottom: 16px !important;
+  }
+
+  .three-days-chip {
+    padding: 7px 10px !important;
+    font-size: 12px !important;
+  }
+
+  .three-days-media {
+    min-height: 360px !important;
+    background-position: center !important;
+  }
+
+  .three-days-tags {
+    gap: 8px !important;
+    padding: 14px 14px 0 !important;
+  }
+
+  .three-days-hashtags {
+    gap: 8px !important;
+    padding: 0 14px 14px !important;
+    margin-top: 230px !important;
+  }
 }
 
 @media (max-width: 450px) {
   .perfect-day-card .ant-card-body {
     padding: 18px !important;
+  }
+
+  .three-days-card .ant-card-body {
+    padding: 18px !important;
+  }
+
+  .three-days-media {
+    min-height: 320px !important;
+  }
+
+  .three-days-hashtags {
+    margin-top: 202px !important;
   }
 }
 

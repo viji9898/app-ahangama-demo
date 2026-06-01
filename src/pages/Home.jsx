@@ -73,10 +73,10 @@ const DENITSA_FEATURED_PLACES = [
   "Lighthouse",
 ];
 
-const THREE_DAYS_STORY_META = [
-  "5 min read",
-  "3 days",
-  "4 featured places",
+const THREE_DAYS_STORY_TAGS = [
+  "Ahangama",
+  "Personal Story",
+  "3 Days",
   "Wellness + Coworking",
 ];
 
@@ -1006,13 +1006,17 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
-            <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
-              <Row gutter={[32, 32]} align="middle">
+            <Card
+              className="three-days-card"
+              style={editorialCardStyle}
+              bodyStyle={{ padding: 32 }}
+            >
+              <Row className="three-days-row" gutter={[32, 32]} align="middle">
                 <Col xs={24} xl={14}>
-                  <Text style={editorialEyebrowStyle}>Personal Story</Text>
 
                   <Title
                     level={2}
+                    className="three-days-title"
                     style={{
                       ...editorialTitleStyle,
                       marginBottom: 14,
@@ -1024,117 +1028,56 @@ export default function Home() {
                     3 Days in Ahangama: My Wellness Stay at Samba
                   </Title>
 
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: 10,
-                      marginBottom: 18,
-                    }}
-                  >
-                    {THREE_DAYS_STORY_META.map((item) => (
-                      <Text
-                        key={item}
-                        style={{
-                          color: "#8B7B63",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: 1.5,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {item}
-                      </Text>
-                    ))}
-                  </div>
-
                   <Paragraph
+                    className="three-days-excerpt"
                     style={{
                       ...editorialCopyStyle,
-                      maxWidth: 640,
-                      marginBottom: 24,
+                      maxWidth: 580,
+                      marginBottom: 20,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
-                    Three days at Samba became a slower editorial rhythm for
-                    Ahangama: mornings split between Pilates and coworking,
-                    afternoons shaped by recovery, and evenings left open for
-                    coffee, coast, and sunset plans that did not feel forced.
+                    Three days at Samba settled into a slower rhythm of
+                    Pilates, coworking, recovery and unhurried sunsets.
+                    Ahangama felt calm, social and easy to stay in.
                   </Paragraph>
 
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns:
-                        "minmax(0, 1fr) minmax(220px, 260px)",
-                      gap: 28,
-                      alignItems: "start",
-                    }}
-                  >
-                    <div>
-                      <Text style={editorialEyebrowStyle}>Highlights</Text>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 12,
-                          paddingTop: 14,
-                          borderTop: "1px solid rgba(32,30,27,0.08)",
-                        }}
-                      >
-                        {THREE_DAYS_HIGHLIGHTS.map((item) => (
-                          <div
-                            key={item}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 10,
-                              color: "#2F3E3A",
-                              fontSize: 15,
-                              lineHeight: 1.45,
-                            }}
-                          >
-                            <CheckOutlined style={{ color: "#8B7B63" }} />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <Text style={editorialEyebrowStyle}>Featured Places</Text>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: 10,
-                          paddingTop: 14,
-                          borderTop: "1px solid rgba(32,30,27,0.08)",
-                        }}
-                      >
-                        {THREE_DAYS_FEATURED_PLACES.map((item) => (
-                          <span
-                            key={item}
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              minHeight: 34,
-                              padding: "7px 12px",
-                              borderRadius: 999,
-                              background: "rgba(255,255,255,0.66)",
-                              border: "1px solid rgba(32,30,27,0.08)",
-                              color: "#3F3A34",
-                              fontSize: 13,
-                              fontWeight: 600,
-                            }}
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
+                  <div className="three-days-chip-group" style={{ marginBottom: 20 }}>
+                    <Text style={editorialEyebrowStyle}>Places Featured</Text>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 10,
+                      }}
+                    >
+                      {THREE_DAYS_FEATURED_PLACES.map((item) => (
+                        <span
+                          key={item}
+                          className="three-days-chip"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            minHeight: 34,
+                            padding: "7px 12px",
+                            borderRadius: 999,
+                            background: "rgba(255,255,255,0.66)",
+                            border: "1px solid rgba(32,30,27,0.08)",
+                            color: "#3F3A34",
+                            fontSize: 13,
+                            fontWeight: 600,
+                          }}
+                        >
+                          {item}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
-                  <div style={{ marginTop: 28 }}>
+                  <div className="three-days-cta" style={{ marginTop: 4 }}>
                     <a
                       href="/3-days-in-ahangama"
                       style={{
@@ -1152,6 +1095,7 @@ export default function Home() {
 
                 <Col xs={24} xl={10}>
                   <div
+                    className="three-days-media"
                     style={{
                       minHeight: 440,
                       borderRadius: 26,
@@ -1162,7 +1106,58 @@ export default function Home() {
                       border: "1px solid rgba(32,30,27,0.08)",
                       boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
                     }}
-                  />
+                  >
+                    <div
+                      className="three-days-tags"
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 10,
+                        padding: "16px 16px 0",
+                      }}
+                    >
+                      {THREE_DAYS_STORY_TAGS.map((item) => (
+                        <Text
+                          key={item}
+                          style={{
+                            color: "rgba(255,248,239,0.9)",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.5,
+                            textTransform: "uppercase",
+                            textShadow: "0 1px 10px rgba(18,25,24,0.18)",
+                          }}
+                        >
+                          {item}
+                        </Text>
+                      ))}
+                    </div>
+                    <div
+                      className="three-days-hashtags"
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 10,
+                        padding: "0 16px 16px",
+                        marginTop: 300,
+                      }}
+                    >
+                      {THREE_DAYS_HIGHLIGHTS.map((item) => (
+                        <Text
+                          key={item}
+                          style={{
+                            color: "rgba(255,248,239,0.9)",
+                            fontSize: 12,
+                            fontWeight: 600,
+                            lineHeight: 1.2,
+                            textShadow: "0 1px 10px rgba(18,25,24,0.28)",
+                          }}
+                        >
+                          #{item}
+                        </Text>
+                      ))}
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </Card>
