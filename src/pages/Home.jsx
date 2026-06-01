@@ -301,6 +301,7 @@ export default function Home() {
               >
                 <div
                   aria-hidden="true"
+                  className="home-hero-media-layer"
                   style={{
                     position: "absolute",
                     inset: 0,
@@ -308,6 +309,7 @@ export default function Home() {
                   }}
                 >
                   <div
+                    className="home-hero-overlay"
                     style={{
                       position: "absolute",
                       inset: 0,
@@ -318,6 +320,7 @@ export default function Home() {
                     }}
                   />
                   <img
+                    className="home-hero-image"
                     src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg"
                     alt="Ahangama coastline editorial hero"
                     style={{

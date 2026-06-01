@@ -3476,6 +3476,22 @@
 }
 
 @media (max-width: 768px) {
+  .home-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.99) 0%,
+      rgba(255, 255, 255, 0.96) 26%,
+      rgba(255, 255, 255, 0.82) 44%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0.14) 76%,
+      rgba(255, 255, 255, 0) 92%
+    ) !important;
+  }
+
+  .home-hero-image {
+    object-position: calc(66% + 157px) 72% !important;
+  }
+
   .story-teasers-row {
     row-gap: 14px !important;
   }
@@ -3758,7 +3774,8 @@ h4,
 .ant-typography-h3,
 .ant-typography-h4 {
   color: var(--editorial-ink) !important;
-  font-family: "Cormorant Garamond", "Libre Baskerville", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Libre Baskerville", Georgia, serif !important;
   font-weight: 500 !important;
   letter-spacing: -0.025em;
 }
