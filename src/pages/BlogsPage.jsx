@@ -435,6 +435,20 @@ function JournalStorySection({ section }) {
         {section.title}
       </Title>
 
+      {section.videoUrl ? (
+        <figure className="blog-journalFigure blog-journalVideoFigure">
+          <video
+            className="blog-journalVideo"
+            src={section.videoUrl}
+            poster={section.posterImage}
+            controls
+            muted
+            loop
+            playsInline
+          />
+        </figure>
+      ) : null}
+
       {section.image ? (
         <figure className="blog-journalFigure">
           <EditorialImage src={section.image} alt={section.title} />
@@ -455,6 +469,19 @@ function JournalStorySection({ section }) {
         <div className="blog-journalNotes">
           <Text className="blog-journalNotesLabel">Scene notes</Text>
           <p className="blog-journalNotesCopy">{section.stats.join(" · ")}</p>
+        </div>
+      ) : null}
+
+      {section.featuredPlaces?.length ? (
+        <div className="blog-journalPlaces">
+          <Text className="blog-journalNotesLabel">Places featured</Text>
+          <div className="blog-journalPlacesList">
+            {section.featuredPlaces.map((place) => (
+              <span key={place} className="blog-journalPlacePill">
+                {place}
+              </span>
+            ))}
+          </div>
         </div>
       ) : null}
 
@@ -748,7 +775,8 @@ export default function BlogsPage() {
               Back to blogs
             </Button>
           </Card>
-        ) : activePost.editorialType === "coastal-town-story" ? (
+        ) : activePost.editorialType === "coastal-town-story" ||
+          activePost.editorialType === "perfect-day-story" ? (
           <CoastalTownEditorialPost post={activePost} />
         ) : activePost.experiences ? (
           <FeaturedEditorialPost post={activePost} />

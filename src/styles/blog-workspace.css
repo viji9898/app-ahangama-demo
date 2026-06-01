@@ -546,6 +546,21 @@
   margin: 0 0 18px;
 }
 
+.blog-journalVideoFigure {
+  overflow: hidden;
+  border-radius: 26px;
+  background: #f4f1ea;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+}
+
+.blog-journalVideo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #d8d3c8;
+}
+
 .blog-journalCopy {
   color: #424941 !important;
   font-size: 18px;
@@ -588,6 +603,31 @@
   color: #5e645e;
   line-height: 1.8;
   font-size: 15px;
+}
+
+.blog-journalPlaces {
+  margin-top: 20px;
+}
+
+.blog-journalPlacesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.blog-journalPlacePill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 36, 31, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  color: #394139;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .blog-journalGallery {

@@ -760,7 +760,7 @@ export default function Home() {
                           }}
                         >
                           <a
-                            href="/blogs"
+                            href="/blogs/Perfect-Day-in-Ahangama"
                             style={{
                               color: "#2F3E3A",
                               textDecoration: "none",

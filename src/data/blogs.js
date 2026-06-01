@@ -210,6 +210,111 @@ export const BLOG_POSTS = [
     ],
   },
   {
+    id: "perfect-day-in-ahangama",
+    slug: "perfect-day-in-ahangama",
+    title: "Perfect Day in Ahangama",
+    shortTitle: "Perfect Day in Ahangama",
+    excerpt:
+      "Pilates, surf, coffee, a slow afternoon, and sunset at Lighthouse. Denitsa shares the exact rhythm of her ideal day in Ahangama.",
+    description:
+      "A personal journal entry from Denitsa on how to spend a perfect day in Ahangama, with video notes, scene-setting details, and the places that shaped it.",
+    publishDate: "2026-06-01",
+    author: "Denitsa Petrova",
+    authorType: "Person",
+    authorRole: "Digital nomad and repeat Ahangama visitor",
+    readingTime: "4 min read",
+    category: "Visitor journal",
+    editorialType: "perfect-day-story",
+    heroImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+    heroSubtitle:
+      "The kind of day that starts with movement, stays loose through the middle, and ends at Lighthouse just as the light turns gold.",
+    introTitle: "A good Ahangama day does not feel rushed",
+    introImage:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+    introColumns: [
+      "When I think about my favorite days in Ahangama, they are never the ones packed with too many plans. The best ones have a rhythm: one good wellness session, a stop for coffee and something fresh, time near the water, then enough space in the afternoon to follow energy rather than a schedule.",
+      "This is the version of the day I keep coming back to. It starts with Pilates, moves through easy food and ocean time, and ends at Lighthouse for sunset. Nothing about it feels forced. That is exactly why it works.",
+    ],
+    pullQuote:
+      "The perfect day here is not about doing more. It is about choosing a few things that let the town open up properly.",
+    storySections: [
+      {
+        eyebrow: "Video journal",
+        title: "The day as it happened",
+        videoUrl:
+          "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4",
+        posterImage:
+          "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+        paragraphs: [
+          "I like the day to begin with movement, because everything after that feels lighter. A Pilates session at Pura resets the body early, and from there the rest of the plan can stay flexible rather than over-managed.",
+          "The video captures that exact feeling: a few anchors, a lot of breathing room, and the kind of pacing that makes Ahangama feel better the longer you stay out in it.",
+        ],
+        stats: [
+          "Pilates first",
+          "Coffee after",
+          "Ocean in the middle of the day",
+          "Sunset at Lighthouse",
+        ],
+        featuredPlaces: [
+          "Pura Pilates",
+          "Oyummy",
+          "Rollingpin Bakery",
+          "Lighthouse",
+        ],
+      },
+      {
+        eyebrow: "Morning to afternoon",
+        title: "Start well, then let the rest of the day stay open",
+        image:
+          "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
+        paragraphs: [
+          "After Pilates, I usually want somewhere easy for breakfast or coffee rather than anything heavy. That is where places like Oyummy and Rollingpin come in. They make the morning feel social and light, without pulling the whole day into a fixed timetable.",
+          "From there, the best move is usually to avoid over-structuring the afternoon. A little surf, a walk, a long coffee, or just time near the beach tends to create a better day than trying to collect too many stops.",
+        ],
+        quote:
+          "Ahangama always feels best when the plan softens after lunch.",
+      },
+      {
+        eyebrow: "Evening note",
+        title: "End somewhere that lets the town slow down again",
+        image:
+          "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+        paragraphs: [
+          "Sunset at Lighthouse is the kind of ending that makes the whole day feel cohesive. By that point you do not need anything dramatic. You just want a place where the light, the sea, and the mood all line up naturally.",
+          "That is what a perfect day here usually is for me: one wellness anchor, a few favorite stops, and an evening that closes softly instead of trying too hard to become a big event.",
+        ],
+        stats: [
+          "No rush after 4pm",
+          "Keep dinner flexible",
+          "Let sunset set the pace",
+        ],
+      },
+    ],
+    passSection: {
+      title: "Use the pass as a quiet layer, not the whole plan",
+      body: "The Ahangama Pass works best when it supports the rhythm of the day rather than dictating it. It helps with curated perks and local benefits across places you may already want to visit, especially if your days usually mix wellness, cafes, and a couple of easy stops.",
+      supporting:
+        "For a day like this, it is less about chasing offers and more about making familiar places feel a little more connected.",
+      ctaLabel: "Get the Free Ahangama Pass",
+    },
+    closingSection: {
+      title: "The version of Ahangama I would repeat",
+      body: [
+        "If I had to repeat one kind of day here, it would always be this sort of rhythm: movement early, something good to eat, a loose middle, and a sunset that does not ask too much of you.",
+        "Ahangama rewards days that are shaped with intention but not overfilled. That is usually when the town feels most beautiful, most social, and most like somewhere you could easily stay longer than planned.",
+      ],
+      ctaLabel: "Explore More Stories",
+    },
+    footerLinks: [
+      { label: "Blogs", href: "/blogs" },
+      { label: "Guide", href: "/" },
+      { label: "Pass", href: "/card" },
+      { label: "Offers", href: "/offers" },
+      { label: "Contact", href: "/about" },
+    ],
+  },
+  {
     id: "why-ahangama-most-interesting-coastal-town",
     slug: "why-ahangama-might-be-sri-lankas-most-interesting-coastal-town-right-now",
     title:
@@ -491,5 +596,10 @@ export const BLOG_POSTS = [
 ];
 
 export function getBlogPostBySlug(slug) {
-  return BLOG_POSTS.find((post) => post.slug === slug) || null;
+  const normalizedSlug = String(slug || "").trim().toLowerCase();
+
+  return (
+    BLOG_POSTS.find((post) => post.slug.toLowerCase() === normalizedSlug) ||
+    null
+  );
 }
