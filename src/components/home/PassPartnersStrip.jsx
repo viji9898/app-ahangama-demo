@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Button, Grid, Typography } from "antd";
+import { Grid, Typography } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
 import { trackPassCtaClick } from "../../analytics";
@@ -18,6 +18,18 @@ const FEATURED_PERKS = [
 ];
 
 const CATEGORY_LINE = "Cafes · Wellness · Stays · Surf · Retail · Experiences";
+
+const editorialCtaStyle = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 8,
+  color: "#2F3E3A",
+  textDecoration: "none",
+  fontSize: 14,
+  fontWeight: 600,
+  letterSpacing: "0.01em",
+  textTransform: "uppercase",
+};
 
 export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   const { places: allPlaces } = usePlaces();
@@ -174,28 +186,17 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 display: "flex",
                 flexDirection: isMobile ? "column" : "row",
                 alignItems: isMobile ? "stretch" : "center",
-                gap: 10,
+                gap: isMobile ? 12 : 18,
               }}
             >
-              <Button
-                type="primary"
+              <a
                 href={FULL_LIST_PATH}
-                icon={<ArrowRightOutlined />}
-                style={{
-                  borderRadius: 999,
-                  height: 44,
-                  paddingInline: 18,
-                  background: "#2F3E3A",
-                  borderColor: "#2F3E3A",
-                  color: "#FFFFFF",
-                  boxShadow: "none",
-                  width: isMobile ? "100%" : "auto",
-                }}
+                style={editorialCtaStyle}
               >
-                View Full Partner List
-              </Button>
+                View Full Partner List <ArrowRightOutlined />
+              </a>
 
-              <Button
+              <a
                 href={passCtaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -205,20 +206,10 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                     destinationUrl: passCtaUrl,
                   });
                 }}
-                style={{
-                  borderRadius: 999,
-                  height: 44,
-                  paddingInline: 18,
-                  borderColor: "rgba(47,62,58,0.14)",
-                  background: "rgba(255,255,255,0.76)",
-                  color: "#2F3E3A",
-                  boxShadow: "none",
-                  width: isMobile ? "100%" : "auto",
-                  fontWeight: 600,
-                }}
+                style={editorialCtaStyle}
               >
                 Get The Ahangama Pass <ArrowRightOutlined />
-              </Button>
+              </a>
             </div>
 
             <Text
