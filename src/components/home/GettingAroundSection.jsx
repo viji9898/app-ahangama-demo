@@ -242,7 +242,7 @@ export default function GettingAroundSection() {
               display: "grid",
               gridTemplateColumns: isMobile
                 ? "minmax(0, 1fr)"
-                : "minmax(0, 1fr) auto",
+                : "minmax(0, 1fr) auto auto",
               gap: isMobile ? 14 : 20,
               alignItems: "end",
               marginTop: 22,
@@ -261,6 +261,25 @@ export default function GettingAroundSection() {
               Transport providers, airport transfers, local tips, scooter
               rentals and practical travel advice.
             </Text>
+            <a
+              href="https://wa.me/94777908790?text=Hi%2C%20I%20need%20help%20booking%20transport%20in%20Ahangama."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                color: "#5B564E",
+                textDecoration: "none",
+                fontSize: 14,
+                fontWeight: 600,
+                letterSpacing: "0.01em",
+                textTransform: "uppercase",
+                whiteSpace: isMobile ? "normal" : "nowrap",
+              }}
+            >
+              Book via WhatsApp <ArrowRightOutlined />
+            </a>
             <a
               href={GUIDE_PATH}
               style={{
