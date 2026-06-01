@@ -1113,6 +1113,52 @@ export default function Home() {
                       </Col>
                     </Row>
                   </Card>
+
+                  <Card
+                    className="mukti-story-card"
+                    style={editorialCardStyle}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <Row gutter={[18, 18]} align="middle">
+                      <Col xs={24}>
+                        <Text style={editorialEyebrowStyle}>New Story</Text>
+                        <Title
+                          level={3}
+                          style={{
+                            ...editorialTitleStyle,
+                            marginBottom: 10,
+                            fontSize: "clamp(24px, 2vw, 31px)",
+                            lineHeight: 0.98,
+                          }}
+                        >
+                          Mukti Studio and the New Face of Ahangama
+                        </Title>
+                        <Paragraph
+                          style={{
+                            marginBottom: 14,
+                            color: "#5F574E",
+                            fontSize: 15,
+                            lineHeight: 1.7,
+                          }}
+                        >
+                          A profile of one of the town's most thoughtful new
+                          creative businesses and the community around it.
+                        </Paragraph>
+                        <a
+                          href="/blogs/mukti-studio-and-the-new-face-of-ahangama"
+                          style={{
+                            color: "#2F3E3A",
+                            textDecoration: "none",
+                            fontSize: 16,
+                            fontWeight: 600,
+                            letterSpacing: 0.1,
+                          }}
+                        >
+                          Read Story <ArrowRightOutlined />
+                        </a>
+                      </Col>
+                    </Row>
+                  </Card>
                 </div>
               </Col>
             </Row>

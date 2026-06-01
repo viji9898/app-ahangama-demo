@@ -685,6 +685,60 @@ function StandardBlogPost({ activePost }) {
   );
 }
 
+function PlainStoryPost({ post }) {
+  return (
+    <article>
+      <Card className="blog-card blog-heroCard" bordered={false}>
+        <Breadcrumb style={{ marginBottom: 18 }}>
+          <Breadcrumb.Item>
+            <a href="/">Ahangama</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="/blogs">Blogs</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>{post.title}</Breadcrumb.Item>
+        </Breadcrumb>
+
+        <Text className="blog-articleEyebrow">{post.category}</Text>
+        <Title level={1} className="blog-articleTitle">
+          {post.title}
+        </Title>
+        <Paragraph className="blog-articleCopy">{post.excerpt}</Paragraph>
+
+        <div className="blog-pillRow">
+          <Tag className="blog-pill">{formatDate(post.publishDate)}</Tag>
+          <Tag className="blog-pill">{post.readingTime}</Tag>
+          <Tag className="blog-pill">{post.author}</Tag>
+        </div>
+      </Card>
+
+      <section className="blog-section">
+        <Card className="blog-card blog-sectionCard" bordered={false}>
+          {post.bodyParagraphs.map((paragraph) => (
+            <Paragraph key={paragraph} className="blog-sectionCopy">
+              {paragraph}
+            </Paragraph>
+          ))}
+
+          {post.visitTitle ? (
+            <>
+              <Title level={3} className="blog-sectionTitle">
+                {post.visitTitle}
+              </Title>
+
+              {post.visitDetails.map((line) => (
+                <Paragraph key={line} className="blog-sectionCopy">
+                  {line}
+                </Paragraph>
+              ))}
+            </>
+          ) : null}
+        </Card>
+      </section>
+    </article>
+  );
+}
+
 export default function BlogsPage() {
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -775,6 +829,8 @@ export default function BlogsPage() {
               Back to blogs
             </Button>
           </Card>
+        ) : activePost.editorialType === "plain-story" ? (
+          <PlainStoryPost post={activePost} />
         ) : activePost.editorialType === "coastal-town-story" ||
           activePost.editorialType === "perfect-day-story" ? (
           <CoastalTownEditorialPost post={activePost} />
