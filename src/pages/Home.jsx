@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Card, Row, Col, Typography, Button, Space, Spin, Tag } from "antd";
 import QRCode from "react-qr-code";
 import {
@@ -104,21 +104,75 @@ const THREE_DAYS_FEATURED_PLACES = [
 const GETTING_AROUND_PREVIEW = [
   {
     label: "Scooter",
-    cost: "LKR 2,500 - 4,500 / day",
+    minLkr: 2500,
+    maxLkr: 4500,
+    suffix: "/ day",
   },
   {
     label: "Tuk Tuk",
-    cost: "LKR 500 - 1,500 / ride",
+    minLkr: 500,
+    maxLkr: 1500,
+    suffix: "/ ride",
   },
   {
     label: "Airport Transfer",
-    cost: "LKR 15,000 - 20,000",
+    minLkr: 15000,
+    maxLkr: 20000,
+    suffix: "",
   },
   {
     label: "Car with Driver",
-    cost: "LKR 12,000 - 20,000 / day",
+    minLkr: 12000,
+    maxLkr: 20000,
+    suffix: "/ day",
   },
 ];
+
+const TRANSPORT_CURRENCIES = ["LKR", "USD", "EUR", "GBP"];
+
+const TRANSPORT_EXCHANGE_RATES = {
+  LKR: 1,
+  USD: 0.0033,
+  EUR: 0.003,
+  GBP: 0.0025,
+};
+
+const TRANSPORT_CURRENCY_FORMATTERS = {
+  LKR: new Intl.NumberFormat("en-LK", {
+    style: "currency",
+    currency: "LKR",
+    maximumFractionDigits: 0,
+  }),
+  USD: new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }),
+  EUR: new Intl.NumberFormat("en-IE", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }),
+  GBP: new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+  }),
+};
+
+function formatTransportRange(item, currency) {
+  const rate = TRANSPORT_EXCHANGE_RATES[currency] || 1;
+  const formatter =
+    TRANSPORT_CURRENCY_FORMATTERS[currency] || TRANSPORT_CURRENCY_FORMATTERS.LKR;
+  const min = Math.round(item.minLkr * rate);
+  const max = Math.round(item.maxLkr * rate);
+  const formattedRange =
+    min === max
+      ? formatter.format(min)
+      : `${formatter.format(min)} - ${formatter.format(max)}`;
+
+  return `${formattedRange}${item.suffix ? ` ${item.suffix}` : ""}`.trim();
+}
 
 const TWELVE_THINGS_GUIDE_META = [
   "12 Experiences",
@@ -136,6 +190,7 @@ const TWELVE_THINGS_GUIDE_PREVIEW = [
 
 export default function Home() {
   const { loading, places } = usePlaces();
+  const [transportCurrency, setTransportCurrency] = useState("LKR");
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
   const sectionSpacing = 32;
@@ -741,6 +796,46 @@ export default function Home() {
                       Simple transport options and local costs.
                     </Title>
 
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-end",
+                          gap: 6,
+                          marginBottom: 12,
+                        }}
+                      >
+                        {TRANSPORT_CURRENCIES.map((currency) => {
+                          const isActive = transportCurrency === currency;
+
+                          return (
+                            <Button
+                              key={currency}
+                              size="small"
+                              type="text"
+                              onClick={() => setTransportCurrency(currency)}
+                              style={{
+                                height: 26,
+                                paddingInline: 8,
+                                borderRadius: 999,
+                                border: isActive
+                                  ? "1px solid rgba(47,62,58,0.18)"
+                                  : "1px solid transparent",
+                                background: isActive
+                                  ? "rgba(47,62,58,0.06)"
+                                  : "transparent",
+                                color: isActive ? "#2F3E3A" : "#8B7B63",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: 0.8,
+                                boxShadow: "none",
+                              }}
+                            >
+                              {currency}
+                            </Button>
+                          );
+                        })}
+                      </div>
+
                     <div
                       style={{
                         display: "grid",
@@ -781,7 +876,7 @@ export default function Home() {
                               textAlign: "right",
                             }}
                           >
-                            {item.cost}
+                            {formatTransportRange(item, transportCurrency)}
                           </Text>
                         </div>
                       ))}
