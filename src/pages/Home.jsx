@@ -728,78 +728,83 @@ export default function Home() {
                   </Card>
 
                   <Card
-                    className="pass-guide-card"
+                    className="getting-around-card"
                     style={editorialCardStyle}
                     bodyStyle={{ padding: 24 }}
                   >
-                    <Row gutter={[18, 18]} align="middle">
-                      <Col xs={10} sm={9}>
+                    <Text style={editorialEyebrowStyle}>Getting Around</Text>
+                    <Title
+                      level={3}
+                      className="getting-around-title"
+                      style={{
+                        ...editorialTitleStyle,
+                        marginBottom: 18,
+                        fontSize: "clamp(26px, 2vw, 33px)",
+                        lineHeight: 1.02,
+                        maxWidth: 320,
+                      }}
+                    >
+                      Simple transport options and local costs.
+                    </Title>
+
+                    <div
+                      style={{
+                        display: "grid",
+                        gap: 0,
+                        marginBottom: 22,
+                      }}
+                    >
+                      {GETTING_AROUND_PREVIEW.map((item, index) => (
                         <div
-                          className="pass-guide-media"
+                          key={item.label}
                           style={{
-                            minHeight: 146,
-                            borderRadius: 18,
-                            border: "1px solid rgba(32,30,27,0.08)",
-                            background: "#FFFFFF",
-                            display: "flex",
+                            display: "grid",
+                            gridTemplateColumns: "minmax(0, 1fr) auto",
+                            gap: 16,
                             alignItems: "center",
-                            justifyContent: "center",
-                            padding: 14,
+                            padding: "14px 0",
+                            borderTop:
+                              index === 0 ? "1px solid rgba(32,30,27,0.08)" : "none",
+                            borderBottom: "1px solid rgba(32,30,27,0.08)",
                           }}
                         >
-                          <img
-                            src={heroPassAppleWallet}
-                            alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
+                          <Text
                             style={{
-                              display: "block",
-                              maxWidth: "100%",
-                              maxHeight: 130,
-                              width: "auto",
-                              height: "auto",
-                              objectFit: "contain",
+                              color: "#2F2A24",
+                              fontSize: 15,
+                              fontWeight: 600,
+                              lineHeight: 1.35,
                             }}
-                          />
+                          >
+                            {item.label}
+                          </Text>
+                          <Text
+                            style={{
+                              color: "#5F574E",
+                              fontSize: 14,
+                              fontWeight: 500,
+                              lineHeight: 1.35,
+                              textAlign: "right",
+                            }}
+                          >
+                            {item.cost}
+                          </Text>
                         </div>
-                      </Col>
-                      <Col xs={14} sm={15}>
-                        <Text style={editorialEyebrowStyle}>Ahangama Pass</Text>
-                        <Title
-                          level={3}
-                          className="pass-guide-title"
-                          style={{
-                            ...editorialTitleStyle,
-                            marginBottom: 10,
-                            fontSize: "clamp(28px, 2.2vw, 36px)",
-                            lineHeight: 0.96,
-                          }}
-                        >
-                          What is the Ahangama Pass?
-                        </Title>
-                        <Paragraph
-                          className="pass-guide-excerpt"
-                          style={{
-                            marginBottom: 14,
-                            color: "#5F574E",
-                            fontSize: 16,
-                            lineHeight: 1.7,
-                          }}
-                        >
-                          Unlock perks across 100+ local places.
-                        </Paragraph>
-                        <a
-                          href="/what-is-ahangama-pass"
-                          style={{
-                            color: "#2F3E3A",
-                            textDecoration: "none",
-                            fontSize: 16,
-                            fontWeight: 600,
-                            letterSpacing: 0.1,
-                          }}
-                        >
-                          Learn More <ArrowRightOutlined />
-                        </a>
-                      </Col>
-                    </Row>
+                      ))}
+                    </div>
+
+                    <a
+                      href="/getting-around-ahangama-scooters-tuk-tuks-airport-transfers"
+                      style={{
+                        color: "#2F3E3A",
+                        textDecoration: "none",
+                        fontSize: 16,
+                        fontWeight: 600,
+                        letterSpacing: 0.1,
+                      }}
+                    >
+                      View Transport Guide <ArrowRightOutlined />
+                    </a>
                   </Card>
                 </div>
               </Col>
