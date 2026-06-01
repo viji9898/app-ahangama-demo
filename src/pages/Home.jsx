@@ -825,194 +825,196 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
-            <Card
-              className="perfect-day-card"
-              style={editorialCardStyle}
-              bodyStyle={{ padding: 32 }}
-            >
-              <Row className="perfect-day-row" gutter={[28, 28]} align="top">
-                <Col xs={24} xl={10}>
-                  <div
-                    className="perfect-day-media"
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 16,
-                      maxWidth: 420,
-                      margin: "0 auto",
-                    }}
-                  >
-                    <div
-                      className="perfect-day-tags"
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 10,
-                      }}
-                    >
-                      {DENITSA_STORY_TAGS.map((item) => (
-                        <Text
-                          key={item}
-                          style={{
-                            color: "#8B7B63",
-                            fontSize: 11,
-                            fontWeight: 700,
-                            letterSpacing: 1.5,
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {item}
-                        </Text>
-                      ))}
-                    </div>
-
-                    <div
-                      style={{
-                        aspectRatio: "4 / 5",
-                        borderRadius: 26,
-                        overflow: "hidden",
-                        border: "1px solid rgba(32,30,27,0.08)",
-                        background:
-                          "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
-                        boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
-                      }}
-                    >
-                      <video
-                        src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
-                        muted
-                        loop
-                        autoPlay
-                        playsInline
+            <Row className="story-teasers-row" gutter={[24, 24]} align="stretch">
+              <Col xs={24} xl={12}>
+                <Card
+                  className="perfect-day-card"
+                  style={{ ...editorialCardStyle, height: "100%" }}
+                  bodyStyle={{ padding: 32, height: "100%" }}
+                >
+                  <Row className="perfect-day-row" gutter={[28, 28]} align="top">
+                    <Col xs={24} xl={10}>
+                      <div
+                        className="perfect-day-media"
                         style={{
-                          display: "block",
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 16,
+                          maxWidth: 420,
+                          margin: "0 auto",
                         }}
-                      />
-                    </div>
-
-                    <div
-                      className="perfect-day-hashtags"
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 10,
-                      }}
-                    >
-                      {DENITSA_DAY_CHIPS.map((item) => (
-                        <Text
-                          key={item}
+                      >
+                        <div
+                          className="perfect-day-tags"
                           style={{
-                            color: "#8B7B63",
-                            fontSize: 12,
-                            fontWeight: 600,
-                            lineHeight: 1.2,
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: 10,
                           }}
                         >
-                          #{item}
-                        </Text>
-                      ))}
-                    </div>
-                  </div>
-                </Col>
+                          {DENITSA_STORY_TAGS.map((item) => (
+                            <Text
+                              key={item}
+                              style={{
+                                color: "#8B7B63",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: 1.5,
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              {item}
+                            </Text>
+                          ))}
+                        </div>
 
-                <Col xs={24} xl={14}>
-                  <Title
-                    level={2}
-                    className="perfect-day-title"
-                    style={{
-                      ...editorialTitleStyle,
-                      marginBottom: 14,
-                      fontSize: "clamp(29px, 3vw, 41px)",
-                      lineHeight: 0.94,
-                    }}
-                  >
-                    Perfect Day in Ahangama
-                  </Title>
-
-                  <Paragraph
-                    className="perfect-day-excerpt"
-                    style={{
-                      marginBottom: 16,
-                      color: "#5F574E",
-                      fontSize: 16,
-                      lineHeight: 1.7,
-                      maxWidth: 560,
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                    }}
-                  >
-                    Pilates, surf, coffee, a slow afternoon and sunset at
-                    Lighthouse. Denitsa shares how she would spend a perfect
-                    day in Ahangama.
-                  </Paragraph>
-
-                  <div className="perfect-day-chip-group" style={{ marginBottom: 20 }}>
-                    <Text style={editorialEyebrowStyle}>Places Featured</Text>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 10,
-                      }}
-                    >
-                      {DENITSA_FEATURED_PLACES.map((item) => (
-                        <span
-                          key={item}
-                          className="perfect-day-chip"
+                        <div
                           style={{
-                            padding: "8px 12px",
-                            borderRadius: 999,
+                            aspectRatio: "4 / 5",
+                            borderRadius: 26,
+                            overflow: "hidden",
                             border: "1px solid rgba(32,30,27,0.08)",
-                            background: "rgba(255,255,255,0.32)",
-                            color: "#2F2A24",
-                            fontSize: 13,
-                            fontWeight: 600,
-                            lineHeight: 1,
+                            background:
+                              "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
+                            boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
                           }}
                         >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                          <video
+                            src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
+                            muted
+                            loop
+                            autoPlay
+                            playsInline
+                            style={{
+                              display: "block",
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
 
-                  <div
-                    className="perfect-day-cta"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <a
-                      href="/blogs"
-                      style={{
-                        color: "#2F3E3A",
-                        textDecoration: "none",
-                        fontSize: 16,
-                        fontWeight: 600,
-                        letterSpacing: 0.1,
-                      }}
-                    >
-                      Read Story <ArrowRightOutlined />
-                    </a>
-                  </div>
-                </Col>
-              </Row>
-            </Card>
-          </div>
+                        <div
+                          className="perfect-day-hashtags"
+                          style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: 10,
+                          }}
+                        >
+                          {DENITSA_DAY_CHIPS.map((item) => (
+                            <Text
+                              key={item}
+                              style={{
+                                color: "#8B7B63",
+                                fontSize: 12,
+                                fontWeight: 600,
+                                lineHeight: 1.2,
+                              }}
+                            >
+                              #{item}
+                            </Text>
+                          ))}
+                        </div>
+                      </div>
+                    </Col>
 
-          <div style={{ marginTop: sectionSpacing }}>
-            <Card
-              className="three-days-card"
-              style={editorialCardStyle}
-              bodyStyle={{ padding: 32 }}
-            >
-              <Row className="three-days-row" gutter={[32, 32]} align="middle">
-                <Col xs={24} xl={14}>
+                    <Col xs={24} xl={14}>
+                      <Title
+                        level={2}
+                        className="perfect-day-title"
+                        style={{
+                          ...editorialTitleStyle,
+                          marginBottom: 14,
+                          fontSize: "clamp(29px, 3vw, 41px)",
+                          lineHeight: 0.94,
+                        }}
+                      >
+                        Perfect Day in Ahangama
+                      </Title>
+
+                      <Paragraph
+                        className="perfect-day-excerpt"
+                        style={{
+                          marginBottom: 16,
+                          color: "#5F574E",
+                          fontSize: 16,
+                          lineHeight: 1.7,
+                          maxWidth: 560,
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
+                      >
+                        Pilates, surf, coffee, a slow afternoon and sunset at
+                        Lighthouse. Denitsa shares how she would spend a perfect
+                        day in Ahangama.
+                      </Paragraph>
+
+                      <div className="perfect-day-chip-group" style={{ marginBottom: 20 }}>
+                        <Text style={editorialEyebrowStyle}>Places Featured</Text>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: 10,
+                          }}
+                        >
+                          {DENITSA_FEATURED_PLACES.map((item) => (
+                            <span
+                              key={item}
+                              className="perfect-day-chip"
+                              style={{
+                                padding: "8px 12px",
+                                borderRadius: 999,
+                                border: "1px solid rgba(32,30,27,0.08)",
+                                background: "rgba(255,255,255,0.32)",
+                                color: "#2F2A24",
+                                fontSize: 13,
+                                fontWeight: 600,
+                                lineHeight: 1,
+                              }}
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div
+                        className="perfect-day-cta"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <a
+                          href="/blogs"
+                          style={{
+                            color: "#2F3E3A",
+                            textDecoration: "none",
+                            fontSize: 16,
+                            fontWeight: 600,
+                            letterSpacing: 0.1,
+                          }}
+                        >
+                          Read Story <ArrowRightOutlined />
+                        </a>
+                      </div>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+
+              <Col xs={24} xl={12}>
+                <Card
+                  className="three-days-card"
+                  style={{ ...editorialCardStyle, height: "100%" }}
+                  bodyStyle={{ padding: 32, height: "100%" }}
+                >
+                  <Row className="three-days-row" gutter={[32, 32]} align="middle">
+                    <Col xs={24} xl={14}>
 
                   <Title
                     level={2}
@@ -1020,8 +1022,8 @@ export default function Home() {
                     style={{
                       ...editorialTitleStyle,
                       marginBottom: 14,
-                      fontSize: "clamp(34px, 3.3vw, 50px)",
-                      lineHeight: 0.96,
+                      fontSize: "clamp(29px, 3vw, 41px)",
+                      lineHeight: 0.94,
                       maxWidth: 760,
                     }}
                   >
@@ -1091,76 +1093,78 @@ export default function Home() {
                       Read Story <ArrowRightOutlined />
                     </a>
                   </div>
-                </Col>
+                    </Col>
 
-                <Col xs={24} xl={10}>
-                  <div
-                    className="three-days-media"
-                    style={{
-                      minHeight: 440,
-                      borderRadius: 26,
-                      backgroundImage:
-                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      border: "1px solid rgba(32,30,27,0.08)",
-                      boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
-                    }}
-                  >
-                    <div
-                      className="three-days-tags"
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 10,
-                        padding: "16px 16px 0",
-                      }}
-                    >
-                      {THREE_DAYS_STORY_TAGS.map((item) => (
-                        <Text
-                          key={item}
+                    <Col xs={24} xl={10}>
+                      <div
+                        className="three-days-media"
+                        style={{
+                          minHeight: 440,
+                          borderRadius: 26,
+                          backgroundImage:
+                            "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg)",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          border: "1px solid rgba(32,30,27,0.08)",
+                          boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
+                        }}
+                      >
+                        <div
+                          className="three-days-tags"
                           style={{
-                            color: "rgba(255,248,239,0.9)",
-                            fontSize: 11,
-                            fontWeight: 700,
-                            letterSpacing: 1.5,
-                            textTransform: "uppercase",
-                            textShadow: "0 1px 10px rgba(18,25,24,0.18)",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: 10,
+                            padding: "16px 16px 0",
                           }}
                         >
-                          {item}
-                        </Text>
-                      ))}
-                    </div>
-                    <div
-                      className="three-days-hashtags"
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 10,
-                        padding: "0 16px 16px",
-                        marginTop: 300,
-                      }}
-                    >
-                      {THREE_DAYS_HIGHLIGHTS.map((item) => (
-                        <Text
-                          key={item}
+                          {THREE_DAYS_STORY_TAGS.map((item) => (
+                            <Text
+                              key={item}
+                              style={{
+                                color: "rgba(255,248,239,0.9)",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: 1.5,
+                                textTransform: "uppercase",
+                                textShadow: "0 1px 10px rgba(18,25,24,0.18)",
+                              }}
+                            >
+                              {item}
+                            </Text>
+                          ))}
+                        </div>
+                        <div
+                          className="three-days-hashtags"
                           style={{
-                            color: "rgba(255,248,239,0.9)",
-                            fontSize: 12,
-                            fontWeight: 600,
-                            lineHeight: 1.2,
-                            textShadow: "0 1px 10px rgba(18,25,24,0.28)",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: 10,
+                            padding: "0 16px 16px",
+                            marginTop: 300,
                           }}
                         >
-                          #{item}
-                        </Text>
-                      ))}
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Card>
+                          {THREE_DAYS_HIGHLIGHTS.map((item) => (
+                            <Text
+                              key={item}
+                              style={{
+                                color: "rgba(255,248,239,0.9)",
+                                fontSize: 12,
+                                fontWeight: 600,
+                                lineHeight: 1.2,
+                                textShadow: "0 1px 10px rgba(18,25,24,0.28)",
+                              }}
+                            >
+                              #{item}
+                            </Text>
+                          ))}
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+            </Row>
           </div>
 
           <div style={{ marginTop: 20 }}>
