@@ -278,56 +278,6 @@ export default function HeroSectionMobile() {
             </a>
           </div>
 
-          <div>
-            <Text
-              style={{
-                display: "block",
-                marginBottom: 10,
-                color: "#B08E62",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: 1.6,
-                textTransform: "uppercase",
-              }}
-            >
-              Start Exploring
-            </Text>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <a
-                href="/12-things"
-                style={{
-                  color: "#2F3E3A",
-                  textDecoration: "none",
-                  fontSize: 16,
-                  fontWeight: 600,
-                }}
-              >
-                Read the guide <ArrowRightOutlined />
-              </a>
-              <a
-                href="/search"
-                style={{
-                  color: "#2F3E3A",
-                  textDecoration: "none",
-                  fontSize: 16,
-                  fontWeight: 500,
-                }}
-              >
-                Browse places <ArrowRightOutlined />
-              </a>
-              <a
-                href="/map"
-                style={{
-                  color: "#2F3E3A",
-                  textDecoration: "none",
-                  fontSize: 16,
-                  fontWeight: 500,
-                }}
-              >
-                Open the map <ArrowRightOutlined />
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>

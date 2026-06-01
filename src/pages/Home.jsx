@@ -198,14 +198,6 @@ export default function Home() {
         name: place.name,
       }));
   }, [places, heroImage]);
-  const featuredHeroStories = [
-    { label: "Best Cafes To Work From", href: "/eat" },
-    { label: "12 Must Do Things", href: "/12-things" },
-    {
-      label: "Ultimate Wellness Guide",
-      href: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
-    },
-  ];
   return (
     <SiteLayout>
       <Seo
@@ -393,90 +385,15 @@ export default function Home() {
                         </Col>
 
                         <Col xs={24} xl={11}>
-                          <div style={{ maxWidth: 520, marginBottom: 30 }}>
-                            <Text style={editorialEyebrowStyle}>
-                              Featured This Week
-                            </Text>
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: 10,
-                              }}
-                            >
-                              {featuredHeroStories.map((story) => (
-                                <a
-                                  key={story.label}
-                                  href={story.href}
-                                  style={{
-                                    color: "#2F3E3A",
-                                    textDecoration: "none",
-                                    fontSize: 18,
-                                    lineHeight: 1.45,
-                                  }}
-                                >
-                                  {story.label} <ArrowRightOutlined />
-                                </a>
-                              ))}
-                            </div>
-                          </div>
-
                           <div
                             style={{
                               display: "grid",
-                              gridTemplateColumns:
-                                "minmax(0, 1fr) minmax(180px, 220px)",
+                              gridTemplateColumns: "minmax(0, 220px)",
                               gap: 24,
                               marginBottom: 30,
                               maxWidth: 560,
                             }}
                           >
-                            <div>
-                              <Text style={editorialEyebrowStyle}>
-                                Start Exploring
-                              </Text>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  gap: 10,
-                                }}
-                              >
-                                <a
-                                  href="/12-things"
-                                  style={{
-                                    color: "#2F3E3A",
-                                    textDecoration: "none",
-                                    fontSize: 16,
-                                    fontWeight: 600,
-                                  }}
-                                >
-                                  Read the guide <ArrowRightOutlined />
-                                </a>
-                                <a
-                                  href="/search"
-                                  style={{
-                                    color: "#2F3E3A",
-                                    textDecoration: "none",
-                                    fontSize: 16,
-                                    fontWeight: 500,
-                                  }}
-                                >
-                                  Browse places <ArrowRightOutlined />
-                                </a>
-                                <a
-                                  href="/map"
-                                  style={{
-                                    color: "#2F3E3A",
-                                    textDecoration: "none",
-                                    fontSize: 16,
-                                    fontWeight: 500,
-                                  }}
-                                >
-                                  Open the map <ArrowRightOutlined />
-                                </a>
-                              </div>
-                            </div>
                             <div>
                               <Text style={editorialEyebrowStyle}>
                                 Member Benefits
