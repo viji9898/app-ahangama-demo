@@ -1014,7 +1014,7 @@ export default function Home() {
                   bodyStyle={{ padding: 32, height: "100%" }}
                 >
                   <Row className="three-days-row" gutter={[32, 32]} align="middle">
-                    <Col xs={24} xl={14}>
+                    <Col xs={{ span: 12, order: 2 }} xl={{ span: 14, order: 1 }}>
 
                   <Title
                     level={2}
@@ -1095,7 +1095,7 @@ export default function Home() {
                   </div>
                     </Col>
 
-                    <Col xs={24} xl={10}>
+                    <Col xs={{ span: 12, order: 1 }} xl={{ span: 10, order: 2 }}>
                       <div
                         className="three-days-media"
                         style={{
