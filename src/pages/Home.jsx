@@ -296,7 +296,7 @@ export default function Home() {
                 style={{
                   position: "relative",
                   overflow: "hidden",
-                  minHeight: 720,
+                  minHeight: 520,
                 }}
               >
                 <Row gutter={0} align="stretch">
@@ -308,9 +308,9 @@ export default function Home() {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
-                        minHeight: "clamp(620px, 64vw, 720px)",
+                        minHeight: "clamp(440px, 46vw, 520px)",
                         padding:
-                          "clamp(58px, 7vw, 92px) clamp(32px, 4.8vw, 72px) 52px",
+                          "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
                       }}
                     >
                       <Row gutter={[40, 32]} align="top">
@@ -490,6 +490,7 @@ export default function Home() {
                         >
                           <video
                             src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
+                            controls
                             muted
                             loop
                             autoPlay
@@ -832,8 +833,7 @@ export default function Home() {
                           minHeight: 240,
                           borderRadius: 24,
                           border: "1px solid rgba(32,30,27,0.08)",
-                          background:
-                            "radial-gradient(circle at top, rgba(255,255,255,0.78) 0%, rgba(239,231,218,0.96) 42%, rgba(227,216,201,0.98) 100%)",
+                          background: "#FFFFFF",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",

@@ -60,8 +60,7 @@ export default function WhatIsAhangamaPassPage() {
             style={{
               borderRadius: 30,
               overflow: "hidden",
-              background:
-                "linear-gradient(180deg, rgba(250,246,240,0.98) 0%, rgba(245,238,228,0.98) 100%)",
+              background: "#FFFFFF",
               boxShadow: "0 24px 60px rgba(47,62,58,0.08)",
               border: "1px solid rgba(32,30,27,0.08)",
             }}
@@ -72,8 +71,7 @@ export default function WhatIsAhangamaPassPage() {
                   style={{
                     height: "100%",
                     minHeight: 420,
-                    background:
-                      "radial-gradient(circle at top, rgba(255,255,255,0.78) 0%, rgba(239,231,218,0.96) 42%, rgba(227,216,201,0.98) 100%)",
+                    background: "#FFFFFF",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -113,8 +111,7 @@ export default function WhatIsAhangamaPassPage() {
                         height: "100%",
                         borderRadius: 34,
                         overflow: "hidden",
-                        background:
-                          "linear-gradient(180deg, rgba(251,248,242,1) 0%, rgba(242,236,227,1) 100%)",
+                        background: "#FFFFFF",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
