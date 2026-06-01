@@ -28,7 +28,6 @@ import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import GettingAroundSection from "../components/home/GettingAroundSection";
 import WellnessGuideSection from "../components/home/WellnessGuideSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
-import HeroSectionMobile from "../components/home/HeroSectionMobile";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -332,8 +331,7 @@ export default function Home() {
       <div className="dm-heroCut" />
       <div className="dm-canvas">
         <div className="dm-wrap">
-          {/* Desktop version */}
-          <div className="desktop-only" style={{ display: "block" }}>
+          <div>
             <div
               className="ahg-hero"
               style={{
@@ -497,10 +495,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-          {/* Mobile version */}
-          <div className="mobile-only" style={{ display: "none" }}>
-            <HeroSectionMobile />
           </div>
 
           <div
