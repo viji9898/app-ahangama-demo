@@ -822,14 +822,18 @@ export default function Home() {
                     postcards, and member savings across Ahangama.
                   </Paragraph>
 
-                  <Button
-                    type="primary"
+                  <a
                     href="/what-is-ahangama-pass"
-                    icon={<ArrowRightOutlined />}
-                    style={editorialPrimaryButtonStyle}
+                    style={{
+                      color: "#2F3E3A",
+                      textDecoration: "none",
+                      fontSize: 16,
+                      fontWeight: 600,
+                      letterSpacing: 0.1,
+                    }}
                   >
-                    Read the guide
-                  </Button>
+                    Tell me more <ArrowRightOutlined />
+                  </a>
                     </Col>
 
                     <Col xs={10} xl={9}>
