@@ -9,6 +9,8 @@ import { FULL_LIST_PATH, getPassPlaces } from "../../lib/passPartners";
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
 
+const MAX_MOSAIC_LOGOS = 48;
+
 const FEATURED_PERKS = [
   "Food & Drink Savings",
   "Wellness Benefits",
@@ -31,6 +33,31 @@ const editorialCtaStyle = {
   textTransform: "uppercase",
 };
 
+function MosaicTile({ partner }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 2,
+        minHeight: 54,
+      }}
+    >
+      <img
+        src={partner.logo}
+        alt={`${partner.name} logo`}
+        style={{
+          width: 50,
+          height: 50,
+          objectFit: "contain",
+          filter: "grayscale(1) contrast(0.88) opacity(0.82)",
+        }}
+      />
+    </div>
+  );
+}
+
 export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   const { places: allPlaces } = usePlaces();
   const passCtaUrl = buildPassCtaUrl();
@@ -41,6 +68,10 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
     () => getPassPlaces(allPlaces, destinationSlug),
     [allPlaces, destinationSlug],
   );
+
+  const mosaicPartners = useMemo(() => {
+    return passPlaces.filter((place) => place.logo).slice(0, MAX_MOSAIC_LOGOS);
+  }, [passPlaces]);
 
   if (!passPlaces.length) return null;
 
@@ -99,8 +130,8 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 maxWidth: 680,
               }}
             >
-              Enjoy perks across cafes, wellness spaces, stays, surf, retail
-              and local experiences.
+              Enjoy perks across cafes, wellness spaces, stays, surf, retail and
+              local experiences.
             </Paragraph>
             <Text
               style={{
@@ -136,6 +167,47 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
       </div>
 
       <div style={{ padding: isMobile ? "0 20px 20px" : "0 30px 26px" }}>
+        {mosaicPartners.length ? (
+          <div
+            style={{
+              marginTop: 6,
+              marginBottom: isMobile ? 18 : 22,
+              padding: isMobile ? "6px 0 2px" : "10px 0 4px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: 2.5,
+                alignItems: "center",
+              }}
+            >
+              {mosaicPartners.map((partner) => (
+                <MosaicTile
+                  key={partner.id || partner.slug || partner.name}
+                  partner={partner}
+                />
+              ))}
+            </div>
+            <Text
+              style={{
+                display: "block",
+                marginTop: 10,
+                color: "#8A7A68",
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                textAlign: "center",
+              }}
+            >
+              + 100 more partners
+            </Text>
+          </div>
+        ) : null}
+
         <div
           style={{
             display: "grid",
@@ -189,10 +261,7 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
                 gap: isMobile ? 12 : 18,
               }}
             >
-              <a
-                href={FULL_LIST_PATH}
-                style={editorialCtaStyle}
-              >
+              <a href={FULL_LIST_PATH} style={editorialCtaStyle}>
                 View Full Partner List <ArrowRightOutlined />
               </a>
 
