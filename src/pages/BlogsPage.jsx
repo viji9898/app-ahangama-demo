@@ -793,7 +793,7 @@ export default function BlogsPage() {
         jsonLd={jsonLd}
       />
 
-      <SiteLayout>
+      <SiteLayout showFooter={false}>
         <BlogWorkspaceLayout
           issueItems={issueItems}
           filteredIssueItems={filteredIssueItems}

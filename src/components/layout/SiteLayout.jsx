@@ -5,14 +5,14 @@ import FooterBar from "./FooterBar";
 
 const { Content } = Layout;
 
-export default function SiteLayout({ children }) {
+export default function SiteLayout({ children, showFooter = true }) {
   return (
     <Layout style={{ minHeight: "100vh", background: "transparent" }}>
       <TopNav />
       <Content style={{ padding: "24px 16px 0" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto" }}>{children}</div>
       </Content>
-      <FooterBar />
+      {showFooter ? <FooterBar /> : null}
     </Layout>
   );
 }
