@@ -142,7 +142,7 @@ export default function FooterBar() {
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>
         <div
           style={{
-            background: "#F4F1EC",
+            background: "#FFFFFF",
             borderRadius: isMobile ? 28 : 36,
             padding: isMobile ? 24 : 40,
             border: "1px solid rgba(32, 30, 27, 0.08)",

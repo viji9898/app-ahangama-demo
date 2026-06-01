@@ -142,10 +142,9 @@ export default function Home() {
   const editorialCardStyle = {
     borderRadius: 30,
     border: "1px solid rgba(32,30,27,0.08)",
-    background:
-      "linear-gradient(180deg, rgba(244,241,236,0.98) 0%, rgba(249,245,239,0.98) 100%)",
+    background: "#FFFFFF",
     overflow: "hidden",
-    boxShadow: "0 18px 40px rgba(32,30,27,0.05)",
+    boxShadow: "none",
   };
   const editorialEyebrowStyle = {
     display: "block",
@@ -289,9 +288,8 @@ export default function Home() {
               className="ahg-hero"
               style={{
                 borderRadius: 34,
-                background:
-                  "linear-gradient(180deg, rgba(244,241,236,0.98) 0%, rgba(249,245,239,0.98) 100%)",
-                boxShadow: "0 26px 64px rgba(47,62,58,0.08)",
+                background: "#FFFFFF",
+                boxShadow: "none",
               }}
             >
               <div

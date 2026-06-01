@@ -1,7 +1,7 @@
 :root {
   /* Core neutrals */
-  --bg-sand: #f4f1ec; /* warm off-white / sand */
-  --bg-card: #faf8f4;
+  --bg-sand: #ffffff;
+  --bg-card: #ffffff;
   --ink-primary: #1f2a24; /* editorial ink */
   --ink-muted: #6b6f6a;
 
@@ -162,8 +162,8 @@
 :root {
   --dm-ink: #1f2a24; /* deep ink */
   --dm-ink-2: #2f3b34; /* button ink */
-  --dm-cream: #f6f0e6; /* warm cream canvas */
-  --dm-card: #fbf7ef; /* warm card surface */
+  --dm-cream: #ffffff;
+  --dm-card: #ffffff;
   --dm-line: rgba(31, 42, 36, 0.08);
   --dm-line-2: rgba(31, 42, 36, 0.12);
   --dm-shadow: 0 14px 40px rgba(31, 42, 36, 0.08);
@@ -199,23 +199,8 @@
   border-radius: var(--dm-radius-xl);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: var(--dm-shadow);
-  background:
-    radial-gradient(
-      1200px 420px at 15% 0%,
-      rgba(0, 0, 0, 0.06),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 420px at 90% 10%,
-      rgba(0, 0, 0, 0.05),
-      transparent 55%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.65),
-      rgba(255, 255, 255, 0.92)
-    );
+  box-shadow: none;
+  background: #ffffff;
 }
 .ahg-heroInner {
   padding: 22px;
@@ -3703,9 +3688,9 @@
 
 /* ===== Editorial minimalism system ===== */
 :root {
-  --editorial-canvas: #f7f3ec;
-  --editorial-surface: #fbf8f2;
-  --editorial-surface-strong: #f2eadf;
+  --editorial-canvas: #ffffff;
+  --editorial-surface: #ffffff;
+  --editorial-surface-strong: #ffffff;
   --editorial-ink: #1f1d1a;
   --editorial-muted: #6a6259;
   --editorial-accent: #b08e62;
@@ -3721,18 +3706,7 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(
-      1100px 520px at 0% 0%,
-      rgba(176, 142, 98, 0.08),
-      transparent 58%
-    ),
-    radial-gradient(
-      900px 420px at 100% 0%,
-      rgba(31, 29, 26, 0.035),
-      transparent 52%
-    ),
-    linear-gradient(180deg, #fbf8f2 0%, var(--editorial-canvas) 28%, #f5f0e7 100%);
+  background: #ffffff;
   color: var(--editorial-ink);
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
@@ -3799,17 +3773,19 @@ h4,
 .ant-card {
   border-radius: 24px !important;
   border: 1px solid var(--editorial-line) !important;
-  background: rgba(251, 248, 242, 0.88) !important;
-  box-shadow: var(--editorial-shadow-soft) !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
   overflow: hidden;
 }
 
 .ant-card .ant-card-head {
   border-bottom-color: var(--editorial-line) !important;
+  background: #ffffff !important;
 }
 
 .ant-card .ant-card-body {
   color: var(--editorial-ink);
+  background: #ffffff;
 }
 
 .ant-btn {
@@ -3859,12 +3835,6 @@ h4,
 
 @media (max-width: 768px) {
   body {
-    background:
-      radial-gradient(
-        600px 260px at 50% 0%,
-        rgba(176, 142, 98, 0.08),
-        transparent 58%
-      ),
-      linear-gradient(180deg, #fbf8f2 0%, var(--editorial-canvas) 100%);
+    background: #ffffff;
   }
 }

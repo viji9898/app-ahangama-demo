@@ -32,7 +32,7 @@ export default function TopNav() {
           position: "sticky",
           top: 0,
           zIndex: 40,
-          background: "rgba(247,243,236,0.9)",
+          background: "rgba(255,255,255,0.92)",
           backdropFilter: "blur(16px)",
           borderBottom: "1px solid rgba(32,30,27,0.08)",
         }}
