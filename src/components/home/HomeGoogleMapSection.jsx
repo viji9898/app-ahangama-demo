@@ -369,7 +369,7 @@ export default function HomeGoogleMapSection() {
           <div>
             <Tag className="home-gmap__pill">Live Map</Tag>
             <Title level={3} className="home-gmap__title">
-              You could be saving all around Ahanagama
+              Member Perks Allround ahangama.
             </Title>
             <Text className="home-gmap__intro">
               Active venues only, pinned around Ahangama with the current offer
