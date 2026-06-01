@@ -94,6 +94,28 @@ const DENITSA_DAY_REASONS = [
   "Budget friendly",
 ];
 
+const THREE_DAYS_STORY_META = [
+  "5 min read",
+  "3 days",
+  "4 featured places",
+  "Wellness + Coworking",
+];
+
+const THREE_DAYS_HIGHLIGHTS = [
+  "Stayed at Samba",
+  "Daily Pilates",
+  "Morning Coworking",
+  "Ice Bath Recovery",
+  "Sunset Sessions",
+];
+
+const THREE_DAYS_FEATURED_PLACES = [
+  "Samba",
+  "Pura Pilates",
+  "Frosty's",
+  "Kaffi",
+];
+
 export default function Home() {
   const { loading, places } = usePlaces();
   const canonical = absUrl("/");
@@ -1179,47 +1201,158 @@ export default function Home() {
 
           <div style={{ marginTop: sectionSpacing }}>
             <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
-              <Row gutter={[20, 20]} align="middle">
-                <Col xs={24} xl={16}>
-                  <Text style={editorialEyebrowStyle}>From the Journal</Text>
-                  <div style={featureTagRailStyle}>
-                    <Tag style={featureTagStyle}>Personal Story</Tag>
-                    <Tag style={featureTagStyle}>3-Day Ahangama Guide</Tag>
-                    <Tag style={featureTagStyle}>Wellness + Coworking</Tag>
-                  </div>
+              <Row gutter={[32, 32]} align="middle">
+                <Col xs={24} xl={14}>
+                  <Text style={editorialEyebrowStyle}>Personal Story</Text>
 
-                  <Title level={2} style={editorialTitleStyle}>
+                  <Title
+                    level={2}
+                    style={{
+                      ...editorialTitleStyle,
+                      marginBottom: 14,
+                      fontSize: "clamp(34px, 3.3vw, 50px)",
+                      lineHeight: 0.96,
+                      maxWidth: 760,
+                    }}
+                  >
                     3 Days in Ahangama: My Wellness Stay at Samba
                   </Title>
 
-                  <Paragraph style={editorialCopyStyle}>
-                    I wanted three days in Ahangama that felt personal, soft,
-                    and still slightly useful: enough time to work a little,
-                    train a little, recover properly, and still keep the town
-                    feeling light. So I based the whole trip at Samba and built
-                    the days around the live pass partners that actually improve
-                    that kind of stay.
-                  </Paragraph>
-
-                  <Button
-                    type="primary"
-                    href="/3-days-in-ahangama"
-                    icon={<ArrowRightOutlined />}
-                    style={editorialPrimaryButtonStyle}
-                  >
-                    Read the story
-                  </Button>
-                </Col>
-
-                <Col xs={24} xl={8}>
                   <div
                     style={{
-                      minHeight: 260,
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 10,
+                      marginBottom: 18,
+                    }}
+                  >
+                    {THREE_DAYS_STORY_META.map((item) => (
+                      <Text
+                        key={item}
+                        style={{
+                          color: "#8B7B63",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          letterSpacing: 1.5,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {item}
+                      </Text>
+                    ))}
+                  </div>
+
+                  <Paragraph
+                    style={{
+                      ...editorialCopyStyle,
+                      maxWidth: 640,
+                      marginBottom: 24,
+                    }}
+                  >
+                    Three days at Samba became a slower editorial rhythm for
+                    Ahangama: mornings split between Pilates and coworking,
+                    afternoons shaped by recovery, and evenings left open for
+                    coffee, coast, and sunset plans that did not feel forced.
+                  </Paragraph>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "minmax(0, 1fr) minmax(220px, 260px)",
+                      gap: 28,
+                      alignItems: "start",
+                    }}
+                  >
+                    <div>
+                      <Text style={editorialEyebrowStyle}>Highlights</Text>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 12,
+                          paddingTop: 14,
+                          borderTop: "1px solid rgba(32,30,27,0.08)",
+                        }}
+                      >
+                        {THREE_DAYS_HIGHLIGHTS.map((item) => (
+                          <div
+                            key={item}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 10,
+                              color: "#2F3E3A",
+                              fontSize: 15,
+                              lineHeight: 1.45,
+                            }}
+                          >
+                            <CheckOutlined style={{ color: "#8B7B63" }} />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <Text style={editorialEyebrowStyle}>Featured Places</Text>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 10,
+                          paddingTop: 14,
+                          borderTop: "1px solid rgba(32,30,27,0.08)",
+                        }}
+                      >
+                        {THREE_DAYS_FEATURED_PLACES.map((item) => (
+                          <span
+                            key={item}
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              minHeight: 34,
+                              padding: "7px 12px",
+                              borderRadius: 999,
+                              background: "rgba(255,255,255,0.66)",
+                              border: "1px solid rgba(32,30,27,0.08)",
+                              color: "#3F3A34",
+                              fontSize: 13,
+                              fontWeight: 600,
+                            }}
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: 28 }}>
+                    <a
+                      href="/3-days-in-ahangama"
+                      style={{
+                        color: "#2F3E3A",
+                        textDecoration: "none",
+                        fontSize: 16,
+                        fontWeight: 600,
+                        letterSpacing: 0.1,
+                      }}
+                    >
+                      Read Story <ArrowRightOutlined />
+                    </a>
+                  </div>
+                </Col>
+
+                <Col xs={24} xl={10}>
+                  <div
+                    style={{
+                      minHeight: 440,
                       borderRadius: 26,
                       backgroundImage:
-                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.22) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp)",
+                        "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg)",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
+                      border: "1px solid rgba(32,30,27,0.08)",
                       boxShadow: "0 16px 34px rgba(32,30,27,0.06)",
                     }}
                   />
