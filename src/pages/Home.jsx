@@ -1272,7 +1272,8 @@ export default function Home() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "minmax(0, 1fr) minmax(220px, 260px)",
+                      gridTemplateColumns:
+                        "minmax(0, 1fr) minmax(220px, 260px)",
                       gap: 28,
                       alignItems: "start",
                     }}
@@ -1514,13 +1515,16 @@ export default function Home() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "minmax(0, 1fr) minmax(240px, 300px)",
+                      gridTemplateColumns:
+                        "minmax(0, 1fr) minmax(240px, 300px)",
                       gap: 28,
                       alignItems: "start",
                     }}
                   >
                     <div>
-                      <Text style={editorialEyebrowStyle}>Editor&apos;s Note</Text>
+                      <Text style={editorialEyebrowStyle}>
+                        Editor&apos;s Note
+                      </Text>
                       <Paragraph
                         style={{
                           marginBottom: 0,
@@ -1535,7 +1539,9 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Text style={editorialEyebrowStyle}>Inside This Guide</Text>
+                      <Text style={editorialEyebrowStyle}>
+                        Inside This Guide
+                      </Text>
                       <div
                         style={{
                           display: "flex",
