@@ -6,6 +6,7 @@ import {
   HomeOutlined,
   CompassOutlined,
   EnvironmentOutlined,
+  CheckOutlined,
   HeartOutlined,
   LaptopOutlined,
   QrcodeOutlined,
@@ -51,11 +52,46 @@ const TWELVE_THINGS_ORDER = [
   "qamar-by-zan",
 ];
 
-const DENITSA_PLACE_ORDER = [
-  "pura",
-  "oyummy",
-  "lighthouse",
-  "rollingpin-bakery",
+const DENITSA_FEATURED_PLACES = [
+  {
+    slug: "pura",
+    categoryLabel: "Wellness",
+  },
+  {
+    slug: "oyummy",
+    categoryLabel: "Breakfast",
+  },
+  {
+    slug: "rollingpin-bakery",
+    categoryLabel: "Food",
+  },
+  {
+    slug: "lighthouse",
+    categoryLabel: "Sunset Spot",
+  },
+];
+
+const DENITSA_DAY_TIMELINE = [
+  {
+    label: "Morning",
+    entries: ["Reformer Pilates at Pura Pilates", "Breakfast at Oyummy"],
+  },
+  {
+    label: "Afternoon",
+    entries: ["Surf lesson", "Massage or workshop"],
+  },
+  {
+    label: "Evening",
+    entries: ["Rollinpin Bakery", "Sunset at Lighthouse", "Stay at Hangama"],
+  },
+];
+
+const DENITSA_DAY_REASONS = [
+  "Wellness focused",
+  "Great for solo travellers",
+  "Walkable",
+  "Ideal for 2-4 days",
+  "Budget friendly",
 ];
 
 export default function Home() {
@@ -160,15 +196,17 @@ export default function Home() {
       ),
     );
 
-    return DENITSA_PLACE_ORDER.map(
-      (slug) => livePlacesBySlug.get(slug) || fallbackPlacesBySlug.get(slug),
-    )
-      .filter((place) => place && place.mapUrl)
-      .map((place) => ({
+    return DENITSA_FEATURED_PLACES.map(({ slug, categoryLabel }) => ({
+      place: livePlacesBySlug.get(slug) || fallbackPlacesBySlug.get(slug),
+      categoryLabel,
+    }))
+      .filter(({ place }) => place && place.mapUrl)
+      .map(({ place, categoryLabel }) => ({
         slug: place.slug,
         name: place.name,
         logo: place.logo || place.image,
         mapUrl: place.mapUrl,
+        categoryLabel,
       }));
   }, [places]);
   const liveAhangamaPlaces = useMemo(
@@ -420,7 +458,9 @@ export default function Home() {
                             borderTop: "1px solid rgba(32,30,27,0.08)",
                           }}
                         >
-                          <Text style={editorialEyebrowStyle}>From the Editor</Text>
+                          <Text style={editorialEyebrowStyle}>
+                            From the Editor
+                          </Text>
                           <Paragraph
                             style={{
                               marginBottom: 0,
@@ -430,14 +470,17 @@ export default function Home() {
                             }}
                           >
                             Ahangama has transformed from a quiet surf town into
-                            one of Sri Lanka&apos;s most interesting destinations.
-                            This guide exists to help visitors discover the
-                            places, people and experiences that make it special.
+                            one of Sri Lanka&apos;s most interesting
+                            destinations. This guide exists to help visitors
+                            discover the places, people and experiences that
+                            make it special.
                           </Paragraph>
                         </div>
 
                         <div style={{ maxWidth: 520, marginBottom: 30 }}>
-                          <Text style={editorialEyebrowStyle}>Featured This Week</Text>
+                          <Text style={editorialEyebrowStyle}>
+                            Featured This Week
+                          </Text>
                           <div
                             style={{
                               display: "flex",
@@ -465,13 +508,16 @@ export default function Home() {
                         <div
                           style={{
                             display: "grid",
-                            gridTemplateColumns: "minmax(0, 1fr) minmax(180px, 220px)",
+                            gridTemplateColumns:
+                              "minmax(0, 1fr) minmax(180px, 220px)",
                             gap: 24,
                             maxWidth: 560,
                           }}
                         >
                           <div>
-                            <Text style={editorialEyebrowStyle}>Start Exploring</Text>
+                            <Text style={editorialEyebrowStyle}>
+                              Start Exploring
+                            </Text>
                             <div
                               style={{
                                 display: "flex",
@@ -515,7 +561,9 @@ export default function Home() {
                             </div>
                           </div>
                           <div>
-                            <Text style={editorialEyebrowStyle}>Member Benefits</Text>
+                            <Text style={editorialEyebrowStyle}>
+                              Member Benefits
+                            </Text>
                             <a
                               href={passCtaUrl}
                               target="_blank"
@@ -550,7 +598,9 @@ export default function Home() {
                         }}
                       >
                         <div style={{ gridColumn: "1 / -1", marginBottom: -2 }}>
-                          <Text style={editorialEyebrowStyle}>Destination Index</Text>
+                          <Text style={editorialEyebrowStyle}>
+                            Destination Index
+                          </Text>
                         </div>
                         {heroStats.map((item) => (
                           <div
@@ -603,7 +653,8 @@ export default function Home() {
                       <div
                         style={{
                           display: "grid",
-                          gridTemplateColumns: "minmax(0, 1.15fr) minmax(0, 0.85fr)",
+                          gridTemplateColumns:
+                            "minmax(0, 1.15fr) minmax(0, 0.85fr)",
                           gap: 14,
                         }}
                       >
@@ -627,7 +678,9 @@ export default function Home() {
                           >
                             {heroCurrentIssue.month}
                           </Text>
-                          <Text style={{ ...editorialEyebrowStyle, marginTop: 8 }}>
+                          <Text
+                            style={{ ...editorialEyebrowStyle, marginTop: 8 }}
+                          >
                             Current Issue
                           </Text>
                           <Title
@@ -656,11 +709,21 @@ export default function Home() {
                           >
                             Featuring
                           </Text>
-                          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 6,
+                            }}
+                          >
                             {heroCurrentIssue.highlights.map((item) => (
                               <Text
                                 key={item}
-                                style={{ color: "#5F574E", fontSize: 14, lineHeight: 1.6 }}
+                                style={{
+                                  color: "#5F574E",
+                                  fontSize: 14,
+                                  lineHeight: 1.6,
+                                }}
                               >
                                 • {item}
                               </Text>
@@ -676,12 +739,24 @@ export default function Home() {
                             border: "1px solid rgba(32,30,27,0.08)",
                           }}
                         >
-                          <Text style={editorialEyebrowStyle}>Editor&apos;s Picks</Text>
-                          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                          <Text style={editorialEyebrowStyle}>
+                            Editor&apos;s Picks
+                          </Text>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 10,
+                            }}
+                          >
                             {heroEditorsPicks.map((item) => (
                               <Text
                                 key={item}
-                                style={{ color: "#2F3E3A", fontSize: 15, lineHeight: 1.45 }}
+                                style={{
+                                  color: "#2F3E3A",
+                                  fontSize: 15,
+                                  lineHeight: 1.45,
+                                }}
                               >
                                 • {item}
                               </Text>
@@ -710,7 +785,9 @@ export default function Home() {
                           borderTop: "1px solid rgba(32,30,27,0.08)",
                         }}
                       >
-                        <Text style={editorialEyebrowStyle}>Featured This Week</Text>
+                        <Text style={editorialEyebrowStyle}>
+                          Featured This Week
+                        </Text>
                         <Title
                           level={4}
                           style={{
@@ -759,98 +836,237 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
-            <Card
-              style={editorialCardStyle}
-              bodyStyle={{ padding: 32 }}
-            >
-              <Row gutter={[20, 20]} align="middle">
-                <Col xs={24} xl={8}>
+            <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
+              <Row gutter={[28, 28]} align="top">
+                <Col xs={24} xl={10}>
                   <div
                     style={{
-                      maxWidth: 320,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 16,
+                      maxWidth: 420,
                       margin: "0 auto",
-                      aspectRatio: "4 / 5",
-                      borderRadius: 26,
-                      overflow: "hidden",
-                      border: "1px solid rgba(32,30,27,0.08)",
-                      background:
-                        "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
-                      boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
                     }}
                   >
-                    <video
-                      src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      controls
+                    <div
                       style={{
-                        display: "block",
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
+                        aspectRatio: "4 / 5",
+                        borderRadius: 26,
+                        overflow: "hidden",
+                        border: "1px solid rgba(32,30,27,0.08)",
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
+                        boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
                       }}
-                    />
+                    >
+                      <video
+                        src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
+                        muted
+                        loop
+                        autoPlay
+                        playsInline
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <Text style={editorialEyebrowStyle}>Watch the Story</Text>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 8,
+                          color: "#1F1D1A",
+                          fontSize: 18,
+                          fontWeight: 600,
+                        }}
+                      >
+                        1 min 24 sec
+                      </Text>
+                      <Paragraph
+                        style={{
+                          marginBottom: 0,
+                          color: "#5F574E",
+                          fontSize: 15,
+                          lineHeight: 1.72,
+                        }}
+                      >
+                        Denitsa shares her favourite day in Ahangama.
+                      </Paragraph>
+                    </div>
                   </div>
                 </Col>
 
-                <Col xs={24} xl={16}>
-                  <Text style={editorialEyebrowStyle}>Travel Notes</Text>
-                  <div style={featureTagRailStyle}>
-                    <Tag style={featureTagStyle}>
-                      Personal Story
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      Perfect Day
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      Wellness + Surf
-                    </Tag>
+                <Col xs={24} xl={14}>
+                  <Text style={editorialEyebrowStyle}>Editorial Series</Text>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 10,
+                      marginBottom: 18,
+                    }}
+                  >
+                    {[
+                      "Denitsa",
+                      "Digital Nomad",
+                      "3 Months In Ahangama",
+                      "Wellness + Surf",
+                    ].map((item) => (
+                      <Text
+                        key={item}
+                        style={{
+                          color: "#8B7B63",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          letterSpacing: 1.5,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {item}
+                      </Text>
+                    ))}
                   </div>
 
                   <Title
                     level={2}
-                    style={editorialTitleStyle}
+                    style={{
+                      ...editorialTitleStyle,
+                      marginBottom: 18,
+                      fontSize: "clamp(38px, 4vw, 54px)",
+                      lineHeight: 0.94,
+                    }}
                   >
-                    Perfect Day in Ahangama - Denitsa
+                    Perfect Day in Ahangama
                   </Title>
 
-                  <Paragraph
-                    style={editorialCopyStyle}
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns:
+                        "minmax(0, 1.2fr) minmax(240px, 0.8fr)",
+                      gap: 28,
+                      alignItems: "start",
+                    }}
                   >
-                    Start the day with an amazing reformer workout at Pura
-                    Pilates and, if you feel a little extra, add a mat class
-                    too. Then head downstairs to Oyame for a super-yummy
-                    breakfast and coffee before jumping on the bike you just
-                    rented and heading off for a surf lesson. It might take a
-                    few tries, but it is genuinely fun. In between, you can add
-                    a massage or a workshop. Later, grab some snacks, meet your
-                    friends at Rollington, maybe get a bit of work done, and
-                    then book your accommodation for the night with Hangama. The
-                    best sunset is at the Lighthouse.
-                  </Paragraph>
-
-                  {denitsaPlaces.length ? (
-                    <div style={{ marginBottom: 18 }}>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 10,
-                          color: "#7A7065",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          letterSpacing: 1.2,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        Places mentioned in the video
+                    <div>
+                      <Text style={editorialEyebrowStyle}>
+                        The Day, Hour by Hour
                       </Text>
                       <div
                         style={{
                           display: "flex",
-                          flexWrap: "wrap",
-                          gap: 10,
+                          flexDirection: "column",
+                          borderTop: "1px solid rgba(32,30,27,0.08)",
+                        }}
+                      >
+                        {DENITSA_DAY_TIMELINE.map((block) => (
+                          <div
+                            key={block.label}
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "116px minmax(0, 1fr)",
+                              gap: 18,
+                              padding: "18px 0",
+                              borderBottom: "1px solid rgba(32,30,27,0.08)",
+                            }}
+                          >
+                            <Text
+                              style={{
+                                color: "#8B7B63",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: 1.5,
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              {block.label}
+                            </Text>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 10,
+                              }}
+                            >
+                              {block.entries.map((entry) => (
+                                <Text
+                                  key={entry}
+                                  style={{
+                                    color: "#2F2A24",
+                                    fontSize: 17,
+                                    lineHeight: 1.55,
+                                  }}
+                                >
+                                  • {entry}
+                                </Text>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <Text style={editorialEyebrowStyle}>
+                        Why This Day Works
+                      </Text>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 12,
+                          padding: "16px 18px",
+                          borderRadius: 22,
+                          background: "rgba(255,255,255,0.5)",
+                          border: "1px solid rgba(32,30,27,0.08)",
+                        }}
+                      >
+                        {DENITSA_DAY_REASONS.map((item) => (
+                          <div
+                            key={item}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 10,
+                              color: "#2F3E3A",
+                              fontSize: 15,
+                              lineHeight: 1.45,
+                            }}
+                          >
+                            <CheckOutlined style={{ color: "#8B7B63" }} />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {denitsaPlaces.length ? (
+                    <div style={{ marginTop: 28, marginBottom: 24 }}>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 12,
+                          color: "#B08E62",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          letterSpacing: 1.6,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Places Featured
+                      </Text>
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns:
+                            "repeat(auto-fit, minmax(180px, 1fr))",
+                          gap: 14,
                         }}
                       >
                         {denitsaPlaces.map((place) => (
@@ -861,13 +1077,15 @@ export default function Home() {
                             rel="noopener noreferrer"
                             aria-label={`${place.name} on Google Maps`}
                             style={{
-                              display: "inline-flex",
+                              display: "flex",
                               alignItems: "center",
-                              gap: 10,
-                              padding: "8px 12px",
-                              borderRadius: 999,
+                              gap: 14,
+                              minHeight: 92,
+                              padding: "16px 18px",
+                              borderRadius: 22,
                               border: "1px solid rgba(32,30,27,0.08)",
                               background: "rgba(255,255,255,0.72)",
+                              boxShadow: "0 12px 28px rgba(32,30,27,0.04)",
                               textDecoration: "none",
                               color: "#3F3A34",
                             }}
@@ -876,9 +1094,9 @@ export default function Home() {
                               src={place.logo}
                               alt={place.name}
                               style={{
-                                width: 28,
-                                height: 28,
-                                borderRadius: 999,
+                                width: 44,
+                                height: 44,
+                                borderRadius: 14,
                                 objectFit: "cover",
                                 display: "block",
                                 border: "1px solid rgba(32,30,27,0.08)",
@@ -894,12 +1112,24 @@ export default function Home() {
                             >
                               <span
                                 style={{
-                                  fontSize: 13,
+                                  fontSize: 15,
                                   fontWeight: 700,
                                   color: "#2F2A24",
                                 }}
                               >
                                 {place.name}
+                              </span>
+                              <span
+                                style={{
+                                  marginTop: 6,
+                                  color: "#8B7B63",
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  letterSpacing: 1.2,
+                                  textTransform: "uppercase",
+                                }}
+                              >
+                                {place.categoryLabel}
                               </span>
                             </span>
                           </a>
@@ -908,51 +1138,61 @@ export default function Home() {
                     </div>
                   ) : null}
 
-                  <Button
-                    type="primary"
-                    href="https://www.instagram.com/denitsaloves/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    icon={<ArrowRightOutlined />}
-                    style={editorialPrimaryButtonStyle}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 12,
+                      alignItems: "center",
+                    }}
                   >
-                    View Denitsa&apos;s Instagram
-                  </Button>
+                    <Button
+                      type="primary"
+                      href="https://www.instagram.com/denitsaloves/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      icon={<ArrowRightOutlined />}
+                      style={editorialPrimaryButtonStyle}
+                    >
+                      View Denitsa&apos;s Instagram
+                    </Button>
+                    <Button
+                      href="/blogs"
+                      icon={<ArrowRightOutlined />}
+                      style={{
+                        borderRadius: 999,
+                        height: 44,
+                        paddingInline: 18,
+                        borderColor: "rgba(32,30,27,0.12)",
+                        color: "#2F3E3A",
+                        background: "rgba(255,255,255,0.62)",
+                        boxShadow: "none",
+                      }}
+                    >
+                      Explore All Perfect Days
+                    </Button>
+                  </div>
                 </Col>
               </Row>
             </Card>
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
-            <Card
-              style={editorialCardStyle}
-              bodyStyle={{ padding: 32 }}
-            >
+            <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={16}>
                   <Text style={editorialEyebrowStyle}>From the Journal</Text>
                   <div style={featureTagRailStyle}>
-                    <Tag style={featureTagStyle}>
-                      Personal Story
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      3-Day Ahangama Guide
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      Wellness + Coworking
-                    </Tag>
+                    <Tag style={featureTagStyle}>Personal Story</Tag>
+                    <Tag style={featureTagStyle}>3-Day Ahangama Guide</Tag>
+                    <Tag style={featureTagStyle}>Wellness + Coworking</Tag>
                   </div>
 
-                  <Title
-                    level={2}
-                    style={editorialTitleStyle}
-                  >
+                  <Title level={2} style={editorialTitleStyle}>
                     3 Days in Ahangama: My Wellness Stay at Samba
                   </Title>
 
-                  <Paragraph
-                    style={editorialCopyStyle}
-                  >
+                  <Paragraph style={editorialCopyStyle}>
                     I wanted three days in Ahangama that felt personal, soft,
                     and still slightly useful: enough time to work a little,
                     train a little, recover properly, and still keep the town
@@ -989,23 +1229,14 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <Card
-              style={editorialCardStyle}
-              bodyStyle={{ padding: 30 }}
-            >
+            <Card style={editorialCardStyle} bodyStyle={{ padding: 30 }}>
               <Row gutter={[18, 18]} align="middle">
                 <Col xs={24} xl={15}>
                   <Text style={editorialEyebrowStyle}>Field Guide</Text>
                   <div style={featureTagRailStyle}>
-                    <Tag style={featureTagStyle}>
-                      Pass Guide
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      Wallet Ready
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      Savings + Perks
-                    </Tag>
+                    <Tag style={featureTagStyle}>Pass Guide</Tag>
+                    <Tag style={featureTagStyle}>Wallet Ready</Tag>
+                    <Tag style={featureTagStyle}>Savings + Perks</Tag>
                   </div>
 
                   <Title
@@ -1016,7 +1247,11 @@ export default function Home() {
                   </Title>
 
                   <Paragraph
-                    style={{ ...editorialCopyStyle, fontSize: 15, maxWidth: 700 }}
+                    style={{
+                      ...editorialCopyStyle,
+                      fontSize: 15,
+                      maxWidth: 700,
+                    }}
                   >
                     A simple local access pass you keep in Apple Wallet or
                     Google Wallet for partner perks, curated recommendations,
@@ -1067,35 +1302,23 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: sectionSpacing }}>
-            <Card
-              style={editorialCardStyle}
-              bodyStyle={{ padding: 32 }}
-            >
+            <Card style={editorialCardStyle} bodyStyle={{ padding: 32 }}>
               <Row gutter={[20, 20]} align="middle">
                 <Col xs={24} xl={16}>
                   <Text style={editorialEyebrowStyle}>Editorial Guide</Text>
                   <div style={featureTagRailStyle}>
-                    <Tag style={featureTagStyle}>
-                      Editorial Guide
-                    </Tag>
-                    <Tag style={featureTagStyle}>
-                      12 Things to Do
-                    </Tag>
+                    <Tag style={featureTagStyle}>Editorial Guide</Tag>
+                    <Tag style={featureTagStyle}>12 Things to Do</Tag>
                     <Tag style={featureTagStyle}>
                       Experiences + Local Favourites
                     </Tag>
                   </div>
 
-                  <Title
-                    level={2}
-                    style={editorialTitleStyle}
-                  >
+                  <Title level={2} style={editorialTitleStyle}>
                     12 Things to Do in Ahangama
                   </Title>
 
-                  <Paragraph
-                    style={editorialCopyStyle}
-                  >
+                  <Paragraph style={editorialCopyStyle}>
                     A more editorial way to explore Ahangama: twelve standout
                     experiences across wellness, adventure, food, shopping, and
                     slow coastal rituals. It is the guide to open when you want
@@ -1370,11 +1593,21 @@ export default function Home() {
                   <Text style={editorialEyebrowStyle}>Pass Access</Text>
                   <Title
                     level={3}
-                    style={{ ...editorialTitleStyle, marginBottom: 10, fontSize: 38 }}
+                    style={{
+                      ...editorialTitleStyle,
+                      marginBottom: 10,
+                      fontSize: 38,
+                    }}
                   >
                     The Ahangama Card
                   </Title>
-                  <Paragraph style={{ ...editorialCopyStyle, marginBottom: 16, fontSize: 15 }}>
+                  <Paragraph
+                    style={{
+                      ...editorialCopyStyle,
+                      marginBottom: 16,
+                      fontSize: 15,
+                    }}
+                  >
                     Built for people staying more than a few days. Simple vendor
                     verification, real perks, and a curated venue list that
                     grows over time.

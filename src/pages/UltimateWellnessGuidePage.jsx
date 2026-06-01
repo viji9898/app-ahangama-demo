@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  HeartOutlined,
-  SafetyCertificateOutlined,
-} from "@ant-design/icons";
+import { HeartOutlined, SafetyCertificateOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Divider, Row, Space, Tag, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";

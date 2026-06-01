@@ -171,7 +171,8 @@ export default function WhatIsAhangamaPassPage() {
                       fontWeight: 500,
                     }}
                   >
-                    What it is, how it works, and why it saves more than it costs.
+                    What it is, how it works, and why it saves more than it
+                    costs.
                   </Title>
                   <Paragraph
                     style={{
@@ -182,10 +183,11 @@ export default function WhatIsAhangamaPassPage() {
                       marginBottom: 22,
                     }}
                   >
-                    The Ahangama Pass is a wallet-ready local access pass for travelers
-                    who want a better version of Ahangama: verified perks, easier venue
-                    access, trusted recommendations, and selected extras that make a stay
-                    feel more curated from day one.
+                    The Ahangama Pass is a wallet-ready local access pass for
+                    travelers who want a better version of Ahangama: verified
+                    perks, easier venue access, trusted recommendations, and
+                    selected extras that make a stay feel more curated from day
+                    one.
                   </Paragraph>
 
                   <Space wrap size={12} style={{ marginBottom: 22 }}>
@@ -222,7 +224,11 @@ export default function WhatIsAhangamaPassPage() {
                     >
                       Get The Pass
                     </Button>
-                    <Button size="large" href="/offers" icon={<ArrowRightOutlined />}>
+                    <Button
+                      size="large"
+                      href="/offers"
+                      icon={<ArrowRightOutlined />}
+                    >
                       See Partner Offers
                     </Button>
                   </Space>
@@ -258,32 +264,60 @@ export default function WhatIsAhangamaPassPage() {
                   <Title level={2} style={{ marginTop: 0, color: "#201E1B" }}>
                     A simple way to unlock Ahangama properly.
                   </Title>
-                  <Paragraph style={{ color: "#49443D", fontSize: 17, lineHeight: 1.75 }}>
-                    Instead of saving screenshots, forwarding links, and trying to
-                    remember where the good places are, the pass gives you one practical
-                    system: keep the pass on your phone, show it when needed, and use it
-                    as a shortcut to the cafes, stays, wellness venues, and experiences
-                    that are already curated into the Ahangama ecosystem.
+                  <Paragraph
+                    style={{ color: "#49443D", fontSize: 17, lineHeight: 1.75 }}
+                  >
+                    Instead of saving screenshots, forwarding links, and trying
+                    to remember where the good places are, the pass gives you
+                    one practical system: keep the pass on your phone, show it
+                    when needed, and use it as a shortcut to the cafes, stays,
+                    wellness venues, and experiences that are already curated
+                    into the Ahangama ecosystem.
                   </Paragraph>
-                  <Paragraph style={{ color: "#49443D", fontSize: 17, lineHeight: 1.75, marginBottom: 0 }}>
-                    It works especially well for people staying more than a few days,
-                    remote workers doing a week or two, couples building an itinerary,
-                    and first-time visitors who want the local version of Ahangama
-                    rather than the generic tourist version.
+                  <Paragraph
+                    style={{
+                      color: "#49443D",
+                      fontSize: 17,
+                      lineHeight: 1.75,
+                      marginBottom: 0,
+                    }}
+                  >
+                    It works especially well for people staying more than a few
+                    days, remote workers doing a week or two, couples building
+                    an itinerary, and first-time visitors who want the local
+                    version of Ahangama rather than the generic tourist version.
                   </Paragraph>
 
                   <Divider />
 
-                  <Space direction="vertical" size={16} style={{ width: "100%" }}>
+                  <Space
+                    direction="vertical"
+                    size={16}
+                    style={{ width: "100%" }}
+                  >
                     {waysToUseIt.map((item) => (
                       <div
                         key={item}
-                        style={{ display: "flex", alignItems: "flex-start", gap: 12 }}
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: 12,
+                        }}
                       >
                         <CheckCircleOutlined
-                          style={{ color: "#B08E62", fontSize: 18, marginTop: 3 }}
+                          style={{
+                            color: "#B08E62",
+                            fontSize: 18,
+                            marginTop: 3,
+                          }}
                         />
-                        <Text style={{ color: "#3F3A34", fontSize: 16, lineHeight: 1.7 }}>
+                        <Text
+                          style={{
+                            color: "#3F3A34",
+                            fontSize: 16,
+                            lineHeight: 1.7,
+                          }}
+                        >
                           {item}
                         </Text>
                       </div>
@@ -319,12 +353,18 @@ export default function WhatIsAhangamaPassPage() {
                   <Title level={3} style={{ marginTop: 0, color: "#201E1B" }}>
                     Keep it where you already keep tickets and boarding passes.
                   </Title>
-                  <Paragraph style={{ color: "#49443D", fontSize: 16, lineHeight: 1.7 }}>
-                    The pass is designed to live in Apple Wallet or Google Wallet so it is
-                    fast to open, easy to show, and hard to lose in a crowded inbox or a
-                    long WhatsApp thread.
+                  <Paragraph
+                    style={{ color: "#49443D", fontSize: 16, lineHeight: 1.7 }}
+                  >
+                    The pass is designed to live in Apple Wallet or Google
+                    Wallet so it is fast to open, easy to show, and hard to lose
+                    in a crowded inbox or a long WhatsApp thread.
                   </Paragraph>
-                  <Space direction="vertical" size={12} style={{ width: "100%" }}>
+                  <Space
+                    direction="vertical"
+                    size={12}
+                    style={{ width: "100%" }}
+                  >
                     <img
                       src={addToAppleWalletLogo}
                       alt="Add to Apple Wallet"
@@ -379,10 +419,19 @@ export default function WhatIsAhangamaPassPage() {
                       }}
                       bodyStyle={{ padding: 22 }}
                     >
-                      <Title level={4} style={{ marginTop: 0, color: "#201E1B" }}>
+                      <Title
+                        level={4}
+                        style={{ marginTop: 0, color: "#201E1B" }}
+                      >
                         {item.title}
                       </Title>
-                      <Paragraph style={{ marginBottom: 0, color: "#514A43", lineHeight: 1.7 }}>
+                      <Paragraph
+                        style={{
+                          marginBottom: 0,
+                          color: "#514A43",
+                          lineHeight: 1.7,
+                        }}
+                      >
                         {item.body}
                       </Paragraph>
                     </Card>
@@ -434,10 +483,16 @@ export default function WhatIsAhangamaPassPage() {
                   >
                     LKR 11,500
                   </Title>
-                  <Paragraph style={{ color: "#5B544C", marginBottom: 0, lineHeight: 1.7 }}>
-                    In one selected stay example, the free extras alone add up to LKR 11,500:
-                    five postcards valued at LKR 700 each and two tea tins valued at
-                    LKR 4,000 each.
+                  <Paragraph
+                    style={{
+                      color: "#5B544C",
+                      marginBottom: 0,
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    In one selected stay example, the free extras alone add up
+                    to LKR 11,500: five postcards valued at LKR 700 each and two
+                    tea tins valued at LKR 4,000 each.
                   </Paragraph>
                 </Card>
               </Col>
@@ -464,7 +519,11 @@ export default function WhatIsAhangamaPassPage() {
                   >
                     What that can look like
                   </Text>
-                  <Space direction="vertical" size={16} style={{ width: "100%" }}>
+                  <Space
+                    direction="vertical"
+                    size={16}
+                    style={{ width: "100%" }}
+                  >
                     {savingsExamples.map((item) => (
                       <div
                         key={item}
@@ -475,7 +534,13 @@ export default function WhatIsAhangamaPassPage() {
                           background: "#fffdf9",
                         }}
                       >
-                        <Text style={{ color: "#3F3A34", fontSize: 16, lineHeight: 1.65 }}>
+                        <Text
+                          style={{
+                            color: "#3F3A34",
+                            fontSize: 16,
+                            lineHeight: 1.65,
+                          }}
+                        >
                           {item}
                         </Text>
                       </div>

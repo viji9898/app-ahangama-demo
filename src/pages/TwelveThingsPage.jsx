@@ -563,7 +563,11 @@ export default function TwelveThingsPage() {
                     </Text>
                     <Title
                       level={2}
-                      style={{ color: "#2F3E3A", marginTop: 0, marginBottom: 12 }}
+                      style={{
+                        color: "#2F3E3A",
+                        marginTop: 0,
+                        marginBottom: 12,
+                      }}
                     >
                       Written by Urvashi
                     </Title>
@@ -574,8 +578,8 @@ export default function TwelveThingsPage() {
                         lineHeight: 1.8,
                       }}
                     >
-                      Sri Lankan local, proud South Coast migrant, and part of the
-                      Ahangama Team.
+                      Sri Lankan local, proud South Coast migrant, and part of
+                      the Ahangama Team.
                     </Paragraph>
                     <Paragraph
                       style={{
@@ -584,8 +588,8 @@ export default function TwelveThingsPage() {
                         lineHeight: 1.8,
                       }}
                     >
-                      We only recommend places we'd genuinely tell a friend about.
-                      That's it.
+                      We only recommend places we'd genuinely tell a friend
+                      about. That's it.
                     </Paragraph>
                     <Paragraph
                       style={{
@@ -598,9 +602,9 @@ export default function TwelveThingsPage() {
                       To unlock every perk, discount and freebie in this guide,
                       grab The Ahangama Pass; from $30, it pays for itself fast.
                       It also gets you onto the Ahangama Collectibles Trail:
-                      exclusive tea tins, postcards and collectible sticker cards
-                      from select partner spots along the way. Free for a limited
-                      time.
+                      exclusive tea tins, postcards and collectible sticker
+                      cards from select partner spots along the way. Free for a
+                      limited time.
                     </Paragraph>
                   </div>
                 </Col>

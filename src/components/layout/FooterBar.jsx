@@ -5,8 +5,7 @@ import { Button, Grid, Input, Typography } from "antd";
 const { Text, Title, Paragraph } = Typography;
 const { useBreakpoint } = Grid;
 
-const SERIF_FONT =
-  '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
+const SERIF_FONT = '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
 
 const editorialStories = [
   {
@@ -54,13 +53,15 @@ const weeklyNotes = [
   },
   {
     label: "Event",
-    title: "Live music every Friday evening at one of the town's favourite hangouts.",
+    title:
+      "Live music every Friday evening at one of the town's favourite hangouts.",
     detail:
       "A good choice if you want something social without committing to a full late night out.",
   },
   {
     label: "Seasonal Note",
-    title: "Morning surf and late-afternoon swims are the sweet spots right now.",
+    title:
+      "Morning surf and late-afternoon swims are the sweet spots right now.",
     detail:
       "The current rhythm favours early movement, a long lunch, and slower plans once the heat softens.",
   },
@@ -192,7 +193,9 @@ export default function FooterBar() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: isMobile ? "1fr" : "repeat(4, minmax(0, 1fr))",
+                gridTemplateColumns: isMobile
+                  ? "1fr"
+                  : "repeat(4, minmax(0, 1fr))",
                 gap: 16,
                 marginTop: isMobile ? 24 : 30,
               }}
@@ -271,7 +274,9 @@ export default function FooterBar() {
                     >
                       Read story
                     </Text>
-                    <ArrowRightOutlined style={{ color: "#2F3E3A", fontSize: 14 }} />
+                    <ArrowRightOutlined
+                      style={{ color: "#2F3E3A", fontSize: 14 }}
+                    />
                   </div>
                 </a>
               ))}
@@ -288,7 +293,9 @@ export default function FooterBar() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(320px, 0.9fr)",
+                gridTemplateColumns: isMobile
+                  ? "1fr"
+                  : "minmax(0, 1.35fr) minmax(320px, 0.9fr)",
                 gap: isMobile ? 28 : 34,
                 alignItems: "start",
               }}
@@ -340,7 +347,9 @@ export default function FooterBar() {
                       key={item.label}
                       style={{
                         display: "grid",
-                        gridTemplateColumns: isMobile ? "1fr" : "140px minmax(0, 1fr)",
+                        gridTemplateColumns: isMobile
+                          ? "1fr"
+                          : "140px minmax(0, 1fr)",
                         gap: isMobile ? 8 : 20,
                         padding: isMobile ? "16px 0" : "18px 0",
                         borderTop:
@@ -502,7 +511,9 @@ export default function FooterBar() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1fr) minmax(0, 0.9fr)",
+                gridTemplateColumns: isMobile
+                  ? "1fr"
+                  : "minmax(0, 1fr) minmax(0, 0.9fr)",
                 gap: isMobile ? 28 : 36,
                 alignItems: "start",
               }}
@@ -537,7 +548,9 @@ export default function FooterBar() {
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: isMobile ? "repeat(2, minmax(0, 1fr))" : "repeat(5, minmax(0, max-content))",
+                    gridTemplateColumns: isMobile
+                      ? "repeat(2, minmax(0, 1fr))"
+                      : "repeat(5, minmax(0, max-content))",
                     gap: isMobile ? "14px 18px" : "16px 22px",
                     marginTop: 18,
                   }}
@@ -651,10 +664,14 @@ export default function FooterBar() {
               borderTop: "1px solid rgba(32, 30, 27, 0.08)",
             }}
           >
-            <Text style={{ color: "#8B7B63", fontSize: 12, letterSpacing: 0.3 }}>
+            <Text
+              style={{ color: "#8B7B63", fontSize: 12, letterSpacing: 0.3 }}
+            >
               © 2026 Ahangama.com
             </Text>
-            <Text style={{ color: "#6D655C", fontSize: 12, letterSpacing: 0.5 }}>
+            <Text
+              style={{ color: "#6D655C", fontSize: 12, letterSpacing: 0.5 }}
+            >
               Your Guide to Ahangama
             </Text>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>

@@ -215,9 +215,9 @@ export default function HeroSectionMobile({ heroImage }) {
             }}
           >
             Ahangama has transformed from a quiet surf town into one of Sri
-            Lanka&apos;s most interesting destinations. This guide exists to help
-            visitors discover the places, people and experiences that make it
-            special.
+            Lanka&apos;s most interesting destinations. This guide exists to
+            help visitors discover the places, people and experiences that make
+            it special.
           </Paragraph>
         </div>
 
