@@ -1,7 +1,7 @@
 .blog-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   background: var(--bg-sand);
   border: 1px solid var(--dm-line);
   border-radius: 28px;
@@ -17,11 +17,14 @@
 }
 
 .blog-sidebarDesktop {
-  position: sticky;
+  position: fixed;
   top: 86px;
+  left: calc((100vw - min(1180px, calc(100vw - 32px))) / 2);
+  width: 360px;
   height: calc(100vh - 86px);
   padding: 28px 22px;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .blog-sidebarInner {
@@ -230,6 +233,7 @@
 
 .blog-mainPane {
   min-width: 0;
+  margin-left: 360px;
 }
 
 .blog-topbar {
@@ -1748,6 +1752,10 @@
 
   .blog-sidebarDesktop {
     display: none;
+  }
+
+  .blog-mainPane {
+    margin-left: 0;
   }
 
   .blog-menuButton {
