@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Button, Grid, Typography } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { usePlaces } from "../../app/placesContext";
@@ -9,129 +9,28 @@ import { FULL_LIST_PATH, getPassPlaces } from "../../lib/passPartners";
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
 
-const SUGGESTED_PARTNER_ORDER = [
-  "Abrazo Ahangama",
-  "Citra",
-  "Lighthouse Ahangama",
-  "Hakuna Matata",
-  "Pura Pilates",
-  "Frosty's",
-  "Kaffi",
-  "Samba",
-  "Senses",
-  "Coconut Court",
-  "GIK Bike Rentals",
-  "Rollingpin Bakery",
-];
-
 const FEATURED_PERKS = [
-  "10% off food & drinks",
-  "Free dessert",
-  "Free drink",
-  "Scooter rental perks",
-  "Wellness discounts",
+  "Food & Drink Savings",
+  "Wellness Benefits",
+  "Retail Offers",
+  "Free Extras",
+  "Accommodation Perks",
 ];
 
-const TRUST_METADATA = [
-  "100+ Local Perks",
-  "Cafes · Wellness · Stays · Surf · Retail",
-  "Updated Monthly",
-];
-
-function normalizeName(value) {
-  return String(value || "")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-function LogoTile({ partner, isMobile }) {
-  return (
-    <div
-      style={{
-        flex: "0 0 auto",
-        minWidth: isMobile ? 112 : 132,
-        height: isMobile ? 76 : 84,
-        padding: isMobile ? "14px 16px" : "16px 20px",
-        borderRadius: 18,
-        border: "1px solid rgba(47,62,58,0.08)",
-        background: "rgba(255,252,246,0.92)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {partner.logo ? (
-        <img
-          src={partner.logo}
-          alt={`${partner.name} logo`}
-          style={{
-            maxWidth: "100%",
-            maxHeight: isMobile ? 34 : 40,
-            width: "auto",
-            height: "auto",
-            objectFit: "contain",
-            filter: "grayscale(1) contrast(0.92) opacity(0.8)",
-          }}
-        />
-      ) : (
-        <Text
-          style={{
-            color: "#556057",
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: 1.1,
-            textTransform: "uppercase",
-            textAlign: "center",
-          }}
-        >
-          {partner.name}
-        </Text>
-      )}
-    </div>
-  );
-}
+const CATEGORY_LINE = "Cafes · Wellness · Stays · Surf · Retail · Experiences";
 
 export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
   const { places: allPlaces } = usePlaces();
   const passCtaUrl = buildPassCtaUrl();
   const screens = useBreakpoint();
   const isMobile = !screens.md;
-  const [isPaused, setIsPaused] = useState(false);
 
   const passPlaces = useMemo(
     () => getPassPlaces(allPlaces, destinationSlug),
     [allPlaces, destinationSlug],
   );
 
-  const marqueePartners = useMemo(() => {
-    const byName = new Map(
-      passPlaces.map((place) => [normalizeName(place.name), place]),
-    );
-
-    const selected = SUGGESTED_PARTNER_ORDER.map((name) =>
-      byName.get(normalizeName(name)),
-    ).filter(Boolean);
-
-    const fallbacks = passPlaces.filter(
-      (place) =>
-        place.logo &&
-        !selected.some(
-          (selectedPlace) =>
-            normalizeName(selectedPlace.name) === normalizeName(place.name),
-        ),
-    );
-
-    return [...selected, ...fallbacks].filter((place) => place.logo).slice(0, 12);
-  }, [passPlaces]);
-
-  const marqueeLoop = useMemo(
-    () => [...marqueePartners, ...marqueePartners],
-    [marqueePartners],
-  );
-
-  if (!marqueePartners.length) return null;
+  if (!passPlaces.length) return null;
 
   return (
     <section
@@ -144,15 +43,6 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
         overflow: "hidden",
       }}
     >
-      <style>
-        {`
-          @keyframes passPartnersMarquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-          }
-        `}
-      </style>
-
       <div style={{ padding: isMobile ? 22 : 30 }}>
         <div
           style={{
@@ -200,32 +90,35 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
               Enjoy perks across cafes, wellness spaces, stays, surf, retail
               and local experiences.
             </Paragraph>
+            <Text
+              style={{
+                display: "block",
+                marginTop: 14,
+                color: "#7A6F63",
+                fontSize: 13,
+                lineHeight: 1.6,
+              }}
+            >
+              Trusted by 100+ local businesses across Ahangama.
+            </Text>
           </div>
 
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: isMobile
-                ? "minmax(0, 1fr)"
-                : "repeat(3, minmax(0, 1fr))",
-              gap: "10px 18px",
-              paddingTop: isMobile ? 6 : 2,
+              paddingTop: isMobile ? 4 : 0,
             }}
           >
-            {TRUST_METADATA.map((item) => (
-              <Text
-                key={item}
-                style={{
-                  color: "#756D63",
-                  fontSize: 12,
-                  lineHeight: 1.55,
-                  letterSpacing: "0.02em",
-                  textTransform: "uppercase",
-                }}
-              >
-                {item}
-              </Text>
-            ))}
+            <Text
+              style={{
+                color: "#8A7A68",
+                fontSize: 12,
+                lineHeight: 1.55,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+              }}
+            >
+              {CATEGORY_LINE}
+            </Text>
           </div>
         </div>
       </div>
@@ -233,41 +126,9 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
       <div style={{ padding: isMobile ? "0 20px 20px" : "0 30px 26px" }}>
         <div
           style={{
-            borderRadius: 24,
-            border: "1px solid rgba(32,30,27,0.08)",
-            background: "rgba(255,252,246,0.88)",
-            overflow: "hidden",
-            padding: isMobile ? "14px 0" : "16px 0",
-          }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: isMobile ? 12 : 14,
-              width: "max-content",
-              animation: "passPartnersMarquee 30s linear infinite",
-              animationPlayState: isPaused ? "paused" : "running",
-              paddingLeft: isMobile ? 12 : 16,
-            }}
-          >
-            {marqueeLoop.map((place, index) => (
-              <LogoTile
-                key={`${place.id || place.slug || place.name}-${index}`}
-                partner={place}
-                isMobile={isMobile}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div
-          style={{
             display: "grid",
             gap: 18,
-            marginTop: 18,
+            marginTop: 8,
           }}
         >
           <div
@@ -312,52 +173,64 @@ export default function PassPartnersStrip({ destinationSlug = "ahangama" }) {
               style={{
                 display: "flex",
                 flexDirection: isMobile ? "column" : "row",
+                alignItems: isMobile ? "stretch" : "center",
                 gap: 10,
               }}
             >
-                <Button
-                  type="primary"
-                  href={FULL_LIST_PATH}
-                  icon={<ArrowRightOutlined />}
-                  style={{
-                    borderRadius: 999,
-                    height: 44,
-                    paddingInline: 18,
-                    background: "#2F3E3A",
-                    borderColor: "#2F3E3A",
-                    color: "#FFFFFF",
-                    boxShadow: "none",
-                    width: isMobile ? "100%" : "auto",
-                  }}
-                >
-                  View Full Partner List
-                </Button>
+              <Button
+                type="primary"
+                href={FULL_LIST_PATH}
+                icon={<ArrowRightOutlined />}
+                style={{
+                  borderRadius: 999,
+                  height: 44,
+                  paddingInline: 18,
+                  background: "#2F3E3A",
+                  borderColor: "#2F3E3A",
+                  color: "#FFFFFF",
+                  boxShadow: "none",
+                  width: isMobile ? "100%" : "auto",
+                }}
+              >
+                View Full Partner List
+              </Button>
 
-                <Button
-                  href={passCtaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    trackPassCtaClick({
-                      ctaLocation: "pass_partners_strip",
-                      destinationUrl: passCtaUrl,
-                    });
-                  }}
-                  style={{
-                    borderRadius: 999,
-                    height: 44,
-                    paddingInline: 18,
-                    borderColor: "rgba(47,62,58,0.14)",
-                    background: "rgba(255,255,255,0.76)",
-                    color: "#2F3E3A",
-                    boxShadow: "none",
-                    width: isMobile ? "100%" : "auto",
-                    fontWeight: 600,
-                  }}
-                >
-                  Get The Ahangama Pass <ArrowRightOutlined />
-                </Button>
+              <Button
+                href={passCtaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackPassCtaClick({
+                    ctaLocation: "pass_partners_strip",
+                    destinationUrl: passCtaUrl,
+                  });
+                }}
+                style={{
+                  borderRadius: 999,
+                  height: 44,
+                  paddingInline: 18,
+                  borderColor: "rgba(47,62,58,0.14)",
+                  background: "rgba(255,255,255,0.76)",
+                  color: "#2F3E3A",
+                  boxShadow: "none",
+                  width: isMobile ? "100%" : "auto",
+                  fontWeight: 600,
+                }}
+              >
+                Get The Ahangama Pass <ArrowRightOutlined />
+              </Button>
             </div>
+
+            <Text
+              style={{
+                color: "#71695F",
+                fontSize: 13,
+                lineHeight: 1.6,
+                maxWidth: 360,
+              }}
+            >
+              See all participating venues, perks and how to claim them.
+            </Text>
           </div>
         </div>
       </div>
