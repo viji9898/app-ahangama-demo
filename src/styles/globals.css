@@ -3479,6 +3479,24 @@
   }
 }
 
+@media (max-width: 768px) {
+  .perfect-day-title {
+    font-size: clamp(30px, 10vw, 42px) !important;
+  }
+
+  .perfect-day-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 22px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .perfect-day-timeline-row {
+    grid-template-columns: 84px minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
 /* ===== Editorial minimalism system ===== */
 :root {
   --editorial-canvas: #f7f3ec;

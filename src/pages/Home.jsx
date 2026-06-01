@@ -970,6 +970,7 @@ export default function Home() {
 
                   <Title
                     level={2}
+                    className="perfect-day-title"
                     style={{
                       ...editorialTitleStyle,
                       marginBottom: 18,
@@ -981,6 +982,7 @@ export default function Home() {
                   </Title>
 
                   <div
+                    className="perfect-day-grid"
                     style={{
                       display: "grid",
                       gridTemplateColumns:
@@ -1003,6 +1005,7 @@ export default function Home() {
                         {DENITSA_DAY_TIMELINE.map((block) => (
                           <div
                             key={block.label}
+                            className="perfect-day-timeline-row"
                             style={{
                               display: "grid",
                               gridTemplateColumns: "116px minmax(0, 1fr)",
