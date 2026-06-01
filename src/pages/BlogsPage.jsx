@@ -4,6 +4,7 @@ import { Breadcrumb, Button, Card, Typography } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import SiteLayout from "../components/layout/SiteLayout";
 import BlogWorkspaceLayout from "../components/layout/BlogWorkspaceLayout";
 import { BLOG_POSTS, getBlogPostBySlug } from "../data/blogs";
 
@@ -26,8 +27,14 @@ const STORY_FILTERS = [
   { key: "pass-guides", label: "Pass Guides" },
 ];
 
+const MUKTI_THUMBNAIL_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mukti/cover_imageavif.avif";
+
 const MUKTI_FEATURE_IMAGE =
-  "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mukti/shop.avif";
+
+const MUKTI_SECONDARY_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mukti/cover_image_shops.avif";
 
 const ISSUE_INDEX = [
   {
@@ -53,7 +60,7 @@ const ISSUE_INDEX = [
     title: "Mukti Studio and the New Face of Ahangama",
     filters: ["local-profiles"],
     articleIssue: "ISSUE 01",
-    thumbnail: MUKTI_FEATURE_IMAGE,
+    thumbnail: MUKTI_THUMBNAIL_IMAGE,
   },
   {
     number: "04",
@@ -115,7 +122,7 @@ function buildIssueItems() {
         item.thumbnail ||
         post.introImage ||
         post.heroImage ||
-        MUKTI_FEATURE_IMAGE,
+        MUKTI_THUMBNAIL_IMAGE,
       filters: ["all", ...(item.filters || [])],
     };
   }).filter(Boolean);
@@ -619,6 +626,17 @@ function MuktiFeaturePost({ post, issueItem, issueItems, onSelectPost }) {
               {paragraph}
             </Paragraph>
           ))}
+
+          <figure className="blog-featureImageBlock">
+            <EditorialImage
+              src={MUKTI_SECONDARY_IMAGE}
+              alt="Mukti Studio storefront in Ahangama"
+            />
+            <figcaption className="blog-featureCaption">
+              Mukti's storefront has become part of the new visual language of
+              Ahangama.
+            </figcaption>
+          </figure>
         </section>
 
         <section className="blog-featureSection">
@@ -767,75 +785,81 @@ export default function BlogsPage() {
         jsonLd={jsonLd}
       />
 
-      <BlogWorkspaceLayout
-        issueItems={issueItems}
-        filteredIssueItems={filteredIssueItems}
-        activeSlug={activePost?.slug || null}
-        filters={STORY_FILTERS}
-        activeFilter={activeFilter}
-        onSelectFilter={setActiveFilter}
-        onSelectPost={handleSelectPost}
-        lastUpdated={formatDate(defaultPost.publishDate)}
-      >
-        {isCollectionHome ? (
-          <StoriesArchiveHome
-            issueItems={filteredIssueItems}
-            onSelectPost={handleSelectPost}
-            activeFilterLabel={activeFilterLabel}
-          />
-        ) : isNotFound ? (
-          <Card className="blog-card blog-emptyCard" bordered={false}>
-            <Text className="blog-articleEyebrow">Blogs</Text>
-            <Title level={1} className="blog-articleTitle">
-              Article not found
-            </Title>
-            <Paragraph className="blog-emptyCopy">
-              The article you tried to open does not exist. Choose a post from
-              the left navigation or return to the main blog hub.
-            </Paragraph>
-            <Button type="primary" icon={<ArrowLeftOutlined />} href="/blogs">
-              Back to blogs
-            </Button>
-          </Card>
-        ) : activePost.slug === "mukti-studio-and-the-new-face-of-ahangama" &&
-          activeIssueItem ? (
-          <MuktiFeaturePost
-            post={activePost}
-            issueItem={activeIssueItem}
-            issueItems={issueItems}
-            onSelectPost={handleSelectPost}
-          />
-        ) : activePost.editorialType === "plain-story" ? (
-          activeIssueItem ? (
-            <EditorialGuidePost
+      <SiteLayout>
+        <BlogWorkspaceLayout
+          issueItems={issueItems}
+          filteredIssueItems={filteredIssueItems}
+          activeSlug={activePost?.slug || null}
+          filters={STORY_FILTERS}
+          activeFilter={activeFilter}
+          onSelectFilter={setActiveFilter}
+          onSelectPost={handleSelectPost}
+          lastUpdated={formatDate(defaultPost.publishDate)}
+        >
+          {isCollectionHome ? (
+            <StoriesArchiveHome
+              issueItems={filteredIssueItems}
+              onSelectPost={handleSelectPost}
+              activeFilterLabel={activeFilterLabel}
+            />
+          ) : isNotFound ? (
+            <Card className="blog-card blog-emptyCard" bordered={false}>
+              <Text className="blog-articleEyebrow">Blogs</Text>
+              <Title level={1} className="blog-articleTitle">
+                Article not found
+              </Title>
+              <Paragraph className="blog-emptyCopy">
+                The article you tried to open does not exist. Choose a post from
+                the left navigation or return to the main blog hub.
+              </Paragraph>
+              <Button
+                type="primary"
+                icon={<ArrowLeftOutlined />}
+                href="/blogs"
+              >
+                Back to blogs
+              </Button>
+            </Card>
+          ) : activePost.slug === "mukti-studio-and-the-new-face-of-ahangama" &&
+            activeIssueItem ? (
+            <MuktiFeaturePost
               post={activePost}
               issueItem={activeIssueItem}
               issueItems={issueItems}
               onSelectPost={handleSelectPost}
             />
-          ) : null
-        ) : activePost.editorialType === "coastal-town-story" ||
-          activePost.editorialType === "perfect-day-story" ||
-          activePost.experiences ? (
-          activeIssueItem ? (
-            <EditorialFeaturePost
-              post={activePost}
-              issueItem={activeIssueItem}
-              issueItems={issueItems}
-              onSelectPost={handleSelectPost}
-            />
-          ) : null
-        ) : (
-          activeIssueItem ? (
-            <EditorialGuidePost
-              post={activePost}
-              issueItem={activeIssueItem}
-              issueItems={issueItems}
-              onSelectPost={handleSelectPost}
-            />
-          ) : null
-        )}
-      </BlogWorkspaceLayout>
+          ) : activePost.editorialType === "plain-story" ? (
+            activeIssueItem ? (
+              <EditorialGuidePost
+                post={activePost}
+                issueItem={activeIssueItem}
+                issueItems={issueItems}
+                onSelectPost={handleSelectPost}
+              />
+            ) : null
+          ) : activePost.editorialType === "coastal-town-story" ||
+            activePost.editorialType === "perfect-day-story" ||
+            activePost.experiences ? (
+            activeIssueItem ? (
+              <EditorialFeaturePost
+                post={activePost}
+                issueItem={activeIssueItem}
+                issueItems={issueItems}
+                onSelectPost={handleSelectPost}
+              />
+            ) : null
+          ) : (
+            activeIssueItem ? (
+              <EditorialGuidePost
+                post={activePost}
+                issueItem={activeIssueItem}
+                issueItems={issueItems}
+                onSelectPost={handleSelectPost}
+              />
+            ) : null
+          )}
+        </BlogWorkspaceLayout>
+      </SiteLayout>
     </>
   );
 }

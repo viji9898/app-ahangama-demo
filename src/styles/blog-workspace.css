@@ -2,26 +2,24 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(246, 241, 232, 0.92),
-      rgba(241, 236, 228, 0.98)
-    ),
-    #f5f0e8;
+  background: var(--bg-sand);
+  border: 1px solid var(--dm-line);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
   color: #1a1b18;
 }
 
 .blog-sidebar {
   border-right: 1px solid rgba(28, 28, 24, 0.09);
-  background: rgba(252, 249, 243, 0.96);
+  background: #ffffff;
   backdrop-filter: blur(12px);
 }
 
 .blog-sidebarDesktop {
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: 86px;
+  height: calc(100vh - 86px);
   padding: 28px 22px;
   overflow-y: auto;
 }
@@ -147,7 +145,7 @@
   overflow: hidden;
   border-radius: 12px;
   aspect-ratio: 1 / 1;
-  background: #ddd5ca;
+  background: #eef1ec;
 }
 
 .blog-contentsThumb {
@@ -236,10 +234,10 @@
 
 .blog-topbar {
   position: sticky;
-  top: 0;
+  top: 72px;
   z-index: 10;
   padding: 22px 32px 14px;
-  background: rgba(245, 240, 232, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid rgba(28, 28, 24, 0.08);
   backdrop-filter: blur(14px);
 }
@@ -285,7 +283,7 @@
 
 .blog-filterChip {
   border: 1px solid rgba(28, 28, 24, 0.1);
-  background: rgba(255, 255, 255, 0.58);
+  background: #ffffff;
   border-radius: 999px;
   padding: 10px 14px;
   color: #4c4943;
@@ -308,6 +306,7 @@
 }
 
 .blog-content {
+  background: #ffffff;
   padding: 18px 32px 56px;
 }
 
@@ -317,7 +316,7 @@
 
 .blog-card {
   border-radius: 24px !important;
-  background: rgba(252, 249, 244, 0.86) !important;
+  background: #ffffff !important;
   border: 1px solid rgba(31, 36, 31, 0.08) !important;
   box-shadow: 0 18px 36px rgba(31, 36, 31, 0.06) !important;
 }
@@ -358,7 +357,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 28px;
-  background: linear-gradient(135deg, #d9d0c2, #efe8dd);
+  background: linear-gradient(135deg, #eef1ec, #f8faf7);
   min-height: 320px;
 }
 
@@ -522,7 +521,7 @@
 .blog-experienceBody {
   border-radius: 28px;
   padding: clamp(22px, 3vw, 34px);
-  background: rgba(252, 249, 244, 0.82);
+  background: #ffffff;
   border: 1px solid rgba(31, 36, 31, 0.08);
   box-shadow: 0 18px 36px rgba(31, 36, 31, 0.06);
 }
@@ -555,7 +554,7 @@
 .blog-storyStatCard {
   padding: 14px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.62);
+  background: #ffffff;
   border: 1px solid rgba(31, 36, 31, 0.08);
   color: #384139;
   font-size: 14px;
@@ -685,7 +684,7 @@
 .blog-journalVideoFigure {
   overflow: hidden;
   border-radius: 26px;
-  background: #f4f1ea;
+  background: #ffffff;
   border: 1px solid rgba(31, 36, 31, 0.08);
 }
 
@@ -899,7 +898,7 @@
   padding: 7px 12px;
   border-radius: 999px;
   border: 1px solid rgba(28, 28, 24, 0.08);
-  background: rgba(255, 255, 255, 0.58);
+  background: #ffffff;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -987,7 +986,7 @@
   border-radius: 20px;
   overflow: hidden;
   padding: 0;
-  background: rgba(255, 251, 246, 0.82);
+  background: #ffffff;
   cursor: pointer;
   text-align: left;
 }
@@ -1153,7 +1152,7 @@
   overflow: hidden;
   border-radius: 28px;
   border: 1px solid rgba(28, 28, 24, 0.08);
-  background: rgba(252, 249, 244, 0.92);
+  background: #ffffff;
 }
 
 .blog-featureModule {
@@ -1181,7 +1180,7 @@
   padding: 16px 18px;
   border-radius: 20px;
   border: 1px solid rgba(28, 28, 24, 0.08);
-  background: rgba(255, 255, 255, 0.58);
+  background: #ffffff;
 }
 
 .blog-featureFactCardWide {
@@ -1228,7 +1227,7 @@
   padding: 28px;
   border-radius: 24px;
   border: 1px solid rgba(28, 28, 24, 0.08);
-  background: rgba(252, 249, 244, 0.92);
+  background: #ffffff;
 }
 
 .blog-fieldNotesTitle {
