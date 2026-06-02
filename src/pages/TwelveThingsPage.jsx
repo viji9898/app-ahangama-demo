@@ -13,6 +13,8 @@ const experiences = [
   {
     number: "01",
     title: "Ride the Coast on Two Wheels",
+    image:
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
     body: [
       "The best way to understand Ahangama is on a scooter, wind-whipped and slightly lost, taking a wrong turn that leads to a better beach.",
       "GIK Rental Bikes make it easy and affordable, guests booking through us receive 25% off, and their fleet is well-maintained. Follow the shore south in the early morning before the heat builds, stop where the fishing boats are pulled up, and consider it your orientation.",
@@ -23,6 +25,8 @@ const experiences = [
   {
     number: "02",
     title: "Unknot Everything at White Lotus Spa & Wellness",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8KWPjNjMGGDaw4Ks7A39vwVExZvxD_ptpjw&s",
     body: [
       "Long-haul travel exacts a toll. The right response is not to push through it — it is to surrender, horizontal, to the capable hands at White Lotus Spa & Wellness, where holistic therapies, therapeutic massages and deeply personalised wellness rituals form the antidote to every hour spent in a middle seat.",
       "The treatments draw on traditional Sri Lankan healing alongside broader Eastern practices, and the effect is cumulative: you leave lighter than you arrived.",
@@ -33,6 +37,8 @@ const experiences = [
   {
     number: "03",
     title: "Claim Your Square of Beach (For free!)",
+    image:
+      "https://www.cdn.travejar.com/storage/india_attraction_tour/1754310899_6890a8f3eaaf2.webp",
     body: [
       "Kabalana Beach requires no budget. Simply show up, lay something down and stare at the Indian Ocean until your nervous system resets.",
       "Not far along, explore the not-so-secret beach — known to locals, known to regulars, somehow still beautiful despite being neither undiscovered nor uncrowded — offers a sheltered cove and excellent reef for snorkelling.",
@@ -482,12 +488,37 @@ export default function TwelveThingsPage() {
                     style={{ flexDirection: reverse ? "row-reverse" : "row" }}
                   >
                     <Col xs={24} lg={10}>
-                      <PlaceholderImage
-                        label={item.imageLabel}
-                        tall={index < 2}
-                        compact={compact}
-                        variant={variant}
-                      />
+                      {item.image ? (
+                        <div
+                          style={{
+                            minHeight: compact ? 220 : index < 2 ? 360 : 280,
+                            borderRadius: 24,
+                            overflow: "hidden",
+                            border: "1px solid rgba(47,62,58,0.08)",
+                            background: "#ebe4da",
+                          }}
+                        >
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            style={{
+                              display: "block",
+                              width: "100%",
+                              height: "100%",
+                              minHeight: compact ? 220 : index < 2 ? 360 : 280,
+                              objectFit: "cover",
+                              objectPosition: "center",
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        <PlaceholderImage
+                          label={item.imageLabel}
+                          tall={index < 2}
+                          compact={compact}
+                          variant={variant}
+                        />
+                      )}
                     </Col>
                     <Col xs={24} lg={14}>
                       <Text
