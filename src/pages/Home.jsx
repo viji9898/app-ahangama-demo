@@ -873,18 +873,17 @@ export default function Home() {
                   <Text style={editorialEyebrowStyle}>Cover Story</Text>
 
                   <Title
+                    className="home-hero-title"
                     style={{
                       margin: 0,
                       color: "#201E1B",
-                      fontSize: "clamp(54px, 6vw, 76px)",
-                      lineHeight: 0.92,
                       fontWeight: 500,
-                      letterSpacing: -2.1,
                       fontFamily:
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                     }}
                   >
-                    This Week In Ahangama
+                    <span className="home-hero-titleLine">This Week In</span>
+                    <span className="home-hero-titleLine">Ahangama</span>
                   </Title>
 
                   <Text style={editorialEyebrowStyle}>From the Editor</Text>

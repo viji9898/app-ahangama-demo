@@ -1234,6 +1234,19 @@
   font-size: 15px;
 }
 
+.home-hero-title {
+  margin: 0 !important;
+  color: #201e1b !important;
+  font-size: clamp(54px, 6vw, 76px) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -2.1px;
+}
+
+.home-hero-titleLine {
+  display: block;
+  white-space: nowrap;
+}
+
 /* Pills */
 .ahg-pill {
   border-radius: 999px !important;
@@ -4571,6 +4584,12 @@
 
   .home-hero-image {
     object-position: calc(66% + 157px) 72% !important;
+  }
+
+  .home-hero-title {
+    font-size: clamp(42px, 13.4vw, 64px) !important;
+    line-height: 0.88 !important;
+    letter-spacing: -1.4px !important;
   }
 
   .story-teasers-row {
