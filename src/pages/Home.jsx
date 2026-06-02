@@ -2501,7 +2501,7 @@ export default function Home() {
             >
               <Row gutter={[16, 16]} align="middle">
                 <Col xs={24} md={16}>
-                  <Text style={editorialEyebrowStyle}>Pass Access</Text>
+                  <Text style={editorialEyebrowStyle}>Member Access</Text>
                   <Title
                     level={3}
                     style={{
