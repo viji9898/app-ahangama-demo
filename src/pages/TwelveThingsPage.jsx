@@ -6,6 +6,8 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { buildPassCtaUrl } from "../lib/passAttribution";
 import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
+import kaffiImage from "../assets/temp/kaffi_image.jpg";
+import sistersImage from "../assets/temp/sisters_image.jpg";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -185,7 +187,8 @@ function renderVenueLinkedText(text) {
 
       const overlaps = matches.some(
         (match) =>
-          foundIndex < match.end && foundIndex + link.label.length > match.start,
+          foundIndex < match.end &&
+          foundIndex + link.label.length > match.start,
       );
 
       if (!overlaps) {
@@ -396,37 +399,108 @@ export default function TwelveThingsPage() {
             ))}
           </div>
 
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "8px 0 28px",
+              width: "100%",
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                maxWidth: 1400,
+                aspectRatio: "3 / 2",
+
+                overflow: "hidden",
+                boxShadow: "0 16px 40px rgba(18,24,22,0.12)",
+              }}
+            >
+              <img
+                src="https://lapoint.b-cdn.net/image/6y1MM4z6vMOdvGqJIY3lmr/9f21893c37bc0fbfd8f62baa1c953727/The-ultimate-surf-guide-to-Sri-Lanka-Ahangama.jpg?fm=jpg&fl=progressive&w=1920&q=75"
+                alt="Surf scene in Ahangama"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
+              />
+            </div>
+          </div>
+
           <div style={{ display: "flex", flexDirection: "column" }}>
             {experiences.map((item, index) => (
-              <section
-                key={item.title}
-                style={{
-                  padding: index === 0 ? "20px 0 36px" : "36px 0",
-                  borderTop:
-                    index === 0 ? "none" : "1px solid rgba(47,62,58,0.12)",
-                }}
-              >
-                <div style={{ maxWidth: 1180 }}>
-                  <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
-                    {item.title}
-                  </Title>
-
-                  {item.body.map((paragraph) => (
-                    <Paragraph
-                      key={paragraph}
+              <React.Fragment key={item.title}>
+                {index === 1 ? (
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                      gap: 24,
+                      margin: "0 auto 28px",
+                      width: "100%",
+                      maxWidth: 1224,
+                    }}
+                  >
+                    <img
+                      src={kaffiImage}
+                      alt="Kaffi in Ahangama"
                       style={{
-                        maxWidth: 1200,
-                        fontSize: 16,
-                        lineHeight: 1.8,
-                        color: "#55514B",
-                        marginBottom: 18,
+                        display: "block",
+                        width: "100%",
+                        maxWidth: 600,
+                        aspectRatio: "4 / 5",
+                        objectFit: "cover",
+                        boxShadow: "0 16px 36px rgba(18,24,22,0.10)",
                       }}
-                    >
-                      {renderVenueLinkedText(paragraph)}
-                    </Paragraph>
-                  ))}
-                </div>
-              </section>
+                    />
+                    <img
+                      src={sistersImage}
+                      alt="Sisters in Ahangama"
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        maxWidth: 600,
+                        aspectRatio: "4 / 5",
+                        objectFit: "cover",
+                        boxShadow: "0 16px 36px rgba(18,24,22,0.10)",
+                      }}
+                    />
+                  </div>
+                ) : null}
+
+                <section
+                  style={{
+                    padding: index === 0 ? "20px 0 36px" : "36px 0",
+                    borderTop:
+                      index === 0 ? "none" : "1px solid rgba(47,62,58,0.12)",
+                  }}
+                >
+                  <div style={{ maxWidth: 1180 }}>
+                    <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
+                      {item.title}
+                    </Title>
+
+                    {item.body.map((paragraph) => (
+                      <Paragraph
+                        key={paragraph}
+                        style={{
+                          maxWidth: 1200,
+                          fontSize: 16,
+                          lineHeight: 1.8,
+                          color: "#55514B",
+                          marginBottom: 18,
+                        }}
+                      >
+                        {renderVenueLinkedText(paragraph)}
+                      </Paragraph>
+                    ))}
+                  </div>
+                </section>
+              </React.Fragment>
             ))}
           </div>
 
@@ -506,7 +580,9 @@ export default function TwelveThingsPage() {
                         marginBottom: 12,
                       }}
                     >
-                      <CheckOutlined style={{ color: "#2F3E3A", fontSize: 14 }} />
+                      <CheckOutlined
+                        style={{ color: "#2F3E3A", fontSize: 14 }}
+                      />
                       Ahangama Pass Perks
                     </Text>
                     <Paragraph
