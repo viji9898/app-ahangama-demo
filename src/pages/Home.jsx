@@ -197,7 +197,7 @@ const MINIMAL_GUIDE_CARDS = [
     title: "Getting Around",
     href: "/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
     image:
-      "https://tuktukrental.com/wp-content/uploads/2023/06/post-img-couple-in-the-red-tuktuk-scaled.jpg",
+      "https://littlewanderbook.com/wp-content/uploads/2024/01/Ahangama-tips-Midigama-18-van-29-scaled.jpg",
   },
 ];
 
