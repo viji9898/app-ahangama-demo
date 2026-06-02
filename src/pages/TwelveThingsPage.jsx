@@ -9,6 +9,15 @@ import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 
 const { Paragraph, Text, Title } = Typography;
 
+function slugifyInstagramPath(label) {
+  return label
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/'/g, "")
+    .replace(/[^a-z0-9]+/g, "")
+    .trim();
+}
+
 const articleIntroduction = [
   "There are places you visit and places you settle into.",
   "Ahangama belongs firmly in the latter category.",
@@ -134,64 +143,101 @@ const experiences = [
 ];
 
 const MENTIONED_PLACE_LINKS = [
-  { label: "Marshmallow", href: "https://example.com/places/marshmallow" },
-  { label: "Kabalana", href: "https://example.com/places/kabalana" },
-  { label: "Kaffi", href: "https://example.com/places/kaffi" },
-  { label: "Sisters", href: "https://example.com/places/sisters" },
-  { label: "Makai", href: "https://example.com/places/makai" },
-  { label: "The Rock", href: "https://example.com/places/the-rock" },
-  { label: "Focus Hub", href: "https://example.com/places/focus-hub" },
-  {
-    label: "Follow The White Rabbit",
-    href: "https://example.com/places/follow-the-white-rabbit",
-  },
-  { label: "Veda Cafe", href: "https://example.com/places/veda-cafe" },
-  {
-    label: "Pura Pilates",
-    href: "https://example.com/places/pura-pilates",
-  },
-  { label: "Frosty's", href: "https://example.com/places/frostys" },
-  {
-    label: "White Lotus",
-    href: "https://example.com/places/white-lotus",
-  },
-  {
-    label: "The Nuga House",
-    href: "https://example.com/places/the-nuga-house",
-  },
-  {
-    label: "Studio Mukti",
-    href: "https://example.com/places/studio-mukti",
-  },
-  {
-    label: "Living Room Concept Store",
-    href: "https://example.com/places/living-room-concept-store",
-  },
-  {
-    label: "Coconut Republik",
-    href: "https://example.com/places/coconut-republik",
-  },
-  {
-    label: "Coconut Court",
-    href: "https://example.com/places/coconut-court",
-  },
-  {
-    label: "Maria Bonita",
-    href: "https://example.com/places/maria-bonita",
-  },
-  {
-    label: "Le Cafe French Bistro",
-    href: "https://example.com/places/le-cafe-french-bistro",
-  },
-  {
-    label: "Hakuna Matata",
-    href: "https://example.com/places/hakuna-matata",
-  },
-  {
-    label: "Tahini & Friends",
-    href: "https://example.com/places/tahini-and-friends",
-  },
-];
+  "Kaffi",
+  "Sisters",
+  "Makai",
+  "Focus Hub",
+  "Follow The White Rabbit",
+  "Veda Cafe",
+  "Pura Pilates",
+  "Frosty's",
+  "White Lotus",
+  "The Nuga House",
+  "Studio Mukti",
+  "Living Room Concept Store",
+  "Coconut Republik",
+  "Maria Bonita",
+  "Le Cafe French Bistro",
+  "Hakuna Matata",
+  "Tahini & Friends",
+  "Coconut Court",
+  "Marshmallow",
+  "Kabalana",
+  "The Rock",
+].map((label) => ({
+  label,
+  href: `https://instagram.com/${slugifyInstagramPath(label)}`,
+}));
+
+function renderVenueLinkedText(text) {
+  const sortedLinks = [...MENTIONED_PLACE_LINKS].sort(
+    (left, right) => right.label.length - left.label.length,
+  );
+  const matches = [];
+
+  sortedLinks.forEach((link) => {
+    let searchIndex = 0;
+
+    while (searchIndex < text.length) {
+      const foundIndex = text.indexOf(link.label, searchIndex);
+
+      if (foundIndex === -1) break;
+
+      const overlaps = matches.some(
+        (match) =>
+          foundIndex < match.end && foundIndex + link.label.length > match.start,
+      );
+
+      if (!overlaps) {
+        matches.push({
+          ...link,
+          start: foundIndex,
+          end: foundIndex + link.label.length,
+        });
+      }
+
+      searchIndex = foundIndex + link.label.length;
+    }
+  });
+
+  if (!matches.length) return text;
+
+  matches.sort((left, right) => left.start - right.start);
+
+  const segments = [];
+  let cursor = 0;
+
+  matches.forEach((match) => {
+    if (cursor < match.start) {
+      segments.push(text.slice(cursor, match.start));
+    }
+
+    segments.push(
+      <a
+        key={`${match.label}-${match.start}`}
+        href={match.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          color: "#2f2a24",
+          textDecoration: "none",
+          borderBottom: "1px solid rgba(214, 178, 102, 0.9)",
+          paddingBottom: 1,
+        }}
+      >
+        {match.label}
+      </a>,
+    );
+
+    cursor = match.end;
+  });
+
+  if (cursor < text.length) {
+    segments.push(text.slice(cursor));
+  }
+
+  return segments;
+}
 
 export default function TwelveThingsPage() {
   const canonical = absUrl("/12-things");
@@ -351,7 +397,7 @@ export default function TwelveThingsPage() {
                         marginBottom: 18,
                       }}
                     >
-                      {paragraph}
+                      {renderVenueLinkedText(paragraph)}
                     </Paragraph>
                   ))}
                 </div>
