@@ -6,6 +6,7 @@ import {
   HomeOutlined,
   CompassOutlined,
   EnvironmentOutlined,
+  ClockCircleOutlined,
   CheckOutlined,
   HeartOutlined,
   LaptopOutlined,
@@ -268,6 +269,14 @@ export default function Home() {
   const [transportCurrency, setTransportCurrency] = useState("LKR");
   const canonical = absUrl("/");
   const passCtaUrl = buildPassCtaUrl();
+  const now = new Date();
+  const startOfYear = new Date(now.getFullYear(), 0, 1);
+  const daysSinceYearStart = Math.floor(
+    (now.getTime() - startOfYear.getTime()) / 86400000,
+  );
+  const currentWeekNumber = Math.ceil(
+    (daysSinceYearStart + startOfYear.getDay() + 1) / 7,
+  );
   const sectionSpacing = 32;
   const editorialSerifFont =
     '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
@@ -537,7 +546,7 @@ export default function Home() {
                   >
                     {[
                       "Issue 2026 / 27",
-                      "The Ahangama Guide",
+                      `Week ${currentWeekNumber}`,
                       "Updated Weekly",
                       "Local Editorial Team",
                     ].map((item) => (
@@ -570,7 +579,7 @@ export default function Home() {
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                     }}
                   >
-                    The Ahangama Guide
+                    This Week In Ahangama
                   </Title>
 
                   <Text style={editorialEyebrowStyle}>From the Editor</Text>
@@ -627,11 +636,49 @@ export default function Home() {
             </div>
           </div>
 
+          <div style={{ marginTop: sectionSpacing }}>
+            <div className="whats-on-board">
+              <div className="whats-on-boardIntro">
+                <Text className="whats-on-boardKicker">What&apos;s On This Week</Text>
+                <Text className="whats-on-boardLocation">Ahangama . 4 - 8 June</Text>
+                <Paragraph className="whats-on-boardDescription">
+                  A curated selection of things happening around town this week.
+                </Paragraph>
+                <a
+                  href="#"
+                  onClick={(event) => event.preventDefault()}
+                  className="whats-on-boardLink"
+                >
+                  View full calendar <ArrowRightOutlined />
+                </a>
+              </div>
+
+              <div className="whats-on-boardRail">
+                {THIS_WEEK_EVENTS.map((event) => (
+                  <div
+                    className="whats-on-boardItem"
+                    key={`${event.title}-${event.date}`}
+                  >
+                    <Text className="whats-on-boardDate">{event.date}</Text>
+                    <Title level={3} className="whats-on-boardTitle">
+                      {event.title}
+                    </Title>
+                    <Text className="whats-on-boardVenue">{event.venue}</Text>
+                    <div className="whats-on-boardMeta">
+                      <span className="whats-on-boardMetaTime">
+                        <ClockCircleOutlined />
+                        <span>{event.time}</span>
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div
             style={{
               marginTop: sectionSpacing,
-              paddingTop: 24,
-              borderTop: "1px solid rgba(32,30,27,0.08)",
             }}
           >
             <Row gutter={[24, 24]} align="stretch">
@@ -1717,58 +1764,6 @@ export default function Home() {
             {/* <div className="mobile-only" style={{ display: "none" }}>
               <HomeMapSectionMobile />
             </div> */}
-          </div>
-
-          <div style={{ marginTop: sectionSpacing - 6 }}>
-            <div className="whats-on-heading">
-              <Text className="whats-on-kicker">What&apos;s On This Week</Text>
-            </div>
-
-            <div className="whats-on-divider" />
-
-            <div className="whats-on-row">
-              {THIS_WEEK_EVENTS.map((event) => (
-                <div className="whats-on-card" key={`${event.title}-${event.date}`}>
-                  <Text className="whats-on-label">{event.date}</Text>
-                  <Title level={3} className="whats-on-title">
-                    {event.title}
-                  </Title>
-                  <div className="whats-on-cardDivider" />
-                  <div className="whats-on-meta">
-                    <Text className="whats-on-metaValue">{event.time}</Text>
-                    <Text className="whats-on-metaValue">{event.venue}</Text>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ marginTop: 18 }}>
-              <a
-                href="#"
-                onClick={(event) => event.preventDefault()}
-                style={{
-                  color: "#161412",
-                  textDecoration: "none",
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: 0.8,
-                  textTransform: "uppercase",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                See All Events This Week <ArrowRightOutlined />
-              </a>
-            </div>
-
-            <div
-              style={{
-                height: 1,
-                marginTop: 20,
-                background: "rgba(22,20,18,0.08)",
-              }}
-            />
           </div>
 
           <div style={{ marginTop: sectionSpacing - 4 }}>
