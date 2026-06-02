@@ -353,8 +353,7 @@ export default function TwelveThingsPage() {
               style={{
                 borderRadius: 28,
                 border: "1px solid rgba(47,62,58,0.08)",
-                background:
-                  "linear-gradient(135deg, rgba(245,236,225,0.92) 0%, rgba(255,251,245,0.98) 100%)",
+                background: "#ffffff",
                 overflow: "hidden",
               }}
               bodyStyle={{ padding: 28 }}
@@ -477,8 +476,7 @@ export default function TwelveThingsPage() {
                   style={{
                     borderRadius: 26,
                     border: "1px solid rgba(47,62,58,0.08)",
-                    background:
-                      "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
+                    background: "#ffffff",
                   }}
                   bodyStyle={{ padding: 24 }}
                 >
@@ -564,8 +562,7 @@ export default function TwelveThingsPage() {
               style={{
                 borderRadius: 28,
                 border: "1px solid rgba(47,62,58,0.08)",
-                background:
-                  "linear-gradient(135deg, rgba(47,62,58,0.98) 0%, rgba(78,55,42,0.98) 100%)",
+                background: "#ffffff",
               }}
               bodyStyle={{ padding: 28 }}
             >
@@ -575,7 +572,7 @@ export default function TwelveThingsPage() {
                     style={{
                       borderRadius: 24,
                       padding: 20,
-                      background: "#FFF8F0",
+                      background: "#ffffff",
                       border: "1px solid rgba(47,62,58,0.08)",
                       boxShadow: "0 10px 24px rgba(18,24,22,0.12)",
                     }}
@@ -644,7 +641,7 @@ export default function TwelveThingsPage() {
                   <Card
                     style={{
                       borderRadius: 22,
-                      background: "#FFF8F0",
+                      background: "#ffffff",
                       border: "1px solid rgba(47,62,58,0.08)",
                       boxShadow: "0 10px 24px rgba(18,24,22,0.12)",
                     }}

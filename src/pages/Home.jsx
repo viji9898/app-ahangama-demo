@@ -99,6 +99,39 @@ const THREE_DAYS_FEATURED_PLACES = [
   "Kaffi",
 ];
 
+const THIS_WEEK_EVENTS = [
+  {
+    title: "Muay Thai Adult Class",
+    date: "Thu 4 Jun 2026",
+    time: "6:00 PM - 7:00 PM",
+    venue: "Kushan Muay Thai",
+  },
+  {
+    title: "Sunset Sessions",
+    date: "Sat 6 Jun 2026",
+    time: "7:00 PM onwards",
+    venue: "Ceylon Sliders",
+  },
+  {
+    title: "Vinyasa Yoga with Poorvika",
+    date: "Thu 4 Jun 2026",
+    time: "7:00 AM - 8:00 AM",
+    venue: "Studio 42",
+  },
+  {
+    title: "Friday Night with Live Band",
+    date: "Fri 5 Jun 2026",
+    time: "7:30 PM onwards",
+    venue: "Kaffi",
+  },
+  {
+    title: "Art for Hours: Under The Stars",
+    date: "Thu 4 Jun 2026",
+    time: "6:00 PM - 9:00 PM",
+    venue: "Coconuts",
+  },
+];
+
 const GETTING_AROUND_PREVIEW = [
   {
     label: "Scooter",
@@ -1684,6 +1717,58 @@ export default function Home() {
             {/* <div className="mobile-only" style={{ display: "none" }}>
               <HomeMapSectionMobile />
             </div> */}
+          </div>
+
+          <div style={{ marginTop: sectionSpacing - 6 }}>
+            <div className="whats-on-heading">
+              <Text className="whats-on-kicker">What&apos;s On This Week</Text>
+            </div>
+
+            <div className="whats-on-divider" />
+
+            <div className="whats-on-row">
+              {THIS_WEEK_EVENTS.map((event) => (
+                <div className="whats-on-card" key={`${event.title}-${event.date}`}>
+                  <Text className="whats-on-label">{event.date}</Text>
+                  <Title level={3} className="whats-on-title">
+                    {event.title}
+                  </Title>
+                  <div className="whats-on-cardDivider" />
+                  <div className="whats-on-meta">
+                    <Text className="whats-on-metaValue">{event.time}</Text>
+                    <Text className="whats-on-metaValue">{event.venue}</Text>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ marginTop: 18 }}>
+              <a
+                href="#"
+                onClick={(event) => event.preventDefault()}
+                style={{
+                  color: "#161412",
+                  textDecoration: "none",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: 0.8,
+                  textTransform: "uppercase",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                See All Events This Week <ArrowRightOutlined />
+              </a>
+            </div>
+
+            <div
+              style={{
+                height: 1,
+                marginTop: 20,
+                background: "rgba(22,20,18,0.08)",
+              }}
+            />
           </div>
 
           <div style={{ marginTop: sectionSpacing - 4 }}>
