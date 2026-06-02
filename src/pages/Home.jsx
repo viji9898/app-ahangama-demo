@@ -97,7 +97,12 @@ const THREE_DAYS_HIGHLIGHTS = [
   "Sunset Sessions",
 ];
 
-const THREE_DAYS_FEATURED_PLACES = ["Samba", "Pura Pilates", "Frosty's", "Kaffi"];
+const THREE_DAYS_FEATURED_PLACES = [
+  "Samba",
+  "Pura Pilates",
+  "Frosty's",
+  "Kaffi",
+];
 
 const THIS_WEEK_EVENTS = [
   {
@@ -844,23 +849,22 @@ export default function Home() {
                       marginBottom: 18,
                     }}
                   >
-                    {[
-                      `Week ${currentWeekNumber}`,
-                      "Updated Weekly",
-                    ].map((item) => (
-                      <Text
-                        key={item}
-                        style={{
-                          color: "#8B7B63",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: 1.6,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {item}
-                      </Text>
-                    ))}
+                    {[`Week ${currentWeekNumber}`, "Updated Weekly"].map(
+                      (item) => (
+                        <Text
+                          key={item}
+                          style={{
+                            color: "#8B7B63",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.6,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {item}
+                        </Text>
+                      ),
+                    )}
                   </div>
 
                   <Title
@@ -1025,7 +1029,9 @@ export default function Home() {
 
           <div style={{ marginTop: 20 }}>
             <div className="weekly-features-heading">
-              <Text className="weekly-features-kicker">1. Editor&apos;s Picks</Text>
+              <Text className="weekly-features-kicker">
+                1. Editor&apos;s Picks
+              </Text>
               <Paragraph className="weekly-features-description">
                 A curated editorial shortlist for the week.
               </Paragraph>

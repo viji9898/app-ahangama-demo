@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Card, Col, Row, Space, Tag, Typography } from "antd";
-import { ArrowRightOutlined, CompassOutlined } from "@ant-design/icons";
+import { Card, Col, Row, Space, Tag, Typography } from "antd";
+import { ArrowRightOutlined, CheckOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -9,328 +9,136 @@ import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 
 const { Paragraph, Text, Title } = Typography;
 
+const articleIntroduction = [
+  "There are destinations built around landmarks and there are destinations built around atmosphere.",
+  "Ahangama belongs firmly in the latter category.",
+  "Stretching along Sri Lanka's southern coastline between Weligama and Midigama, the town has evolved from a quiet fishing settlement into one of the island's most compelling communities. Surfers share coffee shops with architects. Designers sit beside fishermen at breakfast. Remote workers arrive for a week and somehow find themselves staying for months.",
+  "The best experiences here are rarely scheduled. They emerge slowly through conversations, routines and chance encounters.",
+  "Here are twelve ways to understand the town.",
+];
+
 const experiences = [
   {
-    number: "01",
-    title: "Ride the Coast on Two Wheels",
-    image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
+    title: "Watch the Coast Wake Up",
     body: [
-      "The best way to understand Ahangama is on a scooter, wind-whipped and slightly lost, taking a wrong turn that leads to a better beach.",
-      "GIK Rental Bikes make it easy and affordable, guests booking through us receive 25% off, and their fleet is well-maintained. Follow the shore south in the early morning before the heat builds, stop where the fishing boats are pulled up, and consider it your orientation.",
-      "For a real adventure GIK also offers self-drive tuk-tuk adventures; three wheels, no air conditioning, maximum local credibility.",
+      "The day begins early in Ahangama.",
+      "Before breakfast service starts and before the roads become busy, the coastline belongs to fishermen, dog walkers and surfers paddling towards the reef.",
+      "From Kabalana to Marshmallow, the shoreline reveals a quieter side of the south coast. Nets are repaired on the beach, trains roll past the ocean and the first cups of tea are poured.",
+      "The town is at its most beautiful before 7am.",
     ],
-    imageLabel: "Scooter coast ride image placeholder",
   },
   {
-    number: "02",
-    title: "Unknot Everything at White Lotus Spa & Wellness",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8KWPjNjMGGDaw4Ks7A39vwVExZvxD_ptpjw&s",
+    title: "Learn Why People Travel Across the World to Surf Here",
     body: [
-      "Long-haul travel exacts a toll. The right response is not to push through it — it is to surrender, horizontal, to the capable hands at White Lotus Spa & Wellness, where holistic therapies, therapeutic massages and deeply personalised wellness rituals form the antidote to every hour spent in a middle seat.",
-      "The treatments draw on traditional Sri Lankan healing alongside broader Eastern practices, and the effect is cumulative: you leave lighter than you arrived.",
-      "Book through us for 15% off.",
+      "Ahangama's reputation was built on waves.",
+      "The coastline offers an unusual variety of breaks within a short distance of one another, making it possible for complete beginners and experienced surfers to find suitable conditions on the same day.",
+      "Yet what keeps people returning isn't simply the surf itself. It's the lifestyle that surrounds it - mornings in the water, long breakfasts and afternoons that unfold without urgency.",
     ],
-    imageLabel: "Wellness ritual image placeholder",
   },
   {
-    number: "03",
-    title: "Claim Your Square of Beach (For free!)",
-    image:
-      "https://www.cdn.travejar.com/storage/india_attraction_tour/1754310899_6890a8f3eaaf2.webp",
+    title: "Spend a Morning in a Cafe and Stay Longer Than Planned",
     body: [
-      "Kabalana Beach requires no budget. Simply show up, lay something down and stare at the Indian Ocean until your nervous system resets.",
-      "Not far along, explore the not-so-secret beach — known to locals, known to regulars, somehow still beautiful despite being neither undiscovered nor uncrowded — offers a sheltered cove and excellent reef for snorkelling.",
-      "Bring your own fins, leave your phone on the towel, and remember that moments like this are precisely why you came.",
+      "The cafes have become the unofficial town squares of Ahangama.",
+      "Over the past decade a collection of independent venues has emerged along the main road and surrounding lanes, attracting everyone from software founders and photographers to local entrepreneurs and travelling creatives.",
+      "What begins as a coffee often turns into a conversation.",
+      "And occasionally into a new business, friendship or reason to stay.",
     ],
-    imageLabel: "Beach cove image placeholder",
   },
   {
-    number: "04",
-    title: "Catch a Wave (Or Learn How)",
+    title: "Follow the Wellness Trail",
     body: [
-      "The waves at Ahangama have a reputation among those who know: consistent, forgiving enough for intermediates, occasionally thrilling for those who've been at it a while.",
-      "If you simply want to borrow a board and paddle out, The Board Hut has you covered, with exclusive deals for our guests. If you want to go all in, to spend a week living, breathing and dreaming of surfing, Global Surf Lodge offers the complete experience: stays, yoga, surf coaching, and packages calibrated for every level from tentative beginner to seasoned regular.",
-      "Book through us for 10% off all packages. The kind of place you check out of already planning your return.",
+      "Ahangama's wellness culture developed organically.",
+      "Long before it became fashionable, surfers were organising yoga classes and seeking out Ayurvedic treatments to recover between sessions in the water.",
+      "Today the town offers everything from Pilates studios and ice baths to traditional healing practices, though it retains a notably relaxed atmosphere compared to more established wellness destinations elsewhere in Asia.",
     ],
-    imageLabel: "Surf session image placeholder",
   },
   {
-    number: "05",
-    title: "Check Into Unu Boutique",
+    title: "Discover the Town's Creative Community",
     body: [
-      "There are hotels that are merely places to sleep, and then there is Unu Boutique.",
-      "This small, design-led 11-room property on Sri Lanka's south coast is where everyday island life meets a mix of Scandinavian clarity and Japanese calm.",
-      "It is small enough that you will know the staff by name within a day, and beautiful enough that you will resist leaving for the beach until mid-morning. For travellers who regard where they stay as part of the experience rather than a backdrop to it, Unu is the answer.",
+      "Spend enough time in Ahangama and a pattern emerges.",
+      "Many of the people who have chosen to build lives here work in creative fields. Designers, photographers, filmmakers, architects, writers and founders have all found their way to this stretch of coastline.",
+      "Their influence can be seen in the cafes, boutiques, guesthouses and events that increasingly define the character of the town.",
     ],
-    imageLabel: "Boutique hotel image placeholder",
   },
   {
-    number: "06",
-    title: "Cook Like a Local, Eat Like One Too",
+    title: "Visit the Independent Shops",
     body: [
-      "Some meals feed you. This one does something more.",
-      "Kumbuk Kitchen & Art Space is a quiet village kitchen and creative space, a quiet rebellion against the changing landscape of Ahangama. Here the cooking class is led by Amma — a keeper of ancestral recipes, healing spices, and an unhurried kitchen wisdom that was never written down because it was never meant to be.",
-      "Learn to cook with a connection to a place, to a tradition, to the people who built it. By the time you sit down to eat the pol sambol and slow-braised fish curry it will taste like more than lunch.",
+      "Ahangama is developing its own retail identity.",
+      "Small design stores, clothing labels and concept spaces now sit alongside family-run businesses that have served the town for generations.",
+      "One afternoon spent browsing reveals far more about the area's evolution than any guidebook could.",
+      "Many of the most interesting products have been created by people who live only a few streets away.",
     ],
-    imageLabel: "Cooking class image placeholder",
   },
   {
-    number: "07",
-    title: "Discover the Local Art Scene",
+    title: "Spend an Evening at Coconut Court",
     body: [
-      "A short ride from the coast, Siriniwasa Freedom Gallery has recently opened its doors in Ahangama to artists, wanderers, and lovers of slow culture.",
-      "Eclectic art, live music, poetry, and a commitment to the kind of experimental originality that thrives precisely because no one is trying to scale it.",
-      "Check their Instagram for upcoming events and exhibitions. Go without a plan. Stay longer than you meant to.",
+      "Every town has a place where people naturally gather.",
+      "In Ahangama, that place is increasingly Coconut Court.",
+      "What began as a sporting venue has become one of the most social corners of the south coast. On any evening you might find locals, long-term residents, visiting surfers and entrepreneurs sharing a court, a conversation or a post-game drink.",
+      "Few places offer a better snapshot of modern Ahangama.",
     ],
-    imageLabel: "Gallery image placeholder",
   },
   {
-    number: "08",
-    title: "Melt It. Shape It. Wear It.",
+    title: "Take the Road Inland",
     body: [
-      "There is a quiet satisfaction in wearing something you made yourself, particularly when it involves flame.",
-      "Olive Yu's silver ring workshop is one of the places where you can let your creative outlet fly. You melt the metal, carve the form, cast the piece, and walk away with a ring that fits your finger because you shaped it that way.",
-      "The skill transfers. The ring stays with you. Bring a friend, or come alone and enjoy the rare pleasure of making rather than consuming.",
+      "Most visitors rarely leave the coast.",
+      "This is a mistake.",
+      "Only a few minutes from the ocean lie cinnamon estates, rice fields, village temples and quiet residential roads where daily life unfolds at a slower pace.",
+      "The contrast is immediate.",
+      "The surf town disappears and a different Sri Lanka emerges.",
     ],
-    imageLabel: "Jewellery workshop image placeholder",
   },
   {
-    number: "09",
-    title: "Shop (and Stay a While) at Living Room Concept Store",
+    title: "Seek Out Traditional Ayurveda",
     body: [
-      "Living Room is one of those rare shops that functions equally well as a destination and a refuge.",
-      "Tastefully curated, unhurried, stocked with the kind of objects and clothing that you will reach for long after you return home. Buy something beautiful — a piece of handmade ceramic, a linen thing, a candle that smells like somewhere warm.",
-      "Then order a coffee and a cookie and stay at one of the tables. The wifi is good. The vibe is better. Guests booking through us receive 10% off.",
+      "While contemporary wellness receives much of the attention, Ayurveda remains deeply woven into Sri Lankan life.",
+      "Treatments continue to be passed between generations, combining herbal remedies, massage and preventative care in ways that predate modern wellness trends by centuries.",
+      "Experiencing Ayurveda here offers a useful reminder that many of the ideas celebrated today have much older roots.",
     ],
-    imageLabel: "Concept store image placeholder",
   },
   {
-    number: "10",
-    title: "Spend a Night at Monos",
+    title: "Watch Sunset Without a Destination",
     body: [
-      "There are bars, and then there is Monos.",
-      "Open only on Friday, Saturday and Sunday — which somehow makes it more worth the wait — this intimate, music-first cocktail bar in Ahangama operates on a philosophy: that a night out should mean something.",
-      "Cocktails are taken seriously. The South Indian food is great. Vinyl, CDs and cassettes are around to explore. Art exhibitions rotate on the walls. The sound system is the point. Come late, stay until the music stops.",
+      "One of Ahangama's great pleasures is that the sunset belongs to everyone.",
+      "There are no gates, tickets or queues.",
+      "Find a seawall. Sit on the beach. Order a king coconut. Walk along the railway line.",
+      "The best evenings are often the least planned.",
     ],
-    imageLabel: "Cocktail bar image placeholder",
   },
   {
-    number: "11",
-    title: "Learn the Art of Batik at Sarana",
+    title: "Meet the People Behind the Town",
     body: [
-      "There are souvenirs, and then there are the things you made yourself.",
-      "Sarana Lanka is a platform dedicated to keeping Sri Lanka's living craft traditions in the hands of people who care, connecting curious travellers with the local artisans who have spent lifetimes perfecting them. Their batik workshop is one of the most rewarding afternoons you can spend on the south coast: an introduction to one of Sri Lanka's oldest and most meditative art forms, where wax, dye and patience combine into something genuinely beautiful.",
-      "You will leave with a piece that took time and attention to make — which is precisely what makes it worth keeping. Book through us for 20% off.",
+      "Some destinations are shaped by developers.",
+      "Ahangama has largely been shaped by individuals.",
+      "Restaurant owners, surf instructors, artists, wellness practitioners, hotel operators and designers have all contributed to the culture that visitors experience today.",
+      "The more conversations you have, the more the town begins to make sense.",
     ],
-    imageLabel: "Batik workshop image placeholder",
   },
   {
-    number: "12",
-    title: "End Every Evening at the Lighthouse",
+    title: "Stay Long Enough",
     body: [
-      "Ahangama Lighthouse at rooftop sunset is not a secret, and it does not need to be.",
-      "It is simply one of those reliable, unhurried pleasures that a place like this offers freely: the light going golden, the sea going copper, the kind of view that makes two weeks feel simultaneously like too long and not nearly enough.",
-      "Our guests receive 10% off food and beverages, a reason to order that second sundowner and stay until the stars come out.",
+      "This may be the most important recommendation.",
+      "Ahangama reveals itself slowly.",
+      "The first few days are spent finding beaches and cafes. The following week introduces familiar faces. By the second or third week the routines become visible.",
+      "The fisherman who waves each morning.",
+      "The cafe owner who remembers your order.",
+      "The surfer who first arrived six years ago and never left.",
+      "These are the details that transform Ahangama from a destination into a community.",
+      "And they are ultimately what people remember most.",
     ],
-    imageLabel: "Lighthouse sunset image placeholder",
   },
 ];
 
-const PLACEHOLDER_VARIANTS = [
+const MENTIONED_PLACE_LINKS = [
+  { label: "Weligama", href: "https://example.com/places/weligama" },
+  { label: "Midigama", href: "https://example.com/places/midigama" },
+  { label: "Kabalana", href: "https://example.com/places/kabalana" },
+  { label: "Marshmallow", href: "https://example.com/places/marshmallow" },
   {
-    frame:
-      "linear-gradient(135deg, rgba(222,205,182,0.95) 0%, rgba(245,236,222,0.95) 100%)",
-    accent: "#7C5A43",
-    shape: "circle",
-    align: "flex-end",
-  },
-  {
-    frame:
-      "linear-gradient(135deg, rgba(203,220,214,0.92) 0%, rgba(244,248,244,0.96) 100%)",
-    accent: "#43655B",
-    shape: "panel",
-    align: "center",
-  },
-  {
-    frame:
-      "linear-gradient(135deg, rgba(233,220,198,0.94) 0%, rgba(251,245,235,0.98) 100%)",
-    accent: "#9A6B2F",
-    shape: "stripe",
-    align: "flex-start",
-  },
-  {
-    frame:
-      "linear-gradient(135deg, rgba(215,208,225,0.90) 0%, rgba(247,244,250,0.98) 100%)",
-    accent: "#61517F",
-    shape: "stack",
-    align: "center",
+    label: "Coconut Court",
+    href: "https://example.com/places/coconut-court",
   },
 ];
-
-function getPlaceholderVariant(index) {
-  return PLACEHOLDER_VARIANTS[index % PLACEHOLDER_VARIANTS.length];
-}
-
-function PlaceholderArtwork({ variant }) {
-  if (variant.shape === "circle") {
-    return (
-      <div
-        style={{
-          width: "78%",
-          aspectRatio: "4 / 5",
-          borderRadius: 999,
-          background: `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.72), transparent 30%), linear-gradient(180deg, ${variant.accent} 0%, rgba(255,255,255,0.18) 100%)`,
-          border: "1px solid rgba(255,255,255,0.45)",
-          boxShadow: "0 24px 40px rgba(47,62,58,0.14)",
-        }}
-      />
-    );
-  }
-
-  if (variant.shape === "panel") {
-    return (
-      <div style={{ width: "86%", display: "grid", gap: 10 }}>
-        <div
-          style={{
-            height: 150,
-            borderRadius: 28,
-            background: `linear-gradient(135deg, ${variant.accent} 0%, rgba(255,255,255,0.2) 100%)`,
-            boxShadow: "0 24px 40px rgba(47,62,58,0.12)",
-          }}
-        />
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.35fr",
-            gap: 10,
-          }}
-        >
-          <div
-            style={{
-              height: 110,
-              borderRadius: 22,
-              background: "rgba(255,255,255,0.58)",
-              border: "1px solid rgba(47,62,58,0.08)",
-            }}
-          />
-          <div
-            style={{
-              height: 110,
-              borderRadius: 22,
-              background: `linear-gradient(180deg, rgba(255,255,255,0.25) 0%, ${variant.accent} 100%)`,
-            }}
-          />
-        </div>
-      </div>
-    );
-  }
-
-  if (variant.shape === "stripe") {
-    return (
-      <div style={{ width: "88%", display: "grid", gap: 10 }}>
-        <div
-          style={{
-            height: 210,
-            borderRadius: 26,
-            background: `linear-gradient(90deg, ${variant.accent} 0%, ${variant.accent} 22%, rgba(255,255,255,0.28) 22%, rgba(255,255,255,0.28) 42%, rgba(255,255,255,0.72) 42%, rgba(255,255,255,0.72) 100%)`,
-            boxShadow: "0 24px 40px rgba(47,62,58,0.10)",
-          }}
-        />
-        <div
-          style={{
-            width: "52%",
-            height: 58,
-            borderRadius: 999,
-            background: `linear-gradient(90deg, rgba(255,255,255,0.85), ${variant.accent})`,
-          }}
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div style={{ width: "84%", position: "relative", height: 240 }}>
-      <div
-        style={{
-          position: "absolute",
-          inset: "0 0 54px 42px",
-          borderRadius: 26,
-          background: `linear-gradient(135deg, ${variant.accent} 0%, rgba(255,255,255,0.2) 100%)`,
-          boxShadow: "0 24px 40px rgba(47,62,58,0.10)",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: "58px 42px 0 0",
-          borderRadius: 26,
-          background: "rgba(255,255,255,0.74)",
-          border: "1px solid rgba(47,62,58,0.08)",
-        }}
-      />
-    </div>
-  );
-}
-
-function PlaceholderImage({ label, tall = false, variant, compact = false }) {
-  return (
-    <div
-      style={{
-        minHeight: compact ? 220 : tall ? 360 : 280,
-        borderRadius: 24,
-        border: "1px dashed rgba(47,62,58,0.24)",
-        background: variant.frame,
-        display: "flex",
-        alignItems: variant.align,
-        justifyContent: "center",
-        padding: 24,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          inset: 18,
-          borderRadius: 20,
-          border: "1px solid rgba(255,255,255,0.28)",
-          pointerEvents: "none",
-        }}
-      />
-      <PlaceholderArtwork variant={variant} />
-      <div
-        style={{
-          position: "absolute",
-          left: 18,
-          right: 18,
-          bottom: 18,
-          padding: "10px 12px",
-          borderRadius: 16,
-          background: "rgba(255,251,245,0.84)",
-          border: "1px solid rgba(47,62,58,0.08)",
-          textAlign: "left",
-        }}
-      >
-        <Text
-          style={{
-            display: "block",
-            color: variant.accent,
-            fontSize: 11,
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: 1.4,
-            marginBottom: 6,
-          }}
-        >
-          Image Placeholder
-        </Text>
-        <Text style={{ color: "#5F5A53", fontSize: 14 }}>{label}</Text>
-      </div>
-    </div>
-  );
-}
 
 export default function TwelveThingsPage() {
   const canonical = absUrl("/12-things");
@@ -341,20 +149,20 @@ export default function TwelveThingsPage() {
   return (
     <SiteLayout>
       <Seo
-        title="12 Things to Do in Ahangama in Two Weeks (or Less)"
-        description="A long-form editorial guide to Ahangama: surf, design-led stays, workshops, vinyl bars, craft, wellness, and the places that make two weeks feel like too little time."
+        title="12 Ways to Experience Ahangama"
+        description="An editorial guide to Ahangama through atmosphere, surf, cafes, wellness, creative community, independent shops, inland roads and slow routines."
         canonical={canonical}
       />
 
-      <div className="dm-heroCut" />
-      <div className="dm-canvas">
+      <div className="dm-heroCut" style={{ background: "#ffffff" }} />
+      <div className="dm-canvas" style={{ background: "#ffffff" }}>
         <div
           style={{
             position: "relative",
             minHeight: "calc(100vh - 88px)",
             overflow: "hidden",
             marginBottom: 32,
-            background: "#d9d2c5",
+            background: "#ffffff",
           }}
         >
           <img
@@ -389,7 +197,8 @@ export default function TwelveThingsPage() {
               margin: "0 auto",
               display: "flex",
               alignItems: "flex-end",
-              padding: "clamp(28px, 4vw, 44px) clamp(20px, 4vw, 36px) clamp(32px, 6vw, 56px)",
+              padding:
+                "clamp(28px, 4vw, 44px) clamp(20px, 4vw, 36px) clamp(32px, 6vw, 56px)",
               boxSizing: "border-box",
             }}
           >
@@ -417,7 +226,7 @@ export default function TwelveThingsPage() {
                     backdropFilter: "blur(10px)",
                   }}
                 >
-                  Two Weeks or Less
+                  South Coast Notes
                 </Tag>
               </Space>
 
@@ -435,182 +244,70 @@ export default function TwelveThingsPage() {
                     '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                 }}
               >
-                12 Things to Do in Ahangama in Two Weeks (or Less)
+                12 Ways to Experience Ahangama
               </Title>
             </div>
           </div>
         </div>
 
         <div className="dm-wrap">
-          <div style={{ marginBottom: 28 }}>
-            <Card
-              style={{
-                borderRadius: 22,
-                border: "1px solid rgba(47,62,58,0.08)",
-                background: "#ffffff",
-              }}
-              bodyStyle={{ padding: 24 }}
-            >
+          <div
+            style={{
+              maxWidth: 920,
+              paddingBottom: 12,
+            }}
+          >
+            {articleIntroduction.map((paragraph, index) => (
               <Paragraph
+                key={paragraph}
                 style={{
-                  maxWidth: 820,
-                  fontSize: "clamp(17px, 1.55vw, 22px)",
-                  lineHeight: 1.8,
-                  color: "#5C5953",
-                  marginBottom: 22,
+                  fontSize: index === 0 ? 22 : 18,
+                  lineHeight: index === 0 ? 1.7 : 1.85,
+                  color: index < 2 ? "#2f2a24" : "#55514B",
+                  marginBottom: 18,
                 }}
               >
-                A surf town with secrets. Find out a few things about Ahangama
-                from its design-led guesthouses and hands-on workshops to music
-                bars spinning vinyl on a Sunday night. The sea is warm. The food
-                is better. And if you know where to look, two weeks will not feel
-                like enough.
+                {paragraph}
               </Paragraph>
-
-              <Space wrap size={12}>
-                <a
-                  href={passCtaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center" }}
-                >
-                  <img
-                    src={ahangamaPassLogo}
-                    alt="Ahangama Pass"
-                    style={{ display: "block", height: 52, width: "auto" }}
-                  />
-                </a>
-                <Button size="large" href="#guide-note" style={{ borderRadius: 999 }}>
-                  Read the guide note
-                </Button>
-              </Space>
-            </Card>
+            ))}
           </div>
 
-          <div style={{ marginBottom: 28 }}>
-            <Card
-              id="guide-note"
-              style={{
-                borderRadius: 22,
-                border: "1px solid rgba(47,62,58,0.08)",
-              }}
-              bodyStyle={{ padding: 22 }}
-            >
-              <Space align="start" size={12}>
-                <CompassOutlined
-                  style={{ fontSize: 20, color: "#8B5A3C", marginTop: 4 }}
-                />
-                <div>
-                  <Text
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {experiences.map((item, index) => {
+              return (
+                <section
+                  key={item.title}
+                  style={{
+                    padding: index === 0 ? "20px 0 36px" : "36px 0",
+                    borderTop:
+                      index === 0 ? "none" : "1px solid rgba(47,62,58,0.12)",
+                  }}
+                >
+                  <div
                     style={{
-                      display: "block",
-                      color: "#2F3E3A",
-                      fontWeight: 700,
-                      marginBottom: 6,
+                      maxWidth: 1180,
                     }}
                   >
-                    A compact orientation
-                  </Text>
-                  <Paragraph style={{ margin: 0, color: "#5C5953" }}>
-                    This page is written as a proper editorial itinerary rather
-                    than a directory. Every section leaves room for imagery, and
-                    every recommendation is meant to feel like a friend passing
-                    you the best version of their Ahangama list.
-                  </Paragraph>
-                </div>
-              </Space>
-            </Card>
-          </div>
+                    <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
+                      {item.title}
+                    </Title>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-            {experiences.map((item, index) => {
-              const reverse = index % 2 === 1;
-              const variant = getPlaceholderVariant(index);
-              const compact = index >= 6;
-
-              return (
-                <Card
-                  key={item.number}
-                  style={{
-                    borderRadius: 26,
-                    border: "1px solid rgba(47,62,58,0.08)",
-                    background: "#ffffff",
-                  }}
-                  bodyStyle={{ padding: 24 }}
-                >
-                  <Row
-                    gutter={[24, 24]}
-                    align="middle"
-                    style={{ flexDirection: reverse ? "row-reverse" : "row" }}
-                  >
-                    <Col xs={24} lg={10}>
-                      {item.image ? (
-                        <div
-                          style={{
-                            minHeight: compact ? 220 : index < 2 ? 360 : 280,
-                            borderRadius: 24,
-                            overflow: "hidden",
-                            border: "1px solid rgba(47,62,58,0.08)",
-                            background: "#ebe4da",
-                          }}
-                        >
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            style={{
-                              display: "block",
-                              width: "100%",
-                              height: "100%",
-                              minHeight: compact ? 220 : index < 2 ? 360 : 280,
-                              objectFit: "cover",
-                              objectPosition: "center",
-                            }}
-                          />
-                        </div>
-                      ) : (
-                        <PlaceholderImage
-                          label={item.imageLabel}
-                          tall={index < 2}
-                          compact={compact}
-                          variant={variant}
-                        />
-                      )}
-                    </Col>
-                    <Col xs={24} lg={14}>
-                      <Text
+                    {item.body.map((paragraph) => (
+                      <Paragraph
+                        key={paragraph}
                         style={{
-                          display: "block",
-                          color: "#8B5A3C",
-                          fontSize: 13,
-                          fontWeight: 700,
-                          letterSpacing: 1.6,
-                          textTransform: "uppercase",
-                          marginBottom: 10,
+                          maxWidth: 1200,
+                          fontSize: 16,
+                          lineHeight: 1.8,
+                          color: "#55514B",
+                          marginBottom: 18,
                         }}
                       >
-                        {item.number}
-                      </Text>
-                      <Title
-                        level={2}
-                        style={{ marginTop: 0, marginBottom: 14 }}
-                      >
-                        {item.title}
-                      </Title>
-                      {item.body.map((paragraph) => (
-                        <Paragraph
-                          key={paragraph}
-                          style={{
-                            fontSize: 16,
-                            lineHeight: 1.8,
-                            color: "#55514B",
-                          }}
-                        >
-                          {paragraph}
-                        </Paragraph>
-                      ))}
-                    </Col>
-                  </Row>
-                </Card>
+                        {paragraph}
+                      </Paragraph>
+                    ))}
+                  </div>
+                </section>
               );
             })}
           </div>
@@ -662,35 +359,11 @@ export default function TwelveThingsPage() {
                         color: "#2F3E3A",
                         fontSize: 16,
                         lineHeight: 1.8,
+                        marginBottom: 0,
                       }}
                     >
                       Sri Lankan local, proud South Coast migrant, and part of
                       the Ahangama Team.
-                    </Paragraph>
-                    <Paragraph
-                      style={{
-                        color: "#2F3E3A",
-                        fontSize: 16,
-                        lineHeight: 1.8,
-                      }}
-                    >
-                      We only recommend places we'd genuinely tell a friend
-                      about. That's it.
-                    </Paragraph>
-                    <Paragraph
-                      style={{
-                        color: "#2F3E3A",
-                        fontSize: 16,
-                        lineHeight: 1.8,
-                        marginBottom: 0,
-                      }}
-                    >
-                      To unlock every perk, discount and freebie in this guide,
-                      grab The Ahangama Pass; from $30, it pays for itself fast.
-                      It also gets you onto the Ahangama Collectibles Trail:
-                      exclusive tea tins, postcards and collectible sticker
-                      cards from select partner spots along the way. Free for a
-                      limited time.
                     </Paragraph>
                   </div>
                 </Col>
@@ -707,13 +380,18 @@ export default function TwelveThingsPage() {
                   >
                     <Text
                       style={{
-                        display: "block",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
                         color: "#2F3E3A",
                         fontWeight: 700,
                         marginBottom: 12,
                       }}
                     >
-                      The Ahangama Pass
+                      <CheckOutlined
+                        style={{ color: "#2F3E3A", fontSize: 14 }}
+                      />
+                      Ahangama Pass Perks
                     </Text>
                     <Paragraph
                       style={{
@@ -721,8 +399,8 @@ export default function TwelveThingsPage() {
                         marginBottom: 18,
                       }}
                     >
-                      Unlock discounts, freebies, and collectibles across the
-                      experiences in this guide.
+                      Freebies and collectibles across the experiences in this
+                      guide.
                     </Paragraph>
                     <a
                       href={passCtaUrl}
@@ -743,6 +421,52 @@ export default function TwelveThingsPage() {
                   </Card>
                 </Col>
               </Row>
+
+              <div
+                style={{
+                  marginTop: 18,
+                  paddingTop: 16,
+                  borderTop: "1px solid rgba(47,62,58,0.08)",
+                }}
+              >
+                <Text
+                  style={{
+                    display: "block",
+                    color: "#6B5A4E",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: 1.4,
+                    textTransform: "uppercase",
+                    marginBottom: 10,
+                  }}
+                >
+                  Places Mentioned
+                </Text>
+
+                <Space wrap size={[12, 8]}>
+                  {MENTIONED_PLACE_LINKS.map((place) => (
+                    <a
+                      key={place.label}
+                      href={place.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        color: "#6B5A4E",
+                        fontSize: 13,
+                        textDecoration: "none",
+                        borderBottom: "1px solid rgba(107,90,78,0.24)",
+                        paddingBottom: 1,
+                      }}
+                    >
+                      {place.label}
+                      <ArrowRightOutlined style={{ fontSize: 11 }} />
+                    </a>
+                  ))}
+                </Space>
+              </div>
             </Card>
           </div>
         </div>
