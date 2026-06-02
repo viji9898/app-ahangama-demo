@@ -36,6 +36,7 @@ import FullListPage from "../pages/FullListPage";
 import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
+import LocalIntelligencePage from "../pages/LocalIntelligencePage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -60,6 +61,7 @@ const routes = [
     element: <ExternalRedirect to={GETTING_AROUND_BLOG_PATH} />,
   },
   { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
+  { path: "/local-intelligence", element: <LocalIntelligencePage /> },
   {
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,

@@ -15,6 +15,10 @@ import {
   ThunderboltOutlined,
   ExclamationCircleOutlined,
   WhatsAppOutlined,
+  CloudOutlined,
+  ShopOutlined,
+  MessageOutlined,
+  ReadOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { usePlaces } from "../app/placesContext";
@@ -133,6 +137,234 @@ const THIS_WEEK_EVENTS = [
   },
 ];
 
+const THIS_WEEK_FEATURES = [
+  {
+    category: "Editorial",
+    title: "The New Ahangama: Why Everyone Is Moving South",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+  },
+  {
+    category: "Weekend Guide",
+    title: "A Weekend Guide to Kabalana",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+  },
+  {
+    category: "Wellness",
+    title: "Inside Ahangama's Wellness Boom",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
+  },
+];
+
+const WEEKLY_PICKS = [
+  {
+    category: "Nightlife",
+    title: "Friday DJ Night at Trax",
+    date: "Fri 6 Jun",
+  },
+  {
+    category: "Community",
+    title: "Community Market",
+    date: "Sat 7 Jun",
+  },
+  {
+    category: "Openings",
+    title: "New Cafe Opening",
+    date: "Thu 5 Jun",
+  },
+  {
+    category: "Sunset",
+    title: "Best Sunset This Week",
+    date: "Daily",
+  },
+  {
+    category: "Staff Pick",
+    title: "Staff Pick Experience",
+    date: "This Weekend",
+  },
+];
+
+const HERO_INTELLIGENCE_ITEMS = [
+  {
+    key: "surf",
+    label: "Surf",
+    value: "3-4ft at Marshmallow",
+    icon: CompassOutlined,
+  },
+  {
+    key: "weather",
+    label: "Weather",
+    value: "Mostly sunny",
+    icon: CloudOutlined,
+  },
+  {
+    key: "opening",
+    label: "New Opening",
+    value: "Studio Mukti",
+    icon: ShopOutlined,
+  },
+  {
+    key: "discussed",
+    label: "Most Discussed",
+    value: "Coconut Court Pickleball",
+    icon: MessageOutlined,
+  },
+  {
+    key: "note",
+    label: "Editor's Note",
+    value: "The town feels noticeably busier this week.",
+    icon: ReadOutlined,
+  },
+];
+
+const DESTINATION_CATEGORIES = [
+  {
+    key: "eat",
+    title: "Eat",
+    href: "/eat",
+    tone: "#efe8dd",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/animals.jpg",
+    keywords: ["eat", "restaurant", "cafe", "brunch", "coffee"],
+    sublabels: "The best breakfasts, long lunches and dinner spots.",
+  },
+  {
+    key: "drink",
+    title: "Drink",
+    href: "/eat",
+    tone: "#e8dccf",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unsung.jpg",
+    keywords: ["drink", "bar", "cocktail", "prosecco", "music bar", "lounge"],
+    sublabels: "Cocktails at golden hour, late pours and the bars worth staying for.",
+  },
+  {
+    key: "stay",
+    title: "Stay",
+    href: "/stays",
+    tone: "#ece4d8",
+    image:
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
+    keywords: ["stay", "villa", "guesthouse", "boutique hotel", "hotel"],
+    sublabels: "Boutique stays, private villas and the places built for lingering.",
+  },
+  {
+    key: "surf",
+    title: "Surf",
+    href: "/blogs",
+    tone: "#e4ebde",
+    image:
+      "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
+    keywords: ["surf", "surf school", "board rental", "lesson"],
+    sublabels: "Schools, board hire and camps for easy days in the water.",
+  },
+  {
+    key: "wellness",
+    title: "Wellness",
+    href: "/wellness",
+    tone: "#dde6d7",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+    keywords: ["wellness", "yoga", "spa", "pilates", "ice bath", "recovery"],
+    sublabels: "Yoga, treatments and recovery rituals for slower mornings.",
+  },
+  {
+    key: "culture",
+    title: "Culture",
+    href: "/blogs",
+    tone: "#e9e0d1",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+    keywords: ["culture", "local experience", "nature", "cooking", "guide"],
+    sublabels: "Stories, local context and the details that make the town legible.",
+  },
+  {
+    key: "shop",
+    title: "Shop",
+    href: "/retail",
+    tone: "#e7ddd0",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/living_room.jpg",
+    keywords: ["retail", "shop", "clothing", "home & gifts", "gifts"],
+    sublabels: "Clothing, home pieces and the small essentials people actually need.",
+  },
+  {
+    key: "nightlife",
+    title: "Nightlife",
+    href: "/blogs",
+    tone: "#e8d7cd",
+    image:
+      "https://www.theworlds50best.com/discovery/filestore/jpg/TRAX_exterior.jpg",
+    keywords: ["nightlife", "bar", "music", "social", "lounge", "drink"],
+    sublabels: "Music, late-night energy and the places that still feel social.",
+  },
+];
+
+const ITINERARY_FEATURES = [
+  {
+    category: "Short Stay",
+    date: "May 21, 2026",
+    title: "48 Hours in Ahangama",
+    description:
+      "A fast but thoughtful south-coast edit covering surf, coffee, one excellent dinner and the right sunset stop.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+  },
+  {
+    category: "Surf Trip",
+    date: "May 7, 2026",
+    title: "5 Day Surf Escape",
+    description:
+      "A rhythm of dawn sessions, lazy breakfasts, recovery spots and beach-to-beach movement without overplanning it.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
+  },
+  {
+    category: "Wellness",
+    date: "May 6, 2026",
+    title: "Wellness Weekend",
+    description:
+      "Pilates, slow mornings, restorative treatments and the calmest corners of Ahangama for a lighter two-day reset.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+  },
+];
+
+const LATEST_STORIES = [
+  {
+    category: "Food",
+    title: "New restaurant opens",
+    date: "2 Jun 2026",
+  },
+  {
+    category: "Interview",
+    title: "Interview with local artist",
+    date: "1 Jun 2026",
+  },
+  {
+    category: "Festival",
+    title: "Festival announced",
+    date: "31 May 2026",
+  },
+  {
+    category: "Surf",
+    title: "New surf report",
+    date: "30 May 2026",
+  },
+  {
+    category: "Community",
+    title: "Community story",
+    date: "29 May 2026",
+  },
+  {
+    category: "Wellness",
+    title: "Morning recovery ritual at Frosty's",
+    date: "28 May 2026",
+  },
+];
+
 const GETTING_AROUND_PREVIEW = [
   {
     label: "Scooter",
@@ -235,6 +467,33 @@ const MINIMAL_GUIDE_CARDS = [
   },
 ];
 
+const GUIDE_SECTION_PALETTE = [
+  {
+    card: "#f7f1e7",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(176, 142, 98, 0.14)",
+  },
+  {
+    card: "#ebe5d8",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(106, 114, 85, 0.16)",
+  },
+  {
+    card: "#dfe5d6",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(97, 111, 79, 0.16)",
+  },
+  {
+    card: "#e8d6ca",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(136, 92, 64, 0.14)",
+  },
+];
+
 function formatTransportRange(item, currency) {
   const rate = TRANSPORT_EXCHANGE_RATES[currency] || 1;
   const formatter =
@@ -277,6 +536,11 @@ export default function Home() {
   const currentWeekNumber = Math.ceil(
     (daysSinceYearStart + startOfYear.getDay() + 1) / 7,
   );
+  const intelligenceSyncTime = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
   const sectionSpacing = 32;
   const editorialSerifFont =
     '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
@@ -385,6 +649,40 @@ export default function Home() {
       };
     });
   }, [places]);
+  const destinationCategoryCards = useMemo(() => {
+    const sourcePlaces = (places && places.length ? places : PLACES)
+      .filter((place) => place.destinationSlug === "ahangama")
+      .filter((place) => shouldShowPlace(place));
+
+    return DESTINATION_CATEGORIES.map((category) => {
+      const count = sourcePlaces.filter((place) => {
+        const searchable = [
+          place.category,
+          ...(place.tags || []),
+          ...(place.bestFor || []),
+          place.name,
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+        return category.keywords.some((keyword) => searchable.includes(keyword));
+      }).length;
+
+      return {
+        ...category,
+        count,
+      };
+    });
+  }, [places]);
+  const formatCategoryCount = (count) => {
+    if (count >= 10) {
+      return `${Math.floor(count / 10) * 10}+ Places`;
+    }
+
+    return `${count} Places`;
+  };
+  const showLegacyHomepageLowerSections = false;
   return (
     <SiteLayout>
       <Seo
@@ -636,6 +934,50 @@ export default function Home() {
             </div>
           </div>
 
+          <div style={{ marginTop: 20 }}>
+            <div className="home-intelligence-band">
+              <div className="home-intelligence-brand">
+                <div className="home-intelligence-brandLine">
+                  <div className="home-intelligence-mark">
+                    <span>✦</span>
+                  </div>
+                  <div className="home-intelligence-brandText">
+                    <Text className="home-intelligence-kicker">
+                      Ahangama Intelligence
+                    </Text>
+                    <Text className="home-intelligence-syncNote">
+                      Sync at {intelligenceSyncTime}
+                    </Text>
+                  </div>
+                </div>
+                <a
+                  href="/local-intelligence"
+                  className="home-intelligence-link"
+                >
+                  Local Intelligence <ArrowRightOutlined />
+                </a>
+              </div>
+
+              {HERO_INTELLIGENCE_ITEMS.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div className="home-intelligence-item" key={item.key}>
+                    <div className="home-intelligence-itemHeader">
+                      <Icon className="home-intelligence-itemIcon" />
+                      <Text className="home-intelligence-itemLabel">
+                        {item.label}:
+                      </Text>
+                    </div>
+                    <Text className="home-intelligence-itemValue">{item.value}</Text>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="home-section-divider" aria-hidden="true" />
+
           <div style={{ marginTop: sectionSpacing }}>
             <div className="whats-on-board">
               <div className="whats-on-boardIntro">
@@ -674,90 +1016,410 @@ export default function Home() {
                 ))}
               </div>
             </div>
+
+            <div className="home-section-divider" aria-hidden="true" />
           </div>
 
-          <div
-            style={{
-              marginTop: sectionSpacing,
-            }}
-          >
-            <Row gutter={[24, 24]} align="stretch">
-              <Col xs={24} xl={14}>
-                <div style={{ display: "grid", gap: 20, height: "100%" }}>
-                  <Card
-                    className="perfect-day-card"
-                    style={{ ...editorialCardStyle, height: "100%" }}
-                    bodyStyle={{ padding: 32, height: "100%" }}
+          <div style={{ marginTop: 20 }}>
+            <div className="weekly-features-grid">
+              {THIS_WEEK_FEATURES.map((feature) => (
+                <a
+                  key={feature.title}
+                  href="#"
+                  onClick={(event) => event.preventDefault()}
+                  className="weekly-features-card"
+                >
+                  <div className="weekly-features-imageWrap">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="weekly-features-image"
+                    />
+                  </div>
+                  <Text className="weekly-features-tag">{feature.category}</Text>
+                  <Title level={3} className="weekly-features-title">
+                    {feature.title}
+                  </Title>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginTop: 20 }}>
+            <div
+              className="home-section-divider home-section-divider--tight"
+              aria-hidden="true"
+            />
+
+            <div className="weekly-picks-heading">
+              <Text className="weekly-picks-kicker">2. Weekly Picks</Text>
+              <Paragraph className="weekly-picks-description">
+                What&apos;s worth your time this week.
+              </Paragraph>
+            </div>
+
+            <div
+              className="home-section-divider home-section-divider--tight"
+              aria-hidden="true"
+            />
+
+            <div className="weekly-picks-grid">
+              {WEEKLY_PICKS.map((pick) => (
+                <a
+                  key={pick.title}
+                  href="#"
+                  onClick={(event) => event.preventDefault()}
+                  className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
+                  style={
+                    pick.image
+                      ? {
+                          "--weekly-picks-image": `url(${pick.image})`,
+                        }
+                      : undefined
+                  }
+                >
+                  <Text className="weekly-picks-tag">{pick.category}</Text>
+                  <Title level={3} className="weekly-picks-title">
+                    {pick.title}
+                  </Title>
+                  <Text className="weekly-picks-date">{pick.date}</Text>
+                </a>
+              ))}
+            </div>
+
+            <div className="home-section-divider" aria-hidden="true" />
+          </div>
+
+          <div style={{ marginTop: 20 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: 20,
+                marginBottom: 14,
+              }}
+            >
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#161412",
+                  fontSize: "clamp(22px, 2.4vw, 34px)",
+                  lineHeight: 0.96,
+                  fontWeight: 500,
+                  letterSpacing: -0.8,
+                  fontFamily:
+                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                }}
+              >
+                Guide Sections
+              </Title>
+              <a
+                href="/blogs"
+                style={{
+                  color: "#161412",
+                  textDecoration: "none",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: 0.8,
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                See All
+              </a>
+            </div>
+
+            <Row
+              className="guide-sections-row"
+              gutter={[18, 18]}
+              align="stretch"
+            >
+              {MINIMAL_GUIDE_CARDS.map((guide, index) => (
+                (() => {
+                  const palette =
+                    GUIDE_SECTION_PALETTE[index % GUIDE_SECTION_PALETTE.length];
+
+                  return (
+                <Col
+                  className="guide-sections-col"
+                  key={guide.href}
+                  xs={24}
+                  md={12}
+                  xl={6}
+                >
+                  <a
+                    className={`guide-sections-cardLink${index === 0 ? " guide-sections-cardLink--first" : ""}`}
+                    href={guide.href}
+                    style={{
+                      display: "block",
+                      height: "100%",
+                      paddingLeft: index === 0 ? 0 : 18,
+                      borderLeft:
+                        index === 0 ? "none" : "1px solid rgba(22,20,18,0.14)",
+                      textDecoration: "none",
+                    }}
                   >
-                    <Row
-                      className="perfect-day-row"
-                      gutter={[28, 28]}
-                      align="top"
+                    <div
+                      style={{
+                        height: "100%",
+                        borderRadius: 18,
+                        padding: 16,
+                        background: palette.card,
+                        color: palette.ink,
+                        border: "1px solid rgba(31,29,26,0.08)",
+                        boxShadow: "0 8px 20px rgba(31,29,26,0.04)",
+                      }}
                     >
-                      <Col
-                        xs={{ span: 12, order: 1 }}
-                        xl={{ span: 10, order: 1 }}
+                      <Text
+                        style={{
+                          display: "block",
+                          paddingBottom: 6,
+                          marginBottom: 10,
+                          borderBottom: `1px solid ${palette.line}`,
+                          color: palette.ink,
+                          fontSize: 10,
+                          fontWeight: 700,
+                          letterSpacing: 1.5,
+                          textTransform: "uppercase",
+                        }}
                       >
-                        <div
-                          className="perfect-day-media"
+                        {guide.label}
+                      </Text>
+
+                      <Title
+                        level={3}
+                        style={{
+                          margin: "0 0 16px",
+                          color: palette.ink,
+                          fontSize: "clamp(22px, 1.9vw, 34px)",
+                          lineHeight: 0.98,
+                          letterSpacing: -0.8,
+                        }}
+                      >
+                        {guide.title}
+                      </Title>
+
+                      <div
+                        style={{
+                          aspectRatio: "1 / 1.12",
+                          overflow: "hidden",
+                          background: palette.media,
+                          border: "1px solid rgba(31,29,26,0.08)",
+                        }}
+                      >
+                        <img
+                          src={guide.image}
+                          alt={guide.title}
                           style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 16,
-                            maxWidth: 420,
-                            margin: "0 auto",
+                            display: "block",
+                            width: "100%",
+                            height: "100%",
+                            objectFit:
+                              guide.href === "/what-is-ahangama-pass"
+                                ? "contain"
+                                : "cover",
+                            objectPosition: "center",
+                            background:
+                              guide.href === "/what-is-ahangama-pass"
+                                ? "rgba(255,255,255,0.9)"
+                                : "transparent",
                           }}
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </Col>
+                  );
+                })()
+              ))}
+            </Row>
+
+            <div className="home-section-divider" aria-hidden="true" />
+          </div>
+
+          <div style={{ marginTop: 20 }}>
+            <div className="destination-categories-heading">
+              <Text className="destination-categories-kicker">4. Categories</Text>
+              <Paragraph className="destination-categories-description">
+                Help visitors navigate the destination.
+              </Paragraph>
+            </div>
+
+            <div
+              className="home-section-divider home-section-divider--tight"
+              aria-hidden="true"
+            />
+
+            <div className="destination-categories-grid">
+              {destinationCategoryCards.map((category) => (
+                <a
+                  key={category.key}
+                  href={category.href}
+                  className={`destination-categories-card destination-categories-card--${category.key}`}
+                  style={{
+                    "--destination-category-tone": category.tone,
+                  }}
+                >
+                  <div className="destination-categories-top">
+                    <div className="destination-categories-headerLine">
+                      <Text className="destination-categories-label">
+                        {category.title} Guide
+                      </Text>
+                      <Text className="destination-categories-separator">|</Text>
+                      <Text className="destination-categories-countInline">
+                        {formatCategoryCount(category.count)}
+                      </Text>
+                    </div>
+                    <span className="destination-categories-divider" />
+                    <div className="destination-categories-titleRow">
+                      <Text className="destination-categories-title">
+                        {category.title}
+                      </Text>
+                    </div>
+                  </div>
+                  <div className="destination-categories-bottom">
+                    <Text className="destination-categories-sublabels">
+                      {category.sublabels}
+                    </Text>
+                    <Text className="destination-categories-cta">
+                      Explore <ArrowRightOutlined />
+                    </Text>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <div className="home-section-divider" aria-hidden="true" />
+          </div>
+
+          <div style={{ marginTop: 20 }}>
+            <div className="itineraries-heading">
+              <Text className="itineraries-kicker">5. Itineraries</Text>
+              <Paragraph className="itineraries-description">
+                Ready-made trip planning.
+              </Paragraph>
+            </div>
+
+            <div className="itineraries-grid">
+              {ITINERARY_FEATURES.map((item) => (
+                <a
+                  key={item.title}
+                  href="#"
+                  onClick={(event) => event.preventDefault()}
+                  className="itineraries-card"
+                >
+                  <div className="itineraries-imageWrap">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="itineraries-image"
+                    />
+                  </div>
+                  <div className="itineraries-body">
+                    <Text className="itineraries-date">{item.date}</Text>
+                    <Title level={3} className="itineraries-title">
+                      {item.title}
+                    </Title>
+                    <Text className="itineraries-tag">{item.category}</Text>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <div className="home-section-divider" aria-hidden="true" />
+          </div>
+
+          <div style={{ marginTop: 20 }}>
+            <div className="latest-stories-heading">
+              <Text className="latest-stories-kicker">6. Latest Stories</Text>
+              <Paragraph className="latest-stories-description">
+                Publication heartbeat.
+              </Paragraph>
+            </div>
+
+            <div
+              className="home-section-divider home-section-divider--tight"
+              aria-hidden="true"
+            />
+
+            <div className="latest-stories-grid">
+              {LATEST_STORIES.map((story) => (
+                <a
+                  key={`${story.title}-${story.date}`}
+                  href="#"
+                  onClick={(event) => event.preventDefault()}
+                  className="latest-stories-card"
+                >
+                  <Text className="latest-stories-tag">{story.category}</Text>
+                  <Title level={3} className="latest-stories-title">
+                    {story.title}
+                  </Title>
+                  <Text className="latest-stories-date">{story.date}</Text>
+                </a>
+              ))}
+            </div>
+
+            <div className="home-section-divider" aria-hidden="true" />
+          </div>
+
+          {showLegacyHomepageLowerSections ? (
+            <div
+              style={{
+                marginTop: sectionSpacing,
+              }}
+            >
+              <Row gutter={[24, 24]} align="stretch">
+                <Col xs={24} xl={14}>
+                  <div style={{ display: "grid", gap: 20, height: "100%" }}>
+                    <Card
+                      className="perfect-day-card"
+                      style={{ ...editorialCardStyle, height: "100%" }}
+                      bodyStyle={{ padding: 32, height: "100%" }}
+                    >
+                      <Row
+                        className="perfect-day-row"
+                        gutter={[28, 28]}
+                        align="top"
+                      >
+                        <Col
+                          xs={{ span: 12, order: 1 }}
+                          xl={{ span: 10, order: 1 }}
                         >
                           <div
-                            className="perfect-day-tags"
+                            className="perfect-day-media"
                             style={{
                               display: "flex",
-                              flexWrap: "wrap",
-                              gap: 10,
+                              flexDirection: "column",
+                              gap: 16,
+                              maxWidth: 420,
+                              margin: "0 auto",
                             }}
                           >
-                            {DENITSA_STORY_TAGS.map((item) => (
-                              <Text
-                                key={item}
-                                style={{
-                                  color: "#8B7B63",
-                                  fontSize: 11,
-                                  fontWeight: 700,
-                                  letterSpacing: 1.5,
-                                  textTransform: "uppercase",
-                                }}
-                              >
-                                {item}
-                              </Text>
-                            ))}
-                          </div>
-
-                          <div
-                            style={{
-                              aspectRatio: "4 / 4.35",
-                              borderRadius: 26,
-                              overflow: "hidden",
-                              border: "1px solid rgba(32,30,27,0.08)",
-                              background:
-                                "linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(239,231,218,0.92) 100%)",
-                              boxShadow: "0 16px 34px rgba(32,30,27,0.08)",
-                            }}
-                          >
-                            <video
-                              src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/videos/denitsa_perfect_day.mp4"
-                              controls
-                              muted
-                              loop
-                              autoPlay
-                              playsInline
+                            <div
+                              className="perfect-day-tags"
                               style={{
-                                display: "block",
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 10,
                               }}
-                            />
-                          </div>
+                            >
+                              {DENITSA_STORY_TAGS.map((item) => (
+                                <Text
+                                  key={item}
+                                  style={{
+                                    color: "#8B7B63",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    letterSpacing: 1.5,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  {item}
+                                </Text>
+                              ))}
+                            </div>
 
                           <div
                             className="perfect-day-hashtags"
@@ -1309,6 +1971,7 @@ export default function Home() {
               </Col>
             </Row>
           </div>
+          ) : null}
 
           <div style={{ marginTop: 20 }}>
             <Row className="guide-cards-row" gutter={[24, 24]} align="stretch">
@@ -1766,178 +2429,45 @@ export default function Home() {
             </div> */}
           </div>
 
-          <div style={{ marginTop: sectionSpacing - 4 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: 20,
-                marginBottom: 14,
-              }}
-            >
-              <Title
-                level={2}
-                style={{
-                  margin: 0,
-                  color: "#161412",
-                  fontSize: "clamp(22px, 2.4vw, 34px)",
-                  lineHeight: 0.96,
-                  fontWeight: 500,
-                  letterSpacing: -0.8,
-                  fontFamily:
-                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                }}
-              >
-                Guide Sections
-              </Title>
-              <a
-                href="/blogs"
-                style={{
-                  color: "#161412",
-                  textDecoration: "none",
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: 0.8,
-                  textTransform: "uppercase",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                See All
-              </a>
-            </div>
-
-            <Row
-              className="guide-sections-row"
-              gutter={[18, 18]}
-              align="stretch"
-            >
-              {MINIMAL_GUIDE_CARDS.map((guide, index) => (
-                <Col
-                  className="guide-sections-col"
-                  key={guide.href}
-                  xs={24}
-                  md={12}
-                  xl={6}
-                >
-                  <a
-                    className={`guide-sections-cardLink${index === 0 ? " guide-sections-cardLink--first" : ""}`}
-                    href={guide.href}
+          {showLegacyHomepageLowerSections ? (
+            <>
+              <div style={{ marginTop: sectionSpacing - 8 }}>
+                {loading ? (
+                  <Card
                     style={{
-                      display: "block",
-                      height: "100%",
-                      paddingLeft: index === 0 ? 0 : 18,
-                      borderLeft:
-                        index === 0 ? "none" : "1px solid rgba(22,20,18,0.14)",
-                      textDecoration: "none",
+                      borderRadius: 18,
+                      border: "1px solid rgba(32,30,27,0.08)",
+                      background:
+                        "linear-gradient(180deg, rgba(251,248,242,0.96) 0%, rgba(247,243,236,0.96) 100%)",
                     }}
+                    bodyStyle={{ padding: 32 }}
                   >
                     <div
                       style={{
-                        height: "100%",
-                        borderRadius: 18,
-                        padding: 14,
-                        background: "#67cef5",
-                        color: "#111111",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 12,
+                        minHeight: 180,
                       }}
                     >
-                      <Text
-                        style={{
-                          display: "block",
-                          paddingBottom: 6,
-                          marginBottom: 10,
-                          borderBottom: "2px solid rgba(17,17,17,0.8)",
-                          color: "#111111",
-                          fontSize: 10,
-                          fontWeight: 700,
-                          letterSpacing: 1.1,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {guide.label}
-                      </Text>
-
-                      <Title
-                        level={3}
-                        style={{
-                          margin: "0 0 16px",
-                          color: "#111111",
-                          fontSize: "clamp(22px, 1.9vw, 34px)",
-                          lineHeight: 0.95,
-                          letterSpacing: -0.8,
-                        }}
-                      >
-                        {guide.title}
-                      </Title>
-
-                      <div
-                        style={{
-                          aspectRatio: "1 / 0.82",
-                          overflow: "hidden",
-                          background: "rgba(255,255,255,0.28)",
-                        }}
-                      >
-                        <img
-                          src={guide.image}
-                          alt={guide.title}
-                          style={{
-                            display: "block",
-                            width: "100%",
-                            height: "100%",
-                            objectFit:
-                              guide.href === "/what-is-ahangama-pass"
-                                ? "contain"
-                                : "cover",
-                            objectPosition: "center",
-                            background:
-                              guide.href === "/what-is-ahangama-pass"
-                                ? "rgba(255,255,255,0.9)"
-                                : "transparent",
-                          }}
-                        />
-                      </div>
+                      <Spin size="large" />
+                      <Text type="secondary">Loading venues...</Text>
                     </div>
-                  </a>
-                </Col>
-              ))}
-            </Row>
-          </div>
+                  </Card>
+                ) : (
+                  <>
+                    <PassPartnersStrip destinationSlug="ahangama" />
+                  </>
+                )}
+              </div>
 
-          <div style={{ marginTop: sectionSpacing - 8 }}>
-            {loading ? (
-              <Card
-                style={{
-                  borderRadius: 18,
-                  border: "1px solid rgba(32,30,27,0.08)",
-                  background:
-                    "linear-gradient(180deg, rgba(251,248,242,0.96) 0%, rgba(247,243,236,0.96) 100%)",
-                }}
-                bodyStyle={{ padding: 32 }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 12,
-                    minHeight: 180,
-                  }}
-                >
-                  <Spin size="large" />
-                  <Text type="secondary">Loading venues...</Text>
-                </div>
-              </Card>
-            ) : (
-              <>
-                <PassPartnersStrip destinationSlug="ahangama" />
-              </>
-            )}
-          </div>
-
-          <div style={{ marginTop: sectionSpacing }}>
-            <HomeGoogleMapSection />
-          </div>
+              <div style={{ marginTop: sectionSpacing }}>
+                <HomeGoogleMapSection />
+              </div>
+            </>
+          ) : null}
 
           {/* CARD CTA */}
           <div style={{ marginTop: sectionSpacing - 8 }}>

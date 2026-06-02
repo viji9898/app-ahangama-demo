@@ -135,11 +135,20 @@ export default function FooterBar() {
     <footer
       style={{
         background: "transparent",
-        padding: isMobile ? "72px 16px 24px" : "96px 16px 28px",
-        marginTop: 72,
+        padding: isMobile ? "28px 16px 24px" : "36px 16px 28px",
+        marginTop: 24,
       }}
     >
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+        <div
+          aria-hidden="true"
+          style={{
+            height: 1,
+            width: "100%",
+            marginBottom: isMobile ? 20 : 24,
+            background: "rgba(32, 30, 27, 0.08)",
+          }}
+        />
         <div
           style={{
             background: "#FFFFFF",
