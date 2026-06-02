@@ -4512,6 +4512,11 @@
 }
 
 @media (max-width: 768px) {
+  .dm-wrap {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
   .local-intelligence-shell {
     max-width: 1200px;
     padding: 24px 12px 36px;
@@ -4855,7 +4860,9 @@
     gap: 12px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 0 0 8px;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 0 16px 8px;
     scrollbar-width: none;
   }
 
