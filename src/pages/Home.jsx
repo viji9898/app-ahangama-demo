@@ -97,12 +97,7 @@ const THREE_DAYS_HIGHLIGHTS = [
   "Sunset Sessions",
 ];
 
-const THREE_DAYS_FEATURED_PLACES = [
-  "Samba",
-  "Pura Pilates",
-  "Frosty's",
-  "Kaffi",
-];
+const THREE_DAYS_FEATURED_PLACES = ["Samba", "Pura Pilates", "Frosty's", "Kaffi"];
 
 const THIS_WEEK_EVENTS = [
   {
@@ -1029,6 +1024,18 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 20 }}>
+            <div className="weekly-features-heading">
+              <Text className="weekly-features-kicker">1. Editor&apos;s Picks</Text>
+              <Paragraph className="weekly-features-description">
+                A curated editorial shortlist for the week.
+              </Paragraph>
+            </div>
+
+            <div
+              className="home-section-divider home-section-divider--tight"
+              aria-hidden="true"
+            />
+
             <div className="weekly-features-grid">
               {THIS_WEEK_FEATURES.map((feature) => (
                 <a
@@ -1101,45 +1108,22 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: 20,
-                marginBottom: 14,
-              }}
-            >
-              <Title
-                level={2}
-                style={{
-                  margin: 0,
-                  color: "#161412",
-                  fontSize: "clamp(22px, 2.4vw, 34px)",
-                  lineHeight: 0.96,
-                  fontWeight: 500,
-                  letterSpacing: -0.8,
-                  fontFamily:
-                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                }}
-              >
-                Guide Sections
-              </Title>
-              <a
-                href="/blogs"
-                style={{
-                  color: "#161412",
-                  textDecoration: "none",
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: 0.8,
-                  textTransform: "uppercase",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                See All
-              </a>
+            <div className="guide-sections-heading">
+              <Text className="guide-sections-kicker">3. Guide Sections</Text>
+              <div className="guide-sections-headingRow">
+                <Paragraph className="guide-sections-description">
+                  Editorial guides for navigating Ahangama.
+                </Paragraph>
+                <a href="/blogs" className="guide-sections-link">
+                  See All
+                </a>
+              </div>
             </div>
+
+            <div
+              className="home-section-divider home-section-divider--tight"
+              aria-hidden="true"
+            />
 
             <Row
               className="guide-sections-row"

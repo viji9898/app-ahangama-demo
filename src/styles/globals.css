@@ -273,6 +273,27 @@
   line-height: 1;
 }
 
+.weekly-features-heading {
+  margin-bottom: 14px;
+}
+
+.weekly-features-kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: #9d7f57 !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.weekly-features-description {
+  margin: 0 !important;
+  color: #5f574e !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
 .weekly-features-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -835,6 +856,44 @@
   font-weight: 700;
   letter-spacing: 0.6px;
   text-transform: uppercase;
+}
+
+.guide-sections-heading {
+  margin-bottom: 14px;
+}
+
+.guide-sections-kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: #9d7f57 !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.guide-sections-headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.guide-sections-description {
+  margin: 0 !important;
+  color: #5f574e !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.guide-sections-link {
+  color: #161412;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .destination-categories-heading {
