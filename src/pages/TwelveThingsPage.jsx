@@ -243,7 +243,7 @@ export default function TwelveThingsPage() {
   const canonical = absUrl("/12-things");
   const passCtaUrl = buildPassCtaUrl();
   const heroImage =
-    "https://travelrebels.com/wp-content/uploads/2024/04/ahangama-sri-lanka-tips-1.webp";
+    "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg";
 
   return (
     <SiteLayout>
@@ -345,6 +345,31 @@ export default function TwelveThingsPage() {
               >
                 12 Ways to Experience Ahangama
               </Title>
+
+              <Text
+                style={{
+                  display: "block",
+                  marginTop: 14,
+                  color: "rgba(255,255,255,0.82)",
+                  fontSize: 12,
+                  letterSpacing: 0.2,
+                }}
+              >
+                Photo credits: Petter & Linn By{" "}
+                <a
+                  href="https://www.instagram.com/sodalime_/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "#ffffff",
+                    textDecoration: "none",
+                    borderBottom: "1px solid rgba(255,255,255,0.45)",
+                  }}
+                >
+                  Sodalime
+                </a>
+                .
+              </Text>
             </div>
           </div>
         </div>
