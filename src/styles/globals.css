@@ -858,6 +858,118 @@
   text-transform: uppercase;
 }
 
+.around-town-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.around-town-headingCopy {
+  min-width: 0;
+}
+
+.around-town-kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: #9d7f57 !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.around-town-description {
+  margin: 0 !important;
+  max-width: 420px;
+  color: #5f574e !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+
+.around-town-link {
+  flex: 0 0 auto;
+  color: #1f1d1a;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.around-town-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.around-town-card {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(32, 30, 27, 0.08);
+  background: #fffdf9;
+  color: inherit;
+  text-decoration: none;
+}
+
+.around-town-imageWrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid rgba(32, 30, 27, 0.08);
+  background: #efe8dd;
+}
+
+.around-town-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.around-town-cardBody {
+  min-width: 0;
+}
+
+.around-town-tag {
+  display: block;
+  margin-bottom: 8px;
+  color: #8d7760 !important;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.around-town-title {
+  margin: 0 0 8px !important;
+  color: #1f1d1a !important;
+  font-size: clamp(18px, 1.4vw, 24px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.5px;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+}
+
+.around-town-copy {
+  margin: 0 0 10px !important;
+  color: #5f574e !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+.around-town-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #1f1d1a !important;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .guide-sections-heading {
   margin-bottom: 14px;
 }
@@ -4930,6 +5042,42 @@
 
   .weekly-picks-title {
     font-size: clamp(18px, 4.8vw, 24px) !important;
+  }
+
+  .around-town-heading {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .around-town-link {
+    font-size: 13px;
+  }
+
+  .around-town-grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 0 16px 8px;
+    scrollbar-width: none;
+  }
+
+  .around-town-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .around-town-card {
+    flex: 0 0 84vw;
+    min-width: 84vw;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .around-town-title {
+    font-size: clamp(18px, 5vw, 24px) !important;
   }
 
   .destination-categories-grid {

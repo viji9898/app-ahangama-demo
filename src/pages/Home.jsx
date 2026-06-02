@@ -186,6 +186,47 @@ const WEEKLY_PICKS = [
   },
 ];
 
+const AROUND_TOWN_PICKS = [
+  {
+    category: "Instagram Pick",
+    title: "@studio.mukti",
+    description: "Beautiful behind-the-scenes look at the opening week.",
+    cta: "View on Instagram",
+    href: "https://instagram.com/studiomukti",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/living_room.jpg",
+  },
+  {
+    category: "Blog Pick",
+    title: "Tales of the Tropics",
+    description:
+      "A thoughtful piece on Ahangama's changing identity.",
+    cta: "Read article",
+    href: "/blogs",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+  },
+  {
+    category: "Photo of the Week",
+    title: "Sunrise at Marshmallow",
+    description: "Captured by @ahangama.images",
+    cta: "View photo",
+    href: "https://instagram.com/ahangama.images",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
+  },
+  {
+    category: "Creator Spotlight",
+    title: "@followthewhiterabbit",
+    description:
+      "One of our favourite local accounts capturing life in Ahangama.",
+    cta: "Follow",
+    href: "https://instagram.com/followthewhiterabbit",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/animals.jpg",
+  },
+];
+
 const HERO_INTELLIGENCE_ITEMS = [
   {
     key: "surf",
@@ -1363,6 +1404,68 @@ export default function Home() {
                     {story.title}
                   </Title>
                   <Text className="latest-stories-date">{story.date}</Text>
+                </a>
+              ))}
+            </div>
+
+            <div className="home-section-divider" aria-hidden="true" />
+          </div>
+
+          <div style={{ marginTop: 20 }}>
+            <div className="around-town-heading">
+              <div className="around-town-headingCopy">
+                <Text className="around-town-kicker">7. Around the Town</Text>
+                <Paragraph className="around-town-description">
+                  What we&apos;re reading, following and loving around Ahangama
+                  this week.
+                </Paragraph>
+              </div>
+              <a
+                href="#"
+                onClick={(event) => event.preventDefault()}
+                className="around-town-link"
+              >
+                View all picks <ArrowRightOutlined />
+              </a>
+            </div>
+
+            <div
+              className="home-section-divider home-section-divider--tight"
+              aria-hidden="true"
+            />
+
+            <div className="around-town-grid">
+              {AROUND_TOWN_PICKS.map((pick) => (
+                <a
+                  key={pick.title}
+                  href={pick.href}
+                  className="around-town-card"
+                  target={pick.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    pick.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                >
+                  <div className="around-town-imageWrap">
+                    <img
+                      src={pick.image}
+                      alt={pick.title}
+                      className="around-town-image"
+                    />
+                  </div>
+                  <div className="around-town-cardBody">
+                    <Text className="around-town-tag">{pick.category}</Text>
+                    <Title level={3} className="around-town-title">
+                      {pick.title}
+                    </Title>
+                    <Paragraph className="around-town-copy">
+                      {pick.description}
+                    </Paragraph>
+                    <Text className="around-town-cta">
+                      {pick.cta} <ArrowRightOutlined />
+                    </Text>
+                  </div>
                 </a>
               ))}
             </div>
