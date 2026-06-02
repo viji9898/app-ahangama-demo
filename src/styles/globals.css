@@ -246,7 +246,8 @@
   font-size: clamp(18px, 1.65vw, 26px) !important;
   line-height: 1.02 !important;
   letter-spacing: -0.6px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .whats-on-boardVenue {
@@ -316,7 +317,8 @@
   font-size: clamp(24px, 2vw, 34px) !important;
   line-height: 1.04 !important;
   letter-spacing: -0.8px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .home-section-divider {
@@ -337,7 +339,11 @@
   border-radius: 28px;
   border: 1px solid rgba(32, 30, 27, 0.08);
   background:
-    radial-gradient(120% 160% at 50% 0%, rgba(223, 193, 156, 0.18) 0%, rgba(255, 255, 255, 0.98) 52%),
+    radial-gradient(
+      120% 160% at 50% 0%,
+      rgba(223, 193, 156, 0.18) 0%,
+      rgba(255, 255, 255, 0.98) 52%
+    ),
     #fffdfa;
   box-shadow: 0 18px 40px rgba(32, 30, 27, 0.04);
   overflow: hidden;
@@ -447,7 +453,8 @@
   font-size: clamp(38px, 4.5vw, 64px) !important;
   line-height: 0.94 !important;
   letter-spacing: -1.8px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .local-intelligence-subtitle {
@@ -606,7 +613,8 @@
   font-size: clamp(23px, 2vw, 34px) !important;
   line-height: 0.94 !important;
   letter-spacing: -0.8px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .local-intelligence-card--feature .local-intelligence-cardTitle {
@@ -816,7 +824,8 @@
   font-size: clamp(18px, 1.35vw, 24px) !important;
   line-height: 1.06 !important;
   letter-spacing: -0.5px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .weekly-picks-date {
@@ -850,13 +859,15 @@
 }
 
 .destination-categories-grid {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas:
+    "eat drink stay stay"
+    "eat surf nightlife nightlife"
+    "wellness wellness culture shop";
+  grid-template-rows: repeat(3, minmax(112px, auto));
   gap: 14px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0 0 8px;
-  scrollbar-width: none;
+  padding: 0;
 }
 
 .destination-categories-grid::-webkit-scrollbar {
@@ -865,7 +876,6 @@
 
 .destination-categories-card {
   display: flex;
-  flex: 0 0 284px;
   flex-direction: column;
   justify-content: flex-start;
   min-height: 0;
@@ -963,7 +973,8 @@
   font-size: clamp(28px, 2.2vw, 46px);
   line-height: 0.9;
   letter-spacing: -1px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .destination-categories-titleRow {
@@ -1066,7 +1077,8 @@
   font-size: clamp(24px, 2vw, 34px) !important;
   line-height: 1.06 !important;
   letter-spacing: -0.5px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .itineraries-tag {
@@ -1132,7 +1144,8 @@
   font-size: clamp(15px, 1.1vw, 20px) !important;
   line-height: 1.08 !important;
   letter-spacing: -0.3px;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .latest-stories-date {
@@ -4837,10 +4850,17 @@
   }
 
   .destination-categories-grid {
+    display: flex;
+    flex-wrap: nowrap;
     gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0 8px;
+    scrollbar-width: none;
   }
 
   .destination-categories-card {
+    flex: 0 0 248px;
     flex-basis: 248px;
     padding: 14px;
     border-radius: 22px;

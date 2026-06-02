@@ -238,7 +238,8 @@ const DESTINATION_CATEGORIES = [
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/unsung.jpg",
     keywords: ["drink", "bar", "cocktail", "prosecco", "music bar", "lounge"],
-    sublabels: "Cocktails at golden hour, late pours and the bars worth staying for.",
+    sublabels:
+      "Cocktails at golden hour, late pours and the bars worth staying for.",
   },
   {
     key: "stay",
@@ -248,7 +249,8 @@ const DESTINATION_CATEGORIES = [
     image:
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
     keywords: ["stay", "villa", "guesthouse", "boutique hotel", "hotel"],
-    sublabels: "Boutique stays, private villas and the places built for lingering.",
+    sublabels:
+      "Boutique stays, private villas and the places built for lingering.",
   },
   {
     key: "surf",
@@ -278,7 +280,8 @@ const DESTINATION_CATEGORIES = [
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
     keywords: ["culture", "local experience", "nature", "cooking", "guide"],
-    sublabels: "Stories, local context and the details that make the town legible.",
+    sublabels:
+      "Stories, local context and the details that make the town legible.",
   },
   {
     key: "shop",
@@ -288,7 +291,8 @@ const DESTINATION_CATEGORIES = [
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/living_room.jpg",
     keywords: ["retail", "shop", "clothing", "home & gifts", "gifts"],
-    sublabels: "Clothing, home pieces and the small essentials people actually need.",
+    sublabels:
+      "Clothing, home pieces and the small essentials people actually need.",
   },
   {
     key: "nightlife",
@@ -298,7 +302,8 @@ const DESTINATION_CATEGORIES = [
     image:
       "https://www.theworlds50best.com/discovery/filestore/jpg/TRAX_exterior.jpg",
     keywords: ["nightlife", "bar", "music", "social", "lounge", "drink"],
-    sublabels: "Music, late-night energy and the places that still feel social.",
+    sublabels:
+      "Music, late-night energy and the places that still feel social.",
   },
 ];
 
@@ -666,7 +671,9 @@ export default function Home() {
           .join(" ")
           .toLowerCase();
 
-        return category.keywords.some((keyword) => searchable.includes(keyword));
+        return category.keywords.some((keyword) =>
+          searchable.includes(keyword),
+        );
       }).length;
 
       return {
@@ -969,7 +976,9 @@ export default function Home() {
                         {item.label}:
                       </Text>
                     </div>
-                    <Text className="home-intelligence-itemValue">{item.value}</Text>
+                    <Text className="home-intelligence-itemValue">
+                      {item.value}
+                    </Text>
                   </div>
                 );
               })}
@@ -981,8 +990,12 @@ export default function Home() {
           <div style={{ marginTop: sectionSpacing }}>
             <div className="whats-on-board">
               <div className="whats-on-boardIntro">
-                <Text className="whats-on-boardKicker">What&apos;s On This Week</Text>
-                <Text className="whats-on-boardLocation">Ahangama . 4 - 8 June</Text>
+                <Text className="whats-on-boardKicker">
+                  What&apos;s On This Week
+                </Text>
+                <Text className="whats-on-boardLocation">
+                  Ahangama . 4 - 8 June
+                </Text>
                 <Paragraph className="whats-on-boardDescription">
                   A curated selection of things happening around town this week.
                 </Paragraph>
@@ -1036,7 +1049,9 @@ export default function Home() {
                       className="weekly-features-image"
                     />
                   </div>
-                  <Text className="weekly-features-tag">{feature.category}</Text>
+                  <Text className="weekly-features-tag">
+                    {feature.category}
+                  </Text>
                   <Title level={3} className="weekly-features-title">
                     {feature.title}
                   </Title>
@@ -1136,104 +1151,106 @@ export default function Home() {
               gutter={[18, 18]}
               align="stretch"
             >
-              {MINIMAL_GUIDE_CARDS.map((guide, index) => (
+              {MINIMAL_GUIDE_CARDS.map((guide, index) =>
                 (() => {
                   const palette =
                     GUIDE_SECTION_PALETTE[index % GUIDE_SECTION_PALETTE.length];
 
                   return (
-                <Col
-                  className="guide-sections-col"
-                  key={guide.href}
-                  xs={24}
-                  md={12}
-                  xl={6}
-                >
-                  <a
-                    className={`guide-sections-cardLink${index === 0 ? " guide-sections-cardLink--first" : ""}`}
-                    href={guide.href}
-                    style={{
-                      display: "block",
-                      height: "100%",
-                      paddingLeft: index === 0 ? 0 : 18,
-                      borderLeft:
-                        index === 0 ? "none" : "1px solid rgba(22,20,18,0.14)",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: "100%",
-                        borderRadius: 18,
-                        padding: 16,
-                        background: palette.card,
-                        color: palette.ink,
-                        border: "1px solid rgba(31,29,26,0.08)",
-                        boxShadow: "0 8px 20px rgba(31,29,26,0.04)",
-                      }}
+                    <Col
+                      className="guide-sections-col"
+                      key={guide.href}
+                      xs={24}
+                      md={12}
+                      xl={6}
                     >
-                      <Text
+                      <a
+                        className={`guide-sections-cardLink${index === 0 ? " guide-sections-cardLink--first" : ""}`}
+                        href={guide.href}
                         style={{
                           display: "block",
-                          paddingBottom: 6,
-                          marginBottom: 10,
-                          borderBottom: `1px solid ${palette.line}`,
-                          color: palette.ink,
-                          fontSize: 10,
-                          fontWeight: 700,
-                          letterSpacing: 1.5,
-                          textTransform: "uppercase",
+                          height: "100%",
+                          paddingLeft: index === 0 ? 0 : 18,
+                          borderLeft:
+                            index === 0
+                              ? "none"
+                              : "1px solid rgba(22,20,18,0.14)",
+                          textDecoration: "none",
                         }}
                       >
-                        {guide.label}
-                      </Text>
-
-                      <Title
-                        level={3}
-                        style={{
-                          margin: "0 0 16px",
-                          color: palette.ink,
-                          fontSize: "clamp(22px, 1.9vw, 34px)",
-                          lineHeight: 0.98,
-                          letterSpacing: -0.8,
-                        }}
-                      >
-                        {guide.title}
-                      </Title>
-
-                      <div
-                        style={{
-                          aspectRatio: "1 / 1.12",
-                          overflow: "hidden",
-                          background: palette.media,
-                          border: "1px solid rgba(31,29,26,0.08)",
-                        }}
-                      >
-                        <img
-                          src={guide.image}
-                          alt={guide.title}
+                        <div
                           style={{
-                            display: "block",
-                            width: "100%",
                             height: "100%",
-                            objectFit:
-                              guide.href === "/what-is-ahangama-pass"
-                                ? "contain"
-                                : "cover",
-                            objectPosition: "center",
-                            background:
-                              guide.href === "/what-is-ahangama-pass"
-                                ? "rgba(255,255,255,0.9)"
-                                : "transparent",
+                            borderRadius: 18,
+                            padding: 16,
+                            background: palette.card,
+                            color: palette.ink,
+                            border: "1px solid rgba(31,29,26,0.08)",
+                            boxShadow: "0 8px 20px rgba(31,29,26,0.04)",
                           }}
-                        />
-                      </div>
-                    </div>
-                  </a>
-                </Col>
+                        >
+                          <Text
+                            style={{
+                              display: "block",
+                              paddingBottom: 6,
+                              marginBottom: 10,
+                              borderBottom: `1px solid ${palette.line}`,
+                              color: palette.ink,
+                              fontSize: 10,
+                              fontWeight: 700,
+                              letterSpacing: 1.5,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {guide.label}
+                          </Text>
+
+                          <Title
+                            level={3}
+                            style={{
+                              margin: "0 0 16px",
+                              color: palette.ink,
+                              fontSize: "clamp(22px, 1.9vw, 34px)",
+                              lineHeight: 0.98,
+                              letterSpacing: -0.8,
+                            }}
+                          >
+                            {guide.title}
+                          </Title>
+
+                          <div
+                            style={{
+                              aspectRatio: "1 / 1.12",
+                              overflow: "hidden",
+                              background: palette.media,
+                              border: "1px solid rgba(31,29,26,0.08)",
+                            }}
+                          >
+                            <img
+                              src={guide.image}
+                              alt={guide.title}
+                              style={{
+                                display: "block",
+                                width: "100%",
+                                height: "100%",
+                                objectFit:
+                                  guide.href === "/what-is-ahangama-pass"
+                                    ? "contain"
+                                    : "cover",
+                                objectPosition: "center",
+                                background:
+                                  guide.href === "/what-is-ahangama-pass"
+                                    ? "rgba(255,255,255,0.9)"
+                                    : "transparent",
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </a>
+                    </Col>
                   );
-                })()
-              ))}
+                })(),
+              )}
             </Row>
 
             <div className="home-section-divider" aria-hidden="true" />
@@ -1241,7 +1258,9 @@ export default function Home() {
 
           <div style={{ marginTop: 20 }}>
             <div className="destination-categories-heading">
-              <Text className="destination-categories-kicker">4. Categories</Text>
+              <Text className="destination-categories-kicker">
+                4. Categories
+              </Text>
               <Paragraph className="destination-categories-description">
                 Help visitors navigate the destination.
               </Paragraph>
@@ -1267,7 +1286,9 @@ export default function Home() {
                       <Text className="destination-categories-label">
                         {category.title} Guide
                       </Text>
-                      <Text className="destination-categories-separator">|</Text>
+                      <Text className="destination-categories-separator">
+                        |
+                      </Text>
                       <Text className="destination-categories-countInline">
                         {formatCategoryCount(category.count)}
                       </Text>
@@ -1421,150 +1442,541 @@ export default function Home() {
                               ))}
                             </div>
 
-                          <div
-                            className="perfect-day-hashtags"
-                            style={{
-                              display: "flex",
-                              flexWrap: "wrap",
-                              gap: 10,
-                            }}
-                          >
-                            {DENITSA_DAY_CHIPS.map((item) => (
-                              <Text
-                                key={item}
-                                style={{
-                                  color: "#8B7B63",
-                                  fontSize: 12,
-                                  fontWeight: 600,
-                                  lineHeight: 1.2,
-                                }}
-                              >
-                                #{item}
-                              </Text>
-                            ))}
-                          </div>
-                        </div>
-                      </Col>
-
-                      <Col
-                        xs={{ span: 12, order: 2 }}
-                        xl={{ span: 14, order: 2 }}
-                      >
-                        <Title
-                          level={2}
-                          className="perfect-day-title"
-                          style={{
-                            ...editorialTitleStyle,
-                            marginBottom: 10,
-                            fontSize: "clamp(29px, 3vw, 41px)",
-                            lineHeight: 0.94,
-                          }}
-                        >
-                          Perfect Day in Ahangama
-                        </Title>
-
-                        <Paragraph
-                          className="perfect-day-excerpt"
-                          style={{
-                            marginBottom: 12,
-                            color: "#5F574E",
-                            fontSize: 16,
-                            lineHeight: 1.7,
-                            maxWidth: 560,
-                            display: "-webkit-box",
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                          }}
-                        >
-                          Pilates, surf, coffee, a slow afternoon and sunset at
-                          Lighthouse. Denitsa shares how she would spend a
-                          perfect day in Ahangama.
-                        </Paragraph>
-
-                        <div
-                          className="perfect-day-chip-group"
-                          style={{ marginBottom: 14 }}
-                        >
-                          <Text style={editorialEyebrowStyle}>
-                            Places Featured
-                          </Text>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexWrap: "wrap",
-                              gap: 10,
-                            }}
-                          >
-                            {denitsaFeaturedPlaces.map((item) => (
-                              <a
-                                key={item.label}
-                                className="perfect-day-chip"
-                                href={item.mapUrl || undefined}
-                                target={item.mapUrl ? "_blank" : undefined}
-                                rel={
-                                  item.mapUrl
-                                    ? "noopener noreferrer"
-                                    : undefined
-                                }
-                                aria-label={
-                                  item.mapUrl
-                                    ? `Open ${item.label} in Google Maps`
-                                    : item.label
-                                }
-                                style={{
-                                  display: "inline-flex",
-                                  flexDirection: "column",
-                                  alignItems: "center",
-                                  gap: 8,
-                                  color: "#2F2A24",
-                                  fontSize: 13,
-                                  fontWeight: 600,
-                                  lineHeight: 1,
-                                  textDecoration: "none",
-                                  cursor: item.mapUrl ? "pointer" : "default",
-                                }}
-                              >
-                                {item.logo ? (
-                                  <img
-                                    src={item.logo}
-                                    alt=""
-                                    aria-hidden="true"
-                                    style={{
-                                      width: 50,
-                                      height: 50,
-                                      borderRadius: 999,
-                                      objectFit: "cover",
-                                      flex: "0 0 auto",
-                                    }}
-                                  />
-                                ) : null}
-                                <span
+                            <div
+                              className="perfect-day-hashtags"
+                              style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 10,
+                              }}
+                            >
+                              {DENITSA_DAY_CHIPS.map((item) => (
+                                <Text
+                                  key={item}
                                   style={{
-                                    display: "inline-block",
-                                    paddingBottom: 2,
-                                    borderBottom:
-                                      "1px solid rgba(47,42,36,0.42)",
+                                    color: "#8B7B63",
                                     fontSize: 12,
-                                    letterSpacing: 0.08,
+                                    fontWeight: 600,
+                                    lineHeight: 1.2,
                                   }}
                                 >
-                                  {item.label}
-                                </span>
-                              </a>
+                                  #{item}
+                                </Text>
+                              ))}
+                            </div>
+                          </div>
+                        </Col>
+
+                        <Col
+                          xs={{ span: 12, order: 2 }}
+                          xl={{ span: 14, order: 2 }}
+                        >
+                          <Title
+                            level={2}
+                            className="perfect-day-title"
+                            style={{
+                              ...editorialTitleStyle,
+                              marginBottom: 10,
+                              fontSize: "clamp(29px, 3vw, 41px)",
+                              lineHeight: 0.94,
+                            }}
+                          >
+                            Perfect Day in Ahangama
+                          </Title>
+
+                          <Paragraph
+                            className="perfect-day-excerpt"
+                            style={{
+                              marginBottom: 12,
+                              color: "#5F574E",
+                              fontSize: 16,
+                              lineHeight: 1.7,
+                              maxWidth: 560,
+                              display: "-webkit-box",
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: "vertical",
+                              overflow: "hidden",
+                            }}
+                          >
+                            Pilates, surf, coffee, a slow afternoon and sunset
+                            at Lighthouse. Denitsa shares how she would spend a
+                            perfect day in Ahangama.
+                          </Paragraph>
+
+                          <div
+                            className="perfect-day-chip-group"
+                            style={{ marginBottom: 14 }}
+                          >
+                            <Text style={editorialEyebrowStyle}>
+                              Places Featured
+                            </Text>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 10,
+                              }}
+                            >
+                              {denitsaFeaturedPlaces.map((item) => (
+                                <a
+                                  key={item.label}
+                                  className="perfect-day-chip"
+                                  href={item.mapUrl || undefined}
+                                  target={item.mapUrl ? "_blank" : undefined}
+                                  rel={
+                                    item.mapUrl
+                                      ? "noopener noreferrer"
+                                      : undefined
+                                  }
+                                  aria-label={
+                                    item.mapUrl
+                                      ? `Open ${item.label} in Google Maps`
+                                      : item.label
+                                  }
+                                  style={{
+                                    display: "inline-flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    gap: 8,
+                                    color: "#2F2A24",
+                                    fontSize: 13,
+                                    fontWeight: 600,
+                                    lineHeight: 1,
+                                    textDecoration: "none",
+                                    cursor: item.mapUrl ? "pointer" : "default",
+                                  }}
+                                >
+                                  {item.logo ? (
+                                    <img
+                                      src={item.logo}
+                                      alt=""
+                                      aria-hidden="true"
+                                      style={{
+                                        width: 50,
+                                        height: 50,
+                                        borderRadius: 999,
+                                        objectFit: "cover",
+                                        flex: "0 0 auto",
+                                      }}
+                                    />
+                                  ) : null}
+                                  <span
+                                    style={{
+                                      display: "inline-block",
+                                      paddingBottom: 2,
+                                      borderBottom:
+                                        "1px solid rgba(47,42,36,0.42)",
+                                      fontSize: 12,
+                                      letterSpacing: 0.08,
+                                    }}
+                                  >
+                                    {item.label}
+                                  </span>
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div
+                            className="perfect-day-cta"
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <a
+                              href="/blogs/Perfect-Day-in-Ahangama"
+                              style={{
+                                color: "#2F3E3A",
+                                textDecoration: "none",
+                                fontSize: 16,
+                                fontWeight: 600,
+                                letterSpacing: 0.1,
+                              }}
+                            >
+                              Read Story <ArrowRightOutlined />
+                            </a>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Card>
+
+                    <Card
+                      className="getting-around-card"
+                      style={editorialCardStyle}
+                      bodyStyle={{ padding: 24 }}
+                    >
+                      <Text style={editorialEyebrowStyle}>Getting Around</Text>
+                      <Title
+                        level={3}
+                        className="getting-around-title"
+                        style={{
+                          ...editorialTitleStyle,
+                          marginBottom: 18,
+                          fontSize: "clamp(26px, 2vw, 33px)",
+                          lineHeight: 1.02,
+                          maxWidth: 320,
+                        }}
+                      >
+                        Simple transport options and local costs.
+                      </Title>
+
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-end",
+                          gap: 6,
+                          marginBottom: 12,
+                        }}
+                      >
+                        {TRANSPORT_CURRENCIES.map((currency) => {
+                          const isActive = transportCurrency === currency;
+
+                          return (
+                            <Button
+                              key={currency}
+                              size="small"
+                              type="text"
+                              onClick={() => setTransportCurrency(currency)}
+                              style={{
+                                height: 26,
+                                paddingInline: 8,
+                                borderRadius: 999,
+                                border: isActive
+                                  ? "1px solid rgba(47,62,58,0.18)"
+                                  : "1px solid transparent",
+                                background: isActive
+                                  ? "rgba(47,62,58,0.06)"
+                                  : "transparent",
+                                color: isActive ? "#2F3E3A" : "#8B7B63",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                letterSpacing: 0.8,
+                                boxShadow: "none",
+                              }}
+                            >
+                              {currency}
+                            </Button>
+                          );
+                        })}
+                      </div>
+
+                      <div
+                        style={{
+                          display: "grid",
+                          gap: 0,
+                          marginBottom: 22,
+                        }}
+                      >
+                        {GETTING_AROUND_PREVIEW.map((item, index) => (
+                          <div
+                            key={item.label}
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "minmax(0, 1fr) auto",
+                              gap: 16,
+                              alignItems: "center",
+                              padding: "14px 0",
+                              borderTop:
+                                index === 0
+                                  ? "1px solid rgba(32,30,27,0.08)"
+                                  : "none",
+                              borderBottom: "1px solid rgba(32,30,27,0.08)",
+                            }}
+                          >
+                            <Text
+                              style={{
+                                color: "#2F2A24",
+                                fontSize: 15,
+                                fontWeight: 600,
+                                lineHeight: 1.35,
+                              }}
+                            >
+                              {item.label}
+                            </Text>
+                            <Text
+                              style={{
+                                color: "#5F574E",
+                                fontSize: 14,
+                                fontWeight: 500,
+                                lineHeight: 1.35,
+                                textAlign: "right",
+                              }}
+                            >
+                              {formatTransportRange(item, transportCurrency)}
+                            </Text>
+                          </div>
+                        ))}
+                      </div>
+
+                      <a
+                        href="/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers"
+                        style={{
+                          color: "#2F3E3A",
+                          textDecoration: "none",
+                          fontSize: 16,
+                          fontWeight: 600,
+                          letterSpacing: 0.1,
+                        }}
+                      >
+                        View Transport Guide <ArrowRightOutlined />
+                      </a>
+                    </Card>
+                  </div>
+                </Col>
+
+                <Col xs={24} xl={10}>
+                  <div style={{ display: "grid", gap: 20, height: "100%" }}>
+                    <Card
+                      className="three-days-card"
+                      style={editorialCardStyle}
+                      bodyStyle={{ padding: 24 }}
+                    >
+                      <Row gutter={[18, 18]} align="middle">
+                        <Col xs={10} sm={9}>
+                          <div
+                            className="three-days-media"
+                            style={{
+                              minHeight: 136,
+                              borderRadius: 18,
+                              backgroundImage:
+                                "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.12) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg)",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              border: "1px solid rgba(32,30,27,0.08)",
+                            }}
+                          />
+                        </Col>
+                        <Col xs={14} sm={15}>
+                          <Text style={editorialEyebrowStyle}>
+                            3 Days in Ahangama
+                          </Text>
+                          <Title
+                            level={3}
+                            className="three-days-title"
+                            style={{
+                              ...editorialTitleStyle,
+                              marginBottom: 10,
+                              fontSize: "clamp(28px, 2.2vw, 36px)",
+                              lineHeight: 0.96,
+                            }}
+                          >
+                            My Wellness Stay at Samba
+                          </Title>
+                          <Paragraph
+                            className="three-days-excerpt"
+                            style={{
+                              marginBottom: 14,
+                              color: "#5F574E",
+                              fontSize: 16,
+                              lineHeight: 1.7,
+                            }}
+                          >
+                            A slow three-day itinerary for rest, movement and
+                            good food.
+                          </Paragraph>
+                          <a
+                            href="/3-days-in-ahangama"
+                            style={{
+                              color: "#2F3E3A",
+                              textDecoration: "none",
+                              fontSize: 16,
+                              fontWeight: 600,
+                              letterSpacing: 0.1,
+                            }}
+                          >
+                            Read Itinerary <ArrowRightOutlined />
+                          </a>
+                        </Col>
+                      </Row>
+                    </Card>
+
+                    <Card
+                      className="twelve-things-card"
+                      style={editorialCardStyle}
+                      bodyStyle={{ padding: 24 }}
+                    >
+                      <Row gutter={[18, 18]} align="middle">
+                        <Col xs={10} sm={9}>
+                          <div
+                            className="twelve-things-mosaic"
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                              gap: 6,
+                            }}
+                          >
+                            {twelveThingsMosaic.map((item) => (
+                              <a
+                                key={item.slug}
+                                href="/12-things"
+                                title={item.name}
+                                aria-label={`Open 12 Things guide from ${item.name}`}
+                                style={{
+                                  display: "block",
+                                  aspectRatio: "1 / 1",
+                                  borderRadius: 10,
+                                  backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${item.image})`,
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center",
+                                  textDecoration: "none",
+                                  boxShadow:
+                                    "inset 0 0 0 1px rgba(255,255,255,0.12)",
+                                }}
+                              />
                             ))}
                           </div>
-                        </div>
-
-                        <div
-                          className="perfect-day-cta"
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                        >
+                        </Col>
+                        <Col xs={14} sm={15}>
+                          <Text style={editorialEyebrowStyle}>Guide</Text>
+                          <Title
+                            level={3}
+                            className="twelve-things-title"
+                            style={{
+                              ...editorialTitleStyle,
+                              marginBottom: 10,
+                              fontSize: "clamp(28px, 2.2vw, 36px)",
+                              lineHeight: 0.96,
+                            }}
+                          >
+                            12 Things to Do in Ahangama
+                          </Title>
+                          <Paragraph
+                            className="twelve-things-excerpt"
+                            style={{
+                              marginBottom: 14,
+                              color: "#5F574E",
+                              fontSize: 16,
+                              lineHeight: 1.7,
+                            }}
+                          >
+                            Experiences, activities and local favourites.
+                          </Paragraph>
                           <a
-                            href="/blogs/Perfect-Day-in-Ahangama"
+                            href="/12-things"
+                            style={{
+                              color: "#2F3E3A",
+                              textDecoration: "none",
+                              fontSize: 16,
+                              fontWeight: 600,
+                              letterSpacing: 0.1,
+                            }}
+                          >
+                            Explore Guide <ArrowRightOutlined />
+                          </a>
+                        </Col>
+                      </Row>
+                    </Card>
+
+                    <Card
+                      className="pass-guide-card"
+                      style={editorialCardStyle}
+                      bodyStyle={{ padding: 24 }}
+                    >
+                      <Row gutter={[18, 18]} align="middle">
+                        <Col xs={10} sm={9}>
+                          <div
+                            className="pass-guide-media"
+                            style={{
+                              minHeight: 146,
+                              borderRadius: 18,
+                              border: "1px solid rgba(32,30,27,0.08)",
+                              background: "#FFFFFF",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: 14,
+                            }}
+                          >
+                            <img
+                              src={heroPassAppleWallet}
+                              alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
+                              style={{
+                                display: "block",
+                                maxWidth: "100%",
+                                maxHeight: 130,
+                                width: "auto",
+                                height: "auto",
+                                objectFit: "contain",
+                              }}
+                            />
+                          </div>
+                        </Col>
+                        <Col xs={14} sm={15}>
+                          <Text style={editorialEyebrowStyle}>
+                            Ahangama Pass
+                          </Text>
+                          <Title
+                            level={3}
+                            className="pass-guide-title"
+                            style={{
+                              ...editorialTitleStyle,
+                              marginBottom: 10,
+                              fontSize: "clamp(28px, 2.2vw, 36px)",
+                              lineHeight: 0.96,
+                            }}
+                          >
+                            What is the Ahangama Pass?
+                          </Title>
+                          <Paragraph
+                            className="pass-guide-excerpt"
+                            style={{
+                              marginBottom: 14,
+                              color: "#5F574E",
+                              fontSize: 16,
+                              lineHeight: 1.7,
+                            }}
+                          >
+                            Unlock perks across 100+ local places.
+                          </Paragraph>
+                          <a
+                            href="/what-is-ahangama-pass"
+                            style={{
+                              color: "#2F3E3A",
+                              textDecoration: "none",
+                              fontSize: 16,
+                              fontWeight: 600,
+                              letterSpacing: 0.1,
+                            }}
+                          >
+                            Learn More <ArrowRightOutlined />
+                          </a>
+                        </Col>
+                      </Row>
+                    </Card>
+
+                    <Card
+                      className="mukti-story-card"
+                      style={editorialCardStyle}
+                      bodyStyle={{ padding: 24 }}
+                    >
+                      <Row gutter={[18, 18]} align="middle">
+                        <Col xs={24}>
+                          <Text style={editorialEyebrowStyle}>New Story</Text>
+                          <Title
+                            level={3}
+                            style={{
+                              ...editorialTitleStyle,
+                              marginBottom: 10,
+                              fontSize: "clamp(24px, 2vw, 31px)",
+                              lineHeight: 0.98,
+                            }}
+                          >
+                            Mukti Studio and the New Face of Ahangama
+                          </Title>
+                          <Paragraph
+                            style={{
+                              marginBottom: 14,
+                              color: "#5F574E",
+                              fontSize: 15,
+                              lineHeight: 1.7,
+                            }}
+                          >
+                            A profile of one of the town's most thoughtful new
+                            creative businesses and the community around it.
+                          </Paragraph>
+                          <a
+                            href="/blogs/mukti-studio-and-the-new-face-of-ahangama"
                             style={{
                               color: "#2F3E3A",
                               textDecoration: "none",
@@ -1575,402 +1987,13 @@ export default function Home() {
                           >
                             Read Story <ArrowRightOutlined />
                           </a>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Card>
-
-                  <Card
-                    className="getting-around-card"
-                    style={editorialCardStyle}
-                    bodyStyle={{ padding: 24 }}
-                  >
-                    <Text style={editorialEyebrowStyle}>Getting Around</Text>
-                    <Title
-                      level={3}
-                      className="getting-around-title"
-                      style={{
-                        ...editorialTitleStyle,
-                        marginBottom: 18,
-                        fontSize: "clamp(26px, 2vw, 33px)",
-                        lineHeight: 1.02,
-                        maxWidth: 320,
-                      }}
-                    >
-                      Simple transport options and local costs.
-                    </Title>
-
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        gap: 6,
-                        marginBottom: 12,
-                      }}
-                    >
-                      {TRANSPORT_CURRENCIES.map((currency) => {
-                        const isActive = transportCurrency === currency;
-
-                        return (
-                          <Button
-                            key={currency}
-                            size="small"
-                            type="text"
-                            onClick={() => setTransportCurrency(currency)}
-                            style={{
-                              height: 26,
-                              paddingInline: 8,
-                              borderRadius: 999,
-                              border: isActive
-                                ? "1px solid rgba(47,62,58,0.18)"
-                                : "1px solid transparent",
-                              background: isActive
-                                ? "rgba(47,62,58,0.06)"
-                                : "transparent",
-                              color: isActive ? "#2F3E3A" : "#8B7B63",
-                              fontSize: 11,
-                              fontWeight: 700,
-                              letterSpacing: 0.8,
-                              boxShadow: "none",
-                            }}
-                          >
-                            {currency}
-                          </Button>
-                        );
-                      })}
-                    </div>
-
-                    <div
-                      style={{
-                        display: "grid",
-                        gap: 0,
-                        marginBottom: 22,
-                      }}
-                    >
-                      {GETTING_AROUND_PREVIEW.map((item, index) => (
-                        <div
-                          key={item.label}
-                          style={{
-                            display: "grid",
-                            gridTemplateColumns: "minmax(0, 1fr) auto",
-                            gap: 16,
-                            alignItems: "center",
-                            padding: "14px 0",
-                            borderTop:
-                              index === 0
-                                ? "1px solid rgba(32,30,27,0.08)"
-                                : "none",
-                            borderBottom: "1px solid rgba(32,30,27,0.08)",
-                          }}
-                        >
-                          <Text
-                            style={{
-                              color: "#2F2A24",
-                              fontSize: 15,
-                              fontWeight: 600,
-                              lineHeight: 1.35,
-                            }}
-                          >
-                            {item.label}
-                          </Text>
-                          <Text
-                            style={{
-                              color: "#5F574E",
-                              fontSize: 14,
-                              fontWeight: 500,
-                              lineHeight: 1.35,
-                              textAlign: "right",
-                            }}
-                          >
-                            {formatTransportRange(item, transportCurrency)}
-                          </Text>
-                        </div>
-                      ))}
-                    </div>
-
-                    <a
-                      href="/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers"
-                      style={{
-                        color: "#2F3E3A",
-                        textDecoration: "none",
-                        fontSize: 16,
-                        fontWeight: 600,
-                        letterSpacing: 0.1,
-                      }}
-                    >
-                      View Transport Guide <ArrowRightOutlined />
-                    </a>
-                  </Card>
-                </div>
-              </Col>
-
-              <Col xs={24} xl={10}>
-                <div style={{ display: "grid", gap: 20, height: "100%" }}>
-                  <Card
-                    className="three-days-card"
-                    style={editorialCardStyle}
-                    bodyStyle={{ padding: 24 }}
-                  >
-                    <Row gutter={[18, 18]} align="middle">
-                      <Col xs={10} sm={9}>
-                        <div
-                          className="three-days-media"
-                          style={{
-                            minHeight: 136,
-                            borderRadius: 18,
-                            backgroundImage:
-                              "linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.12) 100%), url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg)",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            border: "1px solid rgba(32,30,27,0.08)",
-                          }}
-                        />
-                      </Col>
-                      <Col xs={14} sm={15}>
-                        <Text style={editorialEyebrowStyle}>
-                          3 Days in Ahangama
-                        </Text>
-                        <Title
-                          level={3}
-                          className="three-days-title"
-                          style={{
-                            ...editorialTitleStyle,
-                            marginBottom: 10,
-                            fontSize: "clamp(28px, 2.2vw, 36px)",
-                            lineHeight: 0.96,
-                          }}
-                        >
-                          My Wellness Stay at Samba
-                        </Title>
-                        <Paragraph
-                          className="three-days-excerpt"
-                          style={{
-                            marginBottom: 14,
-                            color: "#5F574E",
-                            fontSize: 16,
-                            lineHeight: 1.7,
-                          }}
-                        >
-                          A slow three-day itinerary for rest, movement and good
-                          food.
-                        </Paragraph>
-                        <a
-                          href="/3-days-in-ahangama"
-                          style={{
-                            color: "#2F3E3A",
-                            textDecoration: "none",
-                            fontSize: 16,
-                            fontWeight: 600,
-                            letterSpacing: 0.1,
-                          }}
-                        >
-                          Read Itinerary <ArrowRightOutlined />
-                        </a>
-                      </Col>
-                    </Row>
-                  </Card>
-
-                  <Card
-                    className="twelve-things-card"
-                    style={editorialCardStyle}
-                    bodyStyle={{ padding: 24 }}
-                  >
-                    <Row gutter={[18, 18]} align="middle">
-                      <Col xs={10} sm={9}>
-                        <div
-                          className="twelve-things-mosaic"
-                          style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                            gap: 6,
-                          }}
-                        >
-                          {twelveThingsMosaic.map((item) => (
-                            <a
-                              key={item.slug}
-                              href="/12-things"
-                              title={item.name}
-                              aria-label={`Open 12 Things guide from ${item.name}`}
-                              style={{
-                                display: "block",
-                                aspectRatio: "1 / 1",
-                                borderRadius: 10,
-                                backgroundImage: `linear-gradient(180deg, rgba(18,25,24,0.04) 0%, rgba(18,25,24,0.18) 100%), url(${item.image})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                textDecoration: "none",
-                                boxShadow:
-                                  "inset 0 0 0 1px rgba(255,255,255,0.12)",
-                              }}
-                            />
-                          ))}
-                        </div>
-                      </Col>
-                      <Col xs={14} sm={15}>
-                        <Text style={editorialEyebrowStyle}>Guide</Text>
-                        <Title
-                          level={3}
-                          className="twelve-things-title"
-                          style={{
-                            ...editorialTitleStyle,
-                            marginBottom: 10,
-                            fontSize: "clamp(28px, 2.2vw, 36px)",
-                            lineHeight: 0.96,
-                          }}
-                        >
-                          12 Things to Do in Ahangama
-                        </Title>
-                        <Paragraph
-                          className="twelve-things-excerpt"
-                          style={{
-                            marginBottom: 14,
-                            color: "#5F574E",
-                            fontSize: 16,
-                            lineHeight: 1.7,
-                          }}
-                        >
-                          Experiences, activities and local favourites.
-                        </Paragraph>
-                        <a
-                          href="/12-things"
-                          style={{
-                            color: "#2F3E3A",
-                            textDecoration: "none",
-                            fontSize: 16,
-                            fontWeight: 600,
-                            letterSpacing: 0.1,
-                          }}
-                        >
-                          Explore Guide <ArrowRightOutlined />
-                        </a>
-                      </Col>
-                    </Row>
-                  </Card>
-
-                  <Card
-                    className="pass-guide-card"
-                    style={editorialCardStyle}
-                    bodyStyle={{ padding: 24 }}
-                  >
-                    <Row gutter={[18, 18]} align="middle">
-                      <Col xs={10} sm={9}>
-                        <div
-                          className="pass-guide-media"
-                          style={{
-                            minHeight: 146,
-                            borderRadius: 18,
-                            border: "1px solid rgba(32,30,27,0.08)",
-                            background: "#FFFFFF",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            padding: 14,
-                          }}
-                        >
-                          <img
-                            src={heroPassAppleWallet}
-                            alt="Ahangama Pass displayed in an iPhone with Apple Wallet and Google Wallet"
-                            style={{
-                              display: "block",
-                              maxWidth: "100%",
-                              maxHeight: 130,
-                              width: "auto",
-                              height: "auto",
-                              objectFit: "contain",
-                            }}
-                          />
-                        </div>
-                      </Col>
-                      <Col xs={14} sm={15}>
-                        <Text style={editorialEyebrowStyle}>Ahangama Pass</Text>
-                        <Title
-                          level={3}
-                          className="pass-guide-title"
-                          style={{
-                            ...editorialTitleStyle,
-                            marginBottom: 10,
-                            fontSize: "clamp(28px, 2.2vw, 36px)",
-                            lineHeight: 0.96,
-                          }}
-                        >
-                          What is the Ahangama Pass?
-                        </Title>
-                        <Paragraph
-                          className="pass-guide-excerpt"
-                          style={{
-                            marginBottom: 14,
-                            color: "#5F574E",
-                            fontSize: 16,
-                            lineHeight: 1.7,
-                          }}
-                        >
-                          Unlock perks across 100+ local places.
-                        </Paragraph>
-                        <a
-                          href="/what-is-ahangama-pass"
-                          style={{
-                            color: "#2F3E3A",
-                            textDecoration: "none",
-                            fontSize: 16,
-                            fontWeight: 600,
-                            letterSpacing: 0.1,
-                          }}
-                        >
-                          Learn More <ArrowRightOutlined />
-                        </a>
-                      </Col>
-                    </Row>
-                  </Card>
-
-                  <Card
-                    className="mukti-story-card"
-                    style={editorialCardStyle}
-                    bodyStyle={{ padding: 24 }}
-                  >
-                    <Row gutter={[18, 18]} align="middle">
-                      <Col xs={24}>
-                        <Text style={editorialEyebrowStyle}>New Story</Text>
-                        <Title
-                          level={3}
-                          style={{
-                            ...editorialTitleStyle,
-                            marginBottom: 10,
-                            fontSize: "clamp(24px, 2vw, 31px)",
-                            lineHeight: 0.98,
-                          }}
-                        >
-                          Mukti Studio and the New Face of Ahangama
-                        </Title>
-                        <Paragraph
-                          style={{
-                            marginBottom: 14,
-                            color: "#5F574E",
-                            fontSize: 15,
-                            lineHeight: 1.7,
-                          }}
-                        >
-                          A profile of one of the town's most thoughtful new
-                          creative businesses and the community around it.
-                        </Paragraph>
-                        <a
-                          href="/blogs/mukti-studio-and-the-new-face-of-ahangama"
-                          style={{
-                            color: "#2F3E3A",
-                            textDecoration: "none",
-                            fontSize: 16,
-                            fontWeight: 600,
-                            letterSpacing: 0.1,
-                          }}
-                        >
-                          Read Story <ArrowRightOutlined />
-                        </a>
-                      </Col>
-                    </Row>
-                  </Card>
-                </div>
-              </Col>
-            </Row>
-          </div>
+                        </Col>
+                      </Row>
+                    </Card>
+                  </div>
+                </Col>
+              </Row>
+            </div>
           ) : null}
 
           <div style={{ marginTop: 20 }}>

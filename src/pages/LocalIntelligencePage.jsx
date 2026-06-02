@@ -172,7 +172,9 @@ function IntelligenceCard({ card }) {
       ) : null}
 
       {card.body ? (
-        <Paragraph className="local-intelligence-cardBody">{card.body}</Paragraph>
+        <Paragraph className="local-intelligence-cardBody">
+          {card.body}
+        </Paragraph>
       ) : null}
 
       {card.footer ? (
@@ -194,7 +196,9 @@ function IntelligenceCard({ card }) {
           {card.crowdRows.map(([place, status]) => (
             <div className="local-intelligence-cardCrowdRow" key={place}>
               <Text className="local-intelligence-cardCrowdPlace">{place}</Text>
-              <Text className="local-intelligence-cardCrowdStatus">{status}</Text>
+              <Text className="local-intelligence-cardCrowdStatus">
+                {status}
+              </Text>
             </div>
           ))}
         </div>
@@ -246,24 +250,39 @@ export default function LocalIntelligencePage() {
         <div className="local-intelligence-shell">
           <header className="local-intelligence-header">
             <Text className="local-intelligence-kicker">Ahangama Bulletin</Text>
-            <Title className="local-intelligence-title">Ahangama Intelligence</Title>
+            <Title className="local-intelligence-title">
+              Ahangama Intelligence
+            </Title>
             <Paragraph className="local-intelligence-subtitle">
               Local updates, openings, events and observations from around town.
             </Paragraph>
-            <Text className="local-intelligence-timestamp">Updated 2 hours ago</Text>
+            <Text className="local-intelligence-timestamp">
+              Updated 2 hours ago
+            </Text>
           </header>
 
-          <div className="local-intelligence-ticker" aria-label="Live intelligence ticker">
+          <div
+            className="local-intelligence-ticker"
+            aria-label="Live intelligence ticker"
+          >
             <div className="local-intelligence-tickerTrack">
-              {[...LIVE_TICKER_ITEMS, ...LIVE_TICKER_ITEMS].map((item, index) => (
-                <span className="local-intelligence-tickerItem" key={`${item}-${index}`}>
-                  {item}
-                </span>
-              ))}
+              {[...LIVE_TICKER_ITEMS, ...LIVE_TICKER_ITEMS].map(
+                (item, index) => (
+                  <span
+                    className="local-intelligence-tickerItem"
+                    key={`${item}-${index}`}
+                  >
+                    {item}
+                  </span>
+                ),
+              )}
             </div>
           </div>
 
-          <section className="local-intelligence-grid" aria-label="Local intelligence cards">
+          <section
+            className="local-intelligence-grid"
+            aria-label="Local intelligence cards"
+          >
             {INTELLIGENCE_CARDS.map((card) => (
               <IntelligenceCard key={card.key} card={card} />
             ))}
