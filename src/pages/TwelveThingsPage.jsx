@@ -335,7 +335,8 @@ function PlaceholderImage({ label, tall = false, variant, compact = false }) {
 export default function TwelveThingsPage() {
   const canonical = absUrl("/12-things");
   const passCtaUrl = buildPassCtaUrl();
-  const heroVariant = PLACEHOLDER_VARIANTS[2];
+  const heroImage =
+    "https://travelrebels.com/wp-content/uploads/2024/04/ahangama-sri-lanka-tips-1.webp";
 
   return (
     <SiteLayout>
@@ -347,91 +348,148 @@ export default function TwelveThingsPage() {
 
       <div className="dm-heroCut" />
       <div className="dm-canvas">
+        <div
+          style={{
+            position: "relative",
+            minHeight: "calc(100vh - 88px)",
+            overflow: "hidden",
+            marginBottom: 32,
+            background: "#d9d2c5",
+          }}
+        >
+          <img
+            src={heroImage}
+            alt="Clifftop coastal view near Ahangama"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center center",
+            }}
+          />
+
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(180deg, rgba(17,16,14,0.08) 0%, rgba(17,16,14,0.16) 34%, rgba(17,16,14,0.5) 100%)",
+            }}
+          />
+
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
+              minHeight: "calc(100vh - 88px)",
+              maxWidth: 1180,
+              margin: "0 auto",
+              display: "flex",
+              alignItems: "flex-end",
+              padding: "clamp(28px, 4vw, 44px) clamp(20px, 4vw, 36px) clamp(32px, 6vw, 56px)",
+              boxSizing: "border-box",
+            }}
+          >
+            <div style={{ maxWidth: 760 }}>
+              <Space wrap size={[8, 8]} style={{ marginBottom: 14 }}>
+                <Tag
+                  style={{
+                    borderRadius: 999,
+                    padding: "6px 12px",
+                    color: "#ffffff",
+                    borderColor: "rgba(255,255,255,0.32)",
+                    background: "rgba(255,255,255,0.14)",
+                    backdropFilter: "blur(10px)",
+                  }}
+                >
+                  Editorial Guide
+                </Tag>
+                <Tag
+                  style={{
+                    borderRadius: 999,
+                    padding: "6px 12px",
+                    color: "#ffffff",
+                    borderColor: "rgba(255,255,255,0.32)",
+                    background: "rgba(255,255,255,0.14)",
+                    backdropFilter: "blur(10px)",
+                  }}
+                >
+                  Two Weeks or Less
+                </Tag>
+              </Space>
+
+              <Title
+                level={1}
+                className="twelve-things-heroTitle"
+                style={{
+                  marginTop: 0,
+                  marginBottom: 0,
+                  color: "#ffffff",
+                  fontSize: "clamp(42px, 6vw, 82px)",
+                  lineHeight: 0.97,
+                  letterSpacing: -1.8,
+                  fontFamily:
+                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                }}
+              >
+                12 Things to Do in Ahangama in Two Weeks (or Less)
+              </Title>
+            </div>
+          </div>
+        </div>
+
         <div className="dm-wrap">
-          <div style={{ marginBottom: 32 }}>
+          <div style={{ marginBottom: 28 }}>
             <Card
               style={{
-                borderRadius: 28,
+                borderRadius: 22,
                 border: "1px solid rgba(47,62,58,0.08)",
                 background: "#ffffff",
-                overflow: "hidden",
               }}
-              bodyStyle={{ padding: 28 }}
+              bodyStyle={{ padding: 24 }}
             >
-              <Row gutter={[24, 24]} align="middle">
-                <Col xs={24} xl={14}>
-                  <Space wrap size={[8, 8]} style={{ marginBottom: 12 }}>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
-                      Editorial Guide
-                    </Tag>
-                    <Tag style={{ borderRadius: 999, padding: "6px 12px" }}>
-                      Two Weeks or Less
-                    </Tag>
-                  </Space>
+              <Paragraph
+                style={{
+                  maxWidth: 820,
+                  fontSize: "clamp(17px, 1.55vw, 22px)",
+                  lineHeight: 1.8,
+                  color: "#5C5953",
+                  marginBottom: 22,
+                }}
+              >
+                A surf town with secrets. Find out a few things about Ahangama
+                from its design-led guesthouses and hands-on workshops to music
+                bars spinning vinyl on a Sunday night. The sea is warm. The food
+                is better. And if you know where to look, two weeks will not feel
+                like enough.
+              </Paragraph>
 
-                  <Title
-                    level={1}
-                    style={{
-                      marginTop: 0,
-                      marginBottom: 12,
-                      fontSize: 42,
-                      lineHeight: 1.02,
-                    }}
-                  >
-                    12 Things to Do in Ahangama in Two Weeks (or Less)
-                  </Title>
-
-                  <Paragraph
-                    style={{
-                      fontSize: 18,
-                      lineHeight: 1.8,
-                      color: "#5C5953",
-                      marginBottom: 18,
-                    }}
-                  >
-                    A surf town with secrets. Find out a few things about
-                    Ahangama from its design-led guesthouses and hands-on
-                    workshops to music bars spinning vinyl on a Sunday night.
-                    The sea is warm. The food is better. And if you know where
-                    to look, two weeks will not feel like enough.
-                  </Paragraph>
-
-                  <Space wrap size={12}>
-                    <a
-                      href={passCtaUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ display: "inline-flex", alignItems: "center" }}
-                    >
-                      <img
-                        src={ahangamaPassLogo}
-                        alt="Ahangama Pass"
-                        style={{ display: "block", height: 52, width: "auto" }}
-                      />
-                    </a>
-                    <Button
-                      size="large"
-                      href="#guide-note"
-                      style={{ borderRadius: 999 }}
-                    >
-                      Read the guide note
-                    </Button>
-                  </Space>
-                </Col>
-
-                <Col xs={24} xl={10}>
-                  <PlaceholderImage
-                    label="Hero image placeholder"
-                    tall
-                    variant={heroVariant}
+              <Space wrap size={12}>
+                <a
+                  href={passCtaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  <img
+                    src={ahangamaPassLogo}
+                    alt="Ahangama Pass"
+                    style={{ display: "block", height: 52, width: "auto" }}
                   />
-                </Col>
-              </Row>
+                </a>
+                <Button size="large" href="#guide-note" style={{ borderRadius: 999 }}>
+                  Read the guide note
+                </Button>
+              </Space>
             </Card>
           </div>
 
           <div style={{ marginBottom: 28 }}>
             <Card
+              id="guide-note"
               style={{
                 borderRadius: 22,
                 border: "1px solid rgba(47,62,58,0.08)",

@@ -5186,6 +5186,11 @@ li,
   font-family: "Avenir Next", "Segoe UI", sans-serif;
 }
 
+.twelve-things-heroTitle,
+.ant-typography.twelve-things-heroTitle {
+  color: #ffffff !important;
+}
+
 h1,
 h2,
 h3,
