@@ -10,133 +10,186 @@ import ahangamaPassLogo from "../assets/ahangama-pass-logo.png";
 const { Paragraph, Text, Title } = Typography;
 
 const articleIntroduction = [
-  "There are destinations built around landmarks and there are destinations built around atmosphere.",
+  "There are places you visit and places you settle into.",
   "Ahangama belongs firmly in the latter category.",
-  "Stretching along Sri Lanka's southern coastline between Weligama and Midigama, the town has evolved from a quiet fishing settlement into one of the island's most compelling communities. Surfers share coffee shops with architects. Designers sit beside fishermen at breakfast. Remote workers arrive for a week and somehow find themselves staying for months.",
-  "The best experiences here are rarely scheduled. They emerge slowly through conversations, routines and chance encounters.",
-  "Here are twelve ways to understand the town.",
+  "At first glance it appears to be another surf town stretched along Sri Lanka's southern coastline. Spend a little longer here, however, and a more nuanced picture emerges. Between the railway tracks and the Indian Ocean is a community of surfers, founders, artists, designers, wellness practitioners and local families who have collectively shaped one of the island's most interesting destinations.",
+  "The best way to understand Ahangama isn't through a checklist of attractions. It's through the rituals that define daily life.",
 ];
 
 const experiences = [
   {
-    title: "Watch the Coast Wake Up",
+    title: "Start the Day Before Everyone Else",
     body: [
-      "The day begins early in Ahangama.",
-      "Before breakfast service starts and before the roads become busy, the coastline belongs to fishermen, dog walkers and surfers paddling towards the reef.",
-      "From Kabalana to Marshmallow, the shoreline reveals a quieter side of the south coast. Nets are repaired on the beach, trains roll past the ocean and the first cups of tea are poured.",
-      "The town is at its most beautiful before 7am.",
+      "The town reveals itself early.",
+      "By sunrise, surfers are already paddling out at Marshmallow and Kabalana while fishermen prepare their boats along the shoreline. The train rattles through town, dogs wander the beach and the first coffees are being poured.",
+      "Many residents begin the morning at Kaffi, Sisters or Makai, where conversations drift between wave forecasts, new restaurant openings and plans for the day ahead.",
+      "Arrive before 7am and you'll experience a quieter Ahangama that many visitors never see.",
     ],
   },
   {
-    title: "Learn Why People Travel Across the World to Surf Here",
+    title: "Understand Why Surfing Changed Everything",
     body: [
-      "Ahangama's reputation was built on waves.",
-      "The coastline offers an unusual variety of breaks within a short distance of one another, making it possible for complete beginners and experienced surfers to find suitable conditions on the same day.",
-      "Yet what keeps people returning isn't simply the surf itself. It's the lifestyle that surrounds it - mornings in the water, long breakfasts and afternoons that unfold without urgency.",
+      "Modern Ahangama owes much of its identity to the ocean.",
+      "The reefs around Marshmallow, The Rock and Kabalana have attracted surfers from around the world for years. Yet the waves themselves only tell part of the story.",
+      "The surf community helped establish many of the cafes, guesthouses and creative businesses that now define the town. What began as a surf destination gradually evolved into a place where people chose to build lives.",
+      "Even those who never enter the water are, in many ways, experiencing a town shaped by surfing.",
     ],
   },
   {
-    title: "Spend a Morning in a Cafe and Stay Longer Than Planned",
+    title: "Spend a Morning Moving Between Cafes",
     body: [
-      "The cafes have become the unofficial town squares of Ahangama.",
-      "Over the past decade a collection of independent venues has emerged along the main road and surrounding lanes, attracting everyone from software founders and photographers to local entrepreneurs and travelling creatives.",
-      "What begins as a coffee often turns into a conversation.",
-      "And occasionally into a new business, friendship or reason to stay.",
+      "Ahangama's cafe culture has become part of its identity.",
+      "What makes the scene interesting is its diversity. Some venues function as informal co-working spaces, others as neighbourhood meeting points.",
+      "You might find remote workers settled into Focus Hub before breakfast, friends gathering at Follow The White Rabbit, or long conversations unfolding beneath the trees at Veda Cafe.",
+      "At Sisters and Makai, tables fill with a mix of travellers and residents, while Kaffi has become something of a community living room.",
+      "The best approach is not to choose one.",
+      "Spend a morning moving between several.",
     ],
   },
   {
     title: "Follow the Wellness Trail",
     body: [
-      "Ahangama's wellness culture developed organically.",
-      "Long before it became fashionable, surfers were organising yoga classes and seeking out Ayurvedic treatments to recover between sessions in the water.",
-      "Today the town offers everything from Pilates studios and ice baths to traditional healing practices, though it retains a notably relaxed atmosphere compared to more established wellness destinations elsewhere in Asia.",
+      "Wellness here feels less performative than in many destinations.",
+      "Pilates classes at Pura Pilates, recovery sessions at Frosty's, treatments at White Lotus and quiet afternoons at The Nuga House have become part of everyday life for many residents.",
+      "What is striking is how integrated wellness has become into the rhythm of the town. Surfers finish sessions in the water and head directly to an ice bath. Entrepreneurs schedule meetings around Pilates classes. Long-term residents build entire routines around movement and recovery.",
+      "The result is a culture that feels sustainable rather than indulgent.",
     ],
   },
   {
-    title: "Discover the Town's Creative Community",
+    title: "Meet the Creative Community",
     body: [
-      "Spend enough time in Ahangama and a pattern emerges.",
-      "Many of the people who have chosen to build lives here work in creative fields. Designers, photographers, filmmakers, architects, writers and founders have all found their way to this stretch of coastline.",
-      "Their influence can be seen in the cafes, boutiques, guesthouses and events that increasingly define the character of the town.",
+      "Ahangama attracts an unusual concentration of creative people.",
+      "Designers, photographers, filmmakers and founders have increasingly chosen the south coast over larger cities.",
+      "This influence can be seen throughout the town. Studio Mukti produces clothing inspired by slow living and ethical production. Living Room Concept Store showcases a curated collection of objects, furniture and design pieces. Small creative projects appear regularly in converted villas, cafes and retail spaces.",
+      "Many visitors arrive expecting a surf town and discover something closer to a creative village.",
     ],
   },
   {
-    title: "Visit the Independent Shops",
+    title: "Discover the Shops Shaping Modern Ahangama",
     body: [
-      "Ahangama is developing its own retail identity.",
-      "Small design stores, clothing labels and concept spaces now sit alongside family-run businesses that have served the town for generations.",
-      "One afternoon spent browsing reveals far more about the area's evolution than any guidebook could.",
-      "Many of the most interesting products have been created by people who live only a few streets away.",
+      "Independent retail has become one of Ahangama's quiet strengths.",
+      "Stores such as Studio Mukti, Living Room Concept Store and Coconut Republik offer an alternative to the souvenir shops found elsewhere along the coast.",
+      "Many products are designed, produced or curated by people who live locally. As a result, shopping here often feels more like a conversation than a transaction.",
+      "Spend enough time browsing and you'll inevitably learn something about the people behind the town.",
     ],
   },
   {
-    title: "Spend an Evening at Coconut Court",
+    title: "Join a Game at Coconut Court",
     body: [
-      "Every town has a place where people naturally gather.",
-      "In Ahangama, that place is increasingly Coconut Court.",
-      "What began as a sporting venue has become one of the most social corners of the south coast. On any evening you might find locals, long-term residents, visiting surfers and entrepreneurs sharing a court, a conversation or a post-game drink.",
-      "Few places offer a better snapshot of modern Ahangama.",
+      "Every community has a gathering place.",
+      "In Ahangama, Coconut Court has become one of them.",
+      "What began as a sporting venue has evolved into something much larger. On any given evening the courts bring together locals, long-term residents, visiting surfers, entrepreneurs and curious first-time players.",
+      "The popularity of pickleball says something about Ahangama itself. People come for the activity but stay for the community.",
     ],
   },
   {
-    title: "Take the Road Inland",
+    title: "Eat Beyond the Instagram Posts",
     body: [
-      "Most visitors rarely leave the coast.",
-      "This is a mistake.",
-      "Only a few minutes from the ocean lie cinnamon estates, rice fields, village temples and quiet residential roads where daily life unfolds at a slower pace.",
-      "The contrast is immediate.",
-      "The surf town disappears and a different Sri Lanka emerges.",
+      "The most photographed restaurants rarely tell the whole story.",
+      "While venues such as Maria Bonita, Le Cafe French Bistro, Hakuna Matata and Tahini & Friends have become favourites among visitors, some of the town's most memorable meals happen elsewhere.",
+      "Ask residents where they eat regularly and you'll discover a constantly evolving list that includes everything from roadside rice-and-curry shops to small family-run kitchens hidden behind the main road.",
+      "The best meals often arrive with no online reservation system and very little publicity.",
     ],
   },
   {
-    title: "Seek Out Traditional Ayurveda",
+    title: "Explore Inland",
     body: [
-      "While contemporary wellness receives much of the attention, Ayurveda remains deeply woven into Sri Lankan life.",
-      "Treatments continue to be passed between generations, combining herbal remedies, massage and preventative care in ways that predate modern wellness trends by centuries.",
-      "Experiencing Ayurveda here offers a useful reminder that many of the ideas celebrated today have much older roots.",
+      "Most visitors spend their time between the railway tracks and the ocean.",
+      "The inland roads reveal a different side of Ahangama.",
+      "Within minutes the landscape shifts to paddy fields, cinnamon estates and village temples. Scooters weave through narrow roads lined with tropical vegetation while daily life unfolds largely unchanged from generations before.",
+      "This contrast is one of the town's greatest strengths.",
+      "The contemporary and traditional sit side by side.",
     ],
   },
   {
-    title: "Watch Sunset Without a Destination",
+    title: "Follow the Afternoon Rhythm",
     body: [
-      "One of Ahangama's great pleasures is that the sunset belongs to everyone.",
-      "There are no gates, tickets or queues.",
-      "Find a seawall. Sit on the beach. Order a king coconut. Walk along the railway line.",
-      "The best evenings are often the least planned.",
+      "By late afternoon the pace changes.",
+      "People drift between meetings, surf sessions and coffee stops. Friends gather at Veda Cafe, Follow The White Rabbit or Makai. Others settle into a quiet corner of Focus Hub to finish work before sunset.",
+      "Unlike many resort destinations, Ahangama feels lived in throughout the day.",
+      "There is no clear separation between visitor and resident life.",
     ],
   },
   {
-    title: "Meet the People Behind the Town",
+    title: "Stay for Sunset",
     body: [
-      "Some destinations are shaped by developers.",
-      "Ahangama has largely been shaped by individuals.",
-      "Restaurant owners, surf instructors, artists, wellness practitioners, hotel operators and designers have all contributed to the culture that visitors experience today.",
-      "The more conversations you have, the more the town begins to make sense.",
+      "The sunset remains one of Ahangama's great democratic experiences.",
+      "There are no ticket booths or designated viewing platforms.",
+      "Some people watch from the beach. Others from a cafe terrace or a wall beside the railway tracks.",
+      "The location matters less than the ritual itself.",
+      "Almost everyone seems to pause.",
     ],
   },
   {
-    title: "Stay Long Enough",
+    title: "Stay Long Enough to Understand the Place",
     body: [
-      "This may be the most important recommendation.",
-      "Ahangama reveals itself slowly.",
-      "The first few days are spent finding beaches and cafes. The following week introduces familiar faces. By the second or third week the routines become visible.",
-      "The fisherman who waves each morning.",
-      "The cafe owner who remembers your order.",
-      "The surfer who first arrived six years ago and never left.",
-      "These are the details that transform Ahangama from a destination into a community.",
-      "And they are ultimately what people remember most.",
+      "The most common mistake visitors make is leaving too quickly.",
+      "Ahangama reveals itself in layers.",
+      "The first few days are spent discovering beaches and cafes. A week later you begin recognising faces. After two weeks, familiar routines emerge. By the end of a month, the owner of your local cafe knows your order, the surf instructor waves as he cycles past and conversations become easier.",
+      "It is this sense of familiarity that keeps people returning.",
+      "Not a single venue, wave or attraction.",
+      "The feeling that, for a short while at least, Ahangama starts to feel like home.",
     ],
   },
 ];
 
 const MENTIONED_PLACE_LINKS = [
-  { label: "Weligama", href: "https://example.com/places/weligama" },
-  { label: "Midigama", href: "https://example.com/places/midigama" },
-  { label: "Kabalana", href: "https://example.com/places/kabalana" },
   { label: "Marshmallow", href: "https://example.com/places/marshmallow" },
+  { label: "Kabalana", href: "https://example.com/places/kabalana" },
+  { label: "Kaffi", href: "https://example.com/places/kaffi" },
+  { label: "Sisters", href: "https://example.com/places/sisters" },
+  { label: "Makai", href: "https://example.com/places/makai" },
+  { label: "The Rock", href: "https://example.com/places/the-rock" },
+  { label: "Focus Hub", href: "https://example.com/places/focus-hub" },
+  {
+    label: "Follow The White Rabbit",
+    href: "https://example.com/places/follow-the-white-rabbit",
+  },
+  { label: "Veda Cafe", href: "https://example.com/places/veda-cafe" },
+  {
+    label: "Pura Pilates",
+    href: "https://example.com/places/pura-pilates",
+  },
+  { label: "Frosty's", href: "https://example.com/places/frostys" },
+  {
+    label: "White Lotus",
+    href: "https://example.com/places/white-lotus",
+  },
+  {
+    label: "The Nuga House",
+    href: "https://example.com/places/the-nuga-house",
+  },
+  {
+    label: "Studio Mukti",
+    href: "https://example.com/places/studio-mukti",
+  },
+  {
+    label: "Living Room Concept Store",
+    href: "https://example.com/places/living-room-concept-store",
+  },
+  {
+    label: "Coconut Republik",
+    href: "https://example.com/places/coconut-republik",
+  },
   {
     label: "Coconut Court",
     href: "https://example.com/places/coconut-court",
+  },
+  {
+    label: "Maria Bonita",
+    href: "https://example.com/places/maria-bonita",
+  },
+  {
+    label: "Le Cafe French Bistro",
+    href: "https://example.com/places/le-cafe-french-bistro",
+  },
+  {
+    label: "Hakuna Matata",
+    href: "https://example.com/places/hakuna-matata",
+  },
+  {
+    label: "Tahini & Friends",
+    href: "https://example.com/places/tahini-and-friends",
   },
 ];
 
@@ -150,7 +203,7 @@ export default function TwelveThingsPage() {
     <SiteLayout>
       <Seo
         title="12 Ways to Experience Ahangama"
-        description="An editorial guide to Ahangama through atmosphere, surf, cafes, wellness, creative community, independent shops, inland roads and slow routines."
+        description="An editorial guide to Ahangama through surf, cafes, wellness, creative community, inland rituals and the routines that define daily life."
         canonical={canonical}
       />
 
@@ -273,43 +326,37 @@ export default function TwelveThingsPage() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {experiences.map((item, index) => {
-              return (
-                <section
-                  key={item.title}
-                  style={{
-                    padding: index === 0 ? "20px 0 36px" : "36px 0",
-                    borderTop:
-                      index === 0 ? "none" : "1px solid rgba(47,62,58,0.12)",
-                  }}
-                >
-                  <div
-                    style={{
-                      maxWidth: 1180,
-                    }}
-                  >
-                    <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
-                      {item.title}
-                    </Title>
+            {experiences.map((item, index) => (
+              <section
+                key={item.title}
+                style={{
+                  padding: index === 0 ? "20px 0 36px" : "36px 0",
+                  borderTop:
+                    index === 0 ? "none" : "1px solid rgba(47,62,58,0.12)",
+                }}
+              >
+                <div style={{ maxWidth: 1180 }}>
+                  <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
+                    {item.title}
+                  </Title>
 
-                    {item.body.map((paragraph) => (
-                      <Paragraph
-                        key={paragraph}
-                        style={{
-                          maxWidth: 1200,
-                          fontSize: 16,
-                          lineHeight: 1.8,
-                          color: "#55514B",
-                          marginBottom: 18,
-                        }}
-                      >
-                        {paragraph}
-                      </Paragraph>
-                    ))}
-                  </div>
-                </section>
-              );
-            })}
+                  {item.body.map((paragraph) => (
+                    <Paragraph
+                      key={paragraph}
+                      style={{
+                        maxWidth: 1200,
+                        fontSize: 16,
+                        lineHeight: 1.8,
+                        color: "#55514B",
+                        marginBottom: 18,
+                      }}
+                    >
+                      {paragraph}
+                    </Paragraph>
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
 
           <div id="guide-note" style={{ marginTop: 32, marginBottom: 36 }}>
@@ -388,9 +435,7 @@ export default function TwelveThingsPage() {
                         marginBottom: 12,
                       }}
                     >
-                      <CheckOutlined
-                        style={{ color: "#2F3E3A", fontSize: 14 }}
-                      />
+                      <CheckOutlined style={{ color: "#2F3E3A", fontSize: 14 }} />
                       Ahangama Pass Perks
                     </Text>
                     <Paragraph
