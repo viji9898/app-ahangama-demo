@@ -850,10 +850,8 @@ export default function Home() {
                     }}
                   >
                     {[
-                      "Issue 2026 / 27",
                       `Week ${currentWeekNumber}`,
                       "Updated Weekly",
-                      "Local Editorial Team",
                     ].map((item) => (
                       <Text
                         key={item}
@@ -869,8 +867,6 @@ export default function Home() {
                       </Text>
                     ))}
                   </div>
-
-                  <Text style={editorialEyebrowStyle}>Cover Story</Text>
 
                   <Title
                     className="home-hero-title"
