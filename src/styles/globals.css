@@ -3603,6 +3603,32 @@
     padding: 16px !important;
   }
 
+  .guide-sections-row {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding: 0 16px 8px;
+    scrollbar-width: none;
+  }
+
+  .guide-sections-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .guide-sections-col {
+    flex: 0 0 78vw !important;
+    max-width: 78vw !important;
+    min-width: 78vw !important;
+  }
+
+  .guide-sections-cardLink,
+  .guide-sections-cardLink--first {
+    padding-left: 0 !important;
+    border-left: 0 !important;
+  }
+
   .pass-guide-row,
   .twelve-things-row {
     row-gap: 14px !important;

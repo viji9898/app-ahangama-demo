@@ -170,6 +170,37 @@ const TRANSPORT_CURRENCY_FORMATTERS = {
   }),
 };
 
+const MINIMAL_GUIDE_CARDS = [
+  {
+    label: "AHANGAMA GUIDE",
+    title: "12 Things to Do",
+    href: "/12-things",
+    image:
+      "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
+  },
+  {
+    label: "WELLNESS STAY",
+    title: "My Wellness Stay at Samba",
+    href: "/3-days-in-ahangama",
+    image:
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
+  },
+  {
+    label: "WELLNESS GUIDE",
+    title: "Wellness in Ahangama",
+    href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    image:
+      "https://images.squarespace-cdn.com/content/v1/687779bfeb67b07ba252ad9e/1765200138172-E21VJEEVSEA0JQ1ZDW90/Jungle+Shala+Launch-45+2.jpg",
+  },
+  {
+    label: "TRANSPORT GUIDE",
+    title: "Getting Around",
+    href: "/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
+    image:
+      "https://tuktukrental.com/wp-content/uploads/2023/06/post-img-couple-in-the-red-tuktuk-scaled.jpg",
+  },
+];
+
 function formatTransportRange(item, currency) {
   const rate = TRANSPORT_EXCHANGE_RATES[currency] || 1;
   const formatter =
@@ -1654,6 +1685,144 @@ export default function Home() {
               <HomeMapSectionMobile />
             </div> */}
           </div>
+
+          <div style={{ marginTop: sectionSpacing - 4 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: 20,
+                marginBottom: 14,
+              }}
+            >
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#161412",
+                  fontSize: "clamp(22px, 2.4vw, 34px)",
+                  lineHeight: 0.96,
+                  fontWeight: 500,
+                  letterSpacing: -0.8,
+                  fontFamily:
+                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                }}
+              >
+                Guide Sections
+              </Title>
+              <a
+                href="/blogs"
+                style={{
+                  color: "#161412",
+                  textDecoration: "none",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: 0.8,
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                See All
+              </a>
+            </div>
+
+            <Row
+              className="guide-sections-row"
+              gutter={[18, 18]}
+              align="stretch"
+            >
+              {MINIMAL_GUIDE_CARDS.map((guide, index) => (
+                <Col
+                  className="guide-sections-col"
+                  key={guide.href}
+                  xs={24}
+                  md={12}
+                  xl={6}
+                >
+                  <a
+                    className={`guide-sections-cardLink${index === 0 ? " guide-sections-cardLink--first" : ""}`}
+                    href={guide.href}
+                    style={{
+                      display: "block",
+                      height: "100%",
+                      paddingLeft: index === 0 ? 0 : 18,
+                      borderLeft:
+                        index === 0 ? "none" : "1px solid rgba(22,20,18,0.14)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <div
+                      style={{
+                        height: "100%",
+                        borderRadius: 18,
+                        padding: 14,
+                        background: "#67cef5",
+                        color: "#111111",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          display: "block",
+                          paddingBottom: 6,
+                          marginBottom: 10,
+                          borderBottom: "2px solid rgba(17,17,17,0.8)",
+                          color: "#111111",
+                          fontSize: 10,
+                          fontWeight: 700,
+                          letterSpacing: 1.1,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {guide.label}
+                      </Text>
+
+                      <Title
+                        level={3}
+                        style={{
+                          margin: "0 0 16px",
+                          color: "#111111",
+                          fontSize: "clamp(22px, 1.9vw, 34px)",
+                          lineHeight: 0.95,
+                          letterSpacing: -0.8,
+                        }}
+                      >
+                        {guide.title}
+                      </Title>
+
+                      <div
+                        style={{
+                          aspectRatio: "1 / 0.82",
+                          overflow: "hidden",
+                          background: "rgba(255,255,255,0.28)",
+                        }}
+                      >
+                        <img
+                          src={guide.image}
+                          alt={guide.title}
+                          style={{
+                            display: "block",
+                            width: "100%",
+                            height: "100%",
+                            objectFit:
+                              guide.href === "/what-is-ahangama-pass"
+                                ? "contain"
+                                : "cover",
+                            objectPosition: "center",
+                            background:
+                              guide.href === "/what-is-ahangama-pass"
+                                ? "rgba(255,255,255,0.9)"
+                                : "transparent",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </Col>
+              ))}
+            </Row>
+          </div>
+
           <div style={{ marginTop: sectionSpacing - 8 }}>
             {loading ? (
               <Card
