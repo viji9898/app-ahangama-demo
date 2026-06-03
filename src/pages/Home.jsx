@@ -1415,8 +1415,7 @@ export default function Home() {
               <div className="around-town-headingCopy">
                 <Text className="around-town-kicker">7. Around the Town</Text>
                 <Paragraph className="around-town-description">
-                  What we&apos;re reading, following and loving around Ahangama
-                  this week.
+                  What we&apos;re reading, following and loving around Ahangama.
                 </Paragraph>
               </div>
               <a

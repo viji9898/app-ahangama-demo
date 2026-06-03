@@ -4,6 +4,7 @@ import HomeV2 from "../pages/HomeV2";
 import HomeMobile from "../pages/HomeMobile";
 import About from "../pages/About";
 import BlogsPage from "../pages/BlogsPage";
+import EatIndex from "../pages/EatIndex";
 import ConceptPage from "../pages/ConceptPage";
 import ProductsIndexPage from "../pages/ProductsIndexPage";
 import ProductPage from "../pages/ProductPage";
@@ -109,10 +110,7 @@ const routes = [
   { path: "/partner-signup/success", element: <PartnerSignUpSuccess /> },
   { path: "/resellers", element: <Resellers /> },
   { path: "/places", element: <PlacesTable /> },
-  {
-    path: "/eat",
-    element: <CategoryIndex categoryKey="eat" config={cfg("eat")} />,
-  },
+  { path: "/eat", element: <EatIndex /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,

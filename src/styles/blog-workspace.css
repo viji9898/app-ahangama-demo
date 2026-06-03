@@ -2,12 +2,12 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  background: var(--bg-sand);
-  border: 1px solid var(--dm-line);
+  background: #ffffff;
+  border: 1px solid rgba(47, 62, 58, 0.12);
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  color: #1a1b18;
+  box-shadow: 0 18px 40px rgba(18, 24, 22, 0.05);
+  color: #2f2a24;
 }
 
 .blog-sidebar {
@@ -56,17 +56,20 @@
 .blog-eyebrow,
 .blog-topbarLabel,
 .blog-articleEyebrow {
-  font-size: 12px;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
-  color: #6b6e67;
+  color: #9d7f57;
 }
 
 .blog-brandTitle,
 .blog-articleTitle,
 .blog-sectionTitle {
   margin: 0 !important;
-  color: #1f241f !important;
+  color: #2f2a24 !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .blog-sidebarIntro {
@@ -266,9 +269,10 @@
 
 .blog-topbarCategory {
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 1.6px;
   font-size: 11px;
-  color: #8b7e71 !important;
+  font-weight: 700;
+  color: #9d7f57 !important;
 }
 
 .blog-topbarDivider {
@@ -311,7 +315,7 @@
 
 .blog-content {
   background: #ffffff;
-  padding: 18px 32px 56px;
+  padding: 22px 36px 64px;
 }
 
 .blog-editorialPage {
@@ -876,15 +880,18 @@
 .stories-archiveTitle {
   margin: 10px 0 18px !important;
   font-size: clamp(42px, 5.5vw, 74px) !important;
-  line-height: 0.94 !important;
-  letter-spacing: -0.05em;
+  line-height: 0.97 !important;
+  letter-spacing: -1.8px;
   max-width: 12ch;
+  color: #2f2a24 !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .stories-archiveLead {
-  color: #544f48 !important;
-  font-size: 17px;
-  line-height: 1.85;
+  color: #55514b !important;
+  font-size: 16px;
+  line-height: 1.8;
   max-width: 34rem;
 }
 
@@ -1028,33 +1035,37 @@
 }
 
 .blog-featureHeader {
-  padding: 20px 0 28px;
-  border-bottom: 1px solid rgba(28, 28, 24, 0.08);
+  padding: 12px 0 28px;
+  border-bottom: 1px solid rgba(47, 62, 58, 0.12);
 }
 
 .blog-featureKicker,
 .blog-featureSectionLabel {
   display: block;
   font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #8a7b6c;
+  letter-spacing: 1.8px;
+  color: #9d7f57;
 }
 
 .blog-featureTitle {
   margin: 12px 0 16px !important;
   max-width: 12ch;
   font-size: clamp(46px, 6vw, 84px) !important;
-  line-height: 0.92 !important;
-  letter-spacing: -0.05em;
+  line-height: 0.97 !important;
+  letter-spacing: -1.8px;
+  color: #2f2a24 !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .blog-featureStandfirst {
-  max-width: 42rem;
+  max-width: 760px;
   margin: 0 0 18px !important;
-  color: #4d4943 !important;
-  font-size: 20px;
-  line-height: 1.75;
+  color: #55514b !important;
+  font-size: 18px;
+  line-height: 1.85;
 }
 
 .blog-featureMeta {
@@ -1069,31 +1080,34 @@
 .blog-featureByline {
   display: block;
   margin-top: 10px;
-  color: #8d8176 !important;
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  color: #6b5a4e !important;
+  font-size: 12px;
+  letter-spacing: 0.2px;
 }
 
 .blog-featureBody {
-  width: min(100%, 760px);
-  margin: 32px auto 0;
+  width: min(100%, 920px);
+  margin: 28px auto 0;
 }
 
 .blog-featureIntro,
 .blog-featureCopy {
-  color: #3f433e !important;
-  font-size: 18px;
-  line-height: 1.95;
+  color: #55514b !important;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 18px !important;
 }
 
 .blog-featurePullQuote {
   margin: 36px 0;
   padding: 0 0 0 24px;
-  border-left: 3px solid rgba(28, 28, 24, 0.16);
-  color: #262a27;
+  border-left: 3px solid rgba(157, 127, 87, 0.24);
+  color: #2f2a24;
   font-size: clamp(24px, 2.6vw, 34px);
   line-height: 1.6;
   letter-spacing: -0.02em;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
 }
 
 .blog-featureImageBlock {
@@ -1106,7 +1120,7 @@
 
 .blog-featureCaption {
   margin-top: 12px;
-  color: #7a7065;
+  color: #6b5a4e;
   font-size: 13px;
   line-height: 1.7;
 }
@@ -1123,8 +1137,11 @@
 .blog-featureSectionTitle {
   margin: 10px 0 18px !important;
   font-size: clamp(30px, 4vw, 44px) !important;
-  line-height: 1.03 !important;
-  letter-spacing: -0.04em;
+  line-height: 1.04 !important;
+  letter-spacing: -0.8px;
+  color: #2f2a24 !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
 }
 
 .blog-featureLeadGrid {
@@ -1161,7 +1178,7 @@
 
 .blog-featureModule {
   padding-bottom: 34px;
-  border-bottom: 1px solid rgba(28, 28, 24, 0.08);
+  border-bottom: 1px solid rgba(47, 62, 58, 0.12);
 }
 
 .blog-featureModule:last-of-type {
