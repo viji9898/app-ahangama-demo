@@ -37,6 +37,8 @@ import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
 import denitsaImage from "../assets/temp/denitsa.jpg";
+import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
+import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -193,9 +195,8 @@ const AROUND_TOWN_PICKS = [
     title: "@studio.mukti",
     description: "Beautiful behind-the-scenes look at the opening week.",
     cta: "View on Instagram",
-    href: "https://instagram.com/studiomukti",
-    image:
-      "https://scontent-lhr8-2.cdninstagram.com/v/t51.2885-19/43745957_282545899050399_6959074040136859648_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41NjkuYzIifQ&_nc_ht=scontent-lhr8-2.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gFZHuZTy4ZvGaJo2FAm9w0h2ah0rb6D8kW29VgddH-cBbIhu3VSD2Efw4FBLhp76ChdRVl4dO6ZNteNhW1_uJQ8&_nc_ohc=qqmd09grNeoQ7kNvwH0Ba7l&_nc_gid=MWJrHhI5jTGuOHZ8RhfBOg&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af9xZ-FMEg4O1_SZE_h48ZEd8UUg7JKJcOd1zMdDra_dBw&oe=6A2537AE&_nc_sid=7a9f4b",
+    href: "https://www.instagram.com/studio.mukti/",
+    image: muktiStudioImage,
   },
   {
     category: "Blog Pick",
@@ -209,12 +210,11 @@ const AROUND_TOWN_PICKS = [
   },
   {
     category: "Photo of the Week",
-    title: "Sunrise at Marshmallow",
-    description: "Captured by @ahangama.images",
+    title: "We call them Good Buggers",
+    description: "Captured by @hoteldeuncles",
     cta: "View photo",
-    href: "https://instagram.com/ahangama.images",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
+    href: "https://www.instagram.com/p/DWgGPb8DDzo/?igsh=MTZkeTZtMnQ2d2cwcA%3D%3D",
+    image: photoOfWeekImage,
   },
   {
     category: "Creator Spotlight",
