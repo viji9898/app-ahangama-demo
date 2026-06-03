@@ -36,6 +36,7 @@ import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
+import denitsaImage from "../assets/temp/denitsa.jpg";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -194,17 +195,17 @@ const AROUND_TOWN_PICKS = [
     cta: "View on Instagram",
     href: "https://instagram.com/studiomukti",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/living_room.jpg",
+      "https://scontent-lhr8-2.cdninstagram.com/v/t51.2885-19/43745957_282545899050399_6959074040136859648_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41NjkuYzIifQ&_nc_ht=scontent-lhr8-2.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gFZHuZTy4ZvGaJo2FAm9w0h2ah0rb6D8kW29VgddH-cBbIhu3VSD2Efw4FBLhp76ChdRVl4dO6ZNteNhW1_uJQ8&_nc_ohc=qqmd09grNeoQ7kNvwH0Ba7l&_nc_gid=MWJrHhI5jTGuOHZ8RhfBOg&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af9xZ-FMEg4O1_SZE_h48ZEd8UUg7JKJcOd1zMdDra_dBw&oe=6A2537AE&_nc_sid=7a9f4b",
   },
   {
     category: "Blog Pick",
-    title: "Tales of the Tropics",
+    title: "Sri Lanka's Hippest Beach Spot",
     description:
-      "A thoughtful piece on Ahangama's changing identity.",
+      "Maria and Espen Egeland, travel nerds from Norway.",
     cta: "Read article",
-    href: "/blogs",
+    href: "https://nerdnomads.com/ahangama-sri-lanka",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+      "https://nerdnomads.com/wp-content/uploads/2014/02/about.png",
   },
   {
     category: "Photo of the Week",
@@ -217,13 +218,11 @@ const AROUND_TOWN_PICKS = [
   },
   {
     category: "Creator Spotlight",
-    title: "@followthewhiterabbit",
-    description:
-      "One of our favourite local accounts capturing life in Ahangama.",
+    title: "Denitsa",
+    description: "Resident Pilates and yoga instructor.",
     cta: "Follow",
-    href: "https://instagram.com/followthewhiterabbit",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/animals.jpg",
+    href: "https://www.instagram.com/denitsaloves/",
+    image: denitsaImage,
   },
 ];
 

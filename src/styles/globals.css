@@ -917,7 +917,7 @@
 }
 
 .around-town-imageWrap {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border: 1px solid rgba(32, 30, 27, 0.08);
   background: #efe8dd;
