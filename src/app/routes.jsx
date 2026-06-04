@@ -40,6 +40,7 @@ import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
+import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -113,6 +114,7 @@ const routes = [
   { path: "/resellers", element: <Resellers /> },
   { path: "/places", element: <PlacesTable /> },
   { path: "/eat", element: <EatEditorialPage /> },
+  { path: "/shops", element: <ShopsEditorialPage /> },
   { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
   {

@@ -5808,6 +5808,20 @@ li,
   letter-spacing: -1.6px;
 }
 
+.eat-guideByline {
+  display: block;
+  margin-top: -4px;
+  color: #207886;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.eat-guideBylineName {
+  text-transform: none;
+}
+
 .eat-guideHeroIntro,
 .eat-guideSectionIntro,
 .eat-guideFeatureCopy,

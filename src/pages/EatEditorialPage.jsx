@@ -480,6 +480,9 @@ export default function EatEditorialPage() {
             <div className="eat-guideHeroCopy">
               <Text className="eat-guideEyebrow">Ahangama / Food Guide</Text>
               <Title level={1} className="eat-guideHeroTitle">Eats</Title>
+              <Text className="eat-guideByline">
+                Words By <span className="eat-guideBylineName">Viji</span>
+              </Text>
             </div>
             <div className="eat-guideHeroMedia">
               <img src={HERO_IMAGE} alt="Editorial food guide hero for Ahangama" />
