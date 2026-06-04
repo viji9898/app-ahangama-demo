@@ -78,16 +78,12 @@ export default function NewsletterPreferencesPage() {
       >
         <div
           style={{
-            background: "#F5F2ED",
-            borderRadius: 32,
-            padding: isMobile ? 20 : 28,
-            border: "1px solid rgba(15, 92, 107, 0.08)",
+            maxWidth: 860,
+            margin: "0 auto",
           }}
         >
           <div
             style={{
-              maxWidth: 860,
-              margin: "0 auto",
               background: "#FFFFFF",
               borderRadius: 28,
               padding: isMobile ? 24 : 40,
@@ -172,7 +168,7 @@ export default function NewsletterPreferencesPage() {
                   marginTop: 30,
                   padding: 28,
                   borderRadius: 24,
-                  background: "#E7DFD1",
+                  background: "#FFFFFF",
                   border: "1px solid rgba(15, 92, 107, 0.1)",
                 }}
               >
