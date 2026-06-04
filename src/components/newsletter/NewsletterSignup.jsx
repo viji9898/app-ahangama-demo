@@ -70,6 +70,9 @@ export default function NewsletterSignup({
 
   const isBusy = isSubmitting || isRedirecting;
   const buttonLabel = isRedirecting ? "Redirecting..." : "Subscribe";
+  const hasLabel = Boolean(label);
+  const hasTitle = Boolean(title);
+  const hasDescription = Boolean(description);
 
   if (variant === "footer") {
     return (
@@ -217,59 +220,71 @@ export default function NewsletterSignup({
   const wrapperStyles =
     variant === "compact"
       ? {
-          padding: isMobile ? 18 : 22,
-          borderRadius: 22,
-          border: "1px solid rgba(15, 92, 107, 0.1)",
+          padding: isMobile ? 16 : 18,
+          borderRadius: 18,
+          border: "1px solid rgba(18, 18, 18, 0.12)",
         }
       : {
-          padding: isMobile ? 24 : 30,
-          borderRadius: 28,
-          border: "1px solid rgba(15, 92, 107, 0.08)",
+          padding: isMobile ? 22 : 26,
+          borderRadius: 20,
+          border: "1px solid rgba(18, 18, 18, 0.12)",
         };
 
-  const titleSize = variant === "compact" ? (isMobile ? 28 : 34) : isMobile ? 36 : 46;
+  const titleSize =
+    variant === "compact" ? (isMobile ? 24 : 28) : isMobile ? 30 : 36;
 
   return (
     <div style={wrapperStyles}>
-      <Text
-        style={{
-          display: "block",
-          marginBottom: 10,
-          color: "#207886",
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: 1.8,
-          textTransform: "uppercase",
-        }}
-      >
-        {label}
-      </Text>
-      <Title
-        level={2}
-        style={{
-          margin: 0,
-          color: "#1E2526",
-          fontFamily: SERIF_FONT,
-          fontSize: titleSize,
-          lineHeight: 1,
-        }}
-      >
-        {title}
-      </Title>
-      <Paragraph
-        style={{
-          maxWidth: 680,
-          marginTop: 14,
-          marginBottom: 0,
-          color: "#566467",
-          fontSize: 16,
-          lineHeight: 1.85,
-        }}
-      >
-        {description}
-      </Paragraph>
+      {hasLabel ? (
+        <Text
+          style={{
+            display: "block",
+            marginBottom: 10,
+            color: "#4C4C4C",
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: 1.8,
+            textTransform: "uppercase",
+          }}
+        >
+          {label}
+        </Text>
+      ) : null}
+      {hasTitle ? (
+        <Title
+          level={2}
+          style={{
+            margin: 0,
+            color: "#111111",
+            fontFamily: SERIF_FONT,
+            fontSize: titleSize,
+            lineHeight: 1,
+          }}
+        >
+          {title}
+        </Title>
+      ) : null}
+      {hasDescription ? (
+        <Paragraph
+          style={{
+            maxWidth: 680,
+            marginTop: 14,
+            marginBottom: 0,
+            color: "#4A4A4A",
+            fontSize: 15,
+            lineHeight: 1.8,
+            fontFamily:
+              'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          }}
+        >
+          {description}
+        </Paragraph>
+      ) : null}
 
-      <form onSubmit={handleSubmit} style={{ marginTop: 20 }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ marginTop: hasLabel || hasTitle || hasDescription ? 20 : 0 }}
+      >
         <div
           style={{
             display: "flex",
@@ -291,13 +306,15 @@ export default function NewsletterSignup({
               flex: isMobile ? "1 1 auto" : "1 1 0%",
               width: isMobile ? "100%" : 0,
               minWidth: 0,
-              height: 54,
+              height: 48,
               borderRadius: 999,
-              borderColor: "rgba(15, 92, 107, 0.14)",
+              borderColor: "rgba(18, 18, 18, 0.16)",
               background: "#FFFFFF",
-              color: "#1E2526",
-              paddingInline: 22,
+              color: "#111111",
+              paddingInline: 18,
               boxShadow: "none",
+              fontFamily:
+                'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
             }}
           />
           <Button
@@ -306,15 +323,17 @@ export default function NewsletterSignup({
             size="large"
             loading={isBusy}
             style={{
-              height: 54,
+              height: 48,
               borderRadius: 999,
-              paddingInline: 28,
-              background: "#0F5C6B",
-              borderColor: "#0F5C6B",
+              paddingInline: 22,
+              background: "#111111",
+              borderColor: "#111111",
               boxShadow: "none",
               width: isMobile ? "100%" : "auto",
               flexShrink: 0,
               fontWeight: 600,
+              fontFamily:
+                'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
             }}
           >
             {buttonLabel}
@@ -328,6 +347,8 @@ export default function NewsletterSignup({
               marginTop: 12,
               color: "#A6452C",
               fontSize: 13,
+              fontFamily:
+                'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
             }}
           >
             {submitError}

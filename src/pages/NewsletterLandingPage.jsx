@@ -1,83 +1,127 @@
 import React from "react";
-import { ArrowRightOutlined } from "@ant-design/icons";
 import { Grid, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import NewsletterSignup from "../components/newsletter/NewsletterSignup";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import denitsaPortrait from "../assets/temp/denitsa.jpg";
+import kaffiImage from "../assets/temp/kaffi_image.jpg";
+import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
+import sistersImage from "../assets/temp/sisters_image.jpg";
+import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
 
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
 
 const SERIF_FONT = '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
 
-const AUDIENCE_CARDS = [
-  {
-    title: "Residents",
-    body: "Stay informed about new openings, community events, local recommendations and developments around town.",
-  },
-  {
-    title: "Regular Visitors",
-    body: "For those who return to Ahangama throughout the year and want to stay connected between visits.",
-  },
-  {
-    title: "Future Visitors",
-    body: "A useful introduction to the town before arriving, helping travellers discover places worth knowing.",
-  },
-  {
-    title: "Business Owners",
-    body: "Follow local trends, hospitality openings, events and developments shaping the destination.",
-  },
-];
-
 const RECEIVE_ITEMS = [
   {
-    title: "New Openings",
+    label: "New Openings",
+    title: "Openings worth paying attention to",
     body: "Restaurants, cafes, shops, hotels and spaces opening around Ahangama.",
   },
   {
-    title: "Local Recommendations",
-    body: "Interesting places, seasonal favourites and local discoveries.",
+    label: "Local Recommendations",
+    title: "Useful places, seasonal favourites and local discoveries",
+    body: "Interesting places that feel timely, relevant and actually worth bookmarking.",
   },
   {
-    title: "Events",
-    body: "Workshops, markets, wellness gatherings, music and community events.",
+    label: "Events",
+    title: "A concise view of what is happening around town",
+    body: "Workshops, markets, music, wellness and community gatherings.",
   },
   {
-    title: "Guides",
-    body: "Curated guides covering food, surf, wellness, transport and local life.",
+    label: "Guides",
+    title: "Practical guides for daily life and short stays",
+    body: "Food, surf, wellness, transport and local life, edited into useful reads.",
   },
   {
-    title: "Stories",
-    body: "Editorial features on people, businesses and places shaping Ahangama.",
+    label: "Stories",
+    title: "Features on the people and places shaping Ahangama",
+    body: "Longer reads on businesses, creative communities and shifts around the south coast.",
   },
   {
-    title: "Ahangama Pass Updates",
-    body: "New partner venues, member offers and experiences.",
+    label: "Ahangama Pass",
+    title: "Member offers, partner updates and useful additions",
+    body: "A clear monthly digest of new member offers and partner news.",
   },
 ];
 
-const ISSUE_CARDS = [
+const FEATURED_STORIES = [
   {
-    issue: "Issue 01",
     title: "Why Everyone Is Moving South",
     summary:
-      "A look at the people, businesses and daily rhythms drawing more long-stay life toward Ahangama.",
+      "A reported look at the people, rhythms and practical realities behind the south coast's steady pull.",
+    readingTime: "6 min read",
     href: "/blogs",
+    image: photoOfWeekImage,
   },
   {
-    issue: "Issue 02",
     title: "The New Wellness Movement",
     summary:
-      "Inside the studios, recovery spaces and slower rituals shaping the next chapter of the south coast.",
+      "Studios, recovery spaces and slower rituals are reshaping the way people spend time in Ahangama.",
+    readingTime: "7 min read",
     href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    image: kaffiImage,
   },
   {
-    issue: "Issue 03",
+    title: "Inside Ahangama's Creative Community",
+    summary:
+      "A quieter portrait of the makers, founders and studios giving the town a more distinct creative identity.",
+    readingTime: "5 min read",
+    href: "/concept",
+    image: sistersImage,
+  },
+  {
     title: "A Guide To The Season Ahead",
     summary:
-      "What to bookmark before the next stretch of surf, events, openings and longer weekends in town.",
+      "What to watch, where to go and the practical details that make the coming months easier to navigate.",
+    readingTime: "8 min read",
     href: "/3-days-in-ahangama",
+    image: muktiStudioImage,
+  },
+];
+
+const INTELLIGENCE_ITEMS = [
+  {
+    label: "Surf",
+    detail: "3-4ft at Marshmallow",
+  },
+  {
+    label: "Weather",
+    detail: "Mostly sunny this week",
+  },
+  {
+    label: "Opening",
+    detail: "Studio Mukti",
+  },
+  {
+    label: "Event",
+    detail: "Community Market this Saturday",
+  },
+  {
+    label: "Discussion",
+    detail: "Coconut Court Pickleball",
+  },
+];
+
+const AUDIENCE_CARDS = [
+  {
+    title: "Residents",
+    body: "Stay informed about openings, events, local recommendations and the quieter shifts around town.",
+  },
+  {
+    title: "Regular Visitors",
+    body: "A way to stay connected between trips and return with a better sense of what has changed.",
+  },
+  {
+    title: "Future Visitors",
+    body: "A useful introduction for travellers who want a more considered sense of Ahangama before arriving.",
+  },
+  {
+    title: "Business Owners",
+    body: "A measured read on hospitality openings, local movement and destination-level change.",
   },
 ];
 
@@ -86,12 +130,14 @@ function SectionLabel({ children }) {
     <Text
       style={{
         display: "block",
-        marginBottom: 12,
-        color: "#207886",
-        fontSize: 11,
+        marginBottom: 14,
+        color: "#5C5C5C",
+        fontSize: 10,
         fontWeight: 700,
-        letterSpacing: 1.8,
+        letterSpacing: 2.2,
         textTransform: "uppercase",
+        fontFamily:
+          'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
     >
       {children}
@@ -114,26 +160,28 @@ export default function NewsletterLandingPage() {
       <div>
         <main
           style={{
-            maxWidth: 1180,
+            maxWidth: 720,
             margin: "0 auto",
-            padding: isMobile ? "28px 16px 72px" : "44px 24px 96px",
+            padding: isMobile ? "32px 20px 80px" : "56px 24px 120px",
+            fontFamily:
+              'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
           }}
         >
           <section
             style={{
-              padding: isMobile ? "24px 0 42px" : "38px 0 56px",
+              padding: isMobile ? "12px 0 56px" : "18px 0 72px",
             }}
           >
-            <div style={{ maxWidth: 860 }}>
+            <div>
               <SectionLabel>Monthly Letter</SectionLabel>
               <Title
                 level={1}
                 style={{
                   margin: 0,
-                  color: "#142225",
+                  color: "#111111",
                   fontFamily: SERIF_FONT,
-                  fontSize: isMobile ? 46 : 84,
-                  lineHeight: isMobile ? 0.98 : 0.92,
+                  fontSize: isMobile ? 48 : 86,
+                  lineHeight: isMobile ? 1 : 0.94,
                   letterSpacing: "-0.03em",
                 }}
               >
@@ -141,12 +189,13 @@ export default function NewsletterLandingPage() {
               </Title>
               <Paragraph
                 style={{
-                  maxWidth: 760,
                   marginTop: 22,
                   marginBottom: 0,
-                  color: "#405457",
-                  fontSize: isMobile ? 17 : 20,
-                  lineHeight: 1.85,
+                  color: "#303030",
+                  fontSize: isMobile ? 19 : 22,
+                  lineHeight: 1.72,
+                  fontFamily:
+                    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
                 }}
               >
                 A monthly collection of local recommendations, new openings,
@@ -154,28 +203,13 @@ export default function NewsletterLandingPage() {
               </Paragraph>
               <Paragraph
                 style={{
-                  maxWidth: 760,
-                  marginTop: 16,
-                  marginBottom: 0,
-                  color: "#405457",
-                  fontSize: isMobile ? 16 : 18,
-                  lineHeight: 1.9,
-                }}
-              >
-                Whether you live here, visit often, own a property, run a
-                business, or are simply interested in the south coast, The
-                Dispatch helps you stay connected to what is happening in and
-                around town.
-              </Paragraph>
-              <Paragraph
-                style={{
-                  maxWidth: 760,
                   marginTop: 18,
                   marginBottom: 0,
-                  color: "#0F5C6B",
+                  color: "#4A4A4A",
                   fontSize: isMobile ? 15 : 16,
-                  fontWeight: 600,
-                  lineHeight: 1.8,
+                  lineHeight: 1.9,
+                  fontFamily:
+                    'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
                 }}
               >
                 Currently read by residents, business owners, frequent visitors
@@ -183,155 +217,221 @@ export default function NewsletterLandingPage() {
               </Paragraph>
             </div>
 
-          </section>
-
-          <section
-            style={{
-              padding: isMobile ? "26px 0 20px" : "40px 0 24px",
-            }}
-          >
-            <SectionLabel>Who Reads The Dispatch</SectionLabel>
-            <Title
-              level={2}
-              style={{
-                maxWidth: 760,
-                margin: 0,
-                color: "#142225",
-                fontFamily: SERIF_FONT,
-                fontSize: isMobile ? 34 : 54,
-                lineHeight: 1,
-              }}
-            >
-              A monthly letter for people with a real connection to Ahangama.
-            </Title>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: isMobile
-                  ? "1fr"
-                  : "repeat(2, minmax(0, 1fr))",
-                gap: 16,
-                marginTop: 26,
-              }}
-            >
-              {AUDIENCE_CARDS.map((card) => (
-                <article
-                  key={card.title}
-                  style={{
-                    background: "#FFFFFF",
-                    border: "1px solid rgba(15, 92, 107, 0.08)",
-                    borderRadius: 28,
-                    padding: isMobile ? 20 : 26,
-                    boxShadow: "0 12px 30px rgba(18, 31, 34, 0.04)",
-                  }}
-                >
-                  <Text
-                    style={{
-                      display: "block",
-                      marginBottom: 10,
-                      color: "#88AEB5",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: 1.6,
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Reader
-                  </Text>
-                  <Title
-                    level={3}
-                    style={{
-                      margin: 0,
-                      color: "#162225",
-                      fontFamily: SERIF_FONT,
-                      fontSize: isMobile ? 28 : 34,
-                      lineHeight: 1.04,
-                    }}
-                  >
-                    {card.title}
-                  </Title>
-                  <Paragraph
-                    style={{
-                      marginTop: 14,
-                      marginBottom: 0,
-                      color: "#506366",
-                      fontSize: 15,
-                      lineHeight: 1.82,
-                    }}
-                  >
-                    {card.body}
-                  </Paragraph>
-                </article>
-              ))}
+            <div style={{ marginTop: 28 }}>
+              <NewsletterSignup
+                variant="compact"
+                source="newsletter_page"
+                label=""
+                title=""
+                description=""
+              />
             </div>
           </section>
 
           <section
             style={{
-              marginTop: isMobile ? 28 : 44,
-              padding: isMobile ? "24px 18px" : "34px 28px",
-              borderRadius: 32,
-              border: "1px solid rgba(15, 92, 107, 0.08)",
+              padding: isMobile ? "0 0 56px" : "0 0 72px",
+              borderTop: "1px solid rgba(17, 17, 17, 0.12)",
             }}
           >
-            <SectionLabel>What You&apos;ll Receive</SectionLabel>
-            <Title
-              level={2}
+            <div
               style={{
-                maxWidth: 820,
-                margin: 0,
-                color: "#142225",
-                fontFamily: SERIF_FONT,
-                fontSize: isMobile ? 34 : 54,
-                lineHeight: 1,
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.2fr) 180px",
+                gap: isMobile ? 24 : 28,
+                alignItems: "start",
+                paddingTop: isMobile ? 28 : 36,
               }}
             >
-              Thoughtful local reporting, useful signals and the places worth
-              paying attention to.
-            </Title>
+              <div>
+                <SectionLabel>Editor&apos;s Letter</SectionLabel>
+                <Text
+                  style={{
+                    display: "block",
+                    marginBottom: 8,
+                    color: "#5C5C5C",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: 2.2,
+                    textTransform: "uppercase",
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  }}
+                >
+                  From Ahangama
+                </Text>
+                <Title
+                  level={2}
+                  style={{
+                    margin: 0,
+                    color: "#111111",
+                    fontFamily: SERIF_FONT,
+                    fontSize: isMobile ? 38 : 56,
+                    lineHeight: 1,
+                  }}
+                >
+                  A calmer way to keep up with Ahangama.
+                </Title>
+                <Paragraph
+                  style={{
+                    marginTop: 22,
+                    marginBottom: 0,
+                    color: "#303030",
+                    fontSize: isMobile ? 17 : 18,
+                    lineHeight: 1.92,
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  }}
+                >
+                  Ahangama changes quickly.
+                </Paragraph>
+                <Paragraph
+                  style={{
+                    marginTop: 18,
+                    marginBottom: 0,
+                    color: "#303030",
+                    fontSize: isMobile ? 16 : 18,
+                    lineHeight: 1.92,
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  }}
+                >
+                  New cafes open, communities grow, visitors arrive, businesses
+                  evolve and useful local knowledge is often scattered across
+                  WhatsApp groups, Instagram posts and conversations.
+                </Paragraph>
+                <Paragraph
+                  style={{
+                    marginTop: 18,
+                    marginBottom: 0,
+                    color: "#303030",
+                    fontSize: isMobile ? 16 : 18,
+                    lineHeight: 1.92,
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  }}
+                >
+                  The Ahangama Dispatch was created to bring together the most
+                  useful updates from around town into a single monthly letter.
+                </Paragraph>
+                <Paragraph
+                  style={{
+                    marginTop: 18,
+                    marginBottom: 0,
+                    color: "#111111",
+                    fontSize: isMobile ? 16 : 18,
+                    lineHeight: 1.92,
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  }}
+                >
+                  No noise.
+                </Paragraph>
+                <Paragraph
+                  style={{
+                    marginTop: 8,
+                    marginBottom: 0,
+                    color: "#111111",
+                    fontSize: isMobile ? 16 : 18,
+                    lineHeight: 1.92,
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  }}
+                >
+                  No daily emails.
+                </Paragraph>
+                <Paragraph
+                  style={{
+                    marginTop: 8,
+                    marginBottom: 0,
+                    color: "#111111",
+                    fontSize: isMobile ? 16 : 18,
+                    lineHeight: 1.92,
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  }}
+                >
+                  Just one thoughtful update from Ahangama.
+                </Paragraph>
+              </div>
+
+              <figure style={{ margin: 0 }}>
+                <img
+                  src={denitsaPortrait}
+                  alt="Portrait from Ahangama"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    aspectRatio: "4 / 5",
+                    objectFit: "cover",
+                    borderRadius: 18,
+                    filter: "grayscale(100%)",
+                  }}
+                />
+              </figure>
+            </div>
+          </section>
+
+          <section
+            style={{
+              padding: isMobile ? "0 0 56px" : "0 0 72px",
+              borderTop: "1px solid rgba(17, 17, 17, 0.12)",
+            }}
+          >
+            <div style={{ paddingTop: isMobile ? 28 : 36 }}>
+              <SectionLabel>What You&apos;ll Receive</SectionLabel>
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#111111",
+                  fontFamily: SERIF_FONT,
+                  fontSize: isMobile ? 38 : 56,
+                  lineHeight: 1,
+                }}
+              >
+                The monthly shape of the letter.
+              </Title>
+            </div>
 
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: isMobile
-                  ? "1fr"
-                  : "repeat(3, minmax(0, 1fr))",
-                gap: 16,
-                marginTop: 26,
+                gap: 18,
+                marginTop: 28,
               }}
             >
               {RECEIVE_ITEMS.map((item) => (
                 <article
-                  key={item.title}
+                  key={item.label}
                   style={{
-                    minHeight: 196,
-                    border: "1px solid rgba(15, 92, 107, 0.08)",
-                    borderRadius: 24,
-                    padding: isMobile ? 18 : 22,
+                    paddingBottom: 18,
+                    borderBottom: "1px solid rgba(17, 17, 17, 0.12)",
                   }}
                 >
                   <Text
                     style={{
                       display: "block",
-                      marginBottom: 10,
-                      color: "#207886",
-                      fontSize: 11,
+                      marginBottom: 12,
+                      color: "#5C5C5C",
+                      fontSize: 10,
                       fontWeight: 700,
-                      letterSpacing: 1.6,
+                      letterSpacing: 2.2,
                       textTransform: "uppercase",
+                      fontFamily:
+                        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
                     }}
                   >
-                    Editorial Section
+                    {item.label}
                   </Text>
                   <Title
                     level={3}
                     style={{
                       margin: 0,
-                      color: "#162225",
+                      color: "#111111",
                       fontFamily: SERIF_FONT,
-                      fontSize: isMobile ? 26 : 30,
-                      lineHeight: 1.06,
+                      fontSize: isMobile ? 30 : 38,
+                      lineHeight: 1.02,
                     }}
                   >
                     {item.title}
@@ -340,9 +440,11 @@ export default function NewsletterLandingPage() {
                     style={{
                       marginTop: 14,
                       marginBottom: 0,
-                      color: "#4E6063",
-                      fontSize: 15,
-                      lineHeight: 1.82,
+                      color: "#3E3E3E",
+                      fontSize: isMobile ? 15 : 16,
+                      lineHeight: 1.88,
+                      fontFamily:
+                        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
                     }}
                   >
                     {item.body}
@@ -354,101 +456,169 @@ export default function NewsletterLandingPage() {
 
           <section
             style={{
-              padding: isMobile ? "42px 0 18px" : "62px 0 28px",
+              padding: isMobile ? "0 0 56px" : "0 0 72px",
+              borderTop: "1px solid rgba(17, 17, 17, 0.12)",
             }}
           >
-            <SectionLabel>Recent Editions</SectionLabel>
-            <Title
-              level={2}
+            <div style={{ paddingTop: isMobile ? 28 : 36 }}>
+              <SectionLabel>Recent Stories</SectionLabel>
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#111111",
+                  fontFamily: SERIF_FONT,
+                  fontSize: isMobile ? 38 : 56,
+                  lineHeight: 1,
+                }}
+              >
+                Recent stories from around town.
+              </Title>
+            </div>
+
+            <div
               style={{
-                maxWidth: 760,
-                margin: 0,
-                color: "#142225",
-                fontFamily: SERIF_FONT,
-                fontSize: isMobile ? 34 : 54,
-                lineHeight: 1,
+                display: "grid",
+                gap: 28,
+                marginTop: 28,
               }}
             >
-              Three examples of the kind of letter subscribers receive.
-            </Title>
+              {FEATURED_STORIES.map((story) => (
+                <a
+                  key={story.title}
+                  href={story.href}
+                  style={{
+                    display: "block",
+                    color: "inherit",
+                    textDecoration: "none",
+                    paddingBottom: 28,
+                    borderBottom: "1px solid rgba(17, 17, 17, 0.12)",
+                  }}
+                >
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      aspectRatio: "16 / 9",
+                      objectFit: "cover",
+                      marginBottom: 18,
+                      borderRadius: 14,
+                    }}
+                  />
+                  <Title
+                    level={3}
+                    style={{
+                      margin: 0,
+                      color: "#111111",
+                      fontFamily: SERIF_FONT,
+                      fontSize: isMobile ? 32 : 42,
+                      lineHeight: 1.02,
+                    }}
+                  >
+                    {story.title}
+                  </Title>
+                  <Paragraph
+                    style={{
+                      marginTop: 14,
+                      marginBottom: 0,
+                      color: "#3E3E3E",
+                      fontSize: isMobile ? 15 : 16,
+                      lineHeight: 1.86,
+                      fontFamily:
+                        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                    }}
+                  >
+                    {story.summary}
+                  </Paragraph>
+                  <Text
+                    style={{
+                      display: "block",
+                      marginTop: 12,
+                      color: "#5C5C5C",
+                      fontSize: 12,
+                      letterSpacing: 0.2,
+                      fontFamily:
+                        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                    }}
+                  >
+                    {story.readingTime}
+                  </Text>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section
+            style={{
+              padding: isMobile ? "0 0 56px" : "0 0 72px",
+              borderTop: "1px solid rgba(17, 17, 17, 0.12)",
+            }}
+          >
+            <div style={{ paddingTop: isMobile ? 28 : 36 }}>
+              <SectionLabel>Local Intelligence</SectionLabel>
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#111111",
+                  fontFamily: SERIF_FONT,
+                  fontSize: isMobile ? 38 : 56,
+                  lineHeight: 1,
+                }}
+              >
+                A short briefing from around town.
+              </Title>
+            </div>
 
             <div
               style={{
                 display: "grid",
                 gridTemplateColumns: isMobile
                   ? "1fr"
-                  : "repeat(3, minmax(0, 1fr))",
-                gap: 16,
-                marginTop: 26,
+                  : "repeat(2, minmax(0, 1fr))",
+                gap: 14,
+                marginTop: 28,
               }}
             >
-              {ISSUE_CARDS.map((issue) => (
+              {INTELLIGENCE_ITEMS.map((item) => (
                 <article
-                  key={issue.issue}
+                  key={item.label}
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    minHeight: 280,
-                    background: "#FFFFFF",
-                    border: "1px solid rgba(15, 92, 107, 0.08)",
-                    borderRadius: 28,
-                    padding: isMobile ? 20 : 24,
-                    boxShadow: "0 12px 28px rgba(18, 31, 34, 0.04)",
+                    minHeight: 108,
+                    padding: isMobile ? 16 : 18,
+                    border: "1px solid rgba(17, 17, 17, 0.12)",
+                    borderRadius: 14,
                   }}
                 >
                   <Text
                     style={{
                       display: "block",
-                      color: "#207886",
-                      fontSize: 11,
+                      color: "#5C5C5C",
+                      fontSize: 10,
                       fontWeight: 700,
-                      letterSpacing: 1.8,
+                      letterSpacing: 2.2,
                       textTransform: "uppercase",
+                      fontFamily:
+                        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
                     }}
                   >
-                    {issue.issue}
+                    {item.label}
                   </Text>
                   <Title
-                    level={3}
+                    level={4}
                     style={{
                       marginTop: 12,
                       marginBottom: 0,
-                      color: "#162225",
+                      color: "#111111",
                       fontFamily: SERIF_FONT,
-                      fontSize: isMobile ? 28 : 34,
+                      fontSize: isMobile ? 24 : 28,
                       lineHeight: 1.08,
                     }}
                   >
-                    {issue.title}
+                    {item.detail}
                   </Title>
-                  <Paragraph
-                    style={{
-                      marginTop: 14,
-                      marginBottom: 0,
-                      color: "#506366",
-                      fontSize: 15,
-                      lineHeight: 1.82,
-                    }}
-                  >
-                    {issue.summary}
-                  </Paragraph>
-                  <a
-                    href={issue.href}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 8,
-                      marginTop: "auto",
-                      paddingTop: 24,
-                      color: "#0F5C6B",
-                      fontSize: 14,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                    }}
-                  >
-                    Read issue
-                    <ArrowRightOutlined />
-                  </a>
                 </article>
               ))}
             </div>
@@ -456,91 +626,224 @@ export default function NewsletterLandingPage() {
 
           <section
             style={{
-              marginTop: isMobile ? 28 : 46,
-              padding: isMobile ? "28px 18px" : "38px 32px",
-              borderRadius: 32,
-              border: "1px solid rgba(15, 92, 107, 0.08)",
+              padding: isMobile ? "0 0 56px" : "0 0 72px",
+              borderTop: "1px solid rgba(17, 17, 17, 0.12)",
             }}
           >
-            <SectionLabel>Why We Created It</SectionLabel>
-            <Title
-              level={2}
+            <div style={{ paddingTop: isMobile ? 28 : 36 }}>
+              <SectionLabel>Who Reads The Dispatch</SectionLabel>
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#111111",
+                  fontFamily: SERIF_FONT,
+                  fontSize: isMobile ? 38 : 56,
+                  lineHeight: 1,
+                }}
+              >
+                Read by people with a real stake in Ahangama.
+              </Title>
+            </div>
+
+            <div
               style={{
-                maxWidth: 700,
-                margin: 0,
-                color: "#142225",
-                fontFamily: SERIF_FONT,
-                fontSize: isMobile ? 34 : 54,
-                lineHeight: 1,
+                display: "grid",
+                gridTemplateColumns: isMobile
+                  ? "1fr"
+                  : "repeat(2, minmax(0, 1fr))",
+                gap: 14,
+                marginTop: 28,
               }}
             >
-              A calmer way to keep up with Ahangama.
-            </Title>
-            <Paragraph
-              style={{
-                maxWidth: 780,
-                marginTop: 18,
-                marginBottom: 0,
-                color: "#44585B",
-                fontSize: isMobile ? 16 : 18,
-                lineHeight: 1.92,
-              }}
-            >
-              Ahangama changes quickly. New cafes open, events appear,
-              communities evolve and useful local knowledge often remains
-              scattered across WhatsApp groups, Instagram posts and
-              conversations.
-            </Paragraph>
-            <Paragraph
-              style={{
-                maxWidth: 780,
-                marginTop: 16,
-                marginBottom: 0,
-                color: "#44585B",
-                fontSize: isMobile ? 16 : 18,
-                lineHeight: 1.92,
-              }}
-            >
-              The Dispatch brings together the most useful updates each month
-              into a single curated letter.
-            </Paragraph>
-            <Paragraph
-              style={{
-                maxWidth: 780,
-                marginTop: 16,
-                marginBottom: 0,
-                color: "#0F5C6B",
-                fontSize: isMobile ? 15 : 16,
-                fontWeight: 600,
-                lineHeight: 1.9,
-              }}
-            >
-              No noise. No daily emails. Just one thoughtful update from
-              Ahangama.
-            </Paragraph>
+              {AUDIENCE_CARDS.map((card) => (
+                <article
+                  key={card.title}
+                  style={{
+                    padding: isMobile ? 18 : 20,
+                    border: "1px solid rgba(17, 17, 17, 0.12)",
+                    borderRadius: 14,
+                  }}
+                >
+                  <Title
+                    level={3}
+                    style={{
+                      margin: 0,
+                      color: "#111111",
+                      fontFamily: SERIF_FONT,
+                      fontSize: isMobile ? 28 : 32,
+                      lineHeight: 1.04,
+                    }}
+                  >
+                    {card.title}
+                  </Title>
+                  <Paragraph
+                    style={{
+                      marginTop: 12,
+                      marginBottom: 0,
+                      color: "#3E3E3E",
+                      fontSize: 15,
+                      lineHeight: 1.84,
+                      fontFamily:
+                        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                    }}
+                  >
+                    {card.body}
+                  </Paragraph>
+                </article>
+              ))}
+            </div>
           </section>
 
           <section
             style={{
-              padding: isMobile ? "42px 0 0" : "60px 0 0",
+              padding: isMobile ? "0 0 56px" : "0 0 72px",
+              borderTop: "1px solid rgba(17, 17, 17, 0.12)",
             }}
           >
             <div
               style={{
-                border: "1px solid rgba(15, 92, 107, 0.08)",
-                borderRadius: 34,
-                padding: isMobile ? 18 : 26,
+                paddingTop: isMobile ? 28 : 36,
               }}
             >
-              <div style={{ maxWidth: 780, marginBottom: 20 }}>
-                <SectionLabel>Join The Letter</SectionLabel>
+              <SectionLabel>Sample Issue</SectionLabel>
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#111111",
+                  fontFamily: SERIF_FONT,
+                  fontSize: isMobile ? 38 : 56,
+                  lineHeight: 1,
+                }}
+              >
+                A typical issue, at a glance.
+              </Title>
+
+              <div
+                style={{
+                  marginTop: 28,
+                  border: "1px solid rgba(17, 17, 17, 0.12)",
+                  borderRadius: 18,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "160px minmax(0, 1fr)",
+                  }}
+                >
+                  <div
+                    style={{
+                      padding: isMobile ? 18 : 24,
+                      borderBottom: isMobile
+                        ? "1px solid rgba(17, 17, 17, 0.12)"
+                        : "none",
+                      borderRight: isMobile
+                        ? "none"
+                        : "1px solid rgba(17, 17, 17, 0.12)",
+                    }}
+                  >
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#5C5C5C",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: 2.2,
+                        textTransform: "uppercase",
+                        fontFamily:
+                          'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                      }}
+                    >
+                      Issue Contents
+                    </Text>
+                    <Title
+                      level={3}
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 0,
+                        color: "#111111",
+                        fontFamily: SERIF_FONT,
+                        fontSize: isMobile ? 28 : 32,
+                        lineHeight: 1.04,
+                      }}
+                    >
+                      June Edition
+                    </Title>
+                  </div>
+
+                  <div style={{ padding: isMobile ? 18 : 24 }}>
+                    {[
+                      "Editor's Letter",
+                      "5 New Openings",
+                      "4 Events Worth Knowing",
+                      "Story of the Month",
+                      "Local Intelligence",
+                      "Restaurant Recommendation",
+                      "Wellness Recommendation",
+                      "Ahangama Pass Updates",
+                      "Closing Notes",
+                    ].map((item, index) => (
+                      <div
+                        key={item}
+                        style={{
+                          display: "flex",
+                          alignItems: "baseline",
+                          justifyContent: "space-between",
+                          gap: 16,
+                          padding: index === 0 ? "0 0 12px" : "12px 0",
+                          borderTop:
+                            index === 0
+                              ? "none"
+                              : "1px solid rgba(17, 17, 17, 0.08)",
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: "#111111",
+                            fontSize: 15,
+                            lineHeight: 1.7,
+                            fontFamily:
+                              'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                          }}
+                        >
+                          {item}
+                        </Text>
+                        <Text
+                          style={{
+                            color: "#7A7A7A",
+                            fontSize: 12,
+                            fontFamily:
+                              'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                          }}
+                        >
+                          {String(index + 1).padStart(2, "0")}
+                        </Text>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            style={{
+              paddingTop: isMobile ? 28 : 36,
+              borderTop: "1px solid rgba(17, 17, 17, 0.12)",
+            }}
+          >
+            <SectionLabel>Join The Ahangama Dispatch</SectionLabel>
+            <div style={{ marginBottom: 20 }}>
                 <Title
                   level={2}
                   style={{
                     margin: 0,
-                    color: "#142225",
+                    color: "#111111",
                     fontFamily: SERIF_FONT,
-                    fontSize: isMobile ? 34 : 50,
+                    fontSize: isMobile ? 38 : 56,
                     lineHeight: 1,
                   }}
                 >
@@ -550,21 +853,25 @@ export default function NewsletterLandingPage() {
                   style={{
                     marginTop: 16,
                     marginBottom: 0,
-                    color: "#44585B",
+                    color: "#3E3E3E",
                     fontSize: isMobile ? 16 : 18,
                     lineHeight: 1.88,
+                    fontFamily:
+                      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
                   }}
                 >
-                  One monthly email covering the people, places, openings and
-                  stories worth knowing.
+                  One thoughtful monthly email covering the people, places,
+                  openings and stories worth knowing.
                 </Paragraph>
               </div>
 
               <NewsletterSignup
-                variant="compact"
+                variant="default"
                 source="newsletter_page_footer"
+                label=""
+                title=""
+                description=""
               />
-            </div>
           </section>
         </main>
       </div>
