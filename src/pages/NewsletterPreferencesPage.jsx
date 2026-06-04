@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Grid, Input, Radio, Space, Typography } from "antd";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -39,6 +39,10 @@ export default function NewsletterPreferencesPage() {
   const [submitError, setSubmitError] = useState("");
   const [isComplete, setIsComplete] = useState(false);
   const email = (searchParams.get("email") || "").trim().toLowerCase();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
 
   async function handleSubmit(values) {
     setIsSubmitting(true);
