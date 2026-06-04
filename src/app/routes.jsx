@@ -38,6 +38,7 @@ import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
+import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import ExternalRedirect from "./ExternalRedirect";
 
@@ -112,6 +113,7 @@ const routes = [
   { path: "/resellers", element: <Resellers /> },
   { path: "/places", element: <PlacesTable /> },
   { path: "/eat", element: <EatEditorialPage /> },
+  { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
   {
     path: "/stays",

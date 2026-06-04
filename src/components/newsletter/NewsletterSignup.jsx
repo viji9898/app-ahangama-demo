@@ -219,13 +219,11 @@ export default function NewsletterSignup({
       ? {
           padding: isMobile ? 18 : 22,
           borderRadius: 22,
-          background: "#FFFFFF",
           border: "1px solid rgba(15, 92, 107, 0.1)",
         }
       : {
           padding: isMobile ? 24 : 30,
           borderRadius: 28,
-          background: "#F5F2ED",
           border: "1px solid rgba(15, 92, 107, 0.08)",
         };
 
