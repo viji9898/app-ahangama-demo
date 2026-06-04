@@ -5865,6 +5865,12 @@ li,
   line-height: 1.7 !important;
 }
 
+.eat-guideSection--note .eat-guideSectionIntro {
+  max-width: 54rem;
+  font-size: 16px !important;
+  line-height: 1.82 !important;
+}
+
 .eat-guideFeatureStack,
 .eat-guideRowList,
 .eat-guideLocalList,
@@ -5974,6 +5980,21 @@ li,
   gap: 22px;
 }
 
+.eat-guidePullQuote {
+  padding: 34px 0 6px;
+}
+
+.eat-guidePullQuote blockquote {
+  margin: 0;
+  max-width: 18ch;
+  color: #1f1d1a;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 0.98;
+  letter-spacing: -0.9px;
+}
+
 .eat-guideTile,
 .eat-guideWorkCard {
   display: grid;
@@ -6002,6 +6023,11 @@ li,
 }
 
 .eat-guideSection--reference {
+  padding-bottom: 8px;
+}
+
+.eat-guideSection--directory,
+.eat-guideSection--explore {
   padding-bottom: 8px;
 }
 
@@ -6054,6 +6080,137 @@ li,
   color: #1f1d1a;
 }
 
+.eat-guideDirectoryControls {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.eat-guideDirectoryToggles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.eat-guideDirectoryModes {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.eat-guideModeButton {
+  border: 1px solid rgba(32, 30, 27, 0.1);
+  background: #ffffff;
+  color: #5f574e;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.eat-guideModeButton.is-active,
+.eat-guideModeButton:hover,
+.eat-guideModeButton:focus {
+  border-color: #2f2a24;
+  background: #2f2a24;
+  color: #ffffff;
+}
+
+.eat-guidePerksToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #5f574e;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.eat-guideTagFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.eat-guideFilterTag {
+  margin: 0 !important;
+  padding: 6px 10px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(32, 30, 27, 0.1) !important;
+  background: #ffffff !important;
+  color: #5f574e !important;
+  cursor: pointer;
+}
+
+.eat-guideFilterTag.is-active {
+  border-color: #2f2a24 !important;
+  background: #2f2a24 !important;
+  color: #ffffff !important;
+}
+
+.eat-guideDirectoryCards {
+  display: grid;
+  gap: 20px;
+}
+
+.eat-guideDirectoryCards--grid {
+  grid-template-columns: 1fr;
+}
+
+.eat-guideDirectoryCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.eat-guideDirectoryMedia,
+.eat-guideExploreMedia {
+  overflow: hidden;
+  background: #efe8dd;
+}
+
+.eat-guideDirectoryMedia {
+  aspect-ratio: 4 / 3;
+}
+
+.eat-guideDirectoryMedia img,
+.eat-guideExploreMedia img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eat-guideDirectoryEmpty,
+.eat-guideLoadMoreWrap {
+  margin-top: 24px;
+}
+
+.eat-guideLoadMoreWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.eat-guideExploreGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.eat-guideExploreCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.eat-guideExploreMedia {
+  aspect-ratio: 4 / 3;
+}
+
 @media (min-width: 768px) {
   .eat-guideHero {
     grid-template-columns: minmax(320px, 0.82fr) minmax(420px, 1.18fr);
@@ -6095,6 +6252,23 @@ li,
     gap: 28px;
     align-items: start;
   }
+
+  .eat-guideDirectoryCards--grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .eat-guideDirectoryCards--list .eat-guideDirectoryCard,
+  .eat-guideExploreCard {
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .eat-guideExploreGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 24px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -6120,6 +6294,26 @@ li,
 
   .eat-guideSectionNumber {
     margin-bottom: 2px;
+  }
+
+  .eat-guidePullQuote {
+    padding-top: 24px;
+  }
+
+  .eat-guideDirectoryToggles {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .eat-guideTagFilters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .eat-guideTagFilters::-webkit-scrollbar {
+    display: none;
   }
 }
 
