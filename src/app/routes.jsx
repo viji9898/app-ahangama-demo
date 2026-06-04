@@ -38,6 +38,7 @@ import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
+import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -111,6 +112,7 @@ const routes = [
   { path: "/resellers", element: <Resellers /> },
   { path: "/places", element: <PlacesTable /> },
   { path: "/eat", element: <EatEditorialPage /> },
+  { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,

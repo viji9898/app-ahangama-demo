@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { Button, Grid, Input, Typography } from "antd";
+import { useNavigate } from "react-router-dom";
+import { createNewsletterSubscriber } from "../../services/newsletter";
 
 const { Text, Title, Paragraph } = Typography;
 const { useBreakpoint } = Grid;
@@ -80,26 +82,55 @@ const secondaryLinks = [
   { label: "Terms", href: "/card/terms" },
 ];
 
-function subscribeHref(email) {
-  const trimmedEmail = email.trim();
-
-  return `mailto:hello@ahangama.com?subject=${encodeURIComponent(
-    "Ahangama Dispatch Subscription",
-  )}&body=${encodeURIComponent(`Please subscribe ${trimmedEmail} to The Ahangama Dispatch.`)}`;
-}
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function FooterBar() {
+  const navigate = useNavigate();
   const screens = useBreakpoint();
   const isMobile = !screens.md;
   const [email, setEmail] = useState("");
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleDispatchSubmit(event) {
+  async function handleDispatchSubmit(event) {
     event.preventDefault();
 
-    const trimmedEmail = email.trim();
-    if (!trimmedEmail) return;
+    const trimmedEmail = email.trim().toLowerCase();
+    if (!trimmedEmail) {
+      setSubmitError("Please enter your email address.");
+      return;
+    }
 
-    window.location.href = subscribeHref(trimmedEmail);
+    if (!EMAIL_PATTERN.test(trimmedEmail)) {
+      setSubmitError("Please enter a valid email address.");
+      return;
+    }
+
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      const source =
+        window.location.pathname === "/"
+          ? "homepage-footer"
+          : `footer:${window.location.pathname}`;
+
+      await createNewsletterSubscriber({
+        email: trimmedEmail,
+        source,
+      });
+
+      navigate(
+        `/newsletter/preferences?email=${encodeURIComponent(trimmedEmail)}`,
+      );
+    } catch (error) {
+      console.error("newsletter signup error:", error);
+      setSubmitError(
+        error.message || "Unable to start your subscription right now.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -498,6 +529,7 @@ export default function FooterBar() {
                           size="large"
                           type="email"
                           required
+                          disabled={isSubmitting}
                           value={email}
                           onChange={(event) => setEmail(event.target.value)}
                           placeholder="Email Address"
@@ -518,6 +550,7 @@ export default function FooterBar() {
                           htmlType="submit"
                           type="primary"
                           size="large"
+                          loading={isSubmitting}
                           style={{
                             height: 54,
                             borderRadius: 999,
@@ -533,6 +566,20 @@ export default function FooterBar() {
                         >
                           Subscribe
                         </Button>
+
+                        {submitError ? (
+                          <Text
+                            style={{
+                              display: "block",
+                              marginTop: 12,
+                              color: "#A6452C",
+                              fontSize: 13,
+                              textAlign: isMobile ? "left" : "center",
+                            }}
+                          >
+                            {submitError}
+                          </Text>
+                        ) : null}
                       </div>
                     </form>
 
