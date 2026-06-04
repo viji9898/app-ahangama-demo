@@ -5822,6 +5822,54 @@ li,
   text-transform: none;
 }
 
+.editorial-shareRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.editorial-shareLabel {
+  color: #8b7b63 !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.editorial-shareLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  color: rgba(32, 120, 134, 0.84);
+  font-size: 18px;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.editorial-shareLink:hover,
+.editorial-shareLink:focus {
+  color: #0f5c6b;
+  opacity: 1;
+}
+
+.editorial-shareButton {
+  appearance: none;
+}
+
+.editorial-shareX {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .eat-guideHeroIntro,
 .eat-guideSectionIntro,
 .eat-guideFeatureCopy,

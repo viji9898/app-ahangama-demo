@@ -4,6 +4,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import ShareRow from "../components/ui/ShareRow";
 import { shouldShowPlace } from "../data/placeStatus";
 
 const { Paragraph, Text, Title } = Typography;
@@ -452,6 +453,8 @@ export default function EatEditorialPage() {
   );
 
   const canonical = absUrl("/eat");
+  const shareTitle = "Eats | Ahangama";
+
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -483,6 +486,11 @@ export default function EatEditorialPage() {
               <Text className="eat-guideByline">
                 Words By <span className="eat-guideBylineName">Viji</span>
               </Text>
+              <ShareRow
+                url={canonical}
+                title={shareTitle}
+                text="An editorial guide to where to eat in Ahangama."
+              />
             </div>
             <div className="eat-guideHeroMedia">
               <img src={HERO_IMAGE} alt="Editorial food guide hero for Ahangama" />
