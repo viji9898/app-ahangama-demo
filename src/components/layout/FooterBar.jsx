@@ -38,35 +38,6 @@ const editorialStories = [
   },
 ];
 
-const weeklyNotes = [
-  {
-    label: "New Opening",
-    title: "A new coffee and bakery concept has opened near Kabalana.",
-    detail:
-      "One for early starts, pastry runs, and the people who plan mornings around coffee rather than schedules.",
-  },
-  {
-    label: "Local Tip",
-    title: "Sunsets have been particularly good at Marshmellow this week.",
-    detail:
-      "Go a little earlier than usual, order slowly, and expect the beach to be at its best just before dusk.",
-  },
-  {
-    label: "Event",
-    title:
-      "Live music every Friday evening at one of the town's favourite hangouts.",
-    detail:
-      "A good choice if you want something social without committing to a full late night out.",
-  },
-  {
-    label: "Seasonal Note",
-    title:
-      "Morning surf and late-afternoon swims are the sweet spots right now.",
-    detail:
-      "The current rhythm favours early movement, a long lunch, and slower plans once the heat softens.",
-  },
-];
-
 const discoveryLinks = [
   { label: "Guides", href: "/blogs" },
   { label: "Places", href: "/search" },
@@ -304,224 +275,6 @@ export default function FooterBar() {
                 display: "grid",
                 gridTemplateColumns: isMobile
                   ? "1fr"
-                  : "minmax(0, 1.35fr) minmax(320px, 0.9fr)",
-                gap: isMobile ? 28 : 34,
-                alignItems: "start",
-              }}
-            >
-              <div>
-                <Text
-                  style={{
-                    display: "block",
-                    marginBottom: 10,
-                    color: "#B08E62",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: 1.6,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Local Bulletin
-                </Text>
-                <Title
-                  level={3}
-                  style={{
-                    margin: 0,
-                    color: "#1F1D1A",
-                    fontFamily: SERIF_FONT,
-                    fontSize: isMobile ? 30 : 40,
-                    lineHeight: 1.06,
-                  }}
-                >
-                  Ahangama This Week
-                </Title>
-                <Paragraph
-                  style={{
-                    maxWidth: 620,
-                    marginTop: 12,
-                    marginBottom: 0,
-                    color: "#6D655C",
-                    fontSize: 15,
-                    lineHeight: 1.75,
-                  }}
-                >
-                  A small local paper feeling: what is opening, what is worth
-                  catching, and the kind of context visitors usually only get
-                  once they are already here.
-                </Paragraph>
-
-                <div style={{ marginTop: 22 }}>
-                  {weeklyNotes.map((item, index) => (
-                    <div
-                      key={item.label}
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: isMobile
-                          ? "1fr"
-                          : "140px minmax(0, 1fr)",
-                        gap: isMobile ? 8 : 20,
-                        padding: isMobile ? "16px 0" : "18px 0",
-                        borderTop:
-                          index === 0
-                            ? "1px solid rgba(32, 30, 27, 0.08)"
-                            : "1px solid rgba(32, 30, 27, 0.06)",
-                      }}
-                    >
-                      <Text
-                        style={{
-                          color: "#8B7B63",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: 1.5,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {item.label}
-                      </Text>
-                      <div>
-                        <Paragraph
-                          style={{
-                            marginBottom: 6,
-                            color: "#1F1D1A",
-                            fontSize: isMobile ? 17 : 18,
-                            lineHeight: 1.55,
-                          }}
-                        >
-                          {item.title}
-                        </Paragraph>
-                        <Text
-                          style={{
-                            color: "#6D655C",
-                            fontSize: 14,
-                            lineHeight: 1.75,
-                          }}
-                        >
-                          {item.detail}
-                        </Text>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div
-                style={{
-                  padding: isMobile ? 20 : 24,
-                  borderRadius: 24,
-                  background: "rgba(255,255,255,0.42)",
-                  border: "1px solid rgba(32, 30, 27, 0.08)",
-                }}
-              >
-                <Text
-                  style={{
-                    display: "block",
-                    marginBottom: 10,
-                    color: "#B08E62",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: 1.6,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Monthly Letter
-                </Text>
-                <Title
-                  level={3}
-                  style={{
-                    margin: 0,
-                    color: "#1F1D1A",
-                    fontFamily: SERIF_FONT,
-                    fontSize: isMobile ? 28 : 34,
-                    lineHeight: 1.08,
-                  }}
-                >
-                  The Ahangama Dispatch
-                </Title>
-                <Paragraph
-                  style={{
-                    marginTop: 12,
-                    marginBottom: 0,
-                    color: "#6D655C",
-                    fontSize: 15,
-                    lineHeight: 1.78,
-                  }}
-                >
-                  A monthly collection of local recommendations, new openings,
-                  guides and stories from Ahangama.
-                </Paragraph>
-
-                <form onSubmit={handleDispatchSubmit} style={{ marginTop: 22 }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: isMobile ? "column" : "row",
-                      gap: 10,
-                    }}
-                  >
-                    <Input
-                      size="large"
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(event) => setEmail(event.target.value)}
-                      placeholder="Email Address"
-                      style={{
-                        flex: 1,
-                        height: 48,
-                        borderRadius: 999,
-                        borderColor: "rgba(32, 30, 27, 0.12)",
-                        background: "rgba(255,255,255,0.72)",
-                        color: "#1F1D1A",
-                        paddingInline: 18,
-                      }}
-                    />
-                    <Button
-                      htmlType="submit"
-                      type="primary"
-                      size="large"
-                      style={{
-                        height: 48,
-                        borderRadius: 999,
-                        paddingInline: 24,
-                        background: "#2F3E3A",
-                        borderColor: "#2F3E3A",
-                        boxShadow: "none",
-                        width: isMobile ? "100%" : "auto",
-                      }}
-                    >
-                      Subscribe
-                    </Button>
-                  </div>
-                </form>
-
-                <Text
-                  style={{
-                    display: "block",
-                    marginTop: 12,
-                    color: "#8B7B63",
-                    fontSize: 12,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Subscription currently opens your email client so the team can
-                  add you manually.
-                </Text>
-              </div>
-            </div>
-          </section>
-
-          <section
-            style={{
-              marginTop: isMobile ? 36 : 44,
-              paddingTop: isMobile ? 28 : 34,
-              borderTop: "1px solid rgba(32, 30, 27, 0.08)",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: isMobile
-                  ? "1fr"
                   : "minmax(0, 1fr) minmax(0, 0.9fr)",
                 gap: isMobile ? 28 : 36,
                 alignItems: "start",
@@ -656,6 +409,111 @@ export default function FooterBar() {
                       {link.label}
                     </a>
                   ))}
+                </div>
+
+                <div
+                  style={{
+                    marginTop: 28,
+                    padding: isMobile ? 20 : 24,
+                    borderRadius: 24,
+                    background: "rgba(255,255,255,0.42)",
+                    border: "1px solid rgba(32, 30, 27, 0.08)",
+                  }}
+                >
+                  <Text
+                    style={{
+                      display: "block",
+                      marginBottom: 10,
+                      color: "#B08E62",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: 1.6,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Monthly Letter
+                  </Text>
+                  <Title
+                    level={3}
+                    style={{
+                      margin: 0,
+                      color: "#1F1D1A",
+                      fontFamily: SERIF_FONT,
+                      fontSize: isMobile ? 28 : 34,
+                      lineHeight: 1.08,
+                    }}
+                  >
+                    The Ahangama Dispatch
+                  </Title>
+                  <Paragraph
+                    style={{
+                      marginTop: 12,
+                      marginBottom: 0,
+                      color: "#6D655C",
+                      fontSize: 15,
+                      lineHeight: 1.78,
+                    }}
+                  >
+                    A monthly collection of local recommendations, new openings,
+                    guides and stories from Ahangama.
+                  </Paragraph>
+
+                  <form onSubmit={handleDispatchSubmit} style={{ marginTop: 22 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: isMobile ? "column" : "row",
+                        gap: 10,
+                      }}
+                    >
+                      <Input
+                        size="large"
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        placeholder="Email Address"
+                        style={{
+                          flex: 1,
+                          height: 48,
+                          borderRadius: 999,
+                          borderColor: "rgba(32, 30, 27, 0.12)",
+                          background: "rgba(255,255,255,0.72)",
+                          color: "#1F1D1A",
+                          paddingInline: 18,
+                        }}
+                      />
+                      <Button
+                        htmlType="submit"
+                        type="primary"
+                        size="large"
+                        style={{
+                          height: 48,
+                          borderRadius: 999,
+                          paddingInline: 24,
+                          background: "#2F3E3A",
+                          borderColor: "#2F3E3A",
+                          boxShadow: "none",
+                          width: isMobile ? "100%" : "auto",
+                        }}
+                      >
+                        Subscribe
+                      </Button>
+                    </div>
+                  </form>
+
+                  <Text
+                    style={{
+                      display: "block",
+                      marginTop: 12,
+                      color: "#8B7B63",
+                      fontSize: 12,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    Subscription currently opens your email client so the team can
+                    add you manually.
+                  </Text>
                 </div>
               </div>
             </div>
