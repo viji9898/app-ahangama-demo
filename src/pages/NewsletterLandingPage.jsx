@@ -131,7 +131,7 @@ function SectionLabel({ children }) {
       style={{
         display: "block",
         marginBottom: 14,
-        color: "#5C5C5C",
+        color: "#0F5C6B",
         fontSize: 10,
         fontWeight: 700,
         letterSpacing: 2.2,
@@ -249,7 +249,7 @@ export default function NewsletterLandingPage() {
                   style={{
                     display: "block",
                     marginBottom: 8,
-                    color: "#5C5C5C",
+                    color: "#207886",
                     fontSize: 10,
                     fontWeight: 700,
                     letterSpacing: 2.2,
@@ -413,7 +413,7 @@ export default function NewsletterLandingPage() {
                     style={{
                       display: "block",
                       marginBottom: 12,
-                      color: "#5C5C5C",
+                      color: "#207886",
                       fontSize: 10,
                       fontWeight: 700,
                       letterSpacing: 2.2,
@@ -595,7 +595,7 @@ export default function NewsletterLandingPage() {
                   <Text
                     style={{
                       display: "block",
-                      color: "#5C5C5C",
+                      color: "#207886",
                       fontSize: 10,
                       fontWeight: 700,
                       letterSpacing: 2.2,
@@ -731,7 +731,9 @@ export default function NewsletterLandingPage() {
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: isMobile ? "1fr" : "160px minmax(0, 1fr)",
+                    gridTemplateColumns: isMobile
+                      ? "1fr"
+                      : "minmax(220px, 240px) minmax(0, 1fr)",
                   }}
                 >
                   <div
@@ -748,7 +750,7 @@ export default function NewsletterLandingPage() {
                     <Text
                       style={{
                         display: "block",
-                        color: "#5C5C5C",
+                        color: "#207886",
                         fontSize: 10,
                         fontWeight: 700,
                         letterSpacing: 2.2,
@@ -766,11 +768,14 @@ export default function NewsletterLandingPage() {
                         marginBottom: 0,
                         color: "#111111",
                         fontFamily: SERIF_FONT,
-                        fontSize: isMobile ? 28 : 32,
-                        lineHeight: 1.04,
+                        fontSize: isMobile ? 28 : 30,
+                        lineHeight: 0.96,
+                        letterSpacing: "-0.02em",
                       }}
                     >
-                      June Edition
+                      June
+                      <br />
+                      Edition
                     </Title>
                   </div>
 
