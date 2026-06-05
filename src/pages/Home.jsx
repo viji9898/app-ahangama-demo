@@ -31,6 +31,7 @@ import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
+import { THIS_WEEK_EVENTS } from "../data/eventsCalendar";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -105,39 +106,6 @@ const THREE_DAYS_FEATURED_PLACES = [
   "Pura Pilates",
   "Frosty's",
   "Kaffi",
-];
-
-const THIS_WEEK_EVENTS = [
-  {
-    title: "Muay Thai Adult Class",
-    date: "Thu 4 Jun 2026",
-    time: "6:00 PM - 7:00 PM",
-    venue: "Kushan Muay Thai",
-  },
-  {
-    title: "Sunset Sessions",
-    date: "Sat 6 Jun 2026",
-    time: "7:00 PM onwards",
-    venue: "Ceylon Sliders",
-  },
-  {
-    title: "Vinyasa Yoga with Poorvika",
-    date: "Thu 4 Jun 2026",
-    time: "7:00 AM - 8:00 AM",
-    venue: "Studio 42",
-  },
-  {
-    title: "Friday Night with Live Band",
-    date: "Fri 5 Jun 2026",
-    time: "7:30 PM onwards",
-    venue: "Kaffi",
-  },
-  {
-    title: "Art for Hours: Under The Stars",
-    date: "Thu 4 Jun 2026",
-    time: "6:00 PM - 9:00 PM",
-    venue: "Coconuts",
-  },
 ];
 
 const THIS_WEEK_FEATURES = [
@@ -1034,8 +1002,7 @@ export default function Home() {
                   A curated selection of things happening around town this week.
                 </Paragraph>
                 <a
-                  href="#"
-                  onClick={(event) => event.preventDefault()}
+                  href="/events"
                   className="whats-on-boardLink"
                 >
                   View full calendar <ArrowRightOutlined />

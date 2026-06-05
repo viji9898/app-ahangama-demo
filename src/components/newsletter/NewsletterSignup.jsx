@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ArrowRightOutlined } from "@ant-design/icons";
 import { Button, Grid, Input, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 import { createNewsletterSubscriber } from "../../services/newsletter";
@@ -20,6 +21,7 @@ export default function NewsletterSignup({
   description = DEFAULT_DESCRIPTION,
   source = "newsletter_component",
   variant = "default",
+  placeholder = "Email Address",
 }) {
   const navigate = useNavigate();
   const screens = useBreakpoint();
@@ -161,7 +163,7 @@ export default function NewsletterSignup({
                   disabled={isBusy}
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Email Address"
+                  placeholder={placeholder}
                   style={{
                     flex: isMobile ? "1 1 auto" : "1 1 0%",
                     width: isMobile ? "100%" : 0,
@@ -214,6 +216,82 @@ export default function NewsletterSignup({
           </div>
         </div>
       </div>
+    );
+  }
+
+  if (variant === "inline") {
+    return (
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            gap: 0,
+            alignItems: "stretch",
+            width: "100%",
+          }}
+        >
+          <Input
+            size="large"
+            type="email"
+            required
+            disabled={isBusy}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder={placeholder}
+            style={{
+              flex: isMobile ? "1 1 auto" : "1 1 0%",
+              width: isMobile ? "100%" : 0,
+              minWidth: 0,
+              height: 56,
+              borderRadius: 0,
+              borderColor: "rgba(34, 31, 28, 0.16)",
+              background: "#FFFFFF",
+              color: "#111111",
+              paddingInline: 18,
+              boxShadow: "none",
+              fontFamily:
+                'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            }}
+          />
+          <Button
+            htmlType="submit"
+            type="primary"
+            size="large"
+            loading={isBusy}
+            style={{
+              height: 56,
+              borderRadius: 0,
+              paddingInline: 28,
+              background: "#221f1c",
+              borderColor: "#221f1c",
+              boxShadow: "none",
+              width: isMobile ? "100%" : "auto",
+              flexShrink: 0,
+              fontWeight: 500,
+              fontFamily:
+                'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            }}
+          >
+            {buttonLabel} <ArrowRightOutlined />
+          </Button>
+        </div>
+
+        {submitError ? (
+          <Text
+            style={{
+              display: "block",
+              marginTop: 12,
+              color: "#A6452C",
+              fontSize: 13,
+              fontFamily:
+                'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            }}
+          >
+            {submitError}
+          </Text>
+        ) : null}
+      </form>
     );
   }
 
@@ -301,7 +379,7 @@ export default function NewsletterSignup({
             disabled={isBusy}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="Email Address"
+            placeholder={placeholder}
             style={{
               flex: isMobile ? "1 1 auto" : "1 1 0%",
               width: isMobile ? "100%" : 0,

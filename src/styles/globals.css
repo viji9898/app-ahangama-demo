@@ -6473,3 +6473,298 @@ h4,
     background: #ffffff;
   }
 }
+
+.events-agenda-page {
+  padding: 42px 0 88px;
+  background: #ffffff;
+}
+
+.events-agenda-shell {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.events-agenda-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 380px);
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 34px;
+  border-bottom: 1px solid rgba(34, 31, 28, 0.12);
+}
+
+.events-agenda-title {
+  margin: 0 !important;
+  color: #1e1a16 !important;
+  font-size: clamp(58px, 7vw, 92px) !important;
+  line-height: 0.92 !important;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-family:
+    "Cormorant Garamond", "Libre Baskerville", Georgia, serif !important;
+}
+
+.events-agenda-kicker {
+  display: block;
+  margin-top: 12px;
+  color: #8f6f4a !important;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.events-agenda-summary {
+  margin: 10px 0 0 !important;
+  max-width: 320px;
+  color: #4e473f !important;
+  font-size: 19px !important;
+  line-height: 1.7 !important;
+}
+
+.events-agenda-list {
+  margin-top: 22px;
+}
+
+.events-agenda-day {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(34, 31, 28, 0.12);
+}
+
+.events-agenda-dateColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.events-agenda-weekday {
+  color: #221f1c !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.events-agenda-dayNumber {
+  margin-top: 8px;
+  color: #1d1915 !important;
+  font-size: 64px;
+  line-height: 1;
+  font-family:
+    "Cormorant Garamond", "Libre Baskerville", Georgia, serif !important;
+}
+
+.events-agenda-month {
+  margin-top: 8px;
+  color: #322d29 !important;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.events-agenda-dayEntries {
+  display: flex;
+  flex-direction: column;
+}
+
+.events-agenda-entry {
+  display: grid;
+  grid-template-columns: 184px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 0;
+}
+
+.events-agenda-entry + .events-agenda-entry {
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.events-agenda-imageWrap {
+  overflow: hidden;
+  aspect-ratio: 1.36;
+  background: linear-gradient(135deg, rgba(203, 177, 143, 0.24), rgba(64, 77, 70, 0.18));
+}
+
+.events-agenda-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.events-agenda-copy {
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.events-agenda-entryTitle {
+  margin: 0 0 8px !important;
+  color: #221f1c !important;
+  font-size: clamp(28px, 3vw, 42px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em;
+  font-family:
+    "Cormorant Garamond", "Libre Baskerville", Georgia, serif !important;
+}
+
+.events-agenda-venue {
+  display: block;
+  color: #5b5248 !important;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.events-agenda-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 18px;
+  color: #7b6753;
+}
+
+.events-agenda-metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.events-agenda-metaDot {
+  color: rgba(123, 103, 83, 0.7);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.events-agenda-category {
+  color: #8c6f55 !important;
+  font-size: 15px;
+}
+
+.events-agenda-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.events-agenda-link {
+  color: #2f2a24;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.events-agenda-link:hover,
+.events-agenda-link:focus {
+  color: #8b7b63;
+}
+
+.events-agenda-signup {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  padding-top: 22px;
+}
+
+.events-agenda-signupLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: #8f6f4a !important;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.events-agenda-signupText {
+  margin: 0 !important;
+  max-width: 280px;
+  color: #534b42 !important;
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+}
+
+.events-agenda-signupForm {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .events-agenda-page {
+    padding: 28px 0 64px;
+  }
+
+  .events-agenda-shell {
+    padding: 0 18px;
+  }
+
+  .events-agenda-header {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-bottom: 24px;
+  }
+
+  .events-agenda-title {
+    font-size: clamp(42px, 12vw, 68px) !important;
+  }
+
+  .events-agenda-kicker {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .events-agenda-summary {
+    margin-top: 0 !important;
+    max-width: none;
+    font-size: 16px !important;
+  }
+
+  .events-agenda-day {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px 0;
+  }
+
+  .events-agenda-dateColumn {
+    align-items: flex-start;
+    padding-top: 0;
+  }
+
+  .events-agenda-dayNumber {
+    font-size: 52px;
+  }
+
+  .events-agenda-entry {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .events-agenda-entryTitle {
+    font-size: clamp(24px, 8vw, 36px) !important;
+  }
+
+  .events-agenda-venue,
+  .events-agenda-category,
+  .events-agenda-metaItem {
+    font-size: 14px;
+  }
+
+  .events-agenda-signup {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 18px;
+  }
+
+  .events-agenda-signupText {
+    max-width: none;
+    font-size: 15px !important;
+  }
+}

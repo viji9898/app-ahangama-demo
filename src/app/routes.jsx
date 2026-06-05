@@ -38,6 +38,7 @@ import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
+import EventsPage from "../pages/EventsPage";
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
@@ -66,6 +67,7 @@ const routes = [
   },
   { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
   { path: "/local-intelligence", element: <LocalIntelligencePage /> },
+  { path: "/events", element: <EventsPage /> },
   {
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
