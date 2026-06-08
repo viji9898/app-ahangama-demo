@@ -17,6 +17,33 @@ const HERO_IMAGE =
   "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207";
 const FEATURE_IMAGE =
   "https://www.thechaosdiaries.com/wp-content/uploads/2026/02/DSCF9566-2-scaled.webp";
+const PHOTO_ESSAY_GROUPS = [
+  [
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113502/1-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113505/2-AhanagamaGuide-SriLanka.jpeg",
+  ],
+  [
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113508/3-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113511/4-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113514/5-AhanagamaGuide-SriLanka.jpeg",
+  ],
+  [
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113517/6-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113520/7-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113523/8-AhanagamaGuide-SriLanka.jpeg",
+  ],
+  [
+    "https://i0.wp.com/images.suitcasemag.com/wp-content/uploads/2025/05/01113527/9-AhanagamaGuide-SriLanka.jpeg?fit=1024%2C683&ssl=1",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113530/10-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113533/11-AhanagamaGuide-SriLanka.jpeg",
+  ],
+  [
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113536/12-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113539/13-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113542/14-AhanagamaGuide-SriLanka.jpeg",
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113546/15-AhanagamaGuide-SriLanka.jpeg",
+  ],
+];
 const NEXT_ARTICLE = {
   href: "/why-surfing-changed-everything-in-ahangama",
   kicker: "Discover More",
@@ -228,6 +255,44 @@ function renderVenueLinkedText(text) {
   return segments;
 }
 
+function EditorialPhotoBlock({ images, marginTop = 0 }) {
+  const columnCount = images.length === 2 ? 2 : images.length === 4 ? 2 : 3;
+
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+        gap: 20,
+        margin: `${marginTop}px 0 28px`,
+      }}
+    >
+      {images.map((imageUrl, index) => (
+        <div
+          key={imageUrl}
+          style={{
+            overflow: "hidden",
+            boxShadow: "0 16px 36px rgba(18,24,22,0.10)",
+          }}
+        >
+          <img
+            src={imageUrl}
+            alt={`Ahangama editorial photograph ${index + 1}`}
+            style={{
+              display: "block",
+              width: "100%",
+              height: "100%",
+              minHeight: images.length === 4 ? 260 : 320,
+              objectFit: "cover",
+              objectPosition: "center center",
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function SriLankasMostInterestingCoastalTownPage() {
   const canonical = absUrl(SRI_LANKAS_MOST_INTERESTING_COASTAL_TOWN_PATH);
   const passCtaUrl = buildPassCtaUrl();
@@ -402,39 +467,70 @@ export default function SriLankasMostInterestingCoastalTownPage() {
             </div>
           </div>
 
+          <EditorialPhotoBlock images={PHOTO_ESSAY_GROUPS[0]} />
+
           <div style={{ display: "flex", flexDirection: "column" }}>
             {articleSections.map((section, index) => (
-              <section
-                key={section.title}
-                style={{
-                  padding: index === 0 ? "20px 0 36px" : "36px 0",
-                  borderTop:
-                    index === 0 ? "none" : "1px solid rgba(47,62,58,0.12)",
-                }}
-              >
-                <div style={{ maxWidth: 1180 }}>
-                  <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
-                    {section.title}
-                  </Title>
+              <React.Fragment key={section.title}>
+                <section
+                  style={{
+                    padding: index === 0 ? "20px 0 36px" : "36px 0",
+                    borderTop:
+                      index === 0 ? "none" : "1px solid rgba(47,62,58,0.12)",
+                  }}
+                >
+                  <div style={{ maxWidth: 1180 }}>
+                    <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
+                      {section.title}
+                    </Title>
 
-                  {section.body.map((paragraph) => (
-                    <Paragraph
-                      key={paragraph}
-                      style={{
-                        maxWidth: 1200,
-                        fontSize: 16,
-                        lineHeight: 1.8,
-                        color: "#55514B",
-                        marginBottom: 18,
-                      }}
-                    >
-                      {renderVenueLinkedText(paragraph)}
-                    </Paragraph>
-                  ))}
-                </div>
-              </section>
+                    {section.body.map((paragraph) => (
+                      <Paragraph
+                        key={paragraph}
+                        style={{
+                          maxWidth: 1200,
+                          fontSize: 16,
+                          lineHeight: 1.8,
+                          color: "#55514B",
+                          marginBottom: 18,
+                        }}
+                      >
+                        {renderVenueLinkedText(paragraph)}
+                      </Paragraph>
+                    ))}
+                  </div>
+                </section>
+
+                {index === 1 ? (
+                  <EditorialPhotoBlock images={PHOTO_ESSAY_GROUPS[1]} />
+                ) : null}
+                {index === 3 ? (
+                  <EditorialPhotoBlock images={PHOTO_ESSAY_GROUPS[2]} />
+                ) : null}
+                {index === 5 ? (
+                  <EditorialPhotoBlock images={PHOTO_ESSAY_GROUPS[3]} />
+                ) : null}
+                {index === 8 ? (
+                  <EditorialPhotoBlock images={PHOTO_ESSAY_GROUPS[4]} />
+                ) : null}
+              </React.Fragment>
             ))}
           </div>
+
+          <Text
+            style={{
+              display: "block",
+              marginTop: 8,
+              marginBottom: 28,
+              color: "#6B5A4E",
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: 1.2,
+              textTransform: "uppercase",
+            }}
+          >
+            Photographs by Issy Croker
+          </Text>
 
           <EditorialNextArticle
             href={NEXT_ARTICLE.href}

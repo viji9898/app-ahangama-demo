@@ -121,7 +121,7 @@ const THIS_WEEK_FEATURES = [
     title: "Sri Lanka's Most Interesting Coastal Town",
     href: "/sri-lankas-most-interesting-coastal-town",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+      "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
   },
   {
     category: "Wellness",
