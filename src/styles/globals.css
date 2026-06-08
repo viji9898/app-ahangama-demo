@@ -1407,7 +1407,7 @@
 
 .home-hero-title {
   margin: 0 !important;
-  color: #201e1b !important;
+  color: #ffffff !important;
   font-size: clamp(54px, 6vw, 76px) !important;
   line-height: 0.92 !important;
   letter-spacing: -2.1px;
@@ -4744,12 +4744,12 @@
   .home-hero-overlay {
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.99) 0%,
-      rgba(255, 255, 255, 0.96) 26%,
-      rgba(255, 255, 255, 0.82) 44%,
-      rgba(255, 255, 255, 0.5) 60%,
-      rgba(255, 255, 255, 0.14) 76%,
-      rgba(255, 255, 255, 0) 92%
+      rgba(10, 14, 18, 0.9) 0%,
+      rgba(10, 14, 18, 0.84) 24%,
+      rgba(10, 14, 18, 0.68) 44%,
+      rgba(10, 14, 18, 0.42) 62%,
+      rgba(10, 14, 18, 0.16) 80%,
+      rgba(10, 14, 18, 0) 100%
     ) !important;
   }
 

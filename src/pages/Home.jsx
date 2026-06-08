@@ -621,7 +621,7 @@ export default function Home() {
   };
 
   const heroImage =
-    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg";
+    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
   const twelveThingsMosaic = useMemo(() => {
     const placesBySlug = new Map(
       (places || [])
@@ -814,15 +814,15 @@ export default function Home() {
                       position: "absolute",
                       inset: 0,
                       background:
-                        "linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 18%, rgba(255,255,255,0.62) 34%, rgba(255,255,255,0.2) 52%, rgba(255,255,255,0) 72%)",
+                        "linear-gradient(90deg, rgba(10,14,18,0.82) 0%, rgba(10,14,18,0.74) 20%, rgba(10,14,18,0.5) 38%, rgba(10,14,18,0.2) 56%, rgba(10,14,18,0.04) 74%, rgba(10,14,18,0) 100%)",
                       pointerEvents: "none",
                       zIndex: 2,
                     }}
                   />
                   <img
                     className="home-hero-image"
-                    src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg"
-                    alt="Ahangama coastline editorial hero"
+                    src={heroImage}
+                    alt="Ahangama guide editorial hero"
                     style={{
                       position: "absolute",
                       inset: 0,
@@ -862,7 +862,7 @@ export default function Home() {
                         <Text
                           key={item}
                           style={{
-                            color: "#8B7B63",
+                            color: "#FFFFFF",
                             fontSize: 11,
                             fontWeight: 700,
                             letterSpacing: 1.6,
@@ -879,24 +879,41 @@ export default function Home() {
                     className="home-hero-title"
                     style={{
                       margin: 0,
-                      color: "#201E1B",
+                      color: "#FFFFFF",
                       fontWeight: 500,
                       fontFamily:
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                     }}
                   >
-                    <span className="home-hero-titleLine">This Week In</span>
-                    <span className="home-hero-titleLine">Ahangama</span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      This Week In
+                    </span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Ahangama
+                    </span>
                   </Title>
 
-                  <Text style={editorialEyebrowStyle}>From the Editor</Text>
+                  <Text
+                    style={{
+                      ...editorialEyebrowStyle,
+                      color: "#FFFFFF",
+                    }}
+                  >
+                    From the Editor
+                  </Text>
 
                   <Paragraph
                     style={{
                       marginTop: 24,
                       marginBottom: 22,
                       maxWidth: 520,
-                      color: "#49443D",
+                      color: "#FFFFFF",
                       fontSize: "clamp(16px, 1.45vw, 19px)",
                       lineHeight: 1.72,
                     }}
@@ -915,7 +932,14 @@ export default function Home() {
                     }}
                   >
                     <div>
-                      <Text style={editorialEyebrowStyle}>Member Benefits</Text>
+                      <Text
+                        style={{
+                          ...editorialEyebrowStyle,
+                          color: "#FFFFFF",
+                        }}
+                      >
+                        Member Benefits
+                      </Text>
                       <a
                         href={passCtaUrl}
                         target="_blank"
@@ -927,7 +951,7 @@ export default function Home() {
                           });
                         }}
                         style={{
-                          color: "#8B7B63",
+                          color: "#FFFFFF",
                           textDecoration: "none",
                           fontSize: 16,
                           fontWeight: 600,
