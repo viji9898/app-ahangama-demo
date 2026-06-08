@@ -622,6 +622,8 @@ export default function Home() {
 
   const heroImage =
     "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
+  const showWeeklyPicksSection = false;
+  const showLatestStoriesSection = false;
   const twelveThingsMosaic = useMemo(() => {
     const placesBySlug = new Map(
       (places || [])
@@ -1099,54 +1101,56 @@ export default function Home() {
             </div>
           </div>
 
-          <div style={{ marginTop: 20 }}>
-            <div
-              className="home-section-divider home-section-divider--tight"
-              aria-hidden="true"
-            />
+          {showWeeklyPicksSection ? (
+            <div style={{ marginTop: 20 }}>
+              <div
+                className="home-section-divider home-section-divider--tight"
+                aria-hidden="true"
+              />
 
-            <div className="weekly-picks-heading">
-              <Text className="weekly-picks-kicker">2. Weekly Picks</Text>
-              <Paragraph className="weekly-picks-description">
-                What&apos;s worth your time this week.
-              </Paragraph>
+              <div className="weekly-picks-heading">
+                <Text className="weekly-picks-kicker">2. Weekly Picks</Text>
+                <Paragraph className="weekly-picks-description">
+                  What&apos;s worth your time this week.
+                </Paragraph>
+              </div>
+
+              <div
+                className="home-section-divider home-section-divider--tight"
+                aria-hidden="true"
+              />
+
+              <div className="weekly-picks-grid">
+                {WEEKLY_PICKS.map((pick) => (
+                  <a
+                    key={pick.title}
+                    href="#"
+                    onClick={(event) => event.preventDefault()}
+                    className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
+                    style={
+                      pick.image
+                        ? {
+                            "--weekly-picks-image": `url(${pick.image})`,
+                          }
+                        : undefined
+                    }
+                  >
+                    <Text className="weekly-picks-tag">{pick.category}</Text>
+                    <Title level={3} className="weekly-picks-title">
+                      {pick.title}
+                    </Title>
+                    <Text className="weekly-picks-date">{pick.date}</Text>
+                  </a>
+                ))}
+              </div>
+
+              <div className="home-section-divider" aria-hidden="true" />
             </div>
-
-            <div
-              className="home-section-divider home-section-divider--tight"
-              aria-hidden="true"
-            />
-
-            <div className="weekly-picks-grid">
-              {WEEKLY_PICKS.map((pick) => (
-                <a
-                  key={pick.title}
-                  href="#"
-                  onClick={(event) => event.preventDefault()}
-                  className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
-                  style={
-                    pick.image
-                      ? {
-                          "--weekly-picks-image": `url(${pick.image})`,
-                        }
-                      : undefined
-                  }
-                >
-                  <Text className="weekly-picks-tag">{pick.category}</Text>
-                  <Title level={3} className="weekly-picks-title">
-                    {pick.title}
-                  </Title>
-                  <Text className="weekly-picks-date">{pick.date}</Text>
-                </a>
-              ))}
-            </div>
-
-            <div className="home-section-divider" aria-hidden="true" />
-          </div>
+          ) : null}
 
           <div style={{ marginTop: 20 }}>
             <div className="guide-sections-heading">
-              <Text className="guide-sections-kicker">3. Guide Sections</Text>
+              <Text className="guide-sections-kicker">2. Guide Sections</Text>
               <div className="guide-sections-headingRow">
                 <Paragraph className="guide-sections-description">
                   Editorial guides for navigating Ahangama.
@@ -1275,7 +1279,7 @@ export default function Home() {
           <div style={{ marginTop: 20 }}>
             <div className="destination-categories-heading">
               <Text className="destination-categories-kicker">
-                4. Categories
+                3. Categories
               </Text>
               <Paragraph className="destination-categories-description">
                 Help visitors navigate the destination.
@@ -1333,7 +1337,7 @@ export default function Home() {
 
           <div style={{ marginTop: 20 }}>
             <div className="itineraries-heading">
-              <Text className="itineraries-kicker">5. Itineraries</Text>
+              <Text className="itineraries-kicker">4. Itineraries</Text>
               <Paragraph className="itineraries-description">
                 Ready-made trip planning.
               </Paragraph>
@@ -1368,43 +1372,45 @@ export default function Home() {
             <div className="home-section-divider" aria-hidden="true" />
           </div>
 
-          <div style={{ marginTop: 20 }}>
-            <div className="latest-stories-heading">
-              <Text className="latest-stories-kicker">6. Latest Stories</Text>
-              <Paragraph className="latest-stories-description">
-                Publication heartbeat.
-              </Paragraph>
+          {showLatestStoriesSection ? (
+            <div style={{ marginTop: 20 }}>
+              <div className="latest-stories-heading">
+                <Text className="latest-stories-kicker">6. Latest Stories</Text>
+                <Paragraph className="latest-stories-description">
+                  Publication heartbeat.
+                </Paragraph>
+              </div>
+
+              <div
+                className="home-section-divider home-section-divider--tight"
+                aria-hidden="true"
+              />
+
+              <div className="latest-stories-grid">
+                {LATEST_STORIES.map((story) => (
+                  <a
+                    key={`${story.title}-${story.date}`}
+                    href="#"
+                    onClick={(event) => event.preventDefault()}
+                    className="latest-stories-card"
+                  >
+                    <Text className="latest-stories-tag">{story.category}</Text>
+                    <Title level={3} className="latest-stories-title">
+                      {story.title}
+                    </Title>
+                    <Text className="latest-stories-date">{story.date}</Text>
+                  </a>
+                ))}
+              </div>
+
+              <div className="home-section-divider" aria-hidden="true" />
             </div>
-
-            <div
-              className="home-section-divider home-section-divider--tight"
-              aria-hidden="true"
-            />
-
-            <div className="latest-stories-grid">
-              {LATEST_STORIES.map((story) => (
-                <a
-                  key={`${story.title}-${story.date}`}
-                  href="#"
-                  onClick={(event) => event.preventDefault()}
-                  className="latest-stories-card"
-                >
-                  <Text className="latest-stories-tag">{story.category}</Text>
-                  <Title level={3} className="latest-stories-title">
-                    {story.title}
-                  </Title>
-                  <Text className="latest-stories-date">{story.date}</Text>
-                </a>
-              ))}
-            </div>
-
-            <div className="home-section-divider" aria-hidden="true" />
-          </div>
+          ) : null}
 
           <div style={{ marginTop: 20 }}>
             <div className="around-town-heading">
               <div className="around-town-headingCopy">
-                <Text className="around-town-kicker">7. Around the Town</Text>
+                <Text className="around-town-kicker">5. Around the Town</Text>
                 <Paragraph className="around-town-description">
                   What we&apos;re reading, following and loving around Ahangama.
                 </Paragraph>
