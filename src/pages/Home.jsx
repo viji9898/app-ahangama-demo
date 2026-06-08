@@ -803,7 +803,7 @@ export default function Home() {
                 style={{
                   position: "relative",
                   overflow: "hidden",
-                  minHeight: 520,
+                  minHeight: "100svh",
                 }}
               >
                 <div
@@ -857,7 +857,7 @@ export default function Home() {
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
-                      minHeight: "clamp(440px, 46vw, 520px)",
+                      minHeight: "100svh",
                       maxWidth: 620,
                       padding:
                         "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
