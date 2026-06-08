@@ -4896,7 +4896,10 @@
 
   .whats-on-board {
     display: block;
-    border-radius: 24px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
   }
 
   .home-intelligence-band {
@@ -4936,51 +4939,91 @@
 
   .whats-on-boardIntro {
     min-width: 0;
-    padding: 22px 20px;
+    padding: 0 0 22px;
     border-right: 0;
     border-bottom: 1px solid rgba(32, 30, 27, 0.08);
   }
 
+  .whats-on-boardKicker {
+    margin-bottom: 14px;
+    color: #201e1b !important;
+    font-size: 16px;
+    letter-spacing: 2.8px;
+  }
+
   .whats-on-boardLocation {
     margin-bottom: 14px;
-    font-size: 11px;
-    letter-spacing: 2.2px;
+    font-size: 12px;
+    letter-spacing: 3px;
   }
 
   .whats-on-boardDescription {
-    margin-bottom: 16px !important;
+    max-width: 220px;
+    margin-bottom: 0 !important;
     font-size: 14px !important;
+    line-height: 1.7 !important;
   }
 
   .whats-on-boardRail {
-    gap: 0;
+    display: block;
     padding: 0;
+    overflow: visible;
   }
 
   .whats-on-boardItem {
-    flex: 0 0 64vw;
-    min-width: 64vw;
-    padding: 18px 18px 16px;
+    display: grid;
+    grid-template-columns: minmax(88px, 96px) minmax(0, 1fr) auto;
+    align-items: start;
+    column-gap: 16px;
+    row-gap: 4px;
+    min-width: 0;
+    padding: 18px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(32, 30, 27, 0.08);
+  }
+
+  .whats-on-boardItem:last-child {
+    border-bottom: 0;
   }
 
   .whats-on-boardDate {
-    margin-bottom: 10px;
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    margin-bottom: 0;
     font-size: 10px;
-    letter-spacing: 1.4px;
+    line-height: 1.5;
+    letter-spacing: 2px;
   }
 
   .whats-on-boardTitle {
-    font-size: clamp(16px, 5vw, 24px) !important;
+    grid-column: 2;
+    margin-bottom: 2px !important;
+    font-size: clamp(17px, 6vw, 28px) !important;
+    line-height: 1.02 !important;
   }
 
   .whats-on-boardVenue {
-    margin-bottom: 18px;
+    grid-column: 2;
+    margin-bottom: 0;
     font-size: 13px;
   }
 
+  .whats-on-boardMeta {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+    align-self: center;
+    justify-content: flex-end;
+  }
+
   .whats-on-boardMetaTime {
-    font-size: 13px;
-    gap: 8px;
+    font-size: 14px;
+    gap: 0;
+    color: #2f2a24;
+    white-space: nowrap;
+  }
+
+  .whats-on-boardMetaTime .anticon {
+    display: none;
   }
 
   .weekly-features-grid {
