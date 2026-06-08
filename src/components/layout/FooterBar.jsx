@@ -84,6 +84,7 @@ const secondaryLinks = [
 export default function FooterBar() {
   const screens = useBreakpoint();
   const isMobile = !screens.md;
+  const showEditorialSelectionSection = false;
 
   return (
     <footer
@@ -112,145 +113,157 @@ export default function FooterBar() {
             boxShadow: "0 18px 44px rgba(32, 30, 27, 0.05)",
           }}
         >
-          <section>
-            <Text
-              style={{
-                display: "block",
-                marginBottom: 10,
-                color: "#B08E62",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: 1.6,
-                textTransform: "uppercase",
-              }}
-            >
-              Editorial Selection
-            </Text>
-            <Title
-              level={2}
-              style={{
-                margin: 0,
-                color: "#1F1D1A",
-                fontFamily: SERIF_FONT,
-                fontSize: isMobile ? 36 : 54,
-                lineHeight: isMobile ? 1.02 : 0.98,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Continue Exploring Ahangama
-            </Title>
-            <Paragraph
-              style={{
-                maxWidth: 720,
-                marginTop: 14,
-                marginBottom: 0,
-                color: "#6D655C",
-                fontSize: isMobile ? 15 : 18,
-                lineHeight: 1.75,
-              }}
-            >
-              Discover more guides, stories, recommendations and local insights
-              from our team.
-            </Paragraph>
+          {showEditorialSelectionSection ? (
+            <section>
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 10,
+                  color: "#B08E62",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.6,
+                  textTransform: "uppercase",
+                }}
+              >
+                Editorial Selection
+              </Text>
+              <Title
+                level={2}
+                style={{
+                  margin: 0,
+                  color: "#1F1D1A",
+                  fontFamily: SERIF_FONT,
+                  fontSize: isMobile ? 36 : 54,
+                  lineHeight: isMobile ? 1.02 : 0.98,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Continue Exploring Ahangama
+              </Title>
+              <Paragraph
+                style={{
+                  maxWidth: 720,
+                  marginTop: 14,
+                  marginBottom: 0,
+                  color: "#6D655C",
+                  fontSize: isMobile ? 15 : 18,
+                  lineHeight: 1.75,
+                }}
+              >
+                Discover more guides, stories, recommendations and local insights
+                from our team.
+              </Paragraph>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: isMobile
-                  ? "1fr"
-                  : "repeat(4, minmax(0, 1fr))",
-                gap: 16,
-                marginTop: isMobile ? 24 : 30,
-              }}
-            >
-              {editorialStories.map((story) => (
-                <a
-                  key={story.title}
-                  href={story.href}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    minHeight: isMobile ? 212 : 232,
-                    padding: isMobile ? 18 : 22,
-                    borderRadius: 22,
-                    textDecoration: "none",
-                    background: "rgba(255,255,255,0.45)",
-                    border: "1px solid rgba(32, 30, 27, 0.08)",
-                    color: "inherit",
-                  }}
-                >
-                  <div>
-                    <Text
-                      style={{
-                        color: "#8B7B63",
-                        fontSize: 11,
-                        fontWeight: 700,
-                        letterSpacing: 1.4,
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {story.label}
-                    </Text>
-                    <Title
-                      level={4}
-                      style={{
-                        marginTop: 12,
-                        marginBottom: 12,
-                        color: "#1F1D1A",
-                        fontFamily: SERIF_FONT,
-                        fontSize: isMobile ? 25 : 28,
-                        lineHeight: 1.1,
-                      }}
-                    >
-                      {story.title}
-                    </Title>
-                    <Paragraph
-                      style={{
-                        marginBottom: 0,
-                        color: "#5F584F",
-                        fontSize: 14,
-                        lineHeight: 1.8,
-                      }}
-                    >
-                      {story.excerpt}
-                    </Paragraph>
-                  </div>
-
-                  <div
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: isMobile
+                    ? "1fr"
+                    : "repeat(4, minmax(0, 1fr))",
+                  gap: 16,
+                  marginTop: isMobile ? 24 : 30,
+                }}
+              >
+                {editorialStories.map((story) => (
+                  <a
+                    key={story.title}
+                    href={story.href}
                     style={{
                       display: "flex",
-                      alignItems: "center",
+                      flexDirection: "column",
                       justifyContent: "space-between",
-                      marginTop: 24,
-                      paddingTop: 16,
-                      borderTop: "1px solid rgba(32, 30, 27, 0.08)",
+                      minHeight: isMobile ? 212 : 232,
+                      padding: isMobile ? 18 : 22,
+                      borderRadius: 22,
+                      textDecoration: "none",
+                      background: "rgba(255,255,255,0.45)",
+                      border: "1px solid rgba(32, 30, 27, 0.08)",
+                      color: "inherit",
                     }}
                   >
-                    <Text
+                    <div>
+                      <Text
+                        style={{
+                          color: "#8B7B63",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          letterSpacing: 1.4,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {story.label}
+                      </Text>
+                      <Title
+                        level={4}
+                        style={{
+                          marginTop: 12,
+                          marginBottom: 12,
+                          color: "#1F1D1A",
+                          fontFamily: SERIF_FONT,
+                          fontSize: isMobile ? 25 : 28,
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {story.title}
+                      </Title>
+                      <Paragraph
+                        style={{
+                          marginBottom: 0,
+                          color: "#5F584F",
+                          fontSize: 14,
+                          lineHeight: 1.8,
+                        }}
+                      >
+                        {story.excerpt}
+                      </Paragraph>
+                    </div>
+
+                    <div
                       style={{
-                        color: "#2F3E3A",
-                        fontSize: 13,
-                        fontWeight: 600,
-                        letterSpacing: 0.2,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        marginTop: 24,
+                        paddingTop: 16,
+                        borderTop: "1px solid rgba(32, 30, 27, 0.08)",
                       }}
                     >
-                      Read story
-                    </Text>
-                    <ArrowRightOutlined
-                      style={{ color: "#2F3E3A", fontSize: 14 }}
-                    />
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
+                      <Text
+                        style={{
+                          color: "#2F3E3A",
+                          fontSize: 13,
+                          fontWeight: 600,
+                          letterSpacing: 0.2,
+                        }}
+                      >
+                        Read story
+                      </Text>
+                      <ArrowRightOutlined
+                        style={{ color: "#2F3E3A", fontSize: 14 }}
+                      />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section
             style={{
-              marginTop: isMobile ? 36 : 44,
-              paddingTop: isMobile ? 28 : 34,
-              borderTop: "1px solid rgba(32, 30, 27, 0.08)",
+              marginTop: showEditorialSelectionSection
+                ? isMobile
+                  ? 36
+                  : 44
+                : 0,
+              paddingTop: showEditorialSelectionSection
+                ? isMobile
+                  ? 28
+                  : 34
+                : 0,
+              borderTop: showEditorialSelectionSection
+                ? "1px solid rgba(32, 30, 27, 0.08)"
+                : "none",
             }}
           >
             <div
