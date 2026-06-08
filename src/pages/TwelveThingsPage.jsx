@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Col, Row, Space, Tag, Typography } from "antd";
 import { ArrowRightOutlined, CheckOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
+import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { buildPassCtaUrl } from "../lib/passAttribution";
@@ -10,6 +11,13 @@ import kaffiImage from "../assets/temp/kaffi_image.jpg";
 import sistersImage from "../assets/temp/sisters_image.jpg";
 
 const { Paragraph, Text, Title } = Typography;
+
+const NEXT_ARTICLE = {
+  href: "/why-surfing-changed-everything-in-ahangama",
+  kicker: "Discover More",
+  title: "Why Surfing Changed Everything in Ahangama",
+  image: "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
+};
 
 function slugifyInstagramPath(label) {
   return label
@@ -503,6 +511,13 @@ export default function TwelveThingsPage() {
               </React.Fragment>
             ))}
           </div>
+
+          <EditorialNextArticle
+            href={NEXT_ARTICLE.href}
+            kicker={NEXT_ARTICLE.kicker}
+            title={NEXT_ARTICLE.title}
+            image={NEXT_ARTICLE.image}
+          />
 
           <div id="guide-note" style={{ marginTop: 32, marginBottom: 36 }}>
             <Card
