@@ -111,9 +111,9 @@ const THREE_DAYS_FEATURED_PLACES = [
 const THIS_WEEK_FEATURES = [
   {
     category: "Editorial",
-    title: "The New Ahangama: Why Everyone Is Moving South",
+    title: "Why Surfing Changed Everything in Ahangama",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+      "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
   },
   {
     category: "Weekend Guide",
