@@ -782,8 +782,10 @@ export default function Home() {
         </div>
       </div> */}
       {/* HERO */}
-      <div className="dm-heroCut" />
-      <div className="dm-canvas">
+      <div
+        className="dm-canvas"
+        style={{ marginTop: 0, paddingTop: 0, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+      >
         <div className="dm-wrap">
           <div>
             <div
