@@ -429,7 +429,6 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
               style={{
                 display: "block",
                 position: "relative",
-                minHeight: "clamp(320px, 42vw, 520px)",
                 overflow: "hidden",
                 textDecoration: "none",
                 color: "inherit",
@@ -462,7 +461,6 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
                 style={{
                   position: "relative",
                   zIndex: 1,
-                  minHeight: "clamp(320px, 42vw, 520px)",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -485,6 +483,7 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
                 </Text>
                 <Title
                   level={2}
+                  className="twelve-things-heroTitle"
                   style={{
                     maxWidth: 1220,
                     margin: 0,
@@ -499,6 +498,18 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
                 >
                   {NEXT_ARTICLE.title}
                 </Title>
+                <Text
+                  style={{
+                    display: "block",
+                    marginTop: 18,
+                    color: "#ffffff",
+                    fontSize: 15,
+                    fontWeight: 600,
+                    letterSpacing: 0.2,
+                  }}
+                >
+                  Read now -&gt;
+                </Text>
               </div>
             </a>
           </div>
