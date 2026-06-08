@@ -117,8 +117,9 @@ const THIS_WEEK_FEATURES = [
       "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
   },
   {
-    category: "Weekend Guide",
-    title: "A Weekend Guide to Kabalana",
+    category: "Editorial",
+    title: "Sri Lanka's Most Interesting Coastal Town",
+    href: "/sri-lankas-most-interesting-coastal-town",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
   },

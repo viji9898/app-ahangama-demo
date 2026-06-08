@@ -35,6 +35,9 @@ import Resellers from "../pages/Resellers";
 import TwelveThingsPage from "../pages/TwelveThingsPage";
 import FullListPage from "../pages/FullListPage";
 import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
+import SriLankasMostInterestingCoastalTownPage, {
+  SRI_LANKAS_MOST_INTERESTING_COASTAL_TOWN_PATH,
+} from "../pages/SriLankasMostInterestingCoastalTownPage";
 import WhySurfingChangedEverythingInAhangamaPage, {
   WHY_SURFING_CHANGED_PATH,
 } from "../pages/WhySurfingChangedEverythingInAhangamaPage";
@@ -69,6 +72,14 @@ const routes = [
     element: <ExternalRedirect to={GETTING_AROUND_BLOG_PATH} />,
   },
   { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
+  {
+    path: SRI_LANKAS_MOST_INTERESTING_COASTAL_TOWN_PATH,
+    element: <SriLankasMostInterestingCoastalTownPage />,
+  },
+  {
+    path: "/Sri Lanka's Most Interesting Coastal Town",
+    element: <SriLankasMostInterestingCoastalTownPage />,
+  },
   {
     path: WHY_SURFING_CHANGED_PATH,
     element: <WhySurfingChangedEverythingInAhangamaPage />,
