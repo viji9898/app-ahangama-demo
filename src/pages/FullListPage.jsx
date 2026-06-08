@@ -1,6 +1,10 @@
 import React, { useMemo } from "react";
-import { ArrowRightOutlined, QrcodeOutlined } from "@ant-design/icons";
-import { Button, Card, Col, Row, Space, Tag, Typography } from "antd";
+import {
+  ArrowRightOutlined,
+  EnvironmentOutlined,
+  QrcodeOutlined,
+} from "@ant-design/icons";
+import { Button, Card, Col, Grid, Row, Space, Tag, Typography } from "antd";
 import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -14,6 +18,9 @@ import {
 } from "../lib/passPartners";
 
 const { Paragraph, Text, Title } = Typography;
+const { useBreakpoint } = Grid;
+
+const SHARED_GOOGLE_MAP_URL = "https://maps.app.goo.gl/zvo1rFQegTtS87ZT8";
 
 function OfferPills({ place }) {
   const offerTags = Array.isArray(place.offers)
@@ -129,6 +136,8 @@ function PlaceLinks({ places }) {
 
 export default function FullListPage() {
   const { places: allPlaces } = usePlaces();
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
   const passCtaUrl = buildPassCtaUrl();
   const canonical = absUrl(FULL_LIST_PATH);
 
@@ -198,7 +207,32 @@ export default function FullListPage() {
                   duplicating cards across every tag.
                 </Paragraph>
 
+                <Paragraph
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: "#6B655D",
+                    marginBottom: 18,
+                    maxWidth: 720,
+                  }}
+                >
+                  Open the shared Google Map for all pass venues and save it to
+                  your Google Maps before you head out.
+                  {isMobile
+                    ? " On mobile, it opens directly in the Google Maps app."
+                    : ""}
+                </Paragraph>
+
                 <Space wrap size={12}>
+                  <Button
+                    href={SHARED_GOOGLE_MAP_URL}
+                    target={isMobile ? undefined : "_blank"}
+                    rel={isMobile ? undefined : "noopener noreferrer"}
+                    icon={<EnvironmentOutlined />}
+                    style={{ borderRadius: 999 }}
+                  >
+                    Open Shared Google Map
+                  </Button>
                   <Button
                     href="/"
                     icon={<ArrowRightOutlined />}
