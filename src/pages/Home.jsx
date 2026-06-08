@@ -112,6 +112,7 @@ const THIS_WEEK_FEATURES = [
   {
     category: "Editorial",
     title: "Why Surfing Changed Everything in Ahangama",
+    href: "/why-surfing-changed-everything-in-ahangama",
     image:
       "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
   },
@@ -1092,8 +1093,12 @@ export default function Home() {
               {THIS_WEEK_FEATURES.map((feature) => (
                 <a
                   key={feature.title}
-                  href="#"
-                  onClick={(event) => event.preventDefault()}
+                  href={feature.href || "#"}
+                  onClick={
+                    feature.href
+                      ? undefined
+                      : (event) => event.preventDefault()
+                  }
                   className="weekly-features-card"
                 >
                   <div className="weekly-features-imageWrap">

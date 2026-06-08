@@ -35,6 +35,9 @@ import Resellers from "../pages/Resellers";
 import TwelveThingsPage from "../pages/TwelveThingsPage";
 import FullListPage from "../pages/FullListPage";
 import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
+import WhySurfingChangedEverythingInAhangamaPage, {
+  WHY_SURFING_CHANGED_PATH,
+} from "../pages/WhySurfingChangedEverythingInAhangamaPage";
 import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
@@ -66,6 +69,14 @@ const routes = [
     element: <ExternalRedirect to={GETTING_AROUND_BLOG_PATH} />,
   },
   { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
+  {
+    path: WHY_SURFING_CHANGED_PATH,
+    element: <WhySurfingChangedEverythingInAhangamaPage />,
+  },
+  {
+    path: "/Why Surfing Changed Everything in Ahangama",
+    element: <WhySurfingChangedEverythingInAhangamaPage />,
+  },
   { path: "/local-intelligence", element: <LocalIntelligencePage /> },
   { path: "/events", element: <EventsPage /> },
   {
