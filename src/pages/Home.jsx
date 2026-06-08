@@ -789,7 +789,10 @@ export default function Home() {
             <div
               className="ahg-hero"
               style={{
-                borderRadius: 34,
+                width: "100vw",
+                marginLeft: "calc(50% - 50vw)",
+                marginRight: "calc(50% - 50vw)",
+                borderRadius: 0,
                 background: "#FFFFFF",
                 boxShadow: "none",
               }}
@@ -842,126 +845,134 @@ export default function Home() {
                   style={{
                     position: "relative",
                     zIndex: 3,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    minHeight: "clamp(440px, 46vw, 520px)",
-                    maxWidth: 620,
-                    padding:
-                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
+                    width: "100%",
+                    maxWidth: 1100,
+                    margin: "0 auto",
                   }}
                 >
                   <div
                     style={{
                       display: "flex",
-                      flexWrap: "wrap",
-                      gap: 12,
-                      marginBottom: 18,
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      minHeight: "clamp(440px, 46vw, 520px)",
+                      maxWidth: 620,
+                      padding:
+                        "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
                     }}
                   >
-                    {[`Week ${currentWeekNumber}`, "Updated Weekly"].map(
-                      (item) => (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 12,
+                        marginBottom: 18,
+                      }}
+                    >
+                      {[`Week ${currentWeekNumber}`, "Updated Weekly"].map(
+                        (item) => (
+                          <Text
+                            key={item}
+                            style={{
+                              color: "#FFFFFF",
+                              fontSize: 11,
+                              fontWeight: 700,
+                              letterSpacing: 1.6,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {item}
+                          </Text>
+                        ),
+                      )}
+                    </div>
+
+                    <Title
+                      className="home-hero-title"
+                      style={{
+                        margin: 0,
+                        color: "#FFFFFF",
+                        fontWeight: 500,
+                        fontFamily:
+                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                      }}
+                    >
+                      <span
+                        className="home-hero-titleLine"
+                        style={{ color: "#FFFFFF" }}
+                      >
+                        This Week In
+                      </span>
+                      <span
+                        className="home-hero-titleLine"
+                        style={{ color: "#FFFFFF" }}
+                      >
+                        Ahangama
+                      </span>
+                    </Title>
+
+                    <Text
+                      style={{
+                        ...editorialEyebrowStyle,
+                        color: "#FFFFFF",
+                      }}
+                    >
+                      From the Editor
+                    </Text>
+
+                    <Paragraph
+                      style={{
+                        marginTop: 24,
+                        marginBottom: 22,
+                        maxWidth: 520,
+                        color: "#FFFFFF",
+                        fontSize: "clamp(16px, 1.45vw, 19px)",
+                        lineHeight: 1.72,
+                      }}
+                    >
+                      A curated guide to cafes, stays, wellness, surf, food and
+                      local experiences across Ahangama. Written and updated by a
+                      local team who live here.
+                    </Paragraph>
+
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "minmax(0, 220px)",
+                        gap: 24,
+                        maxWidth: 560,
+                      }}
+                    >
+                      <div>
                         <Text
-                          key={item}
                           style={{
+                            ...editorialEyebrowStyle,
                             color: "#FFFFFF",
-                            fontSize: 11,
-                            fontWeight: 700,
-                            letterSpacing: 1.6,
-                            textTransform: "uppercase",
                           }}
                         >
-                          {item}
+                          Member Benefits
                         </Text>
-                      ),
-                    )}
-                  </div>
-
-                  <Title
-                    className="home-hero-title"
-                    style={{
-                      margin: 0,
-                      color: "#FFFFFF",
-                      fontWeight: 500,
-                      fontFamily:
-                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    }}
-                  >
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      This Week In
-                    </span>
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Ahangama
-                    </span>
-                  </Title>
-
-                  <Text
-                    style={{
-                      ...editorialEyebrowStyle,
-                      color: "#FFFFFF",
-                    }}
-                  >
-                    From the Editor
-                  </Text>
-
-                  <Paragraph
-                    style={{
-                      marginTop: 24,
-                      marginBottom: 22,
-                      maxWidth: 520,
-                      color: "#FFFFFF",
-                      fontSize: "clamp(16px, 1.45vw, 19px)",
-                      lineHeight: 1.72,
-                    }}
-                  >
-                    A curated guide to cafes, stays, wellness, surf, food and
-                    local experiences across Ahangama. Written and updated by a
-                    local team who live here.
-                  </Paragraph>
-
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "minmax(0, 220px)",
-                      gap: 24,
-                      maxWidth: 560,
-                    }}
-                  >
-                    <div>
-                      <Text
-                        style={{
-                          ...editorialEyebrowStyle,
-                          color: "#FFFFFF",
-                        }}
-                      >
-                        Member Benefits
-                      </Text>
-                      <a
-                        href={passCtaUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => {
-                          trackPassCtaClick({
-                            ctaLocation: "hero_text_link",
-                            destinationUrl: passCtaUrl,
-                          });
-                        }}
-                        style={{
-                          color: "#FFFFFF",
-                          textDecoration: "none",
-                          fontSize: 16,
-                          fontWeight: 600,
-                          lineHeight: 1.55,
-                        }}
-                      >
-                        Get the Ahangama Pass <ArrowRightOutlined />
-                      </a>
+                        <a
+                          href={passCtaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            trackPassCtaClick({
+                              ctaLocation: "hero_text_link",
+                              destinationUrl: passCtaUrl,
+                            });
+                          }}
+                          style={{
+                            color: "#FFFFFF",
+                            textDecoration: "none",
+                            fontSize: 16,
+                            fontWeight: 600,
+                            lineHeight: 1.55,
+                          }}
+                        >
+                          Get the Ahangama Pass <ArrowRightOutlined />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
