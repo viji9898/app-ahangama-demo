@@ -701,7 +701,7 @@ export default function Home() {
   };
   const showLegacyHomepageLowerSections = false;
   return (
-    <SiteLayout>
+    <SiteLayout navOverlayHero>
       <Seo
         title="Ahangama Guide to Perks & Discounts at the Best Local Spots"
         description="Ahangama guide to perks and discounts at the best cafés, stays, surf spots, and experiences—curated local favourites, unlocked with one pass."

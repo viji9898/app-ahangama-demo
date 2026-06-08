@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Button, Drawer, Grid, Space, Typography } from "antd";
 import { HeartOutlined, MenuOutlined } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
@@ -10,13 +10,14 @@ import ahangamaPassLogo from "../../assets/ahangama-pass-logo.png";
 const { Text } = Typography;
 const { useBreakpoint } = Grid;
 
-export default function TopNav() {
+export default function TopNav({ overlayHero = false }) {
   const loc = useLocation();
   const passCtaUrl = buildPassCtaUrl();
   const screens = useBreakpoint();
   const isDesktop = !!screens.xl;
   const isMobile = !screens.md;
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = useMemo(() => [{ label: "Offers", to: "/offers" }], []);
 
@@ -25,16 +26,47 @@ export default function TopNav() {
     return loc.pathname === to || loc.pathname.startsWith(`${to}/`);
   };
 
+  useEffect(() => {
+    if (!overlayHero) {
+      setIsScrolled(false);
+      return undefined;
+    }
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [overlayHero]);
+
+  const useSolidBackground = !overlayHero || isScrolled;
+  const navForeground = useSolidBackground ? "#1F1D1A" : "#FFFFFF";
+  const navMutedForeground = useSolidBackground ? "#2D2B28" : "#FFFFFF";
+
   return (
     <>
       <header
         style={{
-          position: "sticky",
+          position: overlayHero ? "fixed" : "sticky",
           top: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
           zIndex: 40,
-          background: "rgba(255,255,255,0.92)",
-          backdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(32,30,27,0.08)",
+          background: useSolidBackground
+            ? "rgba(255,255,255,0.92)"
+            : "transparent",
+          backdropFilter: useSolidBackground ? "blur(16px)" : "none",
+          borderBottom: useSolidBackground
+            ? "1px solid rgba(32,30,27,0.08)"
+            : "1px solid transparent",
+          transition:
+            "background 180ms ease, backdrop-filter 180ms ease, border-color 180ms ease",
         }}
       >
         <div
@@ -62,7 +94,7 @@ export default function TopNav() {
               to="/"
               style={{
                 textDecoration: "none",
-                color: "#1F1D1A",
+                color: navForeground,
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
@@ -112,7 +144,9 @@ export default function TopNav() {
                     to={item.to}
                     style={{
                       textDecoration: "none",
-                      color: isActive(item.to) ? "#1F1D1A" : "#2D2B28",
+                      color: isActive(item.to)
+                        ? navForeground
+                        : navMutedForeground,
                       fontSize: 14,
                       fontWeight: isActive(item.to) ? 700 : 600,
                       letterSpacing: 0.1,
@@ -134,7 +168,7 @@ export default function TopNav() {
                     justifyContent: "center",
                     width: 38,
                     height: 38,
-                    color: "#1F1D1A",
+                    color: navForeground,
                     flexShrink: 0,
                   }}
                 >
@@ -149,7 +183,7 @@ export default function TopNav() {
                   style={{
                     width: 38,
                     height: 38,
-                    color: "#1F1D1A",
+                    color: navForeground,
                     flexShrink: 0,
                   }}
                 />
@@ -194,7 +228,7 @@ export default function TopNav() {
                   justifyContent: "center",
                   width: 40,
                   height: 40,
-                  color: "#1F1D1A",
+                  color: navForeground,
                 }}
               >
                 <HeartOutlined style={{ fontSize: 22 }} />
@@ -208,7 +242,7 @@ export default function TopNav() {
                 style={{
                   width: 40,
                   height: 40,
-                  color: "#1F1D1A",
+                  color: navForeground,
                 }}
               />
             </Space>
