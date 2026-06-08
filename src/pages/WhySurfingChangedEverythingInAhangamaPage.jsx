@@ -20,6 +20,13 @@ const SIDE_IMAGE_ONE =
   "https://images.pexels.com/photos/33757643/pexels-photo-33757643.jpeg";
 const SIDE_IMAGE_TWO =
   "https://images.pexels.com/photos/7952964/pexels-photo-7952964.jpeg";
+const NEXT_ARTICLE = {
+  href: "/12-things",
+  kicker: "Discover More",
+  title: "12 Ways to Experience Ahangama",
+  image:
+    "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg",
+};
 
 const articleIntroduction = [
   "Modern Ahangama owes much of its identity to the ocean.",
@@ -414,6 +421,86 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
                 </section>
               </React.Fragment>
             ))}
+          </div>
+
+          <div style={{ marginTop: 16, marginBottom: 32 }}>
+            <a
+              href={NEXT_ARTICLE.href}
+              style={{
+                display: "block",
+                position: "relative",
+                minHeight: "clamp(320px, 42vw, 520px)",
+                overflow: "hidden",
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <img
+                src={NEXT_ARTICLE.image}
+                alt={NEXT_ARTICLE.title}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
+              />
+
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(180deg, rgba(12,12,12,0.2) 0%, rgba(12,12,12,0.42) 100%)",
+                }}
+              />
+
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 1,
+                  minHeight: "clamp(320px, 42vw, 520px)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  padding: "clamp(28px, 5vw, 52px)",
+                }}
+              >
+                <Text
+                  style={{
+                    display: "block",
+                    color: "rgba(255,255,255,0.92)",
+                    fontSize: 12,
+                    textTransform: "uppercase",
+                    letterSpacing: 1.2,
+                    marginBottom: 16,
+                  }}
+                >
+                  {NEXT_ARTICLE.kicker}
+                </Text>
+                <Title
+                  level={2}
+                  style={{
+                    maxWidth: 1220,
+                    margin: 0,
+                    color: "#ffffff",
+                    fontSize: "clamp(34px, 4.8vw, 76px)",
+                    lineHeight: 0.97,
+                    letterSpacing: -1.4,
+                    fontFamily:
+                      '"Avenir Next", "Segoe UI", sans-serif',
+                    fontWeight: 600,
+                  }}
+                >
+                  {NEXT_ARTICLE.title}
+                </Title>
+              </div>
+            </a>
           </div>
 
           <div id="guide-note" style={{ marginTop: 32, marginBottom: 36 }}>

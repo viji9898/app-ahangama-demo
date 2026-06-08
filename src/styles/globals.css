@@ -4972,7 +4972,7 @@
 
   .whats-on-boardItem {
     display: grid;
-    grid-template-columns: minmax(88px, 96px) minmax(0, 1fr) auto;
+    grid-template-columns: minmax(88px, 96px) minmax(0, 1fr);
     align-items: start;
     column-gap: 16px;
     row-gap: 4px;
@@ -5009,10 +5009,11 @@
   }
 
   .whats-on-boardMeta {
-    grid-column: 3;
-    grid-row: 1 / span 3;
-    align-self: center;
-    justify-content: flex-end;
+    grid-column: 2;
+    grid-row: auto;
+    align-self: start;
+    justify-content: flex-start;
+    margin-top: 4px;
   }
 
   .whats-on-boardMetaTime {
