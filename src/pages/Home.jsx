@@ -983,50 +983,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div style={{ marginTop: 20 }}>
-            <div className="home-intelligence-band">
-              <div className="home-intelligence-brand">
-                <div className="home-intelligence-brandLine">
-                  <div className="home-intelligence-mark">
-                    <span>✦</span>
-                  </div>
-                  <div className="home-intelligence-brandText">
-                    <Text className="home-intelligence-kicker">
-                      Ahangama Intelligence
-                    </Text>
-                    <Text className="home-intelligence-syncNote">
-                      Sync at {intelligenceSyncTime}
-                    </Text>
-                  </div>
-                </div>
-                <a
-                  href="/local-intelligence"
-                  className="home-intelligence-link"
-                >
-                  Local Intelligence <ArrowRightOutlined />
-                </a>
-              </div>
-
-              {HERO_INTELLIGENCE_ITEMS.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <div className="home-intelligence-item" key={item.key}>
-                    <div className="home-intelligence-itemHeader">
-                      <Icon className="home-intelligence-itemIcon" />
-                      <Text className="home-intelligence-itemLabel">
-                        {item.label}:
-                      </Text>
-                    </div>
-                    <Text className="home-intelligence-itemValue">
-                      {item.value}
-                    </Text>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
           <div className="home-section-divider" aria-hidden="true" />
 
           <div style={{ marginTop: sectionSpacing }}>
