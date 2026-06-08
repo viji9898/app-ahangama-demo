@@ -207,32 +207,7 @@ export default function FullListPage() {
                   duplicating cards across every tag.
                 </Paragraph>
 
-                <Paragraph
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.7,
-                    color: "#6B655D",
-                    marginBottom: 18,
-                    maxWidth: 720,
-                  }}
-                >
-                  Open the shared Google Map for all pass venues and save it to
-                  your Google Maps before you head out.
-                  {isMobile
-                    ? " On mobile, it opens directly in the Google Maps app."
-                    : ""}
-                </Paragraph>
-
                 <Space wrap size={12}>
-                  <Button
-                    href={SHARED_GOOGLE_MAP_URL}
-                    target={isMobile ? undefined : "_blank"}
-                    rel={isMobile ? undefined : "noopener noreferrer"}
-                    icon={<EnvironmentOutlined />}
-                    style={{ borderRadius: 999 }}
-                  >
-                    Open Shared Google Map
-                  </Button>
                   <Button
                     href="/"
                     icon={<ArrowRightOutlined />}
@@ -317,6 +292,79 @@ export default function FullListPage() {
                     ))}
                   </div>
                 </Card>
+              </Col>
+            </Row>
+          </Card>
+
+          <Card
+            style={{
+              borderRadius: 24,
+              border: "1px solid rgba(47,62,58,0.08)",
+              background: "rgba(255,255,255,0.86)",
+              marginBottom: 28,
+            }}
+            bodyStyle={{ padding: isMobile ? 20 : 24 }}
+          >
+            <Row gutter={[20, 20]} align="middle" justify="space-between">
+              <Col xs={24} lg={16}>
+                <Text
+                  style={{
+                    display: "block",
+                    color: "#8B5A3C",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: 1.2,
+                    marginBottom: 8,
+                  }}
+                >
+                  Shared Google Map
+                </Text>
+                <Title
+                  level={3}
+                  style={{
+                    marginTop: 0,
+                    marginBottom: 8,
+                    fontSize: isMobile ? 24 : 28,
+                    lineHeight: 1.1,
+                  }}
+                >
+                  Save all pass venues to your Google Maps
+                </Title>
+                <Paragraph
+                  style={{
+                    marginBottom: 0,
+                    color: "#6B655D",
+                    fontSize: 15,
+                    lineHeight: 1.75,
+                    maxWidth: 760,
+                  }}
+                >
+                  Open the shared Google Map for all venues on the pass, then
+                  save it in Google Maps before you head out.
+                  {isMobile
+                    ? " On mobile, it opens directly in the Google Maps app."
+                    : ""}
+                </Paragraph>
+              </Col>
+
+              <Col xs={24} lg={8}>
+                <Space wrap size={12}>
+                  <Button
+                    href={SHARED_GOOGLE_MAP_URL}
+                    target={isMobile ? undefined : "_blank"}
+                    rel={isMobile ? undefined : "noopener noreferrer"}
+                    icon={<EnvironmentOutlined />}
+                    type="primary"
+                    style={{
+                      borderRadius: 999,
+                      background: "#2F3E3A",
+                      borderColor: "#2F3E3A",
+                    }}
+                  >
+                    Open Shared Google Map
+                  </Button>
+                </Space>
               </Col>
             </Row>
           </Card>
