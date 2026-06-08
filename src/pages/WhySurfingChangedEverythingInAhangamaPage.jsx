@@ -87,20 +87,38 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
                 >
                   Editorial
                 </Text>
-                <Title
-                  level={1}
+                <div
+                  role="heading"
+                  aria-level={1}
                   style={{
                     margin: 0,
                     color: "#FFFFFF",
+                    fontFamily:
+                      '"Cormorant Garamond", "Libre Baskerville", Georgia, serif',
                     fontSize: "clamp(38px, 5.6vw, 72px)",
+                    fontWeight: 500,
                     lineHeight: 0.96,
+                    letterSpacing: "-0.025em",
                   }}
                 >
                   Why Surfing Changed Everything in Ahangama
-                </Title>
+                </div>
               </div>
             </div>
           </div>
+
+          <Text
+            style={{
+              display: "block",
+              marginBottom: 24,
+              color: "#6B655D",
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: 0.4,
+            }}
+          >
+            Words By Jessica Fernando
+          </Text>
 
           <Row gutter={[24, 24]}>
             <Col xs={24} xl={16}>
