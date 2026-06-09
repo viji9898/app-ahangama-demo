@@ -19,10 +19,10 @@ const MOSVOLD_HERO_IMAGE =
   "https://www.mosvoldhotels.com/wp-content/uploads/2025/05/About-Mosvold-1920x600-1.jpg";
 
 const BENEFITS = [
-  "Complimentary Ahangama Pass access for eligible Mosvold guests.",
+  "A 15-day Ahangama Pass, usually priced at USD 30, offered complimentary by Mosvold.",
+  "Issued immediately after the guest shares their details through this page.",
   "Curated partner perks across cafes, wellness, stays, surf, retail, and local experiences.",
   "A simpler way to explore Ahangama without researching every venue from scratch.",
-  "A guest-facing sign-up flow designed for hotel staff handoff and future automation.",
 ];
 
 const HOW_IT_WORKS = [
@@ -31,11 +31,11 @@ const HOW_IT_WORKS = [
     icon: <BookOutlined style={{ fontSize: 18, color: "#B08E62" }} />,
   },
   {
-    body: "Mosvold confirms the stay and sends the pass manually or through a future automated flow.",
+    body: "The complimentary 15-day pass is issued immediately after submission.",
     icon: <CheckCircleOutlined style={{ fontSize: 18, color: "#B08E62" }} />,
   },
   {
-    body: "The guest uses the pass across Ahangama partner venues during their stay.",
+    body: "The guest uses the pass across Ahangama partner venues during their stay and beyond within the 15-day validity.",
     icon: <SafetyCertificateOutlined style={{ fontSize: 18, color: "#B08E62" }} />,
   },
 ];
@@ -47,7 +47,7 @@ export default function MosvoldPage() {
     <SiteLayout navOverlayHero>
       <Seo
         title="Mosvold Guest Pass"
-        description="A dedicated landing page for Mosvold guests to request a complimentary Ahangama Pass, with pass benefits, hotel messaging, and a guest sign-up form."
+        description="A dedicated landing page for Mosvold guests to receive a complimentary 15-day Ahangama Pass, usually priced at USD 30 and issued immediately after sign-up."
         canonical={canonical}
         ogImage={MOSVOLD_HERO_IMAGE}
       />
@@ -197,10 +197,10 @@ export default function MosvoldPage() {
                       lineHeight: 1.72,
                     }}
                   >
-                    A Mosvold guest benefit designed to unlock the Ahangama Pass at no
-                    extra cost. Guests can request access, discover local partner offers,
-                    and use the pass as a curated way into cafes, wellness spaces, surf,
-                    retail, and experiences across town.
+                    A Mosvold guest benefit that unlocks a complimentary 15-day Ahangama
+                    Pass, usually priced at USD 30. Guests can submit their details,
+                    receive the pass immediately, and use it as a curated way into cafes,
+                    wellness spaces, surf, retail, and experiences across town.
                   </Paragraph>
 
                   <Space wrap size={12}>
@@ -271,9 +271,9 @@ export default function MosvoldPage() {
                   }}
                 >
                   This page is structured as a guest-facing landing page where Mosvold can
-                  invite eligible guests to sign up for a complimentary pass. For now, the
-                  focus is on page structure: clear benefit framing, hotel-branded context,
-                  and a simple data-capture form that can later connect to a real workflow.
+                  offer eligible guests a complimentary 15-day Ahangama Pass that usually
+                  costs USD 30. The guest shares a few details, the pass is issued
+                  immediately, and the page frames the benefit in a clear hotel-branded way.
                 </Paragraph>
 
                 <Row gutter={[18, 18]}>
@@ -369,18 +369,6 @@ export default function MosvoldPage() {
                             </div>
                           </div>
                         ))}
-                        <Space size={8} align="center" style={{ paddingTop: 6 }}>
-                          <img
-                            src={addToAppleWalletLogo}
-                            alt="Apple Wallet"
-                            style={{ display: "block", height: 20, width: "auto" }}
-                          />
-                          <img
-                            src={addToGoogleWalletLogo}
-                            alt="Google Wallet"
-                            style={{ display: "block", height: 20, width: "auto" }}
-                          />
-                        </Space>
                       </Space>
                     </Card>
                   </Col>
@@ -425,7 +413,7 @@ export default function MosvoldPage() {
                     fontWeight: 500,
                   }}
                 >
-                  Request your complimentary pass.
+                  Request your complimentary 15-day pass.
                 </Title>
                 <Paragraph
                   style={{
@@ -435,8 +423,8 @@ export default function MosvoldPage() {
                     marginBottom: 22,
                   }}
                 >
-                  Structure-only placeholder form for Mosvold guests. This can later connect
-                  to a live submission workflow, CRM, or hotel concierge process.
+                  Mosvold guests receive a complimentary Ahangama Pass valid for 15 days,
+                  usually priced at USD 30, immediately after submitting these details.
                 </Paragraph>
 
                 <Space direction="vertical" size={14} style={{ width: "100%" }}>
@@ -493,12 +481,24 @@ export default function MosvoldPage() {
                       marginBottom: 8,
                     }}
                   >
-                    Future Workflow
+                    Pass Delivery
                   </Text>
                   <Paragraph style={{ marginBottom: 0, color: "#5A554D", lineHeight: 1.7 }}>
-                    This area can later hold stay verification, concierge approval, CRM sync,
-                    or an automatic delivery message once the complimentary pass is issued.
+                    The pass is issued immediately after submission. This area can later hold
+                    the delivery confirmation, wallet links, or follow-up concierge details.
                   </Paragraph>
+                  <Space size={8} align="center" style={{ marginTop: 14 }}>
+                    <img
+                      src={addToAppleWalletLogo}
+                      alt="Apple Wallet"
+                      style={{ display: "block", height: 30, width: "auto" }}
+                    />
+                    <img
+                      src={addToGoogleWalletLogo}
+                      alt="Google Wallet"
+                      style={{ display: "block", height: 30, width: "auto" }}
+                    />
+                  </Space>
                 </Card>
               </Card>
             </Col>
