@@ -9,6 +9,7 @@ import { Button, Card, Col, Grid, Row, Space, Tag, Typography } from "antd";
 import { usePlaces } from "../app/placesContext";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import SiteLayout from "../components/layout/SiteLayout";
 import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
@@ -24,6 +25,9 @@ const { useBreakpoint } = Grid;
 const SHARED_GOOGLE_MAP_URL = "https://maps.app.goo.gl/zvo1rFQegTtS87ZT8";
 const TWELVE_THINGS_GROUP_KEY = "12-things-to-do";
 const TWELVE_THINGS_TAG_SLUG = "12-things-to-do";
+const TWELVE_THINGS_POST_PATH = "/12-things";
+const TWELVE_THINGS_POST_IMAGE =
+  "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg";
 const MAP_DEFAULT_CENTER = { lat: 5.9699, lng: 80.3666 };
 const MAP_DEFAULT_ZOOM = 14;
 
@@ -356,6 +360,15 @@ function getDirectionsHref(place) {
     : null;
 }
 
+function getVisibleInfoTags(place, limit = 4) {
+  return (place?.bestFor || [])
+    .filter((tag) => {
+      if (!tag) return false;
+      return !TWELVE_THINGS_HIDDEN_INFO_TAGS.has(normalizeTag(tag));
+    })
+    .slice(0, limit);
+}
+
 function createPinIcon(googleMaps, color, iconMarkup, isActive) {
   const size = isActive ? 40 : 34;
   const height = size + 12;
@@ -469,13 +482,7 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
     );
   }, [isLoaded]);
 
-  const selectedPlaceTags =
-    selectedPlace?.bestFor
-      ?.filter((tag) => {
-        if (!tag) return false;
-        return !TWELVE_THINGS_HIDDEN_INFO_TAGS.has(normalizeTag(tag));
-      })
-      .slice(0, 4) || [];
+  const selectedPlaceTags = getVisibleInfoTags(selectedPlace, 4);
   const selectedPlaceInstagramHref = selectedPlace ? getInstagramHref(selectedPlace) : null;
   const selectedPlaceDirectionsHref = selectedPlace ? getDirectionsHref(selectedPlace) : null;
 
@@ -675,14 +682,6 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
                       >
                         {selectedPlace.name}
                       </Title>
-                      <Paragraph
-                        style={{ marginBottom: 0, color: "#4A433C", fontSize: 13 }}
-                      >
-                        {selectedPlace.area || "Ahangama"}
-                        {selectedPlaceTags.length
-                          ? ` • ${selectedPlaceTags.slice(0, 2).join(" • ")}`
-                          : ""}
-                      </Paragraph>
                     </div>
                   </div>
                   <Paragraph
@@ -1056,6 +1055,20 @@ function TwelveThingsCard({ group, places, isMobile }) {
           </div>
         </Col>
       </Row>
+
+      <EditorialNextArticle
+        href={TWELVE_THINGS_POST_PATH}
+        kicker="Discover More"
+        title="12 Ways to Experience Ahangama"
+        image={TWELVE_THINGS_POST_IMAGE}
+        ctaLabel="Read now ->"
+        style={{
+          marginTop: 24,
+          marginBottom: 0,
+          borderRadius: 22,
+          overflow: "hidden",
+        }}
+      />
     </Card>
   );
 }
@@ -1102,6 +1115,7 @@ function PlaceLinks({ places }) {
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       {places.map((place) => {
         const href = getPlaceHref(place);
+        const visibleTags = getVisibleInfoTags(place, 2);
         const content = (
           <>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
@@ -1147,8 +1161,8 @@ function PlaceLinks({ places }) {
                 </Text>
                 <Text style={{ color: "#6C665E", fontSize: 13 }}>
                   {place.area || "Ahangama"}
-                  {place.bestFor?.length
-                    ? ` • ${place.bestFor.slice(0, 2).join(" • ")}`
+                  {visibleTags.length
+                    ? ` • ${visibleTags.join(" • ")}`
                     : ""}
                 </Text>
                 <OfferPills place={place} />
