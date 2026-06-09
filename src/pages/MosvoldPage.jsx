@@ -404,123 +404,69 @@ export default function MosvoldPage() {
                 </Paragraph>
 
                 <Row gutter={[18, 18]}>
-                  <Col xs={24} md={12}>
-                    <Card
-                      style={{
-                        height: "100%",
-                        borderRadius: 22,
-                        border: "1px solid rgba(32,30,27,0.08)",
-                        background: "rgba(255,255,255,0.84)",
-                      }}
-                      bodyStyle={{ padding: 22 }}
-                    >
-                      <Space
-                        direction="vertical"
-                        size={12}
-                        style={{ width: "100%" }}
+                  {DISCOVER_CARDS.map((item) => (
+                    <Col xs={24} md={12} key={item.title}>
+                      <Card
+                        style={{
+                          height: "100%",
+                          borderRadius: 22,
+                          border: "1px solid rgba(32,30,27,0.08)",
+                          background: "rgba(255,255,255,0.84)",
+                        }}
+                        bodyStyle={{ padding: 22 }}
                       >
-                        <GiftOutlined
-                          style={{ fontSize: 22, color: "#B08E62" }}
-                        />
-                        <Text
+                        <Title
+                          level={3}
                           style={{
+                            marginTop: 0,
+                            marginBottom: 12,
                             color: "#201E1B",
-                            fontSize: 14,
-                            fontWeight: 700,
-                            letterSpacing: 1.2,
-                            textTransform: "uppercase",
+                            fontFamily:
+                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                            fontSize: 28,
+                            lineHeight: 1.05,
                           }}
                         >
-                          What You Receive
-                        </Text>
-                        {RECEIVE_ITEMS.map((item) => (
-                          <div
-                            key={item}
-                            style={{
-                              display: "flex",
-                              alignItems: "flex-start",
-                              gap: 10,
-                            }}
-                          >
-                            <CheckCircleOutlined
-                              style={{ color: "#B08E62", marginTop: 4 }}
-                            />
-                            <Text style={{ color: "#4B463F", lineHeight: 1.7 }}>
-                              {item}
-                            </Text>
-                          </div>
-                        ))}
-                      </Space>
-                    </Card>
-                  </Col>
-
-                  <Col xs={24} md={12}>
-                    <Card
-                      style={{
-                        height: "100%",
-                        borderRadius: 22,
-                        border: "1px solid rgba(32,30,27,0.08)",
-                        background: "rgba(255,255,255,0.84)",
-                      }}
-                      bodyStyle={{ padding: 22 }}
-                    >
-                      <Space
-                        direction="vertical"
-                        size={12}
-                        style={{ width: "100%" }}
-                      >
-                        <SafetyCertificateOutlined
-                          style={{ fontSize: 22, color: "#B08E62" }}
-                        />
-                        <Text
+                          {item.title}
+                        </Title>
+                        <Paragraph
                           style={{
-                            color: "#201E1B",
-                            fontSize: 14,
-                            fontWeight: 700,
-                            letterSpacing: 1.2,
-                            textTransform: "uppercase",
+                            color: "#4B463F",
+                            lineHeight: 1.8,
+                            marginBottom: 10,
                           }}
                         >
-                          Featured Benefits
-                        </Text>
-                        {FEATURED_BENEFITS.map((item) => (
-                          <div
-                            key={item.title}
+                          {item.description}
+                        </Paragraph>
+                        {item.detail ? (
+                          <Paragraph
                             style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                              gap: 16,
-                              paddingBottom: 10,
-                              borderBottom: "1px solid rgba(32,30,27,0.08)",
+                              color: "#4B463F",
+                              lineHeight: 1.8,
+                              marginBottom: 22,
                             }}
                           >
-                            <Text
-                              style={{
-                                color: "#201E1B",
-                                lineHeight: 1.7,
-                                fontWeight: 500,
-                              }}
-                            >
-                              {item.title}
-                            </Text>
-                            <Text
-                              style={{
-                                color: "#B08E62",
-                                lineHeight: 1.7,
-                                textAlign: "right",
-                                whiteSpace: "nowrap",
-                              }}
-                            >
-                              {item.benefit}
-                            </Text>
+                            {item.detail}
+                          </Paragraph>
+                        ) : null}
+                        {item.highlights ? (
+                          <div style={{ marginBottom: 22, display: "grid", gap: 6 }}>
+                            {item.highlights.map((highlight) => (
+                              <Text
+                                key={highlight}
+                                style={{ color: "#4B463F", lineHeight: 1.7 }}
+                              >
+                                {`• ${highlight}`}
+                              </Text>
+                            ))}
                           </div>
-                        ))}
-                        <Text style={{ color: "#6B645C", fontSize: 13, lineHeight: 1.7 }}>
-                          Benefits vary by venue and may change throughout the season.
-                        </Text>
-                      </Space>
-                    </Card>
-                  </Col>
+                        ) : null}
+                        <Button href={item.href} icon={<ArrowRightOutlined />}>
+                          {item.ctaLabel}
+                        </Button>
+                      </Card>
+                    </Col>
+                  ))}
                 </Row>
               </Card>
             </Col>
@@ -768,7 +714,7 @@ export default function MosvoldPage() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Discover More
+                  What You Receive
                 </Text>
                 <Title
                   level={2}
@@ -783,58 +729,127 @@ export default function MosvoldPage() {
                     fontWeight: 500,
                   }}
                 >
-                  Make The Most Of Your Stay
+                  Featured Benefits
                 </Title>
 
                 <Row gutter={[18, 18]}>
-                  {DISCOVER_CARDS.map((item) => (
-                    <Col xs={24} md={12} key={item.title}>
-                      <Card
-                        style={{
-                          height: "100%",
-                          borderRadius: 22,
-                          border: "1px solid rgba(32,30,27,0.08)",
-                          background: "rgba(255,255,255,0.84)",
-                        }}
-                        bodyStyle={{ padding: 22 }}
+                  <Col xs={24} md={12}>
+                    <Card
+                      style={{
+                        height: "100%",
+                        borderRadius: 22,
+                        border: "1px solid rgba(32,30,27,0.08)",
+                        background: "rgba(255,255,255,0.84)",
+                      }}
+                      bodyStyle={{ padding: 22 }}
+                    >
+                      <Space
+                        direction="vertical"
+                        size={12}
+                        style={{ width: "100%" }}
                       >
-                        <Title
-                          level={3}
+                        <GiftOutlined
+                          style={{ fontSize: 22, color: "#B08E62" }}
+                        />
+                        <Text
                           style={{
-                            marginTop: 0,
-                            marginBottom: 12,
                             color: "#201E1B",
-                            fontFamily:
-                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                            fontSize: 28,
-                            lineHeight: 1.05,
+                            fontSize: 14,
+                            fontWeight: 700,
+                            letterSpacing: 1.2,
+                            textTransform: "uppercase",
                           }}
                         >
-                          {item.title}
-                        </Title>
-                        <Paragraph style={{ color: "#4B463F", lineHeight: 1.8, marginBottom: 10 }}>
-                          {item.description}
-                        </Paragraph>
-                        {item.detail ? (
-                          <Paragraph style={{ color: "#4B463F", lineHeight: 1.8, marginBottom: 22 }}>
-                            {item.detail}
-                          </Paragraph>
-                        ) : null}
-                        {item.highlights ? (
-                          <div style={{ marginBottom: 22, display: "grid", gap: 6 }}>
-                            {item.highlights.map((highlight) => (
-                              <Text key={highlight} style={{ color: "#4B463F", lineHeight: 1.7 }}>
-                                {`• ${highlight}`}
-                              </Text>
-                            ))}
+                          What You Receive
+                        </Text>
+                        {RECEIVE_ITEMS.map((item) => (
+                          <div
+                            key={item}
+                            style={{
+                              display: "flex",
+                              alignItems: "flex-start",
+                              gap: 10,
+                            }}
+                          >
+                            <CheckCircleOutlined
+                              style={{ color: "#B08E62", marginTop: 4 }}
+                            />
+                            <Text style={{ color: "#4B463F", lineHeight: 1.7 }}>
+                              {item}
+                            </Text>
                           </div>
-                        ) : null}
-                        <Button href={item.href} icon={<ArrowRightOutlined />}>
-                          {item.ctaLabel}
-                        </Button>
-                      </Card>
-                    </Col>
-                  ))}
+                        ))}
+                      </Space>
+                    </Card>
+                  </Col>
+
+                  <Col xs={24} md={12}>
+                    <Card
+                      style={{
+                        height: "100%",
+                        borderRadius: 22,
+                        border: "1px solid rgba(32,30,27,0.08)",
+                        background: "rgba(255,255,255,0.84)",
+                      }}
+                      bodyStyle={{ padding: 22 }}
+                    >
+                      <Space
+                        direction="vertical"
+                        size={12}
+                        style={{ width: "100%" }}
+                      >
+                        <SafetyCertificateOutlined
+                          style={{ fontSize: 22, color: "#B08E62" }}
+                        />
+                        <Text
+                          style={{
+                            color: "#201E1B",
+                            fontSize: 14,
+                            fontWeight: 700,
+                            letterSpacing: 1.2,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          Featured Benefits
+                        </Text>
+                        {FEATURED_BENEFITS.map((item) => (
+                          <div
+                            key={item.title}
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                              gap: 16,
+                              paddingBottom: 10,
+                              borderBottom: "1px solid rgba(32,30,27,0.08)",
+                            }}
+                          >
+                            <Text
+                              style={{
+                                color: "#201E1B",
+                                lineHeight: 1.7,
+                                fontWeight: 500,
+                              }}
+                            >
+                              {item.title}
+                            </Text>
+                            <Text
+                              style={{
+                                color: "#B08E62",
+                                lineHeight: 1.7,
+                                textAlign: "right",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              {item.benefit}
+                            </Text>
+                          </div>
+                        ))}
+                        <Text style={{ color: "#6B645C", fontSize: 13, lineHeight: 1.7 }}>
+                          Benefits vary by venue and may change throughout the season.
+                        </Text>
+                      </Space>
+                    </Card>
+                  </Col>
                 </Row>
               </Card>
             </Col>
