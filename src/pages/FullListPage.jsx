@@ -326,19 +326,32 @@ function getPlaceHref(place) {
 }
 
 function createPinIcon(googleMaps, color, iconMarkup, isActive) {
-  const size = isActive ? 38 : 32;
+  const size = isActive ? 40 : 34;
   const height = size + 12;
-  const stroke = isActive ? "#1F1D1A" : "rgba(31,29,26,0.32)";
+  const stroke = isActive ? "rgba(52,42,33,0.88)" : "rgba(52,42,33,0.4)";
+  const innerFill = isActive ? "#FFF9F1" : "#FFFCF7";
+  const innerStroke = isActive ? "rgba(143,106,74,0.7)" : "rgba(143,106,74,0.48)";
+  const iconFill = isActive ? "#2E261F" : "#43372D";
+  const renderedIconMarkup = String(iconMarkup || "").replaceAll(
+    'fill="white"',
+    `fill="${iconFill}"`,
+  );
   const svg = encodeURIComponent(`
     <svg width="${size}" height="${height}" viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="rgba(31,29,26,0.28)"/>
+          <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="rgba(31,29,26,0.22)"/>
         </filter>
+        <linearGradient id="pin-fill" x1="20" y1="2" x2="20" y2="49" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="${color}" stop-opacity="0.96"/>
+          <stop offset="1" stop-color="${color}" stop-opacity="0.82"/>
+        </linearGradient>
       </defs>
-      <path filter="url(#shadow)" d="M20 2C10.059 2 2 10.059 2 20c0 12.322 14.06 26.61 16.537 29.024a2.06 2.06 0 0 0 2.926 0C23.94 46.61 38 32.322 38 20 38 10.059 29.941 2 20 2Z" fill="${color}" stroke="${stroke}" stroke-width="2"/>
-      <g transform="translate(0 0) scale(0.9) translate(2.2 1.8)">
-        ${iconMarkup}
+      <path filter="url(#shadow)" d="M20 2C10.059 2 2 10.059 2 20c0 12.322 14.06 26.61 16.537 29.024a2.06 2.06 0 0 0 2.926 0C23.94 46.61 38 32.322 38 20 38 10.059 29.941 2 20 2Z" fill="url(#pin-fill)" stroke="${stroke}" stroke-width="1.8"/>
+      <ellipse cx="20" cy="14.8" rx="8.8" ry="4.2" fill="rgba(255,255,255,0.14)"/>
+      <circle cx="20" cy="20" r="10.4" fill="${innerFill}" stroke="${innerStroke}" stroke-width="1.15"/>
+      <g transform="translate(0 0) scale(0.74) translate(6.9 7.2)">
+        ${renderedIconMarkup}
       </g>
     </svg>
   `);
@@ -350,7 +363,18 @@ function createPinIcon(googleMaps, color, iconMarkup, isActive) {
   };
 }
 
-function TwelveThingsMap({ places, isMobile }) {
+function getTwelveThingsMappedPlaces(places) {
+  return places
+    .map((place) => ({
+      ...place,
+      _latlng: safeLatLng(place),
+      _mapCategory: getTwelveThingsMapCategory(place),
+      _primaryOffer: getPrimaryOffer(place),
+    }))
+    .filter((place) => !!place._latlng);
+}
+
+function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile }) {
   const googleMapsApiKey =
     import.meta.env.VITE_GOOGLE_MAPS_API_KEY ||
     import.meta.env.VITE_GOOGLE_MAPS_KEY ||
@@ -360,34 +384,6 @@ function TwelveThingsMap({ places, isMobile }) {
     googleMapsApiKey,
   });
   const mapRef = useRef(null);
-  const mappedPlaces = useMemo(
-    () =>
-      places
-        .map((place) => ({
-          ...place,
-          _latlng: safeLatLng(place),
-          _mapCategory: getTwelveThingsMapCategory(place),
-          _primaryOffer: getPrimaryOffer(place),
-        }))
-        .filter((place) => !!place._latlng),
-    [places],
-  );
-  const [selectedPlaceId, setSelectedPlaceId] = useState(null);
-
-  useEffect(() => {
-    setSelectedPlaceId((current) => {
-      if (current && mappedPlaces.some((place) => place.id === current)) {
-        return current;
-      }
-
-      return mappedPlaces[0]?.id || null;
-    });
-  }, [mappedPlaces]);
-
-  const selectedPlace = useMemo(
-    () => mappedPlaces.find((place) => place.id === selectedPlaceId) || mappedPlaces[0] || null,
-    [mappedPlaces, selectedPlaceId],
-  );
 
   const fitMapToPlaces = useCallback(
     (map) => {
@@ -419,6 +415,12 @@ function TwelveThingsMap({ places, isMobile }) {
       fitMapToPlaces(mapRef.current);
     }
   }, [fitMapToPlaces, mappedPlaces]);
+
+  useEffect(() => {
+    if (mapRef.current && selectedPlace?._latlng) {
+      mapRef.current.panTo(selectedPlace._latlng);
+    }
+  }, [selectedPlace]);
 
   const pinIcons = useMemo(() => {
     if (!isLoaded || !window.google) return {};
@@ -546,51 +548,206 @@ function TwelveThingsMap({ places, isMobile }) {
                   position={place._latlng}
                   title={place.name}
                   icon={selectedPlace?.id === place.id ? pinSet?.active : pinSet?.default}
-                  onClick={() => setSelectedPlaceId(place.id)}
+                  onClick={() => onSelectPlace(place)}
                 />
               );
             })}
           </GoogleMap>
         )}
       </div>
+    </div>
+  );
+}
 
-      {selectedPlace ? (
-        <div
-          style={{
-            padding: isMobile ? "14px 14px" : "16px 18px",
-            borderRadius: 18,
-            border: "1px solid rgba(47,62,58,0.08)",
-            background: "rgba(255,255,255,0.74)",
-          }}
-        >
+function TwelveThingsCard({ group, places, isMobile }) {
+  const mappedPlaces = useMemo(
+    () => getTwelveThingsMappedPlaces(places),
+    [places],
+  );
+  const [selectedPlaceId, setSelectedPlaceId] = useState(null);
+
+  useEffect(() => {
+    setSelectedPlaceId((current) => {
+      if (current && mappedPlaces.some((place) => place.id === current)) {
+        return current;
+      }
+
+      return mappedPlaces[0]?.id || null;
+    });
+  }, [mappedPlaces]);
+
+  const selectedPlace = useMemo(
+    () =>
+      mappedPlaces.find((place) => place.id === selectedPlaceId) ||
+      mappedPlaces[0] ||
+      null,
+    [mappedPlaces, selectedPlaceId],
+  );
+
+  const selectPlace = useCallback((place) => {
+    if (!place) return;
+    setSelectedPlaceId(place.id);
+  }, []);
+
+  return (
+    <Card
+      key={group.key}
+      id={`best-for-${group.key}`}
+      style={{
+        borderRadius: 24,
+        border: "1px solid rgba(47,62,58,0.08)",
+        background: "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
+      }}
+      bodyStyle={{ padding: 24 }}
+    >
+      <Row gutter={[24, 24]}>
+        <Col xs={24} lg={7}>
           <Text
             style={{
               display: "block",
               color: "#8B5A3C",
               fontSize: 12,
               fontWeight: 700,
+              marginBottom: 10,
               textTransform: "uppercase",
-              letterSpacing: 1.2,
-              marginBottom: 6,
+              letterSpacing: 1.4,
             }}
           >
-            Selected venue
+            Main best for
           </Text>
-          <Title level={4} style={{ marginTop: 0, marginBottom: 4 }}>
-            {selectedPlace.name}
+          <Title level={2} style={{ marginTop: 0, marginBottom: 12 }}>
+            {group.label}
           </Title>
-          <Paragraph style={{ marginBottom: 12, color: "#5C5953" }}>
-            {selectedPlace.area || "Ahangama"}
-            {selectedPlace.bestFor?.length
-              ? ` • ${selectedPlace.bestFor.slice(0, 2).join(" • ")}`
-              : ""}
+          <Paragraph style={{ color: "#5C5953", marginBottom: 14 }}>
+            {places.length} venues include this as one of their best-for tags.
           </Paragraph>
-          <Paragraph style={{ marginBottom: 0, color: "#1F2A24" }}>
-            {selectedPlace._primaryOffer}
-          </Paragraph>
-        </div>
-      ) : null}
-    </div>
+
+          {mappedPlaces.length ? (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {mappedPlaces.map((place) => {
+                const categoryConfig =
+                  TWELVE_THINGS_MAP_CATEGORIES[place._mapCategory] ||
+                  TWELVE_THINGS_MAP_CATEGORIES.experiences;
+                const isSelected = selectedPlace?.id === place.id;
+
+                return (
+                  <button
+                    key={place.id || place.slug || place.name}
+                    type="button"
+                    onClick={() => selectPlace(place)}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 8,
+                      borderRadius: 999,
+                      padding: "9px 14px",
+                      border: isSelected
+                        ? "1px solid rgba(52,42,33,0.45)"
+                        : "1px solid rgba(47,62,58,0.08)",
+                      background: categoryConfig.color,
+                      color: "#FFF9F1",
+                      fontSize: 12,
+                      fontWeight: 700,
+                      letterSpacing: 0.3,
+                      cursor: "pointer",
+                      boxShadow: isSelected
+                        ? "0 10px 20px rgba(31,29,26,0.14)"
+                        : "0 4px 10px rgba(31,29,26,0.08)",
+                      transform: isSelected ? "translateY(-1px)" : "none",
+                      textAlign: "left",
+                    }}
+                  >
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: 6,
+                        height: 6,
+                        borderRadius: 999,
+                        background: "rgba(255,249,241,0.82)",
+                        flex: "0 0 6px",
+                      }}
+                    />
+                    {place.name}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+        </Col>
+
+        <Col xs={24} lg={17}>
+          <TwelveThingsMap
+            mappedPlaces={mappedPlaces}
+            selectedPlace={selectedPlace}
+            onSelectPlace={selectPlace}
+            isMobile={isMobile}
+          />
+
+          {selectedPlace ? (
+            <div
+              style={{
+                padding: isMobile ? "14px 14px" : "16px 18px",
+                borderRadius: 18,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background: "rgba(255,255,255,0.74)",
+                marginBottom: 18,
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  color: "#8B5A3C",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 1.2,
+                  marginBottom: 6,
+                }}
+              >
+                Selected venue
+              </Text>
+              <Title level={4} style={{ marginTop: 0, marginBottom: 4 }}>
+                {selectedPlace.name}
+              </Title>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: 999,
+                    padding: "6px 12px",
+                    background:
+                      TWELVE_THINGS_MAP_CATEGORIES[selectedPlace._mapCategory]?.color ||
+                      "#4F6F86",
+                    color: "#FFF9F1",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: 0.6,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {TWELVE_THINGS_MAP_CATEGORIES[selectedPlace._mapCategory]?.label ||
+                    "Venue"}
+                </span>
+              </div>
+              <Paragraph style={{ marginBottom: 12, color: "#5C5953" }}>
+                {selectedPlace.area || "Ahangama"}
+                {selectedPlace.bestFor?.length
+                  ? ` • ${selectedPlace.bestFor.slice(0, 2).join(" • ")}`
+                  : ""}
+              </Paragraph>
+              <Paragraph style={{ marginBottom: 0, color: "#1F2A24" }}>
+                {selectedPlace._primaryOffer}
+              </Paragraph>
+            </div>
+          ) : null}
+
+          <TwelveThingsGroupedPlaceLinks places={places} />
+        </Col>
+      </Row>
+    </Card>
   );
 }
 
@@ -1026,66 +1183,65 @@ export default function FullListPage() {
           </Card>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            {groups.map((group) => (
-              (() => {
-                const displayPlaces =
-                  group.key === TWELVE_THINGS_GROUP_KEY
-                    ? twelveThingsPlaces
-                    : group.places;
+            {groups.map((group) => {
+              const displayPlaces =
+                group.key === TWELVE_THINGS_GROUP_KEY
+                  ? twelveThingsPlaces
+                  : group.places;
 
+              if (group.key === TWELVE_THINGS_GROUP_KEY) {
                 return (
-              <Card
-                key={group.key}
-                id={`best-for-${group.key}`}
-                style={{
-                  borderRadius: 24,
-                  border: "1px solid rgba(47,62,58,0.08)",
-                  background:
-                    "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
-                }}
-                bodyStyle={{ padding: 24 }}
-              >
-                <Row gutter={[24, 24]}>
-                  <Col xs={24} lg={7}>
-                    <Text
-                      style={{
-                        display: "block",
-                        color: "#8B5A3C",
-                        fontSize: 12,
-                        fontWeight: 700,
-                        marginBottom: 10,
-                        textTransform: "uppercase",
-                        letterSpacing: 1.4,
-                      }}
-                    >
-                      Main best for
-                    </Text>
-                    <Title level={2} style={{ marginTop: 0, marginBottom: 12 }}>
-                      {group.label}
-                    </Title>
-                    <Paragraph style={{ color: "#5C5953", marginBottom: 0 }}>
-                      {group.key === TWELVE_THINGS_GROUP_KEY
-                        ? displayPlaces.length
-                        : group.count}{" "}
-                      venues include this as one of their best-for
-                      tags.
-                    </Paragraph>
-                  </Col>
-                  <Col xs={24} lg={17}>
-                    {group.key === TWELVE_THINGS_GROUP_KEY ? (
-                      <TwelveThingsMap places={displayPlaces} isMobile={isMobile} />
-                    ) : null}
-                    {group.key === TWELVE_THINGS_GROUP_KEY ? (
-                      <TwelveThingsGroupedPlaceLinks places={displayPlaces} />
-                    ) : (
-                      <PlaceLinks places={displayPlaces} />
-                    )}
-                  </Col>
-                </Row>
-              </Card>
+                  <TwelveThingsCard
+                    key={group.key}
+                    group={group}
+                    places={displayPlaces}
+                    isMobile={isMobile}
+                  />
                 );
-              })()
-            ))}
+              }
+
+              return (
+                <Card
+                  key={group.key}
+                  id={`best-for-${group.key}`}
+                  style={{
+                    borderRadius: 24,
+                    border: "1px solid rgba(47,62,58,0.08)",
+                    background:
+                      "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
+                  }}
+                  bodyStyle={{ padding: 24 }}
+                >
+                  <Row gutter={[24, 24]}>
+                    <Col xs={24} lg={7}>
+                      <Text
+                        style={{
+                          display: "block",
+                          color: "#8B5A3C",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          marginBottom: 10,
+                          textTransform: "uppercase",
+                          letterSpacing: 1.4,
+                        }}
+                      >
+                        Main best for
+                      </Text>
+                      <Title level={2} style={{ marginTop: 0, marginBottom: 12 }}>
+                        {group.label}
+                      </Title>
+                      <Paragraph style={{ color: "#5C5953", marginBottom: 0 }}>
+                        {group.count} venues include this as one of their best-for
+                        tags.
+                      </Paragraph>
+                    </Col>
+                    <Col xs={24} lg={17}>
+                      <PlaceLinks places={displayPlaces} />
+                    </Col>
+                  </Row>
+                </Card>
+              );
+            })}
 
             {otherPlaces.length ? (
               <Card
