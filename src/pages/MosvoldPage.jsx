@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ArrowRightOutlined,
-  BookOutlined,
   CheckCircleOutlined,
   GiftOutlined,
   SafetyCertificateOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Col, Input, Row, Space, Typography } from "antd";
+import { Button, Card, Col, Input, Modal, Row, Space, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
+import NewsletterSignup from "../components/newsletter/NewsletterSignup";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -18,41 +18,102 @@ const { Paragraph, Text, Title } = Typography;
 const MOSVOLD_HERO_IMAGE =
   "https://www.mosvoldhotels.com/wp-content/uploads/2025/05/About-Mosvold-1920x600-1.jpg";
 
-const BENEFITS = [
-  "A 15-day Ahangama Pass, usually priced at USD 30, offered complimentary by Mosvold.",
-  "Issued immediately after the guest shares their details through this page.",
-  "Curated partner perks across cafes, wellness, stays, surf, retail, and local experiences.",
-  "A simpler way to explore Ahangama without researching every venue from scratch.",
+const HERO_FEATURES = [
+  "Complimentary 15-Day Pass",
+  "Apple Wallet & Google Wallet Access",
+  "Local Discounts & Perks",
+  "Ahangama Guide & Map",
 ];
 
-const HOW_IT_WORKS = [
+const RECEIVE_ITEMS = [
+  "15-Day Digital Pass",
+  "Instant Delivery",
+  "Apple Wallet & Google Wallet",
+  "Discounts at Cafes & Restaurants",
+  "Wellness & Fitness Partner Offers",
+  "Surf & Experience Benefits",
+  "Ahangama Guide 2026/27",
+  "Curated Ahangama Map",
+];
+
+const FEATURED_BENEFITS = [
+  { title: "Living Room Concept Store", benefit: "10% Off" },
+  { title: "Hakuna Matata", benefit: "10% Off Food" },
+  { title: "Global Surf Lodge", benefit: "10% Off Rooms" },
+  { title: "Pura Pilates", benefit: "10% Off Classes" },
+  { title: "Coconut Court", benefit: "Member Rate Pickleball" },
+  { title: "Frosty's", benefit: "10% Off Entry & Memberships" },
+];
+
+const DISCOVER_CARDS = [
   {
-    body: "Guest shares basic details through the form below.",
-    icon: <BookOutlined style={{ fontSize: 18, color: "#B08E62" }} />,
+    title: "Ahangama Guide 2026/27",
+    description:
+      "Editorial recommendations from the local Ahangama.com team.",
+    detail:
+      "Best cafes, beaches, surf spots, wellness experiences and places to explore.",
+    ctaLabel: "View Guide",
+    href: "/blogs",
   },
   {
-    body: "The complimentary 15-day pass is issued immediately after submission.",
-    icon: <CheckCircleOutlined style={{ fontSize: 18, color: "#B08E62" }} />,
+    title: "Curated Ahangama Map",
+    description: "Discover:",
+    highlights: [
+      "Best Breakfasts",
+      "Sunset Spots",
+      "Beginner Surf",
+      "Coffee & Workspaces",
+      "Wellness Studios",
+      "Date Night Picks",
+      "Local Favourites",
+    ],
+    ctaLabel: "Open Map",
+    href: "/map",
+  },
+];
+
+const LOCAL_LINKS = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ahangama.pass",
   },
   {
-    body: "The guest uses the pass across Ahangama partner venues during their stay and beyond within the 15-day validity.",
-    icon: (
-      <SafetyCertificateOutlined style={{ fontSize: 18, color: "#B08E62" }} />
-    ),
+    label: "WhatsApp",
+    href: "https://wa.me/94777908790?text=Hi%20Ahangama%20-%20I%20would%20love%20some%20local%20recommendations.",
+  },
+  {
+    label: "Email",
+    href: "mailto:hello@ahangama.com?subject=Ahangama%20Enquiry",
   },
 ];
 
 export default function MosvoldPage() {
   const canonical = absUrl("/mosvold");
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(true);
 
   return (
     <SiteLayout navOverlayHero>
       <Seo
         title="Mosvold Guest Pass"
-        description="A dedicated landing page for Mosvold guests to receive a complimentary 15-day Ahangama Pass, usually priced at USD 30 and issued immediately after sign-up."
+        description="A premium Mosvold guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the stay."
         canonical={canonical}
         ogImage={MOSVOLD_HERO_IMAGE}
       />
+
+      <Modal
+        open={isDisclaimerOpen}
+        onOk={() => setIsDisclaimerOpen(false)}
+        onCancel={() => setIsDisclaimerOpen(false)}
+        okText="Continue"
+        cancelText="Close"
+        centered
+        title="Disclaimer"
+      >
+        <Paragraph style={{ marginBottom: 0, color: "#4B463F", lineHeight: 1.8 }}>
+          This page is for demonstration purposes only and is not associated with
+          Mosvold at this time.
+        </Paragraph>
+      </Modal>
 
       <div
         className="dm-canvas"
@@ -140,10 +201,7 @@ export default function MosvoldPage() {
                   }}
                 >
                   <Space size={12} wrap style={{ marginBottom: 18 }}>
-                    {[
-                      "Mosvold Guest Access",
-                      "Complimentary Ahangama Pass",
-                    ].map((item) => (
+                    {["Mosvold Guest Access"].map((item) => (
                       <Text
                         key={item}
                         style={{
@@ -185,7 +243,7 @@ export default function MosvoldPage() {
                       className="home-hero-titleLine"
                       style={{ color: "#FFFFFF" }}
                     >
-                      For Mosvold Guests
+                      Exclusively for Mosvold Guests
                     </span>
                   </Title>
 
@@ -200,7 +258,7 @@ export default function MosvoldPage() {
                       textTransform: "uppercase",
                     }}
                   >
-                    Dedicated Guest Sign-Up Page
+                    A complimentary benefit included with your stay.
                   </Text>
 
                   <Paragraph
@@ -213,12 +271,37 @@ export default function MosvoldPage() {
                       lineHeight: 1.72,
                     }}
                   >
-                    A Mosvold guest benefit that unlocks a complimentary 15-day
-                    Ahangama Pass, usually priced at USD 30. Guests can submit
-                    their details, receive the pass immediately, and use it as a
-                    curated way into cafes, wellness spaces, surf, retail, and
-                    experiences across town.
+                    Unlock discounts, local recommendations and curated
+                    experiences across cafes, wellness spaces, surf spots and
+                    independent businesses throughout Ahangama.
                   </Paragraph>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                      gap: 10,
+                      maxWidth: 620,
+                      marginBottom: 26,
+                    }}
+                  >
+                    {HERO_FEATURES.map((item) => (
+                      <div
+                        key={item}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                          color: "rgba(255,255,255,0.94)",
+                          fontSize: 14,
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        <span style={{ color: "#D8C3A0", fontSize: 16 }}>•</span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
 
                   <Space wrap size={12}>
                     <Button
@@ -226,14 +309,14 @@ export default function MosvoldPage() {
                       size="large"
                       href="#mosvold-signup-form"
                     >
-                      Request Your Pass
+                      Claim Your Pass
                     </Button>
                     <Button
                       size="large"
-                      href="/offers"
+                      href="#mosvold-benefits"
                       icon={<ArrowRightOutlined />}
                     >
-                      Explore Pass Benefits
+                      See Included Benefits
                     </Button>
                   </Space>
                 </div>
@@ -248,6 +331,7 @@ export default function MosvoldPage() {
           <Row gutter={[24, 24]} style={{ marginTop: 28 }}>
             <Col xs={24} lg={14}>
               <Card
+                id="mosvold-benefits"
                 style={{
                   borderRadius: 28,
                   border: "1px solid rgba(32,30,27,0.08)",
@@ -267,7 +351,7 @@ export default function MosvoldPage() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Why This Page Exists
+                  Included With Your Stay
                 </Text>
                 <Title
                   level={2}
@@ -282,8 +366,30 @@ export default function MosvoldPage() {
                     fontWeight: 500,
                   }}
                 >
-                  A branded Mosvold entry point into the Ahangama Pass.
+                  A Complimentary Local Access Pass.
                 </Title>
+                <Paragraph
+                  style={{
+                    color: "#4B463F",
+                    fontSize: 17,
+                    lineHeight: 1.8,
+                    marginBottom: 16,
+                  }}
+                >
+                  The Ahangama Pass is a curated visitor pass designed to help
+                  you experience the best of Ahangama.
+                </Paragraph>
+                <Paragraph
+                  style={{
+                    color: "#4B463F",
+                    fontSize: 17,
+                    lineHeight: 1.8,
+                    marginBottom: 16,
+                  }}
+                >
+                  Usually purchased separately, Mosvold guests receive
+                  complimentary access as part of their stay.
+                </Paragraph>
                 <Paragraph
                   style={{
                     color: "#4B463F",
@@ -292,11 +398,9 @@ export default function MosvoldPage() {
                     marginBottom: 24,
                   }}
                 >
-                  This page is structured as a guest-facing landing page where
-                  Mosvold can offer eligible guests a complimentary 15-day
-                  Ahangama Pass that usually costs USD 30. The guest shares a
-                  few details, the pass is issued immediately, and the page
-                  frames the benefit in a clear hotel-branded way.
+                  The pass provides access to exclusive offers, local
+                  recommendations and savings across a growing network of
+                  independent businesses.
                 </Paragraph>
 
                 <Row gutter={[18, 18]}>
@@ -327,9 +431,9 @@ export default function MosvoldPage() {
                             textTransform: "uppercase",
                           }}
                         >
-                          Pass Benefits
+                          What You Receive
                         </Text>
-                        {BENEFITS.map((item) => (
+                        {RECEIVE_ITEMS.map((item) => (
                           <div
                             key={item}
                             style={{
@@ -377,51 +481,43 @@ export default function MosvoldPage() {
                             textTransform: "uppercase",
                           }}
                         >
-                          How It Works
+                          Featured Benefits
                         </Text>
-                        {HOW_IT_WORKS.map((item, index) => (
+                        {FEATURED_BENEFITS.map((item) => (
                           <div
-                            key={item.body}
+                            key={item.title}
                             style={{
                               display: "flex",
-                              alignItems: "flex-start",
-                              gap: 10,
+                              justifyContent: "space-between",
+                              gap: 16,
+                              paddingBottom: 10,
+                              borderBottom: "1px solid rgba(32,30,27,0.08)",
                             }}
                           >
                             <Text
                               style={{
-                                minWidth: 22,
-                                color: "#B08E62",
-                                fontWeight: 700,
+                                color: "#201E1B",
+                                lineHeight: 1.7,
+                                fontWeight: 500,
                               }}
                             >
-                              {index + 1}.
+                              {item.title}
                             </Text>
-                            <div
+                            <Text
                               style={{
-                                display: "flex",
-                                alignItems: "flex-start",
-                                gap: 10,
+                                color: "#B08E62",
+                                lineHeight: 1.7,
+                                textAlign: "right",
+                                whiteSpace: "nowrap",
                               }}
                             >
-                              <span
-                                style={{
-                                  minWidth: 24,
-                                  display: "inline-flex",
-                                  justifyContent: "center",
-                                  paddingTop: 2,
-                                }}
-                              >
-                                {item.icon}
-                              </span>
-                              <Text
-                                style={{ color: "#4B463F", lineHeight: 1.7 }}
-                              >
-                                {item.body}
-                              </Text>
-                            </div>
+                              {item.benefit}
+                            </Text>
                           </div>
                         ))}
+                        <Text style={{ color: "#6B645C", fontSize: 13, lineHeight: 1.7 }}>
+                          Benefits vary by venue and may change throughout the season.
+                        </Text>
                       </Space>
                     </Card>
                   </Col>
@@ -451,7 +547,7 @@ export default function MosvoldPage() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Guest Sign-Up Form
+                  Mosvold Guest Access
                 </Text>
                 <Title
                   level={3}
@@ -466,7 +562,7 @@ export default function MosvoldPage() {
                     fontWeight: 500,
                   }}
                 >
-                  Request your complimentary 15-day pass.
+                  Claim Your Complimentary Pass
                 </Title>
                 <Paragraph
                   style={{
@@ -476,9 +572,18 @@ export default function MosvoldPage() {
                     marginBottom: 22,
                   }}
                 >
-                  Mosvold guests receive a complimentary Ahangama Pass valid for
-                  15 days, usually priced at USD 30, immediately after
-                  submitting these details.
+                  Complete the short form below.
+                </Paragraph>
+                <Paragraph
+                  style={{
+                    color: "#5A554D",
+                    fontSize: 15,
+                    lineHeight: 1.75,
+                    marginBottom: 22,
+                  }}
+                >
+                  Your digital pass will be issued immediately and can be added
+                  directly to Apple Wallet or Google Wallet.
                 </Paragraph>
 
                 <Space direction="vertical" size={14} style={{ width: "100%" }}>
@@ -540,7 +645,7 @@ export default function MosvoldPage() {
                     block
                     style={{ marginTop: 6 }}
                   >
-                    Submit Guest Request
+                    Get My Complimentary Pass
                   </Button>
                 </Space>
 
@@ -565,19 +670,45 @@ export default function MosvoldPage() {
                       marginBottom: 8,
                     }}
                   >
-                    Pass Delivery
+                    Instant Digital Delivery
                   </Text>
                   <Paragraph
                     style={{
-                      marginBottom: 0,
+                      marginBottom: 10,
                       color: "#5A554D",
                       lineHeight: 1.7,
                     }}
                   >
-                    The pass is issued immediately after submission. This area
-                    can later hold the delivery confirmation, wallet links, or
-                    follow-up concierge details.
+                    Your pass is delivered immediately after submission.
                   </Paragraph>
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#5A554D",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    Add it directly to:
+                  </Text>
+                  <Text
+                    style={{
+                      display: "block",
+                      marginTop: 8,
+                      color: "#201E1B",
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    Apple Wallet
+                  </Text>
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#201E1B",
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    Google Wallet
+                  </Text>
                   <Space size={8} align="center" style={{ marginTop: 14 }}>
                     <img
                       src={addToAppleWalletLogo}
@@ -590,10 +721,214 @@ export default function MosvoldPage() {
                       style={{ display: "block", height: 30, width: "auto" }}
                     />
                   </Space>
+                  <Paragraph
+                    style={{
+                      marginTop: 14,
+                      marginBottom: 0,
+                      color: "#5A554D",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    No app required.
+                  </Paragraph>
+                  <Paragraph
+                    style={{
+                      marginTop: 8,
+                      marginBottom: 0,
+                      color: "#5A554D",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    Simply show your pass when visiting participating venues.
+                  </Paragraph>
                 </Card>
               </Card>
             </Col>
           </Row>
+
+          <Row gutter={[24, 24]} style={{ marginTop: 8 }}>
+            <Col xs={24} lg={14}>
+              <Card
+                style={{
+                  borderRadius: 28,
+                  border: "1px solid rgba(32,30,27,0.08)",
+                  background: "#FFFFFF",
+                  boxShadow: "0 22px 54px rgba(47,62,58,0.06)",
+                }}
+                bodyStyle={{ padding: 30 }}
+              >
+                <Text
+                  style={{
+                    display: "block",
+                    marginBottom: 12,
+                    color: "#B08E62",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    letterSpacing: 1.8,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Discover More
+                </Text>
+                <Title
+                  level={2}
+                  style={{
+                    marginTop: 0,
+                    marginBottom: 22,
+                    color: "#201E1B",
+                    fontFamily:
+                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    fontSize: "clamp(30px, 4vw, 54px)",
+                    lineHeight: 0.98,
+                    fontWeight: 500,
+                  }}
+                >
+                  Make The Most Of Your Stay
+                </Title>
+
+                <Row gutter={[18, 18]}>
+                  {DISCOVER_CARDS.map((item) => (
+                    <Col xs={24} md={12} key={item.title}>
+                      <Card
+                        style={{
+                          height: "100%",
+                          borderRadius: 22,
+                          border: "1px solid rgba(32,30,27,0.08)",
+                          background: "rgba(255,255,255,0.84)",
+                        }}
+                        bodyStyle={{ padding: 22 }}
+                      >
+                        <Title
+                          level={3}
+                          style={{
+                            marginTop: 0,
+                            marginBottom: 12,
+                            color: "#201E1B",
+                            fontFamily:
+                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                            fontSize: 28,
+                            lineHeight: 1.05,
+                          }}
+                        >
+                          {item.title}
+                        </Title>
+                        <Paragraph style={{ color: "#4B463F", lineHeight: 1.8, marginBottom: 10 }}>
+                          {item.description}
+                        </Paragraph>
+                        {item.detail ? (
+                          <Paragraph style={{ color: "#4B463F", lineHeight: 1.8, marginBottom: 22 }}>
+                            {item.detail}
+                          </Paragraph>
+                        ) : null}
+                        {item.highlights ? (
+                          <div style={{ marginBottom: 22, display: "grid", gap: 6 }}>
+                            {item.highlights.map((highlight) => (
+                              <Text key={highlight} style={{ color: "#4B463F", lineHeight: 1.7 }}>
+                                {`• ${highlight}`}
+                              </Text>
+                            ))}
+                          </div>
+                        ) : null}
+                        <Button href={item.href} icon={<ArrowRightOutlined />}>
+                          {item.ctaLabel}
+                        </Button>
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
+              </Card>
+            </Col>
+
+            <Col xs={24} lg={10}>
+              <Card
+                style={{
+                  borderRadius: 28,
+                  border: "1px solid rgba(32,30,27,0.08)",
+                  background: "#FFFFFF",
+                  boxShadow: "0 22px 54px rgba(47,62,58,0.06)",
+                }}
+                bodyStyle={{ padding: 30 }}
+              >
+                <Text
+                  style={{
+                    display: "block",
+                    marginBottom: 12,
+                    color: "#B08E62",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    letterSpacing: 1.8,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Powered By Ahangama.com
+                </Text>
+                <Title
+                  level={2}
+                  style={{
+                    marginTop: 0,
+                    marginBottom: 14,
+                    color: "#201E1B",
+                    fontFamily:
+                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    fontSize: "clamp(30px, 4vw, 46px)",
+                    lineHeight: 0.98,
+                    fontWeight: 500,
+                  }}
+                >
+                  Built By Locals
+                </Title>
+                <Paragraph style={{ color: "#4B463F", lineHeight: 1.8, marginBottom: 16 }}>
+                  Created by the Ahangama.com editorial team.
+                </Paragraph>
+                <Paragraph style={{ color: "#4B463F", lineHeight: 1.8, marginBottom: 16 }}>
+                  A local guide dedicated to showcasing the best of Ahangama,
+                  its businesses, people and experiences.
+                </Paragraph>
+                <Paragraph style={{ color: "#4B463F", lineHeight: 1.8, marginBottom: 24 }}>
+                  Covering cafes, wellness, surf, stays, experiences and the
+                  people that make this place special.
+                </Paragraph>
+
+                <Space size={18} wrap>
+                  {LOCAL_LINKS.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: "#2F3E3A",
+                        textDecoration: "none",
+                        fontSize: 14,
+                        letterSpacing: 0.2,
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </Space>
+              </Card>
+            </Col>
+          </Row>
+
+          <Card
+            style={{
+              marginTop: 24,
+              borderRadius: 28,
+              border: "1px solid rgba(32,30,27,0.08)",
+              background: "#FFFFFF",
+              boxShadow: "0 22px 54px rgba(47,62,58,0.06)",
+            }}
+            bodyStyle={{ padding: 30 }}
+          >
+            <NewsletterSignup
+              variant="compact"
+              source="mosvold_newsletter"
+              label="MONTHLY LETTER"
+              title="The Ahangama Dispatch"
+              description="A monthly collection of local recommendations, new openings, events and stories from around the South Coast."
+            />
+          </Card>
         </div>
       </div>
     </SiteLayout>
