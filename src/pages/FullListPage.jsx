@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, InfoWindowF, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import {
   ArrowRightOutlined,
   EnvironmentOutlined,
@@ -115,6 +115,14 @@ const TWELVE_THINGS_CATEGORY_ORDER = [
   "shops",
   "experiences",
 ];
+
+const TWELVE_THINGS_HIDDEN_INFO_TAGS = new Set([
+  "pilates",
+  "mobility",
+  "wellness",
+  "12-things-to-do",
+  "editorial-wellness",
+]);
 
 const TWELVE_THINGS_CURATED_ORDER = [
   "pura",
@@ -325,6 +333,29 @@ function getPlaceHref(place) {
   return `/${place.category}/${place.slug}`;
 }
 
+function getInstagramHref(place) {
+  if (place?.instagramUrl) return place.instagramUrl;
+
+  if (place?.instagram) {
+    return `https://www.instagram.com/${String(place.instagram).replace(/^@/, "")}/`;
+  }
+
+  return null;
+}
+
+function getDirectionsHref(place) {
+  if (place?.mapUrl) return place.mapUrl;
+
+  if (place?._latlng) {
+    return `https://www.google.com/maps/search/?api=1&query=${place._latlng.lat},${place._latlng.lng}`;
+  }
+
+  const query = [place?.name, place?.area || "Ahangama"].filter(Boolean).join(" ");
+  return query
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+    : null;
+}
+
 function createPinIcon(googleMaps, color, iconMarkup, isActive) {
   const size = isActive ? 40 : 34;
   const height = size + 12;
@@ -438,6 +469,16 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
     );
   }, [isLoaded]);
 
+  const selectedPlaceTags =
+    selectedPlace?.bestFor
+      ?.filter((tag) => {
+        if (!tag) return false;
+        return !TWELVE_THINGS_HIDDEN_INFO_TAGS.has(normalizeTag(tag));
+      })
+      .slice(0, 4) || [];
+  const selectedPlaceInstagramHref = selectedPlace ? getInstagramHref(selectedPlace) : null;
+  const selectedPlaceDirectionsHref = selectedPlace ? getDirectionsHref(selectedPlace) : null;
+
   return (
     <div style={{ display: "grid", gap: 14, marginBottom: 18 }}>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -475,6 +516,8 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
 
       <div
         style={{
+          width: "100%",
+          marginLeft: 0,
           minHeight: isMobile ? 320 : 420,
           borderRadius: 20,
           overflow: "hidden",
@@ -552,6 +595,185 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
                 />
               );
             })}
+
+            {selectedPlace?._latlng ? (
+              <InfoWindowF
+                position={selectedPlace._latlng}
+                options={{
+                  pixelOffset: window.google
+                    ? new window.google.maps.Size(0, -34)
+                    : undefined,
+                  disableAutoPan: isMobile,
+                }}
+              >
+                <div
+                  style={{
+                    minWidth: isMobile ? 180 : 220,
+                    maxWidth: isMobile ? 220 : 260,
+                    padding: 2,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: 12,
+                      marginBottom: 8,
+                    }}
+                  >
+                    {selectedPlace.logo ? (
+                      <div
+                        style={{
+                          width: 54,
+                          height: 54,
+                          flex: "0 0 54px",
+                          borderRadius: 16,
+                          background: "rgba(255,255,255,0.96)",
+                          border: "1px solid rgba(47,62,58,0.08)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <img
+                          src={selectedPlace.logo}
+                          alt={`${selectedPlace.name} logo`}
+                          style={{
+                            maxWidth: 54,
+                            maxHeight: 54,
+                            width: "auto",
+                            height: "auto",
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
+                    ) : null}
+                    <div style={{ minWidth: 0, flex: 1 }}>
+                      <Text
+                        style={{
+                          display: "block",
+                          color: "#8B5A3C",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: 1,
+                          marginBottom: 4,
+                        }}
+                      >
+                        {TWELVE_THINGS_MAP_CATEGORIES[selectedPlace._mapCategory]?.label ||
+                          "Venue"}
+                      </Text>
+                      <Title
+                        level={5}
+                        style={{
+                          marginTop: 0,
+                          marginBottom: 6,
+                          fontSize: 18,
+                          color: "#201B17",
+                        }}
+                      >
+                        {selectedPlace.name}
+                      </Title>
+                      <Paragraph
+                        style={{ marginBottom: 0, color: "#4A433C", fontSize: 13 }}
+                      >
+                        {selectedPlace.area || "Ahangama"}
+                        {selectedPlaceTags.length
+                          ? ` • ${selectedPlaceTags.slice(0, 2).join(" • ")}`
+                          : ""}
+                      </Paragraph>
+                    </div>
+                  </div>
+                  <Paragraph
+                    style={{
+                      marginBottom: selectedPlaceTags.length ? 10 : 12,
+                      color: "#2B241E",
+                      fontSize: 13,
+                      lineHeight: 1.5,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {selectedPlace._primaryOffer}
+                  </Paragraph>
+                  {selectedPlaceTags.length ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 6,
+                        marginBottom: 12,
+                      }}
+                    >
+                      {selectedPlaceTags.map((tag) => (
+                        <span
+                          key={tag}
+                          style={{
+                            borderRadius: 999,
+                            padding: "4px 8px",
+                            background: "#F5E8C9",
+                            color: "#6F5235",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            lineHeight: 1.1,
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {selectedPlaceInstagramHref ? (
+                      <a
+                        href={selectedPlaceInstagramHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          minHeight: 34,
+                          padding: "0 12px",
+                          borderRadius: 999,
+                          border: "1px solid rgba(47,62,58,0.12)",
+                          background: "rgba(255,255,255,0.9)",
+                          color: "#2B241E",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          textDecoration: "none",
+                        }}
+                      >
+                        Instagram
+                      </a>
+                    ) : null}
+                    {selectedPlaceDirectionsHref ? (
+                      <a
+                        href={selectedPlaceDirectionsHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          minHeight: 34,
+                          padding: "0 12px",
+                          borderRadius: 999,
+                          border: "1px solid #2F3E3A",
+                          background: "#2F3E3A",
+                          color: "#FFF9F1",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          textDecoration: "none",
+                        }}
+                      >
+                        Directions
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+              </InfoWindowF>
+            ) : null}
           </GoogleMap>
         )}
       </div>
@@ -589,6 +811,48 @@ function TwelveThingsCard({ group, places, isMobile }) {
     setSelectedPlaceId(place.id);
   }, []);
 
+  const selectPlaceByName = useCallback((name) => {
+    const normalizedName = normalizeTag(name);
+    const match = mappedPlaces.find((place) => {
+      const normalizedPlaceName = normalizeTag(place.name);
+      return (
+        normalizedPlaceName === normalizedName ||
+        normalizedPlaceName.includes(normalizedName) ||
+        normalizedName.includes(normalizedPlaceName)
+      );
+    });
+
+    if (match) {
+      setSelectedPlaceId(match.id);
+    }
+  }, [mappedPlaces]);
+
+  const venueHighlightStyle = {
+    display: "inline",
+    padding: 0,
+    margin: 0,
+    border: "none",
+    borderRadius: 0,
+    background: "linear-gradient(180deg, transparent 58%, rgba(229, 189, 99, 0.75) 58%)",
+    color: "#3A2B1D",
+    fontSize: "0.95em",
+    fontWeight: 700,
+    lineHeight: "inherit",
+    cursor: "pointer",
+    boxShadow: "none",
+    textDecoration: "none",
+  };
+
+  const VenueHighlight = ({ name }) => (
+    <button
+      type="button"
+      onClick={() => selectPlaceByName(name)}
+      style={venueHighlightStyle}
+    >
+      {name}
+    </button>
+  );
+
   return (
     <Card
       key={group.key}
@@ -601,7 +865,7 @@ function TwelveThingsCard({ group, places, isMobile }) {
       bodyStyle={{ padding: 24 }}
     >
       <Row gutter={[24, 24]}>
-        <Col xs={24} lg={7}>
+        <Col xs={24} lg={9}>
           <Text
             style={{
               display: "block",
@@ -622,61 +886,100 @@ function TwelveThingsCard({ group, places, isMobile }) {
             {places.length} venues include this as one of their best-for tags.
           </Paragraph>
 
-          {mappedPlaces.length ? (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {mappedPlaces.map((place) => {
-                const categoryConfig =
-                  TWELVE_THINGS_MAP_CATEGORIES[place._mapCategory] ||
-                  TWELVE_THINGS_MAP_CATEGORIES.experiences;
-                const isSelected = selectedPlace?.id === place.id;
-
-                return (
-                  <button
-                    key={place.id || place.slug || place.name}
-                    type="button"
-                    onClick={() => selectPlace(place)}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: 8,
-                      borderRadius: 999,
-                      padding: "9px 14px",
-                      border: isSelected
-                        ? "1px solid rgba(52,42,33,0.45)"
-                        : "1px solid rgba(47,62,58,0.08)",
-                      background: categoryConfig.color,
-                      color: "#FFF9F1",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: 0.3,
-                      cursor: "pointer",
-                      boxShadow: isSelected
-                        ? "0 10px 20px rgba(31,29,26,0.14)"
-                        : "0 4px 10px rgba(31,29,26,0.08)",
-                      transform: isSelected ? "translateY(-1px)" : "none",
-                      textAlign: "left",
-                    }}
-                  >
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        width: 6,
-                        height: 6,
-                        borderRadius: 999,
-                        background: "rgba(255,249,241,0.82)",
-                        flex: "0 0 6px",
-                      }}
-                    />
-                    {place.name}
-                  </button>
-                );
-              })}
+          <div style={{ display: "grid", gap: 12 }}>
+            <div
+              style={{
+                padding: isMobile ? "16px 14px" : "18px 20px",
+                borderRadius: 18,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background: "rgba(255,255,255,0.72)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 8,
+                  color: "#8B5A3C",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 1.1,
+                }}
+              >
+                Morning Start
+              </Text>
+              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
+                Start your morning at <VenueHighlight name="Living Room Concept Store" />
+                with 10% off coffee and brunch before picking up a scooter from
+                <VenueHighlight name="GIK Bike Rentals" /> with 25% off rentals.
+              </Paragraph>
             </div>
-          ) : null}
+
+            <div
+              style={{
+                padding: isMobile ? "16px 14px" : "18px 20px",
+                borderRadius: 18,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background: "rgba(255,255,255,0.72)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 8,
+                  color: "#8B5A3C",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 1.1,
+                }}
+              >
+                Wellness Scene
+              </Text>
+              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
+                <VenueHighlight name="Pura Pilates" /> — 10% off
+                <br />
+                <VenueHighlight name="Sarana" /> — 20% off spa treatments
+                <br />
+                <VenueHighlight name="Frosty's" /> — 10% off entry fees and memberships
+                <br />
+                <VenueHighlight name="Spa Station Midigama" /> — 10% off treatments + free aromatherapy
+                <br />
+                <VenueHighlight name="Coconut Court" /> — Exclusive member rates on pickleball
+              </Paragraph>
+            </div>
+
+            <div
+              style={{
+                padding: isMobile ? "16px 14px" : "18px 20px",
+                borderRadius: 18,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background: "rgba(255,255,255,0.72)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 8,
+                  color: "#8B5A3C",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 1.1,
+                }}
+              >
+                Local Experiences
+              </Text>
+              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
+                <VenueHighlight name="Kumbuk Community" /> — 10% off
+                <br />
+                <VenueHighlight name="Palm and Paint" /> — 10% off
+              </Paragraph>
+            </div>
+          </div>
         </Col>
 
-        <Col xs={24} lg={17}>
+        <Col xs={24} lg={15}>
           <TwelveThingsMap
             mappedPlaces={mappedPlaces}
             selectedPlace={selectedPlace}
@@ -684,67 +987,73 @@ function TwelveThingsCard({ group, places, isMobile }) {
             isMobile={isMobile}
           />
 
-          {selectedPlace ? (
+          <div
+            style={{
+              width: "100%",
+              marginLeft: 0,
+              display: "grid",
+              gap: 12,
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))",
+            }}
+          >
             <div
               style={{
-                padding: isMobile ? "14px 14px" : "16px 18px",
+                padding: isMobile ? "16px 14px" : "18px 20px",
                 borderRadius: 18,
                 border: "1px solid rgba(47,62,58,0.08)",
-                background: "rgba(255,255,255,0.74)",
-                marginBottom: 18,
+                background: "rgba(255,255,255,0.72)",
               }}
             >
               <Text
                 style={{
                   display: "block",
+                  marginBottom: 8,
                   color: "#8B5A3C",
                   fontSize: 12,
                   fontWeight: 700,
                   textTransform: "uppercase",
-                  letterSpacing: 1.2,
-                  marginBottom: 6,
+                  letterSpacing: 1.1,
                 }}
               >
-                Selected venue
+                Shops And Lifestyle
               </Text>
-              <Title level={4} style={{ marginTop: 0, marginBottom: 4 }}>
-                {selectedPlace.name}
-              </Title>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
-                <span
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: 999,
-                    padding: "6px 12px",
-                    background:
-                      TWELVE_THINGS_MAP_CATEGORIES[selectedPlace._mapCategory]?.color ||
-                      "#4F6F86",
-                    color: "#FFF9F1",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: 0.6,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {TWELVE_THINGS_MAP_CATEGORIES[selectedPlace._mapCategory]?.label ||
-                    "Venue"}
-                </span>
-              </div>
-              <Paragraph style={{ marginBottom: 12, color: "#5C5953" }}>
-                {selectedPlace.area || "Ahangama"}
-                {selectedPlace.bestFor?.length
-                  ? ` • ${selectedPlace.bestFor.slice(0, 2).join(" • ")}`
-                  : ""}
-              </Paragraph>
-              <Paragraph style={{ marginBottom: 0, color: "#1F2A24" }}>
-                {selectedPlace._primaryOffer}
+              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
+                <VenueHighlight name="Qamar by Zan" /> — 70% off selected bills + complimentary jewellery-making
+                <br />
+                <VenueHighlight name="Yiva Essentials" /> — 10% off Yiva products and 5% off larger purchases
+                <br />
+                <VenueHighlight name="Gusta" /> — 5-10% off selected items
               </Paragraph>
             </div>
-          ) : null}
 
-          <TwelveThingsGroupedPlaceLinks places={places} />
+            <div
+              style={{
+                padding: isMobile ? "16px 14px" : "18px 20px",
+                borderRadius: 18,
+                border: "1px solid rgba(47,62,58,0.08)",
+                background: "rgba(255,255,255,0.72)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 8,
+                  color: "#8B5A3C",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 1.1,
+                }}
+              >
+                Evening Wind Down
+              </Text>
+              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
+                As evening arrives, enjoy dinner at <VenueHighlight name="Hakuna Matata" /> with 10% off,
+                and if you&apos;re staying a little longer, <VenueHighlight name="Global Surf Lodge" /> offers
+                10% off rooms and 10% off yoga classes.
+              </Paragraph>
+            </div>
+          </div>
         </Col>
       </Row>
     </Card>
