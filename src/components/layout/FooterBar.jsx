@@ -35,7 +35,7 @@ const editorialStories = [
     title: "Getting Around Ahangama",
     excerpt:
       "Scooters, tuk tuks, airport transfers, and the practical transport advice visitors usually need on day one.",
-    href: "/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
+    href: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
   },
 ];
 
@@ -53,7 +53,7 @@ const discoveryLinks = [
   { label: "Stays", href: "/stays" },
   {
     label: "Transport",
-    href: "/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
+    href: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
   },
   { label: "Ahangama Pass", href: "/what-is-ahangama-pass" },
 ];
