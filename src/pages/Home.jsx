@@ -479,7 +479,7 @@ const MINIMAL_GUIDE_CARDS = [
     title: "Getting Around",
     href: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
     image:
-      "https://littlewanderbook.com/wp-content/uploads/2024/01/Ahangama-tips-Midigama-18-van-29-scaled.jpg",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/93/b1/58/caption.jpg?w=500&h=500&s=1",
   },
 ];
 
