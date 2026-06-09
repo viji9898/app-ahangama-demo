@@ -15,6 +15,12 @@ const GUIDE_CONTENT_IMAGE =
 const GUIDE_OVERVIEW_IMAGE =
   "https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/944/images/1440_6e0-1635949941.webp";
 
+const GUIDE_BEST_STAYS_IMAGE =
+  "https://images.mrandmrssmith.com/images/1482x988/7119673-trebartha-east-the-round-house-ahangama-sri-lanka.jpg";
+
+const GUIDE_ANIMALS_IMAGE =
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/625958343.jpg?k=fc972bc46442c3a6173a69f9d5a87550a3f28ab35e1fde5b3fb23ebd8624f315&o=";
+
 const GUIDE_CONTENT_LINKS = [
   "Ahangama Overview",
   "Area Map",
@@ -380,7 +386,7 @@ export default function GuidePage() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
+                    justifyContent: "flex-end",
                     minHeight: "100svh",
                     maxWidth: 760,
                     padding:
@@ -443,6 +449,265 @@ export default function GuidePage() {
                     aesthetic. If you are looking for barefoot luxury,
                     world-class waves, and jungle-fringed cafes, you have found
                     your spot.
+                  </Paragraph>
+                </div>
+              </div>
+
+              <a
+                href="https://www.instagram.com/animalsahangama/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  position: "absolute",
+                  right: "clamp(32px, 4.8vw, 72px)",
+                  bottom: "clamp(28px, 4vw, 48px)",
+                  zIndex: 4,
+                  color: "#FFFFFF",
+                  textDecoration: "none",
+                  fontSize: "clamp(16px, 1.45vw, 19px)",
+                  lineHeight: 1.72,
+                  borderBottom: "1px solid rgba(255,255,255,0.65)",
+                  paddingBottom: 6,
+                }}
+              >
+                #Animals
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
+        <div className="dm-wrap">
+          <div
+            className="ahg-hero"
+            style={{
+              width: "100vw",
+              marginLeft: "calc(50% - 50vw)",
+              marginRight: "calc(50% - 50vw)",
+              borderRadius: 0,
+              background: "#FFFFFF",
+              boxShadow: "none",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="home-hero-media-layer"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  className="home-hero-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(90deg, rgba(10,14,18,0.78) 0%, rgba(10,14,18,0.62) 24%, rgba(10,14,18,0.28) 54%, rgba(10,14,18,0.08) 100%)",
+                    pointerEvents: "none",
+                    zIndex: 2,
+                  }}
+                />
+                <img
+                  className="home-hero-image"
+                  src={GUIDE_BEST_STAYS_IMAGE}
+                  alt="Trebartha East the Round House"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center center",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: "none",
+                  margin: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    minHeight: "100svh",
+                    maxWidth: 760,
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                  }}
+                >
+                  <Title
+                    className="home-hero-title"
+                    style={{
+                      margin: 0,
+                      color: "#FFFFFF",
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF", whiteSpace: "normal" }}
+                    >
+                      Best Stays
+                    </span>
+                  </Title>
+                </div>
+              </div>
+
+              <a
+                href="https://www.instagram.com/trebarthaeast"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  position: "absolute",
+                  left: "clamp(32px, 4.8vw, 72px)",
+                  bottom: "clamp(28px, 4vw, 48px)",
+                  zIndex: 4,
+                  color: "#FFFFFF",
+                  textDecoration: "none",
+                  fontSize: "clamp(16px, 1.45vw, 19px)",
+                  lineHeight: 1.72,
+                  borderBottom: "1px solid rgba(255,255,255,0.65)",
+                  paddingBottom: 6,
+                }}
+              >
+                #Trebartha East the Round House
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
+        <div className="dm-wrap">
+          <div
+            className="ahg-hero"
+            style={{
+              width: "100vw",
+              marginLeft: "calc(50% - 50vw)",
+              marginRight: "calc(50% - 50vw)",
+              borderRadius: 0,
+              background: "#FFFFFF",
+              boxShadow: "none",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="home-hero-media-layer"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  className="home-hero-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(90deg, rgba(10,14,18,0.8) 0%, rgba(10,14,18,0.66) 24%, rgba(10,14,18,0.34) 56%, rgba(10,14,18,0.08) 100%)",
+                    pointerEvents: "none",
+                    zIndex: 2,
+                  }}
+                />
+                <img
+                  className="home-hero-image"
+                  src={GUIDE_ANIMALS_IMAGE}
+                  alt="Animals hotel pool and courtyard"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center center",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: "none",
+                  margin: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    minHeight: "100svh",
+                    maxWidth: 760,
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                  }}
+                >
+                  <Title
+                    className="home-hero-title"
+                    style={{
+                      margin: 0,
+                      color: "#FFFFFF",
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FF4FA3", whiteSpace: "normal" }}
+                    >
+                      Animals
+                    </span>
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginTop: 24,
+                      marginBottom: 0,
+                      maxWidth: 640,
+                      color: "#FFFFFF",
+                      fontSize: "clamp(16px, 1.45vw, 19px)",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    Animals: A chic, minimalist oasis just a short walk from
+                    Kabalana Beach. Known for its aesthetic cooked-to-order
+                    breakfasts, specialty coffee, and a quiet jungle-fringed
+                    pool, it's the perfect spot to escape the midday heat and
+                    recharge.
                   </Paragraph>
                 </div>
               </div>
