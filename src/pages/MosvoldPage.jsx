@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import {
-  ArrowRightOutlined,
-} from "@ant-design/icons";
+import { ArrowRightOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Input, Modal, Row, Space, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
@@ -24,8 +22,7 @@ const HERO_FEATURES = [
 const DISCOVER_CARDS = [
   {
     title: "Ahangama Guide 2026/27",
-    description:
-      "Editorial recommendations from the local Ahangama.com team.",
+    description: "Editorial recommendations from the local Ahangama.com team.",
     detail:
       "Best cafes, beaches, surf spots, wellness experiences and places to explore.",
     ctaLabel: "View Guide",
@@ -76,9 +73,11 @@ export default function MosvoldPage() {
         centered
         title="Disclaimer"
       >
-        <Paragraph style={{ marginBottom: 0, color: "#4B463F", lineHeight: 1.8 }}>
-          This page is for demonstration purposes only and is not associated with
-          Mosvold at this time.
+        <Paragraph
+          style={{ marginBottom: 0, color: "#4B463F", lineHeight: 1.8 }}
+        >
+          This page is for demonstration purposes only and is not associated
+          with Mosvold at this time.
         </Paragraph>
       </Modal>
 
@@ -246,7 +245,8 @@ export default function MosvoldPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                      gridTemplateColumns:
+                        "repeat(auto-fit, minmax(220px, 1fr))",
                       gap: 10,
                       maxWidth: 620,
                       marginBottom: 26,
@@ -264,7 +264,9 @@ export default function MosvoldPage() {
                           lineHeight: 1.5,
                         }}
                       >
-                        <span style={{ color: "#D8C3A0", fontSize: 16 }}>•</span>
+                        <span style={{ color: "#D8C3A0", fontSize: 16 }}>
+                          •
+                        </span>
                         <span>{item}</span>
                       </div>
                     ))}
@@ -410,7 +412,13 @@ export default function MosvoldPage() {
                           </Paragraph>
                         ) : null}
                         {item.highlights ? (
-                          <div style={{ marginBottom: 22, display: "grid", gap: 6 }}>
+                          <div
+                            style={{
+                              marginBottom: 22,
+                              display: "grid",
+                              gap: 6,
+                            }}
+                          >
                             {item.highlights.map((highlight) => (
                               <Text
                                 key={highlight}
@@ -699,7 +707,8 @@ export default function MosvoldPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                      gridTemplateColumns:
+                        "repeat(auto-fit, minmax(180px, 1fr))",
                       gap: 12,
                       marginTop: 4,
                     }}
