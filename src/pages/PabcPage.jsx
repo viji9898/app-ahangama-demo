@@ -6,6 +6,7 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
+import pabcPassImage from "../assets/pabc-pass.jpg";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -328,42 +329,60 @@ export default function PabcPage() {
                 >
                   A Preferential Rate On The Ahangama Pass.
                 </Title>
-                <Paragraph
-                  style={{
-                    color: "#4B463F",
-                    fontSize: 17,
-                    lineHeight: 1.8,
-                    marginBottom: 16,
-                  }}
-                >
-                  The Ahangama Pass is a curated visitor pass designed to help
-                  you experience the best of Ahangama.
-                </Paragraph>
-                <Paragraph
-                  style={{
-                    color: "#4B463F",
-                    fontSize: 17,
-                    lineHeight: 1.8,
-                    marginBottom: 16,
-                  }}
-                >
-                  For PABC customers, the usual USD 30 pass is available at a
-                  25% discount when purchased with an eligible PABC debit or
-                  credit card.
-                </Paragraph>
-                <Paragraph
-                  style={{
-                    color: "#4B463F",
-                    fontSize: 17,
-                    lineHeight: 1.8,
-                    marginBottom: 24,
-                  }}
-                >
-                  The offer is intended as an inclusive benefit for PABC
-                  customers, pairing savings with exclusive offers, local
-                  recommendations and access across a growing network of
-                  independent businesses.
-                </Paragraph>
+                <Row gutter={[24, 24]} align="middle" style={{ marginBottom: 24 }}>
+                  <Col xs={24} md={13}>
+                    <Paragraph
+                      style={{
+                        color: "#4B463F",
+                        fontSize: 17,
+                        lineHeight: 1.8,
+                        marginBottom: 16,
+                      }}
+                    >
+                      The Ahangama Pass is a curated visitor pass designed to
+                      help you experience the best of Ahangama.
+                    </Paragraph>
+                    <Paragraph
+                      style={{
+                        color: "#4B463F",
+                        fontSize: 17,
+                        lineHeight: 1.8,
+                        marginBottom: 16,
+                      }}
+                    >
+                      For PABC customers, the usual USD 30 pass is available at
+                      a 25% discount when purchased with an eligible PABC debit
+                      or credit card.
+                    </Paragraph>
+                    <Paragraph
+                      style={{
+                        color: "#4B463F",
+                        fontSize: 17,
+                        lineHeight: 1.8,
+                        marginBottom: 0,
+                      }}
+                    >
+                      The offer is intended as an inclusive benefit for PABC
+                      customers, pairing savings with exclusive offers, local
+                      recommendations and access across a growing network of
+                      independent businesses.
+                    </Paragraph>
+                  </Col>
+                  <Col xs={24} md={11}>
+                    <img
+                      src={pabcPassImage}
+                      alt="PABC pass visual"
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "100%",
+                        minHeight: 320,
+                        objectFit: "cover",
+                        borderRadius: 22,
+                      }}
+                    />
+                  </Col>
+                </Row>
 
                 <Row gutter={[18, 18]}>
                   {DISCOVER_CARDS.map((item) => (
