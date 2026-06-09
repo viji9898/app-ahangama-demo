@@ -38,6 +38,9 @@ import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import SriLankasMostInterestingCoastalTownPage, {
   SRI_LANKAS_MOST_INTERESTING_COASTAL_TOWN_PATH,
 } from "../pages/SriLankasMostInterestingCoastalTownPage";
+import WhereToStayOnSriLankasSouthernCoastPage, {
+  WHERE_TO_STAY_ON_SRI_LANKAS_SOUTHERN_COAST_PATH,
+} from "../pages/WhereToStayOnSriLankasSouthernCoastPage";
 import WhySurfingChangedEverythingInAhangamaPage, {
   WHY_SURFING_CHANGED_PATH,
 } from "../pages/WhySurfingChangedEverythingInAhangamaPage";
@@ -79,6 +82,14 @@ const routes = [
   {
     path: "/Sri Lanka's Most Interesting Coastal Town",
     element: <SriLankasMostInterestingCoastalTownPage />,
+  },
+  {
+    path: WHERE_TO_STAY_ON_SRI_LANKAS_SOUTHERN_COAST_PATH,
+    element: <WhereToStayOnSriLankasSouthernCoastPage />,
+  },
+  {
+    path: "/Where to Stay on Sri Lanka's Southern Coast",
+    element: <WhereToStayOnSriLankasSouthernCoastPage />,
   },
   {
     path: WHY_SURFING_CHANGED_PATH,

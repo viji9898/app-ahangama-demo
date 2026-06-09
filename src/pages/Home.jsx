@@ -124,10 +124,11 @@ const THIS_WEEK_FEATURES = [
       "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
   },
   {
-    category: "Wellness",
-    title: "Inside Ahangama's Wellness Boom",
+    category: "Stay Guide",
+    title: "Where to Stay on Sri Lanka's Southern Coast",
+    href: "/where-to-stay-on-sri-lankas-southern-coast",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
   },
 ];
 
