@@ -36,7 +36,9 @@ const HOW_IT_WORKS = [
   },
   {
     body: "The guest uses the pass across Ahangama partner venues during their stay and beyond within the 15-day validity.",
-    icon: <SafetyCertificateOutlined style={{ fontSize: 18, color: "#B08E62" }} />,
+    icon: (
+      <SafetyCertificateOutlined style={{ fontSize: 18, color: "#B08E62" }} />
+    ),
   },
 ];
 
@@ -54,7 +56,12 @@ export default function MosvoldPage() {
 
       <div
         className="dm-canvas"
-        style={{ marginTop: 0, paddingTop: 0, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+        style={{
+          marginTop: 0,
+          paddingTop: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+        }}
       >
         <div className="dm-wrap">
           <div
@@ -162,13 +169,22 @@ export default function MosvoldPage() {
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                     }}
                   >
-                    <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
                       Complimentary
                     </span>
-                    <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
                       Ahangama Pass
                     </span>
-                    <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
                       For Mosvold Guests
                     </span>
                   </Title>
@@ -197,10 +213,11 @@ export default function MosvoldPage() {
                       lineHeight: 1.72,
                     }}
                   >
-                    A Mosvold guest benefit that unlocks a complimentary 15-day Ahangama
-                    Pass, usually priced at USD 30. Guests can submit their details,
-                    receive the pass immediately, and use it as a curated way into cafes,
-                    wellness spaces, surf, retail, and experiences across town.
+                    A Mosvold guest benefit that unlocks a complimentary 15-day
+                    Ahangama Pass, usually priced at USD 30. Guests can submit
+                    their details, receive the pass immediately, and use it as a
+                    curated way into cafes, wellness spaces, surf, retail, and
+                    experiences across town.
                   </Paragraph>
 
                   <Space wrap size={12}>
@@ -211,7 +228,11 @@ export default function MosvoldPage() {
                     >
                       Request Your Pass
                     </Button>
-                    <Button size="large" href="/offers" icon={<ArrowRightOutlined />}>
+                    <Button
+                      size="large"
+                      href="/offers"
+                      icon={<ArrowRightOutlined />}
+                    >
                       Explore Pass Benefits
                     </Button>
                   </Space>
@@ -230,7 +251,8 @@ export default function MosvoldPage() {
                 style={{
                   borderRadius: 28,
                   border: "1px solid rgba(32,30,27,0.08)",
-                  background: "linear-gradient(180deg, #fffdf9 0%, #f7f0e6 100%)",
+                  background:
+                    "linear-gradient(180deg, #fffdf9 0%, #f7f0e6 100%)",
                 }}
                 bodyStyle={{ padding: 30 }}
               >
@@ -270,10 +292,11 @@ export default function MosvoldPage() {
                     marginBottom: 24,
                   }}
                 >
-                  This page is structured as a guest-facing landing page where Mosvold can
-                  offer eligible guests a complimentary 15-day Ahangama Pass that usually
-                  costs USD 30. The guest shares a few details, the pass is issued
-                  immediately, and the page frames the benefit in a clear hotel-branded way.
+                  This page is structured as a guest-facing landing page where
+                  Mosvold can offer eligible guests a complimentary 15-day
+                  Ahangama Pass that usually costs USD 30. The guest shares a
+                  few details, the pass is issued immediately, and the page
+                  frames the benefit in a clear hotel-branded way.
                 </Paragraph>
 
                 <Row gutter={[18, 18]}>
@@ -287,8 +310,14 @@ export default function MosvoldPage() {
                       }}
                       bodyStyle={{ padding: 22 }}
                     >
-                      <Space direction="vertical" size={12} style={{ width: "100%" }}>
-                        <GiftOutlined style={{ fontSize: 22, color: "#B08E62" }} />
+                      <Space
+                        direction="vertical"
+                        size={12}
+                        style={{ width: "100%" }}
+                      >
+                        <GiftOutlined
+                          style={{ fontSize: 22, color: "#B08E62" }}
+                        />
                         <Text
                           style={{
                             color: "#201E1B",
@@ -303,12 +332,18 @@ export default function MosvoldPage() {
                         {BENEFITS.map((item) => (
                           <div
                             key={item}
-                            style={{ display: "flex", alignItems: "flex-start", gap: 10 }}
+                            style={{
+                              display: "flex",
+                              alignItems: "flex-start",
+                              gap: 10,
+                            }}
                           >
                             <CheckCircleOutlined
                               style={{ color: "#B08E62", marginTop: 4 }}
                             />
-                            <Text style={{ color: "#4B463F", lineHeight: 1.7 }}>{item}</Text>
+                            <Text style={{ color: "#4B463F", lineHeight: 1.7 }}>
+                              {item}
+                            </Text>
                           </div>
                         ))}
                       </Space>
@@ -325,7 +360,11 @@ export default function MosvoldPage() {
                       }}
                       bodyStyle={{ padding: 22 }}
                     >
-                      <Space direction="vertical" size={12} style={{ width: "100%" }}>
+                      <Space
+                        direction="vertical"
+                        size={12}
+                        style={{ width: "100%" }}
+                      >
                         <SafetyCertificateOutlined
                           style={{ fontSize: 22, color: "#B08E62" }}
                         />
@@ -343,7 +382,11 @@ export default function MosvoldPage() {
                         {HOW_IT_WORKS.map((item, index) => (
                           <div
                             key={item.body}
-                            style={{ display: "flex", alignItems: "flex-start", gap: 10 }}
+                            style={{
+                              display: "flex",
+                              alignItems: "flex-start",
+                              gap: 10,
+                            }}
                           >
                             <Text
                               style={{
@@ -354,7 +397,13 @@ export default function MosvoldPage() {
                             >
                               {index + 1}.
                             </Text>
-                            <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "flex-start",
+                                gap: 10,
+                              }}
+                            >
                               <span
                                 style={{
                                   minWidth: 24,
@@ -365,7 +414,11 @@ export default function MosvoldPage() {
                               >
                                 {item.icon}
                               </span>
-                              <Text style={{ color: "#4B463F", lineHeight: 1.7 }}>{item.body}</Text>
+                              <Text
+                                style={{ color: "#4B463F", lineHeight: 1.7 }}
+                              >
+                                {item.body}
+                              </Text>
                             </div>
                           </div>
                         ))}
@@ -423,40 +476,70 @@ export default function MosvoldPage() {
                     marginBottom: 22,
                   }}
                 >
-                  Mosvold guests receive a complimentary Ahangama Pass valid for 15 days,
-                  usually priced at USD 30, immediately after submitting these details.
+                  Mosvold guests receive a complimentary Ahangama Pass valid for
+                  15 days, usually priced at USD 30, immediately after
+                  submitting these details.
                 </Paragraph>
 
                 <Space direction="vertical" size={14} style={{ width: "100%" }}>
                   <div>
-                    <Text style={{ display: "block", marginBottom: 8, fontWeight: 600 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 8,
+                        fontWeight: 600,
+                      }}
+                    >
                       Full name
                     </Text>
                     <Input size="large" placeholder="Enter guest name" />
                   </div>
 
                   <div>
-                    <Text style={{ display: "block", marginBottom: 8, fontWeight: 600 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 8,
+                        fontWeight: 600,
+                      }}
+                    >
                       Email address
                     </Text>
                     <Input size="large" placeholder="Enter guest email" />
                   </div>
 
                   <div>
-                    <Text style={{ display: "block", marginBottom: 8, fontWeight: 600 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 8,
+                        fontWeight: 600,
+                      }}
+                    >
                       Phone number
                     </Text>
                     <Input size="large" placeholder="Enter guest number" />
                   </div>
 
                   <div>
-                    <Text style={{ display: "block", marginBottom: 8, fontWeight: 600 }}>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 8,
+                        fontWeight: 600,
+                      }}
+                    >
                       Room number or stay reference
                     </Text>
                     <Input size="large" placeholder="Optional stay reference" />
                   </div>
 
-                  <Button type="primary" size="large" block style={{ marginTop: 6 }}>
+                  <Button
+                    type="primary"
+                    size="large"
+                    block
+                    style={{ marginTop: 6 }}
+                  >
                     Submit Guest Request
                   </Button>
                 </Space>
@@ -466,7 +549,8 @@ export default function MosvoldPage() {
                     marginTop: 20,
                     borderRadius: 20,
                     border: "1px solid rgba(176,142,98,0.18)",
-                    background: "linear-gradient(180deg, #fffaf1 0%, #f6ebd9 100%)",
+                    background:
+                      "linear-gradient(180deg, #fffaf1 0%, #f6ebd9 100%)",
                   }}
                   bodyStyle={{ padding: 18 }}
                 >
@@ -483,9 +567,16 @@ export default function MosvoldPage() {
                   >
                     Pass Delivery
                   </Text>
-                  <Paragraph style={{ marginBottom: 0, color: "#5A554D", lineHeight: 1.7 }}>
-                    The pass is issued immediately after submission. This area can later hold
-                    the delivery confirmation, wallet links, or follow-up concierge details.
+                  <Paragraph
+                    style={{
+                      marginBottom: 0,
+                      color: "#5A554D",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    The pass is issued immediately after submission. This area
+                    can later hold the delivery confirmation, wallet links, or
+                    follow-up concierge details.
                   </Paragraph>
                   <Space size={8} align="center" style={{ marginTop: 14 }}>
                     <img
@@ -503,7 +594,6 @@ export default function MosvoldPage() {
               </Card>
             </Col>
           </Row>
-
         </div>
       </div>
     </SiteLayout>

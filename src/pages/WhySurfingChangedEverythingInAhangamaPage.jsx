@@ -389,11 +389,13 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
                           fontSize: 16,
                           lineHeight: 1.8,
                           color:
-                            paragraph === "On the Ahangama Pass, you'll save even more."
+                            paragraph ===
+                            "On the Ahangama Pass, you'll save even more."
                               ? "#2F3E3A"
                               : "#55514B",
                           fontWeight:
-                            paragraph === "On the Ahangama Pass, you'll save even more."
+                            paragraph ===
+                            "On the Ahangama Pass, you'll save even more."
                               ? 700
                               : 400,
                           marginBottom: 18,

@@ -151,8 +151,8 @@ export default function FooterBar() {
                   lineHeight: 1.75,
                 }}
               >
-                Discover more guides, stories, recommendations and local insights
-                from our team.
+                Discover more guides, stories, recommendations and local
+                insights from our team.
               </Paragraph>
 
               <div

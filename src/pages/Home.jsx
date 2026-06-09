@@ -172,12 +172,10 @@ const AROUND_TOWN_PICKS = [
   {
     category: "Blog Pick",
     title: "Sri Lanka's Hippest Beach Spot",
-    description:
-      "Maria and Espen Egeland, travel nerds from Norway.",
+    description: "Maria and Espen Egeland, travel nerds from Norway.",
     cta: "Read article",
     href: "https://nerdnomads.com/ahangama-sri-lanka",
-    image:
-      "https://nerdnomads.com/wp-content/uploads/2014/02/about.png",
+    image: "https://nerdnomads.com/wp-content/uploads/2014/02/about.png",
   },
   {
     category: "Photo of the Week",
@@ -787,7 +785,12 @@ export default function Home() {
       {/* HERO */}
       <div
         className="dm-canvas"
-        style={{ marginTop: 0, paddingTop: 0, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+        style={{
+          marginTop: 0,
+          paddingTop: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+        }}
       >
         <div className="dm-wrap">
           <div>
@@ -936,8 +939,8 @@ export default function Home() {
                       }}
                     >
                       A curated guide to cafes, stays, wellness, surf, food and
-                      local experiences across Ahangama. Written and updated by a
-                      local team who live here.
+                      local experiences across Ahangama. Written and updated by
+                      a local team who live here.
                     </Paragraph>
 
                     <div
@@ -999,10 +1002,7 @@ export default function Home() {
                 <Paragraph className="whats-on-boardDescription">
                   A curated selection of things happening around town this week.
                 </Paragraph>
-                <a
-                  href="/events"
-                  className="whats-on-boardLink"
-                >
+                <a href="/events" className="whats-on-boardLink">
                   View full calendar <ArrowRightOutlined />
                 </a>
               </div>
@@ -1053,9 +1053,7 @@ export default function Home() {
                   key={feature.title}
                   href={feature.href || "#"}
                   onClick={
-                    feature.href
-                      ? undefined
-                      : (event) => event.preventDefault()
+                    feature.href ? undefined : (event) => event.preventDefault()
                   }
                   className="weekly-features-card"
                 >

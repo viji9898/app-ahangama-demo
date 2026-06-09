@@ -48,8 +48,7 @@ const NEXT_ARTICLE = {
   href: "/why-surfing-changed-everything-in-ahangama",
   kicker: "Discover More",
   title: "Why Surfing Changed Everything in Ahangama",
-  image:
-    "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
+  image: "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
 };
 
 const articleIntroduction = [
@@ -179,12 +178,27 @@ const MENTIONED_PLACE_LINKS = [
   { label: "Ahangama", href: "https://www.google.com/search?q=Ahangama" },
   { label: "Weligama", href: "https://www.google.com/search?q=Weligama" },
   { label: "Galle", href: "https://www.google.com/search?q=Galle" },
-  { label: "Kabalana", href: "https://www.google.com/search?q=Kabalana+Beach+Ahangama" },
-  { label: "Marshmallow", href: "https://www.google.com/search?q=Marshmallow+Ahangama" },
+  {
+    label: "Kabalana",
+    href: "https://www.google.com/search?q=Kabalana+Beach+Ahangama",
+  },
+  {
+    label: "Marshmallow",
+    href: "https://www.google.com/search?q=Marshmallow+Ahangama",
+  },
   { label: "Sticks", href: "https://www.google.com/search?q=Sticks+Ahangama" },
-  { label: "The Rock", href: "https://www.google.com/search?q=The+Rock+Ahangama" },
-  { label: "Insight", href: "https://www.google.com/search?q=Insight+Ahangama" },
-  { label: "Koggala Lake", href: "https://www.google.com/search?q=Koggala+Lake" },
+  {
+    label: "The Rock",
+    href: "https://www.google.com/search?q=The+Rock+Ahangama",
+  },
+  {
+    label: "Insight",
+    href: "https://www.google.com/search?q=Insight+Ahangama",
+  },
+  {
+    label: "Koggala Lake",
+    href: "https://www.google.com/search?q=Koggala+Lake",
+  },
 ].sort((left, right) => right.label.length - left.label.length);
 
 function renderVenueLinkedText(text) {

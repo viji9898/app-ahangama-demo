@@ -149,7 +149,12 @@ const directorySections = [
       "Weekly rental: Often discounted",
       "Monthly rental: Usually negotiable and significantly cheaper than daily rates",
     ],
-    goodFor: ["Surf trips", "Cafe hopping", "Beach exploration", "Longer stays"],
+    goodFor: [
+      "Surf trips",
+      "Cafe hopping",
+      "Beach exploration",
+      "Longer stays",
+    ],
   },
   {
     title: "Tuk-Tuks & Local Rides",
@@ -159,7 +164,12 @@ const directorySections = [
       "Cross-town journey: LKR 1,000-1,500",
       "Multi-stop trips: Agree a fixed price before departure",
     ],
-    goodFor: ["Dinner transfers", "Station pickups", "Rainy days", "Visitors who prefer not to self-drive"],
+    goodFor: [
+      "Dinner transfers",
+      "Station pickups",
+      "Rainy days",
+      "Visitors who prefer not to self-drive",
+    ],
   },
   {
     title: "Airport Transfers",
@@ -179,7 +189,12 @@ const directorySections = [
       "Full-day private driver: LKR 12,000-20,000+",
       "Multi-day hire: Available on request",
     ],
-    goodFor: ["Ahangama to Galle", "Ahangama to Hiriketiya", "Ahangama to Yala", "Ahangama to Ella"],
+    goodFor: [
+      "Ahangama to Galle",
+      "Ahangama to Hiriketiya",
+      "Ahangama to Yala",
+      "Ahangama to Ella",
+    ],
   },
 ];
 
@@ -191,11 +206,20 @@ const passBenefits = [
 
 const MENTIONED_PLACE_LINKS = [
   { label: "Ahangama", href: "https://www.google.com/search?q=Ahangama" },
-  { label: "Kabalana", href: "https://www.google.com/search?q=Kabalana+Beach+Ahangama" },
-  { label: "Marshmallow", href: "https://www.google.com/search?q=Marshmallow+Ahangama" },
+  {
+    label: "Kabalana",
+    href: "https://www.google.com/search?q=Kabalana+Beach+Ahangama",
+  },
+  {
+    label: "Marshmallow",
+    href: "https://www.google.com/search?q=Marshmallow+Ahangama",
+  },
   { label: "Kathaluwa", href: "https://www.google.com/search?q=Kathaluwa" },
   { label: "Midigama", href: "https://www.google.com/search?q=Midigama" },
-  { label: "Bandaranaike International Airport", href: "https://www.google.com/search?q=Bandaranaike+International+Airport" },
+  {
+    label: "Bandaranaike International Airport",
+    href: "https://www.google.com/search?q=Bandaranaike+International+Airport",
+  },
   { label: "Colombo", href: "https://www.google.com/search?q=Colombo" },
   { label: "Galle", href: "https://www.google.com/search?q=Galle" },
   { label: "Weligama", href: "https://www.google.com/search?q=Weligama" },
@@ -487,7 +511,8 @@ export default function GettingAroundAhangamaPage() {
                     style={{
                       borderRadius: 24,
                       border: "1px solid rgba(47,62,58,0.08)",
-                      background: "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
+                      background:
+                        "linear-gradient(180deg, #fffdf9 0%, #faf4eb 100%)",
                       height: "100%",
                     }}
                     bodyStyle={{ padding: 22 }}
@@ -517,7 +542,10 @@ export default function GettingAroundAhangamaPage() {
                       Recommended Providers
                     </Text>
                     {section.providers.map((item) => (
-                      <Paragraph key={item} style={{ marginBottom: 8, color: "#55514B" }}>
+                      <Paragraph
+                        key={item}
+                        style={{ marginBottom: 8, color: "#55514B" }}
+                      >
                         {item}
                       </Paragraph>
                     ))}
@@ -534,7 +562,10 @@ export default function GettingAroundAhangamaPage() {
                       Typical Pricing
                     </Text>
                     {section.pricing.map((item) => (
-                      <Paragraph key={item} style={{ marginBottom: 8, color: "#55514B" }}>
+                      <Paragraph
+                        key={item}
+                        style={{ marginBottom: 8, color: "#55514B" }}
+                      >
                         {item}
                       </Paragraph>
                     ))}
@@ -551,7 +582,10 @@ export default function GettingAroundAhangamaPage() {
                       Good For
                     </Text>
                     {section.goodFor.map((item) => (
-                      <Paragraph key={item} style={{ marginBottom: 8, color: "#55514B" }}>
+                      <Paragraph
+                        key={item}
+                        style={{ marginBottom: 8, color: "#55514B" }}
+                      >
                         {item}
                       </Paragraph>
                     ))}
@@ -572,7 +606,10 @@ export default function GettingAroundAhangamaPage() {
                   Ahangama Pass Benefits
                 </Title>
                 {passBenefits.map((item) => (
-                  <Paragraph key={item} style={{ marginBottom: 10, color: "#55514B" }}>
+                  <Paragraph
+                    key={item}
+                    style={{ marginBottom: 10, color: "#55514B" }}
+                  >
                     {item}
                   </Paragraph>
                 ))}
@@ -667,8 +704,9 @@ export default function GettingAroundAhangamaPage() {
                         marginBottom: 0,
                       }}
                     >
-                      A practical guide to scooters, tuk-tuks, airport transfers,
-                      and slow exploration along Sri Lanka&apos;s southern coast.
+                      A practical guide to scooters, tuk-tuks, airport
+                      transfers, and slow exploration along Sri Lanka&apos;s
+                      southern coast.
                     </Paragraph>
                   </div>
                 </Col>

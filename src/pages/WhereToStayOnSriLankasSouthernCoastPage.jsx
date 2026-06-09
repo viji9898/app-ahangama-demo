@@ -182,17 +182,50 @@ const articleSections = [
 const MENTIONED_PLACE_LINKS = [
   { label: "Ahangama", href: "https://www.google.com/search?q=Ahangama" },
   { label: "Galle", href: "https://www.google.com/search?q=Galle" },
-  { label: "The Kip", href: "https://www.google.com/search?q=The+Kip+Ahangama" },
-  { label: "Harding Boutique Hotel", href: "https://www.google.com/search?q=Harding+Boutique+Hotel+Ahangama" },
-  { label: "The Find", href: "https://www.google.com/search?q=The+Find+Ahangama" },
-  { label: "Casa Tikiri", href: "https://www.google.com/search?q=Casa+Tikiri+Ahangama" },
-  { label: "Trebartha East", href: "https://www.google.com/search?q=Trebartha+East+Sri+Lanka" },
-  { label: "Palm Hotel", href: "https://www.google.com/search?q=Palm+Hotel+Sri+Lanka" },
-  { label: "Koggala Lake", href: "https://www.google.com/search?q=Koggala+Lake" },
-  { label: "Kurulu Bay", href: "https://www.google.com/search?q=Kurulu+Bay+Sri+Lanka" },
-  { label: "Mihira", href: "https://www.google.com/search?q=Mihira+villa+Sri+Lanka" },
-  { label: "Merchant House", href: "https://www.google.com/search?q=Merchant+House+Sri+Lanka" },
-  { label: "Kabalana", href: "https://www.google.com/search?q=Kabalana+Beach+Ahangama" },
+  {
+    label: "The Kip",
+    href: "https://www.google.com/search?q=The+Kip+Ahangama",
+  },
+  {
+    label: "Harding Boutique Hotel",
+    href: "https://www.google.com/search?q=Harding+Boutique+Hotel+Ahangama",
+  },
+  {
+    label: "The Find",
+    href: "https://www.google.com/search?q=The+Find+Ahangama",
+  },
+  {
+    label: "Casa Tikiri",
+    href: "https://www.google.com/search?q=Casa+Tikiri+Ahangama",
+  },
+  {
+    label: "Trebartha East",
+    href: "https://www.google.com/search?q=Trebartha+East+Sri+Lanka",
+  },
+  {
+    label: "Palm Hotel",
+    href: "https://www.google.com/search?q=Palm+Hotel+Sri+Lanka",
+  },
+  {
+    label: "Koggala Lake",
+    href: "https://www.google.com/search?q=Koggala+Lake",
+  },
+  {
+    label: "Kurulu Bay",
+    href: "https://www.google.com/search?q=Kurulu+Bay+Sri+Lanka",
+  },
+  {
+    label: "Mihira",
+    href: "https://www.google.com/search?q=Mihira+villa+Sri+Lanka",
+  },
+  {
+    label: "Merchant House",
+    href: "https://www.google.com/search?q=Merchant+House+Sri+Lanka",
+  },
+  {
+    label: "Kabalana",
+    href: "https://www.google.com/search?q=Kabalana+Beach+Ahangama",
+  },
 ].sort((left, right) => right.label.length - left.label.length);
 
 function renderVenueLinkedText(text) {
@@ -478,15 +511,33 @@ export default function WhereToStayOnSriLankasSouthernCoastPage() {
                   </div>
                 </section>
 
-                {index === 0 ? <EditorialPhotoBlock images={PHOTO_GROUPS[1]} /> : null}
-                {index === 1 ? <EditorialPhotoBlock images={PHOTO_GROUPS[2]} /> : null}
-                {index === 1 ? <EditorialPhotoBlock images={PHOTO_GROUPS[3]} /> : null}
-                {index === 1 ? <EditorialPhotoBlock images={PHOTO_GROUPS[4]} /> : null}
-                {index === 2 ? <EditorialPhotoBlock images={PHOTO_GROUPS[5]} /> : null}
-                {index === 2 ? <EditorialPhotoBlock images={PHOTO_GROUPS[6]} /> : null}
-                {index === 3 ? <EditorialPhotoBlock images={PHOTO_GROUPS[7]} /> : null}
-                {index === 4 ? <EditorialPhotoBlock images={PHOTO_GROUPS[8]} /> : null}
-                {index === 5 ? <EditorialPhotoBlock images={PHOTO_GROUPS[9]} /> : null}
+                {index === 0 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[1]} />
+                ) : null}
+                {index === 1 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[2]} />
+                ) : null}
+                {index === 1 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[3]} />
+                ) : null}
+                {index === 1 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[4]} />
+                ) : null}
+                {index === 2 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[5]} />
+                ) : null}
+                {index === 2 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[6]} />
+                ) : null}
+                {index === 3 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[7]} />
+                ) : null}
+                {index === 4 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[8]} />
+                ) : null}
+                {index === 5 ? (
+                  <EditorialPhotoBlock images={PHOTO_GROUPS[9]} />
+                ) : null}
               </React.Fragment>
             ))}
           </div>
@@ -585,8 +636,8 @@ export default function WhereToStayOnSriLankasSouthernCoastPage() {
                         marginBottom: 18,
                       }}
                     >
-                      Savings across stays, cafes, wellness spaces, and the daily
-                      places that shape life on the south coast.
+                      Savings across stays, cafes, wellness spaces, and the
+                      daily places that shape life on the south coast.
                     </Paragraph>
                     <a
                       href={passCtaUrl}

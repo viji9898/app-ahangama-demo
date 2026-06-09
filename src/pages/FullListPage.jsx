@@ -1,5 +1,16 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { GoogleMap, InfoWindowF, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import {
+  GoogleMap,
+  InfoWindowF,
+  MarkerF,
+  useJsApiLoader,
+} from "@react-google-maps/api";
 import {
   ArrowRightOutlined,
   EnvironmentOutlined,
@@ -89,13 +100,18 @@ const TWELVE_THINGS_MAP_CATEGORIES = {
 };
 
 const TWELVE_THINGS_MAP_CATEGORY_ICONS = {
-  eat: "<path d=\"M15 9v7.25c0 1.63-1.11 2.99-2.62 3.38V31h-2.2V19.63C8.67 19.24 7.56 17.88 7.56 16.25V9h2.06v7.11h1.48V9h2.05v7.11h1.48V9H15Zm10.44 0c1.87 0 3.39 1.7 3.39 3.8v7.77h-2.06V31h-2.2V20.57h-2.3V12.8c0-2.1 1.3-3.8 3.17-3.8Z\" fill=\"white\"/>",
-  stays: "<path d=\"M8 18.6V31h2.2v-4.2h19.6V31H32V16.2c0-1.82-1.48-3.3-3.3-3.3H20.9c-.95 0-1.86.4-2.49 1.11l-1.78 1.99H11.3A3.3 3.3 0 0 0 8 18.6Zm4.2 1.6h5.24l1.78-1.98c.21-.24.51-.37.83-.37h8.65c.6 0 1.1.5 1.1 1.1v3.65H10.2V21.3c0-.6.49-1.1 1.1-1.1ZM10.7 11.1a2.8 2.8 0 1 1 5.6 0 2.8 2.8 0 0 1-5.6 0Z\" fill=\"white\"/>",
-  surf: "<path d=\"M7.8 24.5c2.56 0 3.72-1.15 4.75-2.17.98-.97 1.83-1.8 3.48-1.8 1.66 0 2.5.83 3.49 1.8 1.03 1.02 2.18 2.17 4.75 2.17 2.57 0 3.72-1.15 4.75-2.17.98-.97 1.83-1.8 3.49-1.8V18.3c-2.57 0-3.72 1.15-4.76 2.17-.97.97-1.82 1.8-3.48 1.8-1.65 0-2.5-.83-3.48-1.8-1.04-1.02-2.19-2.17-4.76-2.17-2.57 0-3.72 1.15-4.75 2.17-.98.97-1.83 1.8-3.48 1.8-1.66 0-2.5-.83-3.49-1.8-1.03-1.02-2.18-2.17-4.75-2.17v2.2c1.65 0 2.5.83 3.48 1.8 1.04 1.02 2.19 2.17 4.76 2.17Zm2.4-8.08 11.57-7.5 1.2 1.84-11.57 7.5-1.2-1.84Zm11.56 1.2 6.05-3.93 1.2 1.84-6.05 3.93-1.2-1.84Z\" fill=\"white\"/>",
-  wellness: "<path d=\"M20 8.5c3.03 0 5.5 2.47 5.5 5.5 0 1.58-.68 3.09-1.86 4.13l-1.32 1.16L20 21.32l-2.32-2.03-1.32-1.16A5.49 5.49 0 0 1 14.5 14c0-3.03 2.47-5.5 5.5-5.5Zm0 15.78 5.92-5.2A8.63 8.63 0 0 0 28.7 14c0-4.8-3.9-8.7-8.7-8.7-4.8 0-8.7 3.9-8.7 8.7 0 1.94.67 3.82 1.88 5.29L20 24.28Zm-6.84 1.04c1.96 1.6 4.34 2.48 6.84 2.48s4.88-.88 6.84-2.48l1.4 1.7A13.23 13.23 0 0 1 20 31c-3.02 0-5.92-1.03-8.24-2.98l1.4-1.66Z\" fill=\"white\"/>",
-  shops: "<path d=\"M10.3 13.2h19.4l-1.42 5.67a3.3 3.3 0 0 1-3.2 2.5H14.9a3.3 3.3 0 0 1-3.2-2.5L10.3 13.2Zm2.82-4.2h13.76l.92 2.2h2.37L28.8 6.8H11.2L9.83 11.2h2.37l.92-2.2ZM12.2 23.4h15.6V31h-2.2v-5.4h-11.2V31h-2.2v-7.6Z\" fill=\"white\"/>",
-  scooters: "<path d=\"M12.8 24.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm14.4 0a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm-14.4 2.2a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Zm14.4 0a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Zm-6.82-12.2 2.93 5.14h4.87c1.6 0 2.9 1.3 2.9 2.9v.95h-2.2v-.95c0-.39-.31-.7-.7-.7h-6.14l-2.9-5.09h-3.5v-2.2h4.74Z\" fill=\"white\"/>",
-  experiences: "<path d=\"M20 7.4 23 14l7.2.62-5.45 4.72 1.64 7-6.39-3.8-6.39 3.8 1.64-7L9.8 14.62 17 14l3-6.6Zm0 3.54-1.58 3.48-.27.58-.63.05-3.8.33 2.88 2.5.48.41-.14.62-.87 3.7 3.37-2 .56-.34.56.34 3.37 2-.87-3.7-.14-.62.48-.41 2.88-2.5-3.8-.33-.63-.05-.27-.58L20 10.94Z\" fill=\"white\"/>",
+  eat: '<path d="M15 9v7.25c0 1.63-1.11 2.99-2.62 3.38V31h-2.2V19.63C8.67 19.24 7.56 17.88 7.56 16.25V9h2.06v7.11h1.48V9h2.05v7.11h1.48V9H15Zm10.44 0c1.87 0 3.39 1.7 3.39 3.8v7.77h-2.06V31h-2.2V20.57h-2.3V12.8c0-2.1 1.3-3.8 3.17-3.8Z" fill="white"/>',
+  stays:
+    '<path d="M8 18.6V31h2.2v-4.2h19.6V31H32V16.2c0-1.82-1.48-3.3-3.3-3.3H20.9c-.95 0-1.86.4-2.49 1.11l-1.78 1.99H11.3A3.3 3.3 0 0 0 8 18.6Zm4.2 1.6h5.24l1.78-1.98c.21-.24.51-.37.83-.37h8.65c.6 0 1.1.5 1.1 1.1v3.65H10.2V21.3c0-.6.49-1.1 1.1-1.1ZM10.7 11.1a2.8 2.8 0 1 1 5.6 0 2.8 2.8 0 0 1-5.6 0Z" fill="white"/>',
+  surf: '<path d="M7.8 24.5c2.56 0 3.72-1.15 4.75-2.17.98-.97 1.83-1.8 3.48-1.8 1.66 0 2.5.83 3.49 1.8 1.03 1.02 2.18 2.17 4.75 2.17 2.57 0 3.72-1.15 4.75-2.17.98-.97 1.83-1.8 3.49-1.8V18.3c-2.57 0-3.72 1.15-4.76 2.17-.97.97-1.82 1.8-3.48 1.8-1.65 0-2.5-.83-3.48-1.8-1.04-1.02-2.19-2.17-4.76-2.17-2.57 0-3.72 1.15-4.75 2.17-.98.97-1.83 1.8-3.48 1.8-1.66 0-2.5-.83-3.49-1.8-1.03-1.02-2.18-2.17-4.75-2.17v2.2c1.65 0 2.5.83 3.48 1.8 1.04 1.02 2.19 2.17 4.76 2.17Zm2.4-8.08 11.57-7.5 1.2 1.84-11.57 7.5-1.2-1.84Zm11.56 1.2 6.05-3.93 1.2 1.84-6.05 3.93-1.2-1.84Z" fill="white"/>',
+  wellness:
+    '<path d="M20 8.5c3.03 0 5.5 2.47 5.5 5.5 0 1.58-.68 3.09-1.86 4.13l-1.32 1.16L20 21.32l-2.32-2.03-1.32-1.16A5.49 5.49 0 0 1 14.5 14c0-3.03 2.47-5.5 5.5-5.5Zm0 15.78 5.92-5.2A8.63 8.63 0 0 0 28.7 14c0-4.8-3.9-8.7-8.7-8.7-4.8 0-8.7 3.9-8.7 8.7 0 1.94.67 3.82 1.88 5.29L20 24.28Zm-6.84 1.04c1.96 1.6 4.34 2.48 6.84 2.48s4.88-.88 6.84-2.48l1.4 1.7A13.23 13.23 0 0 1 20 31c-3.02 0-5.92-1.03-8.24-2.98l1.4-1.66Z" fill="white"/>',
+  shops:
+    '<path d="M10.3 13.2h19.4l-1.42 5.67a3.3 3.3 0 0 1-3.2 2.5H14.9a3.3 3.3 0 0 1-3.2-2.5L10.3 13.2Zm2.82-4.2h13.76l.92 2.2h2.37L28.8 6.8H11.2L9.83 11.2h2.37l.92-2.2ZM12.2 23.4h15.6V31h-2.2v-5.4h-11.2V31h-2.2v-7.6Z" fill="white"/>',
+  scooters:
+    '<path d="M12.8 24.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm14.4 0a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm-14.4 2.2a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Zm14.4 0a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Zm-6.82-12.2 2.93 5.14h4.87c1.6 0 2.9 1.3 2.9 2.9v.95h-2.2v-.95c0-.39-.31-.7-.7-.7h-6.14l-2.9-5.09h-3.5v-2.2h4.74Z" fill="white"/>',
+  experiences:
+    '<path d="M20 7.4 23 14l7.2.62-5.45 4.72 1.64 7-6.39-3.8-6.39 3.8 1.64-7L9.8 14.62 17 14l3-6.6Zm0 3.54-1.58 3.48-.27.58-.63.05-3.8.33 2.88 2.5.48.41-.14.62-.87 3.7 3.37-2 .56-.34.56.34 3.37 2-.87-3.7-.14-.62.48-.41 2.88-2.5-3.8-.33-.63-.05-.27-.58L20 10.94Z" fill="white"/>',
 };
 
 const TWELVE_THINGS_RETAIL_SLUGS = new Set([
@@ -154,9 +170,7 @@ const TWELVE_THINGS_FALLBACK_PLACES = {
     area: "Ahangama",
     bestFor: ["Retail", "Shopping"],
     offer: "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
-    offers: [
-      "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
-    ],
+    offers: ["Enjoy 10% savings on selected purchases with the Ahangama Pass."],
     excerpt:
       "Explore a curated concept store of coastal-inspired lifestyle pieces, design objects, and essentials.",
     href: null,
@@ -168,8 +182,7 @@ const TWELVE_THINGS_FALLBACK_PLACES = {
     category: "retail",
     area: "Ahangama",
     bestFor: ["Retail", "Jewellery"],
-    offer:
-      "Unlock up to 70% savings on the personalized jewelry experience.",
+    offer: "Unlock up to 70% savings on the personalized jewelry experience.",
     offers: [
       "Unlock up to 70% savings on the personalized jewelry experience.",
     ],
@@ -190,12 +203,15 @@ function safeLatLng(place) {
 }
 
 function isTwelveThingsRetailVenue(place) {
-  const slug = String(place?.slug || "").trim().toLowerCase();
-  const name = String(place?.name || "").trim().toLowerCase();
+  const slug = String(place?.slug || "")
+    .trim()
+    .toLowerCase();
+  const name = String(place?.name || "")
+    .trim()
+    .toLowerCase();
 
   return (
-    TWELVE_THINGS_RETAIL_SLUGS.has(slug) ||
-    TWELVE_THINGS_RETAIL_NAMES.has(name)
+    TWELVE_THINGS_RETAIL_SLUGS.has(slug) || TWELVE_THINGS_RETAIL_NAMES.has(name)
   );
 }
 
@@ -236,12 +252,12 @@ function getTwelveThingsPlaces(places) {
   });
 
   return Array.from(placeMap.values()).sort((left, right) => {
-      const curatedIndexDiff =
-        getTwelveThingsCuratedIndex(left) - getTwelveThingsCuratedIndex(right);
-      if (curatedIndexDiff !== 0) return curatedIndexDiff;
+    const curatedIndexDiff =
+      getTwelveThingsCuratedIndex(left) - getTwelveThingsCuratedIndex(right);
+    if (curatedIndexDiff !== 0) return curatedIndexDiff;
 
-      return String(left.name || "").localeCompare(String(right.name || ""));
-    });
+    return String(left.name || "").localeCompare(String(right.name || ""));
+  });
 }
 
 function getTwelveThingsMapCategory(place) {
@@ -312,7 +328,9 @@ function getTwelveThingsMapCategory(place) {
 }
 
 function getPrimaryOffer(place) {
-  const firstOffer = (Array.isArray(place?.offers) ? place.offers : [place?.offer])
+  const firstOffer = (
+    Array.isArray(place?.offers) ? place.offers : [place?.offer]
+  )
     .flatMap((entry) => (Array.isArray(entry) ? entry : [entry]))
     .filter(Boolean)
     .map((entry) => String(entry).trim())
@@ -354,7 +372,9 @@ function getDirectionsHref(place) {
     return `https://www.google.com/maps/search/?api=1&query=${place._latlng.lat},${place._latlng.lng}`;
   }
 
-  const query = [place?.name, place?.area || "Ahangama"].filter(Boolean).join(" ");
+  const query = [place?.name, place?.area || "Ahangama"]
+    .filter(Boolean)
+    .join(" ");
   return query
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
     : null;
@@ -374,7 +394,9 @@ function createPinIcon(googleMaps, color, iconMarkup, isActive) {
   const height = size + 12;
   const stroke = isActive ? "rgba(52,42,33,0.88)" : "rgba(52,42,33,0.4)";
   const innerFill = isActive ? "#FFF9F1" : "#FFFCF7";
-  const innerStroke = isActive ? "rgba(143,106,74,0.7)" : "rgba(143,106,74,0.48)";
+  const innerStroke = isActive
+    ? "rgba(143,106,74,0.7)"
+    : "rgba(143,106,74,0.48)";
   const iconFill = isActive ? "#2E261F" : "#43372D";
   const renderedIconMarkup = String(iconMarkup || "").replaceAll(
     'fill="white"',
@@ -418,7 +440,12 @@ function getTwelveThingsMappedPlaces(places) {
     .filter((place) => !!place._latlng);
 }
 
-function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile }) {
+function TwelveThingsMap({
+  mappedPlaces,
+  selectedPlace,
+  onSelectPlace,
+  isMobile,
+}) {
   const googleMapsApiKey =
     import.meta.env.VITE_GOOGLE_MAPS_API_KEY ||
     import.meta.env.VITE_GOOGLE_MAPS_KEY ||
@@ -473,7 +500,12 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
       (accumulator, [key, config]) => {
         const iconMarkup = TWELVE_THINGS_MAP_CATEGORY_ICONS[key];
         accumulator[key] = {
-          default: createPinIcon(window.google, config.color, iconMarkup, false),
+          default: createPinIcon(
+            window.google,
+            config.color,
+            iconMarkup,
+            false,
+          ),
           active: createPinIcon(window.google, config.color, iconMarkup, true),
         };
         return accumulator;
@@ -483,14 +515,20 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
   }, [isLoaded]);
 
   const selectedPlaceTags = getVisibleInfoTags(selectedPlace, 4);
-  const selectedPlaceInstagramHref = selectedPlace ? getInstagramHref(selectedPlace) : null;
-  const selectedPlaceDirectionsHref = selectedPlace ? getDirectionsHref(selectedPlace) : null;
+  const selectedPlaceInstagramHref = selectedPlace
+    ? getInstagramHref(selectedPlace)
+    : null;
+  const selectedPlaceDirectionsHref = selectedPlace
+    ? getDirectionsHref(selectedPlace)
+    : null;
 
   return (
     <div style={{ display: "grid", gap: 14, marginBottom: 18 }}>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {Object.entries(TWELVE_THINGS_MAP_CATEGORIES)
-          .filter(([key]) => mappedPlaces.some((place) => place._mapCategory === key))
+          .filter(([key]) =>
+            mappedPlaces.some((place) => place._mapCategory === key),
+          )
           .map(([key, config]) => (
             <span
               key={key}
@@ -543,7 +581,9 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
             }}
           >
             <div>
-              <EnvironmentOutlined style={{ fontSize: 22, color: "#4F6F86", marginBottom: 10 }} />
+              <EnvironmentOutlined
+                style={{ fontSize: 22, color: "#4F6F86", marginBottom: 10 }}
+              />
               <Text strong style={{ display: "block", marginBottom: 6 }}>
                 Google Maps key needed
               </Text>
@@ -563,7 +603,9 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
             }}
           >
             <div>
-              <EnvironmentOutlined style={{ fontSize: 22, color: "#4F6F86", marginBottom: 10 }} />
+              <EnvironmentOutlined
+                style={{ fontSize: 22, color: "#4F6F86", marginBottom: 10 }}
+              />
               <Text strong style={{ display: "block", marginBottom: 6 }}>
                 Map could not load
               </Text>
@@ -584,7 +626,10 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
           </div>
         ) : (
           <GoogleMap
-            mapContainerStyle={{ width: "100%", height: isMobile ? "320px" : "420px" }}
+            mapContainerStyle={{
+              width: "100%",
+              height: isMobile ? "320px" : "420px",
+            }}
             center={MAP_DEFAULT_CENTER}
             zoom={MAP_DEFAULT_ZOOM}
             options={TWELVE_THINGS_MAP_OPTIONS}
@@ -597,7 +642,11 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
                   key={place.id || place.slug || place.name}
                   position={place._latlng}
                   title={place.name}
-                  icon={selectedPlace?.id === place.id ? pinSet?.active : pinSet?.default}
+                  icon={
+                    selectedPlace?.id === place.id
+                      ? pinSet?.active
+                      : pinSet?.default
+                  }
                   onClick={() => onSelectPlace(place)}
                 />
               );
@@ -668,8 +717,9 @@ function TwelveThingsMap({ mappedPlaces, selectedPlace, onSelectPlace, isMobile 
                           marginBottom: 4,
                         }}
                       >
-                        {TWELVE_THINGS_MAP_CATEGORIES[selectedPlace._mapCategory]?.label ||
-                          "Venue"}
+                        {TWELVE_THINGS_MAP_CATEGORIES[
+                          selectedPlace._mapCategory
+                        ]?.label || "Venue"}
                       </Text>
                       <Title
                         level={5}
@@ -810,21 +860,24 @@ function TwelveThingsCard({ group, places, isMobile }) {
     setSelectedPlaceId(place.id);
   }, []);
 
-  const selectPlaceByName = useCallback((name) => {
-    const normalizedName = normalizeTag(name);
-    const match = mappedPlaces.find((place) => {
-      const normalizedPlaceName = normalizeTag(place.name);
-      return (
-        normalizedPlaceName === normalizedName ||
-        normalizedPlaceName.includes(normalizedName) ||
-        normalizedName.includes(normalizedPlaceName)
-      );
-    });
+  const selectPlaceByName = useCallback(
+    (name) => {
+      const normalizedName = normalizeTag(name);
+      const match = mappedPlaces.find((place) => {
+        const normalizedPlaceName = normalizeTag(place.name);
+        return (
+          normalizedPlaceName === normalizedName ||
+          normalizedPlaceName.includes(normalizedName) ||
+          normalizedName.includes(normalizedPlaceName)
+        );
+      });
 
-    if (match) {
-      setSelectedPlaceId(match.id);
-    }
-  }, [mappedPlaces]);
+      if (match) {
+        setSelectedPlaceId(match.id);
+      }
+    },
+    [mappedPlaces],
+  );
 
   const venueHighlightStyle = {
     display: "inline",
@@ -832,7 +885,8 @@ function TwelveThingsCard({ group, places, isMobile }) {
     margin: 0,
     border: "none",
     borderRadius: 0,
-    background: "linear-gradient(180deg, transparent 58%, rgba(229, 189, 99, 0.75) 58%)",
+    background:
+      "linear-gradient(180deg, transparent 58%, rgba(229, 189, 99, 0.75) 58%)",
     color: "#3A2B1D",
     fontSize: "0.95em",
     fontWeight: 700,
@@ -907,8 +961,11 @@ function TwelveThingsCard({ group, places, isMobile }) {
               >
                 Morning Start
               </Text>
-              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
-                Start your morning at <VenueHighlight name="Living Room Concept Store" />
+              <Paragraph
+                style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}
+              >
+                Start your morning at{" "}
+                <VenueHighlight name="Living Room Concept Store" />
                 with 10% off coffee and brunch before picking up a scooter from
                 <VenueHighlight name="GIK Bike Rentals" /> with 25% off rentals.
               </Paragraph>
@@ -935,16 +992,21 @@ function TwelveThingsCard({ group, places, isMobile }) {
               >
                 Wellness Scene
               </Text>
-              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
+              <Paragraph
+                style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}
+              >
                 <VenueHighlight name="Pura Pilates" /> — 10% off
                 <br />
                 <VenueHighlight name="Sarana" /> — 20% off spa treatments
                 <br />
-                <VenueHighlight name="Frosty's" /> — 10% off entry fees and memberships
+                <VenueHighlight name="Frosty's" /> — 10% off entry fees and
+                memberships
                 <br />
-                <VenueHighlight name="Spa Station Midigama" /> — 10% off treatments + free aromatherapy
+                <VenueHighlight name="Spa Station Midigama" /> — 10% off
+                treatments + free aromatherapy
                 <br />
-                <VenueHighlight name="Coconut Court" /> — Exclusive member rates on pickleball
+                <VenueHighlight name="Coconut Court" /> — Exclusive member rates
+                on pickleball
               </Paragraph>
             </div>
 
@@ -969,7 +1031,9 @@ function TwelveThingsCard({ group, places, isMobile }) {
               >
                 Local Experiences
               </Text>
-              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
+              <Paragraph
+                style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}
+              >
                 <VenueHighlight name="Kumbuk Community" /> — 10% off
                 <br />
                 <VenueHighlight name="Palm and Paint" /> — 10% off
@@ -992,7 +1056,9 @@ function TwelveThingsCard({ group, places, isMobile }) {
               marginLeft: 0,
               display: "grid",
               gap: 12,
-              gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))",
+              gridTemplateColumns: isMobile
+                ? "1fr"
+                : "repeat(2, minmax(0, 1fr))",
             }}
           >
             <div
@@ -1016,10 +1082,14 @@ function TwelveThingsCard({ group, places, isMobile }) {
               >
                 Shops And Lifestyle
               </Text>
-              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
-                <VenueHighlight name="Qamar by Zan" /> — 70% off selected bills + complimentary jewellery-making
+              <Paragraph
+                style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}
+              >
+                <VenueHighlight name="Qamar by Zan" /> — 70% off selected bills
+                + complimentary jewellery-making
                 <br />
-                <VenueHighlight name="Yiva Essentials" /> — 10% off Yiva products and 5% off larger purchases
+                <VenueHighlight name="Yiva Essentials" /> — 10% off Yiva
+                products and 5% off larger purchases
                 <br />
                 <VenueHighlight name="Gusta" /> — 5-10% off selected items
               </Paragraph>
@@ -1046,10 +1116,14 @@ function TwelveThingsCard({ group, places, isMobile }) {
               >
                 Evening Wind Down
               </Text>
-              <Paragraph style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}>
-                As evening arrives, enjoy dinner at <VenueHighlight name="Hakuna Matata" /> with 10% off,
-                and if you&apos;re staying a little longer, <VenueHighlight name="Global Surf Lodge" /> offers
-                10% off rooms and 10% off yoga classes.
+              <Paragraph
+                style={{ marginBottom: 0, color: "#2B241E", lineHeight: 1.75 }}
+              >
+                As evening arrives, enjoy dinner at{" "}
+                <VenueHighlight name="Hakuna Matata" /> with 10% off, and if
+                you&apos;re staying a little longer,{" "}
+                <VenueHighlight name="Global Surf Lodge" /> offers 10% off rooms
+                and 10% off yoga classes.
               </Paragraph>
             </div>
           </div>
@@ -1161,9 +1235,7 @@ function PlaceLinks({ places }) {
                 </Text>
                 <Text style={{ color: "#6C665E", fontSize: 13 }}>
                   {place.area || "Ahangama"}
-                  {visibleTags.length
-                    ? ` • ${visibleTags.join(" • ")}`
-                    : ""}
+                  {visibleTags.length ? ` • ${visibleTags.join(" • ")}` : ""}
                 </Text>
                 <OfferPills place={place} />
               </div>
@@ -1216,7 +1288,8 @@ function TwelveThingsGroupedPlaceLinks({ places }) {
 
     places.forEach((place) => {
       const categoryKey = getTwelveThingsMapCategory(place);
-      const targetGroup = groupMap.get(categoryKey) || groupMap.get("experiences");
+      const targetGroup =
+        groupMap.get(categoryKey) || groupMap.get("experiences");
       targetGroup?.places.push(place);
     });
 
@@ -1412,7 +1485,8 @@ export default function FullListPage() {
                             display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: "linear-gradient(180deg, #fffaf1 0%, #f3e4ca 100%)",
+                            background:
+                              "linear-gradient(180deg, #fffaf1 0%, #f3e4ca 100%)",
                             border: "1px solid rgba(139,90,60,0.18)",
                             color: "#6F5235",
                             fontSize: 13,
@@ -1550,12 +1624,15 @@ export default function FullListPage() {
                       >
                         Main best for
                       </Text>
-                      <Title level={2} style={{ marginTop: 0, marginBottom: 12 }}>
+                      <Title
+                        level={2}
+                        style={{ marginTop: 0, marginBottom: 12 }}
+                      >
                         {group.label}
                       </Title>
                       <Paragraph style={{ color: "#5C5953", marginBottom: 0 }}>
-                        {group.count} venues include this as one of their best-for
-                        tags.
+                        {group.count} venues include this as one of their
+                        best-for tags.
                       </Paragraph>
                     </Col>
                     <Col xs={24} lg={17}>

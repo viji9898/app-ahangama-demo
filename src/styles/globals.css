@@ -5889,7 +5889,9 @@ li,
   border: 0;
   padding: 0;
   cursor: pointer;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .editorial-shareLink:hover,
@@ -6088,8 +6090,7 @@ li,
   margin: 0;
   max-width: 18ch;
   color: #1f1d1a;
-  font-family:
-    "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   font-size: clamp(34px, 5vw, 56px);
   line-height: 0.98;
   letter-spacing: -0.9px;
@@ -6627,7 +6628,11 @@ h4,
 .events-agenda-imageWrap {
   overflow: hidden;
   aspect-ratio: 1.36;
-  background: linear-gradient(135deg, rgba(203, 177, 143, 0.24), rgba(64, 77, 70, 0.18));
+  background: linear-gradient(
+    135deg,
+    rgba(203, 177, 143, 0.24),
+    rgba(64, 77, 70, 0.18)
+  );
 }
 
 .events-agenda-image {
