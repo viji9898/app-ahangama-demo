@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import {
   ArrowRightOutlined,
   EnvironmentOutlined,
@@ -21,6 +22,577 @@ const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
 
 const SHARED_GOOGLE_MAP_URL = "https://maps.app.goo.gl/zvo1rFQegTtS87ZT8";
+const TWELVE_THINGS_GROUP_KEY = "12-things-to-do";
+const TWELVE_THINGS_TAG_SLUG = "12-things-to-do";
+const MAP_DEFAULT_CENTER = { lat: 5.9699, lng: 80.3666 };
+const MAP_DEFAULT_ZOOM = 14;
+
+const TWELVE_THINGS_MAP_OPTIONS = {
+  disableDefaultUI: true,
+  zoomControl: true,
+  gestureHandling: "greedy",
+  clickableIcons: false,
+  styles: [
+    {
+      featureType: "administrative",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#6b6f6a" }],
+    },
+    {
+      featureType: "landscape",
+      elementType: "geometry",
+      stylers: [{ color: "#f6f0e6" }],
+    },
+    {
+      featureType: "poi",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [{ color: "#ffffff" }],
+    },
+    {
+      featureType: "road",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#e5dfd5" }],
+    },
+    {
+      featureType: "road",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#7e7a73" }],
+    },
+    {
+      featureType: "transit",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [{ color: "#d7e4ea" }],
+    },
+  ],
+};
+
+const TWELVE_THINGS_MAP_CATEGORIES = {
+  eat: { label: "Eat", color: "#C46A3A" },
+  stays: { label: "Stay", color: "#6B7C5A" },
+  surf: { label: "Surf", color: "#3E5F73" },
+  wellness: { label: "Wellness", color: "#7A6A86" },
+  shops: { label: "Retail", color: "#8F6A4A" },
+  scooters: { label: "Scooters", color: "#B27A2C" },
+  experiences: { label: "Experiences", color: "#4F6F86" },
+};
+
+const TWELVE_THINGS_MAP_CATEGORY_ICONS = {
+  eat: "<path d=\"M15 9v7.25c0 1.63-1.11 2.99-2.62 3.38V31h-2.2V19.63C8.67 19.24 7.56 17.88 7.56 16.25V9h2.06v7.11h1.48V9h2.05v7.11h1.48V9H15Zm10.44 0c1.87 0 3.39 1.7 3.39 3.8v7.77h-2.06V31h-2.2V20.57h-2.3V12.8c0-2.1 1.3-3.8 3.17-3.8Z\" fill=\"white\"/>",
+  stays: "<path d=\"M8 18.6V31h2.2v-4.2h19.6V31H32V16.2c0-1.82-1.48-3.3-3.3-3.3H20.9c-.95 0-1.86.4-2.49 1.11l-1.78 1.99H11.3A3.3 3.3 0 0 0 8 18.6Zm4.2 1.6h5.24l1.78-1.98c.21-.24.51-.37.83-.37h8.65c.6 0 1.1.5 1.1 1.1v3.65H10.2V21.3c0-.6.49-1.1 1.1-1.1ZM10.7 11.1a2.8 2.8 0 1 1 5.6 0 2.8 2.8 0 0 1-5.6 0Z\" fill=\"white\"/>",
+  surf: "<path d=\"M7.8 24.5c2.56 0 3.72-1.15 4.75-2.17.98-.97 1.83-1.8 3.48-1.8 1.66 0 2.5.83 3.49 1.8 1.03 1.02 2.18 2.17 4.75 2.17 2.57 0 3.72-1.15 4.75-2.17.98-.97 1.83-1.8 3.49-1.8V18.3c-2.57 0-3.72 1.15-4.76 2.17-.97.97-1.82 1.8-3.48 1.8-1.65 0-2.5-.83-3.48-1.8-1.04-1.02-2.19-2.17-4.76-2.17-2.57 0-3.72 1.15-4.75 2.17-.98.97-1.83 1.8-3.48 1.8-1.66 0-2.5-.83-3.49-1.8-1.03-1.02-2.18-2.17-4.75-2.17v2.2c1.65 0 2.5.83 3.48 1.8 1.04 1.02 2.19 2.17 4.76 2.17Zm2.4-8.08 11.57-7.5 1.2 1.84-11.57 7.5-1.2-1.84Zm11.56 1.2 6.05-3.93 1.2 1.84-6.05 3.93-1.2-1.84Z\" fill=\"white\"/>",
+  wellness: "<path d=\"M20 8.5c3.03 0 5.5 2.47 5.5 5.5 0 1.58-.68 3.09-1.86 4.13l-1.32 1.16L20 21.32l-2.32-2.03-1.32-1.16A5.49 5.49 0 0 1 14.5 14c0-3.03 2.47-5.5 5.5-5.5Zm0 15.78 5.92-5.2A8.63 8.63 0 0 0 28.7 14c0-4.8-3.9-8.7-8.7-8.7-4.8 0-8.7 3.9-8.7 8.7 0 1.94.67 3.82 1.88 5.29L20 24.28Zm-6.84 1.04c1.96 1.6 4.34 2.48 6.84 2.48s4.88-.88 6.84-2.48l1.4 1.7A13.23 13.23 0 0 1 20 31c-3.02 0-5.92-1.03-8.24-2.98l1.4-1.66Z\" fill=\"white\"/>",
+  shops: "<path d=\"M10.3 13.2h19.4l-1.42 5.67a3.3 3.3 0 0 1-3.2 2.5H14.9a3.3 3.3 0 0 1-3.2-2.5L10.3 13.2Zm2.82-4.2h13.76l.92 2.2h2.37L28.8 6.8H11.2L9.83 11.2h2.37l.92-2.2ZM12.2 23.4h15.6V31h-2.2v-5.4h-11.2V31h-2.2v-7.6Z\" fill=\"white\"/>",
+  scooters: "<path d=\"M12.8 24.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm14.4 0a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm-14.4 2.2a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Zm14.4 0a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Zm-6.82-12.2 2.93 5.14h4.87c1.6 0 2.9 1.3 2.9 2.9v.95h-2.2v-.95c0-.39-.31-.7-.7-.7h-6.14l-2.9-5.09h-3.5v-2.2h4.74Z\" fill=\"white\"/>",
+  experiences: "<path d=\"M20 7.4 23 14l7.2.62-5.45 4.72 1.64 7-6.39-3.8-6.39 3.8 1.64-7L9.8 14.62 17 14l3-6.6Zm0 3.54-1.58 3.48-.27.58-.63.05-3.8.33 2.88 2.5.48.41-.14.62-.87 3.7 3.37-2 .56-.34.56.34 3.37 2-.87-3.7-.14-.62.48-.41 2.88-2.5-3.8-.33-.63-.05-.27-.58L20 10.94Z\" fill=\"white\"/>",
+};
+
+const TWELVE_THINGS_RETAIL_SLUGS = new Set([
+  "gusta",
+  "qamar-by-zan",
+  "yiva-essentials",
+]);
+
+const TWELVE_THINGS_RETAIL_NAMES = new Set([
+  "gusta",
+  "qamar by zan",
+  "yiva essentials",
+]);
+
+const TWELVE_THINGS_CATEGORY_ORDER = [
+  "eat",
+  "stays",
+  "wellness",
+  "surf",
+  "scooters",
+  "shops",
+  "experiences",
+];
+
+const TWELVE_THINGS_CURATED_ORDER = [
+  "pura",
+  "gik-bike-rentals",
+  "coconut-c",
+  "frostys-recovery-centre-hangout",
+  "kumbuk-community",
+  "spa-station-midigama",
+  "sarana-ahangama",
+  "palm-and-paint",
+  "living-r-c-s",
+  "yiva-essentials",
+  "hakuna-matata-ahangama",
+  "qamar-by-zan",
+  "global-surf-lodge",
+  "gusta",
+];
+
+const TWELVE_THINGS_FALLBACK_PLACES = {
+  "yiva-essentials": {
+    id: "fallback-yiva-essentials",
+    slug: "yiva-essentials",
+    name: "Yiva Essentials",
+    category: "retail",
+    area: "Ahangama",
+    bestFor: ["Retail", "Shopping"],
+    offer: "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
+    offers: [
+      "Enjoy 10% savings on selected purchases with the Ahangama Pass.",
+    ],
+    excerpt:
+      "Explore a curated concept store of coastal-inspired lifestyle pieces, design objects, and essentials.",
+    href: null,
+  },
+  "qamar-by-zan": {
+    id: "fallback-qamar-by-zan",
+    slug: "qamar-by-zan",
+    name: "Qamar by Zan",
+    category: "retail",
+    area: "Ahangama",
+    bestFor: ["Retail", "Jewellery"],
+    offer:
+      "Unlock up to 70% savings on the personalized jewelry experience.",
+    offers: [
+      "Unlock up to 70% savings on the personalized jewelry experience.",
+    ],
+    excerpt:
+      "Create a personalized jewelry piece in a guided studio session shaped by coastal inspiration.",
+    href: null,
+  },
+};
+
+function safeLatLng(place) {
+  const lat = place?.position?.lat ?? place?.lat;
+  const lng = place?.position?.lng ?? place?.lng;
+
+  if (typeof lat !== "number" || typeof lng !== "number") return null;
+  if (Number.isNaN(lat) || Number.isNaN(lng)) return null;
+
+  return { lat, lng };
+}
+
+function isTwelveThingsRetailVenue(place) {
+  const slug = String(place?.slug || "").trim().toLowerCase();
+  const name = String(place?.name || "").trim().toLowerCase();
+
+  return (
+    TWELVE_THINGS_RETAIL_SLUGS.has(slug) ||
+    TWELVE_THINGS_RETAIL_NAMES.has(name)
+  );
+}
+
+function normalizeTag(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function hasTwelveThingsTag(place) {
+  return (place.bestFor || []).some(
+    (entry) => normalizeTag(entry) === TWELVE_THINGS_TAG_SLUG,
+  );
+}
+
+function getTwelveThingsCuratedIndex(place) {
+  const index = TWELVE_THINGS_CURATED_ORDER.indexOf(place.slug);
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+}
+
+function getTwelveThingsPlaces(places) {
+  const placeMap = new Map(
+    places
+      .filter(
+        (place) =>
+          hasTwelveThingsTag(place) ||
+          TWELVE_THINGS_CURATED_ORDER.includes(place.slug),
+      )
+      .map((place) => [place.slug, place]),
+  );
+
+  Object.entries(TWELVE_THINGS_FALLBACK_PLACES).forEach(([slug, place]) => {
+    if (!placeMap.has(slug)) {
+      placeMap.set(slug, place);
+    }
+  });
+
+  return Array.from(placeMap.values()).sort((left, right) => {
+      const curatedIndexDiff =
+        getTwelveThingsCuratedIndex(left) - getTwelveThingsCuratedIndex(right);
+      if (curatedIndexDiff !== 0) return curatedIndexDiff;
+
+      return String(left.name || "").localeCompare(String(right.name || ""));
+    });
+}
+
+function getTwelveThingsMapCategory(place) {
+  const category = String(place?.category || "").toLowerCase();
+  const text = [
+    place?.category,
+    ...(place?.bestFor || []),
+    ...(place?.tags || []),
+    ...(Array.isArray(place?.offers) ? place.offers : [place?.offer]),
+    place?.name,
+    place?.excerpt,
+    place?.description,
+    place?.slug,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (
+    category.includes("eat") ||
+    text.includes("cafe") ||
+    text.includes("restaurant") ||
+    text.includes("brunch")
+  ) {
+    return "eat";
+  }
+
+  if (
+    category.includes("stay") ||
+    text.includes("villa") ||
+    text.includes("hostel") ||
+    text.includes("accommodation")
+  ) {
+    return "stays";
+  }
+
+  if (
+    category.includes("wellness") ||
+    text.includes("spa") ||
+    text.includes("massage") ||
+    text.includes("ayurveda") ||
+    text.includes("recovery") ||
+    text.includes("pilates") ||
+    text.includes("yoga")
+  ) {
+    return "wellness";
+  }
+
+  if (isTwelveThingsRetailVenue(place)) {
+    return "shops";
+  }
+
+  if (
+    text.includes("scooter") ||
+    text.includes("bike rental") ||
+    text.includes("transport") ||
+    text.includes("tuk") ||
+    text.includes("airport transfer")
+  ) {
+    return "scooters";
+  }
+
+  if (category.includes("surf") || text.includes("surf")) {
+    return "surf";
+  }
+
+  return "experiences";
+}
+
+function getPrimaryOffer(place) {
+  const firstOffer = (Array.isArray(place?.offers) ? place.offers : [place?.offer])
+    .flatMap((entry) => (Array.isArray(entry) ? entry : [entry]))
+    .filter(Boolean)
+    .map((entry) => String(entry).trim())
+    .find(Boolean);
+
+  return firstOffer || place?.cardPerk || "Pass venue";
+}
+
+function getPlaceHref(place) {
+  if (Object.prototype.hasOwnProperty.call(place || {}, "href")) {
+    return place.href;
+  }
+
+  if (!place?.slug) return FULL_LIST_PATH;
+
+  const category = String(place.category || "").toLowerCase();
+
+  if (category === "shops-essentials" || category === "retail") {
+    return `/retail/${place.slug}`;
+  }
+
+  return `/${place.category}/${place.slug}`;
+}
+
+function createPinIcon(googleMaps, color, iconMarkup, isActive) {
+  const size = isActive ? 38 : 32;
+  const height = size + 12;
+  const stroke = isActive ? "#1F1D1A" : "rgba(31,29,26,0.32)";
+  const svg = encodeURIComponent(`
+    <svg width="${size}" height="${height}" viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="rgba(31,29,26,0.28)"/>
+        </filter>
+      </defs>
+      <path filter="url(#shadow)" d="M20 2C10.059 2 2 10.059 2 20c0 12.322 14.06 26.61 16.537 29.024a2.06 2.06 0 0 0 2.926 0C23.94 46.61 38 32.322 38 20 38 10.059 29.941 2 20 2Z" fill="${color}" stroke="${stroke}" stroke-width="2"/>
+      <g transform="translate(0 0) scale(0.9) translate(2.2 1.8)">
+        ${iconMarkup}
+      </g>
+    </svg>
+  `);
+
+  return {
+    url: `data:image/svg+xml;charset=UTF-8,${svg}`,
+    scaledSize: new googleMaps.maps.Size(size, height),
+    anchor: new googleMaps.maps.Point(size / 2, size + 10),
+  };
+}
+
+function TwelveThingsMap({ places, isMobile }) {
+  const googleMapsApiKey =
+    import.meta.env.VITE_GOOGLE_MAPS_API_KEY ||
+    import.meta.env.VITE_GOOGLE_MAPS_KEY ||
+    "";
+  const { isLoaded, loadError } = useJsApiLoader({
+    id: "ahangama-twelve-things-map",
+    googleMapsApiKey,
+  });
+  const mapRef = useRef(null);
+  const mappedPlaces = useMemo(
+    () =>
+      places
+        .map((place) => ({
+          ...place,
+          _latlng: safeLatLng(place),
+          _mapCategory: getTwelveThingsMapCategory(place),
+          _primaryOffer: getPrimaryOffer(place),
+        }))
+        .filter((place) => !!place._latlng),
+    [places],
+  );
+  const [selectedPlaceId, setSelectedPlaceId] = useState(null);
+
+  useEffect(() => {
+    setSelectedPlaceId((current) => {
+      if (current && mappedPlaces.some((place) => place.id === current)) {
+        return current;
+      }
+
+      return mappedPlaces[0]?.id || null;
+    });
+  }, [mappedPlaces]);
+
+  const selectedPlace = useMemo(
+    () => mappedPlaces.find((place) => place.id === selectedPlaceId) || mappedPlaces[0] || null,
+    [mappedPlaces, selectedPlaceId],
+  );
+
+  const fitMapToPlaces = useCallback(
+    (map) => {
+      if (!window.google || !map || !mappedPlaces.length) return;
+
+      if (mappedPlaces.length === 1) {
+        map.setCenter(mappedPlaces[0]._latlng);
+        map.setZoom(15);
+        return;
+      }
+
+      const bounds = new window.google.maps.LatLngBounds();
+      mappedPlaces.forEach((place) => bounds.extend(place._latlng));
+      map.fitBounds(bounds, isMobile ? 42 : 60);
+    },
+    [isMobile, mappedPlaces],
+  );
+
+  const handleMapLoad = useCallback(
+    (map) => {
+      mapRef.current = map;
+      fitMapToPlaces(map);
+    },
+    [fitMapToPlaces],
+  );
+
+  useEffect(() => {
+    if (mapRef.current && mappedPlaces.length) {
+      fitMapToPlaces(mapRef.current);
+    }
+  }, [fitMapToPlaces, mappedPlaces]);
+
+  const pinIcons = useMemo(() => {
+    if (!isLoaded || !window.google) return {};
+
+    return Object.entries(TWELVE_THINGS_MAP_CATEGORIES).reduce(
+      (accumulator, [key, config]) => {
+        const iconMarkup = TWELVE_THINGS_MAP_CATEGORY_ICONS[key];
+        accumulator[key] = {
+          default: createPinIcon(window.google, config.color, iconMarkup, false),
+          active: createPinIcon(window.google, config.color, iconMarkup, true),
+        };
+        return accumulator;
+      },
+      {},
+    );
+  }, [isLoaded]);
+
+  return (
+    <div style={{ display: "grid", gap: 14, marginBottom: 18 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+        {Object.entries(TWELVE_THINGS_MAP_CATEGORIES)
+          .filter(([key]) => mappedPlaces.some((place) => place._mapCategory === key))
+          .map(([key, config]) => (
+            <span
+              key={key}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                borderRadius: 999,
+                border: "1px solid rgba(31,42,36,0.1)",
+                background: "rgba(255,255,255,0.78)",
+                color: "#1F2A24",
+                padding: "8px 12px",
+                fontSize: 12,
+                fontWeight: 700,
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 999,
+                  background: config.color,
+                }}
+              />
+              {config.label}
+            </span>
+          ))}
+      </div>
+
+      <div
+        style={{
+          minHeight: isMobile ? 320 : 420,
+          borderRadius: 20,
+          overflow: "hidden",
+          border: "1px solid rgba(47,62,58,0.08)",
+          background: "rgba(255,255,255,0.82)",
+        }}
+      >
+        {!googleMapsApiKey ? (
+          <div
+            style={{
+              minHeight: isMobile ? 320 : 420,
+              display: "grid",
+              placeItems: "center",
+              padding: 24,
+              textAlign: "center",
+            }}
+          >
+            <div>
+              <EnvironmentOutlined style={{ fontSize: 22, color: "#4F6F86", marginBottom: 10 }} />
+              <Text strong style={{ display: "block", marginBottom: 6 }}>
+                Google Maps key needed
+              </Text>
+              <Text style={{ color: "#6B655D" }}>
+                Add `VITE_GOOGLE_MAPS_API_KEY` to show the 12 Things venue map.
+              </Text>
+            </div>
+          </div>
+        ) : loadError ? (
+          <div
+            style={{
+              minHeight: isMobile ? 320 : 420,
+              display: "grid",
+              placeItems: "center",
+              padding: 24,
+              textAlign: "center",
+            }}
+          >
+            <div>
+              <EnvironmentOutlined style={{ fontSize: 22, color: "#4F6F86", marginBottom: 10 }} />
+              <Text strong style={{ display: "block", marginBottom: 6 }}>
+                Map could not load
+              </Text>
+              <Text style={{ color: "#6B655D" }}>
+                Check the current Google Maps browser key restrictions.
+              </Text>
+            </div>
+          </div>
+        ) : !isLoaded ? (
+          <div
+            style={{
+              minHeight: isMobile ? 320 : 420,
+              display: "grid",
+              placeItems: "center",
+            }}
+          >
+            <Text strong>Loading map…</Text>
+          </div>
+        ) : (
+          <GoogleMap
+            mapContainerStyle={{ width: "100%", height: isMobile ? "320px" : "420px" }}
+            center={MAP_DEFAULT_CENTER}
+            zoom={MAP_DEFAULT_ZOOM}
+            options={TWELVE_THINGS_MAP_OPTIONS}
+            onLoad={handleMapLoad}
+          >
+            {mappedPlaces.map((place) => {
+              const pinSet = pinIcons[place._mapCategory];
+              return (
+                <MarkerF
+                  key={place.id || place.slug || place.name}
+                  position={place._latlng}
+                  title={place.name}
+                  icon={selectedPlace?.id === place.id ? pinSet?.active : pinSet?.default}
+                  onClick={() => setSelectedPlaceId(place.id)}
+                />
+              );
+            })}
+          </GoogleMap>
+        )}
+      </div>
+
+      {selectedPlace ? (
+        <div
+          style={{
+            padding: isMobile ? "14px 14px" : "16px 18px",
+            borderRadius: 18,
+            border: "1px solid rgba(47,62,58,0.08)",
+            background: "rgba(255,255,255,0.74)",
+          }}
+        >
+          <Text
+            style={{
+              display: "block",
+              color: "#8B5A3C",
+              fontSize: 12,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: 1.2,
+              marginBottom: 6,
+            }}
+          >
+            Selected venue
+          </Text>
+          <Title level={4} style={{ marginTop: 0, marginBottom: 4 }}>
+            {selectedPlace.name}
+          </Title>
+          <Paragraph style={{ marginBottom: 12, color: "#5C5953" }}>
+            {selectedPlace.area || "Ahangama"}
+            {selectedPlace.bestFor?.length
+              ? ` • ${selectedPlace.bestFor.slice(0, 2).join(" • ")}`
+              : ""}
+          </Paragraph>
+          <Paragraph style={{ marginBottom: 0, color: "#1F2A24" }}>
+            {selectedPlace._primaryOffer}
+          </Paragraph>
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 function OfferPills({ place }) {
   const offerTags = Array.isArray(place.offers)
@@ -62,73 +634,153 @@ function OfferPills({ place }) {
 function PlaceLinks({ places }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-      {places.map((place) => (
-        <a
-          key={place.id || place.slug || place.name}
-          href={
-            place.slug ? `/${place.category}/${place.slug}` : FULL_LIST_PATH
-          }
-          style={{
-            display: "block",
-            padding: "14px 16px",
-            borderRadius: 16,
-            border: "1px solid rgba(47,62,58,0.08)",
-            background: "rgba(255,255,255,0.72)",
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-            {place.logo ? (
-              <div
-                style={{
-                  width: 50,
-                  height: 50,
-                  flex: "0 0 50px",
-                  borderRadius: 14,
-                  background: "rgba(255,255,255,0.92)",
-                  border: "1px solid rgba(47,62,58,0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  overflow: "hidden",
-                }}
-              >
-                <img
-                  src={place.logo}
-                  alt={`${place.name} logo`}
+      {places.map((place) => {
+        const href = getPlaceHref(place);
+        const content = (
+          <>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+              {place.logo ? (
+                <div
                   style={{
-                    maxWidth: 50,
-                    maxHeight: 50,
-                    width: "auto",
-                    height: "auto",
-                    objectFit: "contain",
+                    width: 50,
+                    height: 50,
+                    flex: "0 0 50px",
+                    borderRadius: 14,
+                    background: "rgba(255,255,255,0.92)",
+                    border: "1px solid rgba(47,62,58,0.08)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
                   }}
-                />
+                >
+                  <img
+                    src={place.logo}
+                    alt={`${place.name} logo`}
+                    style={{
+                      maxWidth: 50,
+                      maxHeight: 50,
+                      width: "auto",
+                      height: "auto",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
+              ) : null}
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <Text
+                  style={{
+                    display: "block",
+                    color: "#2F3E3A",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    marginBottom: 4,
+                  }}
+                >
+                  {place.name}
+                </Text>
+                <Text style={{ color: "#6C665E", fontSize: 13 }}>
+                  {place.area || "Ahangama"}
+                  {place.bestFor?.length
+                    ? ` • ${place.bestFor.slice(0, 2).join(" • ")}`
+                    : ""}
+                </Text>
+                <OfferPills place={place} />
               </div>
-            ) : null}
-            <div style={{ minWidth: 0, flex: 1 }}>
-              <Text
-                style={{
-                  display: "block",
-                  color: "#2F3E3A",
-                  fontSize: 16,
-                  fontWeight: 700,
-                  marginBottom: 4,
-                }}
-              >
-                {place.name}
-              </Text>
-              <Text style={{ color: "#6C665E", fontSize: 13 }}>
-                {place.area || "Ahangama"}
-                {place.bestFor?.length
-                  ? ` • ${place.bestFor.slice(0, 2).join(" • ")}`
-                  : ""}
-              </Text>
-              <OfferPills place={place} />
             </div>
+          </>
+        );
+
+        const cardStyle = {
+          display: "block",
+          padding: "14px 16px",
+          borderRadius: 16,
+          border: "1px solid rgba(47,62,58,0.08)",
+          background: "rgba(255,255,255,0.72)",
+          textDecoration: "none",
+          color: "inherit",
+        };
+
+        if (!href) {
+          return (
+            <div key={place.id || place.slug || place.name} style={cardStyle}>
+              {content}
+            </div>
+          );
+        }
+
+        return (
+          <a
+            key={place.id || place.slug || place.name}
+            href={href}
+            style={cardStyle}
+          >
+            {content}
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+function TwelveThingsGroupedPlaceLinks({ places }) {
+  const groupedPlaces = useMemo(() => {
+    const groups = TWELVE_THINGS_CATEGORY_ORDER.map((key) => ({
+      key,
+      label: TWELVE_THINGS_MAP_CATEGORIES[key]?.label || key,
+      color: TWELVE_THINGS_MAP_CATEGORIES[key]?.color || "#4F6F86",
+      places: [],
+    }));
+
+    const groupMap = new Map(groups.map((group) => [group.key, group]));
+
+    places.forEach((place) => {
+      const categoryKey = getTwelveThingsMapCategory(place);
+      const targetGroup = groupMap.get(categoryKey) || groupMap.get("experiences");
+      targetGroup?.places.push(place);
+    });
+
+    return groups.filter((group) => group.places.length > 0);
+  }, [places]);
+
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      {groupedPlaces.map((group) => (
+        <section key={group.key} style={{ display: "grid", gap: 10 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              paddingBottom: 8,
+              borderBottom: "1px solid rgba(47,62,58,0.08)",
+            }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: 999,
+                background: group.color,
+                flex: "0 0 10px",
+              }}
+            />
+            <Text
+              style={{
+                color: "#2F3E3A",
+                fontSize: 13,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 1.1,
+              }}
+            >
+              {group.label} ({group.places.length})
+            </Text>
           </div>
-        </a>
+
+          <PlaceLinks places={group.places} />
+        </section>
       ))}
     </div>
   );
@@ -144,6 +796,10 @@ export default function FullListPage() {
   const passPlaces = useMemo(() => getPassPlaces(allPlaces), [allPlaces]);
   const { topBestFors, groups, otherPlaces } = useMemo(
     () => buildBestForGroups(passPlaces),
+    [passPlaces],
+  );
+  const twelveThingsPlaces = useMemo(
+    () => getTwelveThingsPlaces(passPlaces),
     [passPlaces],
   );
 
@@ -371,6 +1027,13 @@ export default function FullListPage() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {groups.map((group) => (
+              (() => {
+                const displayPlaces =
+                  group.key === TWELVE_THINGS_GROUP_KEY
+                    ? twelveThingsPlaces
+                    : group.places;
+
+                return (
               <Card
                 key={group.key}
                 id={`best-for-${group.key}`}
@@ -401,15 +1064,27 @@ export default function FullListPage() {
                       {group.label}
                     </Title>
                     <Paragraph style={{ color: "#5C5953", marginBottom: 0 }}>
-                      {group.count} venues include this as one of their best-for
+                      {group.key === TWELVE_THINGS_GROUP_KEY
+                        ? displayPlaces.length
+                        : group.count}{" "}
+                      venues include this as one of their best-for
                       tags.
                     </Paragraph>
                   </Col>
                   <Col xs={24} lg={17}>
-                    <PlaceLinks places={group.places} />
+                    {group.key === TWELVE_THINGS_GROUP_KEY ? (
+                      <TwelveThingsMap places={displayPlaces} isMobile={isMobile} />
+                    ) : null}
+                    {group.key === TWELVE_THINGS_GROUP_KEY ? (
+                      <TwelveThingsGroupedPlaceLinks places={displayPlaces} />
+                    ) : (
+                      <PlaceLinks places={displayPlaces} />
+                    )}
                   </Col>
                 </Row>
               </Card>
+                );
+              })()
             ))}
 
             {otherPlaces.length ? (
