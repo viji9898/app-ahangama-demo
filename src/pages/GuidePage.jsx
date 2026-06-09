@@ -139,6 +139,7 @@ export default function GuidePage() {
                     className="home-hero-title"
                     style={{
                       margin: 0,
+                      transform: "translateY(-50px)",
                       color: "#FFFFFF",
                       fontWeight: 500,
                       fontFamily:
@@ -259,7 +260,7 @@ export default function GuidePage() {
                   <Title
                     className="home-hero-title"
                     style={{
-                      margin: 0,
+                      margin: "0 0 56px",
                       color: "#FFFFFF",
                       fontWeight: 500,
                       fontFamily:
@@ -452,26 +453,6 @@ export default function GuidePage() {
                   </Paragraph>
                 </div>
               </div>
-
-              <a
-                href="https://www.instagram.com/animalsahangama/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  position: "absolute",
-                  right: "clamp(32px, 4.8vw, 72px)",
-                  bottom: "clamp(28px, 4vw, 48px)",
-                  zIndex: 4,
-                  color: "#FFFFFF",
-                  textDecoration: "none",
-                  fontSize: "clamp(16px, 1.45vw, 19px)",
-                  lineHeight: 1.72,
-                  borderBottom: "1px solid rgba(255,255,255,0.65)",
-                  paddingBottom: 6,
-                }}
-              >
-                #Animals
-              </a>
             </div>
           </div>
         </div>
@@ -547,7 +528,7 @@ export default function GuidePage() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
+                    justifyContent: "flex-end",
                     minHeight: "100svh",
                     maxWidth: 760,
                     padding:
@@ -558,6 +539,7 @@ export default function GuidePage() {
                     className="home-hero-title"
                     style={{
                       margin: 0,
+                      transform: "translateY(-50px)",
                       color: "#FFFFFF",
                       fontWeight: 500,
                       fontFamily:
@@ -580,11 +562,12 @@ export default function GuidePage() {
                 rel="noopener noreferrer"
                 style={{
                   position: "absolute",
-                  left: "clamp(32px, 4.8vw, 72px)",
+                  right: "clamp(32px, 4.8vw, 72px)",
                   bottom: "clamp(28px, 4vw, 48px)",
                   zIndex: 4,
                   color: "#FFFFFF",
                   textDecoration: "none",
+                  textAlign: "right",
                   fontSize: "clamp(16px, 1.45vw, 19px)",
                   lineHeight: 1.72,
                   borderBottom: "1px solid rgba(255,255,255,0.65)",
@@ -668,7 +651,7 @@ export default function GuidePage() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
+                    justifyContent: "flex-end",
                     minHeight: "100svh",
                     maxWidth: 760,
                     padding:
@@ -711,6 +694,26 @@ export default function GuidePage() {
                   </Paragraph>
                 </div>
               </div>
+
+              <a
+                href="https://www.instagram.com/animalsahangama/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  position: "absolute",
+                  right: "clamp(32px, 4.8vw, 72px)",
+                  bottom: "clamp(28px, 4vw, 48px)",
+                  zIndex: 4,
+                  color: "#FFFFFF",
+                  textDecoration: "none",
+                  fontSize: "clamp(16px, 1.45vw, 19px)",
+                  lineHeight: 1.72,
+                  borderBottom: "1px solid rgba(255,255,255,0.65)",
+                  paddingBottom: 6,
+                }}
+              >
+                #Animals
+              </a>
             </div>
           </div>
         </div>
