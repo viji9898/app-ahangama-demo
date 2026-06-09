@@ -4,13 +4,16 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 
-const { Text, Title } = Typography;
+const { Paragraph, Text, Title } = Typography;
 
 const GUIDE_HERO_IMAGE =
   "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207";
 
 const GUIDE_CONTENT_IMAGE =
   "https://stokedsurfadventures.com/wp-content/uploads/2024/05/Gota-Dagua-sri-lanka-surf-camp-ahangama-learn-to-surf-coaching-kabalana-stoked-surf-adventures-14-copy.jpg";
+
+const GUIDE_OVERVIEW_IMAGE =
+  "https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/944/images/1440_6e0-1635949941.webp";
 
 const GUIDE_CONTENT_LINKS = [
   "Ahangama Overview",
@@ -300,6 +303,147 @@ export default function GuidePage() {
                       </a>
                     ))}
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
+        <div className="dm-wrap">
+          <div
+            className="ahg-hero"
+            style={{
+              width: "100vw",
+              marginLeft: "calc(50% - 50vw)",
+              marginRight: "calc(50% - 50vw)",
+              borderRadius: 0,
+              background: "#FFFFFF",
+              boxShadow: "none",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="home-hero-media-layer"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  className="home-hero-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(90deg, rgba(10,14,18,0.84) 0%, rgba(10,14,18,0.72) 26%, rgba(10,14,18,0.44) 56%, rgba(10,14,18,0.1) 100%)",
+                    pointerEvents: "none",
+                    zIndex: 2,
+                  }}
+                />
+                <img
+                  className="home-hero-image"
+                  src={GUIDE_OVERVIEW_IMAGE}
+                  alt="Ahangama coastal landscape"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center center",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: "none",
+                  margin: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    minHeight: "100svh",
+                    maxWidth: 760,
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                  }}
+                >
+                  <Text
+                    style={{
+                      display: "block",
+                      marginBottom: 18,
+                      color: "#FFFFFF",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: 1.6,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Overview
+                  </Text>
+
+                  <Title
+                    className="home-hero-title"
+                    style={{
+                      margin: 0,
+                      color: "#FFFFFF",
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Ahangama
+                    </span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Overview
+                    </span>
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginTop: 24,
+                      marginBottom: 0,
+                      maxWidth: 640,
+                      color: "#FFFFFF",
+                      fontSize: "clamp(16px, 1.45vw, 19px)",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    Once a sleepy stretch of local fishing shacks, Ahangama has
+                    quietly evolved into the South Coast's coolest, most curated
+                    coastal hub. It has successfully dodged the overdeveloped
+                    chaos of other global surf towns, maintaining a delicate
+                    balance between slow island living and a thriving, modern
+                    aesthetic. If you are looking for barefoot luxury,
+                    world-class waves, and jungle-fringed cafes, you have found
+                    your spot.
+                  </Paragraph>
                 </div>
               </div>
             </div>
