@@ -1,0 +1,311 @@
+import React from "react";
+import { Typography } from "antd";
+import SiteLayout from "../components/layout/SiteLayout";
+import { Seo } from "../app/seo";
+import { absUrl } from "../app/siteUrl";
+
+const { Text, Title } = Typography;
+
+const GUIDE_HERO_IMAGE =
+  "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207";
+
+const GUIDE_CONTENT_IMAGE =
+  "https://stokedsurfadventures.com/wp-content/uploads/2024/05/Gota-Dagua-sri-lanka-surf-camp-ahangama-learn-to-surf-coaching-kabalana-stoked-surf-adventures-14-copy.jpg";
+
+const GUIDE_CONTENT_LINKS = [
+  "Ahangama Overview",
+  "Area Map",
+  "Where to Stay ?",
+  "Eat & Drink",
+  "Experiences & Surf Breaks",
+  "Wellness & Healing",
+  "Nightlife",
+  "Retail & Concept Stores",
+  "Wildlife & Nature",
+  "Local Culture & Etiquette",
+  "Essential Travel Info",
+  "Suggested Itineraries",
+  "Insider Tips (Things Nobody Tells You)",
+  "Connect With Us",
+];
+
+export default function GuidePage() {
+  const canonical = absUrl("/guide");
+
+  return (
+    <SiteLayout navOverlayHero showFooter={false} showNav={false}>
+      <Seo
+        title="Ahangama 2026/2027 Season Guide"
+        description="Ahangama 2026/2027 Season Guide."
+        canonical={canonical}
+        ogImage={GUIDE_HERO_IMAGE}
+      />
+
+      <div
+        className="dm-canvas"
+        style={{
+          marginTop: 0,
+          paddingTop: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+        }}
+      >
+        <div className="dm-wrap">
+          <div
+            className="ahg-hero"
+            style={{
+              width: "100vw",
+              marginLeft: "calc(50% - 50vw)",
+              marginRight: "calc(50% - 50vw)",
+              borderRadius: 0,
+              background: "#FFFFFF",
+              boxShadow: "none",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="home-hero-media-layer"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  className="home-hero-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(90deg, rgba(10,14,18,0.82) 0%, rgba(10,14,18,0.66) 28%, rgba(10,14,18,0.34) 58%, rgba(10,14,18,0.08) 100%)",
+                    pointerEvents: "none",
+                    zIndex: 2,
+                  }}
+                />
+                <img
+                  className="home-hero-image"
+                  src={GUIDE_HERO_IMAGE}
+                  alt="Ahangama coastline"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center center",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: "none",
+                  margin: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    minHeight: "100svh",
+                    maxWidth: 780,
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                  }}
+                >
+                  <Title
+                    className="home-hero-title"
+                    style={{
+                      margin: 0,
+                      color: "#FFFFFF",
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Ahangama
+                    </span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF", whiteSpace: "normal" }}
+                    >
+                      2026/2027 Season Guide
+                    </span>
+                  </Title>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
+        <div className="dm-wrap">
+          <div
+            className="ahg-hero"
+            style={{
+              width: "100vw",
+              marginLeft: "calc(50% - 50vw)",
+              marginRight: "calc(50% - 50vw)",
+              borderRadius: 0,
+              background: "#FFFFFF",
+              boxShadow: "none",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="home-hero-media-layer"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  className="home-hero-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(90deg, rgba(10,14,18,0.86) 0%, rgba(10,14,18,0.76) 28%, rgba(10,14,18,0.46) 58%, rgba(10,14,18,0.12) 100%)",
+                    pointerEvents: "none",
+                    zIndex: 2,
+                  }}
+                />
+                <img
+                  className="home-hero-image"
+                  src={GUIDE_CONTENT_IMAGE}
+                  alt="Surf lesson in Ahangama"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center center",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: "none",
+                  margin: 0,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    minHeight: "100svh",
+                    maxWidth: 920,
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                  }}
+                >
+                  <Text
+                    style={{
+                      display: "block",
+                      marginBottom: 18,
+                      color: "#FFFFFF",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: 1.6,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Content
+                  </Text>
+
+                  <Title
+                    className="home-hero-title"
+                    style={{
+                      margin: 0,
+                      color: "#FFFFFF",
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Guide
+                    </span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF", whiteSpace: "normal" }}
+                    >
+                      Contents
+                    </span>
+                  </Title>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns:
+                        "repeat(auto-fit, minmax(220px, 1fr))",
+                      gap: 12,
+                      marginTop: 26,
+                      maxWidth: 880,
+                    }}
+                  >
+                    {GUIDE_CONTENT_LINKS.map((item, index) => (
+                      <a
+                        key={item}
+                        href={`#guide-section-${index + 1}`}
+                        style={{
+                          display: "block",
+                          padding: "0 0 12px",
+                          borderBottom: "1px solid rgba(32,30,27,0.72)",
+                          color: "#FFFFFF",
+                          textDecoration: "none",
+                          fontSize: "clamp(16px, 1.45vw, 19px)",
+                          lineHeight: 1.72,
+                          background: "transparent",
+                        }}
+                      >
+                        {item}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </SiteLayout>
+  );
+}
