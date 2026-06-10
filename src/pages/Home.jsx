@@ -110,7 +110,7 @@ const THREE_DAYS_FEATURED_PLACES = [
 
 const THIS_WEEK_FEATURES = [
   {
-    category: "Editorial",
+    category: "Shop Guide",
     title: "The Living Room Concept Store",
     href: "/the-living-room-concept-store",
     image:
