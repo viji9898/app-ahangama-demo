@@ -276,7 +276,11 @@ export default function PabcPage() {
                   </div>
 
                   <Space wrap size={12}>
-                    <Button type="primary" size="large" href="#pabc-signup-form">
+                    <Button
+                      type="primary"
+                      size="large"
+                      href="#pabc-signup-form"
+                    >
                       Unlock Your Offer
                     </Button>
                   </Space>
@@ -329,7 +333,11 @@ export default function PabcPage() {
                 >
                   A Preferential Rate On The Ahangama Pass.
                 </Title>
-                <Row gutter={[24, 24]} align="middle" style={{ marginBottom: 24 }}>
+                <Row
+                  gutter={[24, 24]}
+                  align="middle"
+                  style={{ marginBottom: 24 }}
+                >
                   <Col xs={24} md={13}>
                     <Paragraph
                       style={{

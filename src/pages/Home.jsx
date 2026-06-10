@@ -111,6 +111,13 @@ const THREE_DAYS_FEATURED_PLACES = [
 const THIS_WEEK_FEATURES = [
   {
     category: "Editorial",
+    title: "The Living Room Concept Store",
+    href: "/the-living-room-concept-store",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
+  },
+  {
+    category: "Editorial",
     title: "Why Surfing Changed Everything in Ahangama",
     href: "/why-surfing-changed-everything-in-ahangama",
     image:
