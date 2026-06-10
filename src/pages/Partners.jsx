@@ -27,6 +27,11 @@ const HERO_IMAGE =
 const HOME_PAGE_HERO_IMAGE =
   "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
 
+const AHANGAMA_GOOGLE_MAP_URL =
+  "https://maps.app.goo.gl/nh4DYnE3haE3euCT6";
+const AHANGAMA_GOOGLE_MAP_EMBED_URL =
+  "https://www.google.com/maps?q=Ahangama,Sri%20Lanka&z=14&output=embed";
+
 const PRODUCT_TIERS = [
   {
     name: "Pass Partner",
@@ -839,7 +844,7 @@ export default function Partners() {
 
                                       <iframe
                                         title="Ahangama Google Map preview"
-                                        src="https://www.google.com/maps?q=Ahangama,Sri%20Lanka&z=14&output=embed"
+                                        src={AHANGAMA_GOOGLE_MAP_EMBED_URL}
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
                                         style={{
@@ -930,29 +935,71 @@ export default function Partners() {
                                     {showAhangamaMapPreview &&
                                     point ===
                                       "Strong visibility across mobile devices" ? (
-                                      <a
-                                        href="https://maps.app.goo.gl/nh4DYnE3haE3euCT6"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{
-                                          display: "inline-flex",
-                                          alignItems: "center",
-                                          justifyContent: "center",
-                                          justifySelf: "start",
-                                          padding: "12px 18px",
-                                          borderRadius: 999,
-                                          background: "#2F2A24",
-                                          color: "#FFFFFF",
-                                          fontSize: 14,
-                                          fontWeight: 600,
-                                          lineHeight: 1,
-                                          textDecoration: "none",
-                                          boxShadow:
-                                            "0 14px 30px rgba(47, 42, 36, 0.14)",
-                                        }}
-                                      >
-                                        Open in Google Maps
-                                      </a>
+                                      <div style={{ display: "grid", gap: 12 }}>
+                                        <a
+                                          href={AHANGAMA_GOOGLE_MAP_URL}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          style={{
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            justifySelf: "start",
+                                            padding: "12px 18px",
+                                            borderRadius: 999,
+                                            background: "#2F2A24",
+                                            color: "#FFFFFF",
+                                            fontSize: 14,
+                                            fontWeight: 600,
+                                            lineHeight: 1,
+                                            textDecoration: "none",
+                                            boxShadow:
+                                              "0 14px 30px rgba(47, 42, 36, 0.14)",
+                                          }}
+                                        >
+                                          Open in Google Maps
+                                        </a>
+                                        <div
+                                          style={{
+                                            display: "flex",
+                                            flexWrap: "wrap",
+                                            gap: 10,
+                                          }}
+                                        >
+                                          {[
+                                            "Best Cafes",
+                                            "Best Hotels",
+                                            "Best of Wellness",
+                                          ].map((item) => (
+                                            <a
+                                              key={item}
+                                              href={AHANGAMA_GOOGLE_MAP_URL}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              style={{
+                                                display: "inline-flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                padding: "10px 16px",
+                                                borderRadius: 999,
+                                                border:
+                                                  "1px solid rgba(86, 72, 57, 0.14)",
+                                                background: "#FBF8F2",
+                                                color: "#2F2A24",
+                                                fontSize: 13,
+                                                fontWeight: 600,
+                                                lineHeight: 1,
+                                                cursor: "pointer",
+                                                textDecoration: "none",
+                                                boxShadow:
+                                                  "0 8px 18px rgba(47, 42, 36, 0.05)",
+                                              }}
+                                            >
+                                              {item}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      </div>
                                     ) : null}
                                   </div>
                                 </div>
@@ -1000,17 +1047,6 @@ export default function Partners() {
                         >
                           {selectedReachChannel.description}
                         </Paragraph>
-                        <Text
-                          style={{
-                            display: "block",
-                            marginBottom: 12,
-                            color: "#2F2A24",
-                            fontSize: 14,
-                            fontWeight: 700,
-                            letterSpacing: 1.2,
-                            textTransform: "uppercase",
-                          }}
-                        ></Text>
                         <div style={{ maxWidth: 760 }}>
                           {selectedReachChannel.reach.map((point) => (
                             <div
