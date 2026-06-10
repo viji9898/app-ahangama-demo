@@ -115,6 +115,7 @@ const AUDIENCE_REACH_CHANNELS = [
       "150,000+ annual page views",
       "Visitors from 80+ countries",
       "High-intent travel audience planning trips to Sri Lanka",
+      "These are estimated figures. We will invest monthly in Google Search Ads and paid targeted promotion to reach high-intent audiences.",
     ],
   },
   {
@@ -644,7 +645,7 @@ export default function Partners() {
                                         alignItems: "center",
                                         justifyContent: "space-between",
                                         marginTop: 10,
-                                        marginBottom: 248,
+                                        marginBottom: 170,
                                       }}
                                     >
                                       <div
