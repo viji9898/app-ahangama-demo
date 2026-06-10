@@ -243,8 +243,7 @@ export default function TheLivingRoomConceptStorePage() {
                         style={{
                           color: "#FFFFFF",
                           textDecoration: "none",
-                          borderBottom:
-                            "1px solid rgba(255, 255, 255, 0.78)",
+                          borderBottom: "1px solid rgba(255, 255, 255, 0.78)",
                           paddingBottom: 1,
                         }}
                       >
@@ -252,13 +251,19 @@ export default function TheLivingRoomConceptStorePage() {
                           className="home-hero-titleLine"
                           style={{ color: "#FFFFFF" }}
                         >
-                          The Living Room
+                          The Living
                         </span>
                         <span
                           className="home-hero-titleLine"
                           style={{ color: "#FFFFFF" }}
                         >
-                          Concept Store
+                          Room Concept
+                        </span>
+                        <span
+                          className="home-hero-titleLine"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          Store
                         </span>
                       </a>
                     </Title>
@@ -287,9 +292,9 @@ export default function TheLivingRoomConceptStorePage() {
                         lineHeight: 1.72,
                       }}
                     >
-                      A design-led retail and coffee space in Ahangama,
-                      shaped around the feeling of home, slow discovery and a
-                      more thoughtful way to spend time in town.
+                      A design-led retail and coffee space in Ahangama, shaped
+                      around the feeling of home, slow discovery and a more
+                      thoughtful way to spend time in town.
                     </Paragraph>
                   </div>
                 </div>
