@@ -17,7 +17,7 @@ import { Card, Col, Row, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
+import iphoneScreenshotPass from "../assets/iphone-screenshot-pass.jpg";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -785,17 +785,27 @@ export default function Partners() {
                                       />
                                     </>
                                   ) : (
-                                    <img
-                                      src={heroPassAppleWallet}
-                                      alt="Ahangama Pass wallet preview"
+                                    <div
                                       style={{
                                         position: "absolute",
                                         inset: 0,
-                                        width: "100%",
-                                        height: "100%",
-                                        objectFit: "cover",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        padding: 14,
+                                        background: "#0f1713",
                                       }}
-                                    />
+                                    >
+                                      <img
+                                        src={iphoneScreenshotPass}
+                                        alt="Ahangama Pass iPhone preview"
+                                        style={{
+                                          width: "100%",
+                                          height: "100%",
+                                          objectFit: "contain",
+                                        }}
+                                      />
+                                    </div>
                                   )}
                                 </div>
                               </div>
