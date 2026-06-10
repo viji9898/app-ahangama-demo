@@ -57,6 +57,7 @@ import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
+import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -114,6 +115,10 @@ const routes = [
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: "/guide", element: <GuidePage /> },
+  {
+    path: "/the-living-room-concept-store",
+    element: <TheLivingRoomConceptStorePage />,
+  },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
   { path: "/offers", element: <FullListPage /> },
