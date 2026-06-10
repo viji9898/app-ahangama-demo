@@ -17,7 +17,7 @@ import { Card, Col, Row, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import iphoneScreenshotPass from "../assets/iphone-screenshot-pass.jpg";
+import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -790,19 +790,23 @@ export default function Partners() {
                                         position: "absolute",
                                         inset: 0,
                                         display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
+                                        alignItems: "flex-start",
+                                        justifyContent: "flex-start",
                                         padding: 14,
                                         background: "#0f1713",
                                       }}
                                     >
                                       <img
-                                        src={iphoneScreenshotPass}
+                                        src={ahangamaPassMobileWallet}
                                         alt="Ahangama Pass iPhone preview"
                                         style={{
                                           width: "100%",
                                           height: "100%",
                                           objectFit: "contain",
+                                          objectPosition: "top center",
+                                          borderRadius: 18,
+                                          transform: "scale(1.1)",
+                                          transformOrigin: "top center",
                                         }}
                                       />
                                     </div>
