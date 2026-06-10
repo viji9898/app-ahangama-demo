@@ -2257,65 +2257,6 @@ export default function Partners() {
               </Row>
             </div>
 
-            <div
-              style={{
-                borderTop: "1px solid rgba(86, 72, 57, 0.12)",
-                paddingTop: 28,
-                maxWidth: 920,
-              }}
-            >
-              <Text
-                style={{
-                  display: "block",
-                  marginBottom: 14,
-                  color: "#8A7B68",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.6,
-                  textTransform: "uppercase",
-                }}
-              >
-                Best Fit
-              </Text>
-              <Title
-                level={3}
-                style={{
-                  marginBottom: 18,
-                  color: "#2F2A24",
-                  fontFamily:
-                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                  fontSize: "clamp(28px, 3vw, 40px)",
-                  lineHeight: 1.05,
-                }}
-              >
-                Built for the businesses shaping the Ahangama destination.
-              </Title>
-              <Row gutter={[16, 16]}>
-                {PLATFORM_AREAS.map((item) => (
-                  <Col xs={24} sm={12} key={item}>
-                    <Card
-                      style={{
-                        borderRadius: "20px",
-                        background: "#FFFFFF",
-                        border: "1px solid rgba(86, 72, 57, 0.12)",
-                        boxShadow: "0 12px 30px rgba(47, 42, 36, 0.05)",
-                      }}
-                      bodyStyle={{ padding: "18px 20px" }}
-                    >
-                      <Text
-                        style={{
-                          color: "#2F2A24",
-                          fontSize: 16,
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {item}
-                      </Text>
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-            </div>
           </div>
         </div>
       </div>
