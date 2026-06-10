@@ -18,6 +18,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
+import coasterScanAhangamaGuideImage from "../assets/coaster-scan-ahangama-guide.jpg";
 import ahangamaScanToGetGuideImage from "../assets/ahangama-scan-to-get-guide.jpg";
 import inRoomPromotionImage from "../assets/in-room-promotion.jpg";
 import stickerAhangamaVenueImage from "../assets/sticker-ahangama-venue.jpg";
@@ -161,6 +162,7 @@ const GUEST_TOUCH_POINTS = [
   {
     title: "Coasters",
     subtitle: "On Tables",
+    image: coasterScanAhangamaGuideImage,
     description:
       "Branded coasters with QR-led discovery prompts placed in cafes, bars and restaurants.",
     points: [
