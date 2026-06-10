@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Space, Tag } from "antd";
+import { Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import { Seo } from "../app/seo";
@@ -107,7 +107,7 @@ export default function TheLivingRoomConceptStorePage() {
   const canonical = absUrl("/the-living-room-concept-store");
 
   return (
-    <SiteLayout>
+    <SiteLayout navOverlayHero>
       <Seo
         title="The Living Room Concept Store"
         description="An editorial page about The Living Room Concept Store in Ahangama."
@@ -115,116 +115,185 @@ export default function TheLivingRoomConceptStorePage() {
         ogImage={HERO_IMAGE}
       />
 
-      <div className="dm-heroCut" style={{ background: "#ffffff" }} />
-      <div className="dm-canvas" style={{ background: "#ffffff" }}>
-        <div
-          style={{
-            position: "relative",
-            minHeight: "calc(100vh - 88px)",
-            overflow: "hidden",
-            marginBottom: 32,
-            background: "#ffffff",
-          }}
-        >
-          <img
-            src={HERO_IMAGE}
-            alt="The Living Room Concept Store showroom"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center center",
-            }}
-          />
-
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(180deg, rgba(17,16,14,0.08) 0%, rgba(17,16,14,0.16) 34%, rgba(17,16,14,0.5) 100%)",
-            }}
-          />
-
-          <div
-            style={{
-              position: "relative",
-              zIndex: 1,
-              minHeight: "calc(100vh - 88px)",
-              maxWidth: 1180,
-              margin: "0 auto",
-              display: "flex",
-              alignItems: "flex-end",
-              padding:
-                "clamp(28px, 4vw, 44px) clamp(20px, 4vw, 36px) clamp(32px, 6vw, 56px)",
-              boxSizing: "border-box",
-            }}
-          >
-            <div style={{ maxWidth: 760 }}>
-              <Space wrap size={[8, 8]} style={{ marginBottom: 14 }}>
-                <Tag
-                  style={{
-                    borderRadius: 999,
-                    padding: "6px 12px",
-                    color: "#ffffff",
-                    borderColor: "rgba(255,255,255,0.32)",
-                    background: "rgba(255,255,255,0.14)",
-                    backdropFilter: "blur(10px)",
-                  }}
-                >
-                  Editorial Guide
-                </Tag>
-                <Tag
-                  style={{
-                    borderRadius: 999,
-                    padding: "6px 12px",
-                    color: "#ffffff",
-                    borderColor: "rgba(255,255,255,0.32)",
-                    background: "rgba(255,255,255,0.14)",
-                    backdropFilter: "blur(10px)",
-                  }}
-                >
-                  South Coast Notes
-                </Tag>
-              </Space>
-
-              <Title
-                level={1}
-                className="twelve-things-heroTitle"
+      <div
+        className="dm-canvas"
+        style={{
+          marginTop: 0,
+          paddingTop: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          background: "#ffffff",
+        }}
+      >
+        <div className="dm-wrap">
+          <div>
+            <div
+              className="ahg-hero"
+              style={{
+                width: "100vw",
+                marginLeft: "calc(50% - 50vw)",
+                marginRight: "calc(50% - 50vw)",
+                borderRadius: 0,
+                background: "#FFFFFF",
+                boxShadow: "none",
+              }}
+            >
+              <div
                 style={{
-                  marginTop: 0,
-                  marginBottom: 0,
-                  color: "#ffffff",
-                  fontSize: "clamp(42px, 6vw, 82px)",
-                  lineHeight: 0.97,
-                  letterSpacing: -1.8,
-                  fontFamily:
-                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                  position: "relative",
+                  overflow: "hidden",
+                  minHeight: "100svh",
                 }}
               >
-                {renderLivingRoomLinkedText(
-                  "Living Room Concept Store",
-                  {
-                    color: "#ffffff",
-                    borderBottom: "1px solid rgba(255, 255, 255, 0.78)",
-                  },
-                )}
-              </Title>
+                <div
+                  aria-hidden="true"
+                  className="home-hero-media-layer"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    overflow: "hidden",
+                  }}
+                >
+                  <div
+                    className="home-hero-overlay"
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background:
+                        "linear-gradient(90deg, rgba(10,14,18,0.82) 0%, rgba(10,14,18,0.74) 20%, rgba(10,14,18,0.5) 38%, rgba(10,14,18,0.2) 56%, rgba(10,14,18,0.04) 74%, rgba(10,14,18,0) 100%)",
+                      pointerEvents: "none",
+                      zIndex: 2,
+                    }}
+                  />
+                  <img
+                    className="home-hero-image"
+                    src={HERO_IMAGE}
+                    alt="The Living Room Concept Store showroom"
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      zIndex: 1,
+                      display: "block",
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center center",
+                    }}
+                  />
+                </div>
 
-              <Text
-                style={{
-                  display: "block",
-                  marginTop: 14,
-                  color: "rgba(255,255,255,0.82)",
-                  fontSize: 12,
-                  letterSpacing: 0.2,
-                }}
-              >
-                Words by Ahangama Editorial.
-              </Text>
+                <div
+                  style={{
+                    position: "relative",
+                    zIndex: 3,
+                    width: "100%",
+                    maxWidth: 1100,
+                    margin: "0 auto",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      minHeight: "100svh",
+                      maxWidth: 620,
+                      padding:
+                        "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 12,
+                        marginBottom: 18,
+                      }}
+                    >
+                      {["Shop Guide", "Ahangama Editorial"].map((item) => (
+                        <Text
+                          key={item}
+                          style={{
+                            color: "#FFFFFF",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.6,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {item}
+                        </Text>
+                      ))}
+                    </div>
+
+                    <Title
+                      className="home-hero-title"
+                      style={{
+                        margin: 0,
+                        color: "#FFFFFF",
+                        fontWeight: 500,
+                        fontFamily:
+                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                      }}
+                    >
+                      <a
+                        href={LIVING_ROOM_INSTAGRAM_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#FFFFFF",
+                          textDecoration: "none",
+                          borderBottom:
+                            "1px solid rgba(255, 255, 255, 0.78)",
+                          paddingBottom: 1,
+                        }}
+                      >
+                        <span
+                          className="home-hero-titleLine"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          The Living Room
+                        </span>
+                        <span
+                          className="home-hero-titleLine"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          Concept Store
+                        </span>
+                      </a>
+                    </Title>
+
+                    <Text
+                      style={{
+                        display: "block",
+                        marginTop: 14,
+                        color: "#FFFFFF",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: 1.6,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      From the Editor
+                    </Text>
+
+                    <Paragraph
+                      style={{
+                        marginTop: 24,
+                        marginBottom: 22,
+                        maxWidth: 520,
+                        color: "#FFFFFF",
+                        fontSize: "clamp(16px, 1.45vw, 19px)",
+                        lineHeight: 1.72,
+                      }}
+                    >
+                      A design-led retail and coffee space in Ahangama,
+                      shaped around the feeling of home, slow discovery and a
+                      more thoughtful way to spend time in town.
+                    </Paragraph>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
