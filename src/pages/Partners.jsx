@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BookOutlined,
   CalendarOutlined,
@@ -100,15 +100,114 @@ const PLATFORM_AREAS = [
 ];
 
 const AUDIENCE_REACH_CHANNELS = [
-  { label: "Ahangama.com", icon: HomeOutlined },
-  { label: "Ahangama Pass", icon: TagOutlined },
-  { label: "Ahangama Map", icon: EnvironmentOutlined },
-  { label: "Ahangama Guide 2026/27", icon: BookOutlined },
-  { label: "Visitor Email Campaigns", icon: MailOutlined },
-  { label: "Hotel Partnerships", icon: HomeOutlined },
-  { label: "Concierge Recommendations", icon: NotificationOutlined },
-  { label: "Instagram & Social Media", icon: InstagramOutlined },
-  { label: "Editorial Features", icon: ReadOutlined },
+  {
+    label: "Ahangama.com",
+    icon: HomeOutlined,
+    description:
+      "The leading independent guide to Ahangama, helping visitors discover where to stay, eat, work, surf, and explore.",
+    reach: [
+      "50,000+ annual website visitors",
+      "150,000+ annual page views",
+      "Visitors from 80+ countries",
+      "High-intent travel audience planning trips to Sri Lanka",
+    ],
+  },
+  {
+    label: "Ahangama Pass",
+    icon: TagOutlined,
+    description:
+      "A visitor membership programme connecting travellers with local businesses through exclusive offers, experiences, and recommendations.",
+    reach: [
+      "3,000+ pass holders annually",
+      "15,000+ offer views per month",
+      "Visitors actively seeking places to spend during their stay",
+      "Direct exposure at the point of decision-making",
+    ],
+  },
+  {
+    label: "Ahangama Map",
+    icon: EnvironmentOutlined,
+    description:
+      "The most comprehensive visitor map of Ahangama, featuring curated venues, experiences, services, and local recommendations.",
+    reach: [
+      "25,000+ annual map views",
+      "Frequently accessed by visitors already in destination",
+      "Used for navigation and venue discovery",
+      "Strong visibility across mobile devices",
+    ],
+  },
+  {
+    label: "Ahangama Guide 2026/27",
+    icon: BookOutlined,
+    description:
+      "A printed and digital editorial guide showcasing the best of Ahangama through stories, recommendations, and local insights.",
+    reach: [
+      "5,000 printed copies annually",
+      "Distributed through hotels, cafes, villas, surf camps, and partner venues",
+      "Long shelf life and repeated readership",
+      "Premium publication designed to be kept, not discarded",
+    ],
+  },
+  {
+    label: "Visitor Email Campaigns",
+    icon: MailOutlined,
+    description:
+      "Targeted communications sent to visitors before, during, and after their stay in Ahangama.",
+    reach: [
+      "10,000+ subscriber database",
+      "Monthly editorial newsletters",
+      "Seasonal destination guides",
+      "Dedicated partner features and recommendations",
+    ],
+  },
+  {
+    label: "Hotel Partnerships",
+    icon: HomeOutlined,
+    description:
+      "A network of accommodation partners introducing guests to Ahangama experiences, venues, and offers.",
+    reach: [
+      "100+ hotel and villa partners",
+      "Direct access to guests during trip planning and arrival",
+      "Visibility at reception desks, guest welcome packs, and concierge recommendations",
+      "Estimated 50,000+ annual guest impressions",
+    ],
+  },
+  {
+    label: "Concierge Recommendations",
+    icon: NotificationOutlined,
+    description:
+      "Personalised recommendations provided to visitors seeking trusted local advice.",
+    reach: [
+      "High-intent travellers actively looking for places to visit",
+      "Direct referrals from concierge teams and hospitality partners",
+      "Strong conversion due to trusted recommendation format",
+      "Premium audience segment with higher spending potential",
+    ],
+  },
+  {
+    label: "Instagram & Social Media",
+    icon: InstagramOutlined,
+    description:
+      "Daily destination content featuring local businesses, experiences, events, and editorial recommendations.",
+    reach: [
+      "100,000+ monthly impressions",
+      "Destination-focused audience",
+      "Reels, stories, venue features, and editorial content",
+      "Strong engagement from visitors currently travelling in Sri Lanka",
+    ],
+  },
+  {
+    label: "Editorial Features",
+    icon: ReadOutlined,
+    description:
+      "Long-form stories, guides, interviews, and curated recommendations highlighting exceptional businesses and experiences.",
+    reach: [
+      "Featured permanently within Ahangama.com",
+      "Shared across newsletter and social channels",
+      "Search engine visibility throughout the year",
+      "Builds credibility through trusted editorial endorsement",
+    ],
+  },
 ];
 
 const PROMOTIONAL_PRODUCTS = [
@@ -123,6 +222,12 @@ const PROMOTIONAL_PRODUCTS = [
 
 export default function Partners() {
   const canonical = absUrl("/partners");
+  const [activeReachChannel, setActiveReachChannel] = useState(
+    AUDIENCE_REACH_CHANNELS[0].label,
+  );
+  const selectedReachChannel =
+    AUDIENCE_REACH_CHANNELS.find((item) => item.label === activeReachChannel) ??
+    AUDIENCE_REACH_CHANNELS[0];
 
   return (
     <SiteLayout navOverlayHero>
@@ -399,17 +504,30 @@ export default function Partners() {
               >
                 {AUDIENCE_REACH_CHANNELS.map((item) => {
                   const Icon = item.icon;
+                  const isActive = item.label === selectedReachChannel.label;
 
                   return (
                     <div key={item.label}>
-                      <div
+                      <button
+                        type="button"
+                        onClick={() => setActiveReachChannel(item.label)}
                         style={{
                           height: "100%",
                           textAlign: "left",
-                          padding: "16px 0",
+                          width: "100%",
+                          padding: "18px 18px",
                           display: "flex",
                           flexDirection: "column",
                           alignItems: "flex-start",
+                          borderRadius: 18,
+                          border: isActive
+                            ? "1px solid rgba(86, 72, 57, 0.26)"
+                            : "1px solid rgba(86, 72, 57, 0.1)",
+                          background: "#FFFFFF",
+                          boxShadow: isActive
+                            ? "0 14px 32px rgba(47, 42, 36, 0.08)"
+                            : "0 8px 18px rgba(47, 42, 36, 0.04)",
+                          cursor: "pointer",
                         }}
                       >
                         <Icon
@@ -431,11 +549,103 @@ export default function Partners() {
                         >
                           {item.label}
                         </Text>
-                      </div>
+                      </button>
                     </div>
                   );
                 })}
               </div>
+
+              <Card
+                style={{
+                  marginTop: 22,
+                  borderRadius: "20px",
+                  background: "#FFFFFF",
+                  border: "1px solid rgba(86, 72, 57, 0.12)",
+                  boxShadow: "0 14px 36px rgba(47, 42, 36, 0.06)",
+                }}
+                bodyStyle={{ padding: "26px 24px" }}
+              >
+                <Text
+                  style={{
+                    display: "block",
+                    marginBottom: 10,
+                    color: "#8A7B68",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: 1.6,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Selected Channel
+                </Text>
+                <Title
+                  level={3}
+                  style={{
+                    marginBottom: 12,
+                    color: "#2F2A24",
+                    fontFamily:
+                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    fontSize: "clamp(28px, 3vw, 36px)",
+                    lineHeight: 1.05,
+                  }}
+                >
+                  {selectedReachChannel.label}
+                </Title>
+                <Paragraph
+                  style={{
+                    marginBottom: 18,
+                    color: "#55514B",
+                    fontSize: 17,
+                    lineHeight: 1.75,
+                    maxWidth: 760,
+                  }}
+                >
+                  {selectedReachChannel.description}
+                </Paragraph>
+                <Text
+                  style={{
+                    display: "block",
+                    marginBottom: 12,
+                    color: "#2F2A24",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    letterSpacing: 1.2,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Reach
+                </Text>
+                <div style={{ maxWidth: 760 }}>
+                  {selectedReachChannel.reach.map((point) => (
+                    <div
+                      key={point}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 10,
+                        marginBottom: 10,
+                      }}
+                    >
+                      <CheckCircleOutlined
+                        style={{
+                          color: "#6A8A71",
+                          fontSize: 16,
+                          marginTop: 3,
+                        }}
+                      />
+                      <Text
+                        style={{
+                          color: "#2F2A24",
+                          fontSize: 15,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {point}
+                      </Text>
+                    </div>
+                  ))}
+                </div>
+              </Card>
             </div>
 
             <div style={{ marginBottom: 18 }}>
