@@ -19,6 +19,8 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
 import whatsappConciergeImage from "../assets/whatsapp-concierge.jpg";
+import postcardStandKumbukImage from "../assets/postcard-stand-kumbuk.jpeg";
+import postcardStandThilenisImage from "../assets/postcard-stand-thilenis.jpeg";
 import denitsaPortrait from "../assets/temp/denitsa.jpg";
 import kaffiImage from "../assets/temp/kaffi_image.jpg";
 import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
@@ -37,6 +39,8 @@ const AHANGAMA_GOOGLE_MAP_URL =
 const AHANGAMA_GOOGLE_MAP_EMBED_URL =
   "https://www.google.com/maps?q=Ahangama,Sri%20Lanka&z=14&output=embed";
 const AHANGAMA_GUIDE_PREVIEW_URL = "/guide";
+const PLASTIC_STANDS_IMAGE = postcardStandThilenisImage;
+const POSTCARDS_IMAGE = postcardStandKumbukImage;
 
 const PRODUCT_TIERS = [
   {
@@ -113,6 +117,99 @@ const PLATFORM_AREAS = [
   "Restaurants, cafes and beach clubs",
   "Surf, wellness and experience-led operators",
   "Retail, culture and destination businesses",
+];
+
+const GUEST_TOUCH_POINTS = [
+  {
+    title: "Hotel Welcome Pack",
+    subtitle: "Complimentary Pass",
+    description:
+      "Pass included in welcome packs at partner hotels and villas to reach guests at check-in.",
+    points: [
+      "Ideal for capturing visitors at arrival",
+      "Works through partner hotel and villa distribution",
+      "Introduces the Pass at a high-attention moment",
+    ],
+  },
+  {
+    title: "Plastic Stands",
+    subtitle: "In Venues & Shops",
+    image: PLASTIC_STANDS_IMAGE,
+    description:
+      "Table and counter displays featuring the map, guide and Pass offers in high-traffic venues.",
+    points: [
+      "Placed inside cafes, restaurants, shops and partner venues",
+      "Combines brand presence with QR-led discovery",
+      "Supports ongoing scans throughout the day",
+    ],
+  },
+  {
+    title: "Coasters",
+    subtitle: "On Tables",
+    description:
+      "Branded coasters with QR-led discovery prompts placed in cafes, bars and restaurants.",
+    points: [
+      "Sits directly in front of seated guests",
+      "Useful for repeated passive exposure",
+      "Encourages quick scans in food and drink settings",
+    ],
+  },
+  {
+    title: "Stickers on Venues",
+    subtitle: "Windows & Doors",
+    description:
+      "Partner venue stickers that signal trust, drive scans and increase walk-in awareness.",
+    points: [
+      "Visible from outside and at entry points",
+      "Builds recognition across the town",
+      "Signals participation in the Ahangama ecosystem",
+    ],
+  },
+  {
+    title: "Tuk Tuk Advertising",
+    subtitle: "On the Move",
+    description:
+      "Back-of-tuk placements that create repeated visibility around Ahangama and nearby areas.",
+    points: [
+      "Mobile awareness while visitors move around town",
+      "Strong visibility in traffic and at pickup points",
+      "Good for broad repeated impressions",
+    ],
+  },
+  {
+    title: "Postcards",
+    subtitle: "In Shops & Venues",
+    image: POSTCARDS_IMAGE,
+    description:
+      "Takeaway postcards with map and offer prompts that visitors can keep and carry with them.",
+    points: [
+      "Easy physical takeaway format",
+      "Combines utility with keepsake value",
+      "Extends visibility beyond the venue itself",
+    ],
+  },
+  {
+    title: "Surf Shop Displays",
+    subtitle: "High Intent Traffic",
+    description:
+      "Display stands inside surf retail environments targeting active travellers already in-market.",
+    points: [
+      "Targets a relevant and active travel segment",
+      "Useful for surf-led and lifestyle audiences",
+      "Connects discovery with retail footfall",
+    ],
+  },
+  {
+    title: "Events & Pop-Ups",
+    subtitle: "Local Engagement",
+    description:
+      "Ahangama Pass presence at markets, activations and seasonal events throughout the year.",
+    points: [
+      "Useful for live engagement and direct sign-ups",
+      "Flexible across seasonal activations",
+      "Builds local and visitor awareness simultaneously",
+    ],
+  },
 ];
 
 const AUDIENCE_REACH_CHANNELS = [
@@ -442,12 +539,18 @@ export default function Partners() {
   const [activeReachChannel, setActiveReachChannel] = useState(
     AUDIENCE_REACH_CHANNELS[0].label,
   );
+  const [activeGuestTouchPoint, setActiveGuestTouchPoint] = useState(
+    GUEST_TOUCH_POINTS[0].title,
+  );
   const [activeEmailCampaignStage, setActiveEmailCampaignStage] = useState(
     EMAIL_CAMPAIGN_STAGES[0].label,
   );
   const selectedReachChannel =
     AUDIENCE_REACH_CHANNELS.find((item) => item.label === activeReachChannel) ??
     AUDIENCE_REACH_CHANNELS[0];
+  const selectedGuestTouchPoint =
+    GUEST_TOUCH_POINTS.find((item) => item.title === activeGuestTouchPoint) ??
+    GUEST_TOUCH_POINTS[0];
   const selectedEmailCampaignStage =
     EMAIL_CAMPAIGN_STAGES.find(
       (item) => item.label === activeEmailCampaignStage,
@@ -756,8 +859,8 @@ export default function Partners() {
                               width: "100%",
                               padding: "18px 18px",
                               display: "flex",
-                              flexDirection: "column",
-                              alignItems: "flex-start",
+                              alignItems: "center",
+                              gap: 12,
                               borderRadius: 18,
                               border: isActive
                                 ? "1px solid rgba(86, 72, 57, 0.26)"
@@ -773,8 +876,8 @@ export default function Partners() {
                               style={{
                                 fontSize: 34,
                                 color: "#61766A",
-                                marginBottom: 12,
                                 display: "block",
+                                flex: "0 0 auto",
                               }}
                             />
                             <Text
@@ -1745,6 +1848,215 @@ export default function Partners() {
             </div>
 
             <div style={{ marginBottom: 18 }}>
+              <div style={{ marginBottom: 52 }}>
+                <div style={{ textAlign: "left", marginBottom: 26 }}>
+                  <Text
+                    style={{
+                      display: "block",
+                      marginBottom: 10,
+                      color: "#8A7B68",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: 1.6,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Guest Touch Points
+                  </Text>
+                  <Paragraph
+                    style={{
+                      margin: 0,
+                      color: "#55514B",
+                      fontSize: 18,
+                      lineHeight: 1.7,
+                      maxWidth: 860,
+                    }}
+                  >
+                    Physical placements across Ahangama that put the Pass,
+                    map, guide and partner messaging directly in front of
+                    visitors while they move through the destination.
+                  </Paragraph>
+                </div>
+
+                <Row gutter={[24, 24]} align="top">
+                  <Col xs={24} lg={10}>
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                        gap: 18,
+                      }}
+                    >
+                      {GUEST_TOUCH_POINTS.map((item) => {
+                        const isActive = item.title === selectedGuestTouchPoint.title;
+
+                        return (
+                          <div key={item.title}>
+                            <button
+                              type="button"
+                              onClick={() => setActiveGuestTouchPoint(item.title)}
+                              style={{
+                                height: "100%",
+                                textAlign: "left",
+                                width: "100%",
+                                padding: "18px 18px",
+                                display: "grid",
+                                gap: 6,
+                                borderRadius: 18,
+                                border: isActive
+                                  ? "1px solid rgba(86, 72, 57, 0.26)"
+                                  : "1px solid rgba(86, 72, 57, 0.1)",
+                                background: "#FFFFFF",
+                                boxShadow: isActive
+                                  ? "0 14px 32px rgba(47, 42, 36, 0.08)"
+                                  : "0 8px 18px rgba(47, 42, 36, 0.04)",
+                                cursor: "pointer",
+                              }}
+                            >
+                              <Text
+                                style={{
+                                  color: "#2F2A24",
+                                  fontSize: 16,
+                                  lineHeight: 1.4,
+                                  fontWeight: 600,
+                                  display: "block",
+                                }}
+                              >
+                                {item.title}
+                              </Text>
+                              <Text
+                                style={{
+                                  color: "#8A7B68",
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  letterSpacing: 1.2,
+                                  textTransform: "uppercase",
+                                  display: "block",
+                                }}
+                              >
+                                {item.subtitle}
+                              </Text>
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </Col>
+
+                  <Col xs={24} lg={14}>
+                    <Card
+                      style={{
+                        borderRadius: "20px",
+                        background: "#FFFFFF",
+                        border: "1px solid rgba(86, 72, 57, 0.12)",
+                        boxShadow: "0 14px 36px rgba(47, 42, 36, 0.06)",
+                      }}
+                      bodyStyle={{ padding: "26px 24px" }}
+                    >
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 10,
+                          color: "#8A7B68",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          letterSpacing: 1.6,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Selected Touch Point
+                      </Text>
+                      <Row gutter={[24, 24]} align="top">
+                        {selectedGuestTouchPoint.image ? (
+                          <Col xs={24} md={10}>
+                            <img
+                              src={selectedGuestTouchPoint.image}
+                              alt={selectedGuestTouchPoint.title}
+                              style={{
+                                display: "block",
+                                width: "100%",
+                                aspectRatio: "4 / 5",
+                                objectFit: "cover",
+                                borderRadius: 16,
+                              }}
+                            />
+                          </Col>
+                        ) : null}
+                        <Col xs={24} md={selectedGuestTouchPoint.image ? 14 : 24}>
+                          <Title
+                            level={3}
+                            style={{
+                              marginBottom: 8,
+                              color: "#2F2A24",
+                              fontFamily:
+                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                              fontSize: "clamp(28px, 3vw, 36px)",
+                              lineHeight: 1.02,
+                            }}
+                          >
+                            {selectedGuestTouchPoint.title}
+                          </Title>
+                          <Text
+                            style={{
+                              display: "block",
+                              marginBottom: 16,
+                              color: "#8A7B68",
+                              fontSize: 11,
+                              fontWeight: 700,
+                              letterSpacing: 1.3,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {selectedGuestTouchPoint.subtitle}
+                          </Text>
+                          <Paragraph
+                            style={{
+                              marginBottom: 18,
+                              color: "#55514B",
+                              fontSize: 17,
+                              lineHeight: 1.75,
+                              maxWidth: 760,
+                            }}
+                          >
+                            {selectedGuestTouchPoint.description}
+                          </Paragraph>
+                          <div style={{ maxWidth: 760 }}>
+                            {selectedGuestTouchPoint.points.map((point) => (
+                              <div
+                                key={point}
+                                style={{
+                                  display: "flex",
+                                  alignItems: "flex-start",
+                                  gap: 10,
+                                  marginBottom: 10,
+                                }}
+                              >
+                                <CheckCircleOutlined
+                                  style={{
+                                    color: "#6A8A71",
+                                    fontSize: 16,
+                                    marginTop: 3,
+                                  }}
+                                />
+                                <Text
+                                  style={{
+                                    color: "#2F2A24",
+                                    fontSize: 15,
+                                    lineHeight: 1.6,
+                                  }}
+                                >
+                                  {point}
+                                </Text>
+                              </div>
+                            ))}
+                          </div>
+                        </Col>
+                      </Row>
+                    </Card>
+                  </Col>
+                </Row>
+              </div>
+
               <Text
                 style={{
                   display: "block",
