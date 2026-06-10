@@ -79,6 +79,7 @@ Before testing promo flows:
 - configure `DATABASE_URL`
 - configure `NETLIFY_DATABASE_URL`
 - apply [migrations/001_create_promo_purchases.sql](/Users/viji/DevEnv/ahangama-app/migrations/001_create_promo_purchases.sql) to the promo database
+- apply [migrations/006_create_pass_guests.sql](/Users/viji/DevEnv/ahangama-app/migrations/006_create_pass_guests.sql), [migrations/007_create_passes.sql](/Users/viji/DevEnv/ahangama-app/migrations/007_create_passes.sql), and [migrations/008_create_guest_preferences.sql](/Users/viji/DevEnv/ahangama-app/migrations/008_create_guest_preferences.sql) to the promo database before wiring complimentary hotel guest issuance
 - configure Stripe, SendGrid, and PassKit variables
 
 ## Email Template Testing

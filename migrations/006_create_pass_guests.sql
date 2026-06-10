@@ -1,0 +1,23 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE TABLE IF NOT EXISTS pass_guests (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  full_name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phone TEXT,
+  country TEXT,
+  whatsapp_opt_in BOOLEAN NOT NULL DEFAULT FALSE,
+  marketing_consent BOOLEAN NOT NULL DEFAULT FALSE,
+  source_hotel_slug TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS pass_guests_email_idx
+  ON pass_guests (email);
+
+CREATE INDEX IF NOT EXISTS pass_guests_source_hotel_slug_idx
+  ON pass_guests (source_hotel_slug);
+
+CREATE INDEX IF NOT EXISTS pass_guests_created_at_idx
+  ON pass_guests (created_at DESC);
