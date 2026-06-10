@@ -129,6 +129,7 @@ const AUDIENCE_REACH_CHANNELS = [
       "15,000+ offer views per month",
       "Visitors actively seeking places to spend during their stay",
       "Direct exposure at the point of decision-making",
+      "Primary distribution via hotel partners and travel agents",
     ],
   },
   {
@@ -793,7 +794,7 @@ export default function Partners() {
                                         alignItems: "flex-start",
                                         justifyContent: "flex-start",
                                         padding: 14,
-                                        background: "#0f1713",
+                                        background: "#FFFFFF",
                                       }}
                                     >
                                       <img
