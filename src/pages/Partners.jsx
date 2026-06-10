@@ -17,6 +17,7 @@ import { Card, Col, Row, Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -236,6 +237,8 @@ export default function Partners() {
     AUDIENCE_REACH_CHANNELS[0];
   const showAhangamaWebsitePreview =
     selectedReachChannel.label === "Ahangama.com";
+  const showAhangamaPassPreview =
+    selectedReachChannel.label === "Ahangama Pass";
 
   return (
     <SiteLayout navOverlayHero>
@@ -576,7 +579,7 @@ export default function Partners() {
                     }}
                     bodyStyle={{ padding: "26px 24px" }}
                   >
-                    {showAhangamaWebsitePreview ? (
+                    {showAhangamaWebsitePreview || showAhangamaPassPreview ? (
                       <div>
                         <Text
                           style={{
@@ -618,166 +621,182 @@ export default function Partners() {
                                     width: "100%",
                                   }}
                                 >
-                                  <div
-                                    style={{
-                                      position: "absolute",
-                                      top: 10,
-                                      left: "50%",
-                                      transform: "translateX(-50%)",
-                                      width: 128,
-                                      height: 24,
-                                      background: "#111111",
-                                      borderRadius: 16,
-                                      zIndex: 5,
-                                    }}
-                                  />
-                                  <div
-                                    style={{
-                                      position: "relative",
-                                      zIndex: 3,
-                                      padding: "28px 16px 0",
-                                      color: "#FFFFFF",
-                                    }}
-                                  >
-                                    <div
-                                      style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        marginTop: 10,
-                                        marginBottom: 170,
-                                      }}
-                                    >
+                                  {showAhangamaWebsitePreview ? (
+                                    <>
                                       <div
                                         style={{
-                                          fontFamily:
-                                            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                          fontSize: 19,
-                                          lineHeight: 1,
-                                          letterSpacing: 0.2,
+                                          position: "absolute",
+                                          top: 10,
+                                          left: "50%",
+                                          transform: "translateX(-50%)",
+                                          width: 128,
+                                          height: 24,
+                                          background: "#111111",
+                                          borderRadius: 16,
+                                          zIndex: 5,
+                                        }}
+                                      />
+                                      <div
+                                        style={{
+                                          position: "relative",
+                                          zIndex: 3,
+                                          padding: "28px 16px 0",
                                           color: "#FFFFFF",
                                         }}
                                       >
-                                        AHANGAMA
+                                        <div
+                                          style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "space-between",
+                                            marginTop: 10,
+                                            marginBottom: 170,
+                                          }}
+                                        >
+                                          <div
+                                            style={{
+                                              fontFamily:
+                                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                              fontSize: 19,
+                                              lineHeight: 1,
+                                              letterSpacing: 0.2,
+                                              color: "#FFFFFF",
+                                            }}
+                                          >
+                                            AHANGAMA
+                                          </div>
+                                          <div
+                                            style={{
+                                              display: "flex",
+                                              alignItems: "center",
+                                              gap: 16,
+                                            }}
+                                          >
+                                            <HeartOutlined
+                                              style={{ color: "#FFFFFF", fontSize: 17 }}
+                                            />
+                                            <MenuOutlined
+                                              style={{ color: "#FFFFFF", fontSize: 20 }}
+                                            />
+                                          </div>
+                                        </div>
+
+                                        <div
+                                          style={{
+                                            display: "flex",
+                                            gap: 16,
+                                            marginBottom: 18,
+                                            flexWrap: "wrap",
+                                            color: "#FFFFFF",
+                                            fontSize: 9,
+                                            fontWeight: 700,
+                                            letterSpacing: 1.4,
+                                            textTransform: "uppercase",
+                                          }}
+                                        >
+                                          <span>Week 24</span>
+                                          <span>Updated Weekly</span>
+                                        </div>
+
+                                        <div
+                                          style={{
+                                            fontFamily:
+                                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                            fontSize: 34,
+                                            lineHeight: 0.86,
+                                            color: "#FFFFFF",
+                                            marginBottom: 8,
+                                          }}
+                                        >
+                                          <div>This Week In</div>
+                                          <div>Ahangama</div>
+                                        </div>
+
+                                        <div
+                                          style={{
+                                            marginBottom: 20,
+                                            color: "#FFFFFF",
+                                            fontSize: 9,
+                                            fontWeight: 700,
+                                            letterSpacing: 1.4,
+                                            textTransform: "uppercase",
+                                          }}
+                                        >
+                                          From the Editor
+                                        </div>
+
+                                        <div
+                                          style={{
+                                            maxWidth: 200,
+                                            color: "rgba(255,255,255,0.96)",
+                                            fontSize: 10,
+                                            lineHeight: 1.45,
+                                            marginBottom: 18,
+                                          }}
+                                        >
+                                          A curated guide to cafes, stays, wellness,
+                                          surf, food and local experiences across
+                                          Ahangama. Written and updated by a local team
+                                          who live here.
+                                        </div>
+
+                                        <div
+                                          style={{
+                                            marginBottom: 12,
+                                            color: "#FFFFFF",
+                                            fontSize: 9,
+                                            fontWeight: 700,
+                                            letterSpacing: 1.4,
+                                            textTransform: "uppercase",
+                                          }}
+                                        >
+                                          Member Benefits
+                                        </div>
+                                        <div
+                                          style={{
+                                            color: "#FFFFFF",
+                                            fontSize: 13,
+                                            lineHeight: 1.3,
+                                            fontWeight: 600,
+                                          }}
+                                        >
+                                          Get the Ahangama Pass -&gt;
+                                        </div>
                                       </div>
+                                      <img
+                                        src={HOME_PAGE_HERO_IMAGE}
+                                        alt="Ahangama homepage hero preview"
+                                        style={{
+                                          position: "absolute",
+                                          inset: 0,
+                                          width: "100%",
+                                          height: "100%",
+                                          objectFit: "cover",
+                                          objectPosition: "right 72%",
+                                        }}
+                                      />
                                       <div
                                         style={{
-                                          display: "flex",
-                                          alignItems: "center",
-                                          gap: 16,
+                                          position: "absolute",
+                                          inset: 0,
+                                          background:
+                                            "linear-gradient(180deg, rgba(11,16,13,0.26) 0%, rgba(11,16,13,0.22) 18%, rgba(11,16,13,0.48) 46%, rgba(11,16,13,0.72) 72%, rgba(11,16,13,0.9) 100%)",
                                         }}
-                                      >
-                                        <HeartOutlined
-                                          style={{ color: "#FFFFFF", fontSize: 17 }}
-                                        />
-                                        <MenuOutlined
-                                          style={{ color: "#FFFFFF", fontSize: 20 }}
-                                        />
-                                      </div>
-                                    </div>
-
-                                    <div
+                                      />
+                                    </>
+                                  ) : (
+                                    <img
+                                      src={heroPassAppleWallet}
+                                      alt="Ahangama Pass wallet preview"
                                       style={{
-                                        display: "flex",
-                                        gap: 16,
-                                        marginBottom: 18,
-                                        flexWrap: "wrap",
-                                        color: "#FFFFFF",
-                                        fontSize: 9,
-                                        fontWeight: 700,
-                                        letterSpacing: 1.4,
-                                        textTransform: "uppercase",
+                                        position: "absolute",
+                                        inset: 0,
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
                                       }}
-                                    >
-                                      <span>Week 24</span>
-                                      <span>Updated Weekly</span>
-                                    </div>
-
-                                    <div
-                                      style={{
-                                        fontFamily:
-                                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                        fontSize: 34,
-                                        lineHeight: 0.86,
-                                        color: "#FFFFFF",
-                                        marginBottom: 8,
-                                      }}
-                                    >
-                                      <div>This Week In</div>
-                                      <div>Ahangama</div>
-                                    </div>
-
-                                    <div
-                                      style={{
-                                        marginBottom: 20,
-                                        color: "#FFFFFF",
-                                        fontSize: 9,
-                                        fontWeight: 700,
-                                        letterSpacing: 1.4,
-                                        textTransform: "uppercase",
-                                      }}
-                                    >
-                                      From the Editor
-                                    </div>
-
-                                    <div
-                                      style={{
-                                        maxWidth: 200,
-                                        color: "rgba(255,255,255,0.96)",
-                                        fontSize: 10,
-                                        lineHeight: 1.45,
-                                        marginBottom: 18,
-                                      }}
-                                    >
-                                      A curated guide to cafes, stays, wellness,
-                                      surf, food and local experiences across
-                                      Ahangama. Written and updated by a local team
-                                      who live here.
-                                    </div>
-
-                                    <div
-                                      style={{
-                                        marginBottom: 12,
-                                        color: "#FFFFFF",
-                                        fontSize: 9,
-                                        fontWeight: 700,
-                                        letterSpacing: 1.4,
-                                        textTransform: "uppercase",
-                                      }}
-                                    >
-                                      Member Benefits
-                                    </div>
-                                    <div
-                                      style={{
-                                        color: "#FFFFFF",
-                                        fontSize: 13,
-                                        lineHeight: 1.3,
-                                        fontWeight: 600,
-                                      }}
-                                    >
-                                      Get the Ahangama Pass -&gt;
-                                    </div>
-                                  </div>
-                                  <img
-                                    src={HOME_PAGE_HERO_IMAGE}
-                                    alt="Ahangama homepage hero preview"
-                                    style={{
-                                      position: "absolute",
-                                      inset: 0,
-                                      width: "100%",
-                                      height: "100%",
-                                      objectFit: "cover",
-                                      objectPosition: "right 72%",
-                                    }}
-                                  />
-                                  <div
-                                    style={{
-                                      position: "absolute",
-                                      inset: 0,
-                                      background:
-                                        "linear-gradient(180deg, rgba(11,16,13,0.26) 0%, rgba(11,16,13,0.22) 18%, rgba(11,16,13,0.48) 46%, rgba(11,16,13,0.72) 72%, rgba(11,16,13,0.9) 100%)",
-                                    }}
-                                  />
+                                    />
+                                  )}
                                 </div>
                               </div>
                             </div>
