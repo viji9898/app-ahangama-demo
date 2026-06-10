@@ -298,7 +298,7 @@ export default function TheLivingRoomConceptStorePage() {
           </div>
         </div>
 
-        <div className="dm-wrap">
+        <div className="dm-wrap" style={{ paddingTop: 28 }}>
           <div
             style={{
               maxWidth: 920,
