@@ -1,13 +1,14 @@
 import React from "react";
 import { Typography, Space, Tag } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
+import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 
 const { Paragraph, Text, Title } = Typography;
 
 const HERO_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/showroom-floor.jpeg";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg";
 
 const SIGNAGE_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/shop-road-signage.jpeg";
@@ -29,6 +30,14 @@ const SERVING_COFFEE_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/serving-coffee.jpeg";
 const ICED_TEA_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/iced-tea.jpeg";
+
+const NEXT_ARTICLE = {
+  href: "/shops",
+  kicker: "Discover More",
+  title: "Ahangama's Independent Shops",
+  image:
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/showroom-shelf-display.jpeg",
+};
 
 const articleIntroduction = [
   "The Living Room Concept Store was inspired by the essence of traditional Sri Lankan architecture, where different spaces of a home open into a shared central area.",
@@ -444,6 +453,13 @@ export default function TheLivingRoomConceptStorePage() {
               </React.Fragment>
             ))}
           </div>
+
+          <EditorialNextArticle
+            href={NEXT_ARTICLE.href}
+            kicker={NEXT_ARTICLE.kicker}
+            title={NEXT_ARTICLE.title}
+            image={NEXT_ARTICLE.image}
+          />
         </div>
       </div>
     </SiteLayout>
