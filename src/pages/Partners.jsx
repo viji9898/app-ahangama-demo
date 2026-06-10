@@ -1977,16 +1977,11 @@ export default function Partners() {
                       }}
                     >
                       {GUEST_TOUCH_POINTS.map((item) => {
-                        const isPlasticStandsCard = item.title === "Plastic Stands";
-                        const useTallImage =
-                          item.title === "Plastic Stands" || item.title === "In-Room";
-
                         return (
                           <div key={item.title}>
                             <div
                               style={{
                                 height: "100%",
-                                minHeight: isPlasticStandsCard ? 290 : undefined,
                                 textAlign: "left",
                                 width: "100%",
                                 padding: "18px 18px",
@@ -1998,20 +1993,30 @@ export default function Partners() {
                                 boxShadow: "0 8px 18px rgba(47, 42, 36, 0.04)",
                               }}
                             >
-                              {item.image ? (
-                                <img
-                                  src={item.image}
-                                  alt={item.title}
-                                  style={{
-                                    display: "block",
-                                    width: "100%",
-                                    aspectRatio: useTallImage ? "4 / 4.2" : "4 / 3",
-                                    objectFit: "cover",
-                                    borderRadius: 14,
-                                    marginBottom: 4,
-                                  }}
-                                />
-                              ) : null}
+                              <div
+                                style={{
+                                  width: "100%",
+                                  aspectRatio: "4 / 4.2",
+                                  borderRadius: 14,
+                                  overflow: "hidden",
+                                  background: item.image
+                                    ? "transparent"
+                                    : "rgba(86, 72, 57, 0.03)",
+                                }}
+                              >
+                                {item.image ? (
+                                  <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    style={{
+                                      display: "block",
+                                      width: "100%",
+                                      height: "100%",
+                                      objectFit: "cover",
+                                    }}
+                                  />
+                                ) : null}
+                              </div>
                               <div style={{ display: "grid", gap: 4 }}>
                                 <Text
                                   style={{
