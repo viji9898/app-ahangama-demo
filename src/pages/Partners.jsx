@@ -4,9 +4,11 @@ import {
   CalendarOutlined,
   CheckCircleOutlined,
   EnvironmentOutlined,
+  HeartOutlined,
   HomeOutlined,
   InstagramOutlined,
   MailOutlined,
+  MenuOutlined,
   NotificationOutlined,
   ReadOutlined,
   TagOutlined,
@@ -20,6 +22,9 @@ const { Paragraph, Text, Title } = Typography;
 
 const HERO_IMAGE =
   "https://polarsteps.s3.amazonaws.com/user_images/steps/large_thumb/u_8317798/3f3fcfc3-61bc-44c9-9e07-5bc8d35ab99c_455b553f-d99d-40ca-ad04-3a5774a62cef.jpg";
+
+const HOME_PAGE_HERO_IMAGE =
+  "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
 
 const PRODUCT_TIERS = [
   {
@@ -228,6 +233,8 @@ export default function Partners() {
   const selectedReachChannel =
     AUDIENCE_REACH_CHANNELS.find((item) => item.label === activeReachChannel) ??
     AUDIENCE_REACH_CHANNELS[0];
+  const showAhangamaWebsitePreview =
+    selectedReachChannel.label === "Ahangama.com";
 
   return (
     <SiteLayout navOverlayHero>
@@ -495,157 +502,427 @@ export default function Partners() {
                 </Paragraph>
               </div>
 
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-                  gap: 18,
-                }}
-              >
-                {AUDIENCE_REACH_CHANNELS.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = item.label === selectedReachChannel.label;
+              <Row gutter={[24, 24]} align="top">
+                <Col xs={24} lg={10}>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                      gap: 18,
+                    }}
+                  >
+                    {AUDIENCE_REACH_CHANNELS.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = item.label === selectedReachChannel.label;
 
-                  return (
-                    <div key={item.label}>
-                      <button
-                        type="button"
-                        onClick={() => setActiveReachChannel(item.label)}
-                        style={{
-                          height: "100%",
-                          textAlign: "left",
-                          width: "100%",
-                          padding: "18px 18px",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "flex-start",
-                          borderRadius: 18,
-                          border: isActive
-                            ? "1px solid rgba(86, 72, 57, 0.26)"
-                            : "1px solid rgba(86, 72, 57, 0.1)",
-                          background: "#FFFFFF",
-                          boxShadow: isActive
-                            ? "0 14px 32px rgba(47, 42, 36, 0.08)"
-                            : "0 8px 18px rgba(47, 42, 36, 0.04)",
-                          cursor: "pointer",
-                        }}
-                      >
-                        <Icon
-                          style={{
-                            fontSize: 34,
-                            color: "#61766A",
-                            marginBottom: 12,
-                            display: "block",
-                          }}
-                        />
+                      return (
+                        <div key={item.label}>
+                          <button
+                            type="button"
+                            onClick={() => setActiveReachChannel(item.label)}
+                            style={{
+                              height: "100%",
+                              textAlign: "left",
+                              width: "100%",
+                              padding: "18px 18px",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "flex-start",
+                              borderRadius: 18,
+                              border: isActive
+                                ? "1px solid rgba(86, 72, 57, 0.26)"
+                                : "1px solid rgba(86, 72, 57, 0.1)",
+                              background: "#FFFFFF",
+                              boxShadow: isActive
+                                ? "0 14px 32px rgba(47, 42, 36, 0.08)"
+                                : "0 8px 18px rgba(47, 42, 36, 0.04)",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <Icon
+                              style={{
+                                fontSize: 34,
+                                color: "#61766A",
+                                marginBottom: 12,
+                                display: "block",
+                              }}
+                            />
+                            <Text
+                              style={{
+                                color: "#2F2A24",
+                                fontSize: 16,
+                                lineHeight: 1.4,
+                                fontWeight: 600,
+                                display: "block",
+                              }}
+                            >
+                              {item.label}
+                            </Text>
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Col>
+
+                <Col xs={24} lg={14}>
+                  <Card
+                    style={{
+                      borderRadius: "20px",
+                      background: "#FFFFFF",
+                      border: "1px solid rgba(86, 72, 57, 0.12)",
+                      boxShadow: "0 14px 36px rgba(47, 42, 36, 0.06)",
+                    }}
+                    bodyStyle={{ padding: "26px 24px" }}
+                  >
+                    {showAhangamaWebsitePreview ? (
+                      <div>
                         <Text
                           style={{
-                            color: "#2F2A24",
-                            fontSize: 16,
-                            lineHeight: 1.4,
-                            fontWeight: 600,
                             display: "block",
+                            marginBottom: 10,
+                            color: "#8A7B68",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.6,
+                            textTransform: "uppercase",
                           }}
                         >
-                          {item.label}
+                          Selected Channel
                         </Text>
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
+                        <Title
+                          level={3}
+                          style={{
+                            marginBottom: 18,
+                            color: "#2F2A24",
+                            fontFamily:
+                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                            fontSize: "clamp(28px, 3vw, 36px)",
+                            lineHeight: 1.05,
+                          }}
+                        >
+                          Search & Website
+                        </Title>
 
-              <Card
-                style={{
-                  marginTop: 22,
-                  borderRadius: "20px",
-                  background: "#FFFFFF",
-                  border: "1px solid rgba(86, 72, 57, 0.12)",
-                  boxShadow: "0 14px 36px rgba(47, 42, 36, 0.06)",
-                }}
-                bodyStyle={{ padding: "26px 24px" }}
-              >
-                <Text
-                  style={{
-                    display: "block",
-                    marginBottom: 10,
-                    color: "#8A7B68",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: 1.6,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Selected Channel
-                </Text>
-                <Title
-                  level={3}
-                  style={{
-                    marginBottom: 12,
-                    color: "#2F2A24",
-                    fontFamily:
-                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    fontSize: "clamp(28px, 3vw, 36px)",
-                    lineHeight: 1.05,
-                  }}
-                >
-                  {selectedReachChannel.label}
-                </Title>
-                <Paragraph
-                  style={{
-                    marginBottom: 18,
-                    color: "#55514B",
-                    fontSize: 17,
-                    lineHeight: 1.75,
-                    maxWidth: 760,
-                  }}
-                >
-                  {selectedReachChannel.description}
-                </Paragraph>
-                <Text
-                  style={{
-                    display: "block",
-                    marginBottom: 12,
-                    color: "#2F2A24",
-                    fontSize: 14,
-                    fontWeight: 700,
-                    letterSpacing: 1.2,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Reach
-                </Text>
-                <div style={{ maxWidth: 760 }}>
-                  {selectedReachChannel.reach.map((point) => (
-                    <div
-                      key={point}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: 10,
-                        marginBottom: 10,
-                      }}
-                    >
-                      <CheckCircleOutlined
-                        style={{
-                          color: "#6A8A71",
-                          fontSize: 16,
-                          marginTop: 3,
-                        }}
-                      />
-                      <Text
-                        style={{
-                          color: "#2F2A24",
-                          fontSize: 15,
-                          lineHeight: 1.6,
-                        }}
-                      >
-                        {point}
-                      </Text>
-                    </div>
-                  ))}
-                </div>
-              </Card>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            marginBottom: 28,
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "min(100%, 320px)",
+                              padding: 10,
+                              borderRadius: 36,
+                              background: "#111111",
+                              boxShadow: "0 28px 50px rgba(0, 0, 0, 0.22)",
+                            }}
+                          >
+                            <div
+                              style={{
+                                position: "relative",
+                                overflow: "hidden",
+                                borderRadius: 28,
+                                background: "#0f1713",
+                                aspectRatio: "9 / 19.5",
+                                width: "100%",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  position: "absolute",
+                                  top: 10,
+                                  left: "50%",
+                                  transform: "translateX(-50%)",
+                                  width: 128,
+                                  height: 24,
+                                  background: "#111111",
+                                  borderRadius: 16,
+                                  zIndex: 5,
+                                }}
+                              />
+                              <div
+                                style={{
+                                  position: "relative",
+                                  zIndex: 3,
+                                  padding: "32px 18px 0",
+                                  color: "#FFFFFF",
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    marginTop: 10,
+                                    marginBottom: 248,
+                                  }}
+                                >
+                                  <div
+                                    style={{
+                                      fontFamily:
+                                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                      fontSize: 27,
+                                      lineHeight: 1,
+                                      letterSpacing: 0.4,
+                                      color: "#FFFFFF",
+                                    }}
+                                  >
+                                    AHANGAMA
+                                  </div>
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      gap: 16,
+                                    }}
+                                  >
+                                    <HeartOutlined
+                                      style={{ color: "#FFFFFF", fontSize: 24 }}
+                                    />
+                                    <MenuOutlined
+                                      style={{ color: "#FFFFFF", fontSize: 28 }}
+                                    />
+                                  </div>
+                                </div>
+
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    gap: 16,
+                                    marginBottom: 22,
+                                    flexWrap: "wrap",
+                                    color: "#FFFFFF",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    letterSpacing: 1.8,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  <span>Week 24</span>
+                                  <span>Updated Weekly</span>
+                                </div>
+
+                                <div
+                                  style={{
+                                    fontFamily:
+                                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                    fontSize: 62,
+                                    lineHeight: 0.9,
+                                    color: "#FFFFFF",
+                                    marginBottom: 10,
+                                  }}
+                                >
+                                  <div>This Week In</div>
+                                  <div>Ahangama</div>
+                                </div>
+
+                                <div
+                                  style={{
+                                    marginBottom: 30,
+                                    color: "#FFFFFF",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    letterSpacing: 2,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  From the Editor
+                                </div>
+
+                                <div
+                                  style={{
+                                    maxWidth: 248,
+                                    color: "rgba(255,255,255,0.96)",
+                                    fontSize: 15,
+                                    lineHeight: 1.7,
+                                    marginBottom: 34,
+                                  }}
+                                >
+                                  A curated guide to cafes, stays, wellness,
+                                  surf, food and local experiences across
+                                  Ahangama. Written and updated by a local team
+                                  who live here.
+                                </div>
+
+                                <div
+                                  style={{
+                                    marginBottom: 12,
+                                    color: "#FFFFFF",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    letterSpacing: 2,
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  Member Benefits
+                                </div>
+                                <div
+                                  style={{
+                                    color: "#FFFFFF",
+                                    fontSize: 19,
+                                    lineHeight: 1.35,
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  Get the Ahangama Pass -&gt;
+                                </div>
+                              </div>
+                              <img
+                                src={HOME_PAGE_HERO_IMAGE}
+                                alt="Ahangama homepage hero preview"
+                                style={{
+                                  position: "absolute",
+                                  inset: 0,
+                                  width: "100%",
+                                  height: "100%",
+                                  objectFit: "cover",
+                                  objectPosition: "right 72%",
+                                }}
+                              />
+                              <div
+                                style={{
+                                  position: "absolute",
+                                  inset: 0,
+                                  background:
+                                    "linear-gradient(180deg, rgba(11,16,13,0.26) 0%, rgba(11,16,13,0.22) 18%, rgba(11,16,13,0.48) 46%, rgba(11,16,13,0.72) 72%, rgba(11,16,13,0.9) 100%)",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <Paragraph
+                          style={{
+                            marginBottom: 18,
+                            color: "#55514B",
+                            fontSize: 17,
+                            lineHeight: 1.75,
+                            maxWidth: 760,
+                          }}
+                        >
+                          {selectedReachChannel.description}
+                        </Paragraph>
+                        <div style={{ maxWidth: 760 }}>
+                          {selectedReachChannel.reach.map((point) => (
+                            <div
+                              key={point}
+                              style={{
+                                display: "flex",
+                                alignItems: "flex-start",
+                                gap: 10,
+                                marginBottom: 10,
+                              }}
+                            >
+                              <CheckCircleOutlined
+                                style={{
+                                  color: "#6A8A71",
+                                  fontSize: 16,
+                                  marginTop: 3,
+                                }}
+                              />
+                              <Text
+                                style={{
+                                  color: "#2F2A24",
+                                  fontSize: 15,
+                                  lineHeight: 1.6,
+                                }}
+                              >
+                                {point}
+                              </Text>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <Text
+                          style={{
+                            display: "block",
+                            marginBottom: 10,
+                            color: "#8A7B68",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.6,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          Selected Channel
+                        </Text>
+                        <Title
+                          level={3}
+                          style={{
+                            marginBottom: 12,
+                            color: "#2F2A24",
+                            fontFamily:
+                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                            fontSize: "clamp(28px, 3vw, 36px)",
+                            lineHeight: 1.05,
+                          }}
+                        >
+                          {selectedReachChannel.label}
+                        </Title>
+                        <Paragraph
+                          style={{
+                            marginBottom: 18,
+                            color: "#55514B",
+                            fontSize: 17,
+                            lineHeight: 1.75,
+                            maxWidth: 760,
+                          }}
+                        >
+                          {selectedReachChannel.description}
+                        </Paragraph>
+                        <Text
+                          style={{
+                            display: "block",
+                            marginBottom: 12,
+                            color: "#2F2A24",
+                            fontSize: 14,
+                            fontWeight: 700,
+                            letterSpacing: 1.2,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          Reach
+                        </Text>
+                        <div style={{ maxWidth: 760 }}>
+                          {selectedReachChannel.reach.map((point) => (
+                            <div
+                              key={point}
+                              style={{
+                                display: "flex",
+                                alignItems: "flex-start",
+                                gap: 10,
+                                marginBottom: 10,
+                              }}
+                            >
+                              <CheckCircleOutlined
+                                style={{
+                                  color: "#6A8A71",
+                                  fontSize: 16,
+                                  marginTop: 3,
+                                }}
+                              />
+                              <Text
+                                style={{
+                                  color: "#2F2A24",
+                                  fontSize: 15,
+                                  lineHeight: 1.6,
+                                }}
+                              >
+                                {point}
+                              </Text>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </Card>
+                </Col>
+              </Row>
             </div>
 
             <div style={{ marginBottom: 18 }}>
