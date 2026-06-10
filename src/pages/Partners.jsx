@@ -590,251 +590,242 @@ export default function Partners() {
                         >
                           Selected Channel
                         </Text>
-                        <Title
-                          level={3}
-                          style={{
-                            marginBottom: 18,
-                            color: "#2F2A24",
-                            fontFamily:
-                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                            fontSize: "clamp(28px, 3vw, 36px)",
-                            lineHeight: 1.05,
-                          }}
-                        >
-                          Search & Website
-                        </Title>
-
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            marginBottom: 28,
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "min(100%, 320px)",
-                              padding: 10,
-                              borderRadius: 36,
-                              background: "#111111",
-                              boxShadow: "0 28px 50px rgba(0, 0, 0, 0.22)",
-                            }}
-                          >
+                        <Row gutter={[28, 28]} align="top">
+                          <Col xs={24} md={10}>
                             <div
                               style={{
-                                position: "relative",
-                                overflow: "hidden",
-                                borderRadius: 28,
-                                background: "#0f1713",
-                                aspectRatio: "9 / 19.5",
-                                width: "100%",
+                                display: "flex",
+                                justifyContent: "center",
                               }}
                             >
                               <div
                                 style={{
-                                  position: "absolute",
-                                  top: 10,
-                                  left: "50%",
-                                  transform: "translateX(-50%)",
-                                  width: 128,
-                                  height: 24,
+                                  width: "min(100%, 240px)",
+                                  padding: 10,
+                                  borderRadius: 36,
                                   background: "#111111",
-                                  borderRadius: 16,
-                                  zIndex: 5,
-                                }}
-                              />
-                              <div
-                                style={{
-                                  position: "relative",
-                                  zIndex: 3,
-                                  padding: "32px 18px 0",
-                                  color: "#FFFFFF",
+                                  boxShadow: "0 28px 50px rgba(0, 0, 0, 0.22)",
                                 }}
                               >
                                 <div
                                   style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                    marginTop: 10,
-                                    marginBottom: 248,
+                                    position: "relative",
+                                    overflow: "hidden",
+                                    borderRadius: 28,
+                                    background: "#0f1713",
+                                    aspectRatio: "9 / 19.5",
+                                    width: "100%",
                                   }}
                                 >
                                   <div
                                     style={{
-                                      fontFamily:
-                                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                      fontSize: 27,
-                                      lineHeight: 1,
-                                      letterSpacing: 0.4,
+                                      position: "absolute",
+                                      top: 10,
+                                      left: "50%",
+                                      transform: "translateX(-50%)",
+                                      width: 128,
+                                      height: 24,
+                                      background: "#111111",
+                                      borderRadius: 16,
+                                      zIndex: 5,
+                                    }}
+                                  />
+                                  <div
+                                    style={{
+                                      position: "relative",
+                                      zIndex: 3,
+                                      padding: "28px 16px 0",
                                       color: "#FFFFFF",
                                     }}
                                   >
-                                    AHANGAMA
+                                    <div
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "space-between",
+                                        marginTop: 10,
+                                        marginBottom: 248,
+                                      }}
+                                    >
+                                      <div
+                                        style={{
+                                          fontFamily:
+                                            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                          fontSize: 19,
+                                          lineHeight: 1,
+                                          letterSpacing: 0.2,
+                                          color: "#FFFFFF",
+                                        }}
+                                      >
+                                        AHANGAMA
+                                      </div>
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                          gap: 16,
+                                        }}
+                                      >
+                                        <HeartOutlined
+                                          style={{ color: "#FFFFFF", fontSize: 17 }}
+                                        />
+                                        <MenuOutlined
+                                          style={{ color: "#FFFFFF", fontSize: 20 }}
+                                        />
+                                      </div>
+                                    </div>
+
+                                    <div
+                                      style={{
+                                        display: "flex",
+                                        gap: 16,
+                                        marginBottom: 18,
+                                        flexWrap: "wrap",
+                                        color: "#FFFFFF",
+                                        fontSize: 9,
+                                        fontWeight: 700,
+                                        letterSpacing: 1.4,
+                                        textTransform: "uppercase",
+                                      }}
+                                    >
+                                      <span>Week 24</span>
+                                      <span>Updated Weekly</span>
+                                    </div>
+
+                                    <div
+                                      style={{
+                                        fontFamily:
+                                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                        fontSize: 34,
+                                        lineHeight: 0.86,
+                                        color: "#FFFFFF",
+                                        marginBottom: 8,
+                                      }}
+                                    >
+                                      <div>This Week In</div>
+                                      <div>Ahangama</div>
+                                    </div>
+
+                                    <div
+                                      style={{
+                                        marginBottom: 20,
+                                        color: "#FFFFFF",
+                                        fontSize: 9,
+                                        fontWeight: 700,
+                                        letterSpacing: 1.4,
+                                        textTransform: "uppercase",
+                                      }}
+                                    >
+                                      From the Editor
+                                    </div>
+
+                                    <div
+                                      style={{
+                                        maxWidth: 200,
+                                        color: "rgba(255,255,255,0.96)",
+                                        fontSize: 10,
+                                        lineHeight: 1.45,
+                                        marginBottom: 18,
+                                      }}
+                                    >
+                                      A curated guide to cafes, stays, wellness,
+                                      surf, food and local experiences across
+                                      Ahangama. Written and updated by a local team
+                                      who live here.
+                                    </div>
+
+                                    <div
+                                      style={{
+                                        marginBottom: 12,
+                                        color: "#FFFFFF",
+                                        fontSize: 9,
+                                        fontWeight: 700,
+                                        letterSpacing: 1.4,
+                                        textTransform: "uppercase",
+                                      }}
+                                    >
+                                      Member Benefits
+                                    </div>
+                                    <div
+                                      style={{
+                                        color: "#FFFFFF",
+                                        fontSize: 13,
+                                        lineHeight: 1.3,
+                                        fontWeight: 600,
+                                      }}
+                                    >
+                                      Get the Ahangama Pass -&gt;
+                                    </div>
                                   </div>
+                                  <img
+                                    src={HOME_PAGE_HERO_IMAGE}
+                                    alt="Ahangama homepage hero preview"
+                                    style={{
+                                      position: "absolute",
+                                      inset: 0,
+                                      width: "100%",
+                                      height: "100%",
+                                      objectFit: "cover",
+                                      objectPosition: "right 72%",
+                                    }}
+                                  />
                                   <div
                                     style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      gap: 16,
+                                      position: "absolute",
+                                      inset: 0,
+                                      background:
+                                        "linear-gradient(180deg, rgba(11,16,13,0.26) 0%, rgba(11,16,13,0.22) 18%, rgba(11,16,13,0.48) 46%, rgba(11,16,13,0.72) 72%, rgba(11,16,13,0.9) 100%)",
                                     }}
-                                  >
-                                    <HeartOutlined
-                                      style={{ color: "#FFFFFF", fontSize: 24 }}
-                                    />
-                                    <MenuOutlined
-                                      style={{ color: "#FFFFFF", fontSize: 28 }}
-                                    />
-                                  </div>
+                                  />
                                 </div>
+                              </div>
+                            </div>
+                          </Col>
 
+                          <Col xs={24} md={14}>
+                            <Paragraph
+                              style={{
+                                marginBottom: 18,
+                                color: "#55514B",
+                                fontSize: 17,
+                                lineHeight: 1.75,
+                                maxWidth: 760,
+                              }}
+                            >
+                              {selectedReachChannel.description}
+                            </Paragraph>
+                            <div style={{ maxWidth: 760 }}>
+                              {selectedReachChannel.reach.map((point) => (
                                 <div
+                                  key={point}
                                   style={{
                                     display: "flex",
-                                    gap: 16,
-                                    marginBottom: 22,
-                                    flexWrap: "wrap",
-                                    color: "#FFFFFF",
-                                    fontSize: 11,
-                                    fontWeight: 700,
-                                    letterSpacing: 1.8,
-                                    textTransform: "uppercase",
-                                  }}
-                                >
-                                  <span>Week 24</span>
-                                  <span>Updated Weekly</span>
-                                </div>
-
-                                <div
-                                  style={{
-                                    fontFamily:
-                                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                    fontSize: 62,
-                                    lineHeight: 0.9,
-                                    color: "#FFFFFF",
+                                    alignItems: "flex-start",
+                                    gap: 10,
                                     marginBottom: 10,
                                   }}
                                 >
-                                  <div>This Week In</div>
-                                  <div>Ahangama</div>
+                                  <CheckCircleOutlined
+                                    style={{
+                                      color: "#6A8A71",
+                                      fontSize: 16,
+                                      marginTop: 3,
+                                    }}
+                                  />
+                                  <Text
+                                    style={{
+                                      color: "#2F2A24",
+                                      fontSize: 15,
+                                      lineHeight: 1.6,
+                                    }}
+                                  >
+                                    {point}
+                                  </Text>
                                 </div>
-
-                                <div
-                                  style={{
-                                    marginBottom: 30,
-                                    color: "#FFFFFF",
-                                    fontSize: 11,
-                                    fontWeight: 700,
-                                    letterSpacing: 2,
-                                    textTransform: "uppercase",
-                                  }}
-                                >
-                                  From the Editor
-                                </div>
-
-                                <div
-                                  style={{
-                                    maxWidth: 248,
-                                    color: "rgba(255,255,255,0.96)",
-                                    fontSize: 15,
-                                    lineHeight: 1.7,
-                                    marginBottom: 34,
-                                  }}
-                                >
-                                  A curated guide to cafes, stays, wellness,
-                                  surf, food and local experiences across
-                                  Ahangama. Written and updated by a local team
-                                  who live here.
-                                </div>
-
-                                <div
-                                  style={{
-                                    marginBottom: 12,
-                                    color: "#FFFFFF",
-                                    fontSize: 11,
-                                    fontWeight: 700,
-                                    letterSpacing: 2,
-                                    textTransform: "uppercase",
-                                  }}
-                                >
-                                  Member Benefits
-                                </div>
-                                <div
-                                  style={{
-                                    color: "#FFFFFF",
-                                    fontSize: 19,
-                                    lineHeight: 1.35,
-                                    fontWeight: 600,
-                                  }}
-                                >
-                                  Get the Ahangama Pass -&gt;
-                                </div>
-                              </div>
-                              <img
-                                src={HOME_PAGE_HERO_IMAGE}
-                                alt="Ahangama homepage hero preview"
-                                style={{
-                                  position: "absolute",
-                                  inset: 0,
-                                  width: "100%",
-                                  height: "100%",
-                                  objectFit: "cover",
-                                  objectPosition: "right 72%",
-                                }}
-                              />
-                              <div
-                                style={{
-                                  position: "absolute",
-                                  inset: 0,
-                                  background:
-                                    "linear-gradient(180deg, rgba(11,16,13,0.26) 0%, rgba(11,16,13,0.22) 18%, rgba(11,16,13,0.48) 46%, rgba(11,16,13,0.72) 72%, rgba(11,16,13,0.9) 100%)",
-                                }}
-                              />
+                              ))}
                             </div>
-                          </div>
-                        </div>
-
-                        <Paragraph
-                          style={{
-                            marginBottom: 18,
-                            color: "#55514B",
-                            fontSize: 17,
-                            lineHeight: 1.75,
-                            maxWidth: 760,
-                          }}
-                        >
-                          {selectedReachChannel.description}
-                        </Paragraph>
-                        <div style={{ maxWidth: 760 }}>
-                          {selectedReachChannel.reach.map((point) => (
-                            <div
-                              key={point}
-                              style={{
-                                display: "flex",
-                                alignItems: "flex-start",
-                                gap: 10,
-                                marginBottom: 10,
-                              }}
-                            >
-                              <CheckCircleOutlined
-                                style={{
-                                  color: "#6A8A71",
-                                  fontSize: 16,
-                                  marginTop: 3,
-                                }}
-                              />
-                              <Text
-                                style={{
-                                  color: "#2F2A24",
-                                  fontSize: 15,
-                                  lineHeight: 1.6,
-                                }}
-                              >
-                                {point}
-                              </Text>
-                            </div>
-                          ))}
-                        </div>
+                          </Col>
+                        </Row>
                       </div>
                     ) : (
                       <div>
