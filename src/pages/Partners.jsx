@@ -240,6 +240,8 @@ export default function Partners() {
     selectedReachChannel.label === "Ahangama.com";
   const showAhangamaPassPreview =
     selectedReachChannel.label === "Ahangama Pass";
+  const showAhangamaMapPreview =
+    selectedReachChannel.label === "Ahangama Map";
 
   return (
     <SiteLayout navOverlayHero>
@@ -580,7 +582,9 @@ export default function Partners() {
                     }}
                     bodyStyle={{ padding: "26px 24px" }}
                   >
-                    {showAhangamaWebsitePreview || showAhangamaPassPreview ? (
+                    {showAhangamaWebsitePreview ||
+                    showAhangamaPassPreview ||
+                    showAhangamaMapPreview ? (
                       <div>
                         <Text
                           style={{
@@ -785,6 +789,202 @@ export default function Partners() {
                                         }}
                                       />
                                     </>
+                                  ) : showAhangamaMapPreview ? (
+                                    <div
+                                      style={{
+                                        position: "absolute",
+                                        inset: 0,
+                                        background:
+                                          "linear-gradient(180deg, #d7efe9 0%, #f7f4ea 48%, #efe4d2 100%)",
+                                      }}
+                                    >
+                                      <div
+                                        style={{
+                                          position: "absolute",
+                                          top: 0,
+                                          right: 0,
+                                          width: "30%",
+                                          height: "100%",
+                                          background:
+                                            "linear-gradient(180deg, #7bd0d5 0%, #58b6d1 100%)",
+                                        }}
+                                      />
+                                      <div
+                                        style={{
+                                          position: "absolute",
+                                          top: 18,
+                                          left: 16,
+                                          right: 16,
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "space-between",
+                                          zIndex: 3,
+                                        }}
+                                      >
+                                        <div
+                                          style={{
+                                            padding: "8px 10px",
+                                            borderRadius: 999,
+                                            background: "rgba(255,255,255,0.88)",
+                                            color: "#2F2A24",
+                                            fontSize: 10,
+                                            fontWeight: 700,
+                                            letterSpacing: 1.2,
+                                            textTransform: "uppercase",
+                                          }}
+                                        >
+                                          Ahangama Map
+                                        </div>
+                                        <div
+                                          style={{
+                                            width: 34,
+                                            height: 34,
+                                            borderRadius: 999,
+                                            background: "rgba(255,255,255,0.88)",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                          }}
+                                        >
+                                          <EnvironmentOutlined
+                                            style={{ color: "#2F2A24", fontSize: 16 }}
+                                          />
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        style={{
+                                          position: "absolute",
+                                          inset: "70px 22px 20px 16px",
+                                          borderRadius: 24,
+                                          overflow: "hidden",
+                                          background: "rgba(255,255,255,0.24)",
+                                          boxShadow:
+                                            "inset 0 0 0 1px rgba(47, 42, 36, 0.06)",
+                                        }}
+                                      >
+                                        <div
+                                          style={{
+                                            position: "absolute",
+                                            inset: 0,
+                                            backgroundImage:
+                                              "linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px)",
+                                            backgroundSize: "34px 34px",
+                                          }}
+                                        />
+                                        <div
+                                          style={{
+                                            position: "absolute",
+                                            top: "12%",
+                                            left: "18%",
+                                            width: "58%",
+                                            height: 10,
+                                            borderRadius: 999,
+                                            background: "#b59f81",
+                                            transform: "rotate(28deg)",
+                                            transformOrigin: "left center",
+                                          }}
+                                        />
+                                        <div
+                                          style={{
+                                            position: "absolute",
+                                            top: "36%",
+                                            left: "12%",
+                                            width: "62%",
+                                            height: 9,
+                                            borderRadius: 999,
+                                            background: "#b59f81",
+                                            transform: "rotate(-18deg)",
+                                            transformOrigin: "left center",
+                                          }}
+                                        />
+                                        <div
+                                          style={{
+                                            position: "absolute",
+                                            top: "58%",
+                                            left: "24%",
+                                            width: "42%",
+                                            height: 8,
+                                            borderRadius: 999,
+                                            background: "#c5af90",
+                                            transform: "rotate(14deg)",
+                                            transformOrigin: "left center",
+                                          }}
+                                        />
+                                        {[
+                                          {
+                                            top: "28%",
+                                            left: "56%",
+                                            label: "Ahangama",
+                                            featured: true,
+                                          },
+                                          {
+                                            top: "48%",
+                                            left: "34%",
+                                            label: "Kabalana",
+                                          },
+                                          {
+                                            top: "66%",
+                                            left: "48%",
+                                            label: "Midigama",
+                                          },
+                                          {
+                                            top: "78%",
+                                            left: "24%",
+                                            label: "Kathaluwa",
+                                          },
+                                        ].map((marker) => (
+                                          <div
+                                            key={marker.label}
+                                            style={{
+                                              position: "absolute",
+                                              top: marker.top,
+                                              left: marker.left,
+                                              transform: "translate(-50%, -50%)",
+                                              zIndex: 2,
+                                            }}
+                                          >
+                                            <div
+                                              style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                alignItems: "center",
+                                                gap: 4,
+                                              }}
+                                            >
+                                              <div
+                                                style={{
+                                                  width: marker.featured ? 16 : 12,
+                                                  height: marker.featured ? 16 : 12,
+                                                  borderRadius: 999,
+                                                  background: marker.featured
+                                                    ? "#256d66"
+                                                    : "#5f8b6f",
+                                                  boxShadow:
+                                                    "0 4px 10px rgba(37, 109, 102, 0.24)",
+                                                  border: "2px solid rgba(255,255,255,0.9)",
+                                                }}
+                                              />
+                                              <div
+                                                style={{
+                                                  padding: "4px 8px",
+                                                  borderRadius: 999,
+                                                  background: "rgba(255,255,255,0.92)",
+                                                  color: "#2F2A24",
+                                                  fontSize: marker.featured ? 10 : 9,
+                                                  fontWeight: marker.featured ? 700 : 600,
+                                                  lineHeight: 1,
+                                                  boxShadow:
+                                                    "0 8px 18px rgba(47, 42, 36, 0.12)",
+                                                }}
+                                              >
+                                                {marker.label}
+                                              </div>
+                                            </div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
                                   ) : (
                                     <div
                                       style={{
