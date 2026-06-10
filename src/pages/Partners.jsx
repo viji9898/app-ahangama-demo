@@ -916,33 +916,62 @@ export default function Partners() {
                                       >
                                         <div
                                           style={{
-                                            padding: "14px 14px 12px",
+                                            padding: "12px 14px",
                                             background: "#F7F1E8",
                                             borderBottom:
                                               "1px solid rgba(86, 72, 57, 0.08)",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "space-between",
+                                            gap: 10,
                                           }}
                                         >
                                           <div
                                             style={{
-                                              color: "#8A7B68",
-                                              fontSize: 9,
+                                              color: "#2F2A24",
+                                              fontSize: 10,
                                               fontWeight: 700,
-                                              letterSpacing: 1.1,
+                                              letterSpacing: 1.2,
                                               textTransform: "uppercase",
-                                              marginBottom: 8,
                                             }}
                                           >
-                                            Editor&apos;s Letter
+                                            The Ahangama Dispatch
                                           </div>
+                                          <MailOutlined
+                                            style={{
+                                              color: "#61766A",
+                                              fontSize: 14,
+                                            }}
+                                          />
+                                        </div>
+
+                                        <div
+                                          style={{
+                                            height: "calc(100% - 39px)",
+                                            overflowY: "auto",
+                                            padding: 14,
+                                            display: "grid",
+                                            gap: 18,
+                                            scrollbarWidth: "none",
+                                          }}
+                                        >
                                           <div
                                             style={{
-                                              display: "flex",
-                                              alignItems: "center",
-                                              justifyContent: "space-between",
-                                              marginBottom: 8,
-                                              gap: 10,
+                                              display: "grid",
+                                              gap: 8,
                                             }}
                                           >
+                                            <div
+                                              style={{
+                                                fontSize: 9,
+                                                fontWeight: 700,
+                                                letterSpacing: 1.2,
+                                                textTransform: "uppercase",
+                                                color: "#8A7B68",
+                                              }}
+                                            >
+                                              Editor&apos;s Letter
+                                            </div>
                                             <div
                                               style={{
                                                 color: "#207886",
@@ -954,100 +983,214 @@ export default function Partners() {
                                             >
                                               From Ahangama
                                             </div>
-                                            <MailOutlined
-                                              style={{
-                                                color: "#61766A",
-                                                fontSize: 14,
-                                              }}
-                                            />
-                                          </div>
-                                          <div
-                                            style={{
-                                              color: "#2F2A24",
-                                              fontFamily:
-                                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                              fontSize: 24,
-                                              lineHeight: 0.94,
-                                              marginBottom: 8,
-                                            }}
-                                          >
-                                            <div>A calmer way to</div>
-                                            <div>keep up with</div>
-                                            <div>Ahangama.</div>
-                                          </div>
-                                          <div
-                                            style={{
-                                              color: "#303030",
-                                              fontSize: 10,
-                                              lineHeight: 1.55,
-                                            }}
-                                          >
-                                            Ahangama changes quickly.
-                                          </div>
-                                        </div>
-
-                                        <div style={{ padding: 14 }}>
-                                          <div
-                                            style={{
-                                              marginBottom: 12,
-                                              padding: 14,
-                                              borderRadius: 18,
-                                              background:
-                                                "linear-gradient(135deg, #16343A 0%, #2D6972 52%, #6CA8B3 100%)",
-                                              color: "#FFFFFF",
-                                            }}
-                                          >
                                             <div
                                               style={{
-                                                fontSize: 9,
-                                                fontWeight: 700,
-                                                letterSpacing: 1.2,
-                                                textTransform: "uppercase",
-                                                marginBottom: 8,
-                                                opacity: 0.9,
-                                              }}
-                                            >
-                                              Partner Feature
-                                            </div>
-                                            <div
-                                              style={{
+                                                color: "#2F2A24",
                                                 fontFamily:
                                                   '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                                fontSize: 24,
+                                                fontSize: 22,
                                                 lineHeight: 0.95,
-                                                marginBottom: 8,
                                               }}
                                             >
                                               A calmer way to keep up with Ahangama.
                                             </div>
-                                            <div
-                                              style={{
-                                                fontSize: 10,
-                                                lineHeight: 1.45,
-                                                maxWidth: 150,
-                                              }}
-                                            >
-                                              Ahangama changes quickly.
-                                            </div>
-                                          </div>
-
-                                          <div
-                                            style={{
-                                              display: "grid",
-                                              gap: 8,
-                                            }}
-                                          >
                                             {[
-                                              "New cafes open, communities grow",
-                                              "Useful local knowledge, edited monthly",
-                                              "Just one thoughtful update from Ahangama",
+                                              "Ahangama changes quickly.",
+                                              "New cafes open, communities grow, visitors arrive, businesses evolve and useful local knowledge is often scattered across WhatsApp groups, Instagram posts and conversations.",
+                                              "The Ahangama Dispatch was created to bring together the most useful updates from around town into a single monthly letter.",
+                                              "No noise.",
+                                              "No daily emails.",
+                                              "Just one thoughtful update from Ahangama.",
                                             ].map((item) => (
                                               <div
                                                 key={item}
                                                 style={{
-                                                  display: "flex",
-                                                  alignItems: "center",
-                                                  gap: 10,
+                                                  color: "#303030",
+                                                  fontSize: 10,
+                                                  lineHeight: 1.55,
+                                                }}
+                                              >
+                                                {item}
+                                              </div>
+                                            ))}
+                                          </div>
+
+                                          <div
+                                            style={{
+                                              borderRadius: 18,
+                                              overflow: "hidden",
+                                              background:
+                                                "linear-gradient(160deg, #D8D1C7 0%, #BBAFA0 100%)",
+                                            }}
+                                          >
+                                            <div
+                                              style={{
+                                                minHeight: 120,
+                                                display: "flex",
+                                                alignItems: "flex-end",
+                                                padding: 12,
+                                                color: "#FFFFFF",
+                                                background:
+                                                  "linear-gradient(180deg, rgba(28,34,38,0.06) 0%, rgba(28,34,38,0.58) 100%)",
+                                              }}
+                                            >
+                                              <div
+                                                style={{
+                                                  fontSize: 10,
+                                                  fontWeight: 700,
+                                                  letterSpacing: 0.2,
+                                                }}
+                                              >
+                                                Portrait from Ahangama
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div style={{ display: "grid", gap: 10 }}>
+                                            <div
+                                              style={{
+                                                color: "#8A7B68",
+                                                fontSize: 9,
+                                                fontWeight: 700,
+                                                letterSpacing: 1.2,
+                                                textTransform: "uppercase",
+                                              }}
+                                            >
+                                              What You&apos;ll Receive
+                                            </div>
+                                            <div
+                                              style={{
+                                                color: "#2F2A24",
+                                                fontFamily:
+                                                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                                fontSize: 20,
+                                                lineHeight: 0.98,
+                                              }}
+                                            >
+                                              The monthly shape of the letter.
+                                            </div>
+                                            {[
+                                              {
+                                                label: "New Openings",
+                                                title: "Openings worth paying attention to",
+                                                body: "Restaurants, cafes, shops, hotels and spaces opening around Ahangama.",
+                                              },
+                                              {
+                                                label: "Local Recommendations",
+                                                title: "Useful places, seasonal favourites and local discoveries",
+                                                body: "Interesting places that feel timely, relevant and actually worth bookmarking.",
+                                              },
+                                              {
+                                                label: "Events",
+                                                title: "A concise view of what is happening around town",
+                                                body: "Workshops, markets, music, wellness and community gatherings.",
+                                              },
+                                              {
+                                                label: "Guides",
+                                                title: "Practical guides for daily life and short stays",
+                                                body: "Food, surf, wellness, transport and local life, edited into useful reads.",
+                                              },
+                                              {
+                                                label: "Stories",
+                                                title: "Features on the people and places shaping Ahangama",
+                                                body: "Longer reads on businesses, creative communities and shifts around the south coast.",
+                                              },
+                                              {
+                                                label: "Ahangama Pass",
+                                                title: "Member offers, partner updates and useful additions",
+                                                body: "A clear monthly digest of new member offers and partner news.",
+                                              },
+                                            ].map((item) => (
+                                              <div
+                                                key={item.label}
+                                                style={{
+                                                  display: "grid",
+                                                  gap: 4,
+                                                  paddingBottom: 10,
+                                                  borderBottom:
+                                                    "1px solid rgba(86, 72, 57, 0.12)",
+                                                }}
+                                              >
+                                                <div
+                                                  style={{
+                                                    color: "#207886",
+                                                    fontSize: 9,
+                                                    fontWeight: 700,
+                                                    letterSpacing: 1.1,
+                                                    textTransform: "uppercase",
+                                                  }}
+                                                >
+                                                  {item.label}
+                                                </div>
+                                                <div
+                                                  style={{
+                                                    color: "#2F2A24",
+                                                    fontFamily:
+                                                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                                    fontSize: 16,
+                                                    lineHeight: 1,
+                                                  }}
+                                                >
+                                                  {item.title}
+                                                </div>
+                                                <div
+                                                  style={{
+                                                    color: "#3E3E3E",
+                                                    fontSize: 10,
+                                                    lineHeight: 1.5,
+                                                  }}
+                                                >
+                                                  {item.body}
+                                                </div>
+                                              </div>
+                                            ))}
+                                          </div>
+
+                                          <div style={{ display: "grid", gap: 10 }}>
+                                            <div
+                                              style={{
+                                                color: "#8A7B68",
+                                                fontSize: 9,
+                                                fontWeight: 700,
+                                                letterSpacing: 1.2,
+                                                textTransform: "uppercase",
+                                              }}
+                                            >
+                                              Recent Stories
+                                            </div>
+                                            <div
+                                              style={{
+                                                color: "#2F2A24",
+                                                fontFamily:
+                                                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                                fontSize: 20,
+                                                lineHeight: 0.98,
+                                              }}
+                                            >
+                                              Recent stories from around town.
+                                            </div>
+                                            {[
+                                              {
+                                                title: "Why Everyone Is Moving South",
+                                                body: "A reported look at the people, rhythms and practical realities behind the south coast's steady pull.",
+                                                meta: "6 min read",
+                                              },
+                                              {
+                                                title: "The New Wellness Movement",
+                                                body: "Studios, recovery spaces and slower rituals are reshaping the way people spend time in Ahangama.",
+                                                meta: "7 min read",
+                                              },
+                                              {
+                                                title: "Inside Ahangama's Creative Community",
+                                                body: "A quieter portrait of the makers, founders and studios giving the town a more distinct creative identity.",
+                                                meta: "Feature story",
+                                              },
+                                            ].map((item) => (
+                                              <div
+                                                key={item.title}
+                                                style={{
+                                                  display: "grid",
+                                                  gap: 4,
                                                   padding: "10px 12px",
                                                   borderRadius: 14,
                                                   background: "#F7F1E8",
@@ -1055,22 +1198,32 @@ export default function Partners() {
                                               >
                                                 <div
                                                   style={{
-                                                    width: 8,
-                                                    height: 8,
-                                                    borderRadius: 999,
-                                                    background: "#6A8A71",
-                                                    flex: "0 0 auto",
+                                                    color: "#2F2A24",
+                                                    fontFamily:
+                                                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                                    fontSize: 16,
+                                                    lineHeight: 1,
                                                   }}
-                                                />
+                                                >
+                                                  {item.title}
+                                                </div>
                                                 <div
                                                   style={{
-                                                    color: "#2F2A24",
+                                                    color: "#3E3E3E",
                                                     fontSize: 10,
-                                                    lineHeight: 1.35,
+                                                    lineHeight: 1.5,
+                                                  }}
+                                                >
+                                                  {item.body}
+                                                </div>
+                                                <div
+                                                  style={{
+                                                    color: "#6B655E",
+                                                    fontSize: 9,
                                                     fontWeight: 600,
                                                   }}
                                                 >
-                                                  {item}
+                                                  {item.meta}
                                                 </div>
                                               </div>
                                             ))}
