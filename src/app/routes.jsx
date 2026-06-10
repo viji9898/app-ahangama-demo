@@ -57,6 +57,7 @@ import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
+import EditorsPicksPage from "../pages/EditorsPicksPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
 import ExternalRedirect from "./ExternalRedirect";
 
@@ -115,6 +116,7 @@ const routes = [
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: "/guide", element: <GuidePage /> },
+  { path: "/editors-picks", element: <EditorsPicksPage /> },
   {
     path: "/the-living-room-concept-store",
     element: <TheLivingRoomConceptStorePage />,

@@ -30,6 +30,8 @@ const SERVING_COFFEE_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/serving-coffee.jpeg";
 const ICED_TEA_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/iced-tea.jpeg";
+const LIVING_ROOM_INSTAGRAM_URL =
+  "https://www.instagram.com/itsyour.livingroom/";
 
 const NEXT_ARTICLE = {
   href: "/shops",
@@ -70,6 +72,36 @@ const articleSections = [
     ],
   },
 ];
+
+function renderLivingRoomLinkedText(text, styleOverride = {}) {
+  const label = "Living Room Concept Store";
+  const foundIndex = text.indexOf(label);
+
+  if (foundIndex === -1) return text;
+
+  const before = text.slice(0, foundIndex);
+  const after = text.slice(foundIndex + label.length);
+
+  return [
+    before,
+    <a
+      key={`${label}-${foundIndex}`}
+      href={LIVING_ROOM_INSTAGRAM_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        color: "#2f2a24",
+        textDecoration: "none",
+        borderBottom: "1px solid rgba(214, 178, 102, 0.9)",
+        paddingBottom: 1,
+        ...styleOverride,
+      }}
+    >
+      {label}
+    </a>,
+    after,
+  ];
+}
 
 export default function TheLivingRoomConceptStorePage() {
   const canonical = absUrl("/the-living-room-concept-store");
@@ -173,7 +205,13 @@ export default function TheLivingRoomConceptStorePage() {
                     '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                 }}
               >
-                The Living Room Concept Store
+                {renderLivingRoomLinkedText(
+                  "Living Room Concept Store",
+                  {
+                    color: "#ffffff",
+                    borderBottom: "1px solid rgba(255, 255, 255, 0.78)",
+                  },
+                )}
               </Title>
 
               <Text
@@ -208,7 +246,7 @@ export default function TheLivingRoomConceptStorePage() {
                   marginBottom: 18,
                 }}
               >
-                {paragraph}
+                {renderLivingRoomLinkedText(paragraph)}
               </Paragraph>
             ))}
           </div>
