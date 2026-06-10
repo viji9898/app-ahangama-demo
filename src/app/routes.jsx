@@ -54,6 +54,7 @@ import EventsPage from "../pages/EventsPage";
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
+import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
@@ -121,6 +122,7 @@ const routes = [
     path: "/the-living-room-concept-store",
     element: <TheLivingRoomConceptStorePage />,
   },
+  { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
   { path: "/offers", element: <FullListPage /> },
