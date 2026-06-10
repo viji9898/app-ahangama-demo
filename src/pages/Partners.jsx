@@ -18,6 +18,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
+import whatsappConciergeImage from "../assets/whatsapp-concierge.jpg";
 import denitsaPortrait from "../assets/temp/denitsa.jpg";
 import kaffiImage from "../assets/temp/kaffi_image.jpg";
 import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
@@ -187,6 +188,18 @@ const AUDIENCE_REACH_CHANNELS = [
       "Direct access to guests during trip planning and arrival",
       "Visibility at reception desks, guest welcome packs, and concierge recommendations",
       "Estimated 50,000+ annual guest impressions",
+    ],
+  },
+  {
+    label: "Bank Partnerships",
+    icon: NotificationOutlined,
+    description:
+      "Strategic bank partnerships that place Ahangama.com offers, guides and partner recommendations in front of cardholders and travel-ready audiences. Example: /pabc.",
+    reach: [
+      "Exposure through bank customer channels and travel-facing campaigns",
+      "Targeted placement for audiences planning leisure and lifestyle spending",
+      "Potential integration with cardholder perks, destination offers and partner benefits",
+      "A scalable acquisition channel for high-intent visitors before arrival",
     ],
   },
   {
@@ -448,6 +461,8 @@ export default function Partners() {
     selectedReachChannel.label === "Ahangama Guide 2026/27";
   const showVisitorEmailCampaignsPreview =
     selectedReachChannel.label === "Visitor Email Campaigns";
+  const showConciergeRecommendationsPreview =
+    selectedReachChannel.label === "Concierge Recommendations";
 
   return (
     <SiteLayout navOverlayHero>
@@ -794,7 +809,8 @@ export default function Partners() {
                     showAhangamaPassPreview ||
                     showAhangamaMapPreview ||
                     showAhangamaGuidePreview ||
-                    showVisitorEmailCampaignsPreview ? (
+                    showVisitorEmailCampaignsPreview ||
+                    showConciergeRecommendationsPreview ? (
                       <div>
                         <Text
                           style={{
@@ -1085,6 +1101,32 @@ export default function Partners() {
                                           transformOrigin: "top center",
                                           boxShadow:
                                             "0 16px 32px rgba(47, 42, 36, 0.12)",
+                                        }}
+                                      />
+                                    </div>
+                                  ) : showConciergeRecommendationsPreview ? (
+                                    <div
+                                      style={{
+                                        position: "absolute",
+                                        inset: 0,
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        padding: 8,
+                                        background: "#E8F1EC",
+                                      }}
+                                    >
+                                      <img
+                                        src={whatsappConciergeImage}
+                                        alt="Concierge WhatsApp preview"
+                                        style={{
+                                          display: "block",
+                                          width: "100%",
+                                          height: "100%",
+                                          objectFit: "cover",
+                                          objectPosition: "top center",
+                                          borderRadius: 22,
+                                          background: "#FFFFFF",
                                         }}
                                       />
                                     </div>
