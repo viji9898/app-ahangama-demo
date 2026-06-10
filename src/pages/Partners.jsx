@@ -18,6 +18,9 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
+import ahangamaScanToGetGuideImage from "../assets/ahangama-scan-to-get-guide.jpg";
+import inRoomPromotionImage from "../assets/in-room-promotion.jpg";
+import stickerAhangamaVenueImage from "../assets/sticker-ahangama-venue.jpg";
 import whatsappConciergeImage from "../assets/whatsapp-concierge.jpg";
 import postcardStandKumbukImage from "../assets/postcard-stand-kumbuk.jpeg";
 import postcardStandThilenisImage from "../assets/postcard-stand-thilenis.jpeg";
@@ -39,7 +42,7 @@ const AHANGAMA_GOOGLE_MAP_URL =
 const AHANGAMA_GOOGLE_MAP_EMBED_URL =
   "https://www.google.com/maps?q=Ahangama,Sri%20Lanka&z=14&output=embed";
 const AHANGAMA_GUIDE_PREVIEW_URL = "/guide";
-const PLASTIC_STANDS_IMAGE = postcardStandThilenisImage;
+const PLASTIC_STANDS_IMAGE = ahangamaScanToGetGuideImage;
 const POSTCARDS_IMAGE = postcardStandKumbukImage;
 
 const PRODUCT_TIERS = [
@@ -132,6 +135,18 @@ const GUEST_TOUCH_POINTS = [
     ],
   },
   {
+    title: "In-Room",
+    subtitle: "Promotion",
+    image: inRoomPromotionImage,
+    description:
+      "Printed in-room placements that introduce the Pass, guide and local recommendations during the stay.",
+    points: [
+      "Reaches guests inside villas, hotels and guest rooms",
+      "Good for slower browse moments during the stay",
+      "Pairs physical placement with QR-led conversion",
+    ],
+  },
+  {
     title: "Plastic Stands",
     subtitle: "In Venues & Shops",
     image: PLASTIC_STANDS_IMAGE,
@@ -157,6 +172,7 @@ const GUEST_TOUCH_POINTS = [
   {
     title: "Stickers on Venues",
     subtitle: "Windows & Doors",
+    image: stickerAhangamaVenueImage,
     description:
       "Partner venue stickers that signal trust, drive scans and increase walk-in awareness.",
     points: [
@@ -1956,16 +1972,21 @@ export default function Partners() {
                     <div
                       style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                        gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
                         gap: 18,
                       }}
                     >
                       {GUEST_TOUCH_POINTS.map((item) => {
+                        const isPlasticStandsCard = item.title === "Plastic Stands";
+                        const useTallImage =
+                          item.title === "Plastic Stands" || item.title === "In-Room";
+
                         return (
                           <div key={item.title}>
                             <div
                               style={{
                                 height: "100%",
+                                minHeight: isPlasticStandsCard ? 290 : undefined,
                                 textAlign: "left",
                                 width: "100%",
                                 padding: "18px 18px",
@@ -1984,46 +2005,38 @@ export default function Partners() {
                                   style={{
                                     display: "block",
                                     width: "100%",
-                                    aspectRatio: "4 / 3",
+                                    aspectRatio: useTallImage ? "4 / 4.2" : "4 / 3",
                                     objectFit: "cover",
                                     borderRadius: 14,
                                     marginBottom: 4,
                                   }}
                                 />
                               ) : null}
-                              <Text
-                                style={{
-                                  color: "#2F2A24",
-                                  fontSize: 16,
-                                  lineHeight: 1.4,
-                                  fontWeight: 600,
-                                  display: "block",
-                                }}
-                              >
-                                {item.title}
-                              </Text>
-                              <Text
-                                style={{
-                                  color: "#8A7B68",
-                                  fontSize: 11,
-                                  fontWeight: 700,
-                                  letterSpacing: 1.2,
-                                  textTransform: "uppercase",
-                                  display: "block",
-                                }}
-                              >
-                                {item.subtitle}
-                              </Text>
-                              <Paragraph
-                                style={{
-                                  marginBottom: 0,
-                                  color: "#55514B",
-                                  fontSize: 15,
-                                  lineHeight: 1.7,
-                                }}
-                              >
-                                {item.description}
-                              </Paragraph>
+                              <div style={{ display: "grid", gap: 4 }}>
+                                <Text
+                                  style={{
+                                    color: "#2F2A24",
+                                    fontSize: 16,
+                                    lineHeight: 1.4,
+                                    fontWeight: 600,
+                                    display: "block",
+                                  }}
+                                >
+                                  {item.title}
+                                </Text>
+                                <Text
+                                  style={{
+                                    color: "#8A7B68",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    letterSpacing: 1.2,
+                                    textTransform: "uppercase",
+                                    display: "block",
+                                  }}
+                                >
+                                  {item.subtitle}
+                                </Text>
+                              </div>
                             </div>
                           </div>
                         );
@@ -2185,7 +2198,7 @@ export default function Partners() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                      gridTemplateColumns: "minmax(0, 1fr)",
                       gap: 18,
                     }}
                   >
