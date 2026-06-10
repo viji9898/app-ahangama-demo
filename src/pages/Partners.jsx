@@ -342,13 +342,86 @@ const PROMOTIONAL_PRODUCTS = [
     name: "Featured Venue of the Week",
     price: "$50",
     icon: NotificationOutlined,
+    summary:
+      "A timed homepage or editorial placement that gives one venue concentrated visibility for a full weekly cycle.",
+    points: [
+      "Best for new openings, seasonal pushes and timely campaigns",
+      "Creates a clear spotlight moment across visitor traffic",
+      "Works well for venues that want short-term promotional bursts",
+    ],
   },
-  { name: "Newsletter Sponsor", price: "$25", icon: MailOutlined },
-  { name: "Event Promotion", price: "$25", icon: CalendarOutlined },
-  { name: "Seasonal Campaign", price: "$100", icon: TagOutlined },
-  { name: "Dedicated Editorial Story", price: "$250", icon: ReadOutlined },
-  { name: "New Venue Launch Package", price: "$250", icon: BookOutlined },
-  { name: "Homepage Feature", price: "$250 /month", icon: HomeOutlined },
+  {
+    name: "Newsletter Sponsor",
+    price: "$25",
+    icon: MailOutlined,
+    summary:
+      "A sponsor slot within the Ahangama newsletter ecosystem designed to keep one business top of mind with readers.",
+    points: [
+      "Strong fit for offers, launches and recurring promotions",
+      "Placed inside an editorial environment visitors already trust",
+      "Useful for sustained visibility with minimal setup",
+    ],
+  },
+  {
+    name: "Event Promotion",
+    price: "$25",
+    icon: CalendarOutlined,
+    summary:
+      "Targeted promotion for one-off events, activations or special programming happening in Ahangama.",
+    points: [
+      "Ideal for driving awareness ahead of a date-specific moment",
+      "Useful for workshops, dinners, pop-ups and community events",
+      "Supports faster discovery among visitors already in destination",
+    ],
+  },
+  {
+    name: "Seasonal Campaign",
+    price: "$100",
+    icon: TagOutlined,
+    summary:
+      "A broader campaign package built around a seasonal period, holiday moment or themed visitor demand window.",
+    points: [
+      "Good for surf season, festive periods and high-travel moments",
+      "Allows one message to run across multiple touchpoints",
+      "Designed for businesses that want more campaign-shaped exposure",
+    ],
+  },
+  {
+    name: "Dedicated Editorial Story",
+    price: "$250",
+    icon: ReadOutlined,
+    summary:
+      "A longer-form editorial feature that gives a venue or brand more depth, context and storytelling value.",
+    points: [
+      "Best for brands with a strong story, founder angle or design point of view",
+      "Creates an asset that can live on site over a longer period",
+      "Adds trust through considered editorial framing rather than pure advertising",
+    ],
+  },
+  {
+    name: "New Venue Launch Package",
+    price: "$250",
+    icon: BookOutlined,
+    summary:
+      "A launch-focused product designed to introduce a new venue to visitors with stronger early visibility.",
+    points: [
+      "Useful in the first weeks of opening or relaunching",
+      "Combines awareness with a clearer announcement moment",
+      "Helps new venues establish recognition quickly in destination",
+    ],
+  },
+  {
+    name: "Homepage Feature",
+    price: "$250 /month",
+    icon: HomeOutlined,
+    summary:
+      "A premium recurring placement on Ahangama.com designed for businesses wanting top-tier ongoing exposure.",
+    points: [
+      "Strongest fit for businesses wanting always-on prominence",
+      "Keeps the venue close to high-intent site traffic",
+      "Works well as a sustained brand-building and conversion layer",
+    ],
+  },
 ];
 
 const EMAIL_CAMPAIGN_STAGES = [
@@ -539,18 +612,18 @@ export default function Partners() {
   const [activeReachChannel, setActiveReachChannel] = useState(
     AUDIENCE_REACH_CHANNELS[0].label,
   );
-  const [activeGuestTouchPoint, setActiveGuestTouchPoint] = useState(
-    GUEST_TOUCH_POINTS[0].title,
-  );
   const [activeEmailCampaignStage, setActiveEmailCampaignStage] = useState(
     EMAIL_CAMPAIGN_STAGES[0].label,
+  );
+  const [activePromotionalProduct, setActivePromotionalProduct] = useState(
+    PROMOTIONAL_PRODUCTS[0].name,
   );
   const selectedReachChannel =
     AUDIENCE_REACH_CHANNELS.find((item) => item.label === activeReachChannel) ??
     AUDIENCE_REACH_CHANNELS[0];
-  const selectedGuestTouchPoint =
-    GUEST_TOUCH_POINTS.find((item) => item.title === activeGuestTouchPoint) ??
-    GUEST_TOUCH_POINTS[0];
+  const selectedPromotionalProduct =
+    PROMOTIONAL_PRODUCTS.find((item) => item.name === activePromotionalProduct) ??
+    PROMOTIONAL_PRODUCTS[0];
   const selectedEmailCampaignStage =
     EMAIL_CAMPAIGN_STAGES.find(
       (item) => item.label === activeEmailCampaignStage,
@@ -1879,40 +1952,45 @@ export default function Partners() {
                 </div>
 
                 <Row gutter={[24, 24]} align="top">
-                  <Col xs={24} lg={10}>
+                  <Col xs={24}>
                     <div
                       style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
                         gap: 18,
                       }}
                     >
                       {GUEST_TOUCH_POINTS.map((item) => {
-                        const isActive = item.title === selectedGuestTouchPoint.title;
-
                         return (
                           <div key={item.title}>
-                            <button
-                              type="button"
-                              onClick={() => setActiveGuestTouchPoint(item.title)}
+                            <div
                               style={{
                                 height: "100%",
                                 textAlign: "left",
                                 width: "100%",
                                 padding: "18px 18px",
                                 display: "grid",
-                                gap: 6,
+                                gap: 10,
                                 borderRadius: 18,
-                                border: isActive
-                                  ? "1px solid rgba(86, 72, 57, 0.26)"
-                                  : "1px solid rgba(86, 72, 57, 0.1)",
+                                border: "1px solid rgba(86, 72, 57, 0.1)",
                                 background: "#FFFFFF",
-                                boxShadow: isActive
-                                  ? "0 14px 32px rgba(47, 42, 36, 0.08)"
-                                  : "0 8px 18px rgba(47, 42, 36, 0.04)",
-                                cursor: "pointer",
+                                boxShadow: "0 8px 18px rgba(47, 42, 36, 0.04)",
                               }}
                             >
+                              {item.image ? (
+                                <img
+                                  src={item.image}
+                                  alt={item.title}
+                                  style={{
+                                    display: "block",
+                                    width: "100%",
+                                    aspectRatio: "4 / 3",
+                                    objectFit: "cover",
+                                    borderRadius: 14,
+                                    marginBottom: 4,
+                                  }}
+                                />
+                              ) : null}
                               <Text
                                 style={{
                                   color: "#2F2A24",
@@ -1936,123 +2014,21 @@ export default function Partners() {
                               >
                                 {item.subtitle}
                               </Text>
-                            </button>
+                              <Paragraph
+                                style={{
+                                  marginBottom: 0,
+                                  color: "#55514B",
+                                  fontSize: 15,
+                                  lineHeight: 1.7,
+                                }}
+                              >
+                                {item.description}
+                              </Paragraph>
+                            </div>
                           </div>
                         );
                       })}
                     </div>
-                  </Col>
-
-                  <Col xs={24} lg={14}>
-                    <Card
-                      style={{
-                        borderRadius: "20px",
-                        background: "#FFFFFF",
-                        border: "1px solid rgba(86, 72, 57, 0.12)",
-                        boxShadow: "0 14px 36px rgba(47, 42, 36, 0.06)",
-                      }}
-                      bodyStyle={{ padding: "26px 24px" }}
-                    >
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 10,
-                          color: "#8A7B68",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: 1.6,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        Selected Touch Point
-                      </Text>
-                      <Row gutter={[24, 24]} align="top">
-                        {selectedGuestTouchPoint.image ? (
-                          <Col xs={24} md={10}>
-                            <img
-                              src={selectedGuestTouchPoint.image}
-                              alt={selectedGuestTouchPoint.title}
-                              style={{
-                                display: "block",
-                                width: "100%",
-                                aspectRatio: "4 / 5",
-                                objectFit: "cover",
-                                borderRadius: 16,
-                              }}
-                            />
-                          </Col>
-                        ) : null}
-                        <Col xs={24} md={selectedGuestTouchPoint.image ? 14 : 24}>
-                          <Title
-                            level={3}
-                            style={{
-                              marginBottom: 8,
-                              color: "#2F2A24",
-                              fontFamily:
-                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                              fontSize: "clamp(28px, 3vw, 36px)",
-                              lineHeight: 1.02,
-                            }}
-                          >
-                            {selectedGuestTouchPoint.title}
-                          </Title>
-                          <Text
-                            style={{
-                              display: "block",
-                              marginBottom: 16,
-                              color: "#8A7B68",
-                              fontSize: 11,
-                              fontWeight: 700,
-                              letterSpacing: 1.3,
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            {selectedGuestTouchPoint.subtitle}
-                          </Text>
-                          <Paragraph
-                            style={{
-                              marginBottom: 18,
-                              color: "#55514B",
-                              fontSize: 17,
-                              lineHeight: 1.75,
-                              maxWidth: 760,
-                            }}
-                          >
-                            {selectedGuestTouchPoint.description}
-                          </Paragraph>
-                          <div style={{ maxWidth: 760 }}>
-                            {selectedGuestTouchPoint.points.map((point) => (
-                              <div
-                                key={point}
-                                style={{
-                                  display: "flex",
-                                  alignItems: "flex-start",
-                                  gap: 10,
-                                  marginBottom: 10,
-                                }}
-                              >
-                                <CheckCircleOutlined
-                                  style={{
-                                    color: "#6A8A71",
-                                    fontSize: 16,
-                                    marginTop: 3,
-                                  }}
-                                />
-                                <Text
-                                  style={{
-                                    color: "#2F2A24",
-                                    fontSize: 15,
-                                    lineHeight: 1.6,
-                                  }}
-                                >
-                                  {point}
-                                </Text>
-                              </div>
-                            ))}
-                          </div>
-                        </Col>
-                      </Row>
-                    </Card>
                   </Col>
                 </Row>
               </div>
@@ -2188,7 +2164,7 @@ export default function Partners() {
             </Row>
 
             <div style={{ marginBottom: 52 }}>
-              <div style={{ textAlign: "center", marginBottom: 26 }}>
+              <div style={{ textAlign: "left", marginBottom: 26 }}>
                 <Text
                   style={{
                     display: "block",
@@ -2204,56 +2180,182 @@ export default function Partners() {
                 </Text>
               </div>
 
-              <Row gutter={[18, 18]}>
-                {PROMOTIONAL_PRODUCTS.map((item) => {
-                  const Icon = item.icon;
+              <Row gutter={[24, 24]} align="top">
+                <Col xs={24} lg={10}>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                      gap: 18,
+                    }}
+                  >
+                    {PROMOTIONAL_PRODUCTS.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = item.name === selectedPromotionalProduct.name;
 
-                  return (
-                    <Col xs={24} sm={12} md={8} xl={24 / 7} key={item.name}>
-                      <Card
-                        style={{
-                          height: "100%",
-                          borderRadius: "20px",
-                          background: "#FBF8F2",
-                          border: "1px solid rgba(86, 72, 57, 0.1)",
-                          boxShadow: "0 12px 30px rgba(47, 42, 36, 0.05)",
-                        }}
-                        bodyStyle={{
-                          padding: "24px 18px",
-                          textAlign: "center",
-                        }}
-                      >
-                        <Icon
+                      return (
+                        <div key={item.name}>
+                          <button
+                            type="button"
+                            onClick={() => setActivePromotionalProduct(item.name)}
+                            style={{
+                              height: "100%",
+                              textAlign: "left",
+                              width: "100%",
+                              padding: "18px 18px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 12,
+                              borderRadius: 18,
+                              border: isActive
+                                ? "1px solid rgba(86, 72, 57, 0.26)"
+                                : "1px solid rgba(86, 72, 57, 0.1)",
+                              background: "#FFFFFF",
+                              boxShadow: isActive
+                                ? "0 14px 32px rgba(47, 42, 36, 0.08)"
+                                : "0 8px 18px rgba(47, 42, 36, 0.04)",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <Icon
+                              style={{
+                                fontSize: 28,
+                                color: "#61766A",
+                                display: "block",
+                                flex: "0 0 auto",
+                              }}
+                            />
+                            <div style={{ display: "grid", gap: 6, flex: 1, minWidth: 0 }}>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "baseline",
+                                  justifyContent: "space-between",
+                                  gap: 12,
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: "#2F2A24",
+                                    fontSize: 16,
+                                    lineHeight: 1.4,
+                                    fontWeight: 600,
+                                    display: "block",
+                                  }}
+                                >
+                                  {item.name}
+                                </Text>
+                                <Text
+                                  style={{
+                                    color: "#234731",
+                                    fontSize: 14,
+                                    fontWeight: 700,
+                                    display: "block",
+                                    whiteSpace: "nowrap",
+                                    textAlign: "right",
+                                  }}
+                                >
+                                  {item.price}
+                                </Text>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Col>
+
+                <Col xs={24} lg={14}>
+                  <Card
+                    style={{
+                      borderRadius: "20px",
+                      background: "#FFFFFF",
+                      border: "1px solid rgba(86, 72, 57, 0.12)",
+                      boxShadow: "0 14px 36px rgba(47, 42, 36, 0.06)",
+                    }}
+                    bodyStyle={{ padding: "26px 24px" }}
+                  >
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 10,
+                        color: "#8A7B68",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: 1.6,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Selected Product
+                    </Text>
+                    <Title
+                      level={3}
+                      style={{
+                        marginBottom: 10,
+                        color: "#2F2A24",
+                        fontFamily:
+                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                        fontSize: "clamp(28px, 3vw, 36px)",
+                        lineHeight: 1.02,
+                      }}
+                    >
+                      {selectedPromotionalProduct.name}
+                    </Title>
+                    <Text
+                      style={{
+                        display: "block",
+                        marginBottom: 16,
+                        color: "#234731",
+                        fontSize: 16,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {selectedPromotionalProduct.price}
+                    </Text>
+                    <Paragraph
+                      style={{
+                        marginBottom: 18,
+                        color: "#55514B",
+                        fontSize: 17,
+                        lineHeight: 1.75,
+                        maxWidth: 760,
+                      }}
+                    >
+                      {selectedPromotionalProduct.summary}
+                    </Paragraph>
+                    <div style={{ maxWidth: 760 }}>
+                      {selectedPromotionalProduct.points.map((point) => (
+                        <div
+                          key={point}
                           style={{
-                            fontSize: 30,
-                            color: "#61766A",
-                            marginBottom: 14,
-                          }}
-                        />
-                        <Title
-                          level={4}
-                          style={{
-                            marginBottom: 12,
-                            color: "#2F2A24",
-                            fontSize: 18,
-                            lineHeight: 1.2,
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: 10,
+                            marginBottom: 10,
                           }}
                         >
-                          {item.name}
-                        </Title>
-                        <Text
-                          style={{
-                            color: "#234731",
-                            fontSize: 18,
-                            fontWeight: 700,
-                          }}
-                        >
-                          {item.price}
-                        </Text>
-                      </Card>
-                    </Col>
-                  );
-                })}
+                          <CheckCircleOutlined
+                            style={{
+                              color: "#6A8A71",
+                              fontSize: 16,
+                              marginTop: 3,
+                            }}
+                          />
+                          <Text
+                            style={{
+                              color: "#2F2A24",
+                              fontSize: 15,
+                              lineHeight: 1.6,
+                            }}
+                          >
+                            {point}
+                          </Text>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                </Col>
               </Row>
             </div>
 
