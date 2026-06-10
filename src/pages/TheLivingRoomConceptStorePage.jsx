@@ -251,13 +251,13 @@ export default function TheLivingRoomConceptStorePage() {
                           className="home-hero-titleLine"
                           style={{ color: "#FFFFFF" }}
                         >
-                          The Living
+                          Living Room
                         </span>
                         <span
                           className="home-hero-titleLine"
                           style={{ color: "#FFFFFF" }}
                         >
-                          Room Concept
+                          Concept
                         </span>
                         <span
                           className="home-hero-titleLine"
