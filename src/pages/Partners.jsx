@@ -31,6 +31,7 @@ const AHANGAMA_GOOGLE_MAP_URL =
   "https://maps.app.goo.gl/nh4DYnE3haE3euCT6";
 const AHANGAMA_GOOGLE_MAP_EMBED_URL =
   "https://www.google.com/maps?q=Ahangama,Sri%20Lanka&z=14&output=embed";
+const AHANGAMA_GUIDE_PREVIEW_URL = "/guide";
 
 const PRODUCT_TIERS = [
   {
@@ -249,6 +250,8 @@ export default function Partners() {
   const showAhangamaPassPreview =
     selectedReachChannel.label === "Ahangama Pass";
   const showAhangamaMapPreview = selectedReachChannel.label === "Ahangama Map";
+  const showAhangamaGuidePreview =
+    selectedReachChannel.label === "Ahangama Guide 2026/27";
 
   return (
     <SiteLayout navOverlayHero>
@@ -593,7 +596,8 @@ export default function Partners() {
                   >
                     {showAhangamaWebsitePreview ||
                     showAhangamaPassPreview ||
-                    showAhangamaMapPreview ? (
+                    showAhangamaMapPreview ||
+                    showAhangamaGuidePreview ? (
                       <div>
                         <Text
                           style={{
@@ -847,6 +851,31 @@ export default function Partners() {
                                         src={AHANGAMA_GOOGLE_MAP_EMBED_URL}
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
+                                        style={{
+                                          position: "absolute",
+                                          inset: "0 6px 6px 6px",
+                                          width: "calc(100% - 12px)",
+                                          height: "calc(100% - 6px)",
+                                          border: 0,
+                                          borderRadius: 22,
+                                          background: "#FFFFFF",
+                                          boxShadow:
+                                            "0 16px 32px rgba(47, 42, 36, 0.12)",
+                                        }}
+                                      />
+                                    </div>
+                                  ) : showAhangamaGuidePreview ? (
+                                    <div
+                                      style={{
+                                        position: "absolute",
+                                        inset: 0,
+                                        background: "#F6F1E8",
+                                      }}
+                                    >
+                                      <iframe
+                                        title="Ahangama Guide preview"
+                                        src={AHANGAMA_GUIDE_PREVIEW_URL}
+                                        loading="lazy"
                                         style={{
                                           position: "absolute",
                                           inset: "0 6px 6px 6px",
