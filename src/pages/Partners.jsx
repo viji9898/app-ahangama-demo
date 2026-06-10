@@ -18,6 +18,10 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
+import denitsaPortrait from "../assets/temp/denitsa.jpg";
+import kaffiImage from "../assets/temp/kaffi_image.jpg";
+import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
+import sistersImage from "../assets/temp/sisters_image.jpg";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -237,14 +241,204 @@ const PROMOTIONAL_PRODUCTS = [
   { name: "Homepage Feature", price: "$250 /month", icon: HomeOutlined },
 ];
 
+const EMAIL_CAMPAIGN_STAGES = [
+  {
+    label: "Newsletter on sign up",
+    eyebrow: "Arrival Sequence",
+    kicker: "Welcome to Ahangama",
+    title: "A warm first note sent the moment a visitor signs up.",
+    paragraphs: [
+      "This dummy version introduces the destination, explains what the subscriber will receive, and sets the tone for the stay ahead.",
+      "It highlights a few useful links, frames Ahangama as a curated destination, and opens the relationship with a considered editorial voice.",
+    ],
+    featureLabel: "Included Blocks",
+    featureTitle: "What this sign-up email could contain.",
+    features: [
+      {
+        label: "Welcome Note",
+        title: "A short editorial introduction",
+        body: "A lightweight opening message that explains the purpose of the emails and builds trust immediately.",
+      },
+      {
+        label: "Quick Links",
+        title: "Map, guide and pass in one place",
+        body: "Fast access to the most useful Ahangama products for a visitor who has just entered the ecosystem.",
+      },
+      {
+        label: "Partner Spotlight",
+        title: "A featured business placement",
+        body: "A simple hero recommendation that gives one partner premium visibility at the highest-attention moment.",
+      },
+    ],
+    storiesLabel: "Dummy Modules",
+    storiesTitle: "Example placements in the welcome email.",
+    stories: [
+      {
+        title: "Where to Start in Ahangama",
+        body: "A short editorial card guiding the visitor toward a first set of trusted recommendations.",
+        meta: "Hero placement",
+        image: kaffiImage,
+      },
+      {
+        title: "Your Pass Benefits",
+        body: "A secondary block outlining the value of joining the Ahangama Pass network on arrival.",
+        meta: "Support module",
+        image: muktiStudioImage,
+      },
+    ],
+  },
+  {
+    label: "Day 1 Newsletter",
+    eyebrow: "Arrival Sequence",
+    kicker: "First Full Day",
+    title: "A practical first-day email for visitors settling into town.",
+    paragraphs: [
+      "This dummy version is more utility-led: where to eat first, how to orient yourself, and what to bookmark for the rest of the trip.",
+      "It is designed to drive immediate foot traffic to selected partners during the visitor's highest-intent discovery window.",
+    ],
+    featureLabel: "Suggested Structure",
+    featureTitle: "What the Day 1 email could prioritise.",
+    features: [
+      {
+        label: "Breakfast + Coffee",
+        title: "Morning recommendations near where visitors stay",
+        body: "A concise set of practical suggestions that converts quickly because it meets immediate needs.",
+      },
+      {
+        label: "Orientation",
+        title: "Map-based discovery prompts",
+        body: "A supporting block that nudges users to open the map, save spots and begin navigating the destination.",
+      },
+      {
+        label: "Featured Partner",
+        title: "A premium venue recommendation",
+        body: "A highlighted partner card positioned as a trusted starting point for the day.",
+      },
+    ],
+    storiesLabel: "Dummy Modules",
+    storiesTitle: "Example content for a Day 1 send.",
+    stories: [
+      {
+        title: "Best First Stops After Arrival",
+        body: "A simple round-up of places a visitor can act on immediately after checking in.",
+        meta: "Utility feature",
+        image: sistersImage,
+      },
+      {
+        title: "Three Places to Book Today",
+        body: "An action-oriented recommendation block meant to create quick conversion for partner venues.",
+        meta: "Partner module",
+        image: kaffiImage,
+      },
+    ],
+  },
+  {
+    label: "Day 2 Newsletter",
+    eyebrow: "In-Stay Sequence",
+    kicker: "Deepen Discovery",
+    title: "A second-day email focused on exploration and stronger recommendations.",
+    paragraphs: [
+      "This dummy version assumes the visitor is now oriented and ready for more selective editorial suggestions, bookings and discoveries.",
+      "It can move beyond basics into wellness, experiences, shopping, evening plans and higher-value partner exposure.",
+    ],
+    featureLabel: "Suggested Structure",
+    featureTitle: "What the Day 2 email could contain.",
+    features: [
+      {
+        label: "Experiences",
+        title: "Surf, wellness and activity recommendations",
+        body: "A curated list of bookable options that helps visitors spend more intentionally around town.",
+      },
+      {
+        label: "Editorial Picks",
+        title: "More selective local favourites",
+        body: "A tighter, taste-led set of recommendations positioned as trusted Ahangama edits.",
+      },
+      {
+        label: "Premium Partner",
+        title: "A stronger sponsored feature",
+        body: "A more immersive partner story with image-led presentation and a direct action prompt.",
+      },
+    ],
+    storiesLabel: "Dummy Modules",
+    storiesTitle: "Example content for the second-day send.",
+    stories: [
+      {
+        title: "A Slower Wellness Day in Ahangama",
+        body: "A themed content block showing how a premium partner could appear inside an editorial journey.",
+        meta: "Editorial feature",
+        image: muktiStudioImage,
+      },
+      {
+        title: "After-Surf Places Worth Knowing",
+        body: "A second content card for food, retail or sunset-facing recommendations later in the stay.",
+        meta: "Curated list",
+        image: sistersImage,
+      },
+    ],
+  },
+  {
+    label: "Last Day Newsletter",
+    eyebrow: "Departure Sequence",
+    kicker: "Before You Leave",
+    title: "A final email designed for last-day bookings, souvenirs and keeping the relationship alive.",
+    paragraphs: [
+      "This dummy version encourages one last round of spending while also nudging the visitor into longer-term brand connection after departure.",
+      "It can support retail partners, gift-led offers, final meals, and prompts to follow Ahangama.com after the trip.",
+    ],
+    featureLabel: "Suggested Structure",
+    featureTitle: "What the last-day email could prioritise.",
+    features: [
+      {
+        label: "One Last Visit",
+        title: "A final dining or experience recommendation",
+        body: "A high-intent prompt aimed at converting visitors before they leave the destination.",
+      },
+      {
+        label: "Take Ahangama Home",
+        title: "Retail and keepsake partner placements",
+        body: "A useful slot for stores, gifts and products that fit the end of a trip.",
+      },
+      {
+        label: "Stay Connected",
+        title: "Post-trip relationship building",
+        body: "A closing module that keeps Ahangama.com present after departure through editorial and future-trip hooks.",
+      },
+    ],
+    storiesLabel: "Dummy Modules",
+    storiesTitle: "Example blocks in the departure email.",
+    stories: [
+      {
+        title: "Last Night in Ahangama",
+        body: "A final recommendation card for dinner, drinks or one memorable end-of-trip stop.",
+        meta: "Conversion slot",
+        image: kaffiImage,
+      },
+      {
+        title: "A Few Things Worth Taking Home",
+        body: "A retail-focused block showing how local product brands could be woven into the final email.",
+        meta: "Retail placement",
+        image: denitsaPortrait,
+      },
+    ],
+  },
+];
+
 export default function Partners() {
   const canonical = absUrl("/partners");
   const [activeReachChannel, setActiveReachChannel] = useState(
     AUDIENCE_REACH_CHANNELS[0].label,
   );
+  const [activeEmailCampaignStage, setActiveEmailCampaignStage] = useState(
+    EMAIL_CAMPAIGN_STAGES[0].label,
+  );
   const selectedReachChannel =
     AUDIENCE_REACH_CHANNELS.find((item) => item.label === activeReachChannel) ??
     AUDIENCE_REACH_CHANNELS[0];
+  const selectedEmailCampaignStage =
+    EMAIL_CAMPAIGN_STAGES.find(
+      (item) => item.label === activeEmailCampaignStage,
+    ) ?? EMAIL_CAMPAIGN_STAGES[0];
   const showAhangamaWebsitePreview =
     selectedReachChannel.label === "Ahangama.com";
   const showAhangamaPassPreview =
@@ -977,7 +1171,7 @@ export default function Partners() {
                                                 textTransform: "uppercase",
                                               }}
                                             >
-                                              From Ahangama
+                                              {selectedEmailCampaignStage.kicker}
                                             </div>
                                             <div
                                               style={{
@@ -988,15 +1182,11 @@ export default function Partners() {
                                                 lineHeight: 0.95,
                                               }}
                                             >
-                                              A calmer way to keep up with Ahangama.
+                                              {selectedEmailCampaignStage.title}
                                             </div>
                                             {[
-                                              "Ahangama changes quickly.",
-                                              "New cafes open, communities grow, visitors arrive, businesses evolve and useful local knowledge is often scattered across WhatsApp groups, Instagram posts and conversations.",
-                                              "The Ahangama Dispatch was created to bring together the most useful updates from around town into a single monthly letter.",
-                                              "No noise.",
-                                              "No daily emails.",
-                                              "Just one thoughtful update from Ahangama.",
+                                              selectedEmailCampaignStage.eyebrow,
+                                              ...selectedEmailCampaignStage.paragraphs,
                                             ].map((item) => (
                                               <div
                                                 key={item}
@@ -1015,27 +1205,47 @@ export default function Partners() {
                                             style={{
                                               borderRadius: 18,
                                               overflow: "hidden",
-                                              background: "#FFFFFF",
+                                              background: "#F3ECE1",
                                             }}
                                           >
-                                            <div
-                                              style={{
-                                                minHeight: 120,
-                                                display: "flex",
-                                                alignItems: "flex-end",
-                                                padding: 12,
-                                                color: "#2F2A24",
-                                                background: "#FFFFFF",
-                                              }}
-                                            >
+                                            <div style={{ position: "relative" }}>
+                                              <img
+                                                src={denitsaPortrait}
+                                                alt="Portrait from Ahangama"
+                                                style={{
+                                                  display: "block",
+                                                  width: "100%",
+                                                  aspectRatio: "4 / 5",
+                                                  objectFit: "cover",
+                                                  filter: "grayscale(100%)",
+                                                }}
+                                              />
                                               <div
                                                 style={{
-                                                  fontSize: 10,
-                                                  fontWeight: 700,
-                                                  letterSpacing: 0.2,
+                                                  position: "absolute",
+                                                  inset: 0,
+                                                  background:
+                                                    "linear-gradient(180deg, rgba(24, 23, 20, 0.04) 0%, rgba(24, 23, 20, 0.52) 100%)",
+                                                }}
+                                              />
+                                              <div
+                                                style={{
+                                                  position: "absolute",
+                                                  left: 12,
+                                                  right: 12,
+                                                  bottom: 12,
+                                                  color: "#FFFFFF",
                                                 }}
                                               >
-                                                Portrait from Ahangama
+                                                <div
+                                                  style={{
+                                                    fontSize: 10,
+                                                    fontWeight: 700,
+                                                    letterSpacing: 0.2,
+                                                  }}
+                                                >
+                                                  Portrait from Ahangama
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
@@ -1050,7 +1260,7 @@ export default function Partners() {
                                                 textTransform: "uppercase",
                                               }}
                                             >
-                                              What You&apos;ll Receive
+                                              {selectedEmailCampaignStage.featureLabel}
                                             </div>
                                             <div
                                               style={{
@@ -1061,40 +1271,9 @@ export default function Partners() {
                                                 lineHeight: 0.98,
                                               }}
                                             >
-                                              The monthly shape of the letter.
+                                              {selectedEmailCampaignStage.featureTitle}
                                             </div>
-                                            {[
-                                              {
-                                                label: "New Openings",
-                                                title: "Openings worth paying attention to",
-                                                body: "Restaurants, cafes, shops, hotels and spaces opening around Ahangama.",
-                                              },
-                                              {
-                                                label: "Local Recommendations",
-                                                title: "Useful places, seasonal favourites and local discoveries",
-                                                body: "Interesting places that feel timely, relevant and actually worth bookmarking.",
-                                              },
-                                              {
-                                                label: "Events",
-                                                title: "A concise view of what is happening around town",
-                                                body: "Workshops, markets, music, wellness and community gatherings.",
-                                              },
-                                              {
-                                                label: "Guides",
-                                                title: "Practical guides for daily life and short stays",
-                                                body: "Food, surf, wellness, transport and local life, edited into useful reads.",
-                                              },
-                                              {
-                                                label: "Stories",
-                                                title: "Features on the people and places shaping Ahangama",
-                                                body: "Longer reads on businesses, creative communities and shifts around the south coast.",
-                                              },
-                                              {
-                                                label: "Ahangama Pass",
-                                                title: "Member offers, partner updates and useful additions",
-                                                body: "A clear monthly digest of new member offers and partner news.",
-                                              },
-                                            ].map((item) => (
+                                            {selectedEmailCampaignStage.features.map((item) => (
                                               <div
                                                 key={item.label}
                                                 style={{
@@ -1150,7 +1329,7 @@ export default function Partners() {
                                                 textTransform: "uppercase",
                                               }}
                                             >
-                                              Recent Stories
+                                              {selectedEmailCampaignStage.storiesLabel}
                                             </div>
                                             <div
                                               style={{
@@ -1161,25 +1340,9 @@ export default function Partners() {
                                                 lineHeight: 0.98,
                                               }}
                                             >
-                                              Recent stories from around town.
+                                              {selectedEmailCampaignStage.storiesTitle}
                                             </div>
-                                            {[
-                                              {
-                                                title: "Why Everyone Is Moving South",
-                                                body: "A reported look at the people, rhythms and practical realities behind the south coast's steady pull.",
-                                                meta: "6 min read",
-                                              },
-                                              {
-                                                title: "The New Wellness Movement",
-                                                body: "Studios, recovery spaces and slower rituals are reshaping the way people spend time in Ahangama.",
-                                                meta: "7 min read",
-                                              },
-                                              {
-                                                title: "Inside Ahangama's Creative Community",
-                                                body: "A quieter portrait of the makers, founders and studios giving the town a more distinct creative identity.",
-                                                meta: "Feature story",
-                                              },
-                                            ].map((item) => (
+                                            {selectedEmailCampaignStage.stories.map((item) => (
                                               <div
                                                 key={item.title}
                                                 style={{
@@ -1190,6 +1353,18 @@ export default function Partners() {
                                                     "1px solid rgba(86, 72, 57, 0.12)",
                                                 }}
                                               >
+                                                <img
+                                                  src={item.image}
+                                                  alt={item.title}
+                                                  style={{
+                                                    display: "block",
+                                                    width: "100%",
+                                                    aspectRatio: "16 / 9",
+                                                    objectFit: "cover",
+                                                    borderRadius: 12,
+                                                    marginBottom: 8,
+                                                  }}
+                                                />
                                                 <div
                                                   style={{
                                                     color: "#2F2A24",
@@ -1389,6 +1564,58 @@ export default function Partners() {
                                       >
                                         View Guide
                                       </a>
+                                    ) : showVisitorEmailCampaignsPreview &&
+                                      point ===
+                                        "Dedicated partner features and recommendations" ? (
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          flexWrap: "wrap",
+                                          gap: 10,
+                                        }}
+                                      >
+                                        {[
+                                          "Newsletter on sign up",
+                                          "Day 1 Newsletter",
+                                          "Day 2 Newsletter",
+                                          "Last Day Newsletter",
+                                        ].map((item) => (
+                                          <button
+                                            key={item}
+                                            type="button"
+                                            onClick={() =>
+                                              setActiveEmailCampaignStage(item)
+                                            }
+                                            style={{
+                                              display: "inline-flex",
+                                              alignItems: "center",
+                                              justifyContent: "center",
+                                              padding: "10px 16px",
+                                              borderRadius: 999,
+                                              border:
+                                                item === activeEmailCampaignStage
+                                                  ? "1px solid rgba(47, 42, 36, 0.28)"
+                                                  : "1px solid rgba(86, 72, 57, 0.14)",
+                                              background:
+                                                item === activeEmailCampaignStage
+                                                  ? "#2F2A24"
+                                                  : "#FBF8F2",
+                                              color:
+                                                item === activeEmailCampaignStage
+                                                  ? "#FFFFFF"
+                                                  : "#2F2A24",
+                                              fontSize: 13,
+                                              fontWeight: 600,
+                                              lineHeight: 1.2,
+                                              cursor: "pointer",
+                                              boxShadow:
+                                                "0 8px 18px rgba(47, 42, 36, 0.05)",
+                                            }}
+                                          >
+                                            {item}
+                                          </button>
+                                        ))}
+                                      </div>
                                     ) : null}
                                   </div>
                                 </div>
