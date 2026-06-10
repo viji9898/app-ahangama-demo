@@ -252,6 +252,8 @@ export default function Partners() {
   const showAhangamaMapPreview = selectedReachChannel.label === "Ahangama Map";
   const showAhangamaGuidePreview =
     selectedReachChannel.label === "Ahangama Guide 2026/27";
+  const showVisitorEmailCampaignsPreview =
+    selectedReachChannel.label === "Visitor Email Campaigns";
 
   return (
     <SiteLayout navOverlayHero>
@@ -597,7 +599,8 @@ export default function Partners() {
                     {showAhangamaWebsitePreview ||
                     showAhangamaPassPreview ||
                     showAhangamaMapPreview ||
-                    showAhangamaGuidePreview ? (
+                    showAhangamaGuidePreview ||
+                    showVisitorEmailCampaignsPreview ? (
                       <div>
                         <Text
                           style={{
@@ -878,16 +881,202 @@ export default function Partners() {
                                         loading="lazy"
                                         style={{
                                           position: "absolute",
-                                          inset: "0 6px 6px 6px",
-                                          width: "calc(100% - 12px)",
-                                          height: "calc(100% - 6px)",
+                                          inset: "-1% -1.5%",
+                                          width: "103%",
+                                          height: "102%",
                                           border: 0,
-                                          borderRadius: 22,
+                                          borderRadius: 28,
                                           background: "#FFFFFF",
+                                          transform: "scale(1.01)",
+                                          transformOrigin: "top center",
                                           boxShadow:
                                             "0 16px 32px rgba(47, 42, 36, 0.12)",
                                         }}
                                       />
+                                    </div>
+                                  ) : showVisitorEmailCampaignsPreview ? (
+                                    <div
+                                      style={{
+                                        position: "absolute",
+                                        inset: 0,
+                                        padding: 14,
+                                        background:
+                                          "linear-gradient(180deg, #F6F0E6 0%, #EEE4D5 100%)",
+                                      }}
+                                    >
+                                      <div
+                                        style={{
+                                          height: "100%",
+                                          borderRadius: 22,
+                                          background: "#FFFCF7",
+                                          overflow: "hidden",
+                                          boxShadow:
+                                            "0 20px 40px rgba(47, 42, 36, 0.14)",
+                                        }}
+                                      >
+                                        <div
+                                          style={{
+                                            padding: "14px 14px 12px",
+                                            background: "#F7F1E8",
+                                            borderBottom:
+                                              "1px solid rgba(86, 72, 57, 0.08)",
+                                          }}
+                                        >
+                                          <div
+                                            style={{
+                                              color: "#8A7B68",
+                                              fontSize: 9,
+                                              fontWeight: 700,
+                                              letterSpacing: 1.1,
+                                              textTransform: "uppercase",
+                                              marginBottom: 8,
+                                            }}
+                                          >
+                                            Editor&apos;s Letter
+                                          </div>
+                                          <div
+                                            style={{
+                                              display: "flex",
+                                              alignItems: "center",
+                                              justifyContent: "space-between",
+                                              marginBottom: 8,
+                                              gap: 10,
+                                            }}
+                                          >
+                                            <div
+                                              style={{
+                                                color: "#207886",
+                                                fontSize: 9,
+                                                fontWeight: 700,
+                                                letterSpacing: 1.2,
+                                                textTransform: "uppercase",
+                                              }}
+                                            >
+                                              From Ahangama
+                                            </div>
+                                            <MailOutlined
+                                              style={{
+                                                color: "#61766A",
+                                                fontSize: 14,
+                                              }}
+                                            />
+                                          </div>
+                                          <div
+                                            style={{
+                                              color: "#2F2A24",
+                                              fontFamily:
+                                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                              fontSize: 24,
+                                              lineHeight: 0.94,
+                                              marginBottom: 8,
+                                            }}
+                                          >
+                                            <div>A calmer way to</div>
+                                            <div>keep up with</div>
+                                            <div>Ahangama.</div>
+                                          </div>
+                                          <div
+                                            style={{
+                                              color: "#303030",
+                                              fontSize: 10,
+                                              lineHeight: 1.55,
+                                            }}
+                                          >
+                                            Ahangama changes quickly.
+                                          </div>
+                                        </div>
+
+                                        <div style={{ padding: 14 }}>
+                                          <div
+                                            style={{
+                                              marginBottom: 12,
+                                              padding: 14,
+                                              borderRadius: 18,
+                                              background:
+                                                "linear-gradient(135deg, #16343A 0%, #2D6972 52%, #6CA8B3 100%)",
+                                              color: "#FFFFFF",
+                                            }}
+                                          >
+                                            <div
+                                              style={{
+                                                fontSize: 9,
+                                                fontWeight: 700,
+                                                letterSpacing: 1.2,
+                                                textTransform: "uppercase",
+                                                marginBottom: 8,
+                                                opacity: 0.9,
+                                              }}
+                                            >
+                                              Partner Feature
+                                            </div>
+                                            <div
+                                              style={{
+                                                fontFamily:
+                                                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                                fontSize: 24,
+                                                lineHeight: 0.95,
+                                                marginBottom: 8,
+                                              }}
+                                            >
+                                              A calmer way to keep up with Ahangama.
+                                            </div>
+                                            <div
+                                              style={{
+                                                fontSize: 10,
+                                                lineHeight: 1.45,
+                                                maxWidth: 150,
+                                              }}
+                                            >
+                                              Ahangama changes quickly.
+                                            </div>
+                                          </div>
+
+                                          <div
+                                            style={{
+                                              display: "grid",
+                                              gap: 8,
+                                            }}
+                                          >
+                                            {[
+                                              "New cafes open, communities grow",
+                                              "Useful local knowledge, edited monthly",
+                                              "Just one thoughtful update from Ahangama",
+                                            ].map((item) => (
+                                              <div
+                                                key={item}
+                                                style={{
+                                                  display: "flex",
+                                                  alignItems: "center",
+                                                  gap: 10,
+                                                  padding: "10px 12px",
+                                                  borderRadius: 14,
+                                                  background: "#F7F1E8",
+                                                }}
+                                              >
+                                                <div
+                                                  style={{
+                                                    width: 8,
+                                                    height: 8,
+                                                    borderRadius: 999,
+                                                    background: "#6A8A71",
+                                                    flex: "0 0 auto",
+                                                  }}
+                                                />
+                                                <div
+                                                  style={{
+                                                    color: "#2F2A24",
+                                                    fontSize: 10,
+                                                    lineHeight: 1.35,
+                                                    fontWeight: 600,
+                                                  }}
+                                                >
+                                                  {item}
+                                                </div>
+                                              </div>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   ) : (
                                     <div
@@ -1029,6 +1218,30 @@ export default function Partners() {
                                           ))}
                                         </div>
                                       </div>
+                                    ) : showAhangamaGuidePreview &&
+                                      point ===
+                                        "Premium publication designed to be kept, not discarded" ? (
+                                      <a
+                                        href={AHANGAMA_GUIDE_PREVIEW_URL}
+                                        style={{
+                                          display: "inline-flex",
+                                          alignItems: "center",
+                                          justifyContent: "center",
+                                          justifySelf: "start",
+                                          padding: "12px 18px",
+                                          borderRadius: 999,
+                                          background: "#2F2A24",
+                                          color: "#FFFFFF",
+                                          fontSize: 14,
+                                          fontWeight: 600,
+                                          lineHeight: 1,
+                                          textDecoration: "none",
+                                          boxShadow:
+                                            "0 14px 30px rgba(47, 42, 36, 0.14)",
+                                        }}
+                                      >
+                                        View Guide
+                                      </a>
                                     ) : null}
                                   </div>
                                 </div>

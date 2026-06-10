@@ -154,9 +154,15 @@ export default function GuidePage() {
                     </span>
                     <span
                       className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF", whiteSpace: "normal" }}
+                      style={{ color: "#FFFFFF", whiteSpace: "nowrap" }}
                     >
-                      2026/2027 Season Guide
+                      2026/2027
+                    </span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Season Guide
                     </span>
                   </Title>
                 </div>
