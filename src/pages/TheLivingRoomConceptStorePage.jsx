@@ -195,7 +195,7 @@ export default function TheLivingRoomConceptStorePage() {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "center",
+                      justifyContent: "flex-end",
                       minHeight: "100svh",
                       maxWidth: 620,
                       padding:
