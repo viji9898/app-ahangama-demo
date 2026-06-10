@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import { Button, Card, Col, Input, Row, Space, Typography } from "antd";
+import {
+  Alert,
+  Button,
+  Card,
+  Checkbox,
+  Col,
+  Input,
+  Radio,
+  Row,
+  Space,
+  Typography,
+} from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -8,6 +19,11 @@ import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 
 const { Paragraph, Text, Title } = Typography;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const LIGHTHOUSE_PASS_ENDPOINT = "/.netlify/functions/create-hotel-guest-pass";
+const FORM_STEP_DETAILS = "details";
+const FORM_STEP_PREFERENCES = "preferences";
+const FORM_STEP_SUCCESS = "success";
 
 const LIGHTHOUSE_HERO_IMAGE =
   "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=";
@@ -51,8 +67,171 @@ const PASS_EDITORIAL_NOTES = [
   "Access to a curated guide and map shaped around useful recommendations, local favourites and places actually worth knowing.",
 ];
 
+const STAY_LENGTH_OPTIONS = [
+  "1-3 nights",
+  "4-7 nights",
+  "8-14 nights",
+  "15-30 nights",
+  "1 month+",
+];
+
+const INTEREST_OPTIONS = [
+  "Surfing",
+  "Cafes & Coffee",
+  "Restaurants",
+  "Wellness & Yoga",
+  "Fitness & Sports",
+  "Nightlife",
+  "Coworking",
+  "Photography",
+  "Shopping",
+  "Nature & Wildlife",
+  "Families & Kids",
+  "Luxury Experiences",
+];
+
+const SERVICE_OPTIONS = [
+  "Airport Transfers",
+  "Scooter Rental",
+  "Surf Lessons",
+  "Yoga Classes",
+  "Massage & Wellness",
+  "Private Driver",
+  "Accommodation Deals",
+  "Tours & Experiences",
+  "Coworking Passes",
+];
+
+function validateGuestDetails(values) {
+  const errors = {};
+
+  if (!String(values.fullName || "").trim()) {
+    errors.fullName = "Please enter your full name";
+  }
+
+  const email = String(values.email || "").trim().toLowerCase();
+
+  if (!email) {
+    errors.email = "Please enter your email address";
+  } else if (!EMAIL_PATTERN.test(email)) {
+    errors.email = "Please enter a valid email address";
+  }
+
+  if (!String(values.phone || "").trim()) {
+    errors.phone = "Please enter your phone number";
+  }
+
+  return errors;
+}
+
 export default function LighthousePage() {
   const canonical = absUrl("/lighthouse");
+  const [formStep, setFormStep] = useState(FORM_STEP_DETAILS);
+  const [isSubmittingDetails, setIsSubmittingDetails] = useState(false);
+  const [detailsError, setDetailsError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [createdPassState, setCreatedPassState] = useState(null);
+  const [guestDetails, setGuestDetails] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+  });
+  const [preferencesDraft, setPreferencesDraft] = useState({
+    country: "",
+    stayLength: "",
+    interests: [],
+    wantsWhatsappRecommendations: false,
+    servicesInterested: [],
+  });
+
+  const handleGuestDetailsChange = (field, value) => {
+    setGuestDetails((current) => ({
+      ...current,
+      [field]: value,
+    }));
+
+    setFieldErrors((current) => {
+      if (!current[field]) {
+        return current;
+      }
+
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+
+    if (detailsError) {
+      setDetailsError("");
+    }
+  };
+
+  const handlePreferencesChange = (field, value) => {
+    setPreferencesDraft((current) => ({
+      ...current,
+      [field]: value,
+    }));
+  };
+
+  const handleGuestDetailsSubmit = async () => {
+    const nextErrors = validateGuestDetails(guestDetails);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setFieldErrors(nextErrors);
+      return;
+    }
+
+    setIsSubmittingDetails(true);
+    setDetailsError("");
+
+    try {
+      const response = await fetch(LIGHTHOUSE_PASS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: guestDetails.fullName.trim(),
+          email: guestDetails.email.trim().toLowerCase(),
+          phone: guestDetails.phone.trim(),
+          sourceHotelSlug: "lighthouse-hotel",
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setDetailsError(
+          payload.error ||
+            "We couldn't create your pass just now. Please try again.",
+        );
+        return;
+      }
+
+      setCreatedPassState({
+        guest: payload.guest,
+        pass: payload.pass,
+        preferences: payload.preferences,
+      });
+      setFormStep(FORM_STEP_PREFERENCES);
+    } catch (error) {
+      setDetailsError("We couldn't reach the pass service. Please try again.");
+    } finally {
+      setIsSubmittingDetails(false);
+    }
+  };
+
+  const handlePreferencesSubmit = () => {
+    console.log("lighthouse-pass preferences draft", {
+      guestId: createdPassState?.guest?.id,
+      passId: createdPassState?.pass?.id,
+      preferences: preferencesDraft,
+    });
+    setFormStep(FORM_STEP_SUCCESS);
+  };
+
+  const handleSkipPreferences = () => {
+    setFormStep(FORM_STEP_SUCCESS);
+  };
 
   return (
     <SiteLayout navOverlayHero>
@@ -482,59 +661,390 @@ export default function LighthousePage() {
                     marginBottom: 22,
                   }}
                 >
-                  The digital pass can be delivered immediately and added
-                  directly to Apple Wallet or Google Wallet.
+                  Your pass details can be prepared now, with wallet
+                  installation available in the next step.
                 </Paragraph>
 
-                <Space direction="vertical" size={14} style={{ width: "100%" }}>
-                  <div>
-                    <Text
-                      style={{
-                        display: "block",
-                        marginBottom: 8,
-                        fontWeight: 600,
-                      }}
-                    >
-                      Full name
-                    </Text>
-                    <Input size="large" placeholder="Enter guest name" />
-                  </div>
-
-                  <div>
-                    <Text
-                      style={{
-                        display: "block",
-                        marginBottom: 8,
-                        fontWeight: 600,
-                      }}
-                    >
-                      Email address
-                    </Text>
-                    <Input size="large" placeholder="Enter guest email" />
-                  </div>
-
-                  <div>
-                    <Text
-                      style={{
-                        display: "block",
-                        marginBottom: 8,
-                        fontWeight: 600,
-                      }}
-                    >
-                      Phone number
-                    </Text>
-                    <Input size="large" placeholder="Enter guest number" />
-                  </div>
-
-                  <Button
-                    type="primary"
-                    size="large"
-                    block
-                    style={{ marginTop: 6 }}
+                {formStep === FORM_STEP_DETAILS ? (
+                  <Space
+                    direction="vertical"
+                    size={14}
+                    style={{ width: "100%" }}
                   >
-                    Get My Complimentary Pass
-                  </Button>
-                </Space>
+                    {detailsError ? (
+                      <Alert
+                        type="error"
+                        showIcon
+                        message={detailsError}
+                        style={{ borderRadius: 16 }}
+                      />
+                    ) : null}
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 8,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Full name
+                      </Text>
+                      <Input
+                        size="large"
+                        placeholder="Enter guest name"
+                        value={guestDetails.fullName}
+                        status={fieldErrors.fullName ? "error" : ""}
+                        onChange={(event) =>
+                          handleGuestDetailsChange("fullName", event.target.value)
+                        }
+                      />
+                      {fieldErrors.fullName ? (
+                        <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                          {fieldErrors.fullName}
+                        </Text>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 8,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Email address
+                      </Text>
+                      <Input
+                        size="large"
+                        placeholder="Enter guest email"
+                        value={guestDetails.email}
+                        status={fieldErrors.email ? "error" : ""}
+                        onChange={(event) =>
+                          handleGuestDetailsChange("email", event.target.value)
+                        }
+                      />
+                      {fieldErrors.email ? (
+                        <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                          {fieldErrors.email}
+                        </Text>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 8,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Phone number
+                      </Text>
+                      <Input
+                        size="large"
+                        placeholder="Enter guest number"
+                        value={guestDetails.phone}
+                        status={fieldErrors.phone ? "error" : ""}
+                        onChange={(event) =>
+                          handleGuestDetailsChange("phone", event.target.value)
+                        }
+                      />
+                      {fieldErrors.phone ? (
+                        <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                          {fieldErrors.phone}
+                        </Text>
+                      ) : null}
+                    </div>
+
+                    <Button
+                      type="primary"
+                      size="large"
+                      block
+                      loading={isSubmittingDetails}
+                      style={{ marginTop: 6 }}
+                      onClick={handleGuestDetailsSubmit}
+                    >
+                      Get My Complimentary Pass
+                    </Button>
+                  </Space>
+                ) : null}
+
+                {formStep === FORM_STEP_PREFERENCES ? (
+                  <Space
+                    direction="vertical"
+                    size={18}
+                    style={{ width: "100%" }}
+                  >
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 10,
+                          color: "#B08E62",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          letterSpacing: 1.4,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Optional Preferences
+                      </Text>
+                      <Title
+                        level={4}
+                        style={{
+                          marginTop: 0,
+                          marginBottom: 8,
+                          color: "#201E1B",
+                          fontFamily:
+                            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                          fontSize: "clamp(26px, 2.8vw, 36px)",
+                          lineHeight: 1.02,
+                          fontWeight: 500,
+                        }}
+                      >
+                        Help us personalise your Ahangama experience
+                      </Title>
+                      <Paragraph
+                        style={{
+                          color: "#5A554D",
+                          fontSize: 15,
+                          lineHeight: 1.75,
+                          marginBottom: 0,
+                        }}
+                      >
+                        Optional — takes less than 30 seconds.
+                      </Paragraph>
+                    </div>
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 8,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Country
+                      </Text>
+                      <Input
+                        size="large"
+                        placeholder="Where are you visiting from?"
+                        value={preferencesDraft.country}
+                        onChange={(event) =>
+                          handlePreferencesChange("country", event.target.value)
+                        }
+                      />
+                    </div>
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 10,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Length of stay
+                      </Text>
+                      <Radio.Group
+                        value={preferencesDraft.stayLength}
+                        onChange={(event) =>
+                          handlePreferencesChange("stayLength", event.target.value)
+                        }
+                        style={{ display: "grid", gap: 10 }}
+                      >
+                        {STAY_LENGTH_OPTIONS.map((option) => (
+                          <Radio key={option} value={option}>
+                            {option}
+                          </Radio>
+                        ))}
+                      </Radio.Group>
+                    </div>
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 10,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Interests
+                      </Text>
+                      <Checkbox.Group
+                        value={preferencesDraft.interests}
+                        onChange={(value) =>
+                          handlePreferencesChange("interests", value)
+                        }
+                        style={{ width: "100%" }}
+                      >
+                        <Row gutter={[12, 12]}>
+                          {INTEREST_OPTIONS.map((option) => (
+                            <Col xs={24} sm={12} key={option}>
+                              <Checkbox value={option}>{option}</Checkbox>
+                            </Col>
+                          ))}
+                        </Row>
+                      </Checkbox.Group>
+                    </div>
+
+                    <Checkbox
+                      checked={preferencesDraft.wantsWhatsappRecommendations}
+                      onChange={(event) =>
+                        handlePreferencesChange(
+                          "wantsWhatsappRecommendations",
+                          event.target.checked,
+                        )
+                      }
+                    >
+                      Yes, send me personalised recommendations and local deals
+                      via WhatsApp
+                    </Checkbox>
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 10,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Services interested in
+                      </Text>
+                      <Checkbox.Group
+                        value={preferencesDraft.servicesInterested}
+                        onChange={(value) =>
+                          handlePreferencesChange("servicesInterested", value)
+                        }
+                        style={{ width: "100%" }}
+                      >
+                        <Row gutter={[12, 12]}>
+                          {SERVICE_OPTIONS.map((option) => (
+                            <Col xs={24} sm={12} key={option}>
+                              <Checkbox value={option}>{option}</Checkbox>
+                            </Col>
+                          ))}
+                        </Row>
+                      </Checkbox.Group>
+                    </div>
+
+                    <Space direction="vertical" size={10} style={{ width: "100%" }}>
+                      <Button
+                        type="primary"
+                        size="large"
+                        block
+                        onClick={handlePreferencesSubmit}
+                      >
+                        Continue
+                      </Button>
+                      <Button size="large" block onClick={handleSkipPreferences}>
+                        Skip for now
+                      </Button>
+                    </Space>
+                  </Space>
+                ) : null}
+
+                {formStep === FORM_STEP_SUCCESS ? (
+                  <Space
+                    direction="vertical"
+                    size={18}
+                    style={{ width: "100%" }}
+                  >
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 10,
+                          color: "#B08E62",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          letterSpacing: 1.8,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Pass In Progress
+                      </Text>
+                      <Title
+                        level={3}
+                        style={{
+                          marginTop: 0,
+                          marginBottom: 10,
+                          color: "#201E1B",
+                          fontFamily:
+                            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                          fontSize: "clamp(30px, 3vw, 42px)",
+                          lineHeight: 1,
+                          fontWeight: 500,
+                        }}
+                      >
+                        Your Ahangama Pass is being prepared
+                      </Title>
+                      <Paragraph
+                        style={{
+                          color: "#5A554D",
+                          fontSize: 15,
+                          lineHeight: 1.75,
+                          marginBottom: 10,
+                        }}
+                      >
+                        Wallet installation will be available in the next step.
+                      </Paragraph>
+                      {createdPassState?.guest?.fullName ? (
+                        <Text style={{ color: "#5A554D" }}>
+                          We have reserved your guest pass for {createdPassState.guest.fullName}.
+                        </Text>
+                      ) : null}
+                    </div>
+
+                    <Card
+                      style={{
+                        borderRadius: 20,
+                        border: "1px solid rgba(176,142,98,0.18)",
+                        background:
+                          "linear-gradient(180deg, #fffaf1 0%, #f6ebd9 100%)",
+                      }}
+                      bodyStyle={{ padding: 18 }}
+                    >
+                      <Text
+                        style={{
+                          display: "block",
+                          color: "#7A5B32",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          letterSpacing: 1.2,
+                          textTransform: "uppercase",
+                          marginBottom: 8,
+                        }}
+                      >
+                        Next Step
+                      </Text>
+                      <Paragraph
+                        style={{
+                          marginBottom: 10,
+                          color: "#5A554D",
+                          lineHeight: 1.7,
+                        }}
+                      >
+                        We&apos;ll guide you to wallet installation as soon as the
+                        next step is ready.
+                      </Paragraph>
+                      <Space size={8} align="center" style={{ marginTop: 4 }}>
+                        <img
+                          src={addToAppleWalletLogo}
+                          alt="Apple Wallet"
+                          style={{ display: "block", height: 45, width: "auto" }}
+                        />
+                        <img
+                          src={addToGoogleWalletLogo}
+                          alt="Google Wallet"
+                          style={{ display: "block", height: 45, width: "auto" }}
+                        />
+                      </Space>
+                    </Card>
+                  </Space>
+                ) : null}
 
                 <Card
                   style={{
@@ -566,7 +1076,7 @@ export default function LighthousePage() {
                       lineHeight: 1.7,
                     }}
                   >
-                    Your pass can be delivered immediately after submission.
+                    The first step confirms your guest pass instantly.
                   </Paragraph>
                   <Text
                     style={{
@@ -575,7 +1085,7 @@ export default function LighthousePage() {
                       lineHeight: 1.7,
                     }}
                   >
-                    Add it directly to:
+                    Wallet installation follows in the next step:
                   </Text>
                   <Space size={8} align="center" style={{ marginTop: 14 }}>
                     <img

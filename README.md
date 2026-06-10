@@ -82,6 +82,19 @@ Before testing promo flows:
 - apply [migrations/006_create_pass_guests.sql](/Users/viji/DevEnv/ahangama-app/migrations/006_create_pass_guests.sql), [migrations/007_create_passes.sql](/Users/viji/DevEnv/ahangama-app/migrations/007_create_passes.sql), and [migrations/008_create_guest_preferences.sql](/Users/viji/DevEnv/ahangama-app/migrations/008_create_guest_preferences.sql) to the promo database before wiring complimentary hotel guest issuance
 - configure Stripe, SendGrid, and PassKit variables
 
+To test the complimentary hotel guest Stage 2 endpoint locally through Netlify Dev, use:
+
+```bash
+curl -X POST http://localhost:8890/.netlify/functions/create-hotel-guest-pass \
+	-H "Content-Type: application/json" \
+	-d '{
+		"fullName": "Jane Smith",
+		"email": "jane@email.com",
+		"phone": "+94770000000",
+		"sourceHotelSlug": "lighthouse-hotel"
+	}'
+```
+
 ## Email Template Testing
 
 The promo email test script expects `SENDGRID_API_KEY` in your shell or in one of these local env files at the repo root:
