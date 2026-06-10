@@ -899,27 +899,23 @@ export default function Partners() {
                                       style={{
                                         position: "absolute",
                                         inset: 0,
-                                        padding: 14,
-                                        background:
-                                          "linear-gradient(180deg, #F6F0E6 0%, #EEE4D5 100%)",
+                                        padding: 0,
+                                        background: "#FFFFFF",
                                       }}
                                     >
                                       <div
                                         style={{
                                           height: "100%",
-                                          borderRadius: 22,
-                                          background: "#FFFCF7",
+                                          borderRadius: 0,
+                                          background: "#FFFFFF",
                                           overflow: "hidden",
-                                          boxShadow:
-                                            "0 20px 40px rgba(47, 42, 36, 0.14)",
+                                          boxShadow: "none",
                                         }}
                                       >
                                         <div
                                           style={{
                                             padding: "12px 14px",
-                                            background: "#F7F1E8",
-                                            borderBottom:
-                                              "1px solid rgba(86, 72, 57, 0.08)",
+                                            background: "#FFFFFF",
                                             display: "flex",
                                             alignItems: "center",
                                             justifyContent: "space-between",
@@ -1019,8 +1015,7 @@ export default function Partners() {
                                             style={{
                                               borderRadius: 18,
                                               overflow: "hidden",
-                                              background:
-                                                "linear-gradient(160deg, #D8D1C7 0%, #BBAFA0 100%)",
+                                              background: "#FFFFFF",
                                             }}
                                           >
                                             <div
@@ -1029,9 +1024,8 @@ export default function Partners() {
                                                 display: "flex",
                                                 alignItems: "flex-end",
                                                 padding: 12,
-                                                color: "#FFFFFF",
-                                                background:
-                                                  "linear-gradient(180deg, rgba(28,34,38,0.06) 0%, rgba(28,34,38,0.58) 100%)",
+                                                color: "#2F2A24",
+                                                background: "#FFFFFF",
                                               }}
                                             >
                                               <div
@@ -1191,9 +1185,9 @@ export default function Partners() {
                                                 style={{
                                                   display: "grid",
                                                   gap: 4,
-                                                  padding: "10px 12px",
-                                                  borderRadius: 14,
-                                                  background: "#F7F1E8",
+                                                  padding: "0 0 10px",
+                                                  borderBottom:
+                                                    "1px solid rgba(86, 72, 57, 0.12)",
                                                 }}
                                               >
                                                 <div
