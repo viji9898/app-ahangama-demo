@@ -161,10 +161,10 @@ const LIGHTHOUSE_GUIDE_SECTION_CARDS = [
   },
   {
     label: "WELLNESS STAY",
-    title: "My Wellness Stay at Samba",
+    title: "My Weekend at Lighthouse",
     href: "/3-days-in-ahangama",
     image:
-      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
+      "https://q-xx.bstatic.com/xdata/images/hotel/max500/504932003.jpg?k=dea775aa5ed58cbc819897a662ae336aa36e75e2ce5c63e6bf382fa496bfc78b&o=",
   },
   {
     label: "WELLNESS GUIDE",
