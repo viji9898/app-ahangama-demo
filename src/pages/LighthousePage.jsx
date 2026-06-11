@@ -116,6 +116,7 @@ const HERO_FEATURES = [
 ];
 
 const HERO_SOCIAL_PROOF = ["LW", "AP", "HN"];
+const HERO_BADGE_YEAR = "2026 / 27";
 
 const PASS_LOVE_STATS = [
   {
@@ -586,7 +587,6 @@ export default function LighthousePage() {
           </div>
         </div>
       </div>
-      gridTemplateColumns: "minmax(146px, 172px) minmax(0, 1fr)",
       <div style={{ textAlign: "center", maxWidth: 320 }}>
         <Text
           style={{
