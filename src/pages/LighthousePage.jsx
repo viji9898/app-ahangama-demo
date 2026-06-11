@@ -23,6 +23,7 @@ import {
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 
@@ -349,60 +350,184 @@ export default function LighthousePage() {
     setFormStep(FORM_STEP_SUCCESS);
   };
 
+  const passPreviewPanel = (
+    <div
+      style={{
+        display: "grid",
+        justifyItems: "center",
+        gap: 18,
+        padding: "clamp(24px, 3vw, 36px)",
+        borderRadius: 28,
+        border: "1px solid rgba(32,30,27,0.08)",
+        background: "linear-gradient(180deg, #fffdf9 0%, #f4ede4 100%)",
+        boxShadow: "0 26px 80px rgba(42,38,31,0.12)",
+      }}
+    >
+      <div
+        style={{
+          width: "min(100%, 208px)",
+          padding: 10,
+          borderRadius: 36,
+          background: "#111111",
+          boxShadow: "0 28px 50px rgba(0, 0, 0, 0.22)",
+        }}
+      >
+        <div
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            borderRadius: 28,
+            background: "#FFFFFF",
+            aspectRatio: "9 / 19.5",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 10,
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: 128,
+              height: 24,
+              background: "#111111",
+              borderRadius: 16,
+              zIndex: 2,
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "flex-start",
+              padding: 14,
+              background: "#FFFFFF",
+            }}
+          >
+            <img
+              src={ahangamaPassMobileWallet}
+              alt="Ahangama Pass iPhone preview"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                objectPosition: "top center",
+                borderRadius: 18,
+                transform: "scale(1.1)",
+                transformOrigin: "top center",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style={{ textAlign: "center", maxWidth: 320 }}>
+        <Text
+          style={{
+            display: "block",
+            marginBottom: 8,
+            color: "#B08E62",
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: 1.6,
+            textTransform: "uppercase",
+          }}
+        >
+          Ahangama Pass Preview
+        </Text>
+        <Paragraph
+          style={{
+            margin: 0,
+            color: "#5A554D",
+            fontSize: 14,
+            lineHeight: 1.7,
+          }}
+        >
+          A wallet-ready guest pass with local perks.
+        </Paragraph>
+      </div>
+    </div>
+  );
+
   const signupPanel = (
     <Card
       id="lighthouse-signup-form"
       style={{
+        width: "100%",
         borderRadius: 28,
         border: "1px solid rgba(32,30,27,0.08)",
         background: "rgba(255,255,255,0.94)",
         boxShadow: "0 26px 80px rgba(42,38,31,0.16)",
         backdropFilter: "blur(14px)",
       }}
-      bodyStyle={{ padding: 26 }}
+      bodyStyle={{ padding: 32 }}
     >
-      <Title
-        level={3}
-        style={{
-          marginTop: 0,
-          marginBottom: 6,
-          color: "#201E1B",
-          fontFamily:
-            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-          fontSize: "clamp(30px, 3vw, 42px)",
-          lineHeight: 0.95,
-          fontWeight: 500,
-        }}
-      >
-        {formStep === FORM_STEP_DETAILS
-          ? ""
-          : formStep === FORM_STEP_PREFERENCES
-            ? "Tell Us A Little More"
-            : "Your Pass Is Ready"}
-      </Title>
-      <Paragraph
-        style={{
-          color: "#6D655B",
-          fontSize: 14,
-          lineHeight: 1.7,
-          marginBottom: 20,
-        }}
-      >
-        {formStep === FORM_STEP_DETAILS
-          ? "Takes less than 30 seconds."
-          : formStep === FORM_STEP_PREFERENCES
-            ? "Optional preferences help us tailor your Ahangama recommendations."
-            : "Your complimentary guest access has been prepared."}
-      </Paragraph>
+      {formStep !== FORM_STEP_DETAILS ? (
+        <>
+          {formStep === FORM_STEP_PREFERENCES ? (
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                color: "#B08E62",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 1.4,
+                textTransform: "uppercase",
+              }}
+            >
+              Optional Preferences
+            </Text>
+          ) : null}
+          <Title
+            level={3}
+            style={{
+              marginTop: 0,
+              marginBottom: 6,
+              color: "#201E1B",
+              fontFamily:
+                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+              fontSize: "clamp(30px, 3vw, 42px)",
+              lineHeight: 0.95,
+              fontWeight: 500,
+            }}
+          >
+            {formStep === FORM_STEP_PREFERENCES
+              ? "Tell Us A Little More"
+              : "Your Pass Is Ready"}
+          </Title>
+          <Paragraph
+            style={{
+              color: "#6D655B",
+              fontSize: 14,
+              lineHeight: 1.7,
+              marginBottom: 20,
+            }}
+          >
+            {formStep === FORM_STEP_PREFERENCES
+              ? "Optional preferences help us tailor your Ahangama recommendations."
+              : "Your complimentary guest access has been prepared."}
+          </Paragraph>
+        </>
+      ) : null}
 
       {formStep === FORM_STEP_DETAILS ? (
-        <Space direction="vertical" size={14} style={{ width: "100%" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: 18,
+            width: "100%",
+          }}
+        >
           {detailsError ? (
             <Alert
               type="error"
               showIcon
               message={detailsError}
-              style={{ borderRadius: 16 }}
+              style={{ borderRadius: 16, gridColumn: "1 / -1" }}
             />
           ) : null}
 
@@ -534,6 +659,7 @@ export default function LighthousePage() {
               borderColor: "#1E1814",
               boxShadow: "none",
               fontWeight: 600,
+              gridColumn: "1 / -1",
             }}
             onClick={handleGuestDetailsSubmit}
           >
@@ -543,7 +669,7 @@ export default function LighthousePage() {
           <Space
             size={8}
             align="center"
-            style={{ marginTop: 4, color: "#6D655B" }}
+            style={{ marginTop: 4, color: "#6D655B", gridColumn: "1 / -1" }}
           >
             <LockOutlined style={{ color: "#B08E62" }} />
             <Text style={{ color: "#6D655B", fontSize: 13 }}>
@@ -551,7 +677,7 @@ export default function LighthousePage() {
             </Text>
           </Space>
 
-          <Space size={10} style={{ marginTop: 4 }}>
+          <Space size={10} style={{ marginTop: 4, gridColumn: "1 / -1" }}>
             <img
               src={addToAppleWalletLogo}
               alt="Apple Wallet"
@@ -563,49 +689,29 @@ export default function LighthousePage() {
               style={{ display: "block", height: 42, width: "auto" }}
             />
           </Space>
-        </Space>
+        </div>
       ) : null}
 
       {formStep === FORM_STEP_PREFERENCES ? (
-        <Space direction="vertical" size={18} style={{ width: "100%" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: 24,
+            width: "100%",
+            alignItems: "start",
+          }}
+        >
           {preferencesError ? (
             <Alert
               type="error"
               showIcon
               message={preferencesError}
-              style={{ borderRadius: 16 }}
+              style={{ borderRadius: 16, gridColumn: "1 / -1" }}
             />
           ) : null}
 
-          <div>
-            <Text
-              style={{
-                display: "block",
-                marginBottom: 10,
-                color: "#B08E62",
-                fontSize: 12,
-                fontWeight: 700,
-                letterSpacing: 1.4,
-                textTransform: "uppercase",
-              }}
-            >
-              Optional Preferences
-            </Text>
-            <Title
-              level={4}
-              style={{
-                marginTop: 0,
-                marginBottom: 8,
-                color: "#201E1B",
-                fontFamily:
-                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                fontSize: "clamp(26px, 2.8vw, 36px)",
-                lineHeight: 1.02,
-                fontWeight: 500,
-              }}
-            >
-              Help us personalise your Ahangama experience
-            </Title>
+          <div style={{ gridColumn: "1 / -1" }}>
             <Paragraph
               style={{
                 color: "#5A554D",
@@ -696,6 +802,7 @@ export default function LighthousePage() {
                 event.target.checked,
               )
             }
+            style={{ gridColumn: "1 / -1" }}
           >
             Yes, send me personalised recommendations and local deals via WhatsApp
           </Checkbox>
@@ -727,7 +834,11 @@ export default function LighthousePage() {
             </Checkbox.Group>
           </div>
 
-          <Space direction="vertical" size={10} style={{ width: "100%" }}>
+          <Space
+            direction="vertical"
+            size={10}
+            style={{ width: "100%", gridColumn: "1 / -1" }}
+          >
             <Button
               type="primary"
               size="large"
@@ -746,11 +857,19 @@ export default function LighthousePage() {
               Skip for now
             </Button>
           </Space>
-        </Space>
+        </div>
       ) : null}
 
       {formStep === FORM_STEP_SUCCESS ? (
-        <Space direction="vertical" size={18} style={{ width: "100%" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: 24,
+            width: "100%",
+            alignItems: "start",
+          }}
+        >
           <div>
             <Text
               style={{
@@ -876,7 +995,7 @@ export default function LighthousePage() {
               </Button>
             ) : null}
           </Card>
-        </Space>
+        </div>
       ) : null}
     </Card>
   );
@@ -1166,8 +1285,60 @@ export default function LighthousePage() {
       </div>
 
       <div className="dm-canvas">
+        <div className="dm-wrap" style={{ paddingTop: 36, paddingBottom: 4 }}>
+          <div
+            style={{
+              maxWidth: 860,
+              margin: "0 auto",
+              textAlign: "center",
+            }}
+          >
+            <Title
+              level={2}
+              style={{
+                margin: 0,
+                color: "#2F2A24",
+                fontFamily:
+                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                fontSize: "clamp(30px, 4.2vw, 50px)",
+                lineHeight: 1.04,
+                fontWeight: 500,
+              }}
+            >
+              Everything you need for the perfect Ahangama stay.
+            </Title>
+
+            <Text
+              style={{
+                display: "block",
+                marginTop: 16,
+                color: "#B08E62",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 2,
+                textTransform: "uppercase",
+              }}
+            >
+              Local Insight + Exclusive Benefits
+            </Text>
+          </div>
+        </div>
+      </div>
+
+      <div className="dm-canvas">
         <div className="dm-wrap" style={{ paddingTop: 28, paddingBottom: 8 }}>
-          <div style={{ maxWidth: 460, margin: "0 auto" }}>{signupPanel}</div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(280px, 360px) minmax(0, 1fr)",
+              gap: 24,
+              width: "100%",
+              alignItems: "start",
+            }}
+          >
+            {passPreviewPanel}
+            <div style={{ width: "100%", margin: "0 auto" }}>{signupPanel}</div>
+          </div>
         </div>
       </div>
 
