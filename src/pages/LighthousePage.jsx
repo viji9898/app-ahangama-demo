@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import {
   BookOutlined,
   CalendarOutlined,
+  DownOutlined,
   EnvironmentOutlined,
   GiftOutlined,
   HeartOutlined,
   LockOutlined,
   MessageOutlined,
   MobileOutlined,
+  SearchOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
 import {
@@ -19,7 +21,6 @@ import {
   Input,
   Radio,
   Row,
-  Select,
   Space,
   Typography,
 } from "antd";
@@ -48,6 +49,10 @@ const DISPLAY_DATE_FORMATTER = new Intl.DateTimeFormat("en-GB", {
   month: "long",
   year: "numeric",
 });
+const DEFAULT_WHATSAPP_COUNTRY_OPTION =
+  PHONE_COUNTRY_CODES.find(
+    (option) => option.value === DEFAULT_WHATSAPP_COUNTRY_CODE,
+  ) || PHONE_COUNTRY_CODES[0];
 
 function formatDisplayDate(value) {
   const date = new Date(value);
@@ -69,6 +74,14 @@ function buildWhatsappPhoneNumber(countryCode, phone) {
   }
 
   return `${normalizedCountryCode}${localDigits}`;
+}
+
+function formatCountryOptionLabel(option) {
+  if (!option) {
+    return "";
+  }
+
+  return `${option.label} (${option.value})`;
 }
 
 const LIGHTHOUSE_HERO_IMAGE =
@@ -316,6 +329,19 @@ export default function LighthousePage() {
     wantsWhatsappRecommendations: false,
     servicesInterested: [],
   });
+  const [countrySearchQuery, setCountrySearchQuery] = useState(
+    formatCountryOptionLabel(DEFAULT_WHATSAPP_COUNTRY_OPTION),
+  );
+  const [isCountryMenuOpen, setIsCountryMenuOpen] = useState(false);
+  const [isCountryInputActive, setIsCountryInputActive] = useState(false);
+
+  const selectedCountryOption =
+    PHONE_COUNTRY_CODES.find(
+      (option) => option.value === guestDetails.countryCode,
+    ) || DEFAULT_WHATSAPP_COUNTRY_OPTION;
+  const filteredCountryOptions = PHONE_COUNTRY_CODES.filter((option) =>
+    option.searchText.toLowerCase().includes(countrySearchQuery.toLowerCase()),
+  ).slice(0, 12);
 
   const handleGuestDetailsChange = (field, value) => {
     setGuestDetails((current) => ({
@@ -346,6 +372,32 @@ export default function LighthousePage() {
       ...current,
       [field]: value,
     }));
+  };
+
+  const handleCountrySearchFocus = () => {
+    setIsCountryInputActive(true);
+    setCountrySearchQuery("");
+    setIsCountryMenuOpen(true);
+  };
+
+  const handleCountrySearchBlur = () => {
+    setIsCountryInputActive(false);
+    window.setTimeout(() => {
+      setIsCountryMenuOpen(false);
+      setCountrySearchQuery(formatCountryOptionLabel(selectedCountryOption));
+    }, 120);
+  };
+
+  const handleCountrySearchChange = (value) => {
+    setCountrySearchQuery(value);
+    setIsCountryMenuOpen(true);
+  };
+
+  const handleCountrySelect = (option) => {
+    handleGuestDetailsChange("countryCode", option.value);
+    setCountrySearchQuery(formatCountryOptionLabel(option));
+    setIsCountryMenuOpen(false);
+    setIsCountryInputActive(false);
   };
 
   const handleGuestDetailsSubmit = async () => {
@@ -534,7 +586,7 @@ export default function LighthousePage() {
           </div>
         </div>
       </div>
-
+      gridTemplateColumns: "minmax(146px, 172px) minmax(0, 1fr)",
       <div style={{ textAlign: "center", maxWidth: 320 }}>
         <Text
           style={{
@@ -723,34 +775,142 @@ export default function LighthousePage() {
             >
               WhatsApp number
             </Text>
+            <input
+              aria-hidden="true"
+              tabIndex={-1}
+              autoComplete="username"
+              style={{
+                position: "absolute",
+                opacity: 0,
+                pointerEvents: "none",
+                height: 0,
+                width: 0,
+              }}
+            />
+            <input
+              aria-hidden="true"
+              tabIndex={-1}
+              autoComplete="new-password"
+              style={{
+                position: "absolute",
+                opacity: 0,
+                pointerEvents: "none",
+                height: 0,
+                width: 0,
+              }}
+            />
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "minmax(112px, 132px) minmax(0, 1fr)",
+                gridTemplateColumns: "minmax(146px, 172px) minmax(0, 1fr)",
                 gap: 10,
               }}
             >
-              <Select
-                showSearch
-                value={guestDetails.countryCode}
-                onChange={(value) => handleGuestDetailsChange("countryCode", value)}
-                aria-label="WhatsApp country code"
-                popupMatchSelectWidth={320}
-                optionFilterProp="searchText"
-                filterOption={(inputValue, option) =>
-                  String(option?.searchText || "")
-                    .toLowerCase()
-                    .includes(inputValue.toLowerCase())
-                }
-                options={PHONE_COUNTRY_CODES.map((option) => ({
-                  value: option.value,
-                  searchText: option.searchText,
-                  label: `${option.label} (${option.value})`,
-                }))}
-                size="large"
-                status={fieldErrors.phone ? "error" : ""}
-                placeholder="Country code"
-              />
+              <div style={{ position: "relative" }}>
+                <Input
+                  size="large"
+                  name="whatsapp-country-search"
+                  aria-label="WhatsApp country code"
+                  autoComplete="new-password"
+                  autoCorrect="off"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  readOnly={!isCountryInputActive}
+                  value={
+                    isCountryInputActive
+                      ? countrySearchQuery
+                      : formatCountryOptionLabel(selectedCountryOption)
+                  }
+                  status={fieldErrors.phone ? "error" : ""}
+                  onFocus={handleCountrySearchFocus}
+                  onBlur={handleCountrySearchBlur}
+                  onChange={(event) =>
+                    handleCountrySearchChange(event.target.value)
+                  }
+                  suffix={
+                    isCountryMenuOpen ? (
+                      <SearchOutlined style={{ color: "#b8b2aa" }} />
+                    ) : (
+                      <DownOutlined style={{ color: "#b8b2aa" }} />
+                    )
+                  }
+                  style={{ borderRadius: 14, minHeight: 46 }}
+                />
+
+                {isCountryMenuOpen ? (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 8px)",
+                      left: 0,
+                      width: "min(360px, 100%)",
+                      maxHeight: 280,
+                      overflowY: "auto",
+                      borderRadius: 16,
+                      border: "1px solid rgba(32,30,27,0.08)",
+                      background: "#FFFFFF",
+                      boxShadow: "0 18px 40px rgba(32,30,27,0.12)",
+                      zIndex: 30,
+                    }}
+                  >
+                    {filteredCountryOptions.length > 0 ? (
+                      filteredCountryOptions.map((option) => (
+                        <button
+                          key={`${option.iso2}-${option.value}`}
+                          type="button"
+                          onMouseDown={(event) => {
+                            event.preventDefault();
+                            handleCountrySelect(option);
+                          }}
+                          style={{
+                            display: "block",
+                            width: "100%",
+                            padding: "12px 14px",
+                            border: "none",
+                            borderBottom: "1px solid rgba(32,30,27,0.06)",
+                            background: "#FFFFFF",
+                            color: "#201E1B",
+                            textAlign: "left",
+                            cursor: "pointer",
+                          }}
+                        >
+                          <span
+                            style={{
+                              display: "block",
+                              fontSize: 15,
+                              fontWeight: 600,
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            {option.label}
+                          </span>
+                          <span
+                            style={{
+                              display: "block",
+                              marginTop: 2,
+                              color: "#7A746D",
+                              fontSize: 13,
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            {option.value}
+                          </span>
+                        </button>
+                      ))
+                    ) : (
+                      <div
+                        style={{
+                          padding: "12px 14px",
+                          color: "#7A746D",
+                          fontSize: 14,
+                        }}
+                      >
+                        No matching country code.
+                      </div>
+                    )}
+                  </div>
+                ) : null}
+              </div>
 
               <Input
                 size="large"
@@ -1431,8 +1591,7 @@ export default function LighthousePage() {
               margin: "0 auto",
               textAlign: "center",
             }}
-          >
-          </div>
+          ></div>
         </div>
       </div>
 
@@ -1450,7 +1609,8 @@ export default function LighthousePage() {
               style={{
                 flex: 1,
                 height: 1,
-                background: "linear-gradient(90deg, rgba(176,142,98,0.08) 0%, rgba(176,142,98,0.45) 100%)",
+                background:
+                  "linear-gradient(90deg, rgba(176,142,98,0.08) 0%, rgba(176,142,98,0.45) 100%)",
               }}
             />
             <Title
@@ -1473,7 +1633,8 @@ export default function LighthousePage() {
               style={{
                 flex: 1,
                 height: 1,
-                background: "linear-gradient(90deg, rgba(176,142,98,0.45) 0%, rgba(176,142,98,0.08) 100%)",
+                background:
+                  "linear-gradient(90deg, rgba(176,142,98,0.45) 0%, rgba(176,142,98,0.08) 100%)",
               }}
             />
           </div>
@@ -1507,7 +1668,9 @@ export default function LighthousePage() {
                         : "1px solid rgba(32,30,27,0.08)",
                   }}
                 >
-                  <Icon style={{ fontSize: 34, color: "#B08E62", flex: "0 0 auto" }} />
+                  <Icon
+                    style={{ fontSize: 34, color: "#B08E62", flex: "0 0 auto" }}
+                  />
                   <div>
                     <div
                       style={{
