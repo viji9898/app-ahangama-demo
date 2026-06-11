@@ -20,7 +20,6 @@ import {
   Space,
   Typography,
 } from "antd";
-import QRCode from "react-qr-code";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -37,6 +36,21 @@ const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PREFERENCES = "preferences";
 const FORM_STEP_SUCCESS = "success";
 const DEFAULT_PASS_VALIDITY_DAYS = 15;
+const DISPLAY_DATE_FORMATTER = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+function formatDisplayDate(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return DISPLAY_DATE_FORMATTER.format(date);
+}
 
 const LIGHTHOUSE_HERO_IMAGE =
   "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=";
@@ -901,100 +915,31 @@ export default function LighthousePage() {
       {formStep === FORM_STEP_SUCCESS ? (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 24,
             width: "100%",
-            alignItems: "start",
           }}
         >
-          <div>
-            {createdPassState?.pass?.passkitInstallUrl ? (
-              <div
-                style={{
-                  display: "inline-flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 18,
-                  padding: 14,
-                  borderRadius: 18,
-                  background: "#FFFFFF",
-                  border: "1px solid rgba(176,142,98,0.16)",
-                }}
-              >
-                <QRCode
-                  value={createdPassState.pass.passkitInstallUrl}
-                  size={132}
-                  bgColor="#FFFFFF"
-                  fgColor="#1E1814"
-                />
-                <Text
-                  style={{
-                    color: "#7A5B32",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: 1.2,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Scan To Add Pass
-                </Text>
-              </div>
-            ) : null}
-
-            <Paragraph
-              style={{
-                color: "#5A554D",
-                fontSize: 15,
-                lineHeight: 1.75,
-                marginBottom: 10,
-              }}
-            >
-              {createdPassState?.pass?.passkitInstallUrl
-                ? "Add your pass to Apple Wallet or Google Wallet below."
-                : "Wallet installation will be available in the next step."}
-            </Paragraph>
-            {createdPassState?.guest?.fullName ? (
-              <Text style={{ color: "#5A554D" }}>
-                We have reserved your guest pass for{" "}
-                {createdPassState.guest.fullName}.
-              </Text>
-            ) : null}
-            {createdPassState?.pass?.validFrom ? (
-              <Text
-                style={{
-                  display: "block",
-                  marginTop: 8,
-                  color: "#5A554D",
-                }}
-              >
-                Starts {formatPassDateLabel(createdPassState.pass.validFrom)}{" "}
-                and stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
-              </Text>
-            ) : null}
-            {createdPassState?.passkitPending &&
-            createdPassState?.passkitError ? (
-              <Text
-                style={{
-                  display: "block",
-                  color: "#8C6B3B",
-                  marginTop: 10,
-                }}
-              >
-                {createdPassState.passkitError}
-              </Text>
-            ) : null}
-          </div>
-
           <Card
             style={{
+              width: "100%",
               borderRadius: 20,
               border: "1px solid rgba(176,142,98,0.18)",
               background: "linear-gradient(180deg, #fffaf1 0%, #f6ebd9 100%)",
             }}
             bodyStyle={{ padding: 18 }}
           >
+            {createdPassState?.passkitPending &&
+            createdPassState?.passkitError ? (
+              <Text
+                style={{
+                  display: "block",
+                  color: "#8C6B3B",
+                  marginBottom: 12,
+                }}
+              >
+                {createdPassState.passkitError}
+              </Text>
+            ) : null}
+
             <Text
               style={{
                 display: "block",
@@ -1018,9 +963,23 @@ export default function LighthousePage() {
               }}
             >
               {createdPassState?.pass?.passkitInstallUrl
-                ? "Use the secure PassKit link below to add your pass to Apple Wallet or Google Wallet."
+                ? "Add your pass to Apple Wallet or Google Wallet below."
                 : "We&apos;ll guide you to wallet installation as soon as the next step is ready."}
             </Paragraph>
+
+            {createdPassState?.pass?.passkitInstallUrl &&
+            createdPassState?.pass?.validFrom ? (
+              <Text
+                style={{
+                  display: "block",
+                  marginTop: 8,
+                  color: "#5A554D",
+                  lineHeight: 1.7,
+                }}
+              >
+                {`Starts ${formatDisplayDate(createdPassState.pass.validFrom)} and stays active for ${DEFAULT_PASS_VALIDITY_DAYS} days.`}
+              </Text>
+            ) : null}
 
             {createdPassState?.pass?.passkitInstallUrl ? (
               <Button
@@ -1030,7 +989,7 @@ export default function LighthousePage() {
                 href={createdPassState.pass.passkitInstallUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ marginTop: 14 }}
+                style={{ marginTop: 18, width: "100%", minHeight: 52 }}
               >
                 Add to Apple Wallet / Google Wallet
               </Button>
