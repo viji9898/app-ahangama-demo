@@ -18,6 +18,7 @@ import {
   Card,
   Checkbox,
   Col,
+  Grid,
   Input,
   Radio,
   Row,
@@ -309,6 +310,8 @@ function formatPassDateLabel(value) {
 
 export default function LighthousePage() {
   const canonical = absUrl("/lighthouse");
+  const screens = Grid.useBreakpoint();
+  const isTabletUp = Boolean(screens.md);
   const [formStep, setFormStep] = useState(FORM_STEP_DETAILS);
   const [isSubmittingDetails, setIsSubmittingDetails] = useState(false);
   const [isSavingPreferences, setIsSavingPreferences] = useState(false);
@@ -626,7 +629,7 @@ export default function LighthousePage() {
         boxShadow: "0 26px 80px rgba(42,38,31,0.16)",
         backdropFilter: "blur(14px)",
       }}
-      bodyStyle={{ padding: 32 }}
+      bodyStyle={{ padding: isTabletUp ? 32 : 20 }}
     >
       {formStep !== FORM_STEP_DETAILS ? (
         <>
@@ -802,7 +805,9 @@ export default function LighthousePage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "minmax(146px, 172px) minmax(0, 1fr)",
+                gridTemplateColumns: isTabletUp
+                  ? "minmax(146px, 172px) minmax(0, 1fr)"
+                  : "minmax(122px, 132px) minmax(0, 1fr)",
                 gap: 10,
               }}
             >
@@ -1084,7 +1089,9 @@ export default function LighthousePage() {
               }
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+                gridTemplateColumns: isTabletUp
+                  ? "repeat(5, minmax(0, 1fr))"
+                  : "repeat(2, minmax(0, 1fr))",
                 gap: 10,
               }}
             >
@@ -1118,7 +1125,9 @@ export default function LighthousePage() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                  gridTemplateColumns: isTabletUp
+                    ? "repeat(4, minmax(0, 1fr))"
+                    : "repeat(2, minmax(0, 1fr))",
                   gap: "14px 24px",
                   width: "100%",
                 }}
@@ -1338,7 +1347,7 @@ export default function LighthousePage() {
               style={{
                 position: "relative",
                 overflow: "hidden",
-                minHeight: "100svh",
+                minHeight: isTabletUp ? "100svh" : "auto",
               }}
             >
               <div
@@ -1389,11 +1398,13 @@ export default function LighthousePage() {
               >
                 <div
                   style={{
-                    minHeight: "100svh",
+                    minHeight: isTabletUp ? "100svh" : "auto",
                     display: "flex",
                     alignItems: "center",
                     padding:
-                      "clamp(108px, 12vw, 152px) clamp(28px, 4.8vw, 72px) clamp(42px, 5vw, 60px)",
+                      isTabletUp
+                        ? "clamp(108px, 12vw, 152px) clamp(28px, 4.8vw, 72px) clamp(42px, 5vw, 60px)"
+                        : "112px 20px 36px",
                   }}
                 >
                   <div style={{ maxWidth: 700 }}>
@@ -1481,9 +1492,10 @@ export default function LighthousePage() {
                     <div
                       style={{
                         display: "grid",
-                        gridTemplateColumns:
-                          "repeat(auto-fit, minmax(96px, 1fr))",
-                        gap: 18,
+                        gridTemplateColumns: isTabletUp
+                          ? "repeat(auto-fit, minmax(96px, 1fr))"
+                          : "repeat(2, minmax(0, 1fr))",
+                        gap: isTabletUp ? 18 : 14,
                         maxWidth: 650,
                         marginBottom: 28,
                       }}
@@ -1539,6 +1551,7 @@ export default function LighthousePage() {
                         display: "flex",
                         alignItems: "center",
                         gap: 14,
+                        flexWrap: "wrap",
                       }}
                     >
                       <div style={{ display: "flex", marginRight: 2 }}>
@@ -1608,6 +1621,7 @@ export default function LighthousePage() {
               alignItems: "center",
               gap: 18,
               marginBottom: 18,
+              flexWrap: "wrap",
             }}
           >
             <div
@@ -1616,6 +1630,7 @@ export default function LighthousePage() {
                 height: 1,
                 background:
                   "linear-gradient(90deg, rgba(176,142,98,0.08) 0%, rgba(176,142,98,0.45) 100%)",
+                minWidth: isTabletUp ? 0 : 72,
               }}
             />
             <Title
@@ -1629,7 +1644,8 @@ export default function LighthousePage() {
                 fontSize: "clamp(26px, 3.2vw, 44px)",
                 lineHeight: 1,
                 fontWeight: 500,
-                whiteSpace: "nowrap",
+                whiteSpace: "normal",
+                flex: isTabletUp ? "0 1 auto" : "1 1 100%",
               }}
             >
               Why Lighthouse Guests Love Their Pass
@@ -1640,6 +1656,7 @@ export default function LighthousePage() {
                 height: 1,
                 background:
                   "linear-gradient(90deg, rgba(176,142,98,0.45) 0%, rgba(176,142,98,0.08) 100%)",
+                minWidth: isTabletUp ? 0 : 72,
               }}
             />
           </div>
@@ -1667,10 +1684,15 @@ export default function LighthousePage() {
                     gap: 18,
                     alignItems: "center",
                     padding: "28px 24px",
-                    borderRight:
-                      index === PASS_LOVE_STATS.length - 1
+                    borderRight: isTabletUp
+                      ? index === PASS_LOVE_STATS.length - 1
                         ? "none"
-                        : "1px solid rgba(32,30,27,0.08)",
+                        : "1px solid rgba(32,30,27,0.08)"
+                      : "none",
+                    borderBottom:
+                      !isTabletUp && index !== PASS_LOVE_STATS.length - 1
+                        ? "1px solid rgba(32,30,27,0.08)"
+                        : "none",
                   }}
                 >
                   <Icon
@@ -1723,7 +1745,9 @@ export default function LighthousePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "minmax(280px, 360px) minmax(0, 1fr)",
+              gridTemplateColumns: isTabletUp
+                ? "minmax(280px, 360px) minmax(0, 1fr)"
+                : "minmax(0, 1fr)",
               gap: 24,
               width: "100%",
               alignItems: "start",
@@ -1802,9 +1826,13 @@ export default function LighthousePage() {
 
                 <div
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                    display: "flex",
+                    alignItems: "stretch",
+                    overflowX: "auto",
+                    overscrollBehaviorX: "contain",
+                    scrollSnapType: "x proximity",
                     gap: 18,
+                    paddingBottom: 8,
                   }}
                 >
                   {LIGHTHOUSE_GUIDE_SECTION_CARDS.map((guide, index) => {
@@ -1819,13 +1847,21 @@ export default function LighthousePage() {
                         key={guide.href || guide.title}
                         href={guide.href || undefined}
                         style={{
-                          display: "block",
+                          display: "flex",
+                          flex: isTabletUp
+                            ? "0 0 min(320px, 28vw)"
+                            : "0 0 min(84vw, 292px)",
+                          minWidth: 0,
                           height: "100%",
                           textDecoration: "none",
+                          scrollSnapAlign: "start",
                         }}
                       >
                         <div
                           style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            width: "100%",
                             height: "100%",
                             borderRadius: 18,
                             padding: 16,
@@ -1868,6 +1904,7 @@ export default function LighthousePage() {
 
                           <div
                             style={{
+                              marginTop: "auto",
                               aspectRatio: "1 / 1.12",
                               overflow: "hidden",
                               background: palette.media,
