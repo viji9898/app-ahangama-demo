@@ -78,7 +78,8 @@ Before testing promo flows:
 
 - configure `DATABASE_URL`
 - configure `NETLIFY_DATABASE_URL`
-- configure `PASSKIT_API_KEY`, `PASSKIT_PROGRAM_ID`, and `PASSKIT_BASE_URL` for the complimentary hotel guest PassKit scaffold
+- configure `PASSKIT_API_KEY`, `PASSKIT_PROGRAM_ID`, and `PASSKIT_BASE_URL` for full complimentary hotel guest PassKit member creation
+- alternatively, `PASSKIT_SMARTPASS_SECRET` plus `PASSKIT_DISTRIBUTION_URL` are enough to generate a hotel SmartPass install URL in distribution-only mode
 - apply [migrations/001_create_promo_purchases.sql](/Users/viji/DevEnv/ahangama-app/migrations/001_create_promo_purchases.sql) to the promo database
 - apply [migrations/006_create_pass_guests.sql](/Users/viji/DevEnv/ahangama-app/migrations/006_create_pass_guests.sql), [migrations/007_create_passes.sql](/Users/viji/DevEnv/ahangama-app/migrations/007_create_passes.sql), and [migrations/008_create_guest_preferences.sql](/Users/viji/DevEnv/ahangama-app/migrations/008_create_guest_preferences.sql) to the promo database before wiring complimentary hotel guest issuance
 - configure Stripe, SendGrid, and PassKit variables
@@ -96,7 +97,8 @@ curl -X POST http://localhost:8890/.netlify/functions/create-hotel-guest-pass \
 	}'
 ```
 
-If PassKit is configured and the PassKit request succeeds, the Stage 2 response will include a populated `pass.passkitInstallUrl`.
+If full PassKit member-create config is present and succeeds, the Stage 2 response will include a populated `pass.passkitInstallUrl`.
+If only `PASSKIT_SMARTPASS_SECRET` and `PASSKIT_DISTRIBUTION_URL` are present, the hotel flow can still generate and persist a SmartPass install URL without member-create credentials.
 If PassKit is not configured or PassKit creation fails, guest capture still succeeds and the response will include `passkitPending: true` with a non-blocking fallback message.
 
 To test the complimentary hotel guest Stage 4 preferences endpoint locally through Netlify Dev, use:

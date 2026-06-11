@@ -1241,17 +1241,37 @@ export default function LighthousePage() {
                         />
                       </Space>
                       {createdPassState?.pass?.passkitInstallUrl ? (
-                        <Button
-                          type="primary"
-                          size="large"
-                          block
-                          href={createdPassState.pass.passkitInstallUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ marginTop: 14 }}
-                        >
-                          Add to Apple Wallet / Google Wallet
-                        </Button>
+                        <>
+                          <Button
+                            type="primary"
+                            size="large"
+                            block
+                            href={createdPassState.pass.passkitInstallUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ marginTop: 14 }}
+                          >
+                            Add to Apple Wallet / Google Wallet
+                          </Button>
+                          <Text
+                            style={{
+                              display: "block",
+                              marginTop: 12,
+                              color: "#5A554D",
+                              lineHeight: 1.7,
+                              wordBreak: "break-all",
+                            }}
+                          >
+                            Smart Pass URL: {" "}
+                            <a
+                              href={createdPassState.pass.passkitInstallUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {createdPassState.pass.passkitInstallUrl}
+                            </a>
+                          </Text>
+                        </>
                       ) : null}
                     </Card>
                   </Space>
