@@ -81,7 +81,7 @@ function formatCountryOptionLabel(option) {
     return "";
   }
 
-  return `${option.label} (${option.value})`;
+  return option.value;
 }
 
 const LIGHTHOUSE_HERO_IMAGE =
@@ -834,6 +834,11 @@ export default function LighthousePage() {
                       <DownOutlined style={{ color: "#b8b2aa" }} />
                     )
                   }
+                  styles={{
+                    input: {
+                      textAlign: isCountryInputActive ? "left" : "right",
+                    },
+                  }}
                   style={{ borderRadius: 14, minHeight: 46 }}
                 />
 
