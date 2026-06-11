@@ -20,6 +20,7 @@ import {
   Space,
   Typography,
 } from "antd";
+import QRCode from "react-qr-code";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -480,6 +481,22 @@ export default function LighthousePage() {
             >
               Optional Preferences
             </Text>
+          ) : formStep === FORM_STEP_SUCCESS ? (
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                color: "#B08E62",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 1.8,
+                textTransform: "uppercase",
+              }}
+            >
+              {createdPassState?.pass?.passkitInstallUrl
+                ? "Pass Ready"
+                : "Pass In Progress"}
+            </Text>
           ) : null}
           <Title
             level={3}
@@ -496,7 +513,7 @@ export default function LighthousePage() {
           >
             {formStep === FORM_STEP_PREFERENCES
               ? "Tell Us A Little More"
-              : "Your Pass Is Ready"}
+              : "Your Ahangama Pass is ready"}
           </Title>
           <Paragraph
             style={{
@@ -641,7 +658,8 @@ export default function LighthousePage() {
               <Text
                 style={{ display: "block", marginTop: 6, color: "#7A7368" }}
               >
-                Valid for {DEFAULT_PASS_VALIDITY_DAYS} days from the selected start date.
+                Valid for {DEFAULT_PASS_VALIDITY_DAYS} days from the selected
+                start date.
               </Text>
             )}
           </div>
@@ -711,19 +729,6 @@ export default function LighthousePage() {
             />
           ) : null}
 
-          <div style={{ gridColumn: "1 / -1" }}>
-            <Paragraph
-              style={{
-                color: "#5A554D",
-                fontSize: 15,
-                lineHeight: 1.75,
-                marginBottom: 0,
-              }}
-            >
-              Optional — takes less than 30 seconds.
-            </Paragraph>
-          </div>
-
           <div>
             <Text
               style={{
@@ -759,10 +764,18 @@ export default function LighthousePage() {
               onChange={(event) =>
                 handlePreferencesChange("stayLength", event.target.value)
               }
-              style={{ display: "grid", gap: 10 }}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+                gap: 10,
+              }}
             >
               {STAY_LENGTH_OPTIONS.map((option) => (
-                <Radio key={option} value={option}>
+                <Radio
+                  key={option}
+                  value={option}
+                  style={{ marginInlineEnd: 0, minWidth: 0 }}
+                >
                   {option}
                 </Radio>
               ))}
@@ -828,7 +841,8 @@ export default function LighthousePage() {
             }
             style={{ gridColumn: "1 / -1" }}
           >
-            Yes, send me personalised recommendations and local deals via WhatsApp
+            Yes, send me personalised recommendations and local deals via
+            WhatsApp
           </Checkbox>
 
           <div>
@@ -850,7 +864,7 @@ export default function LighthousePage() {
             >
               <Row gutter={[12, 12]}>
                 {SERVICE_OPTIONS.map((option) => (
-                  <Col xs={24} sm={12} key={option}>
+                  <Col xs={24} sm={12} lg={8} key={option}>
                     <Checkbox value={option}>{option}</Checkbox>
                   </Col>
                 ))}
@@ -895,38 +909,40 @@ export default function LighthousePage() {
           }}
         >
           <div>
-            <Text
-              style={{
-                display: "block",
-                marginBottom: 10,
-                color: "#B08E62",
-                fontSize: 12,
-                fontWeight: 700,
-                letterSpacing: 1.8,
-                textTransform: "uppercase",
-              }}
-            >
-              {createdPassState?.pass?.passkitInstallUrl
-                ? "Pass Ready"
-                : "Pass In Progress"}
-            </Text>
-            <Title
-              level={3}
-              style={{
-                marginTop: 0,
-                marginBottom: 10,
-                color: "#201E1B",
-                fontFamily:
-                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                fontSize: "clamp(30px, 3vw, 42px)",
-                lineHeight: 1,
-                fontWeight: 500,
-              }}
-            >
-              {createdPassState?.pass?.passkitInstallUrl
-                ? "Your Ahangama Pass is ready"
-                : "Your Ahangama Pass is being prepared"}
-            </Title>
+            {createdPassState?.pass?.passkitInstallUrl ? (
+              <div
+                style={{
+                  display: "inline-flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 18,
+                  padding: 14,
+                  borderRadius: 18,
+                  background: "#FFFFFF",
+                  border: "1px solid rgba(176,142,98,0.16)",
+                }}
+              >
+                <QRCode
+                  value={createdPassState.pass.passkitInstallUrl}
+                  size={132}
+                  bgColor="#FFFFFF"
+                  fgColor="#1E1814"
+                />
+                <Text
+                  style={{
+                    color: "#7A5B32",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    letterSpacing: 1.2,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Scan To Add Pass
+                </Text>
+              </div>
+            ) : null}
+
             <Paragraph
               style={{
                 color: "#5A554D",
@@ -953,11 +969,12 @@ export default function LighthousePage() {
                   color: "#5A554D",
                 }}
               >
-                Starts {formatPassDateLabel(createdPassState.pass.validFrom)} and
-                stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
+                Starts {formatPassDateLabel(createdPassState.pass.validFrom)}{" "}
+                and stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
               </Text>
             ) : null}
-            {createdPassState?.passkitPending && createdPassState?.passkitError ? (
+            {createdPassState?.passkitPending &&
+            createdPassState?.passkitError ? (
               <Text
                 style={{
                   display: "block",
