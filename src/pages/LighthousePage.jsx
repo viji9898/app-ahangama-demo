@@ -1826,13 +1826,16 @@ export default function LighthousePage() {
 
                 <div
                   style={{
-                    display: "flex",
+                    display: isTabletUp ? "grid" : "flex",
                     alignItems: "stretch",
-                    overflowX: "auto",
-                    overscrollBehaviorX: "contain",
-                    scrollSnapType: "x proximity",
+                    overflowX: isTabletUp ? "visible" : "auto",
+                    overscrollBehaviorX: isTabletUp ? "auto" : "contain",
+                    scrollSnapType: isTabletUp ? "none" : "x proximity",
+                    gridTemplateColumns: isTabletUp
+                      ? "repeat(auto-fit, minmax(220px, 1fr))"
+                      : undefined,
                     gap: 18,
-                    paddingBottom: 8,
+                    paddingBottom: isTabletUp ? 0 : 8,
                   }}
                 >
                   {LIGHTHOUSE_GUIDE_SECTION_CARDS.map((guide, index) => {
@@ -1847,14 +1850,14 @@ export default function LighthousePage() {
                         key={guide.href || guide.title}
                         href={guide.href || undefined}
                         style={{
-                          display: "flex",
+                          display: isTabletUp ? "block" : "flex",
                           flex: isTabletUp
-                            ? "0 0 min(320px, 28vw)"
+                            ? undefined
                             : "0 0 min(84vw, 292px)",
                           minWidth: 0,
                           height: "100%",
                           textDecoration: "none",
-                          scrollSnapAlign: "start",
+                          scrollSnapAlign: isTabletUp ? "none" : "start",
                         }}
                       >
                         <div
