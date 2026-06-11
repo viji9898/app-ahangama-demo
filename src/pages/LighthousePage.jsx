@@ -874,7 +874,10 @@ export default function LighthousePage() {
                         min={getTodayInputValue()}
                         status={fieldErrors.startDate ? "error" : ""}
                         onChange={(event) =>
-                          handleGuestDetailsChange("startDate", event.target.value)
+                          handleGuestDetailsChange(
+                            "startDate",
+                            event.target.value,
+                          )
                         }
                       />
                       {fieldErrors.startDate ? (
@@ -886,9 +889,14 @@ export default function LighthousePage() {
                         </Text>
                       ) : (
                         <Text
-                          style={{ display: "block", marginTop: 6, color: "#7A7368" }}
+                          style={{
+                            display: "block",
+                            marginTop: 6,
+                            color: "#7A7368",
+                          }}
                         >
-                          Your pass will be valid for {DEFAULT_PASS_VALIDITY_DAYS} days from this date.
+                          Your pass will be valid for{" "}
+                          {DEFAULT_PASS_VALIDITY_DAYS} days from this date.
                         </Text>
                       )}
                     </div>
@@ -1168,7 +1176,10 @@ export default function LighthousePage() {
                             color: "#5A554D",
                           }}
                         >
-                          Starts {formatPassDateLabel(createdPassState.pass.validFrom)} and stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
+                          Starts{" "}
+                          {formatPassDateLabel(createdPassState.pass.validFrom)}{" "}
+                          and stays active for {DEFAULT_PASS_VALIDITY_DAYS}{" "}
+                          days.
                         </Text>
                       ) : null}
                       {createdPassState?.passkitPending &&
@@ -1220,26 +1231,7 @@ export default function LighthousePage() {
                           ? "Use the secure PassKit link below to add your pass to Apple Wallet or Google Wallet."
                           : "We&apos;ll guide you to wallet installation as soon as the next step is ready."}
                       </Paragraph>
-                      <Space size={8} align="center" style={{ marginTop: 4 }}>
-                        <img
-                          src={addToAppleWalletLogo}
-                          alt="Apple Wallet"
-                          style={{
-                            display: "block",
-                            height: 45,
-                            width: "auto",
-                          }}
-                        />
-                        <img
-                          src={addToGoogleWalletLogo}
-                          alt="Google Wallet"
-                          style={{
-                            display: "block",
-                            height: 45,
-                            width: "auto",
-                          }}
-                        />
-                      </Space>
+
                       {createdPassState?.pass?.passkitInstallUrl ? (
                         <>
                           <Button
@@ -1253,24 +1245,6 @@ export default function LighthousePage() {
                           >
                             Add to Apple Wallet / Google Wallet
                           </Button>
-                          <Text
-                            style={{
-                              display: "block",
-                              marginTop: 12,
-                              color: "#5A554D",
-                              lineHeight: 1.7,
-                              wordBreak: "break-all",
-                            }}
-                          >
-                            Smart Pass URL: {" "}
-                            <a
-                              href={createdPassState.pass.passkitInstallUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {createdPassState.pass.passkitInstallUrl}
-                            </a>
-                          </Text>
                         </>
                       ) : null}
                     </Card>
