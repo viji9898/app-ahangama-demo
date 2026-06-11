@@ -1,10 +1,14 @@
-import { createHotelGuestPass } from "../../lib/hotel-passes-db.js";
+import {
+  createHotelGuestPass,
+  updatePasskitFields,
+} from "../../lib/hotel-passes-db.js";
+import { createPasskitMemberForHotelGuest } from "../../lib/passkit-client.js";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DEFAULT_SOURCE_HOTEL_SLUG = "lighthouse-hotel";
 const DEFAULT_PASS_TYPE = "complimentary_hotel_guest";
 const DEFAULT_STATUS = "active";
-const DEFAULT_VALIDITY_DAYS = 7;
+const DEFAULT_VALIDITY_DAYS = 15;
 
 function jsonHeaders() {
   return {
@@ -27,6 +31,26 @@ function startOfUtcDay(value = new Date()) {
   return new Date(
     Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate()),
   );
+}
+
+function parseRequestedStartDate(value) {
+  const normalized = normalizeText(value);
+
+  if (!normalized) {
+    return null;
+  }
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(normalized)) {
+    return null;
+  }
+
+  const parsed = new Date(`${normalized}T00:00:00.000Z`);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return null;
+  }
+
+  return startOfUtcDay(parsed);
 }
 
 function addUtcDays(value, days) {
@@ -57,6 +81,7 @@ export const handler = async (event) => {
     const phone = normalizeText(body.phone);
     const sourceHotelSlug =
       normalizeText(body.sourceHotelSlug) || DEFAULT_SOURCE_HOTEL_SLUG;
+    const requestedStartDate = parseRequestedStartDate(body.startDate);
 
     if (!fullName) {
       return {
@@ -90,7 +115,17 @@ export const handler = async (event) => {
       };
     }
 
-    const validFrom = startOfUtcDay();
+    if (body.startDate && !requestedStartDate) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({
+          error: "Please choose a valid pass start date",
+        }),
+      };
+    }
+
+    const validFrom = requestedStartDate || startOfUtcDay();
     const validUntil = addUtcDays(validFrom, DEFAULT_VALIDITY_DAYS);
 
     console.log("create-hotel-guest-pass request", {
@@ -109,14 +144,49 @@ export const handler = async (event) => {
       validUntil: validUntil.toISOString(),
     });
 
+    let pass = result.pass;
+    let passkitPending = false;
+    let passkitError = null;
+
+    try {
+      const passkitData = await createPasskitMemberForHotelGuest({
+        guest: result.guest,
+        pass: result.pass,
+        preferences: result.preferences,
+        sourceHotelSlug,
+      });
+
+      pass = await updatePasskitFields(result.pass.id, {
+        passkitProgramId: passkitData.passkitProgramId,
+        passkitMemberId: passkitData.passkitMemberId,
+        passkitExternalId: passkitData.passkitExternalId,
+        passkitPassUrl: passkitData.passkitPassUrl,
+        passkitInstallUrl: passkitData.passkitInstallUrl,
+        passkitStatus: passkitData.passkitStatus,
+        lastPasskitSyncAt: new Date().toISOString(),
+      });
+    } catch (error) {
+      passkitPending = true;
+      passkitError =
+        "Pass creation is pending. Please try wallet installation shortly.";
+      console.error("create-hotel-guest-pass passkit error:", {
+        passId: result.pass.id,
+        sourceHotelSlug,
+        message: error?.message || "Unknown PassKit error",
+        statusCode: error?.statusCode || null,
+      });
+    }
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         success: true,
         guest: result.guest,
-        pass: result.pass,
+        pass,
         preferences: result.preferences,
+        passkitPending,
+        passkitError,
         nextStep: "preferences",
       }),
     };

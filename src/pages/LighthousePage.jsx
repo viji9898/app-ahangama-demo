@@ -26,6 +26,7 @@ const LIGHTHOUSE_PREFERENCES_ENDPOINT =
 const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PREFERENCES = "preferences";
 const FORM_STEP_SUCCESS = "success";
+const DEFAULT_PASS_VALIDITY_DAYS = 15;
 
 const LIGHTHOUSE_HERO_IMAGE =
   "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=";
@@ -125,7 +126,34 @@ function validateGuestDetails(values) {
     errors.phone = "Please enter your phone number";
   }
 
+  if (!String(values.startDate || "").trim()) {
+    errors.startDate = "Please choose your pass start date";
+  }
+
   return errors;
+}
+
+function getTodayInputValue() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function formatPassDateLabel(value) {
+  if (!value) {
+    return "";
+  }
+
+  const normalized = value.includes("T") ? value : `${value}T00:00:00`;
+  const date = new Date(normalized);
+
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 export default function LighthousePage() {
@@ -141,6 +169,7 @@ export default function LighthousePage() {
     fullName: "",
     email: "",
     phone: "",
+    startDate: getTodayInputValue(),
   });
   const [preferencesDraft, setPreferencesDraft] = useState({
     country: "",
@@ -199,6 +228,7 @@ export default function LighthousePage() {
           fullName: guestDetails.fullName.trim(),
           email: guestDetails.email.trim().toLowerCase(),
           phone: guestDetails.phone.trim(),
+          startDate: guestDetails.startDate,
           sourceHotelSlug: "lighthouse-hotel",
         }),
       });
@@ -217,6 +247,8 @@ export default function LighthousePage() {
         guest: payload.guest,
         pass: payload.pass,
         preferences: payload.preferences,
+        passkitPending: Boolean(payload.passkitPending),
+        passkitError: payload.passkitError || "",
       });
       setPreferencesError("");
       setFormStep(FORM_STEP_PREFERENCES);
@@ -716,8 +748,8 @@ export default function LighthousePage() {
                     marginBottom: 22,
                   }}
                 >
-                  Your pass details can be prepared now, with wallet
-                  installation available in the next step.
+                  Choose when your pass should begin. Each complimentary pass
+                  stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
                 </Paragraph>
 
                 {formStep === FORM_STEP_DETAILS ? (
@@ -823,6 +855,42 @@ export default function LighthousePage() {
                           {fieldErrors.phone}
                         </Text>
                       ) : null}
+                    </div>
+
+                    <div>
+                      <Text
+                        style={{
+                          display: "block",
+                          marginBottom: 8,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Pass start date
+                      </Text>
+                      <Input
+                        size="large"
+                        type="date"
+                        value={guestDetails.startDate}
+                        min={getTodayInputValue()}
+                        status={fieldErrors.startDate ? "error" : ""}
+                        onChange={(event) =>
+                          handleGuestDetailsChange("startDate", event.target.value)
+                        }
+                      />
+                      {fieldErrors.startDate ? (
+                        <Text
+                          type="danger"
+                          style={{ display: "block", marginTop: 6 }}
+                        >
+                          {fieldErrors.startDate}
+                        </Text>
+                      ) : (
+                        <Text
+                          style={{ display: "block", marginTop: 6, color: "#7A7368" }}
+                        >
+                          Your pass will be valid for {DEFAULT_PASS_VALIDITY_DAYS} days from this date.
+                        </Text>
+                      )}
                     </div>
 
                     <Button
@@ -1053,7 +1121,9 @@ export default function LighthousePage() {
                           textTransform: "uppercase",
                         }}
                       >
-                        Pass In Progress
+                        {createdPassState?.pass?.passkitInstallUrl
+                          ? "Pass Ready"
+                          : "Pass In Progress"}
                       </Text>
                       <Title
                         level={3}
@@ -1068,7 +1138,9 @@ export default function LighthousePage() {
                           fontWeight: 500,
                         }}
                       >
-                        Your Ahangama Pass is being prepared
+                        {createdPassState?.pass?.passkitInstallUrl
+                          ? "Your Ahangama Pass is ready"
+                          : "Your Ahangama Pass is being prepared"}
                       </Title>
                       <Paragraph
                         style={{
@@ -1078,12 +1150,37 @@ export default function LighthousePage() {
                           marginBottom: 10,
                         }}
                       >
-                        Wallet installation will be available in the next step.
+                        {createdPassState?.pass?.passkitInstallUrl
+                          ? "Add your pass to Apple Wallet or Google Wallet below."
+                          : "Wallet installation will be available in the next step."}
                       </Paragraph>
                       {createdPassState?.guest?.fullName ? (
                         <Text style={{ color: "#5A554D" }}>
                           We have reserved your guest pass for{" "}
                           {createdPassState.guest.fullName}.
+                        </Text>
+                      ) : null}
+                      {createdPassState?.pass?.validFrom ? (
+                        <Text
+                          style={{
+                            display: "block",
+                            marginTop: 8,
+                            color: "#5A554D",
+                          }}
+                        >
+                          Starts {formatPassDateLabel(createdPassState.pass.validFrom)} and stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
+                        </Text>
+                      ) : null}
+                      {createdPassState?.passkitPending &&
+                      createdPassState?.passkitError ? (
+                        <Text
+                          style={{
+                            display: "block",
+                            color: "#8C6B3B",
+                            marginTop: 10,
+                          }}
+                        >
+                          {createdPassState.passkitError}
                         </Text>
                       ) : null}
                     </div>
@@ -1108,7 +1205,9 @@ export default function LighthousePage() {
                           marginBottom: 8,
                         }}
                       >
-                        Next Step
+                        {createdPassState?.pass?.passkitInstallUrl
+                          ? "Install Pass"
+                          : "Next Step"}
                       </Text>
                       <Paragraph
                         style={{
@@ -1117,8 +1216,9 @@ export default function LighthousePage() {
                           lineHeight: 1.7,
                         }}
                       >
-                        We&apos;ll guide you to wallet installation as soon as
-                        the next step is ready.
+                        {createdPassState?.pass?.passkitInstallUrl
+                          ? "Use the secure PassKit link below to add your pass to Apple Wallet or Google Wallet."
+                          : "We&apos;ll guide you to wallet installation as soon as the next step is ready."}
                       </Paragraph>
                       <Space size={8} align="center" style={{ marginTop: 4 }}>
                         <img
@@ -1140,6 +1240,19 @@ export default function LighthousePage() {
                           }}
                         />
                       </Space>
+                      {createdPassState?.pass?.passkitInstallUrl ? (
+                        <Button
+                          type="primary"
+                          size="large"
+                          block
+                          href={createdPassState.pass.passkitInstallUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ marginTop: 14 }}
+                        >
+                          Add to Apple Wallet / Google Wallet
+                        </Button>
+                      ) : null}
                     </Card>
                   </Space>
                 ) : null}
