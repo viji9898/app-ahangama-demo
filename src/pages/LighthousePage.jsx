@@ -162,14 +162,14 @@ const LIGHTHOUSE_GUIDE_SECTION_CARDS = [
   {
     label: "WELLNESS STAY",
     title: "My Weekend at Lighthouse",
-    href: "/3-days-in-ahangama",
+    href: "",
     image:
       "https://q-xx.bstatic.com/xdata/images/hotel/max500/504932003.jpg?k=dea775aa5ed58cbc819897a662ae336aa36e75e2ce5c63e6bf382fa496bfc78b&o=",
   },
   {
     label: "WELLNESS GUIDE",
     title: "Wellness in Ahangama",
-    href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    href: "",
     image:
       "https://images.squarespace-cdn.com/content/v1/687779bfeb67b07ba252ad9e/1765200138172-E21VJEEVSEA0JQ1ZDW90/Jungle+Shala+Launch-45+2.jpg",
   },
@@ -1812,11 +1812,12 @@ export default function LighthousePage() {
                       LIGHTHOUSE_GUIDE_SECTION_PALETTE[
                         index % LIGHTHOUSE_GUIDE_SECTION_PALETTE.length
                       ];
+                    const CardTag = guide.href ? "a" : "div";
 
                     return (
-                      <a
-                        key={guide.href}
-                        href={guide.href}
+                      <CardTag
+                        key={guide.href || guide.title}
+                        href={guide.href || undefined}
                         style={{
                           display: "block",
                           height: "100%",
@@ -1886,7 +1887,7 @@ export default function LighthousePage() {
                             />
                           </div>
                         </div>
-                      </a>
+                      </CardTag>
                     );
                   })}
                 </div>
