@@ -517,7 +517,7 @@ export default function LighthousePage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "minmax(0, 1fr)",
             gap: 18,
             width: "100%",
           }}
@@ -696,7 +696,7 @@ export default function LighthousePage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "minmax(0, 1fr)",
             gap: 24,
             width: "100%",
             alignItems: "start",
@@ -744,7 +744,7 @@ export default function LighthousePage() {
             />
           </div>
 
-          <div>
+          <div style={{ gridColumn: "1 / -1" }}>
             <Text
               style={{
                 display: "block",
@@ -784,13 +784,37 @@ export default function LighthousePage() {
               onChange={(value) => handlePreferencesChange("interests", value)}
               style={{ width: "100%" }}
             >
-              <Row gutter={[12, 12]}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                  gap: "14px 24px",
+                  width: "100%",
+                }}
+              >
                 {INTEREST_OPTIONS.map((option) => (
-                  <Col xs={24} sm={12} key={option}>
-                    <Checkbox value={option}>{option}</Checkbox>
-                  </Col>
+                  <div key={option} style={{ minWidth: 0 }}>
+                    <Checkbox
+                      value={option}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        lineHeight: 1.45,
+                      }}
+                    >
+                      <span
+                        style={{
+                          display: "inline-block",
+                          whiteSpace: "normal",
+                          overflowWrap: "anywhere",
+                        }}
+                      >
+                        {option}
+                      </span>
+                    </Checkbox>
+                  </div>
                 ))}
-              </Row>
+              </div>
             </Checkbox.Group>
           </div>
 
