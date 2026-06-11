@@ -1834,7 +1834,7 @@ export default function LighthousePage() {
                     gridTemplateColumns: isTabletUp
                       ? "repeat(auto-fit, minmax(220px, 1fr))"
                       : undefined,
-                    gap: 18,
+                    gap: isTabletUp ? 18 : 14,
                     paddingBottom: isTabletUp ? 0 : 8,
                   }}
                 >
@@ -1853,7 +1853,7 @@ export default function LighthousePage() {
                           display: isTabletUp ? "block" : "flex",
                           flex: isTabletUp
                             ? undefined
-                            : "0 0 min(84vw, 292px)",
+                            : "0 0 248px",
                           minWidth: 0,
                           height: "100%",
                           textDecoration: "none",
@@ -1866,8 +1866,9 @@ export default function LighthousePage() {
                             flexDirection: "column",
                             width: "100%",
                             height: "100%",
+                            minHeight: isTabletUp ? undefined : 392,
                             borderRadius: 18,
-                            padding: 16,
+                            padding: isTabletUp ? 16 : 14,
                             background: palette.card,
                             color: palette.ink,
                             border: "1px solid rgba(31,29,26,0.08)",
@@ -1895,7 +1896,9 @@ export default function LighthousePage() {
                             style={{
                               margin: "0 0 16px",
                               color: palette.ink,
-                              fontSize: "clamp(22px, 1.9vw, 34px)",
+                              fontSize: isTabletUp
+                                ? "clamp(22px, 1.9vw, 34px)"
+                                : "28px",
                               lineHeight: 0.98,
                               letterSpacing: -0.8,
                               fontFamily:
