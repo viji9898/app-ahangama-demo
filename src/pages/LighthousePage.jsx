@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import {
+  ArrowRightOutlined,
+  BookOutlined,
+  CalendarOutlined,
+  EnvironmentOutlined,
+  GiftOutlined,
+  LockOutlined,
+  MessageOutlined,
+} from "@ant-design/icons";
 import {
   Alert,
   Button,
@@ -32,11 +40,34 @@ const LIGHTHOUSE_HERO_IMAGE =
   "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=";
 
 const HERO_FEATURES = [
-  "Complimentary 15-Day Pass",
-  "Apple Wallet & Google Wallet Access",
-  "Local Discounts & Perks",
-  "Ahangama Guide & Map",
+  {
+    title: "Local",
+    subtitle: "Recommendations",
+    Icon: MessageOutlined,
+  },
+  {
+    title: "What's On",
+    subtitle: "This Week",
+    Icon: CalendarOutlined,
+  },
+  {
+    title: "Ahangama",
+    subtitle: "Guide 2026/27",
+    Icon: BookOutlined,
+  },
+  {
+    title: "Curated",
+    subtitle: "Local Map",
+    Icon: EnvironmentOutlined,
+  },
+  {
+    title: "Exclusive",
+    subtitle: "Guest Benefits",
+    Icon: GiftOutlined,
+  },
 ];
+
+const HERO_SOCIAL_PROOF = ["LW", "AP", "HN"];
 
 const DISCOVER_CARDS = [
   {
@@ -318,6 +349,538 @@ export default function LighthousePage() {
     setFormStep(FORM_STEP_SUCCESS);
   };
 
+  const signupPanel = (
+    <Card
+      id="lighthouse-signup-form"
+      style={{
+        borderRadius: 28,
+        border: "1px solid rgba(32,30,27,0.08)",
+        background: "rgba(255,255,255,0.94)",
+        boxShadow: "0 26px 80px rgba(42,38,31,0.16)",
+        backdropFilter: "blur(14px)",
+      }}
+      bodyStyle={{ padding: 26 }}
+    >
+      <Title
+        level={3}
+        style={{
+          marginTop: 0,
+          marginBottom: 6,
+          color: "#201E1B",
+          fontFamily:
+            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+          fontSize: "clamp(30px, 3vw, 42px)",
+          lineHeight: 0.95,
+          fontWeight: 500,
+        }}
+      >
+        {formStep === FORM_STEP_DETAILS
+          ? ""
+          : formStep === FORM_STEP_PREFERENCES
+            ? "Tell Us A Little More"
+            : "Your Pass Is Ready"}
+      </Title>
+      <Paragraph
+        style={{
+          color: "#6D655B",
+          fontSize: 14,
+          lineHeight: 1.7,
+          marginBottom: 20,
+        }}
+      >
+        {formStep === FORM_STEP_DETAILS
+          ? "Takes less than 30 seconds."
+          : formStep === FORM_STEP_PREFERENCES
+            ? "Optional preferences help us tailor your Ahangama recommendations."
+            : "Your complimentary guest access has been prepared."}
+      </Paragraph>
+
+      {formStep === FORM_STEP_DETAILS ? (
+        <Space direction="vertical" size={14} style={{ width: "100%" }}>
+          {detailsError ? (
+            <Alert
+              type="error"
+              showIcon
+              message={detailsError}
+              style={{ borderRadius: 16 }}
+            />
+          ) : null}
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              Full name
+            </Text>
+            <Input
+              size="large"
+              placeholder="Enter your full name"
+              value={guestDetails.fullName}
+              status={fieldErrors.fullName ? "error" : ""}
+              onChange={(event) =>
+                handleGuestDetailsChange("fullName", event.target.value)
+              }
+              style={{ borderRadius: 14, minHeight: 46 }}
+            />
+            {fieldErrors.fullName ? (
+              <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                {fieldErrors.fullName}
+              </Text>
+            ) : null}
+          </div>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              Email address
+            </Text>
+            <Input
+              size="large"
+              placeholder="Enter your email"
+              value={guestDetails.email}
+              status={fieldErrors.email ? "error" : ""}
+              onChange={(event) =>
+                handleGuestDetailsChange("email", event.target.value)
+              }
+              style={{ borderRadius: 14, minHeight: 46 }}
+            />
+            {fieldErrors.email ? (
+              <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                {fieldErrors.email}
+              </Text>
+            ) : null}
+          </div>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              WhatsApp number
+            </Text>
+            <Input
+              size="large"
+              placeholder="Enter your WhatsApp number"
+              value={guestDetails.phone}
+              status={fieldErrors.phone ? "error" : ""}
+              onChange={(event) =>
+                handleGuestDetailsChange("phone", event.target.value)
+              }
+              style={{ borderRadius: 14, minHeight: 46 }}
+            />
+            {fieldErrors.phone ? (
+              <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                {fieldErrors.phone}
+              </Text>
+            ) : null}
+          </div>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              Pass starts on
+            </Text>
+            <Input
+              size="large"
+              type="date"
+              value={guestDetails.startDate}
+              min={getTodayInputValue()}
+              status={fieldErrors.startDate ? "error" : ""}
+              onChange={(event) =>
+                handleGuestDetailsChange("startDate", event.target.value)
+              }
+              style={{ borderRadius: 14, minHeight: 46 }}
+            />
+            {fieldErrors.startDate ? (
+              <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                {fieldErrors.startDate}
+              </Text>
+            ) : (
+              <Text
+                style={{ display: "block", marginTop: 6, color: "#7A7368" }}
+              >
+                Valid for {DEFAULT_PASS_VALIDITY_DAYS} days from the selected start date.
+              </Text>
+            )}
+          </div>
+
+          <Button
+            type="primary"
+            size="large"
+            block
+            loading={isSubmittingDetails}
+            style={{
+              marginTop: 6,
+              height: 52,
+              borderRadius: 999,
+              background: "#1E1814",
+              borderColor: "#1E1814",
+              boxShadow: "none",
+              fontWeight: 600,
+            }}
+            onClick={handleGuestDetailsSubmit}
+          >
+            Get My Complimentary Pass
+          </Button>
+
+          <Space
+            size={8}
+            align="center"
+            style={{ marginTop: 4, color: "#6D655B" }}
+          >
+            <LockOutlined style={{ color: "#B08E62" }} />
+            <Text style={{ color: "#6D655B", fontSize: 13 }}>
+              No app required. Works with Apple Wallet & Google Wallet.
+            </Text>
+          </Space>
+
+          <Space size={10} style={{ marginTop: 4 }}>
+            <img
+              src={addToAppleWalletLogo}
+              alt="Apple Wallet"
+              style={{ display: "block", height: 42, width: "auto" }}
+            />
+            <img
+              src={addToGoogleWalletLogo}
+              alt="Google Wallet"
+              style={{ display: "block", height: 42, width: "auto" }}
+            />
+          </Space>
+        </Space>
+      ) : null}
+
+      {formStep === FORM_STEP_PREFERENCES ? (
+        <Space direction="vertical" size={18} style={{ width: "100%" }}>
+          {preferencesError ? (
+            <Alert
+              type="error"
+              showIcon
+              message={preferencesError}
+              style={{ borderRadius: 16 }}
+            />
+          ) : null}
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                color: "#B08E62",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 1.4,
+                textTransform: "uppercase",
+              }}
+            >
+              Optional Preferences
+            </Text>
+            <Title
+              level={4}
+              style={{
+                marginTop: 0,
+                marginBottom: 8,
+                color: "#201E1B",
+                fontFamily:
+                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                fontSize: "clamp(26px, 2.8vw, 36px)",
+                lineHeight: 1.02,
+                fontWeight: 500,
+              }}
+            >
+              Help us personalise your Ahangama experience
+            </Title>
+            <Paragraph
+              style={{
+                color: "#5A554D",
+                fontSize: 15,
+                lineHeight: 1.75,
+                marginBottom: 0,
+              }}
+            >
+              Optional — takes less than 30 seconds.
+            </Paragraph>
+          </div>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              Country
+            </Text>
+            <Input
+              size="large"
+              placeholder="Where are you visiting from?"
+              value={preferencesDraft.country}
+              onChange={(event) =>
+                handlePreferencesChange("country", event.target.value)
+              }
+            />
+          </div>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                fontWeight: 600,
+              }}
+            >
+              Length of stay
+            </Text>
+            <Radio.Group
+              value={preferencesDraft.stayLength}
+              onChange={(event) =>
+                handlePreferencesChange("stayLength", event.target.value)
+              }
+              style={{ display: "grid", gap: 10 }}
+            >
+              {STAY_LENGTH_OPTIONS.map((option) => (
+                <Radio key={option} value={option}>
+                  {option}
+                </Radio>
+              ))}
+            </Radio.Group>
+          </div>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                fontWeight: 600,
+              }}
+            >
+              Interests
+            </Text>
+            <Checkbox.Group
+              value={preferencesDraft.interests}
+              onChange={(value) => handlePreferencesChange("interests", value)}
+              style={{ width: "100%" }}
+            >
+              <Row gutter={[12, 12]}>
+                {INTEREST_OPTIONS.map((option) => (
+                  <Col xs={24} sm={12} key={option}>
+                    <Checkbox value={option}>{option}</Checkbox>
+                  </Col>
+                ))}
+              </Row>
+            </Checkbox.Group>
+          </div>
+
+          <Checkbox
+            checked={preferencesDraft.wantsWhatsappRecommendations}
+            onChange={(event) =>
+              handlePreferencesChange(
+                "wantsWhatsappRecommendations",
+                event.target.checked,
+              )
+            }
+          >
+            Yes, send me personalised recommendations and local deals via WhatsApp
+          </Checkbox>
+
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                fontWeight: 600,
+              }}
+            >
+              Services interested in
+            </Text>
+            <Checkbox.Group
+              value={preferencesDraft.servicesInterested}
+              onChange={(value) =>
+                handlePreferencesChange("servicesInterested", value)
+              }
+              style={{ width: "100%" }}
+            >
+              <Row gutter={[12, 12]}>
+                {SERVICE_OPTIONS.map((option) => (
+                  <Col xs={24} sm={12} key={option}>
+                    <Checkbox value={option}>{option}</Checkbox>
+                  </Col>
+                ))}
+              </Row>
+            </Checkbox.Group>
+          </div>
+
+          <Space direction="vertical" size={10} style={{ width: "100%" }}>
+            <Button
+              type="primary"
+              size="large"
+              block
+              loading={isSavingPreferences}
+              onClick={handlePreferencesSubmit}
+            >
+              Continue
+            </Button>
+            <Button
+              size="large"
+              block
+              disabled={isSavingPreferences}
+              onClick={handleSkipPreferences}
+            >
+              Skip for now
+            </Button>
+          </Space>
+        </Space>
+      ) : null}
+
+      {formStep === FORM_STEP_SUCCESS ? (
+        <Space direction="vertical" size={18} style={{ width: "100%" }}>
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                color: "#B08E62",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 1.8,
+                textTransform: "uppercase",
+              }}
+            >
+              {createdPassState?.pass?.passkitInstallUrl
+                ? "Pass Ready"
+                : "Pass In Progress"}
+            </Text>
+            <Title
+              level={3}
+              style={{
+                marginTop: 0,
+                marginBottom: 10,
+                color: "#201E1B",
+                fontFamily:
+                  '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                fontSize: "clamp(30px, 3vw, 42px)",
+                lineHeight: 1,
+                fontWeight: 500,
+              }}
+            >
+              {createdPassState?.pass?.passkitInstallUrl
+                ? "Your Ahangama Pass is ready"
+                : "Your Ahangama Pass is being prepared"}
+            </Title>
+            <Paragraph
+              style={{
+                color: "#5A554D",
+                fontSize: 15,
+                lineHeight: 1.75,
+                marginBottom: 10,
+              }}
+            >
+              {createdPassState?.pass?.passkitInstallUrl
+                ? "Add your pass to Apple Wallet or Google Wallet below."
+                : "Wallet installation will be available in the next step."}
+            </Paragraph>
+            {createdPassState?.guest?.fullName ? (
+              <Text style={{ color: "#5A554D" }}>
+                We have reserved your guest pass for{" "}
+                {createdPassState.guest.fullName}.
+              </Text>
+            ) : null}
+            {createdPassState?.pass?.validFrom ? (
+              <Text
+                style={{
+                  display: "block",
+                  marginTop: 8,
+                  color: "#5A554D",
+                }}
+              >
+                Starts {formatPassDateLabel(createdPassState.pass.validFrom)} and
+                stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
+              </Text>
+            ) : null}
+            {createdPassState?.passkitPending && createdPassState?.passkitError ? (
+              <Text
+                style={{
+                  display: "block",
+                  color: "#8C6B3B",
+                  marginTop: 10,
+                }}
+              >
+                {createdPassState.passkitError}
+              </Text>
+            ) : null}
+          </div>
+
+          <Card
+            style={{
+              borderRadius: 20,
+              border: "1px solid rgba(176,142,98,0.18)",
+              background: "linear-gradient(180deg, #fffaf1 0%, #f6ebd9 100%)",
+            }}
+            bodyStyle={{ padding: 18 }}
+          >
+            <Text
+              style={{
+                display: "block",
+                color: "#7A5B32",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 1.2,
+                textTransform: "uppercase",
+                marginBottom: 8,
+              }}
+            >
+              {createdPassState?.pass?.passkitInstallUrl
+                ? "Install Pass"
+                : "Next Step"}
+            </Text>
+            <Paragraph
+              style={{
+                marginBottom: 10,
+                color: "#5A554D",
+                lineHeight: 1.7,
+              }}
+            >
+              {createdPassState?.pass?.passkitInstallUrl
+                ? "Use the secure PassKit link below to add your pass to Apple Wallet or Google Wallet."
+                : "We&apos;ll guide you to wallet installation as soon as the next step is ready."}
+            </Paragraph>
+
+            {createdPassState?.pass?.passkitInstallUrl ? (
+              <Button
+                type="primary"
+                size="large"
+                block
+                href={createdPassState.pass.passkitInstallUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ marginTop: 14 }}
+              >
+                Add to Apple Wallet / Google Wallet
+              </Button>
+            ) : null}
+          </Card>
+        </Space>
+      ) : null}
+    </Card>
+  );
+
   return (
     <SiteLayout navOverlayHero>
       <Seo
@@ -403,135 +966,198 @@ export default function LighthousePage() {
               >
                 <div
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
                     minHeight: "100svh",
-                    maxWidth: 720,
+                    display: "flex",
+                    alignItems: "center",
                     padding:
-                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                      "clamp(108px, 12vw, 152px) clamp(28px, 4.8vw, 72px) clamp(42px, 5vw, 60px)",
                   }}
                 >
-                  <Space size={12} wrap style={{ marginBottom: 18 }}>
-                    {["Lighthouse Guest Access"].map((item) => (
+                  <div style={{ maxWidth: 700 }}>
+                    <div
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        padding: "8px 14px",
+                        borderRadius: 999,
+                        background: "rgba(255,255,255,0.82)",
+                        border: "1px solid rgba(176,142,98,0.18)",
+                        boxShadow: "0 10px 28px rgba(32,30,27,0.08)",
+                        marginBottom: 22,
+                      }}
+                    >
                       <Text
-                        key={item}
                         style={{
-                          color: "#FFFFFF",
+                          color: "#A07843",
                           fontSize: 11,
                           fontWeight: 700,
-                          letterSpacing: 1.6,
+                          letterSpacing: 1.4,
                           textTransform: "uppercase",
                         }}
                       >
-                        {item}
+                        Included With Your Stay At Lighthouse Hotel
                       </Text>
-                    ))}
-                  </Space>
+                    </div>
 
-                  <Title
-                    className="home-hero-title"
-                    style={{
-                      margin: 0,
-                      color: "#FFFFFF",
-                      fontWeight: 500,
-                      fontFamily:
-                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    }}
-                  >
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Complimentary
-                    </span>
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Ahangama Pass
-                    </span>
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF", whiteSpace: "normal" }}
-                    >
-                      For Lighthouse Hotel Guests
-                    </span>
-                  </Title>
-
-                  <Text
-                    style={{
-                      display: "block",
-                      marginTop: 18,
-                      color: "rgba(255,255,255,0.92)",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: 1.6,
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    A complimentary benefit included with your stay.
-                  </Text>
-
-                  <Paragraph
-                    style={{
-                      marginTop: 24,
-                      marginBottom: 22,
-                      maxWidth: 560,
-                      color: "#FFFFFF",
-                      fontSize: "clamp(16px, 1.45vw, 19px)",
-                      lineHeight: 1.72,
-                    }}
-                  >
-                    Lighthouse Hotel guests can claim a complimentary Ahangama
-                    Pass for local savings, curated recommendations and easier
-                    discovery across the best of Ahangama.
-                  </Paragraph>
-
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns:
-                        "repeat(auto-fit, minmax(220px, 1fr))",
-                      gap: 10,
-                      maxWidth: 620,
-                      marginBottom: 26,
-                    }}
-                  >
-                    {HERO_FEATURES.map((item) => (
-                      <div
-                        key={item}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 10,
-                          color: "rgba(255,255,255,0.94)",
-                          fontSize: 14,
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        <span style={{ color: "#D8C3A0", fontSize: 16 }}>
-                          •
-                        </span>
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Space wrap size={12}>
-                    <Button
-                      size="large"
-                      href="#lighthouse-signup-form"
+                    <Title
+                      className="home-hero-title"
                       style={{
-                        background: "#FFFFFF",
-                        color: "#201E1B",
-                        borderColor: "#FFFFFF",
-                        boxShadow: "none",
+                        margin: 0,
+                        color: "#FFFFFF",
+                        fontWeight: 500,
+                        fontFamily:
+                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                        fontSize: "clamp(56px, 8vw, 96px)",
+                        lineHeight: 0.92,
+                        letterSpacing: "-0.03em",
                       }}
                     >
-                      Claim Your Pass
-                    </Button>
-                  </Space>
+                      <span
+                        className="home-hero-titleLine"
+                        style={{ color: "#FFFFFF" }}
+                      >
+                        Complimentary
+                      </span>
+                      <span
+                        className="home-hero-titleLine"
+                        style={{ color: "#FFFFFF" }}
+                      >
+                        Ahangama Pass
+                      </span>
+                    </Title>
+
+                    <Paragraph
+                      style={{
+                        marginTop: 18,
+                        marginBottom: 16,
+                        color: "#A07843",
+                        fontSize: "clamp(18px, 2vw, 22px)",
+                        lineHeight: 1.45,
+                        fontFamily:
+                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                      }}
+                    >
+                      Your local companion for Ahangama.
+                    </Paragraph>
+
+                    <Paragraph
+                      style={{
+                        marginTop: 0,
+                        marginBottom: 26,
+                        maxWidth: 560,
+                        color: "#FFFFFF",
+                        fontSize: "clamp(16px, 1.45vw, 19px)",
+                        lineHeight: 1.72,
+                      }}
+                    >
+                      Local insight, trusted recommendations and exclusive guest
+                      benefits, all in one digital pass built for Lighthouse
+                      Hotel guests.
+                    </Paragraph>
+
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns:
+                          "repeat(auto-fit, minmax(96px, 1fr))",
+                        gap: 18,
+                        maxWidth: 650,
+                        marginBottom: 28,
+                      }}
+                    >
+                      {HERO_FEATURES.map(({ title, subtitle, Icon }) => (
+                        <div
+                          key={`${title}-${subtitle}`}
+                          style={{ textAlign: "center", color: "#FFFFFF" }}
+                        >
+                          <div
+                            style={{
+                              width: 52,
+                              height: 52,
+                              borderRadius: 999,
+                              margin: "0 auto 10px",
+                              display: "grid",
+                              placeItems: "center",
+                              background: "rgba(255,255,255,0.58)",
+                              border: "1px solid rgba(176,142,98,0.18)",
+                              color: "#A07843",
+                              fontSize: 22,
+                            }}
+                          >
+                            <Icon />
+                          </div>
+                          <Text
+                            style={{
+                              display: "block",
+                              color: "#FFFFFF",
+                              fontSize: 13,
+                              fontWeight: 600,
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            {title}
+                          </Text>
+                          <Text
+                            style={{
+                              display: "block",
+                              color: "#FFFFFF",
+                              fontSize: 13,
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            {subtitle}
+                          </Text>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 14,
+                      }}
+                    >
+                      <div style={{ display: "flex", marginRight: 2 }}>
+                        {HERO_SOCIAL_PROOF.map((initials, index) => (
+                          <div
+                            key={initials}
+                            style={{
+                              width: 42,
+                              height: 42,
+                              borderRadius: "50%",
+                              display: "grid",
+                              placeItems: "center",
+                              marginLeft: index === 0 ? 0 : -10,
+                              border: "2px solid rgba(255,255,255,0.95)",
+                              background:
+                                index === 0
+                                  ? "#D4B08A"
+                                  : index === 1
+                                    ? "#B78562"
+                                    : "#6E7A63",
+                              color: "#FFFFFF",
+                              fontSize: 11,
+                              fontWeight: 700,
+                              letterSpacing: 0.4,
+                            }}
+                          >
+                            {initials}
+                          </div>
+                        ))}
+                      </div>
+                      <Text
+                        style={{
+                          color: "#2F2A24",
+                          fontSize: 13,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        Join 1,247+ Lighthouse guests already exploring Ahangama
+                        better.
+                      </Text>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -540,9 +1166,15 @@ export default function LighthousePage() {
       </div>
 
       <div className="dm-canvas">
+        <div className="dm-wrap" style={{ paddingTop: 28, paddingBottom: 8 }}>
+          <div style={{ maxWidth: 460, margin: "0 auto" }}>{signupPanel}</div>
+        </div>
+      </div>
+
+      <div className="dm-canvas">
         <div className="dm-wrap" style={{ paddingBottom: 8 }}>
           <Row gutter={[24, 24]} style={{ marginTop: 28 }}>
-            <Col xs={24} lg={14}>
+            <Col xs={24}>
               <Card
                 id="lighthouse-benefits"
                 style={{
@@ -687,644 +1319,6 @@ export default function LighthousePage() {
                     </Col>
                   ))}
                 </Row>
-              </Card>
-            </Col>
-
-            <Col xs={24} lg={10}>
-              <Card
-                id="lighthouse-signup-form"
-                style={{
-                  borderRadius: 28,
-                  border: "1px solid rgba(32,30,27,0.08)",
-                  background: "#FFFFFF",
-                  boxShadow: "0 22px 54px rgba(47,62,58,0.08)",
-                }}
-                bodyStyle={{ padding: 30 }}
-              >
-                <Text
-                  style={{
-                    display: "block",
-                    marginBottom: 10,
-                    color: "#B08E62",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: 1.8,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Lighthouse Guest Access
-                </Text>
-                <Title
-                  level={3}
-                  style={{
-                    marginTop: 0,
-                    marginBottom: 10,
-                    color: "#201E1B",
-                    fontFamily:
-                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    fontSize: "clamp(30px, 3vw, 42px)",
-                    lineHeight: 1,
-                    fontWeight: 500,
-                  }}
-                >
-                  Claim Your Complimentary Pass
-                </Title>
-                <Paragraph
-                  style={{
-                    color: "#5A554D",
-                    fontSize: 15,
-                    lineHeight: 1.75,
-                    marginBottom: 22,
-                  }}
-                >
-                  Complete the short form below to issue a complimentary pass
-                  for Lighthouse Hotel guests.
-                </Paragraph>
-                <Paragraph
-                  style={{
-                    color: "#5A554D",
-                    fontSize: 15,
-                    lineHeight: 1.75,
-                    marginBottom: 22,
-                  }}
-                >
-                  Choose when your pass should begin. Each complimentary pass
-                  stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
-                </Paragraph>
-
-                {formStep === FORM_STEP_DETAILS ? (
-                  <Space
-                    direction="vertical"
-                    size={14}
-                    style={{ width: "100%" }}
-                  >
-                    {detailsError ? (
-                      <Alert
-                        type="error"
-                        showIcon
-                        message={detailsError}
-                        style={{ borderRadius: 16 }}
-                      />
-                    ) : null}
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 8,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Full name
-                      </Text>
-                      <Input
-                        size="large"
-                        placeholder="Enter guest name"
-                        value={guestDetails.fullName}
-                        status={fieldErrors.fullName ? "error" : ""}
-                        onChange={(event) =>
-                          handleGuestDetailsChange(
-                            "fullName",
-                            event.target.value,
-                          )
-                        }
-                      />
-                      {fieldErrors.fullName ? (
-                        <Text
-                          type="danger"
-                          style={{ display: "block", marginTop: 6 }}
-                        >
-                          {fieldErrors.fullName}
-                        </Text>
-                      ) : null}
-                    </div>
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 8,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Email address
-                      </Text>
-                      <Input
-                        size="large"
-                        placeholder="Enter guest email"
-                        value={guestDetails.email}
-                        status={fieldErrors.email ? "error" : ""}
-                        onChange={(event) =>
-                          handleGuestDetailsChange("email", event.target.value)
-                        }
-                      />
-                      {fieldErrors.email ? (
-                        <Text
-                          type="danger"
-                          style={{ display: "block", marginTop: 6 }}
-                        >
-                          {fieldErrors.email}
-                        </Text>
-                      ) : null}
-                    </div>
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 8,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Phone number
-                      </Text>
-                      <Input
-                        size="large"
-                        placeholder="Enter guest number"
-                        value={guestDetails.phone}
-                        status={fieldErrors.phone ? "error" : ""}
-                        onChange={(event) =>
-                          handleGuestDetailsChange("phone", event.target.value)
-                        }
-                      />
-                      {fieldErrors.phone ? (
-                        <Text
-                          type="danger"
-                          style={{ display: "block", marginTop: 6 }}
-                        >
-                          {fieldErrors.phone}
-                        </Text>
-                      ) : null}
-                    </div>
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 8,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Pass start date
-                      </Text>
-                      <Input
-                        size="large"
-                        type="date"
-                        value={guestDetails.startDate}
-                        min={getTodayInputValue()}
-                        status={fieldErrors.startDate ? "error" : ""}
-                        onChange={(event) =>
-                          handleGuestDetailsChange(
-                            "startDate",
-                            event.target.value,
-                          )
-                        }
-                      />
-                      {fieldErrors.startDate ? (
-                        <Text
-                          type="danger"
-                          style={{ display: "block", marginTop: 6 }}
-                        >
-                          {fieldErrors.startDate}
-                        </Text>
-                      ) : (
-                        <Text
-                          style={{
-                            display: "block",
-                            marginTop: 6,
-                            color: "#7A7368",
-                          }}
-                        >
-                          Your pass will be valid for{" "}
-                          {DEFAULT_PASS_VALIDITY_DAYS} days from this date.
-                        </Text>
-                      )}
-                    </div>
-
-                    <Button
-                      type="primary"
-                      size="large"
-                      block
-                      loading={isSubmittingDetails}
-                      style={{ marginTop: 6 }}
-                      onClick={handleGuestDetailsSubmit}
-                    >
-                      Get My Complimentary Pass
-                    </Button>
-                  </Space>
-                ) : null}
-
-                {formStep === FORM_STEP_PREFERENCES ? (
-                  <Space
-                    direction="vertical"
-                    size={18}
-                    style={{ width: "100%" }}
-                  >
-                    {preferencesError ? (
-                      <Alert
-                        type="error"
-                        showIcon
-                        message={preferencesError}
-                        style={{ borderRadius: 16 }}
-                      />
-                    ) : null}
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 10,
-                          color: "#B08E62",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          letterSpacing: 1.4,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        Optional Preferences
-                      </Text>
-                      <Title
-                        level={4}
-                        style={{
-                          marginTop: 0,
-                          marginBottom: 8,
-                          color: "#201E1B",
-                          fontFamily:
-                            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                          fontSize: "clamp(26px, 2.8vw, 36px)",
-                          lineHeight: 1.02,
-                          fontWeight: 500,
-                        }}
-                      >
-                        Help us personalise your Ahangama experience
-                      </Title>
-                      <Paragraph
-                        style={{
-                          color: "#5A554D",
-                          fontSize: 15,
-                          lineHeight: 1.75,
-                          marginBottom: 0,
-                        }}
-                      >
-                        Optional — takes less than 30 seconds.
-                      </Paragraph>
-                    </div>
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 8,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Country
-                      </Text>
-                      <Input
-                        size="large"
-                        placeholder="Where are you visiting from?"
-                        value={preferencesDraft.country}
-                        onChange={(event) =>
-                          handlePreferencesChange("country", event.target.value)
-                        }
-                      />
-                    </div>
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 10,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Length of stay
-                      </Text>
-                      <Radio.Group
-                        value={preferencesDraft.stayLength}
-                        onChange={(event) =>
-                          handlePreferencesChange(
-                            "stayLength",
-                            event.target.value,
-                          )
-                        }
-                        style={{ display: "grid", gap: 10 }}
-                      >
-                        {STAY_LENGTH_OPTIONS.map((option) => (
-                          <Radio key={option} value={option}>
-                            {option}
-                          </Radio>
-                        ))}
-                      </Radio.Group>
-                    </div>
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 10,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Interests
-                      </Text>
-                      <Checkbox.Group
-                        value={preferencesDraft.interests}
-                        onChange={(value) =>
-                          handlePreferencesChange("interests", value)
-                        }
-                        style={{ width: "100%" }}
-                      >
-                        <Row gutter={[12, 12]}>
-                          {INTEREST_OPTIONS.map((option) => (
-                            <Col xs={24} sm={12} key={option}>
-                              <Checkbox value={option}>{option}</Checkbox>
-                            </Col>
-                          ))}
-                        </Row>
-                      </Checkbox.Group>
-                    </div>
-
-                    <Checkbox
-                      checked={preferencesDraft.wantsWhatsappRecommendations}
-                      onChange={(event) =>
-                        handlePreferencesChange(
-                          "wantsWhatsappRecommendations",
-                          event.target.checked,
-                        )
-                      }
-                    >
-                      Yes, send me personalised recommendations and local deals
-                      via WhatsApp
-                    </Checkbox>
-
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 10,
-                          fontWeight: 600,
-                        }}
-                      >
-                        Services interested in
-                      </Text>
-                      <Checkbox.Group
-                        value={preferencesDraft.servicesInterested}
-                        onChange={(value) =>
-                          handlePreferencesChange("servicesInterested", value)
-                        }
-                        style={{ width: "100%" }}
-                      >
-                        <Row gutter={[12, 12]}>
-                          {SERVICE_OPTIONS.map((option) => (
-                            <Col xs={24} sm={12} key={option}>
-                              <Checkbox value={option}>{option}</Checkbox>
-                            </Col>
-                          ))}
-                        </Row>
-                      </Checkbox.Group>
-                    </div>
-
-                    <Space
-                      direction="vertical"
-                      size={10}
-                      style={{ width: "100%" }}
-                    >
-                      <Button
-                        type="primary"
-                        size="large"
-                        block
-                        loading={isSavingPreferences}
-                        onClick={handlePreferencesSubmit}
-                      >
-                        Continue
-                      </Button>
-                      <Button
-                        size="large"
-                        block
-                        disabled={isSavingPreferences}
-                        onClick={handleSkipPreferences}
-                      >
-                        Skip for now
-                      </Button>
-                    </Space>
-                  </Space>
-                ) : null}
-
-                {formStep === FORM_STEP_SUCCESS ? (
-                  <Space
-                    direction="vertical"
-                    size={18}
-                    style={{ width: "100%" }}
-                  >
-                    <div>
-                      <Text
-                        style={{
-                          display: "block",
-                          marginBottom: 10,
-                          color: "#B08E62",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          letterSpacing: 1.8,
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {createdPassState?.pass?.passkitInstallUrl
-                          ? "Pass Ready"
-                          : "Pass In Progress"}
-                      </Text>
-                      <Title
-                        level={3}
-                        style={{
-                          marginTop: 0,
-                          marginBottom: 10,
-                          color: "#201E1B",
-                          fontFamily:
-                            '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                          fontSize: "clamp(30px, 3vw, 42px)",
-                          lineHeight: 1,
-                          fontWeight: 500,
-                        }}
-                      >
-                        {createdPassState?.pass?.passkitInstallUrl
-                          ? "Your Ahangama Pass is ready"
-                          : "Your Ahangama Pass is being prepared"}
-                      </Title>
-                      <Paragraph
-                        style={{
-                          color: "#5A554D",
-                          fontSize: 15,
-                          lineHeight: 1.75,
-                          marginBottom: 10,
-                        }}
-                      >
-                        {createdPassState?.pass?.passkitInstallUrl
-                          ? "Add your pass to Apple Wallet or Google Wallet below."
-                          : "Wallet installation will be available in the next step."}
-                      </Paragraph>
-                      {createdPassState?.guest?.fullName ? (
-                        <Text style={{ color: "#5A554D" }}>
-                          We have reserved your guest pass for{" "}
-                          {createdPassState.guest.fullName}.
-                        </Text>
-                      ) : null}
-                      {createdPassState?.pass?.validFrom ? (
-                        <Text
-                          style={{
-                            display: "block",
-                            marginTop: 8,
-                            color: "#5A554D",
-                          }}
-                        >
-                          Starts{" "}
-                          {formatPassDateLabel(createdPassState.pass.validFrom)}{" "}
-                          and stays active for {DEFAULT_PASS_VALIDITY_DAYS}{" "}
-                          days.
-                        </Text>
-                      ) : null}
-                      {createdPassState?.passkitPending &&
-                      createdPassState?.passkitError ? (
-                        <Text
-                          style={{
-                            display: "block",
-                            color: "#8C6B3B",
-                            marginTop: 10,
-                          }}
-                        >
-                          {createdPassState.passkitError}
-                        </Text>
-                      ) : null}
-                    </div>
-
-                    <Card
-                      style={{
-                        borderRadius: 20,
-                        border: "1px solid rgba(176,142,98,0.18)",
-                        background:
-                          "linear-gradient(180deg, #fffaf1 0%, #f6ebd9 100%)",
-                      }}
-                      bodyStyle={{ padding: 18 }}
-                    >
-                      <Text
-                        style={{
-                          display: "block",
-                          color: "#7A5B32",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          letterSpacing: 1.2,
-                          textTransform: "uppercase",
-                          marginBottom: 8,
-                        }}
-                      >
-                        {createdPassState?.pass?.passkitInstallUrl
-                          ? "Install Pass"
-                          : "Next Step"}
-                      </Text>
-                      <Paragraph
-                        style={{
-                          marginBottom: 10,
-                          color: "#5A554D",
-                          lineHeight: 1.7,
-                        }}
-                      >
-                        {createdPassState?.pass?.passkitInstallUrl
-                          ? "Use the secure PassKit link below to add your pass to Apple Wallet or Google Wallet."
-                          : "We&apos;ll guide you to wallet installation as soon as the next step is ready."}
-                      </Paragraph>
-
-                      {createdPassState?.pass?.passkitInstallUrl ? (
-                        <>
-                          <Button
-                            type="primary"
-                            size="large"
-                            block
-                            href={createdPassState.pass.passkitInstallUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ marginTop: 14 }}
-                          >
-                            Add to Apple Wallet / Google Wallet
-                          </Button>
-                        </>
-                      ) : null}
-                    </Card>
-                  </Space>
-                ) : null}
-
-                <Card
-                  style={{
-                    marginTop: 20,
-                    borderRadius: 20,
-                    border: "1px solid rgba(176,142,98,0.18)",
-                    background:
-                      "linear-gradient(180deg, #fffaf1 0%, #f6ebd9 100%)",
-                  }}
-                  bodyStyle={{ padding: 18 }}
-                >
-                  <Text
-                    style={{
-                      display: "block",
-                      color: "#7A5B32",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: 1.2,
-                      textTransform: "uppercase",
-                      marginBottom: 8,
-                    }}
-                  >
-                    Instant Digital Delivery
-                  </Text>
-                  <Paragraph
-                    style={{
-                      marginBottom: 10,
-                      color: "#5A554D",
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    The first step confirms your guest pass instantly.
-                  </Paragraph>
-                  <Text
-                    style={{
-                      display: "block",
-                      color: "#5A554D",
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    Wallet installation follows in the next step:
-                  </Text>
-                  <Space size={8} align="center" style={{ marginTop: 14 }}>
-                    <img
-                      src={addToAppleWalletLogo}
-                      alt="Apple Wallet"
-                      style={{ display: "block", height: 45, width: "auto" }}
-                    />
-                    <img
-                      src={addToGoogleWalletLogo}
-                      alt="Google Wallet"
-                      style={{ display: "block", height: 45, width: "auto" }}
-                    />
-                  </Space>
-                  <Paragraph
-                    style={{
-                      marginTop: 14,
-                      marginBottom: 0,
-                      color: "#5A554D",
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    No app required.
-                  </Paragraph>
-                  <Paragraph
-                    style={{
-                      marginTop: 8,
-                      marginBottom: 0,
-                      color: "#5A554D",
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    Simply show your pass when visiting participating venues.
-                  </Paragraph>
-                </Card>
               </Card>
             </Col>
           </Row>
