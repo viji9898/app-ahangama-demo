@@ -38,8 +38,7 @@ const HERO_IMAGE =
 const HOME_PAGE_HERO_IMAGE =
   "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
 
-const AHANGAMA_GOOGLE_MAP_URL =
-  "https://maps.app.goo.gl/nh4DYnE3haE3euCT6";
+const AHANGAMA_GOOGLE_MAP_URL = "https://maps.app.goo.gl/nh4DYnE3haE3euCT6";
 const AHANGAMA_GOOGLE_MAP_EMBED_URL =
   "https://www.google.com/maps?q=Ahangama,Sri%20Lanka&z=14&output=embed";
 const AHANGAMA_GUIDE_PREVIEW_URL = "/guide";
@@ -537,7 +536,8 @@ const EMAIL_CAMPAIGN_STAGES = [
     label: "Day 2 Newsletter",
     eyebrow: "In-Stay Sequence",
     kicker: "Deepen Discovery",
-    title: "A second-day email focused on exploration and stronger recommendations.",
+    title:
+      "A second-day email focused on exploration and stronger recommendations.",
     paragraphs: [
       "This dummy version assumes the visitor is now oriented and ready for more selective editorial suggestions, bookings and discoveries.",
       "It can move beyond basics into wellness, experiences, shopping, evening plans and higher-value partner exposure.",
@@ -582,7 +582,8 @@ const EMAIL_CAMPAIGN_STAGES = [
     label: "Last Day Newsletter",
     eyebrow: "Departure Sequence",
     kicker: "Before You Leave",
-    title: "A final email designed for last-day bookings, souvenirs and keeping the relationship alive.",
+    title:
+      "A final email designed for last-day bookings, souvenirs and keeping the relationship alive.",
     paragraphs: [
       "This dummy version encourages one last round of spending while also nudging the visitor into longer-term brand connection after departure.",
       "It can support retail partners, gift-led offers, final meals, and prompts to follow Ahangama.com after the trip.",
@@ -640,8 +641,9 @@ export default function Partners() {
     AUDIENCE_REACH_CHANNELS.find((item) => item.label === activeReachChannel) ??
     AUDIENCE_REACH_CHANNELS[0];
   const selectedPromotionalProduct =
-    PROMOTIONAL_PRODUCTS.find((item) => item.name === activePromotionalProduct) ??
-    PROMOTIONAL_PRODUCTS[0];
+    PROMOTIONAL_PRODUCTS.find(
+      (item) => item.name === activePromotionalProduct,
+    ) ?? PROMOTIONAL_PRODUCTS[0];
   const selectedEmailCampaignStage =
     EMAIL_CAMPAIGN_STAGES.find(
       (item) => item.label === activeEmailCampaignStage,
@@ -1407,7 +1409,9 @@ export default function Partners() {
                                                 textTransform: "uppercase",
                                               }}
                                             >
-                                              {selectedEmailCampaignStage.kicker}
+                                              {
+                                                selectedEmailCampaignStage.kicker
+                                              }
                                             </div>
                                             <div
                                               style={{
@@ -1444,7 +1448,9 @@ export default function Partners() {
                                               background: "#F3ECE1",
                                             }}
                                           >
-                                            <div style={{ position: "relative" }}>
+                                            <div
+                                              style={{ position: "relative" }}
+                                            >
                                               <img
                                                 src={denitsaPortrait}
                                                 alt="Portrait from Ahangama"
@@ -1486,7 +1492,9 @@ export default function Partners() {
                                             </div>
                                           </div>
 
-                                          <div style={{ display: "grid", gap: 10 }}>
+                                          <div
+                                            style={{ display: "grid", gap: 10 }}
+                                          >
                                             <div
                                               style={{
                                                 color: "#8A7B68",
@@ -1496,7 +1504,9 @@ export default function Partners() {
                                                 textTransform: "uppercase",
                                               }}
                                             >
-                                              {selectedEmailCampaignStage.featureLabel}
+                                              {
+                                                selectedEmailCampaignStage.featureLabel
+                                              }
                                             </div>
                                             <div
                                               style={{
@@ -1507,55 +1517,62 @@ export default function Partners() {
                                                 lineHeight: 0.98,
                                               }}
                                             >
-                                              {selectedEmailCampaignStage.featureTitle}
+                                              {
+                                                selectedEmailCampaignStage.featureTitle
+                                              }
                                             </div>
-                                            {selectedEmailCampaignStage.features.map((item) => (
-                                              <div
-                                                key={item.label}
-                                                style={{
-                                                  display: "grid",
-                                                  gap: 4,
-                                                  paddingBottom: 10,
-                                                  borderBottom:
-                                                    "1px solid rgba(86, 72, 57, 0.12)",
-                                                }}
-                                              >
+                                            {selectedEmailCampaignStage.features.map(
+                                              (item) => (
                                                 <div
+                                                  key={item.label}
                                                   style={{
-                                                    color: "#207886",
-                                                    fontSize: 9,
-                                                    fontWeight: 700,
-                                                    letterSpacing: 1.1,
-                                                    textTransform: "uppercase",
+                                                    display: "grid",
+                                                    gap: 4,
+                                                    paddingBottom: 10,
+                                                    borderBottom:
+                                                      "1px solid rgba(86, 72, 57, 0.12)",
                                                   }}
                                                 >
-                                                  {item.label}
+                                                  <div
+                                                    style={{
+                                                      color: "#207886",
+                                                      fontSize: 9,
+                                                      fontWeight: 700,
+                                                      letterSpacing: 1.1,
+                                                      textTransform:
+                                                        "uppercase",
+                                                    }}
+                                                  >
+                                                    {item.label}
+                                                  </div>
+                                                  <div
+                                                    style={{
+                                                      color: "#2F2A24",
+                                                      fontFamily:
+                                                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                                      fontSize: 16,
+                                                      lineHeight: 1,
+                                                    }}
+                                                  >
+                                                    {item.title}
+                                                  </div>
+                                                  <div
+                                                    style={{
+                                                      color: "#3E3E3E",
+                                                      fontSize: 10,
+                                                      lineHeight: 1.5,
+                                                    }}
+                                                  >
+                                                    {item.body}
+                                                  </div>
                                                 </div>
-                                                <div
-                                                  style={{
-                                                    color: "#2F2A24",
-                                                    fontFamily:
-                                                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                                    fontSize: 16,
-                                                    lineHeight: 1,
-                                                  }}
-                                                >
-                                                  {item.title}
-                                                </div>
-                                                <div
-                                                  style={{
-                                                    color: "#3E3E3E",
-                                                    fontSize: 10,
-                                                    lineHeight: 1.5,
-                                                  }}
-                                                >
-                                                  {item.body}
-                                                </div>
-                                              </div>
-                                            ))}
+                                              ),
+                                            )}
                                           </div>
 
-                                          <div style={{ display: "grid", gap: 10 }}>
+                                          <div
+                                            style={{ display: "grid", gap: 10 }}
+                                          >
                                             <div
                                               style={{
                                                 color: "#8A7B68",
@@ -1565,7 +1582,9 @@ export default function Partners() {
                                                 textTransform: "uppercase",
                                               }}
                                             >
-                                              {selectedEmailCampaignStage.storiesLabel}
+                                              {
+                                                selectedEmailCampaignStage.storiesLabel
+                                              }
                                             </div>
                                             <div
                                               style={{
@@ -1576,62 +1595,66 @@ export default function Partners() {
                                                 lineHeight: 0.98,
                                               }}
                                             >
-                                              {selectedEmailCampaignStage.storiesTitle}
+                                              {
+                                                selectedEmailCampaignStage.storiesTitle
+                                              }
                                             </div>
-                                            {selectedEmailCampaignStage.stories.map((item) => (
-                                              <div
-                                                key={item.title}
-                                                style={{
-                                                  display: "grid",
-                                                  gap: 4,
-                                                  padding: "0 0 10px",
-                                                  borderBottom:
-                                                    "1px solid rgba(86, 72, 57, 0.12)",
-                                                }}
-                                              >
-                                                <img
-                                                  src={item.image}
-                                                  alt={item.title}
-                                                  style={{
-                                                    display: "block",
-                                                    width: "100%",
-                                                    aspectRatio: "16 / 9",
-                                                    objectFit: "cover",
-                                                    borderRadius: 12,
-                                                    marginBottom: 8,
-                                                  }}
-                                                />
+                                            {selectedEmailCampaignStage.stories.map(
+                                              (item) => (
                                                 <div
+                                                  key={item.title}
                                                   style={{
-                                                    color: "#2F2A24",
-                                                    fontFamily:
-                                                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                                                    fontSize: 16,
-                                                    lineHeight: 1,
+                                                    display: "grid",
+                                                    gap: 4,
+                                                    padding: "0 0 10px",
+                                                    borderBottom:
+                                                      "1px solid rgba(86, 72, 57, 0.12)",
                                                   }}
                                                 >
-                                                  {item.title}
+                                                  <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    style={{
+                                                      display: "block",
+                                                      width: "100%",
+                                                      aspectRatio: "16 / 9",
+                                                      objectFit: "cover",
+                                                      borderRadius: 12,
+                                                      marginBottom: 8,
+                                                    }}
+                                                  />
+                                                  <div
+                                                    style={{
+                                                      color: "#2F2A24",
+                                                      fontFamily:
+                                                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                                                      fontSize: 16,
+                                                      lineHeight: 1,
+                                                    }}
+                                                  >
+                                                    {item.title}
+                                                  </div>
+                                                  <div
+                                                    style={{
+                                                      color: "#3E3E3E",
+                                                      fontSize: 10,
+                                                      lineHeight: 1.5,
+                                                    }}
+                                                  >
+                                                    {item.body}
+                                                  </div>
+                                                  <div
+                                                    style={{
+                                                      color: "#6B655E",
+                                                      fontSize: 9,
+                                                      fontWeight: 600,
+                                                    }}
+                                                  >
+                                                    {item.meta}
+                                                  </div>
                                                 </div>
-                                                <div
-                                                  style={{
-                                                    color: "#3E3E3E",
-                                                    fontSize: 10,
-                                                    lineHeight: 1.5,
-                                                  }}
-                                                >
-                                                  {item.body}
-                                                </div>
-                                                <div
-                                                  style={{
-                                                    color: "#6B655E",
-                                                    fontSize: 9,
-                                                    fontWeight: 600,
-                                                  }}
-                                                >
-                                                  {item.meta}
-                                                </div>
-                                              </div>
-                                            ))}
+                                              ),
+                                            )}
                                           </div>
                                         </div>
                                       </div>
@@ -1829,15 +1852,18 @@ export default function Partners() {
                                               padding: "10px 16px",
                                               borderRadius: 999,
                                               border:
-                                                item === activeEmailCampaignStage
+                                                item ===
+                                                activeEmailCampaignStage
                                                   ? "1px solid rgba(47, 42, 36, 0.28)"
                                                   : "1px solid rgba(86, 72, 57, 0.14)",
                                               background:
-                                                item === activeEmailCampaignStage
+                                                item ===
+                                                activeEmailCampaignStage
                                                   ? "#2F2A24"
                                                   : "#FBF8F2",
                                               color:
-                                                item === activeEmailCampaignStage
+                                                item ===
+                                                activeEmailCampaignStage
                                                   ? "#FFFFFF"
                                                   : "#2F2A24",
                                               fontSize: 13,
@@ -1963,9 +1989,9 @@ export default function Partners() {
                       maxWidth: 860,
                     }}
                   >
-                    Physical placements across Ahangama that put the Pass,
-                    map, guide and partner messaging directly in front of
-                    visitors while they move through the destination.
+                    Physical placements across Ahangama that put the Pass, map,
+                    guide and partner messaging directly in front of visitors
+                    while they move through the destination.
                   </Paragraph>
                 </div>
 
@@ -2211,13 +2237,16 @@ export default function Partners() {
                   >
                     {PROMOTIONAL_PRODUCTS.map((item) => {
                       const Icon = item.icon;
-                      const isActive = item.name === selectedPromotionalProduct.name;
+                      const isActive =
+                        item.name === selectedPromotionalProduct.name;
 
                       return (
                         <div key={item.name}>
                           <button
                             type="button"
-                            onClick={() => setActivePromotionalProduct(item.name)}
+                            onClick={() =>
+                              setActivePromotionalProduct(item.name)
+                            }
                             style={{
                               height: "100%",
                               textAlign: "left",
@@ -2245,7 +2274,14 @@ export default function Partners() {
                                 flex: "0 0 auto",
                               }}
                             />
-                            <div style={{ display: "grid", gap: 6, flex: 1, minWidth: 0 }}>
+                            <div
+                              style={{
+                                display: "grid",
+                                gap: 6,
+                                flex: 1,
+                                minWidth: 0,
+                              }}
+                            >
                               <div
                                 style={{
                                   display: "flex",
@@ -2378,7 +2414,6 @@ export default function Partners() {
                 </Col>
               </Row>
             </div>
-
           </div>
         </div>
       </div>

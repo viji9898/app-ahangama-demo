@@ -109,7 +109,9 @@ function validateGuestDetails(values) {
     errors.fullName = "Please enter your full name";
   }
 
-  const email = String(values.email || "").trim().toLowerCase();
+  const email = String(values.email || "")
+    .trim()
+    .toLowerCase();
 
   if (!email) {
     errors.email = "Please enter your email address";
@@ -425,7 +427,9 @@ export default function LighthousePage() {
                           lineHeight: 1.5,
                         }}
                       >
-                        <span style={{ color: "#D8C3A0", fontSize: 16 }}>•</span>
+                        <span style={{ color: "#D8C3A0", fontSize: 16 }}>
+                          •
+                        </span>
                         <span>{item}</span>
                       </div>
                     ))}
@@ -696,11 +700,17 @@ export default function LighthousePage() {
                         value={guestDetails.fullName}
                         status={fieldErrors.fullName ? "error" : ""}
                         onChange={(event) =>
-                          handleGuestDetailsChange("fullName", event.target.value)
+                          handleGuestDetailsChange(
+                            "fullName",
+                            event.target.value,
+                          )
                         }
                       />
                       {fieldErrors.fullName ? (
-                        <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                        <Text
+                          type="danger"
+                          style={{ display: "block", marginTop: 6 }}
+                        >
                           {fieldErrors.fullName}
                         </Text>
                       ) : null}
@@ -726,7 +736,10 @@ export default function LighthousePage() {
                         }
                       />
                       {fieldErrors.email ? (
-                        <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                        <Text
+                          type="danger"
+                          style={{ display: "block", marginTop: 6 }}
+                        >
                           {fieldErrors.email}
                         </Text>
                       ) : null}
@@ -752,7 +765,10 @@ export default function LighthousePage() {
                         }
                       />
                       {fieldErrors.phone ? (
-                        <Text type="danger" style={{ display: "block", marginTop: 6 }}>
+                        <Text
+                          type="danger"
+                          style={{ display: "block", marginTop: 6 }}
+                        >
                           {fieldErrors.phone}
                         </Text>
                       ) : null}
@@ -851,7 +867,10 @@ export default function LighthousePage() {
                       <Radio.Group
                         value={preferencesDraft.stayLength}
                         onChange={(event) =>
-                          handlePreferencesChange("stayLength", event.target.value)
+                          handlePreferencesChange(
+                            "stayLength",
+                            event.target.value,
+                          )
                         }
                         style={{ display: "grid", gap: 10 }}
                       >
@@ -930,7 +949,11 @@ export default function LighthousePage() {
                       </Checkbox.Group>
                     </div>
 
-                    <Space direction="vertical" size={10} style={{ width: "100%" }}>
+                    <Space
+                      direction="vertical"
+                      size={10}
+                      style={{ width: "100%" }}
+                    >
                       <Button
                         type="primary"
                         size="large"
@@ -939,7 +962,11 @@ export default function LighthousePage() {
                       >
                         Continue
                       </Button>
-                      <Button size="large" block onClick={handleSkipPreferences}>
+                      <Button
+                        size="large"
+                        block
+                        onClick={handleSkipPreferences}
+                      >
                         Skip for now
                       </Button>
                     </Space>
@@ -993,7 +1020,8 @@ export default function LighthousePage() {
                       </Paragraph>
                       {createdPassState?.guest?.fullName ? (
                         <Text style={{ color: "#5A554D" }}>
-                          We have reserved your guest pass for {createdPassState.guest.fullName}.
+                          We have reserved your guest pass for{" "}
+                          {createdPassState.guest.fullName}.
                         </Text>
                       ) : null}
                     </div>
@@ -1027,19 +1055,27 @@ export default function LighthousePage() {
                           lineHeight: 1.7,
                         }}
                       >
-                        We&apos;ll guide you to wallet installation as soon as the
-                        next step is ready.
+                        We&apos;ll guide you to wallet installation as soon as
+                        the next step is ready.
                       </Paragraph>
                       <Space size={8} align="center" style={{ marginTop: 4 }}>
                         <img
                           src={addToAppleWalletLogo}
                           alt="Apple Wallet"
-                          style={{ display: "block", height: 45, width: "auto" }}
+                          style={{
+                            display: "block",
+                            height: 45,
+                            width: "auto",
+                          }}
                         />
                         <img
                           src={addToGoogleWalletLogo}
                           alt="Google Wallet"
-                          style={{ display: "block", height: 45, width: "auto" }}
+                          style={{
+                            display: "block",
+                            height: 45,
+                            width: "auto",
+                          }}
                         />
                       </Space>
                     </Card>
