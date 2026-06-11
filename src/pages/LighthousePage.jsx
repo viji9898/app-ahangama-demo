@@ -21,6 +21,8 @@ import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 const { Paragraph, Text, Title } = Typography;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const LIGHTHOUSE_PASS_ENDPOINT = "/.netlify/functions/create-hotel-guest-pass";
+const LIGHTHOUSE_PREFERENCES_ENDPOINT =
+  "/.netlify/functions/update-hotel-guest-preferences";
 const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PREFERENCES = "preferences";
 const FORM_STEP_SUCCESS = "success";
@@ -130,7 +132,9 @@ export default function LighthousePage() {
   const canonical = absUrl("/lighthouse");
   const [formStep, setFormStep] = useState(FORM_STEP_DETAILS);
   const [isSubmittingDetails, setIsSubmittingDetails] = useState(false);
+  const [isSavingPreferences, setIsSavingPreferences] = useState(false);
   const [detailsError, setDetailsError] = useState("");
+  const [preferencesError, setPreferencesError] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
   const [createdPassState, setCreatedPassState] = useState(null);
   const [guestDetails, setGuestDetails] = useState({
@@ -214,6 +218,7 @@ export default function LighthousePage() {
         pass: payload.pass,
         preferences: payload.preferences,
       });
+      setPreferencesError("");
       setFormStep(FORM_STEP_PREFERENCES);
     } catch (error) {
       setDetailsError("We couldn't reach the pass service. Please try again.");
@@ -222,16 +227,62 @@ export default function LighthousePage() {
     }
   };
 
-  const handlePreferencesSubmit = () => {
-    console.log("lighthouse-pass preferences draft", {
-      guestId: createdPassState?.guest?.id,
-      passId: createdPassState?.pass?.id,
-      preferences: preferencesDraft,
-    });
-    setFormStep(FORM_STEP_SUCCESS);
+  const handlePreferencesSubmit = async () => {
+    const passId = createdPassState?.pass?.id;
+
+    if (!passId) {
+      setPreferencesError(
+        "We couldn't find your pass details. Please restart the form.",
+      );
+      return;
+    }
+
+    setIsSavingPreferences(true);
+    setPreferencesError("");
+
+    try {
+      const response = await fetch(LIGHTHOUSE_PREFERENCES_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          passId,
+          country: preferencesDraft.country,
+          stayLength: preferencesDraft.stayLength,
+          interests: preferencesDraft.interests,
+          wantsWhatsappRecommendations:
+            preferencesDraft.wantsWhatsappRecommendations,
+          servicesInterested: preferencesDraft.servicesInterested,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setPreferencesError(
+          payload.error ||
+            "We couldn't save your preferences just now. Please try again.",
+        );
+        return;
+      }
+
+      setCreatedPassState((current) => ({
+        ...current,
+        preferences: payload.preferences || current?.preferences,
+      }));
+      setFormStep(FORM_STEP_SUCCESS);
+    } catch (error) {
+      setPreferencesError(
+        "We couldn't reach the preferences service. Please try again.",
+      );
+    } finally {
+      setIsSavingPreferences(false);
+    }
   };
 
   const handleSkipPreferences = () => {
+    setPreferencesError("");
     setFormStep(FORM_STEP_SUCCESS);
   };
 
@@ -793,6 +844,15 @@ export default function LighthousePage() {
                     size={18}
                     style={{ width: "100%" }}
                   >
+                    {preferencesError ? (
+                      <Alert
+                        type="error"
+                        showIcon
+                        message={preferencesError}
+                        style={{ borderRadius: 16 }}
+                      />
+                    ) : null}
+
                     <div>
                       <Text
                         style={{
@@ -958,6 +1018,7 @@ export default function LighthousePage() {
                         type="primary"
                         size="large"
                         block
+                        loading={isSavingPreferences}
                         onClick={handlePreferencesSubmit}
                       >
                         Continue
@@ -965,6 +1026,7 @@ export default function LighthousePage() {
                       <Button
                         size="large"
                         block
+                        disabled={isSavingPreferences}
                         onClick={handleSkipPreferences}
                       >
                         Skip for now

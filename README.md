@@ -95,6 +95,21 @@ curl -X POST http://localhost:8890/.netlify/functions/create-hotel-guest-pass \
 	}'
 ```
 
+To test the complimentary hotel guest Stage 4 preferences endpoint locally through Netlify Dev, use:
+
+```bash
+curl -X POST http://localhost:8890/.netlify/functions/update-hotel-guest-preferences \
+	-H "Content-Type: application/json" \
+	-d '{
+		"passId": "your-pass-uuid",
+		"country": "United Kingdom",
+		"stayLength": "4-7 nights",
+		"interests": ["Surfing", "Cafes & Coffee"],
+		"wantsWhatsappRecommendations": true,
+		"servicesInterested": ["Airport Transfers", "Scooter Rental"]
+	}'
+```
+
 ## Email Template Testing
 
 The promo email test script expects `SENDGRID_API_KEY` in your shell or in one of these local env files at the repo root:
