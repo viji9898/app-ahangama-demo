@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import {
-  ArrowRightOutlined,
   BookOutlined,
   CalendarOutlined,
   EnvironmentOutlined,
   GiftOutlined,
+  HeartOutlined,
   LockOutlined,
   MessageOutlined,
+  MobileOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import {
   Alert,
@@ -85,36 +87,95 @@ const HERO_FEATURES = [
 
 const HERO_SOCIAL_PROOF = ["LW", "AP", "HN"];
 
-const DISCOVER_CARDS = [
+const PASS_LOVE_STATS = [
   {
-    title: "Ahangama Guide 2026/27",
-    description: "Editorial recommendations from the local Ahangama.com team.",
-    detail:
-      "Best cafes, beaches, surf spots, wellness experiences and places to explore.",
-    ctaLabel: "View Guide",
-    href: "/guide",
+    value: "150+",
+    title: "Curated Places",
+    detail: "Handpicked by locals",
+    Icon: EnvironmentOutlined,
   },
   {
-    title: "Curated Ahangama Map",
-    description: "Discover:",
-    highlights: [
-      "Best Breakfasts",
-      "Sunset Spots",
-      "Beginner Surf",
-      "Coffee & Workspaces",
-      "Wellness Studios",
-      "Date Night Picks",
-      "Local Favourites",
-    ],
-    ctaLabel: "Open Map",
-    href: "/map",
+    value: "50+",
+    title: "Exclusive Perks",
+    detail: "Save across Ahangama",
+    Icon: GiftOutlined,
+  },
+  {
+    value: "1",
+    title: "Digital Pass",
+    detail: "Always with you",
+    Icon: MobileOutlined,
+  },
+  {
+    value: "Local",
+    title: "Support",
+    detail: "Real people, real help if you need it",
+    Icon: TeamOutlined,
+  },
+  {
+    value: "0",
+    title: "Planning Stress",
+    detail: "We've got you covered",
+    Icon: HeartOutlined,
   },
 ];
 
-const PASS_EDITORIAL_NOTES = [
-  "A local access pass designed to help Lighthouse Hotel guests experience Ahangama with more depth and less guesswork.",
-  "Perks and privileges across cafes, restaurants, wellness studios, surf spaces, retail and everyday essentials throughout town.",
-  "Access to a curated guide and map shaped around useful recommendations, local favourites and places actually worth knowing.",
+const LIGHTHOUSE_GUIDE_SECTION_CARDS = [
+  {
+    label: "AHANGAMA GUIDE",
+    title: "12 Things to Do",
+    href: "/12-things",
+    image:
+      "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
+  },
+  {
+    label: "WELLNESS STAY",
+    title: "My Wellness Stay at Samba",
+    href: "/3-days-in-ahangama",
+    image:
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
+  },
+  {
+    label: "WELLNESS GUIDE",
+    title: "Wellness in Ahangama",
+    href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    image:
+      "https://images.squarespace-cdn.com/content/v1/687779bfeb67b07ba252ad9e/1765200138172-E21VJEEVSEA0JQ1ZDW90/Jungle+Shala+Launch-45+2.jpg",
+  },
+  {
+    label: "TRANSPORT GUIDE",
+    title: "Getting Around",
+    href: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
+    image:
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/93/b1/58/caption.jpg?w=500&h=500&s=1",
+  },
+];
+
+const LIGHTHOUSE_GUIDE_SECTION_PALETTE = [
+  {
+    card: "#f7f1e7",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(176, 142, 98, 0.14)",
+  },
+  {
+    card: "#ebe5d8",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(106, 114, 85, 0.16)",
+  },
+  {
+    card: "#dfe5d6",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(97, 111, 79, 0.16)",
+  },
+  {
+    card: "#e8d6ca",
+    ink: "#1f1d1a",
+    line: "rgba(31,29,26,0.72)",
+    media: "rgba(136, 92, 64, 0.14)",
+  },
 ];
 
 const STAY_LENGTH_OPTIONS = [
@@ -1293,35 +1354,121 @@ export default function LighthousePage() {
               textAlign: "center",
             }}
           >
+          </div>
+        </div>
+      </div>
+
+      <div className="dm-canvas">
+        <div className="dm-wrap" style={{ paddingTop: 18, paddingBottom: 20 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 18,
+              marginBottom: 18,
+            }}
+          >
+            <div
+              style={{
+                flex: 1,
+                height: 1,
+                background: "linear-gradient(90deg, rgba(176,142,98,0.08) 0%, rgba(176,142,98,0.45) 100%)",
+              }}
+            />
             <Title
               level={2}
               style={{
                 margin: 0,
                 color: "#2F2A24",
+                textAlign: "center",
                 fontFamily:
                   '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                fontSize: "clamp(30px, 4.2vw, 50px)",
-                lineHeight: 1.04,
+                fontSize: "clamp(26px, 3.2vw, 44px)",
+                lineHeight: 1,
                 fontWeight: 500,
+                whiteSpace: "nowrap",
               }}
             >
-              Everything you need for the perfect Ahangama stay.
+              Why Lighthouse Guests Love Their Pass
             </Title>
-
-            <Text
+            <div
               style={{
-                display: "block",
-                marginTop: 16,
-                color: "#B08E62",
-                fontSize: 12,
-                fontWeight: 700,
-                letterSpacing: 2,
-                textTransform: "uppercase",
+                flex: 1,
+                height: 1,
+                background: "linear-gradient(90deg, rgba(176,142,98,0.45) 0%, rgba(176,142,98,0.08) 100%)",
+              }}
+            />
+          </div>
+
+          <Card
+            style={{
+              borderRadius: 28,
+              border: "1px solid rgba(32,30,27,0.08)",
+              background: "linear-gradient(180deg, #fffefb 0%, #fbf6ee 100%)",
+              boxShadow: "0 18px 40px rgba(70,54,28,0.06)",
+            }}
+            bodyStyle={{ padding: 0 }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
               }}
             >
-              Local Insight + Exclusive Benefits
-            </Text>
-          </div>
+              {PASS_LOVE_STATS.map(({ value, title, detail, Icon }, index) => (
+                <div
+                  key={`${title}-${value}`}
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    alignItems: "center",
+                    padding: "28px 24px",
+                    borderRight:
+                      index === PASS_LOVE_STATS.length - 1
+                        ? "none"
+                        : "1px solid rgba(32,30,27,0.08)",
+                  }}
+                >
+                  <Icon style={{ fontSize: 34, color: "#B08E62", flex: "0 0 auto" }} />
+                  <div>
+                    <div
+                      style={{
+                        color: "#A47F49",
+                        fontSize: 26,
+                        lineHeight: 1,
+                        fontWeight: 500,
+                        fontFamily:
+                          '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                      }}
+                    >
+                      {value}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: 10,
+                        color: "#2F2A24",
+                        fontSize: 15,
+                        fontWeight: 700,
+                        lineHeight: 1.35,
+                      }}
+                    >
+                      {title}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: 4,
+                        color: "#6E675F",
+                        fontSize: 13,
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      {detail}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
       </div>
 
@@ -1346,263 +1493,160 @@ export default function LighthousePage() {
         <div className="dm-wrap" style={{ paddingBottom: 8 }}>
           <Row gutter={[24, 24]} style={{ marginTop: 28 }}>
             <Col xs={24}>
-              <Card
-                id="lighthouse-benefits"
-                style={{
-                  borderRadius: 28,
-                  border: "1px solid rgba(32,30,27,0.08)",
-                  background:
-                    "linear-gradient(180deg, #fffdf9 0%, #f7f0e6 100%)",
-                }}
-                bodyStyle={{ padding: 30 }}
-              >
-                <Text
+              <div style={{ marginBottom: 28 }}>
+                <div
                   style={{
-                    display: "block",
-                    marginBottom: 12,
-                    color: "#B08E62",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: 1.8,
-                    textTransform: "uppercase",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    gap: 16,
+                    flexWrap: "wrap",
+                    marginBottom: 18,
                   }}
                 >
-                  Included With Your Stay
-                </Text>
-                <Title
-                  level={2}
-                  style={{
-                    marginTop: 0,
-                    marginBottom: 14,
-                    color: "#201E1B",
-                    fontFamily:
-                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    fontSize: "clamp(30px, 4vw, 54px)",
-                    lineHeight: 0.98,
-                    fontWeight: 500,
-                  }}
-                >
-                  A Complimentary Local Access Pass.
-                </Title>
-                <Paragraph
-                  style={{
-                    color: "#4B463F",
-                    fontSize: 17,
-                    lineHeight: 1.8,
-                    marginBottom: 16,
-                  }}
-                >
-                  The Ahangama Pass is a curated visitor pass designed to help
-                  you experience the best of Ahangama.
-                </Paragraph>
-                <Paragraph
-                  style={{
-                    color: "#4B463F",
-                    fontSize: 17,
-                    lineHeight: 1.8,
-                    marginBottom: 16,
-                  }}
-                >
-                  Lighthouse Hotel guests receive complimentary access as part
-                  of their stay.
-                </Paragraph>
-                <Paragraph
-                  style={{
-                    color: "#4B463F",
-                    fontSize: 17,
-                    lineHeight: 1.8,
-                    marginBottom: 24,
-                  }}
-                >
-                  The pass provides access to exclusive offers, local
-                  recommendations and savings across a growing network of
-                  independent businesses.
-                </Paragraph>
-
-                <Row gutter={[18, 18]}>
-                  {DISCOVER_CARDS.map((item) => (
-                    <Col xs={24} md={12} key={item.title}>
-                      <Card
-                        style={{
-                          height: "100%",
-                          borderRadius: 22,
-                          border: "1px solid rgba(32,30,27,0.08)",
-                          background: "rgba(255,255,255,0.84)",
-                        }}
-                        bodyStyle={{ padding: 22 }}
-                      >
-                        <Title
-                          level={3}
-                          style={{
-                            marginTop: 0,
-                            marginBottom: 12,
-                            color: "#201E1B",
-                            fontFamily:
-                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                            fontSize: 28,
-                            lineHeight: 1.05,
-                          }}
-                        >
-                          {item.title}
-                        </Title>
-                        <Paragraph
-                          style={{
-                            color: "#4B463F",
-                            lineHeight: 1.8,
-                            marginBottom: 10,
-                          }}
-                        >
-                          {item.description}
-                        </Paragraph>
-                        {item.detail ? (
-                          <Paragraph
-                            style={{
-                              color: "#4B463F",
-                              lineHeight: 1.8,
-                              marginBottom: 22,
-                            }}
-                          >
-                            {item.detail}
-                          </Paragraph>
-                        ) : null}
-                        {item.highlights ? (
-                          <div
-                            style={{
-                              marginBottom: 22,
-                              display: "grid",
-                              gap: 6,
-                            }}
-                          >
-                            {item.highlights.map((highlight) => (
-                              <Text
-                                key={highlight}
-                                style={{ color: "#4B463F", lineHeight: 1.7 }}
-                              >
-                                {`• ${highlight}`}
-                              </Text>
-                            ))}
-                          </div>
-                        ) : null}
-                        <Button href={item.href} icon={<ArrowRightOutlined />}>
-                          {item.ctaLabel}
-                        </Button>
-                      </Card>
-                    </Col>
-                  ))}
-                </Row>
-              </Card>
-            </Col>
-          </Row>
-
-          <Card
-            style={{
-              marginTop: 8,
-              borderRadius: 28,
-              border: "1px solid rgba(32,30,27,0.08)",
-              background: "linear-gradient(180deg, #fffdf9 0%, #f7f0e6 100%)",
-              boxShadow: "0 22px 54px rgba(47,62,58,0.06)",
-            }}
-            bodyStyle={{ padding: 30 }}
-          >
-            <Row gutter={[28, 28]} align="top">
-              <Col xs={24} lg={10}>
-                <Text
-                  style={{
-                    display: "block",
-                    marginBottom: 12,
-                    color: "#B08E62",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: 1.8,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  What Is The Ahangama Pass
-                </Text>
-                <Title
-                  level={2}
-                  style={{
-                    marginTop: 0,
-                    marginBottom: 14,
-                    color: "#201E1B",
-                    fontFamily:
-                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    fontSize: "clamp(34px, 4vw, 58px)",
-                    lineHeight: 0.96,
-                    fontWeight: 500,
-                  }}
-                >
-                  A considered way into Ahangama.
-                </Title>
-                <a
-                  href="https://ahangama.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    color: "#2F3E3A",
-                    textDecoration: "none",
-                    fontSize: 14,
-                    fontWeight: 600,
-                    letterSpacing: 0.2,
-                  }}
-                >
-                  Explore Ahangama.com -&gt;
-                </a>
-              </Col>
-
-              <Col xs={24} lg={14}>
-                <div style={{ display: "grid", gap: 18 }}>
-                  {PASS_EDITORIAL_NOTES.map((item) => (
+                  <div>
+                    <Text
+                      style={{
+                        display: "block",
+                        color: "#B08E62",
+                        fontSize: 12,
+                        fontWeight: 700,
+                        letterSpacing: 1.8,
+                        textTransform: "uppercase",
+                        marginBottom: 10,
+                      }}
+                    >
+                      2. Guide Sections
+                    </Text>
                     <Paragraph
-                      key={item}
                       style={{
                         margin: 0,
                         color: "#4B463F",
-                        fontSize: 17,
-                        lineHeight: 1.9,
-                        maxWidth: 760,
+                        fontSize: 16,
+                        lineHeight: 1.7,
                       }}
                     >
-                      {item}
+                      Editorial guides for navigating Ahangama.
                     </Paragraph>
-                  ))}
+                  </div>
 
-                  <div
+                  <a
+                    href="/blogs"
                     style={{
-                      display: "grid",
-                      gridTemplateColumns:
-                        "repeat(auto-fit, minmax(180px, 1fr))",
-                      gap: 12,
-                      marginTop: 4,
+                      color: "#2F2A24",
+                      fontSize: 14,
+                      fontWeight: 700,
+                      textDecoration: "none",
+                      borderBottom: "1px solid rgba(47,42,36,0.35)",
+                      paddingBottom: 2,
                     }}
                   >
-                    {[
-                      "150+ venues across Ahangama",
-                      "Perks, privileges and everyday savings",
-                      "Curated local guide and map",
-                      "More authentic local experiences",
-                    ].map((item) => (
-                      <div
-                        key={item}
+                    See All
+                  </a>
+                </div>
+
+                <div
+                  aria-hidden="true"
+                  style={{
+                    height: 1,
+                    background: "rgba(32,30,27,0.1)",
+                    marginBottom: 20,
+                  }}
+                />
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                    gap: 18,
+                  }}
+                >
+                  {LIGHTHOUSE_GUIDE_SECTION_CARDS.map((guide, index) => {
+                    const palette =
+                      LIGHTHOUSE_GUIDE_SECTION_PALETTE[
+                        index % LIGHTHOUSE_GUIDE_SECTION_PALETTE.length
+                      ];
+
+                    return (
+                      <a
+                        key={guide.href}
+                        href={guide.href}
                         style={{
-                          padding: "12px 14px",
-                          borderTop: "1px solid rgba(32,30,27,0.12)",
-                          color: "#201E1B",
-                          fontSize: 14,
-                          lineHeight: 1.6,
+                          display: "block",
+                          height: "100%",
+                          textDecoration: "none",
                         }}
                       >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                        <div
+                          style={{
+                            height: "100%",
+                            borderRadius: 18,
+                            padding: 16,
+                            background: palette.card,
+                            color: palette.ink,
+                            border: "1px solid rgba(31,29,26,0.08)",
+                            boxShadow: "0 8px 20px rgba(31,29,26,0.04)",
+                          }}
+                        >
+                          <Text
+                            style={{
+                              display: "block",
+                              paddingBottom: 6,
+                              marginBottom: 10,
+                              borderBottom: `1px solid ${palette.line}`,
+                              color: palette.ink,
+                              fontSize: 10,
+                              fontWeight: 700,
+                              letterSpacing: 1.5,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {guide.label}
+                          </Text>
+
+                          <Title
+                            level={3}
+                            style={{
+                              margin: "0 0 16px",
+                              color: palette.ink,
+                              fontSize: "clamp(22px, 1.9vw, 34px)",
+                              lineHeight: 0.98,
+                              letterSpacing: -0.8,
+                              fontFamily:
+                                '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                            }}
+                          >
+                            {guide.title}
+                          </Title>
+
+                          <div
+                            style={{
+                              aspectRatio: "1 / 1.12",
+                              overflow: "hidden",
+                              background: palette.media,
+                              border: "1px solid rgba(31,29,26,0.08)",
+                            }}
+                          >
+                            <img
+                              src={guide.image}
+                              alt={guide.title}
+                              style={{
+                                display: "block",
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: "center",
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </a>
+                    );
+                  })}
                 </div>
-              </Col>
-            </Row>
-          </Card>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
     </SiteLayout>
