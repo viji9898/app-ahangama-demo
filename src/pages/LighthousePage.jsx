@@ -19,12 +19,17 @@ import {
   Input,
   Radio,
   Row,
+  Select,
   Space,
   Typography,
 } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import {
+  DEFAULT_WHATSAPP_COUNTRY_CODE,
+  PHONE_COUNTRY_CODES,
+} from "../data/phoneCountryCodes";
 import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
@@ -52,6 +57,18 @@ function formatDisplayDate(value) {
   }
 
   return DISPLAY_DATE_FORMATTER.format(date);
+}
+
+function buildWhatsappPhoneNumber(countryCode, phone) {
+  const normalizedCountryCode = String(countryCode || "").trim();
+  const normalizedDigits = String(phone || "").replace(/\D/g, "");
+  const localDigits = normalizedDigits.replace(/^0+/, "");
+
+  if (!normalizedCountryCode || !localDigits) {
+    return "";
+  }
+
+  return `${normalizedCountryCode}${localDigits}`;
 }
 
 const LIGHTHOUSE_HERO_IMAGE =
@@ -230,8 +247,20 @@ function validateGuestDetails(values) {
     errors.email = "Please enter a valid email address";
   }
 
-  if (!String(values.phone || "").trim()) {
-    errors.phone = "Please enter your phone number";
+  if (!String(values.countryCode || "").trim()) {
+    errors.phone = "Please choose a country code";
+  }
+
+  const localPhoneDigits = String(values.phone || "").replace(/\D/g, "");
+
+  if (!localPhoneDigits) {
+    errors.phone = "Please enter your WhatsApp number";
+  } else if (localPhoneDigits.length < 7) {
+    errors.phone = "Please enter a valid WhatsApp number";
+  }
+
+  if (!buildWhatsappPhoneNumber(values.countryCode, values.phone)) {
+    errors.phone = errors.phone || "Please enter a valid WhatsApp number";
   }
 
   if (!String(values.startDate || "").trim()) {
@@ -276,6 +305,7 @@ export default function LighthousePage() {
   const [guestDetails, setGuestDetails] = useState({
     fullName: "",
     email: "",
+    countryCode: DEFAULT_WHATSAPP_COUNTRY_CODE,
     phone: "",
     startDate: getTodayInputValue(),
   });
@@ -300,6 +330,9 @@ export default function LighthousePage() {
 
       const next = { ...current };
       delete next[field];
+      if (field === "countryCode" && next.phone) {
+        delete next.phone;
+      }
       return next;
     });
 
@@ -335,7 +368,10 @@ export default function LighthousePage() {
         body: JSON.stringify({
           fullName: guestDetails.fullName.trim(),
           email: guestDetails.email.trim().toLowerCase(),
-          phone: guestDetails.phone.trim(),
+          phone: buildWhatsappPhoneNumber(
+            guestDetails.countryCode,
+            guestDetails.phone,
+          ),
           startDate: guestDetails.startDate,
           sourceHotelSlug: "lighthouse-hotel",
         }),
@@ -687,16 +723,58 @@ export default function LighthousePage() {
             >
               WhatsApp number
             </Text>
-            <Input
-              size="large"
-              placeholder="Enter your WhatsApp number"
-              value={guestDetails.phone}
-              status={fieldErrors.phone ? "error" : ""}
-              onChange={(event) =>
-                handleGuestDetailsChange("phone", event.target.value)
-              }
-              style={{ borderRadius: 14, minHeight: 46 }}
-            />
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "minmax(112px, 132px) minmax(0, 1fr)",
+                gap: 10,
+              }}
+            >
+              <Select
+                showSearch
+                value={guestDetails.countryCode}
+                onChange={(value) => handleGuestDetailsChange("countryCode", value)}
+                aria-label="WhatsApp country code"
+                popupMatchSelectWidth={320}
+                optionFilterProp="searchText"
+                filterOption={(inputValue, option) =>
+                  String(option?.searchText || "")
+                    .toLowerCase()
+                    .includes(inputValue.toLowerCase())
+                }
+                options={PHONE_COUNTRY_CODES.map((option) => ({
+                  value: option.value,
+                  searchText: option.searchText,
+                  label: `${option.label} (${option.value})`,
+                }))}
+                size="large"
+                status={fieldErrors.phone ? "error" : ""}
+                placeholder="Country code"
+              />
+
+              <Input
+                size="large"
+                placeholder="Enter your WhatsApp number"
+                value={guestDetails.phone}
+                inputMode="tel"
+                status={fieldErrors.phone ? "error" : ""}
+                onChange={(event) =>
+                  handleGuestDetailsChange("phone", event.target.value)
+                }
+                style={{ borderRadius: 14, minHeight: 46 }}
+              />
+            </div>
+            <Text
+              style={{
+                display: "block",
+                marginTop: 6,
+                color: "#7A746D",
+                fontSize: 12,
+                lineHeight: 1.5,
+              }}
+            >
+              Search by country name or dial code, for example Sri Lanka or +94.
+            </Text>
             {fieldErrors.phone ? (
               <Text type="danger" style={{ display: "block", marginTop: 6 }}>
                 {fieldErrors.phone}
