@@ -12,6 +12,8 @@ const siteUrl = (process.env.VITE_SITE_URL || "https://ahangama.com").replace(
   /\/$/,
   "",
 );
+const defaultAuthor = "viji.com";
+const defaultPublishDate = "2026-06-12T00:00:00.000Z";
 
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -58,6 +60,8 @@ function findBuiltAssetUrl(prefix) {
 
 function applyMeta(html, meta) {
   const canonical = buildAbsoluteUrl(meta.route);
+  const author = meta.author || defaultAuthor;
+  const publishDate = meta.publishDate || defaultPublishDate;
   const ogImage = meta.image
     ? typeof meta.image === "function"
       ? meta.image()
@@ -83,6 +87,16 @@ function applyMeta(html, meta) {
   );
   nextHtml = replaceOrInsert(
     nextHtml,
+    /<meta\s+name=["']author["'][^>]*>/i,
+    `<meta name="author" content="${escapeHtml(author)}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
+    /<meta\s+name=["']publish_date["'][^>]*>/i,
+    `<meta name="publish_date" content="${escapeHtml(publishDate)}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
     /<link\s+rel=["']canonical["'][^>]*>/i,
     `<link rel="canonical" href="${escapeHtml(canonical)}" />`,
   );
@@ -100,6 +114,16 @@ function applyMeta(html, meta) {
     nextHtml,
     /<meta\s+property=["']og:url["'][^>]*>/i,
     `<meta property="og:url" content="${escapeHtml(canonical)}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
+    /<meta\s+property=["']article:author["'][^>]*>/i,
+    `<meta property="article:author" content="${escapeHtml(author)}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
+    /<meta\s+property=["']article:published_time["'][^>]*>/i,
+    `<meta property="article:published_time" content="${escapeHtml(publishDate)}" />`,
   );
   if (ogImage) {
     nextHtml = replaceOrInsert(
@@ -144,7 +168,8 @@ const routeMeta = [
     route: "/the-living-room-concept-store",
     title: "The Living Room Concept Store",
     description:
-      "An editorial page about The Living Room Concept Store in Ahangama.",
+      "A design-led retail and coffee space in Ahangama, shaped around the feeling of home, slow discovery and a more thoughtful way to spend time in town.",
+    publishDate: "2026-05-18T09:15:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
@@ -184,6 +209,7 @@ const routeMeta = [
     title: "12 Ways to Experience Ahangama",
     description:
       "An editorial guide to Ahangama through surf, cafes, wellness, creative community, inland rituals and the routines that define daily life.",
+    publishDate: "2026-05-27T08:40:00.000Z",
     image:
       "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg",
   },
@@ -191,6 +217,7 @@ const routeMeta = [
     route: "/guide",
     title: "Ahangama 2026/2027 Season Guide",
     description: "Ahangama 2026/2027 Season Guide.",
+    publishDate: "2026-06-03T07:30:00.000Z",
     image:
       "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
   },
@@ -199,6 +226,7 @@ const routeMeta = [
     title: "Editor's Picks",
     description:
       "A design-led retail and coffee space in Ahangama, shaped around the feeling of home, slow discovery and a more thoughtful way to spend time in town.",
+    publishDate: "2026-06-08T10:20:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
@@ -207,6 +235,7 @@ const routeMeta = [
     title: "Why Surfing Changed Everything in Ahangama",
     description:
       "A short editorial on how surf culture reshaped modern Ahangama, from Kabalana mornings to the cafes, camps, and creative businesses that followed.",
+    publishDate: "2026-05-11T06:55:00.000Z",
     image:
       "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
   },
@@ -215,6 +244,7 @@ const routeMeta = [
     title: "Sri Lanka's Most Interesting Coastal Town",
     description:
       "An editorial on why Ahangama has become one of Sri Lanka's most distinctive coastal destinations, shaped by surf, hospitality, food, wellness, and community.",
+    publishDate: "2026-06-12T11:05:00.000Z",
     image:
       "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
   },
@@ -223,6 +253,7 @@ const routeMeta = [
     title: "Where to Stay on Sri Lanka's Southern Coast",
     description:
       "A guide to the hotels, villas and retreats shaping a new chapter on Sri Lanka's south coast.",
+    publishDate: "2026-05-22T14:10:00.000Z",
     image:
       "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
   },
@@ -231,6 +262,7 @@ const routeMeta = [
     title: "Getting Around Ahangama",
     description:
       "A practical guide to scooters, tuk-tuks, airport transfers and exploring Sri Lanka's southern coast.",
+    publishDate: "2026-06-01T12:25:00.000Z",
     image:
       "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
   },
@@ -239,6 +271,7 @@ const routeMeta = [
     title: "3 Days in Ahangama: A Personal Wellness Stay at Samba",
     description:
       "A personal 3-day Ahangama itinerary built around a stay at Samba, with coworking blocks, wellness sessions, and a practical Ahangama Pass cost breakdown.",
+    publishDate: "2026-05-30T15:45:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp",
   },
@@ -247,6 +280,7 @@ const routeMeta = [
     title: "Eats | Ahangama",
     description:
       "An editorial guide to where to eat in Ahangama, from coffee and long lunches to local favourites, sunset drinks and date-night tables.",
+    publishDate: "2026-06-05T13:35:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp",
   },
@@ -255,6 +289,7 @@ const routeMeta = [
     title: "Shops | Ahangama",
     description:
       "An editorial guide to shops and everyday essentials in Ahangama, from design-led retail and local finds to practical stores worth knowing.",
+    publishDate: "2026-05-14T16:05:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mukti.jpg",
   },
@@ -281,6 +316,7 @@ const routeMeta = [
     title: "Ahangama Blogs — Real Visitor Stories, Guides, and Experiences",
     description:
       "A collection of Ahangama blog posts shaped by real visitor experiences, return trips, slow stays, surf mornings, food notes, and local discoveries.",
+    publishDate: "2026-06-09T09:50:00.000Z",
   },
   {
     route: "/events",
@@ -293,6 +329,7 @@ const routeMeta = [
     title: "The Ahangama Dispatch",
     description:
       "A monthly editorial letter covering local recommendations, openings, events, guides and stories from Ahangama.",
+    publishDate: "2026-05-25T07:05:00.000Z",
   },
   {
     route: "/local-intelligence",
@@ -300,6 +337,7 @@ const routeMeta = [
       "Ahangama Intelligence | Live Snapshot of What Is Happening Right Now",
     description:
       "Local updates, openings, events and observations from around town. A live editorial snapshot of what is happening in Ahangama right now.",
+    publishDate: "2026-06-06T18:15:00.000Z",
   },
   {
     route: "/partners",
