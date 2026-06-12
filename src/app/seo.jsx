@@ -37,11 +37,7 @@ export function Seo({
   jsonLd,
 }) {
   const fullTitle = title ? `${title}` : "ahangama.com";
-  const jsonLdEntries = Array.isArray(jsonLd)
-    ? jsonLd
-    : jsonLd
-      ? [jsonLd]
-      : [];
+  const jsonLdEntries = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
   if (ogType === "article" && author && publishDate) {
     jsonLdEntries.push({

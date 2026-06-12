@@ -35,7 +35,11 @@ const publicRoutes = [
   { path: "/search", changefreq: "weekly", priority: "0.8" },
   { path: "/shops", changefreq: "weekly", priority: "0.8" },
   { path: "/stays", changefreq: "weekly", priority: "0.8" },
-  { path: "/the-living-room-concept-store", changefreq: "monthly", priority: "0.7" },
+  {
+    path: "/the-living-room-concept-store",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
   { path: "/what-is-ahangama-pass", changefreq: "monthly", priority: "0.8" },
   { path: "/wellness", changefreq: "weekly", priority: "0.8" },
   { path: "/12-things", changefreq: "monthly", priority: "0.8" },
