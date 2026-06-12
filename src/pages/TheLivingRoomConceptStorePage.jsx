@@ -105,14 +105,18 @@ function renderLivingRoomLinkedText(text, styleOverride = {}) {
 
 export default function TheLivingRoomConceptStorePage() {
   const canonical = absUrl("/the-living-room-concept-store");
+  const publishDate = "2026-05-18T09:15:00.000Z";
 
   return (
     <SiteLayout navOverlayHero>
       <Seo
         title="The Living Room Concept Store"
-        description="An editorial page about The Living Room Concept Store in Ahangama."
+        description="A design-led retail and coffee space in Ahangama, shaped around the feeling of home, slow discovery and a more thoughtful way to spend time in town."
         canonical={canonical}
         ogImage={HERO_IMAGE}
+        ogType="article"
+        author="viji.com"
+        publishDate={publishDate}
       />
 
       <div
