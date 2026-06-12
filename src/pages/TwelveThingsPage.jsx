@@ -262,6 +262,7 @@ export default function TwelveThingsPage() {
         title="12 Ways to Experience Ahangama"
         description="An editorial guide to Ahangama through surf, cafes, wellness, creative community, inland rituals and the routines that define daily life."
         canonical={canonical}
+        ogImage={heroImage}
       />
 
       <div className="dm-heroCut" style={{ background: "#ffffff" }} />
