@@ -1,847 +1,913 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:5173/</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/search</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/about</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/blogs</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/blogs</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/card</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/events</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/partners-knowledge</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/guide</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/editors-picks</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/lighthouse</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/local-intelligence</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/map</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/mosvold</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/newsletter</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/experiences</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/offers</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/card</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/pabc</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/partners</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/products</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/card/buy</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://ahangama.com/retail</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/card/my</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://ahangama.com/search</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/card/verify</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://ahangama.com/shops</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/soko</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/the-living-room-concept-store</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/animals</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/what-is-ahangama-pass</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/unsung</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ahangama.com/12-things</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/crave</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/3-days-in-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/abrazo-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/getting-around-ahangama-scooters-tuk-tuks-airport-transfers</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Co-Working/focus-hub</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/sri-lankas-most-interesting-coastal-town</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/living</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/where-to-stay-on-sri-lankas-southern-coast</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/coconut-republik</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/why-surfing-changed-everything-in-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/cafe-wave</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/soko</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/hungry-puppet</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/animals</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/folklore-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/unsung</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/shops-essentials/daydream</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/crave</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/mellow-hostel</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/abrazo-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/ekuku-lake-house</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/living</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/villa-mugatiya</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/coconut-republik</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/veda-cafe</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/cafe-wave</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/marshmellow-surf-cafe</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/hungry-puppet</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/cactus-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/folklore-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/moochies-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/retail/daydream</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/the-kip</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/mellow-hostel</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/ceylon-sliders</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/ekuku-lake-house</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/le-cafe-french-bistro-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/villa-mugatiya</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/hakuna-matata-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/veda-cafe</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/cafe-ceylon-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/marshmellow-surf-cafe</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/black-honey-cafe</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/cactus-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/squeeze-me</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/moochies-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/twin-fin-surf-x-coffee</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/the-kip</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/samba-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/ceylon-sliders</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/kaffi-ag</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/le-cafe-french-bistro-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/meori-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/hakuna-matata-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/sisters-kabalana</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/cafe-ceylon-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/fruit-cafe-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/black-honey-cafe</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/maria-bonita-sri-lanka</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/squeeze-me</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/follow-the-white-rabbit-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/twin-fin-surf-x-coffee</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/makai-cafe-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/samba-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/teddies-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/kaffi-ag</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/jam-house-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/meori-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/patels-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/sisters-kabalana</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/tahini</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/fruit-cafe-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/iluk-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/maria-bonita-sri-lanka</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/aliikai-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/follow-the-white-rabbit-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/citra-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/makai-cafe-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/donna-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/teddies-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/the-kip-stay</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/jam-house-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/ayurveda-palm-garden-resort</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/patels-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/teddies-stay-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/tahini</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/samba-stay-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/iluk-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/solas-surf</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/aliikai-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/mosvold-villa</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/citra-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/art-house</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/donna-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/kabalana-house-by-ceilao-villas</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/the-kip-stay</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/teal-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/ayurveda-palm-garden-resort</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/tea-tree-villa</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/teddies-stay-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/the-find</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/samba-stay-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/lighthouse</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/solas-surf</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/merchant</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/mosvold-villa</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/marigold-gedara</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/art-house</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/trebartha-east-the-roundhouse</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/kabalana-house-by-ceilao-villas</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/the-spice-trail</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/teal-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/kurulu-bay</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/tea-tree-villa</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/harding-boutique</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/the-find</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/the-hotel</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/lighthouse</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/sama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/merchant</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/palm-hotel</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/marigold-gedara</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/abode-by-the-beach</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/trebartha-east-the-roundhouse</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/unu-boutique-hotel</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/the-spice-trail</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/coconut</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/kurulu-bay</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/aksaaya-ayurveda-wellness-spa</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/harding-boutique</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/surf/the-board-hut</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/the-hotel</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/shramalaya</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/sama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/senses</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/palm-hotel</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Experiences/sarana-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/abode-by-the-beach</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/manoris-kitchen</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/unu-boutique-hotel</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/daily-dose-cafe</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/coconut</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/shops-essentials/gusta</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/aksaaya-ayurveda-wellness-spa</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/pebble-alma</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/shramalaya</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Co-Working/colive</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/senses</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Transport/gik-bike-rentals</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/manoris-kitchen</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/mana</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/daily-dose-cafe</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/sellam</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/retail/gusta</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Experiences/kumbuk-community</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/pebble-alma</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/divas-hostel</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/mana</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/lucky-u-hostel</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/sellam</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/sama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/divas-hostel</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Experiences/palm-and-paint</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/lucky-u-hostel</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/thilenis</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/sama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/oyummy</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/thilenis</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/chillinguito</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/oyummy</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/puffer-fish</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/chillinguito</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/shops-essentials/dirty-clothes-midigama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/puffer-fish</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/shops-essentials/klean-laundry-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/retail/dirty-clothes-midigama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/pura</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/retail/klean-laundry-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/the-cinnamon-trails-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/pura</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Transport/scooty-rental-and-taxi-service</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/the-cinnamon-trails-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/southpoint-villa</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/southpoint-villa</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/kalage</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/kalage</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/rice-and-spoon</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/rice-and-spoon</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/roaming-retreat-cafe-hostel-villa</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/roaming-retreat-cafe-hostel-villa</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/rollingpin-bakery</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/rollingpin-bakery</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/the-benison-ahangama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/the-benison-ahangama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/fi-midigama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/fi-midigama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/the-nuga-house</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/the-nuga-house</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/frostys-recovery-centre-hangout</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/frostys-recovery-centre-hangout</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Transport/happy-tours</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/spa-station-midigama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/spa-station-midigama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/cozy-cocos</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/cozy-cocos</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/mora-rooftop-lounge</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/mora-rooftop-lounge</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/pickled-pelican</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/pickled-pelican</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/sandwich-spot</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/sandwich-spot</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/banya-steam-house</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/banya-steam-house</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/krish-combat-fitness</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/krish-combat-fitness</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/lum-cafe</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/lum-cafe</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/wellness/salon-change</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/wellness/salon-change</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/the-stables</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/the-stables</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/king-lush-green-view</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/king-lush-green-view</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/villa-queen-fort</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/villa-queen-fort</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/retail/mudra-herbal-spicy-tea-shop</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/shops-essentials/mudra-herbal-spicy-tea-shop</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/younger-villas-resorts</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/younger-villas-resorts</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/stays/surf-villa</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/stays/surf-villa</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/eat/paradise-cove-midigama</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/eat/paradise-cove-midigama</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/retail/tea-zone-ceylon</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Experiences/aggala</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/retail/pachcha-sanni</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Transport/nova-rent-a-car</loc>
+    <loc>https://ahangama.com/blogs/12-must-do-things-in-ahangama-2026-guide</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/Experiences/cristina-ailmentart-school</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/blogs/perfect-day-in-ahangama</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/shops-essentials/tea-zone-ceylon</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/blogs/mukti-studio-and-the-new-face-of-ahangama</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/shops-essentials/pachcha-sanni</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/blogs/12-must-do-things-in-ahangama-2026-guide</loc>
-    <lastmod>2026-05-25</lastmod>
+    <loc>https://ahangama.com/blogs/getting-around-ahangama-scooters-tuk-tuks-airport-transfers</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/blogs/why-ahangama-might-be-sri-lankas-most-interesting-coastal-town-right-now</loc>
+    <loc>https://ahangama.com/blogs/why-ahangama-might-be-sri-lankas-most-interesting-coastal-town-right-now</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/blogs/why-ahangama-works-best-when-you-explore-it-slowly</loc>
+    <loc>https://ahangama.com/blogs/why-ahangama-works-best-when-you-explore-it-slowly</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/blogs/ahangama-for-first-time-visitors-where-to-eat-stay-and-reset</loc>
+    <loc>https://ahangama.com/blogs/ahangama-for-first-time-visitors-where-to-eat-stay-and-reset</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:5173/blogs/the-best-way-to-use-a-day-in-ahangama-without-overplanning-it</loc>
+    <loc>https://ahangama.com/blogs/the-best-way-to-use-a-day-in-ahangama-without-overplanning-it</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run meta:routes",
+    "build": "vite build && npm run meta:routes && npm run seo:gen",
     "lint": "eslint .",
     "meta:routes": "node scripts/generate-route-meta-html.mjs",
     "preview": "vite preview",

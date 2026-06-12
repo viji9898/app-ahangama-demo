@@ -5,14 +5,74 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ---- EDIT THIS if your repo structure differs ----
 const blogsPath = path.join(__dirname, "..", "src", "data", "blogs.js");
 const placesPath = path.join(__dirname, "..", "src", "data", "places.js");
 const outDir = path.join(__dirname, "..", "public");
-const siteUrl = (process.env.VITE_SITE_URL || "http://localhost:5173").replace(
+const siteUrl = (process.env.VITE_SITE_URL || "https://ahangama.com").replace(
   /\/$/,
   "",
 );
+
+const publicRoutes = [
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/about", changefreq: "monthly", priority: "0.7" },
+  { path: "/blogs", changefreq: "weekly", priority: "0.8" },
+  { path: "/card", changefreq: "weekly", priority: "0.9" },
+  { path: "/eat", changefreq: "weekly", priority: "0.9" },
+  { path: "/events", changefreq: "weekly", priority: "0.8" },
+  { path: "/guide", changefreq: "weekly", priority: "0.9" },
+  { path: "/editors-picks", changefreq: "weekly", priority: "0.8" },
+  { path: "/lighthouse", changefreq: "monthly", priority: "0.8" },
+  { path: "/local-intelligence", changefreq: "daily", priority: "0.8" },
+  { path: "/map", changefreq: "weekly", priority: "0.7" },
+  { path: "/mosvold", changefreq: "monthly", priority: "0.7" },
+  { path: "/newsletter", changefreq: "weekly", priority: "0.7" },
+  { path: "/offers", changefreq: "weekly", priority: "0.7" },
+  { path: "/pabc", changefreq: "monthly", priority: "0.7" },
+  { path: "/partners", changefreq: "monthly", priority: "0.7" },
+  { path: "/products", changefreq: "weekly", priority: "0.8" },
+  { path: "/retail", changefreq: "weekly", priority: "0.7" },
+  { path: "/search", changefreq: "weekly", priority: "0.8" },
+  { path: "/shops", changefreq: "weekly", priority: "0.8" },
+  { path: "/stays", changefreq: "weekly", priority: "0.8" },
+  { path: "/the-living-room-concept-store", changefreq: "monthly", priority: "0.7" },
+  { path: "/what-is-ahangama-pass", changefreq: "monthly", priority: "0.8" },
+  { path: "/wellness", changefreq: "weekly", priority: "0.8" },
+  { path: "/12-things", changefreq: "monthly", priority: "0.8" },
+  {
+    path: "/3-days-in-ahangama",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    path: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    path: "/sri-lankas-most-interesting-coastal-town",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    path: "/where-to-stay-on-sri-lankas-southern-coast",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    path: "/why-surfing-changed-everything-in-ahangama",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+];
+
+const placeCategoryRouteMap = {
+  eat: "eat",
+  stays: "stays",
+  wellness: "wellness",
+  retail: "retail",
+  "shops-essentials": "retail",
+};
 
 // Simple, safe-ish import of your ES module data in Node
 async function loadPlaces() {
@@ -47,6 +107,23 @@ function xmlEscape(str) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&apos;");
+}
+
+function buildUrl(pathname) {
+  if (pathname === "/") return siteUrl;
+  return `${siteUrl}${pathname}`;
+}
+
+function normalizePlaceRoute(place) {
+  const rawCategory = String(place.category || "").trim();
+  const normalizedKey = rawCategory.toLowerCase();
+  const routeCategory = placeCategoryRouteMap[normalizedKey];
+
+  if (!routeCategory || !place.slug) {
+    return null;
+  }
+
+  return `/${routeCategory}/${place.slug}`;
 }
 
 function buildSitemap(urls) {
@@ -84,34 +161,27 @@ Sitemap: ${sitemap}
   const BLOG_POSTS = await loadBlogs();
   const PLACES = await loadPlaces();
 
-  // Core routes (add more as you build)
-  const staticRoutes = [
-    { loc: `${siteUrl}/`, changefreq: "weekly", priority: "1.0" },
-    { loc: `${siteUrl}/search`, changefreq: "weekly", priority: "0.8" },
-    { loc: `${siteUrl}/blogs`, changefreq: "weekly", priority: "0.8" },
-    {
-      loc: `${siteUrl}/partners-knowledge`,
-      changefreq: "daily",
-      priority: "0.8",
-    },
-    { loc: `${siteUrl}/eat`, changefreq: "weekly", priority: "0.9" },
-    { loc: `${siteUrl}/stays`, changefreq: "weekly", priority: "0.9" },
-    { loc: `${siteUrl}/experiences`, changefreq: "weekly", priority: "0.9" },
-    { loc: `${siteUrl}/card`, changefreq: "weekly", priority: "0.9" },
-    { loc: `${siteUrl}/card/buy`, changefreq: "monthly", priority: "0.5" },
-    { loc: `${siteUrl}/card/my`, changefreq: "monthly", priority: "0.2" },
-    { loc: `${siteUrl}/card/verify`, changefreq: "monthly", priority: "0.2" },
-  ];
-
-  // Dynamic place routes from arrays
-  const dynamicRoutes = PLACES.map((p) => ({
-    loc: `${siteUrl}/${p.category}/${p.slug}`,
-    changefreq: "monthly",
-    priority: "0.7",
+  const staticRoutes = publicRoutes.map(({ path, ...rest }) => ({
+    loc: buildUrl(path),
+    ...rest,
   }));
 
+  const dynamicRoutes = PLACES.map((place) => {
+    const pathname = normalizePlaceRoute(place);
+
+    if (!pathname) {
+      return null;
+    }
+
+    return {
+      loc: buildUrl(pathname),
+      changefreq: "monthly",
+      priority: "0.7",
+    };
+  }).filter(Boolean);
+
   const blogRoutes = BLOG_POSTS.map((post) => ({
-    loc: `${siteUrl}/blogs/${post.slug}`,
+    loc: buildUrl(`/blogs/${post.slug}`),
     changefreq: "monthly",
     priority: "0.7",
     lastmod: post.publishDate,
