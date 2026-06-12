@@ -35,6 +35,35 @@ function replaceOrInsert(html, pattern, replacement) {
   return html.replace("</head>", `  ${replacement}\n</head>`);
 }
 
+function serializeJsonLd(data) {
+  return JSON.stringify(data).replaceAll("</script>", "<\\/script>");
+}
+
+function buildAuthorSchema(author) {
+  const hasUrl = /^https?:\/\//i.test(author);
+
+  if (hasUrl) {
+    return {
+      "@type": "Organization",
+      name: author,
+      url: author,
+    };
+  }
+
+  if (author.includes(".")) {
+    return {
+      "@type": "Organization",
+      name: author,
+      url: `https://${author}`,
+    };
+  }
+
+  return {
+    "@type": "Person",
+    name: author,
+  };
+}
+
 function buildAbsoluteUrl(routePath) {
   const normalizedPath = routePath.startsWith("/")
     ? routePath
@@ -173,6 +202,27 @@ function applyMeta(html, meta) {
       nextHtml,
       /<meta\s+(?:name|property)=["']twitter:image["'][^>]*>/i,
       `<meta name="twitter:image" content="${escapeHtml(ogImage)}" />`,
+    );
+  }
+
+  if (pageType === "article") {
+    const articleSchema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: meta.title,
+      description: meta.description,
+      author: buildAuthorSchema(author),
+      datePublished: publishDate,
+      dateModified: publishDate,
+      mainEntityOfPage: canonical,
+      url: canonical,
+      ...(ogImage ? { image: [ogImage] } : {}),
+    };
+
+    nextHtml = replaceOrInsert(
+      nextHtml,
+      /<script\s+type=["']application\/ld\+json["']\s+data-route-article-schema=["']true["']>[\s\S]*?<\/script>/i,
+      `<script type="application/ld+json" data-route-article-schema="true">${serializeJsonLd(articleSchema)}</script>`,
     );
   }
 

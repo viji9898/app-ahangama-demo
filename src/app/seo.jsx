@@ -1,6 +1,31 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
+function buildAuthorSchema(author) {
+  const hasUrl = /^https?:\/\//i.test(author);
+
+  if (hasUrl) {
+    return {
+      "@type": "Organization",
+      name: author,
+      url: author,
+    };
+  }
+
+  if (author.includes(".")) {
+    return {
+      "@type": "Organization",
+      name: author,
+      url: `https://${author}`,
+    };
+  }
+
+  return {
+    "@type": "Person",
+    name: author,
+  };
+}
+
 export function Seo({
   title,
   description,
@@ -12,6 +37,27 @@ export function Seo({
   jsonLd,
 }) {
   const fullTitle = title ? `${title}` : "ahangama.com";
+  const jsonLdEntries = Array.isArray(jsonLd)
+    ? jsonLd
+    : jsonLd
+      ? [jsonLd]
+      : [];
+
+  if (ogType === "article" && author && publishDate) {
+    jsonLdEntries.push({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: fullTitle,
+      description,
+      author: buildAuthorSchema(author),
+      datePublished: publishDate,
+      dateModified: publishDate,
+      mainEntityOfPage: canonical,
+      url: canonical,
+      ...(ogImage ? { image: [ogImage] } : {}),
+    });
+  }
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
@@ -38,9 +84,11 @@ export function Seo({
       />
       {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-      {jsonLd && (
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      )}
+      {jsonLdEntries.map((entry, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(entry)}
+        </script>
+      ))}
     </Helmet>
   );
 }
