@@ -1401,10 +1401,9 @@ export default function LighthousePage() {
                     minHeight: isTabletUp ? "100svh" : "auto",
                     display: "flex",
                     alignItems: "center",
-                    padding:
-                      isTabletUp
-                        ? "clamp(108px, 12vw, 152px) clamp(28px, 4.8vw, 72px) clamp(42px, 5vw, 60px)"
-                        : "112px 20px 36px",
+                    padding: isTabletUp
+                      ? "clamp(108px, 12vw, 152px) clamp(28px, 4.8vw, 72px) clamp(42px, 5vw, 60px)"
+                      : "112px 20px 36px",
                   }}
                 >
                   <div style={{ maxWidth: 700 }}>
@@ -1851,9 +1850,7 @@ export default function LighthousePage() {
                         href={guide.href || undefined}
                         style={{
                           display: isTabletUp ? "block" : "flex",
-                          flex: isTabletUp
-                            ? undefined
-                            : "0 0 248px",
+                          flex: isTabletUp ? undefined : "0 0 248px",
                           minWidth: 0,
                           height: "100%",
                           textDecoration: "none",

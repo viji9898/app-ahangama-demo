@@ -62,6 +62,7 @@ function applyMeta(html, meta) {
   const canonical = buildAbsoluteUrl(meta.route);
   const author = meta.author || defaultAuthor;
   const publishDate = meta.publishDate || defaultPublishDate;
+  const pageType = meta.type || (meta.publishDate ? "article" : "website");
   const ogImage = meta.image
     ? typeof meta.image === "function"
       ? meta.image()
@@ -92,6 +93,11 @@ function applyMeta(html, meta) {
   );
   nextHtml = replaceOrInsert(
     nextHtml,
+    /<meta\s+property=["']author["'][^>]*>/i,
+    `<meta property="author" content="${escapeHtml(author)}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
     /<meta\s+name=["']publish_date["'][^>]*>/i,
     `<meta name="publish_date" content="${escapeHtml(publishDate)}" />`,
   );
@@ -99,6 +105,11 @@ function applyMeta(html, meta) {
     nextHtml,
     /<link\s+rel=["']canonical["'][^>]*>/i,
     `<link rel="canonical" href="${escapeHtml(canonical)}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
+    /<meta\s+property=["']og:type["'][^>]*>/i,
+    `<meta property="og:type" content="${escapeHtml(pageType)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
@@ -119,6 +130,11 @@ function applyMeta(html, meta) {
     nextHtml,
     /<meta\s+property=["']article:author["'][^>]*>/i,
     `<meta property="article:author" content="${escapeHtml(author)}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
+    /<meta\s+name=["']article:author["'][^>]*>/i,
+    `<meta name="article:author" content="${escapeHtml(author)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
