@@ -192,6 +192,62 @@ const routeMeta = [
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
+  {
+    route: "/why-surfing-changed-everything-in-ahangama",
+    title: "Why Surfing Changed Everything in Ahangama",
+    description:
+      "A short editorial on how surf culture reshaped modern Ahangama, from Kabalana mornings to the cafes, camps, and creative businesses that followed.",
+    image:
+      "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
+  },
+  {
+    route: "/sri-lankas-most-interesting-coastal-town",
+    title: "Sri Lanka's Most Interesting Coastal Town",
+    description:
+      "An editorial on why Ahangama has become one of Sri Lanka's most distinctive coastal destinations, shaped by surf, hospitality, food, wellness, and community.",
+    image:
+      "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
+  },
+  {
+    route: "/where-to-stay-on-sri-lankas-southern-coast",
+    title: "Where to Stay on Sri Lanka's Southern Coast",
+    description:
+      "A guide to the hotels, villas and retreats shaping a new chapter on Sri Lanka's south coast.",
+    image:
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
+  },
+  {
+    route: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
+    title: "Getting Around Ahangama",
+    description:
+      "A practical guide to scooters, tuk-tuks, airport transfers and exploring Sri Lanka's southern coast.",
+    image:
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
+  },
+  {
+    route: "/3-days-in-ahangama",
+    title: "3 Days in Ahangama: A Personal Wellness Stay at Samba",
+    description:
+      "A personal 3-day Ahangama itinerary built around a stay at Samba, with coworking blocks, wellness sessions, and a practical Ahangama Pass cost breakdown.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/stays/Asset+33samba.webp",
+  },
+  {
+    route: "/eat",
+    title: "Eats | Ahangama",
+    description:
+      "An editorial guide to where to eat in Ahangama, from coffee and long lunches to local favourites, sunset drinks and date-night tables.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp",
+  },
+  {
+    route: "/shops",
+    title: "Shops | Ahangama",
+    description:
+      "An editorial guide to shops and everyday essentials in Ahangama, from design-led retail and local finds to practical stores worth knowing.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mukti.jpg",
+  },
 ];
 
 if (!fs.existsSync(indexPath)) {

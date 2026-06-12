@@ -202,6 +202,7 @@ export default function ThreeDaysInAhangamaPage() {
         title="3 Days in Ahangama: A Personal Wellness Stay at Samba"
         description="A personal 3-day Ahangama itinerary built around a stay at Samba, with coworking blocks, wellness sessions, and a practical Ahangama Pass cost breakdown."
         canonical={canonical}
+        ogImage={daySections[0].image}
       />
 
       <div className="dm-heroCut" />
