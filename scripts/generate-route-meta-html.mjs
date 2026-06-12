@@ -34,7 +34,9 @@ function replaceOrInsert(html, pattern, replacement) {
 }
 
 function buildAbsoluteUrl(routePath) {
-  const normalizedPath = routePath.startsWith("/") ? routePath : `/${routePath}`;
+  const normalizedPath = routePath.startsWith("/")
+    ? routePath
+    : `/${routePath}`;
   return `${siteUrl}${normalizedPath}`;
 }
 
@@ -56,7 +58,11 @@ function findBuiltAssetUrl(prefix) {
 
 function applyMeta(html, meta) {
   const canonical = buildAbsoluteUrl(meta.route);
-  const ogImage = typeof meta.image === "function" ? meta.image() : meta.image;
+  const ogImage = meta.image
+    ? typeof meta.image === "function"
+      ? meta.image()
+      : meta.image
+    : null;
 
   let nextHtml = html;
 
@@ -95,16 +101,18 @@ function applyMeta(html, meta) {
     /<meta\s+property=["']og:url["'][^>]*>/i,
     `<meta property="og:url" content="${escapeHtml(canonical)}" />`,
   );
-  nextHtml = replaceOrInsert(
-    nextHtml,
-    /<meta\s+property=["']og:image["'][^>]*>/i,
-    `<meta property="og:image" content="${escapeHtml(ogImage)}" />`,
-  );
-  nextHtml = replaceOrInsert(
-    nextHtml,
-    /<meta\s+name=["']twitter:card["'][^>]*>/i,
-    '<meta name="twitter:card" content="summary_large_image" />',
-  );
+  if (ogImage) {
+    nextHtml = replaceOrInsert(
+      nextHtml,
+      /<meta\s+property=["']og:image["'][^>]*>/i,
+      `<meta property="og:image" content="${escapeHtml(ogImage)}" />`,
+    );
+    nextHtml = replaceOrInsert(
+      nextHtml,
+      /<meta\s+name=["']twitter:card["'][^>]*>/i,
+      '<meta name="twitter:card" content="summary_large_image" />',
+    );
+  }
   nextHtml = replaceOrInsert(
     nextHtml,
     /<meta\s+(?:name|property)=["']twitter:url["'][^>]*>/i,
@@ -120,11 +128,13 @@ function applyMeta(html, meta) {
     /<meta\s+(?:name|property)=["']twitter:description["'][^>]*>/i,
     `<meta name="twitter:description" content="${escapeHtml(meta.description)}" />`,
   );
-  nextHtml = replaceOrInsert(
-    nextHtml,
-    /<meta\s+(?:name|property)=["']twitter:image["'][^>]*>/i,
-    `<meta name="twitter:image" content="${escapeHtml(ogImage)}" />`,
-  );
+  if (ogImage) {
+    nextHtml = replaceOrInsert(
+      nextHtml,
+      /<meta\s+(?:name|property)=["']twitter:image["'][^>]*>/i,
+      `<meta name="twitter:image" content="${escapeHtml(ogImage)}" />`,
+    );
+  }
 
   return nextHtml;
 }
@@ -188,7 +198,7 @@ const routeMeta = [
     route: "/editors-picks",
     title: "Editor's Picks",
     description:
-      "Ahangama editorial stories, guides and long-form articles collected in one place.",
+      "A design-led retail and coffee space in Ahangama, shaped around the feeling of home, slow discovery and a more thoughtful way to spend time in town.",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
@@ -248,6 +258,81 @@ const routeMeta = [
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mukti.jpg",
   },
+  {
+    route: "/products",
+    title: "Ahangama Pass Ecosystem",
+    description:
+      "A curated access layer for experiencing Ahangama through perks, experiences, local discovery, and premium travel support.",
+  },
+  {
+    route: "/card",
+    title: "Ahangama Card",
+    description:
+      "Choose from multiple pass options designed for different travel styles in Ahangama.",
+  },
+  {
+    route: "/about",
+    title: "About - Ahangama",
+    description:
+      "Learn about our curated guide to Ahangama - a thoughtful approach to travel that prioritizes quality over quantity, built for independent travelers and long-stay visitors.",
+  },
+  {
+    route: "/blogs",
+    title: "Ahangama Blogs — Real Visitor Stories, Guides, and Experiences",
+    description:
+      "A collection of Ahangama blog posts shaped by real visitor experiences, return trips, slow stays, surf mornings, food notes, and local discoveries.",
+  },
+  {
+    route: "/events",
+    title: "Events | Ahangama Events Agenda",
+    description:
+      "A daily guide to what's happening around town in Ahangama, with this week's editorial calendar and event highlights.",
+  },
+  {
+    route: "/newsletter",
+    title: "The Ahangama Dispatch",
+    description:
+      "A monthly editorial letter covering local recommendations, openings, events, guides and stories from Ahangama.",
+  },
+  {
+    route: "/local-intelligence",
+    title:
+      "Ahangama Intelligence | Live Snapshot of What Is Happening Right Now",
+    description:
+      "Local updates, openings, events and observations from around town. A live editorial snapshot of what is happening in Ahangama right now.",
+  },
+  {
+    route: "/partners",
+    title: "Ahangama.com Platform",
+    description:
+      "Ahangama.com is positioned as the customer acquisition and distribution platform for tourism businesses in Ahangama.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+  },
+  {
+    route: "/search",
+    title: "Search Ahangama",
+    description:
+      "Browse everything in Ahangama — search across food, stays, and experiences.",
+  },
+  {
+    route: "/map",
+    title: "Map — Ahangama",
+    description:
+      "A calm, curated map of places in Ahangama — designed to guide, not overwhelm.",
+  },
+  {
+    route: "/offers",
+    title: "Ahangama Pass Full List",
+    description:
+      "Browse the full list of Ahangama Pass partners, organized by the top best-for categories from the live venue data.",
+  },
+  {
+    route: "/full-list",
+    title: "Ahangama Pass Full List",
+    description:
+      "Browse the full list of Ahangama Pass partners, organized by the top best-for categories from the live venue data.",
+  },
 ];
 
 if (!fs.existsSync(indexPath)) {
@@ -265,4 +350,6 @@ routeMeta.forEach((meta) => {
   fs.writeFileSync(path.join(routeDir, "index.html"), routeHtml, "utf8");
 });
 
-console.log(`✅ Generated route-specific meta HTML for ${routeMeta.length} routes`);
+console.log(
+  `✅ Generated route-specific meta HTML for ${routeMeta.length} routes`,
+);
