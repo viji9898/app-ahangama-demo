@@ -161,6 +161,7 @@ export const handler = async (event) => {
       ...(body.country !== undefined
         ? { country: normalizeOptionalText(body.country) }
         : {}),
+      ...(destination ? { destination } : {}),
       whatsappOptIn,
     });
 

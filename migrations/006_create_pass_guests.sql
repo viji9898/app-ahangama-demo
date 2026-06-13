@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS pass_guests (
   whatsapp_opt_in BOOLEAN NOT NULL DEFAULT FALSE,
   marketing_consent BOOLEAN NOT NULL DEFAULT FALSE,
   source_hotel_slug TEXT,
+  destination TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -18,6 +19,9 @@ CREATE INDEX IF NOT EXISTS pass_guests_email_idx
 
 CREATE INDEX IF NOT EXISTS pass_guests_source_hotel_slug_idx
   ON pass_guests (source_hotel_slug);
+
+CREATE INDEX IF NOT EXISTS pass_guests_destination_idx
+  ON pass_guests (destination);
 
 CREATE INDEX IF NOT EXISTS pass_guests_created_at_idx
   ON pass_guests (created_at DESC);

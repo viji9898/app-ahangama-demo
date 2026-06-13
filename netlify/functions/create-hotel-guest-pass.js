@@ -6,9 +6,13 @@ import { createPasskitMemberForHotelGuest } from "../../lib/passkit-client.js";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DEFAULT_SOURCE_HOTEL_SLUG = "lighthouse-hotel";
+const DEFAULT_DESTINATION = "ahangama";
 const DEFAULT_PASS_TYPE = "complimentary_hotel_guest";
 const DEFAULT_STATUS = "active";
 const DEFAULT_VALIDITY_DAYS = 15;
+const DESTINATION_BY_SOURCE_HOTEL_SLUG = {
+  "lighthouse-hotel": "ahangama",
+};
 
 function jsonHeaders() {
   return {
@@ -25,6 +29,14 @@ function normalizeText(value) {
 
 function normalizeEmail(value) {
   return normalizeText(value).toLowerCase();
+}
+
+function getDestinationForSourceHotel(sourceHotelSlug, fallback) {
+  return (
+    DESTINATION_BY_SOURCE_HOTEL_SLUG[sourceHotelSlug] ||
+    normalizeText(fallback) ||
+    DEFAULT_DESTINATION
+  );
 }
 
 function startOfUtcDay(value = new Date()) {
@@ -81,6 +93,10 @@ export const handler = async (event) => {
     const phone = normalizeText(body.phone);
     const sourceHotelSlug =
       normalizeText(body.sourceHotelSlug) || DEFAULT_SOURCE_HOTEL_SLUG;
+    const destination = getDestinationForSourceHotel(
+      sourceHotelSlug,
+      body.destination,
+    );
     const requestedStartDate = parseRequestedStartDate(body.startDate);
 
     if (!fullName) {
@@ -130,6 +146,7 @@ export const handler = async (event) => {
 
     console.log("create-hotel-guest-pass request", {
       sourceHotelSlug,
+      destination,
       emailDomain: email.split("@")[1] || "",
     });
 
@@ -138,6 +155,7 @@ export const handler = async (event) => {
       email,
       phone,
       sourceHotelSlug,
+      destination,
       passType: DEFAULT_PASS_TYPE,
       status: DEFAULT_STATUS,
       validFrom: validFrom.toISOString(),
@@ -154,6 +172,7 @@ export const handler = async (event) => {
         pass: result.pass,
         preferences: result.preferences,
         sourceHotelSlug,
+        destination,
       });
 
       pass = await updatePasskitFields(result.pass.id, {

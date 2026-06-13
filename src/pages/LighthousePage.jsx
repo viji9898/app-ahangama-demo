@@ -42,6 +42,7 @@ const LIGHTHOUSE_PASS_ENDPOINT = "/.netlify/functions/create-hotel-guest-pass";
 const LIGHTHOUSE_PREFERENCES_ENDPOINT =
   "/.netlify/functions/update-hotel-guest-preferences";
 const LIGHTHOUSE_SOURCE_HOTEL_SLUG = "lighthouse-hotel";
+const LIGHTHOUSE_DESTINATION = "ahangama";
 const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PREFERENCES = "preferences";
 const FORM_STEP_SUCCESS = "success";
@@ -453,6 +454,7 @@ export default function LighthousePage() {
           ),
           startDate: guestDetails.startDate,
           sourceHotelSlug: LIGHTHOUSE_SOURCE_HOTEL_SLUG,
+          destination: LIGHTHOUSE_DESTINATION,
         }),
       });
 
@@ -515,7 +517,7 @@ export default function LighthousePage() {
           sourceHotel,
           signupDate,
           source: "complimentary-pass",
-          destination: "ahangama",
+          destination: LIGHTHOUSE_DESTINATION,
         }),
       });
 
