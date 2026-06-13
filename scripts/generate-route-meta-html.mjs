@@ -247,7 +247,7 @@ const routeMeta = [
     publishDate: "2026-06-13T09:00:00.000Z",
     author: "Federica Lazza",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/dulasiri-federica-group-photo.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/Dulasiri-on-the-beach-holding-a-turtle.jpg",
   },
   {
     route: "/lighthouse",

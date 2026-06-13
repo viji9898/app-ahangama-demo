@@ -11,11 +11,11 @@ const { Paragraph, Text, Title } = Typography;
 export const DULASIRI_UNCLE_PATH = "/dulasiri-uncle";
 
 const HERO_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/dulasiri-federica-group-photo.jpg";
-const CLOSE_UP_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/close-up-dulasiri-holding-two-turtles.jpg";
-const BEACH_TURTLE_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/Dulasiri-on-the-beach-holding-a-turtle.jpg";
+const CLOSE_UP_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/dulasiri-federica-group-photo.jpg";
+const BEACH_TURTLE_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/close-up-dulasiri-holding-two-turtles.jpg";
 const T_SHIRT_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/dulasiri-showing-t-shirt.jpg";
 const VIDEO_URL =
@@ -94,10 +94,7 @@ function renderMentionedKeywordText(text) {
       const normalizedLabel = label.toLowerCase();
 
       while (searchIndex < text.length) {
-        const foundIndex = normalizedText.indexOf(
-          normalizedLabel,
-          searchIndex,
-        );
+        const foundIndex = normalizedText.indexOf(normalizedLabel, searchIndex);
 
         if (foundIndex === -1) break;
 
