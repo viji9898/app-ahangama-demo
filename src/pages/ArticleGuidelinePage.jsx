@@ -160,7 +160,7 @@ function SampleArticleWireframe() {
       >
         <div
           style={{
-            minHeight: 340,
+            minHeight: 460,
             padding: 24,
             position: "relative",
             overflow: "hidden",
@@ -191,7 +191,7 @@ function SampleArticleWireframe() {
             style={{
               position: "relative",
               zIndex: 2,
-              minHeight: 292,
+              minHeight: 412,
               maxWidth: 460,
               display: "flex",
               flexDirection: "column",
@@ -337,6 +337,56 @@ function SampleArticleWireframe() {
               Pull quote or emphasis moment
             </Text>
             <div style={{ ...textLineStyle, width: "76%", height: 14 }} />
+          </div>
+        </div>
+
+        <div style={{ padding: "18px 24px" }}>
+          <Text style={{ ...labelStyle, marginBottom: 14 }}>
+            Body section
+          </Text>
+          <div style={{ maxWidth: 820 }}>
+            {["88%", "96%", "82%", "90%", "72%"].map((width) => (
+              <div
+                key={width}
+                style={{
+                  ...textLineStyle,
+                  width,
+                  marginBottom: 10,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div style={{ padding: "18px 24px" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: 14,
+            }}
+          >
+            {["Image left", "Image right"].map((label) => (
+              <div
+                key={label}
+                style={{
+                  minHeight: 220,
+                  display: "grid",
+                  placeItems: "center",
+                  border: "1px dashed rgba(107,90,78,0.4)",
+                  background: "#F2EEE6",
+                  color: "#8A6F45",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.2,
+                  textTransform: "uppercase",
+                  textAlign: "center",
+                  padding: 12,
+                }}
+              >
+                {label}
+              </div>
+            ))}
           </div>
         </div>
 
