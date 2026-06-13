@@ -16,6 +16,7 @@ const siteUrl = (process.env.VITE_SITE_URL || "https://ahangama.com").replace(
 const publicRoutes = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
   { path: "/about", changefreq: "monthly", priority: "0.7" },
+  { path: "/article-guideline", changefreq: "monthly", priority: "0.5" },
   { path: "/blogs", changefreq: "weekly", priority: "0.8" },
   { path: "/card", changefreq: "weekly", priority: "0.9" },
   { path: "/dulasiri-uncle", changefreq: "monthly", priority: "0.7" },
