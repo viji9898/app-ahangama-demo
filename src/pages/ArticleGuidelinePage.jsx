@@ -33,6 +33,12 @@ const pageSections = [
   },
   {
     kicker: "03",
+    title: "Sample Article Wireframe",
+    body: [],
+    showWireframe: true,
+  },
+  {
+    kicker: "04",
     title: "Image Sizes",
     body: [
       "Hero image: upload at 2400 x 1600 px minimum, landscape, JPG or WebP. Keep the subject away from the far left if text overlays the hero. The page crops the hero to full viewport height, so the image must still work at wide desktop and tall mobile crops.",
@@ -43,7 +49,7 @@ const pageSections = [
     ],
   },
   {
-    kicker: "04",
+    kicker: "05",
     title: "File Naming And Alt Text",
     body: [
       "Name files in lowercase kebab-case. Prefer descriptive filenames over camera exports. Good: dulasiri-on-the-beach-holding-a-turtle.jpg. Avoid: IMG_3847.jpg.",
@@ -53,8 +59,8 @@ const pageSections = [
     ],
   },
   {
-    kicker: "05",
-    title: "SEO And Route Metadata",
+    kicker: "06",
+    title: "SEO And Route Metadata For Developers",
     body: [
       "Every standalone article needs runtime SEO in the page component and static route metadata in scripts/generate-route-meta-html.mjs. The route should also be listed in scripts/generate-seo.mjs so it appears in the sitemap.",
       "SEO title should be short and literal. Description should summarize the article in one sentence, ideally under 160 characters. Author and publishDate should be present for article pages.",
@@ -62,8 +68,8 @@ const pageSections = [
     ],
   },
   {
-    kicker: "06",
-    title: "Places And Keywords",
+    kicker: "07",
+    title: "Places And Keywords For Developers",
     body: [
       "Add a Places Mentioned section near the bottom when the article references local venues, beaches, towns, or landmarks. Keep the list useful, not exhaustive.",
       "In the article body, highlight important place names with the subtle gold underline link treatment used across guide pages. Use this sparingly so the text still feels calm.",
@@ -393,36 +399,155 @@ function SampleArticleWireframe() {
         <div style={{ padding: "18px 24px 28px" }}>
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+              display: "flex",
+              flexDirection: "column",
               gap: 14,
             }}
           >
-            {["Gallery image", "Places mentioned", "Next article"].map((label) => (
-              <div
-                key={label}
-                style={{
-                  minHeight: 118,
-                  display: "grid",
-                  placeItems: "center",
-                  border: "1px dashed rgba(107,90,78,0.35)",
-                  background: "#F7F2EA",
-                  color: "#8A6F45",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.2,
-                  textTransform: "uppercase",
-                  textAlign: "center",
-                  padding: 12,
-                }}
-              >
-                {label}
-              </div>
-            ))}
+            <div
+              style={{
+                minHeight: 118,
+                display: "grid",
+                placeItems: "center",
+                border: "1px dashed rgba(107,90,78,0.35)",
+                background: "#F7F2EA",
+                color: "#8A6F45",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 1.2,
+                textTransform: "uppercase",
+                textAlign: "center",
+                padding: 12,
+              }}
+            >
+              Places mentioned
+            </div>
+            <div
+              style={{
+                minHeight: 118,
+                width: "100%",
+                display: "grid",
+                placeItems: "center",
+                border: "1px dashed rgba(107,90,78,0.35)",
+                background: "#F7F2EA",
+                color: "#8A6F45",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 1.2,
+                textTransform: "uppercase",
+                textAlign: "center",
+                padding: 12,
+              }}
+            >
+              Next article
+            </div>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function GuidelineSection({ section }) {
+  const isDeveloperSection = section.title.includes("For Developers");
+  const content = (
+    <>
+      {section.body.map((paragraph) => (
+        <Paragraph
+          key={paragraph}
+          style={{
+            maxWidth: 1200,
+            fontSize: 16,
+            lineHeight: 1.8,
+            color: "#55514B",
+            marginBottom: 18,
+          }}
+        >
+          {paragraph}
+        </Paragraph>
+      ))}
+      {section.showWireframe ? <SampleArticleWireframe /> : null}
+    </>
+  );
+
+  return (
+    <section
+      style={{
+        padding: "36px 0",
+        borderTop: "1px solid rgba(47,62,58,0.12)",
+      }}
+    >
+      <div style={{ maxWidth: 1180 }}>
+        {isDeveloperSection ? (
+          <details>
+            <summary
+              style={{
+                cursor: "pointer",
+                listStyle: "none",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 8,
+                  color: "#6B5A4E",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.4,
+                  textTransform: "uppercase",
+                }}
+              >
+                {section.kicker}
+              </Text>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 16,
+                }}
+              >
+                <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
+                  {section.title}
+                </Title>
+                <Text
+                  aria-hidden="true"
+                  style={{
+                    color: "#8A6F45",
+                    fontSize: 22,
+                    lineHeight: 1,
+                    marginBottom: 18,
+                  }}
+                >
+                  +
+                </Text>
+              </div>
+            </summary>
+            <div style={{ paddingTop: 4 }}>{content}</div>
+          </details>
+        ) : (
+          <>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 8,
+                color: "#6B5A4E",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 1.4,
+                textTransform: "uppercase",
+              }}
+            >
+              {section.kicker}
+            </Text>
+            <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
+              {section.title}
+            </Title>
+            {content}
+          </>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -748,47 +873,7 @@ export default function ArticleGuidelinePage() {
 
           <div style={{ display: "flex", flexDirection: "column" }}>
             {pageSections.map((section) => (
-              <section
-                key={section.title}
-                style={{
-                  padding: "36px 0",
-                  borderTop: "1px solid rgba(47,62,58,0.12)",
-                }}
-              >
-                <div style={{ maxWidth: 1180 }}>
-                  <Text
-                    style={{
-                      display: "block",
-                      marginBottom: 8,
-                      color: "#6B5A4E",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: 1.4,
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {section.kicker}
-                  </Text>
-                  <Title level={2} style={{ marginTop: 0, marginBottom: 18 }}>
-                    {section.title}
-                  </Title>
-                  {section.body.map((paragraph) => (
-                    <Paragraph
-                      key={paragraph}
-                      style={{
-                        maxWidth: 1200,
-                        fontSize: 16,
-                        lineHeight: 1.8,
-                        color: "#55514B",
-                        marginBottom: 18,
-                      }}
-                    >
-                      {paragraph}
-                    </Paragraph>
-                  ))}
-                  {section.kicker === "06" ? <SampleArticleWireframe /> : null}
-                </div>
-              </section>
+              <GuidelineSection key={section.title} section={section} />
             ))}
           </div>
         </div>
