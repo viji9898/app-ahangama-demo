@@ -794,13 +794,22 @@
 }
 
 .weekly-picks-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  display: flex;
   gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.weekly-picks-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .weekly-picks-card {
   display: block;
+  flex: 0 0 clamp(220px, 18vw, 360px);
+  min-width: clamp(220px, 18vw, 360px);
   padding: 16px;
   position: relative;
   overflow: hidden;
@@ -846,7 +855,7 @@
 }
 
 .weekly-picks-title {
-  margin: 0 0 18px !important;
+  margin: 0 !important;
   color: #1f1d1a !important;
   font-size: clamp(18px, 1.35vw, 24px) !important;
   line-height: 1.06 !important;
@@ -5069,18 +5078,10 @@
   }
 
   .weekly-picks-grid {
-    display: flex;
     gap: 14px;
-    overflow-x: auto;
-    overflow-y: hidden;
     margin-left: -16px;
     margin-right: -16px;
     padding: 0 16px 8px;
-    scrollbar-width: none;
-  }
-
-  .weekly-picks-grid::-webkit-scrollbar {
-    display: none;
   }
 
   .weekly-picks-card {

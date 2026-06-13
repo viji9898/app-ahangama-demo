@@ -110,13 +110,6 @@ const THREE_DAYS_FEATURED_PLACES = [
 
 const THIS_WEEK_FEATURES = [
   {
-    category: "Shop Guide",
-    title: "The Living Room Concept Store",
-    href: "/the-living-room-concept-store",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
-  },
-  {
     category: "Editorial",
     title: "Why Surfing Changed Everything in Ahangama",
     href: "/why-surfing-changed-everything-in-ahangama",
@@ -140,6 +133,12 @@ const THIS_WEEK_FEATURES = [
 ];
 
 const WEEKLY_PICKS = [
+  {
+    category: "Shop Guide",
+    title: "The Living Room Concept Store",
+    date: "This Week",
+    href: "/the-living-room-concept-store",
+  },
   {
     category: "Nightlife",
     title: "Friday DJ Night at Trax",
@@ -1105,8 +1104,10 @@ export default function Home() {
                 {WEEKLY_PICKS.map((pick) => (
                   <a
                     key={pick.title}
-                    href="#"
-                    onClick={(event) => event.preventDefault()}
+                    href={pick.href || "#"}
+                    onClick={
+                      pick.href ? undefined : (event) => event.preventDefault()
+                    }
                     className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
                     style={
                       pick.image
@@ -1120,7 +1121,6 @@ export default function Home() {
                     <Title level={3} className="weekly-picks-title">
                       {pick.title}
                     </Title>
-                    <Text className="weekly-picks-date">{pick.date}</Text>
                   </a>
                 ))}
               </div>
