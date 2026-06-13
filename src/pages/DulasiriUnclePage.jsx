@@ -36,14 +36,17 @@ const NEXT_ARTICLE = {
 const MENTIONED_PLACE_LINKS = [
   {
     label: "Marshmallow Cafe",
+    matchLabels: ["Marshmallow Cafe"],
     href: "https://www.google.com/search?q=Marshmallow+Cafe+Ahangama",
   },
   {
     label: "Ahangama Town",
+    matchLabels: ["Ahangama town", "Ahangama Town"],
     href: "https://www.google.com/search?q=Ahangama+Town",
   },
   {
     label: "Sri Lanka",
+    matchLabels: ["Sri Lanka", "Sri Lankan"],
     href: "https://www.google.com/search?q=Sri+Lanka",
   },
 ];
@@ -78,6 +81,84 @@ const articleSections = [
     ],
   },
 ];
+
+function renderMentionedKeywordText(text) {
+  const matches = [];
+
+  MENTIONED_PLACE_LINKS.forEach((link) => {
+    const labels = link.matchLabels || [link.label];
+
+    labels.forEach((label) => {
+      let searchIndex = 0;
+      const normalizedText = text.toLowerCase();
+      const normalizedLabel = label.toLowerCase();
+
+      while (searchIndex < text.length) {
+        const foundIndex = normalizedText.indexOf(
+          normalizedLabel,
+          searchIndex,
+        );
+
+        if (foundIndex === -1) break;
+
+        const endIndex = foundIndex + label.length;
+        const overlaps = matches.some(
+          (match) => foundIndex < match.end && endIndex > match.start,
+        );
+
+        if (!overlaps) {
+          matches.push({
+            ...link,
+            start: foundIndex,
+            end: endIndex,
+          });
+        }
+
+        searchIndex = endIndex;
+      }
+    });
+  });
+
+  if (!matches.length) return text;
+
+  matches.sort((left, right) => left.start - right.start);
+
+  const segments = [];
+  let cursor = 0;
+
+  matches.forEach((match) => {
+    if (cursor < match.start) {
+      segments.push(text.slice(cursor, match.start));
+    }
+
+    const matchedText = text.slice(match.start, match.end);
+
+    segments.push(
+      <a
+        key={`${match.label}-${match.start}`}
+        href={match.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          color: "#2f2a24",
+          textDecoration: "none",
+          borderBottom: "1px solid rgba(214, 178, 102, 0.9)",
+          paddingBottom: 1,
+        }}
+      >
+        {matchedText}
+      </a>,
+    );
+
+    cursor = match.end;
+  });
+
+  if (cursor < text.length) {
+    segments.push(text.slice(cursor));
+  }
+
+  return segments;
+}
 
 export default function DulasiriUnclePage() {
   const canonical = absUrl(DULASIRI_UNCLE_PATH);
@@ -281,7 +362,7 @@ export default function DulasiriUnclePage() {
                   marginBottom: 18,
                 }}
               >
-                {paragraph}
+                {renderMentionedKeywordText(paragraph)}
               </Paragraph>
             ))}
           </div>
@@ -381,7 +462,7 @@ export default function DulasiriUnclePage() {
                           marginBottom: 18,
                         }}
                       >
-                        {paragraph}
+                        {renderMentionedKeywordText(paragraph)}
                       </Paragraph>
                     ))}
 
@@ -397,7 +478,7 @@ export default function DulasiriUnclePage() {
                           lineHeight: 1.8,
                         }}
                       >
-                        {section.quote}
+                        {renderMentionedKeywordText(section.quote)}
                       </blockquote>
                     ) : null}
                   </div>
