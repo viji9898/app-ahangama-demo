@@ -42,6 +42,8 @@ function normalizeStringArray(value, fieldName) {
   return value.map((item) => normalizeText(item)).filter(Boolean);
 }
 
+const MAX_INTEREST_SELECTIONS = 3;
+
 export const handler = async (event) => {
   const headers = jsonHeaders();
 
@@ -70,19 +72,27 @@ export const handler = async (event) => {
     }
 
     let interests;
-    let servicesInterested;
+    let servicesInterestedIn;
 
     try {
       interests = normalizeStringArray(body.interests, "interests");
-      servicesInterested = normalizeStringArray(
-        body.servicesInterested,
-        "servicesInterested",
+      servicesInterestedIn = normalizeStringArray(
+        body.servicesInterestedIn ?? body.servicesInterested,
+        "servicesInterestedIn",
       );
     } catch (error) {
       return {
         statusCode: 400,
         headers,
         body: JSON.stringify({ error: error.message }),
+      };
+    }
+
+    if (interests && interests.length > MAX_INTEREST_SELECTIONS) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: "Please select up to 3 interests" }),
       };
     }
 
@@ -96,8 +106,8 @@ export const handler = async (event) => {
       };
     }
 
-    const wantsWhatsappRecommendations = normalizeBoolean(
-      body.wantsWhatsappRecommendations,
+    const whatsappOptIn = normalizeBoolean(
+      body.whatsappOptIn ?? body.wantsWhatsappRecommendations,
       false,
     );
 
@@ -109,8 +119,13 @@ export const handler = async (event) => {
     const preferences = await updateGuestPreferences(passId, {
       ...(body.stayLength !== undefined ? { stayLength: body.stayLength } : {}),
       ...(interests !== undefined ? { interests } : {}),
-      ...(servicesInterested !== undefined ? { servicesInterested } : {}),
-      wantsWhatsappRecommendations,
+      ...(body.travelGroup !== undefined
+        ? { travelGroup: normalizeOptionalText(body.travelGroup) }
+        : {}),
+      ...(servicesInterestedIn !== undefined
+        ? { servicesInterestedIn }
+        : {}),
+      whatsappOptIn,
       completedAt: new Date().toISOString(),
     });
 
@@ -118,7 +133,7 @@ export const handler = async (event) => {
       ...(body.country !== undefined
         ? { country: normalizeOptionalText(body.country) }
         : {}),
-      whatsappOptIn: wantsWhatsappRecommendations,
+      whatsappOptIn,
     });
 
     return {

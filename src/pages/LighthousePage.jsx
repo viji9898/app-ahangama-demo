@@ -45,6 +45,7 @@ const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PREFERENCES = "preferences";
 const FORM_STEP_SUCCESS = "success";
 const DEFAULT_PASS_VALIDITY_DAYS = 15;
+const MAX_INTEREST_SELECTIONS = 3;
 const DISPLAY_DATE_FORMATTER = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
   month: "long",
@@ -211,38 +212,46 @@ const LIGHTHOUSE_GUIDE_SECTION_PALETTE = [
 ];
 
 const STAY_LENGTH_OPTIONS = [
-  "1-3 nights",
-  "4-7 nights",
-  "8-14 nights",
-  "15-30 nights",
+  "1–3 nights",
+  "4–7 nights",
+  "8–14 nights",
+  "15–30 nights",
   "1 month+",
 ];
 
 const INTEREST_OPTIONS = [
+  "Cafés & Coffee",
+  "Food & Local Dining",
   "Surfing",
-  "Cafes & Coffee",
-  "Restaurants",
   "Wellness & Yoga",
   "Fitness & Sports",
-  "Nightlife",
-  "Coworking",
+  "Shopping & Design",
   "Photography",
-  "Shopping",
+  "Nightlife & Social",
   "Nature & Wildlife",
-  "Families & Kids",
+  "Culture & Local Life",
   "Luxury Experiences",
+  "Remote Work & Coworking",
+  "Family-Friendly Activities",
+];
+
+const TRAVEL_GROUP_OPTIONS = [
+  "Solo",
+  "Partner / Couple",
+  "Friends",
+  "Family",
+  "Work / Remote Work",
 ];
 
 const SERVICE_OPTIONS = [
   "Airport Transfers",
   "Scooter Rental",
   "Surf Lessons",
-  "Yoga Classes",
-  "Massage & Wellness",
-  "Private Driver",
-  "Accommodation Deals",
+  "Wellness Treatments",
   "Tours & Experiences",
+  "Private Driver",
   "Coworking Passes",
+  "Accommodation Deals",
 ];
 
 function validateGuestDetails(values) {
@@ -330,8 +339,9 @@ export default function LighthousePage() {
     country: "",
     stayLength: "",
     interests: [],
-    wantsWhatsappRecommendations: false,
-    servicesInterested: [],
+    travelGroup: "",
+    whatsappOptIn: false,
+    servicesInterestedIn: [],
   });
   const [countrySearchQuery, setCountrySearchQuery] = useState(
     formatCountryOptionLabel(DEFAULT_WHATSAPP_COUNTRY_OPTION),
@@ -376,6 +386,17 @@ export default function LighthousePage() {
       ...current,
       [field]: value,
     }));
+
+    if (preferencesError) {
+      setPreferencesError("");
+    }
+  };
+
+  const handleInterestsChange = (value) => {
+    handlePreferencesChange(
+      "interests",
+      Array.isArray(value) ? value.slice(0, MAX_INTEREST_SELECTIONS) : [],
+    );
   };
 
   const handleCountrySearchFocus = () => {
@@ -483,9 +504,9 @@ export default function LighthousePage() {
           country: preferencesDraft.country,
           stayLength: preferencesDraft.stayLength,
           interests: preferencesDraft.interests,
-          wantsWhatsappRecommendations:
-            preferencesDraft.wantsWhatsappRecommendations,
-          servicesInterested: preferencesDraft.servicesInterested,
+          travelGroup: preferencesDraft.travelGroup,
+          whatsappOptIn: preferencesDraft.whatsappOptIn,
+          servicesInterestedIn: preferencesDraft.servicesInterestedIn,
         }),
       });
 
@@ -517,6 +538,9 @@ export default function LighthousePage() {
     setPreferencesError("");
     setFormStep(FORM_STEP_SUCCESS);
   };
+
+  const hasReachedInterestLimit =
+    preferencesDraft.interests.length >= MAX_INTEREST_SELECTIONS;
 
   const passPreviewPanel = (
     <div
@@ -1111,15 +1135,20 @@ export default function LighthousePage() {
             <Text
               style={{
                 display: "block",
-                marginBottom: 10,
+                marginBottom: 6,
                 fontWeight: 600,
               }}
             >
-              Interests
+              What are you most interested in during your stay?
+            </Text>
+            <Text
+              style={{ display: "block", marginBottom: 10, color: "#7A746D" }}
+            >
+              Select up to 3.
             </Text>
             <Checkbox.Group
               value={preferencesDraft.interests}
-              onChange={(value) => handlePreferencesChange("interests", value)}
+              onChange={handleInterestsChange}
               style={{ width: "100%" }}
             >
               <div
@@ -1136,6 +1165,10 @@ export default function LighthousePage() {
                   <div key={option} style={{ minWidth: 0 }}>
                     <Checkbox
                       value={option}
+                      disabled={
+                        hasReachedInterestLimit &&
+                        !preferencesDraft.interests.includes(option)
+                      }
                       style={{
                         display: "flex",
                         alignItems: "flex-start",
@@ -1158,13 +1191,45 @@ export default function LighthousePage() {
             </Checkbox.Group>
           </div>
 
+          <div style={{ gridColumn: "1 / -1" }}>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 10,
+                fontWeight: 600,
+              }}
+            >
+              Who are you travelling with?
+            </Text>
+            <Radio.Group
+              value={preferencesDraft.travelGroup}
+              onChange={(event) =>
+                handlePreferencesChange("travelGroup", event.target.value)
+              }
+              style={{
+                display: "grid",
+                gridTemplateColumns: isTabletUp
+                  ? "repeat(5, minmax(0, 1fr))"
+                  : "repeat(2, minmax(0, 1fr))",
+                gap: 10,
+              }}
+            >
+              {TRAVEL_GROUP_OPTIONS.map((option) => (
+                <Radio
+                  key={option}
+                  value={option}
+                  style={{ marginInlineEnd: 0, minWidth: 0 }}
+                >
+                  {option}
+                </Radio>
+              ))}
+            </Radio.Group>
+          </div>
+
           <Checkbox
-            checked={preferencesDraft.wantsWhatsappRecommendations}
+            checked={preferencesDraft.whatsappOptIn}
             onChange={(event) =>
-              handlePreferencesChange(
-                "wantsWhatsappRecommendations",
-                event.target.checked,
-              )
+              handlePreferencesChange("whatsappOptIn", event.target.checked)
             }
             style={{ gridColumn: "1 / -1" }}
           >
@@ -1180,12 +1245,12 @@ export default function LighthousePage() {
                 fontWeight: 600,
               }}
             >
-              Services interested in
+              Interested in help with?
             </Text>
             <Checkbox.Group
-              value={preferencesDraft.servicesInterested}
+              value={preferencesDraft.servicesInterestedIn}
               onChange={(value) =>
-                handlePreferencesChange("servicesInterested", value)
+                handlePreferencesChange("servicesInterestedIn", value)
               }
               style={{ width: "100%" }}
             >
