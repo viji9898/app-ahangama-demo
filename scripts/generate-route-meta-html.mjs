@@ -256,7 +256,7 @@ const routeMeta = [
       "Editorial guidelines for writing, laying out, naming images, sizing media, and preparing SEO for Ahangama article pages.",
     publishDate: "2026-06-14T09:00:00.000Z",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/admin/wireframing-elements-web-design.webp",
   },
   {
     route: "/lighthouse",

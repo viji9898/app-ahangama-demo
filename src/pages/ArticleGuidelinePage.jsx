@@ -10,6 +10,8 @@ export const ARTICLE_GUIDELINE_PATH = "/article-guideline";
 
 const HERO_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg";
+const OG_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/admin/wireframing-elements-web-design.webp";
 const EXAMPLE_SECONDARY_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/Dulasiri-on-the-beach-holding-a-turtle.jpg";
 
@@ -561,7 +563,7 @@ export default function ArticleGuidelinePage() {
         title="Article Guideline"
         description="Editorial guidelines for writing, laying out, naming images, sizing media, and preparing SEO for Ahangama article pages."
         canonical={canonical}
-        ogImage={HERO_IMAGE}
+        ogImage={OG_IMAGE}
         ogType="article"
         author="viji.com"
         publishDate={publishDate}
