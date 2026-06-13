@@ -41,5 +41,11 @@ CREATE INDEX IF NOT EXISTS passes_guest_id_idx
 CREATE INDEX IF NOT EXISTS passes_source_hotel_slug_idx
   ON passes (source_hotel_slug);
 
+CREATE UNIQUE INDEX IF NOT EXISTS passes_active_hotel_guest_uidx
+  ON passes (guest_id, source_hotel_slug, pass_type)
+  WHERE status = 'active'
+    AND pass_type = 'complimentary_hotel_guest'
+    AND source_hotel_slug IS NOT NULL;
+
 CREATE INDEX IF NOT EXISTS passes_created_at_idx
   ON passes (created_at DESC);

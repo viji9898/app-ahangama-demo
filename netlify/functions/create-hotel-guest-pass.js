@@ -165,8 +165,27 @@ export const handler = async (event) => {
     let pass = result.pass;
     let passkitPending = false;
     let passkitError = null;
+    const hasExistingPasskitPass = Boolean(
+      pass.passkitMemberId || pass.passkitInstallUrl || pass.passkitPassUrl,
+    );
 
     try {
+      if (hasExistingPasskitPass) {
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({
+            success: true,
+            guest: result.guest,
+            pass,
+            preferences: result.preferences,
+            passkitPending,
+            passkitError,
+            nextStep: "preferences",
+          }),
+        };
+      }
+
       const passkitData = await createPasskitMemberForHotelGuest({
         guest: result.guest,
         pass: result.pass,

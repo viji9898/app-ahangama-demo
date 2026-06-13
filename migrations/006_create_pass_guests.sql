@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS pass_guests (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   full_name TEXT NOT NULL,
   email TEXT NOT NULL,
+  normalized_email TEXT,
   phone TEXT,
   country TEXT,
   whatsapp_opt_in BOOLEAN NOT NULL DEFAULT FALSE,
@@ -16,6 +17,15 @@ CREATE TABLE IF NOT EXISTS pass_guests (
 
 CREATE INDEX IF NOT EXISTS pass_guests_email_idx
   ON pass_guests (email);
+
+CREATE INDEX IF NOT EXISTS pass_guests_normalized_email_idx
+  ON pass_guests (normalized_email);
+
+CREATE UNIQUE INDEX IF NOT EXISTS pass_guests_hotel_destination_email_uidx
+  ON pass_guests (normalized_email, source_hotel_slug, destination)
+  WHERE normalized_email IS NOT NULL
+    AND source_hotel_slug IS NOT NULL
+    AND destination IS NOT NULL;
 
 CREATE INDEX IF NOT EXISTS pass_guests_source_hotel_slug_idx
   ON pass_guests (source_hotel_slug);
