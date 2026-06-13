@@ -1,4 +1,5 @@
 import {
+  createBookingRequestsForInterests,
   getPassById,
   updateGuestPreferences,
   updatePassGuestById,
@@ -157,6 +158,13 @@ export const handler = async (event) => {
       completedAt,
     });
 
+    const bookingRequests = await createBookingRequestsForInterests({
+      guestId: pass.guestId,
+      passId,
+      bookingInterests,
+      notes: "Created from complimentary pass preferences",
+    });
+
     await updatePassGuestById(pass.guestId, {
       ...(body.country !== undefined
         ? { country: normalizeOptionalText(body.country) }
@@ -171,6 +179,7 @@ export const handler = async (event) => {
       body: JSON.stringify({
         success: true,
         preferences,
+        bookingRequestsCreated: bookingRequests.length,
         metadata: {
           sourceHotel,
           signupDate: completedAt,
