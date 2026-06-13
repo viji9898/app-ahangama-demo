@@ -630,7 +630,7 @@ export default function Home() {
 
   const heroImage =
     "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
-  const showWeeklyPicksSection = false;
+  const showWeeklyPicksSection = true;
   const showLatestStoriesSection = false;
   const twelveThingsMosaic = useMemo(() => {
     const placesBySlug = new Map(
@@ -1131,7 +1131,7 @@ export default function Home() {
 
           <div style={{ marginTop: 20 }}>
             <div className="guide-sections-heading">
-              <Text className="guide-sections-kicker">2. Guide Sections</Text>
+              <Text className="guide-sections-kicker">3. Guide Sections</Text>
               <div className="guide-sections-headingRow">
                 <Paragraph className="guide-sections-description">
                   Editorial guides for navigating Ahangama.
