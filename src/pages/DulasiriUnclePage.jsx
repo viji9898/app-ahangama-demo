@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import { Seo } from "../app/seo";
@@ -31,6 +32,21 @@ const NEXT_ARTICLE = {
   image:
     "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
 };
+
+const MENTIONED_PLACE_LINKS = [
+  {
+    label: "Marshmallow Cafe",
+    href: "https://www.google.com/search?q=Marshmallow+Cafe+Ahangama",
+  },
+  {
+    label: "Ahangama Town",
+    href: "https://www.google.com/search?q=Ahangama+Town",
+  },
+  {
+    label: "Sri Lanka",
+    href: "https://www.google.com/search?q=Sri+Lanka",
+  },
+];
 
 const articleIntroduction = [
   "I don't remember exactly when I met Dulasiri for the first time. I think I was at Marshmallow Cafe, and I immediately felt something very genuine about him, an authenticity that doesn't happen so often, something you can sense and that just feels true.",
@@ -431,6 +447,61 @@ export default function DulasiriUnclePage() {
                 ) : null}
               </React.Fragment>
             ))}
+          </div>
+
+          <div
+            style={{
+              marginTop: 18,
+              marginBottom: 28,
+              paddingTop: 18,
+              paddingBottom: 18,
+              borderTop: "1px solid rgba(47,62,58,0.08)",
+              borderBottom: "1px solid rgba(47,62,58,0.08)",
+            }}
+          >
+            <Text
+              style={{
+                display: "block",
+                color: "#6B5A4E",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 1.4,
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Places Mentioned
+            </Text>
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "8px 12px",
+              }}
+            >
+              {MENTIONED_PLACE_LINKS.map((place) => (
+                <a
+                  key={place.label}
+                  href={place.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    color: "#6B5A4E",
+                    fontSize: 13,
+                    textDecoration: "none",
+                    borderBottom: "1px solid rgba(107,90,78,0.24)",
+                    paddingBottom: 1,
+                  }}
+                >
+                  {place.label}
+                  <ArrowRightOutlined style={{ fontSize: 11 }} />
+                </a>
+              ))}
+            </div>
           </div>
 
           <EditorialNextArticle

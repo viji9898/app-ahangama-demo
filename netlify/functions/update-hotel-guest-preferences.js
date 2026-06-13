@@ -97,7 +97,9 @@ export const handler = async (event) => {
     try {
       interests = normalizeStringArray(body.interests, "interests");
       bookingInterests = normalizeStringArray(
-        body.bookingInterests ?? body.servicesInterestedIn ?? body.servicesInterested,
+        body.bookingInterests ??
+          body.servicesInterestedIn ??
+          body.servicesInterested,
         "bookingInterests",
       );
       signupDate = normalizeIsoTimestamp(body.signupDate);
@@ -135,8 +137,7 @@ export const handler = async (event) => {
       body.sourceHotel ?? body.sourceHotelSlug ?? pass.sourceHotelSlug,
     );
     const source = normalizeOptionalText(body.source) || "complimentary-pass";
-    const destination =
-      normalizeOptionalText(body.destination) || "ahangama";
+    const destination = normalizeOptionalText(body.destination) || "ahangama";
     const completedAt = signupDate || new Date().toISOString();
 
     console.log("update-hotel-guest-preferences request", {
@@ -153,9 +154,7 @@ export const handler = async (event) => {
       ...(body.travelGroup !== undefined
         ? { travelGroup: normalizeOptionalText(body.travelGroup) }
         : {}),
-      ...(bookingInterests !== undefined
-        ? { bookingInterests }
-        : {}),
+      ...(bookingInterests !== undefined ? { bookingInterests } : {}),
       whatsappOptIn,
       completedAt,
     });
