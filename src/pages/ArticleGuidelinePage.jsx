@@ -109,6 +109,273 @@ function SpecRow({ label, value, detail, use }) {
   );
 }
 
+function SampleArticleWireframe() {
+  const blockStyle = {
+    border: "1px solid rgba(47,62,58,0.14)",
+    background: "#fffdf9",
+  };
+  const labelStyle = {
+    display: "block",
+    color: "#8A6F45",
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: 1.2,
+    textTransform: "uppercase",
+  };
+  const textLineStyle = {
+    height: 10,
+    background: "rgba(85,81,75,0.18)",
+  };
+
+  return (
+    <div
+      style={{
+        marginTop: 28,
+        padding: 22,
+        border: "1px solid rgba(47,62,58,0.14)",
+        background: "#F7F2EA",
+        maxWidth: 1180,
+      }}
+    >
+      <Text
+        style={{
+          display: "block",
+          marginBottom: 16,
+          color: "#6B5A4E",
+          fontSize: 11,
+          fontWeight: 700,
+          letterSpacing: 1.4,
+          textTransform: "uppercase",
+        }}
+      >
+        Sample Article Wireframe
+      </Text>
+
+      <div
+        style={{
+          ...blockStyle,
+          overflow: "hidden",
+          background: "#FFFFFF",
+        }}
+      >
+        <div
+          style={{
+            minHeight: 340,
+            padding: 24,
+            position: "relative",
+            overflow: "hidden",
+            background:
+              "linear-gradient(135deg, rgba(119,112,95,0.55), rgba(232,225,211,0.95))",
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 24,
+              border: "1px dashed rgba(255,255,255,0.75)",
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.18), rgba(47,42,36,0.18))",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 24,
+              background:
+                "linear-gradient(90deg, rgba(10,14,18,0.8) 0%, rgba(10,14,18,0.58) 42%, rgba(10,14,18,0.08) 100%)",
+            }}
+          />
+          <div
+            style={{
+              position: "relative",
+              zIndex: 2,
+              minHeight: 292,
+              maxWidth: 460,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Text style={{ ...labelStyle, marginBottom: 12, color: "#FFFFFF" }}>
+              Hero area: background image + overlay
+            </Text>
+            <div
+              style={{
+                width: "32%",
+                height: 8,
+                marginBottom: 14,
+                background: "rgba(255,255,255,0.62)",
+              }}
+            />
+            <div
+              style={{
+                width: "86%",
+                height: 28,
+                marginBottom: 8,
+                background: "rgba(255,255,255,0.92)",
+              }}
+            />
+            <div
+              style={{
+                width: "64%",
+                height: 28,
+                marginBottom: 16,
+                background: "rgba(255,255,255,0.92)",
+              }}
+            />
+            <div
+              style={{
+                width: "42%",
+                height: 8,
+                marginBottom: 18,
+                background: "rgba(255,255,255,0.56)",
+              }}
+            />
+            {["74%", "58%"].map((width) => (
+              <div
+                key={width}
+                style={{
+                  width,
+                  height: 9,
+                  marginBottom: 7,
+                  background: "rgba(255,255,255,0.42)",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div style={{ padding: "28px 24px 10px" }}>
+          <Text style={{ ...labelStyle, marginBottom: 14 }}>
+            Intro text block
+          </Text>
+          <div style={{ maxWidth: 760 }}>
+            {["92%", "84%", "74%", "88%"].map((width) => (
+              <div
+                key={width}
+                style={{
+                  ...textLineStyle,
+                  width,
+                  marginBottom: 10,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div style={{ padding: "18px 24px" }}>
+          <div
+            style={{
+              minHeight: 180,
+              display: "grid",
+              placeItems: "center",
+              border: "1px dashed rgba(107,90,78,0.4)",
+              background: "#F2EEE6",
+              color: "#8A6F45",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: 1.2,
+              textTransform: "uppercase",
+            }}
+          >
+            Wide feature image
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: 22,
+            padding: "18px 24px",
+          }}
+        >
+          <div>
+            <Text style={{ ...labelStyle, marginBottom: 14 }}>
+              Body section
+            </Text>
+            {["84%", "96%", "78%", "90%", "66%"].map((width) => (
+              <div
+                key={width}
+                style={{
+                  ...textLineStyle,
+                  width,
+                  marginBottom: 10,
+                }}
+              />
+            ))}
+          </div>
+          <div
+            style={{
+              minHeight: 220,
+              display: "grid",
+              placeItems: "center",
+              border: "1px dashed rgba(107,90,78,0.4)",
+              background: "#F8F5EF",
+              color: "#8A6F45",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: 1.2,
+              textTransform: "uppercase",
+            }}
+          >
+            Portrait image or video
+          </div>
+        </div>
+
+        <div style={{ padding: "18px 24px" }}>
+          <div
+            style={{
+              padding: 24,
+              borderLeft: "3px solid rgba(214,178,102,0.9)",
+              background: "#fffdf9",
+            }}
+          >
+            <Text style={{ ...labelStyle, marginBottom: 14 }}>
+              Pull quote or emphasis moment
+            </Text>
+            <div style={{ ...textLineStyle, width: "76%", height: 14 }} />
+          </div>
+        </div>
+
+        <div style={{ padding: "18px 24px 28px" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+              gap: 14,
+            }}
+          >
+            {["Gallery image", "Places mentioned", "Next article"].map((label) => (
+              <div
+                key={label}
+                style={{
+                  minHeight: 118,
+                  display: "grid",
+                  placeItems: "center",
+                  border: "1px dashed rgba(107,90,78,0.35)",
+                  background: "#F7F2EA",
+                  color: "#8A6F45",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.2,
+                  textTransform: "uppercase",
+                  textAlign: "center",
+                  padding: 12,
+                }}
+              >
+                {label}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ArticleGuidelinePage() {
   const canonical = absUrl(ARTICLE_GUIDELINE_PATH);
   const publishDate = "2026-06-14T09:00:00.000Z";
@@ -469,6 +736,7 @@ export default function ArticleGuidelinePage() {
                       {paragraph}
                     </Paragraph>
                   ))}
+                  {section.kicker === "06" ? <SampleArticleWireframe /> : null}
                 </div>
               </section>
             ))}
