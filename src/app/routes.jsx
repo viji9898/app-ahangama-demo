@@ -60,6 +60,9 @@ import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
+import DulasiriUnclePage, {
+  DULASIRI_UNCLE_PATH,
+} from "../pages/DulasiriUnclePage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -121,6 +124,10 @@ const routes = [
   {
     path: "/the-living-room-concept-store",
     element: <TheLivingRoomConceptStorePage />,
+  },
+  {
+    path: DULASIRI_UNCLE_PATH,
+    element: <DulasiriUnclePage />,
   },
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },

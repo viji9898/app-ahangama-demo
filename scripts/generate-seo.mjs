@@ -18,6 +18,7 @@ const publicRoutes = [
   { path: "/about", changefreq: "monthly", priority: "0.7" },
   { path: "/blogs", changefreq: "weekly", priority: "0.8" },
   { path: "/card", changefreq: "weekly", priority: "0.9" },
+  { path: "/dulasiri-uncle", changefreq: "monthly", priority: "0.7" },
   { path: "/eat", changefreq: "weekly", priority: "0.9" },
   { path: "/events", changefreq: "weekly", priority: "0.8" },
   { path: "/guide", changefreq: "weekly", priority: "0.9" },

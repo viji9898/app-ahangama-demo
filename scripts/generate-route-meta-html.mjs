@@ -240,6 +240,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
   {
+    route: "/dulasiri-uncle",
+    title: "Dulasiri Uncle",
+    description:
+      "Words by Federica Lazza. A quiet personal story about friendship, family warmth, and gratitude in Ahangama.",
+    publishDate: "2026-06-13T09:00:00.000Z",
+    author: "Federica Lazza",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/dulasiri-federica-group-photo.jpg",
+  },
+  {
     route: "/lighthouse",
     title: "Lighthouse Guest Pass",
     description:
