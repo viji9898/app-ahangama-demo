@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS venue_interactions (
       'website_click',
       'offer_view',
       'offer_click',
+      'pass_click',
       'redemption'
     ))
 );
@@ -71,7 +72,15 @@ CREATE TABLE IF NOT EXISTS article_interactions (
   interaction_type TEXT NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   CONSTRAINT article_interactions_interaction_type_check
-    CHECK (interaction_type IN ('view', 'click', 'share'))
+    CHECK (interaction_type IN (
+      'view',
+      'click',
+      'share',
+      'article_view',
+      'article_click',
+      'map_click',
+      'guide_click'
+    ))
 );
 
 CREATE INDEX IF NOT EXISTS article_interactions_guest_id_idx
