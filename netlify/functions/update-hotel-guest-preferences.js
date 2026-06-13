@@ -42,6 +42,22 @@ function normalizeStringArray(value, fieldName) {
   return value.map((item) => normalizeText(item)).filter(Boolean);
 }
 
+function normalizeIsoTimestamp(value) {
+  const normalized = normalizeOptionalText(value);
+
+  if (!normalized) {
+    return null;
+  }
+
+  const date = new Date(normalized);
+
+  if (Number.isNaN(date.getTime())) {
+    throw new Error("signupDate must be a valid timestamp");
+  }
+
+  return date.toISOString();
+}
+
 const MAX_INTEREST_SELECTIONS = 3;
 
 export const handler = async (event) => {
@@ -72,14 +88,16 @@ export const handler = async (event) => {
     }
 
     let interests;
-    let servicesInterestedIn;
+    let bookingInterests;
+    let signupDate;
 
     try {
       interests = normalizeStringArray(body.interests, "interests");
-      servicesInterestedIn = normalizeStringArray(
-        body.servicesInterestedIn ?? body.servicesInterested,
-        "servicesInterestedIn",
+      bookingInterests = normalizeStringArray(
+        body.bookingInterests ?? body.servicesInterestedIn ?? body.servicesInterested,
+        "bookingInterests",
       );
+      signupDate = normalizeIsoTimestamp(body.signupDate);
     } catch (error) {
       return {
         statusCode: 400,
@@ -110,10 +128,20 @@ export const handler = async (event) => {
       body.whatsappOptIn ?? body.wantsWhatsappRecommendations,
       false,
     );
+    const sourceHotel = normalizeOptionalText(
+      body.sourceHotel ?? body.sourceHotelSlug ?? pass.sourceHotelSlug,
+    );
+    const source = normalizeOptionalText(body.source) || "complimentary-pass";
+    const destination =
+      normalizeOptionalText(body.destination) || "ahangama";
+    const completedAt = signupDate || new Date().toISOString();
 
     console.log("update-hotel-guest-preferences request", {
       passId,
       guestId: pass.guestId,
+      sourceHotel,
+      source,
+      destination,
     });
 
     const preferences = await updateGuestPreferences(passId, {
@@ -122,11 +150,11 @@ export const handler = async (event) => {
       ...(body.travelGroup !== undefined
         ? { travelGroup: normalizeOptionalText(body.travelGroup) }
         : {}),
-      ...(servicesInterestedIn !== undefined
-        ? { servicesInterestedIn }
+      ...(bookingInterests !== undefined
+        ? { bookingInterests }
         : {}),
       whatsappOptIn,
-      completedAt: new Date().toISOString(),
+      completedAt,
     });
 
     await updatePassGuestById(pass.guestId, {
@@ -142,6 +170,12 @@ export const handler = async (event) => {
       body: JSON.stringify({
         success: true,
         preferences,
+        metadata: {
+          sourceHotel,
+          signupDate: completedAt,
+          source,
+          destination,
+        },
         nextStep: "success",
       }),
     };

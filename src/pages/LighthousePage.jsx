@@ -41,6 +41,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const LIGHTHOUSE_PASS_ENDPOINT = "/.netlify/functions/create-hotel-guest-pass";
 const LIGHTHOUSE_PREFERENCES_ENDPOINT =
   "/.netlify/functions/update-hotel-guest-preferences";
+const LIGHTHOUSE_SOURCE_HOTEL_SLUG = "lighthouse-hotel";
 const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PREFERENCES = "preferences";
 const FORM_STEP_SUCCESS = "success";
@@ -252,6 +253,7 @@ const SERVICE_OPTIONS = [
   "Private Driver",
   "Coworking Passes",
   "Accommodation Deals",
+  "Restaurant Reservations",
 ];
 
 function validateGuestDetails(values) {
@@ -341,7 +343,7 @@ export default function LighthousePage() {
     interests: [],
     travelGroup: "",
     whatsappOptIn: false,
-    servicesInterestedIn: [],
+    bookingInterests: [],
   });
   const [countrySearchQuery, setCountrySearchQuery] = useState(
     formatCountryOptionLabel(DEFAULT_WHATSAPP_COUNTRY_OPTION),
@@ -450,7 +452,7 @@ export default function LighthousePage() {
             guestDetails.phone,
           ),
           startDate: guestDetails.startDate,
-          sourceHotelSlug: "lighthouse-hotel",
+          sourceHotelSlug: LIGHTHOUSE_SOURCE_HOTEL_SLUG,
         }),
       });
 
@@ -494,6 +496,9 @@ export default function LighthousePage() {
     setPreferencesError("");
 
     try {
+      const signupDate = new Date().toISOString();
+      const sourceHotel =
+        createdPassState?.pass?.sourceHotelSlug || LIGHTHOUSE_SOURCE_HOTEL_SLUG;
       const response = await fetch(LIGHTHOUSE_PREFERENCES_ENDPOINT, {
         method: "POST",
         headers: {
@@ -506,7 +511,11 @@ export default function LighthousePage() {
           interests: preferencesDraft.interests,
           travelGroup: preferencesDraft.travelGroup,
           whatsappOptIn: preferencesDraft.whatsappOptIn,
-          servicesInterestedIn: preferencesDraft.servicesInterestedIn,
+          bookingInterests: preferencesDraft.bookingInterests,
+          sourceHotel,
+          signupDate,
+          source: "complimentary-pass",
+          destination: "ahangama",
         }),
       });
 
@@ -1146,6 +1155,12 @@ export default function LighthousePage() {
             >
               Select up to 3.
             </Text>
+            <Text
+              style={{ display: "block", marginBottom: 10, color: "#7A746D" }}
+            >
+              We&apos;ll use these preferences to personalise recommendations,
+              events and offers during your stay.
+            </Text>
             <Checkbox.Group
               value={preferencesDraft.interests}
               onChange={handleInterestsChange}
@@ -1245,12 +1260,12 @@ export default function LighthousePage() {
                 fontWeight: 600,
               }}
             >
-              Interested in help with?
+              Interested in booking or arranging?
             </Text>
             <Checkbox.Group
-              value={preferencesDraft.servicesInterestedIn}
+              value={preferencesDraft.bookingInterests}
               onChange={(value) =>
-                handlePreferencesChange("servicesInterestedIn", value)
+                handlePreferencesChange("bookingInterests", value)
               }
               style={{ width: "100%" }}
             >
