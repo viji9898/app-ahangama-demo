@@ -140,9 +140,12 @@ const WEEKLY_PICKS = [
     href: "/the-living-room-concept-store",
   },
   {
-    category: "Nightlife",
-    title: "Friday DJ Night at Trax",
-    date: "Fri 6 Jun",
+    category: "Community",
+    title: "Dulasiri Uncle",
+    date: "This Week",
+    href: "/dulasiri-uncle",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/dulasiri-uncle/Dulasiri-on-the-beach-holding-a-turtle.jpg",
   },
   {
     category: "Community",
