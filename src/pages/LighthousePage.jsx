@@ -6,11 +6,14 @@ import {
   EnvironmentOutlined,
   GiftOutlined,
   HeartOutlined,
+  HeartFilled,
+  LaptopOutlined,
   LockOutlined,
   MessageOutlined,
   MobileOutlined,
   SearchOutlined,
   TeamOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import {
   Alert,
@@ -239,17 +242,27 @@ const INTEREST_CARD_OPTIONS = [
   { value: "Shopping & Design", label: "Shopping", icon: "🛍️" },
   { value: "Culture & Local Life", label: "Culture", icon: "🎨" },
   { value: "Luxury Experiences", label: "Luxury", icon: "✨" },
-  { value: "Family-Friendly Activities", label: "Family", icon: "👨‍👩‍👧‍👦" },
+  {
+    value: "Family-Friendly Activities",
+    label: "Family Activities",
+    icon: "👨‍👩‍👧‍👦",
+    compact: true,
+  },
 ];
 
 const INITIAL_INTEREST_CARD_COUNT = 8;
 
 const TRAVEL_GROUP_OPTIONS = [
-  "Solo",
-  "Partner / Couple",
-  "Friends",
-  "Family",
-  "Work / Remote Work",
+  { value: "Solo", label: "Solo", Icon: UserOutlined },
+  { value: "Partner / Couple", label: "Couple", Icon: HeartFilled },
+  { value: "Friends", label: "Friends", Icon: TeamOutlined },
+  { value: "Family", label: "Family", Icon: TeamOutlined },
+  {
+    value: "Work / Remote Work",
+    label: "Work / Remote Work",
+    Icon: LaptopOutlined,
+    compact: true,
+  },
 ];
 
 const SERVICE_OPTIONS = [
@@ -1232,23 +1245,24 @@ export default function LighthousePage() {
               onChange={(event) =>
                 handlePreferencesChange("travelGroup", event.target.value)
               }
-              style={{
-                display: "grid",
-                gridTemplateColumns: isTabletUp
-                  ? "repeat(5, minmax(0, 1fr))"
-                  : "repeat(2, minmax(0, 1fr))",
-                gap: 10,
-              }}
+              className="lighthouse-travelGroup"
             >
-              {TRAVEL_GROUP_OPTIONS.map((option) => (
-                <Radio
-                  key={option}
-                  value={option}
-                  style={{ marginInlineEnd: 0, minWidth: 0 }}
-                >
-                  {option}
-                </Radio>
-              ))}
+              <div className="lighthouse-travelGrid">
+                {TRAVEL_GROUP_OPTIONS.map(({ value, label, Icon, compact }) => (
+                  <Radio
+                    className="lighthouse-travelCard"
+                    key={value}
+                    value={value}
+                  >
+                    <Icon className="lighthouse-travelIcon" aria-hidden="true" />
+                    <span
+                      className={`lighthouse-travelLabel${compact ? " lighthouse-travelLabel--compact" : ""}`}
+                    >
+                      {label}
+                    </span>
+                  </Radio>
+                ))}
+              </div>
             </Radio.Group>
           </div>
 

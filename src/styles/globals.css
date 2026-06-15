@@ -6670,6 +6670,88 @@ h4,
   color: #8d5f14;
 }
 
+.lighthouse-travelGroup {
+  width: 100%;
+}
+
+.lighthouse-travelGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+
+.lighthouse-travelCard.ant-radio-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  margin: 0;
+  padding: 15px 12px;
+  border: 1px solid rgba(176, 142, 98, 0.2);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(32, 30, 27, 0.03);
+  color: #111111;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+.lighthouse-travelCard.ant-radio-wrapper:hover,
+.lighthouse-travelCard.ant-radio-wrapper:focus-within {
+  border-color: rgba(176, 142, 98, 0.5);
+  box-shadow: 0 10px 26px rgba(32, 30, 27, 0.07);
+  transform: translateY(-1px);
+}
+
+.lighthouse-travelCard.ant-radio-wrapper-checked {
+  border-color: #b98525;
+  background: #fffdf9;
+  box-shadow: 0 10px 24px rgba(185, 133, 37, 0.12);
+}
+
+.lighthouse-travelCard .ant-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lighthouse-travelCard .ant-radio + span {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+.lighthouse-travelIcon {
+  color: #8b7a68;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.lighthouse-travelCard.ant-radio-wrapper-checked .lighthouse-travelIcon {
+  color: #2f2a24;
+}
+
+.lighthouse-travelLabel {
+  color: #111111;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.lighthouse-travelLabel--compact {
+  font-size: 14px;
+}
+
 @media (max-width: 900px) {
   .lighthouse-interestHeader {
     margin-bottom: 14px;
@@ -6715,6 +6797,33 @@ h4,
   }
 
   .lighthouse-interestMore {
+    font-size: 13px;
+  }
+
+  .lighthouse-travelGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lighthouse-travelCard.ant-radio-wrapper {
+    min-height: 92px;
+    padding: 13px 10px;
+    border-radius: 10px;
+  }
+
+  .lighthouse-travelCard .ant-radio + span {
+    gap: 6px;
+  }
+
+  .lighthouse-travelIcon {
+    font-size: 25px;
+  }
+
+  .lighthouse-travelLabel {
+    font-size: 14px;
+  }
+
+  .lighthouse-travelLabel--compact {
     font-size: 13px;
   }
 }
