@@ -681,6 +681,35 @@ export default function LighthousePage() {
               }}
             />
           </div>
+          <div
+            style={{
+              position: "absolute",
+              left: 12,
+              right: 12,
+              bottom: 14,
+              zIndex: 3,
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 7,
+              justifyItems: "center",
+              padding: "10px 8px",
+              borderRadius: 16,
+              background: "rgba(255, 255, 255, 0.92)",
+              boxShadow: "0 10px 22px rgba(32, 30, 27, 0.16)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            <img
+              src={addToAppleWalletLogo}
+              alt="Apple Wallet"
+              style={{ display: "block", height: 31, width: "auto" }}
+            />
+            <img
+              src={addToGoogleWalletLogo}
+              alt="Google Wallet"
+              style={{ display: "block", height: 31, width: "auto" }}
+            />
+          </div>
         </div>
       </div>
       <div style={{ textAlign: "center", maxWidth: 320 }}>
