@@ -6670,6 +6670,89 @@ h4,
   color: #8d5f14;
 }
 
+.lighthouse-stayGroup {
+  width: 100%;
+}
+
+.lighthouse-stayGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+
+.lighthouse-stayCard.ant-radio-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92px;
+  margin: 0;
+  padding: 14px 10px;
+  border: 1px solid rgba(176, 142, 98, 0.2);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(32, 30, 27, 0.03);
+  color: #111111;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+.lighthouse-stayCard.ant-radio-wrapper:hover,
+.lighthouse-stayCard.ant-radio-wrapper:focus-within {
+  border-color: rgba(176, 142, 98, 0.5);
+  box-shadow: 0 10px 26px rgba(32, 30, 27, 0.07);
+  transform: translateY(-1px);
+}
+
+.lighthouse-stayCard.ant-radio-wrapper-checked {
+  border-color: #b98525;
+  background: #fffdf9;
+  box-shadow: 0 10px 24px rgba(185, 133, 37, 0.12);
+}
+
+.lighthouse-stayCard .ant-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lighthouse-stayCard .ant-radio + span {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+.lighthouse-stayIcon {
+  display: inline-grid;
+  place-items: center;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.lighthouse-stayLabel {
+  color: #111111;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.lighthouse-stayDescription {
+  color: #7a746d;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .lighthouse-travelGroup {
   width: 100%;
 }
@@ -6873,6 +6956,33 @@ h4,
 
   .lighthouse-interestMore {
     font-size: 13px;
+  }
+
+  .lighthouse-stayGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lighthouse-stayCard.ant-radio-wrapper {
+    min-height: 86px;
+    padding: 13px 10px;
+    border-radius: 10px;
+  }
+
+  .lighthouse-stayCard .ant-radio + span {
+    gap: 5px;
+  }
+
+  .lighthouse-stayIcon {
+    font-size: 23px;
+  }
+
+  .lighthouse-stayLabel {
+    font-size: 14px;
+  }
+
+  .lighthouse-stayDescription {
+    font-size: 12px;
   }
 
   .lighthouse-travelGrid {

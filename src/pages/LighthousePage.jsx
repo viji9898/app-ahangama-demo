@@ -217,11 +217,36 @@ const LIGHTHOUSE_GUIDE_SECTION_PALETTE = [
 ];
 
 const STAY_LENGTH_OPTIONS = [
-  "1–3 nights",
-  "4–7 nights",
-  "8–14 nights",
-  "15–30 nights",
-  "1 month+",
+  {
+    value: "1–3 nights",
+    label: "1–3 nights",
+    description: "Quick getaway",
+    icon: "🌙",
+  },
+  {
+    value: "4–7 nights",
+    label: "4–7 nights",
+    description: "Short stay",
+    icon: "🧳",
+  },
+  {
+    value: "8–14 nights",
+    label: "8–14 nights",
+    description: "Extended stay",
+    icon: "🏝️",
+  },
+  {
+    value: "15–30 nights",
+    label: "15–30 nights",
+    description: "Long stay",
+    icon: "🏡",
+  },
+  {
+    value: "1 month+",
+    label: "1 month+",
+    description: "Living in Ahangama",
+    icon: "📅",
+  },
 ];
 
 const INTEREST_CARD_OPTIONS = [
@@ -1155,23 +1180,27 @@ export default function LighthousePage() {
               onChange={(event) =>
                 handlePreferencesChange("stayLength", event.target.value)
               }
-              style={{
-                display: "grid",
-                gridTemplateColumns: isTabletUp
-                  ? "repeat(5, minmax(0, 1fr))"
-                  : "repeat(2, minmax(0, 1fr))",
-                gap: 10,
-              }}
+              className="lighthouse-stayGroup"
             >
-              {STAY_LENGTH_OPTIONS.map((option) => (
-                <Radio
-                  key={option}
-                  value={option}
-                  style={{ marginInlineEnd: 0, minWidth: 0 }}
-                >
-                  {option}
-                </Radio>
-              ))}
+              <div className="lighthouse-stayGrid">
+                {STAY_LENGTH_OPTIONS.map((option) => (
+                  <Radio
+                    className="lighthouse-stayCard"
+                    key={option.value}
+                    value={option.value}
+                  >
+                    <span className="lighthouse-stayIcon" aria-hidden="true">
+                      {option.icon}
+                    </span>
+                    <span className="lighthouse-stayLabel">
+                      {option.label}
+                    </span>
+                    <span className="lighthouse-stayDescription">
+                      {option.description}
+                    </span>
+                  </Radio>
+                ))}
+              </div>
             </Radio.Group>
           </div>
 
