@@ -221,21 +221,28 @@ const STAY_LENGTH_OPTIONS = [
   "1 month+",
 ];
 
-const INTEREST_OPTIONS = [
-  "Cafés & Coffee",
-  "Food & Local Dining",
-  "Surfing",
-  "Wellness & Yoga",
-  "Fitness & Sports",
-  "Shopping & Design",
-  "Photography",
-  "Nightlife & Social",
-  "Nature & Wildlife",
-  "Culture & Local Life",
-  "Luxury Experiences",
-  "Remote Work & Coworking",
-  "Family-Friendly Activities",
+const INTEREST_CARD_OPTIONS = [
+  { value: "Cafés & Coffee", label: "Cafes", icon: "☕" },
+  { value: "Food & Local Dining", label: "Food", icon: "🍴" },
+  { value: "Surfing", label: "Surf", icon: "🏄" },
+  { value: "Wellness & Yoga", label: "Wellness", icon: "🧘" },
+  { value: "Photography", label: "Photography", icon: "📷", compact: true },
+  { value: "Nature & Wildlife", label: "Nature", icon: "🌴" },
+  {
+    value: "Remote Work & Coworking",
+    label: "Remote Work",
+    icon: "💻",
+    compact: true,
+  },
+  { value: "Nightlife & Social", label: "Nightlife", icon: "🍸" },
+  { value: "Fitness & Sports", label: "Fitness", icon: "💪" },
+  { value: "Shopping & Design", label: "Shopping", icon: "🛍️" },
+  { value: "Culture & Local Life", label: "Culture", icon: "🎨" },
+  { value: "Luxury Experiences", label: "Luxury", icon: "✨" },
+  { value: "Family-Friendly Activities", label: "Family", icon: "👨‍👩‍👧‍👦" },
 ];
+
+const INITIAL_INTEREST_CARD_COUNT = 8;
 
 const TRAVEL_GROUP_OPTIONS = [
   "Solo",
@@ -349,6 +356,7 @@ export default function LighthousePage() {
   const [countrySearchQuery, setCountrySearchQuery] = useState(
     formatCountryOptionLabel(DEFAULT_WHATSAPP_COUNTRY_OPTION),
   );
+  const [showAllInterests, setShowAllInterests] = useState(false);
   const [isCountryMenuOpen, setIsCountryMenuOpen] = useState(false);
   const [isCountryInputActive, setIsCountryInputActive] = useState(false);
 
@@ -494,6 +502,11 @@ export default function LighthousePage() {
       return;
     }
 
+    if (preferencesDraft.interests.length < 1) {
+      setPreferencesError("Please choose at least one interest to continue.");
+      return;
+    }
+
     setIsSavingPreferences(true);
     setPreferencesError("");
 
@@ -552,6 +565,9 @@ export default function LighthousePage() {
 
   const hasReachedInterestLimit =
     preferencesDraft.interests.length >= MAX_INTEREST_SELECTIONS;
+  const visibleInterestOptions = showAllInterests
+    ? INTEREST_CARD_OPTIONS
+    : INTEREST_CARD_OPTIONS.slice(0, INITIAL_INTEREST_CARD_COUNT);
 
   const passPreviewPanel = (
     <div
@@ -1142,70 +1158,64 @@ export default function LighthousePage() {
             </Radio.Group>
           </div>
 
-          <div>
-            <Text
-              style={{
-                display: "block",
-                marginBottom: 6,
-                fontWeight: 600,
-              }}
-            >
-              What are you most interested in during your stay?
-            </Text>
-            <Text
-              style={{ display: "block", marginBottom: 10, color: "#7A746D" }}
-            >
-              Select up to 3.
-            </Text>
-            <Text
-              style={{ display: "block", marginBottom: 10, color: "#7A746D" }}
-            >
-              We&apos;ll use these preferences to personalise recommendations,
-              events and offers during your stay.
-            </Text>
+          <div className="lighthouse-interestStep">
+            <div className="lighthouse-interestHeader">
+              <span className="lighthouse-interestStepNumber">1</span>
+              <div>
+                <Text className="lighthouse-interestTitle">
+                  What are you most interested in during your stay?
+                </Text>
+                <Text className="lighthouse-interestLimit">
+                  Select 1 to {MAX_INTEREST_SELECTIONS}.
+                </Text>
+                <Text className="lighthouse-interestDescription">
+                  We&apos;ll use these preferences to personalise recommendations,
+                  events and offers during your stay.
+                </Text>
+              </div>
+            </div>
             <Checkbox.Group
               value={preferencesDraft.interests}
               onChange={handleInterestsChange}
               style={{ width: "100%" }}
             >
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: isTabletUp
-                    ? "repeat(4, minmax(0, 1fr))"
-                    : "repeat(2, minmax(0, 1fr))",
-                  gap: "14px 24px",
-                  width: "100%",
-                }}
-              >
-                {INTEREST_OPTIONS.map((option) => (
-                  <div key={option} style={{ minWidth: 0 }}>
+              <div className="lighthouse-interestGrid">
+                {visibleInterestOptions.map((option) => {
+                  const isSelected = preferencesDraft.interests.includes(
+                    option.value,
+                  );
+                  const isDisabled = hasReachedInterestLimit && !isSelected;
+
+                  return (
                     <Checkbox
-                      value={option}
-                      disabled={
-                        hasReachedInterestLimit &&
-                        !preferencesDraft.interests.includes(option)
-                      }
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        lineHeight: 1.45,
-                      }}
+                      className={`lighthouse-interestCard${isSelected ? " is-selected" : ""}`}
+                      disabled={isDisabled}
+                      key={option.value}
+                      value={option.value}
                     >
+                      <span className="lighthouse-interestIcon" aria-hidden="true">
+                        {option.icon}
+                      </span>
                       <span
-                        style={{
-                          display: "inline-block",
-                          whiteSpace: "normal",
-                          overflowWrap: "anywhere",
-                        }}
+                        className={`lighthouse-interestLabel${option.compact ? " lighthouse-interestLabel--compact" : ""}`}
                       >
-                        {option}
+                        {option.label}
                       </span>
                     </Checkbox>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </Checkbox.Group>
+            {!showAllInterests &&
+              INTEREST_CARD_OPTIONS.length > INITIAL_INTEREST_CARD_COUNT && (
+                <button
+                  className="lighthouse-interestMore"
+                  type="button"
+                  onClick={() => setShowAllInterests(true)}
+                >
+                  + Show more interests
+                </button>
+              )}
           </div>
 
           <div style={{ gridColumn: "1 / -1" }}>
