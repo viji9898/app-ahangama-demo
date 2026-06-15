@@ -392,7 +392,7 @@ export default function LighthousePage() {
     stayLength: "",
     interests: [],
     travelGroup: "",
-    whatsappOptIn: false,
+    whatsappOptIn: true,
     bookingInterests: [],
   });
   const [countrySearchQuery, setCountrySearchQuery] = useState(
@@ -1221,9 +1221,7 @@ export default function LighthousePage() {
                     <span className="lighthouse-stayIcon" aria-hidden="true">
                       {option.icon}
                     </span>
-                    <span className="lighthouse-stayLabel">
-                      {option.label}
-                    </span>
+                    <span className="lighthouse-stayLabel">{option.label}</span>
                     <span className="lighthouse-stayDescription">
                       {option.description}
                     </span>
@@ -1243,8 +1241,8 @@ export default function LighthousePage() {
                   Select 1 to {MAX_INTEREST_SELECTIONS}.
                 </Text>
                 <Text className="lighthouse-interestDescription">
-                  We&apos;ll use these preferences to personalise recommendations,
-                  events and offers during your stay.
+                  We&apos;ll use these preferences to personalise
+                  recommendations, events and offers during your stay.
                 </Text>
               </div>
             </div>
@@ -1267,7 +1265,10 @@ export default function LighthousePage() {
                       key={option.value}
                       value={option.value}
                     >
-                      <span className="lighthouse-interestIcon" aria-hidden="true">
+                      <span
+                        className="lighthouse-interestIcon"
+                        aria-hidden="true"
+                      >
                         {option.icon}
                       </span>
                       <span
@@ -1316,7 +1317,10 @@ export default function LighthousePage() {
                     key={value}
                     value={value}
                   >
-                    <Icon className="lighthouse-travelIcon" aria-hidden="true" />
+                    <Icon
+                      className="lighthouse-travelIcon"
+                      aria-hidden="true"
+                    />
                     <span
                       className={`lighthouse-travelLabel${compact ? " lighthouse-travelLabel--compact" : ""}`}
                     >
@@ -1368,7 +1372,10 @@ export default function LighthousePage() {
                       key={option.value}
                       value={option.value}
                     >
-                      <span className="lighthouse-bookingIcon" aria-hidden="true">
+                      <span
+                        className="lighthouse-bookingIcon"
+                        aria-hidden="true"
+                      >
                         {option.icon}
                       </span>
                       <span className="lighthouse-bookingLabel">
