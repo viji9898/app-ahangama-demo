@@ -266,15 +266,19 @@ const TRAVEL_GROUP_OPTIONS = [
 ];
 
 const SERVICE_OPTIONS = [
-  "Airport Transfers",
-  "Scooter Rental",
-  "Surf Lessons",
-  "Wellness Treatments",
-  "Tours & Experiences",
-  "Private Driver",
-  "Coworking Passes",
-  "Accommodation Deals",
-  "Restaurant Reservations",
+  { value: "Airport Transfers", label: "Airport Transfer", icon: "✈️" },
+  { value: "Scooter Rental", label: "Scooter Rental", icon: "🛵" },
+  { value: "Surf Lessons", label: "Surf Lessons", icon: "🏄" },
+  { value: "Wellness Treatments", label: "Wellness Treatments", icon: "🪷" },
+  { value: "Tours & Experiences", label: "Tours & Experiences", icon: "🚌" },
+  { value: "Private Driver", label: "Private Driver", icon: "🚙" },
+  { value: "Coworking Passes", label: "Coworking Passes", icon: "💻" },
+  { value: "Accommodation Deals", label: "Accommodation Deals", icon: "🛏️" },
+  {
+    value: "Restaurant Reservations",
+    label: "Restaurant Reservations",
+    icon: "🍴",
+  },
 ];
 
 function validateGuestDetails(values) {
@@ -1292,15 +1296,30 @@ export default function LighthousePage() {
               onChange={(value) =>
                 handlePreferencesChange("bookingInterests", value)
               }
-              style={{ width: "100%" }}
+              className="lighthouse-bookingGroup"
             >
-              <Row gutter={[12, 12]}>
-                {SERVICE_OPTIONS.map((option) => (
-                  <Col xs={24} sm={12} lg={8} key={option}>
-                    <Checkbox value={option}>{option}</Checkbox>
-                  </Col>
-                ))}
-              </Row>
+              <div className="lighthouse-bookingGrid">
+                {SERVICE_OPTIONS.map((option) => {
+                  const isSelected = preferencesDraft.bookingInterests.includes(
+                    option.value,
+                  );
+
+                  return (
+                    <Checkbox
+                      className={`lighthouse-bookingCard${isSelected ? " is-selected" : ""}`}
+                      key={option.value}
+                      value={option.value}
+                    >
+                      <span className="lighthouse-bookingIcon" aria-hidden="true">
+                        {option.icon}
+                      </span>
+                      <span className="lighthouse-bookingLabel">
+                        {option.label}
+                      </span>
+                    </Checkbox>
+                  );
+                })}
+              </div>
             </Checkbox.Group>
           </div>
 

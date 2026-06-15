@@ -6752,6 +6752,81 @@ h4,
   font-size: 14px;
 }
 
+.lighthouse-bookingGroup {
+  width: 100%;
+}
+
+.lighthouse-bookingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 14px;
+  width: 100%;
+}
+
+.lighthouse-bookingCard.ant-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(176, 142, 98, 0.2);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 5px 16px rgba(32, 30, 27, 0.025);
+  color: #111111;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+.lighthouse-bookingCard.ant-checkbox-wrapper:hover,
+.lighthouse-bookingCard.ant-checkbox-wrapper:focus-within {
+  border-color: rgba(176, 142, 98, 0.5);
+  box-shadow: 0 9px 22px rgba(32, 30, 27, 0.06);
+  transform: translateY(-1px);
+}
+
+.lighthouse-bookingCard.is-selected.ant-checkbox-wrapper {
+  border-color: #b98525;
+  background: #fffdf9;
+  box-shadow: 0 10px 24px rgba(185, 133, 37, 0.12);
+}
+
+.lighthouse-bookingCard .ant-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lighthouse-bookingCard .ant-checkbox + span {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+.lighthouse-bookingIcon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 34px;
+  color: #9b8063;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.lighthouse-bookingLabel {
+  min-width: 0;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
 @media (max-width: 900px) {
   .lighthouse-interestHeader {
     margin-bottom: 14px;
@@ -6825,6 +6900,30 @@ h4,
 
   .lighthouse-travelLabel--compact {
     font-size: 13px;
+  }
+
+  .lighthouse-bookingGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .lighthouse-bookingCard.ant-checkbox-wrapper {
+    min-height: 54px;
+    padding: 11px 14px;
+    border-radius: 10px;
+  }
+
+  .lighthouse-bookingCard .ant-checkbox + span {
+    gap: 13px;
+  }
+
+  .lighthouse-bookingIcon {
+    flex-basis: 30px;
+    font-size: 22px;
+  }
+
+  .lighthouse-bookingLabel {
+    font-size: 14px;
   }
 }
 
