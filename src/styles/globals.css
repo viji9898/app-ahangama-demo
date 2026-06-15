@@ -728,7 +728,7 @@
 
 .local-intelligence-cardNumberedList,
 .local-intelligence-cardBulletList {
-  margin: 0;
+  margin: 15px 0;
   padding-left: 16px;
   font-size: 13px;
   line-height: 1.45;
@@ -6532,26 +6532,8 @@ h4,
 }
 
 .lighthouse-interestHeader {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  display: block;
   margin-bottom: 16px;
-}
-
-.lighthouse-interestStepNumber {
-  display: inline-grid;
-  width: 32px;
-  height: 32px;
-  place-items: center;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #c99536 0%, #a97718 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28),
-    0 8px 18px rgba(151, 100, 24, 0.18);
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1;
 }
 
 .lighthouse-interestTitle {
@@ -6587,19 +6569,18 @@ h4,
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
+  align-items: start;
   width: 100%;
 }
 
 .lighthouse-interestCard.ant-checkbox-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  align-content: center;
-  gap: 3px;
-  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
   min-height: 0;
   margin: 0;
-  padding: 15px;
+  padding: 15px 12px;
   border: 1px solid rgba(176, 142, 98, 0.2);
   border-radius: 12px;
   background: #ffffff;
@@ -6637,7 +6618,12 @@ h4,
 }
 
 .lighthouse-interestCard .ant-checkbox + span {
-  display: contents;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   padding-inline-start: 0;
   padding-inline-end: 0;
 }
@@ -6646,36 +6632,36 @@ h4,
   display: inline-grid;
   place-items: center;
   width: 100%;
-  font-size: 24px;
+  font-size: 23px;
   line-height: 1;
 }
 
 .lighthouse-interestLabel {
   min-width: 0;
   color: #111111;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1.1;
   text-align: center;
   overflow-wrap: anywhere;
 }
 
 .lighthouse-interestLabel--compact {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .lighthouse-interestMore {
   display: inline-flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 0;
   border: 0;
   background: transparent;
   color: #b37818;
   font: inherit;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
   cursor: pointer;
 }
 
@@ -6686,14 +6672,7 @@ h4,
 
 @media (max-width: 900px) {
   .lighthouse-interestHeader {
-    gap: 12px;
     margin-bottom: 14px;
-  }
-
-  .lighthouse-interestStepNumber {
-    width: 28px;
-    height: 28px;
-    font-size: 13px;
   }
 
   .lighthouse-interestTitle {
@@ -6712,17 +6691,19 @@ h4,
   }
 
   .lighthouse-interestCard.ant-checkbox-wrapper {
-    grid-template-columns: 1fr;
-    gap: 2px;
-    height: 50px;
+    height: auto;
     min-height: 0;
-    padding: 15px;
+    padding: 13px 10px;
     border-radius: 10px;
+  }
+
+  .lighthouse-interestCard .ant-checkbox + span {
+    gap: 4px;
   }
 
   .lighthouse-interestIcon {
     width: 100%;
-    font-size: 20px;
+    font-size: 19px;
   }
 
   .lighthouse-interestLabel {
@@ -6734,7 +6715,7 @@ h4,
   }
 
   .lighthouse-interestMore {
-    font-size: 17px;
+    font-size: 13px;
   }
 }
 

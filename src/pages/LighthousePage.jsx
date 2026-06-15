@@ -1160,7 +1160,6 @@ export default function LighthousePage() {
 
           <div className="lighthouse-interestStep">
             <div className="lighthouse-interestHeader">
-              <span className="lighthouse-interestStepNumber">1</span>
               <div>
                 <Text className="lighthouse-interestTitle">
                   What are you most interested in during your stay?
