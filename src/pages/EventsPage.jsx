@@ -106,6 +106,22 @@ export default function EventsPage() {
                           </ul>
                         ) : null}
 
+                        {event.passBenefit ? (
+                          <div className="events-agenda-passBenefit">
+                            <Text className="events-agenda-passBenefitLabel">
+                              {event.passBenefit.label}
+                            </Text>
+                            {event.passBenefit.discount ? (
+                              <Text className="events-agenda-passBenefitDiscount">
+                                {event.passBenefit.discount}
+                              </Text>
+                            ) : null}
+                            <Text className="events-agenda-passBenefitPerk">
+                              {event.passBenefit.perk}
+                            </Text>
+                          </div>
+                        ) : null}
+
                         <div className="events-agenda-links">
                           <a
                             href={event.instagramUrl}

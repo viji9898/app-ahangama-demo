@@ -7239,6 +7239,40 @@ h4,
   line-height: 1.55;
 }
 
+.events-agenda-passBenefit {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(139, 123, 99, 0.24);
+  background: rgba(247, 242, 234, 0.76);
+}
+
+.events-agenda-passBenefitLabel,
+.events-agenda-passBenefitDiscount {
+  color: #6b5a4e !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.events-agenda-passBenefitDiscount {
+  color: #2f2a24 !important;
+}
+
+.events-agenda-passBenefitPerk {
+  flex-basis: 100%;
+  color: #534b42 !important;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 .events-agenda-links {
   display: flex;
   flex-wrap: wrap;

@@ -19,6 +19,18 @@ const ceylonSlidersImage =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4tqOBI2aw3LSwAFzSp-LOrPry5130DW3B2XCXAKplLSUMmLT5KAhq_R6d&s=10";
 const leCafeFrenchBistroImage =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN2ssDlRL51FwFIu_ycTE5PLEp4PBrwFeUddoSVwC_mA&s=10";
+const surfClubMidigamaImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLNrn0hcb3C4Mahgkhd1LITEGeMN_HUTHtlcSR_u78ig&s=10";
+
+const VENUE_NAME_ALIASES = {
+  "le cafe french bistro": "le cafe",
+};
+
+function formatDiscount(discount) {
+  if (typeof discount !== "number" || discount <= 0) return "";
+
+  return `${Math.round(discount * 100)}% off`;
+}
 
 function normalizeVenueName(value) {
   return String(value || "")
@@ -30,9 +42,26 @@ function normalizeVenueName(value) {
 
 function findVenuePlace(name) {
   const normalizedName = normalizeVenueName(name);
+  const normalizedAlias = VENUE_NAME_ALIASES[normalizedName];
   return PLACES.find(
-    (place) => place.destinationSlug === "ahangama" && normalizeVenueName(place.name) === normalizedName,
+    (place) =>
+      place.destinationSlug === "ahangama" &&
+      (normalizeVenueName(place.name) === normalizedName ||
+        normalizeVenueName(place.name) === normalizedAlias),
   );
+}
+
+function getPassBenefit(name) {
+  const place = findVenuePlace(name);
+  const discountLabel = formatDiscount(place?.discount);
+
+  if (!place?.cardPerk && !discountLabel) return null;
+
+  return {
+    label: "Ahangama Pass",
+    discount: discountLabel,
+    perk: place.cardPerk || "Pass holder perk available.",
+  };
 }
 
 function getInstagramUrl(name) {
@@ -59,6 +88,7 @@ function enrichEvent(event) {
     ...event,
     instagramUrl: getInstagramUrl(event.venue),
     directionsUrl: getDirectionsUrl(event.venue),
+    passBenefit: getPassBenefit(event.venue),
   };
 }
 
@@ -212,7 +242,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Surf Club Midigama",
         time: "From 4:00 PM onwards",
         category: "Late June Events",
-        image: photoOfWeekImage,
+        image: surfClubMidigamaImage,
       }),
       enrichEvent({
         title: "🌴 Saturday Session",
