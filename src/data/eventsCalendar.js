@@ -50,101 +50,211 @@ function enrichEvent(event) {
 export const EVENTS_CALENDAR_OVERVIEW = {
   monthLabel: "June 2026",
   kicker: "Ahangama Events Agenda",
-  summary: "A daily guide to what's happening around town.",
-  weekLabel: "Ahangama . 4 - 8 June",
-  weekDescription: "A curated selection of things happening around town this week.",
+  summary: "This week's highlights, weekly picks, wellness sessions and late June events around Ahangama.",
+  weekLabel: "Ahangama . 18 - 30 June",
+  weekDescription: "A curated selection of music, wellness, happy hours and social nights around town.",
 };
 
 export const EVENTS_CALENDAR_DAYS = [
   {
-    key: "2026-06-04",
+    key: "2026-06-18",
     weekday: "Thursday",
-    dayNumber: "4",
+    dayNumber: "18",
     month: "June",
     events: [
       enrichEvent({
-        title: "Muay Thai Adult Class",
-        venue: "Kushan Muay Thai",
-        time: "6:00 PM - 7:00 PM",
-        category: "Wellness",
-        image: photoOfWeekImage,
+        title: "🍹 Sunset Happy Hour & Music Night",
+        venue: "Hakuna Matata",
+        time: "Happy Hour: 5:00 PM - 7:00 PM",
+        category: "Weekly Picks",
+        image: denitsaImage,
+        description: "20% off all cocktails with sunset music and a full night line-up.",
+        details: [
+          "Music: Skillz Jay, Monamourrr, Mr. Percussion, Hotel De Uncles",
+          "Offer: 20% off all cocktails",
+        ],
       }),
       enrichEvent({
-        title: "Vinyasa Yoga",
-        venue: "Studio 42",
-        time: "7:00 AM - 8:00 AM",
+        title: "🎤 Karaoke Thursday",
+        venue: "Hakuna Matata",
+        time: "From 6:00 PM",
+        category: "Weekly Picks",
+        image: kaffiImage,
+      }),
+      enrichEvent({
+        title: "🎵 Live Music with Channa",
+        venue: "Kai Ahangama",
+        time: "From 5:00 PM",
+        category: "Weekly Picks",
+        image: sistersImage,
+      }),
+    ],
+  },
+  {
+    key: "2026-06-19",
+    weekday: "Friday",
+    dayNumber: "19",
+    month: "June",
+    events: [
+      enrichEvent({
+        title: "🎵 Mono — Dante Alchemico Koila",
+        venue: "Mono",
+        time: "8:00 PM - 10:00 PM; 10:00 PM - Midnight",
+        category: "This Week's Highlights",
+        image: photoOfWeekImage,
+        description: "Electronic live set by Bali-based DJ and producer Dante Alchemico Koila.",
+      }),
+    ],
+  },
+  {
+    key: "2026-06-20",
+    weekday: "Saturday",
+    dayNumber: "20",
+    month: "June",
+    events: [
+      enrichEvent({
+        title: "🎶 Kurundu Sundown Session",
+        venue: "Kurundu",
+        time: "4:00 PM - 2:00 AM",
+        category: "This Week's Highlights",
+        image: denitsaImage,
+        description: "Sunset music, cocktails and late-night dancing.",
+        details: [
+          "Line-up: Adriqus, Banu, Derek, Jayy Vibes b2b Chiruka, Sam, Shamika",
+          "Tickets: Rs. 5,000",
+        ],
+      }),
+      enrichEvent({
+        title: "🥁 Mono — Drum & Bass Night",
+        venue: "Mono",
+        time: "8:30 PM - 11:30 PM",
+        category: "This Week's Highlights",
+        image: photoOfWeekImage,
+        description: "Featuring DJ Janaka.",
+      }),
+      enrichEvent({
+        title: "🎸 Live Music with Ashane",
+        venue: "Kai Ahangama",
+        time: "From 5:00 PM",
+        category: "This Week's Highlights",
+        image: kaffiImage,
+      }),
+    ],
+  },
+  {
+    key: "2026-06-21",
+    weekday: "Sunday",
+    dayNumber: "21",
+    month: "June",
+    events: [
+      enrichEvent({
+        title: "🎵 Live Music with Shenal",
+        venue: "Kai Ahangama",
+        time: "From 5:00 PM",
+        category: "Weekly Picks",
+        image: kaffiImage,
+      }),
+    ],
+  },
+  {
+    key: "2026-06-23",
+    weekday: "Tuesday",
+    dayNumber: "23",
+    month: "June",
+    events: [
+      enrichEvent({
+        title: "🧘 Breathwork",
+        venue: "Ember & Ice",
+        time: "10:00 AM",
         category: "Wellness",
         image: muktiStudioImage,
       }),
     ],
   },
   {
-    key: "2026-06-05",
-    weekday: "Friday",
-    dayNumber: "5",
+    key: "2026-06-24",
+    weekday: "Wednesday",
+    dayNumber: "24",
     month: "June",
     events: [
       enrichEvent({
-        title: "Live Music Night",
-        venue: "Kaffi",
-        time: "7:30 PM onwards",
-        category: "Music",
-        image: kaffiImage,
-      }),
-    ],
-  },
-  {
-    key: "2026-06-06",
-    weekday: "Saturday",
-    dayNumber: "6",
-    month: "June",
-    events: [
-      enrichEvent({
-        title: "Sunset Sessions",
-        venue: "Ceylon Sliders",
-        time: "7:00 PM onwards",
-        category: "Music",
-        image: denitsaImage,
-      }),
-      enrichEvent({
-        title: "Art Market",
-        venue: "Focus Hub",
-        time: "10:00 AM - 2:00 PM",
-        category: "Markets",
-        image: sistersImage,
-      }),
-    ],
-  },
-  {
-    key: "2026-06-07",
-    weekday: "Sunday",
-    dayNumber: "7",
-    month: "June",
-    events: [
-      enrichEvent({
-        title: "Sunday Coffee & Vinyl",
-        venue: "Kaffi",
-        time: "10:00 AM - 1:00 PM",
-        category: "Community",
-        image: kaffiImage,
-      }),
-    ],
-  },
-  {
-    key: "2026-06-08",
-    weekday: "Monday",
-    dayNumber: "8",
-    month: "June",
-    events: [
-      enrichEvent({
-        title: "Surf & Connect",
-        venue: "Ahangama Surf Club",
-        time: "8:00 AM onwards",
+        title: "🔥 Ember & Ice Ritual",
+        venue: "Ember & Ice",
+        time: "11:00 AM",
         category: "Wellness",
+        image: muktiStudioImage,
+      }),
+    ],
+  },
+  {
+    key: "2026-06-27",
+    weekday: "Saturday",
+    dayNumber: "27",
+    month: "June",
+    events: [
+      enrichEvent({
+        title: "🏄 Claramont Gaali",
+        venue: "Surf Club Midigama",
+        time: "From 4:00 PM onwards",
+        category: "Late June Events",
         image: photoOfWeekImage,
       }),
+      enrichEvent({
+        title: "🌴 Saturday Session",
+        venue: "Ceylon Sliders",
+        time: "8:00 PM - 1:00 AM",
+        category: "Late June Events",
+        image: denitsaImage,
+        description: "Featuring Miloh & Sheran.",
+        details: [
+          "Entry: Free before 8pm",
+          "Rs. 1,000 from 8-9pm",
+          "Rs. 2,000 from 9pm-12:30am",
+          "Rs. 1,000 after 12:30am",
+        ],
+      }),
     ],
   },
+  {
+    key: "2026-06-30",
+    weekday: "Tuesday",
+    dayNumber: "30",
+    month: "June",
+    events: [
+      enrichEvent({
+        title: "🧘 Breathwork",
+        venue: "Ember & Ice",
+        time: "10:00 AM",
+        category: "Wellness",
+        image: muktiStudioImage,
+      }),
+    ],
+  },
+  {
+    key: "ongoing",
+    weekday: "Ongoing",
+    dayNumber: "Daily",
+    month: "",
+    events: [
+      enrichEvent({
+        title: "🍷 Daily Happy Hour",
+        venue: "Le Café French Bistro",
+        time: "5:00 PM - 6:00 PM",
+        category: "Ongoing",
+        image: sistersImage,
+        description:
+          "Receive a complimentary charcuterie or cheese bite with every glass of wine or beer.",
+      }),
+    ],
+  },
+];
+
+export const EVENTS_EDITOR_PICKS = [
+  "Kurundu Sundown Session — biggest event of the week.",
+  "Mono: Dante Alchemico Koila — strongest electronic music booking.",
+  "Hakuna Matata Sunset Happy Hour — best value night out.",
+  "Ember & Ice Breathwork — wellness highlight.",
+  "Ceylon Sliders Saturday Session — late June social favourite.",
 ];
 
 export const THIS_WEEK_EVENTS = EVENTS_CALENDAR_DAYS.flatMap((day) =>

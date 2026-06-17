@@ -7215,6 +7215,24 @@ h4,
   font-size: 15px;
 }
 
+.events-agenda-description {
+  margin: 14px 0 0 !important;
+  max-width: 620px;
+  color: #534b42 !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+.events-agenda-details {
+  display: grid;
+  gap: 6px;
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: #655b50;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
 .events-agenda-links {
   display: flex;
   flex-wrap: wrap;
@@ -7232,6 +7250,35 @@ h4,
 .events-agenda-link:hover,
 .events-agenda-link:focus {
   color: #8b7b63;
+}
+
+.events-agenda-editorPicks {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(47, 42, 36, 0.12);
+}
+
+.events-agenda-editorPicksLabel {
+  color: #8f6f4a !important;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.events-agenda-editorPicksList {
+  display: grid;
+  gap: 10px;
+}
+
+.events-agenda-editorPick {
+  display: block;
+  color: #2f2a24 !important;
+  font-size: 17px;
+  line-height: 1.55;
 }
 
 .events-agenda-signup {
@@ -7322,6 +7369,19 @@ h4,
   .events-agenda-category,
   .events-agenda-metaItem {
     font-size: 14px;
+  }
+
+  .events-agenda-description {
+    font-size: 15px !important;
+  }
+
+  .events-agenda-editorPicks {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .events-agenda-editorPick {
+    font-size: 15px;
   }
 
   .events-agenda-signup {

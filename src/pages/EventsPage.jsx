@@ -7,6 +7,7 @@ import SiteLayout from "../components/layout/SiteLayout";
 import NewsletterSignup from "../components/newsletter/NewsletterSignup";
 import {
   EVENTS_CALENDAR_DAYS,
+  EVENTS_EDITOR_PICKS,
   EVENTS_CALENDAR_OVERVIEW,
 } from "../data/eventsCalendar";
 
@@ -87,6 +88,20 @@ export default function EventsPage() {
                           <Text className="events-agenda-category">{event.category}</Text>
                         </div>
 
+                        {event.description ? (
+                          <Paragraph className="events-agenda-description">
+                            {event.description}
+                          </Paragraph>
+                        ) : null}
+
+                        {event.details?.length ? (
+                          <ul className="events-agenda-details">
+                            {event.details.map((detail) => (
+                              <li key={detail}>{detail}</li>
+                            ))}
+                          </ul>
+                        ) : null}
+
                         <div className="events-agenda-links">
                           <a
                             href={event.instagramUrl}
@@ -112,6 +127,19 @@ export default function EventsPage() {
               </section>
             ))}
           </div>
+
+          <section className="events-agenda-editorPicks">
+            <Text className="events-agenda-editorPicksLabel">
+              Editor&apos;s Picks This Week
+            </Text>
+            <div className="events-agenda-editorPicksList">
+              {EVENTS_EDITOR_PICKS.map((pick) => (
+                <Text className="events-agenda-editorPick" key={pick}>
+                  {pick}
+                </Text>
+              ))}
+            </div>
+          </section>
 
           <section className="events-agenda-signup">
             <div className="events-agenda-signupIntro">
