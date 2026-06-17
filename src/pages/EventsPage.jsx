@@ -70,6 +70,7 @@ export default function EventsPage() {
                     <article
                       className="events-agenda-entry"
                       key={`${day.key}-${event.title}`}
+                      style={{ "--events-agenda-bg": `url(${event.image})` }}
                     >
                       <div className="events-agenda-imageWrap">
                         <img

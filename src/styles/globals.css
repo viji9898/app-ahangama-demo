@@ -7397,22 +7397,94 @@ h4,
   }
 
   .events-agenda-entry {
+    position: relative;
     grid-template-columns: 1fr;
-    gap: 16px;
+    min-height: 260px;
+    overflow: hidden;
+    padding: 18px;
+    align-items: end;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(12, 14, 12, 0.12) 0%,
+        rgba(12, 14, 12, 0.48) 46%,
+        rgba(12, 14, 12, 0.82) 100%
+      ),
+      var(--events-agenda-bg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .events-agenda-imageWrap {
+    display: none;
+  }
+
+  .events-agenda-copy {
+    position: relative;
+    z-index: 1;
+    padding-top: 0;
   }
 
   .events-agenda-entryTitle {
-    font-size: clamp(24px, 8vw, 36px) !important;
+    margin-bottom: 5px !important;
+    color: #ffffff !important;
+    font-size: clamp(20px, 6.4vw, 28px) !important;
+    line-height: 1 !important;
+  }
+
+  .events-agenda-meta {
+    gap: 8px;
+    margin-top: 10px;
   }
 
   .events-agenda-venue,
   .events-agenda-category,
   .events-agenda-metaItem {
-    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 13px;
+  }
+
+  .events-agenda-metaItem {
+    gap: 6px;
+  }
+
+  .events-agenda-metaDot {
+    display: none;
   }
 
   .events-agenda-description {
-    font-size: 15px !important;
+    margin-top: 10px !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .events-agenda-details {
+    color: rgba(255, 255, 255, 0.86);
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .events-agenda-passBenefit {
+    margin-top: 10px;
+    padding: 8px 9px;
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.88);
+  }
+
+  .events-agenda-passBenefitPerk {
+    font-size: 12px;
+  }
+
+  .events-agenda-links {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .events-agenda-link {
+    color: #ffffff;
+    font-size: 12px;
   }
 
   .events-agenda-editorPicks {
