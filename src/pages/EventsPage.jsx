@@ -13,6 +13,9 @@ import {
 
 const { Title, Paragraph, Text } = Typography;
 
+const EVENTS_OG_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/events_june_ahangama.jpg";
+
 export default function EventsPage() {
   const canonical = absUrl("/events");
 
@@ -22,6 +25,7 @@ export default function EventsPage() {
         title="Events | Ahangama Events Agenda"
         description="A daily guide to what's happening around town in Ahangama, with this week's editorial calendar and event highlights."
         canonical={canonical}
+        ogImage={EVENTS_OG_IMAGE}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
