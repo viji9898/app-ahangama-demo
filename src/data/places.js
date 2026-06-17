@@ -727,7 +727,7 @@ export const PLACES = [
       "Valid with coffee orders only. One free pastry per card per visit.",
     whatsApp: "94771234580",
     email: "info@lecafeahangama.com",
-    instagram: "lecafeahangama",
+    instagram: "le_cafe_french_bistro_ahangama",
     discount: 0.1,
     price: "Mid-range",
     hours: "Confirm seasonally",
