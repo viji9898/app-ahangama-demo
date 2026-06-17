@@ -53,7 +53,11 @@ export default function EventsPage() {
               <section className="events-agenda-day" key={day.key}>
                 <div className="events-agenda-dateColumn">
                   <Text className="events-agenda-weekday">{day.weekday}</Text>
-                  <Text className="events-agenda-dayNumber">{day.dayNumber}</Text>
+                  <Text
+                    className={`events-agenda-dayNumber${day.key === "ongoing" ? " events-agenda-dayNumber--label" : ""}`}
+                  >
+                    {day.dayNumber}
+                  </Text>
                   <Text className="events-agenda-month">{day.month}</Text>
                 </div>
 

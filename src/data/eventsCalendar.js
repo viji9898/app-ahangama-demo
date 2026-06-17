@@ -5,6 +5,21 @@ import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
 import sistersImage from "../assets/temp/sisters_image.jpg";
 import { PLACES } from "./places";
 
+const hakunaMatataImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9e--9bKEqx2UsgwLgl-sD9HERM2IwUO-SrlbjgkObzg&s";
+const kaiAhangamaImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFo_WO2aYf0skZDCdlnXsk_4KFA-Pk8lzm4YMHn6opTm68tPL3VBuvRBFP&s=10";
+const monoImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fdxlVJzlSJyvRhSuPJgtgyXlYPdVZ_F0JoZ_NEUDW3rUAcduiXmedfo&s=10";
+const kurunduImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMdjOUPtrdg1scx7VrB-rtPZs2Lt1irsRnQOMA20tgMg&s";
+const emberAndIceImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7a98ui0WeTl_1buvGUviVYiSqP9ce7YblAsl7NXykmA&s=10";
+const ceylonSlidersImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4tqOBI2aw3LSwAFzSp-LOrPry5130DW3B2XCXAKplLSUMmLT5KAhq_R6d&s=10";
+const leCafeFrenchBistroImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN2ssDlRL51FwFIu_ycTE5PLEp4PBrwFeUddoSVwC_mA&s=10";
+
 function normalizeVenueName(value) {
   return String(value || "")
     .toLowerCase()
@@ -67,7 +82,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Hakuna Matata",
         time: "Happy Hour: 5:00 PM - 7:00 PM",
         category: "Weekly Picks",
-        image: denitsaImage,
+        image: hakunaMatataImage,
         description: "20% off all cocktails with sunset music and a full night line-up.",
         details: [
           "Music: Skillz Jay, Monamourrr, Mr. Percussion, Hotel De Uncles",
@@ -79,14 +94,14 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Hakuna Matata",
         time: "From 6:00 PM",
         category: "Weekly Picks",
-        image: kaffiImage,
+        image: hakunaMatataImage,
       }),
       enrichEvent({
         title: "🎵 Live Music with Channa",
         venue: "Kai Ahangama",
         time: "From 5:00 PM",
         category: "Weekly Picks",
-        image: sistersImage,
+        image: kaiAhangamaImage,
       }),
     ],
   },
@@ -101,7 +116,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Mono",
         time: "8:00 PM - 10:00 PM; 10:00 PM - Midnight",
         category: "This Week's Highlights",
-        image: photoOfWeekImage,
+        image: monoImage,
         description: "Electronic live set by Bali-based DJ and producer Dante Alchemico Koila.",
       }),
     ],
@@ -117,7 +132,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Kurundu",
         time: "4:00 PM - 2:00 AM",
         category: "This Week's Highlights",
-        image: denitsaImage,
+        image: kurunduImage,
         description: "Sunset music, cocktails and late-night dancing.",
         details: [
           "Line-up: Adriqus, Banu, Derek, Jayy Vibes b2b Chiruka, Sam, Shamika",
@@ -129,7 +144,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Mono",
         time: "8:30 PM - 11:30 PM",
         category: "This Week's Highlights",
-        image: photoOfWeekImage,
+        image: monoImage,
         description: "Featuring DJ Janaka.",
       }),
       enrichEvent({
@@ -137,7 +152,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Kai Ahangama",
         time: "From 5:00 PM",
         category: "This Week's Highlights",
-        image: kaffiImage,
+        image: kaiAhangamaImage,
       }),
     ],
   },
@@ -152,7 +167,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Kai Ahangama",
         time: "From 5:00 PM",
         category: "Weekly Picks",
-        image: kaffiImage,
+        image: kaiAhangamaImage,
       }),
     ],
   },
@@ -167,7 +182,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Ember & Ice",
         time: "10:00 AM",
         category: "Wellness",
-        image: muktiStudioImage,
+        image: emberAndIceImage,
       }),
     ],
   },
@@ -182,7 +197,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Ember & Ice",
         time: "11:00 AM",
         category: "Wellness",
-        image: muktiStudioImage,
+        image: emberAndIceImage,
       }),
     ],
   },
@@ -204,7 +219,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Ceylon Sliders",
         time: "8:00 PM - 1:00 AM",
         category: "Late June Events",
-        image: denitsaImage,
+        image: ceylonSlidersImage,
         description: "Featuring Miloh & Sheran.",
         details: [
           "Entry: Free before 8pm",
@@ -226,7 +241,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Ember & Ice",
         time: "10:00 AM",
         category: "Wellness",
-        image: muktiStudioImage,
+        image: emberAndIceImage,
       }),
     ],
   },
@@ -241,7 +256,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Le Café French Bistro",
         time: "5:00 PM - 6:00 PM",
         category: "Ongoing",
-        image: sistersImage,
+        image: leCafeFrenchBistroImage,
         description:
           "Receive a complimentary charcuterie or cheese bite with every glass of wine or beer.",
       }),

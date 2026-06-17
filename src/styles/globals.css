@@ -7122,6 +7122,12 @@ h4,
     "Cormorant Garamond", "Libre Baskerville", Georgia, serif !important;
 }
 
+.events-agenda-dayNumber--label {
+  font-size: 44px;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
 .events-agenda-month {
   margin-top: 8px;
   color: #322d29 !important;
@@ -7138,7 +7144,7 @@ h4,
 
 .events-agenda-entry {
   display: grid;
-  grid-template-columns: 184px minmax(0, 1fr);
+  grid-template-columns: 164px minmax(0, 1fr);
   gap: 24px;
   align-items: start;
   padding: 0;
@@ -7151,7 +7157,7 @@ h4,
 
 .events-agenda-imageWrap {
   overflow: hidden;
-  aspect-ratio: 1.36;
+  aspect-ratio: 4 / 5;
   background: linear-gradient(
     135deg,
     rgba(203, 177, 143, 0.24),
