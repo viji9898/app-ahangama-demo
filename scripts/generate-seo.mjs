@@ -42,6 +42,11 @@ const publicRoutes = [
     changefreq: "monthly",
     priority: "0.7",
   },
+  {
+    path: "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
   { path: "/what-is-ahangama-pass", changefreq: "monthly", priority: "0.8" },
   { path: "/wellness", changefreq: "weekly", priority: "0.8" },
   { path: "/12-things", changefreq: "monthly", priority: "0.8" },

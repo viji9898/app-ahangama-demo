@@ -240,6 +240,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
   {
+    route:
+      "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel",
+    title: "Where Ahangama Gathers for Sunset - Stairway Rooftop Bar",
+    description:
+      "A sunset story from Stairway Rooftop Bar at Lighthouse Hotel, where cocktails, ocean views and Ahangama's evening rhythm meet.",
+    publishDate: "2026-06-21T09:00:00.000Z",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/hero-view-from-the-bar.jpg",
+  },
+  {
     route: "/dulasiri-uncle",
     title: "Dulasiri Uncle",
     description:
