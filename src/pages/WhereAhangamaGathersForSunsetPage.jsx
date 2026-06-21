@@ -228,7 +228,7 @@ export default function WhereAhangamaGathersForSunsetPage() {
                     </div>
 
                     <Title
-                      className="home-hero-title"
+                      className="home-hero-title stairway-hero-title"
                       style={{
                         margin: 0,
                         color: "#FFFFFF",
@@ -238,13 +238,13 @@ export default function WhereAhangamaGathersForSunsetPage() {
                       }}
                     >
                       <span
-                        className="home-hero-titleLine"
+                        className="home-hero-titleLine stairway-hero-titleLine"
                         style={{ color: "#FFFFFF" }}
                       >
                         Where Ahangama
                       </span>
                       <span
-                        className="home-hero-titleLine"
+                        className="home-hero-titleLine stairway-hero-titleLine"
                         style={{ color: "#FFFFFF" }}
                       >
                         Gathers for Sunset

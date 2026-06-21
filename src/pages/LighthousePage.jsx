@@ -167,11 +167,11 @@ const LIGHTHOUSE_GUIDE_SECTION_CARDS = [
       "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
   },
   {
-    label: "WELLNESS STAY",
-    title: "My Weekend at Lighthouse",
-    href: "",
+    label: "ROOFTOP BAR",
+    title: "Where Ahangama Gathers for Sunset",
+    href: "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel",
     image:
-      "https://q-xx.bstatic.com/xdata/images/hotel/max500/504932003.jpg?k=dea775aa5ed58cbc819897a662ae336aa36e75e2ce5c63e6bf382fa496bfc78b&o=",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/hero-view-from-the-bar.jpg",
   },
   {
     label: "WELLNESS GUIDE",
