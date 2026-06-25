@@ -130,8 +130,7 @@ export const NEWSLETTER_DATA = [
     instagram: null,
     latitude: null,
     longitude: null,
-    googleUrl:
-      "https://www.google.com/maps/search/?api=1&query=Kai%20Ahangama",
+    googleUrl: "https://www.google.com/maps/search/?api=1&query=Kai%20Ahangama",
   },
   {
     tagline: "Drinks and chill",
@@ -179,6 +178,37 @@ export const NEWSLETTER_DATA = [
           "https://www.google.com/maps/search/?api=1&query=Lamana%20Ahangama",
       },
     ],
+  },
+];
+
+export const NEWSLETTER_ESSENTIALS_NEARBY_HELP = [
+  {
+    name: "Commercial Bank ATM",
+    category: "Essentials / Nearby Help",
+    type: "ATM",
+    instagram: null,
+    latitude: 5.972636249193255,
+    longitude: 80.36467655347151,
+    googleUrl: "https://maps.app.goo.gl/unh9L9B2tPETKVCh7",
+  },
+  {
+    name: "IMC MED Hospital - International Medical Center, Weligama",
+    category: "Essentials / Nearby Help",
+    type: "Hospital",
+    instagram: null,
+    latitude: 5.975065441962627,
+    longitude: 80.43584215107867,
+    googleUrl: "https://maps.app.goo.gl/EXdRo5srwycejMKo7",
+  },
+  {
+    name: "South Coast Tourist Police",
+    category: "Essentials / Nearby Help",
+    type: "Tourist Police",
+    instagram: null,
+    latitude: null,
+    longitude: null,
+    googleUrl:
+      "https://www.google.com/maps/search/?api=1&query=South%20Coast%20Tourist%20Police",
   },
 ];
 
