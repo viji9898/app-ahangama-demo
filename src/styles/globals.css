@@ -967,7 +967,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 170px;
+  min-height: 102px;
 }
 
 .weekly-picks-card--withImage::before {
@@ -5257,7 +5257,7 @@
   .weekly-picks-card {
     flex: 0 0 56vw;
     min-width: 56vw;
-    min-height: 150px;
+    min-height: 90px;
     padding: 14px;
   }
 

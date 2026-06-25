@@ -151,6 +151,7 @@ const WEEKLY_PICKS = [
     category: "Community",
     title: "Community Market",
     date: "Sat 7 Jun",
+    href: "/community-market-in-ahangama",
   },
   {
     category: "Openings",
