@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Card, Row, Col, Typography, Button, Space, Spin, Tag } from "antd";
 import QRCode from "react-qr-code";
 import {
@@ -634,6 +634,10 @@ export default function Home() {
     "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
   const showWeeklyPicksSection = true;
   const showLatestStoriesSection = false;
+  const weeklyPicksLooped = useMemo(
+    () => [...WEEKLY_PICKS, ...WEEKLY_PICKS, ...WEEKLY_PICKS],
+    [],
+  );
   const twelveThingsMosaic = useMemo(() => {
     const placesBySlug = new Map(
       (places || [])
@@ -710,6 +714,163 @@ export default function Home() {
     return `${count} Places`;
   };
   const showLegacyHomepageLowerSections = false;
+  const whatsOnBoardRailRef = useRef(null);
+  const [canScrollWhatsOnLeft, setCanScrollWhatsOnLeft] = useState(false);
+  const [canScrollWhatsOnRight, setCanScrollWhatsOnRight] = useState(false);
+  const weeklyPicksRailRef = useRef(null);
+  const weeklyPicksSetWidthRef = useRef(0);
+  const isWeeklyPicksAdjustingRef = useRef(false);
+  const [canScrollWeeklyPicksRight, setCanScrollWeeklyPicksRight] =
+    useState(false);
+
+  useEffect(() => {
+    const rail = whatsOnBoardRailRef.current;
+
+    if (!rail) {
+      return undefined;
+    }
+
+    const updateWhatsOnScrollState = () => {
+      const maxScrollLeft = rail.scrollWidth - rail.clientWidth - 4;
+      setCanScrollWhatsOnLeft(rail.scrollLeft > 4);
+      setCanScrollWhatsOnRight(rail.scrollLeft < maxScrollLeft);
+    };
+
+    updateWhatsOnScrollState();
+    rail.addEventListener("scroll", updateWhatsOnScrollState, {
+      passive: true,
+    });
+    window.addEventListener("resize", updateWhatsOnScrollState);
+
+    return () => {
+      rail.removeEventListener("scroll", updateWhatsOnScrollState);
+      window.removeEventListener("resize", updateWhatsOnScrollState);
+    };
+  }, []);
+
+  const handleWhatsOnScrollLeft = () => {
+    const rail = whatsOnBoardRailRef.current;
+
+    if (!rail) {
+      return;
+    }
+
+    const firstItem = rail.querySelector(".whats-on-boardItem");
+    const itemWidth = firstItem ? firstItem.getBoundingClientRect().width : 0;
+
+    rail.scrollBy({
+      left: -(itemWidth ? itemWidth + 1 : rail.clientWidth * 0.8),
+      behavior: "smooth",
+    });
+  };
+
+  const handleWhatsOnScrollRight = () => {
+    const rail = whatsOnBoardRailRef.current;
+
+    if (!rail) {
+      return;
+    }
+
+    const firstItem = rail.querySelector(".whats-on-boardItem");
+    const itemWidth = firstItem ? firstItem.getBoundingClientRect().width : 0;
+
+    rail.scrollBy({
+      left: itemWidth ? itemWidth + 1 : rail.clientWidth * 0.8,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const rail = weeklyPicksRailRef.current;
+
+    if (!rail) {
+      return undefined;
+    }
+
+    const updateWeeklyPicksScrollState = () => {
+      const setWidth = rail.scrollWidth / 3;
+
+      weeklyPicksSetWidthRef.current = setWidth;
+      setCanScrollWeeklyPicksRight(setWidth > rail.clientWidth + 4);
+
+      if (!setWidth) {
+        return;
+      }
+
+      if (isWeeklyPicksAdjustingRef.current) {
+        return;
+      }
+
+      const leftBoundary = setWidth * 0.5;
+      const rightBoundary = setWidth * 1.5;
+
+      if (rail.scrollLeft < leftBoundary) {
+        isWeeklyPicksAdjustingRef.current = true;
+        rail.scrollLeft += setWidth;
+        requestAnimationFrame(() => {
+          isWeeklyPicksAdjustingRef.current = false;
+        });
+      } else if (rail.scrollLeft > rightBoundary) {
+        isWeeklyPicksAdjustingRef.current = true;
+        rail.scrollLeft -= setWidth;
+        requestAnimationFrame(() => {
+          isWeeklyPicksAdjustingRef.current = false;
+        });
+      }
+    };
+
+    updateWeeklyPicksScrollState();
+    rail.addEventListener("scroll", updateWeeklyPicksScrollState, {
+      passive: true,
+    });
+    window.addEventListener("resize", updateWeeklyPicksScrollState);
+
+    return () => {
+      rail.removeEventListener("scroll", updateWeeklyPicksScrollState);
+      window.removeEventListener("resize", updateWeeklyPicksScrollState);
+    };
+  }, []);
+
+  const handleWeeklyPicksScrollRight = () => {
+    const rail = weeklyPicksRailRef.current;
+
+    if (!rail) {
+      return;
+    }
+
+    const firstCard = rail.querySelector(".weekly-picks-card");
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+    const setWidth = weeklyPicksSetWidthRef.current || rail.scrollWidth / 3;
+    const scrollStep = cardWidth ? cardWidth + 14 : rail.clientWidth * 0.8;
+    const nextScrollLeft = rail.scrollLeft + scrollStep;
+
+    if (setWidth && nextScrollLeft >= setWidth * 2 - 4) {
+      rail.scrollBy({
+        left: scrollStep,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    rail.scrollBy({ left: scrollStep, behavior: "smooth" });
+  };
+
+  const handleWeeklyPicksScrollLeft = () => {
+    const rail = weeklyPicksRailRef.current;
+
+    if (!rail) {
+      return;
+    }
+
+    const firstCard = rail.querySelector(".weekly-picks-card");
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+    const scrollStep = cardWidth ? cardWidth + 14 : rail.clientWidth * 0.8;
+
+    rail.scrollBy({
+      left: -scrollStep,
+      behavior: "smooth",
+    });
+  };
   return (
     <SiteLayout navOverlayHero>
       <Seo
@@ -1016,25 +1177,49 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="whats-on-boardRail">
-                {THIS_WEEK_EVENTS.map((event) => (
-                  <div
-                    className="whats-on-boardItem"
-                    key={`${event.title}-${event.date}`}
+              <div className="whats-on-boardRailWrap">
+                {canScrollWhatsOnLeft ? (
+                  <button
+                    type="button"
+                    className="whats-on-boardArrow whats-on-boardArrow--left"
+                    onClick={handleWhatsOnScrollLeft}
+                    aria-label="Scroll events left"
                   >
-                    <Text className="whats-on-boardDate">{event.date}</Text>
-                    <Title level={3} className="whats-on-boardTitle">
-                      {event.title}
-                    </Title>
-                    <Text className="whats-on-boardVenue">{event.venue}</Text>
-                    <div className="whats-on-boardMeta">
-                      <span className="whats-on-boardMetaTime">
-                        <ClockCircleOutlined />
-                        <span>{event.time}</span>
-                      </span>
+                    <ArrowRightOutlined />
+                  </button>
+                ) : null}
+
+                <div className="whats-on-boardRail" ref={whatsOnBoardRailRef}>
+                  {THIS_WEEK_EVENTS.map((event) => (
+                    <div
+                      className="whats-on-boardItem"
+                      key={`${event.title}-${event.date}`}
+                    >
+                      <Text className="whats-on-boardDate">{event.date}</Text>
+                      <Title level={3} className="whats-on-boardTitle">
+                        {event.title}
+                      </Title>
+                      <Text className="whats-on-boardVenue">{event.venue}</Text>
+                      <div className="whats-on-boardMeta">
+                        <span className="whats-on-boardMetaTime">
+                          <ClockCircleOutlined />
+                          <span>{event.time}</span>
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {canScrollWhatsOnRight ? (
+                  <button
+                    type="button"
+                    className="whats-on-boardArrow whats-on-boardArrow--right"
+                    onClick={handleWhatsOnScrollRight}
+                    aria-label="Scroll events right"
+                  >
+                    <ArrowRightOutlined />
+                  </button>
+                ) : null}
               </div>
             </div>
 
@@ -1092,10 +1277,12 @@ export default function Home() {
               />
 
               <div className="weekly-picks-heading">
-                <Text className="weekly-picks-kicker">2. Weekly Picks</Text>
-                <Paragraph className="weekly-picks-description">
-                  What&apos;s worth your time this week.
-                </Paragraph>
+                <div className="weekly-picks-headingCopy">
+                  <Text className="weekly-picks-kicker">2. Weekly Picks</Text>
+                  <Paragraph className="weekly-picks-description">
+                    What&apos;s worth your time this week.
+                  </Paragraph>
+                </div>
               </div>
 
               <div
@@ -1103,29 +1290,52 @@ export default function Home() {
                 aria-hidden="true"
               />
 
-              <div className="weekly-picks-grid">
-                {WEEKLY_PICKS.map((pick) => (
-                  <a
-                    key={pick.title}
-                    href={pick.href || "#"}
-                    onClick={
-                      pick.href ? undefined : (event) => event.preventDefault()
-                    }
-                    className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
-                    style={
-                      pick.image
-                        ? {
-                            "--weekly-picks-image": `url(${pick.image})`,
-                          }
-                        : undefined
-                    }
-                  >
-                    <Text className="weekly-picks-tag">{pick.category}</Text>
-                    <Title level={3} className="weekly-picks-title">
-                      {pick.title}
-                    </Title>
-                  </a>
-                ))}
+              <div className="weekly-picks-railWrap">
+                <div className="weekly-picks-grid" ref={weeklyPicksRailRef}>
+                  {weeklyPicksLooped.map((pick, index) => (
+                    <a
+                      key={`${pick.title}-${index}`}
+                      href={pick.href || "#"}
+                      onClick={
+                        pick.href ? undefined : (event) => event.preventDefault()
+                      }
+                      className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
+                      style={
+                        pick.image
+                          ? {
+                              "--weekly-picks-image": `url(${pick.image})`,
+                            }
+                          : undefined
+                      }
+                    >
+                      <Text className="weekly-picks-tag">{pick.category}</Text>
+                      <Title level={3} className="weekly-picks-title">
+                        {pick.title}
+                      </Title>
+                    </a>
+                  ))}
+                </div>
+
+                {canScrollWeeklyPicksRight ? (
+                  <>
+                    <button
+                      type="button"
+                      className="weekly-picks-scrollCue weekly-picks-scrollCue--left"
+                      onClick={handleWeeklyPicksScrollLeft}
+                      aria-label="Scroll weekly picks to the left"
+                    >
+                      <ArrowRightOutlined />
+                    </button>
+                    <button
+                      type="button"
+                      className="weekly-picks-scrollCue weekly-picks-scrollCue--right"
+                      onClick={handleWeeklyPicksScrollRight}
+                      aria-label="Scroll weekly picks to the right"
+                    >
+                      <ArrowRightOutlined />
+                    </button>
+                  </>
+                ) : null}
               </div>
 
               <div className="home-section-divider" aria-hidden="true" />

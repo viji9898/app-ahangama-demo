@@ -28,7 +28,6 @@ export default function TopNav({ overlayHero = false }) {
 
   useEffect(() => {
     if (!overlayHero) {
-      setIsScrolled(false);
       return undefined;
     }
 
