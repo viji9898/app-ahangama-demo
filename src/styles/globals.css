@@ -219,6 +219,62 @@
   display: none;
 }
 
+.whats-on-boardRailWrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.whats-on-boardArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(32, 30, 27, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  color: #1f1d1a;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(31, 29, 26, 0.14);
+  transform: translateY(-50%);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.whats-on-boardArrow:hover,
+.whats-on-boardArrow:focus-visible {
+  background: #fff;
+  box-shadow: 0 16px 28px rgba(31, 29, 26, 0.18);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.whats-on-boardArrow:focus-visible {
+  outline: 2px solid rgba(157, 127, 87, 0.35);
+  outline-offset: 3px;
+}
+
+.whats-on-boardArrow .anticon {
+  font-size: 18px;
+}
+
+.whats-on-boardArrow--left {
+  left: 10px;
+}
+
+.whats-on-boardArrow--left .anticon {
+  transform: rotate(180deg);
+}
+
+.whats-on-boardArrow--right {
+  right: 10px;
+}
+
 .whats-on-boardItem {
   flex: 0 0 246px;
   min-width: 246px;
@@ -773,7 +829,15 @@
 }
 
 .weekly-picks-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
   margin-bottom: 14px;
+}
+
+.weekly-picks-headingCopy {
+  min-width: 0;
 }
 
 .weekly-picks-kicker {
@@ -791,6 +855,85 @@
   color: #5f574e !important;
   font-size: 14px !important;
   line-height: 1.5 !important;
+}
+
+.weekly-picks-railWrap {
+  position: relative;
+}
+
+.weekly-picks-railWrap::before,
+.weekly-picks-railWrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(72px, 8vw, 120px);
+  pointer-events: none;
+}
+
+.weekly-picks-railWrap::before {
+  left: 0;
+  right: auto;
+  background: linear-gradient(90deg, rgba(255, 253, 249, 0.98), rgba(255, 253, 249, 0.82) 45%, rgba(255, 255, 255, 0));
+}
+
+.weekly-picks-railWrap::after {
+  right: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 253, 249, 0.82) 55%, rgba(255, 253, 249, 0.98));
+}
+
+.weekly-picks-scrollCue {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(32, 30, 27, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1f1d1a;
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(31, 29, 26, 0.16);
+  transform: translateY(-50%);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.weekly-picks-scrollCue--left {
+  left: 14px;
+  right: auto;
+}
+
+.weekly-picks-scrollCue--left .anticon {
+  transform: rotate(180deg);
+}
+
+.weekly-picks-scrollCue--right {
+  right: 14px;
+  left: auto;
+}
+
+.weekly-picks-scrollCue .anticon {
+  font-size: 18px;
+}
+
+.weekly-picks-scrollCue:hover,
+.weekly-picks-scrollCue:focus-visible {
+  background: #fff;
+  box-shadow: 0 18px 32px rgba(31, 29, 26, 0.2);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.weekly-picks-scrollCue:focus-visible {
+  outline: 2px solid rgba(157, 127, 87, 0.35);
+  outline-offset: 3px;
 }
 
 .weekly-picks-grid {
@@ -5062,6 +5205,19 @@
     display: none;
   }
 
+  .whats-on-boardArrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .whats-on-boardArrow--left {
+    left: 8px;
+  }
+
+  .whats-on-boardArrow--right {
+    right: 8px;
+  }
+
   .weekly-features-grid {
     display: flex;
     gap: 16px;
@@ -5107,6 +5263,28 @@
 
   .weekly-picks-title {
     font-size: clamp(18px, 4.8vw, 24px) !important;
+  }
+
+  .weekly-picks-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .weekly-picks-scrollButton {
+    display: none;
+  }
+
+  .weekly-picks-scrollCue {
+    width: 44px;
+    height: 44px;
+  }
+
+  .weekly-picks-scrollCue--left {
+    left: 10px;
+  }
+
+  .weekly-picks-scrollCue--right {
+    right: 10px;
   }
 
   .around-town-heading {
