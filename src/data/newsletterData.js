@@ -6,8 +6,7 @@ export const NEWSLETTER_DATA = [
     instagram: "kaffi.ahangama",
     latitude: 5.9689078,
     longitude: 80.3706031,
-    googleUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJu7pmUN0T4ToRzNnyYODfGU4",
+    googleUrl: "https://maps.app.goo.gl/gBeUwCoaXsD7igNs6",
   },
   {
     tagline: "The go-to spot for breakfast",
@@ -16,8 +15,7 @@ export const NEWSLETTER_DATA = [
     instagram: "moochiessrilanka_",
     latitude: 5.9703741,
     longitude: 80.3676768,
-    googleUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJz1rAFQMV4ToRW7iWdc4p3RA",
+    googleUrl: "https://maps.app.goo.gl/4fQEy1B5SdGdX2APA",
   },
   {
     tagline: "Catch your next wave here",
@@ -26,8 +24,7 @@ export const NEWSLETTER_DATA = [
     instagram: "ceylonsliders",
     latitude: 5.9721737,
     longitude: 80.3640169,
-    googleUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJ3XlQ7z0T4ToRfAv-CstU8gY",
+    googleUrl: "https://maps.app.goo.gl/4761wqeeWxPwhEhMA",
   },
   {
     tagline: "Hidden gem for brunch",
@@ -36,8 +33,7 @@ export const NEWSLETTER_DATA = [
     instagram: "thekipsrilanka",
     latitude: 5.9700077,
     longitude: 80.3735191,
-    googleUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJMTRdTaQU4ToRM-xEwUWydew",
+    googleUrl: "https://maps.app.goo.gl/3dRQ6ayZMxTNosCG8",
   },
   {
     tagline: "Find your balance",
@@ -46,7 +42,7 @@ export const NEWSLETTER_DATA = [
     instagram: "purapilatessrilanka",
     latitude: 5.980186974839597,
     longitude: 80.36560881118537,
-    googleUrl: "https://maps.app.goo.gl/ybTcvC642V5t6LCGA",
+    googleUrl: "https://maps.app.goo.gl/4MPrYmTceepnRx1R6",
   },
   {
     tagline: "Cook like a local",
@@ -55,7 +51,7 @@ export const NEWSLETTER_DATA = [
     instagram: "kumbuk.community",
     latitude: 6.003078614172835,
     longitude: 80.37894863792567,
-    googleUrl: "https://maps.app.goo.gl/CWJAvm7CVR9XeVea9",
+    googleUrl: "https://maps.app.goo.gl/M6WVNAJnfyVmEuG57",
   },
   {
     tagline: "Stay active in Ahangama",
@@ -64,7 +60,7 @@ export const NEWSLETTER_DATA = [
     instagram: "sellamgym",
     latitude: 5.9742794466164995,
     longitude: 80.36432653558248,
-    googleUrl: "https://maps.app.goo.gl/z9Phojvqk4uQTHiW6",
+    googleUrl: "https://maps.app.goo.gl/LpB2JGXXvX5mKyNW8",
   },
   {
     tagline: "A taste of traditional Sri Lanka",
@@ -73,8 +69,7 @@ export const NEWSLETTER_DATA = [
     instagram: "manoris_kitchen_ahangama",
     latitude: 5.970553677414811,
     longitude: 80.37116892443733,
-    googleUrl:
-      "https://www.google.com/maps/search/?api=1&query=5.970553677414811,80.37116892443733",
+    googleUrl: "https://maps.app.goo.gl/pQ44Hn6ivmJPiTAP8",
   },
   {
     tagline: "Slow shopping in Ahangama",
@@ -83,8 +78,7 @@ export const NEWSLETTER_DATA = [
     instagram: "yivaessentials",
     latitude: null,
     longitude: null,
-    googleUrl:
-      "https://www.google.com/maps/search/?api=1&query=Yiva%20Essentials%20Ahangama",
+    googleUrl: "https://maps.app.goo.gl/iF62EM8V9kXtYERP8",
   },
   {
     tagline: "Stay connected, stay productive",
@@ -93,7 +87,7 @@ export const NEWSLETTER_DATA = [
     instagram: "focushubcoworking",
     latitude: 5.971778035764045,
     longitude: 80.36565208835837,
-    googleUrl: "https://maps.app.goo.gl/Sqzrp6LGxscqEjEC7",
+    googleUrl: "https://maps.app.goo.gl/VpZ77T8YAbhjG6tp8",
   },
   {
     tagline: "Deep reset spot",
@@ -102,7 +96,7 @@ export const NEWSLETTER_DATA = [
     instagram: "banyasrilanka",
     latitude: 5.994568318002994,
     longitude: 80.35071306820878,
-    googleUrl: "https://maps.app.goo.gl/FbUPQAsxxSL4quyC8",
+    googleUrl: "https://maps.app.goo.gl/d7wsd3N8aapmR6GX6",
   },
   {
     tagline: "Fun for everyone",
@@ -111,7 +105,7 @@ export const NEWSLETTER_DATA = [
     instagram: "coconutcourt_lk",
     latitude: 5.978418297405438,
     longitude: 80.34807776441775,
-    googleUrl: "https://maps.app.goo.gl/b1zqTnJJgsETKm9k8",
+    googleUrl: "https://maps.app.goo.gl/8SqZZQxWLmuc2tBr6",
   },
   {
     tagline: "Made for the camera",
@@ -120,8 +114,7 @@ export const NEWSLETTER_DATA = [
     instagram: "cactus_ahangama",
     latitude: 5.9718757,
     longitude: 80.3645275,
-    googleUrl:
-      "https://www.google.com/maps/place/?q=place_id:ChIJs3FQfk8T4ToRFksxXDpsvL0",
+    googleUrl: "https://maps.app.goo.gl/VZqSNsJUwJuUe2L69",
   },
   {
     tagline: "Golden hour",
@@ -130,7 +123,7 @@ export const NEWSLETTER_DATA = [
     instagram: "kai_ahangama",
     latitude: null,
     longitude: null,
-    googleUrl: "https://www.google.com/maps/search/?api=1&query=Kai%20Ahangama",
+    googleUrl: "https://maps.app.goo.gl/W55JNuWevuHJwj1g7",
   },
   {
     tagline: "Drinks and chill",
@@ -139,8 +132,7 @@ export const NEWSLETTER_DATA = [
     instagram: "hoteldeuncles",
     latitude: null,
     longitude: null,
-    googleUrl:
-      "https://www.google.com/maps/search/?api=1&query=Hotel%20de%20Uncles%20Ahangama",
+    googleUrl: "https://maps.app.goo.gl/gjacPN9afh8xtuoq5",
   },
   {
     tagline: "Music nights on Wednesday",
@@ -149,8 +141,7 @@ export const NEWSLETTER_DATA = [
     instagram: "crust_ahangama",
     latitude: null,
     longitude: null,
-    googleUrl:
-      "https://www.google.com/maps/search/?api=1&query=The%20Crust%20Ahangama",
+    googleUrl: "https://maps.app.goo.gl/oWQtPmGYc63HLhJ76",
   },
   {
     tagline: "Thursday night picks",
@@ -159,7 +150,7 @@ export const NEWSLETTER_DATA = [
     instagram: "hakuna_matata_ahangama",
     latitude: 5.9669647,
     longitude: 80.3748064,
-    googleUrl: "https://maps.app.goo.gl/48Mm3kbcMVNKBqAh7",
+    googleUrl: "https://maps.app.goo.gl/YcC2Z3dpif3gQsQt9",
   },
   {
     tagline: "Thursday night picks",
@@ -168,7 +159,7 @@ export const NEWSLETTER_DATA = [
     instagram: "lamana_ahangama",
     latitude: 5.972605853309495,
     longitude: 80.3640155306916,
-    googleUrl: "https://maps.app.goo.gl/y6sdXT3EZnAFh2t48",
+    googleUrl: "https://maps.app.goo.gl/Cz5wK3SGjdtoN8zu6",
   },
 ];
 
