@@ -18,6 +18,20 @@ const SANS_FONT =
   'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
 const ACCENT = "#ff6f61";
 
+const SUNSET_ARTICLE = {
+  title: "Where Ahangama Gathers for Sunset",
+  href: "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel/",
+  image:
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/hero-view-from-the-bar.jpg",
+};
+
+const TWELVE_THINGS_ARTICLE = {
+  title: "12 Things to Do in Ahangama",
+  href: "/12-things/",
+  image:
+    "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
+};
+
 function buildInstagramUrl(handle) {
   if (!handle) return null;
 
@@ -51,7 +65,12 @@ function MetaLink({ label, href }) {
   );
 }
 
-function EntryMeta({ item, compact = false }) {
+function EntryMeta({
+  item,
+  compact = false,
+  showInstagram = true,
+  showCoordinates = false,
+}) {
   const instagramUrl = buildInstagramUrl(item.instagram);
 
   return (
@@ -67,18 +86,22 @@ function EntryMeta({ item, compact = false }) {
         lineHeight: 1.45,
       }}
     >
-      <div>
-        <strong style={{ color: "#242424" }}>Instagram: </strong>
-        {instagramUrl ? (
-          <MetaLink label={`@${item.instagram}`} href={instagramUrl} />
-        ) : (
-          <span>Pending</span>
-        )}
-      </div>
-      <div>
-        <strong style={{ color: "#242424" }}>Coordinates: </strong>
-        <Coordinates latitude={item.latitude} longitude={item.longitude} />
-      </div>
+      {showInstagram ? (
+        <div>
+          <strong style={{ color: "#242424" }}>Instagram: </strong>
+          {instagramUrl ? (
+            <MetaLink label={`@${item.instagram}`} href={instagramUrl} />
+          ) : (
+            <span>Pending</span>
+          )}
+        </div>
+      ) : null}
+      {showCoordinates ? (
+        <div>
+          <strong style={{ color: "#242424" }}>Coordinates: </strong>
+          <Coordinates latitude={item.latitude} longitude={item.longitude} />
+        </div>
+      ) : null}
       <div>
         <strong style={{ color: "#242424" }}>Map: </strong>
         <MetaLink label="Open Google Maps" href={item.googleUrl} />
@@ -119,7 +142,7 @@ function NewsletterEntry({ item, index }) {
             margin: 0,
             color: "#242424",
             fontFamily: SERIF_FONT,
-            fontSize: 42,
+            fontSize: 32,
             fontWeight: 700,
             lineHeight: 0.98,
           }}
@@ -131,7 +154,7 @@ function NewsletterEntry({ item, index }) {
             margin: "10px 0 0",
             color: "#242424",
             fontFamily: SERIF_FONT,
-            fontSize: 26,
+            fontSize: 20,
             fontStyle: "italic",
             fontWeight: 600,
             lineHeight: 1.18,
@@ -176,6 +199,49 @@ function NewsletterEntry({ item, index }) {
   );
 }
 
+function NewsletterArticleInsert({ article }) {
+  return (
+    <article style={{ borderTop: "1px solid #242424" }}>
+      <a
+        href={article.href}
+        style={{
+          display: "block",
+          padding: "28px 0",
+          borderBottom: "1px solid #242424",
+          color: "#242424",
+          textDecoration: "none",
+        }}
+      >
+        <img
+          src={article.image}
+          alt="Sunset view from Stairway Rooftop Bar at Lighthouse Hotel"
+          loading="lazy"
+          style={{
+            display: "block",
+            width: "100%",
+            aspectRatio: "4 / 3",
+            objectFit: "cover",
+            marginBottom: 14,
+          }}
+        />
+        <Title
+          level={2}
+          style={{
+            margin: 0,
+            color: "#242424",
+            fontFamily: SERIF_FONT,
+            fontSize: 32,
+            fontWeight: 700,
+            lineHeight: 0.98,
+          }}
+        >
+          {article.title}
+        </Title>
+      </a>
+    </article>
+  );
+}
+
 function EssentialEntry({ item }) {
   return (
     <article style={{ padding: "11px 0", borderBottom: "1px solid #242424" }}>
@@ -205,7 +271,12 @@ function EssentialEntry({ item }) {
       >
         {item.name}
       </Title>
-      <EntryMeta item={item} compact />
+      <EntryMeta
+        item={item}
+        compact
+        showInstagram={false}
+        showCoordinates={false}
+      />
     </article>
   );
 }
@@ -247,7 +318,7 @@ function WhatsOnSection() {
                 marginBottom: 8,
                 color: ACCENT,
                 fontFamily: SERIF_FONT,
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: 700,
                 textTransform: "uppercase",
               }}
@@ -260,7 +331,7 @@ function WhatsOnSection() {
                 margin: 0,
                 color: "#242424",
                 fontFamily: SERIF_FONT,
-                fontSize: 34,
+                fontSize: 26,
                 fontWeight: 700,
                 lineHeight: 1,
               }}
@@ -512,11 +583,15 @@ export default function NewsletterDataPage() {
 
         <section style={{ marginTop: 28 }}>
           {NEWSLETTER_DATA.map((item, index) => (
-            <NewsletterEntry
-              key={`${item.vendor}-${item.category}`}
-              item={item}
-              index={index}
-            />
+            <React.Fragment key={`${item.vendor}-${item.category}`}>
+              <NewsletterEntry item={item} index={index} />
+              {index === 4 ? (
+                <NewsletterArticleInsert article={SUNSET_ARTICLE} />
+              ) : null}
+              {index === 12 ? (
+                <NewsletterArticleInsert article={TWELVE_THINGS_ARTICLE} />
+              ) : null}
+            </React.Fragment>
           ))}
         </section>
 
