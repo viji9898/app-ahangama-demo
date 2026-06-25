@@ -723,10 +723,7 @@ export default function Home() {
   const [canScrollWhatsOnLeft, setCanScrollWhatsOnLeft] = useState(false);
   const [canScrollWhatsOnRight, setCanScrollWhatsOnRight] = useState(false);
   const weeklyPicksRailRef = useRef(null);
-  const weeklyPicksSetWidthRef = useRef(0);
   const isWeeklyPicksAdjustingRef = useRef(false);
-  const [canScrollWeeklyPicksRight, setCanScrollWeeklyPicksRight] =
-    useState(false);
 
   useEffect(() => {
     const rail = whatsOnBoardRailRef.current;
@@ -795,9 +792,6 @@ export default function Home() {
     const updateWeeklyPicksScrollState = () => {
       const setWidth = rail.scrollWidth / 3;
 
-      weeklyPicksSetWidthRef.current = setWidth;
-      setCanScrollWeeklyPicksRight(setWidth > rail.clientWidth + 4);
-
       if (!setWidth) {
         return;
       }
@@ -836,46 +830,6 @@ export default function Home() {
     };
   }, []);
 
-  const handleWeeklyPicksScrollRight = () => {
-    const rail = weeklyPicksRailRef.current;
-
-    if (!rail) {
-      return;
-    }
-
-    const firstCard = rail.querySelector(".weekly-picks-card");
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-    const setWidth = weeklyPicksSetWidthRef.current || rail.scrollWidth / 3;
-    const scrollStep = cardWidth ? cardWidth + 14 : rail.clientWidth * 0.8;
-    const nextScrollLeft = rail.scrollLeft + scrollStep;
-
-    if (setWidth && nextScrollLeft >= setWidth * 2 - 4) {
-      rail.scrollBy({
-        left: scrollStep,
-        behavior: "smooth",
-      });
-      return;
-    }
-
-    rail.scrollBy({ left: scrollStep, behavior: "smooth" });
-  };
-
-  const handleWeeklyPicksScrollLeft = () => {
-    const rail = weeklyPicksRailRef.current;
-
-    if (!rail) {
-      return;
-    }
-
-    const firstCard = rail.querySelector(".weekly-picks-card");
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-    const scrollStep = cardWidth ? cardWidth + 14 : rail.clientWidth * 0.8;
-
-    rail.scrollBy({
-      left: -scrollStep,
-      behavior: "smooth",
-    });
-  };
   return (
     <SiteLayout navOverlayHero>
       <Seo
@@ -1321,26 +1275,6 @@ export default function Home() {
                   ))}
                 </div>
 
-                {canScrollWeeklyPicksRight ? (
-                  <>
-                    <button
-                      type="button"
-                      className="weekly-picks-scrollCue weekly-picks-scrollCue--left"
-                      onClick={handleWeeklyPicksScrollLeft}
-                      aria-label="Scroll weekly picks to the left"
-                    >
-                      <ArrowRightOutlined />
-                    </button>
-                    <button
-                      type="button"
-                      className="weekly-picks-scrollCue weekly-picks-scrollCue--right"
-                      onClick={handleWeeklyPicksScrollRight}
-                      aria-label="Scroll weekly picks to the right"
-                    >
-                      <ArrowRightOutlined />
-                    </button>
-                  </>
-                ) : null}
               </div>
 
               <div className="home-section-divider" aria-hidden="true" />
