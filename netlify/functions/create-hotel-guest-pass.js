@@ -2,6 +2,7 @@ import {
   createHotelGuestPass,
   updatePasskitFields,
 } from "../../lib/hotel-passes-db.js";
+import { sendGuestWelcomeEmail } from "../../lib/guest-welcome-email.js";
 import { createPasskitMemberForHotelGuest } from "../../lib/passkit-client.js";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -170,39 +171,25 @@ export const handler = async (event) => {
     );
 
     try {
-      if (hasExistingPasskitPass) {
-        return {
-          statusCode: 200,
-          headers,
-          body: JSON.stringify({
-            success: true,
-            guest: result.guest,
-            pass,
-            preferences: result.preferences,
-            passkitPending,
-            passkitError,
-            nextStep: "preferences",
-          }),
-        };
+      if (!hasExistingPasskitPass) {
+        const passkitData = await createPasskitMemberForHotelGuest({
+          guest: result.guest,
+          pass: result.pass,
+          preferences: result.preferences,
+          sourceHotelSlug,
+          destination,
+        });
+
+        pass = await updatePasskitFields(result.pass.id, {
+          passkitProgramId: passkitData.passkitProgramId,
+          passkitMemberId: passkitData.passkitMemberId,
+          passkitExternalId: passkitData.passkitExternalId,
+          passkitPassUrl: passkitData.passkitPassUrl,
+          passkitInstallUrl: passkitData.passkitInstallUrl,
+          passkitStatus: passkitData.passkitStatus,
+          lastPasskitSyncAt: new Date().toISOString(),
+        });
       }
-
-      const passkitData = await createPasskitMemberForHotelGuest({
-        guest: result.guest,
-        pass: result.pass,
-        preferences: result.preferences,
-        sourceHotelSlug,
-        destination,
-      });
-
-      pass = await updatePasskitFields(result.pass.id, {
-        passkitProgramId: passkitData.passkitProgramId,
-        passkitMemberId: passkitData.passkitMemberId,
-        passkitExternalId: passkitData.passkitExternalId,
-        passkitPassUrl: passkitData.passkitPassUrl,
-        passkitInstallUrl: passkitData.passkitInstallUrl,
-        passkitStatus: passkitData.passkitStatus,
-        lastPasskitSyncAt: new Date().toISOString(),
-      });
     } catch (error) {
       passkitPending = true;
       passkitError =
@@ -212,6 +199,20 @@ export const handler = async (event) => {
         sourceHotelSlug,
         message: error?.message || "Unknown PassKit error",
         statusCode: error?.statusCode || null,
+      });
+    }
+
+    try {
+      await sendGuestWelcomeEmail({
+        guest: result.guest,
+        pass,
+        preferences: result.preferences,
+      });
+    } catch (error) {
+      console.error("guest welcome email error:", {
+        guestId: result.guest?.id,
+        passId: pass?.id,
+        message: error?.message || "Unable to send guest welcome email",
       });
     }
 
