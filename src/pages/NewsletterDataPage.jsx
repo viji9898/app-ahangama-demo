@@ -32,6 +32,24 @@ const TWELVE_THINGS_ARTICLE = {
     "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
 };
 
+const TEXT_ARTICLES = [
+  {
+    label: "Town Guide",
+    title: "Sri Lanka's Most Interesting Coastal Town",
+    href: "/sri-lankas-most-interesting-coastal-town/?utm_source=newsletter&utm_medium=online&utm_campaign=newsletter_data&utm_content=text_coastal_town_article",
+  },
+  {
+    label: "Transport",
+    title: "Getting Around Ahangama",
+    href: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers/?utm_source=newsletter&utm_medium=online&utm_campaign=newsletter_data&utm_content=text_getting_around_article",
+  },
+  {
+    label: "Design",
+    title: "The Living Room Concept Store",
+    href: "/the-living-room-concept-store/?utm_source=newsletter&utm_medium=online&utm_campaign=newsletter_data&utm_content=text_living_room_article",
+  },
+];
+
 function buildInstagramUrl(handle) {
   if (!handle) return null;
 
@@ -414,6 +432,64 @@ function WhatsOnSection() {
   );
 }
 
+function TextArticlesSection() {
+  return (
+    <section style={{ marginTop: 28, borderTop: "5px solid #242424" }}>
+      <div
+        style={{
+          padding: "9px 8px 8px",
+          borderBottom: "1px solid #777",
+          background: "#f3f3f3",
+          color: "#242424",
+          fontFamily: SERIF_FONT,
+          fontSize: 20,
+          fontWeight: 700,
+          lineHeight: 1,
+          textTransform: "uppercase",
+        }}
+      >
+        Articles: <span style={{ color: ACCENT }}>Further Reading</span>
+      </div>
+      {TEXT_ARTICLES.map((article) => (
+        <article
+          key={article.href}
+          style={{ padding: "18px 0", borderBottom: "1px solid #242424" }}
+        >
+          <Text
+            style={{
+              display: "block",
+              marginBottom: 6,
+              color: ACCENT,
+              fontFamily: SERIF_FONT,
+              fontSize: 15,
+              fontWeight: 700,
+              textTransform: "uppercase",
+            }}
+          >
+            {article.label}
+          </Text>
+          <a href={article.href} style={{ color: "#242424" }}>
+            <Title
+              level={3}
+              style={{
+                margin: 0,
+                color: "#242424",
+                fontFamily: SERIF_FONT,
+                fontSize: 26,
+                fontWeight: 700,
+                lineHeight: 1,
+                textDecoration: "underline",
+              }}
+            >
+              {article.title}
+            </Title>
+          </a>
+        </article>
+      ))}
+    </section>
+  );
+}
+
 export default function NewsletterDataPage() {
   const canonical = absUrl(NEWSLETTER_DATA_PATH);
   const dateLabel = new Intl.DateTimeFormat("en-GB", {
@@ -628,6 +704,8 @@ export default function NewsletterDataPage() {
             </React.Fragment>
           ))}
         </section>
+
+        <TextArticlesSection />
 
         <section style={{ marginTop: 28 }}>
           <div
