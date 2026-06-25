@@ -51,6 +51,9 @@ import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
 import EventsPage from "../pages/EventsPage";
+import NewsletterDataPage, {
+  NEWSLETTER_DATA_PATH,
+} from "../pages/NewsletterDataPage";
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
@@ -119,6 +122,7 @@ const routes = [
   },
   { path: "/local-intelligence", element: <LocalIntelligencePage /> },
   { path: "/events", element: <EventsPage /> },
+  { path: NEWSLETTER_DATA_PATH, element: <NewsletterDataPage /> },
   {
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,

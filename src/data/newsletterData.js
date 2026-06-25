@@ -1,0 +1,185 @@
+export const NEWSLETTER_DATA = [
+  {
+    tagline: "Best oceanfront coffee",
+    vendor: "Kaffi",
+    category: "Coffee",
+    instagram: "kaffihangama",
+    latitude: 5.9689078,
+    longitude: 80.3706031,
+    googleUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJu7pmUN0T4ToRzNnyYODfGU4",
+  },
+  {
+    tagline: "The go-to spot for breakfast",
+    vendor: "Moochies Cafe and Rooftop",
+    category: "Breakfast",
+    instagram: "moochiesahangama",
+    latitude: 5.9703741,
+    longitude: 80.3676768,
+    googleUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJz1rAFQMV4ToRW7iWdc4p3RA",
+  },
+  {
+    tagline: "Catch your next wave here",
+    vendor: "Ceylon Sliders",
+    category: "Surfing",
+    instagram: "ceylonsliders",
+    latitude: 5.9721737,
+    longitude: 80.3640169,
+    googleUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJ3XlQ7z0T4ToRfAv-CstU8gY",
+  },
+  {
+    tagline: "Hidden gem for brunch",
+    vendor: "The Kip",
+    category: "Brunch",
+    instagram: "thekipahangama",
+    latitude: 5.9700077,
+    longitude: 80.3735191,
+    googleUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJMTRdTaQU4ToRM-xEwUWydew",
+  },
+  {
+    tagline: "Find your balance",
+    vendor: "Pura Pilates",
+    category: "Wellness",
+    instagram: "purapilatessrilanka",
+    latitude: 5.980186974839597,
+    longitude: 80.36560881118537,
+    googleUrl: "https://maps.app.goo.gl/ybTcvC642V5t6LCGA",
+  },
+  {
+    tagline: "Cook like a local",
+    vendor: "Kumbuk Kitchen & Art Space",
+    category: "Experience",
+    instagram: null,
+    latitude: 6.003078614172835,
+    longitude: 80.37894863792567,
+    googleUrl: "https://maps.app.goo.gl/CWJAvm7CVR9XeVea9",
+  },
+  {
+    tagline: "Stay active in Ahangama",
+    vendor: "Sellam",
+    category: "Gym",
+    instagram: null,
+    latitude: 5.9742794466164995,
+    longitude: 80.36432653558248,
+    googleUrl: "https://maps.app.goo.gl/z9Phojvqk4uQTHiW6",
+  },
+  {
+    tagline: "A taste of traditional Sri Lanka",
+    vendor: "Manori's Kitchen",
+    category: "Sri Lankan Rice & Curry",
+    instagram: "manoriskitchen",
+    latitude: 5.970553677414811,
+    longitude: 80.37116892443733,
+    googleUrl:
+      "https://www.google.com/maps/search/?api=1&query=5.970553677414811,80.37116892443733",
+  },
+  {
+    tagline: "Slow shopping in Ahangama",
+    vendor: "Yiva Essentials",
+    category: "Retail",
+    instagram: null,
+    latitude: null,
+    longitude: null,
+    googleUrl:
+      "https://www.google.com/maps/search/?api=1&query=Yiva%20Essentials%20Ahangama",
+  },
+  {
+    tagline: "Stay connected, stay productive",
+    vendor: "Focus Hub",
+    category: "Co-working",
+    instagram: null,
+    latitude: 5.971778035764045,
+    longitude: 80.36565208835837,
+    googleUrl: "https://maps.app.goo.gl/Sqzrp6LGxscqEjEC7",
+  },
+  {
+    tagline: "Deep reset spot",
+    vendor: "Banya Steam House",
+    category: "Sauna & Ice Bath",
+    instagram: "banyasrilanka",
+    latitude: 5.994568318002994,
+    longitude: 80.35071306820878,
+    googleUrl: "https://maps.app.goo.gl/FbUPQAsxxSL4quyC8",
+  },
+  {
+    tagline: "Fun for everyone",
+    vendor: "Coconut Court",
+    category: "Pickleball",
+    instagram: null,
+    latitude: 5.978418297405438,
+    longitude: 80.34807776441775,
+    googleUrl: "https://maps.app.goo.gl/b1zqTnJJgsETKm9k8",
+  },
+  {
+    tagline: "Made for the camera",
+    vendor: "Cactus",
+    category: "Photography",
+    instagram: "cactusahangama",
+    latitude: 5.9718757,
+    longitude: 80.3645275,
+    googleUrl:
+      "https://www.google.com/maps/place/?q=place_id:ChIJs3FQfk8T4ToRFksxXDpsvL0",
+  },
+  {
+    tagline: "Golden hour",
+    vendor: "Kai Ahangama",
+    category: "Sunset Spot",
+    instagram: null,
+    latitude: null,
+    longitude: null,
+    googleUrl:
+      "https://www.google.com/maps/search/?api=1&query=Kai%20Ahangama",
+  },
+  {
+    tagline: "Drinks and chill",
+    vendor: "Hotel de Uncles",
+    category: "Drink Spot",
+    instagram: "hoteldeuncles",
+    latitude: null,
+    longitude: null,
+    googleUrl:
+      "https://www.google.com/maps/search/?api=1&query=Hotel%20de%20Uncles%20Ahangama",
+  },
+  {
+    tagline: "Music nights on Wednesday",
+    vendor: "The Crust",
+    category: "Music",
+    instagram: null,
+    latitude: null,
+    longitude: null,
+    googleUrl:
+      "https://www.google.com/maps/search/?api=1&query=The%20Crust%20Ahangama",
+  },
+  {
+    tagline: "Thursday night picks",
+    vendor: "Hakuna Matata & Lamana",
+    category: "DJ Music",
+    instagram: null,
+    latitude: null,
+    longitude: null,
+    googleUrl:
+      "https://www.google.com/maps/search/?api=1&query=Hakuna%20Matata%20Lamana%20Ahangama",
+    venues: [
+      {
+        vendor: "Hakuna Matata",
+        instagram: "hakunamataahangama",
+        latitude: 5.9669647,
+        longitude: 80.3748064,
+        googleUrl: "https://maps.app.goo.gl/48Mm3kbcMVNKBqAh7",
+      },
+      {
+        vendor: "Lamana",
+        instagram: null,
+        latitude: null,
+        longitude: null,
+        googleUrl:
+          "https://www.google.com/maps/search/?api=1&query=Lamana%20Ahangama",
+      },
+    ],
+  },
+];
+
+export default NEWSLETTER_DATA;

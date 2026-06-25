@@ -29,6 +29,7 @@ const publicRoutes = [
   { path: "/map", changefreq: "weekly", priority: "0.7" },
   { path: "/mosvold", changefreq: "monthly", priority: "0.7" },
   { path: "/newsletter", changefreq: "weekly", priority: "0.7" },
+  { path: "/newsletter-data", changefreq: "weekly", priority: "0.5" },
   { path: "/offers", changefreq: "weekly", priority: "0.7" },
   { path: "/pabc", changefreq: "monthly", priority: "0.7" },
   { path: "/partners", changefreq: "monthly", priority: "0.7" },

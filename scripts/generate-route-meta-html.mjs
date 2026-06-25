@@ -439,6 +439,12 @@ const routeMeta = [
     publishDate: "2026-05-25T07:05:00.000Z",
   },
   {
+    route: "/newsletter-data",
+    title: "Newsletter Data | Ahangama",
+    description:
+      "Newsletter vendor data for Ahangama recommendations, including taglines, categories, Instagram handles, coordinates and Google Maps links.",
+  },
+  {
     route: "/local-intelligence",
     title:
       "Ahangama Intelligence | Live Snapshot of What Is Happening Right Now",
