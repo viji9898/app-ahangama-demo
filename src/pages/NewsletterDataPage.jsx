@@ -17,6 +17,7 @@ const SERIF_FONT = '"Cormorant Garamond", "Libre Baskerville", Georgia, serif';
 const SANS_FONT =
   'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
 const ACCENT = "#ff6f61";
+const CHARACTER_QUOTE_IMAGE = "/newsletter-character-quote.png";
 
 const SUNSET_ARTICLE = {
   title: "Where Ahangama Gathers for Sunset",
@@ -49,6 +50,7 @@ const TEXT_ARTICLES = [
     href: "/the-living-room-concept-store/?utm_source=newsletter&utm_medium=online&utm_campaign=newsletter_data&utm_content=text_living_room_article",
   },
 ];
+const FEATURED_ARTICLE_COUNT = TEXT_ARTICLES.length + 2;
 
 function buildInstagramUrl(handle) {
   if (!handle) return null;
@@ -629,46 +631,48 @@ export default function NewsletterDataPage() {
           }}
         >
           <div
-            aria-hidden="true"
             style={{
-              display: "grid",
-              placeItems: "center",
-              width: 54,
-              height: 54,
-              marginBottom: 24,
-              border: "3px solid #000",
-              borderRadius: "50%",
-              color: "#000",
-              fontFamily: SERIF_FONT,
-              fontSize: 30,
-              fontWeight: 700,
-              lineHeight: 1,
+              display: "flex",
+              alignItems: "center",
+              gap: 18,
+              marginBottom: 26,
+              paddingBottom: 22,
+              borderBottom: "1px solid #242424",
             }}
           >
-            A
+            <img
+              src={CHARACTER_QUOTE_IMAGE}
+              alt="Ahangama character"
+              loading="lazy"
+              style={{
+                display: "block",
+                flex: "0 0 88px",
+                width: 88,
+                height: "auto",
+              }}
+            />
+            <Paragraph
+              style={{
+                margin: 0,
+                color: "#111",
+                fontFamily: SERIF_FONT,
+                fontSize: 24,
+                fontStyle: "italic",
+                fontWeight: 700,
+                lineHeight: 1.28,
+              }}
+            >
+              Physically I&apos;m here. Mentally I&apos;m in a pool in Ahangama
+              ordering my third arrack cocktail.
+            </Paragraph>
           </div>
-          <Paragraph
-            style={{
-              margin: "0 0 26px",
-              color: "#2a2a2a",
-              fontFamily: SERIF_FONT,
-              fontSize: 27,
-              fontStyle: "italic",
-              fontWeight: 600,
-              lineHeight: 1.34,
-            }}
-          >
-            Good morning from Ahangama. Here is the working newsletter dataset:
-            local picks, practical services and map-backed notes for the next
-            dispatch.
-          </Paragraph>
           <div
             style={{
               display: "grid",
               gap: 8,
               color: "#242424",
               fontFamily: SERIF_FONT,
-              fontSize: 24,
+              fontSize: 12,
               fontWeight: 700,
               lineHeight: 1.2,
             }}
@@ -678,13 +682,12 @@ export default function NewsletterDataPage() {
               {NEWSLETTER_DATA.length} vendor recommendations
             </div>
             <div>
-              <span style={{ color: ACCENT }}>MAP READY:</span> {completeCount}{" "}
-              rows with Instagram and coordinates
+              <span style={{ color: ACCENT }}>FEATURED ARTICLES:</span>{" "}
+              {FEATURED_ARTICLE_COUNT} featured articles
             </div>
             <div>
-              <span style={{ color: ACCENT }}>NEARBY HELP:</span>{" "}
-              {NEWSLETTER_ESSENTIALS_NEARBY_HELP.length} essentials,{" "}
-              {essentialsCompleteCount} with coordinates
+              <span style={{ color: ACCENT }}>EVENTS:</span>{" "}
+              {THIS_WEEK_EVENTS.length} events
             </div>
           </div>
         </section>
