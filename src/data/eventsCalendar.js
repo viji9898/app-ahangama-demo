@@ -238,11 +238,12 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "🏄 Claramont Gaali",
+        title: "🌅 Sunset Club",
         venue: "Surf Club Midigama",
         time: "From 4:00 PM onwards",
         category: "Late June Events",
         image: surfClubMidigamaImage,
+        details: ["Music: Claremont x Gaali (2 DJs)"],
       }),
       enrichEvent({
         title: "🌴 Saturday Session",
