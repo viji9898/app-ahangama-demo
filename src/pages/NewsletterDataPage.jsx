@@ -208,35 +208,57 @@ function NewsletterArticleInsert({ article }) {
           display: "block",
           padding: "28px 0",
           borderBottom: "1px solid #242424",
-          color: "#242424",
+          color: "#ffffff",
           textDecoration: "none",
         }}
       >
-        <img
-          src={article.image}
-          alt="Sunset view from Stairway Rooftop Bar at Lighthouse Hotel"
-          loading="lazy"
+        <div
           style={{
-            display: "block",
-            width: "100%",
+            position: "relative",
+            overflow: "hidden",
             aspectRatio: "4 / 3",
-            objectFit: "cover",
-            marginBottom: 14,
-          }}
-        />
-        <Title
-          level={2}
-          style={{
-            margin: 0,
-            color: "#242424",
-            fontFamily: SERIF_FONT,
-            fontSize: 32,
-            fontWeight: 700,
-            lineHeight: 0.98,
+            background: "#111",
           }}
         >
-          {article.title}
-        </Title>
+          <img
+            src={article.image}
+            alt={article.title}
+            loading="lazy"
+            style={{
+              display: "block",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(180deg, rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.72) 100%)",
+            }}
+          />
+          <Title
+            level={2}
+            style={{
+              position: "absolute",
+              right: 16,
+              bottom: 16,
+              left: 16,
+              margin: 0,
+              color: "#ffffff",
+              fontFamily: SERIF_FONT,
+              fontSize: 32,
+              fontWeight: 700,
+              lineHeight: 0.98,
+              textShadow: "0 2px 12px rgba(0,0,0,0.55)",
+            }}
+          >
+            <span style={{ color: "#ffffff" }}>{article.title}</span>
+          </Title>
+        </div>
       </a>
     </article>
   );
