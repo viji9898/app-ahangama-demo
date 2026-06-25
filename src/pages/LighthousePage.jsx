@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   BookOutlined,
   CalendarOutlined,
@@ -373,6 +373,7 @@ export default function LighthousePage() {
   const canonical = absUrl("/lighthouse");
   const screens = Grid.useBreakpoint();
   const isTabletUp = Boolean(screens.md);
+  const passReadySectionRef = useRef(null);
   const [formStep, setFormStep] = useState(FORM_STEP_DETAILS);
   const [isSubmittingDetails, setIsSubmittingDetails] = useState(false);
   const [isSavingPreferences, setIsSavingPreferences] = useState(false);
@@ -409,6 +410,22 @@ export default function LighthousePage() {
   const filteredCountryOptions = PHONE_COUNTRY_CODES.filter((option) =>
     option.searchText.toLowerCase().includes(countrySearchQuery.toLowerCase()),
   ).slice(0, 12);
+
+  useEffect(() => {
+    if (formStep !== FORM_STEP_SUCCESS) {
+      return undefined;
+    }
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      passReadySectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      passReadySectionRef.current?.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, [formStep]);
 
   const handleGuestDetailsChange = (field, value) => {
     setGuestDetails((current) => ({
@@ -741,19 +758,24 @@ export default function LighthousePage() {
   );
 
   const signupPanel = (
-    <Card
-      id="lighthouse-signup-form"
-      style={{
-        width: "100%",
-        borderRadius: 28,
-        border: "1px solid rgba(32,30,27,0.08)",
-        background: "rgba(255,255,255,0.94)",
-        boxShadow: "0 26px 80px rgba(42,38,31,0.16)",
-        backdropFilter: "blur(14px)",
-      }}
-      bodyStyle={{ padding: isTabletUp ? 32 : 20 }}
+    <div
+      ref={passReadySectionRef}
+      tabIndex={-1}
+      style={{ width: "100%", scrollMarginTop: 96, outline: "none" }}
     >
-      {formStep !== FORM_STEP_DETAILS ? (
+      <Card
+        id="lighthouse-signup-form"
+        style={{
+          width: "100%",
+          borderRadius: 28,
+          border: "1px solid rgba(32,30,27,0.08)",
+          background: "rgba(255,255,255,0.94)",
+          boxShadow: "0 26px 80px rgba(42,38,31,0.16)",
+          backdropFilter: "blur(14px)",
+        }}
+        bodyStyle={{ padding: isTabletUp ? 32 : 20 }}
+      >
+        {formStep !== FORM_STEP_DETAILS ? (
         <>
           {formStep === FORM_STEP_PREFERENCES ? (
             <Text
@@ -816,9 +838,9 @@ export default function LighthousePage() {
               : "Your complimentary guest access has been prepared."}
           </Paragraph>
         </>
-      ) : null}
+        ) : null}
 
-      {formStep === FORM_STEP_DETAILS ? (
+        {formStep === FORM_STEP_DETAILS ? (
         <div
           style={{
             display: "grid",
@@ -1153,9 +1175,9 @@ export default function LighthousePage() {
             />
           </Space>
         </div>
-      ) : null}
+        ) : null}
 
-      {formStep === FORM_STEP_PREFERENCES ? (
+        {formStep === FORM_STEP_PREFERENCES ? (
         <div
           style={{
             display: "grid",
@@ -1412,9 +1434,9 @@ export default function LighthousePage() {
             </Button>
           </Space>
         </div>
-      ) : null}
+        ) : null}
 
-      {formStep === FORM_STEP_SUCCESS ? (
+        {formStep === FORM_STEP_SUCCESS ? (
         <div
           style={{
             width: "100%",
@@ -1498,8 +1520,9 @@ export default function LighthousePage() {
             ) : null}
           </Card>
         </div>
-      ) : null}
-    </Card>
+        ) : null}
+      </Card>
+    </div>
   );
 
   return (
