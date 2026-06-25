@@ -240,6 +240,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
   {
+    route: "/community-market-in-ahangama",
+    title: "Community Markets in Ahangama",
+    description:
+      "Where local creativity, makers, and travellers come together through Ahangama's pop-up markets, workshops, music, and community gatherings.",
+    publishDate: "2026-06-25T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/Hero+image+_+community-markets-ahangama-crowd-stalls.webp",
+  },
+  {
     route:
       "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel",
     title: "Where Ahangama Gathers for Sunset - Stairway Rooftop Bar",

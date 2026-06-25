@@ -43,6 +43,11 @@ const publicRoutes = [
     priority: "0.7",
   },
   {
+    path: "/community-market-in-ahangama",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
     path: "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel",
     changefreq: "monthly",
     priority: "0.7",
