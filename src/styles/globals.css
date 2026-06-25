@@ -282,6 +282,22 @@
   border-right: 1px solid rgba(32, 30, 27, 0.08);
 }
 
+.whats-on-boardImageWrap {
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 22px;
+  aspect-ratio: 4 / 3;
+  background: rgba(245, 239, 230, 0.85);
+}
+
+.whats-on-boardImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  opacity: 0.72;
+}
+
 .whats-on-boardItem:last-child {
   border-right: 0;
 }

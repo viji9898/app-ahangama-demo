@@ -1195,6 +1195,15 @@ export default function Home() {
                       className="whats-on-boardItem"
                       key={`${event.title}-${event.date}`}
                     >
+                      {event.image ? (
+                        <div className="whats-on-boardImageWrap">
+                          <img
+                            src={event.image}
+                            alt={event.title}
+                            className="whats-on-boardImage"
+                          />
+                        </div>
+                      ) : null}
                       <Text className="whats-on-boardDate">{event.date}</Text>
                       <Title level={3} className="whats-on-boardTitle">
                         {event.title}
