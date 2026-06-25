@@ -430,12 +430,13 @@ export default function NewsletterDataPage() {
             flexWrap: "wrap",
             gap: 16,
             justifyContent: "space-between",
-            padding: "18px 16px 18px",
+            overflow: "hidden",
+            padding: "18px 16px 20px",
             background: "#000000",
             color: "#ffffff",
           }}
         >
-          <div>
+          <div style={{ maxWidth: "100%" }}>
             <Text
               style={{
                 display: "block",
@@ -455,18 +456,29 @@ export default function NewsletterDataPage() {
                 margin: 0,
                 color: "#ffffff",
                 fontFamily: SERIF_FONT,
-                fontSize: 52,
+                fontSize: 46,
                 fontWeight: 700,
-                letterSpacing: 1,
-                lineHeight: 0.78,
+                letterSpacing: 0,
+                lineHeight: 0.9,
+                maxWidth: "100%",
                 textTransform: "uppercase",
               }}
             >
-              <span style={{ color: "#ffffff" }}>The</span>
-              <br />
-              <span style={{ color: "#ffffff" }}>Ahangama</span>
-              <br />
-              <span style={{ color: "#ffffff" }}>Minute</span>
+              <span style={{ color: "#ffffff", display: "block" }}>The</span>
+              <span
+                style={{
+                  color: "#ffffff",
+                  display: "block",
+                  fontSize: 40,
+                  overflowWrap: "anywhere",
+                  wordBreak: "break-word",
+                }}
+              >
+                Ahangama
+              </span>
+              <span style={{ color: "#ffffff", display: "block" }}>
+                Minute
+              </span>
             </Title>
           </div>
           <div
