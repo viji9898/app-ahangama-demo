@@ -20,14 +20,14 @@ const ACCENT = "#ff6f61";
 
 const SUNSET_ARTICLE = {
   title: "Where Ahangama Gathers for Sunset",
-  href: "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel/",
+  href: "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel/?utm_source=newsletter&utm_medium=online&utm_campaign=newsletter_data&utm_content=sunset_article",
   image:
     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/hero-view-from-the-bar.jpg",
 };
 
 const TWELVE_THINGS_ARTICLE = {
   title: "12 Things to Do in Ahangama",
-  href: "/12-things/",
+  href: "/12-things/?utm_source=newsletter&utm_medium=online&utm_campaign=newsletter_data&utm_content=12_things_article",
   image:
     "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
 };
@@ -395,7 +395,7 @@ function WhatsOnSection() {
           </article>
         ))}
         <a
-          href="/events"
+          href="/events?utm_source=newsletter&utm_medium=online&utm_campaign=newsletter_data&utm_content=view_full_events"
           style={{
             display: "inline-block",
             margin: "18px 0 22px",
