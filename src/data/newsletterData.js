@@ -154,30 +154,21 @@ export const NEWSLETTER_DATA = [
   },
   {
     tagline: "Thursday night picks",
-    vendor: "Hakuna Matata & Lamana",
+    vendor: "Hakuna Matata",
     category: "DJ Music",
-    instagram: null,
-    latitude: null,
-    longitude: null,
-    googleUrl:
-      "https://www.google.com/maps/search/?api=1&query=Hakuna%20Matata%20Lamana%20Ahangama",
-    venues: [
-      {
-        vendor: "Hakuna Matata",
-        instagram: "hakunamataahangama",
-        latitude: 5.9669647,
-        longitude: 80.3748064,
-        googleUrl: "https://maps.app.goo.gl/48Mm3kbcMVNKBqAh7",
-      },
-      {
-        vendor: "Lamana",
-        instagram: null,
-        latitude: null,
-        longitude: null,
-        googleUrl:
-          "https://www.google.com/maps/search/?api=1&query=Lamana%20Ahangama",
-      },
-    ],
+    instagram: "hakunamataahangama",
+    latitude: 5.9669647,
+    longitude: 80.3748064,
+    googleUrl: "https://maps.app.goo.gl/48Mm3kbcMVNKBqAh7",
+  },
+  {
+    tagline: "Thursday night picks",
+    vendor: "Lamana",
+    category: "DJ Music",
+    instagram: "lamana_ahangama",
+    latitude: 5.972605853309495,
+    longitude: 80.3640155306916,
+    googleUrl: "https://maps.app.goo.gl/y6sdXT3EZnAFh2t48",
   },
 ];
 

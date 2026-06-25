@@ -51,7 +51,7 @@ function MetaLink({ label, href }) {
   );
 }
 
-function EntryMeta({ item }) {
+function EntryMeta({ item, compact = false }) {
   const instagramUrl = buildInstagramUrl(item.instagram);
 
   return (
@@ -59,11 +59,11 @@ function EntryMeta({ item }) {
       style={{
         display: "flex",
         flexWrap: "wrap",
-        gap: "4px 12px",
-        marginTop: 18,
+        gap: compact ? "2px 8px" : "4px 12px",
+        marginTop: compact ? 9 : 18,
         color: "#555",
         fontFamily: SANS_FONT,
-        fontSize: 13,
+        fontSize: compact ? 11 : 13,
         lineHeight: 1.45,
       }}
     >
@@ -178,14 +178,14 @@ function NewsletterEntry({ item, index }) {
 
 function EssentialEntry({ item }) {
   return (
-    <article style={{ padding: "22px 0", borderBottom: "1px solid #242424" }}>
+    <article style={{ padding: "11px 0", borderBottom: "1px solid #242424" }}>
       <Text
         style={{
           display: "block",
-          marginBottom: 8,
+          marginBottom: 4,
           color: ACCENT,
           fontFamily: SERIF_FONT,
-          fontSize: 20,
+          fontSize: 10,
           fontWeight: 700,
           textTransform: "uppercase",
         }}
@@ -198,14 +198,14 @@ function EssentialEntry({ item }) {
           margin: 0,
           color: "#242424",
           fontFamily: SERIF_FONT,
-          fontSize: 34,
+          fontSize: 17,
           fontWeight: 700,
           lineHeight: 1,
         }}
       >
         {item.name}
       </Title>
-      <EntryMeta item={item} />
+      <EntryMeta item={item} compact />
     </article>
   );
 }
