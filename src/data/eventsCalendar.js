@@ -302,9 +302,66 @@ export const EVENTS_EDITOR_PICKS = [
   "Ceylon Sliders Saturday Session — late June social favourite.",
 ];
 
-export const THIS_WEEK_EVENTS = EVENTS_CALENDAR_DAYS.flatMap((day) =>
-  day.events.map((event) => ({
-    ...event,
-    date: `${day.weekday.slice(0, 3)} ${day.dayNumber} ${day.month.slice(0, 3)} 2026`,
-  })),
-).slice(0, 5);
+function getTodayKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function formatDayLabel(day) {
+  if (day.key === "ongoing") return "Ongoing";
+
+  return `${day.weekday.slice(0, 3)} ${day.dayNumber} ${day.month.slice(0, 3)} 2026`;
+}
+
+function buildHomepageEvents() {
+  const todayKey = getTodayKey();
+  const datedDays = EVENTS_CALENDAR_DAYS.filter((day) =>
+    /^\d{4}-\d{2}-\d{2}$/.test(day.key),
+  );
+  const ongoingDays = EVENTS_CALENDAR_DAYS.filter(
+    (day) => day.key === "ongoing",
+  );
+  const upcomingEvents = datedDays
+    .filter((day) => day.key >= todayKey)
+    .flatMap((day) =>
+      day.events.map((event) => ({
+        ...event,
+        date: formatDayLabel(day),
+        dayKey: day.key,
+      })),
+    );
+  const ongoingEvents = ongoingDays.flatMap((day) =>
+    day.events.map((event) => ({
+      ...event,
+      date: formatDayLabel(day),
+      dayKey: day.key,
+    })),
+  );
+
+  return [...upcomingEvents, ...ongoingEvents].slice(0, 5);
+}
+
+function buildHomepageDateLabel(events) {
+  const datedEvents = events.filter((event) => event.dayKey !== "ongoing");
+
+  if (!datedEvents.length) return "Ahangama . Ongoing";
+
+  const firstEvent = datedEvents[0];
+  const lastEvent = datedEvents[datedEvents.length - 1];
+  const firstDate = firstEvent.date
+    .replace(/^[A-Za-z]{3} /, "")
+    .replace(" 2026", "");
+  const lastDate = lastEvent.date
+    .replace(/^[A-Za-z]{3} /, "")
+    .replace(" 2026", "");
+
+  if (firstDate === lastDate) return `Ahangama . ${firstDate}`;
+
+  return `Ahangama . ${firstDate} - ${lastDate}`;
+}
+
+export const THIS_WEEK_EVENTS = buildHomepageEvents();
+export const THIS_WEEK_EVENTS_LABEL = buildHomepageDateLabel(THIS_WEEK_EVENTS);

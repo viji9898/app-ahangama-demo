@@ -31,7 +31,10 @@ import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
-import { THIS_WEEK_EVENTS } from "../data/eventsCalendar";
+import {
+  THIS_WEEK_EVENTS,
+  THIS_WEEK_EVENTS_LABEL,
+} from "../data/eventsCalendar";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -1126,7 +1129,7 @@ export default function Home() {
                   What&apos;s On This Week
                 </Text>
                 <Text className="whats-on-boardLocation">
-                  Ahangama . 4 - 8 June
+                  {THIS_WEEK_EVENTS_LABEL}
                 </Text>
                 <Paragraph className="whats-on-boardDescription">
                   A curated selection of things happening around town this week.
