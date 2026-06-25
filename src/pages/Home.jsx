@@ -138,6 +138,8 @@ const WEEKLY_PICKS = [
     title: "The Living Room Concept Store",
     date: "This Week",
     href: "/the-living-room-concept-store",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
   {
     category: "Community",
@@ -152,6 +154,8 @@ const WEEKLY_PICKS = [
     title: "Community Market",
     date: "Sat 7 Jun",
     href: "/community-market-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/Hero+image+_+community-markets-ahangama-crowd-stalls.webp",
   },
   {
     category: "Openings",
