@@ -316,32 +316,43 @@ function formatDayLabel(day) {
   return `${day.weekday.slice(0, 3)} ${day.dayNumber} ${day.month.slice(0, 3)} 2026`;
 }
 
-function buildHomepageEvents() {
+function isDatedDay(day) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(day.key);
+}
+
+function buildUpcomingCalendarDays() {
   const todayKey = getTodayKey();
-  const datedDays = EVENTS_CALENDAR_DAYS.filter((day) =>
-    /^\d{4}-\d{2}-\d{2}$/.test(day.key),
-  );
+  const datedDays = EVENTS_CALENDAR_DAYS.filter((day) => isDatedDay(day));
   const ongoingDays = EVENTS_CALENDAR_DAYS.filter(
     (day) => day.key === "ongoing",
   );
-  const upcomingEvents = datedDays
-    .filter((day) => day.key >= todayKey)
+
+  return [...datedDays.filter((day) => day.key >= todayKey), ...ongoingDays];
+}
+
+function buildHomepageEvents(days) {
+  return days
     .flatMap((day) =>
       day.events.map((event) => ({
         ...event,
         date: formatDayLabel(day),
         dayKey: day.key,
       })),
-    );
-  const ongoingEvents = ongoingDays.flatMap((day) =>
-    day.events.map((event) => ({
-      ...event,
-      date: formatDayLabel(day),
-      dayKey: day.key,
-    })),
-  );
+    )
+    .slice(0, 5);
+}
 
-  return [...upcomingEvents, ...ongoingEvents].slice(0, 5);
+function buildUpcomingEditorPicks(days) {
+  return days
+    .flatMap((day) =>
+      day.events.map((event) => {
+        const eventDate =
+          day.key === "ongoing" ? "Ongoing" : formatDayLabel(day);
+
+        return `${event.title} at ${event.venue} — ${eventDate}.`;
+      }),
+    )
+    .slice(0, 4);
 }
 
 function buildHomepageDateLabel(events) {
@@ -363,5 +374,11 @@ function buildHomepageDateLabel(events) {
   return `Ahangama . ${firstDate} - ${lastDate}`;
 }
 
-export const THIS_WEEK_EVENTS = buildHomepageEvents();
+export const UPCOMING_EVENTS_CALENDAR_DAYS = buildUpcomingCalendarDays();
+export const UPCOMING_EVENTS_EDITOR_PICKS = buildUpcomingEditorPicks(
+  UPCOMING_EVENTS_CALENDAR_DAYS,
+);
+export const THIS_WEEK_EVENTS = buildHomepageEvents(
+  UPCOMING_EVENTS_CALENDAR_DAYS,
+);
 export const THIS_WEEK_EVENTS_LABEL = buildHomepageDateLabel(THIS_WEEK_EVENTS);

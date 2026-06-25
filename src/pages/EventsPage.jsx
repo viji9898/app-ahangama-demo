@@ -6,9 +6,9 @@ import { absUrl } from "../app/siteUrl";
 import SiteLayout from "../components/layout/SiteLayout";
 import NewsletterSignup from "../components/newsletter/NewsletterSignup";
 import {
-  EVENTS_CALENDAR_DAYS,
-  EVENTS_EDITOR_PICKS,
   EVENTS_CALENDAR_OVERVIEW,
+  UPCOMING_EVENTS_CALENDAR_DAYS,
+  UPCOMING_EVENTS_EDITOR_PICKS,
 } from "../data/eventsCalendar";
 
 const { Title, Paragraph, Text } = Typography;
@@ -53,7 +53,7 @@ export default function EventsPage() {
           </header>
 
           <div className="events-agenda-list" role="list">
-            {EVENTS_CALENDAR_DAYS.map((day) => (
+            {UPCOMING_EVENTS_CALENDAR_DAYS.map((day) => (
               <section className="events-agenda-day" key={day.key}>
                 <div className="events-agenda-dateColumn">
                   <Text className="events-agenda-weekday">{day.weekday}</Text>
@@ -158,7 +158,7 @@ export default function EventsPage() {
               Editor&apos;s Picks This Week
             </Text>
             <div className="events-agenda-editorPicksList">
-              {EVENTS_EDITOR_PICKS.map((pick) => (
+              {UPCOMING_EVENTS_EDITOR_PICKS.map((pick) => (
                 <Text className="events-agenda-editorPick" key={pick}>
                   {pick}
                 </Text>
