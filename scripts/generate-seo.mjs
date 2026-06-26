@@ -24,7 +24,10 @@ const publicRoutes = [
   { path: "/events", changefreq: "weekly", priority: "0.8" },
   { path: "/guide", changefreq: "weekly", priority: "0.9" },
   { path: "/editors-picks", changefreq: "weekly", priority: "0.8" },
+  { path: "/gusta", changefreq: "monthly", priority: "0.5" },
+  { path: "/kaffi", changefreq: "monthly", priority: "0.5" },
   { path: "/lighthouse", changefreq: "monthly", priority: "0.8" },
+  { path: "/living-Room", changefreq: "monthly", priority: "0.5" },
   { path: "/local-intelligence", changefreq: "daily", priority: "0.8" },
   { path: "/map", changefreq: "weekly", priority: "0.7" },
   { path: "/mosvold", changefreq: "monthly", priority: "0.7" },
@@ -38,6 +41,7 @@ const publicRoutes = [
   { path: "/search", changefreq: "weekly", priority: "0.8" },
   { path: "/shops", changefreq: "weekly", priority: "0.8" },
   { path: "/stays", changefreq: "weekly", priority: "0.8" },
+  { path: "/tahini", changefreq: "monthly", priority: "0.5" },
   {
     path: "/the-living-room-concept-store",
     changefreq: "monthly",

@@ -303,6 +303,35 @@ const routeMeta = [
       "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg",
   },
   {
+    route: "/kaffi",
+    title: "Kaffi | Coming Soon",
+    description:
+      "Kaffi is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+    image: () => findBuiltAssetUrl("kaffi_image"),
+  },
+  {
+    route: "/gusta",
+    title: "Gusta | Coming Soon",
+    description:
+      "Gusta is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+    image: () => findBuiltAssetUrl("ahangama-scan-to-get-guide"),
+  },
+  {
+    route: "/tahini",
+    title: "Tahini & Friends | Coming Soon",
+    description:
+      "Tahini & Friends is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+    image: () => findBuiltAssetUrl("ahangama-scan-to-get-guide"),
+  },
+  {
+    route: "/living-Room",
+    title: "Living Room | Coming Soon",
+    description:
+      "Living Room is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
+  },
+  {
     route: "/what-is-ahangama-pass",
     title: "What Is The Ahangama Pass?",
     description:
