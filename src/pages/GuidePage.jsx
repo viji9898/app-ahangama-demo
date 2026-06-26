@@ -3,6 +3,8 @@ import { Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import AnimalsWebImage from "../assets/Animals Web.webp";
+import TrebathaWebImage from "../assets/Trebatha Web.webp";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -15,11 +17,9 @@ const GUIDE_CONTENT_IMAGE =
 const GUIDE_OVERVIEW_IMAGE =
   "https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/944/images/1440_6e0-1635949941.webp";
 
-const GUIDE_BEST_STAYS_IMAGE =
-  "https://images.mrandmrssmith.com/images/1482x988/7119673-trebartha-east-the-round-house-ahangama-sri-lanka.jpg";
+const GUIDE_BEST_STAYS_IMAGE = TrebathaWebImage;
 
-const GUIDE_ANIMALS_IMAGE =
-  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/625958343.jpg?k=fc972bc46442c3a6173a69f9d5a87550a3f28ab35e1fde5b3fb23ebd8624f315&o=";
+const GUIDE_ANIMALS_IMAGE = AnimalsWebImage;
 
 const GUIDE_CONTENT_LINKS = [
   "Ahangama Overview",

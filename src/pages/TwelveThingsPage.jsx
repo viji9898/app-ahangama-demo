@@ -19,15 +19,6 @@ const NEXT_ARTICLE = {
   image: "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
 };
 
-function slugifyInstagramPath(label) {
-  return label
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/'/g, "")
-    .replace(/[^a-z0-9]+/g, "")
-    .trim();
-}
-
 const articleIntroduction = [
   "There are places you visit and places you settle into.",
   "Ahangama belongs firmly in the latter category.",
@@ -153,31 +144,28 @@ const experiences = [
 ];
 
 const MENTIONED_PLACE_LINKS = [
-  "Kaffi",
-  "Sisters",
-  "Makai",
-  "Focus Hub",
-  "Follow The White Rabbit",
-  "Veda Cafe",
-  "Pura Pilates",
-  "Frosty's",
-  "White Lotus",
-  "The Nuga House",
-  "Studio Mukti",
-  "Living Room Concept Store",
-  "Coconut Republik",
-  "Maria Bonita",
-  "Le Cafe French Bistro",
-  "Hakuna Matata",
-  "Tahini & Friends",
-  "Coconut Court",
-  "Marshmallow",
-  "Kabalana",
-  "The Rock",
-].map((label) => ({
-  label,
-  href: `https://instagram.com/${slugifyInstagramPath(label)}`,
-}));
+  { label: "Kaffi", href: "https://www.instagram.com/kaffi.ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Sisters", href: "https://www.instagram.com/sisterssrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Makai", href: "https://www.instagram.com/makaisrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Focus Hub", href: "https://www.instagram.com/focushubcoworking?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Follow The White Rabbit", href: "https://www.instagram.com/followthewhiterabbitahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Veda Cafe", href: "https://www.instagram.com/vedacafesl?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Pura Pilates", href: "https://www.instagram.com/purapilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Frosty's", href: "https://www.instagram.com/frostys.kabalana?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "White Lotus", href: "https://www.instagram.com/lotussurfcamp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "The Nuga House", href: "https://www.instagram.com/thenugahouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Studio Mukti", href: "https://www.instagram.com/studio.mukti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Living Room Concept Store", href: "https://www.instagram.com/itsyour.livingroom?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Coconut Republik", href: "https://www.instagram.com/coconutrepublik_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Maria Bonita", href: "https://www.instagram.com/mariabonitasrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Le Cafe French Bistro", href: "https://www.instagram.com/le_cafe_french_bistro_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Hakuna Matata", href: "https://www.instagram.com/hakuna_matata_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Tahini & Friends", href: "https://www.instagram.com/tahini_and_friends?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Coconut Court", href: "https://www.instagram.com/coconutcourt_lk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Marshmallow", href: "https://www.instagram.com/marshmellowcafe.srilanka/?hl=en" },
+  { label: "Kabalana", href: "https://share.google/jrhvCF873SEstAwrB" },
+  { label: "The Rock", href: "https://share.google/7lUreActzTwY8SiFy" },
+];
 
 function renderVenueLinkedText(text) {
   const sortedLinks = [...MENTIONED_PLACE_LINKS].sort(
