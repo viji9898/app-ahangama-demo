@@ -11,27 +11,27 @@ export const WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH =
   "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel";
 
 const HERO_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/hero-view-from-the-bar.jpg";
+  "/Light%20House%20Webpage%20images/light-house-front-facing-view-portrait.webp";
 const VIEW_FROM_BAR_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/view-from-theb-bar.jpg";
+  "/Light%20House%20Webpage%20images/light-house-beach-view-hero.webp";
 const ROOFTOP_GUEST_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/rooftop-man-smking-a-pipe-dog-background-ocean.jpg";
+  "/Light%20House%20Webpage%20images/people-enjoying-cocktails-in-the-rooftop-portrait.webp";
 const BARTENDER_COCKTAILS_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/bartender-showing-4-cocktails.jpg";
+  "/Light%20House%20Webpage%20images/light-house-staff-2-making-cocktails-portrait.webp";
 const PURPLE_OASIS_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/Purple+Oasis+(purple+cocktail+with+ocean+backdrop).jpeg";
+  "/Light%20House%20Webpage%20images/cocktail-3-portrait.webp";
 const GOLDEN_SOUR_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/Golden+Sour+(bartender+serving+drink).jpeg";
+  "/Light%20House%20Webpage%20images/light-house-staff-making-cocktails-portrait.webp";
 const CUCUMBER_MULE_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/Cucumber+Mule+(with+Lighthouse+coaster).jpeg";
+  "/Light%20House%20Webpage%20images/light-house-cocktail-making-section-in-detail-portrait.webp";
 const CEYLON_SPRITZ_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/Ceylon+Spritz+(pineapple+garnish).jpeg";
+  "/Light%20House%20Webpage%20images/cocktail-4-wide-feature.webp";
 
 const NEXT_ARTICLE = {
   href: "/lighthouse",
   kicker: "Explore More",
   title: "Lighthouse Guest Pass",
-  image: HERO_IMAGE,
+  image: "/Light%20House%20Webpage%20images/light-house-beach-view-og.webp",
 };
 
 const articleIntroduction = [
@@ -480,7 +480,7 @@ export default function WhereAhangamaGathersForSunsetPage() {
                       alt="Cucumber Mule cocktail with a Lighthouse coaster"
                     />
                     <ArticleImage
-                      src={HERO_IMAGE}
+                      src="/Light%20House%20Webpage%20images/people-enjoying-the-beach-view-wide-feature.webp"
                       alt="Sunset crowd at Stairway Rooftop Bar"
                     />
                   </div>
