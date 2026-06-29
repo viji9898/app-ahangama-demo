@@ -56,6 +56,7 @@ import NewsletterDataPage, {
 } from "../pages/NewsletterDataPage";
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
+import EmailPreviewPage from "../pages/EmailPreviewPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
@@ -215,6 +216,7 @@ const routes = [
   { path: "/shops", element: <ShopsEditorialPage /> },
   { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
+  { path: "/email-preview", element: <EmailPreviewPage /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,
