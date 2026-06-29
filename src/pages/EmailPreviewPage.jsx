@@ -9,6 +9,8 @@ const { Paragraph, Text, Title } = Typography;
 
 const EMAIL_PREVIEW_PATH = "/email-preview";
 const EMAIL_PREVIEW_ENDPOINT = "/.netlify/functions/guest-welcome-email-preview";
+const EMAIL_PREVIEW_WIDTH = 390;
+const EMAIL_PREVIEW_HEIGHT = 760;
 
 export default function EmailPreviewPage() {
   const [preview, setPreview] = useState(null);
@@ -199,7 +201,7 @@ export default function EmailPreviewPage() {
             aria-label="Mobile email preview"
             style={{
               flex: "1 1 320px",
-              width: "min(100%, 430px)",
+              width: `min(100%, ${EMAIL_PREVIEW_WIDTH + 40}px)`,
               margin: "0 auto",
               padding: 12,
               border: "1px solid #171717",
@@ -208,6 +210,25 @@ export default function EmailPreviewPage() {
               boxShadow: "0 28px 70px rgba(40, 32, 20, 0.28)",
             }}
           >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "0 0 10px",
+              }}
+            >
+              <Text
+                style={{
+                  color: "#f4f0e8",
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: 1.2,
+                  textTransform: "uppercase",
+                }}
+              >
+                Email width: {EMAIL_PREVIEW_WIDTH}px
+              </Text>
+            </div>
             <div
               style={{
                 height: 24,
@@ -228,8 +249,10 @@ export default function EmailPreviewPage() {
             <div
               style={{
                 overflow: "hidden",
-                height: "min(760px, calc(100vh - 128px))",
+                width: `min(100%, ${EMAIL_PREVIEW_WIDTH}px)`,
+                height: `min(${EMAIL_PREVIEW_HEIGHT}px, calc(100vh - 128px))`,
                 minHeight: 520,
+                margin: "0 auto",
                 borderRadius: 24,
                 background: "#fff",
               }}
