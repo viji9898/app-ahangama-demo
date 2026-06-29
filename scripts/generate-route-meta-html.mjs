@@ -304,30 +304,30 @@ const routeMeta = [
   },
   {
     route: "/kaffi",
-    title: "Kaffi | Coming Soon",
+    title: "Kaffi Guest Pass",
     description:
-      "Kaffi is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+      "A Kaffi guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
     image: () => findBuiltAssetUrl("kaffi_image"),
   },
   {
     route: "/gusta",
-    title: "Gusta | Coming Soon",
+    title: "Gusta Guest Pass",
     description:
-      "Gusta is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+      "A Gusta guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
     image: () => findBuiltAssetUrl("ahangama-scan-to-get-guide"),
   },
   {
     route: "/tahini",
-    title: "Tahini & Friends | Coming Soon",
+    title: "Tahini & Friends Guest Pass",
     description:
-      "Tahini & Friends is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+      "A Tahini & Friends guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
     image: () => findBuiltAssetUrl("ahangama-scan-to-get-guide"),
   },
   {
     route: "/living-Room",
-    title: "Living Room | Coming Soon",
+    title: "Living Room Guest Pass",
     description:
-      "Living Room is coming soon to Ahangama.com, with venue details, local context, and guest pass information.",
+      "A Living Room guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },

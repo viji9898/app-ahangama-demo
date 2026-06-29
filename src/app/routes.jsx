@@ -63,9 +63,6 @@ import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
-import VenueComingSoonPage, {
-  VENUE_COMING_SOON_PAGES,
-} from "../pages/VenueComingSoonPage";
 import CommunityMarketInAhangamaPage, {
   COMMUNITY_MARKET_IN_AHANGAMA_PATH,
 } from "../pages/CommunityMarketInAhangamaPage";
@@ -161,22 +158,20 @@ const routes = [
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
   {
-    path: VENUE_COMING_SOON_PAGES.kaffi.path,
-    element: <VenueComingSoonPage venue={VENUE_COMING_SOON_PAGES.kaffi} />,
+    path: "/kaffi",
+    element: <LighthousePage variant="kaffi" />,
   },
   {
-    path: VENUE_COMING_SOON_PAGES.gusta.path,
-    element: <VenueComingSoonPage venue={VENUE_COMING_SOON_PAGES.gusta} />,
+    path: "/gusta",
+    element: <LighthousePage variant="gusta" />,
   },
   {
-    path: VENUE_COMING_SOON_PAGES.tahini.path,
-    element: <VenueComingSoonPage venue={VENUE_COMING_SOON_PAGES.tahini} />,
+    path: "/tahini",
+    element: <LighthousePage variant="tahini" />,
   },
   {
-    path: VENUE_COMING_SOON_PAGES.livingRoom.path,
-    element: (
-      <VenueComingSoonPage venue={VENUE_COMING_SOON_PAGES.livingRoom} />
-    ),
+    path: "/living-Room",
+    element: <LighthousePage variant="livingRoom" />,
   },
   { path: "/offers", element: <FullListPage /> },
   { path: "/full-list", element: <FullListPage /> },
