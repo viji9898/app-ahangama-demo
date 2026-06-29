@@ -284,7 +284,7 @@ const routeMeta = [
     description:
       "A Lighthouse Hotel guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the stay.",
     image:
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/light-house-beach-view-wide.webp",
   },
   {
     route: "/mosvold",
@@ -307,21 +307,24 @@ const routeMeta = [
     title: "Kaffi Guest Pass",
     description:
       "A Kaffi guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
-    image: () => findBuiltAssetUrl("kaffi_image"),
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/kaffi-ahangama-outdoors-wide.webp",
   },
   {
     route: "/gusta",
     title: "Gusta Guest Pass",
     description:
       "A Gusta guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
-    image: () => findBuiltAssetUrl("ahangama-scan-to-get-guide"),
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/gusta-evening-wide.webp",
   },
   {
     route: "/tahini",
     title: "Tahini & Friends Guest Pass",
     description:
       "A Tahini & Friends guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
-    image: () => findBuiltAssetUrl("ahangama-scan-to-get-guide"),
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/tahini-and-friends-yoga-area-wide.webp",
   },
   {
     route: "/living-Room",
@@ -329,7 +332,7 @@ const routeMeta = [
     description:
       "A Living Room guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/living-room-wide.webp",
   },
   {
     route: "/what-is-ahangama-pass",

@@ -36,10 +36,8 @@ import {
   PHONE_COUNTRY_CODES,
 } from "../data/phoneCountryCodes";
 import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
-import guideImage from "../assets/ahangama-scan-to-get-guide.jpg";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
-import kaffiImage from "../assets/temp/kaffi_image.jpg";
 
 const { Paragraph, Text, Title } = Typography;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -94,9 +92,15 @@ function formatCountryOptionLabel(option) {
 }
 
 const LIGHTHOUSE_HERO_IMAGE =
-  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/light-house-beach-view-wide.webp";
+const GUSTA_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/gusta-evening-wide.webp";
+const KAFFI_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/kaffi-ahangama-outdoors-wide.webp";
 const LIVING_ROOM_HERO_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/living-room-wide.webp";
+const TAHINI_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/tahini-and-friends-yoga-area-wide.webp";
 
 const GUEST_PASS_PAGE_VARIANTS = {
   lighthouse: {
@@ -122,7 +126,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     seoTitle: "Kaffi Guest Pass",
     seoDescription:
       "A Kaffi guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
-    heroImage: kaffiImage,
+    heroImage: KAFFI_HERO_IMAGE,
     heroAlt: "Kaffi in Ahangama",
     badge: "Included For Kaffi Guests",
     body:
@@ -138,7 +142,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     seoTitle: "Gusta Guest Pass",
     seoDescription:
       "A Gusta guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
-    heroImage: guideImage,
+    heroImage: GUSTA_HERO_IMAGE,
     heroAlt: "Ahangama guide display",
     badge: "Included For Gusta Guests",
     body:
@@ -153,7 +157,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     seoTitle: "Tahini & Friends Guest Pass",
     seoDescription:
       "A Tahini & Friends guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
-    heroImage: guideImage,
+    heroImage: TAHINI_HERO_IMAGE,
     heroAlt: "Ahangama guide display",
     badge: "Included For Tahini & Friends Guests",
     body:
