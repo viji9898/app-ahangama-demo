@@ -2,8 +2,8 @@ import denitsaImage from "../assets/temp/denitsa.jpg";
 import kaffiImage from "../assets/temp/kaffi_image.jpg";
 import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
 import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
-import lightHouseHappyHourImage from "../assets/temp/Lighthouse Happy Hour.jpeg";
 import sistersImage from "../assets/temp/sisters_image.jpg";
+import lighthouseHappyHourImage from "../assets/temp/Lighthouse Happy Hour.jpeg";
 import { PLACES } from "./places";
 
 const hakunaMatataImage =
@@ -241,7 +241,7 @@ export const EVENTS_CALENDAR_DAYS = [
       enrichEvent({
         title: "🌅 Sunset Club",
         venue: "Surf Club Midigama",
-        time: "From 4:00 PM onwards",
+        time: "From 4:00 PM onwards",      
         category: "Late June Events",
         image: surfClubMidigamaImage,
         details: ["Music: Claremont x Gaali (2 DJs)"],
@@ -292,27 +292,21 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Receive a complimentary charcuterie or cheese bite with every glass of wine or beer.",
       }),
-    ],
-  },
-  
-   {
-    key: "ongoing",
-    weekday: "Ongoing",
-    dayNumber: "Daily",
-    month: "",
-    events: [
       enrichEvent({
-        title: "🌅 Daily Light House - Rooftop Happy Hour",
-        venue: "Light House",
+        title: "🌅 Rooftop Happy Hour",
+        venue: "Lighthouse",
         time: "4:00 PM - 6:00 PM",
         category: "Ongoing",
-        image: lightHouseHappyHourImage,
-        description:
-          "Selected drinks at happy hour prices.",
+        image: lighthouseHappyHourImage,
+        description: "Daily happy hour featuring selected drinks specials at Lighthouse Rooftop.",
+        details: [
+          "Time: 4:00 PM - 6:00 PM",
+          "Venue: Lighthouse Rooftop",
+          "Offer: Selected drinks specials",
+        ],
       }),
     ],
   },
-
 ];
 
 export const EVENTS_EDITOR_PICKS = [
