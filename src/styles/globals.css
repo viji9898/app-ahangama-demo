@@ -206,6 +206,10 @@
   font-weight: 700;
 }
 
+.whats-on-boardLink--mobile {
+  display: none;
+}
+
 .whats-on-boardRail {
   display: flex;
   flex: 1 1 auto;
@@ -5106,6 +5110,15 @@
     margin-bottom: 0 !important;
     font-size: 14px !important;
     line-height: 1.7 !important;
+  }
+
+  .whats-on-boardIntro .whats-on-boardLink {
+    display: none;
+  }
+
+  .whats-on-boardLink--mobile {
+    display: inline-flex;
+    margin-top: 18px;
   }
 
   .whats-on-boardRail {

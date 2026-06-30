@@ -1193,6 +1193,13 @@ export default function Home() {
                   </button>
                 ) : null}
               </div>
+
+              <a
+                href="/events"
+                className="whats-on-boardLink whats-on-boardLink--mobile"
+              >
+                View full calendar <ArrowRightOutlined />
+              </a>
             </div>
 
             <div className="home-section-divider" aria-hidden="true" />
