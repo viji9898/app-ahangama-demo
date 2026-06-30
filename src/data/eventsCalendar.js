@@ -3,7 +3,7 @@ import kaffiImage from "../assets/temp/kaffi_image.jpg";
 import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
 import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
 import sistersImage from "../assets/temp/sisters_image.jpg";
-import lighthouseHappyHourImage from "../assets/temp/Lighthouse Happy Hour.jpeg";
+import lighthouseHappyHourImage from "../assets/temp/lighthouse-happy-hour.jpeg";
 import { PLACES } from "./places";
 
 const hakunaMatataImage =
@@ -298,12 +298,7 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "4:00 PM - 6:00 PM",
         category: "Ongoing",
         image: lighthouseHappyHourImage,
-        description: "Daily happy hour featuring selected drinks specials at Lighthouse Rooftop.",
-        details: [
-          "Time: 4:00 PM - 6:00 PM",
-          "Venue: Lighthouse Rooftop",
-          "Offer: Selected drinks specials",
-        ],
+        description: "Daily rooftop happy hour with selected drinks specials.",
       }),
     ],
   },
