@@ -1,11 +1,9 @@
 import {
   createBookingRequestsForInterests,
   getPassById,
-  getPassGuestById,
   updateGuestPreferences,
   updatePassGuestById,
 } from "../../lib/hotel-passes-db.js";
-import { sendGuestWelcomeEmail } from "../../lib/guest-welcome-email.js";
 
 function jsonHeaders() {
   return {
@@ -166,27 +164,13 @@ export const handler = async (event) => {
       notes: "Created from complimentary pass preferences",
     });
 
-    const guest = await updatePassGuestById(pass.guestId, {
+    await updatePassGuestById(pass.guestId, {
       ...(body.country !== undefined
         ? { country: normalizeOptionalText(body.country) }
         : {}),
       ...(destination ? { destination } : {}),
       whatsappOptIn,
     });
-
-    try {
-      await sendGuestWelcomeEmail({
-        guest: guest || (await getPassGuestById(pass.guestId)),
-        pass,
-        preferences,
-      });
-    } catch (error) {
-      console.error("guest welcome email error:", {
-        guestId: pass.guestId,
-        passId,
-        message: error?.message || "Unable to send guest welcome email",
-      });
-    }
 
     return {
       statusCode: 200,

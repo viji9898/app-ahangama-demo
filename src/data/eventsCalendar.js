@@ -1,28 +1,32 @@
-import denitsaImage from "../assets/temp/denitsa.jpg";
-import kaffiImage from "../assets/temp/kaffi_image.jpg";
-import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
-import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
-import sistersImage from "../assets/temp/sisters_image.jpg";
 import lighthouseHappyHourImage from "../assets/temp/lighthouse-happy-hour.jpeg";
 import sambaHappyHourImage from "../assets/temp/Samba Haappy Hour .png";
 import { PLACES } from "./places";
 
-const hakunaMatataImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9e--9bKEqx2UsgwLgl-sD9HERM2IwUO-SrlbjgkObzg&s";
-const kaiAhangamaImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFo_WO2aYf0skZDCdlnXsk_4KFA-Pk8lzm4YMHn6opTm68tPL3VBuvRBFP&s=10";
-const monoImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fdxlVJzlSJyvRhSuPJgtgyXlYPdVZ_F0JoZ_NEUDW3rUAcduiXmedfo&s=10";
-const kurunduImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMdjOUPtrdg1scx7VrB-rtPZs2Lt1irsRnQOMA20tgMg&s";
-const emberAndIceImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7a98ui0WeTl_1buvGUviVYiSqP9ce7YblAsl7NXykmA&s=10";
-const ceylonSlidersImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4tqOBI2aw3LSwAFzSp-LOrPry5130DW3B2XCXAKplLSUMmLT5KAhq_R6d&s=10";
-const leCafeFrenchBistroImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN2ssDlRL51FwFIu_ycTE5PLEp4PBrwFeUddoSVwC_mA&s=10";
-const surfClubMidigamaImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLNrn0hcb3C4Mahgkhd1LITEGeMN_HUTHtlcSR_u78ig&s=10";
+const eventImage = (fileName) =>
+  encodeURI(`/Images for Events Calendar/${fileName}`);
+
+const hakunaMatataSunsetImage = eventImage(
+  "Hakuna Matata - Thursday sunset Event Flyer.png",
+);
+const hotelDeUnclesKaraokeImage = eventImage(
+  "Hotel De uncles - Karaoke Event Flyer_.jpg",
+);
+const kaiAhangamaImage = eventImage("Kai - Live Music - Venue Image.png");
+const monoImage = eventImage("Mono - Dante Alchemico Koila Event Flyer.jpg");
+const kurunduImage = eventImage("Kurundu - Sundown session Event Flyer.png");
+const emberAndIceRitualsImage = eventImage("Ember & Ice-  Rituals Image.png");
+const emberAndIceBreathworkImage = eventImage(
+  "Ember & Ice - Breathworking Image_.png",
+);
+const ceylonSlidersImage = eventImage(
+  "Ceylon sliders - Saturday Session - Party night image.jpg",
+);
+const leCafeFrenchBistroImage = eventImage(
+  "Le Cafe french bistro - two Wine glasses and two  side plates of cheese_.png",
+);
+const surfClubMidigamaImage = eventImage(
+  "Surf Club midigama - Sunset Club Event Flyer.jpg",
+);
 
 const VENUE_NAME_ALIASES = {
   "le cafe french bistro": "le cafe",
@@ -114,7 +118,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Hakuna Matata",
         time: "Happy Hour: 5:00 PM - 7:00 PM",
         category: "Weekly Picks",
-        image: hakunaMatataImage,
+        image: hakunaMatataSunsetImage,
         description: "20% off all cocktails with sunset music and a full night line-up.",
         details: [
           "Music: Skillz Jay, Monamourrr, Mr. Percussion, Hotel De Uncles",
@@ -126,7 +130,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Hakuna Matata",
         time: "From 6:00 PM",
         category: "Weekly Picks",
-        image: hakunaMatataImage,
+        image: hotelDeUnclesKaraokeImage,
       }),
       enrichEvent({
         title: "🎵 Live Music with Channa",
@@ -214,7 +218,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Ember & Ice",
         time: "10:00 AM",
         category: "Wellness",
-        image: emberAndIceImage,
+        image: emberAndIceBreathworkImage,
       }),
     ],
   },
@@ -229,7 +233,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Ember & Ice",
         time: "11:00 AM",
         category: "Wellness",
-        image: emberAndIceImage,
+        image: emberAndIceRitualsImage,
       }),
     ],
   },
@@ -274,7 +278,7 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Ember & Ice",
         time: "10:00 AM",
         category: "Wellness",
-        image: emberAndIceImage,
+        image: emberAndIceBreathworkImage,
       }),
     ],
   },

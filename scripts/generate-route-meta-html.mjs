@@ -284,7 +284,7 @@ const routeMeta = [
     description:
       "A Lighthouse Hotel guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the stay.",
     image:
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/light-house-beach-view-wide.webp",
   },
   {
     route: "/mosvold",
@@ -301,6 +301,38 @@ const routeMeta = [
       "An exclusive Pan Asia Bank cardholder offer with 25% off the USD 30 Ahangama Pass when purchased using an eligible PABC debit or credit card.",
     image:
       "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg",
+  },
+  {
+    route: "/kaffi",
+    title: "Kaffi Guest Pass",
+    description:
+      "A Kaffi guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/kaffi-ahangama-outdoors-wide.webp",
+  },
+  {
+    route: "/gusta",
+    title: "Gusta Guest Pass",
+    description:
+      "A Gusta guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/gusta-evening-wide.webp",
+  },
+  {
+    route: "/tahini",
+    title: "Tahini & Friends Guest Pass",
+    description:
+      "A Tahini & Friends guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/tahini-and-friends-yoga-area-wide.webp",
+  },
+  {
+    route: "/living-Room",
+    title: "Living Room Guest Pass",
+    description:
+      "A Living Room guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/living-room-wide.webp",
   },
   {
     route: "/what-is-ahangama-pass",
@@ -437,6 +469,12 @@ const routeMeta = [
     description:
       "A monthly editorial letter covering local recommendations, openings, events, guides and stories from Ahangama.",
     publishDate: "2026-05-25T07:05:00.000Z",
+  },
+  {
+    route: "/newsletter-data",
+    title: "Newsletter Data | Ahangama",
+    description:
+      "Newsletter vendor data for Ahangama recommendations, including taglines, categories, Instagram handles, coordinates and Google Maps links.",
   },
   {
     route: "/local-intelligence",

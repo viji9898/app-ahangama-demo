@@ -51,8 +51,12 @@ import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
 import EventsPage from "../pages/EventsPage";
+import NewsletterDataPage, {
+  NEWSLETTER_DATA_PATH,
+} from "../pages/NewsletterDataPage";
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
+import EmailPreviewPage from "../pages/EmailPreviewPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
@@ -119,6 +123,7 @@ const routes = [
   },
   { path: "/local-intelligence", element: <LocalIntelligencePage /> },
   { path: "/events", element: <EventsPage /> },
+  { path: NEWSLETTER_DATA_PATH, element: <NewsletterDataPage /> },
   {
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
@@ -153,6 +158,22 @@ const routes = [
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
+  {
+    path: "/kaffi",
+    element: <LighthousePage variant="kaffi" />,
+  },
+  {
+    path: "/gusta",
+    element: <LighthousePage variant="gusta" />,
+  },
+  {
+    path: "/tahini",
+    element: <LighthousePage variant="tahini" />,
+  },
+  {
+    path: "/living-Room",
+    element: <LighthousePage variant="livingRoom" />,
+  },
   { path: "/offers", element: <FullListPage /> },
   { path: "/full-list", element: <FullListPage /> },
   { path: "/12-things", element: <TwelveThingsPage /> },
@@ -195,6 +216,7 @@ const routes = [
   { path: "/shops", element: <ShopsEditorialPage /> },
   { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
+  { path: "/email-preview", element: <EmailPreviewPage /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,

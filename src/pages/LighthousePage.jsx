@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   BookOutlined,
   CalendarOutlined,
@@ -92,7 +92,97 @@ function formatCountryOptionLabel(option) {
 }
 
 const LIGHTHOUSE_HERO_IMAGE =
-  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399746482.jpg?k=dcf8dd932aa01c5c00a96346f8facccd7e423e187db501a3939e4c971d097c18&o=";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/light-house-beach-view-wide.webp";
+const GUSTA_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/gusta-evening-wide.webp";
+const KAFFI_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/kaffi-ahangama-outdoors-wide.webp";
+const LIVING_ROOM_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/living-room-wide.webp";
+const TAHINI_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/tahini-and-friends-yoga-area-wide.webp";
+
+const GUEST_PASS_PAGE_VARIANTS = {
+  lighthouse: {
+    path: "/lighthouse",
+    sourceHotelSlug: LIGHTHOUSE_SOURCE_HOTEL_SLUG,
+    destination: LIGHTHOUSE_DESTINATION,
+    seoTitle: "Lighthouse Guest Pass",
+    seoDescription:
+      "A Lighthouse Hotel guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the stay.",
+    heroImage: LIGHTHOUSE_HERO_IMAGE,
+    heroAlt: "Lighthouse Hotel exterior",
+    badge: "Included With Your Stay At Lighthouse Hotel",
+    body:
+      "Local insight, trusted recommendations and exclusive guest benefits, all in one digital pass built for Lighthouse Hotel guests.",
+    socialProof:
+      "Join 1,247+ Lighthouse guests already exploring Ahangama better.",
+    statsTitle: "Why Lighthouse Guests Love Their Pass",
+  },
+  kaffi: {
+    path: "/kaffi",
+    sourceHotelSlug: "kaffi",
+    destination: LIGHTHOUSE_DESTINATION,
+    seoTitle: "Kaffi Guest Pass",
+    seoDescription:
+      "A Kaffi guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    heroImage: KAFFI_HERO_IMAGE,
+    heroAlt: "Kaffi in Ahangama",
+    badge: "Included For Kaffi Guests",
+    body:
+      "Local insight, trusted recommendations and exclusive guest benefits, all in one digital pass built for Kaffi guests.",
+    socialProof:
+      "Join Kaffi guests already exploring Ahangama better.",
+    statsTitle: "Why Kaffi Guests Love Their Pass",
+  },
+  gusta: {
+    path: "/gusta",
+    sourceHotelSlug: "gusta",
+    destination: LIGHTHOUSE_DESTINATION,
+    seoTitle: "Gusta Guest Pass",
+    seoDescription:
+      "A Gusta guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    heroImage: GUSTA_HERO_IMAGE,
+    heroAlt: "Ahangama guide display",
+    badge: "Included For Gusta Guests",
+    body:
+      "Local insight, trusted recommendations and exclusive guest benefits, all in one digital pass built for Gusta guests.",
+    socialProof: "Join Gusta guests already exploring Ahangama better.",
+    statsTitle: "Why Gusta Guests Love Their Pass",
+  },
+  tahini: {
+    path: "/tahini",
+    sourceHotelSlug: "tahini",
+    destination: LIGHTHOUSE_DESTINATION,
+    seoTitle: "Tahini & Friends Guest Pass",
+    seoDescription:
+      "A Tahini & Friends guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    heroImage: TAHINI_HERO_IMAGE,
+    heroAlt: "Ahangama guide display",
+    badge: "Included For Tahini & Friends Guests",
+    body:
+      "Local insight, trusted recommendations and exclusive guest benefits, all in one digital pass built for Tahini & Friends guests.",
+    socialProof:
+      "Join Tahini & Friends guests already exploring Ahangama better.",
+    statsTitle: "Why Tahini & Friends Guests Love Their Pass",
+  },
+  livingRoom: {
+    path: "/living-Room",
+    sourceHotelSlug: "living-room",
+    destination: LIGHTHOUSE_DESTINATION,
+    seoTitle: "Living Room Guest Pass",
+    seoDescription:
+      "A Living Room guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    heroImage: LIVING_ROOM_HERO_IMAGE,
+    heroAlt: "The Living Room Concept Store showroom",
+    badge: "Included For Living Room Guests",
+    body:
+      "Local insight, trusted recommendations and exclusive guest benefits, all in one digital pass built for Living Room guests.",
+    socialProof:
+      "Join Living Room guests already exploring Ahangama better.",
+    statsTitle: "Why Living Room Guests Love Their Pass",
+  },
+};
 
 const HERO_FEATURES = [
   {
@@ -369,10 +459,13 @@ function formatPassDateLabel(value) {
   });
 }
 
-export default function LighthousePage() {
-  const canonical = absUrl("/lighthouse");
+export default function LighthousePage({ variant = "lighthouse" }) {
+  const pageConfig =
+    GUEST_PASS_PAGE_VARIANTS[variant] || GUEST_PASS_PAGE_VARIANTS.lighthouse;
+  const canonical = absUrl(pageConfig.path);
   const screens = Grid.useBreakpoint();
   const isTabletUp = Boolean(screens.md);
+  const passReadySectionRef = useRef(null);
   const [formStep, setFormStep] = useState(FORM_STEP_DETAILS);
   const [isSubmittingDetails, setIsSubmittingDetails] = useState(false);
   const [isSavingPreferences, setIsSavingPreferences] = useState(false);
@@ -409,6 +502,22 @@ export default function LighthousePage() {
   const filteredCountryOptions = PHONE_COUNTRY_CODES.filter((option) =>
     option.searchText.toLowerCase().includes(countrySearchQuery.toLowerCase()),
   ).slice(0, 12);
+
+  useEffect(() => {
+    if (formStep !== FORM_STEP_SUCCESS) {
+      return undefined;
+    }
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      passReadySectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      passReadySectionRef.current?.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, [formStep]);
 
   const handleGuestDetailsChange = (field, value) => {
     setGuestDetails((current) => ({
@@ -503,8 +612,8 @@ export default function LighthousePage() {
             guestDetails.phone,
           ),
           startDate: guestDetails.startDate,
-          sourceHotelSlug: LIGHTHOUSE_SOURCE_HOTEL_SLUG,
-          destination: LIGHTHOUSE_DESTINATION,
+          sourceHotelSlug: pageConfig.sourceHotelSlug,
+          destination: pageConfig.destination,
         }),
       });
 
@@ -555,7 +664,7 @@ export default function LighthousePage() {
     try {
       const signupDate = new Date().toISOString();
       const sourceHotel =
-        createdPassState?.pass?.sourceHotelSlug || LIGHTHOUSE_SOURCE_HOTEL_SLUG;
+        createdPassState?.pass?.sourceHotelSlug || pageConfig.sourceHotelSlug;
       const response = await fetch(LIGHTHOUSE_PREFERENCES_ENDPOINT, {
         method: "POST",
         headers: {
@@ -572,7 +681,7 @@ export default function LighthousePage() {
           sourceHotel,
           signupDate,
           source: "complimentary-pass",
-          destination: LIGHTHOUSE_DESTINATION,
+          destination: pageConfig.destination,
         }),
       });
 
@@ -741,19 +850,24 @@ export default function LighthousePage() {
   );
 
   const signupPanel = (
-    <Card
-      id="lighthouse-signup-form"
-      style={{
-        width: "100%",
-        borderRadius: 28,
-        border: "1px solid rgba(32,30,27,0.08)",
-        background: "rgba(255,255,255,0.94)",
-        boxShadow: "0 26px 80px rgba(42,38,31,0.16)",
-        backdropFilter: "blur(14px)",
-      }}
-      bodyStyle={{ padding: isTabletUp ? 32 : 20 }}
+    <div
+      ref={passReadySectionRef}
+      tabIndex={-1}
+      style={{ width: "100%", scrollMarginTop: 96, outline: "none" }}
     >
-      {formStep !== FORM_STEP_DETAILS ? (
+      <Card
+        id="lighthouse-signup-form"
+        style={{
+          width: "100%",
+          borderRadius: 28,
+          border: "1px solid rgba(32,30,27,0.08)",
+          background: "rgba(255,255,255,0.94)",
+          boxShadow: "0 26px 80px rgba(42,38,31,0.16)",
+          backdropFilter: "blur(14px)",
+        }}
+        bodyStyle={{ padding: isTabletUp ? 32 : 20 }}
+      >
+        {formStep !== FORM_STEP_DETAILS ? (
         <>
           {formStep === FORM_STEP_PREFERENCES ? (
             <Text
@@ -816,9 +930,9 @@ export default function LighthousePage() {
               : "Your complimentary guest access has been prepared."}
           </Paragraph>
         </>
-      ) : null}
+        ) : null}
 
-      {formStep === FORM_STEP_DETAILS ? (
+        {formStep === FORM_STEP_DETAILS ? (
         <div
           style={{
             display: "grid",
@@ -1153,9 +1267,9 @@ export default function LighthousePage() {
             />
           </Space>
         </div>
-      ) : null}
+        ) : null}
 
-      {formStep === FORM_STEP_PREFERENCES ? (
+        {formStep === FORM_STEP_PREFERENCES ? (
         <div
           style={{
             display: "grid",
@@ -1412,9 +1526,9 @@ export default function LighthousePage() {
             </Button>
           </Space>
         </div>
-      ) : null}
+        ) : null}
 
-      {formStep === FORM_STEP_SUCCESS ? (
+        {formStep === FORM_STEP_SUCCESS ? (
         <div
           style={{
             width: "100%",
@@ -1498,17 +1612,18 @@ export default function LighthousePage() {
             ) : null}
           </Card>
         </div>
-      ) : null}
-    </Card>
+        ) : null}
+      </Card>
+    </div>
   );
 
   return (
     <SiteLayout navOverlayHero>
       <Seo
-        title="Lighthouse Guest Pass"
-        description="A Lighthouse Hotel guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the stay."
+        title={pageConfig.seoTitle}
+        description={pageConfig.seoDescription}
         canonical={canonical}
-        ogImage={LIGHTHOUSE_HERO_IMAGE}
+        ogImage={pageConfig.heroImage}
       />
 
       <div
@@ -1561,8 +1676,8 @@ export default function LighthousePage() {
                 />
                 <img
                   className="home-hero-image"
-                  src={LIGHTHOUSE_HERO_IMAGE}
-                  alt="Lighthouse Hotel exterior"
+                  src={pageConfig.heroImage}
+                  alt={pageConfig.heroAlt}
                   style={{
                     position: "absolute",
                     inset: 0,
@@ -1617,7 +1732,7 @@ export default function LighthousePage() {
                           textTransform: "uppercase",
                         }}
                       >
-                        Included With Your Stay At Lighthouse Hotel
+                        {pageConfig.badge}
                       </Text>
                     </div>
 
@@ -1672,9 +1787,7 @@ export default function LighthousePage() {
                         lineHeight: 1.72,
                       }}
                     >
-                      Local insight, trusted recommendations and exclusive guest
-                      benefits, all in one digital pass built for Lighthouse
-                      Hotel guests.
+                      {pageConfig.body}
                     </Paragraph>
 
                     <div
@@ -1777,8 +1890,7 @@ export default function LighthousePage() {
                           lineHeight: 1.6,
                         }}
                       >
-                        Join 1,247+ Lighthouse guests already exploring Ahangama
-                        better.
+                        {pageConfig.socialProof}
                       </Text>
                     </div>
                   </div>
@@ -1836,7 +1948,7 @@ export default function LighthousePage() {
                 flex: isTabletUp ? "0 1 auto" : "1 1 100%",
               }}
             >
-              Why Lighthouse Guests Love Their Pass
+              {pageConfig.statsTitle}
             </Title>
             <div
               style={{
@@ -1861,7 +1973,9 @@ export default function LighthousePage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                gridTemplateColumns: isTabletUp
+                  ? "repeat(auto-fit, minmax(180px, 1fr))"
+                  : "minmax(0, 1fr)",
               }}
             >
               {PASS_LOVE_STATS.map(({ value, title, detail, Icon }, index) => (
@@ -1871,7 +1985,7 @@ export default function LighthousePage() {
                     display: "flex",
                     gap: 18,
                     alignItems: "center",
-                    padding: "28px 24px",
+                    padding: isTabletUp ? "28px 24px" : "22px 20px",
                     borderRight: isTabletUp
                       ? index === PASS_LOVE_STATS.length - 1
                         ? "none"
