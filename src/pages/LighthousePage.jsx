@@ -459,7 +459,7 @@ function formatPassDateLabel(value) {
 
 function formatPreviewExpiryDate() {
   const expiryDate = new Date();
-  expiryDate.setMonth(expiryDate.getMonth() + 1);
+  expiryDate.setDate(expiryDate.getDate() + DEFAULT_PASS_VALIDITY_DAYS);
 
   return expiryDate.toLocaleDateString("en-GB", {
     day: "2-digit",
