@@ -1276,7 +1276,9 @@ export default function Home() {
                       key={`${pick.title}-${index}`}
                       href={pick.href || "#"}
                       onClick={
-                        pick.href ? undefined : (event) => event.preventDefault()
+                        pick.href
+                          ? undefined
+                          : (event) => event.preventDefault()
                       }
                       className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
                       style={
@@ -1294,7 +1296,6 @@ export default function Home() {
                     </a>
                   ))}
                 </div>
-
               </div>
 
               <div className="home-section-divider" aria-hidden="true" />

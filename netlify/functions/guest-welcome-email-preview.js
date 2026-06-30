@@ -130,15 +130,15 @@ export const handler = async (event) => {
               recipientOverride: TEST_EMAIL_RECIPIENT,
             })
           : emailType === "venue-notification"
-          ? await sendGuestPassVenueNotificationEmail({
-              ...payload,
-              sourceHotelSlug: payload.pass.sourceHotelSlug,
-              recipientOverride: TEST_EMAIL_RECIPIENT,
-            })
-          : await sendGuestWelcomeEmail({
-              ...payload,
-              recordHistory: false,
-            });
+            ? await sendGuestPassVenueNotificationEmail({
+                ...payload,
+                sourceHotelSlug: payload.pass.sourceHotelSlug,
+                recipientOverride: TEST_EMAIL_RECIPIENT,
+              })
+            : await sendGuestWelcomeEmail({
+                ...payload,
+                recordHistory: false,
+              });
 
       return {
         statusCode: 200,

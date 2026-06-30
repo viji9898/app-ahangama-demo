@@ -895,12 +895,22 @@
 .weekly-picks-railWrap::before {
   left: 0;
   right: auto;
-  background: linear-gradient(90deg, rgba(255, 253, 249, 0.98), rgba(255, 253, 249, 0.82) 45%, rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 253, 249, 0.98),
+    rgba(255, 253, 249, 0.82) 45%,
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .weekly-picks-railWrap::after {
   right: 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 253, 249, 0.82) 55%, rgba(255, 253, 249, 0.98));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 253, 249, 0.82) 55%,
+    rgba(255, 253, 249, 0.98)
+  );
 }
 
 .weekly-picks-grid {

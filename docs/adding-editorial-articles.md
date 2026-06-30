@@ -54,10 +54,7 @@ export const ARTICLE_PATH = "/your-article-slug";
 const HERO_IMAGE = "https://...";
 const publishDate = "2026-06-30T09:00:00.000Z";
 
-const articleIntroduction = [
-  "Opening paragraph.",
-  "Second paragraph.",
-];
+const articleIntroduction = ["Opening paragraph.", "Second paragraph."];
 
 const articleSections = [
   {

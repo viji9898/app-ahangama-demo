@@ -576,9 +576,7 @@ export default function NewsletterDataPage() {
               >
                 Ahangama
               </span>
-              <span style={{ color: "#ffffff", display: "block" }}>
-                Minute
-              </span>
+              <span style={{ color: "#ffffff", display: "block" }}>Minute</span>
             </Title>
           </div>
           <div

@@ -93,10 +93,16 @@ function enrichEvent(event) {
   const passBenefit = Object.prototype.hasOwnProperty.call(event, "passBenefit")
     ? event.passBenefit
     : getPassBenefit(event.venue);
-  const instagramUrl = Object.prototype.hasOwnProperty.call(event, "instagramUrl")
+  const instagramUrl = Object.prototype.hasOwnProperty.call(
+    event,
+    "instagramUrl",
+  )
     ? event.instagramUrl
     : getInstagramUrl(event.venue);
-  const directionsUrl = Object.prototype.hasOwnProperty.call(event, "directionsUrl")
+  const directionsUrl = Object.prototype.hasOwnProperty.call(
+    event,
+    "directionsUrl",
+  )
     ? event.directionsUrl
     : getDirectionsUrl(event.venue);
 
@@ -111,9 +117,11 @@ function enrichEvent(event) {
 export const EVENTS_CALENDAR_OVERVIEW = {
   monthLabel: "July 2026",
   kicker: "Ahangama Events Agenda",
-  summary: "This week's highlights, weekly picks, wellness sessions and late June events around Ahangama.",
+  summary:
+    "This week's highlights, weekly picks, wellness sessions and late June events around Ahangama.",
   weekLabel: "Ahangama . 18 - 30 June",
-  weekDescription: "A curated selection of music, wellness, happy hours and social nights around town.",
+  weekDescription:
+    "A curated selection of music, wellness, happy hours and social nights around town.",
 };
 
 export const EVENTS_CALENDAR_DAYS = [
@@ -129,7 +137,8 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "Happy Hour: 5:00 PM - 7:00 PM",
         category: "Weekly Picks",
         image: hakunaMatataSunsetImage,
-        description: "20% off all cocktails with sunset music and a full night line-up.",
+        description:
+          "20% off all cocktails with sunset music and a full night line-up.",
         details: [
           "Music: Skillz Jay, Monamourrr, Mr. Percussion, Hotel De Uncles",
           "Offer: 20% off all cocktails",
@@ -163,7 +172,8 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "8:00 PM - 10:00 PM; 10:00 PM - Midnight",
         category: "This Week's Highlights",
         image: monoImage,
-        description: "Electronic live set by Bali-based DJ and producer Dante Alchemico Koila.",
+        description:
+          "Electronic live set by Bali-based DJ and producer Dante Alchemico Koila.",
       }),
     ],
   },
@@ -241,7 +251,7 @@ export const EVENTS_CALENDAR_DAYS = [
       enrichEvent({
         title: "Sunset Club",
         venue: "Surf Club Midigama",
-        time: "From 4:00 PM onwards",      
+        time: "From 4:00 PM onwards",
         category: "Late June Events",
         image: surfClubMidigamaImage,
         details: ["Music: Claremont x Gaali (2 DJs)"],

@@ -88,17 +88,24 @@ export default function EventsPage() {
                         <Title level={2} className="events-agenda-entryTitle">
                           {event.title}
                         </Title>
-                        <Text className="events-agenda-venue">{event.venue}</Text>
+                        <Text className="events-agenda-venue">
+                          {event.venue}
+                        </Text>
 
                         <div className="events-agenda-meta">
                           <span className="events-agenda-metaItem">
                             <ClockCircleOutlined />
                             <span>{event.time}</span>
                           </span>
-                          <span className="events-agenda-metaDot" aria-hidden="true">
+                          <span
+                            className="events-agenda-metaDot"
+                            aria-hidden="true"
+                          >
                             •
                           </span>
-                          <Text className="events-agenda-category">{event.category}</Text>
+                          <Text className="events-agenda-category">
+                            {event.category}
+                          </Text>
                         </div>
 
                         {event.description ? (
@@ -174,9 +181,12 @@ export default function EventsPage() {
 
           <section className="events-agenda-signup">
             <div className="events-agenda-signupIntro">
-              <Text className="events-agenda-signupLabel">Stay In The Loop</Text>
+              <Text className="events-agenda-signupLabel">
+                Stay In The Loop
+              </Text>
               <Paragraph className="events-agenda-signupText">
-                Subscribe to our weekly newsletter for the latest events and stories.
+                Subscribe to our weekly newsletter for the latest events and
+                stories.
               </Paragraph>
             </div>
 

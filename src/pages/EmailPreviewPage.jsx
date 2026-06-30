@@ -8,7 +8,8 @@ import SiteLayout from "../components/layout/SiteLayout";
 const { Paragraph, Text, Title } = Typography;
 
 const EMAIL_PREVIEW_PATH = "/email-preview";
-const EMAIL_PREVIEW_ENDPOINT = "/.netlify/functions/guest-welcome-email-preview";
+const EMAIL_PREVIEW_ENDPOINT =
+  "/.netlify/functions/guest-welcome-email-preview";
 const EMAIL_PREVIEW_WIDTH = 390;
 const EMAIL_PREVIEW_HEIGHT = 760;
 
@@ -246,9 +247,13 @@ export default function EmailPreviewPage() {
                 lineHeight: 1.65,
               }}
             >
-              Guest subject: <strong>{guestWelcomePreview?.subject || "Loading..."}</strong>
+              Guest subject:{" "}
+              <strong>{guestWelcomePreview?.subject || "Loading..."}</strong>
               <br />
-              Venue subject: <strong>{venueNotificationPreview?.subject || "Loading..."}</strong>
+              Venue subject:{" "}
+              <strong>
+                {venueNotificationPreview?.subject || "Loading..."}
+              </strong>
             </Paragraph>
 
             <div
