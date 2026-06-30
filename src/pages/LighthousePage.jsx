@@ -107,6 +107,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     path: "/lighthouse",
     sourceHotelSlug: LIGHTHOUSE_SOURCE_HOTEL_SLUG,
     destination: LIGHTHOUSE_DESTINATION,
+    venueName: "Lighthouse Hotel",
     seoTitle: "Lighthouse Guest Pass",
     seoDescription:
       "A Lighthouse Hotel guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the stay.",
@@ -123,6 +124,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     path: "/kaffi",
     sourceHotelSlug: "kaffi",
     destination: LIGHTHOUSE_DESTINATION,
+    venueName: "Kaffi",
     seoTitle: "Kaffi Guest Pass",
     seoDescription:
       "A Kaffi guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
@@ -139,6 +141,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     path: "/gusta",
     sourceHotelSlug: "gusta",
     destination: LIGHTHOUSE_DESTINATION,
+    venueName: "Gusta",
     seoTitle: "Gusta Guest Pass",
     seoDescription:
       "A Gusta guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
@@ -154,6 +157,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     path: "/tahini",
     sourceHotelSlug: "tahini",
     destination: LIGHTHOUSE_DESTINATION,
+    venueName: "Tahini & Friends",
     seoTitle: "Tahini & Friends Guest Pass",
     seoDescription:
       "A Tahini & Friends guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
@@ -170,6 +174,7 @@ const GUEST_PASS_PAGE_VARIANTS = {
     path: "/living-Room",
     sourceHotelSlug: "living-room",
     destination: LIGHTHOUSE_DESTINATION,
+    venueName: "Living Room",
     seoTitle: "Living Room Guest Pass",
     seoDescription:
       "A Living Room guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
@@ -1242,6 +1247,19 @@ export default function LighthousePage({ variant = "lighthouse" }) {
           >
             Get My Complimentary Pass
           </Button>
+
+          <Text
+            style={{
+              display: "block",
+              marginTop: 2,
+              color: "#7A7368",
+              fontSize: 11,
+              lineHeight: 1.45,
+              gridColumn: "1 / -1",
+            }}
+          >
+            Data collected will be shared with {pageConfig.venueName}.
+          </Text>
 
           <Space
             size={8}
