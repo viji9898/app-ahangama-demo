@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import { Seo } from "../app/seo";
@@ -133,6 +134,40 @@ const MENTIONED_PLACE_LINKS = [
     href: "https://www.instagram.com/hoteldeuncles/?hl=en",
   },
 ];
+
+const FEATURED_VENUES = [
+  {
+    ...MENTIONED_PLACE_LINKS.find((place) => place.label === "Kaffi Ahangama"),
+    note: "The soft start: coffee, coast air and the first loose decision of the day.",
+  },
+  {
+    ...MENTIONED_PLACE_LINKS.find(
+      (place) => place.label === "Marshmellow Cafe Ahangama",
+    ),
+    note: "A slow brunch pause where beanbags, refills and ocean air stretch the morning.",
+  },
+  {
+    ...MENTIONED_PLACE_LINKS.find((place) => place.label === "Ceylon Sliders"),
+    note: "Surf culture with a social edge, moving between boards, rooftops and the sea.",
+  },
+  {
+    label: "Kumbuk Community's Traditional Cooking Class / Cooking with Amma",
+    href: "https://www.instagram.com/kumbuk.community/",
+    note: "A grounded afternoon invitation into family cooking, spice, story and tradition.",
+  },
+  {
+    ...MENTIONED_PLACE_LINKS.find((place) => place.label === "Thileni's"),
+    note: "A sunset stop where the light slows the coastline down without asking.",
+  },
+  {
+    ...MENTIONED_PLACE_LINKS.find((place) => place.label === "Crust Ahangama"),
+    note: "The evening shift: pizza, live music, cocktails and an easy social rhythm.",
+  },
+  {
+    ...MENTIONED_PLACE_LINKS.find((place) => place.label === "Hotel de Uncles"),
+    note: "The late-night turn, where karaoke and movement pull everyone into the room.",
+  },
+].filter(Boolean);
 
 function renderVenueLinkedText(text, styleOverride = {}) {
   const sortedLinks = [...MENTIONED_PLACE_LINKS].sort(
@@ -587,6 +622,76 @@ export default function StaffPickExperienceAhangamaPage() {
               </React.Fragment>
             ))}
           </div>
+
+          <section
+            style={{
+              margin: "22px 0 34px",
+              paddingTop: 16,
+              borderTop: "1px solid rgba(47,62,58,0.08)",
+            }}
+          >
+            <Text
+              style={{
+                display: "block",
+                color: "#6B5A4E",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: 1.4,
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Places Mentioned
+            </Text>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "14px 22px",
+              }}
+            >
+              {FEATURED_VENUES.map((venue) => (
+                <div
+                  key={venue.label}
+                  style={{
+                    paddingTop: 10,
+                    borderTop: "1px solid rgba(47,62,58,0.08)",
+                  }}
+                >
+                  <a
+                    href={venue.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      color: "#6B5A4E",
+                      fontSize: 13,
+                      textDecoration: "none",
+                      borderBottom: "1px solid rgba(107,90,78,0.24)",
+                      paddingBottom: 1,
+                    }}
+                  >
+                    {venue.label}
+                    <ArrowRightOutlined style={{ fontSize: 11 }} />
+                  </a>
+                  <Text
+                    style={{
+                      display: "block",
+                      marginTop: 7,
+                      color: "#55514B",
+                      fontSize: 13,
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    {venue.note}
+                  </Text>
+                </div>
+              ))}
+            </div>
+          </section>
 
           <EditorialNextArticle
             href={NEXT_ARTICLE.href}
