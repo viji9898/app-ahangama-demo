@@ -152,7 +152,7 @@ const MENTIONED_PLACE_LINKS = [
   { label: "Veda Cafe", href: "https://www.instagram.com/vedacafesl?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { label: "Pura Pilates", href: "https://www.instagram.com/purapilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { label: "Frosty's", href: "https://www.instagram.com/frostys.kabalana?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-  { label: "White Lotus", href: "https://www.instagram.com/lotussurfcamp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "White Lotus", href: "https://www.instagram.com/whitelotusgalle?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { label: "The Nuga House", href: "https://www.instagram.com/thenugahouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { label: "Studio Mukti", href: "https://www.instagram.com/studio.mukti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { label: "Living Room Concept Store", href: "https://www.instagram.com/itsyour.livingroom?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },

@@ -1,3 +1,5 @@
+import lighthouseHappyHourImage from "../assets/temp/lighthouse-happy-hour.jpeg";
+import sambaHappyHourImage from "../assets/temp/Samba Haappy Hour .png";
 import { PLACES } from "./places";
 
 const eventImage = (fileName) =>
@@ -244,7 +246,7 @@ export const EVENTS_CALENDAR_DAYS = [
       enrichEvent({
         title: "🌅 Sunset Club",
         venue: "Surf Club Midigama",
-        time: "From 4:00 PM onwards",
+        time: "From 4:00 PM onwards",      
         category: "Late June Events",
         image: surfClubMidigamaImage,
         details: ["Music: Claremont x Gaali (2 DJs)"],
@@ -286,6 +288,22 @@ export const EVENTS_CALENDAR_DAYS = [
     dayNumber: "Daily",
     month: "",
     events: [
+      enrichEvent({
+        title: "🍸 Samba Happy Hour",
+        venue: "Samba",
+        time: "5:00 PM - 7:00 PM",
+        category: "Ongoing",
+        image: sambaHappyHourImage,
+        description: "Buy 2 get 1 free for all cocktails during happy hour.",
+      }),
+      enrichEvent({
+        title: "🌅 Lighthouse Rooftop Happy Hour",
+        venue: "Lighthouse",
+        time: "4:00 PM - 6:00 PM",
+        category: "Ongoing",
+        image: lighthouseHappyHourImage,
+        description: "Selected drinks available during the rooftop happy hour.",
+      }),
       enrichEvent({
         title: "🍷 Daily Happy Hour",
         venue: "Le Café French Bistro",
