@@ -152,15 +152,6 @@ export const NEWSLETTER_DATA = [
     longitude: 80.3748064,
     googleUrl: "https://maps.app.goo.gl/YcC2Z3dpif3gQsQt9",
   },
-  {
-    tagline: "Thursday night picks",
-    vendor: "Lamana",
-    category: "DJ Music",
-    instagram: "lamana_ahangama",
-    latitude: 5.972605853309495,
-    longitude: 80.3640155306916,
-    googleUrl: "https://maps.app.goo.gl/Cz5wK3SGjdtoN8zu6",
-  },
 ];
 
 export const NEWSLETTER_ESSENTIALS_NEARBY_HELP = [
