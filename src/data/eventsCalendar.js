@@ -287,7 +287,7 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "July",
     events: [
       enrichEvent({
-        title: "Mono\nHouse / Disco / Afro Grooves",
+        title: "House / Disco / Afro Grooves",
         venue: "Mono",
         time: "8:30 PM - 11:30 PM",
         category: "Weekly Picks",
