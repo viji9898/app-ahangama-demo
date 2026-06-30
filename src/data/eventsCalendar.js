@@ -1,5 +1,8 @@
 import lighthouseHappyHourImage from "../assets/temp/lighthouse-happy-hour.jpeg";
 import sambaHappyHourImage from "../assets/temp/Samba Haappy Hour .png";
+import cafeCeylonMovieNightImage from "../assets/temp/Cafe Ceylon Movie Night .jpeg";
+import monoDjNightImage from "../assets/temp/Mono - DJ Night .jpg";
+import hotelDeUnclesMonsoonNightImage from "../assets/temp/Hotel De Uncles Monsoon Nights .jpeg";
 import { PLACES } from "./places";
 
 const eventImage = (fileName) =>
@@ -279,6 +282,54 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "10:00 AM",
         category: "Wellness",
         image: emberAndIceBreathworkImage,
+      }),
+    ],
+  },
+  {
+    key: "2026-07-01",
+    weekday: "Wednesday",
+    dayNumber: "01",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "🎬 Cafe Ceylon Movie Night — A Bug's Life",
+        venue: "Cafe Ceylon",
+        time: "6:15 PM",
+        category: "Weekly Picks",
+        image: cafeCeylonMovieNightImage,
+        description: "Chicken schnitzel or sliders with fries.",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-03",
+    weekday: "Friday",
+    dayNumber: "03",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "🎧 Mono — House / Disco / Afro Grooves",
+        venue: "Mono",
+        time: "8:30 PM - 11:30 PM",
+        category: "Weekly Picks",
+        image: monoDjNightImage,
+        description: "ED Templeton.",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-04",
+    weekday: "Saturday",
+    dayNumber: "04",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "🎩 Hotel De Uncles - Monsoon Nights",
+        venue: "Hotel De Uncles",
+        time: "6:00 PM",
+        category: "Weekly Picks",
+        image: hotelDeUnclesMonsoonNightImage,
+        description: "Hotel De Uncles x Latoya Presents.",
       }),
     ],
   },
