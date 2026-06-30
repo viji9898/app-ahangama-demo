@@ -60,6 +60,7 @@ import EmailPreviewPage from "../pages/EmailPreviewPage";
 import PassesIssuedPage, {
   PASSES_ISSUED_PATH,
 } from "../pages/PassesIssuedPage";
+import PassValidityPage from "../pages/PassValidityPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
@@ -222,6 +223,7 @@ const routes = [
   { path: "/card/pass/:cardId", element: <CardPass /> },
   { path: "/verify", element: <CardVerify /> },
   { path: "/verify/:cardId", element: <CardVerify /> },
+  { path: "/valid", element: <PassValidityPage /> },
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },

@@ -12,6 +12,8 @@ const DEFAULT_DESTINATION = "ahangama";
 const DEFAULT_PASS_TYPE = "complimentary_hotel_guest";
 const DEFAULT_STATUS = "active";
 const DEFAULT_VALIDITY_DAYS = 15;
+const VERIFICATION_CODE_ALPHABET = "23456789abcdefghjkmnpqrstuvwxyz";
+const VERIFICATION_RANDOM_LENGTH = 3;
 const DESTINATION_BY_SOURCE_HOTEL_SLUG = {
   "lighthouse-hotel": "ahangama",
 };
@@ -71,6 +73,27 @@ function addUtcDays(value, days) {
   const next = new Date(value);
   next.setUTCDate(next.getUTCDate() + days);
   return next;
+}
+
+function compactVenueSlug(sourceHotelSlug) {
+  return normalizeText(sourceHotelSlug)
+    .toLowerCase()
+    .replace("lighthouse-hotel", "lighthouse")
+    .replaceAll("-", "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function generateVerificationCode(sourceHotelSlug) {
+  let prefix = "";
+
+  for (let index = 0; index < VERIFICATION_RANDOM_LENGTH; index += 1) {
+    prefix +=
+      VERIFICATION_CODE_ALPHABET[
+        Math.floor(Math.random() * VERIFICATION_CODE_ALPHABET.length)
+      ];
+  }
+
+  return `${prefix}${compactVenueSlug(sourceHotelSlug) || "pass"}`;
 }
 
 export const handler = async (event) => {
@@ -145,6 +168,7 @@ export const handler = async (event) => {
 
     const validFrom = requestedStartDate || startOfUtcDay();
     const validUntil = addUtcDays(validFrom, DEFAULT_VALIDITY_DAYS);
+    const verificationCode = generateVerificationCode(sourceHotelSlug);
 
     console.log("create-hotel-guest-pass request", {
       sourceHotelSlug,
@@ -162,6 +186,7 @@ export const handler = async (event) => {
       status: DEFAULT_STATUS,
       validFrom: validFrom.toISOString(),
       validUntil: validUntil.toISOString(),
+      verificationCode,
     });
 
     let pass = result.pass;
