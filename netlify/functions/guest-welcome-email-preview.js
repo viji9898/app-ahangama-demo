@@ -53,6 +53,41 @@ function buildPreviewPayload() {
   };
 }
 
+function buildOtherVenuePreviewPayload() {
+  const validFrom = new Date();
+  const validUntil = new Date(validFrom);
+  validUntil.setUTCDate(validUntil.getUTCDate() + 15);
+
+  return {
+    guest: {
+      id: "email-preview-kaffi-guest",
+      fullName: "Maya Preview",
+      email: "maya@example.com",
+      phone: "+94771112222",
+      sourceHotelSlug: "kaffi",
+      destination: "ahangama",
+    },
+    pass: {
+      id: "email-preview-kaffi-pass",
+      guestId: "email-preview-kaffi-guest",
+      sourceHotelSlug: "kaffi",
+      passType: "complimentary_hotel_guest",
+      status: "active",
+      validFrom: validFrom.toISOString(),
+      validUntil: validUntil.toISOString(),
+      passkitInstallUrl: "https://ahangama.com/kaffi",
+    },
+    preferences: {
+      id: "email-preview-kaffi-preferences",
+      stayLength: 4,
+      interests: ["coffee", "surf", "food"],
+      travelGroup: "couple",
+      servicesInterested: ["restaurant bookings"],
+      wantsWhatsappRecommendations: true,
+    },
+  };
+}
+
 function parseBody(event) {
   if (!event.body) {
     return {};
@@ -82,12 +117,19 @@ export const handler = async (event) => {
 
   try {
     const payload = buildPreviewPayload();
+    const otherVenuePayload = buildOtherVenuePreviewPayload();
 
     if (event.httpMethod === "POST") {
       const body = parseBody(event);
       const emailType = body.emailType || "guest-welcome";
       const email =
-        emailType === "venue-notification"
+        emailType === "other-venue-notification"
+          ? await sendGuestPassVenueNotificationEmail({
+              ...otherVenuePayload,
+              sourceHotelSlug: otherVenuePayload.pass.sourceHotelSlug,
+              recipientOverride: TEST_EMAIL_RECIPIENT,
+            })
+          : emailType === "venue-notification"
           ? await sendGuestPassVenueNotificationEmail({
               ...payload,
               sourceHotelSlug: payload.pass.sourceHotelSlug,
@@ -115,6 +157,12 @@ export const handler = async (event) => {
       ...payload,
       sourceHotelSlug: payload.pass.sourceHotelSlug,
     });
+    const otherVenueNotificationEmail = generateGuestPassVenueNotificationEmail(
+      {
+        ...otherVenuePayload,
+        sourceHotelSlug: otherVenuePayload.pass.sourceHotelSlug,
+      },
+    );
 
     return {
       statusCode: 200,
@@ -135,6 +183,12 @@ export const handler = async (event) => {
           html: venueNotificationEmail.html,
           text: venueNotificationEmail.text,
           recipient: venueNotificationEmail.recipient,
+        },
+        otherVenueNotification: {
+          subject: otherVenueNotificationEmail.subject,
+          html: otherVenueNotificationEmail.html,
+          text: otherVenueNotificationEmail.text,
+          recipient: otherVenueNotificationEmail.recipient,
         },
       }),
     };

@@ -173,6 +173,7 @@ export default function EmailPreviewPage() {
 
   const guestWelcomePreview = preview?.guestWelcome || preview;
   const venueNotificationPreview = preview?.venueNotification;
+  const otherVenueNotificationPreview = preview?.otherVenueNotification;
 
   return (
     <SiteLayout>
@@ -221,7 +222,7 @@ export default function EmailPreviewPage() {
                 textTransform: "uppercase",
               }}
             >
-              Guest Welcome Email
+              Guest + Lighthouse Venue Emails
             </Text>
             <Title
               level={1}
@@ -278,7 +279,15 @@ export default function EmailPreviewPage() {
                 onClick={() => sendTestEmail("venue-notification")}
                 style={{ minHeight: 42, fontWeight: 700 }}
               >
-                Send venue test
+                Send Lighthouse test
+              </Button>
+              <Button
+                icon={<MailOutlined />}
+                loading={sendingType === "other-venue-notification"}
+                onClick={() => sendTestEmail("other-venue-notification")}
+                style={{ minHeight: 42, fontWeight: 700 }}
+              >
+                Send other venue test
               </Button>
               <Button
                 icon={<ReloadOutlined />}
@@ -324,8 +333,14 @@ export default function EmailPreviewPage() {
           />
 
           <PreviewPhone
-            title="Venue notification email"
+            title="Lighthouse venue email"
             preview={venueNotificationPreview}
+            isLoadingPreview={isLoadingPreview}
+          />
+
+          <PreviewPhone
+            title="Kaffi / Gusta venue email"
+            preview={otherVenueNotificationPreview}
             isLoadingPreview={isLoadingPreview}
           />
         </div>
