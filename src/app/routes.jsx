@@ -64,6 +64,9 @@ import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
+import StaffPickExperienceAhangamaPage, {
+  STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
+} from "../pages/StaffPickExperienceAhangamaPage";
 import CommunityMarketInAhangamaPage, {
   COMMUNITY_MARKET_IN_AHANGAMA_PATH,
 } from "../pages/CommunityMarketInAhangamaPage";
@@ -138,6 +141,10 @@ const routes = [
   {
     path: "/the-living-room-concept-store",
     element: <TheLivingRoomConceptStorePage />,
+  },
+  {
+    path: STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
+    element: <StaffPickExperienceAhangamaPage />,
   },
   {
     path: COMMUNITY_MARKET_IN_AHANGAMA_PATH,

@@ -240,6 +240,18 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
   {
+    route:
+      "/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama",
+    title:
+      "Staff Pick Experience: A Day That Slowly Erases Your Plan in Ahangama",
+    description:
+      "A staff-picked Ahangama day that moves through coffee, surf, cooking, tuk tuks, sunset, live music and the slow pleasure of letting the plan dissolve.",
+    publishDate: "2026-06-30T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama/Hero+image+_+ahangama-morning-coffee-hands-cups-close-up.webp",
+  },
+  {
     route: "/community-market-in-ahangama",
     title: "Community Markets in Ahangama",
     description:
