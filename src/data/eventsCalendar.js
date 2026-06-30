@@ -4,6 +4,7 @@ import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
 import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
 import sistersImage from "../assets/temp/sisters_image.jpg";
 import lighthouseHappyHourImage from "../assets/temp/lighthouse-happy-hour.jpeg";
+import sambaHappyHourImage from "../assets/temp/Samba Haappy Hour .png";
 import { PLACES } from "./places";
 
 const hakunaMatataImage =
@@ -284,6 +285,22 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "",
     events: [
       enrichEvent({
+        title: "🍸 Samba Happy Hour",
+        venue: "Samba",
+        time: "5:00 PM - 7:00 PM",
+        category: "Ongoing",
+        image: sambaHappyHourImage,
+        description: "Buy 2 get 1 free for all cocktails during happy hour.",
+      }),
+      enrichEvent({
+        title: "🌅 Lighthouse Rooftop Happy Hour",
+        venue: "Lighthouse",
+        time: "4:00 PM - 6:00 PM",
+        category: "Ongoing",
+        image: lighthouseHappyHourImage,
+        description: "Selected drinks available during the rooftop happy hour.",
+      }),
+      enrichEvent({
         title: "🍷 Daily Happy Hour",
         venue: "Le Café French Bistro",
         time: "5:00 PM - 6:00 PM",
@@ -291,14 +308,6 @@ export const EVENTS_CALENDAR_DAYS = [
         image: leCafeFrenchBistroImage,
         description:
           "Receive a complimentary charcuterie or cheese bite with every glass of wine or beer.",
-      }),
-      enrichEvent({
-        title: "🌅 Rooftop Happy Hour",
-        venue: "Lighthouse",
-        time: "4:00 PM - 6:00 PM",
-        category: "Ongoing",
-        image: lighthouseHappyHourImage,
-        description: "Daily rooftop happy hour with selected drinks specials.",
       }),
     ],
   },
