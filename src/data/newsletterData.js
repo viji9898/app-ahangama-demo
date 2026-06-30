@@ -194,4 +194,62 @@ export const NEWSLETTER_ESSENTIALS_NEARBY_HELP = [
   },
 ];
 
+export const NEWSLETTER_COMP_PASS_SIGNUP_VENUES = [
+  {
+    name: "Lighthouse",
+    type: "Hotel",
+    instagram: "lighthouse_ahangama",
+    instagramUrl: "https://www.instagram.com/lighthouse_ahangama/?hl=en",
+    latitude: 5.9661163559675865,
+    longitude: 80.37708343558226,
+    googleUrl: "https://maps.app.goo.gl/LgU1Yj2zof5YYutp8",
+    slug: "lighthouse",
+    signupUrl: "/lighthouse",
+  },
+  {
+    name: "Kaffi",
+    type: "Coffee Shop",
+    instagram: "kaffi.ahangama",
+    instagramUrl: "https://www.instagram.com/kaffi.ahangama/?hl=en",
+    latitude: 5.969046518681681,
+    longitude: 80.37065137975961,
+    googleUrl: "https://maps.app.goo.gl/XWu3v34e99pvEPnD9",
+    slug: "kaffi",
+    signupUrl: "/kaffi",
+  },
+  {
+    name: "Gusta",
+    type: "Retail",
+    instagram: "gusta.sl",
+    instagramUrl: "https://www.instagram.com/gusta.sl/?hl=en",
+    latitude: 5.978313297632928,
+    longitude: 80.34849092776551,
+    googleUrl: "https://maps.app.goo.gl/yNiokPhDUG2rsRLf9",
+    slug: "gusta",
+    signupUrl: "/gusta",
+  },
+  {
+    name: "Living Room",
+    type: "Cafe & Retail",
+    instagram: "livingroomahangama",
+    instagramUrl: "https://www.instagram.com/livingroomahangama/",
+    latitude: 5.972722482335797,
+    longitude: 80.36352071135448,
+    googleUrl: "https://maps.app.goo.gl/h37Z3b98vjRRLUnd9",
+    slug: "living-room",
+    signupUrl: "/living-room",
+  },
+  {
+    name: "Tahini & Friends",
+    type: "Hotel and Cafe",
+    instagram: "tahini_and_friends",
+    instagramUrl: "https://www.instagram.com/tahini_and_friends/",
+    latitude: 5.970621942117507,
+    longitude: 80.36713247791131,
+    googleUrl: "https://maps.app.goo.gl/fDbn24JroyDiV7mG7",
+    slug: "tahini",
+    signupUrl: "/tahini",
+  },
+];
+
 export default NEWSLETTER_DATA;
