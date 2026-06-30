@@ -1304,18 +1304,39 @@ export default function LighthousePage({ variant = "lighthouse" }) {
               </Text>
             </Space>
 
-            <Space size={10} style={{ marginTop: 4, gridColumn: "1 / -1" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, max-content))",
+                gap: 10,
+                alignItems: "center",
+                justifyContent: "start",
+                marginTop: 4,
+                gridColumn: "1 / -1",
+                maxWidth: "100%",
+              }}
+            >
               <img
                 src={addToAppleWalletLogo}
                 alt="Apple Wallet"
-                style={{ display: "block", height: 42, width: "auto" }}
+                style={{
+                  display: "block",
+                  width: "min(100%, 132px)",
+                  height: "auto",
+                  maxHeight: 42,
+                }}
               />
               <img
                 src={addToGoogleWalletLogo}
                 alt="Google Wallet"
-                style={{ display: "block", height: 42, width: "auto" }}
+                style={{
+                  display: "block",
+                  width: "min(100%, 132px)",
+                  height: "auto",
+                  maxHeight: 42,
+                }}
               />
-            </Space>
+            </div>
           </div>
         ) : null}
 
