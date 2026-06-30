@@ -5016,6 +5016,7 @@
     margin-left: -16px !important;
     margin-right: -16px !important;
     padding: 0 16px 8px;
+    column-gap: 18px;
     scrollbar-width: none;
   }
 
@@ -5027,6 +5028,8 @@
     flex: 0 0 78vw !important;
     max-width: 78vw !important;
     min-width: 78vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .guide-sections-cardLink,
