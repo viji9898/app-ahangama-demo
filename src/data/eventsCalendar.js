@@ -2,6 +2,7 @@ import denitsaImage from "../assets/temp/denitsa.jpg";
 import kaffiImage from "../assets/temp/kaffi_image.jpg";
 import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
 import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
+import lightHouseHappyHourImage from "../assets/temp/Lighthouse Happy Hour.jpeg";
 import sistersImage from "../assets/temp/sisters_image.jpg";
 import { PLACES } from "./places";
 
@@ -293,6 +294,25 @@ export const EVENTS_CALENDAR_DAYS = [
       }),
     ],
   },
+  
+   {
+    key: "ongoing",
+    weekday: "Ongoing",
+    dayNumber: "Daily",
+    month: "",
+    events: [
+      enrichEvent({
+        title: "🌅 Daily Light House - Rooftop Happy Hour",
+        venue: "Light House",
+        time: "4:00 PM - 6:00 PM",
+        category: "Ongoing",
+        image: lightHouseHappyHourImage,
+        description:
+          "Selected drinks at happy hour prices.",
+      }),
+    ],
+  },
+
 ];
 
 export const EVENTS_EDITOR_PICKS = [
