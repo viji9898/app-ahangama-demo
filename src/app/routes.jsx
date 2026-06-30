@@ -67,6 +67,9 @@ import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePag
 import StaffPickExperienceAhangamaPage, {
   STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
 } from "../pages/StaffPickExperienceAhangamaPage";
+import BestSunsetsInAhangamaPage, {
+  BEST_SUNSETS_IN_AHANGAMA_PATH,
+} from "../pages/BestSunsetsInAhangamaPage";
 import CommunityMarketInAhangamaPage, {
   COMMUNITY_MARKET_IN_AHANGAMA_PATH,
 } from "../pages/CommunityMarketInAhangamaPage";
@@ -145,6 +148,10 @@ const routes = [
   {
     path: STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
     element: <StaffPickExperienceAhangamaPage />,
+  },
+  {
+    path: BEST_SUNSETS_IN_AHANGAMA_PATH,
+    element: <BestSunsetsInAhangamaPage />,
   },
   {
     path: COMMUNITY_MARKET_IN_AHANGAMA_PATH,

@@ -161,19 +161,20 @@ const WEEKLY_PICKS = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/Hero+image+_+community-markets-ahangama-crowd-stalls.webp",
   },
   {
-    category: "Openings",
-    title: "New Cafe Opening",
-    date: "Thu 5 Jun",
-  },
-  {
     category: "Sunset",
     title: "Best Sunset This Week",
     date: "Daily",
+    href: "/best-sunsets-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/best-sunsets/Hero+Image+-+2400+x+1600+px.webp",
   },
   {
     category: "Staff Pick",
     title: "Staff Pick Experience",
     date: "This Weekend",
+    href: "/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama/Hero+image+_+ahangama-morning-coffee-hands-cups-close-up.webp",
   },
 ];
 

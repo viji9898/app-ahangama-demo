@@ -53,6 +53,11 @@ const publicRoutes = [
     priority: "0.7",
   },
   {
+    path: "/best-sunsets-in-ahangama",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
     path: "/community-market-in-ahangama",
     changefreq: "monthly",
     priority: "0.7",

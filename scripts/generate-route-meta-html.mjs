@@ -252,6 +252,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama/Hero+image+_+ahangama-morning-coffee-hands-cups-close-up.webp",
   },
   {
+    route: "/best-sunsets-in-ahangama",
+    title: "Best Sunsets in Ahangama",
+    description:
+      "The best sunset spot in Ahangama this week, when to arrive, where to stand, and the nearby beaches worth considering for golden hour.",
+    publishDate: "2026-06-30T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/best-sunsets/Hero+Image+-+2400+x+1600+px.webp",
+  },
+  {
     route: "/community-market-in-ahangama",
     title: "Community Markets in Ahangama",
     description:
