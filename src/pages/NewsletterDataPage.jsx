@@ -778,7 +778,8 @@ export default function NewsletterDataPage() {
               textTransform: "uppercase",
             }}
           >
-            Complimentary Pass: <span style={{ color: ACCENT }}>Signup Venues</span>
+            Complimentary Pass:{" "}
+            <span style={{ color: ACCENT }}>Signup Venues</span>
           </div>
           {NEWSLETTER_COMP_PASS_SIGNUP_VENUES.map((item) => (
             <CompPassSignupVenueEntry key={item.slug} item={item} />
