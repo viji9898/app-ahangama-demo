@@ -2,6 +2,7 @@ import {
   createHotelGuestPass,
   updatePasskitFields,
 } from "../../lib/hotel-passes-db.js";
+import { sendGuestPassVenueNotificationEmail } from "../../lib/guest-pass-venue-email.js";
 import { sendGuestWelcomeEmail } from "../../lib/guest-welcome-email.js";
 import { createPasskitMemberForHotelGuest } from "../../lib/passkit-client.js";
 
@@ -213,6 +214,23 @@ export const handler = async (event) => {
         guestId: result.guest?.id,
         passId: pass?.id,
         message: error?.message || "Unable to send guest welcome email",
+      });
+    }
+
+    try {
+      await sendGuestPassVenueNotificationEmail({
+        guest: result.guest,
+        pass,
+        preferences: result.preferences,
+        sourceHotelSlug,
+      });
+    } catch (error) {
+      console.error("guest pass venue notification email error:", {
+        guestId: result.guest?.id,
+        passId: pass?.id,
+        sourceHotelSlug,
+        message:
+          error?.message || "Unable to send guest pass venue notification",
       });
     }
 

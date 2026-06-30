@@ -12,11 +12,113 @@ const EMAIL_PREVIEW_ENDPOINT = "/.netlify/functions/guest-welcome-email-preview"
 const EMAIL_PREVIEW_WIDTH = 390;
 const EMAIL_PREVIEW_HEIGHT = 760;
 
+function PreviewPhone({ title, preview, isLoadingPreview }) {
+  return (
+    <section
+      aria-label={title}
+      style={{
+        flex: "1 1 320px",
+        width: `min(100%, ${EMAIL_PREVIEW_WIDTH + 40}px)`,
+        margin: "0 auto",
+        padding: 12,
+        border: "1px solid #171717",
+        borderRadius: 34,
+        background: "#171717",
+        boxShadow: "0 28px 70px rgba(40, 32, 20, 0.28)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "0 0 10px",
+        }}
+      >
+        <Text
+          style={{
+            color: "#f4f0e8",
+            fontSize: 11,
+            fontWeight: 800,
+            letterSpacing: 1.2,
+            textTransform: "uppercase",
+          }}
+        >
+          {title} / {EMAIL_PREVIEW_WIDTH}px
+        </Text>
+      </div>
+      <div
+        style={{
+          height: 24,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 72,
+            height: 5,
+            borderRadius: 99,
+            background: "#2e2e2e",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          overflow: "hidden",
+          width: `min(100%, ${EMAIL_PREVIEW_WIDTH}px)`,
+          height: `min(${EMAIL_PREVIEW_HEIGHT}px, calc(100vh - 128px))`,
+          minHeight: 520,
+          margin: "0 auto",
+          borderRadius: 24,
+          background: "#fff",
+        }}
+      >
+        {isLoadingPreview ? (
+          <div
+            style={{
+              display: "grid",
+              minHeight: "100%",
+              placeItems: "center",
+            }}
+          >
+            <Spin />
+          </div>
+        ) : preview?.html ? (
+          <iframe
+            title={title}
+            srcDoc={preview.html}
+            style={{
+              display: "block",
+              width: "100%",
+              height: "100%",
+              border: 0,
+              background: "#fff",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              display: "grid",
+              minHeight: "100%",
+              placeItems: "center",
+              padding: 24,
+              textAlign: "center",
+            }}
+          >
+            <Text type="secondary">Preview unavailable</Text>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 export default function EmailPreviewPage() {
   const [preview, setPreview] = useState(null);
   const [isLoadingPreview, setIsLoadingPreview] = useState(true);
   const [previewError, setPreviewError] = useState(null);
-  const [isSending, setIsSending] = useState(false);
+  const [sendingType, setSendingType] = useState(null);
   const [sendResult, setSendResult] = useState(null);
   const [sendError, setSendError] = useState(null);
 
@@ -44,13 +146,17 @@ export default function EmailPreviewPage() {
     loadPreview();
   }, [loadPreview]);
 
-  const sendTestEmail = async () => {
-    setIsSending(true);
+  const sendTestEmail = async (emailType) => {
+    setSendingType(emailType);
     setSendResult(null);
     setSendError(null);
 
     try {
-      const response = await fetch(EMAIL_PREVIEW_ENDPOINT, { method: "POST" });
+      const response = await fetch(EMAIL_PREVIEW_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ emailType }),
+      });
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
@@ -61,9 +167,12 @@ export default function EmailPreviewPage() {
     } catch (error) {
       setSendError(error.message || "Unable to send test email");
     } finally {
-      setIsSending(false);
+      setSendingType(null);
     }
   };
+
+  const guestWelcomePreview = preview?.guestWelcome || preview;
+  const venueNotificationPreview = preview?.venueNotification;
 
   return (
     <SiteLayout>
@@ -125,7 +234,7 @@ export default function EmailPreviewPage() {
                 fontWeight: 700,
               }}
             >
-              Mobile email preview
+              Email previews
             </Title>
             <Paragraph
               style={{
@@ -136,7 +245,9 @@ export default function EmailPreviewPage() {
                 lineHeight: 1.65,
               }}
             >
-              Subject: <strong>{preview?.subject || "Loading..."}</strong>
+              Guest subject: <strong>{guestWelcomePreview?.subject || "Loading..."}</strong>
+              <br />
+              Venue subject: <strong>{venueNotificationPreview?.subject || "Loading..."}</strong>
             </Paragraph>
 
             <div
@@ -150,8 +261,8 @@ export default function EmailPreviewPage() {
               <Button
                 type="primary"
                 icon={<MailOutlined />}
-                loading={isSending}
-                onClick={sendTestEmail}
+                loading={sendingType === "guest-welcome"}
+                onClick={() => sendTestEmail("guest-welcome")}
                 style={{
                   minHeight: 42,
                   background: "#111",
@@ -159,7 +270,15 @@ export default function EmailPreviewPage() {
                   fontWeight: 700,
                 }}
               >
-                Send test to viji@viji.com
+                Send guest test
+              </Button>
+              <Button
+                icon={<MailOutlined />}
+                loading={sendingType === "venue-notification"}
+                onClick={() => sendTestEmail("venue-notification")}
+                style={{ minHeight: 42, fontWeight: 700 }}
+              >
+                Send venue test
               </Button>
               <Button
                 icon={<ReloadOutlined />}
@@ -177,6 +296,7 @@ export default function EmailPreviewPage() {
                 showIcon
                 style={{ marginTop: 18, maxWidth: 390 }}
                 message={`Test email sent to ${sendResult.recipient}`}
+                description={sendResult.subject}
               />
             ) : null}
             {sendError ? (
@@ -197,103 +317,17 @@ export default function EmailPreviewPage() {
             ) : null}
           </section>
 
-          <section
-            aria-label="Mobile email preview"
-            style={{
-              flex: "1 1 320px",
-              width: `min(100%, ${EMAIL_PREVIEW_WIDTH + 40}px)`,
-              margin: "0 auto",
-              padding: 12,
-              border: "1px solid #171717",
-              borderRadius: 34,
-              background: "#171717",
-              boxShadow: "0 28px 70px rgba(40, 32, 20, 0.28)",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "0 0 10px",
-              }}
-            >
-              <Text
-                style={{
-                  color: "#f4f0e8",
-                  fontSize: 11,
-                  fontWeight: 800,
-                  letterSpacing: 1.2,
-                  textTransform: "uppercase",
-                }}
-              >
-                Email width: {EMAIL_PREVIEW_WIDTH}px
-              </Text>
-            </div>
-            <div
-              style={{
-                height: 24,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <div
-                style={{
-                  width: 72,
-                  height: 5,
-                  borderRadius: 99,
-                  background: "#2e2e2e",
-                }}
-              />
-            </div>
-            <div
-              style={{
-                overflow: "hidden",
-                width: `min(100%, ${EMAIL_PREVIEW_WIDTH}px)`,
-                height: `min(${EMAIL_PREVIEW_HEIGHT}px, calc(100vh - 128px))`,
-                minHeight: 520,
-                margin: "0 auto",
-                borderRadius: 24,
-                background: "#fff",
-              }}
-            >
-              {isLoadingPreview ? (
-                <div
-                  style={{
-                    display: "grid",
-                    minHeight: "100%",
-                    placeItems: "center",
-                  }}
-                >
-                  <Spin />
-                </div>
-              ) : preview?.html ? (
-                <iframe
-                  title="Guest welcome email mobile preview"
-                  srcDoc={preview.html}
-                  style={{
-                    display: "block",
-                    width: "100%",
-                    height: "100%",
-                    border: 0,
-                    background: "#fff",
-                  }}
-                />
-              ) : (
-                <div
-                  style={{
-                    display: "grid",
-                    minHeight: "100%",
-                    placeItems: "center",
-                    padding: 24,
-                    textAlign: "center",
-                  }}
-                >
-                  <Text type="secondary">Preview unavailable</Text>
-                </div>
-              )}
-            </div>
-          </section>
+          <PreviewPhone
+            title="Guest welcome email"
+            preview={guestWelcomePreview}
+            isLoadingPreview={isLoadingPreview}
+          />
+
+          <PreviewPhone
+            title="Venue notification email"
+            preview={venueNotificationPreview}
+            isLoadingPreview={isLoadingPreview}
+          />
         </div>
       </main>
     </SiteLayout>

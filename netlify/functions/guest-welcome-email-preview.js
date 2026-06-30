@@ -2,6 +2,10 @@ import {
   generateGuestWelcomeEmail,
   sendGuestWelcomeEmail,
 } from "../../lib/guest-welcome-email.js";
+import {
+  generateGuestPassVenueNotificationEmail,
+  sendGuestPassVenueNotificationEmail,
+} from "../../lib/guest-pass-venue-email.js";
 
 const TEST_EMAIL_RECIPIENT = "viji@viji.com";
 
@@ -49,6 +53,18 @@ function buildPreviewPayload() {
   };
 }
 
+function parseBody(event) {
+  if (!event.body) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(event.body);
+  } catch {
+    return {};
+  }
+}
+
 export const handler = async (event) => {
   const headers = jsonHeaders();
 
@@ -68,10 +84,19 @@ export const handler = async (event) => {
     const payload = buildPreviewPayload();
 
     if (event.httpMethod === "POST") {
-      const email = await sendGuestWelcomeEmail({
-        ...payload,
-        recordHistory: false,
-      });
+      const body = parseBody(event);
+      const emailType = body.emailType || "guest-welcome";
+      const email =
+        emailType === "venue-notification"
+          ? await sendGuestPassVenueNotificationEmail({
+              ...payload,
+              sourceHotelSlug: payload.pass.sourceHotelSlug,
+              recipientOverride: TEST_EMAIL_RECIPIENT,
+            })
+          : await sendGuestWelcomeEmail({
+              ...payload,
+              recordHistory: false,
+            });
 
       return {
         statusCode: 200,
@@ -79,21 +104,38 @@ export const handler = async (event) => {
         body: JSON.stringify({
           success: true,
           recipient: TEST_EMAIL_RECIPIENT,
+          emailType,
           subject: email.subject,
         }),
       };
     }
 
-    const email = generateGuestWelcomeEmail(payload);
+    const guestWelcomeEmail = generateGuestWelcomeEmail(payload);
+    const venueNotificationEmail = generateGuestPassVenueNotificationEmail({
+      ...payload,
+      sourceHotelSlug: payload.pass.sourceHotelSlug,
+    });
 
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        subject: email.subject,
-        html: email.html,
-        text: email.text,
+        subject: guestWelcomeEmail.subject,
+        html: guestWelcomeEmail.html,
+        text: guestWelcomeEmail.text,
         recipient: TEST_EMAIL_RECIPIENT,
+        guestWelcome: {
+          subject: guestWelcomeEmail.subject,
+          html: guestWelcomeEmail.html,
+          text: guestWelcomeEmail.text,
+          recipient: TEST_EMAIL_RECIPIENT,
+        },
+        venueNotification: {
+          subject: venueNotificationEmail.subject,
+          html: venueNotificationEmail.html,
+          text: venueNotificationEmail.text,
+          recipient: venueNotificationEmail.recipient,
+        },
       }),
     };
   } catch (error) {
