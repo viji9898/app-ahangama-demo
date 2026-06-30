@@ -7202,7 +7202,7 @@ h4,
 .events-agenda-title {
   margin: 0 !important;
   color: #1e1a16 !important;
-  font-size: clamp(58px, 7vw, 92px) !important;
+  font-size: clamp(44px, 5.5vw, 72px) !important;
   line-height: 0.92 !important;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -7322,8 +7322,9 @@ h4,
 .events-agenda-entryTitle {
   margin: 0 0 8px !important;
   color: #221f1c !important;
-  font-size: clamp(28px, 3vw, 42px) !important;
+  font-size: clamp(22px, 2.4vw, 32px) !important;
   line-height: 1.05 !important;
+  white-space: pre-line;
   letter-spacing: -0.02em;
   font-family:
     "Cormorant Garamond", "Libre Baskerville", Georgia, serif !important;
@@ -7429,6 +7430,26 @@ h4,
   text-decoration: none;
 }
 
+.events-agenda-linkInstagram {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.events-agenda-linkLocation {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.events-agenda-linkInstagram .anticon {
+  font-size: 20px;
+}
+
+.events-agenda-linkLocation .anticon {
+  font-size: 20px;
+}
+
 .events-agenda-link:hover,
 .events-agenda-link:focus {
   color: #8b7b63;
@@ -7509,7 +7530,7 @@ h4,
   }
 
   .events-agenda-title {
-    font-size: clamp(42px, 12vw, 68px) !important;
+    font-size: clamp(34px, 10vw, 56px) !important;
   }
 
   .events-agenda-kicker {
@@ -7570,7 +7591,7 @@ h4,
   .events-agenda-entryTitle {
     margin-bottom: 5px !important;
     color: #ffffff !important;
-    font-size: clamp(20px, 6.4vw, 28px) !important;
+    font-size: clamp(18px, 5.4vw, 24px) !important;
     line-height: 1 !important;
   }
 
@@ -7627,6 +7648,14 @@ h4,
   .events-agenda-link {
     color: #ffffff;
     font-size: 12px;
+  }
+
+  .events-agenda-linkInstagram .anticon {
+    font-size: 19px;
+  }
+
+  .events-agenda-linkLocation .anticon {
+    font-size: 19px;
   }
 
   .events-agenda-editorPicks {
