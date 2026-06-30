@@ -1,5 +1,9 @@
 import React from "react";
-import { ClockCircleOutlined } from "@ant-design/icons";
+import {
+  ClockCircleOutlined,
+  EnvironmentOutlined,
+  InstagramOutlined,
+} from "@ant-design/icons";
 import { Typography } from "antd";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -130,19 +134,21 @@ export default function EventsPage() {
                         <div className="events-agenda-links">
                           <a
                             href={event.instagramUrl}
-                            className="events-agenda-link"
+                            className="events-agenda-link events-agenda-linkInstagram"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Instagram for ${event.venue}`}
                           >
-                            Instagram
+                            <InstagramOutlined />
                           </a>
                           <a
                             href={event.directionsUrl}
-                            className="events-agenda-link"
+                            className="events-agenda-link events-agenda-linkLocation"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Directions to ${event.venue}`}
                           >
-                            Directions
+                            <EnvironmentOutlined />
                           </a>
                         </div>
                       </div>
