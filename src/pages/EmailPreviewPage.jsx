@@ -128,7 +128,9 @@ export default function EmailPreviewPage() {
     setPreviewError(null);
 
     try {
-      const response = await fetch(EMAIL_PREVIEW_ENDPOINT);
+      const response = await fetch(EMAIL_PREVIEW_ENDPOINT, {
+        cache: "no-store",
+      });
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
