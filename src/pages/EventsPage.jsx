@@ -18,7 +18,7 @@ import {
 const { Title, Paragraph, Text } = Typography;
 
 const EVENTS_OG_IMAGE =
-  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782880342/EventsCalender_metaImage_bvgzp8.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782884816/EventsCalender_metaImage_m3mt10.webp";
 
 export default function EventsPage() {
   const canonical = absUrl("/events");
