@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "antd";
+import { Typography } from "antd"; 
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import { Seo } from "../app/seo";

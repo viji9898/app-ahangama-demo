@@ -371,8 +371,8 @@ export const BLOG_POSTS = [
       "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830635/Section_1_-_Sauna_Ice_bath_Frosty_s_sk93mf.webp",
     sections: [
       {
-        Image:
-          "/12 Experiences Images /Wellness guide /Section 1 -  Sauna & Ice bath Frosty_s.jpg",
+        image:
+          "",
         heading: "Start with the kind of wellness rhythm you actually want",
         paragraphs: [
           "The best version of wellness in Ahangama is rarely the most maximal one. The town works best when you decide early whether your stay is about slower mornings, surf recovery, structured training, or one proper reset somewhere in the middle of the trip.",
@@ -388,6 +388,8 @@ export const BLOG_POSTS = [
       },
       {
         heading: "Yoga in Ahangama is about tone more than trend",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830619/Section_2_-_Yoga_in_Nuga_House_a19bld.webp",
         paragraphs: [
           "The strongest yoga recommendations in Ahangama are the ones that match a slower pace of stay. If you want retreat energy, softer mornings, and a more grounded start to the day, Senses, Shramalaya, and The Nuga House are the clearest names in the current live set.",
           "These are not just places to collect classes. They work best when they become part of a routine: wake early, move well, eat lightly, and let the rest of the day stay open rather than forcing every hour into a program.",
@@ -400,6 +402,8 @@ export const BLOG_POSTS = [
       },
       {
         heading: "Pilates and mobility are often the smartest choice for surf-heavy stays",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830631/Section_3_-_Pilates_at_Pura_Pilates__dqo4fc.webp",
         paragraphs: [
           "If the goal is to support surfing with better mobility, posture, and strength, Pura Pilates is still the standout recommendation. It makes sense for visitors who want wellness to feel useful and structured rather than purely indulgent.",
           "Pilates also suits Ahangama because it integrates neatly into the day. It sits well between surf, co-working, breakfast stops, and evening plans, which makes it one of the easiest categories to recommend to repeat visitors and longer stays.",
@@ -411,6 +415,8 @@ export const BLOG_POSTS = [
       },
       {
         heading: "Do not ignore the gym and harder-training side of the town",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814135/Section_4_-_krish_Combat_Gym__njifcz.webp",
         paragraphs: [
           "Ahangama is often described through soft wellness alone, but that misses a growing part of the destination. Many longer-stay visitors still want real physical training while they are here, and Krish Combat & Fitness is the clearest fit for that version of the trip.",
           "This becomes more relevant the longer you stay. After a week, wellness usually stops meaning only massage and yoga. It starts meaning consistency, good movement, and feeling physically capable enough to enjoy everything else properly.",
@@ -422,6 +428,8 @@ export const BLOG_POSTS = [
       },
       {
         heading: "Recovery culture is now part of Ahangama's identity",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814134/Section_5_-_Recovery_at_Spa_Station__vl4rt3.webp",
         paragraphs: [
           "The recovery side of town has become much more defined, and Frosty's remains the easiest entry point if you want cold immersion and practical post-surf reset sessions without too much ceremony. Banya Steam House offers a slower, more niche version of that mood through steam and restoration.",
           "This category works best for visitors who want a wellness afternoon that feels functional rather than performative. It is about easing soreness, regulating energy, and making the next session in the water or the next workday feel noticeably better.",
@@ -434,6 +442,8 @@ export const BLOG_POSTS = [
       },
       {
         heading: "Spa and Ayurveda are where the town shifts into restoration mode",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814135/Section_6_-_Aksaaya_wellness_plcfzy.webp",
         paragraphs: [
           "When someone needs to feel repaired rather than activated, the strongest names are Aksaaya Ayurveda Wellness Spa, Sarana, White Lotus Spa & Wellness, and Ayurveda Palm Garden Resort. Each offers a different interpretation of reset, from traditional treatment culture to more polished resort calm.",
           "These are also the easiest recommendations when the trip is less about surfing and more about arriving tired, traveling as a couple, or giving the stay one quieter anchor experience that changes its pace.",
@@ -447,6 +457,8 @@ export const BLOG_POSTS = [
       },
       {
         heading: "The best wellness itinerary is mixed, not maximal",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814135/Section_6_-_Aksaaya_wellness_plcfzy.webp",
         paragraphs: [
           "The common mistake is trying to do too much: yoga every morning, surf every day, treatments on top, and then wondering why the trip feels strangely tiring. Ahangama works better when you mix categories and leave room for actual rest.",
           "That is what makes the town strong. You can train, stretch, recover, socialize, and still keep the whole trip feeling light. The right guide is not one that gives you the most options. It is one that helps you find the right rhythm.",
@@ -476,7 +488,7 @@ export const BLOG_POSTS = [
     readingTime: "7 min read",
     category: "Transport guide",
     heroImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/scooty_rental_and_taxi.jpeg",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814071/Section_1_-_Scooty_rental_taxi_service_f4pusd.webp",
     sections: [
       {
         heading: "Use the right transport for the right kind of day",
@@ -492,6 +504,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814071/Section_1_-_Scooty_rental_taxi_service_f4pusd.webp",
         heading: "Scooters are still the default for everyday Ahangama movement",
         paragraphs: [
           "If you are staying in Ahangama for more than a day or two, a scooter is usually the simplest way to move. It gives you flexible access to surf breaks, cafes, supermarkets, and neighboring beaches without having to negotiate every short trip.",
@@ -503,6 +517,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814072/Section_3_-_Tuk_Tuk_Rides_qeccvy.webp",
         heading: "Tuk-tuks are best for short local hops, not full-day dependence",
         paragraphs: [
           "For visitors who do not want to self-drive, tuk-tuks and local taxi-style rides are the practical fallback. They work best for station pickups, rainy-day movements, dinner runs, and quick trips across town rather than acting as the foundation for every hour of the day.",
@@ -514,6 +530,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "/12 Experiences Images /12 - Editorial style lifestyle section - Explore Ahangama Slowly.webp",
         heading: "Airport transfers should feel fixed, clear, and pre-agreed",
         paragraphs: [
           "The clearest airport-transfer specialist in the live data is Taxi and Transport Tours. Its description explicitly covers airport pickups, local rides, private day tours, and long-distance travel, and it is marked as available 24/7.",
@@ -525,6 +543,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "/12 Experiences Images /04 - Ice bath & Sauna(1).jpg",
         heading: "For Galle, Hiriketiya, and longer south-coast runs, cars usually win",
         paragraphs: [
           "The transport descriptions do not always explicitly call out every destination, but the positioning is still clear. Nova Rent a Car is the strongest self-drive option because it is framed around car rentals, road trips, and exploring beyond Ahangama.",
@@ -536,6 +556,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "/12 Experiences Images /09-Co work.jpg",
         heading: "The strongest transport entries in the database right now",
         paragraphs: [
           "GIK Bike Rentals is the clearest scooter-led option for flexible local movement, and Scooty Rental & Taxi Service remains one of the strongest day-to-day names in the set by review count and practical use case.",
@@ -715,6 +737,8 @@ export const BLOG_POSTS = [
     authorRole: "Slow-travel writer visiting for a month",
     readingTime: "6 min read",
     category: "Travel guide",
+    heroImage:
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814164/Section_1_-_Hero_image_-_Lunch_on_the_table_wg1vyd.webp",
     sections: [
       {
         heading: "Start with the town's natural rhythm",
@@ -724,6 +748,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814165/Section_2_-_Ahangama_kabalana_beach_football_hzhpk4.webp",
         heading: "Build your day around one anchor, not six",
         paragraphs: [
           "The strongest Ahangama itineraries usually revolve around one main activity: a surf lesson, a wellness session, a lunch reservation, or a slow beach afternoon. Everything else should support that anchor rather than compete with it.",
@@ -736,6 +762,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814072/Section_3_-_Tuk_Tuk_Rides_qeccvy.webp",
         heading: "The reward is a trip that feels less generic",
         paragraphs: [
           "Ahangama does not need to be consumed like a list. It works better as a place where you repeat good moments, revisit neighborhoods, and let your second stop of the day be the one you did not plan in advance.",
@@ -758,6 +786,8 @@ export const BLOG_POSTS = [
     authorRole: "First-time visitor from London",
     readingTime: "7 min read",
     category: "Visitor guide",
+    heroImage:
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814058/pd4hextqasqx4effm4it_ovep57.webp",
     sections: [
       {
         heading: "Choose your base with intention",
@@ -767,6 +797,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814058/Section_2_-_Lunch_at_cactus_jn2v8j.webp",
         heading:
           "Treat food as part of the destination, not only a convenience",
         paragraphs: [
@@ -780,6 +812,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814060/z7sg5qpvmhqld4nw8fuy_c6f7lx.webp",
         heading: "A better trip usually includes recovery time",
         paragraphs: [
           "The town is strongest when surf, beach, and social energy are balanced with recovery. That can mean yoga, massage, a slower morning, or simply giving yourself an empty block instead of filling every hour.",
@@ -802,6 +836,8 @@ export const BLOG_POSTS = [
     authorRole: "Weekend traveler from Colombo",
     readingTime: "5 min read",
     category: "Itinerary",
+    heroImage:
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814117/section_1_-_Beachfront_breakfast_b8i8dh.webp",
     sections: [
       {
         heading: "Morning should feel open, not compressed",
@@ -811,6 +847,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814118/section_2_-_Shopping_at_ahangama_gyva8f.webp",
         heading: "Use the middle of the day for depth",
         paragraphs: [
           "Midday is where visitors either rush or settle in. The better option is almost always to settle in: take a longer lunch, browse one or two retail stops, or add a wellness session instead of another transfer.",
@@ -818,6 +856,8 @@ export const BLOG_POSTS = [
         ],
       },
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830733/Sunset_at_Light_house_wifoik.webp",
         heading: "Let the evening respond to the day you actually had",
         paragraphs: [
           "The right evening plan depends on the day that came before it. If the day was active, end lightly. If the day was quiet, choose the social dinner or cocktail stop that gives the trip a stronger final note.",
