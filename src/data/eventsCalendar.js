@@ -3,6 +3,11 @@ import sambaHappyHourImage from "../assets/temp/Samba Haappy Hour .png";
 import cafeCeylonMovieNightImage from "../assets/temp/Cafe Ceylon Movie Night .jpeg";
 import monoDjNightImage from "../assets/temp/Mono - DJ Night .jpg";
 import hotelDeUnclesMonsoonNightImage from "../assets/temp/Hotel De Uncles Monsoon Nights .jpeg";
+import img2Image from "../assets/temp/img2.jpeg";
+import img3Image from "../assets/temp/img3.jpeg";
+import img4Image from "../assets/temp/img4.jpeg";
+import img5Image from "../assets/temp/img5.jpeg";
+import img6Image from "../assets/temp/img6.jpeg";
 import { PLACES } from "./places";
 
 const eventImage = (fileName) =>
@@ -18,6 +23,9 @@ const kaiAhangamaImage = eventImage("Kai - Live Music - Venue Image.png");
 const monoImage = eventImage("Mono - Dante Alchemico Koila Event Flyer.jpg");
 const kurunduImage = eventImage("Kurundu - Sundown session Event Flyer.png");
 const emberAndIceRitualsImage = eventImage("Ember & Ice-  Rituals Image.png");
+const emberAndIceBreathworkImage = eventImage(
+  "Ember & Ice - Breathworking Image_.png",
+);
 const ceylonSlidersImage = eventImage(
   "Ceylon sliders - Saturday Session - Party night image.jpg",
 );
@@ -157,6 +165,8 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "From 5:00 PM",
         category: "Weekly Picks",
         image: kaiAhangamaImage,
+        instagramUrl:
+          "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
     ],
   },
@@ -209,6 +219,8 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "From 5:00 PM",
         category: "This Week's Highlights",
         image: kaiAhangamaImage,
+        instagramUrl:
+          "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
     ],
   },
@@ -224,6 +236,8 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "From 5:00 PM",
         category: "Weekly Picks",
         image: kaiAhangamaImage,
+        instagramUrl:
+          "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
     ],
   },
@@ -291,6 +305,45 @@ export const EVENTS_CALENDAR_DAYS = [
     ],
   },
   {
+    key: "2026-07-02",
+    weekday: "Thursday",
+    dayNumber: "02",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Thurseday Sunset Party",
+        venue: "Hakuna Matata",
+        time: "From 5:00 PM",
+        category: "Weekly Picks",
+        image: img2Image,
+        description:
+          "Played by MONAMOURRR SKILLZ JAY | MR PERCUSSION | ECH HOUSE / RNB / TECHNO / DISCO",
+        instagramUrl:
+          "https://www.instagram.com/hakuna_matata_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Karaoke Thurseday",
+        venue: "Hotel De Uncles",
+        time: "6.00PM",
+        category: "Weekly Picks",
+        image: img3Image,
+        instagramUrl:
+          "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5.00PM",
+        category: "Weekly Picks",
+        image: img4Image,
+        description: "Played by Chana",
+        instagramUrl:
+          "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+    ],
+  },
+  {
     key: "2026-07-03",
     weekday: "Friday",
     dayNumber: "03",
@@ -323,6 +376,52 @@ export const EVENTS_CALENDAR_DAYS = [
         description: "Hotel De Uncles x Latoya Presents.",
         instagramUrl:
           "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5.00PM",
+        category: "Weekly Picks",
+        image: img6Image,
+        description: "Played by Channuka",
+        instagramUrl:
+          "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-05",
+    weekday: "Sunday",
+    dayNumber: "05",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5.00PM",
+        category: "Weekly Picks",
+        image: img5Image,
+        description: "Played by Delaa",
+        instagramUrl:
+          "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-07",
+    weekday: "Tuesday",
+    dayNumber: "07",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "BREATHWORK",
+        venue: "Ember & Ice",
+        time: "10.00AM",
+        category: "Wellness",
+        image: emberAndIceBreathworkImage,
+        description: "BREATHWORK + E&I*",
+        instagramUrl:
+          "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
     ],
   },
