@@ -516,6 +516,15 @@ function EditorialGuidePost({ post, issueItem, issueItems, onSelectPost }) {
             key={section.heading}
             className="blog-featureSection blog-featureModule"
           >
+            {section.image || section.Image ? (
+              <figure className="blog-featureFigure">
+                <EditorialImage
+                  src={section.image || section.Image}
+                  alt={section.heading}
+                />
+              </figure>
+            ) : null}
+
             <Text className="blog-featureSectionLabel">
               {`Section ${String(index + 1).padStart(2, "0")}`}
             </Text>
