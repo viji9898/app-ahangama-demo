@@ -17,7 +17,7 @@ export const BLOG_POSTS = [
     heroImage:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
     introImage:
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830921/12_-_Editorial_style_lifestyle_section_-_Explore_Ahangama_Slowly_joi1zd.webp",
     heroSubtitle:
       "A curated guide to wellness, adventure, food, creativity, and coastal living in Sri Lanka's most exciting surf town.",
     introTitle: "Ahangama is best experienced slowly",
@@ -54,7 +54,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 8,100 ($23.47)",
         passLabel: "Preferred studio pricing",
         image:
-          "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813854/01_-_Pura_Pilates__myhaog.webp",
         layout: "split-left",
       },
       {
@@ -67,7 +67,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 2,625 ($7.60)",
         passLabel: "Pass holder rate",
         image:
-          "https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782831182/02_-_Self_derive_Tuk_Tuk_fkhqnd.webp",
         layout: "split-right",
       },
       {
@@ -80,7 +80,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 5,600 ($16.23)",
         passLabel: "Curated activity benefit",
         image:
-          "https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782831194/03_-_Pickle_Ball_nloxdv.webp",
         layout: "feature",
       },
       {
@@ -93,7 +93,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 3,600 ($10.43)",
         passLabel: "Wellness partner perk",
         image:
-          "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=80",
+          "/12 Experiences Images /04 - Ice bath & Sauna(1).jpg", // have to change this image into webp format
         layout: "split-left",
       },
       {
@@ -106,7 +106,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 10,800 ($31.30)",
         passLabel: "Pass holder kitchen access",
         image:
-          "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813853/05_-_Cooking_Class_smyqbi.webp",
         layout: "split-right",
       },
       {
@@ -119,7 +119,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 6,450 ($18.69)",
         passLabel: "Preferred wellness pricing",
         image:
-          "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813856/06_-_Massage_Spa_1_dpecer.webp",
         layout: "feature",
       },
       {
@@ -132,7 +132,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 4,400 ($12.75)",
         passLabel: "Curated excursion benefit",
         image:
-          "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813856/07_-_River_Journey_b4tq08.webp",
         layout: "split-left",
       },
       {
@@ -145,7 +145,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 3,325 ($9.63)",
         passLabel: "Creative studio perk",
         image:
-          "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782831205/08_-_Tote_bag_ceramic_painting_dwgxyw.webp",
         layout: "split-right",
       },
       {
@@ -158,7 +158,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 2,700 ($7.82)",
         passLabel: "Workspace partner rate",
         image:
-          "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813857/09-Co_work_zaanev.webp",
         layout: "feature",
       },
       {
@@ -171,7 +171,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 13,500 ($39.13)",
         passLabel: "Partner retail benefit",
         image:
-          "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830900/10_-_Shopping_Yiva_Essentials_ezac4o.webp",
         layout: "split-left",
       },
       {
@@ -184,7 +184,7 @@ export const BLOG_POSTS = [
         passPrice: "Rs. 4,500 ($13.04)",
         passLabel: "Sunset partner pricing",
         image:
-          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830895/11-_Sunset_party_-_Hakuna_matata_vmpvlk.webp",
         layout: "split-right",
       },
       {
@@ -197,7 +197,7 @@ export const BLOG_POSTS = [
         passPrice: "The pass quietly enhances the journey",
         passLabel: "Soft companion benefit",
         image:
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830921/12_-_Editorial_style_lifestyle_section_-_Explore_Ahangama_Slowly_joi1zd.webp",
         layout: "feature",
       },
     ],
@@ -231,7 +231,7 @@ export const BLOG_POSTS = [
       "The kind of day that starts with movement, stays loose through the middle, and ends at Lighthouse just as the light turns gold.",
     introTitle: "A good Ahangama day does not feel rushed",
     introImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830708/Sunset_at_Light_house_kfxr9i.webp",
     introColumns: [
       "When I think about my favorite days in Ahangama, they are never the ones packed with too many plans. The best ones have a rhythm: one good wellness session, a stop for coffee and something fresh, time near the water, then enough space in the afternoon to follow energy rather than a schedule.",
       "This is the version of the day I keep coming back to. It starts with Pilates, moves through easy food and ocean time, and ends at Lighthouse for sunset. Nothing about it feels forced. That is exactly why it works.",
@@ -267,7 +267,7 @@ export const BLOG_POSTS = [
         eyebrow: "Morning to afternoon",
         title: "Start well, then let the rest of the day stay open",
         image:
-          "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814105/Rolling_pin_Coffee__eo7w5u.webp",
         paragraphs: [
           "After Pilates, I usually want somewhere easy for breakfast or coffee rather than anything heavy. That is where places like Oyummy and Rollingpin come in. They make the morning feel social and light, without pulling the whole day into a fixed timetable.",
           "From there, the best move is usually to avoid over-structuring the afternoon. A little surf, a walk, a long coffee, or just time near the beach tends to create a better day than trying to collect too many stops.",
@@ -278,7 +278,7 @@ export const BLOG_POSTS = [
         eyebrow: "Evening note",
         title: "End somewhere that lets the town slow down again",
         image:
-          "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830708/Sunset_at_Light_house_kfxr9i.webp",
         paragraphs: [
           "Sunset at Lighthouse is the kind of ending that makes the whole day feel cohesive. By that point you do not need anything dramatic. You just want a place where the light, the sea, and the mood all line up naturally.",
           "That is what a perfect day here usually is for me: one wellness anchor, a few favorite stops, and an evening that closes softly instead of trying too hard to become a big event.",
@@ -368,9 +368,11 @@ export const BLOG_POSTS = [
     readingTime: "8 min read",
     category: "Wellness guide",
     heroImage:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830635/Section_1_-_Sauna_Ice_bath_Frosty_s_sk93mf.webp",
     sections: [
       {
+        Image:
+          "/12 Experiences Images /Wellness guide /Section 1 -  Sauna & Ice bath Frosty_s.jpg",
         heading: "Start with the kind of wellness rhythm you actually want",
         paragraphs: [
           "The best version of wellness in Ahangama is rarely the most maximal one. The town works best when you decide early whether your stay is about slower mornings, surf recovery, structured training, or one proper reset somewhere in the middle of the trip.",
@@ -569,7 +571,7 @@ export const BLOG_POSTS = [
       "A guide to surf culture, wellness, creativity, remote work, and tropical slow living on Sri Lanka's south coast.",
     introTitle: "A place you plan to pass through, then somehow remain in",
     introImage:
-      "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=80",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814155/Hero_Image_-_Opening_note_suor1s.webp",
     introColumns: [
       "I first arrived in Ahangama expecting a stopover. A few surf sessions, a good lunch, maybe a slow afternoon cafe, then onward. But the town has a way of rearranging your plans without drama. A couple of nights becomes a week. A week starts to feel brief.",
       "You begin to notice how the day naturally assembles itself here: surf in the morning, long coffee in the heat, an ice bath or Pilates class in the afternoon, sunset drinks with people you met only hours earlier, then dinner somewhere that feels half tropical hideaway, half quietly global. Ahangama has evolved into something far more interesting than a traditional surf town.",
@@ -583,7 +585,7 @@ export const BLOG_POSTS = [
         title: "The ocean still sets the pace",
         layout: "immersive",
         image:
-          "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1600&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782829915/Surf_Culture_nqswyt.webp",
         paragraphs: [
           "Even if you never paddle out, surf culture shapes the rhythm of Ahangama. Dawn begins at Kabalana. By mid-morning, conversations drift between The Rock, Marshmallows, board choices, swell windows, and where to stop for coffee after the session.",
           "For beginners, the atmosphere is generous. For experienced surfers, there is enough shape, texture, and routine to keep the days interesting. Either way, the water gives the town its tempo, and even non-surfers end up moving to it. The Ahangama Pass unlocks partner benefits across selected surf and lifestyle venues, but the wider reward is simply being drawn into the atmosphere.",
@@ -602,7 +604,7 @@ export const BLOG_POSTS = [
         title: "Slow mornings have become part of the culture",
         layout: "split-left",
         image:
-          "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814157/Wellness_Recovery_-_Ice_bath_-_Ember_Ice_kqxk6i.webp",
         paragraphs: [
           "What makes Ahangama feel current is not just the surf, but what happens around it. Ice baths, saunas, Pilates sessions, yoga classes, spa rituals, and wellness cafes now sit naturally within the day rather than on its edges. Places like Pura Pilates, Frosty's, Ember & Ice, and the growing spa scene have helped shape a recovery culture that feels modern without becoming performative.",
           "There is a softness to it all. People move from the ocean to the studio, from coffee to breathwork, from a long brunch to a massage, not with urgency but with intention. The town makes wellness feel less like a discipline and more like a rhythm.",
@@ -619,22 +621,22 @@ export const BLOG_POSTS = [
         gallery: [
           {
             image:
-              "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+              "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832159/Cafes_Food_Creative_Culture_-Speciality_Coffee__xpfpqw.webp",
             label: "Specialty coffee",
           },
           {
             image:
-              "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
+              "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814153/Coworking_Afternoons_dt3m3a.webp",
             label: "Coworking afternoons",
           },
           {
             image:
-              "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80",
+              "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814153/Boutique_retail_cf6yge.webp",
             label: "Boutique retail",
           },
           {
             image:
-              "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80",
+              "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814154/Creative_workshop_cjlqrh.webp",
             label: "Creative workshops",
           },
         ],
@@ -644,7 +646,7 @@ export const BLOG_POSTS = [
         title: "Ahangama is social, but rarely overwhelming",
         layout: "split-right",
         image:
-          "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1200&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814156/The_Social_side_-_hero_image_xr4qxf.webp",
         paragraphs: [
           "By early evening, the tone shifts. Beach bars begin to fill, house music starts to move through open spaces, and places like Hakuna Matata and Lamana Skatepark become part of a wider scene that feels international without losing the looseness of a beach town.",
           "That balance is part of Ahangama's appeal. It offers enough energy to feel alive, enough nightlife to feel social, and enough restraint to avoid tipping into chaos. You can move from an ice bath to a DJ set in the same day and somehow the transition still feels coherent.",
@@ -655,7 +657,7 @@ export const BLOG_POSTS = [
         title: "The inland detours are part of the story",
         layout: "immersive",
         image:
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832210/Slow_20Exploration_20-_20Boat_20Ride_uyffp6.webp",
         paragraphs: [
           "Some of the most memorable moments here happen away from the shoreline. A self-drive tuk-tuk from GIK Bike Rentals, a river journey with Sarana, a road through rice paddies, a temple stop, or an inland waterfall can completely change the emotional shape of a day.",
           "Ahangama works because it is not only about the beach. It opens outward. The ocean draws you in, but the roads beyond town remind you that the south coast is larger, slower, and more layered than first impressions suggest.",

@@ -14,7 +14,7 @@ import {
 const { Title, Paragraph, Text } = Typography;
 
 const EVENTS_OG_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/events_june_ahangama.jpg";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782880342/EventsCalender_metaImage_bvgzp8.webp";
 
 export default function EventsPage() {
   const canonical = absUrl("/events");
