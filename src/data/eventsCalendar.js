@@ -409,7 +409,7 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "10.00AM",
         category: "Wellness",
         image: emberAndIceBreathworkImage,
-        description: "Breathwork sessionwith Ember & Ice.",
+        description: "Breathwork session with Ember & Ice.",
         instagramUrl:
           "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
