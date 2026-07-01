@@ -51,8 +51,16 @@ import WhatIsAhangamaPassPage from "../pages/WhatIsAhangamaPassPage";
 import VenueQrLandingPage from "../pages/VenueQrLandingPage";
 import LocalIntelligencePage from "../pages/LocalIntelligencePage";
 import EventsPage from "../pages/EventsPage";
+import NewsletterDataPage, {
+  NEWSLETTER_DATA_PATH,
+} from "../pages/NewsletterDataPage";
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
+import EmailPreviewPage from "../pages/EmailPreviewPage";
+import PassesIssuedPage, {
+  PASSES_ISSUED_PATH,
+} from "../pages/PassesIssuedPage";
+import PassValidityPage from "../pages/PassValidityPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
@@ -60,6 +68,15 @@ import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
+import StaffPickExperienceAhangamaPage, {
+  STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
+} from "../pages/StaffPickExperienceAhangamaPage";
+import BestSunsetsInAhangamaPage, {
+  BEST_SUNSETS_IN_AHANGAMA_PATH,
+} from "../pages/BestSunsetsInAhangamaPage";
+import CommunityMarketInAhangamaPage, {
+  COMMUNITY_MARKET_IN_AHANGAMA_PATH,
+} from "../pages/CommunityMarketInAhangamaPage";
 import WhereAhangamaGathersForSunsetPage, {
   WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH,
 } from "../pages/WhereAhangamaGathersForSunsetPage";
@@ -116,6 +133,7 @@ const routes = [
   },
   { path: "/local-intelligence", element: <LocalIntelligencePage /> },
   { path: "/events", element: <EventsPage /> },
+  { path: NEWSLETTER_DATA_PATH, element: <NewsletterDataPage /> },
   {
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
@@ -132,6 +150,18 @@ const routes = [
     element: <TheLivingRoomConceptStorePage />,
   },
   {
+    path: STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
+    element: <StaffPickExperienceAhangamaPage />,
+  },
+  {
+    path: BEST_SUNSETS_IN_AHANGAMA_PATH,
+    element: <BestSunsetsInAhangamaPage />,
+  },
+  {
+    path: COMMUNITY_MARKET_IN_AHANGAMA_PATH,
+    element: <CommunityMarketInAhangamaPage />,
+  },
+  {
     path: WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH,
     element: <WhereAhangamaGathersForSunsetPage />,
   },
@@ -146,6 +176,22 @@ const routes = [
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
+  {
+    path: "/kaffi",
+    element: <LighthousePage variant="kaffi" />,
+  },
+  {
+    path: "/gusta",
+    element: <LighthousePage variant="gusta" />,
+  },
+  {
+    path: "/tahini",
+    element: <LighthousePage variant="tahini" />,
+  },
+  {
+    path: "/living-Room",
+    element: <LighthousePage variant="livingRoom" />,
+  },
   { path: "/offers", element: <FullListPage /> },
   { path: "/full-list", element: <FullListPage /> },
   { path: "/12-things", element: <TwelveThingsPage /> },
@@ -177,6 +223,7 @@ const routes = [
   { path: "/card/pass/:cardId", element: <CardPass /> },
   { path: "/verify", element: <CardVerify /> },
   { path: "/verify/:cardId", element: <CardVerify /> },
+  { path: "/valid", element: <PassValidityPage /> },
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
@@ -188,6 +235,8 @@ const routes = [
   { path: "/shops", element: <ShopsEditorialPage /> },
   { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
+  { path: "/email-preview", element: <EmailPreviewPage /> },
+  { path: PASSES_ISSUED_PATH, element: <PassesIssuedPage /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,

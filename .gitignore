@@ -30,6 +30,8 @@ netlify/functions/*.zip
 # Environment variables
 .env
 .env.local
+.env*
+!.env.example
 
 # Stripe environment documentation (sensitive information)
 STRIPE_ENVIRONMENTS.md

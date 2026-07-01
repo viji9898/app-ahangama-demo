@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Button, Drawer, Grid, Space, Typography } from "antd";
-import { HeartOutlined, MenuOutlined } from "@ant-design/icons";
-import { Link, useLocation } from "react-router-dom";
+import { ArrowLeftOutlined, HeartOutlined, MenuOutlined } from "@ant-design/icons";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { trackPassCtaClick } from "../../analytics";
 import { buildPassCtaUrl } from "../../lib/passAttribution";
 import palmTreeIcon from "../../assets/receipt_icons/palm-tree-icon.svg";
@@ -12,12 +12,14 @@ const { useBreakpoint } = Grid;
 
 export default function TopNav({ overlayHero = false }) {
   const loc = useLocation();
+  const navigate = useNavigate();
   const passCtaUrl = buildPassCtaUrl();
   const screens = useBreakpoint();
   const isDesktop = !!screens.xl;
   const isMobile = !screens.md;
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isHome = loc.pathname === "/";
 
   const navItems = useMemo(() => [{ label: "Offers", to: "/offers" }], []);
 
@@ -89,41 +91,67 @@ export default function TopNav({ overlayHero = false }) {
               width: "100%",
             }}
           >
-            <Link
-              to="/"
+            <div
               style={{
-                textDecoration: "none",
-                color: navForeground,
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
+                gap: isDesktop ? 12 : 8,
                 flexShrink: 0,
-                minWidth: 0,
               }}
             >
-              <img
-                src={palmTreeIcon}
-                alt="Ahangama palm mark"
+              {!isHome && (
+                <Button
+                  type="text"
+                  aria-label="Go back"
+                  icon={<ArrowLeftOutlined style={{ fontSize: isDesktop ? 22 : 18 }} />}
+                  onClick={() => navigate(-1)}
+                  style={{
+                    color: navForeground,
+                    width: isDesktop ? 40 : 36,
+                    height: isDesktop ? 40 : 36,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: 0,
+                  }}
+                />
+              )}
+              <Link
+                to="/"
                 style={{
-                  width: isDesktop ? 28 : 22,
-                  height: isDesktop ? 28 : 22,
-                  objectFit: "contain",
-                  display: "block",
-                }}
-              />
-              <span
-                style={{
-                  fontFamily:
-                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                  fontSize: isDesktop ? 29 : 20,
-                  letterSpacing: isDesktop ? 1.8 : 1.1,
-                  fontWeight: 500,
-                  lineHeight: 1,
+                  textDecoration: "none",
+                  color: navForeground,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  flexShrink: 0,
+                  minWidth: 0,
                 }}
               >
-                AHANGAMA
-              </span>
-            </Link>
+                <img
+                  src={palmTreeIcon}
+                  alt="Ahangama palm mark"
+                  style={{
+                    width: isDesktop ? 28 : 22,
+                    height: isDesktop ? 28 : 22,
+                    objectFit: "contain",
+                    display: "block",
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily:
+                      '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    fontSize: isDesktop ? 29 : 20,
+                    letterSpacing: isDesktop ? 1.8 : 1.1,
+                    fontWeight: 500,
+                    lineHeight: 1,
+                  }}
+                >
+                  AHANGAMA
+                </span>
+              </Link>
+            </div>
 
             {isDesktop ? (
               <nav

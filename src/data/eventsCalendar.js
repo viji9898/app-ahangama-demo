@@ -1,3 +1,8 @@
+import lighthouseHappyHourImage from "../assets/temp/lighthouse-happy-hour.jpeg";
+import sambaHappyHourImage from "../assets/temp/Samba Haappy Hour .png";
+import cafeCeylonMovieNightImage from "../assets/temp/Cafe Ceylon Movie Night .jpeg";
+import monoDjNightImage from "../assets/temp/Mono - DJ Night .jpg";
+import hotelDeUnclesMonsoonNightImage from "../assets/temp/Hotel De Uncles Monsoon Nights .jpeg";
 import { PLACES } from "./places";
 
 const eventImage = (fileName) =>
@@ -13,9 +18,6 @@ const kaiAhangamaImage = eventImage("Kai - Live Music - Venue Image.png");
 const monoImage = eventImage("Mono - Dante Alchemico Koila Event Flyer.jpg");
 const kurunduImage = eventImage("Kurundu - Sundown session Event Flyer.png");
 const emberAndIceRitualsImage = eventImage("Ember & Ice-  Rituals Image.png");
-const emberAndIceBreathworkImage = eventImage(
-  "Ember & Ice - Breathworking Image_.png",
-);
 const ceylonSlidersImage = eventImage(
   "Ceylon sliders - Saturday Session - Party night image.jpg",
 );
@@ -88,20 +90,38 @@ function getDirectionsUrl(name) {
 }
 
 function enrichEvent(event) {
+  const passBenefit = Object.prototype.hasOwnProperty.call(event, "passBenefit")
+    ? event.passBenefit
+    : getPassBenefit(event.venue);
+  const instagramUrl = Object.prototype.hasOwnProperty.call(
+    event,
+    "instagramUrl",
+  )
+    ? event.instagramUrl
+    : getInstagramUrl(event.venue);
+  const directionsUrl = Object.prototype.hasOwnProperty.call(
+    event,
+    "directionsUrl",
+  )
+    ? event.directionsUrl
+    : getDirectionsUrl(event.venue);
+
   return {
     ...event,
-    instagramUrl: getInstagramUrl(event.venue),
-    directionsUrl: getDirectionsUrl(event.venue),
-    passBenefit: getPassBenefit(event.venue),
+    instagramUrl,
+    directionsUrl,
+    passBenefit,
   };
 }
 
 export const EVENTS_CALENDAR_OVERVIEW = {
-  monthLabel: "June 2026",
+  monthLabel: "July 2026",
   kicker: "Ahangama Events Agenda",
-  summary: "This week's highlights, weekly picks, wellness sessions and late June events around Ahangama.",
+  summary:
+    "This week's highlights, weekly picks, wellness sessions and late June events around Ahangama.",
   weekLabel: "Ahangama . 18 - 30 June",
-  weekDescription: "A curated selection of music, wellness, happy hours and social nights around town.",
+  weekDescription:
+    "A curated selection of music, wellness, happy hours and social nights around town.",
 };
 
 export const EVENTS_CALENDAR_DAYS = [
@@ -112,26 +132,27 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "🍹 Sunset Happy Hour & Music Night",
+        title: "Sunset Happy Hour & Music Night",
         venue: "Hakuna Matata",
         time: "Happy Hour: 5:00 PM - 7:00 PM",
         category: "Weekly Picks",
         image: hakunaMatataSunsetImage,
-        description: "20% off all cocktails with sunset music and a full night line-up.",
+        description:
+          "20% off all cocktails with sunset music and a full night line-up.",
         details: [
           "Music: Skillz Jay, Monamourrr, Mr. Percussion, Hotel De Uncles",
           "Offer: 20% off all cocktails",
         ],
       }),
       enrichEvent({
-        title: "🎤 Karaoke Thursday",
+        title: "Karaoke Thursday",
         venue: "Hakuna Matata",
         time: "From 6:00 PM",
         category: "Weekly Picks",
         image: hotelDeUnclesKaraokeImage,
       }),
       enrichEvent({
-        title: "🎵 Live Music with Channa",
+        title: "Live Music with Channa",
         venue: "Kai Ahangama",
         time: "From 5:00 PM",
         category: "Weekly Picks",
@@ -146,12 +167,13 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "🎵 Mono — Dante Alchemico Koila",
+        title: "Mono — Dante Alchemico Koila",
         venue: "Mono",
         time: "8:00 PM - 10:00 PM; 10:00 PM - Midnight",
         category: "This Week's Highlights",
         image: monoImage,
-        description: "Electronic live set by Bali-based DJ and producer Dante Alchemico Koila.",
+        description:
+          "Electronic live set by Bali-based DJ and producer Dante Alchemico Koila.",
       }),
     ],
   },
@@ -162,7 +184,7 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "🎶 Kurundu Sundown Session",
+        title: "Kurundu Sundown Session",
         venue: "Kurundu",
         time: "4:00 PM - 2:00 AM",
         category: "This Week's Highlights",
@@ -174,7 +196,7 @@ export const EVENTS_CALENDAR_DAYS = [
         ],
       }),
       enrichEvent({
-        title: "🥁 Mono — Drum & Bass Night",
+        title: "Mono — Drum & Bass Night",
         venue: "Mono",
         time: "8:30 PM - 11:30 PM",
         category: "This Week's Highlights",
@@ -182,7 +204,7 @@ export const EVENTS_CALENDAR_DAYS = [
         description: "Featuring DJ Janaka.",
       }),
       enrichEvent({
-        title: "🎸 Live Music with Ashane",
+        title: "Live Music with Ashane",
         venue: "Kai Ahangama",
         time: "From 5:00 PM",
         category: "This Week's Highlights",
@@ -197,26 +219,11 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "🎵 Live Music with Shenal",
+        title: "Live Music with Shenal",
         venue: "Kai Ahangama",
         time: "From 5:00 PM",
         category: "Weekly Picks",
         image: kaiAhangamaImage,
-      }),
-    ],
-  },
-  {
-    key: "2026-06-23",
-    weekday: "Tuesday",
-    dayNumber: "23",
-    month: "June",
-    events: [
-      enrichEvent({
-        title: "🧘 Breathwork",
-        venue: "Ember & Ice",
-        time: "10:00 AM",
-        category: "Wellness",
-        image: emberAndIceBreathworkImage,
       }),
     ],
   },
@@ -227,7 +234,7 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "🔥 Ember & Ice Ritual",
+        title: "Ember & Ice Ritual",
         venue: "Ember & Ice",
         time: "11:00 AM",
         category: "Wellness",
@@ -242,14 +249,15 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "🏄 Claramont Gaali",
+        title: "Sunset Club",
         venue: "Surf Club Midigama",
         time: "From 4:00 PM onwards",
         category: "Late June Events",
         image: surfClubMidigamaImage,
+        details: ["Music: Claremont x Gaali (2 DJs)"],
       }),
       enrichEvent({
-        title: "🌴 Saturday Session",
+        title: "Saturday Session",
         venue: "Ceylon Sliders",
         time: "8:00 PM - 1:00 AM",
         category: "Late June Events",
@@ -265,17 +273,56 @@ export const EVENTS_CALENDAR_DAYS = [
     ],
   },
   {
-    key: "2026-06-30",
-    weekday: "Tuesday",
-    dayNumber: "30",
-    month: "June",
+    key: "2026-07-01",
+    weekday: "Wednesday",
+    dayNumber: "01",
+    month: "July",
     events: [
       enrichEvent({
-        title: "🧘 Breathwork",
-        venue: "Ember & Ice",
-        time: "10:00 AM",
-        category: "Wellness",
-        image: emberAndIceBreathworkImage,
+        title: "Movie Night - A Bug's Life",
+        venue: "Cafe Ceylon",
+        time: "6:15 PM",
+        category: "Weekly Picks",
+        image: cafeCeylonMovieNightImage,
+        description: "Chicken schnitzel or sliders with fries.",
+        instagramUrl:
+          "https://www.instagram.com/cafe_ceylon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-03",
+    weekday: "Friday",
+    dayNumber: "03",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "House / Disco / Afro Grooves",
+        venue: "Mono",
+        time: "8:30 PM - 11:30 PM",
+        category: "Weekly Picks",
+        image: monoDjNightImage,
+        description: "Music played by ED Templeton.",
+        instagramUrl:
+          "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-04",
+    weekday: "Saturday",
+    dayNumber: "04",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Monsoon Nights",
+        venue: "Hotel De Uncles",
+        time: "6:00 PM",
+        category: "Weekly Picks",
+        image: hotelDeUnclesMonsoonNightImage,
+        description: "Hotel De Uncles x Latoya Presents.",
+        instagramUrl:
+          "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
     ],
   },
@@ -286,13 +333,38 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "",
     events: [
       enrichEvent({
-        title: "🍷 Daily Happy Hour",
+        title: "Daily Happy Hour",
+        venue: "Samba",
+        time: "5:00 PM - 7:00 PM",
+        category: "Ongoing",
+        image: sambaHappyHourImage,
+        description: "Buy 2 get 1 free for all cocktails during happy hour.",
+        instagramUrl:
+          "https://www.instagram.com/samba_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Stairway Rooftop Bar Happy Hour",
+        venue: "Lighthouse",
+        time: "4:00 PM - 6:00 PM",
+        category: "Ongoing",
+        image: lighthouseHappyHourImage,
+        description: "Selected drinks available during the rooftop happy hour.",
+        instagramUrl:
+          "https://www.instagram.com/lighthouse_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        directionsUrl: "https://maps.app.goo.gl/39z6wZ3tGpp2jw7z7",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Daily Happy Hour",
         venue: "Le Café French Bistro",
         time: "5:00 PM - 6:00 PM",
         category: "Ongoing",
         image: leCafeFrenchBistroImage,
         description:
           "Receive a complimentary charcuterie or cheese bite with every glass of wine or beer.",
+        instagramUrl:
+          "https://www.instagram.com/le_cafe_french_bistro_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
     ],
   },
@@ -302,13 +374,86 @@ export const EVENTS_EDITOR_PICKS = [
   "Kurundu Sundown Session — biggest event of the week.",
   "Mono: Dante Alchemico Koila — strongest electronic music booking.",
   "Hakuna Matata Sunset Happy Hour — best value night out.",
-  "Ember & Ice Breathwork — wellness highlight.",
   "Ceylon Sliders Saturday Session — late June social favourite.",
 ];
 
-export const THIS_WEEK_EVENTS = EVENTS_CALENDAR_DAYS.flatMap((day) =>
-  day.events.map((event) => ({
-    ...event,
-    date: `${day.weekday.slice(0, 3)} ${day.dayNumber} ${day.month.slice(0, 3)} 2026`,
-  })),
-).slice(0, 5);
+function getTodayKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function formatDayLabel(day) {
+  if (day.key === "ongoing") return "Ongoing";
+
+  return `${day.weekday.slice(0, 3)} ${day.dayNumber} ${day.month.slice(0, 3)} 2026`;
+}
+
+function isDatedDay(day) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(day.key);
+}
+
+function buildUpcomingCalendarDays() {
+  const todayKey = getTodayKey();
+  const datedDays = EVENTS_CALENDAR_DAYS.filter((day) => isDatedDay(day));
+  const ongoingDays = EVENTS_CALENDAR_DAYS.filter(
+    (day) => day.key === "ongoing",
+  );
+
+  return [...datedDays.filter((day) => day.key >= todayKey), ...ongoingDays];
+}
+
+function buildHomepageEvents(days) {
+  return days
+    .flatMap((day) =>
+      day.events.map((event) => ({
+        ...event,
+        date: formatDayLabel(day),
+        dayKey: day.key,
+      })),
+    )
+    .slice(0, 5);
+}
+
+function buildUpcomingEditorPicks(days) {
+  return days
+    .flatMap((day) =>
+      day.events.map((event) => {
+        const eventDate =
+          day.key === "ongoing" ? "Ongoing" : formatDayLabel(day);
+
+        return `${event.title} at ${event.venue} — ${eventDate}.`;
+      }),
+    )
+    .slice(0, 4);
+}
+
+function buildHomepageDateLabel(events) {
+  const datedEvents = events.filter((event) => event.dayKey !== "ongoing");
+
+  if (!datedEvents.length) return "Ahangama . Ongoing";
+
+  const firstEvent = datedEvents[0];
+  const lastEvent = datedEvents[datedEvents.length - 1];
+  const firstDate = firstEvent.date
+    .replace(/^[A-Za-z]{3} /, "")
+    .replace(" 2026", "");
+  const lastDate = lastEvent.date
+    .replace(/^[A-Za-z]{3} /, "")
+    .replace(" 2026", "");
+
+  if (firstDate === lastDate) return `Ahangama . ${firstDate}`;
+
+  return `Ahangama . ${firstDate} - ${lastDate}`;
+}
+
+export const UPCOMING_EVENTS_CALENDAR_DAYS = buildUpcomingCalendarDays();
+export const UPCOMING_EVENTS_EDITOR_PICKS = buildUpcomingEditorPicks(
+  UPCOMING_EVENTS_CALENDAR_DAYS,
+);
+export const THIS_WEEK_EVENTS = buildHomepageEvents(
+  UPCOMING_EVENTS_CALENDAR_DAYS,
+);
+export const THIS_WEEK_EVENTS_LABEL = buildHomepageDateLabel(THIS_WEEK_EVENTS);

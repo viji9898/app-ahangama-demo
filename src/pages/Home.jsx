@@ -31,7 +31,10 @@ import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
-import { THIS_WEEK_EVENTS } from "../data/eventsCalendar";
+import {
+  THIS_WEEK_EVENTS,
+  THIS_WEEK_EVENTS_LABEL,
+} from "../data/eventsCalendar";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -138,6 +141,8 @@ const WEEKLY_PICKS = [
     title: "The Living Room Concept Store",
     date: "This Week",
     href: "/the-living-room-concept-store",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
   },
   {
     category: "Community",
@@ -151,21 +156,25 @@ const WEEKLY_PICKS = [
     category: "Community",
     title: "Community Market",
     date: "Sat 7 Jun",
-  },
-  {
-    category: "Openings",
-    title: "New Cafe Opening",
-    date: "Thu 5 Jun",
+    href: "/community-market-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/Hero+image+_+community-markets-ahangama-crowd-stalls.webp",
   },
   {
     category: "Sunset",
     title: "Best Sunset This Week",
     date: "Daily",
+    href: "/best-sunsets-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/best-sunsets/Hero+Image+-+2400+x+1600+px.webp",
   },
   {
     category: "Staff Pick",
     title: "Staff Pick Experience",
     date: "This Weekend",
+    href: "/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama/Hero+image+_+ahangama-morning-coffee-hands-cups-close-up.webp",
   },
 ];
 
@@ -718,10 +727,7 @@ export default function Home() {
   const [canScrollWhatsOnLeft, setCanScrollWhatsOnLeft] = useState(false);
   const [canScrollWhatsOnRight, setCanScrollWhatsOnRight] = useState(false);
   const weeklyPicksRailRef = useRef(null);
-  const weeklyPicksSetWidthRef = useRef(0);
   const isWeeklyPicksAdjustingRef = useRef(false);
-  const [canScrollWeeklyPicksRight, setCanScrollWeeklyPicksRight] =
-    useState(false);
 
   useEffect(() => {
     const rail = whatsOnBoardRailRef.current;
@@ -790,9 +796,6 @@ export default function Home() {
     const updateWeeklyPicksScrollState = () => {
       const setWidth = rail.scrollWidth / 3;
 
-      weeklyPicksSetWidthRef.current = setWidth;
-      setCanScrollWeeklyPicksRight(setWidth > rail.clientWidth + 4);
-
       if (!setWidth) {
         return;
       }
@@ -831,46 +834,6 @@ export default function Home() {
     };
   }, []);
 
-  const handleWeeklyPicksScrollRight = () => {
-    const rail = weeklyPicksRailRef.current;
-
-    if (!rail) {
-      return;
-    }
-
-    const firstCard = rail.querySelector(".weekly-picks-card");
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-    const setWidth = weeklyPicksSetWidthRef.current || rail.scrollWidth / 3;
-    const scrollStep = cardWidth ? cardWidth + 14 : rail.clientWidth * 0.8;
-    const nextScrollLeft = rail.scrollLeft + scrollStep;
-
-    if (setWidth && nextScrollLeft >= setWidth * 2 - 4) {
-      rail.scrollBy({
-        left: scrollStep,
-        behavior: "smooth",
-      });
-      return;
-    }
-
-    rail.scrollBy({ left: scrollStep, behavior: "smooth" });
-  };
-
-  const handleWeeklyPicksScrollLeft = () => {
-    const rail = weeklyPicksRailRef.current;
-
-    if (!rail) {
-      return;
-    }
-
-    const firstCard = rail.querySelector(".weekly-picks-card");
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-    const scrollStep = cardWidth ? cardWidth + 14 : rail.clientWidth * 0.8;
-
-    rail.scrollBy({
-      left: -scrollStep,
-      behavior: "smooth",
-    });
-  };
   return (
     <SiteLayout navOverlayHero>
       <Seo
@@ -1167,7 +1130,7 @@ export default function Home() {
                   What&apos;s On This Week
                 </Text>
                 <Text className="whats-on-boardLocation">
-                  Ahangama . 4 - 8 June
+                  {THIS_WEEK_EVENTS_LABEL}
                 </Text>
                 <Paragraph className="whats-on-boardDescription">
                   A curated selection of things happening around town this week.
@@ -1230,6 +1193,13 @@ export default function Home() {
                   </button>
                 ) : null}
               </div>
+
+              <a
+                href="/events"
+                className="whats-on-boardLink whats-on-boardLink--mobile"
+              >
+                View full calendar <ArrowRightOutlined />
+              </a>
             </div>
 
             <div className="home-section-divider" aria-hidden="true" />
@@ -1306,7 +1276,9 @@ export default function Home() {
                       key={`${pick.title}-${index}`}
                       href={pick.href || "#"}
                       onClick={
-                        pick.href ? undefined : (event) => event.preventDefault()
+                        pick.href
+                          ? undefined
+                          : (event) => event.preventDefault()
                       }
                       className={`weekly-picks-card${pick.image ? " weekly-picks-card--withImage" : ""}`}
                       style={
@@ -1324,27 +1296,6 @@ export default function Home() {
                     </a>
                   ))}
                 </div>
-
-                {canScrollWeeklyPicksRight ? (
-                  <>
-                    <button
-                      type="button"
-                      className="weekly-picks-scrollCue weekly-picks-scrollCue--left"
-                      onClick={handleWeeklyPicksScrollLeft}
-                      aria-label="Scroll weekly picks to the left"
-                    >
-                      <ArrowRightOutlined />
-                    </button>
-                    <button
-                      type="button"
-                      className="weekly-picks-scrollCue weekly-picks-scrollCue--right"
-                      onClick={handleWeeklyPicksScrollRight}
-                      aria-label="Scroll weekly picks to the right"
-                    >
-                      <ArrowRightOutlined />
-                    </button>
-                  </>
-                ) : null}
               </div>
 
               <div className="home-section-divider" aria-hidden="true" />

@@ -1,5 +1,6 @@
 import {
   markEmailClicked,
+  recordEmailClick,
   recordArticleInteraction,
   recordExperienceInteraction,
   recordVenueInteraction,
@@ -33,6 +34,68 @@ function safeRedirect(value) {
   }
 
   return "";
+}
+
+function validHttpUrl(value) {
+  const candidate = normalizeText(value);
+
+  if (!candidate) {
+    return null;
+  }
+
+  try {
+    const parsed = new URL(candidate);
+
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return parsed;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function appendUtmParameters(url, { campaign, content, cta } = {}) {
+  url.searchParams.set("utm_source", "ahangama");
+  url.searchParams.set("utm_medium", "email");
+
+  const normalizedCampaign = normalizeText(campaign);
+  const normalizedContent = normalizeText(content) || normalizeText(cta);
+
+  if (normalizedCampaign) {
+    url.searchParams.set("utm_campaign", normalizedCampaign);
+  }
+
+  if (normalizedContent) {
+    url.searchParams.set("utm_content", normalizedContent);
+  }
+
+  return url.toString();
+}
+
+function getHeader(event, name) {
+  const headers = event.headers || {};
+  const lowerName = name.toLowerCase();
+  const matchingKey = Object.keys(headers).find(
+    (key) => key.toLowerCase() === lowerName,
+  );
+
+  return matchingKey ? headers[matchingKey] : "";
+}
+
+function getIpAddress(event) {
+  const forwardedFor = normalizeText(getHeader(event, "x-forwarded-for"));
+
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0]?.trim() || forwardedFor;
+  }
+
+  return (
+    normalizeText(getHeader(event, "x-nf-client-connection-ip")) ||
+    normalizeText(getHeader(event, "client-ip")) ||
+    normalizeText(event.requestContext?.identity?.sourceIp)
+  );
 }
 
 function redirectResponse(location) {
@@ -89,6 +152,53 @@ async function recordInteraction({
 
 export const handler = async (event) => {
   const params = event.queryStringParameters || {};
+  const destinationUrl = validHttpUrl(params.url);
+
+  if (Object.prototype.hasOwnProperty.call(params, "url")) {
+    if (!destinationUrl) {
+      return {
+        statusCode: 400,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ error: "A valid http/https url is required" }),
+      };
+    }
+
+    const source = normalizeText(params.source) || "ahangama";
+    const medium = normalizeText(params.medium) || "email";
+    const finalDestinationUrl = appendUtmParameters(destinationUrl, {
+      campaign: params.campaign,
+      content: params.content,
+      cta: params.cta,
+    });
+
+    try {
+      await recordEmailClick({
+        guestId: params.guestId,
+        emailId: params.emailId,
+        venueSlug: params.venueSlug,
+        cta: params.cta,
+        campaign: params.campaign,
+        source,
+        medium,
+        content: params.content,
+        destinationUrl: finalDestinationUrl,
+        userAgent: getHeader(event, "user-agent"),
+        ipAddress: getIpAddress(event),
+        clickedAt: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error("track-click email click error:", {
+        guestId: params.guestId,
+        emailId: params.emailId,
+        campaign: params.campaign,
+        cta: params.cta,
+        message: error?.message || "Unknown email click tracking error",
+      });
+    }
+
+    return redirectResponse(finalDestinationUrl);
+  }
+
   const guestId = normalizeText(params.guestId);
   const passId = normalizeText(params.passId);
   const type = normalizeText(params.type).toLowerCase();

@@ -1,14 +1,18 @@
 import React from "react";
-import { ClockCircleOutlined } from "@ant-design/icons";
+import {
+  ClockCircleOutlined,
+  EnvironmentOutlined,
+  InstagramOutlined,
+} from "@ant-design/icons";
 import { Typography } from "antd";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import SiteLayout from "../components/layout/SiteLayout";
 import NewsletterSignup from "../components/newsletter/NewsletterSignup";
 import {
-  EVENTS_CALENDAR_DAYS,
-  EVENTS_EDITOR_PICKS,
   EVENTS_CALENDAR_OVERVIEW,
+  UPCOMING_EVENTS_CALENDAR_DAYS,
+  UPCOMING_EVENTS_EDITOR_PICKS,
 } from "../data/eventsCalendar";
 
 const { Title, Paragraph, Text } = Typography;
@@ -53,7 +57,7 @@ export default function EventsPage() {
           </header>
 
           <div className="events-agenda-list" role="list">
-            {EVENTS_CALENDAR_DAYS.map((day) => (
+            {UPCOMING_EVENTS_CALENDAR_DAYS.map((day) => (
               <section className="events-agenda-day" key={day.key}>
                 <div className="events-agenda-dateColumn">
                   <Text className="events-agenda-weekday">{day.weekday}</Text>
@@ -84,17 +88,24 @@ export default function EventsPage() {
                         <Title level={2} className="events-agenda-entryTitle">
                           {event.title}
                         </Title>
-                        <Text className="events-agenda-venue">{event.venue}</Text>
+                        <Text className="events-agenda-venue">
+                          {event.venue}
+                        </Text>
 
                         <div className="events-agenda-meta">
                           <span className="events-agenda-metaItem">
                             <ClockCircleOutlined />
                             <span>{event.time}</span>
                           </span>
-                          <span className="events-agenda-metaDot" aria-hidden="true">
+                          <span
+                            className="events-agenda-metaDot"
+                            aria-hidden="true"
+                          >
                             •
                           </span>
-                          <Text className="events-agenda-category">{event.category}</Text>
+                          <Text className="events-agenda-category">
+                            {event.category}
+                          </Text>
                         </div>
 
                         {event.description ? (
@@ -130,19 +141,21 @@ export default function EventsPage() {
                         <div className="events-agenda-links">
                           <a
                             href={event.instagramUrl}
-                            className="events-agenda-link"
+                            className="events-agenda-link events-agenda-linkInstagram"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Instagram for ${event.venue}`}
                           >
-                            Instagram
+                            <InstagramOutlined />
                           </a>
                           <a
                             href={event.directionsUrl}
-                            className="events-agenda-link"
+                            className="events-agenda-link events-agenda-linkLocation"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Directions to ${event.venue}`}
                           >
-                            Directions
+                            <EnvironmentOutlined />
                           </a>
                         </div>
                       </div>
@@ -158,7 +171,7 @@ export default function EventsPage() {
               Editor&apos;s Picks This Week
             </Text>
             <div className="events-agenda-editorPicksList">
-              {EVENTS_EDITOR_PICKS.map((pick) => (
+              {UPCOMING_EVENTS_EDITOR_PICKS.map((pick) => (
                 <Text className="events-agenda-editorPick" key={pick}>
                   {pick}
                 </Text>
@@ -168,9 +181,12 @@ export default function EventsPage() {
 
           <section className="events-agenda-signup">
             <div className="events-agenda-signupIntro">
-              <Text className="events-agenda-signupLabel">Stay In The Loop</Text>
+              <Text className="events-agenda-signupLabel">
+                Stay In The Loop
+              </Text>
               <Paragraph className="events-agenda-signupText">
-                Subscribe to our weekly newsletter for the latest events and stories.
+                Subscribe to our weekly newsletter for the latest events and
+                stories.
               </Paragraph>
             </div>
 
