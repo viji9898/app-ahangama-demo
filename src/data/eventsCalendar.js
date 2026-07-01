@@ -180,7 +180,7 @@ export const EVENTS_CALENDAR_DAYS = [
         title: "Mono — Dante Alchemico Koila",
         venue: "Mono",
         time: "8:00 PM - 10:00 PM; 10:00 PM - Midnight",
-        category: "This Week's Highlights",
+        category: "This Week's Highlights.",
         image: monoImage,
         description:
           "Electronic live set by Bali-based DJ and producer Dante Alchemico Koila.",
@@ -311,19 +311,19 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "July",
     events: [
       enrichEvent({
-        title: "Thurseday Sunset Party",
+        title: "Sunset Party",
         venue: "Hakuna Matata",
         time: "From 5:00 PM",
         category: "Weekly Picks",
         image: img2Image,
         description:
-          "Played by MONAMOURRR SKILLZ JAY | MR PERCUSSION | ECH HOUSE / RNB / TECHNO / DISCO",
+          "Played by Monamourrr Skillz Jay | Mr Percussion.",
         instagramUrl:
           "https://www.instagram.com/hakuna_matata_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         passBenefit: null,
       }),
       enrichEvent({
-        title: "Karaoke Thurseday",
+        title: "Karaoke Thursday",
         venue: "Hotel De Uncles",
         time: "6.00PM",
         category: "Weekly Picks",
@@ -337,7 +337,7 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "5.00PM",
         category: "Weekly Picks",
         image: img4Image,
-        description: "Played by Chana",
+        description: "Played by Chana.",
         instagramUrl:
           "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
@@ -383,7 +383,7 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "5.00PM",
         category: "Weekly Picks",
         image: img6Image,
-        description: "Played by Channuka",
+        description: "Played by Channuka.",
         instagramUrl:
           "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
@@ -401,7 +401,7 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "5.00PM",
         category: "Weekly Picks",
         image: img5Image,
-        description: "Played by Delaa",
+        description: "Played by Delaa.",
         instagramUrl:
           "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
@@ -419,7 +419,7 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "10.00AM",
         category: "Wellness",
         image: emberAndIceBreathworkImage,
-        description: "BREATHWORK + E&I*",
+        description: "Breathwork sessionwith Ember & Ice.",
         instagramUrl:
           "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
