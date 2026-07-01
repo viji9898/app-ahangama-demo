@@ -73,6 +73,7 @@ export function Seo({
         <meta property="article:published_time" content={publishDate} />
       )}
       {ogImage && <meta property="og:image" content={ogImage} />}
+      {ogImage && <meta property="og:image:secure_url" content={ogImage} />}
 
       <meta
         name="twitter:card"

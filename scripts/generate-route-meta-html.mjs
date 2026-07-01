@@ -178,6 +178,11 @@ function applyMeta(html, meta) {
     );
     nextHtml = replaceOrInsert(
       nextHtml,
+      /<meta\s+property=["']og:image:secure_url["'][^>]*>/i,
+      `<meta property="og:image:secure_url" content="${escapeHtml(ogImage)}" />`,
+    );
+    nextHtml = replaceOrInsert(
+      nextHtml,
       /<meta\s+name=["']twitter:card["'][^>]*>/i,
       '<meta name="twitter:card" content="summary_large_image" />',
     );
