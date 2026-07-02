@@ -843,7 +843,7 @@ export const BLOG_POSTS = [
     readingTime: "5 min read",
     category: "Itinerary",
     heroImage:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782974588/Hero_image-_the_best_wjkpgy.webp",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782977235/hero_image_zja88c.webp",
     sections: [
       {
         image:
