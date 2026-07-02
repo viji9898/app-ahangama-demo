@@ -38,6 +38,33 @@ const GUIDE_CONTENT_LINKS = [
   "Connect With Us",
 ];
 
+function InstagramLabel({ text, justify = "flex-end" }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: justify,
+        gap: 8,
+      }}
+    >
+      <svg
+        aria-hidden="true"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="#FFFFFF" strokeWidth="1.8" />
+        <circle cx="12" cy="12" r="4.2" stroke="#FFFFFF" strokeWidth="1.8" />
+        <circle cx="17.2" cy="6.8" r="1.2" fill="#FFFFFF" />
+      </svg>
+      <span>{text}</span>
+    </span>
+  );
+}
+
 export default function GuidePage() {
   const canonical = absUrl("/guide");
 
@@ -595,7 +622,7 @@ export default function GuidePage() {
                   paddingBottom: 6,
                 }}
               >
-                Trebartha East
+                <InstagramLabel text="Trebartha East" justify="flex-end" />
               </a>
             </div>
           </div>
@@ -733,7 +760,7 @@ export default function GuidePage() {
                   paddingBottom: 6,
                 }}
               >
-                #Animals
+                <InstagramLabel text="Animals" />
               </a>
             </div>
           </div>
