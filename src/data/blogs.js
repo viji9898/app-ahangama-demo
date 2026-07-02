@@ -368,11 +368,11 @@ export const BLOG_POSTS = [
     readingTime: "8 min read",
     category: "Wellness guide",
     heroImage:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830635/Section_1_-_Sauna_Ice_bath_Frosty_s_sk93mf.webp",
+      "",
     sections: [
       {
         image:
-          "",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830635/Section_1_-_Sauna_Ice_bath_Frosty_s_sk93mf.webp",
         heading: "Start with the kind of wellness rhythm you actually want",
         paragraphs: [
           "The best version of wellness in Ahangama is rarely the most maximal one. The town works best when you decide early whether your stay is about slower mornings, surf recovery, structured training, or one proper reset somewhere in the middle of the trip.",
@@ -458,7 +458,7 @@ export const BLOG_POSTS = [
       {
         heading: "The best wellness itinerary is mixed, not maximal",
         image:
-          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814135/Section_6_-_Aksaaya_wellness_plcfzy.webp",
+          "",
         paragraphs: [
           "The common mistake is trying to do too much: yoga every morning, surf every day, treatments on top, and then wondering why the trip feels strangely tiring. Ahangama works better when you mix categories and leave room for actual rest.",
           "That is what makes the town strong. You can train, stretch, recover, socialize, and still keep the whole trip feeling light. The right guide is not one that gives you the most options. It is one that helps you find the right rhythm.",
@@ -488,9 +488,11 @@ export const BLOG_POSTS = [
     readingTime: "7 min read",
     category: "Transport guide",
     heroImage:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814071/Section_1_-_Scooty_rental_taxi_service_f4pusd.webp",
+      "",
     sections: [
       {
+        image:
+          "",
         heading: "Use the right transport for the right kind of day",
         paragraphs: [
           "The practical version of getting around Ahangama starts with a simple rule: use the vehicle that matches the shape of the day. Scooters are best for everyday local freedom, tuk-tuks are stronger for short hops, and airport or longer south-coast runs work better when they are pre-booked properly.",
@@ -531,7 +533,7 @@ export const BLOG_POSTS = [
       },
       {
         image:
-          "/12 Experiences Images /12 - Editorial style lifestyle section - Explore Ahangama Slowly.webp",
+          "",
         heading: "Airport transfers should feel fixed, clear, and pre-agreed",
         paragraphs: [
           "The clearest airport-transfer specialist in the live data is Taxi and Transport Tours. Its description explicitly covers airport pickups, local rides, private day tours, and long-distance travel, and it is marked as available 24/7.",
@@ -544,7 +546,7 @@ export const BLOG_POSTS = [
       },
       {
         image:
-          "/12 Experiences Images /04 - Ice bath & Sauna(1).jpg",
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814072/Section_5_-_Cars_-_Nova_rent_a_car_z3dgwi.webp",
         heading: "For Galle, Hiriketiya, and longer south-coast runs, cars usually win",
         paragraphs: [
           "The transport descriptions do not always explicitly call out every destination, but the positioning is still clear. Nova Rent a Car is the strongest self-drive option because it is framed around car rentals, road trips, and exploring beyond Ahangama.",
@@ -557,7 +559,7 @@ export const BLOG_POSTS = [
       },
       {
         image:
-          "/12 Experiences Images /09-Co work.jpg",
+          "",
         heading: "The strongest transport entries in the database right now",
         paragraphs: [
           "GIK Bike Rentals is the clearest scooter-led option for flexible local movement, and Scooty Rental & Taxi Service remains one of the strongest day-to-day names in the set by review count and practical use case.",
@@ -738,9 +740,11 @@ export const BLOG_POSTS = [
     readingTime: "6 min read",
     category: "Travel guide",
     heroImage:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814164/Section_1_-_Hero_image_-_Lunch_on_the_table_wg1vyd.webp",
+      "",
     sections: [
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814164/Section_1_-_Hero_image_-_Lunch_on_the_table_wg1vyd.webp",
         heading: "Start with the town's natural rhythm",
         paragraphs: [
           "Ahangama is at its best when you stop trying to cover everything in a day. The town opens gradually: surf breaks wake up first, coffee spots follow, and the energy settles into a long, social afternoon rather than a rushed checklist.",
@@ -763,7 +767,7 @@ export const BLOG_POSTS = [
       },
       {
         image:
-          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814072/Section_3_-_Tuk_Tuk_Rides_qeccvy.webp",
+          "",
         heading: "The reward is a trip that feels less generic",
         paragraphs: [
           "Ahangama does not need to be consumed like a list. It works better as a place where you repeat good moments, revisit neighborhoods, and let your second stop of the day be the one you did not plan in advance.",
@@ -787,9 +791,11 @@ export const BLOG_POSTS = [
     readingTime: "7 min read",
     category: "Visitor guide",
     heroImage:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814058/pd4hextqasqx4effm4it_ovep57.webp",
+      "",
     sections: [
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814058/pd4hextqasqx4effm4it_ovep57.webp",
         heading: "Choose your base with intention",
         paragraphs: [
           "For first-time visitors, accommodation defines the experience more than most people expect. Ahangama can feel intimate and easy or fragmented and overly logistical depending on where you stay relative to the places you actually want to spend time.",
@@ -837,9 +843,11 @@ export const BLOG_POSTS = [
     readingTime: "5 min read",
     category: "Itinerary",
     heroImage:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814117/section_1_-_Beachfront_breakfast_b8i8dh.webp",
+      "",
     sections: [
       {
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814117/section_1_-_Beachfront_breakfast_b8i8dh.webp",
         heading: "Morning should feel open, not compressed",
         paragraphs: [
           "If you only have one day, the instinct is often to fit in too much. In Ahangama that usually backfires. A calmer morning, especially one built around surf, coffee, or a beachfront breakfast, creates a better tone for the rest of the day.",

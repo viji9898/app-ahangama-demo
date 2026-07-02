@@ -137,8 +137,7 @@ function buildIssueItems() {
       thumbnail:
         item.thumbnail ||
         post.introImage ||
-        post.heroImage ||
-        MUKTI_THUMBNAIL_IMAGE,
+        post.heroImage, // removed the default thumbnail fallback to avoid using a placeholder image
       filters: ["all", ...(item.filters || [])],
     };
   }).filter(Boolean);
@@ -516,15 +515,6 @@ function EditorialGuidePost({ post, issueItem, issueItems, onSelectPost }) {
             key={section.heading}
             className="blog-featureSection blog-featureModule"
           >
-            {section.image || section.Image ? (
-              <figure className="blog-featureFigure">
-                <EditorialImage
-                  src={section.image || section.Image}
-                  alt={section.heading}
-                />
-              </figure>
-            ) : null}
-
             <Text className="blog-featureSectionLabel">
               {`Section ${String(index + 1).padStart(2, "0")}`}
             </Text>
@@ -544,6 +534,15 @@ function EditorialGuidePost({ post, issueItem, issueItems, onSelectPost }) {
                   <li key={bullet}>{bullet}</li>
                 ))}
               </ul>
+            ) : null}
+
+            {section.image || section.Image ? (
+              <figure className="blog-featureFigure">
+                <EditorialImage
+                  src={section.image || section.Image}
+                  alt={section.heading}
+                />
+              </figure>
             ) : null}
           </section>
         ))}
