@@ -604,26 +604,49 @@ export default function GuidePage() {
                 </div>
               </div>
 
-              <a
-                href="https://www.instagram.com/trebarthaeast"
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
                 style={{
                   position: "absolute",
                   right: "clamp(32px, 4.8vw, 72px)",
                   bottom: "clamp(28px, 4vw, 48px)",
                   zIndex: 4,
-                  color: "#FFFFFF",
-                  textDecoration: "none",
-                  textAlign: "right",
-                  fontSize: "clamp(16px, 1.45vw, 19px)",
-                  lineHeight: 1.72,
-                  borderBottom: "1px solid rgba(255,255,255,0.65)",
-                  paddingBottom: 6,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 16,
                 }}
               >
-                <InstagramLabel text="Trebartha East" justify="flex-end" />
-              </a>
+                <a
+                  href="https://www.instagram.com/trebarthaeast"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "#FFFFFF",
+                    textDecoration: "none",
+                    textAlign: "right",
+                    fontSize: "clamp(16px, 1.45vw, 19px)",
+                    lineHeight: 1.72,
+                    borderBottom: "1px solid rgba(255,255,255,0.65)",
+                    paddingBottom: 6,
+                  }}
+                >
+                  <InstagramLabel text="Trebartha East" justify="flex-end" />
+                </a>
+                <a
+                  href="https://maps.app.goo.gl/7QuEuwonzUD9Rgrz8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "#FFFFFF",
+                    textDecoration: "none",
+                    fontSize: "clamp(16px, 1.45vw, 19px)",
+                    lineHeight: 1.72,
+                    borderBottom: "1px solid rgba(255,255,255,0.65)",
+                    paddingBottom: 6,
+                  }}
+                >
+                  Direction
+                </a>
+              </div>
             </div>
           </div>
         </div>
