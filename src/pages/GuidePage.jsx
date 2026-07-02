@@ -65,6 +65,38 @@ function InstagramLabel({ text, justify = "flex-end" }) {
   );
 }
 
+function DirectionLabel({ text = "Direction", justify = "flex-end" }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: justify,
+        gap: 8,
+      }}
+    >
+      <svg
+        aria-hidden="true"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 21s6-5.55 6-10a6 6 0 1 0-12 0c0 4.45 6 10 6 10Z"
+          stroke="#FFFFFF"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="12" cy="11" r="2.2" fill="#FFFFFF" />
+      </svg>
+      <span>{text}</span>
+    </span>
+  );
+}
+
 export default function GuidePage() {
   const canonical = absUrl("/guide");
 
@@ -644,7 +676,7 @@ export default function GuidePage() {
                     paddingBottom: 6,
                   }}
                 >
-                  Direction
+                  <DirectionLabel text="Direction" justify="flex-end" />
                 </a>
               </div>
             </div>
@@ -805,7 +837,7 @@ export default function GuidePage() {
                     paddingBottom: 6,
                   }}
                 >
-                  Direction
+                  <DirectionLabel text="Direction" justify="flex-end" />
                 </a>
               </div>
             </div>
