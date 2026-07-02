@@ -556,9 +556,24 @@ export default function GuidePage() {
                       className="home-hero-titleLine"
                       style={{ color: "#FFFFFF", whiteSpace: "normal" }}
                     >
-                      Best Stays
+                      Trebartha East
                     </span>
                   </Title>
+                  <Paragraph
+                    style={{
+                      margin: "18px 0 0",
+                      maxWidth: 640,
+                      color: "rgba(255,255,255,0.95)",
+                      fontSize: "clamp(16px, 1.45vw, 19px)",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    Trebartha East: A spectacular, design-led oasis nestled
+                    high in the Ahangama jungle. Known for its 360-degree
+                    estate views, striking circular architecture, and a
+                    luxurious sweeping pool, it&apos;s the perfect spot to escape
+                    the coastal buzz and experience elevated tropical living.
+                  </Paragraph>
                 </div>
               </div>
 
@@ -580,7 +595,7 @@ export default function GuidePage() {
                   paddingBottom: 6,
                 }}
               >
-                #Trebartha East the Round House
+                Trebartha East
               </a>
             </div>
           </div>
