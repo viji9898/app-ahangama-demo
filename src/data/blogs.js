@@ -368,7 +368,7 @@ export const BLOG_POSTS = [
     readingTime: "8 min read",
     category: "Wellness guide",
     heroImage:
-      "",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782972954/Hero_Image_wellness_guide_ixtuos.webp",
     sections: [
       {
         image:
@@ -488,7 +488,7 @@ export const BLOG_POSTS = [
     readingTime: "7 min read",
     category: "Transport guide",
     heroImage:
-      "",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782974299/Hero_image_for_getting_around_iv9npr.webp",
     sections: [
       {
         image:
@@ -740,7 +740,7 @@ export const BLOG_POSTS = [
     readingTime: "6 min read",
     category: "Travel guide",
     heroImage:
-      "",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782974360/Hero_image_uowvij.webp",
     sections: [
       {
         image:
@@ -791,7 +791,7 @@ export const BLOG_POSTS = [
     readingTime: "7 min read",
     category: "Visitor guide",
     heroImage:
-      "",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782974424/Hero_image_1_o5k9rh.webp",
     sections: [
       {
         image:
@@ -843,7 +843,7 @@ export const BLOG_POSTS = [
     readingTime: "5 min read",
     category: "Itinerary",
     heroImage:
-      "",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782974588/Hero_image-_the_best_wjkpgy.webp",
     sections: [
       {
         image:
