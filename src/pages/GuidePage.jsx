@@ -3,8 +3,8 @@ import { Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import AnimalsWebImage from "../assets/Animals Web.webp";
-import TrebathaWebImage from "../assets/Trebatha Web.webp";
+import AnimalsWebImage from "../assets/animals4x scale copy.webp";
+import TrebathaWebImage from "../assets/Trebatha 4x scale copy.webp";
 
 const { Paragraph, Text, Title } = Typography;
 
