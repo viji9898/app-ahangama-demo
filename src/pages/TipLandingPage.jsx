@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
-import { Button, Card, Spin, Typography } from "antd";
+import { Button, Card, Input, Spin, Typography } from "antd";
 import {
   ArrowRightOutlined,
   CheckOutlined,
@@ -227,10 +227,11 @@ function PrimaryButton({ children, onClick }) {
   );
 }
 
-function SecondaryButton({ children, onClick }) {
+function SecondaryButton({ children, disabled, onClick }) {
   return (
     <Button
       size="large"
+      disabled={disabled}
       onClick={onClick}
       style={{
         minHeight: 48,
@@ -952,6 +953,48 @@ function CompactEmailPhone() {
 }
 
 function SampleCard({ sample }) {
+  const isEmailSample = sample.cta === "Send me a sample email";
+  const [sampleEmail, setSampleEmail] = useState("");
+  const [isSendingSample, setIsSendingSample] = useState(false);
+  const [sendSampleStatus, setSendSampleStatus] = useState(null);
+
+  async function sendSampleEmail() {
+    const email = sampleEmail.trim();
+
+    if (!email) {
+      setSendSampleStatus({ type: "error", message: "Enter an email address." });
+      return;
+    }
+
+    setIsSendingSample(true);
+    setSendSampleStatus(null);
+
+    try {
+      const response = await fetch(EMAIL_PREVIEW_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, emailType: "guest-welcome" }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to send sample email");
+      }
+
+      setSendSampleStatus({
+        type: "success",
+        message: `Sent the welcome guest email to ${data.recipient || email}.`,
+      });
+    } catch (error) {
+      setSendSampleStatus({
+        type: "error",
+        message: error.message || "Unable to send sample email.",
+      });
+    } finally {
+      setIsSendingSample(false);
+    }
+  }
+
   return (
     <Card
       bordered={false}
@@ -985,7 +1028,43 @@ function SampleCard({ sample }) {
       >
         {sample.copy}
       </Paragraph>
-      <SecondaryButton>{sample.cta}</SecondaryButton>
+      {isEmailSample ? (
+        <div style={{ display: "grid", gap: 12 }}>
+          <Input
+            type="email"
+            size="large"
+            value={sampleEmail}
+            placeholder="Email address"
+            autoComplete="email"
+            onChange={(event) => {
+              setSampleEmail(event.target.value);
+              if (sendSampleStatus) {
+                setSendSampleStatus(null);
+              }
+            }}
+            onPressEnter={sendSampleEmail}
+            style={{
+              minHeight: 48,
+              borderRadius: 999,
+              paddingInline: 18,
+              borderColor: "#d9d4cc",
+            }}
+          />
+          <SecondaryButton disabled={isSendingSample} onClick={sendSampleEmail}>
+            {isSendingSample ? "Sending..." : sample.cta}
+          </SecondaryButton>
+          {sendSampleStatus ? (
+            <Text
+              type={sendSampleStatus.type === "error" ? "danger" : "success"}
+              style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.4 }}
+            >
+              {sendSampleStatus.message}
+            </Text>
+          ) : null}
+        </div>
+      ) : (
+        <SecondaryButton>{sample.cta}</SecondaryButton>
+      )}
     </Card>
   );
 }

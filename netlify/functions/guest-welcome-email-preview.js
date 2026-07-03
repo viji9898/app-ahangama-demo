@@ -8,6 +8,7 @@ import {
 } from "../../lib/guest-pass-venue-email.js";
 
 const TEST_EMAIL_RECIPIENT = "viji@viji.com";
+const SAMPLE_GUEST_NAME = "Test Email User";
 
 function jsonHeaders() {
   return {
@@ -103,6 +104,16 @@ function parseBody(event) {
   }
 }
 
+function normalizeEmail(value) {
+  const email = String(value || "").trim().toLowerCase();
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return "";
+  }
+
+  return email;
+}
+
 export const handler = async (event) => {
   const headers = jsonHeaders();
 
@@ -125,6 +136,34 @@ export const handler = async (event) => {
     if (event.httpMethod === "POST") {
       const body = parseBody(event);
       const emailType = body.emailType || "guest-welcome";
+      const hasRecipientOverride = Object.prototype.hasOwnProperty.call(
+        body,
+        "email",
+      );
+      const recipientOverride = normalizeEmail(body.email);
+
+      if (
+        emailType === "guest-welcome" &&
+        hasRecipientOverride &&
+        !recipientOverride
+      ) {
+        return {
+          statusCode: 400,
+          headers,
+          body: JSON.stringify({ error: "A valid email address is required" }),
+        };
+      }
+
+      const guestWelcomePayload = recipientOverride
+        ? {
+            ...payload,
+            guest: {
+              ...payload.guest,
+              fullName: SAMPLE_GUEST_NAME,
+              email: recipientOverride,
+            },
+          }
+        : payload;
       const email =
         emailType === "other-venue-notification"
           ? await sendGuestPassVenueNotificationEmail({
@@ -139,7 +178,7 @@ export const handler = async (event) => {
                 recipientOverride: TEST_EMAIL_RECIPIENT,
               })
             : await sendGuestWelcomeEmail({
-                ...payload,
+                  ...guestWelcomePayload,
                 recordHistory: false,
               });
 
@@ -148,7 +187,7 @@ export const handler = async (event) => {
         headers,
         body: JSON.stringify({
           success: true,
-          recipient: TEST_EMAIL_RECIPIENT,
+          recipient: recipientOverride || TEST_EMAIL_RECIPIENT,
           emailType,
           subject: email.subject,
         }),
