@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Card, Typography } from "antd";
+import React, { useEffect, useRef, useState } from "react";
+import { Button, Card, Spin, Typography } from "antd";
 import {
   ArrowRightOutlined,
   CheckOutlined,
@@ -14,6 +14,11 @@ import { absUrl } from "../app/siteUrl";
 const { Paragraph, Text, Title } = Typography;
 
 export const TIP_LANDING_PATH = "/tip";
+
+const EMAIL_PREVIEW_ENDPOINT =
+  "/.netlify/functions/guest-welcome-email-preview";
+const COMPACT_EMAIL_PREVIEW_WIDTH = 390;
+const COMPACT_EMAIL_SCREEN_HEIGHT = 490;
 
 const TIP_PAGE_CONTENT = {
   seo: {
@@ -35,13 +40,13 @@ const TIP_PAGE_CONTENT = {
   },
   recommendations: {
     headline: "We recommend you directly to visitors",
-    copy:
-      "Your business can be featured in personalised recommendations sent to travellers by email and WhatsApp during their stay.",
+    copy: "Your business can be featured in personalised recommendations sent to travellers by email and WhatsApp during their stay.",
     cards: [
       {
         title: "Email recommendations",
         copy: "Featured in arrival, stay, and interest-led visitor emails.",
         Icon: MailOutlined,
+        showEmailPreview: true,
       },
       {
         title: "WhatsApp recommendations",
@@ -219,10 +224,177 @@ function RecommendationCard({ card }) {
       <Title level={3} style={{ margin: 0, fontSize: 22, lineHeight: 1.15 }}>
         {card.title}
       </Title>
-      <Paragraph style={{ margin: "12px 0 0", color: "#5f5a52", lineHeight: 1.65 }}>
+      <Paragraph
+        style={{ margin: "12px 0 0", color: "#5f5a52", lineHeight: 1.65 }}
+      >
         {card.copy}
       </Paragraph>
+      {card.showEmailPreview ? <CompactEmailPhone /> : null}
     </Card>
+  );
+}
+
+function CompactEmailPhone() {
+  const screenRef = useRef(null);
+  const [preview, setPreview] = useState(null);
+  const [isLoadingPreview, setIsLoadingPreview] = useState(true);
+  const [previewError, setPreviewError] = useState(null);
+  const [screenWidth, setScreenWidth] = useState(224);
+
+  useEffect(() => {
+    if (!screenRef.current || typeof ResizeObserver === "undefined") {
+      return undefined;
+    }
+
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry?.contentRect?.width) {
+        setScreenWidth(entry.contentRect.width);
+      }
+    });
+
+    observer.observe(screenRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadPreview() {
+      try {
+        const response = await fetch(EMAIL_PREVIEW_ENDPOINT, {
+          cache: "no-store",
+        });
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to load email preview");
+        }
+
+        if (isMounted) {
+          setPreview(data.guestWelcome || data);
+        }
+      } catch (error) {
+        if (isMounted) {
+          setPreviewError(error.message || "Preview unavailable");
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoadingPreview(false);
+        }
+      }
+    }
+
+    loadPreview();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const previewScale = Math.min(screenWidth / COMPACT_EMAIL_PREVIEW_WIDTH, 1);
+  const iframeHeight = Math.ceil(COMPACT_EMAIL_SCREEN_HEIGHT / previewScale);
+
+  return (
+    <div
+      aria-label="Guest welcome email preview"
+      style={{
+        width: "min(100%, 240px)",
+        margin: "24px auto 0",
+        padding: 8,
+        border: "1px solid #171717",
+        borderRadius: 28,
+        background: "#171717",
+        boxShadow: "0 18px 42px rgba(40, 32, 20, 0.22)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "2px 0 7px",
+        }}
+      >
+        <Text
+          style={{
+            color: "#f4f0e8",
+            fontSize: 9,
+            fontWeight: 800,
+            letterSpacing: 1.1,
+            textTransform: "uppercase",
+          }}
+        >
+          Email preview
+        </Text>
+      </div>
+      <div
+        style={{
+          height: 18,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 4,
+            borderRadius: 99,
+            background: "#2e2e2e",
+          }}
+        />
+      </div>
+      <div
+        ref={screenRef}
+        style={{
+          height: COMPACT_EMAIL_SCREEN_HEIGHT,
+          overflow: "hidden",
+          borderRadius: 20,
+          background: "#ffffff",
+        }}
+      >
+        {isLoadingPreview ? (
+          <div
+            style={{
+              display: "grid",
+              minHeight: 330,
+              placeItems: "center",
+            }}
+          >
+            <Spin size="small" />
+          </div>
+        ) : preview?.html ? (
+          <iframe
+            title="Guest welcome email preview"
+            srcDoc={preview.html}
+            scrolling="yes"
+            style={{
+              display: "block",
+              width: COMPACT_EMAIL_PREVIEW_WIDTH,
+              height: iframeHeight,
+              border: 0,
+              background: "#ffffff",
+              transform: `scale(${previewScale})`,
+              transformOrigin: "top left",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              display: "grid",
+              minHeight: 330,
+              placeItems: "center",
+              padding: 18,
+              textAlign: "center",
+            }}
+          >
+            <Text type="secondary" style={{ fontSize: 12 }}>
+              {previewError || "Preview unavailable"}
+            </Text>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -255,7 +427,9 @@ function SampleCard({ sample }) {
       <Title level={3} style={{ margin: 0, fontSize: 24, lineHeight: 1.12 }}>
         {sample.title}
       </Title>
-      <Paragraph style={{ margin: "16px 0 24px", color: "#55524d", lineHeight: 1.7 }}>
+      <Paragraph
+        style={{ margin: "16px 0 24px", color: "#55524d", lineHeight: 1.7 }}
+      >
         {sample.copy}
       </Paragraph>
       <SecondaryButton>{sample.cta}</SecondaryButton>
@@ -529,7 +703,14 @@ export default function TipLandingPage() {
               }}
               styles={{ body: { padding: "clamp(28px, 6vw, 54px)" } }}
             >
-              <Text style={{ color: "#cfc8bd", fontWeight: 800, letterSpacing: 1.4, textTransform: "uppercase" }}>
+              <Text
+                style={{
+                  color: "#cfc8bd",
+                  fontWeight: 800,
+                  letterSpacing: 1.4,
+                  textTransform: "uppercase",
+                }}
+              >
                 {content.pricing.name}
               </Text>
               <Title
@@ -546,7 +727,9 @@ export default function TipLandingPage() {
               <Paragraph style={{ margin: 0, color: "#cfc8bd", fontSize: 17 }}>
                 {content.pricing.term}
               </Paragraph>
-              <Paragraph style={{ margin: "8px 0 0", color: "#ffffff", fontSize: 17 }}>
+              <Paragraph
+                style={{ margin: "8px 0 0", color: "#ffffff", fontSize: 17 }}
+              >
                 {content.pricing.scarcity}
               </Paragraph>
               <Paragraph
@@ -561,9 +744,18 @@ export default function TipLandingPage() {
               </Paragraph>
               <div style={{ display: "grid", gap: 12, marginTop: 34 }}>
                 {content.pricing.benefits.map((benefit) => (
-                  <div key={benefit} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <div
+                    key={benefit}
+                    style={{
+                      display: "flex",
+                      gap: 12,
+                      alignItems: "flex-start",
+                    }}
+                  >
                     <CheckOutlined style={{ color: "#ffffff", marginTop: 4 }} />
-                    <Text style={{ color: "#ffffff", fontSize: 16 }}>{benefit}</Text>
+                    <Text style={{ color: "#ffffff", fontSize: 16 }}>
+                      {benefit}
+                    </Text>
                   </div>
                 ))}
               </div>
@@ -587,7 +779,12 @@ export default function TipLandingPage() {
             </Card>
           </Section>
 
-          <Section style={{ textAlign: "center", paddingBottom: "clamp(72px, 12vw, 150px)" }}>
+          <Section
+            style={{
+              textAlign: "center",
+              paddingBottom: "clamp(72px, 12vw, 150px)",
+            }}
+          >
             <SectionHeader
               headline={content.finalCta.headline}
               copy={content.finalCta.copy}
