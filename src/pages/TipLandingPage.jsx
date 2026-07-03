@@ -52,6 +52,7 @@ const TIP_PAGE_CONTENT = {
         title: "WhatsApp recommendations",
         copy: "Suggested at the moment visitors are choosing where to go.",
         Icon: MessageOutlined,
+        showWhatsAppPreview: true,
       },
       {
         title: "Guide & map visibility",
@@ -221,7 +222,15 @@ function RecommendationCard({ card }) {
       styles={{ body: { padding: 24 } }}
     >
       <Icon style={{ color: "#111111", fontSize: 22, marginBottom: 34 }} />
-      <Title level={3} style={{ margin: 0, fontSize: 22, lineHeight: 1.15 }}>
+      <Title
+        level={3}
+        style={{
+          margin: 0,
+          fontSize: card.title === "WhatsApp recommendations" ? 20 : 22,
+          lineHeight: 1.15,
+          whiteSpace: "nowrap",
+        }}
+      >
         {card.title}
       </Title>
       <Paragraph
@@ -230,7 +239,253 @@ function RecommendationCard({ card }) {
         {card.copy}
       </Paragraph>
       {card.showEmailPreview ? <CompactEmailPhone /> : null}
+      {card.showWhatsAppPreview ? <CompactWhatsAppPhone /> : null}
     </Card>
+  );
+}
+
+function CompactWhatsAppPhone() {
+  const messages = [
+    {
+      from: "ahangama",
+      text: "Hi Dinara! I'm Shoaib from ahangama.com.\n\nWelcome to Ahangama, and thanks for claiming your complimentary pass. I noticed you're interested in wellness, cafes, and nature, so I thought I'd share a couple of places you might love.\n\nPura Pilates is a beautiful spot for a wellness session, and you can enjoy an exclusive discount with your pass.\n\nKaffi is one of my favorite cafes for great coffee and a relaxed atmosphere. They also have a special offer available for pass holders.\n\nJust out of curiosity, how long are you staying in Ahangama?",
+      time: "11:43",
+    },
+    {
+      from: "guest",
+      text: "Thank you\nI stay till autumn",
+      time: "12:16",
+    },
+    {
+      from: "ahangama",
+      text: "That's perfect, you'll really get to experience Ahangama. Since you're here for a while, I can share some really nice spots and experiences with you along the way.",
+      time: "12:51",
+    },
+    {
+      from: "guest",
+      text: "Thank you",
+      time: "16:55",
+    },
+  ];
+
+  return (
+    <div
+      aria-label="WhatsApp recommendation preview"
+      style={{
+        width: "min(100%, 240px)",
+        margin: "24px auto 0",
+        padding: 8,
+        border: "1px solid #171717",
+        borderRadius: 28,
+        background: "#171717",
+        boxShadow: "0 18px 42px rgba(40, 32, 20, 0.22)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "2px 0 7px",
+        }}
+      >
+        <Text
+          style={{
+            color: "#f4f0e8",
+            fontSize: 9,
+            fontWeight: 800,
+            letterSpacing: 1.1,
+            textTransform: "uppercase",
+          }}
+        >
+          WhatsApp preview
+        </Text>
+      </div>
+      <div
+        style={{
+          height: 18,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 4,
+            borderRadius: 99,
+            background: "#2e2e2e",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          height: COMPACT_EMAIL_SCREEN_HEIGHT,
+          overflow: "hidden",
+          borderRadius: 20,
+          background: "#0b141a",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 9,
+            minHeight: 54,
+            padding: "9px 11px",
+            background: "#111b21",
+            color: "#ffffff",
+          }}
+        >
+          <div
+            style={{
+              display: "grid",
+              width: 29,
+              height: 29,
+              placeItems: "center",
+              borderRadius: "50%",
+              background: "#d8c7ac",
+              color: "#111b21",
+              fontSize: 13,
+              fontWeight: 800,
+            }}
+          >
+            D
+          </div>
+          <div style={{ minWidth: 0 }}>
+            <Text
+              style={{
+                display: "block",
+                color: "#ffffff",
+                fontSize: 12,
+                fontWeight: 800,
+                lineHeight: 1.1,
+              }}
+            >
+              Dinara
+            </Text>
+            <Text style={{ color: "rgba(255,255,255,0.68)", fontSize: 9 }}>
+              last seen today at 16:59
+            </Text>
+          </div>
+        </div>
+        <div
+          style={{
+            height: COMPACT_EMAIL_SCREEN_HEIGHT - 54,
+            overflowY: "auto",
+            padding: "14px 10px 16px",
+            background:
+              "radial-gradient(circle at 18% 18%, rgba(255,255,255,0.08) 0 1px, transparent 1px), linear-gradient(135deg, #0b141a, #111b21)",
+            backgroundSize: "18px 18px, auto",
+          }}
+        >
+          <div
+            style={{
+              width: "fit-content",
+              maxWidth: "78%",
+              margin: "0 auto 14px",
+              padding: "5px 10px",
+              borderRadius: 7,
+              background: "#1f2c33",
+              color: "#ffd279",
+              fontSize: 9,
+              fontWeight: 700,
+              lineHeight: 1.35,
+              textAlign: "center",
+            }}
+          >
+            Messages and calls are end-to-end encrypted.
+          </div>
+          {messages.map((message) => {
+            const isGuest = message.from === "guest";
+
+            return (
+              <div
+                key={`${message.time}-${message.text}`}
+                style={{
+                  display: "flex",
+                  justifyContent: isGuest ? "flex-end" : "flex-start",
+                  marginBottom: 9,
+                }}
+              >
+                <div
+                  style={{
+                    maxWidth: isGuest ? "72%" : "88%",
+                    padding: "8px 10px 6px",
+                    borderRadius: isGuest
+                      ? "12px 12px 12px 4px"
+                      : "12px 12px 4px 12px",
+                    background: isGuest ? "#202c33" : "#005c4b",
+                    boxShadow: "0 2px 7px rgba(0, 0, 0, 0.16)",
+                  }}
+                >
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#f7f8f8",
+                      fontSize: 10.5,
+                      fontWeight: 700,
+                      lineHeight: 1.38,
+                      whiteSpace: "pre-line",
+                    }}
+                  >
+                    {message.text}
+                  </Text>
+                  <Text
+                    style={{
+                      display: "block",
+                      marginTop: 4,
+                      color: "rgba(255,255,255,0.58)",
+                      fontSize: 8,
+                      textAlign: "right",
+                    }}
+                  >
+                    {message.time}
+                  </Text>
+                </div>
+              </div>
+            );
+          })}
+          <div
+            style={{
+              display: "flex",
+              gap: 6,
+              marginTop: 18,
+            }}
+          >
+            <div
+              style={{
+                flex: 1,
+                minHeight: 32,
+                borderRadius: 999,
+                background: "#202c33",
+                color: "#8796a1",
+                display: "flex",
+                alignItems: "center",
+                paddingInline: 12,
+                fontSize: 10,
+              }}
+            >
+              Message
+            </div>
+            <div
+              style={{
+                display: "grid",
+                width: 32,
+                height: 32,
+                placeItems: "center",
+                borderRadius: "50%",
+                background: "#00a884",
+                color: "#ffffff",
+                fontSize: 13,
+                fontWeight: 900,
+              }}
+            >
+              &gt;
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
