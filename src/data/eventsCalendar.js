@@ -8,6 +8,7 @@ import img3Image from "../assets/temp/img3.jpeg";
 import img4Image from "../assets/temp/img4.jpeg";
 import img5Image from "../assets/temp/img5.jpeg";
 import img6Image from "../assets/temp/img6.jpeg";
+import img7Image from "../assets/temp/img7.jpeg";
 import { PLACES } from "./places";
 
 const eventImage = (fileName) =>
@@ -317,7 +318,7 @@ export const EVENTS_CALENDAR_DAYS = [
         category: "Weekly Picks",
         image: img2Image,
         description:
-          "Played by Monamourrr Skillz Jay | Mr Percussion.",
+          "Played by Monamourrr, Skillz Jay, Mr Percussion.",
         instagramUrl:
           "https://www.instagram.com/hakuna_matata_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         passBenefit: null,
@@ -358,6 +359,17 @@ export const EVENTS_CALENDAR_DAYS = [
         description: "Music played by ED Templeton.",
         instagramUrl:
           "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+      enrichEvent({
+        title: "Weekend Flow",
+        venue: "Crust Ahangama",
+        time: "7.00PM till dawn",
+        category: "Weekly Picks",
+        image: img7Image,
+        description:
+          "DJ Shaggy & Dammy D take over the decks with the hottest beats all night long.",
+          instagramUrl:
+          "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
     ],
   },
