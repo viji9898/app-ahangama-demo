@@ -9,6 +9,7 @@ import ConceptPage from "../pages/ConceptPage";
 import ProductsIndexPage from "../pages/ProductsIndexPage";
 import ProductPage from "../pages/ProductPage";
 import Partners from "../pages/Partners";
+import TipLandingPage, { TIP_LANDING_PATH } from "../pages/TipLandingPage";
 import PlaceDetail from "../pages/PlaceDetail";
 import CategoryIndex from "../pages/CategoryIndex";
 import NotFound from "../NotFound";
@@ -60,6 +61,9 @@ import EmailPreviewPage from "../pages/EmailPreviewPage";
 import PassesIssuedPage, {
   PASSES_ISSUED_PATH,
 } from "../pages/PassesIssuedPage";
+import InteractionsPage, {
+  INTERACTIONS_PATH,
+} from "../pages/InteractionsPage";
 import PassValidityPage from "../pages/PassValidityPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
@@ -203,6 +207,7 @@ const routes = [
   { path: "/concept/:slug", element: <ConceptPage /> },
   { path: "/products", element: <ProductsIndexPage /> },
   { path: "/product/:slug", element: <ProductPage /> },
+  { path: TIP_LANDING_PATH, element: <TipLandingPage /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },
@@ -237,6 +242,7 @@ const routes = [
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
   { path: "/email-preview", element: <EmailPreviewPage /> },
   { path: PASSES_ISSUED_PATH, element: <PassesIssuedPage /> },
+  { path: INTERACTIONS_PATH, element: <InteractionsPage /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,
