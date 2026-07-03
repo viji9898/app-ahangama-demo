@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import mapboxgl from "mapbox-gl";
 import { Button, Card, Spin, Typography } from "antd";
 import {
   ArrowRightOutlined,
@@ -10,6 +11,7 @@ import {
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import { PLACES } from "../data/places";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -19,6 +21,37 @@ const EMAIL_PREVIEW_ENDPOINT =
   "/.netlify/functions/guest-welcome-email-preview";
 const COMPACT_EMAIL_PREVIEW_WIDTH = 390;
 const COMPACT_EMAIL_SCREEN_HEIGHT = 490;
+
+const MAP_PREVIEW_CENTER = { lat: 5.9699, lng: 80.3666 };
+const MAP_PREVIEW_CATEGORY_COLORS = {
+  eat: "#c46a3a",
+  stays: "#6b7c5a",
+  wellness: "#7a6a86",
+  culture: "#7a6a86",
+  surf: "#3e5f73",
+  experiences: "#3e5f73",
+  "work-long-stays": "#6b7c5a",
+  "getting-around": "#4f6f86",
+  "shops-essentials": "#6b6f6a",
+  community: "#4f6f86",
+  "co-working": "#4f6f86",
+};
+const MAP_PREVIEW_PINS = PLACES.filter(
+  (place) =>
+    place.destinationSlug === "ahangama" &&
+    typeof place.lat === "number" &&
+    typeof place.lng === "number" &&
+    !Number.isNaN(place.lat) &&
+    !Number.isNaN(place.lng),
+).map((place) => ({
+  id: place.id || place.slug || place.name,
+  name: place.name,
+  lat: place.lat,
+  lng: place.lng,
+  color:
+    MAP_PREVIEW_CATEGORY_COLORS[String(place.category || "").toLowerCase()] ||
+    "#4f6f86",
+}));
 
 const TIP_PAGE_CONTENT = {
   seo: {
@@ -64,6 +97,7 @@ const TIP_PAGE_CONTENT = {
         title: "Map visibility",
         copy: "Shown on visitor maps when travellers are choosing where to go next.",
         Icon: CompassOutlined,
+        showMapPreview: true,
       },
     ],
   },
@@ -247,7 +281,164 @@ function RecommendationCard({ card }) {
       {card.showEmailPreview ? <CompactEmailPhone /> : null}
       {card.showWhatsAppPreview ? <CompactWhatsAppPhone /> : null}
       {card.showGuidePreview ? <CompactGuidePhone /> : null}
+      {card.showMapPreview ? <CompactMapPhone /> : null}
     </Card>
+  );
+}
+
+function CompactMapPhone() {
+  const mapContainerRef = useRef(null);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const token = import.meta.env.VITE_MAPBOX_TOKEN;
+
+    if (!token || !mapContainerRef.current || mapRef.current) {
+      return undefined;
+    }
+
+    mapboxgl.accessToken = token;
+
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: "mapbox://styles/mapbox/light-v11",
+      center: [MAP_PREVIEW_CENTER.lng, MAP_PREVIEW_CENTER.lat],
+      zoom: 12.45,
+      attributionControl: false,
+      interactive: true,
+    });
+
+    mapRef.current = map;
+
+    MAP_PREVIEW_PINS.forEach((pin) => {
+      const markerElement = document.createElement("div");
+      markerElement.style.width = "22px";
+      markerElement.style.height = "22px";
+      markerElement.style.borderRadius = "50% 50% 50% 5px";
+      markerElement.style.background = pin.color;
+      markerElement.style.border = "2px solid #ffffff";
+      markerElement.style.boxShadow = "0 5px 14px rgba(0, 0, 0, 0.24)";
+      markerElement.style.transform = "rotate(-45deg)";
+      markerElement.style.cursor = "pointer";
+
+      const markerDot = document.createElement("span");
+      markerDot.style.position = "absolute";
+      markerDot.style.inset = "6px";
+      markerDot.style.borderRadius = "50%";
+      markerDot.style.background = "#ffffff";
+      markerElement.appendChild(markerDot);
+
+      new mapboxgl.Marker({ element: markerElement, anchor: "bottom" })
+        .setLngLat([pin.lng, pin.lat])
+        .setPopup(
+          new mapboxgl.Popup({ offset: 18 }).setHTML(
+            `<strong>${pin.name}</strong><br><span>${pin.lat.toFixed(5)}, ${pin.lng.toFixed(5)}</span>`,
+          ),
+        )
+        .addTo(map);
+    });
+
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
+  }, []);
+
+  return (
+    <div
+      aria-label="Ahangama map preview"
+      style={{
+        width: "min(100%, 240px)",
+        margin: "24px auto 0",
+        padding: 8,
+        border: "1px solid #171717",
+        borderRadius: 28,
+        background: "#171717",
+        boxShadow: "0 18px 42px rgba(40, 32, 20, 0.22)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "2px 0 7px",
+        }}
+      >
+        <Text
+          style={{
+            color: "#f4f0e8",
+            fontSize: 9,
+            fontWeight: 800,
+            letterSpacing: 1.1,
+            textTransform: "uppercase",
+          }}
+        >
+          Map preview
+        </Text>
+      </div>
+      <div
+        style={{
+          height: 18,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 4,
+            borderRadius: 99,
+            background: "#2e2e2e",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          position: "relative",
+          height: COMPACT_EMAIL_SCREEN_HEIGHT,
+          overflow: "hidden",
+          borderRadius: 20,
+          background: "#ffffff",
+        }}
+      >
+        <div
+          ref={mapContainerRef}
+          aria-label="Ahangama map with partner pins"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        />
+        <a
+          href="https://maps.app.goo.gl/YW3xW7Krn4UwrFAN7"
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            position: "absolute",
+            left: 14,
+            right: 14,
+            bottom: 14,
+            zIndex: 2,
+            minHeight: 38,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 999,
+            background: "#111111",
+            color: "#ffffff",
+            fontSize: 11,
+            fontWeight: 900,
+            textDecoration: "none",
+            boxShadow: "0 12px 28px rgba(0, 0, 0, 0.24)",
+          }}
+        >
+          Open in Google Maps
+        </a>
+      </div>
+    </div>
   );
 }
 
