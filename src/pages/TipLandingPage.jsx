@@ -27,6 +27,9 @@ const TIP_PAGE_CONTENT = {
       "We directly connect with over 5,000 visitors a month in Ahangama.",
     subtext:
       "Ahangama.com helps local businesses reach visitors through personalised email and WhatsApp recommendations, curated guides, and monthly visitor intelligence.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/tahini-complimentry-pass.jpeg",
+    imageAlt: "Ahangama complimentary pass guest recommendation preview",
     primaryCta: "Become a Founding Partner",
     secondaryCta: "Test the Experience",
   },
@@ -264,7 +267,7 @@ export default function TipLandingPage() {
   const content = TIP_PAGE_CONTENT;
 
   return (
-    <SiteLayout>
+    <SiteLayout navOverlayHero>
       <Seo
         title={content.seo.title}
         description={content.seo.description}
@@ -278,74 +281,202 @@ export default function TipLandingPage() {
             margin: "0 auto",
           }}
         >
-          <Section
+          <div
+            className="ahg-hero"
             style={{
-              minHeight: "min(780px, calc(100vh - 96px))",
-              display: "flex",
-              alignItems: "center",
+              width: "100vw",
+              marginLeft: "calc(50% - 50vw)",
+              marginRight: "calc(50% - 50vw)",
+              borderRadius: 0,
+              background: "#FFFFFF",
+              boxShadow: "none",
             }}
           >
-            <div style={{ maxWidth: 900 }}>
-              <Text
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="home-hero-media-layer"
                 style={{
-                  display: "block",
-                  marginBottom: 28,
-                  color: "#8b8277",
-                  fontSize: 12,
-                  fontWeight: 800,
-                  letterSpacing: 1.8,
-                  textTransform: "uppercase",
+                  position: "absolute",
+                  inset: 0,
+                  overflow: "hidden",
                 }}
               >
-                Ahangama.com for Business
-              </Text>
-              <Title
+                <div
+                  className="home-hero-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(90deg, rgba(10,14,18,0.84) 0%, rgba(10,14,18,0.76) 22%, rgba(10,14,18,0.52) 42%, rgba(10,14,18,0.22) 62%, rgba(10,14,18,0.04) 82%, rgba(10,14,18,0) 100%)",
+                    pointerEvents: "none",
+                    zIndex: 2,
+                  }}
+                />
+                <img
+                  className="home-hero-image"
+                  src={content.hero.image}
+                  alt={content.hero.imageAlt}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "right center",
+                  }}
+                />
+              </div>
+
+              <div
                 style={{
-                  margin: 0,
-                  color: "#111111",
-                  fontFamily: "Georgia, 'Times New Roman', serif",
-                  fontSize: "clamp(52px, 13vw, 118px)",
-                  lineHeight: 0.9,
-                  fontWeight: 500,
-                  letterSpacing: 0,
-                  maxWidth: 980,
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: 1100,
+                  margin: "0 auto",
                 }}
               >
-                {content.hero.headline}
-              </Title>
-              <Paragraph
-                style={{
-                  margin: "28px 0 0",
-                  maxWidth: 720,
-                  color: "#111111",
-                  fontSize: "clamp(22px, 4.6vw, 38px)",
-                  lineHeight: 1.12,
-                  fontWeight: 500,
-                }}
-              >
-                {content.hero.tagline}
-              </Paragraph>
-              <Paragraph
-                style={{
-                  margin: "24px 0 0",
-                  maxWidth: 690,
-                  color: "#5f5a52",
-                  fontSize: "clamp(16px, 2vw, 20px)",
-                  lineHeight: 1.7,
-                }}
-              >
-                {content.hero.subtext}
-              </Paragraph>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 34 }}>
-                <PrimaryButton onClick={() => scrollToSection("pricing")}>
-                  {content.hero.primaryCta}
-                </PrimaryButton>
-                <SecondaryButton onClick={() => scrollToSection("test")}> 
-                  {content.hero.secondaryCta}
-                </SecondaryButton>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    minHeight: "100svh",
+                    maxWidth: 680,
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 12,
+                      marginBottom: 18,
+                    }}
+                  >
+                    {["Ahangama.com for Business", "Founding Partners"].map(
+                      (item) => (
+                        <Text
+                          key={item}
+                          style={{
+                            color: "#FFFFFF",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: 1.6,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {item}
+                        </Text>
+                      ),
+                    )}
+                  </div>
+
+                  <Title
+                    className="home-hero-title"
+                    style={{
+                      margin: 0,
+                      color: "#FFFFFF",
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Tourism
+                    </span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Intelligence
+                    </span>
+                    <span
+                      className="home-hero-titleLine"
+                      style={{ color: "#FFFFFF" }}
+                    >
+                      Platform
+                    </span>
+                  </Title>
+
+                  <Paragraph
+                    style={{
+                      marginTop: 24,
+                      marginBottom: 0,
+                      maxWidth: 560,
+                      color: "#FFFFFF",
+                      fontSize: "clamp(18px, 2.1vw, 26px)",
+                      lineHeight: 1.35,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {content.hero.tagline}
+                  </Paragraph>
+
+                  <Paragraph
+                    style={{
+                      marginTop: 18,
+                      marginBottom: 28,
+                      maxWidth: 540,
+                      color: "rgba(255,255,255,0.9)",
+                      fontSize: "clamp(15px, 1.45vw, 18px)",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    {content.hero.subtext}
+                  </Paragraph>
+
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                    <Button
+                      size="large"
+                      icon={<ArrowRightOutlined />}
+                      iconPosition="end"
+                      onClick={() => scrollToSection("pricing")}
+                      style={{
+                        minHeight: 48,
+                        borderRadius: 999,
+                        paddingInline: 24,
+                        background: "#FFFFFF",
+                        borderColor: "#FFFFFF",
+                        color: "#111111",
+                        fontWeight: 800,
+                      }}
+                    >
+                      {content.hero.primaryCta}
+                    </Button>
+                    <Button
+                      size="large"
+                      onClick={() => scrollToSection("test")}
+                      style={{
+                        minHeight: 48,
+                        borderRadius: 999,
+                        paddingInline: 24,
+                        background: "rgba(255,255,255,0.08)",
+                        borderColor: "rgba(255,255,255,0.72)",
+                        color: "#FFFFFF",
+                        fontWeight: 800,
+                      }}
+                    >
+                      {content.hero.secondaryCta}
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
-          </Section>
+          </div>
 
           <Section>
             <SectionHeader
