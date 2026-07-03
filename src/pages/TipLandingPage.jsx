@@ -58,6 +58,7 @@ const TIP_PAGE_CONTENT = {
         title: "Guide visibility",
         copy: "Placed inside curated Ahangama guides visitors use to plan their stay.",
         Icon: CompassOutlined,
+        showGuidePreview: true,
       },
       {
         title: "Map visibility",
@@ -245,7 +246,108 @@ function RecommendationCard({ card }) {
       </Paragraph>
       {card.showEmailPreview ? <CompactEmailPhone /> : null}
       {card.showWhatsAppPreview ? <CompactWhatsAppPhone /> : null}
+      {card.showGuidePreview ? <CompactGuidePhone /> : null}
     </Card>
+  );
+}
+
+function CompactGuidePhone() {
+  const screenRef = useRef(null);
+  const [screenWidth, setScreenWidth] = useState(224);
+
+  useEffect(() => {
+    if (!screenRef.current || typeof ResizeObserver === "undefined") {
+      return undefined;
+    }
+
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry?.contentRect?.width) {
+        setScreenWidth(entry.contentRect.width);
+      }
+    });
+
+    observer.observe(screenRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const previewScale = Math.min(screenWidth / COMPACT_EMAIL_PREVIEW_WIDTH, 1);
+  const iframeHeight = Math.ceil(COMPACT_EMAIL_SCREEN_HEIGHT / previewScale);
+
+  return (
+    <div
+      aria-label="Ahangama guide preview"
+      style={{
+        width: "min(100%, 240px)",
+        margin: "24px auto 0",
+        padding: 8,
+        border: "1px solid #171717",
+        borderRadius: 28,
+        background: "#171717",
+        boxShadow: "0 18px 42px rgba(40, 32, 20, 0.22)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "2px 0 7px",
+        }}
+      >
+        <Text
+          style={{
+            color: "#f4f0e8",
+            fontSize: 9,
+            fontWeight: 800,
+            letterSpacing: 1.1,
+            textTransform: "uppercase",
+          }}
+        >
+          Guide preview
+        </Text>
+      </div>
+      <div
+        style={{
+          height: 18,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 4,
+            borderRadius: 99,
+            background: "#2e2e2e",
+          }}
+        />
+      </div>
+      <div
+        ref={screenRef}
+        style={{
+          height: COMPACT_EMAIL_SCREEN_HEIGHT,
+          overflow: "hidden",
+          borderRadius: 20,
+          background: "#ffffff",
+        }}
+      >
+        <iframe
+          title="Ahangama guide preview"
+          src="/guide"
+          scrolling="yes"
+          style={{
+            display: "block",
+            width: COMPACT_EMAIL_PREVIEW_WIDTH,
+            height: iframeHeight,
+            border: 0,
+            background: "#ffffff",
+            transform: `scale(${previewScale})`,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
+    </div>
   );
 }
 
