@@ -55,8 +55,13 @@ const TIP_PAGE_CONTENT = {
         showWhatsAppPreview: true,
       },
       {
-        title: "Guide & map visibility",
-        copy: "Placed inside curated Ahangama guides and visitor maps.",
+        title: "Guide visibility",
+        copy: "Placed inside curated Ahangama guides visitors use to plan their stay.",
+        Icon: CompassOutlined,
+      },
+      {
+        title: "Map visibility",
+        copy: "Shown on visitor maps when travellers are choosing where to go next.",
         Icon: CompassOutlined,
       },
     ],
@@ -913,9 +918,9 @@ export default function TipLandingPage() {
               copy={content.recommendations.copy}
             />
             <div
+              className="tip-recommendations-grid"
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
                 gap: 14,
               }}
             >
