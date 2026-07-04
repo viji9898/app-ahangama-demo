@@ -22,6 +22,7 @@ export const TIP_LANDING_PATH = "/tip";
 
 const EMAIL_PREVIEW_ENDPOINT =
   "/.netlify/functions/guest-welcome-email-preview";
+const TIP_VENDOR_STATS_ENDPOINT = "/.netlify/functions/tip-vendor-stats";
 const TIP_OG_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg";
 const COMPACT_EMAIL_PREVIEW_WIDTH = 390;
@@ -165,12 +166,6 @@ const TIP_PAGE_CONTENT = {
     ],
     highlight:
       "Rather than advertising to everyone, we introduce your business to visitors who are actively looking for experiences like yours during their stay in Ahangama.",
-    stats: [
-      { value: "742", label: "Visitors This Month" },
-      { value: "18", label: "Countries" },
-      { value: "5.6", label: "Average Stay (Nights)" },
-      { value: "64%", label: "Email Open Rate" },
-    ],
     statement:
       "Real visitors. Real interests. Real opportunities for local businesses.",
   },
@@ -751,6 +746,317 @@ function CompactPassPreviewPhone() {
   );
 }
 
+function formatNumber(value, options) {
+  const number = Number(value || 0);
+
+  return new Intl.NumberFormat("en-GB", options).format(number);
+}
+
+function formatPercent(value) {
+  return `${formatNumber(value, { maximumFractionDigits: 1 })}%`;
+}
+
+function formatInsightLabel(value) {
+  const normalized = String(value || "")
+    .replace(/^https?:\/\//i, "")
+    .replace(/[?#].*$/, "")
+    .split("/")
+    .filter(Boolean)
+    .pop();
+
+  return String(normalized || value || "Unknown")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function TipStatsMetric({ label, value, note }) {
+  return (
+    <div
+      className="tip-visitor-hover-card"
+      style={{
+        minHeight: 136,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        border: "1px solid #EAEAEA",
+        borderRadius: 18,
+        background: "#ffffff",
+        padding: "22px 18px",
+        boxShadow: "0 12px 30px rgba(17, 17, 17, 0.03)",
+      }}
+    >
+      <Text
+        style={{
+          display: "block",
+          color: "#7b746b",
+          fontSize: 11,
+          fontWeight: 900,
+          letterSpacing: 1.4,
+          textTransform: "uppercase",
+        }}
+      >
+        {label}
+      </Text>
+      <Text
+        style={{
+          display: "block",
+          marginTop: 18,
+          color: "#111111",
+          fontFamily: "Georgia, 'Times New Roman', serif",
+          fontSize: "clamp(34px, 4.4vw, 56px)",
+          lineHeight: 0.95,
+        }}
+      >
+        {value}
+      </Text>
+      {note ? (
+        <Text style={{ marginTop: 12, color: "#6a655f", fontSize: 13 }}>
+          {note}
+        </Text>
+      ) : null}
+    </div>
+  );
+}
+
+function TipStatsList({ title, items, emptyText }) {
+  return (
+    <div
+      className="tip-visitor-hover-card"
+      style={{
+        border: "1px solid #EAEAEA",
+        borderRadius: 18,
+        background: "#ffffff",
+        padding: "22px 20px",
+        boxShadow: "0 12px 30px rgba(17, 17, 17, 0.03)",
+      }}
+    >
+      <Text
+        style={{
+          display: "block",
+          color: "#111111",
+          fontSize: 16,
+          fontWeight: 850,
+        }}
+      >
+        {title}
+      </Text>
+      <div style={{ display: "grid", gap: 12, marginTop: 18 }}>
+        {items.length ? (
+          items.map((item, index) => (
+            <div
+              key={`${item.label}-${index}`}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "minmax(0, 1fr) auto",
+                gap: 14,
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{
+                  minWidth: 0,
+                  color: "#38342e",
+                  fontSize: 14,
+                  fontWeight: 750,
+                  lineHeight: 1.28,
+                }}
+              >
+                {formatInsightLabel(item.label)}
+              </Text>
+              <Text
+                style={{
+                  color: "#111111",
+                  fontSize: 14,
+                  fontWeight: 900,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {formatNumber(item.value)}
+              </Text>
+            </div>
+          ))
+        ) : (
+          <Text style={{ color: "#77716a", fontSize: 14, lineHeight: 1.5 }}>
+            {emptyText}
+          </Text>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function TipVendorStatsSection() {
+  const [stats, setStats] = useState(null);
+  const [isLoadingStats, setIsLoadingStats] = useState(true);
+  const [statsError, setStatsError] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadStats() {
+      try {
+        const response = await fetch(TIP_VENDOR_STATS_ENDPOINT, {
+          cache: "no-store",
+        });
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to load stats");
+        }
+
+        if (isMounted) {
+          setStats(data);
+        }
+      } catch (error) {
+        if (isMounted) {
+          setStatsError(error.message || "Stats unavailable");
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoadingStats(false);
+        }
+      }
+    }
+
+    loadStats();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const summary = stats?.summary || {};
+
+  return (
+    <div
+      style={{
+        marginTop: "clamp(42px, 6vw, 68px)",
+        padding: "0 clamp(18px, 4vw, 56px)",
+      }}
+    >
+      <div style={{ maxWidth: 760, marginBottom: 24 }}>
+        <Text
+          style={{
+            display: "block",
+            color: "#8b8277",
+            fontSize: 12,
+            fontWeight: 900,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+          }}
+        >
+          Stats
+        </Text>
+        <Title
+          level={3}
+          style={{
+            margin: "10px 0 0",
+            color: "#111111",
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontSize: "clamp(30px, 4.8vw, 52px)",
+            lineHeight: 1.02,
+            fontWeight: 500,
+          }}
+        >
+          Live audience and engagement signals.
+        </Title>
+      </div>
+
+      {isLoadingStats ? (
+        <div
+          style={{
+            minHeight: 190,
+            display: "grid",
+            placeItems: "center",
+            border: "1px solid #EAEAEA",
+            borderRadius: 18,
+            background: "#ffffff",
+          }}
+        >
+          <Spin />
+        </div>
+      ) : statsError ? (
+        <div
+          style={{
+            border: "1px solid #EAEAEA",
+            borderRadius: 18,
+            background: "#ffffff",
+            padding: 24,
+          }}
+        >
+          <Text style={{ color: "#7b746b", fontSize: 15 }}>
+            Live stats are unavailable right now.
+          </Text>
+        </div>
+      ) : (
+        <>
+          <div
+            className="tip-visitor-stats-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+              gap: 14,
+            }}
+          >
+            <TipStatsMetric
+              label="Email Database"
+              value={formatNumber(summary.emailDatabaseSize)}
+              note="Newsletter and pass guest emails"
+            />
+            <TipStatsMetric
+              label="Emails Sent"
+              value={formatNumber(summary.emailsSent)}
+              note={`${formatPercent(summary.emailOpenRate)} open rate`}
+            />
+            <TipStatsMetric
+              label="Email Clicks"
+              value={formatNumber(summary.emailClicks)}
+              note={`${formatPercent(summary.emailClickRate)} click rate`}
+            />
+            <TipStatsMetric
+              label="Pass Guests"
+              value={formatNumber(summary.passGuests)}
+              note={`${formatNumber(summary.countries)} countries tracked`}
+            />
+          </div>
+
+          <div
+            className="tip-stats-detail-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+              gap: 14,
+              marginTop: 14,
+            }}
+          >
+            <TipStatsList
+              title="Top clicked articles"
+              items={Array.isArray(stats.topArticles) ? stats.topArticles : []}
+              emptyText="Article click data will appear here after visitors engage with article links."
+            />
+            <TipStatsList
+              title="Top email clicks"
+              items={
+                Array.isArray(stats.topClickedContent)
+                  ? stats.topClickedContent
+                  : []
+              }
+              emptyText="Email click data will appear here after tracked email links are clicked."
+            />
+            <TipStatsList
+              title="Interests behind clicks"
+              items={Array.isArray(stats.topInterests) ? stats.topInterests : []}
+              emptyText="Interest data will appear here when clicked guests have completed their preferences."
+            />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function VisitorIntelligenceSection({ content }) {
   return (
     <Section
@@ -856,60 +1162,7 @@ function VisitorIntelligenceSection({ content }) {
           </div>
         </div>
 
-        <div
-          className="tip-visitor-stats-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-            gap: 14,
-            marginTop: "clamp(38px, 6vw, 64px)",
-            padding: "0 clamp(18px, 4vw, 56px)",
-          }}
-        >
-          {content.stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="tip-visitor-hover-card"
-              style={{
-                minHeight: 132,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                border: "1px solid #EAEAEA",
-                borderRadius: 18,
-                background: "#ffffff",
-                padding: "22px 18px",
-                textAlign: "center",
-                boxShadow: "0 12px 30px rgba(17, 17, 17, 0.03)",
-              }}
-            >
-              <Text
-                style={{
-                  display: "block",
-                  color: "#111111",
-                  fontFamily: "Georgia, 'Times New Roman', serif",
-                  fontSize: "clamp(38px, 4.5vw, 58px)",
-                  lineHeight: 0.95,
-                }}
-              >
-                {stat.value}
-              </Text>
-              <Text
-                style={{
-                  display: "block",
-                  marginTop: 12,
-                  color: "#7b746b",
-                  fontSize: 11,
-                  fontWeight: 900,
-                  letterSpacing: 1.4,
-                  textTransform: "uppercase",
-                }}
-              >
-                {stat.label}
-              </Text>
-            </div>
-          ))}
-        </div>
+        <TipVendorStatsSection />
 
         <Paragraph
           style={{
