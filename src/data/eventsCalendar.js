@@ -9,6 +9,7 @@ import img4Image from "../assets/temp/img4.jpeg";
 import img5Image from "../assets/temp/img5.jpeg";
 import img6Image from "../assets/temp/img6.jpeg";
 import img7Image from "../assets/temp/img7.jpeg";
+import img8Image from "../assets/temp/img8.jpeg";
 import { PLACES } from "./places";
 
 const eventImage = (fileName) =>
@@ -434,6 +435,23 @@ export const EVENTS_CALENDAR_DAYS = [
         description: "Breathwork session with Ember & Ice.",
         instagramUrl:
           "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-15",
+    weekday: "Wednesday",
+    dayNumber: "15",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "A Community Gathering & Working Session",
+        venue: "Flowground, Ahangama",
+        time: "6:00 PM",
+        category: "Weekly Picks",
+        image: img8Image,
+        description:
+          "Plastic-Free South Coast Coalition x The Ripple Effect. Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
       }),
     ],
   },
