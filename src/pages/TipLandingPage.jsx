@@ -104,6 +104,67 @@ const TIP_PAGE_CONTENT = {
       },
     ],
   },
+  visitorIntelligence: {
+    label: "Visitor Intelligence",
+    headline: "Every visitor becomes a valuable insight.",
+    copy: "Every guest who claims the complimentary Ahangama Pass chooses to share information that helps us personalise their experience. This allows us to recommend your business to visitors who are genuinely interested in what you offer, while giving you measurable insight into your audience.",
+    cards: [
+      {
+        title: "Visitor Profile",
+        twoColumns: true,
+        items: [
+          "Name",
+          "Country",
+          "Hotel",
+          "Arrival Date",
+          "Departure Date",
+          "Length of Stay",
+          "Email",
+          "WhatsApp",
+        ],
+      },
+      {
+        title: "Interests",
+        twoColumns: true,
+        items: [
+          "Surfing",
+          "Cafés",
+          "Restaurants",
+          "Wellness",
+          "Yoga",
+          "Nature",
+          "Shopping",
+          "Nightlife",
+          "Remote Working",
+          "Adventure",
+        ],
+      },
+      {
+        title: "Visitor Behaviour",
+        twoColumns: true,
+        items: [
+          "Emails opened",
+          "WhatsApp engagement",
+          "Recommendations clicked",
+          "Articles viewed",
+          "Businesses explored",
+          "Map interactions",
+          "Experiences viewed",
+          "Pass redemptions",
+        ],
+      },
+    ],
+    highlight:
+      "Rather than advertising to everyone, we introduce your business to visitors who are actively looking for experiences like yours during their stay in Ahangama.",
+    stats: [
+      { value: "742", label: "Visitors This Month" },
+      { value: "18", label: "Countries" },
+      { value: "5.6", label: "Average Stay (Nights)" },
+      { value: "64%", label: "Email Open Rate" },
+    ],
+    statement:
+      "Real visitors. Real interests. Real opportunities for local businesses.",
+  },
   test: {
     headline: "Test the experience",
     copy: "See how your business could appear in a guest recommendation.",
@@ -287,6 +348,485 @@ function RecommendationCard({ card }) {
       {card.showGuidePreview ? <CompactGuidePhone /> : null}
       {card.showMapPreview ? <CompactMapPhone /> : null}
     </Card>
+  );
+}
+
+function ChecklistItem({ children }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 9,
+        minWidth: 0,
+      }}
+    >
+      <CheckOutlined
+        aria-hidden="true"
+        style={{ color: "#111111", fontSize: 11, flex: "0 0 auto" }}
+      />
+      <Text
+        style={{
+          color: "#38342e",
+          fontSize: 14,
+          lineHeight: 1.35,
+          fontWeight: 650,
+        }}
+      >
+        {children}
+      </Text>
+    </div>
+  );
+}
+
+function VisitorIntelligenceCard({ card }) {
+  return (
+    <div
+      className="tip-visitor-hover-card"
+      style={{
+        border: "1px solid #EAEAEA",
+        borderRadius: 18,
+        background: "#ffffff",
+        padding: "clamp(20px, 2.4vw, 26px)",
+        boxShadow: "0 14px 34px rgba(17, 17, 17, 0.035)",
+      }}
+    >
+      <Title
+        level={3}
+        style={{
+          margin: 0,
+          color: "#111111",
+          fontSize: 20,
+          lineHeight: 1.2,
+          fontWeight: 700,
+        }}
+      >
+        {card.title}
+      </Title>
+      <div
+        className={card.twoColumns ? "tip-visitor-checklist" : undefined}
+        style={{
+          display: "grid",
+          gap: "11px 14px",
+          marginTop: 18,
+        }}
+      >
+        {card.items.map((item) => (
+          <ChecklistItem key={item}>{item}</ChecklistItem>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PhoneProfileShell({ title, children }) {
+  return (
+    <div style={{ marginTop: 16 }}>
+      <Text
+        style={{
+          display: "block",
+          margin: "0 0 7px 4px",
+          color: "#8a837a",
+          fontSize: 10,
+          fontWeight: 900,
+          letterSpacing: 1.2,
+          textTransform: "uppercase",
+        }}
+      >
+        {title}
+      </Text>
+      <div
+        style={{
+          overflow: "hidden",
+          border: "1px solid rgba(17, 17, 17, 0.06)",
+          borderRadius: 16,
+          background: "#ffffff",
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function PhoneProfileGroup({ title, rows, checked = false }) {
+  return (
+    <PhoneProfileShell title={title}>
+      {rows.map(([label, value], index) => (
+        <div
+          key={label}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            padding: "12px 13px",
+            borderTop: index ? "1px solid #eeeeec" : 0,
+          }}
+        >
+          <Text style={{ color: "#706a62", fontSize: 13, fontWeight: 700 }}>
+            {label}
+          </Text>
+          <Text
+            style={{
+              color: "#111111",
+              fontSize: 13,
+              fontWeight: 800,
+              textAlign: "right",
+            }}
+          >
+            {checked ? "✓ " : ""}
+            {value}
+          </Text>
+        </div>
+      ))}
+    </PhoneProfileShell>
+  );
+}
+
+function PhoneProfileTags({ title, items }) {
+  return (
+    <PhoneProfileShell title={title}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, padding: 13 }}>
+        {items.map((item) => (
+          <span
+            key={item}
+            style={{
+              border: "1px solid #e7e2da",
+              borderRadius: 999,
+              background: "#fbfaf7",
+              padding: "7px 10px",
+              color: "#111111",
+              fontSize: 12,
+              fontWeight: 800,
+              lineHeight: 1,
+            }}
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </PhoneProfileShell>
+  );
+}
+
+function PhoneProfileActivity({ title, items }) {
+  return (
+    <PhoneProfileShell title={title}>
+      {items.map((item, index) => (
+        <div
+          key={item}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "12px 13px",
+            borderTop: index ? "1px solid #eeeeec" : 0,
+          }}
+        >
+          <span
+            aria-hidden="true"
+            style={{
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              background: "#111111",
+              flex: "0 0 auto",
+            }}
+          />
+          <Text style={{ color: "#25221f", fontSize: 13, fontWeight: 750 }}>
+            {item}
+          </Text>
+        </div>
+      ))}
+    </PhoneProfileShell>
+  );
+}
+
+function VisitorProfilePhone() {
+  const interests = ["Wellness", "Surfing", "Coffee", "Local Food"];
+  const activities = [
+    "Opened Welcome Email",
+    "Viewed Best Cafés",
+    "Clicked Sunset Yoga",
+    "Redeemed Complimentary Coffee",
+  ];
+
+  return (
+    <div
+      aria-label="Example visitor profile"
+      style={{
+        width: "min(100%, 318px)",
+        margin: "0 auto",
+        padding: 10,
+        border: "1px solid #171717",
+        borderRadius: 38,
+        background: "#171717",
+        boxShadow: "0 26px 72px rgba(17, 17, 17, 0.16)",
+      }}
+    >
+      <div
+        style={{
+          height: 24,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 76,
+            height: 5,
+            borderRadius: 99,
+            background: "#2d2d2d",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          minHeight: 610,
+          borderRadius: 28,
+          overflow: "hidden",
+          background: "#f5f4f0",
+          padding: 16,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            marginBottom: 18,
+          }}
+        >
+          <div
+            style={{
+              display: "grid",
+              placeItems: "center",
+              width: 48,
+              height: 48,
+              borderRadius: "50%",
+              background: "#111111",
+              color: "#ffffff",
+              fontSize: 18,
+              fontWeight: 800,
+            }}
+          >
+            AM
+          </div>
+          <div>
+            <Text
+              style={{
+                display: "block",
+                color: "#111111",
+                fontSize: 18,
+                lineHeight: 1.1,
+                fontWeight: 800,
+              }}
+            >
+              Anna Müller
+            </Text>
+            <Text style={{ color: "#77716a", fontSize: 13, fontWeight: 700 }}>
+              Germany
+            </Text>
+          </div>
+        </div>
+
+        <PhoneProfileGroup
+          title="Staying"
+          rows={[
+            ["Hotel", "The Sandhya Hotel"],
+            ["Dates", "12-18 July"],
+            ["Length", "6 Nights"],
+          ]}
+        />
+        <PhoneProfileTags title="Interests" items={interests} />
+        <PhoneProfileGroup
+          title="Communication"
+          rows={[
+            ["Email", "Enabled"],
+            ["WhatsApp", "Enabled"],
+          ]}
+          checked
+        />
+        <PhoneProfileActivity title="Recent Activity" items={activities} />
+      </div>
+    </div>
+  );
+}
+
+function VisitorIntelligenceSection({ content }) {
+  return (
+    <Section
+      style={{
+        padding: "clamp(88px, 12vw, 148px) 0 clamp(78px, 11vw, 136px)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1280,
+          margin: "0 auto",
+          borderTop: "1px solid #EAEAEA",
+          borderBottom: "1px solid #EAEAEA",
+          padding: "clamp(54px, 7vw, 84px) 0",
+          background: "#fbfaf7",
+        }}
+      >
+        <div
+          className="tip-visitor-intelligence-layout"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 3fr) minmax(280px, 2fr)",
+            gap: "clamp(34px, 6vw, 76px)",
+            alignItems: "start",
+            padding: "0 clamp(18px, 4vw, 56px)",
+          }}
+        >
+          <div>
+            <Text
+              style={{
+                display: "block",
+                marginBottom: 18,
+                color: "#8b8277",
+                fontSize: 12,
+                fontWeight: 900,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+              }}
+            >
+              {content.label}
+            </Text>
+            <Title
+              level={2}
+              style={{
+                maxWidth: 700,
+                margin: 0,
+                color: "#111111",
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                fontSize: "clamp(40px, 7vw, 78px)",
+                lineHeight: 0.96,
+                fontWeight: 500,
+                letterSpacing: 0,
+              }}
+            >
+              {content.headline}
+            </Title>
+            <Paragraph
+              style={{
+                maxWidth: 620,
+                margin: "24px 0 0",
+                color: "#55524d",
+                fontSize: "clamp(16px, 1.8vw, 19px)",
+                lineHeight: 1.75,
+              }}
+            >
+              {content.copy}
+            </Paragraph>
+            <div style={{ display: "grid", gap: 14, marginTop: 34 }}>
+              {content.cards.map((card) => (
+                <VisitorIntelligenceCard key={card.title} card={card} />
+              ))}
+            </div>
+            <div
+              className="tip-visitor-hover-card"
+              style={{
+                marginTop: 16,
+                border: "1px solid #EAEAEA",
+                borderRadius: 20,
+                background: "#f5efe4",
+                padding: "clamp(22px, 3vw, 30px)",
+                boxShadow: "0 14px 34px rgba(17, 17, 17, 0.03)",
+              }}
+            >
+              <Paragraph
+                style={{
+                  margin: 0,
+                  color: "#211f1c",
+                  fontFamily: "Georgia, 'Times New Roman', serif",
+                  fontSize: "clamp(21px, 2.5vw, 29px)",
+                  lineHeight: 1.24,
+                }}
+              >
+                {content.highlight}
+              </Paragraph>
+            </div>
+          </div>
+          <div className="tip-visitor-phone-column">
+            <VisitorProfilePhone />
+          </div>
+        </div>
+
+        <div
+          className="tip-visitor-stats-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+            gap: 14,
+            marginTop: "clamp(38px, 6vw, 64px)",
+            padding: "0 clamp(18px, 4vw, 56px)",
+          }}
+        >
+          {content.stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="tip-visitor-hover-card"
+              style={{
+                minHeight: 132,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                border: "1px solid #EAEAEA",
+                borderRadius: 18,
+                background: "#ffffff",
+                padding: "22px 18px",
+                textAlign: "center",
+                boxShadow: "0 12px 30px rgba(17, 17, 17, 0.03)",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  color: "#111111",
+                  fontFamily: "Georgia, 'Times New Roman', serif",
+                  fontSize: "clamp(38px, 4.5vw, 58px)",
+                  lineHeight: 0.95,
+                }}
+              >
+                {stat.value}
+              </Text>
+              <Text
+                style={{
+                  display: "block",
+                  marginTop: 12,
+                  color: "#7b746b",
+                  fontSize: 11,
+                  fontWeight: 900,
+                  letterSpacing: 1.4,
+                  textTransform: "uppercase",
+                }}
+              >
+                {stat.label}
+              </Text>
+            </div>
+          ))}
+        </div>
+
+        <Paragraph
+          style={{
+            maxWidth: 760,
+            margin: "clamp(30px, 5vw, 46px) auto 0",
+            padding: "0 18px",
+            color: "#111111",
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontSize: "clamp(26px, 3.8vw, 44px)",
+            lineHeight: 1.14,
+            textAlign: "center",
+          }}
+        >
+          {content.statement}
+        </Paragraph>
+      </div>
+    </Section>
   );
 }
 
@@ -1305,6 +1845,8 @@ export default function TipLandingPage() {
               ))}
             </div>
           </Section>
+
+          <VisitorIntelligenceSection content={content.visitorIntelligence} />
 
           <Section id="test" style={{ paddingTop: "clamp(24px, 4vw, 44px)" }}>
             <SectionHeader

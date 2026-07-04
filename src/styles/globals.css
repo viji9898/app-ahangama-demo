@@ -27,15 +27,52 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.tip-visitor-checklist {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tip-visitor-hover-card {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.tip-visitor-hover-card:hover {
+  transform: translateY(-2px);
+  border-color: #dedede;
+  box-shadow: 0 20px 48px rgba(17, 17, 17, 0.075) !important;
+}
+
 @media (max-width: 900px) {
   .tip-recommendations-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tip-visitor-intelligence-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tip-visitor-phone-column {
+    order: 2;
+  }
+
+  .tip-visitor-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
 @media (max-width: 640px) {
   .tip-recommendations-grid {
     grid-template-columns: 1fr;
+  }
+
+  .tip-visitor-checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .tip-visitor-stats-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
