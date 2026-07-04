@@ -236,6 +236,14 @@ function applyMeta(html, meta) {
 
 const routeMeta = [
   {
+    route: "/tip",
+    title: "Tourism Intelligence Platform | Ahangama.com",
+    description:
+      "Ahangama.com helps local businesses reach visitors through personalised recommendations, curated guides, and monthly visitor intelligence.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg",
+  },
+  {
     route: "/the-living-room-concept-store",
     title: "The Living Room Concept Store",
     description:

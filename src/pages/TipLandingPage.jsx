@@ -19,6 +19,8 @@ export const TIP_LANDING_PATH = "/tip";
 
 const EMAIL_PREVIEW_ENDPOINT =
   "/.netlify/functions/guest-welcome-email-preview";
+const TIP_OG_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg";
 const COMPACT_EMAIL_PREVIEW_WIDTH = 390;
 const COMPACT_EMAIL_SCREEN_HEIGHT = 490;
 
@@ -58,6 +60,7 @@ const TIP_PAGE_CONTENT = {
     title: "Tourism Intelligence Platform | Ahangama.com",
     description:
       "Ahangama.com helps local businesses reach visitors through personalised recommendations, curated guides, and monthly visitor intelligence.",
+    ogImage: TIP_OG_IMAGE,
   },
   hero: {
     headline: "Tourism Intelligence Platform",
@@ -1078,6 +1081,7 @@ export default function TipLandingPage() {
         title={content.seo.title}
         description={content.seo.description}
         canonical={absUrl(TIP_LANDING_PATH)}
+        ogImage={content.seo.ogImage}
       />
 
       <main style={{ background: "#ffffff", color: "#111111" }}>
