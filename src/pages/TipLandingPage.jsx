@@ -102,6 +102,12 @@ const TIP_PAGE_CONTENT = {
         Icon: CompassOutlined,
         showMapPreview: true,
       },
+      {
+        title: "Events visibility",
+        copy: "Featured where visitors discover what is happening during their stay.",
+        Icon: CompassOutlined,
+        showEventsPreview: true,
+      },
     ],
   },
   visitorIntelligence: {
@@ -347,6 +353,7 @@ function RecommendationCard({ card }) {
       {card.showWhatsAppPreview ? <CompactWhatsAppPhone /> : null}
       {card.showGuidePreview ? <CompactGuidePhone /> : null}
       {card.showMapPreview ? <CompactMapPhone /> : null}
+      {card.showEventsPreview ? <CompactEventsPhone /> : null}
     </Card>
   );
 }
@@ -986,7 +993,7 @@ function CompactMapPhone() {
   );
 }
 
-function CompactGuidePhone() {
+function CompactPagePhone({ ariaLabel, label, title, src }) {
   const screenRef = useRef(null);
   const [screenWidth, setScreenWidth] = useState(224);
 
@@ -1011,7 +1018,7 @@ function CompactGuidePhone() {
 
   return (
     <div
-      aria-label="Ahangama guide preview"
+      aria-label={ariaLabel}
       style={{
         width: "min(100%, 240px)",
         margin: "24px auto 0",
@@ -1038,7 +1045,7 @@ function CompactGuidePhone() {
             textTransform: "uppercase",
           }}
         >
-          Guide preview
+          {label}
         </Text>
       </div>
       <div
@@ -1068,8 +1075,8 @@ function CompactGuidePhone() {
         }}
       >
         <iframe
-          title="Ahangama guide preview"
-          src="/guide"
+          title={title}
+          src={src}
           scrolling="yes"
           style={{
             display: "block",
@@ -1083,6 +1090,28 @@ function CompactGuidePhone() {
         />
       </div>
     </div>
+  );
+}
+
+function CompactGuidePhone() {
+  return (
+    <CompactPagePhone
+      ariaLabel="Ahangama guide preview"
+      label="Guide preview"
+      title="Ahangama guide preview"
+      src="/guide"
+    />
+  );
+}
+
+function CompactEventsPhone() {
+  return (
+    <CompactPagePhone
+      ariaLabel="Ahangama events preview"
+      label="Events preview"
+      title="Ahangama events preview"
+      src="/events"
+    />
   );
 }
 
