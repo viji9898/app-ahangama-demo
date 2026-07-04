@@ -520,47 +520,8 @@ function PhoneProfileTags({ title, items }) {
   );
 }
 
-function PhoneProfileActivity({ title, items }) {
-  return (
-    <PhoneProfileShell title={title}>
-      {items.map((item, index) => (
-        <div
-          key={item}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            padding: "12px 13px",
-            borderTop: index ? "1px solid #eeeeec" : 0,
-          }}
-        >
-          <span
-            aria-hidden="true"
-            style={{
-              width: 7,
-              height: 7,
-              borderRadius: "50%",
-              background: "#111111",
-              flex: "0 0 auto",
-            }}
-          />
-          <Text style={{ color: "#25221f", fontSize: 13, fontWeight: 750 }}>
-            {item}
-          </Text>
-        </div>
-      ))}
-    </PhoneProfileShell>
-  );
-}
-
 function VisitorProfilePhone() {
   const interests = ["Wellness", "Surfing", "Coffee", "Local Food"];
-  const activities = [
-    "Opened Welcome Email",
-    "Viewed Best Cafés",
-    "Clicked Sunset Yoga",
-    "Redeemed Complimentary Coffee",
-  ];
 
   return (
     <div
@@ -659,7 +620,6 @@ function VisitorProfilePhone() {
           ]}
           checked
         />
-        <PhoneProfileActivity title="Recent Activity" items={activities} />
       </div>
     </div>
   );
