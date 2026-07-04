@@ -62,7 +62,7 @@ const TIP_PAGE_CONTENT = {
   hero: {
     headline: "Tourism Intelligence Platform",
     tagline:
-      "We directly connect with over 5,000 visitors a month in Ahangama.",
+      "We directly connect with visitors in Ahangama",
     subtext:
       "Ahangama.com helps local businesses reach visitors through personalised email and WhatsApp recommendations, curated guides, and monthly visitor intelligence.",
     image:
@@ -1284,7 +1284,7 @@ export default function TipLandingPage() {
             </div>
           </div>
 
-          <Section>
+          <Section style={{ paddingBottom: "clamp(28px, 4vw, 48px)" }}>
             <SectionHeader
               headline={content.recommendations.headline}
               copy={content.recommendations.copy}
@@ -1302,7 +1302,7 @@ export default function TipLandingPage() {
             </div>
           </Section>
 
-          <Section id="test">
+          <Section id="test" style={{ paddingTop: "clamp(24px, 4vw, 44px)" }}>
             <SectionHeader
               headline={content.test.headline}
               copy={content.test.copy}
@@ -1374,7 +1374,14 @@ export default function TipLandingPage() {
               >
                 {content.pricing.standardPrice}
               </Paragraph>
-              <div style={{ display: "grid", gap: 12, marginTop: 34 }}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "10px 18px",
+                  marginTop: 24,
+                }}
+              >
                 {content.pricing.benefits.map((benefit) => (
                   <div
                     key={benefit}
@@ -1385,7 +1392,7 @@ export default function TipLandingPage() {
                     }}
                   >
                     <CheckOutlined style={{ color: "#ffffff", marginTop: 4 }} />
-                    <Text style={{ color: "#ffffff", fontSize: 16 }}>
+                    <Text style={{ color: "#ffffff", fontSize: 15 }}>
                       {benefit}
                     </Text>
                   </div>
@@ -1399,7 +1406,7 @@ export default function TipLandingPage() {
                   minHeight: 50,
                   borderRadius: 999,
                   paddingInline: 24,
-                  marginTop: 38,
+                  marginTop: 24,
                   background: "#ffffff",
                   color: "#111111",
                   borderColor: "#ffffff",
