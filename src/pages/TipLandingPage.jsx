@@ -12,6 +12,9 @@ import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { PLACES } from "../data/places";
+import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
+import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
+import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -662,6 +665,132 @@ function VisitorProfilePhone() {
   );
 }
 
+function CompactPassPreviewPhone() {
+  return (
+    <div
+      aria-label="Ahangama pass preview"
+      style={{
+        width: "min(100%, 318px)",
+        margin: "0 auto",
+        padding: 10,
+        border: "1px solid #171717",
+        borderRadius: 38,
+        background: "#171717",
+        boxShadow: "0 26px 72px rgba(17, 17, 17, 0.16)",
+      }}
+    >
+      <div
+        style={{
+          height: 24,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 76,
+            height: 5,
+            borderRadius: 99,
+            background: "#2d2d2d",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          position: "relative",
+          height: 590,
+          overflow: "hidden",
+          borderRadius: 28,
+          background: "#ffffff",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: 0,
+            transform: "translateX(-50%)",
+            width: 128,
+            height: 24,
+            background: "#111111",
+            borderRadius: 16,
+            zIndex: 2,
+          }}
+        />
+        <img
+          src={ahangamaPassMobileWallet}
+          alt="Ahangama Pass wallet preview"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            objectPosition: "top center",
+            borderRadius: 24,
+            transform: "scale(1.08)",
+            transformOrigin: "top center",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: "35.2%",
+            right: "9.5%",
+            zIndex: 3,
+            width: "39%",
+            minHeight: 24,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            padding: "1px 0 2px 8px",
+            background: "#68A9CA",
+            color: "#FFFFFF",
+            fontSize: 12,
+            fontWeight: 300,
+            lineHeight: 1,
+            fontFamily:
+              'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            pointerEvents: "none",
+          }}
+        >
+          19/07/2026
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            left: 12,
+            right: 12,
+            bottom: 14,
+            zIndex: 3,
+            display: "grid",
+            gap: 7,
+            justifyItems: "center",
+            padding: "10px 8px",
+            borderRadius: 16,
+            background: "rgba(255, 255, 255, 0.92)",
+            boxShadow: "0 10px 22px rgba(32, 30, 27, 0.16)",
+            backdropFilter: "blur(8px)",
+          }}
+        >
+          <img
+            src={addToAppleWalletLogo}
+            alt="Add to Apple Wallet"
+            style={{ display: "block", height: 31, width: "auto" }}
+          />
+          <img
+            src={addToGoogleWalletLogo}
+            alt="Add to Google Wallet"
+            style={{ display: "block", height: 31, width: "auto" }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function VisitorIntelligenceSection({ content }) {
   return (
     <Section
@@ -758,7 +887,11 @@ function VisitorIntelligenceSection({ content }) {
               </Paragraph>
             </div>
           </div>
-          <div className="tip-visitor-phone-column">
+          <div
+            className="tip-visitor-phone-column"
+            style={{ display: "grid", gap: 24 }}
+          >
+            <CompactPassPreviewPhone />
             <VisitorProfilePhone />
           </div>
         </div>
