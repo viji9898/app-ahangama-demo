@@ -15,7 +15,7 @@ export const BLOG_POSTS = [
     readingTime: "12 min read",
     category: "2026 Guide",
     heroImage:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
+      "",
     introImage:
       "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830921/12_-_Editorial_style_lifestyle_section_-_Explore_Ahangama_Slowly_joi1zd.webp",
     heroSubtitle:
