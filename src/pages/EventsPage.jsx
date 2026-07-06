@@ -62,7 +62,7 @@ export default function EventsPage() {
                 <div className="events-agenda-dateColumn">
                   <Text className="events-agenda-weekday">{day.weekday}</Text>
                   <Text
-                    className={`events-agenda-dayNumber${day.key === "ongoing" ? " events-agenda-dayNumber--label" : ""}`}
+                    className={`events-agenda-dayNumber${day.key.startsWith("ongoing") ? " events-agenda-dayNumber--label" : ""}`}
                   >
                     {day.dayNumber}
                   </Text>

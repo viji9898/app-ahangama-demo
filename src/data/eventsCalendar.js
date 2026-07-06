@@ -134,7 +134,6 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "Sunset Happy Hour & Music Night",
         venue: "Hakuna Matata",
         time: "Happy Hour: 5:00 PM - 7:00 PM",
         category: "Weekly Picks",
@@ -411,6 +410,24 @@ export const EVENTS_CALENDAR_DAYS = [
     ],
   },
   {
+    key: "2026-07-06",
+    weekday: "Monday",
+    dayNumber: "06",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "No Shame Monday - Karaoke Night",
+        venue: "Crust Ahangama",
+        time: "7.00PM Onwards",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783314017/Crust_Ahangama_Karaoke_pii79w.jpg",
+        description: "Played by Minol.",
+        instagramUrl:"https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+      }),
+    ],
+  },
+  {
     key: "2026-07-07",
     weekday: "Tuesday",
     dayNumber: "07",
@@ -425,6 +442,58 @@ export const EVENTS_CALENDAR_DAYS = [
         description: "Breathwork session with Ember & Ice.",
         instagramUrl:
           "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      }),
+      enrichEvent({
+        title: "Traditional Cooking Class",
+        venue: "Kumbuk Community",
+        time: "4:00 PM - 7:00 PM",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783314826/Kumbuk_Kitchen_cooking_class_czudav_no7spc.webp",
+        description: "Kumbuk Community Kitchen traditional cooking class.",
+        instagramUrl:
+         "https://www.instagram.com/kumbuk.community?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+    ],
+  },
+  {
+    key: "2026-07-08",
+    weekday: "Wednesday",
+    dayNumber: "08",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Cane Weaving (Wewel)",
+        venue: "Sarana",
+        time: "11.30PM",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783315427/Sarana_Cane_weaving_c6tuw6.jpg",
+          description: "Discover the traditional craft of Wewel cane weaving and create your own handcrafted piece.",
+                 instagramUrl:
+         "https://www.instagram.com/saranalanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+    ],
+  },
+  {
+    key: "2026-07-09",
+    weekday: "Thursday",
+    dayNumber: "09",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Traditional Cooking Class",
+        venue: "Kumbuk Community",
+        time: "4:00 PM - 7:00 PM",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783314826/Kumbuk_Kitchen_cooking_class_czudav_no7spc.webp",
+        description: "Kumbuk Community Kitchen traditional cooking class.",
+         instagramUrl:
+         "https://www.instagram.com/kumbuk.community?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
       }),
     ],
   },
@@ -441,7 +510,60 @@ export const EVENTS_CALENDAR_DAYS = [
         category: "Weekly Picks",
         image: img8Image,
         description:
-          "Plastic-Free South Coast Coalition x The Ripple Effect. Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
+          "Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
+      }),
+    ],
+  },
+  {
+    key: "ongoing-this-week",
+    weekday: "Ongoing",
+    dayNumber: "This\nWeek",
+    month: "",
+    events: [
+      enrichEvent({
+        title: "The Well Yoga Week",
+        venue: "The Well",
+        time: "9:00 AM",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/thewell_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783317753/The_well_Schedule_kzntt5.png",
+        description:
+          "Price: 3000 LKR per class + use pool after your session",
+        details: [
+          "Monday 9am Slow flow.",
+          "Tuesday 9am Vinyasa.",
+          "Wednesday 9am Asana & Pranayama.",
+          "Thursday 9am Vinyasa.",
+          "Friday 9am Slow flow.",
+          "Saturday 9am Power Vinyasa.",
+          "Sunday 9am Hatha.",
+        ],
+      }),
+      enrichEvent({
+        title: "Terra Weekly Classes",
+        venue: "Terra Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/terra.srilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783321778/Terra_Schedule_vs9pd2.jpg",
+        description:
+          "Monday\n• 9:00 AM – 10:00 AM: Mat Pilates (Rebeka)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Grounding Yoga Flow (Pardis)\n\nTuesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Rebeka)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nWednesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Rebeka)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nThursday\n• 9:00 AM – 10:00 AM: Grounding Yoga Flow (Pardis)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Vivienne)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nFriday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nSaturday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Vivienne)\n• 4:00 PM – 5:00 PM: Grounding Yoga Flow (Pardis)\n\nSunday\n• 9:00 AM – 10:00 AM: Reformer Pilates (Hannah)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
+      }),
+      enrichEvent({
+        title: "Calma Samaya Weekly Schedule",
+        venue: "Calma Samaya Hotel, Café & Wellness",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/calmasamaya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783322456/Calma_samaya_schedule_u1ag1a.jpg",
+        description:
+          "Monday\n• 10:30 AM – 11:30 AM: Hatha Yoga (Isuru)\n\nTuesday\n• 4:00 PM – 5:00 PM: Yin Yoga (Natasha)\n\nWednesday\n• 10:30 AM – 11:30 AM: Mat Pilates (Yashi)\n• 7:00 PM – 8:00 PM: Breathwork (Paradis)\n\nThursday\n• 4:00 PM – 5:00 PM: Yin Yoga (Isuru)\n\nFriday\n• 10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)\n\nSaturday\n• 4:00 PM – 5:00 PM: Hatha Yoga (Isuru)\n\nSunday\n• 10:30 AM – 11:30 AM: Kundalini Yoga (Natasha)",
       }),
     ],
   },
@@ -460,6 +582,30 @@ export const EVENTS_CALENDAR_DAYS = [
         description: "Buy 2 get 1 free for all cocktails during happy hour.",
         instagramUrl:
           "https://www.instagram.com/samba_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "50% Off All Cocktails",
+        venue: "Crave",
+        time: "Daily",
+        category: "Ongoing",
+         description: "Daily 50% Off All Cocktails.",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783316092/Crave_offer_50_vjhobv.png",
+                        instagramUrl:
+         "https://www.instagram.com/crave_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Daily Pasta + 1 Soft Drink - 2,500 LKR",
+        venue: "Surfing Wombat",
+        time: "Daily",
+        category: "Ongoing",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783316605/Surfing_wombat_offer_gztyv1.webp",
+        description: "Daily pasta plus one soft drink for only 2,500 LKR.",
+        instagramUrl:
+         "https://www.instagram.com/surfingwombats?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         passBenefit: null,
       }),
       enrichEvent({
@@ -505,7 +651,7 @@ function getTodayKey(date = new Date()) {
 }
 
 function formatDayLabel(day) {
-  if (day.key === "ongoing") return "Ongoing";
+  if (day.key.startsWith("ongoing")) return "Ongoing";
 
   return `${day.weekday.slice(0, 3)} ${day.dayNumber} ${day.month.slice(0, 3)} 2026`;
 }
@@ -518,7 +664,7 @@ function buildUpcomingCalendarDays() {
   const todayKey = getTodayKey();
   const datedDays = EVENTS_CALENDAR_DAYS.filter((day) => isDatedDay(day));
   const ongoingDays = EVENTS_CALENDAR_DAYS.filter(
-    (day) => day.key === "ongoing",
+    (day) => day.key.startsWith("ongoing"),
   );
 
   return [...datedDays.filter((day) => day.key >= todayKey), ...ongoingDays];
@@ -541,7 +687,7 @@ function buildUpcomingEditorPicks(days) {
     .flatMap((day) =>
       day.events.map((event) => {
         const eventDate =
-          day.key === "ongoing" ? "Ongoing" : formatDayLabel(day);
+          day.key.startsWith("ongoing") ? "Ongoing" : formatDayLabel(day);
 
         return `${event.title} at ${event.venue} — ${eventDate}.`;
       }),
@@ -550,7 +696,9 @@ function buildUpcomingEditorPicks(days) {
 }
 
 function buildHomepageDateLabel(events) {
-  const datedEvents = events.filter((event) => event.dayKey !== "ongoing");
+  const datedEvents = events.filter(
+    (event) => !String(event.dayKey).startsWith("ongoing"),
+  );
 
   if (!datedEvents.length) return "Ahangama . Ongoing";
 
