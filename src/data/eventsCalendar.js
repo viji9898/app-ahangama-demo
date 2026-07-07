@@ -529,6 +529,17 @@ export const EVENTS_CALENDAR_DAYS = [
          "https://www.instagram.com/kumbuk.community?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         passBenefit: null,
       }),
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429217/WhatsApp_Image_2026-07-07_at_13.19.28_njocuj.jpg",
+        description: "Live Music with Pradhee.",
+      }),
     ],
   },
   {
@@ -547,6 +558,45 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783404499/WhatsApp_Image_2026-07-07_at_08.11.41_aygcos.jpg",
         description: "Played by Sadboi Sam (LK)\nIndie Dance\nGroovy House",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-11",
+    weekday: "Saturday",
+    dayNumber: "11",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429209/WhatsApp_Image_2026-07-07_at_13.19.27_1_g5wurw.jpg",
+        description:
+          "Live Music with Shenal",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-12",
+    weekday: "Sunday",
+    dayNumber: "12",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429202/WhatsApp_Image_2026-07-07_at_13.19.27_clnh7a.jpg",
+        description: "Live Music with Jeewaka.",
       }),
     ],
   },
