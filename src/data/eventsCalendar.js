@@ -569,8 +569,8 @@ export const EVENTS_CALENDAR_DAYS = [
   },
   {
     key: "ongoing-this-week",
-    weekday: "Ongoing",
-    dayNumber: "This\nWeek",
+    weekday: "The Weekly",
+    dayNumber: "Flow",
     month: "",
     events: [
       enrichEvent({
@@ -616,8 +616,8 @@ export const EVENTS_CALENDAR_DAYS = [
   },
   {
     key: "ongoing",
-    weekday: "Ongoing",
-    dayNumber: "Daily",
+    weekday: "Local",
+    dayNumber: "Perks",
     month: "",
     events: [
       enrichEvent({
