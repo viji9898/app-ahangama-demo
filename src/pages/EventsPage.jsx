@@ -22,6 +22,116 @@ const EVENTS_OG_IMAGE =
 
 export default function EventsPage() {
   const canonical = absUrl("/events");
+  const datedDays = UPCOMING_EVENTS_CALENDAR_DAYS.filter(
+    (day) => !day.key.startsWith("ongoing"),
+  );
+  const weeklyFlowDays = UPCOMING_EVENTS_CALENDAR_DAYS.filter(
+    (day) => day.key === "ongoing-this-week",
+  );
+  const localPerksDays = UPCOMING_EVENTS_CALENDAR_DAYS.filter(
+    (day) => day.key === "ongoing",
+  );
+
+  const renderDay = (day) => (
+    <section className="events-agenda-day" key={day.key}>
+      <div className="events-agenda-dateColumn">
+        <Text className="events-agenda-weekday">{day.weekday}</Text>
+        <Text
+          className={`events-agenda-dayNumber${day.key.startsWith("ongoing") ? " events-agenda-dayNumber--label" : ""}`}
+        >
+          {day.dayNumber}
+        </Text>
+        <Text className="events-agenda-month">{day.month}</Text>
+      </div>
+
+      <div className="events-agenda-dayEntries">
+        {day.events.map((event) => (
+          <article
+            className="events-agenda-entry"
+            key={`${day.key}-${event.title}`}
+            style={{ "--events-agenda-bg": `url(${event.image})` }}
+          >
+            <div className="events-agenda-imageWrap">
+              <img
+                src={event.image}
+                alt={`${event.title} at ${event.venue}`}
+                className="events-agenda-image"
+              />
+            </div>
+
+            <div className="events-agenda-copy">
+              <Title level={2} className="events-agenda-entryTitle">
+                {event.title}
+              </Title>
+              <Text className="events-agenda-venue">{event.venue}</Text>
+
+              <div className="events-agenda-meta">
+                <span className="events-agenda-metaItem">
+                  <ClockCircleOutlined />
+                  <span>{event.time}</span>
+                </span>
+                <span className="events-agenda-metaDot" aria-hidden="true">
+                  •
+                </span>
+                <Text className="events-agenda-category">{event.category}</Text>
+              </div>
+
+              {event.description ? (
+                <Paragraph className="events-agenda-description">
+                  {event.description}
+                </Paragraph>
+              ) : null}
+
+              {event.details?.length ? (
+                <ul className="events-agenda-details">
+                  {event.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              ) : null}
+
+              {event.passBenefit ? (
+                <div className="events-agenda-passBenefit">
+                  <Text className="events-agenda-passBenefitLabel">
+                    {event.passBenefit.label}
+                  </Text>
+                  {event.passBenefit.discount ? (
+                    <Text className="events-agenda-passBenefitDiscount">
+                      {event.passBenefit.discount}
+                    </Text>
+                  ) : null}
+                  <Text className="events-agenda-passBenefitPerk">
+                    {event.passBenefit.perk}
+                  </Text>
+                </div>
+              ) : null}
+
+              <div className="events-agenda-links">
+                <a
+                  href={event.instagramUrl}
+                  className="events-agenda-link events-agenda-linkInstagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Instagram for ${event.venue}`}
+                >
+                  <InstagramOutlined />
+                </a>
+                <a
+                  href={event.directionsUrl}
+                  className="events-agenda-link events-agenda-linkLocation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Directions to ${event.venue}`}
+                >
+                  <EnvironmentOutlined />
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 
   return (
     <SiteLayout>
@@ -57,106 +167,15 @@ export default function EventsPage() {
           </header>
 
           <div className="events-agenda-list" role="list">
-            {UPCOMING_EVENTS_CALENDAR_DAYS.map((day) => (
-              <section className="events-agenda-day" key={day.key}>
-                <div className="events-agenda-dateColumn">
-                  <Text className="events-agenda-weekday">{day.weekday}</Text>
-                  <Text
-                    className={`events-agenda-dayNumber${day.key.startsWith("ongoing") ? " events-agenda-dayNumber--label" : ""}`}
-                  >
-                    {day.dayNumber}
-                  </Text>
-                  <Text className="events-agenda-month">{day.month}</Text>
-                </div>
+            {datedDays.map((day) => renderDay(day))}
+          </div>
 
-                <div className="events-agenda-dayEntries">
-                  {day.events.map((event) => (
-                    <article
-                      className="events-agenda-entry"
-                      key={`${day.key}-${event.title}`}
-                      style={{ "--events-agenda-bg": `url(${event.image})` }}
-                    >
-                      <div className="events-agenda-imageWrap">
-                        <img
-                          src={event.image}
-                          alt={`${event.title} at ${event.venue}`}
-                          className="events-agenda-image"
-                        />
-                      </div>
+          <div className="events-agenda-list" role="list" style={{ marginTop: 40 }}>
+            {weeklyFlowDays.map((day) => renderDay(day))}
+          </div>
 
-                      <div className="events-agenda-copy">
-                        <Title level={2} className="events-agenda-entryTitle">
-                          {event.title}
-                        </Title>
-                        <Text className="events-agenda-venue">{event.venue}</Text>
-
-                        <div className="events-agenda-meta">
-                          <span className="events-agenda-metaItem">
-                            <ClockCircleOutlined />
-                            <span>{event.time}</span>
-                          </span>
-                          <span className="events-agenda-metaDot" aria-hidden="true">
-                            •
-                          </span>
-                          <Text className="events-agenda-category">{event.category}</Text>
-                        </div>
-
-                        {event.description ? (
-                          <Paragraph className="events-agenda-description">
-                            {event.description}
-                          </Paragraph>
-                        ) : null}
-
-                        {event.details?.length ? (
-                          <ul className="events-agenda-details">
-                            {event.details.map((detail) => (
-                              <li key={detail}>{detail}</li>
-                            ))}
-                          </ul>
-                        ) : null}
-
-                        {event.passBenefit ? (
-                          <div className="events-agenda-passBenefit">
-                            <Text className="events-agenda-passBenefitLabel">
-                              {event.passBenefit.label}
-                            </Text>
-                            {event.passBenefit.discount ? (
-                              <Text className="events-agenda-passBenefitDiscount">
-                                {event.passBenefit.discount}
-                              </Text>
-                            ) : null}
-                            <Text className="events-agenda-passBenefitPerk">
-                              {event.passBenefit.perk}
-                            </Text>
-                          </div>
-                        ) : null}
-
-                        <div className="events-agenda-links">
-                          <a
-                            href={event.instagramUrl}
-                            className="events-agenda-link events-agenda-linkInstagram"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Instagram for ${event.venue}`}
-                          >
-                            <InstagramOutlined />
-                          </a>
-                          <a
-                            href={event.directionsUrl}
-                            className="events-agenda-link events-agenda-linkLocation"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Directions to ${event.venue}`}
-                          >
-                            <EnvironmentOutlined />
-                          </a>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
-            ))}
+          <div className="events-agenda-list" role="list" style={{ marginTop: 40 }}>
+            {localPerksDays.map((day) => renderDay(day))}
           </div>
 
           <section className="events-agenda-editorPicks">
