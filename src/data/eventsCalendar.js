@@ -485,6 +485,30 @@ export const EVENTS_CALENDAR_DAYS = [
          "https://www.instagram.com/saranalanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         passBenefit: null,
       }),
+      enrichEvent({
+        title: "Movie Night - Kids Special",
+        venue: "Cafe Ceylone",
+        time: "6.15PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/cafe_ceylon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783403880/WhatsApp_Image_2026-07-07_at_09.01.22_e7sftg.jpg",
+        description:
+          "Kids menu - Special price\nChicken schnitzel or sliders with fries.",
+      }),
+      enrichEvent({
+        title: "Electric Sands with DIS & DAT",
+        venue: "Crust Ahangama",
+        time: "7:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783405168/WhatsApp_Image_2026-07-06_at_23.44.12_ufrfqv.jpg",
+        description:
+          "Live Music & Good Vibes\nGreat Food & Drinks\nBeachside Atmosphere",
+      }),
     ],
   },
   {
@@ -504,6 +528,25 @@ export const EVENTS_CALENDAR_DAYS = [
          instagramUrl:
          "https://www.instagram.com/kumbuk.community?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         passBenefit: null,
+      }),
+    ],
+  },
+  {
+    key: "2026-07-10",
+    weekday: "Friday",
+    dayNumber: "10",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Mono Friday",
+        venue: "Mono Ahangama",
+        time: "8.00PM - 11.30PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783404499/WhatsApp_Image_2026-07-07_at_08.11.41_aygcos.jpg",
+        description: "Played by Sadboi Sam (LK)\nIndie Dance\nGroovy House",
       }),
     ],
   },
@@ -542,13 +585,7 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Price: 3000 LKR per class + use pool after your session",
         details: [
-          "Monday 9am Slow flow.",
-          "Tuesday 9am Vinyasa.",
-          "Wednesday 9am Asana & Pranayama.",
-          "Thursday 9am Vinyasa.",
-          "Friday 9am Slow flow.",
-          "Saturday 9am Power Vinyasa.",
-          "Sunday 9am Hatha.",
+          "7th Tuesday 9am Vinyasa.",
         ],
       }),
       enrichEvent({
@@ -561,7 +598,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783321778/Terra_Schedule_vs9pd2.jpg",
         description:
-          "Monday\n• 9:00 AM – 10:00 AM: Mat Pilates (Rebeka)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Grounding Yoga Flow (Pardis)\n\nTuesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Rebeka)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nWednesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Rebeka)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nThursday\n• 9:00 AM – 10:00 AM: Grounding Yoga Flow (Pardis)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Vivienne)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nFriday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)\n\nSaturday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Vivienne)\n• 4:00 PM – 5:00 PM: Grounding Yoga Flow (Pardis)\n\nSunday\n• 9:00 AM – 10:00 AM: Reformer Pilates (Hannah)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
+          "7th Tuesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Rebeka)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
       }),
       enrichEvent({
         title: "Calma Samaya Weekly Schedule",
@@ -573,7 +610,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783322456/Calma_samaya_schedule_u1ag1a.jpg",
         description:
-          "Monday\n• 10:30 AM – 11:30 AM: Hatha Yoga (Isuru)\n\nTuesday\n• 4:00 PM – 5:00 PM: Yin Yoga (Natasha)\n\nWednesday\n• 10:30 AM – 11:30 AM: Mat Pilates (Yashi)\n• 7:00 PM – 8:00 PM: Breathwork (Paradis)\n\nThursday\n• 4:00 PM – 5:00 PM: Yin Yoga (Isuru)\n\nFriday\n• 10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)\n\nSaturday\n• 4:00 PM – 5:00 PM: Hatha Yoga (Isuru)\n\nSunday\n• 10:30 AM – 11:30 AM: Kundalini Yoga (Natasha)",
+          "7th Tuesday\n• 4:00 PM – 5:00 PM: Yin Yoga (Natasha)",
       }),
     ],
   },
