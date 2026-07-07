@@ -178,6 +178,11 @@ function applyMeta(html, meta) {
     );
     nextHtml = replaceOrInsert(
       nextHtml,
+      /<meta\s+property=["']og:image:secure_url["'][^>]*>/i,
+      `<meta property="og:image:secure_url" content="${escapeHtml(ogImage)}" />`,
+    );
+    nextHtml = replaceOrInsert(
+      nextHtml,
       /<meta\s+name=["']twitter:card["'][^>]*>/i,
       '<meta name="twitter:card" content="summary_large_image" />',
     );
@@ -231,6 +236,14 @@ function applyMeta(html, meta) {
 
 const routeMeta = [
   {
+    route: "/tip",
+    title: "Tourism Intelligence Platform | Ahangama.com",
+    description:
+      "Ahangama.com helps local businesses reach visitors through personalised recommendations, curated guides, and monthly visitor intelligence.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg",
+  },
+  {
     route: "/the-living-room-concept-store",
     title: "The Living Room Concept Store",
     description:
@@ -238,6 +251,28 @@ const routeMeta = [
     publishDate: "2026-05-18T09:15:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
+  },
+  {
+    route:
+      "/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama",
+    title:
+      "Staff Pick Experience: A Day That Slowly Erases Your Plan in Ahangama",
+    description:
+      "A staff-picked Ahangama day that moves through coffee, surf, cooking, tuk tuks, sunset, live music and the slow pleasure of letting the plan dissolve.",
+    publishDate: "2026-06-30T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama/Hero+image+_+ahangama-morning-coffee-hands-cups-close-up.webp",
+  },
+  {
+    route: "/best-sunsets-in-ahangama",
+    title: "Best Sunsets in Ahangama",
+    description:
+      "The best sunset spot in Ahangama this week, when to arrive, where to stand, and the nearby beaches worth considering for golden hour.",
+    publishDate: "2026-06-30T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/best-sunsets/Hero+Image+-+2400+x+1600+px.webp",
   },
   {
     route: "/community-market-in-ahangama",
@@ -461,7 +496,7 @@ const routeMeta = [
     description:
       "A daily guide to what's happening around town in Ahangama, with this week's editorial calendar and event highlights.",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/events_june_ahangama.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/july_events_ahangama.jpg",
   },
   {
     route: "/newsletter",

@@ -9,6 +9,7 @@ import ConceptPage from "../pages/ConceptPage";
 import ProductsIndexPage from "../pages/ProductsIndexPage";
 import ProductPage from "../pages/ProductPage";
 import Partners from "../pages/Partners";
+import TipLandingPage, { TIP_LANDING_PATH } from "../pages/TipLandingPage";
 import PlaceDetail from "../pages/PlaceDetail";
 import CategoryIndex from "../pages/CategoryIndex";
 import NotFound from "../NotFound";
@@ -57,6 +58,13 @@ import NewsletterDataPage, {
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import EmailPreviewPage from "../pages/EmailPreviewPage";
+import PassesIssuedPage, {
+  PASSES_ISSUED_PATH,
+} from "../pages/PassesIssuedPage";
+import InteractionsPage, {
+  INTERACTIONS_PATH,
+} from "../pages/InteractionsPage";
+import PassValidityPage from "../pages/PassValidityPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
@@ -64,6 +72,12 @@ import PabcPage from "../pages/PabcPage";
 import GuidePage from "../pages/GuidePage";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
+import StaffPickExperienceAhangamaPage, {
+  STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
+} from "../pages/StaffPickExperienceAhangamaPage";
+import BestSunsetsInAhangamaPage, {
+  BEST_SUNSETS_IN_AHANGAMA_PATH,
+} from "../pages/BestSunsetsInAhangamaPage";
 import CommunityMarketInAhangamaPage, {
   COMMUNITY_MARKET_IN_AHANGAMA_PATH,
 } from "../pages/CommunityMarketInAhangamaPage";
@@ -140,6 +154,14 @@ const routes = [
     element: <TheLivingRoomConceptStorePage />,
   },
   {
+    path: STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
+    element: <StaffPickExperienceAhangamaPage />,
+  },
+  {
+    path: BEST_SUNSETS_IN_AHANGAMA_PATH,
+    element: <BestSunsetsInAhangamaPage />,
+  },
+  {
     path: COMMUNITY_MARKET_IN_AHANGAMA_PATH,
     element: <CommunityMarketInAhangamaPage />,
   },
@@ -185,6 +207,7 @@ const routes = [
   { path: "/concept/:slug", element: <ConceptPage /> },
   { path: "/products", element: <ProductsIndexPage /> },
   { path: "/product/:slug", element: <ProductPage /> },
+  { path: TIP_LANDING_PATH, element: <TipLandingPage /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },
@@ -205,6 +228,7 @@ const routes = [
   { path: "/card/pass/:cardId", element: <CardPass /> },
   { path: "/verify", element: <CardVerify /> },
   { path: "/verify/:cardId", element: <CardVerify /> },
+  { path: "/valid", element: <PassValidityPage /> },
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
@@ -217,6 +241,8 @@ const routes = [
   { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
   { path: "/email-preview", element: <EmailPreviewPage /> },
+  { path: PASSES_ISSUED_PATH, element: <PassesIssuedPage /> },
+  { path: INTERACTIONS_PATH, element: <InteractionsPage /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,

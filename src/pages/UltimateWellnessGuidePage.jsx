@@ -14,6 +14,8 @@ const wellnessSections = [
   {
     number: "01",
     title: "Yoga in Ahangama is less about trend and more about rhythm",
+    // imageUrl: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830619/Section_2_-_Yoga_in_Nuga_House_a19bld.webp",
+    // imageAlt: "Yoga in Ahangama",
     body: [
       "The best yoga choices in Ahangama are the ones that match the pace of your stay. If you want slower mornings and a retreat-like tone, Senses, Shramalaya, and The Nuga House are the clearest fits in the current live venue set.",
       "These are the places that make sense when the brief is simple: move well, breathe properly, and let the day start softer than a surf alarm. They are less about high-volume class hopping and more about building a daily ritual that feels sustainable for a week or two on the coast.",
@@ -28,6 +30,8 @@ const wellnessSections = [
   {
     number: "02",
     title: "Pilates and mobility are the cleanest answer for surf-heavy stays",
+    imageUrl: "",
+    imageAlt: "Pilates and mobility in Ahangama",
     body: [
       "If the goal is to balance surfing with better posture, mobility, and some structure, Pura Pilates is the standout name. It feels like the right recommendation for visitors who want wellness to be part of performance, not just a recovery add-on.",
       "Pilates also works especially well in Ahangama because it does not need to compete with the rest of your trip. It sits neatly between surf sessions, co-working blocks, and dinners out, and it makes more sense than overcomplicating your routine with too many different classes in one week.",
@@ -42,6 +46,8 @@ const wellnessSections = [
     number: "03",
     title:
       "Gyms and harder sessions matter more here than most short guides admit",
+    imageUrl: "",
+    imageAlt: "Gym training in Ahangama",
     body: [
       "Ahangama is often marketed as soft wellness only, but plenty of people still want real training while they are here. Krish Combat & Fitness is the strongest match in the current set for gym access, private classes, and more disciplined physical work.",
       "That matters for longer stays. If you are here for two weeks or more, wellness usually stops meaning only massages and yoga. It starts meaning consistency, strength work, and keeping your body feeling capable enough to actually enjoy the trip.",
@@ -56,6 +62,8 @@ const wellnessSections = [
     number: "04",
     title:
       "Recovery culture is real now: ice baths, steam, and reset sessions are part of the town's identity",
+    imageUrl: "",
+    imageAlt: "Ice baths and recovery in Ahangama",
     body: [
       "The recovery side of Ahangama has become more defined, and Frosty's is the most obvious entry point if you want that world without ceremony. It is practical, social, and easy to plug into after surfing or training. Banya Steam House takes the mood in a more niche, slower direction, with a stronger emphasis on steam and restoration.",
       "This is the category for people who want a wellness afternoon without needing it to feel spiritual or luxurious. It is about nervous-system reset, easing soreness, and making the next surf or workday feel better than the previous one.",
@@ -71,6 +79,8 @@ const wellnessSections = [
     number: "05",
     title:
       "Spas and Ayurveda are where Ahangama shifts from active wellness to restoration",
+    imageUrl: "",
+    imageAlt: "Spa and Ayurveda in Ahangama",
     body: [
       "When the mood is less about training and more about feeling repaired, the strongest names are Aksaaya Ayurveda Wellness Spa, Sarana, White Lotus Spa & Wellness, and Ayurveda Palm Garden Resort. Each one leans toward a different version of reset, from traditional treatments to more polished resort-style calm.",
       "This is the lane to recommend when someone is arriving tired, needs a mid-trip reset, or wants one anchor experience that makes the holiday feel slower and more intentional. In practical terms, these are also the easiest venues to recommend to couples, parents, and visitors who are not building their trip around surfing.",
@@ -86,6 +96,8 @@ const wellnessSections = [
   {
     number: "06",
     title: "The best wellness itinerary is mixed, not maximal",
+    imageUrl: "",
+    imageAlt: "A mixed wellness itinerary in Ahangama",
     body: [
       "The mistake most visitors make is trying to do too much: yoga every day, surfing every day, treatments every day, and then wondering why the whole trip feels oddly tiring. Ahangama works better when you mix categories. One or two active sessions, one recovery block, one spa treatment, and a few slower mornings usually gives the best result.",
       "That is what makes this place strong. You can train, stretch, recover, socialize, and still keep the trip feeling light. The best wellness guide is not a list of the most options. It is a guide to choosing the right rhythm for the version of Ahangama you actually want.",
@@ -296,6 +308,11 @@ export default function UltimateWellnessGuidePage() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {wellnessSections.map((section) => (
+              (() => {
+                const sectionImageSrc = section.imageUrl || section.image || "";
+                const sectionImageAlt = section.imageAlt || section.title;
+
+                return (
               <Card
                 key={section.number}
                 style={{
@@ -308,6 +325,56 @@ export default function UltimateWellnessGuidePage() {
               >
                 <Row gutter={[24, 24]}>
                   <Col xs={24} lg={16}>
+                    <div
+                      style={{
+                        minHeight: 240,
+                        borderRadius: 20,
+                        marginBottom: 18,
+                        border: `1px dashed ${
+                          sectionImageSrc ? "transparent" : "rgba(111,138,116,0.4)"
+                        }`,
+                        background:
+                          "linear-gradient(135deg, rgba(247,250,245,0.95) 0%, rgba(235,242,234,0.95) 100%)",
+                        overflow: "hidden",
+                        position: "relative",
+                      }}
+                    >
+                      {sectionImageSrc ? (
+                        <img
+                          src={sectionImageSrc}
+                          alt={sectionImageAlt}
+                          style={{
+                            display: "block",
+                            width: "100%",
+                            height: 240,
+                            objectFit: "cover",
+                          }}
+                        />
+                      ) : (
+                        <div
+                          style={{
+                            minHeight: 240,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: 20,
+                            textAlign: "center",
+                          }}
+                        >
+                          <Text
+                            style={{
+                              color: "#6F8A74",
+                              fontSize: 14,
+                              fontWeight: 700,
+                              letterSpacing: 0.5,
+                            }}
+                          >
+                            Add Cloudinary image URL for section {section.number}
+                          </Text>
+                        </div>
+                      )}
+                    </div>
+
                     <Text
                       style={{
                         display: "block",
@@ -376,6 +443,8 @@ export default function UltimateWellnessGuidePage() {
                   </Col>
                 </Row>
               </Card>
+                );
+              })()
             ))}
           </div>
 

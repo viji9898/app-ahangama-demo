@@ -4,6 +4,7 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import SiteLayout from "../components/layout/SiteLayout";
 import {
+  NEWSLETTER_COMP_PASS_SIGNUP_VENUES,
   NEWSLETTER_DATA,
   NEWSLETTER_ESSENTIALS_NEARBY_HELP,
 } from "../data/newsletterData";
@@ -91,7 +92,7 @@ function EntryMeta({
   showInstagram = true,
   showCoordinates = false,
 }) {
-  const instagramUrl = buildInstagramUrl(item.instagram);
+  const instagramUrl = item.instagramUrl || buildInstagramUrl(item.instagram);
 
   return (
     <div
@@ -127,6 +128,55 @@ function EntryMeta({
         <MetaLink label="Open Google Maps" href={item.googleUrl} />
       </div>
     </div>
+  );
+}
+
+function CompPassSignupVenueEntry({ item }) {
+  return (
+    <article style={{ padding: "16px 0", borderBottom: "1px solid #242424" }}>
+      <Text
+        style={{
+          display: "block",
+          marginBottom: 5,
+          color: ACCENT,
+          fontFamily: SERIF_FONT,
+          fontSize: 10,
+          fontWeight: 700,
+          textTransform: "uppercase",
+        }}
+      >
+        {item.type} / {item.slug}
+      </Text>
+      <Title
+        level={3}
+        style={{
+          margin: 0,
+          color: "#242424",
+          fontFamily: SERIF_FONT,
+          fontSize: 22,
+          fontWeight: 700,
+          lineHeight: 1,
+        }}
+      >
+        {item.name}
+      </Title>
+      <EntryMeta item={item} compact showCoordinates />
+      <a
+        href={item.signupUrl}
+        style={{
+          display: "inline-block",
+          marginTop: 10,
+          color: "#242424",
+          fontFamily: SANS_FONT,
+          fontSize: 12,
+          fontWeight: 700,
+          textDecoration: "underline",
+          textTransform: "uppercase",
+        }}
+      >
+        Open comp pass signup page
+      </a>
+    </article>
   );
 }
 
@@ -507,6 +557,7 @@ export default function NewsletterDataPage() {
   const essentialsCompleteCount = NEWSLETTER_ESSENTIALS_NEARBY_HELP.filter(
     (item) => item.latitude && item.longitude,
   ).length;
+  const compPassVenueCount = NEWSLETTER_COMP_PASS_SIGNUP_VENUES.length;
 
   return (
     <SiteLayout>
@@ -576,9 +627,7 @@ export default function NewsletterDataPage() {
               >
                 Ahangama
               </span>
-              <span style={{ color: "#ffffff", display: "block" }}>
-                Minute
-              </span>
+              <span style={{ color: "#ffffff", display: "block" }}>Minute</span>
             </Title>
           </div>
           <div
@@ -689,6 +738,10 @@ export default function NewsletterDataPage() {
               <span style={{ color: ACCENT }}>EVENTS:</span>{" "}
               {THIS_WEEK_EVENTS.length} events
             </div>
+            <div>
+              <span style={{ color: ACCENT }}>COMP PASS SIGNUPS:</span>{" "}
+              {compPassVenueCount} venues
+            </div>
           </div>
         </section>
 
@@ -709,6 +762,29 @@ export default function NewsletterDataPage() {
         </section>
 
         <TextArticlesSection />
+
+        <section style={{ marginTop: 28 }}>
+          <div
+            style={{
+              padding: "9px 8px 8px",
+              borderTop: "5px solid #242424",
+              borderBottom: "1px solid #777",
+              background: "#f3f3f3",
+              color: "#242424",
+              fontFamily: SERIF_FONT,
+              fontSize: 20,
+              fontWeight: 700,
+              lineHeight: 1,
+              textTransform: "uppercase",
+            }}
+          >
+            Complimentary Pass:{" "}
+            <span style={{ color: ACCENT }}>Signup Venues</span>
+          </div>
+          {NEWSLETTER_COMP_PASS_SIGNUP_VENUES.map((item) => (
+            <CompPassSignupVenueEntry key={item.slug} item={item} />
+          ))}
+        </section>
 
         <section style={{ marginTop: 28 }}>
           <div

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "antd";
+import { Typography } from "antd"; 
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import { Seo } from "../app/seo";
@@ -11,27 +11,27 @@ export const WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH =
   "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel";
 
 const HERO_IMAGE =
-  "/Light%20House%20Webpage%20images/light-house-front-facing-view-portrait.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832555/light-house-front-facing-view-portrait_vdh6c1.webp";
 const VIEW_FROM_BAR_IMAGE =
-  "/Light%20House%20Webpage%20images/light-house-beach-view-hero.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp";
 const ROOFTOP_GUEST_IMAGE =
-  "/Light%20House%20Webpage%20images/people-enjoying-cocktails-in-the-rooftop-portrait.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832562/people-enjoying-cocktails-in-the-rooftop-portrait_q7u32j.webp";
 const BARTENDER_COCKTAILS_IMAGE =
-  "/Light%20House%20Webpage%20images/light-house-staff-2-making-cocktails-portrait.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832557/light-house-staff-2-making-cocktails-portrait_asmal3.webp";
 const PURPLE_OASIS_IMAGE =
-  "/Light%20House%20Webpage%20images/cocktail-3-portrait.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832517/cocktail-3-portrait_jj0j2w.webp";
 const GOLDEN_SOUR_IMAGE =
-  "/Light%20House%20Webpage%20images/light-house-staff-making-cocktails-portrait.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832561/light-house-staff-making-cocktails-portrait_f4dryo.webp";
 const CUCUMBER_MULE_IMAGE =
-  "/Light%20House%20Webpage%20images/light-house-cocktail-making-section-in-detail-portrait.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832545/light-house-cocktail-making-section-in-detail-portrait_hvf93w.webp";
 const CEYLON_SPRITZ_IMAGE =
-  "/Light%20House%20Webpage%20images/cocktail-4-wide-feature.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832519/cocktail-4-wide-feature_qcodbt.webp";
 
 const NEXT_ARTICLE = {
   href: "/lighthouse",
   kicker: "Explore More",
   title: "Lighthouse Guest Pass",
-  image: "/Light%20House%20Webpage%20images/light-house-beach-view-og.webp",
+  image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp",
 };
 
 const articleIntroduction = [
@@ -480,7 +480,7 @@ export default function WhereAhangamaGathersForSunsetPage() {
                       alt="Cucumber Mule cocktail with a Lighthouse coaster"
                     />
                     <ArticleImage
-                      src="/Light%20House%20Webpage%20images/people-enjoying-the-beach-view-wide-feature.webp"
+                      src="https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832566/people-enjoying-the-beach-view-wide-feature_xor26s.webp"
                       alt="Sunset crowd at Stairway Rooftop Bar"
                     />
                   </div>

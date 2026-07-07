@@ -2,8 +2,13 @@ import {
   generateGuestWelcomeEmail,
   sendGuestWelcomeEmail,
 } from "../../lib/guest-welcome-email.js";
+import {
+  generateGuestPassVenueNotificationEmail,
+  sendGuestPassVenueNotificationEmail,
+} from "../../lib/guest-pass-venue-email.js";
 
 const TEST_EMAIL_RECIPIENT = "viji@viji.com";
+const SAMPLE_GUEST_NAME = "Test Email User";
 
 function jsonHeaders() {
   return {
@@ -11,6 +16,9 @@ function jsonHeaders() {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+    Pragma: "no-cache",
+    Expires: "0",
   };
 }
 
@@ -49,6 +57,63 @@ function buildPreviewPayload() {
   };
 }
 
+function buildOtherVenuePreviewPayload() {
+  const validFrom = new Date();
+  const validUntil = new Date(validFrom);
+  validUntil.setUTCDate(validUntil.getUTCDate() + 15);
+
+  return {
+    guest: {
+      id: "email-preview-kaffi-guest",
+      fullName: "Maya Preview",
+      email: "maya@example.com",
+      phone: "+94771112222",
+      sourceHotelSlug: "kaffi",
+      destination: "ahangama",
+    },
+    pass: {
+      id: "email-preview-kaffi-pass",
+      guestId: "email-preview-kaffi-guest",
+      sourceHotelSlug: "kaffi",
+      passType: "complimentary_hotel_guest",
+      status: "active",
+      validFrom: validFrom.toISOString(),
+      validUntil: validUntil.toISOString(),
+      passkitInstallUrl: "https://ahangama.com/kaffi",
+    },
+    preferences: {
+      id: "email-preview-kaffi-preferences",
+      stayLength: 4,
+      interests: ["coffee", "surf", "food"],
+      travelGroup: "couple",
+      servicesInterested: ["restaurant bookings"],
+      wantsWhatsappRecommendations: true,
+    },
+  };
+}
+
+function parseBody(event) {
+  if (!event.body) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(event.body);
+  } catch {
+    return {};
+  }
+}
+
+function normalizeEmail(value) {
+  const email = String(value || "").trim().toLowerCase();
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return "";
+  }
+
+  return email;
+}
+
 export const handler = async (event) => {
   const headers = jsonHeaders();
 
@@ -66,34 +131,107 @@ export const handler = async (event) => {
 
   try {
     const payload = buildPreviewPayload();
+    const otherVenuePayload = buildOtherVenuePreviewPayload();
 
     if (event.httpMethod === "POST") {
-      const email = await sendGuestWelcomeEmail({
-        ...payload,
-        recordHistory: false,
-      });
+      const body = parseBody(event);
+      const emailType = body.emailType || "guest-welcome";
+      const hasRecipientOverride = Object.prototype.hasOwnProperty.call(
+        body,
+        "email",
+      );
+      const recipientOverride = normalizeEmail(body.email);
+
+      if (
+        emailType === "guest-welcome" &&
+        hasRecipientOverride &&
+        !recipientOverride
+      ) {
+        return {
+          statusCode: 400,
+          headers,
+          body: JSON.stringify({ error: "A valid email address is required" }),
+        };
+      }
+
+      const guestWelcomePayload = recipientOverride
+        ? {
+            ...payload,
+            guest: {
+              ...payload.guest,
+              fullName: SAMPLE_GUEST_NAME,
+              email: recipientOverride,
+            },
+          }
+        : payload;
+      const email =
+        emailType === "other-venue-notification"
+          ? await sendGuestPassVenueNotificationEmail({
+              ...otherVenuePayload,
+              sourceHotelSlug: otherVenuePayload.pass.sourceHotelSlug,
+              recipientOverride: TEST_EMAIL_RECIPIENT,
+            })
+          : emailType === "venue-notification"
+            ? await sendGuestPassVenueNotificationEmail({
+                ...payload,
+                sourceHotelSlug: payload.pass.sourceHotelSlug,
+                recipientOverride: TEST_EMAIL_RECIPIENT,
+              })
+            : await sendGuestWelcomeEmail({
+                  ...guestWelcomePayload,
+                recordHistory: false,
+              });
 
       return {
         statusCode: 200,
         headers,
         body: JSON.stringify({
           success: true,
-          recipient: TEST_EMAIL_RECIPIENT,
+          recipient: recipientOverride || TEST_EMAIL_RECIPIENT,
+          emailType,
           subject: email.subject,
         }),
       };
     }
 
-    const email = generateGuestWelcomeEmail(payload);
+    const guestWelcomeEmail = generateGuestWelcomeEmail(payload);
+    const venueNotificationEmail = generateGuestPassVenueNotificationEmail({
+      ...payload,
+      sourceHotelSlug: payload.pass.sourceHotelSlug,
+    });
+    const otherVenueNotificationEmail = generateGuestPassVenueNotificationEmail(
+      {
+        ...otherVenuePayload,
+        sourceHotelSlug: otherVenuePayload.pass.sourceHotelSlug,
+      },
+    );
 
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        subject: email.subject,
-        html: email.html,
-        text: email.text,
+        subject: guestWelcomeEmail.subject,
+        html: guestWelcomeEmail.html,
+        text: guestWelcomeEmail.text,
         recipient: TEST_EMAIL_RECIPIENT,
+        guestWelcome: {
+          subject: guestWelcomeEmail.subject,
+          html: guestWelcomeEmail.html,
+          text: guestWelcomeEmail.text,
+          recipient: TEST_EMAIL_RECIPIENT,
+        },
+        venueNotification: {
+          subject: venueNotificationEmail.subject,
+          html: venueNotificationEmail.html,
+          text: venueNotificationEmail.text,
+          recipient: venueNotificationEmail.recipient,
+        },
+        otherVenueNotification: {
+          subject: otherVenueNotificationEmail.subject,
+          html: otherVenueNotificationEmail.html,
+          text: otherVenueNotificationEmail.text,
+          recipient: otherVenueNotificationEmail.recipient,
+        },
       }),
     };
   } catch (error) {
