@@ -20,6 +20,8 @@ const { Title, Paragraph, Text } = Typography;
 const EVENTS_OG_IMAGE =
   "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782884816/EventsCalender_metaImage_m3mt10.webp";
 
+const LARGE_DETAIL_TEXT = "8th Wednesday 9am Asana & Pranayama.";
+
 export default function EventsPage() {
   const canonical = absUrl("/events");
   const datedDays = UPCOMING_EVENTS_CALENDAR_DAYS.filter(
@@ -85,7 +87,16 @@ export default function EventsPage() {
               {event.details?.length ? (
                 <ul className="events-agenda-details">
                   {event.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
+                    <li
+                      key={detail}
+                      className={
+                        detail === LARGE_DETAIL_TEXT
+                          ? "events-agenda-detail--large"
+                          : undefined
+                      }
+                    >
+                      {detail}
+                    </li>
                   ))}
                 </ul>
               ) : null}
