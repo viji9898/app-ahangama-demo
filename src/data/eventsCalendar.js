@@ -552,6 +552,18 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Karaoke Night, Fun with Friends & Family, Live Sing-Along Vibes.",
       }),
+      enrichEvent({
+        title: "Thursday Sunset Party",
+        venue: "Hakuna Matata Ahangama",
+        time: "5:30 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/hakuna_matata_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783515708/WhatsApp_Image_2026-07-08_at_17.42.39_r3ext8.jpg",
+        description:
+          "Live Music with Skillz Jay, Shyro, Denon_SL & Mr Percussion.\nHappy Hour 5–7 PM (20% off any cocktail).",
+      }),
     ],
   },
   {
