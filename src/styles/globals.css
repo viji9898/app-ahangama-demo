@@ -7466,6 +7466,11 @@ h4,
   line-height: 1.55;
 }
 
+.events-agenda-detail--large {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 .events-agenda-passBenefit {
   display: flex;
   align-items: center;

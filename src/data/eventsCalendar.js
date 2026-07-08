@@ -635,7 +635,7 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Price: 3000 LKR per class + use pool after your session",
         details: [
-          "7th Tuesday 9am Vinyasa.",
+          "8th Wednesday 9am Asana & Pranayama.",
         ],
       }),
       enrichEvent({
@@ -648,7 +648,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783321778/Terra_Schedule_vs9pd2.jpg",
         description:
-          "7th Tuesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Rebeka)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
+          "8th Wednesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Rebeka)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
       }),
       enrichEvent({
         title: "Calma Samaya Weekly Schedule",
@@ -660,7 +660,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783322456/Calma_samaya_schedule_u1ag1a.jpg",
         description:
-          "7th Tuesday\n• 4:00 PM – 5:00 PM: Yin Yoga (Natasha)",
+          "8th Wednesday\n• 10:30 AM – 11:30 AM: Mat Pilates (Yashi)\n• 7:00 PM – 8:00 PM: Breathwork (Paradis)",
       }),
     ],
   },
