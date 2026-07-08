@@ -540,6 +540,18 @@ export const EVENTS_CALENDAR_DAYS = [
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429217/WhatsApp_Image_2026-07-07_at_13.19.28_njocuj.jpg",
         description: "Live Music with Pradhee.",
       }),
+      enrichEvent({
+        title: "Karaoke Thursday",
+        venue: "Hotel De Uncles",
+        time: "6:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783485938/WhatsApp_Image_2026-07-08_at_10.03.40_e49xcu.jpg",
+        description:
+          "Karaoke Night, Fun with Friends & Family, Live Sing-Along Vibes.",
+      }),
     ],
   },
   {
