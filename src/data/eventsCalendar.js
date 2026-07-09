@@ -592,6 +592,18 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "July",
     events: [
       enrichEvent({
+        title: "Pressure Drop",
+        venue: "Mono Ahangama",
+        time: "8:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783575568/WhatsApp_Image_2026-07-08_at_20.17.43_avupyv.jpg",
+        description:
+          "Garage, Jungle, DNB & Deep 140.\nFeaturing Janaka Selekta (Sony Music India). \n38 Deep (AUS) & Black Ja (SL).",
+      }),
+      enrichEvent({
         title: "Live Music",
         venue: "Kai Ahangama",
         time: "5:00 PM Onwards",
