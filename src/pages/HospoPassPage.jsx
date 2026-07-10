@@ -794,17 +794,17 @@ export default function HospoPassPage() {
                       fontWeight: 500,
                     }}
                   >
-                    {formStep === FORM_STEP_DETAILS
-                      ? (
-                          <>
-                            Sign up here for your
-                            <br />
-                            complimentary pass
-                          </>
-                        )
-                      : formStep === FORM_STEP_PROFILE
-                        ? "Tell us who you are"
-                        : "Your Ahangama Pass is ready"}
+                    {formStep === FORM_STEP_DETAILS ? (
+                      <>
+                        Sign up here for your
+                        <br />
+                        complimentary pass
+                      </>
+                    ) : formStep === FORM_STEP_PROFILE ? (
+                      "Tell us who you are"
+                    ) : (
+                      "Your Ahangama Pass is ready"
+                    )}
                   </Title>
                   <Paragraph
                     style={{
@@ -1020,7 +1020,7 @@ export default function HospoPassPage() {
                             <Input
                               size="large"
                               value={profileDraft.businessLocation}
-                              placeholder="Where in Ahangama?"
+                              placeholder="Ahangama, Weligama, Mirrisa etc..?"
                               onChange={(event) =>
                                 handleProfileChange(
                                   "businessLocation",
@@ -1176,9 +1176,9 @@ export default function HospoPassPage() {
                           lineHeight: 1.6,
                         }}
                       >
-                        By receiving the complimentary pass, you agree to receive
-                        thoughtful insights and updates about all things Ahangama
-                        ❤️
+                        By receiving the complimentary pass, you agree to
+                        receive thoughtful insights and updates about all things
+                        Ahangama ❤️
                       </Text>
 
                       <Button
@@ -1258,21 +1258,55 @@ export default function HospoPassPage() {
                           </Text>
                         ) : null}
                         {createdPassState?.pass?.passkitInstallUrl ? (
-                          <Button
-                            type="primary"
-                            size="large"
-                            block
-                            href={createdPassState.pass.passkitInstallUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                              marginTop: 18,
-                              width: "100%",
-                              minHeight: 52,
-                            }}
-                          >
-                            Add to Apple Wallet / Google Wallet
-                          </Button>
+                          <>
+                            <Button
+                              type="primary"
+                              size="large"
+                              block
+                              href={createdPassState.pass.passkitInstallUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                marginTop: 18,
+                                width: "100%",
+                                minHeight: 52,
+                              }}
+                            >
+                              Add to Apple Wallet / Google Wallet
+                            </Button>
+                            <a
+                              href={createdPassState.pass.passkitInstallUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                gap: 10,
+                                flexWrap: "wrap",
+                                marginTop: 12,
+                              }}
+                            >
+                              <img
+                                src={addToAppleWalletLogo}
+                                alt="Apple Wallet"
+                                style={{
+                                  display: "block",
+                                  height: 38,
+                                  width: "auto",
+                                }}
+                              />
+                              <img
+                                src={addToGoogleWalletLogo}
+                                alt="Google Wallet"
+                                style={{
+                                  display: "block",
+                                  height: 38,
+                                  width: "auto",
+                                }}
+                              />
+                            </a>
+                          </>
                         ) : null}
                       </Card>
                     </div>
