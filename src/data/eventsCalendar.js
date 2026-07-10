@@ -592,6 +592,8 @@ export const EVENTS_CALENDAR_DAYS = [
          "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783661172/WhatsApp_Image_2026-07-09_at_18.45.56_k0bwst.jpg",
+        mobileImage:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665694/Screenshot_2026-07-10_at_12.11.08_jbjrzj.png",
         description: "Played by DJ Shaggy.\n Pizza, Music & Drinks.",
       }),
     ],
@@ -658,7 +660,8 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Flowground, Ahangama",
         time: "6:00 PM",
         category: "Weekly Picks",
-        image: img8Image,
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1783664769/Screenshot_2026-07-10_at_11.55.19_mfupwl.png",
         description:
           "Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
       }),
@@ -678,7 +681,7 @@ export const EVENTS_CALENDAR_DAYS = [
         instagramUrl:
          "https://www.instagram.com/thewell_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783317753/The_well_Schedule_kzntt5.png",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665092/Screenshot_2026-07-10_at_12.01.10_vv8ooa.png",
         description:
           "Price: 3000 LKR per class + use pool after your session",
         details: [
@@ -693,7 +696,7 @@ export const EVENTS_CALENDAR_DAYS = [
         instagramUrl:
          "https://www.instagram.com/terra.srilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783321778/Terra_Schedule_vs9pd2.jpg",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665264/Screenshot_2026-07-10_at_12.04.04_uyklwo.png",
         description:
           "Friday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
       }),
@@ -705,7 +708,7 @@ export const EVENTS_CALENDAR_DAYS = [
         instagramUrl:
          "https://www.instagram.com/calmasamaya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783322456/Calma_samaya_schedule_u1ag1a.jpg",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665449/Screenshot_2026-07-10_at_12.06.45_jolz5b.png",
         description:
           "Friday\n• 10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)",
       }),
