@@ -12,6 +12,7 @@ const DEFAULT_DESTINATION = "ahangama";
 const DEFAULT_PASS_TYPE = "complimentary_hotel_guest";
 const DEFAULT_STATUS = "active";
 const DEFAULT_VALIDITY_DAYS = 365;
+const HOSPO_SOURCE_HOTEL_SLUG = "ahangama-hospo";
 const VERIFICATION_CODE_ALPHABET = "23456789abcdefghjkmnpqrstuvwxyz";
 const VERIFICATION_RANDOM_LENGTH = 3;
 const DESTINATION_BY_SOURCE_HOTEL_SLUG = {
@@ -164,9 +165,11 @@ export const handler = async (event) => {
     const hasExistingPasskitPass = Boolean(
       pass.passkitMemberId || pass.passkitInstallUrl || pass.passkitPassUrl,
     );
+    const shouldSyncPasskit =
+      !hasExistingPasskitPass || sourceHotelSlug === HOSPO_SOURCE_HOTEL_SLUG;
 
     try {
-      if (!hasExistingPasskitPass) {
+      if (shouldSyncPasskit) {
         const passkitData = await createPasskitMemberForHotelGuest({
           guest: result.guest,
           pass: result.pass,
