@@ -126,7 +126,9 @@ function buildWhatsappPhoneNumber(countryCode, phone) {
 
 function validateGuestDetails(values) {
   const errors = {};
-  const email = String(values.email || "").trim().toLowerCase();
+  const email = String(values.email || "")
+    .trim()
+    .toLowerCase();
   const localPhoneDigits = String(values.phone || "").replace(/\D/g, "");
 
   if (!String(values.fullName || "").trim()) {
@@ -172,7 +174,10 @@ function validateProfile(profile) {
     errors.businessName = "Please enter your business name";
   }
 
-  if (profile.audienceType === "resident" && !String(profile.residentArea || "").trim()) {
+  if (
+    profile.audienceType === "resident" &&
+    !String(profile.residentArea || "").trim()
+  ) {
     errors.residentArea = "Please enter your area in or around Ahangama";
   }
 
@@ -230,9 +235,7 @@ function AudienceCard({ option, selected }) {
       </span>
       <span className="hospo-audience-copy">
         <span className="hospo-audience-title">{option.label}</span>
-        <span className="hospo-audience-description">
-          {option.description}
-        </span>
+        <span className="hospo-audience-description">{option.description}</span>
       </span>
     </Radio>
   );
@@ -404,7 +407,9 @@ export default function HospoPassPage() {
 
       setFormStep(FORM_STEP_SUCCESS);
     } catch {
-      setProfileError("We couldn't reach the profile service. Please try again.");
+      setProfileError(
+        "We couldn't reach the profile service. Please try again.",
+      );
     } finally {
       setIsSubmittingProfile(false);
     }
@@ -413,8 +418,8 @@ export default function HospoPassPage() {
   return (
     <SiteLayout navOverlayHero>
       <Seo
-        title="Ahangama Complimentary Pass | Hospo"
-        description="Claim the Ahangama complimentary pass and tell us whether you are a business owner, resident, or visitor so we can shape the right local experience."
+        title="Exclusive for Hospo Community | Hospo"
+        description="Claim the free Ahangama Hospo Community pass for members and share a few details so the team can understand who is joining."
         canonical={absUrl(HOSPO_PASS_PATH)}
       />
 
@@ -441,7 +446,7 @@ export default function HospoPassPage() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Ahangama Complimentary Pass
+                  Exclusive for Hospo Community
                 </Text>
                 <Title
                   style={{
@@ -454,7 +459,7 @@ export default function HospoPassPage() {
                     fontWeight: 500,
                   }}
                 >
-                  Claim your local Ahangama pass.
+                  Claim your Complimentary Ahangama Pass
                 </Title>
                 <Paragraph
                   style={{
@@ -465,10 +470,9 @@ export default function HospoPassPage() {
                     lineHeight: 1.75,
                   }}
                 >
-                  Built for business owners, residents and visitors who want a
-                  better way to connect with Ahangama. First we create your
-                  complimentary pass, then we collect a few details so the team
-                  can understand who is joining.
+                  A free pass for Hospo Community members in Ahangama. First we
+                  create your member pass, then we collect a few details so the
+                  team can understand who is joining.
                 </Paragraph>
                 <Space
                   size={10}
@@ -484,7 +488,9 @@ export default function HospoPassPage() {
 
               <Col xs={24} lg={13}>
                 <Card
-                  ref={formStep === FORM_STEP_SUCCESS ? passReadySectionRef : null}
+                  ref={
+                    formStep === FORM_STEP_SUCCESS ? passReadySectionRef : null
+                  }
                   style={{
                     border: "1px solid rgba(32,30,27,0.08)",
                     borderRadius: 28,
@@ -558,7 +564,10 @@ export default function HospoPassPage() {
                           value={guestDetails.fullName}
                           status={fieldErrors.fullName ? "error" : ""}
                           onChange={(event) =>
-                            handleGuestDetailsChange("fullName", event.target.value)
+                            handleGuestDetailsChange(
+                              "fullName",
+                              event.target.value,
+                            )
                           }
                         />
                         <FieldError>{fieldErrors.fullName}</FieldError>
@@ -573,7 +582,10 @@ export default function HospoPassPage() {
                           value={guestDetails.email}
                           status={fieldErrors.email ? "error" : ""}
                           onChange={(event) =>
-                            handleGuestDetailsChange("email", event.target.value)
+                            handleGuestDetailsChange(
+                              "email",
+                              event.target.value,
+                            )
                           }
                         />
                         <FieldError>{fieldErrors.email}</FieldError>
@@ -612,7 +624,10 @@ export default function HospoPassPage() {
                             value={guestDetails.phone}
                             status={fieldErrors.phone ? "error" : ""}
                             onChange={(event) =>
-                              handleGuestDetailsChange("phone", event.target.value)
+                              handleGuestDetailsChange(
+                                "phone",
+                                event.target.value,
+                              )
                             }
                           />
                         </div>
@@ -628,7 +643,10 @@ export default function HospoPassPage() {
                           value={guestDetails.startDate}
                           status={fieldErrors.startDate ? "error" : ""}
                           onChange={(event) =>
-                            handleGuestDetailsChange("startDate", event.target.value)
+                            handleGuestDetailsChange(
+                              "startDate",
+                              event.target.value,
+                            )
                           }
                         />
                         <FieldError>{fieldErrors.startDate}</FieldError>
@@ -696,7 +714,10 @@ export default function HospoPassPage() {
                         <Radio.Group
                           value={profileDraft.audienceType}
                           onChange={(event) =>
-                            handleProfileChange("audienceType", event.target.value)
+                            handleProfileChange(
+                              "audienceType",
+                              event.target.value,
+                            )
                           }
                           className="hospo-audience-group"
                         >
@@ -705,12 +726,16 @@ export default function HospoPassPage() {
                               <AudienceCard
                                 key={option.value}
                                 option={option}
-                                selected={profileDraft.audienceType === option.value}
+                                selected={
+                                  profileDraft.audienceType === option.value
+                                }
                               />
                             ))}
                           </div>
                         </Radio.Group>
-                        <FieldError>{profileFieldErrors.audienceType}</FieldError>
+                        <FieldError>
+                          {profileFieldErrors.audienceType}
+                        </FieldError>
                       </div>
 
                       {profileDraft.audienceType === "business_owner" ? (
@@ -720,13 +745,20 @@ export default function HospoPassPage() {
                             <Input
                               size="large"
                               value={profileDraft.businessName}
-                              status={profileFieldErrors.businessName ? "error" : ""}
+                              status={
+                                profileFieldErrors.businessName ? "error" : ""
+                              }
                               placeholder="e.g. Kaffi"
                               onChange={(event) =>
-                                handleProfileChange("businessName", event.target.value)
+                                handleProfileChange(
+                                  "businessName",
+                                  event.target.value,
+                                )
                               }
                             />
-                            <FieldError>{profileFieldErrors.businessName}</FieldError>
+                            <FieldError>
+                              {profileFieldErrors.businessName}
+                            </FieldError>
                           </Col>
                           <Col xs={24} md={12}>
                             <FormLabel>Business category</FormLabel>
@@ -766,13 +798,20 @@ export default function HospoPassPage() {
                             <Input
                               size="large"
                               value={profileDraft.residentArea}
-                              status={profileFieldErrors.residentArea ? "error" : ""}
+                              status={
+                                profileFieldErrors.residentArea ? "error" : ""
+                              }
                               placeholder="Ahangama, Midigama, Kabalana..."
                               onChange={(event) =>
-                                handleProfileChange("residentArea", event.target.value)
+                                handleProfileChange(
+                                  "residentArea",
+                                  event.target.value,
+                                )
                               }
                             />
-                            <FieldError>{profileFieldErrors.residentArea}</FieldError>
+                            <FieldError>
+                              {profileFieldErrors.residentArea}
+                            </FieldError>
                           </Col>
                           <Col xs={24} md={12}>
                             <FormLabel>Connection to Ahangama</FormLabel>
@@ -830,12 +869,18 @@ export default function HospoPassPage() {
                         <FormLabel>What are you interested in?</FormLabel>
                         <Checkbox.Group
                           value={profileDraft.interests}
-                          onChange={(value) => handleProfileChange("interests", value)}
+                          onChange={(value) =>
+                            handleProfileChange("interests", value)
+                          }
                           style={{ width: "100%" }}
                         >
                           <div className="hospo-chip-grid">
                             {INTEREST_OPTIONS.map((value) => (
-                              <Checkbox className="hospo-chip" key={value} value={value}>
+                              <Checkbox
+                                className="hospo-chip"
+                                key={value}
+                                value={value}
+                              >
                                 {value}
                               </Checkbox>
                             ))}
@@ -845,15 +890,23 @@ export default function HospoPassPage() {
                       </div>
 
                       <div>
-                        <FormLabel>What would you like from Ahangama.com?</FormLabel>
+                        <FormLabel>
+                          What would you like from Ahangama.com?
+                        </FormLabel>
                         <Checkbox.Group
                           value={profileDraft.goals}
-                          onChange={(value) => handleProfileChange("goals", value)}
+                          onChange={(value) =>
+                            handleProfileChange("goals", value)
+                          }
                           style={{ width: "100%" }}
                         >
                           <div className="hospo-chip-grid">
                             {GOAL_OPTIONS.map((value) => (
-                              <Checkbox className="hospo-chip" key={value} value={value}>
+                              <Checkbox
+                                className="hospo-chip"
+                                key={value}
+                                value={value}
+                              >
                                 {value}
                               </Checkbox>
                             ))}
@@ -877,7 +930,10 @@ export default function HospoPassPage() {
                         <Checkbox
                           checked={profileDraft.whatsappOptIn}
                           onChange={(event) =>
-                            handleProfileChange("whatsappOptIn", event.target.checked)
+                            handleProfileChange(
+                              "whatsappOptIn",
+                              event.target.checked,
+                            )
                           }
                         >
                           Yes, send me local recommendations via WhatsApp.
@@ -949,7 +1005,11 @@ export default function HospoPassPage() {
                           Install Pass
                         </Text>
                         <Paragraph
-                          style={{ marginBottom: 10, color: "#5A554D", lineHeight: 1.7 }}
+                          style={{
+                            marginBottom: 10,
+                            color: "#5A554D",
+                            lineHeight: 1.7,
+                          }}
                         >
                           Your details have been sent to the Ahangama team. Add
                           your pass to Apple Wallet or Google Wallet below.
@@ -963,8 +1023,10 @@ export default function HospoPassPage() {
                               lineHeight: 1.7,
                             }}
                           >
-                            Starts {formatDisplayDate(createdPassState.pass.validFrom)}
-                            {" "}and stays active for {DEFAULT_PASS_VALIDITY_DAYS} days.
+                            Starts{" "}
+                            {formatDisplayDate(createdPassState.pass.validFrom)}{" "}
+                            and stays active for {DEFAULT_PASS_VALIDITY_DAYS}{" "}
+                            days.
                           </Text>
                         ) : null}
                         {createdPassState?.pass?.passkitInstallUrl ? (
@@ -975,7 +1037,11 @@ export default function HospoPassPage() {
                             href={createdPassState.pass.passkitInstallUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ marginTop: 18, width: "100%", minHeight: 52 }}
+                            style={{
+                              marginTop: 18,
+                              width: "100%",
+                              minHeight: 52,
+                            }}
                           >
                             Add to Apple Wallet / Google Wallet
                           </Button>
