@@ -142,7 +142,6 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "June",
     events: [
       enrichEvent({
-        title: "Sunset Happy Hour & Music Night",
         venue: "Hakuna Matata",
         time: "Happy Hour: 5:00 PM - 7:00 PM",
         category: "Weekly Picks",
@@ -421,6 +420,24 @@ export const EVENTS_CALENDAR_DAYS = [
     ],
   },
   {
+    key: "2026-07-06",
+    weekday: "Monday",
+    dayNumber: "06",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "No Shame Monday - Karaoke Night",
+        venue: "Crust Ahangama",
+        time: "7.00PM Onwards",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783314017/Crust_Ahangama_Karaoke_pii79w.jpg",
+        description: "Played by Minol.",
+        instagramUrl:"https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+      }),
+    ],
+  },
+  {
     key: "2026-07-07",
     weekday: "Tuesday",
     dayNumber: "07",
@@ -436,6 +453,200 @@ export const EVENTS_CALENDAR_DAYS = [
         instagramUrl:
           "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       }),
+      enrichEvent({
+        title: "Traditional Cooking Class",
+        venue: "Kumbuk Community",
+        time: "4:00 PM - 7:00 PM",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783314826/Kumbuk_Kitchen_cooking_class_czudav_no7spc.webp",
+        description: "Kumbuk Community Kitchen traditional cooking class.",
+        instagramUrl:
+         "https://www.instagram.com/kumbuk.community?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+    ],
+  },
+  {
+    key: "2026-07-08",
+    weekday: "Wednesday",
+    dayNumber: "08",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Cane Weaving (Wewel)",
+        venue: "Sarana",
+        time: "11.30PM",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783315427/Sarana_Cane_weaving_c6tuw6.jpg",
+          description: "Discover the traditional craft of Wewel cane weaving and create your own handcrafted piece.",
+                 instagramUrl:
+         "https://www.instagram.com/saranalanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Movie Night - Kids Special",
+        venue: "Cafe Ceylone",
+        time: "6.15PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/cafe_ceylon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783403880/WhatsApp_Image_2026-07-07_at_09.01.22_e7sftg.jpg",
+        description:
+          "Kids menu - Special price\nChicken schnitzel or sliders with fries.",
+      }),
+      enrichEvent({
+        title: "Electric Sands with DIS & DAT",
+        venue: "Crust Ahangama",
+        time: "7:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783405168/WhatsApp_Image_2026-07-06_at_23.44.12_ufrfqv.jpg",
+        description:
+          "Live Music & Good Vibes\nGreat Food & Drinks\nBeachside Atmosphere",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-09",
+    weekday: "Thursday",
+    dayNumber: "09",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Traditional Cooking Class",
+        venue: "Kumbuk Community",
+        time: "4:00 PM - 7:00 PM",
+        category: "Weekly Picks",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783314826/Kumbuk_Kitchen_cooking_class_czudav_no7spc.webp",
+        description: "Kumbuk Community Kitchen traditional cooking class.",
+         instagramUrl:
+         "https://www.instagram.com/kumbuk.community?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429217/WhatsApp_Image_2026-07-07_at_13.19.28_njocuj.jpg",
+        description: "Live Music with Pradhee.",
+      }),
+      enrichEvent({
+        title: "Karaoke Thursday",
+        venue: "Hotel De Uncles",
+        time: "6:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783485938/WhatsApp_Image_2026-07-08_at_10.03.40_e49xcu.jpg",
+        description:
+          "Karaoke Night, Fun with Friends & Family, Live Sing-Along Vibes.",
+      }),
+      enrichEvent({
+        title: "Thursday Sunset Party",
+        venue: "Hakuna Matata Ahangama",
+        time: "5:30 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/hakuna_matata_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783515708/WhatsApp_Image_2026-07-08_at_17.42.39_r3ext8.jpg",
+        description:
+          "Live Music with Skillz Jay, Shyro, Denon_SL & Mr Percussion.\nHappy Hour 5–7 PM (20% off any cocktail).",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-10",
+    weekday: "Friday",
+    dayNumber: "10",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Mono Friday",
+        venue: "Mono Ahangama",
+        time: "8.00PM - 11.30PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783404499/WhatsApp_Image_2026-07-07_at_08.11.41_aygcos.jpg",
+        description: "Played by Sadboi Sam (LK)\nIndie Dance\nGroovy House",
+      }),
+            enrichEvent({
+        title: "Weekend Flow DJ Night",
+        venue: "Crust Ahangama",
+        time: "7:00 PM till Dawn",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783661172/WhatsApp_Image_2026-07-09_at_18.45.56_k0bwst.jpg",
+        mobileImage:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665694/Screenshot_2026-07-10_at_12.11.08_jbjrzj.png",
+        description: "Played by DJ Shaggy.\n Pizza, Music & Drinks.",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-11",
+    weekday: "Saturday",
+    dayNumber: "11",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Pressure Drop",
+        venue: "Mono Ahangama",
+        time: "8:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783575568/WhatsApp_Image_2026-07-08_at_20.17.43_avupyv.jpg",
+        description:
+          "Garage, Jungle, DNB & Deep 140.\nFeaturing Janaka Selekta (Sony Music India). \n38 Deep (AUS) & Black Ja (SL).",
+      }),
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429209/WhatsApp_Image_2026-07-07_at_13.19.27_1_g5wurw.jpg",
+        description:
+          "Live Music with Shenal",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-12",
+    weekday: "Sunday",
+    dayNumber: "12",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429202/WhatsApp_Image_2026-07-07_at_13.19.27_clnh7a.jpg",
+        description: "Live Music with Jeewaka.",
+      }),
     ],
   },
   {
@@ -449,16 +660,76 @@ export const EVENTS_CALENDAR_DAYS = [
         venue: "Flowground, Ahangama",
         time: "6:00 PM",
         category: "Weekly Picks",
-        image: img8Image,
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1783664769/Screenshot_2026-07-10_at_11.55.19_mfupwl.png",
         description:
-          "Plastic-Free South Coast Coalition x The Ripple Effect. Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
+          "Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
+      }),
+    ],
+  },
+  {
+    key: "ongoing-this-week",
+    weekday: "The Weekly",
+    dayNumber: "Flow",
+    month: "",
+    events: [
+      enrichEvent({
+        title: "The Well Yoga Week",
+        venue: "The Well",
+        time: "9:00 AM",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/thewell_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665092/Screenshot_2026-07-10_at_12.01.10_vv8ooa.png",
+        description:
+          "Price: 3000 LKR per class + use pool after your session",
+        details: [
+          "Friday 9am Slow flow.",
+        ],
+      }),
+      enrichEvent({
+        title: "Terra Weekly Classes",
+        venue: "Terra Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/terra.srilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665264/Screenshot_2026-07-10_at_12.04.04_uyklwo.png",
+        description:
+          "Friday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
+      }),
+      enrichEvent({
+        title: "Calma Samaya Weekly Schedule",
+        venue: "Calma Samaya Hotel, Café & Wellness",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/calmasamaya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665449/Screenshot_2026-07-10_at_12.06.45_jolz5b.png",
+        description:
+          "Friday\n• 10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)",
+      }),
+           enrichEvent({
+        title: "Pura Pilates Weekly Schedule",
+        venue: "Pura Pilates Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/purapilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783660741/WhatsApp_Image_2026-07-09_at_18.10.46_y71kxx.jpg",
+        description:
+          "Friday \n8:30 AM – 9:30 AM: Reformer – Strength & control.\n11:00 AM – 12:00 PM: Mat – Core & mobility. \n12:00 PM – 1:00 PM: Reformer – Strength & control. \n\n  Pricing: Reformer 6,000 · Mat & Yoga 3,000. \nBooking: Via Bookwhen · walk-ins as available.\nPolicy: Cancel 72h before ·transfer up to 12h.\nArrival: 10 minutes early to settle in.",
       }),
     ],
   },
   {
     key: "ongoing",
-    weekday: "Ongoing",
-    dayNumber: "Daily",
+    weekday: "Local",
+    dayNumber: "Perks",
     month: "",
     events: [
       enrichEvent({
@@ -470,6 +741,30 @@ export const EVENTS_CALENDAR_DAYS = [
         description: "Buy 2 get 1 free for all cocktails during happy hour.",
         instagramUrl:
           "https://www.instagram.com/samba_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "50% Off All Cocktails",
+        venue: "Crave",
+        time: "Daily",
+        category: "Ongoing",
+         description: "Daily 50% Off All Cocktails.",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783316092/Crave_offer_50_vjhobv.png",
+                        instagramUrl:
+         "https://www.instagram.com/crave_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Daily Pasta + 1 Soft Drink - 2,500 LKR",
+        venue: "Surfing Wombat",
+        time: "Daily",
+        category: "Ongoing",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783316605/Surfing_wombat_offer_gztyv1.webp",
+        description: "Daily pasta plus one soft drink for only 2,500 LKR.",
+        instagramUrl:
+         "https://www.instagram.com/surfingwombats?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         passBenefit: null,
       }),
       enrichEvent({
@@ -515,7 +810,7 @@ function getTodayKey(date = new Date()) {
 }
 
 function formatDayLabel(day) {
-  if (day.key === "ongoing") return "Ongoing";
+  if (day.key.startsWith("ongoing")) return "Ongoing";
 
   return `${day.weekday.slice(0, 3)} ${day.dayNumber} ${day.month.slice(0, 3)} 2026`;
 }
@@ -528,7 +823,7 @@ function buildUpcomingCalendarDays() {
   const todayKey = getTodayKey();
   const datedDays = EVENTS_CALENDAR_DAYS.filter((day) => isDatedDay(day));
   const ongoingDays = EVENTS_CALENDAR_DAYS.filter(
-    (day) => day.key === "ongoing",
+    (day) => day.key.startsWith("ongoing"),
   );
 
   return [...datedDays.filter((day) => day.key >= todayKey), ...ongoingDays];
@@ -551,7 +846,7 @@ function buildUpcomingEditorPicks(days) {
     .flatMap((day) =>
       day.events.map((event) => {
         const eventDate =
-          day.key === "ongoing" ? "Ongoing" : formatDayLabel(day);
+          day.key.startsWith("ongoing") ? "Ongoing" : formatDayLabel(day);
 
         return `${event.title} at ${event.venue} — ${eventDate}.`;
       }),
@@ -560,7 +855,9 @@ function buildUpcomingEditorPicks(days) {
 }
 
 function buildHomepageDateLabel(events) {
-  const datedEvents = events.filter((event) => event.dayKey !== "ongoing");
+  const datedEvents = events.filter(
+    (event) => !String(event.dayKey).startsWith("ongoing"),
+  );
 
   if (!datedEvents.length) return "Ahangama . Ongoing";
 
