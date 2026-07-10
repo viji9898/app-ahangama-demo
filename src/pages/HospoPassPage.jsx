@@ -461,7 +461,7 @@ export default function HospoPassPage() {
           }}
         >
           <div style={{ width: "min(100%, 1160px)", margin: "0 auto" }}>
-            <Row gutter={[32, 32]} align="middle">
+            <Row gutter={[32, 32]} align="top">
               <Col xs={24} lg={13}>
                 <Text
                   style={{
@@ -482,12 +482,22 @@ export default function HospoPassPage() {
                     color: "#201e1b",
                     fontFamily:
                       '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    fontSize: isTabletUp ? 60 : "clamp(48px, 8vw, 92px)",
+                    fontSize: isTabletUp ? 60 : "clamp(36px, 10vw, 48px)",
                     lineHeight: 0.9,
                     fontWeight: 500,
                   }}
                 >
-                  Claim your Complimentary
+                  {isTabletUp ? (
+                    <span style={{ whiteSpace: "nowrap" }}>
+                      Claim your Complimentary
+                    </span>
+                  ) : (
+                    <>
+                      Claim your
+                      <br />
+                      Complimentary
+                    </>
+                  )}
                   <br />
                   Ahangama Pass
                 </Title>
@@ -738,7 +748,7 @@ export default function HospoPassPage() {
                 </Space>
               </Col>
 
-              <Col xs={24} lg={11}>
+              <Col xs={24} lg={11} style={{ paddingTop: isTabletUp ? 118 : 0 }}>
                 <Card
                   ref={
                     formStep === FORM_STEP_SUCCESS ? passReadySectionRef : null
@@ -776,13 +786,22 @@ export default function HospoPassPage() {
                       color: "#201E1B",
                       fontFamily:
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                      fontSize: "clamp(30px, 3vw, 44px)",
+                      fontSize:
+                        formStep === FORM_STEP_DETAILS
+                          ? "clamp(28px, 2.5vw, 38px)"
+                          : "clamp(30px, 3vw, 44px)",
                       lineHeight: 0.98,
                       fontWeight: 500,
                     }}
                   >
                     {formStep === FORM_STEP_DETAILS
-                      ? "Create your complimentary pass"
+                      ? (
+                          <>
+                            Sign up here for your
+                            <br />
+                            complimentary pass
+                          </>
+                        )
                       : formStep === FORM_STEP_PROFILE
                         ? "Tell us who you are"
                         : "Your Ahangama Pass is ready"}
