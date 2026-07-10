@@ -44,6 +44,105 @@
   box-shadow: 0 20px 48px rgba(17, 17, 17, 0.075) !important;
 }
 
+.hospo-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hospo-audience-card.ant-radio-wrapper {
+  min-height: 142px;
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid rgba(32, 30, 27, 0.1);
+  border-radius: 18px;
+  background: #ffffff;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.hospo-audience-card.ant-radio-wrapper:hover,
+.hospo-audience-card.ant-radio-wrapper:focus-within,
+.hospo-audience-card.is-selected.ant-radio-wrapper {
+  border-color: #b08e62;
+  box-shadow: 0 14px 34px rgba(32, 30, 27, 0.08);
+  transform: translateY(-1px);
+}
+
+.hospo-audience-card .ant-radio {
+  margin-top: 2px;
+}
+
+.hospo-audience-card .ant-radio + span {
+  width: 100%;
+  padding-inline-start: 10px;
+}
+
+.hospo-audience-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: #f5efe4;
+  color: #1e1814;
+  font-size: 16px;
+}
+
+.hospo-audience-copy,
+.hospo-audience-title,
+.hospo-audience-description {
+  display: block;
+}
+
+.hospo-audience-title {
+  color: #201e1b;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hospo-audience-description {
+  margin-top: 7px;
+  color: #6d655b;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.hospo-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hospo-chip.ant-checkbox-wrapper {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(32, 30, 27, 0.1);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #201e1b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hospo-chip.ant-checkbox-wrapper:hover,
+.hospo-chip.ant-checkbox-wrapper:focus-within,
+.hospo-chip.ant-checkbox-wrapper-checked {
+  border-color: #b08e62;
+  background: #fffaf1;
+}
+
 @media (max-width: 900px) {
   .tip-recommendations-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -64,6 +163,10 @@
   .tip-stats-detail-grid {
     grid-template-columns: 1fr !important;
   }
+
+  .hospo-audience-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -77,6 +180,10 @@
 
   .tip-visitor-stats-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  .hospo-chip-grid {
+    grid-template-columns: 1fr;
   }
 }
 

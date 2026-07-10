@@ -244,6 +244,14 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg",
   },
   {
+    route: "/hospo",
+    title: "Ahangama Complimentary Pass | Hospo",
+    description:
+      "Claim the Ahangama complimentary pass and tell us whether you are a business owner, resident, or visitor so we can shape the right local experience.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/light-house-beach-view-wide.webp",
+  },
+  {
     route: "/the-living-room-concept-store",
     title: "The Living Room Concept Store",
     description:
