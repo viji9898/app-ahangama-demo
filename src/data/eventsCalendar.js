@@ -583,6 +583,17 @@ export const EVENTS_CALENDAR_DAYS = [
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783404499/WhatsApp_Image_2026-07-07_at_08.11.41_aygcos.jpg",
         description: "Played by Sadboi Sam (LK)\nIndie Dance\nGroovy House",
       }),
+            enrichEvent({
+        title: "Weekend Flow DJ Night",
+        venue: "Crust Ahangama",
+        time: "7:00 PM till Dawn",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783661172/WhatsApp_Image_2026-07-09_at_18.45.56_k0bwst.jpg",
+        description: "Played by DJ Shaggy.\n Pizza, Music & Drinks.",
+      }),
     ],
   },
   {
@@ -671,7 +682,7 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Price: 3000 LKR per class + use pool after your session",
         details: [
-          "8th Wednesday 9am Asana & Pranayama.",
+          "Friday 9am Slow flow.",
         ],
       }),
       enrichEvent({
@@ -684,7 +695,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783321778/Terra_Schedule_vs9pd2.jpg",
         description:
-          "8th Wednesday\n• 9:00 AM – 10:00 AM: Morning Vinyasa Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Rebeka)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
+          "Friday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
       }),
       enrichEvent({
         title: "Calma Samaya Weekly Schedule",
@@ -696,7 +707,19 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783322456/Calma_samaya_schedule_u1ag1a.jpg",
         description:
-          "8th Wednesday\n• 10:30 AM – 11:30 AM: Mat Pilates (Yashi)\n• 7:00 PM – 8:00 PM: Breathwork (Paradis)",
+          "Friday\n• 10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)",
+      }),
+           enrichEvent({
+        title: "Pura Pilates Weekly Schedule",
+        venue: "Pura Pilates Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/purapilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783660741/WhatsApp_Image_2026-07-09_at_18.10.46_y71kxx.jpg",
+        description:
+          "Friday \n8:30 AM – 9:30 AM: Reformer – Strength & control.\n11:00 AM – 12:00 PM: Mat – Core & mobility. \n12:00 PM – 1:00 PM: Reformer – Strength & control. \n\n  Pricing: Reformer 6,000 · Mat & Yoga 3,000. \nBooking: Via Bookwhen · walk-ins as available.\nPolicy: Cancel 72h before ·transfer up to 12h.\nArrival: 10 minutes early to settle in.",
       }),
     ],
   },
