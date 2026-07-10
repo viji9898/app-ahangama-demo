@@ -48,7 +48,8 @@ const HOSPO_DESTINATION = "ahangama";
 const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PROFILE = "profile";
 const FORM_STEP_SUCCESS = "success";
-const DEFAULT_PASS_VALIDITY_DAYS = 15;
+const DEFAULT_PASS_VALIDITY_DAYS = 365;
+const PASS_VALIDITY_LABEL = "one year";
 const DEFAULT_WHATSAPP_COUNTRY_OPTION =
   PHONE_COUNTRY_CODES.find(
     (option) => option.value === DEFAULT_WHATSAPP_COUNTRY_CODE,
@@ -140,10 +141,6 @@ const TRAVEL_GROUP_OPTIONS = [
   "Work / Remote Work",
 ];
 
-function getTodayInputValue() {
-  return new Date().toISOString().slice(0, 10);
-}
-
 function buildWhatsappPhoneNumber(countryCode, phone) {
   const normalizedCountryCode = String(countryCode || "").trim();
   const normalizedDigits = String(phone || "").replace(/\D/g, "");
@@ -183,10 +180,6 @@ function validateGuestDetails(values) {
 
   if (!buildWhatsappPhoneNumber(values.countryCode, values.phone)) {
     errors.phone = errors.phone || "Please enter a valid WhatsApp number";
-  }
-
-  if (!String(values.startDate || "").trim()) {
-    errors.startDate = "Please choose your pass start date";
   }
 
   return errors;
@@ -295,7 +288,6 @@ export default function HospoPassPage() {
     email: "",
     countryCode: DEFAULT_WHATSAPP_COUNTRY_OPTION.value,
     phone: "",
-    startDate: getTodayInputValue(),
   });
   const [profileDraft, setProfileDraft] = useState({
     audienceType: "",
@@ -381,7 +373,6 @@ export default function HospoPassPage() {
             guestDetails.countryCode,
             guestDetails.phone,
           ),
-          startDate: guestDetails.startDate,
           sourceHotelSlug: HOSPO_SOURCE_HOTEL_SLUG,
           destination: HOSPO_DESTINATION,
         }),
@@ -895,36 +886,6 @@ export default function HospoPassPage() {
                         <FieldError>{fieldErrors.phone}</FieldError>
                       </div>
 
-                      <div>
-                        <FormLabel>Pass starts on</FormLabel>
-                        <Input
-                          size="large"
-                          type="date"
-                          min={getTodayInputValue()}
-                          value={guestDetails.startDate}
-                          status={fieldErrors.startDate ? "error" : ""}
-                          onChange={(event) =>
-                            handleGuestDetailsChange(
-                              "startDate",
-                              event.target.value,
-                            )
-                          }
-                        />
-                        <FieldError>{fieldErrors.startDate}</FieldError>
-                        {!fieldErrors.startDate ? (
-                          <Text
-                            style={{
-                              display: "block",
-                              marginTop: 6,
-                              color: "#7A7368",
-                            }}
-                          >
-                            Valid for {DEFAULT_PASS_VALIDITY_DAYS} days from the
-                            selected start date.
-                          </Text>
-                        ) : null}
-                      </div>
-
                       <Button
                         type="primary"
                         size="large"
@@ -1135,7 +1096,7 @@ export default function HospoPassPage() {
                           }
                           style={{ width: "100%" }}
                         >
-                          <div className="hospo-chip-grid">
+                          <div className="hospo-chip-grid hospo-interest-chip-grid">
                             {INTEREST_OPTIONS.map((value) => (
                               <Checkbox
                                 className="hospo-chip"
@@ -1187,31 +1148,19 @@ export default function HospoPassPage() {
                         />
                       </div>
 
-                      <Space direction="vertical" size={10}>
-                        <Checkbox
-                          checked={profileDraft.whatsappOptIn}
-                          onChange={(event) =>
-                            handleProfileChange(
-                              "whatsappOptIn",
-                              event.target.checked,
-                            )
-                          }
-                        >
-                          Yes, send me local recommendations via WhatsApp.
-                        </Checkbox>
-                        <Checkbox
-                          checked={profileDraft.wantsPartnerUpdates}
-                          onChange={(event) =>
-                            handleProfileChange(
-                              "wantsPartnerUpdates",
-                              event.target.checked,
-                            )
-                          }
-                        >
-                          Yes, keep me updated about Ahangama community and
-                          partner opportunities.
-                        </Checkbox>
-                      </Space>
+                      <Text
+                        style={{
+                          display: "block",
+                          color: "#6d655b",
+                          fontSize: 13,
+                          fontWeight: 600,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        By receiving the complimentary pass, you agree to receive
+                        thoughtful insights and updates about all things Ahangama
+                        ❤️
+                      </Text>
 
                       <Button
                         type="primary"
@@ -1286,8 +1235,7 @@ export default function HospoPassPage() {
                           >
                             Starts{" "}
                             {formatDisplayDate(createdPassState.pass.validFrom)}{" "}
-                            and stays active for {DEFAULT_PASS_VALIDITY_DAYS}{" "}
-                            days.
+                            and stays active for {PASS_VALIDITY_LABEL}.
                           </Text>
                         ) : null}
                         {createdPassState?.pass?.passkitInstallUrl ? (

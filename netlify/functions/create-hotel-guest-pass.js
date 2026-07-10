@@ -11,7 +11,7 @@ const DEFAULT_SOURCE_HOTEL_SLUG = "lighthouse-hotel";
 const DEFAULT_DESTINATION = "ahangama";
 const DEFAULT_PASS_TYPE = "complimentary_hotel_guest";
 const DEFAULT_STATUS = "active";
-const DEFAULT_VALIDITY_DAYS = 15;
+const DEFAULT_VALIDITY_DAYS = 365;
 const VERIFICATION_CODE_ALPHABET = "23456789abcdefghjkmnpqrstuvwxyz";
 const VERIFICATION_RANDOM_LENGTH = 3;
 const DESTINATION_BY_SOURCE_HOTEL_SLUG = {
@@ -47,26 +47,6 @@ function startOfUtcDay(value = new Date()) {
   return new Date(
     Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate()),
   );
-}
-
-function parseRequestedStartDate(value) {
-  const normalized = normalizeText(value);
-
-  if (!normalized) {
-    return null;
-  }
-
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(normalized)) {
-    return null;
-  }
-
-  const parsed = new Date(`${normalized}T00:00:00.000Z`);
-
-  if (Number.isNaN(parsed.getTime())) {
-    return null;
-  }
-
-  return startOfUtcDay(parsed);
 }
 
 function addUtcDays(value, days) {
@@ -122,7 +102,6 @@ export const handler = async (event) => {
       sourceHotelSlug,
       body.destination,
     );
-    const requestedStartDate = parseRequestedStartDate(body.startDate);
 
     if (!fullName) {
       return {
@@ -156,17 +135,7 @@ export const handler = async (event) => {
       };
     }
 
-    if (body.startDate && !requestedStartDate) {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({
-          error: "Please choose a valid pass start date",
-        }),
-      };
-    }
-
-    const validFrom = requestedStartDate || startOfUtcDay();
+    const validFrom = startOfUtcDay();
     const validUntil = addUtcDays(validFrom, DEFAULT_VALIDITY_DAYS);
     const verificationCode = generateVerificationCode(sourceHotelSlug);
 
