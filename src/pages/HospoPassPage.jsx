@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   BankOutlined,
+  EnvironmentOutlined,
+  GiftOutlined,
   HomeOutlined,
   LockOutlined,
+  MobileOutlined,
   SendOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -27,6 +30,7 @@ import {
   DEFAULT_WHATSAPP_COUNTRY_CODE,
   PHONE_COUNTRY_CODES,
 } from "../data/phoneCountryCodes";
+import ahangamaPassMobileWallet from "../assets/ahangama-pass-mobie-wallet.jpg";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
 
@@ -67,6 +71,27 @@ const AUDIENCE_OPTIONS = [
     label: "Tourist",
     description: "I am visiting Ahangama and want local recommendations.",
     Icon: UserOutlined,
+  },
+];
+
+const HOSPO_PASS_STATS = [
+  {
+    value: "150+",
+    title: "Curated Places",
+    detail: "Handpicked by locals",
+    Icon: EnvironmentOutlined,
+  },
+  {
+    value: "50+",
+    title: "Exclusive Perks",
+    detail: "Save across Ahangama",
+    Icon: GiftOutlined,
+  },
+  {
+    value: "1",
+    title: "Digital Pass",
+    detail: "Always with you",
+    Icon: MobileOutlined,
   },
 ];
 
@@ -244,6 +269,11 @@ function AudienceCard({ option, selected }) {
 export default function HospoPassPage() {
   const screens = Grid.useBreakpoint();
   const isTabletUp = Boolean(screens.md);
+  const previewExpiryDate = formatDisplayDate(
+    new Date(
+      Date.now() + DEFAULT_PASS_VALIDITY_DAYS * 24 * 60 * 60 * 1000,
+    ).toISOString(),
+  );
   const passReadySectionRef = useRef(null);
   const [formStep, setFormStep] = useState(FORM_STEP_DETAILS);
   const [detailsError, setDetailsError] = useState("");
@@ -446,7 +476,7 @@ export default function HospoPassPage() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Exclusive for Hospo Community
+                  Exclusive for Southside Hospo Community
                 </Text>
                 <Title
                   style={{
@@ -454,13 +484,236 @@ export default function HospoPassPage() {
                     color: "#201e1b",
                     fontFamily:
                       '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    fontSize: "clamp(48px, 8vw, 92px)",
+                    fontSize: isTabletUp ? 60 : "clamp(48px, 8vw, 92px)",
                     lineHeight: 0.9,
                     fontWeight: 500,
                   }}
                 >
                   Claim your Complimentary Ahangama Pass
                 </Title>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isTabletUp
+                      ? "repeat(3, minmax(0, 1fr))"
+                      : "repeat(2, minmax(0, 1fr))",
+                    gap: isTabletUp ? 12 : 10,
+                    marginTop: 26,
+                    maxWidth: 570,
+                  }}
+                >
+                  {HOSPO_PASS_STATS.map(({ value, title, detail, Icon }) => (
+                    <div
+                      key={`${title}-${value}`}
+                      style={{
+                        display: "flex",
+                        flexDirection: isTabletUp ? "row" : "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: isTabletUp ? 12 : 8,
+                        minHeight: isTabletUp ? "auto" : 150,
+                        padding: isTabletUp ? "16px 14px" : "14px 10px",
+                        border: "1px solid rgba(32,30,27,0.08)",
+                        borderRadius: 18,
+                        background: "rgba(255,255,255,0.72)",
+                        boxShadow: "0 14px 34px rgba(70,54,28,0.07)",
+                        textAlign: isTabletUp ? "left" : "center",
+                      }}
+                    >
+                      <Icon
+                        style={{
+                          fontSize: isTabletUp ? 26 : 24,
+                          color: "#B08E62",
+                          flex: "0 0 auto",
+                        }}
+                      />
+                      <div>
+                        <div
+                          style={{
+                            color: "#A47F49",
+                            fontSize: isTabletUp ? 24 : 22,
+                            lineHeight: 1,
+                            fontWeight: 500,
+                            fontFamily:
+                              '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                          }}
+                        >
+                          {value}
+                        </div>
+                        <div
+                          style={{
+                            marginTop: isTabletUp ? 8 : 7,
+                            color: "#2F2A24",
+                            fontSize: isTabletUp ? 14 : 13,
+                            fontWeight: 700,
+                            lineHeight: 1.3,
+                          }}
+                        >
+                          {title}
+                        </div>
+                        <div
+                          style={{
+                            marginTop: 3,
+                            color: "#6E675F",
+                            fontSize: isTabletUp ? 12 : 11,
+                            lineHeight: 1.45,
+                          }}
+                        >
+                          {detail}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div
+                  style={{
+                    display: "grid",
+                    justifyItems: "center",
+                    gap: 14,
+                    marginTop: 24,
+                    maxWidth: 570,
+                    padding: isTabletUp ? "22px 24px" : "20px 18px",
+                    borderRadius: 24,
+                    border: "1px solid rgba(32,30,27,0.08)",
+                    background:
+                      "linear-gradient(180deg, rgba(255,253,249,0.92) 0%, rgba(244,237,228,0.9) 100%)",
+                    boxShadow: "0 20px 54px rgba(42,38,31,0.1)",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: isTabletUp ? 186 : 168,
+                      padding: 9,
+                      borderRadius: 32,
+                      background: "#111111",
+                      boxShadow: "0 24px 44px rgba(0, 0, 0, 0.2)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: "relative",
+                        overflow: "hidden",
+                        borderRadius: 25,
+                        background: "#FFFFFF",
+                        aspectRatio: "9 / 19.5",
+                        width: "100%",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 9,
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          width: 112,
+                          height: 21,
+                          background: "#111111",
+                          borderRadius: 14,
+                          zIndex: 2,
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          display: "flex",
+                          alignItems: "flex-start",
+                          justifyContent: "flex-start",
+                          padding: 12,
+                          background: "#FFFFFF",
+                        }}
+                      >
+                        <img
+                          src={ahangamaPassMobileWallet}
+                          alt="Ahangama Pass iPhone preview"
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                            objectPosition: "top center",
+                            borderRadius: 16,
+                            transform: "scale(1.1)",
+                            transformOrigin: "top center",
+                          }}
+                        />
+                      </div>
+                      <div
+                        aria-label={`Preview expiry ${previewExpiryDate}`}
+                        style={{
+                          position: "absolute",
+                          top: "35.2%",
+                          right: "9.5%",
+                          zIndex: 3,
+                          width: "39%",
+                          minHeight: 22,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "flex-end",
+                          padding: "1px 0 2px 8px",
+                          background: "#68A9CA",
+                          color: "#FFFFFF",
+                          fontSize: 10,
+                          fontWeight: 300,
+                          lineHeight: 1,
+                          letterSpacing: 0,
+                          fontFamily:
+                            'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                          pointerEvents: "none",
+                        }}
+                      >
+                        {previewExpiryDate}
+                      </div>
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: 11,
+                          right: 11,
+                          bottom: 13,
+                          zIndex: 3,
+                          display: "grid",
+                          gridTemplateColumns: "1fr",
+                          gap: 6,
+                          justifyItems: "center",
+                          padding: "9px 7px",
+                          borderRadius: 15,
+                          background: "rgba(255, 255, 255, 0.92)",
+                          boxShadow: "0 10px 22px rgba(32, 30, 27, 0.16)",
+                          backdropFilter: "blur(8px)",
+                        }}
+                      >
+                        <img
+                          src={addToAppleWalletLogo}
+                          alt="Apple Wallet"
+                          style={{
+                            display: "block",
+                            height: 28,
+                            width: "auto",
+                          }}
+                        />
+                        <img
+                          src={addToGoogleWalletLogo}
+                          alt="Google Wallet"
+                          style={{
+                            display: "block",
+                            height: 28,
+                            width: "auto",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <Text
+                    style={{
+                      color: "#5f574d",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: 1.2,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Ahangama Pass Preview
+                  </Text>
+                </div>
                 <Paragraph
                   style={{
                     maxWidth: 570,
@@ -470,9 +723,8 @@ export default function HospoPassPage() {
                     lineHeight: 1.75,
                   }}
                 >
-                  A free pass for Hospo Community members in Ahangama. First we
-                  create your member pass, then we collect a few details so the
-                  team can understand who is joining.
+                  Exclusive access to the Hospo Community. Get the pass, try it
+                  out and let us know what you think.
                 </Paragraph>
                 <Space
                   size={10}
