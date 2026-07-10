@@ -54,11 +54,16 @@ export default function EventsPage() {
             style={{ "--events-agenda-bg": `url(${event.image})` }}
           >
             <div className="events-agenda-imageWrap">
-              <img
-                src={event.image}
-                alt={`${event.title} at ${event.venue}`}
-                className="events-agenda-image"
-              />
+              <picture>
+                {event.mobileImage ? (
+                  <source media="(max-width: 900px)" srcSet={event.mobileImage} />
+                ) : null}
+                <img
+                  src={event.image}
+                  alt={`${event.title} at ${event.venue}`}
+                  className="events-agenda-image"
+                />
+              </picture>
             </div>
 
             <div className="events-agenda-copy">
