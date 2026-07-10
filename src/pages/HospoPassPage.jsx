@@ -40,6 +40,9 @@ const { TextArea } = Input;
 
 export const HOSPO_PASS_PATH = "/hospo";
 
+const HOSPO_META_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg";
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const HOSPO_PASS_ENDPOINT = "/.netlify/functions/create-hotel-guest-pass";
 const HOSPO_PROFILE_ENDPOINT = "/.netlify/functions/send-hospo-pass-profile";
@@ -446,9 +449,9 @@ export default function HospoPassPage() {
   return (
     <SiteLayout navOverlayHero>
       <Seo
-        title="Exclusive for Hospo Community | Hospo"
-        description="Claim the free Ahangama Hospo Community pass for members and share a few details so the team can understand who is joining."
-        canonical={absUrl(HOSPO_PASS_PATH)}
+        title="Ahangama Pass | Exclusive for Hospo Community"
+        description="Claim the free Ahangama Pass | Exclusive for Southside Hospo Community members - Unlock Perks and Benefits in Ahangama."
+        ogImage={HOSPO_META_IMAGE}
       />
 
       <main style={{ background: "#f6f3ed", color: "#201e1b" }}>

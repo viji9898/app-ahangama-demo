@@ -245,11 +245,11 @@ const routeMeta = [
   },
   {
     route: "/hospo",
-    title: "Ahangama Complimentary Pass | Hospo",
+    title: "Exclusive for Hospo Community | Hospo",
     description:
-      "Claim the Ahangama complimentary pass and tell us whether you are a business owner, resident, or visitor so we can shape the right local experience.",
+      "Claim the free Ahangama Hospo Community pass for members and share a few details so the team can understand who is joining.",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/light-house-beach-view-wide.webp",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg",
   },
   {
     route: "/the-living-room-concept-store",
