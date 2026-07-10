@@ -6,6 +6,7 @@ import {
   HomeOutlined,
   LockOutlined,
   MobileOutlined,
+  ReadOutlined,
   SendOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -82,7 +83,7 @@ const HOSPO_PASS_STATS = [
     Icon: EnvironmentOutlined,
   },
   {
-    value: "50+",
+    value: "100+",
     title: "Exclusive Perks",
     detail: "Save across Ahangama",
     Icon: GiftOutlined,
@@ -92,6 +93,12 @@ const HOSPO_PASS_STATS = [
     title: "Digital Pass",
     detail: "Always with you",
     Icon: MobileOutlined,
+  },
+  {
+    value: "Ahangama Guide",
+    title: "2026/27 Season",
+    detail: "Local picks and perks",
+    Icon: ReadOutlined,
   },
 ];
 
@@ -464,7 +471,7 @@ export default function HospoPassPage() {
         >
           <div style={{ width: "min(100%, 1160px)", margin: "0 auto" }}>
             <Row gutter={[32, 32]} align="middle">
-              <Col xs={24} lg={11}>
+              <Col xs={24} lg={13}>
                 <Text
                   style={{
                     display: "block",
@@ -489,13 +496,15 @@ export default function HospoPassPage() {
                     fontWeight: 500,
                   }}
                 >
-                  Claim your Complimentary Ahangama Pass
+                  Claim your Complimentary
+                  <br />
+                  Ahangama Pass
                 </Title>
                 <div
                   style={{
                     display: "grid",
                     gridTemplateColumns: isTabletUp
-                      ? "repeat(3, minmax(0, 1fr))"
+                      ? "repeat(2, minmax(0, 1fr))"
                       : "repeat(2, minmax(0, 1fr))",
                     gap: isTabletUp ? 12 : 10,
                     marginTop: 26,
@@ -511,7 +520,7 @@ export default function HospoPassPage() {
                         alignItems: "center",
                         justifyContent: "center",
                         gap: isTabletUp ? 12 : 8,
-                        minHeight: isTabletUp ? "auto" : 150,
+                        minHeight: isTabletUp ? 136 : 150,
                         padding: isTabletUp ? "16px 14px" : "14px 10px",
                         border: "1px solid rgba(32,30,27,0.08)",
                         borderRadius: 18,
@@ -738,7 +747,7 @@ export default function HospoPassPage() {
                 </Space>
               </Col>
 
-              <Col xs={24} lg={13}>
+              <Col xs={24} lg={11}>
                 <Card
                   ref={
                     formStep === FORM_STEP_SUCCESS ? passReadySectionRef : null
