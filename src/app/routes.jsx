@@ -190,6 +190,10 @@ const routes = [
     element: <LighthousePage variant="gusta" />,
   },
   {
+    path: "/surf-club",
+    element: <LighthousePage variant="surfClub" />,
+  },
+  {
     path: "/tahini",
     element: <LighthousePage variant="tahini" />,
   },

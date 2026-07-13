@@ -101,6 +101,8 @@ const LIVING_ROOM_HERO_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/living-room-wide.webp";
 const TAHINI_HERO_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/tahini-and-friends-yoga-area-wide.webp";
+const SURF_CLUB_HERO_IMAGE =
+  "https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-club/image.jpg";
 
 const GUEST_PASS_PAGE_VARIANTS = {
   lighthouse: {
@@ -148,6 +150,21 @@ const GUEST_PASS_PAGE_VARIANTS = {
     body: "Local insight, trusted recommendations and exclusive guest benefits, all in one digital pass built for Gusta guests.",
     socialProof: "Join Gusta guests already exploring Ahangama better.",
     statsTitle: "Why Gusta Guests Love Their Pass",
+  },
+  surfClub: {
+    path: "/surf-club",
+    sourceHotelSlug: "surf-club",
+    destination: LIGHTHOUSE_DESTINATION,
+    venueName: "Surf Club",
+    seoTitle: "Surf Club Guest Pass",
+    seoDescription:
+      "A Surf Club guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    heroImage: SURF_CLUB_HERO_IMAGE,
+    heroAlt: "Surf Club in Ahangama",
+    badge: "Included For Surf Club Guests",
+    body: "Local insight, trusted recommendations and exclusive guest benefits, all in one digital pass built for Surf Club guests.",
+    socialProof: "Join Surf Club guests already exploring Ahangama better.",
+    statsTitle: "Why Surf Club Guests Love Their Pass",
   },
   tahini: {
     path: "/tahini",
