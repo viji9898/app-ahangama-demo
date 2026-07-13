@@ -802,6 +802,18 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Tuesday\n9:00 AM: Slow Flow with Bessie",
       }),
+               enrichEvent({
+        title: "Banya Weekly Schedule",
+        venue: "Banya Steam House Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/banyasrilanka?igsh=MTJtczl1MTNrMjd3Yw==",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783939797/WhatsApp_Image_2026-07-13_at_16.12.45_lup879.jpg",
+        description:
+          "Tuesday\nWoman’s Day",
+      }),
            enrichEvent({
         title: "ULU Weekly Schedule",
         venue: "ULU, Ahangama & Hiriketiya ",

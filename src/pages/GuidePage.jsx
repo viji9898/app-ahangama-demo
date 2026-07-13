@@ -27,48 +27,6 @@ const GUIDE_SOLA_HOTEL_IMAGE = "https://res.cloudinary.com/dp7in4ulw/image/uploa
 const GUIDE_Kelly_IMAGE = "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Kelly_Ahangama_ydgnq0.webp"
 
 const GUIDE_EXTRA_STAYS = [
-  {
-    title: "Ko Lake Villa",
-    description:
-      "A tranquil lakeside retreat offering the best of both worlds.",
-    image:
-      "https://res.cloudinary.com/xmybcqyi/image/upload/v1783674651/Screenshot_2026-07-10_at_14.40.29_ggc6ck.png",
-    instagramLabel: "Ko Lake Villa",
-  },
-  {
-    title: "Sola Hotel",
-    image:
-      "https://res.cloudinary.com/xmybcqyi/image/upload/v1783674120/Screenshot_2026-07-10_at_14.31.33_klhetz.png",
-    description:
-      "A striking modern sanctuary nestled within lush tropical palms, with elevated jungle living and a stunning private pool.",
-    instagramLabel: "Sola Hotel",
-  },
-  {
-    title: "Kelly",
-    description:
-      "A sleek, contemporary getaway featuring a vibrant evening ambience and a beautifully illuminated pool.",
-    instagramLabel: "Kelly",
-    image:
-      "https://res.cloudinary.com/xmybcqyi/image/upload/v1783674277/Screenshot_2026-07-10_at_14.34.00_jaesbv.png",
-  },
-  {
-    title: "Lighthouse",
-    description:
-      "A prominent coastal escape offering sweeping, uninterrupted ocean views and relaxed stays by the rocky shoreline.",
-    instagramLabel: "Lighthouse",
-  },
-  {
-    title: "Mosvold",
-    description:
-      "A chic beachfront address known for calm, minimalist design and direct access to Ahangama's coastal rhythm.",
-    instagramLabel: "Mosvold",
-  },
-  {
-    title: "Black Honey",
-    description:
-      "A tranquil retreat with lush tropical surroundings, crafted for private, slow, design-forward living.",
-    instagramLabel: "Black Honey",
-  },
 ];
 
 const GUIDE_CONTENT_LINKS = [
