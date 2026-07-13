@@ -604,7 +604,7 @@ export default function GuidePage() {
                       fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
                     }}
                   >
-                    Trebartha West
+                    Trebartha East
                   </Title>
                   <Text
                     style={{
@@ -664,7 +664,7 @@ export default function GuidePage() {
                       fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
                     }}
                   >
-                    Animals
+                    Non Animals
                   </Title>
                   <Text
                     style={{
