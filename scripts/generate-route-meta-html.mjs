@@ -244,6 +244,14 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg",
   },
   {
+    route: "/hospo",
+    title: "Exclusive for Hospo Community | Hospo",
+    description:
+      "Claim the free Ahangama Hospo Community pass for members and share a few details so the team can understand who is joining.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg",
+  },
+  {
     route: "/the-living-room-concept-store",
     title: "The Living Room Concept Store",
     description:

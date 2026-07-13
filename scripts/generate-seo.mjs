@@ -1,180 +1,43 @@
+import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { generateArticlesSitemap } from "../lib/sitemap/articles.js";
+import { generateBlogsSitemap } from "../lib/sitemap/blogs.js";
+import { generateEatSitemap } from "../lib/sitemap/eat.js";
+import { generateEventsSitemap } from "../lib/sitemap/events.js";
+import { generateImagesSitemap } from "../lib/sitemap/images.js";
+import { generatePagesSitemap } from "../lib/sitemap/pages.js";
+import { generateRetailSitemap } from "../lib/sitemap/retail.js";
+import { generateStaysSitemap } from "../lib/sitemap/stays.js";
+import {
+  buildSitemapIndex,
+  closeSitemapDatabase,
+  getCanonicalSiteUrl,
+  newestLastmod,
+  writeSitemapSection,
+} from "../lib/sitemap/utils.js";
+import { generateWellnessSitemap } from "../lib/sitemap/wellness.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const rootDir = path.join(__dirname, "..");
+const outDir = path.join(rootDir, "public");
+const siteUrl = getCanonicalSiteUrl();
 
-const blogsPath = path.join(__dirname, "..", "src", "data", "blogs.js");
-const placesPath = path.join(__dirname, "..", "src", "data", "places.js");
-const outDir = path.join(__dirname, "..", "public");
-const siteUrl = (process.env.VITE_SITE_URL || "https://ahangama.com").replace(
-  /\/$/,
-  "",
-);
-
-const publicRoutes = [
-  { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/about", changefreq: "monthly", priority: "0.7" },
-  { path: "/article-guideline", changefreq: "monthly", priority: "0.5" },
-  { path: "/blogs", changefreq: "weekly", priority: "0.8" },
-  { path: "/card", changefreq: "weekly", priority: "0.9" },
-  { path: "/dulasiri-uncle", changefreq: "monthly", priority: "0.7" },
-  { path: "/eat", changefreq: "weekly", priority: "0.9" },
-  { path: "/events", changefreq: "weekly", priority: "0.8" },
-  { path: "/guide", changefreq: "weekly", priority: "0.9" },
-  { path: "/editors-picks", changefreq: "weekly", priority: "0.8" },
-  { path: "/gusta", changefreq: "monthly", priority: "0.5" },
-  { path: "/kaffi", changefreq: "monthly", priority: "0.5" },
-  { path: "/lighthouse", changefreq: "monthly", priority: "0.8" },
-  { path: "/living-Room", changefreq: "monthly", priority: "0.5" },
-  { path: "/local-intelligence", changefreq: "daily", priority: "0.8" },
-  { path: "/map", changefreq: "weekly", priority: "0.7" },
-  { path: "/mosvold", changefreq: "monthly", priority: "0.7" },
-  { path: "/newsletter", changefreq: "weekly", priority: "0.7" },
-  { path: "/newsletter-data", changefreq: "weekly", priority: "0.5" },
-  { path: "/offers", changefreq: "weekly", priority: "0.7" },
-  { path: "/pabc", changefreq: "monthly", priority: "0.7" },
-  { path: "/partners", changefreq: "monthly", priority: "0.7" },
-  { path: "/products", changefreq: "weekly", priority: "0.8" },
-  { path: "/retail", changefreq: "weekly", priority: "0.7" },
-  { path: "/search", changefreq: "weekly", priority: "0.8" },
-  { path: "/shops", changefreq: "weekly", priority: "0.8" },
-  { path: "/stays", changefreq: "weekly", priority: "0.8" },
-  { path: "/tahini", changefreq: "monthly", priority: "0.5" },
-  {
-    path: "/the-living-room-concept-store",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/staff-pick-experience-a-day-that-slowly-erases-your-plan-in-ahangama",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/best-sunsets-in-ahangama",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/community-market-in-ahangama",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/where-ahangama-gathers-for-sunset-stairway-rooftop-bar-at-lighthouse-hotel",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  { path: "/what-is-ahangama-pass", changefreq: "monthly", priority: "0.8" },
-  { path: "/wellness", changefreq: "weekly", priority: "0.8" },
-  { path: "/12-things", changefreq: "monthly", priority: "0.8" },
-  {
-    path: "/3-days-in-ahangama",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/sri-lankas-most-interesting-coastal-town",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/where-to-stay-on-sri-lankas-southern-coast",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
-  {
-    path: "/why-surfing-changed-everything-in-ahangama",
-    changefreq: "monthly",
-    priority: "0.7",
-  },
+const sitemapSections = [
+  ["pages", generatePagesSitemap],
+  ["articles", generateArticlesSitemap],
+  ["blogs", generateBlogsSitemap],
+  ["eat", generateEatSitemap],
+  ["stays", generateStaysSitemap],
+  ["wellness", generateWellnessSitemap],
+  ["retail", generateRetailSitemap],
+  ["events", generateEventsSitemap],
 ];
-
-const placeCategoryRouteMap = {
-  eat: "eat",
-  stays: "stays",
-  wellness: "wellness",
-  retail: "retail",
-  "shops-essentials": "retail",
-};
-
-// Simple, safe-ish import of your ES module data in Node
-async function loadPlaces() {
-  const mod = await import(pathToFileUrl(placesPath));
-  return mod.PLACES || [];
-}
-
-async function loadBlogs() {
-  const mod = await import(pathToFileUrl(blogsPath));
-  return mod.BLOG_POSTS || [];
-}
-
-function pathToFileUrl(p) {
-  const u = new URL("file://");
-  // Windows-safe
-  u.pathname = path.resolve(p).replace(/\\/g, "/");
-  return u.href;
-}
 
 function ensureDir(p) {
   if (!fs.existsSync(p)) fs.mkdirSync(p, { recursive: true });
-}
-
-function isoDate(d = new Date()) {
-  return d.toISOString().split("T")[0];
-}
-
-function xmlEscape(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&apos;");
-}
-
-function buildUrl(pathname) {
-  if (pathname === "/") return siteUrl;
-  return `${siteUrl}${pathname}`;
-}
-
-function normalizePlaceRoute(place) {
-  const rawCategory = String(place.category || "").trim();
-  const normalizedKey = rawCategory.toLowerCase();
-  const routeCategory = placeCategoryRouteMap[normalizedKey];
-
-  if (!routeCategory || !place.slug) {
-    return null;
-  }
-
-  return `/${routeCategory}/${place.slug}`;
-}
-
-function buildSitemap(urls) {
-  const today = isoDate();
-  const items = urls
-    .map(
-      ({ loc, changefreq = "weekly", priority = "0.6", lastmod = today }) => `
-  <url>
-    <loc>${xmlEscape(loc)}</loc>
-    <lastmod>${xmlEscape(lastmod)}</lastmod>
-    <changefreq>${xmlEscape(changefreq)}</changefreq>
-    <priority>${xmlEscape(priority)}</priority>
-  </url>`,
-    )
-    .join("");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">${items}
-</urlset>
-`;
 }
 
 function buildRobots({ siteUrl }) {
@@ -188,57 +51,49 @@ Sitemap: ${sitemap}
 
 (async () => {
   ensureDir(outDir);
+  ensureDir(path.join(outDir, "sitemaps"));
 
-  const BLOG_POSTS = await loadBlogs();
-  const PLACES = await loadPlaces();
+  const context = { siteUrl, rootDir };
+  const generatedSections = [];
+  const entriesBySection = new Map();
 
-  const staticRoutes = publicRoutes.map(({ path, ...rest }) => ({
-    loc: buildUrl(path),
-    ...rest,
-  }));
+  for (const [sectionName, generateSection] of sitemapSections) {
+    const entries = await generateSection(context);
+    entriesBySection.set(sectionName, entries);
+    generatedSections.push(
+      ...writeSitemapSection({ outDir, siteUrl, sectionName, entries }),
+    );
+  }
 
-  const dynamicRoutes = PLACES.map((place) => {
-    const pathname = normalizePlaceRoute(place);
-
-    if (!pathname) {
-      return null;
-    }
-
-    return {
-      loc: buildUrl(pathname),
-      changefreq: "monthly",
-      priority: "0.7",
-    };
-  }).filter(Boolean);
-
-  const blogRoutes = BLOG_POSTS.map((post) => ({
-    loc: buildUrl(`/blogs/${post.slug}`),
-    changefreq: "monthly",
-    priority: "0.7",
-    lastmod: post.publishDate,
-  }));
-
-  // Deduplicate
-  const seen = new Set();
-  const urls = [...staticRoutes, ...dynamicRoutes, ...blogRoutes].filter(
-    (u) => {
-      if (seen.has(u.loc)) return false;
-      seen.add(u.loc);
-      return true;
-    },
+  const entriesForImages = [...entriesBySection.values()].flat();
+  generatedSections.push(
+    ...writeSitemapSection({
+      outDir,
+      siteUrl,
+      sectionName: "images",
+      entries: await generateImagesSitemap(context, entriesForImages),
+      includeImages: true,
+    }),
   );
 
-  const sitemapXml = buildSitemap(urls);
-  fs.writeFileSync(path.join(outDir, "sitemap.xml"), sitemapXml, "utf8");
+  const sitemapIndex = buildSitemapIndex(generatedSections);
+  fs.writeFileSync(path.join(outDir, "sitemap.xml"), sitemapIndex, "utf8");
 
   const robotsTxt = buildRobots({ siteUrl });
   fs.writeFileSync(path.join(outDir, "robots.txt"), robotsTxt, "utf8");
 
-  console.log(`✅ Generated public/sitemap.xml (${urls.length} URLs)`);
+  console.log(
+    `✅ Generated public/sitemap.xml (${generatedSections.length} child sitemap files)`,
+  );
+  for (const section of generatedSections) {
+    console.log(`  - ${section.fileName}: ${section.count} URLs`);
+  }
   console.log(
     `✅ Generated public/robots.txt (Sitemap: ${siteUrl}/sitemap.xml)`,
   );
 })().catch((err) => {
   console.error("❌ SEO generation failed:", err);
   process.exit(1);
+}).finally(async () => {
+  await closeSitemapDatabase();
 });
