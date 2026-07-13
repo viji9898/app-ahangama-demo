@@ -22,6 +22,9 @@ const GUIDE_BEST_STAYS_INTRO_IMAGE =
 
 const GUIDE_BEST_STAYS_IMAGE = TrebathaWebImage;
 const GUIDE_ANIMALS_IMAGE = AnimalsWebImage;
+const GUIDE_KO_LAKE_VILLA_IMAGE = "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Ko_Lake_Villa_nqxg16.webp"
+const GUIDE_SOLA_HOTEL_IMAGE = "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp"
+const GUIDE_Kelly_IMAGE = "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Kelly_Ahangama_ydgnq0.webp"
 
 const GUIDE_EXTRA_STAYS = [
   {
@@ -562,7 +565,7 @@ export default function GuidePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
               gap: "clamp(20px, 2.5vw, 34px)",
               maxWidth: 1240,
               margin: "0 auto",
@@ -685,9 +688,440 @@ export default function GuidePage() {
                 >
                   A chic, minimalist oasis just a short walk from Kabalana Beach.
                 </Paragraph>
+                
+              </div>
+            </article>   
+
+            <article>
+              <img
+                src={GUIDE_KO_LAKE_VILLA_IMAGE}
+                alt="Ko Lake Villa"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Ko Lake Villa
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    4.8 ★
+                  </Text>
+                </div>
+                <Paragraph
+                  style={{
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
+                  }}
+                >
+                  A chic, minimalist oasis just a short walk from Kabalana Beach.
+                </Paragraph>
+                
               </div>
             </article>
+
+            <article>
+              <img
+                src={GUIDE_SOLA_HOTEL_IMAGE}
+                alt="Sola Hotel"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Solar Hotel
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    4.8 ★
+                  </Text>
+                </div>
+                <Paragraph
+                  style={{
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
+                  }}
+                >
+                  A chic, minimalist oasis just a short walk from Kabalana Beach.
+                </Paragraph>
+                
+              </div>
+            </article>
+
+            <article>
+              <img
+                src={GUIDE_Kelly_IMAGE}
+                alt="Kelly Ahangama"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Kelly
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    4.8 ★
+                  </Text>
+                </div>
+                <Paragraph
+                  style={{
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
+                  }}
+                >
+                  A sleek, contemporary getaway featuring a vibrant evening ambience and a beautifully illuminated pool.
+                </Paragraph>
+                
+              </div>
+            </article>
+
+            <article>
+              <img
+                src={GUIDE_ANIMALS_IMAGE}
+                alt="Animals hotel pool and courtyard"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Animals
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    4.8 ★
+                  </Text>
+                </div>
+                <Paragraph
+                  style={{
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
+                  }}
+                >
+                  A chic, minimalist oasis just a short walk from Kabalana Beach.
+                </Paragraph>
+                
+              </div>
+            </article>
+
+            <article>
+              <img
+                src={GUIDE_ANIMALS_IMAGE}
+                alt="Animals hotel pool and courtyard"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Animals
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    4.8 ★
+                  </Text>
+                </div>
+                <Paragraph
+                  style={{
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
+                  }}
+                >
+                  A chic, minimalist oasis just a short walk from Kabalana Beach.
+                </Paragraph>
+                
+              </div>
+            </article>
+
+            <article>
+              <img
+                src={GUIDE_ANIMALS_IMAGE}
+                alt="Animals hotel pool and courtyard"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Animals
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    4.8 ★
+                  </Text>
+                </div>
+                <Paragraph
+                  style={{
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
+                  }}
+                >
+                  A chic, minimalist oasis just a short walk from Kabalana Beach.
+                </Paragraph>
+                
+              </div>
+            </article>
+
+            <article>
+              <img
+                src={GUIDE_ANIMALS_IMAGE}
+                alt="Animals hotel pool and courtyard"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Animals
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    4.8 ★
+                  </Text>
+                </div>
+                <Paragraph
+                  style={{
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
+                  }}
+                >
+                  A chic, minimalist oasis just a short walk from Kabalana Beach.
+                </Paragraph>
+                
+              </div>
+            </article> 
+            
           </div>
+
+
         </div>
       </FullBleedSection>
 

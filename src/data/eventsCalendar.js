@@ -11,7 +11,6 @@ import img6Image from "../assets/temp/img6.jpeg";
 import img7Image from "../assets/temp/img7.jpeg";
 import img8Image from "../assets/temp/img8.jpeg";
 import { PLACES } from "./places";
-import { SHARED_UPCOMING_EVENT_DAYS } from "./upcomingEventsShared";
 
 const eventImage = (fileName) =>
   encodeURI(`/Images for Events Calendar/${fileName}`);
@@ -567,10 +566,149 @@ export const EVENTS_CALENDAR_DAYS = [
       }),
     ],
   },
-  ...SHARED_UPCOMING_EVENT_DAYS.map((day) => ({
-    ...day,
-    events: day.events.map((event) => enrichEvent(event)),
-  })),
+  {
+    key: "2026-07-10",
+    weekday: "Friday",
+    dayNumber: "10",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Mono Friday",
+        venue: "Mono Ahangama",
+        time: "8.00PM - 11.30PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783404499/WhatsApp_Image_2026-07-07_at_08.11.41_aygcos.jpg",
+        description: "Played by Sadboi Sam (LK)\nIndie Dance\nGroovy House",
+      }),
+            enrichEvent({
+        title: "Weekend Flow DJ Night",
+        venue: "Crust Ahangama",
+        time: "7:00 PM till Dawn",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783661172/WhatsApp_Image_2026-07-09_at_18.45.56_k0bwst.jpg",
+        mobileImage:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665694/Screenshot_2026-07-10_at_12.11.08_jbjrzj.png",
+        description: "Played by DJ Shaggy.\n Pizza, Music & Drinks.",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-11",
+    weekday: "Saturday",
+    dayNumber: "11",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Pressure Drop",
+        venue: "Mono Ahangama",
+        time: "8:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783575568/WhatsApp_Image_2026-07-08_at_20.17.43_avupyv.jpg",
+        description:
+          "Garage, Jungle, DNB & Deep 140.\nFeaturing Janaka Selekta (Sony Music India). \n38 Deep (AUS) & Black Ja (SL).",
+      }),
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429209/WhatsApp_Image_2026-07-07_at_13.19.27_1_g5wurw.jpg",
+        description:
+          "Live Music with Shenal",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-12",
+    weekday: "Sunday",
+    dayNumber: "12",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM Onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783429202/WhatsApp_Image_2026-07-07_at_13.19.27_clnh7a.jpg",
+        description: "Live Music with Jeewaka.",
+      }),
+    ],
+  },
+       {
+    key: "2026-07-13",
+    weekday: "Monday",
+    dayNumber: "13",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "No Shame – Karaoke Night",
+        venue: "Crust Ahangama",
+        time: "7:00 PM Onwards",
+        category: "Weekly Picks",
+         instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921827/WhatsApp_Image_2026-07-12_at_19.12.51_hhu1gp.jpg",
+        description:
+          "Karaoke Night with Minol",
+      }),
+    ],
+  },
+     {
+    key: "2026-07-14",
+    weekday: "Tuesday",
+    dayNumber: "14",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Breathwork + E&I",
+        venue: "Ember & Ice",
+        time: "10:00 AM",
+        category: "Weekly Picks",
+         instagramUrl:
+         "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1783920807/Screenshot_2026-07-13_at_11.03.19_p0kryh.png",
+        description:
+          "Breathwork + E&I* Experience",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-15",
+    weekday: "Wednesday",
+    dayNumber: "15",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "A Community Gathering & Working Session",
+        venue: "Flowground, Ahangama",
+        time: "6:00 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/flowground?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1783664769/Screenshot_2026-07-10_at_11.55.19_mfupwl.png",
+        description:
+          "Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
+      }),
+    ],
+  },
   {
     key: "ongoing-this-week",
     weekday: "The Weekly",
@@ -578,18 +716,18 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "",
     events: [
       enrichEvent({
-        title: "The Well Yoga Week",
-        venue: "The Well",
+        title: "Palm Weekly Classes",
+        venue: "PALM Hotel Ahangama",
         time: "9:00 AM",
         category: "Wellness",
         instagramUrl:
          "https://www.instagram.com/thewell_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665092/Screenshot_2026-07-10_at_12.01.10_vv8ooa.png",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783918698/Screenshot_2026-07-13_at_10.27.22_tk338e.png",
         description:
-          "Price: 3000 LKR per class + use pool after your session",
+          "Monday\n•  8:30 AM - Crossfit\n•  10:00 AM - Muay Thai\n•  12:00 PM -  Functional Strength",
         details: [
-          "Friday 9am Slow flow.",
+          "Open for open gym outside of class hours",
         ],
       }),
       enrichEvent({
@@ -602,7 +740,19 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665264/Screenshot_2026-07-10_at_12.04.04_uyklwo.png",
         description:
-          "Friday\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)\n• 10:30 AM – 11:30 AM: Reformer Pilates (Emmanuel)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
+          "Monday\n• 9:00 AM – 10:00 AM: Grounding Yoga Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)",
+      }),
+            enrichEvent({
+        title: "Music Week",
+        venue: "Hotel De Uncle'sAhangama",
+        time: "Weekly Schedule",
+        category: "Entertainment ",
+        instagramUrl:
+         "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922441/Screenshot_2026-07-13_at_11.30.32_u2clbr.png",
+        description:
+          "Tuesday\n• Tiny Bar Sessions — Live Music: DELAA",
       }),
       enrichEvent({
         title: "Calma Samaya Weekly Schedule",
@@ -614,19 +764,58 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665449/Screenshot_2026-07-10_at_12.06.45_jolz5b.png",
         description:
-          "Friday\n• 10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)",
+          "Monday\n•4:00 PM – 5:00 PM: Hatha Yoga (Isuru)",
       }),
-           enrichEvent({
-        title: "Pura Pilates Weekly Schedule",
-        venue: "Pura Pilates Ahangama",
+      enrichEvent({
+        title: "Flow Ground Studio Weekly Classes",
+        venue: "Flow Ground Studio",
         time: "Weekly Schedule",
         category: "Wellness",
         instagramUrl:
-         "https://www.instagram.com/purapilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+         "https://www.instagram.com/flowground?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783660741/WhatsApp_Image_2026-07-09_at_18.10.46_y71kxx.jpg",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921223/Screenshot_2026-07-13_at_11.10.15_fgle2u.png",
         description:
-          "Friday \n8:30 AM – 9:30 AM: Reformer – Strength & control.\n11:00 AM – 12:00 PM: Mat – Core & mobility. \n12:00 PM – 1:00 PM: Reformer – Strength & control. \n\n  Pricing: Reformer 6,000 · Mat & Yoga 3,000. \nBooking: Via Bookwhen · walk-ins as available.\nPolicy: Cancel 72h before ·transfer up to 12h.\nArrival: 10 minutes early to settle in.",
+          "Monday\n9:30 AM – 10:45 AM: Vinyasa Flow",
+      }),
+            enrichEvent({
+        title: "Krozz Fit Weekly Classes",
+        venue: " Krozz Fit Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/krozzfit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921580/Screenshot_2026-07-13_at_11.16.12_uzym2o.png",
+        description:
+          "Monday\n9:30 AM: Hyrox Class",
+      }),
+                  enrichEvent({
+        title: "Rooftop Shala Weekly Classes",
+        venue: "CASA TIKIRI®️",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/casatikiri?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922955/Screenshot_2026-07-13_at_11.38.54_z1aukp.png",
+        description:
+          "Tuesday\n9:00 AM: Slow Flow with Bessie",
+      }),
+           enrichEvent({
+        title: "ULU Weekly Schedule",
+        venue: "ULU, Ahangama & Hiriketiya ",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/ulupilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783919395/Screenshot_2026-07-13_at_10.39.40_knkror.png",
+        description:
+          "Monday \n• 8:00 AM - Mat Pilates L.1.\n• 10:00 AM - Arms Booty & Abs \n• 5:00 PM - Power Reformer L.2",
+                 details: [
+          "15% off all class packs — use code ISLAND15\nValid at both locations | Ends September 1",
+        ],
       }),
     ],
   },
