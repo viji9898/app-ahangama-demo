@@ -562,7 +562,7 @@ export default function GuidePage() {
                       fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
                     }}
                   >
-                    Trebartha East
+                    Trebartha West
                   </Title>
                   <Text
                     style={{

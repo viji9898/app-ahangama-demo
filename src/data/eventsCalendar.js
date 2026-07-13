@@ -649,46 +649,6 @@ export const EVENTS_CALENDAR_DAYS = [
       }),
     ],
   },
-       {
-    key: "2026-07-13",
-    weekday: "Monday",
-    dayNumber: "13",
-    month: "July",
-    events: [
-      enrichEvent({
-        title: "No Shame – Karaoke Night",
-        venue: "Crust Ahangama",
-        time: "7:00 PM Onwards",
-        category: "Weekly Picks",
-         instagramUrl:
-         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image: 
-        "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921827/WhatsApp_Image_2026-07-12_at_19.12.51_hhu1gp.jpg",
-        description:
-          "Karaoke Night with Minol",
-      }),
-    ],
-  },
-     {
-    key: "2026-07-14",
-    weekday: "Tuesday",
-    dayNumber: "14",
-    month: "July",
-    events: [
-      enrichEvent({
-        title: "Breathwork + E&I",
-        venue: "Ember & Ice",
-        time: "10:00 AM",
-        category: "Weekly Picks",
-         instagramUrl:
-         "https://www.instagram.com/emberandiceahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image: 
-        "https://res.cloudinary.com/xmybcqyi/image/upload/v1783920807/Screenshot_2026-07-13_at_11.03.19_p0kryh.png",
-        description:
-          "Breathwork + E&I* Experience",
-      }),
-    ],
-  },
   {
     key: "2026-07-15",
     weekday: "Wednesday",
@@ -716,8 +676,8 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "",
     events: [
       enrichEvent({
-        title: "Crossfit Ceylon Weekly Classes",
-        venue: "PALM Hotel Ahangama",
+        title: "The Well Yoga Week",
+        venue: "The Well",
         time: "9:00 AM",
         category: "Wellness",
         instagramUrl:
@@ -776,7 +736,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921223/Screenshot_2026-07-13_at_11.10.15_fgle2u.png",
         description:
-          "Monday\n9:30 AM – 10:45 AM: Vinyasa Flow",
+          "Friday \n8:30 AM – 9:30 AM: Reformer – Strength & control.\n11:00 AM – 12:00 PM: Mat – Core & mobility. \n12:00 PM – 1:00 PM: Reformer – Strength & control. \n\n  Pricing: Reformer 6,000 · Mat & Yoga 3,000. \nBooking: Via Bookwhen · walk-ins as available.\nPolicy: Cancel 72h before ·transfer up to 12h.\nArrival: 10 minutes early to settle in.",
       }),
             enrichEvent({
         title: "Krozz Fit Weekly Classes",
