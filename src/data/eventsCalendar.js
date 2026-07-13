@@ -9,7 +9,7 @@ import img4Image from "../assets/temp/img4.jpeg";
 import img5Image from "../assets/temp/img5.jpeg";
 import img6Image from "../assets/temp/img6.jpeg";
 import img7Image from "../assets/temp/img7.jpeg";
-import img8Image from "../assets/temp/img8.jpeg";
+//import img8Image from "../assets/temp/img8.jpeg";
 import { PLACES } from "./places";
 
 const eventImage = (fileName) =>
@@ -716,12 +716,12 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "",
     events: [
       enrichEvent({
-        title: "Palm Weekly Classes",
+        title: "Crossfit Ceylon Weekly Classes",
         venue: "PALM Hotel Ahangama",
         time: "9:00 AM",
         category: "Wellness",
         instagramUrl:
-         "https://www.instagram.com/thewell_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+         "https://www.instagram.com/crossfitceylonpalm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783918698/Screenshot_2026-07-13_at_10.27.22_tk338e.png",
         description:
