@@ -17,9 +17,56 @@ const GUIDE_CONTENT_IMAGE =
 const GUIDE_OVERVIEW_IMAGE =
   "https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/944/images/1440_6e0-1635949941.webp";
 
-const GUIDE_BEST_STAYS_IMAGE = TrebathaWebImage;
+const GUIDE_BEST_STAYS_INTRO_IMAGE =
+  "https://res.cloudinary.com/xmybcqyi/image/upload/v1783675102/Screenshot_2026-07-10_at_14.48.09_btwioa.png";
 
+const GUIDE_BEST_STAYS_IMAGE = TrebathaWebImage;
 const GUIDE_ANIMALS_IMAGE = AnimalsWebImage;
+
+const GUIDE_EXTRA_STAYS = [
+  {
+    title: "Ko Lake Villa",
+    description:
+      "A tranquil lakeside retreat offering the best of both worlds.",
+    image:
+      "https://res.cloudinary.com/xmybcqyi/image/upload/v1783674651/Screenshot_2026-07-10_at_14.40.29_ggc6ck.png",
+    instagramLabel: "Ko Lake Villa",
+  },
+  {
+    title: "Sola Hotel",
+    image:
+      "https://res.cloudinary.com/xmybcqyi/image/upload/v1783674120/Screenshot_2026-07-10_at_14.31.33_klhetz.png",
+    description:
+      "A striking modern sanctuary nestled within lush tropical palms, with elevated jungle living and a stunning private pool.",
+    instagramLabel: "Sola Hotel",
+  },
+  {
+    title: "Kelly",
+    description:
+      "A sleek, contemporary getaway featuring a vibrant evening ambience and a beautifully illuminated pool.",
+    instagramLabel: "Kelly",
+    image:
+      "https://res.cloudinary.com/xmybcqyi/image/upload/v1783674277/Screenshot_2026-07-10_at_14.34.00_jaesbv.png",
+  },
+  {
+    title: "Lighthouse",
+    description:
+      "A prominent coastal escape offering sweeping, uninterrupted ocean views and relaxed stays by the rocky shoreline.",
+    instagramLabel: "Lighthouse",
+  },
+  {
+    title: "Mosvold",
+    description:
+      "A chic beachfront address known for calm, minimalist design and direct access to Ahangama's coastal rhythm.",
+    instagramLabel: "Mosvold",
+  },
+  {
+    title: "Black Honey",
+    description:
+      "A tranquil retreat with lush tropical surroundings, crafted for private, slow, design-forward living.",
+    instagramLabel: "Black Honey",
+  },
+];
 
 const GUIDE_CONTENT_LINKS = [
   "Ahangama Overview",
@@ -56,7 +103,15 @@ function InstagramLabel({ text, justify = "flex-end" }) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect x="3" y="3" width="18" height="18" rx="5" stroke="#FFFFFF" strokeWidth="1.8" />
+        <rect
+          x="3"
+          y="3"
+          width="18"
+          height="18"
+          rx="5"
+          stroke="#FFFFFF"
+          strokeWidth="1.8"
+        />
         <circle cx="12" cy="12" r="4.2" stroke="#FFFFFF" strokeWidth="1.8" />
         <circle cx="17.2" cy="6.8" r="1.2" fill="#FFFFFF" />
       </svg>
@@ -97,6 +152,28 @@ function DirectionLabel({ text = "Direction", justify = "flex-end" }) {
   );
 }
 
+function FullBleedSection({ children }) {
+  return (
+    <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
+      <div className="dm-wrap">
+        <section
+          className="ahg-hero"
+          style={{
+            width: "100vw",
+            marginLeft: "calc(50% - 50vw)",
+            marginRight: "calc(50% - 50vw)",
+            borderRadius: 0,
+            background: "#FFFFFF",
+            boxShadow: "none",
+          }}
+        >
+          {children}
+        </section>
+      </div>
+    </div>
+  );
+}
+
 export default function GuidePage() {
   const canonical = absUrl("/guide");
 
@@ -109,741 +186,628 @@ export default function GuidePage() {
         ogImage={GUIDE_HERO_IMAGE}
       />
 
-      <div
-        className="dm-canvas"
-        style={{
-          marginTop: 0,
-          paddingTop: 0,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-        }}
-      >
-        <div className="dm-wrap">
+      <FullBleedSection>
+        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
           <div
-            className="ahg-hero"
-            style={{
-              width: "100vw",
-              marginLeft: "calc(50% - 50vw)",
-              marginRight: "calc(50% - 50vw)",
-              borderRadius: 0,
-              background: "#FFFFFF",
-              boxShadow: "none",
-            }}
+            aria-hidden="true"
+            className="home-hero-media-layer"
+            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
           >
             <div
+              className="home-hero-overlay"
               style={{
-                position: "relative",
-                overflow: "hidden",
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(90deg, rgba(10,14,18,0.82) 0%, rgba(10,14,18,0.66) 28%, rgba(10,14,18,0.34) 58%, rgba(10,14,18,0.08) 100%)",
+                pointerEvents: "none",
+                zIndex: 2,
+              }}
+            />
+            <img
+              className="home-hero-image"
+              src={GUIDE_HERO_IMAGE}
+              alt="Ahangama coastline"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 1,
+                display: "block",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center center",
+              }}
+            />
+          </div>
+
+          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
                 minHeight: "100svh",
+                maxWidth: 780,
+                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
               }}
             >
-              <div
-                aria-hidden="true"
-                className="home-hero-media-layer"
+              <Title
+                className="home-hero-title"
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  className="home-hero-overlay"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(90deg, rgba(10,14,18,0.82) 0%, rgba(10,14,18,0.66) 28%, rgba(10,14,18,0.34) 58%, rgba(10,14,18,0.08) 100%)",
-                    pointerEvents: "none",
-                    zIndex: 2,
-                  }}
-                />
-                <img
-                  className="home-hero-image"
-                  src={GUIDE_HERO_IMAGE}
-                  alt="Ahangama coastline"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 1,
-                    display: "block",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center center",
-                  }}
-                />
-              </div>
-
-              <div
-                style={{
-                  position: "relative",
-                  zIndex: 3,
-                  width: "100%",
-                  maxWidth: "none",
                   margin: 0,
+                  transform: "translateY(-50px)",
+                  color: "#FFFFFF",
+                  fontWeight: 500,
+                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    minHeight: "100svh",
-                    maxWidth: 780,
-                    padding:
-                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-                  }}
-                >
-                  <Title
-                    className="home-hero-title"
-                    style={{
-                      margin: 0,
-                      transform: "translateY(-50px)",
-                      color: "#FFFFFF",
-                      fontWeight: 500,
-                      fontFamily:
-                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    }}
-                  >
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Ahangama
-                    </span>
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF", whiteSpace: "nowrap" }}
-                    >
-                      2026/2027
-                    </span>
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Season Guide
-                    </span>
-                  </Title>
-                </div>
-              </div>
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                  Ahangama
+                </span>
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF", whiteSpace: "nowrap" }}>
+                  2026/2027
+                </span>
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                  Season Guide
+                </span>
+              </Title>
             </div>
           </div>
         </div>
-      </div>
+      </FullBleedSection>
 
-      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
-        <div className="dm-wrap">
+      <FullBleedSection>
+        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
           <div
-            className="ahg-hero"
-            style={{
-              width: "100vw",
-              marginLeft: "calc(50% - 50vw)",
-              marginRight: "calc(50% - 50vw)",
-              borderRadius: 0,
-              background: "#FFFFFF",
-              boxShadow: "none",
-            }}
+            aria-hidden="true"
+            className="home-hero-media-layer"
+            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
           >
             <div
+              className="home-hero-overlay"
               style={{
-                position: "relative",
-                overflow: "hidden",
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(90deg, rgba(10,14,18,0.86) 0%, rgba(10,14,18,0.76) 28%, rgba(10,14,18,0.46) 58%, rgba(10,14,18,0.12) 100%)",
+                pointerEvents: "none",
+                zIndex: 2,
+              }}
+            />
+            <img
+              className="home-hero-image"
+              src={GUIDE_CONTENT_IMAGE}
+              alt="Surf lesson in Ahangama"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 1,
+                display: "block",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center center",
+              }}
+            />
+          </div>
+
+          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
                 minHeight: "100svh",
+                maxWidth: 920,
+                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
               }}
             >
-              <div
-                aria-hidden="true"
-                className="home-hero-media-layer"
+              <Text
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  overflow: "hidden",
+                  display: "block",
+                  marginBottom: 18,
+                  color: "#FFFFFF",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.6,
+                  textTransform: "uppercase",
                 }}
               >
-                <div
-                  className="home-hero-overlay"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(90deg, rgba(10,14,18,0.86) 0%, rgba(10,14,18,0.76) 28%, rgba(10,14,18,0.46) 58%, rgba(10,14,18,0.12) 100%)",
-                    pointerEvents: "none",
-                    zIndex: 2,
-                  }}
-                />
-                <img
-                  className="home-hero-image"
-                  src={GUIDE_CONTENT_IMAGE}
-                  alt="Surf lesson in Ahangama"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 1,
-                    display: "block",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center center",
-                  }}
-                />
-              </div>
+                Content
+              </Text>
+
+              <Title
+                className="home-hero-title"
+                style={{
+                  margin: "0 0 56px",
+                  color: "#FFFFFF",
+                  fontWeight: 500,
+                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                }}
+              >
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                  Guide
+                </span>
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF", whiteSpace: "normal" }}>
+                  Contents
+                </span>
+              </Title>
 
               <div
                 style={{
-                  position: "relative",
-                  zIndex: 3,
-                  width: "100%",
-                  maxWidth: "none",
-                  margin: 0,
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: 12,
+                  marginTop: 26,
+                  maxWidth: 880,
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    minHeight: "100svh",
-                    maxWidth: 920,
-                    padding:
-                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-                  }}
-                >
-                  <Text
+                {GUIDE_CONTENT_LINKS.map((item, index) => (
+                  <a
+                    key={item}
+                    href={`#guide-section-${index + 1}`}
                     style={{
                       display: "block",
-                      marginBottom: 18,
+                      padding: "0 0 12px",
+                      borderBottom: "1px solid rgba(32,30,27,0.72)",
                       color: "#FFFFFF",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: 1.6,
-                      textTransform: "uppercase",
+                      textDecoration: "none",
+                      fontSize: "clamp(16px, 1.45vw, 19px)",
+                      lineHeight: 1.72,
+                      background: "transparent",
                     }}
                   >
-                    Content
-                  </Text>
-
-                  <Title
-                    className="home-hero-title"
-                    style={{
-                      margin: "0 0 56px",
-                      color: "#FFFFFF",
-                      fontWeight: 500,
-                      fontFamily:
-                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    }}
-                  >
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Guide
-                    </span>
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF", whiteSpace: "normal" }}
-                    >
-                      Contents
-                    </span>
-                  </Title>
-
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns:
-                        "repeat(auto-fit, minmax(220px, 1fr))",
-                      gap: 12,
-                      marginTop: 26,
-                      maxWidth: 880,
-                    }}
-                  >
-                    {GUIDE_CONTENT_LINKS.map((item, index) => (
-                      <a
-                        key={item}
-                        href={`#guide-section-${index + 1}`}
-                        style={{
-                          display: "block",
-                          padding: "0 0 12px",
-                          borderBottom: "1px solid rgba(32,30,27,0.72)",
-                          color: "#FFFFFF",
-                          textDecoration: "none",
-                          fontSize: "clamp(16px, 1.45vw, 19px)",
-                          lineHeight: 1.72,
-                          background: "transparent",
-                        }}
-                      >
-                        {item}
-                      </a>
-                    ))}
-                  </div>
-                </div>
+                    {item}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </FullBleedSection>
 
-      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
-        <div className="dm-wrap">
+      <FullBleedSection>
+        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
           <div
-            className="ahg-hero"
-            style={{
-              width: "100vw",
-              marginLeft: "calc(50% - 50vw)",
-              marginRight: "calc(50% - 50vw)",
-              borderRadius: 0,
-              background: "#FFFFFF",
-              boxShadow: "none",
-            }}
+            aria-hidden="true"
+            className="home-hero-media-layer"
+            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
           >
             <div
+              className="home-hero-overlay"
               style={{
-                position: "relative",
-                overflow: "hidden",
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(90deg, rgba(10,14,18,0.86) 0%, rgba(10,14,18,0.72) 30%, rgba(10,14,18,0.4) 62%, rgba(10,14,18,0.12) 100%)",
+                pointerEvents: "none",
+                zIndex: 2,
+              }}
+            />
+            <img
+              className="home-hero-image"
+              src={GUIDE_OVERVIEW_IMAGE}
+              alt="Ahangama coastal landscape"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 1,
+                display: "block",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center center",
+              }}
+            />
+          </div>
+
+          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
                 minHeight: "100svh",
+                maxWidth: 780,
+                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
               }}
             >
-              <div
-                aria-hidden="true"
-                className="home-hero-media-layer"
+              <Text
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  overflow: "hidden",
+                  display: "block",
+                  marginBottom: 18,
+                  color: "#FFFFFF",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.6,
+                  textTransform: "uppercase",
                 }}
               >
-                <div
-                  className="home-hero-overlay"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(90deg, rgba(10,14,18,0.84) 0%, rgba(10,14,18,0.72) 26%, rgba(10,14,18,0.44) 56%, rgba(10,14,18,0.1) 100%)",
-                    pointerEvents: "none",
-                    zIndex: 2,
-                  }}
-                />
-                <img
-                  className="home-hero-image"
-                  src={GUIDE_OVERVIEW_IMAGE}
-                  alt="Ahangama coastal landscape"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 1,
-                    display: "block",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center center",
-                  }}
-                />
-              </div>
+                Overview
+              </Text>
 
-              <div
+              <Title
+                className="home-hero-title"
                 style={{
-                  position: "relative",
-                  zIndex: 3,
-                  width: "100%",
-                  maxWidth: "none",
                   margin: 0,
+                  color: "#FFFFFF",
+                  fontWeight: 500,
+                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                 }}
               >
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                  Ahangama
+                </span>
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                  Overview
+                </span>
+              </Title>
+
+              <Paragraph
+                style={{
+                  marginTop: 24,
+                  marginBottom: 0,
+                  maxWidth: 640,
+                  color: "#FFFFFF",
+                  fontSize: "clamp(16px, 1.45vw, 19px)",
+                  lineHeight: 1.72,
+                }}
+              >
+                Once a sleepy stretch of local fishing shacks, Ahangama has quietly evolved into the South Coast&apos;s coolest, most curated coastal hub. It has successfully dodged the overdeveloped chaos of other global surf towns, maintaining a delicate balance between slow island living and a thriving, modern aesthetic. If you are looking for barefoot luxury, world-class waves, and jungle-fringed cafes, you have found your spot.
+              </Paragraph>
+            </div>
+          </div>
+        </div>
+      </FullBleedSection>
+
+      <FullBleedSection>
+        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
+          <div
+            aria-hidden="true"
+            className="home-hero-media-layer"
+            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
+          >
+            <div
+              className="home-hero-overlay"
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(90deg, rgba(10,14,18,0.84) 0%, rgba(10,14,18,0.72) 26%, rgba(10,14,18,0.44) 56%, rgba(10,14,18,0.1) 100%)",
+                pointerEvents: "none",
+                zIndex: 2,
+              }}
+            />
+            <img
+              className="home-hero-image"
+              src={GUIDE_BEST_STAYS_INTRO_IMAGE}
+              alt="Best stays in guide"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 1,
+                display: "block",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center center",
+              }}
+            />
+          </div>
+
+          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                minHeight: "100svh",
+                maxWidth: 760,
+                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+              }}
+            >
+              <Text
+                style={{
+                  display: "block",
+                  marginBottom: 18,
+                  color: "#FFFFFF",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: 1.6,
+                  textTransform: "uppercase",
+                }}
+              >
+                Stays
+              </Text>
+
+              <Title
+                className="home-hero-title"
+                style={{
+                  margin: 0,
+                  color: "#FFFFFF",
+                  fontWeight: 500,
+                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                }}
+              >
+                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                  Best Stays
+                </span>
+              </Title>
+
+              <Paragraph
+                style={{
+                  marginTop: 24,
+                  marginBottom: 0,
+                  maxWidth: 640,
+                  color: "#FFFFFF",
+                  fontSize: "clamp(16px, 1.45vw, 19px)",
+                  lineHeight: 1.72,
+                }}
+              >
+                A handpicked list of standout stays in and around Ahangama, from design-led villas to coastal hideaways.
+              </Paragraph>
+            </div>
+          </div>
+        </div>
+      </FullBleedSection>
+
+      <FullBleedSection>
+        <div
+          style={{
+            background: "#e7e7e7",
+            padding: "clamp(28px, 4vw, 48px)",
+          }}
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "clamp(20px, 2.5vw, 34px)",
+              maxWidth: 1240,
+              margin: "0 auto",
+            }}
+          >
+            <article>
+              <img
+                src={GUIDE_BEST_STAYS_IMAGE}
+                alt="Trebartha East the Round House"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
+                }}
+              />
+              <div style={{ padding: "12px 2px 0" }}>
                 <div
                   style={{
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    minHeight: "100svh",
-                    maxWidth: 760,
-                    padding:
-                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
                   }}
                 >
+                  <Title
+                    level={2}
+                    style={{
+                      margin: 0,
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
+                    }}
+                  >
+                    Trebartha East
+                  </Title>
                   <Text
                     style={{
-                      display: "block",
-                      marginBottom: 18,
-                      color: "#FFFFFF",
-                      fontSize: 11,
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
                       fontWeight: 700,
-                      letterSpacing: 1.6,
-                      textTransform: "uppercase",
+                      lineHeight: 1,
                     }}
                   >
-                    Overview
+                    4.8 ★
                   </Text>
-
-                  <Title
-                    className="home-hero-title"
-                    style={{
-                      margin: 0,
-                      color: "#FFFFFF",
-                      fontWeight: 500,
-                      fontFamily:
-                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    }}
-                  >
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Ahangama
-                    </span>
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF" }}
-                    >
-                      Overview
-                    </span>
-                  </Title>
-
-                  <Paragraph
-                    style={{
-                      marginTop: 24,
-                      marginBottom: 0,
-                      maxWidth: 640,
-                      color: "#FFFFFF",
-                      fontSize: "clamp(16px, 1.45vw, 19px)",
-                      lineHeight: 1.72,
-                    }}
-                  >
-                    Once a sleepy stretch of local fishing shacks, Ahangama has
-                    quietly evolved into the South Coast's coolest, most curated
-                    coastal hub. It has successfully dodged the overdeveloped
-                    chaos of other global surf towns, maintaining a delicate
-                    balance between slow island living and a thriving, modern
-                    aesthetic. If you are looking for barefoot luxury,
-                    world-class waves, and jungle-fringed cafes, you have found
-                    your spot.
-                  </Paragraph>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
-        <div className="dm-wrap">
-          <div
-            className="ahg-hero"
-            style={{
-              width: "100vw",
-              marginLeft: "calc(50% - 50vw)",
-              marginRight: "calc(50% - 50vw)",
-              borderRadius: 0,
-              background: "#FFFFFF",
-              boxShadow: "none",
-            }}
-          >
-            <div
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                minHeight: "100svh",
-              }}
-            >
-              <div
-                aria-hidden="true"
-                className="home-hero-media-layer"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  className="home-hero-overlay"
+                <Paragraph
                   style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(90deg, rgba(10,14,18,0.78) 0%, rgba(10,14,18,0.62) 24%, rgba(10,14,18,0.28) 54%, rgba(10,14,18,0.08) 100%)",
-                    pointerEvents: "none",
-                    zIndex: 2,
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
                   }}
-                />
-                <img
-                  className="home-hero-image"
-                  src={GUIDE_BEST_STAYS_IMAGE}
-                  alt="Trebartha East the Round House"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 1,
-                    display: "block",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center center",
-                  }}
-                />
+                >
+                  Trebartha East: A spectacular, design-led oasis nestled high in the Ahangama jungle.
+                </Paragraph>
               </div>
+            </article>
 
-              <div
+            <article>
+              <img
+                src={GUIDE_ANIMALS_IMAGE}
+                alt="Animals hotel pool and courtyard"
                 style={{
-                  position: "relative",
-                  zIndex: 3,
+                  display: "block",
                   width: "100%",
-                  maxWidth: "none",
-                  margin: 0,
+                  aspectRatio: "16 / 11",
+                  objectFit: "cover",
+                  borderRadius: "36px",
                 }}
-              >
+              />
+              <div style={{ padding: "12px 2px 0" }}>
                 <div
                   style={{
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    minHeight: "100svh",
-                    maxWidth: 760,
-                    padding:
-                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    flexWrap: "wrap",
                   }}
                 >
                   <Title
-                    className="home-hero-title"
+                    level={2}
                     style={{
                       margin: 0,
-                      transform: "translateY(-50px)",
-                      color: "#FFFFFF",
-                      fontWeight: 500,
-                      fontFamily:
-                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                      color: "#072434",
+                      fontWeight: 700,
+                      fontSize: "clamp(30px, 3.2vw, 56px)",
+                      lineHeight: 1.02,
+                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
                     }}
                   >
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FFFFFF", whiteSpace: "normal" }}
-                    >
-                      Trebartha East
-                    </span>
+                    Animals
                   </Title>
-                  <Paragraph
+                  <Text
                     style={{
-                      margin: "18px 0 0",
-                      maxWidth: 640,
-                      color: "rgba(255,255,255,0.95)",
-                      fontSize: "clamp(16px, 1.45vw, 19px)",
-                      lineHeight: 1.72,
+                      color: "#072434",
+                      fontSize: "clamp(24px, 2.2vw, 34px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
                     }}
                   >
-                    Trebartha East: A spectacular, design-led oasis nestled
-                    high in the Ahangama jungle. Known for its 360-degree
-                    estate views, striking circular architecture, and a
-                    luxurious sweeping pool, it&apos;s the perfect spot to escape
-                    the coastal buzz and experience elevated tropical living.
-                  </Paragraph>
+                    4.8 ★
+                  </Text>
                 </div>
-              </div>
-
-              <div
-                style={{
-                  position: "absolute",
-                  right: "clamp(32px, 4.8vw, 72px)",
-                  bottom: "clamp(28px, 4vw, 48px)",
-                  zIndex: 4,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 16,
-                }}
-              >
-                <a
-                  href="https://www.instagram.com/trebarthaeast"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Paragraph
                   style={{
-                    color: "#FFFFFF",
-                    textDecoration: "none",
-                    textAlign: "right",
-                    fontSize: "clamp(16px, 1.45vw, 19px)",
-                    lineHeight: 1.72,
-                    borderBottom: "1px solid rgba(255,255,255,0.65)",
-                    paddingBottom: 6,
+                    margin: "12px 0 0",
+                    color: "#0d2532",
+                    fontSize: "clamp(18px, 1.5vw, 30px)",
+                    lineHeight: 1.42,
+                    maxWidth: "95%",
                   }}
                 >
-                  <InstagramLabel text="Trebartha East" justify="flex-end" />
-                </a>
-                <a
-                  href="https://maps.app.goo.gl/7QuEuwonzUD9Rgrz8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "#FFFFFF",
-                    textDecoration: "none",
-                    fontSize: "clamp(16px, 1.45vw, 19px)",
-                    lineHeight: 1.72,
-                    borderBottom: "1px solid rgba(255,255,255,0.65)",
-                    paddingBottom: 6,
-                  }}
-                >
-                  <DirectionLabel text="Direction" justify="flex-end" />
-                </a>
+                  A chic, minimalist oasis just a short walk from Kabalana Beach.
+                </Paragraph>
               </div>
-            </div>
+            </article>
           </div>
         </div>
-      </div>
+      </FullBleedSection>
 
-      <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
-        <div className="dm-wrap">
-          <div
-            className="ahg-hero"
-            style={{
-              width: "100vw",
-              marginLeft: "calc(50% - 50vw)",
-              marginRight: "calc(50% - 50vw)",
-              borderRadius: 0,
-              background: "#FFFFFF",
-              boxShadow: "none",
-            }}
-          >
+      {GUIDE_EXTRA_STAYS.map((stay) => (
+        <FullBleedSection key={stay.title}>
+          <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
             <div
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                minHeight: "100svh",
-              }}
+              aria-hidden="true"
+              className="home-hero-media-layer"
+              style={{ position: "absolute", inset: 0, overflow: "hidden" }}
             >
               <div
-                aria-hidden="true"
-                className="home-hero-media-layer"
+                className="home-hero-overlay"
                 style={{
                   position: "absolute",
                   inset: 0,
-                  overflow: "hidden",
+                  background:
+                    "linear-gradient(90deg, rgba(10,14,18,0.8) 0%, rgba(10,14,18,0.66) 24%, rgba(10,14,18,0.34) 56%, rgba(10,14,18,0.08) 100%)",
+                  pointerEvents: "none",
+                  zIndex: 2,
                 }}
-              >
-                <div
-                  className="home-hero-overlay"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(90deg, rgba(10,14,18,0.8) 0%, rgba(10,14,18,0.66) 24%, rgba(10,14,18,0.34) 56%, rgba(10,14,18,0.08) 100%)",
-                    pointerEvents: "none",
-                    zIndex: 2,
-                  }}
-                />
-                <img
-                  className="home-hero-image"
-                  src={GUIDE_ANIMALS_IMAGE}
-                  alt="Animals hotel pool and courtyard"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 1,
-                    display: "block",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center center",
-                  }}
-                />
-              </div>
-
-              <div
-                style={{
-                  position: "relative",
-                  zIndex: 3,
-                  width: "100%",
-                  maxWidth: "none",
-                  margin: 0,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    minHeight: "100svh",
-                    maxWidth: 760,
-                    padding:
-                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-                  }}
-                >
-                  <Title
-                    className="home-hero-title"
-                    style={{
-                      margin: 0,
-                      color: "#FFFFFF",
-                      fontWeight: 500,
-                      fontFamily:
-                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                    }}
-                  >
-                    <span
-                      className="home-hero-titleLine"
-                      style={{ color: "#FF4FA3", whiteSpace: "normal" }}
-                    >
-                      Animals
-                    </span>
-                  </Title>
-
-                  <Paragraph
-                    style={{
-                      marginTop: 24,
-                      marginBottom: 0,
-                      maxWidth: 640,
-                      color: "#FFFFFF",
-                      fontSize: "clamp(16px, 1.45vw, 19px)",
-                      lineHeight: 1.72,
-                    }}
-                  >
-                    Animals: A chic, minimalist oasis just a short walk from
-                    Kabalana Beach. Known for its aesthetic cooked-to-order
-                    breakfasts, specialty coffee, and a quiet jungle-fringed
-                    pool, it's the perfect spot to escape the midday heat and
-                    recharge.
-                  </Paragraph>
-                </div>
-              </div>
-
-              <div
+              />
+              <img
+                className="home-hero-image"
+                src={stay.image || GUIDE_OVERVIEW_IMAGE}
+                alt={stay.title}
                 style={{
                   position: "absolute",
-                  right: "clamp(32px, 4.8vw, 72px)",
-                  bottom: "clamp(28px, 4vw, 48px)",
-                  zIndex: 4,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 16,
+                  inset: 0,
+                  zIndex: 1,
+                  display: "block",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
+              />
+            </div>
+
+            <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  minHeight: "100svh",
+                  maxWidth: 760,
+                  padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
                 }}
               >
-                <a
-                  href="https://www.instagram.com/animalsahangama/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Title
+                  className="home-hero-title"
                   style={{
+                    margin: 0,
                     color: "#FFFFFF",
-                    textDecoration: "none",
-                    fontSize: "clamp(16px, 1.45vw, 19px)",
-                    lineHeight: 1.72,
-                    borderBottom: "1px solid rgba(255,255,255,0.65)",
-                    paddingBottom: 6,
+                    fontWeight: 500,
+                    fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                   }}
                 >
-                  <InstagramLabel text="Animals" />
-                </a>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=X9H3%2BGPG%2C%20Welhengoda%20Road%2C%20Ahangama"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  <span className="home-hero-titleLine" style={{ color: "#FFFFFF", whiteSpace: "normal" }}>
+                    {stay.title}
+                  </span>
+                </Title>
+
+                <Paragraph
                   style={{
+                    marginTop: 24,
+                    marginBottom: 0,
+                    maxWidth: 640,
                     color: "#FFFFFF",
-                    textDecoration: "none",
                     fontSize: "clamp(16px, 1.45vw, 19px)",
                     lineHeight: 1.72,
-                    borderBottom: "1px solid rgba(255,255,255,0.65)",
-                    paddingBottom: 6,
                   }}
                 >
-                  <DirectionLabel text="Direction" justify="flex-end" />
-                </a>
+                  {stay.description}
+                </Paragraph>
               </div>
             </div>
+
+            <div
+              style={{
+                position: "absolute",
+                right: "clamp(32px, 4.8vw, 72px)",
+                bottom: "clamp(28px, 4vw, 48px)",
+                zIndex: 4,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 16,
+              }}
+            >
+              <a
+                href="#"
+                style={{
+                  color: "#FFFFFF",
+                  textDecoration: "none",
+                  fontSize: "clamp(16px, 1.45vw, 19px)",
+                  lineHeight: 1.72,
+                  borderBottom: "1px solid rgba(255,255,255,0.65)",
+                  paddingBottom: 6,
+                }}
+              >
+                <InstagramLabel text={stay.instagramLabel} justify="flex-end" />
+              </a>
+              <a
+                href="#"
+                style={{
+                  color: "#FFFFFF",
+                  textDecoration: "none",
+                  fontSize: "clamp(16px, 1.45vw, 19px)",
+                  lineHeight: 1.72,
+                  borderBottom: "1px solid rgba(255,255,255,0.65)",
+                  paddingBottom: 6,
+                }}
+              >
+                <DirectionLabel text="Direction" justify="flex-end" />
+              </a>
+            </div>
           </div>
-        </div>
-      </div>
+        </FullBleedSection>
+      ))}
     </SiteLayout>
   );
 }
