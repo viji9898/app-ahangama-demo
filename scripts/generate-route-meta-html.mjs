@@ -362,6 +362,14 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/comp_pass/gusta-evening-wide.webp",
   },
   {
+    route: "/surf-club",
+    title: "Surf Club Guest Pass",
+    description:
+      "A Surf Club guest benefit offering a complimentary Ahangama Pass, with local perks, wallet access, and curated recommendations included with the visit.",
+    image:
+      "https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-club/image.jpg",
+  },
+  {
     route: "/tahini",
     title: "Tahini & Friends Guest Pass",
     description:

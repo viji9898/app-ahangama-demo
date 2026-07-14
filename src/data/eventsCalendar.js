@@ -738,6 +738,57 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Friday \n8:30 AM – 9:30 AM: Reformer – Strength & control.\n11:00 AM – 12:00 PM: Mat – Core & mobility. \n12:00 PM – 1:00 PM: Reformer – Strength & control. \n\n  Pricing: Reformer 6,000 · Mat & Yoga 3,000. \nBooking: Via Bookwhen · walk-ins as available.\nPolicy: Cancel 72h before ·transfer up to 12h.\nArrival: 10 minutes early to settle in.",
       }),
+            enrichEvent({
+        title: "Krozz Fit Weekly Classes",
+        venue: " Krozz Fit Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/krozzfit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921580/Screenshot_2026-07-13_at_11.16.12_uzym2o.png",
+        description:
+          "Monday\n9:30 AM: Hyrox Class",
+      }),
+                  enrichEvent({
+        title: "Rooftop Shala Weekly Classes",
+        venue: "CASA TIKIRI®️",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/casatikiri?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922955/Screenshot_2026-07-13_at_11.38.54_z1aukp.png",
+        description:
+          "Tuesday\n9:00 AM: Slow Flow with Bessie",
+      }),
+               enrichEvent({
+        title: "Banya Weekly Schedule",
+        venue: "Banya Steam House Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/banyasrilanka?igsh=MTJtczl1MTNrMjd3Yw==",
+        image:
+          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783939797/WhatsApp_Image_2026-07-13_at_16.12.45_lup879.jpg",
+        description:
+          "Tuesday\nWoman’s Day",
+      }),
+           enrichEvent({
+        title: "ULU Weekly Schedule",
+        venue: "ULU, Ahangama & Hiriketiya ",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/ulupilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783919395/Screenshot_2026-07-13_at_10.39.40_knkror.png",
+        description:
+          "Monday \n• 8:00 AM - Mat Pilates L.1.\n• 10:00 AM - Arms Booty & Abs \n• 5:00 PM - Power Reformer L.2",
+                 details: [
+          "15% off all class packs — use code ISLAND15\nValid at both locations | Ends September 1",
+        ],
+      }),
     ],
   },
   {

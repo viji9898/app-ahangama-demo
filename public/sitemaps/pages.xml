@@ -6,7 +6,11 @@
   </url>
   <url>
     <loc>https://ahangama.com/guide</loc>
+<<<<<<< HEAD
     <lastmod>2026-07-13T10:40:50.518Z</lastmod>
+=======
+    <lastmod>2026-07-13T12:50:51.860Z</lastmod>
+>>>>>>> origin/main
   </url>
   <url>
     <loc>https://ahangama.com/map</loc>
@@ -94,7 +98,11 @@
   </url>
   <url>
     <loc>https://ahangama.com/lighthouse</loc>
+<<<<<<< HEAD
     <lastmod>2026-07-13T10:23:04.071Z</lastmod>
+=======
+    <lastmod>2026-07-13T12:51:07.701Z</lastmod>
+>>>>>>> origin/main
   </url>
   <url>
     <loc>https://ahangama.com/mosvold</loc>
@@ -106,6 +114,7 @@
   </url>
   <url>
     <loc>https://ahangama.com/kaffi</loc>
+<<<<<<< HEAD
     <lastmod>2026-07-13T10:23:04.071Z</lastmod>
   </url>
   <url>
@@ -119,5 +128,24 @@
   <url>
     <loc>https://ahangama.com/living-room</loc>
     <lastmod>2026-07-13T10:23:04.071Z</lastmod>
+=======
+    <lastmod>2026-07-13T12:51:07.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ahangama.com/gusta</loc>
+    <lastmod>2026-07-13T12:51:07.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ahangama.com/surf-club</loc>
+    <lastmod>2026-07-13T12:51:07.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ahangama.com/tahini</loc>
+    <lastmod>2026-07-13T12:51:07.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ahangama.com/living-room</loc>
+    <lastmod>2026-07-13T12:51:07.701Z</lastmod>
+>>>>>>> origin/main
   </url>
 </urlset>
