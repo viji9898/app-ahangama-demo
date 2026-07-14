@@ -667,8 +667,73 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
       }),
+        enrichEvent({
+        title: "Kids Movie Night",
+        venue: "Cafe Ceylon",
+        time: "6:15 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/cafe_ceylon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784012969/WhatsApp_Image_2026-07-14_at_08.11.34_jwlacx.jpg",
+        description:
+          "Kids menu - Special price\nChicken schnitzel or sliders with fries.",
+      }),
+              enrichEvent({
+        title: "Electric Sands with Dis & Dat",
+        venue: "Crust Ahangama",
+        time: "7:00 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784013191/WhatsApp_Image_2026-07-14_at_11.02.50_mraje9.jpg",
+        description:
+          "Played by Electric Sands, with Dis & Dat. ",
+      }),
     ],
   },
+  {
+    key: "2026-07-18",
+    weekday: "Wednesday",
+    dayNumber: "18",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784013880/WhatsApp_Image_2026-07-14_at_11.02.51_weqtnd.jpg",
+        description:
+          "Live Music at Kai Ahangama, featuring Channuka.",
+      }),
+    ],
+  },
+  {
+    key: "2026-07-19",
+    weekday: "Wednesday",
+    dayNumber: "19",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music",
+        venue: "Kai Ahangama",
+        time: "5:00 PM onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784013697/WhatsApp_Image_2026-07-14_at_11.02.51_1_klkvx6.jpg",
+        description:
+          "Live Music at Kai Ahangama, featuring Delaa.",
+      }),
+    ],
+  },
+  
   {
     key: "ongoing-this-week",
     weekday: "The Weekly",
@@ -726,6 +791,19 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Monday\n•4:00 PM – 5:00 PM: Hatha Yoga (Isuru)",
       }),
+       enrichEvent({
+        title: "Banya Weekly Schedule",
+        venue: "Banya Steam House",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/banyasrilanka?igsh=MTJtczl1MTNrMjd3Yw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784012173/WhatsApp_Image_2026-07-13_at_16.12.45_sdl94r.jpg",
+        description:
+          "Wednesday\n• Men's Day",
+           passBenefit: null,
+      }),
       enrichEvent({
         title: "Flow Ground Studio Weekly Classes",
         venue: "Flow Ground Studio",
@@ -737,57 +815,6 @@ export const EVENTS_CALENDAR_DAYS = [
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921223/Screenshot_2026-07-13_at_11.10.15_fgle2u.png",
         description:
           "Friday \n8:30 AM – 9:30 AM: Reformer – Strength & control.\n11:00 AM – 12:00 PM: Mat – Core & mobility. \n12:00 PM – 1:00 PM: Reformer – Strength & control. \n\n  Pricing: Reformer 6,000 · Mat & Yoga 3,000. \nBooking: Via Bookwhen · walk-ins as available.\nPolicy: Cancel 72h before ·transfer up to 12h.\nArrival: 10 minutes early to settle in.",
-      }),
-            enrichEvent({
-        title: "Krozz Fit Weekly Classes",
-        venue: " Krozz Fit Ahangama",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/krozzfit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921580/Screenshot_2026-07-13_at_11.16.12_uzym2o.png",
-        description:
-          "Monday\n9:30 AM: Hyrox Class",
-      }),
-                  enrichEvent({
-        title: "Rooftop Shala Weekly Classes",
-        venue: "CASA TIKIRI®️",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/casatikiri?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922955/Screenshot_2026-07-13_at_11.38.54_z1aukp.png",
-        description:
-          "Tuesday\n9:00 AM: Slow Flow with Bessie",
-      }),
-               enrichEvent({
-        title: "Banya Weekly Schedule",
-        venue: "Banya Steam House Ahangama",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/banyasrilanka?igsh=MTJtczl1MTNrMjd3Yw==",
-        image:
-          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783939797/WhatsApp_Image_2026-07-13_at_16.12.45_lup879.jpg",
-        description:
-          "Tuesday\nWoman’s Day",
-      }),
-           enrichEvent({
-        title: "ULU Weekly Schedule",
-        venue: "ULU, Ahangama & Hiriketiya ",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/ulupilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783919395/Screenshot_2026-07-13_at_10.39.40_knkror.png",
-        description:
-          "Monday \n• 8:00 AM - Mat Pilates L.1.\n• 10:00 AM - Arms Booty & Abs \n• 5:00 PM - Power Reformer L.2",
-                 details: [
-          "15% off all class packs — use code ISLAND15\nValid at both locations | Ends September 1",
-        ],
       }),
     ],
   },
