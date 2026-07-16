@@ -861,7 +861,7 @@ export const EVENTS_CALENDAR_DAYS = [
   {
     key: "ongoing",
     weekday: "The Weekly",
-    dayNumber: "Note",
+    dayNumber: "Notice",
     month: "",
     events: [
       enrichEvent({
