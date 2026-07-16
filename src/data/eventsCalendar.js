@@ -667,6 +667,61 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Film screening 'Monsters Cave', guest speakers Dilsiri Welikala (Kite Surfing Lanka), Pearl Protectors & more, facilitated by Marla Lise (The Eco Chapter).",
       }),
+      
+    ],
+  },
+  {
+    key: "2026-07-17",
+    weekday: "Wednesday",
+    dayNumber: "17",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Weekend Flow ",
+        venue: "Crust Ahangama",
+        time: "7:00 PM till dawn",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784193296/WhatsApp_Image_2026-07-16_at_11.09.47_hgmjyc.jpg",
+        description:
+          "DJ Night with DJ Shaggy. Pizza / Music / Drinks.",
+      }),
+      enrichEvent({
+        title: "Mono Fridays ",
+        venue: "Mono Ahangama",
+        time: "8:00 PM – 12:00 AM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/find_mono_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784210684/WhatsApp_Image_2026-07-15_at_20.48.14_nnoipq.jpg",
+        description:
+          "Featuring Funk Frequents and Anddrewn.\nFunky House / Disco / Afro House.",
+      }),
+      
+    ],
+  },
+   {
+    key: "2026-07-25",
+    weekday: "Saturday",
+    dayNumber: "25",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Sunset Club Vol. 3",
+        venue: "Surf Club Midigama",
+        time: "3:00 PM – 11:00 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/surfclubmidigama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784210569/WhatsApp_Image_2026-07-15_at_20.47.19_sfgnr4.jpg",
+        description:
+          "Featuring Tres Manos and Alexxo.",
+      }),
+      
     ],
   },
   {
@@ -702,6 +757,18 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Monday\n• 9:00 AM – 10:00 AM: Grounding Yoga Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)",
       }),
+       enrichEvent({
+        title: "Loka Lanka Fitness Class Schedule",
+        venue: "Loka Lanka Fitness Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/lokalankafitness?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784212556/Screenshot_2026-07-16_at_20.05.48_ogeyaw.png",
+        description:
+          "Friday\n• 8:00 AM: Boxing – 45 min\n• 9:15 AM: Strength (Pull) – 60 min\n• 10:30 AM: HIIT Circuit – 45 min\n• Ice Bath – 1000 Rs",
+      }),
             enrichEvent({
         title: "Music Week",
         venue: "Hotel De Uncle'sAhangama",
@@ -712,7 +779,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922441/Screenshot_2026-07-13_at_11.30.32_u2clbr.png",
         description:
-          "Tuesday\n• Tiny Bar Sessions — Live Music: DELAA",
+          "Thursday\n• Karaoke Thurseday",
       }),
       enrichEvent({
         title: "Calma Samaya Weekly Schedule",
@@ -793,6 +860,27 @@ export const EVENTS_CALENDAR_DAYS = [
   },
   {
     key: "ongoing",
+    weekday: "The Weekly",
+    dayNumber: "Note",
+    month: "",
+    events: [
+      enrichEvent({
+        title: "Closed tomorrow",
+        venue: "Sellam Ahangama",
+        time: "5:00 PM - 7:00 PM",
+        category: "Ongoing",
+        image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784211078/WhatsApp_Image_2026-07-16_at_19.29.49_unkjow.jpg",
+        description: "Buy 2 get 1 free for all cocktails during happy hour.",
+        instagramUrl:
+          "https://www.instagram.com/sellamgym/?utm_source=ig_web_button_share_sheet",
+        description: "Closed tomorrow (Friday 17/07) due to a power cut in the area. .",
+        passBenefit: null,
+      }),
+    ],
+  },
+
+  {
+    key: "ongoing",
     weekday: "Local",
     dayNumber: "Perks",
     month: "",
@@ -857,6 +945,7 @@ export const EVENTS_CALENDAR_DAYS = [
       }),
     ],
   },
+  
 ];
 
 export const EVENTS_EDITOR_PICKS = [
