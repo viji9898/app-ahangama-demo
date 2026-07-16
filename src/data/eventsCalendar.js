@@ -672,7 +672,7 @@ export const EVENTS_CALENDAR_DAYS = [
   },
   {
     key: "2026-07-17",
-    weekday: "Wednesday",
+    weekday: "Friday",
     dayNumber: "17",
     month: "July",
     events: [
@@ -699,6 +699,48 @@ export const EVENTS_CALENDAR_DAYS = [
         "https://res.cloudinary.com/xmybcqyi/image/upload/v1784210684/WhatsApp_Image_2026-07-15_at_20.48.14_nnoipq.jpg",
         description:
           "Featuring Funk Frequents and Anddrewn.\nFunky House / Disco / Afro House.",
+      }),
+      
+    ],
+  },
+     {
+    key: "2026-07-18",
+    weekday: "Saturday",
+    dayNumber: "18",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music ",
+        venue: "Kai Ahangama",
+        time: "5:00 PM onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784013880/WhatsApp_Image_2026-07-14_at_11.02.51_weqtnd.jpg",
+        description:
+          "Live Music at Kai Ahangama, featuring Channuka.",
+      }),
+      
+    ],
+  },
+   {
+    key: "2026-07-19",
+    weekday: "Sunday",
+    dayNumber: "19",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Live Music ",
+        venue: "Kai Ahangama",
+        time: "5:00 PM onwards",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/kai_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784013697/WhatsApp_Image_2026-07-14_at_11.02.51_1_klkvx6.jpg",
+        description:
+          "Live Music at Kai Ahangama, featuring Delaa.",
       }),
       
     ],
@@ -740,7 +782,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783918698/Screenshot_2026-07-13_at_10.27.22_tk338e.png",
         description:
-          "Monday\n•  8:30 AM - Crossfit\n•  10:00 AM - Muay Thai\n•  12:00 PM -  Functional Strength",
+          "Saturday\n• 9.00am Power Vinyasa.",
         details: [
           "Open for open gym outside of class hours",
         ],
@@ -755,7 +797,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665264/Screenshot_2026-07-10_at_12.04.04_uyklwo.png",
         description:
-          "Monday\n• 9:00 AM – 10:00 AM: Grounding Yoga Flow (Pardis)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)\n• 3:00 PM – 4:00 PM: Reformer Pilates (Hannah)",
+          "Friday\n• 9:30 AM – 10:30 AM: Slow Flow (Moti)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)",
       }),
        enrichEvent({
         title: "Loka Lanka Fitness Class Schedule",
@@ -779,7 +821,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922441/Screenshot_2026-07-13_at_11.30.32_u2clbr.png",
         description:
-          "Thursday\n• Karaoke Thurseday",
+          "Saturday\n• DJ played by Asid Monkey",
       }),
       enrichEvent({
         title: "Calma Samaya Weekly Schedule",
@@ -791,7 +833,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665449/Screenshot_2026-07-10_at_12.06.45_jolz5b.png",
         description:
-          "Monday\n•4:00 PM – 5:00 PM: Hatha Yoga (Isuru)",
+          "Friday\n•10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)",
       }),
       enrichEvent({
         title: "Flow Ground Studio Weekly Classes",
@@ -815,7 +857,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921580/Screenshot_2026-07-13_at_11.16.12_uzym2o.png",
         description:
-          "Monday\n9:30 AM: Hyrox Class",
+          "Saturday\n10:00 AM: HIIT Class",
       }),
                   enrichEvent({
         title: "Rooftop Shala Weekly Classes",
@@ -827,7 +869,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922955/Screenshot_2026-07-13_at_11.38.54_z1aukp.png",
         description:
-          "Tuesday\n9:00 AM: Slow Flow with Bessie",
+          "Friday\n9:00 AM: Slow Flow with Bessie",
       }),
                enrichEvent({
         title: "Banya Weekly Schedule",
@@ -839,7 +881,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783939797/WhatsApp_Image_2026-07-13_at_16.12.45_lup879.jpg",
         description:
-          "Tuesday\nWoman’s Day",
+          "Friday\nFor Private Booking",
       }),
            enrichEvent({
         title: "ULU Weekly Schedule",
@@ -851,7 +893,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783919395/Screenshot_2026-07-13_at_10.39.40_knkror.png",
         description:
-          "Monday \n• 8:00 AM - Mat Pilates L.1.\n• 10:00 AM - Arms Booty & Abs \n• 5:00 PM - Power Reformer L.2",
+          "Friday \n• 8:00 AM: Power Reformer L.2\n• 10:00 AM: Power Reformer L.1 \n• 4:00 PM: Arms Booty & Abs",
                  details: [
           "15% off all class packs — use code ISLAND15\nValid at both locations | Ends September 1",
         ],
@@ -865,7 +907,7 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "",
     events: [
       enrichEvent({
-        title: "Closed tomorrow",
+        title: "Closed Tomorrow",
         venue: "Sellam Ahangama",
         time: "5:00 PM - 7:00 PM",
         category: "Ongoing",
