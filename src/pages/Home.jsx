@@ -903,7 +903,7 @@ export default function Home() {
                   }}
                   onClick={() => {
                     window.open(
-                      "https://wa.me/94777908790?text=Hi!%20I%20have%20concerns%20about%20the%20test%20data%20on%20your%20concept%20site.",
+                      "https://wa.me/94777422274?text=Hi!%20I%20have%20concerns%20about%20the%20test%20data%20on%20your%20concept%20site.",
                       "_blank"
                     );
                   }}
@@ -2624,7 +2624,7 @@ export default function Home() {
                           }}
                         >
                           <QRCode
-                            value="https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide"
+                            value="https://wa.me/94777422274?text=please%20send%20me%20the%20Ahangama%20Guide"
                             size={90}
                             level="M"
                             fgColor="#2F3349"

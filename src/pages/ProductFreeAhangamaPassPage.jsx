@@ -35,7 +35,7 @@ const howSteps = [
 ];
 
 const whatsappGuideUrl =
-  "https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide";
+  "https://wa.me/94777422274?text=please%20send%20me%20the%20Ahangama%20Guide";
 
 export default function ProductFreeAhangamaPassPage() {
   return (

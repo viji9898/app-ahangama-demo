@@ -351,7 +351,7 @@ const generatePassPDF = async (
 
   pdf.setFontSize(7);
   pdf.setFont("helvetica", "normal");
-  pdf.text("WhatsApp: +94 777 908 790", margin, currentY);
+  pdf.text("WhatsApp: +94 77 742 2274", margin, currentY);
   currentY += 5;
   pdf.text("Web: ahangama.com", margin, currentY);
   currentY += 8;

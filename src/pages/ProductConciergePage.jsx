@@ -42,7 +42,7 @@ const bestFor = [
 ];
 
 const whatsappConciergeUrl =
-  "https://wa.me/94777908790?text=Hi%20Ahangama%20-%20I%27d%20like%20to%20speak%20to%20concierge";
+  "https://wa.me/94777422274?text=Hi%20Ahangama%20-%20I%27d%20like%20to%20speak%20to%20concierge";
 
 export default function ProductConciergePage() {
   return (

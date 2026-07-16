@@ -483,7 +483,7 @@ const CardTerms = () => {
                       Email Support
                     </Button> */}
                     <Button
-                      href="https://wa.me/94777908790?text=I have a question about the card terms"
+                      href="https://wa.me/94777422274?text=I have a question about the card terms"
                       target="_blank"
                       style={{ color: "#25D366", borderColor: "#25D366" }}
                     >

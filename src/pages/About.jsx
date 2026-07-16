@@ -493,7 +493,7 @@ export default function About() {
 
                   <Button
                     size="large"
-                    href="https://wa.me/94777908790?text=please%20send%20me%20the%20Ahangama%20Guide"
+                    href="https://wa.me/94777422274?text=please%20send%20me%20the%20Ahangama%20Guide"
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={<BookOutlined />}

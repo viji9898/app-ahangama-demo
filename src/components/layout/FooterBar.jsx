@@ -66,7 +66,7 @@ const socialLinks = [
   },
   {
     label: "WhatsApp",
-    href: "https://wa.me/94777908790?text=Hi%20Ahangama%20-%20I%20would%20love%20some%20local%20recommendations.",
+    href: "https://wa.me/94777422274?text=Hi%20Ahangama%20-%20I%20would%20love%20some%20local%20recommendations.",
     external: true,
   },
   {

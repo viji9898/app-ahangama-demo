@@ -35,7 +35,7 @@ const howSteps = [
 ];
 
 const whatsappSupportUrl =
-  "https://wa.me/94777908790?text=Hi%20Ahangama%20-%20please%20notify%20me%20when%20Pass%2B%20is%20available";
+  "https://wa.me/94777422274?text=Hi%20Ahangama%20-%20please%20notify%20me%20when%20Pass%2B%20is%20available";
 
 export default function Product5UsdAhangamaPassPage() {
   return (

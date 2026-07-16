@@ -262,7 +262,7 @@ export default function GettingAroundSection() {
               rentals and practical travel advice.
             </Text>
             <a
-              href="https://wa.me/94777908790?text=Hi%2C%20I%20need%20help%20booking%20transport%20in%20Ahangama."
+              href="https://wa.me/94777422274?text=Hi%2C%20I%20need%20help%20booking%20transport%20in%20Ahangama."
               target="_blank"
               rel="noopener noreferrer"
               style={{
