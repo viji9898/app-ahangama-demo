@@ -7460,8 +7460,8 @@ h4,
 
 .events-agenda-dayNumber--label {
   font-size: 44px;
-  line-height: 0.95;
-  white-space: pre-line;
+  line-height: 1.1;
+  white-space: normal;
 }
 
 .events-agenda-month {
