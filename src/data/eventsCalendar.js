@@ -909,13 +909,26 @@ export const EVENTS_CALENDAR_DAYS = [
       enrichEvent({
         title: "Closed Tomorrow",
         venue: "Sellam Ahangama",
-        time: "5:00 PM - 7:00 PM",
+        time: "Friday, 17 July",
         category: "Ongoing",
         image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784211078/WhatsApp_Image_2026-07-16_at_19.29.49_unkjow.jpg",
         description: "Buy 2 get 1 free for all cocktails during happy hour.",
         instagramUrl:
           "https://www.instagram.com/sellamgym/?utm_source=ig_web_button_share_sheet",
-        description: "Closed tomorrow (Friday 17/07) due to a power cut in the area. .",
+        description: "Closed tomorrow (Friday 17/07) due to a power cut in the area.",
+        passBenefit: null,
+      }),
+
+      enrichEvent({
+        title: "Temporary Closure",
+        venue: "The Pink House, Ahangama",
+        time: "Friday, 17 July",
+        category: "Ongoing",
+        image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784265256/WhatsApp_Image_2026-07-17_at_09.57.54_uhmibm.jpg",
+        description: "Buy 2 get 1 free for all cocktails during happy hour.",
+        instagramUrl:
+          "https://www.instagram.com/thepinkhouse_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        description: "Due to an unexpected power outage, The Pink House will be closed Friday, 17 July.",
         passBenefit: null,
       }),
     ],
@@ -927,6 +940,17 @@ export const EVENTS_CALENDAR_DAYS = [
     dayNumber: "Perks",
     month: "",
     events: [
+      enrichEvent({
+        title: "Come for Yoga, Stay for the Moment",
+        venue: "Calma Samaya",
+        time: "Valid till 31st July only",
+        category: "Ongoing",
+        image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784265545/WhatsApp_Image_2026-07-17_at_10.12.41_gsi644.jpg",
+        description: "Enjoy 20% off coffee or matcha at Café Samaya when you attend a yoga class. Valid till 31st July only. Don't miss this limited-time offer.",
+        instagramUrl:
+          "https://www.instagram.com/calmasamaya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        passBenefit: null,
+      }),
       enrichEvent({
         title: "Daily Happy Hour",
         venue: "Samba",
