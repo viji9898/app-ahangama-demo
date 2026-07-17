@@ -89,6 +89,43 @@ export default function EventsPage() {
                 </Paragraph>
               ) : null}
 
+              {event.venueLinks?.length ? (
+                <ul className="events-agenda-details">
+                  {event.venueLinks.map((venueLink) => (
+                    <li key={venueLink.name}>
+                      <Text>{venueLink.name}</Text>
+                      <div
+                        className="events-agenda-links"
+                        style={{ marginTop: 8 }}
+                      >
+                        {venueLink.instagramUrl ? (
+                          <a
+                            href={venueLink.instagramUrl}
+                            className="events-agenda-link events-agenda-linkInstagram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Instagram for ${venueLink.name}`}
+                          >
+                            <InstagramOutlined />
+                          </a>
+                        ) : null}
+                        {venueLink.directionsUrl ? (
+                          <a
+                            href={venueLink.directionsUrl}
+                            className="events-agenda-link events-agenda-linkLocation"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Directions to ${venueLink.name}`}
+                          >
+                            <EnvironmentOutlined />
+                          </a>
+                        ) : null}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
               {event.details?.length ? (
                 <ul className="events-agenda-details">
                   {event.details.map((detail) => (
@@ -122,26 +159,32 @@ export default function EventsPage() {
                 </div>
               ) : null}
 
-              <div className="events-agenda-links">
-                <a
-                  href={event.instagramUrl}
-                  className="events-agenda-link events-agenda-linkInstagram"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Instagram for ${event.venue}`}
-                >
-                  <InstagramOutlined />
-                </a>
-                <a
-                  href={event.directionsUrl}
-                  className="events-agenda-link events-agenda-linkLocation"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Directions to ${event.venue}`}
-                >
-                  <EnvironmentOutlined />
-                </a>
-              </div>
+              {event.instagramUrl || event.directionsUrl ? (
+                <div className="events-agenda-links">
+                  {event.instagramUrl ? (
+                    <a
+                      href={event.instagramUrl}
+                      className="events-agenda-link events-agenda-linkInstagram"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Instagram for ${event.venue}`}
+                    >
+                      <InstagramOutlined />
+                    </a>
+                  ) : null}
+                  {event.directionsUrl ? (
+                    <a
+                      href={event.directionsUrl}
+                      className="events-agenda-link events-agenda-linkLocation"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Directions to ${event.venue}`}
+                    >
+                      <EnvironmentOutlined />
+                    </a>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
           </article>
         ))}
