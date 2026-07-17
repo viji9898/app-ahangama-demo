@@ -912,7 +912,6 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "Friday, 17 July",
         category: "Ongoing",
         image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784211078/WhatsApp_Image_2026-07-16_at_19.29.49_unkjow.jpg",
-        description: "Buy 2 get 1 free for all cocktails during happy hour.",
         instagramUrl:
           "https://www.instagram.com/sellamgym/?utm_source=ig_web_button_share_sheet",
         description: "Closed tomorrow (Friday 17/07) due to a power cut in the area.",
@@ -925,10 +924,32 @@ export const EVENTS_CALENDAR_DAYS = [
         time: "Friday, 17 July",
         category: "Ongoing",
         image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784265256/WhatsApp_Image_2026-07-17_at_09.57.54_uhmibm.jpg",
-        description: "Buy 2 get 1 free for all cocktails during happy hour.",
         instagramUrl:
           "https://www.instagram.com/thepinkhouse_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         description: "Due to an unexpected power outage, The Pink House will be closed Friday, 17 July.",
+        passBenefit: null,
+      }),
+      enrichEvent({
+        title: "Generator Available",
+        time: "Friday, 17 July",
+        category: "Ongoing",
+        image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784268416/generator_available_notice_1_wtznhw.png",
+        description:
+          "The following places currently have power due to availability of generators:",
+        venueLinks: [
+          {
+            name: "Ember & Ice Ahangama",
+            instagramUrl: "https://www.instagram.com/emberandiceahangama/",
+            directionsUrl: "https://maps.google.com/?q=Ember+%26+Ice+Ahangama",
+          },
+          {
+            name: "PALM Ahangama",
+            instagramUrl: "https://www.instagram.com/palmhotelsrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+            directionsUrl: "https://maps.google.com/?q=PALM+Ahangama",
+          },
+        ],
+        instagramUrl: null,
+        directionsUrl: null,
         passBenefit: null,
       }),
     ],
