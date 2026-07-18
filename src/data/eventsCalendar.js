@@ -124,6 +124,24 @@ function enrichEvent(event) {
   };
 }
 
+function isExpiredNotice(event, todayKey = getTodayKey()) {
+  if (!event.expiryDate) return false;
+
+  return String(event.expiryDate).slice(0, 10) < todayKey;
+}
+
+function formatNoticeExpiryDate(expiryDate) {
+  const date = new Date(`${String(expiryDate).slice(0, 10)}T00:00:00`);
+
+  if (Number.isNaN(date.getTime())) return String(expiryDate);
+
+  return date.toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+}
+
 export const EVENTS_CALENDAR_OVERVIEW = {
   monthLabel: "July 2026",
   kicker: "Ahangama Events Agenda",
@@ -742,6 +760,39 @@ export const EVENTS_CALENDAR_DAYS = [
         description:
           "Live Music at Kai Ahangama, featuring Delaa.",
       }),
+            enrichEvent({
+        title: "Sunday Sunset Party",
+        venue: "Hakuna Matata Ahangama",
+        time: "5:00 PM - 7:00 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/hakuna_matata_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784364361/WhatsApp_Image_2026-07-17_at_23.13.46_fpx2t2.jpg",
+        description:
+          "Featuring Dashasun, Vlasova, Skillz Jay, and Mr Percussion.\nHappy Hour 5-7 PM (20% off any cocktail).",
+      }),
+      
+    ],
+  },
+   {
+    key: "2026-07-22",
+    weekday: "Wednesday",
+    dayNumber: "22",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Movie Night – Turning Red (Kids Special)",
+        venue: "Cafe Ceylon",
+        time: "6:15 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/cafe_ceylon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image: 
+        "https://res.cloudinary.com/xmybcqyi/image/upload/v1784365719/WhatsApp_Image_2026-07-18_at_11.33.36_wlsucg.jpg",
+        description:
+          "Kids Special Night — Movie Night featuring Turning Red.\n Kids menu at special price: chicken schnitzel or sliders with fries.",
+      }),
       
     ],
   },
@@ -782,7 +833,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783918698/Screenshot_2026-07-13_at_10.27.22_tk338e.png",
         description:
-          "Saturday\n• 9.00am Power Vinyasa.",
+          "Sunday\n• 9am: Hatha",
         details: [
           "Open for open gym outside of class hours",
         ],
@@ -797,19 +848,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665264/Screenshot_2026-07-10_at_12.04.04_uyklwo.png",
         description:
-          "Friday\n• 9:30 AM – 10:30 AM: Slow Flow (Moti)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Vivienne)",
-      }),
-       enrichEvent({
-        title: "Loka Lanka Fitness Class Schedule",
-        venue: "Loka Lanka Fitness Ahangama",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/lokalankafitness?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784212556/Screenshot_2026-07-16_at_20.05.48_ogeyaw.png",
-        description:
-          "Friday\n• 8:00 AM: Boxing – 45 min\n• 9:15 AM: Strength (Pull) – 60 min\n• 10:30 AM: HIIT Circuit – 45 min\n• Ice Bath – 1000 Rs",
+          "Sunday\n• 9:00 AM – 10:00 AM: Slow Flow (Moti)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
       }),
             enrichEvent({
         title: "Music Week",
@@ -833,7 +872,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665449/Screenshot_2026-07-10_at_12.06.45_jolz5b.png",
         description:
-          "Friday\n•10:30 AM – 11:30 AM: Vinyasa Yoga (Linnea)",
+          "Saturday\n• 4:00 PM – 5:00 PM: Hatha Yoga (Isuru)",
       }),
       enrichEvent({
         title: "Flow Ground Studio Weekly Classes",
@@ -845,32 +884,9 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921223/Screenshot_2026-07-13_at_11.10.15_fgle2u.png",
         description:
-          "Friday \n8:30 AM – 9:30 AM: Reformer – Strength & control.\n11:00 AM – 12:00 PM: Mat – Core & mobility. \n12:00 PM – 1:00 PM: Reformer – Strength & control. \n\n  Pricing: Reformer 6,000 · Mat & Yoga 3,000. \nBooking: Via Bookwhen · walk-ins as available.\nPolicy: Cancel 72h before ·transfer up to 12h.\nArrival: 10 minutes early to settle in.",
+          "Sunday \n• No Classes",
       }),
-            enrichEvent({
-        title: "Krozz Fit Weekly Classes",
-        venue: " Krozz Fit Ahangama",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/krozzfit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921580/Screenshot_2026-07-13_at_11.16.12_uzym2o.png",
-        description:
-          "Saturday\n10:00 AM: HIIT Class",
-      }),
-                  enrichEvent({
-        title: "Rooftop Shala Weekly Classes",
-        venue: "CASA TIKIRI®️",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/casatikiri?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922955/Screenshot_2026-07-13_at_11.38.54_z1aukp.png",
-        description:
-          "Friday\n9:00 AM: Slow Flow with Bessie",
-      }),
+
                enrichEvent({
         title: "Banya Weekly Schedule",
         venue: "Banya Steam House Ahangama",
@@ -881,7 +897,20 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783939797/WhatsApp_Image_2026-07-13_at_16.12.45_lup879.jpg",
         description:
-          "Friday\nFor Private Booking",
+          "Saturday\nFor Private Booking",
+      }),
+                 enrichEvent({
+        title: "Kumbuk Community Weekly Activities",
+        venue: "Kumbuk Community",
+        time: "9:00 AM",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/kumbuk.community?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784366730/Screenshot_2026-07-18_at_14.55.15_kdn3es.png",
+        description:
+          "Every Week\n• Postcard & Coconut Shell Drawing – 2000/-\n\nEvery Tuesday & Thursday\n •4:00 PM – 7:00 PM: Traditional Cooking Class – 12,000/-\n\nEvery Saturday & Sunday\n• 10:00 AM – 12:00 PM: Crafts from Coconut Shell Workshop – 5000/-\n\nEvery Monday & Saturday\n• Canvas Painting Sessions – 3000/-\n\n Flexible date and time\n• Indigenous Rice Cultivation Workshop + Lunch – 9000/-\n• Traditional Cinnamon Cultivating & Harvesting Workshop – 6000/-",
+        passBenefit: null,
       }),
            enrichEvent({
         title: "ULU Weekly Schedule",
@@ -893,12 +922,13 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783919395/Screenshot_2026-07-13_at_10.39.40_knkror.png",
         description:
-          "Friday \n• 8:00 AM: Power Reformer L.2\n• 10:00 AM: Power Reformer L.1 \n• 4:00 PM: Arms Booty & Abs",
+          "Saturday \n• 9:00 AM: Mat Pilates L.1\n• 11:00 AM: Power Reformer L.1 \n• 3:00 PM: Arms Booty & Abs",
                  details: [
           "15% off all class packs — use code ISLAND15\nValid at both locations | Ends September 1",
         ],
       }),
     ],
+    
   },
   {
     key: "ongoing",
@@ -915,8 +945,10 @@ export const EVENTS_CALENDAR_DAYS = [
         instagramUrl:
           "https://www.instagram.com/sellamgym/?utm_source=ig_web_button_share_sheet",
         description: "Closed tomorrow (Friday 17/07) due to a power cut in the area.",
+        expiryDate: "2026-07-17",
         passBenefit: null,
       }),
+
 
       enrichEvent({
         title: "Temporary Closure",
@@ -927,6 +959,7 @@ export const EVENTS_CALENDAR_DAYS = [
         instagramUrl:
           "https://www.instagram.com/thepinkhouse_ahangama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         description: "Due to an unexpected power outage, The Pink House will be closed Friday, 17 July.",
+        expiryDate: "2026-07-17",
         passBenefit: null,
       }),
       enrichEvent({
@@ -936,6 +969,7 @@ export const EVENTS_CALENDAR_DAYS = [
         image: "https://res.cloudinary.com/xmybcqyi/image/upload/v1784268416/generator_available_notice_1_wtznhw.png",
         description:
           "The following places currently have power due to availability of generators:",
+        expiryDate: "2026-07-17",
         venueLinks: [
           {
             name: "Ember & Ice Ahangama",
@@ -1067,7 +1101,14 @@ function buildUpcomingCalendarDays() {
     (day) => day.key.startsWith("ongoing"),
   );
 
-  return [...datedDays.filter((day) => day.key >= todayKey), ...ongoingDays];
+  const filteredOngoingDays = ongoingDays
+    .map((day) => ({
+      ...day,
+      events: day.events.filter((event) => !isExpiredNotice(event, todayKey)),
+    }))
+    .filter((day) => day.events.length > 0);
+
+  return [...datedDays.filter((day) => day.key >= todayKey), ...filteredOngoingDays];
 }
 
 function buildHomepageEvents(days) {

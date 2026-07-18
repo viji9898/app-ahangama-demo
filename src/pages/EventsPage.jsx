@@ -89,6 +89,18 @@ export default function EventsPage() {
                 </Paragraph>
               ) : null}
 
+              {event.expiryDate ? (
+                <div className="events-agenda-details">
+                  <Text className="events-agenda-expiryDate">
+                    Expiry Date: {new Date(`${String(event.expiryDate).slice(0, 10)}T00:00:00`).toLocaleDateString("en-GB", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                    })}
+                  </Text>
+                </div>
+              ) : null}
+
               {event.venueLinks?.length ? (
                 <ul className="events-agenda-details">
                   {event.venueLinks.map((venueLink) => (
