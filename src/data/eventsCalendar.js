@@ -824,19 +824,18 @@ export const EVENTS_CALENDAR_DAYS = [
     month: "",
     events: [
       enrichEvent({
-        title: "The Well Yoga Week",
-        venue: "The Well",
+        title: "Pura Pilates Weekly Classes",
+        venue: "Pura Pilates",
         time: "9:00 AM",
         category: "Wellness",
         instagramUrl:
-         "https://www.instagram.com/crossfitceylonpalm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+         "https://www.instagram.com/purapilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783918698/Screenshot_2026-07-13_at_10.27.22_tk338e.png",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784496979/Screenshot_2026-07-20_at_03.06.10_i4b0ox.png",
         description:
-          "Sunday\n• 9am: Hatha",
-        details: [
-          "Open for open gym outside of class hours",
-        ],
+          "Monday\n• 8:30 AM – 9:30 AM: Reformer – Strength & control\n•11:00 AM – 12:00 PM: Mat – Core & mobility \n• 12:00 PM – 1:00 PM: Reformer – Strength & control",
+          passBenefit: null,
+          
       }),
       enrichEvent({
         title: "Terra Weekly Classes",
@@ -848,19 +847,31 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665264/Screenshot_2026-07-10_at_12.04.04_uyklwo.png",
         description:
-          "Sunday\n• 9:00 AM – 10:00 AM: Slow Flow (Moti)\n• 9:30 AM – 10:30 AM: Reformer Pilates (Hannah)\n• 4:00 PM – 5:00 PM: Yin Yoga (Pardis)",
+          "Monday\n•9:00 AM – 10:00 AM: Grounding Yoga Flow (Pardis)\n•9:30 AM – 10:30 AM: Reformer Pilates (Emmanuel)",
+      }),
+      enrichEvent({
+        title: " Palm Weekly Classes",
+        venue: "CrossFit Ceylon Ahangama",
+        time: "Weekly Schedule",
+        category: "Wellness",
+        instagramUrl:
+         "https://www.instagram.com/crossfitceylonpalm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        image:
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784495990/Screenshot_2026-07-20_at_02.49.28_z69qvu.png",
+        description:
+          "Monday\n•8:30 AM: Crossfit\n•10:00 AM: Muay Thai\n•12:00 PM: Functional Strength",
       }),
             enrichEvent({
-        title: "Music Week",
-        venue: "Hotel De Uncle'sAhangama",
+        title: "The Nuga House – Weekly Schedule",
+        venue: "The Nuga House Ahangama",
         time: "Weekly Schedule",
-        category: "Entertainment ",
+        category: "Wellness",
         instagramUrl:
-         "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+         "https://www.instagram.com/thenugahouse?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783922441/Screenshot_2026-07-13_at_11.30.32_u2clbr.png",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784495456/Screenshot_2026-07-20_at_02.40.49_faw7kw.png",
         description:
-          "Saturday\n• DJ played by Asid Monkey",
+          "Tuesday\n• 8:30 AM: Vinyasa Flow with Cat",
       }),
       enrichEvent({
         title: "Calma Samaya Weekly Schedule",
@@ -872,32 +883,19 @@ export const EVENTS_CALENDAR_DAYS = [
         image:
           "https://res.cloudinary.com/xmybcqyi/image/upload/v1783665449/Screenshot_2026-07-10_at_12.06.45_jolz5b.png",
         description:
-          "Saturday\n• 4:00 PM – 5:00 PM: Hatha Yoga (Isuru)",
+          "Monday\n• 10:30 AM: Hatha Yoga (Natasha)\n• 4:00 PM: Yin Yoga (Isuru)",
       }),
       enrichEvent({
-        title: "Flow Ground Studio Weekly Classes",
-        venue: "Flow Ground Studio",
+        title: "Soul & Surf Yoga Weekly Classes",
+        venue: "Soul & Surf, Sri Lanka",
         time: "Weekly Schedule",
         category: "Wellness",
         instagramUrl:
-         "https://www.instagram.com/flowground?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+         "https://www.instagram.com/soulandsurfsrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783921223/Screenshot_2026-07-13_at_11.10.15_fgle2u.png",
+          "https://res.cloudinary.com/xmybcqyi/image/upload/v1784497220/Screenshot_2026-07-20_at_03.10.05_w2tc6s.png",
         description:
-          "Sunday \n• No Classes",
-      }),
-
-               enrichEvent({
-        title: "Banya Weekly Schedule",
-        venue: "Banya Steam House Ahangama",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/banyasrilanka?igsh=MTJtczl1MTNrMjd3Yw==",
-        image:
-          "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783939797/WhatsApp_Image_2026-07-13_at_16.12.45_lup879.jpg",
-        description:
-          "Saturday\nFor Private Booking",
+          "Monday \n• 3:00 PM: Vinyasa Flow",
       }),
                  enrichEvent({
         title: "Kumbuk Community Weekly Activities",
@@ -912,21 +910,7 @@ export const EVENTS_CALENDAR_DAYS = [
           "Every Week\n• Postcard & Coconut Shell Drawing – 2000/-\n\nEvery Tuesday & Thursday\n •4:00 PM – 7:00 PM: Traditional Cooking Class – 12,000/-\n\nEvery Saturday & Sunday\n• 10:00 AM – 12:00 PM: Crafts from Coconut Shell Workshop – 5000/-\n\nEvery Monday & Saturday\n• Canvas Painting Sessions – 3000/-\n\n Flexible date and time\n• Indigenous Rice Cultivation Workshop + Lunch – 9000/-\n• Traditional Cinnamon Cultivating & Harvesting Workshop – 6000/-",
         passBenefit: null,
       }),
-           enrichEvent({
-        title: "ULU Weekly Schedule",
-        venue: "ULU, Ahangama & Hiriketiya ",
-        time: "Weekly Schedule",
-        category: "Wellness",
-        instagramUrl:
-         "https://www.instagram.com/ulupilatessrilanka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        image:
-          "https://res.cloudinary.com/xmybcqyi/image/upload/v1783919395/Screenshot_2026-07-13_at_10.39.40_knkror.png",
-        description:
-          "Saturday \n• 9:00 AM: Mat Pilates L.1\n• 11:00 AM: Power Reformer L.1 \n• 3:00 PM: Arms Booty & Abs",
-                 details: [
-          "15% off all class packs — use code ISLAND15\nValid at both locations | Ends September 1",
-        ],
-      }),
+           
     ],
     
   },
