@@ -308,7 +308,7 @@ export const EVENTS_CALENDAR_DAYS = [
   {
     key: "2026-07-01",
     weekday: "Wednesday",
-    dayNumber: "01",
+    dayNumber: "03",
     month: "July",
     events: [
       enrichEvent({
@@ -775,6 +775,51 @@ export const EVENTS_CALENDAR_DAYS = [
       
     ],
   },
+    {
+    key: "2026-07-20",
+    weekday: "Monday",
+    dayNumber: "20",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "No Shame Monday - Karaoke Night",
+        venue: "Crust Ahangama",
+        time: "7:00 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/crust_ahangama/",
+        image: 
+        "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784523235/WhatsApp_Image_2026-07-20_at_09.08.17_bwqg0t.jpg",
+        description:
+          "• Played By Minol\n• Good food. Great music. Zero judgment. ❤️",
+        directionsUrl: "https://maps.app.goo.gl/pfi5rd4wWrzEC2yS7",
+      }),
+      
+    ],
+  },
+  {
+    key: "2026-07-21",
+    weekday: "Tuesday",
+    dayNumber: "21",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Tiny Bar Sessions",
+        venue: "Hotel De Uncle's",
+        time: "",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/hoteldeuncles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D",
+        image: 
+        "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784524453/WhatsApp_Image_2026-07-20_at_10.43.40_dhez1c.jpg",
+        description:
+          "Live music - Navodh",
+        directionsUrl: "https://maps.app.goo.gl/PRNVifUu8rGctAgi8",
+      }),
+      
+    ],
+  },
+
    {
     key: "2026-07-22",
     weekday: "Wednesday",
