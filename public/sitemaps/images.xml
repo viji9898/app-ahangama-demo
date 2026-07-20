@@ -180,6 +180,19 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/eat/kaffi-ag</loc>
+    <lastmod>2026-07-20T15:18:13.782Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/kaffi.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/kaffi-ahangama/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/kaffi-ahangama/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/eat/surf-club</loc>
     <lastmod>2026-07-20T06:21:39.968Z</lastmod>
     <image:image>
@@ -558,19 +571,6 @@
     </image:image>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/jam-house-ahangama/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/kaffi-ag</loc>
-    <lastmod>2026-07-17T19:43:42.388Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/kaffi.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/kaffi-ahangama/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/kaffi-ahangama/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
