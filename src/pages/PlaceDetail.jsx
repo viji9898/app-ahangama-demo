@@ -29,7 +29,6 @@ export default function PlaceDetail({ category }) {
   const place = allPlaces.find(
     (p) =>
       p.destinationSlug === "ahangama" &&
-      p.category === category &&
       p.slug === slug,
   );
 
