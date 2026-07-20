@@ -7508,6 +7508,48 @@ h4,
   display: block;
 }
 
+.events-agenda-offer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  background: #f5f3ef;
+  border-radius: 10px;
+  border: 1px solid rgba(34, 31, 28, 0.08);
+  max-width: 320px;
+}
+
+.events-agenda-offerImage {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex: 0 0 auto;
+}
+
+.events-agenda-offerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.events-agenda-offerLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(34, 31, 28, 0.5);
+}
+
+.events-agenda-offerText {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #221f1c;
+}
+
 .events-agenda-copy {
   min-width: 0;
   padding-top: 2px;
@@ -7721,6 +7763,10 @@ h4,
 
   .events-agenda-shell {
     padding: 0 18px;
+  }
+
+  .events-agenda-offer {
+    max-width: none;
   }
 
   .events-agenda-header {

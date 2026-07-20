@@ -67,6 +67,21 @@ export default function EventsPage() {
             </div>
 
             <div className="events-agenda-copy">
+              {event.offerImage ? (
+                <div className="events-agenda-offer">
+                  <img
+                    src={event.offerImage}
+                    alt="Special offer"
+                    className="events-agenda-offerImage"
+                  />
+                  <div className="events-agenda-offerBody">
+                    <span className="events-agenda-offerLabel">Offer</span>
+                    {event.offerText ? (
+                      <span className="events-agenda-offerText">{event.offerText}</span>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
               <Title level={2} className="events-agenda-entryTitle">
                 {event.title}
               </Title>

@@ -819,7 +819,6 @@ export const EVENTS_CALENDAR_DAYS = [
       
     ],
   },
-
    {
     key: "2026-07-22",
     weekday: "Wednesday",
@@ -837,6 +836,31 @@ export const EVENTS_CALENDAR_DAYS = [
         "https://res.cloudinary.com/xmybcqyi/image/upload/v1784365719/WhatsApp_Image_2026-07-18_at_11.33.36_wlsucg.jpg",
         description:
           "Kids Special Night — Movie Night featuring Turning Red.\n Kids menu at special price: chicken schnitzel or sliders with fries.",
+      }),
+      
+    ],
+  },
+  {
+    key: "2026-07-23",
+    weekday: "Thursday",
+    dayNumber: "23",
+    month: "July",
+    events: [
+      enrichEvent({
+        title: "Movie Night",
+        venue: "Animals",
+        time: "7:00 PM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/animalsahangama/",
+        directionsUrl: "https://maps.app.goo.gl/DJ9nPdekNbwxxCqG8",
+        image: 
+        "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784536370/movie_night_igs5ht.jpg",
+        description:
+          "Showing: Mamma Mia",
+        offerText: "Special Combo: Chicken or Mushroom Burger with a Beer for LKR 2,500",
+        offerImage: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784536384/WhatsApp_Image_2026-07-20_at_13.55.36_1_o5zv5g.jpg",
+        passBenefit: null,
       }),
       
     ],
