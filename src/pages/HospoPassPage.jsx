@@ -89,7 +89,7 @@ const PASS_PAGE_CONFIGS = {
     ogImage: COMP_PASS_META_IMAGE,
     eyebrow: "Complimentary Ahangama Pass",
     intro:
-      "A generic sign up page for complimentary passes. Claim the pass, add it to your wallet, and tell us what would make Ahangama more useful to you.",
+      "Claim the pass, add it to your wallet, and tell us what would make Ahangama more useful to you.",
     detailsCopy:
       "Start here and we will create your complimentary Ahangama Pass.",
     profileCopy:
