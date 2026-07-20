@@ -265,6 +265,7 @@ const routes = [
   { path: "/stays/:slug", element: <PlaceDetail category="stays" /> },
   { path: "/wellness/:slug", element: <PlaceDetail category="wellness" /> },
   { path: "/retail/:slug", element: <PlaceDetail category="retail" /> },
+  { path: "/transport/:slug", element: <PlaceDetail category="Transport" /> },
   { path: "*", element: <NotFound /> },
 ];
 
