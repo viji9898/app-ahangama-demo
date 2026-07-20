@@ -10,7 +10,10 @@ import ProductsIndexPage from "../pages/ProductsIndexPage";
 import ProductPage from "../pages/ProductPage";
 import Partners from "../pages/Partners";
 import TipLandingPage, { TIP_LANDING_PATH } from "../pages/TipLandingPage";
-import HospoPassPage, { HOSPO_PASS_PATH } from "../pages/HospoPassPage";
+import HospoPassPage, {
+  COMP_PASS_PATH,
+  HOSPO_PASS_PATH,
+} from "../pages/HospoPassPage";
 import PlaceDetail from "../pages/PlaceDetail";
 import CategoryIndex from "../pages/CategoryIndex";
 import NotFound from "../NotFound";
@@ -214,6 +217,7 @@ const routes = [
   { path: "/product/:slug", element: <ProductPage /> },
   { path: TIP_LANDING_PATH, element: <TipLandingPage /> },
   { path: HOSPO_PASS_PATH, element: <HospoPassPage /> },
+  { path: COMP_PASS_PATH, element: <HospoPassPage variant="compPass" /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },

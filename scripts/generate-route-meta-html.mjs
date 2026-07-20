@@ -252,6 +252,14 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg",
   },
   {
+    route: "/comp-pass",
+    title: "Complimentary Ahangama Pass Signup",
+    description:
+      "Sign up for a complimentary Ahangama Pass and unlock local perks, picks, and benefits around Ahangama.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg",
+  },
+  {
     route: "/the-living-room-concept-store",
     title: "The Living Room Concept Store",
     description:

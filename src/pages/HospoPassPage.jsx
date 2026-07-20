@@ -26,7 +26,6 @@ import {
 } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
-import { absUrl } from "../app/siteUrl";
 import {
   DEFAULT_WHATSAPP_COUNTRY_CODE,
   PHONE_COUNTRY_CODES,
@@ -39,6 +38,7 @@ const { Paragraph, Text, Title } = Typography;
 const { TextArea } = Input;
 
 export const HOSPO_PASS_PATH = "/hospo";
+export const COMP_PASS_PATH = "/comp-pass";
 
 const HOSPO_META_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg";
@@ -47,6 +47,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const HOSPO_PASS_ENDPOINT = "/.netlify/functions/create-hotel-guest-pass";
 const HOSPO_PROFILE_ENDPOINT = "/.netlify/functions/send-hospo-pass-profile";
 const HOSPO_SOURCE_HOTEL_SLUG = "ahangama-hospo";
+const COMP_PASS_SOURCE_HOTEL_SLUG = "ahangama-comp-pass";
 const HOSPO_DESTINATION = "ahangama";
 const FORM_STEP_DETAILS = "details";
 const FORM_STEP_PROFILE = "profile";
@@ -57,6 +58,44 @@ const DEFAULT_WHATSAPP_COUNTRY_OPTION =
   PHONE_COUNTRY_CODES.find(
     (option) => option.value === DEFAULT_WHATSAPP_COUNTRY_CODE,
   ) || PHONE_COUNTRY_CODES[0];
+
+const PASS_PAGE_CONFIGS = {
+  hospo: {
+    passContext: "hospo",
+    sourceHotelSlug: HOSPO_SOURCE_HOTEL_SLUG,
+    seoTitle: "Ahangama Pass | Exclusive for Hospo Community",
+    seoDescription:
+      "Claim the free Ahangama Pass | Exclusive for Southside Hospo Community members - Unlock Perks and Benefits in Ahangama.",
+    eyebrow: "Exclusive for Southside Hospo Community",
+    intro:
+      "Exclusive access to the Hospo Community. Get the pass, try it out and let us know what you think.",
+    detailsCopy:
+      "This first step matches the current complimentary pass flow.",
+    profileCopy:
+      "These details help the Ahangama team understand who is using the complimentary pass.",
+    successCopy: "Your profile details have been sent to the Ahangama team.",
+    consentCopy:
+      "By receiving the complimentary pass, you agree to receive thoughtful insights and updates about all things Ahangama.",
+  },
+  compPass: {
+    passContext: "comp-pass",
+    sourceHotelSlug: COMP_PASS_SOURCE_HOTEL_SLUG,
+    seoTitle: "Ahangama Pass | Complimentary Pass Signup",
+    seoDescription:
+      "Sign up for a complimentary Ahangama Pass and unlock local perks, picks, and benefits around Ahangama.",
+    eyebrow: "Complimentary Ahangama Pass",
+    intro:
+      "A generic sign up page for complimentary passes. Claim the pass, add it to your wallet, and tell us what would make Ahangama more useful to you.",
+    detailsCopy:
+      "Start here and we will create your complimentary Ahangama Pass.",
+    profileCopy:
+      "A few extra details help the Ahangama team tailor updates, recommendations, and partner opportunities.",
+    successCopy:
+      "Your complimentary pass profile has been sent to the Ahangama team.",
+    consentCopy:
+      "By receiving the complimentary pass, you agree to receive thoughtful Ahangama updates, local recommendations, and partner news.",
+  },
+};
 
 const AUDIENCE_OPTIONS = [
   {
@@ -269,7 +308,8 @@ function AudienceCard({ option, selected }) {
   );
 }
 
-export default function HospoPassPage() {
+export default function HospoPassPage({ variant = "hospo" }) {
+  const pageConfig = PASS_PAGE_CONFIGS[variant] || PASS_PAGE_CONFIGS.hospo;
   const screens = Grid.useBreakpoint();
   const isTabletUp = Boolean(screens.md);
   const previewExpiryDate = formatDisplayDate(
@@ -376,7 +416,7 @@ export default function HospoPassPage() {
             guestDetails.countryCode,
             guestDetails.phone,
           ),
-          sourceHotelSlug: HOSPO_SOURCE_HOTEL_SLUG,
+          sourceHotelSlug: pageConfig.sourceHotelSlug,
           destination: HOSPO_DESTINATION,
         }),
       });
@@ -422,7 +462,8 @@ export default function HospoPassPage() {
         body: JSON.stringify({
           guest: createdPassState?.guest,
           pass: createdPassState?.pass,
-          sourceHotelSlug: HOSPO_SOURCE_HOTEL_SLUG,
+          sourceHotelSlug: pageConfig.sourceHotelSlug,
+          passContext: pageConfig.passContext,
           profile: profileDraft,
         }),
       });
@@ -449,8 +490,8 @@ export default function HospoPassPage() {
   return (
     <SiteLayout navOverlayHero>
       <Seo
-        title="Ahangama Pass | Exclusive for Hospo Community"
-        description="Claim the free Ahangama Pass | Exclusive for Southside Hospo Community members - Unlock Perks and Benefits in Ahangama."
+        title={pageConfig.seoTitle}
+        description={pageConfig.seoDescription}
         ogImage={HOSPO_META_IMAGE}
       />
 
@@ -477,7 +518,7 @@ export default function HospoPassPage() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Exclusive for Southside Hospo Community
+                  {pageConfig.eyebrow}
                 </Text>
                 <Title
                   style={{
@@ -515,7 +556,7 @@ export default function HospoPassPage() {
                     maxWidth: 570,
                   }}
                 >
-                  {HOSPO_PASS_STATS.map(({ value, title, detail, Icon }) => (
+                  {HOSPO_PASS_STATS.map(({ value, title, detail, Icon: StatIcon }) => (
                     <div
                       key={`${title}-${value}`}
                       style={{
@@ -533,13 +574,13 @@ export default function HospoPassPage() {
                         textAlign: isTabletUp ? "left" : "center",
                       }}
                     >
-                      <Icon
-                        style={{
+                      {React.createElement(StatIcon, {
+                        style: {
                           fontSize: isTabletUp ? 26 : 24,
                           color: "#B08E62",
                           flex: "0 0 auto",
-                        }}
-                      />
+                        },
+                      })}
                       <div>
                         <div
                           style={{
@@ -736,8 +777,7 @@ export default function HospoPassPage() {
                     lineHeight: 1.75,
                   }}
                 >
-                  Exclusive access to the Hospo Community. Get the pass, try it
-                  out and let us know what you think.
+                  {pageConfig.intro}
                 </Paragraph>
                 <Space
                   size={10}
@@ -818,10 +858,10 @@ export default function HospoPassPage() {
                     }}
                   >
                     {formStep === FORM_STEP_DETAILS
-                      ? "This first step matches the current complimentary pass flow."
+                      ? pageConfig.detailsCopy
                       : formStep === FORM_STEP_PROFILE
-                        ? "For now, these details will be emailed to team@ahangama.com and not stored in a new profile table."
-                        : "Your profile details have been sent to the Ahangama team."}
+                        ? pageConfig.profileCopy
+                        : pageConfig.successCopy}
                   </Paragraph>
 
                   {formStep === FORM_STEP_DETAILS ? (
@@ -1179,9 +1219,7 @@ export default function HospoPassPage() {
                           lineHeight: 1.6,
                         }}
                       >
-                        By receiving the complimentary pass, you agree to
-                        receive thoughtful insights and updates about all things
-                        Ahangama ❤️
+                        {pageConfig.consentCopy}
                       </Text>
 
                       <Button

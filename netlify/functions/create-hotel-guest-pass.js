@@ -13,6 +13,7 @@ const DEFAULT_PASS_TYPE = "complimentary_hotel_guest";
 const DEFAULT_STATUS = "active";
 const DEFAULT_VALIDITY_DAYS = 365;
 const HOSPO_SOURCE_HOTEL_SLUG = "ahangama-hospo";
+const COMP_PASS_SOURCE_HOTEL_SLUG = "ahangama-comp-pass";
 const VERIFICATION_CODE_ALPHABET = "23456789abcdefghjkmnpqrstuvwxyz";
 const VERIFICATION_RANDOM_LENGTH = 3;
 const DESTINATION_BY_SOURCE_HOTEL_SLUG = {
@@ -75,6 +76,12 @@ function generateVerificationCode(sourceHotelSlug) {
   }
 
   return `${prefix}${compactVenueSlug(sourceHotelSlug) || "pass"}`;
+}
+
+function isOneYearWalletPass(sourceHotelSlug) {
+  return [HOSPO_SOURCE_HOTEL_SLUG, COMP_PASS_SOURCE_HOTEL_SLUG].includes(
+    sourceHotelSlug,
+  );
 }
 
 export const handler = async (event) => {
@@ -166,7 +173,7 @@ export const handler = async (event) => {
       pass.passkitMemberId || pass.passkitInstallUrl || pass.passkitPassUrl,
     );
     const shouldSyncPasskit =
-      !hasExistingPasskitPass || sourceHotelSlug === HOSPO_SOURCE_HOTEL_SLUG;
+      !hasExistingPasskitPass || isOneYearWalletPass(sourceHotelSlug);
 
     try {
       if (shouldSyncPasskit) {
