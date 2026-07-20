@@ -42,6 +42,8 @@ export const COMP_PASS_PATH = "/comp-pass";
 
 const HOSPO_META_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg";
+const COMP_PASS_META_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImgw-comp-pass.jpg";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const HOSPO_PASS_ENDPOINT = "/.netlify/functions/create-hotel-guest-pass";
@@ -66,6 +68,7 @@ const PASS_PAGE_CONFIGS = {
     seoTitle: "Ahangama Pass | Exclusive for Hospo Community",
     seoDescription:
       "Claim the free Ahangama Pass | Exclusive for Southside Hospo Community members - Unlock Perks and Benefits in Ahangama.",
+    ogImage: HOSPO_META_IMAGE,
     eyebrow: "Exclusive for Southside Hospo Community",
     intro:
       "Exclusive access to the Hospo Community. Get the pass, try it out and let us know what you think.",
@@ -83,6 +86,7 @@ const PASS_PAGE_CONFIGS = {
     seoTitle: "Ahangama Pass | Complimentary Pass Signup",
     seoDescription:
       "Sign up for a complimentary Ahangama Pass and unlock local perks, picks, and benefits around Ahangama.",
+    ogImage: COMP_PASS_META_IMAGE,
     eyebrow: "Complimentary Ahangama Pass",
     intro:
       "A generic sign up page for complimentary passes. Claim the pass, add it to your wallet, and tell us what would make Ahangama more useful to you.",
@@ -492,7 +496,7 @@ export default function HospoPassPage({ variant = "hospo" }) {
       <Seo
         title={pageConfig.seoTitle}
         description={pageConfig.seoDescription}
-        ogImage={HOSPO_META_IMAGE}
+        ogImage={pageConfig.ogImage}
       />
 
       <main style={{ background: "#f6f3ed", color: "#201e1b" }}>

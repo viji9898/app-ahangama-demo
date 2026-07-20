@@ -1,7 +1,6 @@
-/* global exports, process, require */
-
-const sgMail = require("@sendgrid/mail");
-const pg = require("pg");
+import process from "node:process";
+import sgMail from "@sendgrid/mail";
+import pg from "pg";
 
 const { Pool } = pg;
 
@@ -202,7 +201,7 @@ function renderRow(label, value) {
   `;
 }
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const headers = jsonHeaders();
 
   if (event.httpMethod === "OPTIONS") {
