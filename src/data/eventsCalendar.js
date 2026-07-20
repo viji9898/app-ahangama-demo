@@ -816,6 +816,19 @@ export const EVENTS_CALENDAR_DAYS = [
           "Live music - Navodh",
         directionsUrl: "https://maps.app.goo.gl/PRNVifUu8rGctAgi8",
       }),
+      enrichEvent({
+        title: "Slow Flow",
+        venue: "Casa Tikiri - Rooftop Shala",
+        time: "9.00 AM",
+        category: "Weekly Picks",
+        instagramUrl:
+         "https://www.instagram.com/casatikiri/",
+        image: 
+        "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784536470/casa_tikiri_okyc5c.jpg",
+        description:
+          "With Bessie",
+        directionsUrl: "https://maps.app.goo.gl/xQCzcvHcGSyeRyE76",
+      }),
       
     ],
   },
