@@ -23,6 +23,26 @@ const EVENTS_OG_IMAGE =
 const EVENTS_ENDPOINT = "/.netlify/functions/events";
 const LARGE_DETAIL_TEXT = "8th Wednesday 9am Asana & Pranayama.";
 
+const EVENT_CATEGORY_LABELS = {
+  arts_culture: "Arts & Culture",
+  food_drink: "Food & Drink",
+  surf_ocean: "Surf & Ocean",
+};
+
+function formatEventCategory(category) {
+  const normalizedCategory = String(category || "").trim();
+
+  if (!normalizedCategory) {
+    return "";
+  }
+
+  return EVENT_CATEGORY_LABELS[normalizedCategory] || normalizedCategory
+    .split("_")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export default function EventsPage() {
   const canonical = absUrl("/events");
   const [calendarDays, setCalendarDays] = useState(UPCOMING_EVENTS_CALENDAR_DAYS);
@@ -133,7 +153,9 @@ export default function EventsPage() {
                 <span className="events-agenda-metaDot" aria-hidden="true">
                   •
                 </span>
-                <Text className="events-agenda-category">{event.category}</Text>
+                <Text className="events-agenda-category">
+                  {formatEventCategory(event.category)}
+                </Text>
               </div>
 
               {event.description ? (
