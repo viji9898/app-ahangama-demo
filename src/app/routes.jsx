@@ -98,6 +98,7 @@ import ArticleGuidelinePage, {
   ARTICLE_GUIDELINE_PATH,
 } from "../pages/ArticleGuidelinePage";
 import StaysPage, { STAYS_PATH } from "../pages/StaysPage";
+import BestAirbnbsPage, { BEST_AIRBNBS_PATH } from "../pages/BestAirbnbsPage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -190,6 +191,7 @@ const routes = [
     element: <ArticleGuidelinePage />,
   },
   { path: STAYS_PATH, element: <StaysPage /> },
+  { path: BEST_AIRBNBS_PATH, element: <BestAirbnbsPage /> },
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
