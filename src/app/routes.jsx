@@ -88,6 +88,9 @@ import CommunityMarketInAhangamaPage, {
 import WhereAhangamaGathersForSunsetPage, {
   WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH,
 } from "../pages/WhereAhangamaGathersForSunsetPage";
+import InsideTheLaunchOfAhangamaCirclePage, {
+  INSIDE_AHANGAMA_CIRCLE_LAUNCH_PATH,
+} from "../pages/InsideTheLaunchOfAhangamaCirclePage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -172,6 +175,10 @@ const routes = [
   {
     path: WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH,
     element: <WhereAhangamaGathersForSunsetPage />,
+  },
+  {
+    path: INSIDE_AHANGAMA_CIRCLE_LAUNCH_PATH,
+    element: <InsideTheLaunchOfAhangamaCirclePage />,
   },
   {
     path: DULASIRI_UNCLE_PATH,

@@ -311,6 +311,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/hero-view-from-the-bar.jpg",
   },
   {
+    route: "/inside-the-launch-of-ahangama-circle",
+    title: "Inside the Launch of Ahangama Circle",
+    description:
+      "Inside the first Ahangama Circle gathering, where the south's business owners, creatives and hospitality community came together at Surf Club Midigama.",
+    publishDate: "2026-07-26T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/inside-the-launch-of-ahangama-circle/hero+-+Guests+networking+at+Surf+Club+Midigama+during+sunset+-+Option+01+.jpeg",
+  },
+  {
     route: "/dulasiri-uncle",
     title: "Dulasiri Uncle",
     description:
