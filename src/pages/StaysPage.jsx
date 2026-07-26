@@ -15,8 +15,11 @@ import {
 import {
   ArrowRightOutlined,
   CheckOutlined,
+  CompassOutlined,
   EnvironmentOutlined,
-  SafetyCertificateOutlined,
+  HeartOutlined,
+  HomeOutlined,
+  SkinOutlined,
 } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
@@ -183,31 +186,109 @@ const PROPERTY_OPTIONS = STAYS.map(({ name, slug }) => ({
   value: slug,
 }));
 
-function RateComparison({ stay, onEnquire }) {
-  const saving = stay.otaPrice - stay.directPrice;
-  const percentage = Math.round((saving / stay.otaPrice) * 100);
+const HOTEL_DETAILS = {
+  "the-lighthouse-ahangama": { category: "Boutique hotel · Oceanfront", editorialTag: "Editor's Pick", facts: ["Private beach access", "Rooftop", "Restaurant", "Sunset views"] },
+  "trebartha-east-the-roundhouse": { category: "Architectural retreat · Inland", editorialTag: "Quiet Escape", facts: ["Cinnamon estate", "Pool", "Restaurant", "Limited rooms"], profile: true },
+  "mosvold-villa": { category: "Beachfront villa · Kabalana", editorialTag: "Best for Couples", facts: ["Beachfront", "Pool", "Ocean-view rooms", "Restaurant"], profile: true },
+  "mana-villa": { category: "Wellness villa · Kabalana", editorialTag: "Surf Favourite", facts: ["Walk to Kabalana", "Pool", "Sauna", "Ice bath"] },
+  "the-benison-ahangama": { category: "Boutique cabanas · Central Ahangama", editorialTag: "Quiet Escape", facts: ["Private cabanas", "Central location", "Restaurant", "Couples"], profile: true },
+  "palm-hotel": { category: "Design hotel · Inland Ahangama", editorialTag: "Design Hotel", facts: ["Four acres", "Pool", "Gym", "Restaurant"], profile: true },
+  "animals-boutique-hotel": { category: "Adults-only hotel · Kabalana", editorialTag: "Social Favourite", facts: ["Adults only", "Pool", "Restaurant", "Walk to beach"] },
+  "abode-ahangama": { category: "Art Deco retreat · Ahangama", editorialTag: "Long Stay Favourite", facts: ["18-metre pool", "Two minutes to ocean", "Tropical garden", "Restored villa"] },
+  "harding-boutique-hotel": { category: "Contemporary hotel · Central Ahangama", editorialTag: "Best Base", facts: ["Central location", "Ocean views", "Rooftop", "Restaurant"] },
+  "casa-tikiri": { category: "Adults-only hotel · Kabalana", editorialTag: "Best for Couples", facts: ["Adults only", "300m to beach", "Pool", "Italian restaurant"] },
+};
 
+const CHAPTERS = [
+  { eyebrow: "Chapter One", title: "Editor's Picks", introduction: "The places that best express where Ahangama is today: independent, thoughtful and inseparable from the landscape around them.", slugs: ["the-lighthouse-ahangama", "trebartha-east-the-roundhouse"], quote: "Good hotels become part of the journey." },
+  { eyebrow: "Chapter Two", title: "By the Water", introduction: "For mornings shaped by the tide, sandy walks home and the particular calm that comes from sleeping within earshot of the Indian Ocean.", slugs: ["mosvold-villa", "mana-villa"], quote: "The best mornings in Ahangama begin slowly." },
+  { eyebrow: "Chapter Three", title: "Small & Characterful", introduction: "Intimate stays where the welcome is personal, the pace is unhurried and every room feels connected to the life of the house.", slugs: ["the-benison-ahangama", "animals-boutique-hotel", "abode-ahangama"], quote: "Luxury here is measured in space, stillness and time." },
+  { eyebrow: "Chapter Four", title: "Design-Led Stays", introduction: "Architecture with a point of view, from bold tropical modernism to quiet Italian restraint, without losing the warmth of the south coast.", slugs: ["palm-hotel", "harding-boutique-hotel", "casa-tikiri"] },
+];
+
+const NEIGHBOURHOODS = [
+  { name: "Kabalana", description: "The centre of Ahangama's surf life. Stay here for an easy walk to the beach, excellent waves and a growing collection of restaurants and cafes." },
+  { name: "Midigama", description: "A little looser and more surf-led, with reef breaks, small guesthouses and a slower rhythm west of town." },
+  { name: "Central Ahangama", description: "Best for travellers who want to move easily between coffee, dinner, the station and the coast while keeping everything close at hand." },
+  { name: "Goviyapana", description: "A quieter stretch towards the eastern edge of Ahangama, known for ocean views, rocky coves and a welcome sense of distance from the centre." },
+];
+
+export function EditorialHero({ onEnquire }) {
   return (
-    <aside className="stays-rate-panel" aria-label={`${stay.name} example rate`}>
-      <Text className="stays-rate-eyebrow">Example nightly rate</Text>
-      <div className="stays-rate-row stays-rate-ota">
-        <span>Booking.com</span>
-        <span>${stay.otaPrice}</span>
+    <header className="stays-editorial-hero">
+      <img src={HERO_IMAGE} alt="A design-led stay overlooking the Indian Ocean in Ahangama" />
+      <div className="stays-editorial-hero-overlay" aria-hidden="true" />
+      <div className="stays-editorial-hero-content">
+        <Text className="stays-eyebrow stays-eyebrow-light">Editor's Selection · 2026</Text>
+        <Title level={1}><span>The Best</span><span>Stays in</span><span>Ahangama</span></Title>
+        <Paragraph>Only a handful of places truly capture the spirit of Ahangama. These are the hotels we'd confidently recommend to friends and family.</Paragraph>
+        <Button className="stays-text-action stays-text-action-light" type="link" onClick={onEnquire}>Ask the editors <ArrowRightOutlined /></Button>
       </div>
-      <div className="stays-rate-row stays-rate-direct">
-        <span>Book with Ahangama</span>
-        <strong>${stay.directPrice}</strong>
+    </header>
+  );
+}
+
+export function EditorsLetter() {
+  return (
+    <section className="stays-letter stays-editorial-shell" aria-labelledby="editors-note-title">
+      <div className="stays-letter-heading"><Text className="stays-eyebrow">A letter from Ahangama</Text><Title level={2} id="editors-note-title">Editor's Note</Title></div>
+      <div className="stays-letter-copy">
+        <Paragraph>A good hotel can change the way you understand a place. It introduces you to a neighbourhood, gives shape to the first hour of the morning and becomes the setting for stories you did not expect to bring home.</Paragraph>
+        <Paragraph>We chose these stays by visiting, listening and returning. They are not ranked, and this is not an exhaustive directory. Each one has a clear point of view, generous hospitality and a relationship with Ahangama that feels genuine rather than manufactured.</Paragraph>
+        <Paragraph>Some sit directly above the ocean; others disappear into cinnamon and palms. What connects them is a sense of care. These are the places we mention when someone asks where they should really stay.</Paragraph>
+        <Text className="stays-letter-signature">— The Ahangama.com Editorial Team</Text>
       </div>
-      <div className="stays-saving">
-        <CheckOutlined /> Save ${saving} ({percentage}%)
+    </section>
+  );
+}
+
+export function SelectionCriteria() {
+  const criteria = [
+    { icon: <SkinOutlined />, title: "Design", copy: "Architecture and interiors with intention, not decoration for its own sake." },
+    { icon: <HeartOutlined />, title: "Hospitality", copy: "Warm, observant service that makes a stay feel personal." },
+    { icon: <CompassOutlined />, title: "Location", copy: "A setting that helps you experience the rhythm of Ahangama." },
+    { icon: <HomeOutlined />, title: "Sense of Place", copy: "A property that could only feel at home on Sri Lanka's south coast." },
+  ];
+  return (
+    <section className="stays-criteria" aria-labelledby="selection-title"><div className="stays-editorial-shell">
+      <Text className="stays-eyebrow">Our Method</Text><Title level={2} id="selection-title">How We Select</Title>
+      <div className="stays-criteria-grid">{criteria.map((item) => <article key={item.title}><span className="stays-criterion-icon" aria-hidden="true">{item.icon}</span><Title level={3}>{item.title}</Title><Paragraph>{item.copy}</Paragraph></article>)}</div>
+    </div></section>
+  );
+}
+
+export function HotelFeature({ stay, index, onEnquire }) {
+  const details = HOTEL_DETAILS[stay.slug];
+  return (
+    <article className={`stays-hotel-feature ${index % 2 ? "stays-hotel-feature-reverse" : ""}`}>
+      <figure className="stays-hotel-figure"><img src={stay.image} alt={`${stay.name}, ${stay.location}`} loading="lazy" /><figcaption>{String(index + 1).padStart(2, "0")} · {stay.location}</figcaption></figure>
+      <div className="stays-hotel-editorial">
+        <div><Text className="stays-eyebrow">{details.category}</Text><Title level={3}>{stay.name}</Title><Text className="stays-editorial-tag">{details.editorialTag}</Text><Paragraph>{stay.description}</Paragraph><blockquote>{stay.editorNote}</blockquote></div>
+        <div><ul className="stays-hotel-facts" aria-label={`${stay.name} highlights`}>{details.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul>
+          <div className="stays-hotel-actions">{details.profile ? <Button href={`/stays/${stay.slug}`}>View Hotel</Button> : null}<Button type="primary" onClick={() => onEnquire(stay)}>Book Direct</Button></div>
+          <Text className="stays-direct-note">We check the equivalent public rate before confirming a direct quote.</Text>
+        </div>
       </div>
-      <Button type="primary" size="large" block onClick={onEnquire}>
-        Check availability <ArrowRightOutlined />
-      </Button>
-      <Text className="stays-rate-fineprint">
-        Indicative only. We compare the same dates, room and terms before confirming your quote.
-      </Text>
-    </aside>
+    </article>
+  );
+}
+
+export function EditorialQuote({ children }) {
+  return <aside className="stays-editorial-quote"><blockquote>“{children}”</blockquote></aside>;
+}
+
+export function NeighbourhoodGuide() {
+  return (
+    <section className="stays-neighbourhoods" aria-labelledby="neighbourhood-title"><div className="stays-editorial-shell">
+      <div className="stays-neighbourhood-heading"><Text className="stays-eyebrow">Where to base yourself</Text><Title level={2} id="neighbourhood-title">Ahangama, Neighbourhood by Neighbourhood</Title></div>
+      <div className="stays-neighbourhood-grid">{NEIGHBOURHOODS.map((area, index) => <article key={area.name}><Text>{String(index + 1).padStart(2, "0")}</Text><Title level={3}>{area.name}</Title><Paragraph>{area.description}</Paragraph></article>)}</div>
+    </div></section>
+  );
+}
+
+export function FinalThoughts({ onEnquire }) {
+  return (
+    <footer className="stays-final-thoughts stays-editorial-shell"><Text className="stays-eyebrow">Final Thoughts</Text><Title level={2}>Wherever you stay in Ahangama, the best experiences are rarely planned.</Title><Paragraph>Leave time for long breakfasts, slow afternoons and conversations with locals. The town reveals itself in the spaces between the itinerary.</Paragraph><Text className="stays-letter-signature">— The Ahangama.com Editorial Team</Text><Button className="stays-text-action" type="link" onClick={onEnquire}>Ask us where to stay <ArrowRightOutlined /></Button></footer>
   );
 }
 
@@ -280,97 +361,23 @@ export default function StaysPage() {
       />
 
       <main className="stays-page">
-        <header className="stays-hero">
-          <img src={HERO_IMAGE} alt="Boutique stay on Sri Lanka's south coast" />
-          <div className="stays-hero-shade" />
-          <div className="stays-hero-content">
-            <Text className="stays-kicker">The Ahangama edit · July 2026</Text>
-            <Title level={1}>Best Stays in Ahangama</Title>
-            <Paragraph>
-              Boutique hotels, beachfront villas and hidden retreats we would recommend to our own friends.
-            </Paragraph>
-            <Button type="primary" size="large" onClick={() => openEnquiry()}>
-              Find my stay <ArrowRightOutlined />
-            </Button>
-          </div>
-        </header>
-
-        <section className="stays-intro stays-shell">
-          <div>
-            <Text className="stays-section-label">Stay thoughtfully</Text>
-            <Title level={2}>Discover the best places to stay in Ahangama</Title>
-          </div>
-          <div className="stays-intro-copy">
-            <Paragraph>
-              Once a quiet fishing village, Ahangama has become one of Sri Lanka's most sought-after coastal destinations, celebrated for world-class surf, vibrant cafes, wellness and laid-back tropical living.
-            </Paragraph>
-            <Paragraph>
-              Rather than large resorts, the town is home to owner-led hotels, villas and retreats with genuine character. We hand-pick the places below, then help you secure a direct rate that aims to beat the equivalent public OTA price by 10-15%.
-            </Paragraph>
-          </div>
+        <EditorialHero onEnquire={() => openEnquiry()} />
+        <EditorsLetter />
+        <SelectionCriteria />
+        <section className="stays-hotel-chapters" aria-label="The best stays in Ahangama">
+          {CHAPTERS.map((chapter, chapterIndex) => {
+            const chapterOffset = CHAPTERS.slice(0, chapterIndex).reduce((total, item) => total + item.slugs.length, 0);
+            return (
+              <section className="stays-chapter" key={chapter.title} aria-labelledby={`chapter-${chapterIndex}`}>
+                <header className="stays-chapter-heading stays-editorial-shell"><Text className="stays-eyebrow">{chapter.eyebrow}</Text><Title level={2} id={`chapter-${chapterIndex}`}>{chapter.title}</Title><Paragraph>{chapter.introduction}</Paragraph></header>
+                <div className="stays-feature-list">{chapter.slugs.map((slug, hotelIndex) => <HotelFeature key={slug} stay={STAYS.find((stay) => stay.slug === slug)} index={chapterOffset + hotelIndex} onEnquire={openEnquiry} />)}</div>
+                {chapter.quote ? <EditorialQuote>{chapter.quote}</EditorialQuote> : null}
+              </section>
+            );
+          })}
         </section>
-
-        <section className="stays-promise" aria-label="Why enquire with Ahangama">
-          <div className="stays-shell stays-promise-grid">
-            <div><SafetyCertificateOutlined /><span><strong>Hand-picked</strong>Editorially selected, never an endless directory.</span></div>
-            <div><CheckOutlined /><span><strong>Better direct rates</strong>Matched against equivalent public booking terms.</span></div>
-            <div><EnvironmentOutlined /><span><strong>Local help</strong>Human recommendations from people who know Ahangama.</span></div>
-          </div>
-        </section>
-
-        <section className="stays-why stays-shell">
-          <Text className="stays-section-label">Why Ahangama</Text>
-          <Title level={2}>Relaxed enough to disappear. Connected enough to do everything.</Title>
-          <Paragraph>
-            Surf breaks, hidden beaches, yoga studios and independent restaurants sit within easy reach. Whether you are travelling solo, as a couple, with family or friends, there is a stay here that fits the rhythm of your trip.
-          </Paragraph>
-        </section>
-
-        <section className="stays-list stays-shell">
-          <div className="stays-list-heading">
-            <Text className="stays-section-label">Our favourites</Text>
-            <Title level={2}>Ten places worth planning a trip around</Title>
-          </div>
-
-          {STAYS.map((stay, index) => (
-            <article className={`stays-property ${index % 2 ? "stays-property-reverse" : ""}`} key={stay.slug}>
-              <div className="stays-property-image">
-                <img src={stay.image} alt={`${stay.name} in Ahangama`} loading="lazy" />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <div className="stays-property-copy">
-                <div>
-                  <Text className="stays-location"><EnvironmentOutlined /> {stay.location}</Text>
-                  <Title level={2}>{stay.name}</Title>
-                  <Title level={3}>{stay.bestFor}</Title>
-                  <Paragraph>{stay.description}</Paragraph>
-                  <div className="stays-tags">{stay.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <blockquote><span>Editor's note</span>{stay.editorNote}</blockquote>
-                </div>
-                <RateComparison stay={stay} onEnquire={() => openEnquiry(stay)} />
-              </div>
-            </article>
-          ))}
-        </section>
-
-        <section className="stays-concierge">
-          <div className="stays-shell stays-concierge-inner">
-            <div>
-              <Text className="stays-section-label">A local pair of eyes</Text>
-              <Title level={2}>Not sure where to stay?</Title>
-              <Paragraph>
-                Tell us your dates, budget and what matters to you. We will shortlist the right places, check availability and return with a matched direct quote.
-              </Paragraph>
-            </div>
-            <Button type="primary" size="large" onClick={() => openEnquiry()}>
-              Help me choose <ArrowRightOutlined />
-            </Button>
-          </div>
-        </section>
-
-        <footer className="stays-closing stays-shell">
-          <Title level={2}>Wherever you choose to stay, Ahangama promises slow mornings, golden sunsets and memories that last long after you leave.</Title>
-        </footer>
+        <NeighbourhoodGuide />
+        <FinalThoughts onEnquire={() => openEnquiry()} />
       </main>
 
       <Modal
