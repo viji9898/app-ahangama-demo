@@ -97,6 +97,7 @@ import DulasiriUnclePage, {
 import ArticleGuidelinePage, {
   ARTICLE_GUIDELINE_PATH,
 } from "../pages/ArticleGuidelinePage";
+import StaysPage, { STAYS_PATH } from "../pages/StaysPage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -188,6 +189,7 @@ const routes = [
     path: ARTICLE_GUIDELINE_PATH,
     element: <ArticleGuidelinePage />,
   },
+  { path: STAYS_PATH, element: <StaysPage /> },
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },

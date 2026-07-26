@@ -464,6 +464,15 @@ const routeMeta = [
       "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
   },
   {
+    route: "/stays",
+    title: "Best Stays in Ahangama",
+    description:
+      "A hand-picked guide to Ahangama's best boutique hotels, beachfront villas and hidden retreats, with locally managed direct-booking enquiries.",
+    publishDate: "2026-07-27T09:00:00.000Z",
+    image:
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
+  },
+  {
     route: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
     title: "Getting Around Ahangama",
     description:
