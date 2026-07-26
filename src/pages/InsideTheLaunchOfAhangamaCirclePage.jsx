@@ -15,6 +15,8 @@ const BASE_IMAGE_URL =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/inside-the-launch-of-ahangama-circle";
 
 const HERO_IMAGE = `${BASE_IMAGE_URL}/hero+-+Guests+networking+at+Surf+Club+Midigama+during+sunset+-+Option+01+.jpeg`;
+const COMMUNITY_MARKETS_HERO_IMAGE =
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/Hero+image+_+community-markets-ahangama-crowd-stalls.webp";
 const SUNSET_IMAGE = `${BASE_IMAGE_URL}/Sunset+at+Surf+Club+with+guests+mingling.jpg.jpg`;
 const WELCOME_DRINKS_IMAGE = `${BASE_IMAGE_URL}/Guests+enjoying+welcome+drinks.jpg.jpg`;
 const BUSINESS_OWNERS_IMAGE = `${BASE_IMAGE_URL}/Business+Owners+Chatting+.jpeg`;
@@ -30,7 +32,7 @@ const NEXT_ARTICLE = {
   href: "/community-market-in-ahangama",
   kicker: "Read Next",
   title: "Community Markets in Ahangama",
-  image: NETWORKING_IMAGE,
+  image: COMMUNITY_MARKETS_HERO_IMAGE,
 };
 
 const LINKED_TERMS = [
