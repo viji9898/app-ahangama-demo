@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import AnimalsWebImage from "../assets/animals4x scale copy.webp";
 import TrebathaWebImage from "../assets/Trebatha 4x scale copy.webp";
+import "../styles/guide-page.css";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -46,9 +47,10 @@ const GUIDE_CONTENT_LINKS = [
   "Connect With Us",
 ];
 
-function InstagramLabel({ text, justify = "flex-end" }) {
+function InstagramLabel({ text, justify = "flex-end", className = "" }) {
   return (
     <span
+      className={className}
       style={{
         display: "inline-flex",
         alignItems: "center",
@@ -81,9 +83,10 @@ function InstagramLabel({ text, justify = "flex-end" }) {
   );
 }
 
-function DirectionLabel({ text = "Direction", justify = "flex-end" }) {
+function DirectionLabel({ text = "Direction", justify = "flex-end", className = "" }) {
   return (
     <span
+      className={className}
       style={{
         display: "inline-flex",
         alignItems: "center",
@@ -113,12 +116,12 @@ function DirectionLabel({ text = "Direction", justify = "flex-end" }) {
   );
 }
 
-function FullBleedSection({ children }) {
+function FullBleedSection({ children, className = "" }) {
   return (
     <div className="dm-canvas" style={{ marginTop: 0, paddingTop: 0 }}>
       <div className="dm-wrap">
         <section
-          className="ahg-hero"
+          className={`${className}`}
           style={{
             width: "100vw",
             marginLeft: "calc(50% - 50vw)",
@@ -135,11 +138,62 @@ function FullBleedSection({ children }) {
   );
 }
 
-export default function GuidePage() {
-  const canonical = absUrl("/guide");
+function ScrollReveal({ children, className = "" }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("gp-revealed");
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <SiteLayout navOverlayHero showFooter={false} showNav={false}>
+    <div ref={ref} className={`gp-scrollReveal ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+export default function GuidePage() {
+  const canonical = absUrl("/guide");
+  const heroMediaRef = useRef(null);
+
+  useEffect(() => {
+    const el = heroMediaRef.current;
+    if (!el) return;
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          const translateY = scrolled * 0.3;
+          el.style.transform = `translateY(${translateY}px) scale(1.05)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <SiteLayout navOverlayHero showFooter={false} showNav>
       <Seo
         title="Ahangama 2026/2027 Season Guide"
         description="Ahangama 2026/2027 Season Guide."
@@ -147,1018 +201,284 @@ export default function GuidePage() {
         ogImage={GUIDE_HERO_IMAGE}
       />
 
-      <FullBleedSection>
-        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
-          <div
-            aria-hidden="true"
-            className="home-hero-media-layer"
-            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
-          >
-            <div
-              className="home-hero-overlay"
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(90deg, rgba(10,14,18,0.82) 0%, rgba(10,14,18,0.66) 28%, rgba(10,14,18,0.34) 58%, rgba(10,14,18,0.08) 100%)",
-                pointerEvents: "none",
-                zIndex: 2,
-              }}
-            />
-            <img
-              className="home-hero-image"
-              src={GUIDE_HERO_IMAGE}
-              alt="Ahangama coastline"
-              style={{
-                position: "absolute",
-                inset: 0,
-                zIndex: 1,
-                display: "block",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center center",
-              }}
-            />
+      {/* ---- HERO ---- */}
+      <section
+        style={{
+          width: "100vw",
+          marginLeft: "calc(50% - 50vw)",
+          marginRight: "calc(50% - 50vw)",
+        }}
+      >
+        <div className="gp-hero">
+          <div aria-hidden="true" className="gp-hero-media" ref={heroMediaRef}>
+            <div className="gp-hero-overlay" />
+            <img src={GUIDE_HERO_IMAGE} alt="Ahangama coastline" />
           </div>
-
-          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                minHeight: "100svh",
-                maxWidth: 780,
-                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-              }}
-            >
-              <Title
-                className="home-hero-title"
-                style={{
-                  margin: 0,
-                  transform: "translateY(-50px)",
-                  color: "#FFFFFF",
-                  fontWeight: 500,
-                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                }}
-              >
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
-                  Ahangama
-                </span>
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF", whiteSpace: "nowrap" }}>
-                  2026/2027
-                </span>
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
-                  Season Guide
-                </span>
-              </Title>
+          <div className="gp-hero-content">
+            <h1 className="gp-hero-title">
+              <span className="gp-hero-titleLine">Ahangama</span>
+              <span className="gp-hero-titleLine">2026/2027</span>
+              <span className="gp-hero-titleLine">Season Guide</span>
+            </h1>
+            <p className="gp-hero-sub">Your curated guide to the south coast&rsquo;s most captivating destination</p>
+            <div className="gp-hero-actions">
+              <a href="#guide-contents" className="gp-btn gp-btn-outline">
+                <span>Begin the journey</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
             </div>
+          </div>
+          <div className="gp-hero-scroll" aria-hidden="true">
+            <span className="gp-hero-scrollText">Scroll</span>
+            <svg className="gp-hero-scrollArrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 3v12M5 11l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- GUIDE CONTENTS ---- */}
+      <FullBleedSection>
+        <div className="gp-sec gp-sec-warm" id="guide-contents">
+          <div className="gp-sec-inner">
+            <ScrollReveal>
+              <div className="gp-contents-grid">
+                <div className="gp-contents-titleCol-glass">
+                  <span className="gp-label-glass">Content</span>
+                  <h2 className="gp-contents-title">Guide<br />Contents</h2>
+                  <p className="gp-contents-desc">Everything you need to know about Ahangama, curated for the 2026/2027 season.</p>
+                </div>
+                <div className="gp-contents-list">
+                  {GUIDE_CONTENT_LINKS.map((item, index) => (
+                    <a
+                      key={item}
+                      href={`#guide-section-${index + 1}`}
+                      className="gp-contents-link"
+                    >
+                      <span className="gp-contents-linkNum">{String(index + 1).padStart(2, '0')}</span>
+                      <span>{item}</span>
+                      <span className="gp-contents-linkArrow">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </FullBleedSection>
 
+      {/* ---- OVERVIEW ---- */}
       <FullBleedSection>
-        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
-          <div
-            aria-hidden="true"
-            className="home-hero-media-layer"
-            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
-          >
-            <div
-              className="home-hero-overlay"
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(90deg, rgba(10,14,18,0.86) 0%, rgba(10,14,18,0.76) 28%, rgba(10,14,18,0.46) 58%, rgba(10,14,18,0.12) 100%)",
-                pointerEvents: "none",
-                zIndex: 2,
-              }}
-            />
-            <img
-              className="home-hero-image"
-              src={GUIDE_CONTENT_IMAGE}
-              alt="Surf lesson in Ahangama"
-              style={{
-                position: "absolute",
-                inset: 0,
-                zIndex: 1,
-                display: "block",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center center",
-              }}
-            />
-          </div>
-
-          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                minHeight: "100svh",
-                maxWidth: 920,
-                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-              }}
-            >
-              <Text
-                style={{
-                  display: "block",
-                  marginBottom: 18,
-                  color: "#FFFFFF",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.6,
-                  textTransform: "uppercase",
-                }}
-              >
-                Content
-              </Text>
-
-              <Title
-                className="home-hero-title"
-                style={{
-                  margin: "0 0 56px",
-                  color: "#FFFFFF",
-                  fontWeight: 500,
-                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                }}
-              >
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
-                  Guide
-                </span>
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF", whiteSpace: "normal" }}>
-                  Contents
-                </span>
-              </Title>
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                  gap: 12,
-                  marginTop: 26,
-                  maxWidth: 880,
-                }}
-              >
-                {GUIDE_CONTENT_LINKS.map((item, index) => (
-                  <a
-                    key={item}
-                    href={`#guide-section-${index + 1}`}
-                    style={{
-                      display: "block",
-                      padding: "0 0 12px",
-                      borderBottom: "1px solid rgba(32,30,27,0.72)",
-                      color: "#FFFFFF",
-                      textDecoration: "none",
-                      fontSize: "clamp(16px, 1.45vw, 19px)",
-                      lineHeight: 1.72,
-                      background: "transparent",
-                    }}
-                  >
-                    {item}
-                  </a>
-                ))}
+        <div className="gp-sec gp-sec-cream">
+          <div className="gp-sec-inner">
+            <ScrollReveal>
+              <div className="gp-overview-grid">
+                <div className="gp-overview-imageWrap">
+                  <img src={GUIDE_OVERVIEW_IMAGE} alt="Ahangama coastal landscape" />
+                </div>
+                <div className="gp-overview-textCol">
+                  <span className="gp-label">Overview</span>
+                  <h2 className="gp-serif-title gp-overview-title">
+                    Ahangama<br />Overview
+                  </h2>
+                  <p className="gp-body">
+                    Once a sleepy stretch of local fishing shacks, Ahangama has quietly evolved into the South Coast&apos;s coolest, most curated coastal hub. It has successfully dodged the overdeveloped chaos of other global surf towns, maintaining a delicate balance between slow island living and a thriving, modern aesthetic. If you are looking for barefoot luxury, world-class waves, and jungle-fringed cafes, you have found your spot.
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </FullBleedSection>
 
+      {/* ---- BEST STAYS INTRO ---- */}
       <FullBleedSection>
-        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
-          <div
-            aria-hidden="true"
-            className="home-hero-media-layer"
-            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
-          >
-            <div
-              className="home-hero-overlay"
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(90deg, rgba(10,14,18,0.86) 0%, rgba(10,14,18,0.72) 30%, rgba(10,14,18,0.4) 62%, rgba(10,14,18,0.12) 100%)",
-                pointerEvents: "none",
-                zIndex: 2,
-              }}
-            />
-            <img
-              className="home-hero-image"
-              src={GUIDE_OVERVIEW_IMAGE}
-              alt="Ahangama coastal landscape"
-              style={{
-                position: "absolute",
-                inset: 0,
-                zIndex: 1,
-                display: "block",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center center",
-              }}
-            />
-          </div>
-
-          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                minHeight: "100svh",
-                maxWidth: 780,
-                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-              }}
-            >
-              <Text
-                style={{
-                  display: "block",
-                  marginBottom: 18,
-                  color: "#FFFFFF",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.6,
-                  textTransform: "uppercase",
-                }}
-              >
-                Overview
-              </Text>
-
-              <Title
-                className="home-hero-title"
-                style={{
-                  margin: 0,
-                  color: "#FFFFFF",
-                  fontWeight: 500,
-                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                }}
-              >
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
-                  Ahangama
-                </span>
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
-                  Overview
-                </span>
-              </Title>
-
-              <Paragraph
-                style={{
-                  marginTop: 24,
-                  marginBottom: 0,
-                  maxWidth: 640,
-                  color: "#FFFFFF",
-                  fontSize: "clamp(16px, 1.45vw, 19px)",
-                  lineHeight: 1.72,
-                }}
-              >
-                Once a sleepy stretch of local fishing shacks, Ahangama has quietly evolved into the South Coast&apos;s coolest, most curated coastal hub. It has successfully dodged the overdeveloped chaos of other global surf towns, maintaining a delicate balance between slow island living and a thriving, modern aesthetic. If you are looking for barefoot luxury, world-class waves, and jungle-fringed cafes, you have found your spot.
-              </Paragraph>
+        <ScrollReveal>
+          <div className="gp-staysIntro">
+            <div aria-hidden="true" className="gp-staysIntro-imageWrap">
+              <div className="gp-staysIntro-overlay" />
+              <img src={GUIDE_BEST_STAYS_INTRO_IMAGE} alt="Best stays in guide" />
+            </div>
+            <div className="gp-staysIntro-content">
+              <div className="gp-staysIntro-contentInner">
+                <span className="gp-label-glass" style={{ color: "rgba(255,255,255,0.7)" }}>Stays</span>
+                <h2 className="gp-serif-title-light gp-staysIntro-title">Best Stays</h2>
+                <p className="gp-staysIntro-text">
+                  A handpicked list of standout stays in and around Ahangama, from design-led villas to coastal hideaways.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </FullBleedSection>
 
+      {/* ---- BEST STAYS CARDS ---- */}
       <FullBleedSection>
-        <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
-          <div
-            aria-hidden="true"
-            className="home-hero-media-layer"
-            style={{ position: "absolute", inset: 0, overflow: "hidden" }}
-          >
-            <div
-              className="home-hero-overlay"
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(90deg, rgba(10,14,18,0.84) 0%, rgba(10,14,18,0.72) 26%, rgba(10,14,18,0.44) 56%, rgba(10,14,18,0.1) 100%)",
-                pointerEvents: "none",
-                zIndex: 2,
-              }}
-            />
-            <img
-              className="home-hero-image"
-              src={GUIDE_BEST_STAYS_INTRO_IMAGE}
-              alt="Best stays in guide"
-              style={{
-                position: "absolute",
-                inset: 0,
-                zIndex: 1,
-                display: "block",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center center",
-              }}
-            />
+        <div className="gp-stays">
+          <div className="gp-stays-inner">
+            <ScrollReveal>
+              <div className="gp-stays-grid">
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_BEST_STAYS_IMAGE} alt="Trebartha East the Round House" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Trebartha East</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      Trebartha East: A spectacular, design-led oasis nestled high in the Ahangama jungle.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_ANIMALS_IMAGE} alt="Animals hotel pool and courtyard" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Non Animals</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A chic, minimalist oasis just a short walk from Kabalana Beach.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_KO_LAKE_VILLA_IMAGE} alt="Ko Lake Villa" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Ko Lake Villa</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A chic, minimalist oasis just a short walk from Kabalana Beach.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_SOLA_HOTEL_IMAGE} alt="Sola Hotel" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Solar Hotel</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A chic, minimalist oasis just a short walk from Kabalana Beach.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_Kelly_IMAGE} alt="Kelly Ahangama" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Kelly</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A sleek, contemporary getaway featuring a vibrant evening ambience and a beautifully illuminated pool.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_ANIMALS_IMAGE} alt="Animals hotel pool and courtyard" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Animals</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A chic, minimalist oasis just a short walk from Kabalana Beach.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_ANIMALS_IMAGE} alt="Animals hotel pool and courtyard" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Animals</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A chic, minimalist oasis just a short walk from Kabalana Beach.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_ANIMALS_IMAGE} alt="Animals hotel pool and courtyard" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Animals</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A chic, minimalist oasis just a short walk from Kabalana Beach.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="gp-stayCard">
+                  <div className="gp-stayCard-imageWrap">
+                    <img src={GUIDE_ANIMALS_IMAGE} alt="Animals hotel pool and courtyard" />
+                  </div>
+                  <div className="gp-stayCard-body">
+                    <div className="gp-stayCard-header">
+                      <h3 className="gp-stayCard-name">Animals</h3>
+                      <span className="gp-stayCard-rating">4.8 ★</span>
+                    </div>
+                    <p className="gp-stayCard-desc">
+                      A chic, minimalist oasis just a short walk from Kabalana Beach.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </ScrollReveal>
           </div>
-
-          <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
-                minHeight: "100svh",
-                maxWidth: 760,
-                padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-              }}
-            >
-              <Text
-                style={{
-                  display: "block",
-                  marginBottom: 18,
-                  color: "#FFFFFF",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 1.6,
-                  textTransform: "uppercase",
-                }}
-              >
-                Stays
-              </Text>
-
-              <Title
-                className="home-hero-title"
-                style={{
-                  margin: 0,
-                  color: "#FFFFFF",
-                  fontWeight: 500,
-                  fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                }}
-              >
-                <span className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
-                  Best Stays
-                </span>
-              </Title>
-
-              <Paragraph
-                style={{
-                  marginTop: 24,
-                  marginBottom: 0,
-                  maxWidth: 640,
-                  color: "#FFFFFF",
-                  fontSize: "clamp(16px, 1.45vw, 19px)",
-                  lineHeight: 1.72,
-                }}
-              >
-                A handpicked list of standout stays in and around Ahangama, from design-led villas to coastal hideaways.
-              </Paragraph>
-            </div>
-          </div>
-        </div>
-      </FullBleedSection>
-
-      <FullBleedSection>
-        <div
-          style={{
-            background: "#e7e7e7",
-            padding: "clamp(28px, 4vw, 48px)",
-          }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              gap: "clamp(20px, 2.5vw, 34px)",
-              maxWidth: 1240,
-              margin: "0 auto",
-            }}
-          >
-            <article>
-              <img
-                src={GUIDE_BEST_STAYS_IMAGE}
-                alt="Trebartha East the Round House"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Trebartha East
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  Trebartha East: A spectacular, design-led oasis nestled high in the Ahangama jungle.
-                </Paragraph>
-              </div>
-            </article>
-
-            <article>
-              <img
-                src={GUIDE_ANIMALS_IMAGE}
-                alt="Animals hotel pool and courtyard"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Non Animals
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A chic, minimalist oasis just a short walk from Kabalana Beach.
-                </Paragraph>
-                
-              </div>
-            </article>   
-
-            <article>
-              <img
-                src={GUIDE_KO_LAKE_VILLA_IMAGE}
-                alt="Ko Lake Villa"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Ko Lake Villa
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A chic, minimalist oasis just a short walk from Kabalana Beach.
-                </Paragraph>
-                
-              </div>
-            </article>
-
-            <article>
-              <img
-                src={GUIDE_SOLA_HOTEL_IMAGE}
-                alt="Sola Hotel"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Solar Hotel
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A chic, minimalist oasis just a short walk from Kabalana Beach.
-                </Paragraph>
-                
-              </div>
-            </article>
-
-            <article>
-              <img
-                src={GUIDE_Kelly_IMAGE}
-                alt="Kelly Ahangama"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Kelly
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A sleek, contemporary getaway featuring a vibrant evening ambience and a beautifully illuminated pool.
-                </Paragraph>
-                
-              </div>
-            </article>
-
-            <article>
-              <img
-                src={GUIDE_ANIMALS_IMAGE}
-                alt="Animals hotel pool and courtyard"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Animals
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A chic, minimalist oasis just a short walk from Kabalana Beach.
-                </Paragraph>
-                
-              </div>
-            </article>
-
-            <article>
-              <img
-                src={GUIDE_ANIMALS_IMAGE}
-                alt="Animals hotel pool and courtyard"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Animals
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A chic, minimalist oasis just a short walk from Kabalana Beach.
-                </Paragraph>
-                
-              </div>
-            </article>
-
-            <article>
-              <img
-                src={GUIDE_ANIMALS_IMAGE}
-                alt="Animals hotel pool and courtyard"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Animals
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A chic, minimalist oasis just a short walk from Kabalana Beach.
-                </Paragraph>
-                
-              </div>
-            </article>
-
-            <article>
-              <img
-                src={GUIDE_ANIMALS_IMAGE}
-                alt="Animals hotel pool and courtyard"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  aspectRatio: "16 / 11",
-                  objectFit: "cover",
-                  borderRadius: "36px",
-                }}
-              />
-              <div style={{ padding: "12px 2px 0" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Title
-                    level={2}
-                    style={{
-                      margin: 0,
-                      color: "#072434",
-                      fontWeight: 700,
-                      fontSize: "clamp(30px, 3.2vw, 56px)",
-                      lineHeight: 1.02,
-                      fontFamily: '"Manrope", "Avenir Next", "Segoe UI", sans-serif',
-                    }}
-                  >
-                    Animals
-                  </Title>
-                  <Text
-                    style={{
-                      color: "#072434",
-                      fontSize: "clamp(24px, 2.2vw, 34px)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                    }}
-                  >
-                    4.8 ★
-                  </Text>
-                </div>
-                <Paragraph
-                  style={{
-                    margin: "12px 0 0",
-                    color: "#0d2532",
-                    fontSize: "clamp(18px, 1.5vw, 30px)",
-                    lineHeight: 1.42,
-                    maxWidth: "95%",
-                  }}
-                >
-                  A chic, minimalist oasis just a short walk from Kabalana Beach.
-                </Paragraph>
-                
-              </div>
-            </article> 
-            
-          </div>
-
-
         </div>
       </FullBleedSection>
 
       {GUIDE_EXTRA_STAYS.map((stay) => (
         <FullBleedSection key={stay.title}>
-          <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
-            <div
-              aria-hidden="true"
-              className="home-hero-media-layer"
-              style={{ position: "absolute", inset: 0, overflow: "hidden" }}
-            >
-              <div
-                className="home-hero-overlay"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(90deg, rgba(10,14,18,0.8) 0%, rgba(10,14,18,0.66) 24%, rgba(10,14,18,0.34) 56%, rgba(10,14,18,0.08) 100%)",
-                  pointerEvents: "none",
-                  zIndex: 2,
-                }}
-              />
-              <img
-                className="home-hero-image"
-                src={stay.image || GUIDE_OVERVIEW_IMAGE}
-                alt={stay.title}
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  zIndex: 1,
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "center center",
-                }}
-              />
+          <div className="gp-hero">
+            <div aria-hidden="true" className="gp-hero-media">
+              <div className="gp-hero-overlay" />
+              <img src={stay.image || GUIDE_OVERVIEW_IMAGE} alt={stay.title} />
             </div>
-
-            <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: "none", margin: 0 }}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                  minHeight: "100svh",
-                  maxWidth: 760,
-                  padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 44px",
-                }}
-              >
-                <Title
-                  className="home-hero-title"
-                  style={{
-                    margin: 0,
-                    color: "#FFFFFF",
-                    fontWeight: 500,
-                    fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
-                  }}
-                >
-                  <span className="home-hero-titleLine" style={{ color: "#FFFFFF", whiteSpace: "normal" }}>
-                    {stay.title}
-                  </span>
-                </Title>
-
-                <Paragraph
-                  style={{
-                    marginTop: 24,
-                    marginBottom: 0,
-                    maxWidth: 640,
-                    color: "#FFFFFF",
-                    fontSize: "clamp(16px, 1.45vw, 19px)",
-                    lineHeight: 1.72,
-                  }}
-                >
-                  {stay.description}
-                </Paragraph>
-              </div>
+            <div className="gp-hero-content">
+              <h2 className="gp-serif-title-light" style={{ fontSize: "clamp(40px, 6vw, 80px)", margin: 0 }}>
+                {stay.title}
+              </h2>
+              <p className="gp-body-light" style={{ marginTop: 24 }}>
+                {stay.description}
+              </p>
             </div>
-
             <div
               style={{
                 position: "absolute",
@@ -1181,7 +501,7 @@ export default function GuidePage() {
                   paddingBottom: 6,
                 }}
               >
-                <InstagramLabel text={stay.instagramLabel} justify="flex-end" />
+                <InstagramLabel text={stay.instagramLabel} justify="flex-end" className="gp-caption" />
               </a>
               <a
                 href="#"
@@ -1190,11 +510,9 @@ export default function GuidePage() {
                   textDecoration: "none",
                   fontSize: "clamp(16px, 1.45vw, 19px)",
                   lineHeight: 1.72,
-                  borderBottom: "1px solid rgba(255,255,255,0.65)",
-                  paddingBottom: 6,
                 }}
               >
-                <DirectionLabel text="Direction" justify="flex-end" />
+                <DirectionLabel text="Direction" justify="flex-end" className="gp-caption" />
               </a>
             </div>
           </div>

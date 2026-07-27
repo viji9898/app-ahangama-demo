@@ -60,14 +60,22 @@ export default function TopNav({ overlayHero = false }) {
           width: "100%",
           zIndex: 40,
           background: useSolidBackground
-            ? "rgba(255,255,255,0.92)"
+            ? "rgba(255,255,255,0.82)"
             : "transparent",
-          backdropFilter: useSolidBackground ? "blur(16px)" : "none",
+          backdropFilter: useSolidBackground
+            ? "blur(28px) saturate(1.1)"
+            : "none",
+          WebkitBackdropFilter: useSolidBackground
+            ? "blur(28px) saturate(1.1)"
+            : "none",
           borderBottom: useSolidBackground
-            ? "1px solid rgba(32,30,27,0.08)"
-            : "1px solid transparent",
+            ? "0.5px solid rgba(255,255,255,0.15)"
+            : "0.5px solid transparent",
+          boxShadow: useSolidBackground
+            ? "0 4px 24px rgba(0,0,0,0.04)"
+            : "none",
           transition:
-            "background 180ms ease, backdrop-filter 180ms ease, border-color 180ms ease",
+            "background 240ms ease, backdrop-filter 240ms ease, border-color 240ms ease, box-shadow 240ms ease",
         }}
       >
         <div
