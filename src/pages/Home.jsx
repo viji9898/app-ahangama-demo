@@ -137,6 +137,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Community",
+    title: "Inside the Launch of Ahangama Circle",
+    date: "This Week",
+    href: "/inside-the-launch-of-ahangama-circle",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/inside-the-launch-of-ahangama-circle/hero+-+Guests+networking+at+Surf+Club+Midigama+during+sunset+-+Option+01+.jpeg",
+  },
+  {
     category: "Shop Guide",
     title: "The Living Room Concept Store",
     date: "This Week",
