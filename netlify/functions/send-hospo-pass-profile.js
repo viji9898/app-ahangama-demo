@@ -1,13 +1,16 @@
-/* global exports, process, require */
-
-const sgMail = require("@sendgrid/mail");
-const pg = require("pg");
+import process from "node:process";
+import sgMail from "@sendgrid/mail";
+import pg from "pg";
 
 const { Pool } = pg;
 
 const TEAM_EMAIL = "team@ahangama.com";
 const FROM_EMAIL = "hello@ahangama.com";
 const HOSPO_PASS_PROFILES_TABLE = "hospo_pass_profiles";
+const PASS_CONTEXT_LABELS = {
+  hospo: "/hospo",
+  "comp-pass": "/comp-pass",
+};
 const AUDIENCE_LABELS = {
   business_owner: "Business owner",
   resident: "Resident",
@@ -84,6 +87,7 @@ async function saveHospoPassProfile({
   profile,
   audienceType,
   sourceHotelSlug,
+  passContext,
 }) {
   const passId = normalizeUuid(pass.id);
 
@@ -100,6 +104,7 @@ async function saveHospoPassProfile({
         full_name,
         email,
         phone,
+        pass_context,
         source_hotel_slug,
         audience_type,
         business_name,
@@ -118,13 +123,14 @@ async function saveHospoPassProfile({
         updated_at
       ) VALUES (
         $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
-        $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, NOW()
+        $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, NOW()
       )
       ON CONFLICT (pass_id) DO UPDATE SET
         guest_id = EXCLUDED.guest_id,
         full_name = EXCLUDED.full_name,
         email = EXCLUDED.email,
         phone = EXCLUDED.phone,
+        pass_context = EXCLUDED.pass_context,
         source_hotel_slug = EXCLUDED.source_hotel_slug,
         audience_type = EXCLUDED.audience_type,
         business_name = EXCLUDED.business_name,
@@ -149,6 +155,7 @@ async function saveHospoPassProfile({
       normalizeText(guest.fullName),
       normalizeText(guest.email).toLowerCase(),
       normalizeText(guest.phone),
+      normalizeText(passContext) || "hospo",
       normalizeText(sourceHotelSlug),
       audienceType,
       normalizeText(profile.businessName),
@@ -194,7 +201,7 @@ function renderRow(label, value) {
   `;
 }
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const headers = jsonHeaders();
 
   if (event.httpMethod === "OPTIONS") {
@@ -218,6 +225,7 @@ exports.handler = async (event) => {
     const sourceHotelSlug = normalizeText(
       pass.sourceHotelSlug || body.sourceHotelSlug,
     );
+    const passContext = normalizeText(body.passContext) || "hospo";
 
     if (!normalizeText(pass.id)) {
       return {
@@ -249,6 +257,7 @@ exports.handler = async (event) => {
       profile,
       audienceType,
       sourceHotelSlug,
+      passContext,
     });
 
     if (!process.env.SENDGRID_API_KEY) {
@@ -260,7 +269,9 @@ exports.handler = async (event) => {
     const submittedAt = savedProfile.submitted_at || new Date().toISOString();
     const subjectName = normalizeText(guest.fullName) || normalizeText(guest.email);
     const audienceLabel = AUDIENCE_LABELS[audienceType];
+    const passContextLabel = PASS_CONTEXT_LABELS[passContext] || passContext;
     const rows = [
+      renderRow("Pass context", passContextLabel),
       renderRow("Audience type", audienceLabel),
       renderRow("Full name", guest.fullName),
       renderRow("Email", guest.email),
@@ -291,11 +302,11 @@ exports.handler = async (event) => {
       to: TEAM_EMAIL,
       from: FROM_EMAIL,
       replyTo: normalizeText(guest.email),
-      subject: `New /hospo complimentary pass profile - ${audienceLabel} - ${subjectName}`,
+      subject: `New ${passContextLabel} complimentary pass profile - ${audienceLabel} - ${subjectName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 760px; margin: 0 auto; color: #111827; line-height: 1.6;">
-          <h1 style="margin: 0 0 8px; font-size: 26px; color: #111827;">New /hospo complimentary pass profile</h1>
-          <p style="margin: 0 0 22px; color: #4b5563;">A visitor completed the second stage of the Ahangama complimentary pass flow. This profile has been saved to the hospo_pass_profiles database table.</p>
+          <h1 style="margin: 0 0 8px; font-size: 26px; color: #111827;">New ${escapeHtml(passContextLabel)} complimentary pass profile</h1>
+          <p style="margin: 0 0 22px; color: #4b5563;">A visitor completed the second stage of the Ahangama complimentary pass flow. This profile has been saved to the hospo_pass_profiles database table with pass context ${escapeHtml(passContextLabel)}.</p>
           <table style="width: 100%; border-collapse: collapse; font-size: 14px; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
             ${rows}
           </table>

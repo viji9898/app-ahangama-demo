@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ClockCircleOutlined,
   EnvironmentOutlined,
@@ -20,19 +20,77 @@ const { Title, Paragraph, Text } = Typography;
 const EVENTS_OG_IMAGE =
   "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782884816/EventsCalender_metaImage_m3mt10.webp";
 
+const EVENTS_ENDPOINT = "/.netlify/functions/events";
 const LARGE_DETAIL_TEXT = "8th Wednesday 9am Asana & Pranayama.";
+
+const EVENT_CATEGORY_LABELS = {
+  arts_culture: "Arts & Culture",
+  food_drink: "Food & Drink",
+  surf_ocean: "Surf & Ocean",
+};
+
+function formatEventCategory(category) {
+  const normalizedCategory = String(category || "").trim();
+
+  if (!normalizedCategory) {
+    return "";
+  }
+
+  return EVENT_CATEGORY_LABELS[normalizedCategory] || normalizedCategory
+    .split("_")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 export default function EventsPage() {
   const canonical = absUrl("/events");
-  const datedDays = UPCOMING_EVENTS_CALENDAR_DAYS.filter(
+  const [calendarDays, setCalendarDays] = useState(UPCOMING_EVENTS_CALENDAR_DAYS);
+  const [editorPicks, setEditorPicks] = useState(UPCOMING_EVENTS_EDITOR_PICKS);
+  const datedDays = calendarDays.filter(
     (day) => !day.key.startsWith("ongoing"),
   );
-  const weeklyFlowDays = UPCOMING_EVENTS_CALENDAR_DAYS.filter(
+  const weeklyFlowDays = calendarDays.filter(
     (day) => day.key === "ongoing-this-week",
   );
-  const localPerksDays = UPCOMING_EVENTS_CALENDAR_DAYS.filter(
+  const localPerksDays = calendarDays.filter(
     (day) => day.key === "ongoing",
   );
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadEvents() {
+      try {
+        const response = await fetch(EVENTS_ENDPOINT);
+        const payload = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(payload.error || "Unable to load events");
+        }
+
+        if (cancelled) {
+          return;
+        }
+
+        if (Array.isArray(payload.days) && payload.days.length > 0) {
+          setCalendarDays(payload.days);
+        }
+
+        if (Array.isArray(payload.editorPicks) && payload.editorPicks.length > 0) {
+          setEditorPicks(payload.editorPicks);
+        }
+      } catch (error) {
+        console.warn("Using static events calendar fallback", error);
+      }
+    }
+
+    loadEvents();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const renderDay = (day) => (
     <section className="events-agenda-day" key={day.key}>
@@ -95,7 +153,9 @@ export default function EventsPage() {
                 <span className="events-agenda-metaDot" aria-hidden="true">
                   •
                 </span>
-                <Text className="events-agenda-category">{event.category}</Text>
+                <Text className="events-agenda-category">
+                  {formatEventCategory(event.category)}
+                </Text>
               </div>
 
               {event.description ? (
@@ -269,7 +329,7 @@ export default function EventsPage() {
               Editor&apos;s Picks This Week
             </Text>
             <div className="events-agenda-editorPicksList">
-              {UPCOMING_EVENTS_EDITOR_PICKS.map((pick) => (
+              {editorPicks.map((pick) => (
                 <Text className="events-agenda-editorPick" key={pick}>
                   {pick}
                 </Text>

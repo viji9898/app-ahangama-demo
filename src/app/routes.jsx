@@ -10,7 +10,10 @@ import ProductsIndexPage from "../pages/ProductsIndexPage";
 import ProductPage from "../pages/ProductPage";
 import Partners from "../pages/Partners";
 import TipLandingPage, { TIP_LANDING_PATH } from "../pages/TipLandingPage";
-import HospoPassPage, { HOSPO_PASS_PATH } from "../pages/HospoPassPage";
+import HospoPassPage, {
+  COMP_PASS_PATH,
+  HOSPO_PASS_PATH,
+} from "../pages/HospoPassPage";
 import PlaceDetail from "../pages/PlaceDetail";
 import CategoryIndex from "../pages/CategoryIndex";
 import NotFound from "../NotFound";
@@ -85,12 +88,17 @@ import CommunityMarketInAhangamaPage, {
 import WhereAhangamaGathersForSunsetPage, {
   WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH,
 } from "../pages/WhereAhangamaGathersForSunsetPage";
+import InsideTheLaunchOfAhangamaCirclePage, {
+  INSIDE_AHANGAMA_CIRCLE_LAUNCH_PATH,
+} from "../pages/InsideTheLaunchOfAhangamaCirclePage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
 import ArticleGuidelinePage, {
   ARTICLE_GUIDELINE_PATH,
 } from "../pages/ArticleGuidelinePage";
+import StaysPage, { STAYS_PATH } from "../pages/StaysPage";
+import BestAirbnbsPage, { BEST_AIRBNBS_PATH } from "../pages/BestAirbnbsPage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -171,6 +179,10 @@ const routes = [
     element: <WhereAhangamaGathersForSunsetPage />,
   },
   {
+    path: INSIDE_AHANGAMA_CIRCLE_LAUNCH_PATH,
+    element: <InsideTheLaunchOfAhangamaCirclePage />,
+  },
+  {
     path: DULASIRI_UNCLE_PATH,
     element: <DulasiriUnclePage />,
   },
@@ -178,6 +190,8 @@ const routes = [
     path: ARTICLE_GUIDELINE_PATH,
     element: <ArticleGuidelinePage />,
   },
+  { path: STAYS_PATH, element: <StaysPage /> },
+  { path: BEST_AIRBNBS_PATH, element: <BestAirbnbsPage /> },
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
@@ -214,6 +228,7 @@ const routes = [
   { path: "/product/:slug", element: <ProductPage /> },
   { path: TIP_LANDING_PATH, element: <TipLandingPage /> },
   { path: HOSPO_PASS_PATH, element: <HospoPassPage /> },
+  { path: COMP_PASS_PATH, element: <HospoPassPage variant="compPass" /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },

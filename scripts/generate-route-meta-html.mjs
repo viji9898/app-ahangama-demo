@@ -252,6 +252,14 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hospo_complimentry_pass.jpg",
   },
   {
+    route: "/comp-pass",
+    title: "Complimentary Ahangama Pass Signup",
+    description:
+      "Sign up for a complimentary Ahangama Pass and unlock local perks, picks, and benefits around Ahangama.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImgw-comp-pass.jpg",
+  },
+  {
     route: "/the-living-room-concept-store",
     title: "The Living Room Concept Store",
     description:
@@ -301,6 +309,16 @@ const routeMeta = [
     publishDate: "2026-06-21T09:00:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/where-ahangama-gathers-for-sunset+/hero-view-from-the-bar.jpg",
+  },
+  {
+    route: "/inside-the-launch-of-ahangama-circle",
+    title: "Inside the Launch of Ahangama Circle",
+    description:
+      "Inside the first Ahangama Circle gathering, where the south's business owners, creatives and hospitality community came together at Surf Club Midigama.",
+    publishDate: "2026-07-26T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/inside-the-launch-of-ahangama-circle/hero+-+Guests+networking+at+Surf+Club+Midigama+during+sunset+-+Option+01+.jpeg",
   },
   {
     route: "/dulasiri-uncle",
@@ -444,6 +462,24 @@ const routeMeta = [
     publishDate: "2026-05-22T14:10:00.000Z",
     image:
       "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
+  },
+  {
+    route: "/stays",
+    title: "Best Stays in Ahangama",
+    description:
+      "A hand-picked guide to Ahangama's best boutique hotels, beachfront villas and hidden retreats, with locally managed direct-booking enquiries.",
+    publishDate: "2026-07-27T09:00:00.000Z",
+    image:
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
+  },
+  {
+    route: "/best-airbnbs",
+    title: "Best Airbnbs & Private Villas in Ahangama",
+    description:
+      "A hand-picked editorial guide to Ahangama's best private villas, beach houses and hidden retreats for couples, families and groups.",
+    publishDate: "2026-07-27T09:00:00.000Z",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pebble_alma.jpg",
   },
   {
     route: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
