@@ -73,7 +73,7 @@ import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
-import GuidePage from "../pages/GuidePage";
+import ExperienceAhangamaGuide from "../pages/ExperienceAhangamaGuide";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
 import StaffPickExperienceAhangamaPage, {
@@ -156,7 +156,7 @@ const routes = [
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
-  { path: "/guide", element: <GuidePage /> },
+  { path: "/online-guide", element: <ExperienceAhangamaGuide /> },
   { path: "/editors-picks", element: <EditorsPicksPage /> },
   {
     path: "/the-living-room-concept-store",

@@ -148,6 +148,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     host: true,
+    server: {
+      allowedHosts: [".ngrok-free.dev", ".ngrok-free.app"],
+    },
     plugins: [react(), venuesApiPlugin()],
   };
 });
