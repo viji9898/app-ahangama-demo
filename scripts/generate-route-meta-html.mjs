@@ -538,6 +538,14 @@ const routeMeta = [
       "Choose from multiple pass options designed for different travel styles in Ahangama.",
   },
   {
+    route: "/pass-perks",
+    title: "Ahangama Pass Perks",
+    description:
+      "Discover current Ahangama Pass perks across food, wellness, stays, experiences, shopping, and transport.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_pass_apple_wallet.png",
+  },
+  {
     route: "/about",
     title: "About - Ahangama",
     description:

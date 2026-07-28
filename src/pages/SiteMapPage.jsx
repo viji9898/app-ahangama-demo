@@ -69,6 +69,7 @@ const PAGE_GROUPS = [
     icon: WalletOutlined,
     pages: [
       { title: "What is the Ahangama Pass?", path: "/what-is-ahangama-pass", detail: "How the pass works and what it unlocks." },
+      { title: "Pass perks", path: "/pass-perks", detail: "Browse current perks by category and learn how to claim them." },
       { title: "Pass products", path: "/products", detail: "Compare the available access and travel products." },
       { title: "Get a pass", path: "/card", detail: "Choose and purchase an Ahangama Pass." },
       { title: "Buy a pass", path: "/card/buy", detail: "Go directly to pass checkout." },

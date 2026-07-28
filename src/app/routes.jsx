@@ -101,6 +101,7 @@ import StaysPage, { STAYS_PATH } from "../pages/StaysPage";
 import BestAirbnbsPage, { BEST_AIRBNBS_PATH } from "../pages/BestAirbnbsPage";
 import SiteMapPage, { SITE_MAP_PATH } from "../pages/SiteMapPage";
 import TransportPage, { TRANSPORT_PATH } from "../pages/TransportPage";
+import PassPerksPage, { PASS_PERKS_PATH } from "../pages/PassPerksPage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -233,6 +234,7 @@ const routes = [
   { path: TIP_LANDING_PATH, element: <TipLandingPage /> },
   { path: HOSPO_PASS_PATH, element: <HospoPassPage /> },
   { path: COMP_PASS_PATH, element: <HospoPassPage variant="compPass" /> },
+  { path: PASS_PERKS_PATH, element: <PassPerksPage /> },
   { path: "/partners", element: <Partners /> },
   { path: "/master-index", element: <MasterIndex /> },
   { path: "/map", element: <MapPage /> },
