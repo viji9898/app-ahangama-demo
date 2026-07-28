@@ -335,7 +335,7 @@ export default function BestAirbnbsPage() {
       </main>
 
       <Modal className="stays-enquiry-modal" open={enquiryOpen} onCancel={closeEnquiry} footer={null} width={680} title={submitted ? "Enquiry received" : selectedVilla?.name ? `Check ${selectedVilla.name}` : "Find my private villa"} destroyOnHidden>
-        {submitted ? <div className="stays-success"><div><CheckOutlined /></div><Title level={3}>We will start checking the right villas.</Title><Paragraph>We will compare matching terms and contact you with availability and the best direct quote we can secure.</Paragraph><Button type="primary" onClick={closeEnquiry}>Done</Button></div> :
+        {submitted ? <div className="stays-success"><div className="stays-success-icon"><CheckOutlined /></div><Title level={3}>We will start checking the right villas.</Title><Paragraph>We will compare matching terms and contact you with availability and the best direct quote we can secure.</Paragraph><Button type="primary" onClick={closeEnquiry}>Done</Button></div> :
           <Form form={form} layout="vertical" onFinish={submitEnquiry} requiredMark={false}>
             <Alert type="info" showIcon message="No payment is taken. We verify live availability and pricing before sending your quote." />
             <div className="stays-form-grid">

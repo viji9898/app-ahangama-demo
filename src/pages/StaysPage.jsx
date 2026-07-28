@@ -391,7 +391,7 @@ export default function StaysPage() {
       >
         {submitted ? (
           <div className="stays-success">
-            <div><CheckOutlined /></div>
+            <div className="stays-success-icon"><CheckOutlined /></div>
             <Title level={3}>We will start checking the right stays.</Title>
             <Paragraph>
               We will compare matching room terms and contact you with availability and the best direct quote we can secure.

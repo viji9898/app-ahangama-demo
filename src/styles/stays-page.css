@@ -86,7 +86,7 @@
 .stays-final-thoughts .stays-letter-signature { margin-bottom: 38px; }
 .stays-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin-top: 22px; }
 .stays-success { padding: 30px 10px 12px; text-align: center; }
-.stays-success > div { display: grid; width: 54px; height: 54px; margin: auto; place-items: center; border: 1px solid var(--stays-ink); color: var(--stays-ink); border-radius: 50%; font-size: 20px; }
+.stays-success-icon { display: grid; width: 54px; height: 54px; margin: auto; place-items: center; border: 1px solid var(--stays-ink); color: var(--stays-ink); border-radius: 50%; font-size: 20px; }
 .stays-success p { max-width: 480px; margin: 0 auto 24px; color: #65706a; }
 
 @media (max-width: 800px) {
