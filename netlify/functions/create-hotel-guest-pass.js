@@ -164,6 +164,8 @@ export const handler = async (event) => {
       validFrom: validFrom.toISOString(),
       validUntil: validUntil.toISOString(),
       verificationCode,
+      whatsappOptIn: body.whatsappOptIn,
+      marketingConsent: body.marketingConsent,
     });
 
     let pass = result.pass;

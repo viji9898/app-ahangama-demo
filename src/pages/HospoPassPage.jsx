@@ -422,6 +422,8 @@ export default function HospoPassPage({ variant = "hospo" }) {
           ),
           sourceHotelSlug: pageConfig.sourceHotelSlug,
           destination: HOSPO_DESTINATION,
+          whatsappOptIn: true,
+          marketingConsent: true,
         }),
       });
       const payload = await response.json().catch(() => ({}));
