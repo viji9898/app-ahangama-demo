@@ -31,10 +31,6 @@ import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
-import {
-  THIS_WEEK_EVENTS,
-  THIS_WEEK_EVENTS_LABEL,
-} from "../data/eventsCalendar";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -775,10 +771,8 @@ export default function Home() {
   };
   const showLegacyHomepageLowerSections = false;
   const whatsOnBoardRailRef = useRef(null);
-  const [thisWeekEvents, setThisWeekEvents] = useState(THIS_WEEK_EVENTS);
-  const [thisWeekEventsLabel, setThisWeekEventsLabel] = useState(
-    THIS_WEEK_EVENTS_LABEL,
-  );
+  const [thisWeekEvents, setThisWeekEvents] = useState([]);
+  const [thisWeekEventsLabel, setThisWeekEventsLabel] = useState("Ahangama");
   const [canScrollWhatsOnLeft, setCanScrollWhatsOnLeft] = useState(false);
   const [canScrollWhatsOnRight, setCanScrollWhatsOnRight] = useState(false);
   const weeklyPicksRailRef = useRef(null);
@@ -807,7 +801,7 @@ export default function Home() {
           setThisWeekEventsLabel(buildHomepageEventsLabel(homepageEvents));
         }
       } catch (error) {
-        console.warn("Using static homepage events fallback", error);
+        console.warn("Unable to load homepage events", error);
       }
     }
 
