@@ -34,6 +34,7 @@ const PAGE_GROUPS = [
       { title: "Where to eat", path: "/eat", detail: "Restaurants, cafes, bars, and local favourites." },
       { title: "Where to stay", path: "/stays", detail: "Boutique hotels, villas, and direct enquiries." },
       { title: "Private villas", path: "/best-airbnbs", detail: "A curated guide to villas and beach houses." },
+      { title: "Transport & travel", path: "/transport", detail: "Request scooters, tuk-tuks, airport pickups, and private transfers." },
       { title: "Wellness", path: "/wellness", detail: "Yoga, recovery, fitness, and treatments." },
       { title: "Shops", path: "/shops", detail: "Design stores, local finds, and essentials." },
       { title: "Events", path: "/events", detail: "What is happening around town." },

@@ -482,6 +482,14 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pebble_alma.jpg",
   },
   {
+    route: "/transport",
+    title: "Transport & Travel in Ahangama",
+    description:
+      "Request scooter rentals, tuk-tuks, airport pickups, and private transfers from Ahangama to Colombo, Hiriketiya, Galle, and beyond.",
+    image:
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
+  },
+  {
     route: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
     title: "Getting Around Ahangama",
     description:
