@@ -9,6 +9,14 @@ function jsonHeaders() {
   };
 }
 
+function cacheHeaders() {
+  return {
+    "Cache-Control": "public, max-age=60, stale-while-revalidate=300",
+    "Netlify-CDN-Cache-Control":
+      "public, durable, s-maxage=300, stale-while-revalidate=86400",
+  };
+}
+
 export const handler = async (event) => {
   const headers = jsonHeaders();
 
@@ -29,7 +37,7 @@ export const handler = async (event) => {
 
     return {
       statusCode: 200,
-      headers,
+      headers: { ...headers, ...cacheHeaders() },
       body: JSON.stringify({ success: true, ...payload }),
     };
   } catch (error) {
