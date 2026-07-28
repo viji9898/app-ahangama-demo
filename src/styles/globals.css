@@ -7426,6 +7426,18 @@ h4,
   margin-top: 22px;
 }
 
+.events-agenda-status {
+  padding: 56px 0;
+  border-bottom: 1px solid rgba(34, 31, 28, 0.12);
+  color: #534b42;
+  font-size: 17px;
+}
+
+.events-agenda-status--error,
+.events-agenda-status--error .ant-typography {
+  color: #8b2f28;
+}
+
 .events-agenda-day {
   display: grid;
   grid-template-columns: 140px minmax(0, 1fr);

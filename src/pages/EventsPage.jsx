@@ -9,11 +9,6 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import SiteLayout from "../components/layout/SiteLayout";
 import NewsletterSignup from "../components/newsletter/NewsletterSignup";
-import {
-  EVENTS_CALENDAR_OVERVIEW,
-  UPCOMING_EVENTS_CALENDAR_DAYS,
-  UPCOMING_EVENTS_EDITOR_PICKS,
-} from "../data/eventsCalendar";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -43,10 +38,39 @@ function formatEventCategory(category) {
     .join(" ");
 }
 
+function buildCalendarTitle(days) {
+  const monthLabels = days
+    .filter((day) => /^\d{4}-\d{2}-\d{2}$/.test(String(day.key)))
+    .map((day) => {
+      const date = new Date(`${day.key}T00:00:00`);
+
+      return Number.isNaN(date.getTime())
+        ? ""
+        : new Intl.DateTimeFormat("en-GB", {
+            month: "long",
+            year: "numeric",
+          }).format(date);
+    })
+    .filter((label, index, labels) => label && labels.indexOf(label) === index);
+
+  if (monthLabels.length === 0) {
+    return days.length > 0 ? "Ongoing Events" : "Events";
+  }
+
+  if (monthLabels.length === 1) {
+    return monthLabels[0];
+  }
+
+  return `${monthLabels[0]} - ${monthLabels[monthLabels.length - 1]}`;
+}
+
 export default function EventsPage() {
   const canonical = absUrl("/events");
-  const [calendarDays, setCalendarDays] = useState(UPCOMING_EVENTS_CALENDAR_DAYS);
-  const [editorPicks, setEditorPicks] = useState(UPCOMING_EVENTS_EDITOR_PICKS);
+  const [calendarDays, setCalendarDays] = useState([]);
+  const [editorPicks, setEditorPicks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
+  const calendarTitle = buildCalendarTitle(calendarDays);
   const datedDays = calendarDays.filter(
     (day) => !day.key.startsWith("ongoing"),
   );
@@ -73,15 +97,19 @@ export default function EventsPage() {
           return;
         }
 
-        if (Array.isArray(payload.days) && payload.days.length > 0) {
-          setCalendarDays(payload.days);
-        }
-
-        if (Array.isArray(payload.editorPicks) && payload.editorPicks.length > 0) {
-          setEditorPicks(payload.editorPicks);
-        }
+        setCalendarDays(Array.isArray(payload.days) ? payload.days : []);
+        setEditorPicks(
+          Array.isArray(payload.editorPicks) ? payload.editorPicks : [],
+        );
       } catch (error) {
-        console.warn("Using static events calendar fallback", error);
+        if (!cancelled) {
+          console.error("Unable to load events calendar", error);
+          setLoadError("The events calendar is temporarily unavailable.");
+        }
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false);
+        }
       }
     }
 
@@ -300,17 +328,33 @@ export default function EventsPage() {
         <div className="events-agenda-shell">
           <header className="events-agenda-header">
             <div>
-              <Title className="events-agenda-title">
-                {EVENTS_CALENDAR_OVERVIEW.monthLabel}
-              </Title>
+              <Title className="events-agenda-title">{calendarTitle}</Title>
               <Text className="events-agenda-kicker">
-                {EVENTS_CALENDAR_OVERVIEW.kicker}
+                Ahangama Events Agenda
               </Text>
             </div>
             <Paragraph className="events-agenda-summary">
-              {EVENTS_CALENDAR_OVERVIEW.summary}
+              A daily guide to what&apos;s happening around town in Ahangama.
             </Paragraph>
           </header>
+
+          {isLoading ? (
+            <div className="events-agenda-status" role="status" aria-live="polite">
+              <Text>Loading events...</Text>
+            </div>
+          ) : null}
+
+          {!isLoading && loadError ? (
+            <div className="events-agenda-status events-agenda-status--error" role="alert">
+              <Text>{loadError}</Text>
+            </div>
+          ) : null}
+
+          {!isLoading && !loadError && calendarDays.length === 0 ? (
+            <div className="events-agenda-status" role="status">
+              <Text>No upcoming events are currently published.</Text>
+            </div>
+          ) : null}
 
           <div className="events-agenda-list" role="list">
             {datedDays.map((day) => renderDay(day))}
@@ -324,18 +368,20 @@ export default function EventsPage() {
             {localPerksDays.map((day) => renderDay(day))}
           </div>
 
-          <section className="events-agenda-editorPicks">
-            <Text className="events-agenda-editorPicksLabel">
-              Editor&apos;s Picks This Week
-            </Text>
-            <div className="events-agenda-editorPicksList">
-              {editorPicks.map((pick) => (
-                <Text className="events-agenda-editorPick" key={pick}>
-                  {pick}
-                </Text>
-              ))}
-            </div>
-          </section>
+          {editorPicks.length > 0 ? (
+            <section className="events-agenda-editorPicks">
+              <Text className="events-agenda-editorPicksLabel">
+                Editor&apos;s Picks This Week
+              </Text>
+              <div className="events-agenda-editorPicksList">
+                {editorPicks.map((pick) => (
+                  <Text className="events-agenda-editorPick" key={pick}>
+                    {pick}
+                  </Text>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section className="events-agenda-signup">
             <div className="events-agenda-signupIntro">
