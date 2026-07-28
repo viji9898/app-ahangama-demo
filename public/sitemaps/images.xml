@@ -180,6 +180,19 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/eat/taboo-beach-club</loc>
+    <lastmod>2026-07-28T05:43:30.719Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/eat/surf-club</loc>
     <lastmod>2026-07-24T05:11:59.233Z</lastmod>
     <image:image>
@@ -265,19 +278,6 @@
     </image:image>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/caf-samaya/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/taboo-beach-club</loc>
-    <lastmod>2026-07-17T19:43:42.388Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/logo.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -884,6 +884,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/stays/surf-villa</loc>
+    <lastmod>2026-07-27T04:09:17.340Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-villa/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-villa/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/stays/southpoint-villa</loc>
     <lastmod>2026-07-24T05:10:43.489Z</lastmod>
     <image:image>
@@ -1270,16 +1280,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/stays/surf-villa</loc>
-    <lastmod>2026-07-17T19:43:42.388Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-villa/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-villa/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/stays/tea-tree-villa</loc>
     <lastmod>2026-07-17T19:43:42.388Z</lastmod>
     <image:image>
@@ -1435,6 +1435,29 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/wellness/eliment-jiu-jitsu</loc>
+    <lastmod>2026-07-28T08:30:11.451Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/eliment-jiu-jitsu/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/eliment-jiu-jitsu/image.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/wellness/white-lotus-spa-wellness</loc>
+    <lastmod>2026-07-28T05:36:17.877Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/white-lotus-spa-wellness/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/white-lotus-spa-wellness/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/white-lotus-spa-wellness/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/wellness/spa-station-midigama</loc>
     <lastmod>2026-07-24T05:09:13.128Z</lastmod>
     <image:image>
@@ -1445,19 +1468,6 @@
     </image:image>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/spa-station-midigama/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/wellness/white-lotus-spa-wellness</loc>
-    <lastmod>2026-07-20T06:22:03.049Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/white-lotus-spa-wellness/logo.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/white-lotus-spa-wellness/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/white-lotus-spa-wellness/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -1484,16 +1494,6 @@
     </image:image>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/calma-samaya/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/wellness/eliment-jiu-jitsu</loc>
-    <lastmod>2026-07-17T19:43:42.388Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/eliment-jiu-jitsu/logo.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/eliment-jiu-jitsu/image.jpg</image:loc>
     </image:image>
   </url>
   <url>

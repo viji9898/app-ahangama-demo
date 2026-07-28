@@ -46,6 +46,49 @@ import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
 
 const { Title, Paragraph, Text } = Typography;
 
+const EVENTS_ENDPOINT = "/.netlify/functions/events";
+
+function formatHomepageEventDate(day) {
+  if (String(day.key).startsWith("ongoing")) {
+    return "Ongoing";
+  }
+
+  const year = String(day.key).slice(0, 4);
+  return `${String(day.weekday).slice(0, 3)} ${day.dayNumber} ${String(day.month).slice(0, 3)} ${year}`;
+}
+
+function buildHomepageEvents(days) {
+  return days
+    .flatMap((day) =>
+      (day.events || []).map((event) => ({
+        ...event,
+        date: formatHomepageEventDate(day),
+        dayKey: day.key,
+      })),
+    )
+    .slice(0, 5);
+}
+
+function buildHomepageEventsLabel(events) {
+  const datedEvents = events.filter(
+    (event) => !String(event.dayKey).startsWith("ongoing"),
+  );
+
+  if (!datedEvents.length) {
+    return "Ahangama . Ongoing";
+  }
+
+  const formatDate = (event) => event.date
+    .replace(/^[A-Za-z]{3} /, "")
+    .replace(/ \d{4}$/, "");
+  const firstDate = formatDate(datedEvents[0]);
+  const lastDate = formatDate(datedEvents[datedEvents.length - 1]);
+
+  return firstDate === lastDate
+    ? `Ahangama . ${firstDate}`
+    : `Ahangama . ${firstDate} - ${lastDate}`;
+}
+
 const TWELVE_THINGS_ORDER = [
   "pura",
   "gik-bike-rentals",
@@ -732,10 +775,48 @@ export default function Home() {
   };
   const showLegacyHomepageLowerSections = false;
   const whatsOnBoardRailRef = useRef(null);
+  const [thisWeekEvents, setThisWeekEvents] = useState(THIS_WEEK_EVENTS);
+  const [thisWeekEventsLabel, setThisWeekEventsLabel] = useState(
+    THIS_WEEK_EVENTS_LABEL,
+  );
   const [canScrollWhatsOnLeft, setCanScrollWhatsOnLeft] = useState(false);
   const [canScrollWhatsOnRight, setCanScrollWhatsOnRight] = useState(false);
   const weeklyPicksRailRef = useRef(null);
   const isWeeklyPicksAdjustingRef = useRef(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadEvents() {
+      try {
+        const response = await fetch(EVENTS_ENDPOINT);
+        const payload = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(payload.error || "Unable to load events");
+        }
+
+        if (cancelled || !Array.isArray(payload.days)) {
+          return;
+        }
+
+        const homepageEvents = buildHomepageEvents(payload.days);
+
+        if (homepageEvents.length > 0) {
+          setThisWeekEvents(homepageEvents);
+          setThisWeekEventsLabel(buildHomepageEventsLabel(homepageEvents));
+        }
+      } catch (error) {
+        console.warn("Using static homepage events fallback", error);
+      }
+    }
+
+    loadEvents();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const rail = whatsOnBoardRailRef.current;
@@ -1138,7 +1219,7 @@ export default function Home() {
                   What&apos;s On This Week
                 </Text>
                 <Text className="whats-on-boardLocation">
-                  {THIS_WEEK_EVENTS_LABEL}
+                  {thisWeekEventsLabel}
                 </Text>
                 <Paragraph className="whats-on-boardDescription">
                   A curated selection of things happening around town this week.
@@ -1161,7 +1242,7 @@ export default function Home() {
                 ) : null}
 
                 <div className="whats-on-boardRail" ref={whatsOnBoardRailRef}>
-                  {THIS_WEEK_EVENTS.map((event) => (
+                  {thisWeekEvents.map((event) => (
                     <div
                       className="whats-on-boardItem"
                       key={`${event.title}-${event.date}`}
