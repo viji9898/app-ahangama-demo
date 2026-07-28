@@ -536,6 +536,12 @@ const routeMeta = [
       "Learn about our curated guide to Ahangama - a thoughtful approach to travel that prioritizes quality over quantity, built for independent travelers and long-stay visitors.",
   },
   {
+    route: "/site-map",
+    title: "Site Map | Explore Ahangama.com",
+    description:
+      "A clear, grouped directory of Ahangama.com guides, places, stories, pass pages, partner resources, and team tools.",
+  },
+  {
     route: "/blogs",
     title: "Ahangama Blogs — Real Visitor Stories, Guides, and Experiences",
     description:

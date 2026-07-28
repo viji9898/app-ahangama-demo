@@ -99,6 +99,7 @@ import ArticleGuidelinePage, {
 } from "../pages/ArticleGuidelinePage";
 import StaysPage, { STAYS_PATH } from "../pages/StaysPage";
 import BestAirbnbsPage, { BEST_AIRBNBS_PATH } from "../pages/BestAirbnbsPage";
+import SiteMapPage, { SITE_MAP_PATH } from "../pages/SiteMapPage";
 import ExternalRedirect from "./ExternalRedirect";
 
 const WELLNESS_GUIDE_BLOG_PATH =
@@ -219,6 +220,7 @@ const routes = [
   { path: "/full-list", element: <FullListPage /> },
   { path: "/12-things", element: <TwelveThingsPage /> },
   { path: "/about", element: <About /> },
+  { path: SITE_MAP_PATH, element: <SiteMapPage /> },
   { path: "/logo", element: <LogoPage /> },
   { path: "/blogs", element: <BlogsPage /> },
   { path: "/blogs/:slug", element: <BlogsPage /> },

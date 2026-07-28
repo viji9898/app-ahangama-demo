@@ -1,0 +1,277 @@
+.siteMap-page {
+  --map-ink: #1b201c;
+  --map-forest: #254c3d;
+  --map-coral: #c7674f;
+  --map-paper: #f5f2ea;
+  --map-line: rgba(27, 32, 28, 0.16);
+  color: var(--map-ink);
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+.siteMap-hero {
+  position: relative;
+  width: 100vw;
+  min-height: min(76svh, 760px);
+  margin-left: calc(50% - 50vw);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #263a32;
+}
+
+.siteMap-heroImage {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp");
+  background-position: center 48%;
+  background-size: cover;
+  transform: scale(1.02);
+  animation: siteMap-reveal 900ms ease-out both;
+}
+
+.siteMap-heroShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 18, 14, 0.12) 15%, rgba(10, 18, 14, 0.78) 100%);
+}
+
+.siteMap-heroContent {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 160px 0 64px;
+  color: #fff;
+  animation: siteMap-rise 700ms 120ms ease-out both;
+}
+
+.siteMap-eyebrow.ant-typography {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.siteMap-hero h1.ant-typography {
+  max-width: 900px;
+  margin: 18px 0 18px;
+  color: #fff !important;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: clamp(64px, 9vw, 112px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.siteMap-heroContent > div.ant-typography {
+  max-width: 650px;
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.siteMap-count {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.siteMap-directory {
+  padding: 88px 0 140px;
+}
+
+.siteMap-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 48px;
+  align-items: end;
+}
+
+.siteMap-eyebrowDark.ant-typography { color: var(--map-coral); }
+
+.siteMap-controls h2.ant-typography {
+  margin: 10px 0 0;
+  color: var(--map-ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.siteMap-controls .ant-input-affix-wrapper {
+  height: 52px;
+  border: 0;
+  border-bottom: 1px solid var(--map-ink);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.siteMap-jumpNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 46px;
+  padding: 18px 0;
+  border-top: 1px solid var(--map-line);
+  border-bottom: 1px solid var(--map-line);
+}
+
+.siteMap-jumpNav a {
+  color: #566159;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.siteMap-jumpNav a:hover { color: var(--map-coral); }
+.siteMap-results.ant-typography { display: block; margin-top: 32px; color: #667068; }
+
+.siteMap-groups { margin-top: 30px; }
+
+.siteMap-group {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.6fr);
+  gap: clamp(40px, 7vw, 100px);
+  padding: 74px 0;
+  border-bottom: 1px solid var(--map-line);
+  scroll-margin-top: 24px;
+}
+
+.siteMap-groupIcon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 26px;
+  place-items: center;
+  border: 1px solid var(--map-line);
+  color: var(--map-forest);
+  font-size: 18px;
+}
+
+.siteMap-groupNumber.ant-typography {
+  display: block;
+  color: var(--map-coral);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.siteMap-groupIntro h2.ant-typography {
+  margin: 10px 0 14px;
+  color: var(--map-ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.siteMap-groupIntro p.ant-typography {
+  max-width: 340px;
+  color: #69726b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.siteMap-internalLabel.ant-typography {
+  color: var(--map-coral);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.siteMap-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.siteMap-link {
+  display: flex;
+  min-height: 118px;
+  padding: 22px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--map-line);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--map-ink);
+  text-decoration: none;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.siteMap-link:hover {
+  border-color: var(--map-forest);
+  background: #fff;
+  color: var(--map-ink);
+  transform: translateY(-2px);
+}
+
+.siteMap-link strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.siteMap-link .ant-typography {
+  display: block;
+  color: #707871;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.siteMap-link > .anticon { margin-top: 4px; color: var(--map-coral); }
+
+.siteMap-groupInternal {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-inline: max(24px, calc((100vw - 1180px) / 2));
+  background: var(--map-paper);
+}
+
+@keyframes siteMap-reveal {
+  from { opacity: 0; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes siteMap-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+  .siteMap-hero { min-height: 72svh; }
+  .siteMap-heroContent { width: calc(100% - 32px); padding: 140px 0 38px; }
+  .siteMap-hero h1.ant-typography { font-size: 58px; }
+  .siteMap-heroContent > div.ant-typography { font-size: 16px; }
+  .siteMap-directory { padding: 64px 16px 90px; }
+  .siteMap-controls { grid-template-columns: 1fr; gap: 28px; }
+  .siteMap-controls h2.ant-typography { font-size: 40px; }
+  .siteMap-jumpNav { gap: 10px 18px; }
+  .siteMap-group { grid-template-columns: 1fr; gap: 28px; padding: 58px 0; }
+  .siteMap-groupIcon { margin-bottom: 18px; }
+  .siteMap-groupIntro p.ant-typography { max-width: 520px; }
+  .siteMap-links { grid-template-columns: 1fr; }
+  .siteMap-link { min-height: 106px; }
+  .siteMap-groupInternal { padding-inline: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .siteMap-heroImage,
+  .siteMap-heroContent { animation: none; }
+  .siteMap-link { transition: none; }
+}
