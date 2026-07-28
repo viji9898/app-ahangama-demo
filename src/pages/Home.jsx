@@ -2889,6 +2889,15 @@ export default function Home() {
                   >
                     Get the Card
                   </Button>
+                  <Button
+                    size="large"
+                    block
+                    href="/pass-perks"
+                    icon={<HeartOutlined />}
+                    style={{ marginTop: 10, width: "100%" }}
+                  >
+                    Explore Pass Perks
+                  </Button>
                   {/* <Button style={{ marginTop: 10 }} block href="/card/my">
                     View my QR
                   </Button> */}

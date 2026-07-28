@@ -21,7 +21,10 @@ export default function TopNav({ overlayHero = false }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const isHome = loc.pathname === "/";
 
-  const navItems = useMemo(() => [{ label: "Offers", to: "/offers" }], []);
+  const navItems = useMemo(
+    () => [{ label: "Pass Perks", to: "/pass-perks" }],
+    [],
+  );
 
   const isActive = (to) => {
     if (to === "/") return loc.pathname === "/";
@@ -195,8 +198,8 @@ export default function TopNav({ overlayHero = false }) {
             ) : (
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <Link
-                  to="/offers"
-                  aria-label="Offers"
+                  to="/pass-perks"
+                  aria-label="Pass Perks"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -255,8 +258,8 @@ export default function TopNav({ overlayHero = false }) {
               </a>
 
               <Link
-                to="/offers"
-                aria-label="Offers"
+                to="/pass-perks"
+                aria-label="Pass Perks"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
