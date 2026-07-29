@@ -101,6 +101,7 @@ import StaysPage, { STAYS_PATH } from "../pages/StaysPage";
 import BestAirbnbsPage, { BEST_AIRBNBS_PATH } from "../pages/BestAirbnbsPage";
 import SiteMapPage, { SITE_MAP_PATH } from "../pages/SiteMapPage";
 import TransportPage, { TRANSPORT_PATH } from "../pages/TransportPage";
+import HostRetreatPage, { HOST_RETREAT_PATH } from "../pages/HostRetreatPage";
 import PassPerksPage, { PASS_PERKS_PATH } from "../pages/PassPerksPage";
 import ExternalRedirect from "./ExternalRedirect";
 
@@ -196,6 +197,7 @@ const routes = [
   { path: STAYS_PATH, element: <StaysPage /> },
   { path: BEST_AIRBNBS_PATH, element: <BestAirbnbsPage /> },
   { path: TRANSPORT_PATH, element: <TransportPage /> },
+  { path: HOST_RETREAT_PATH, element: <HostRetreatPage /> },
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },

@@ -473,6 +473,15 @@ const routeMeta = [
       "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
   },
   {
+    route: "/host-a-retreat-ahangama",
+    title: "Host a Retreat in Ahangama",
+    description:
+      "Plan a yoga retreat, leadership offsite, creative gathering or fitness camp in Ahangama with trusted local venue and concierge support.",
+    publishDate: "2026-07-30T09:00:00.000Z",
+    image:
+      "https://images.openai.com/static-rsc-4/dH7shEGk1uXluF2Jir2c0DGDyYL3Z1kIo7mtn_Fdm219IbR2HYzMwWZJYukJ89v_3Ndbo64q64fWu883O89hVuDk9nHpEKl8N9MnPcbePkvJsC0tOD_JN_5upPYy1qJeOVhQOa9CHEJ67Xjjr1h7N200gaHbZs10vAIJSwWklPk?purpose=inline",
+  },
+  {
     route: "/best-airbnbs",
     title: "Best Airbnbs & Private Villas in Ahangama",
     description:

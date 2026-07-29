@@ -1,0 +1,81 @@
+.retreat-page { --ink: #181916; --muted: #6f7069; --line: #cecec6; --paper: #f4f1e8; --green: #31483b; background: #fff; color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; }
+.retreat-shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+.retreat-page h1.ant-typography, .retreat-page h2.ant-typography, .retreat-page h3.ant-typography { color: var(--ink); font-family: "Iowan Old Style", Georgia, serif; font-weight: 400; letter-spacing: 0; }
+.retreat-page h2.ant-typography { font-size: clamp(46px, 6vw, 80px); line-height: 1; }
+.retreat-page p.ant-typography { color: #454740; font-size: 18px; line-height: 1.8; }
+.retreat-kicker { color: var(--muted) !important; font: 600 10px/1.4 "Avenir Next", sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+.retreat-hero { position: relative; display: flex; width: 100vw; min-height: 100svh; margin-left: calc(50% - 50vw); align-items: flex-end; overflow: hidden; background: #272721; }
+.retreat-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.retreat-hero-shade { position: absolute; inset: 0; background: rgba(16,16,13,.46); }
+.retreat-hero-content { position: relative; z-index: 1; width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 170px 0 64px; color: white; }
+.retreat-hero-content > span { color: rgba(255,255,255,.82); font: 600 10px/1.4 "Avenir Next", sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+.retreat-hero h1.ant-typography { display: flex; flex-direction: column; max-width: 850px; margin: 22px 0 28px; color: white !important; font: 400 clamp(68px, 9vw, 116px)/.8 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
+.retreat-hero h1.ant-typography span { color: white !important; }
+.retreat-hero-content > div.ant-typography { max-width: 590px; margin-bottom: 18px; color: rgba(255,255,255,.92) !important; font-size: 20px; line-height: 1.65; }
+.retreat-hero .ant-btn { height: auto; padding: 8px 0; border: 0; border-bottom: 1px solid rgba(255,255,255,.75); border-radius: 0; color: white; box-shadow: none; font: 600 11px/1.4 "Avenir Next", sans-serif; letter-spacing: 1.2px; text-transform: uppercase; }
+.retreat-intro { display: grid; grid-template-columns: 1fr 3fr; gap: 60px; padding-block: clamp(110px, 14vw, 190px); }
+.retreat-intro h2.ant-typography { max-width: 980px; margin: 0 0 54px; }
+.retreat-intro p.ant-typography { max-width: 720px; margin-left: auto; }
+.retreat-quote { display: grid; min-height: 66svh; margin: 0; padding: 60px 24px; place-items: center; background: var(--green); color: white; font-size: clamp(54px, 8vw, 108px); line-height: 1; text-align: center; }
+.retreat-venue { border-bottom: 1px solid var(--line); }
+.retreat-gallery { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: repeat(2, minmax(280px, 42vw)); gap: 4px; background: white; }
+.retreat-gallery img { width: 100%; height: 100%; object-fit: cover; }
+.retreat-gallery img:first-child { grid-row: 1 / 3; }
+.retreat-venue-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; padding-block: clamp(84px, 11vw, 150px); }
+.retreat-venue-title h2.ant-typography { margin: 24px 0 16px; font-size: clamp(64px, 8vw, 112px); }
+.retreat-venue-title em { color: var(--muted); font-size: 22px; }
+.retreat-venue-details > p { max-width: 620px; }
+.retreat-list-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 46px; border-top: 1px solid var(--line); }
+.retreat-list-pair > div { padding-top: 22px; }
+.retreat-list-pair span { font: 600 10px "Avenir Next", sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
+.retreat-list-pair ul { margin: 20px 0 0; padding: 0; list-style: none; }
+.retreat-list-pair li { padding: 8px 0; border-bottom: 1px solid var(--line); color: #575951; font: 500 12px "Avenir Next", sans-serif; text-transform: uppercase; }
+.retreat-venue-details .ant-btn, .retreat-concierge .ant-btn { height: auto; margin-top: 38px; padding: 9px 0; border-bottom: 1px solid var(--ink); border-radius: 0; color: var(--ink); font: 600 10px "Avenir Next", sans-serif; letter-spacing: 1.2px; text-transform: uppercase; }
+.retreat-comparison { padding-block: clamp(110px, 14vw, 180px); }
+.retreat-comparison h2 { margin: 18px 0 65px; }
+.retreat-table-wrap { overflow-x: auto; }
+.retreat-comparison table { width: 100%; min-width: 720px; border-collapse: collapse; font-family: "Avenir Next", sans-serif; }
+.retreat-comparison th, .retreat-comparison td { padding: 18px 14px; border-bottom: 1px solid var(--line); text-align: left; }
+.retreat-comparison thead th { border-top: 2px solid var(--ink); color: var(--ink); font-size: 17px; }
+.retreat-comparison tbody th { color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+.retreat-comparison td { color: #30322d; font-size: 13px; }
+.retreat-process { padding-block: clamp(100px, 13vw, 170px); background: var(--ink); color: white; }
+.retreat-process h2.ant-typography { max-width: 800px; margin: 18px 0 80px; color: white !important; }
+.retreat-process .retreat-kicker { color: #aeb4ab !important; }
+.retreat-process ol { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; padding: 0; border-top: 1px solid #51534d; list-style: none; }
+.retreat-process li { min-height: 190px; padding: 22px 18px; border-right: 1px solid #51534d; }
+.retreat-process li span { display: block; color: #aeb4ab; font: 600 10px "Avenir Next", sans-serif; }
+.retreat-process li strong { display: block; margin-top: 72px; color: white; font-size: 19px; font-weight: 400; }
+.retreat-concierge { padding-block: clamp(120px, 16vw, 210px); background: var(--paper); text-align: center; }
+.retreat-concierge h2 { margin: 24px 0 38px; }
+.retreat-concierge p { max-width: 710px; margin-inline: auto; }
+.retreat-concierge strong { display: block; margin-top: 35px; font-size: 25px; font-weight: 400; }
+.retreat-concierge .ant-btn { display: block; margin: 38px auto 0; }
+.retreat-enquiry { padding-block: clamp(110px, 14vw, 180px); background: #fff; }
+.retreat-enquiry-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(60px, 9vw, 130px); }
+.retreat-enquiry h2 { margin: 20px 0 32px; }
+.retreat-form-wrap { padding-top: 6px; }
+.retreat-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.retreat-form-wrap .ant-input, .retreat-form-wrap .ant-input-number, .retreat-form-wrap .ant-picker, .retreat-form-wrap .ant-select-selector { border-radius: 0 !important; }
+.retreat-form-wrap .ant-btn-primary { height: 52px; border-radius: 0; background: var(--green); font: 600 11px "Avenir Next", sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+.retreat-success { padding: 42px 0; text-align: center; }
+.retreat-success > .anticon { display: grid; width: 58px; height: 58px; margin: auto; place-items: center; border: 1px solid var(--green); border-radius: 50%; color: var(--green); }
+.retreat-success h3 { margin-top: 28px; font-size: 36px; }
+
+@media (max-width: 800px) {
+  .retreat-shell, .retreat-hero-content { width: min(100% - 32px, 1180px); }
+  .retreat-hero { min-height: 100svh; }
+  .retreat-hero-content { padding: 150px 0 38px; }
+  .retreat-hero h1.ant-typography { margin-block: 18px 24px; font-size: clamp(52px, 16.5vw, 68px); line-height: .84; overflow-wrap: normal; word-break: normal; hyphens: none; }
+  .retreat-hero-content > div.ant-typography { font-size: 17px; line-height: 1.6; }
+  .retreat-intro, .retreat-venue-copy, .retreat-enquiry-layout { grid-template-columns: 1fr; gap: 42px; }
+  .retreat-intro h2.ant-typography { font-size: 48px; }
+  .retreat-quote { min-height: 55svh; font-size: 52px; }
+  .retreat-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: minmax(420px, 110vw) minmax(210px, 58vw); }
+  .retreat-gallery img:first-child { grid-column: 1 / 3; grid-row: 1; }
+  .retreat-venue-title h2.ant-typography { font-size: 68px; }
+  .retreat-process ol { grid-template-columns: 1fr; }
+  .retreat-process li { display: grid; grid-template-columns: 48px 1fr; min-height: 0; padding: 26px 0; border-right: 0; border-bottom: 1px solid #51534d; }
+  .retreat-process li strong { margin: 0; }
+  .retreat-form-grid { grid-template-columns: 1fr; }
+}
