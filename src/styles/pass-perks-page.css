@@ -13,7 +13,7 @@
 
 .passPerks-header {
   position: relative;
-  padding: 70px 0 48px;
+  padding: 70px 20px 48px;
   border-bottom: 1px solid var(--perks-line);
 }
 
@@ -25,7 +25,7 @@
 .passPerks-summary { display: flex; gap: 24px; margin-top: 32px; color: #657068; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; }
 .passPerks-summary strong { margin-right: 4px; color: var(--perks-ink); font-size: 18px; }
 
-.passPerks-tools { position: sticky; z-index: 5; top: 0; padding: 20px 0 16px; background: rgba(255,255,255,.96); backdrop-filter: blur(14px); }
+.passPerks-tools { position: sticky; z-index: 5; top: 0; padding: 20px 20px 16px; background: rgba(255,255,255,.96); backdrop-filter: blur(14px); }
 .passPerks-tools > .ant-input-affix-wrapper { width: min(100%, 460px); height: 48px; border: 1px solid var(--perks-line); border-radius: 4px; box-shadow: none; }
 .passPerks-filters { display: flex; gap: 8px; margin-top: 14px; padding-bottom: 4px; overflow-x: auto; scrollbar-width: none; }
 .passPerks-filters::-webkit-scrollbar { display: none; }
@@ -37,7 +37,7 @@
 .passPerks-loading { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding: 34px 0 90px; }
 .passPerks-loading > div { padding: 24px; border: 1px solid var(--perks-line); }
 .passPerks-results { padding: 42px 0 110px; }
-.passPerks-resultsHeader { display: flex; margin-bottom: 26px; align-items: baseline; justify-content: space-between; gap: 20px; }
+.passPerks-resultsHeader { display: flex; margin-bottom: 26px; padding-inline: 20px; align-items: baseline; justify-content: space-between; gap: 20px; }
 .passPerks-resultsHeader h2.ant-typography { margin: 0; color: var(--perks-ink); font: 500 36px/1 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
 .passPerks-resultsHeader > .ant-typography { color: #737b75; font-size: 12px; }
 .passPerks-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
@@ -74,13 +74,13 @@
 }
 
 @media (max-width: 700px) {
-  .passPerks-header { padding: 42px 0 34px; }
+  .passPerks-header { padding: 42px 20px 34px; }
   .passPerks-headerBrand { margin-bottom: 25px; }
   .passPerks-headerBrand img { width: 44px; height: 44px; }
   .passPerks-header h1.ant-typography { font-size: 48px; }
   .passPerks-header > div.ant-typography { font-size: 15px; }
   .passPerks-summary { margin-top: 24px; }
-  .passPerks-tools { padding-inline: 0; }
+  .passPerks-tools { padding-inline: 20px; }
   .passPerks-tools > .ant-input-affix-wrapper { width: 100%; }
   .passPerks-loading, .passPerks-grid { grid-template-columns: 1fr; }
   .passPerks-results { padding: 28px 0 80px; }
