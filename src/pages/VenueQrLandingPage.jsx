@@ -10,7 +10,7 @@ import {
 import { useParams } from "react-router-dom";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
-import { trackQrEvent } from "../analytics";
+import { reportPassAdsConversion, trackQrEvent } from "../analytics";
 import {
   getPrPromoCheckoutContext,
   getPrPromotion,
@@ -163,6 +163,8 @@ function ErrorState({ onRetry }) {
 }
 
 function EmptyState({ slug }) {
+  const fallbackPassUrl = "https://pass.ahangama.com";
+
   return (
     <div className="qr-page">
       <div className="qr-shell">
@@ -176,7 +178,18 @@ function EmptyState({ slug }) {
                 <Button type="primary" size="large" block href="/">
                   Explore all perks
                 </Button>
-                <Button size="large" block href="https://pass.ahangama.com">
+                <Button
+                  size="large"
+                  block
+                  href={fallbackPassUrl}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    reportPassAdsConversion({
+                      destinationUrl: fallbackPassUrl,
+                      navigate: true,
+                    });
+                  }}
+                >
                   Go to Ahangama Pass
                 </Button>
               </Space>

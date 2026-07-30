@@ -15,6 +15,25 @@
 
       gtag("config", "G-HZ20D69WMB");
       gtag("config", "AW-18209868538");
+
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url !== "undefined") {
+            window.location = url;
+          }
+        };
+
+        gtag("event", "conversion", {
+          send_to: "AW-18209868538/xq0RCLWB6tgcEPqVkutD",
+          value: 1.0,
+          currency: "GBP",
+          event_callback: callback,
+        });
+
+        return false;
+      }
+
+      window.gtag_report_conversion = gtag_report_conversion;
     </script>
 
     <meta charset="UTF-8" />

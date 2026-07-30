@@ -17,6 +17,56 @@ const getAnalyticsAttribution = () => {
   };
 };
 
+const GOOGLE_ADS_CONVERSION_CONFIG = {
+  send_to: "AW-18209868538/xq0RCLWB6tgcEPqVkutD",
+  value: 1.0,
+  currency: "GBP",
+};
+
+const isPassConversionUrl = (destinationUrl) => {
+  if (typeof window === "undefined" || !destinationUrl) {
+    return false;
+  }
+
+  try {
+    const url = new URL(destinationUrl, window.location.origin);
+
+    return url.hostname === "pass.ahangama.com";
+  } catch {
+    return false;
+  }
+};
+
+export const reportPassAdsConversion = ({
+  destinationUrl,
+  navigate = false,
+} = {}) => {
+  if (typeof window === "undefined" || !isPassConversionUrl(destinationUrl)) {
+    return false;
+  }
+
+  if (typeof window.gtag_report_conversion === "function") {
+    window.gtag_report_conversion(navigate ? destinationUrl : undefined);
+    return true;
+  }
+
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "conversion", GOOGLE_ADS_CONVERSION_CONFIG);
+
+    if (navigate) {
+      window.location.assign(destinationUrl);
+    }
+
+    return true;
+  }
+
+  if (navigate) {
+    window.location.assign(destinationUrl);
+  }
+
+  return false;
+};
+
 // src/analytics.js
 export const trackPageView = (url) => {
   persistPassAttribution();
@@ -33,6 +83,8 @@ export const trackPassCtaClick = ({
   productId,
   destinationUrl,
 } = {}) => {
+  reportPassAdsConversion({ destinationUrl });
+
   if (typeof window === "undefined" || typeof window.gtag !== "function") {
     return;
   }
