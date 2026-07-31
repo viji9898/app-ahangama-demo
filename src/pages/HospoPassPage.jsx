@@ -348,6 +348,7 @@ export default function HospoPassPage({ variant = "hospo" }) {
     interests: [],
     goals: [],
     whatsappOptIn: true,
+    marketingConsent: true,
     wantsPartnerUpdates: true,
     notes: "",
   });

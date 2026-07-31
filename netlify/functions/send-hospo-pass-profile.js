@@ -117,13 +117,14 @@ async function saveHospoPassProfile({
         interests,
         goals,
         whatsapp_opt_in,
+        marketing_consent,
         wants_partner_updates,
         notes,
         submitted_at,
         updated_at
       ) VALUES (
         $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
-        $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, NOW()
+        $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, NOW()
       )
       ON CONFLICT (pass_id) DO UPDATE SET
         guest_id = EXCLUDED.guest_id,
@@ -143,6 +144,7 @@ async function saveHospoPassProfile({
         interests = EXCLUDED.interests,
         goals = EXCLUDED.goals,
         whatsapp_opt_in = EXCLUDED.whatsapp_opt_in,
+        marketing_consent = EXCLUDED.marketing_consent,
         wants_partner_updates = EXCLUDED.wants_partner_updates,
         notes = EXCLUDED.notes,
         submitted_at = EXCLUDED.submitted_at,
@@ -168,6 +170,7 @@ async function saveHospoPassProfile({
       normalizeArray(profile.interests),
       normalizeArray(profile.goals),
       normalizeBoolean(profile.whatsappOptIn, true),
+      normalizeBoolean(profile.marketingConsent, true),
       normalizeBoolean(profile.wantsPartnerUpdates, true),
       normalizeText(profile.notes),
       submittedAt,

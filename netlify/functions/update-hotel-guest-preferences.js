@@ -129,7 +129,7 @@ export const handler = async (event) => {
 
     const whatsappOptIn = normalizeBoolean(
       body.whatsappOptIn ?? body.wantsWhatsappRecommendations,
-      false,
+      true,
     );
     const sourceHotel = normalizeOptionalText(
       body.sourceHotel ?? body.sourceHotelSlug ?? pass.sourceHotelSlug,
