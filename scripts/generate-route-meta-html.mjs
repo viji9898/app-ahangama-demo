@@ -244,6 +244,14 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg",
   },
   {
+    route: "/partner-signup",
+    title: "Partner Sign-Up - Ahangama Pass",
+    description:
+      "Join the Ahangama Pass destination network and reach travelers exploring Ahangama. Simple sign-up, no fees, immediate go-live.",
+    image:
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1785743817/Add_a_heading_nilvtf.webp",
+  },
+  {
     route: "/hospo",
     title: "Exclusive for Hospo Community | Hospo",
     description:
