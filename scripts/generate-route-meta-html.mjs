@@ -587,7 +587,7 @@ const routeMeta = [
     description:
       "A daily guide to what's happening around town in Ahangama, with this week's editorial calendar and event highlights.",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/july_events_ahangama.jpg",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786033500/August_Calendar_OG_Image_3_al05rq.webp",
   },
   {
     route: "/newsletter",

@@ -13,7 +13,7 @@ import NewsletterSignup from "../components/newsletter/NewsletterSignup";
 const { Title, Paragraph, Text } = Typography;
 
 const EVENTS_OG_IMAGE =
-  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782884816/EventsCalender_metaImage_m3mt10.webp";
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786033500/August_Calendar_OG_Image_3_al05rq.webp";
 
 const EVENTS_ENDPOINT = "/.netlify/functions/events";
 const LARGE_DETAIL_TEXT = "8th Wednesday 9am Asana & Pranayama.";
