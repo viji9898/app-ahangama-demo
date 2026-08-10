@@ -77,7 +77,7 @@ export default function PartnerSignUp() {
         title="Partner Sign-Up - Ahangama Pass"
         description="Join the Ahangama Pass destination network and reach travelers exploring Ahangama. Simple sign-up, no fees, immediate go-live."
         keywords="Ahangama Pass, partner network, Sri Lanka tourism, destination partners"
-        ogImage="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786347936/August_Calendar_OG_Image_kvxsyx.jpg"
+        ogImage="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786334394/Partner_Sign-Up_OG_Image_b6suln.jpg"
       />
 
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "20px" }}>

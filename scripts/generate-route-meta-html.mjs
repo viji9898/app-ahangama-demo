@@ -249,7 +249,7 @@ const routeMeta = [
     description:
       "Join the Ahangama Pass destination network and reach travelers exploring Ahangama. Simple sign-up, no fees, immediate go-live.",
     image:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786347936/August_Calendar_OG_Image_kvxsyx.jpg",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786334394/Partner_Sign-Up_OG_Image_b6suln.jpg",
   },
   {
     route: "/hospo",
@@ -587,7 +587,7 @@ const routeMeta = [
     description:
       "A daily guide to what's happening around town in Ahangama, with this week's editorial calendar and event highlights.",
     image:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786033500/August_Calendar_OG_Image_3_al05rq.webp",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786347936/August_Calendar_OG_Image_kvxsyx.jpg",
   },
   {
     route: "/newsletter",
