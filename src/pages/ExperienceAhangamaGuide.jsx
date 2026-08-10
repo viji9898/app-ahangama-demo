@@ -36,7 +36,7 @@ const CHAPTERS = [
   { id: "best-experiences", label: "Best Experiences", bg: "cream" },
   { id: "wellness", label: "Wellness", bg: "cream" },
   { id: "night-life", label: "Night Life", bg: "cream" },
-  { id: "souvenir-shops", label: "Souvenir Shops", bg: "cream" },
+  { id: "best-retail-stores", label: "Best Retail Stores", bg: "cream" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
 
@@ -228,7 +228,7 @@ function ContentsSection() {
     "Overview", "Best For", "The Reality Check", "Best Season",
     "How Long Do People Usually Stay?", "Transport Reality Check",
     "Best Stays", "Best Eats", "Best Experiences", "Wellness",
-    "Night Life", "Souvenir Shops",
+    "Night Life", "Best Retail Stores",
   ];
 
   const sectionIds = [
@@ -535,6 +535,14 @@ function BestStaysSection() {
     { name: "Sola Hotel", rating: "4.4", desc: "A striking modern sanctuary nestled within lush tropical palms. Experience elevated jungle living and a stunning private pool.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp" },
     { name: "Kelly", rating: "4.8", desc: "A sleek, contemporary getaway featuring a vibrant evening ambiance. Unwind in style beside the beautifully illuminated pool.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Kelly_Ahangama_ydgnq0.webp" },
     { name: "Lighthouse", rating: "4.4", desc: "A prominent coastal escape offering sweeping, uninterrupted ocean views. Relax by the rocky shoreline at this towering haven.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp" },
+    { name: "Trebartha East – The Roundhouse", rating: "5.0", desc: "A striking circular retreat hidden within a working cinnamon estate, with views across rice fields, tropical forest and the distant ocean.", image: "https://images.suitcasemag.com/wp-content/uploads/2025/03/18160116/Trebartha-Daisy-Wingate-Saul-9234-copy.jpeg" },
+    { name: "Mosvold Villa", rating: "4.5", desc: "A secluded beachfront retreat where every room enjoys uninterrupted Indian Ocean views, with warm hospitality and a peaceful atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Mosvold_imdadl.webp" },
+    { name: "The Benison", rating: "4.9", desc: "Thoughtfully designed cabanas, personalised hospitality and a calm atmosphere in the heart of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/The_Benison_02_uzlcpb.webp" },
+    { name: "Palm Hotel", rating: "4.6", desc: "A design-led lifestyle retreat set across four tropical acres, with A-frame cabanas, concept store, gym and pool.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Palm_Hotel_02_t78i4y.webp" },
+    { name: "Abode by the Beach", rating: "4.5", desc: "A boho-luxe Art Deco hideaway among the palms with an 18-metre pool, just two minutes from the ocean.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Abode_01_rorwfz.webp" },
+    { name: "Harding Boutique Hotel", rating: "4.6", desc: "Contemporary accommodation and warm service in the heart of Ahangama, close to beaches, restaurants and surf breaks.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Harding_Hotel_02_qwxzlc.webp" },
+    { name: "Casa Tikiri Boutique Hotel", rating: "", desc: "An Italian-designed, adults-only jungle retreat with curated rooms and a renowned restaurant, 300 metres from Kabalana Beach.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp" },
+    { name: "SĀMA", rating: "4.9", desc: "A top-rated stay-and-dine spot in the heart of Ahangama, known for healthy seasonal food and relaxed, stylish accommodation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Sama_01_mwposq.webp" },
   ];
 
   return (
@@ -563,8 +571,12 @@ function BestStaysSection() {
                     <p className="eag-card-desc">{stay.desc}</p>
                     <div className="eag-card-meta">
                       <span className="eag-card-meta-name">{stay.name}</span>
-                      <span> &middot; </span>
-                      <span className="eag-card-meta-rating"><StarIcon /> {stay.rating}</span>
+                      {stay.rating && (
+                        <>
+                          <span> &middot; </span>
+                          <span className="eag-card-meta-rating"><StarIcon /> {stay.rating}</span>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -585,11 +597,14 @@ function BestStaysSection() {
  */
 
 const EATS = [
-  { name: "Follow the White Rabbit", desc: "Locally-grown ingredients, oceanfront tables, and a tuna steak locals swear by. · near Marshmallows & Sticks surf break", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784792806/White_rabbit_food_lqhyf8.webp" },
-  { name: "Cactus", desc: "Vegan-forward and Instagram-ready — one of the first restaurants to put Ahangama Beach on the map. · Ahangama Beach", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784792883/cactus_ginziv.webp" },
-  { name: "Lamana", desc: "Spanish small plates, a skate park next to the dining room, and a crowd that stays past dessert. · Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784792976/lamana_dufzmu.webp" },
-  { name: "Ceylon Sliders", desc: "Mediterranean beach bites, cocktails, and a surf shop built into the same space. · beachfront", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784793118/ceylon_sliders_qnixtl.webp" },
-  { name: "RUMA", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784793164/ruma_rmfprq.webp" },
+  { name: "Ceylon Sliders", desc: "Mediterranean beach bites, cocktails, and a surf shop built into the same space. · beachfront", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Ceylon_Sliders_dijus4.webp" },
+  { name: "Kai Rooftop", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Kai_Ahangama_01_exlwja.webp" },
+  { name: "Mermaid’s Kitchen", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341114/Mermaid_s_Kitchen_rsmols.webp" },
+  { name: "Maria Bonita", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp" },
+  { name: "SAMA Restaurant", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/SAMA_Restaurant_zrxp9r.webp" },
+  { name: "Pickled Pelican", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341114/Pickled_Pelican_01_t8znfw.webp" },
+
+
 ];
 
 function BestEatsSection() {
@@ -633,11 +648,15 @@ function BestEatsSection() {
 }
 
 const EXPERIENCES = [
-  { name: "Surf Marshmallows & The Rock", desc: "Long, mellow reef breaks that draw wave-riders from every corner of the globe. · Kabalana Beach" },
-  { name: "Watch the Stilt Fishermen", desc: "Wooden poles rising from the shallows — one of the south coast's most iconic, centuries-old sights. · near Koggala" },
-  { name: "Tour Handunugoda Tea Estate", desc: "Guided tours through one of Sri Lanka's only coastal white-tea estates, tastings included. · ~10 minutes away" },
-  { name: "Koggala Lake Boat Trip / SUP", desc: "Paddle glassy water past mangroves and tiny islands, minutes from the beach." },
-  { name: "Day Trip to Galle Fort", desc: "Cobblestone ramparts, colonial architecture, and ocean views on every corner. · ~20 minutes away" },
+  { name: "Kumbuk Kitchen & Art Space", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Kumbuk_Kitchen_Art_Space_utjfvl.webp" },
+  { name: "Coconut Court Pickleball", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Coconut_Court_Pickleball_fdenxj.webp" },
+  { name: "Palm & Paint", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Palm_Paint_tfdtou.webp" },
+  { name: "Aggala", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Aggala_gztsho.webp" },
+  { name: "Qamar by Zan", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Qamar_by_Zan_02_ricehc.jpg" },
+  { name: "Olive Yu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342710/Olive_Yu_msccgg.webp" },
+  { name: "Frostys", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp" },
+  { name: "Pachcha Sanni", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp" },
+
 ];
 
 function BestExperiencesSection() {
@@ -656,9 +675,13 @@ function BestExperiencesSection() {
               {EXPERIENCES.map((item) => (
                 <div key={item.name} className="eag-card-item">
                   <div className="eag-card-img-wrap">
-                    <div className="eag-card-img--placeholder">
-                      <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
-                    </div>
+                    {item.image ? (
+                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img" />
+                    ) : (
+                      <div className="eag-card-img--placeholder">
+                        <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
+                      </div>
+                    )}
                   </div>
                   <div className="eag-card-body">
                     <p className="eag-card-desc">{item.desc}</p>
@@ -677,22 +700,35 @@ function BestExperiencesSection() {
 }
 
 const WELLNESS = [
-  { name: "Wild Ahangama", desc: "Yoga shalas, a 20-person sauna, and ice baths tucked into the jungle." },
-  { name: "Soul & Surf", desc: "Where surfing meets yoga, right on a quiet cove overlooking the stilt fishermen." },
-  { name: "Aksaaya Ayurveda Wellness", desc: "Traditional Ayurvedic treatments and consultations, tailored to you." },
+  { name: "Pura Pilates", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813854/01_-_Pura_Pilates__myhaog.webp" },
+  { name: "White Lotus Spa – Radisson Collection", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344051/White_Lotus_Spa_oanxz9.webp" },
+  { name: "Banya Steam House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344045/Banya_Steam_House_01_d7fg2v.webp" },
+  { name: "The Nuga House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344048/The_Nuga_House_eihfcp.webp" },
+  { name: "Sellam Gym Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344046/Sellam_01_wmr34n.webp" },
+  { name: "Spa Station Midigama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344054/Spa_Station_Midigama_01_jvniel.webp" },
+  { name: "Calma Samaya", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344053/Calma_Samaya_01_d00qlb.webp" },
+  { name: "Palm Garden Ayurveda Resort", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344047/Palm_Garden_Ayurveda_Resort_01_euj0u2.webp" },
 ];
 
 const NIGHT_LIFE = [
-  { name: "TRAX Ahangama", desc: "Industrial-chic bar and art gallery near the old railway station." },
-  { name: "Lighthouse Ahangama", desc: "Rooftop views and the south coast's biggest Saturday night DJ sets." },
-  { name: "Hakuna Matata Ahangama", desc: "Beachfront DJ nights with sand between your toes." },
-  { name: "Kai Ahangama", desc: "Sea views by day, cocktails by night, right on the rooftop." },
+  { name: "TRAX Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344646/Trax_Ahangama_hzldib.webp" },
+  { name: "Lamana", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344639/Lamana_smqj5r.webp" },
+  { name: "Hakuna Matata", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779729/Hakuna_ColoredImage_ji8d1dji8d1dji8d_Topaz_Gigapixel_2x_scale_bxi6wt.webp" },
+  { name: "MONO", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344642/MONO_byzqbs.webp" },
+  { name: "Kurundu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344640/Kurundu_divv2x.webp" },
+  { name: "Kicks Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp" },
+  { name: "Ceylon Sliders", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Ceylon_Sliders_dijus4.webp" },
+  { name: "Hotel De Uncle’s", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344645/Hotel_De_Uncle_s_01_sfz4w8.webp" },
+
 ];
 
-const SOUVENIR_SHOPS = [
-  { name: "I Love Ceylon", desc: "Sri Lanka's largest collection of vintage Ceylon travel posters and prints." },
-  { name: "Olive Yu Jewellery", desc: "Handcrafted jewellery made on-site, oceanfront, right across from Sticks surf break." },
-  { name: "Mah Roc Concept Store", desc: "Design-led finds that feel more considered than a typical beach souvenir." },
+const BEST_RETAIL_STORES = [
+  { name: "Gusta", desc:"Gourmet groceries, fresh produce and artisan products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346946/Gusta_01_mnzv6h.webp" },
+  { name: "Mudra Herbal Spicy Tea Shop", desc:"Handcrafted teas, local spices and Sri Lankan flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346942/Mudra_Herbal_Spicy_Tea_Shop_bzqrm4.webp" },
+  { name: "Yiva Essentials", desc:"Natural skincare and thoughtful self-care products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346951/YIva_Essentials_vnlm2s.webp" },
+  { name: "Daydream", desc:"A thoughtfully curated lifestyle boutique featuring fashion, homeware, gifts, and unique coastal finds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346949/DayDream_izgfon.webp" },
+  { name: "Pickle Pear by Cactus", desc:"Colourful clothing, accessories and unique local finds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346940/Pickly_Pear_by_Cactus_03_v24bxr.webp" },
+  { name: "Mana Boutique", desc:"A beautifully curated boutique showcasing stylish fashion, accessories, and coastal-inspired pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346944/Mana_Boutique_iskoyo.webp" },
 ];
 
 function cardGrid(items) {
@@ -747,16 +783,17 @@ function NightLifeSection() {
   );
 }
 
-function SouvenirShopsSection() {
+function BestRetailStoresSection() {
   return (
-    <section id="souvenir-shops" className="eag-section eag-section--cream">
+    <section id="best-retail-stores" className="eag-section eag-section--cream">
       <div className="eag-content">
-        <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Souvenir Shops</span></h2></Reveal>
-        {cardGrid(SOUVENIR_SHOPS)}
+        <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Best Retail Stores</span></h2></Reveal>
+        {cardGrid(BEST_RETAIL_STORES)}
       </div>
     </section>
   );
 }
+
 
 function ClosingCTASection() {
   return (
@@ -817,7 +854,7 @@ function TocRibbon({ currentChapter }) {
     { id: "best-experiences", label: "Experiences" },
     { id: "wellness", label: "Wellness" },
     { id: "night-life", label: "Night Life" },
-    { id: "souvenir-shops", label: "Souvenir Shops" },
+    { id: "best-retail-stores", label: "Best Retail Stores" },
     { id: "closing-cta", label: "Closing" },
   ];
 
@@ -949,7 +986,7 @@ export default function ExperienceAhangamaGuide() {
           <BestExperiencesSection />
           <WellnessSection />
           <NightLifeSection />
-          <SouvenirShopsSection />
+          <BestRetailStoresSection />
           <ClosingCTASection />
         </div>
       </div>
