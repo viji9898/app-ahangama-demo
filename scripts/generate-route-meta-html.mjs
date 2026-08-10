@@ -249,7 +249,7 @@ const routeMeta = [
     description:
       "Join the Ahangama Pass destination network and reach travelers exploring Ahangama. Simple sign-up, no fees, immediate go-live.",
     image:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1785743817/Add_a_heading_nilvtf.webp",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786334394/Partner_Sign-Up_OG_Image_b6suln.jpg",
   },
   {
     route: "/hospo",
