@@ -116,6 +116,49 @@ function StarIcon() {
   return <span style={{ color: "var(--eag-gold)" }}>★</span>;
 }
 
+function ImageLightbox({ item, onClose }) {
+  useEffect(() => {
+    if (!item) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    const container = document.querySelector(".eag-scroll-container");
+    const prevOverflow = container ? container.style.overflow : "";
+    if (container) container.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      if (container) container.style.overflow = prevOverflow;
+    };
+  }, [item, onClose]);
+
+  if (!item) return null;
+
+  return (
+    <div
+      className="eag-lightbox"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={item.name}
+    >
+      <button className="eag-lightbox-close" onClick={onClose} aria-label="Close preview">&times;</button>
+      <figure className="eag-lightbox-figure" onClick={(e) => e.stopPropagation()}>
+        <img src={item.image} alt={item.name} />
+        <figcaption className="eag-lightbox-caption">
+          <span className="eag-lightbox-name">{item.name}</span>
+          {item.rating ? (
+            <span className="eag-lightbox-rating"><StarIcon /> {item.rating}</span>
+          ) : null}
+          {item.desc ? (
+            <span className="eag-lightbox-desc">{item.desc}</span>
+          ) : null}
+        </figcaption>
+      </figure>
+    </div>
+  );
+}
+
 function SunIcon() {
   return (
     <svg className="eag-temp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -527,7 +570,7 @@ function TransportSection() {
   );
 }
 
-function BestStaysSection() {
+function BestStaysSection({ onImageClick }) {
   const stays = [
     { name: "Animals", rating: "4.8", desc: "A chic, minimalist oasis just a short walk from Kabalana Beach.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp" },
     { name: "Ko Lake Villa", rating: "4.4", desc: "A tranquil lakeside retreat offering the best of both worlds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Ko_Lake_Villa_nqxg16.webp" },
@@ -563,6 +606,11 @@ function BestStaysSection() {
                     <div
                       className="eag-card-img--placeholder"
                       style={stay.image ? { backgroundImage: `url(${stay.image})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
+                      onClick={() => stay.image && onImageClick?.(stay)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View larger image of ${stay.name}`}
+                      onKeyDown={(e) => { if (e.key === "Enter") stay.image && onImageClick?.(stay); }}
                     >
                       {!stay.image && <span className="eag-card-img-label">[PHOTO: {stay.name}]</span>}
                     </div>
@@ -598,16 +646,16 @@ function BestStaysSection() {
 
 const EATS = [
   { name: "Ceylon Sliders", desc: "Mediterranean beach bites, cocktails, and a surf shop built into the same space. · beachfront", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Ceylon_Sliders_dijus4.webp" },
-  { name: "Kai Rooftop", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Kai_Ahangama_01_exlwja.webp" },
-  { name: "Mermaid’s Kitchen", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341114/Mermaid_s_Kitchen_rsmols.webp" },
+  { name: "Kai Rooftop", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp" },
+  { name: "Mermaid’s Kitchen", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp" },
   { name: "Maria Bonita", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp" },
-  { name: "SAMA Restaurant", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/SAMA_Restaurant_zrxp9r.webp" },
-  { name: "Pickled Pelican", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341114/Pickled_Pelican_01_t8znfw.webp" },
+  { name: "SAMA Restaurant", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Sama_image_uxmbzj.webp" },
+  { name: "Pickled Pelican", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp" },
 
 
 ];
 
-function BestEatsSection() {
+function BestEatsSection({ onImageClick }) {
   return (
     <section id="best-eats" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -624,7 +672,13 @@ function BestEatsSection() {
                 <div key={item.name} className="eag-card-item">
                   <div className="eag-card-img-wrap">
                     {item.image ? (
-                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img" />
+                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img"
+                        onClick={() => onImageClick?.(item)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`View larger image of ${item.name}`}
+                        onKeyDown={(e) => { if (e.key === "Enter") onImageClick?.(item); }}
+                      />
                     ) : (
                       <div className="eag-card-img--placeholder">
                         <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
@@ -648,18 +702,18 @@ function BestEatsSection() {
 }
 
 const EXPERIENCES = [
-  { name: "Kumbuk Kitchen & Art Space", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Kumbuk_Kitchen_Art_Space_utjfvl.webp" },
+  { name: "Kumbuk Kitchen & Art Space", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Kumbuk_Community_1_tnbbky.webp" },
   { name: "Coconut Court Pickleball", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Coconut_Court_Pickleball_fdenxj.webp" },
   { name: "Palm & Paint", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Palm_Paint_tfdtou.webp" },
-  { name: "Aggala", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Aggala_gztsho.webp" },
+  { name: "Aggala", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427733/Aggala_2_djqa9c.webp" },
   { name: "Qamar by Zan", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Qamar_by_Zan_02_ricehc.jpg" },
-  { name: "Olive Yu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342710/Olive_Yu_msccgg.webp" },
+  { name: "Olive Yu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Olive_yu_1_ciylad.webp" },
   { name: "Frostys", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp" },
   { name: "Pachcha Sanni", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp" },
 
 ];
 
-function BestExperiencesSection() {
+function BestExperiencesSection({ onImageClick }) {
   return (
     <section id="best-experiences" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -676,7 +730,13 @@ function BestExperiencesSection() {
                 <div key={item.name} className="eag-card-item">
                   <div className="eag-card-img-wrap">
                     {item.image ? (
-                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img" />
+                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img"
+                        onClick={() => onImageClick?.(item)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`View larger image of ${item.name}`}
+                        onKeyDown={(e) => { if (e.key === "Enter") onImageClick?.(item); }}
+                      />
                     ) : (
                       <div className="eag-card-img--placeholder">
                         <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
@@ -701,37 +761,35 @@ function BestExperiencesSection() {
 
 const WELLNESS = [
   { name: "Pura Pilates", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813854/01_-_Pura_Pilates__myhaog.webp" },
-  { name: "White Lotus Spa – Radisson Collection", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344051/White_Lotus_Spa_oanxz9.webp" },
-  { name: "Banya Steam House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344045/Banya_Steam_House_01_d7fg2v.webp" },
-  { name: "The Nuga House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344048/The_Nuga_House_eihfcp.webp" },
+  { name: "White Lotus Spa – Radisson Collection", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426471/Couple_Room_edited_1_vssbmp.webp" },
+  { name: "Banya Steam House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Banya_Steam_House_ac31sy.webp" },
+  { name: "The Nuga House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Copy_of_Section_2_-_Yoga_in_Nuga_House_b3f1mw.avif" },
   { name: "Sellam Gym Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344046/Sellam_01_wmr34n.webp" },
-  { name: "Spa Station Midigama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344054/Spa_Station_Midigama_01_jvniel.webp" },
-  { name: "Calma Samaya", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344053/Calma_Samaya_01_d00qlb.webp" },
+  { name: "Spa Station Midigama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Spa_Station_1_xgyiqd.webp" },
+  { name: "Calma Samaya", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Calma_Samaya_ehqfln.webp" },
   { name: "Palm Garden Ayurveda Resort", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344047/Palm_Garden_Ayurveda_Resort_01_euj0u2.webp" },
 ];
 
 const NIGHT_LIFE = [
-  { name: "TRAX Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344646/Trax_Ahangama_hzldib.webp" },
-  { name: "Lamana", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344639/Lamana_smqj5r.webp" },
-  { name: "Hakuna Matata", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779729/Hakuna_ColoredImage_ji8d1dji8d1dji8d_Topaz_Gigapixel_2x_scale_bxi6wt.webp" },
-  { name: "MONO", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344642/MONO_byzqbs.webp" },
-  { name: "Kurundu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344640/Kurundu_divv2x.webp" },
+  { name: "Lamana", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Lamana_1_xtggum.webp" },
+  { name: "Hakuna Matata", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp" },
+  { name: "MONO", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp" },
+  { name: "Kurundu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp" },
   { name: "Kicks Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp" },
-  { name: "Ceylon Sliders", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Ceylon_Sliders_dijus4.webp" },
-  { name: "Hotel De Uncle’s", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344645/Hotel_De_Uncle_s_01_sfz4w8.webp" },
+  { name: "Hotel De Uncle’s", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp" },
 
 ];
 
 const BEST_RETAIL_STORES = [
   { name: "Gusta", desc:"Gourmet groceries, fresh produce and artisan products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346946/Gusta_01_mnzv6h.webp" },
   { name: "Mudra Herbal Spicy Tea Shop", desc:"Handcrafted teas, local spices and Sri Lankan flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346942/Mudra_Herbal_Spicy_Tea_Shop_bzqrm4.webp" },
-  { name: "Yiva Essentials", desc:"Natural skincare and thoughtful self-care products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346951/YIva_Essentials_vnlm2s.webp" },
+  { name: "Yiva Essentials", desc:"Natural skincare and thoughtful self-care products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp" },
   { name: "Daydream", desc:"A thoughtfully curated lifestyle boutique featuring fashion, homeware, gifts, and unique coastal finds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346949/DayDream_izgfon.webp" },
-  { name: "Pickle Pear by Cactus", desc:"Colourful clothing, accessories and unique local finds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346940/Pickly_Pear_by_Cactus_03_v24bxr.webp" },
-  { name: "Mana Boutique", desc:"A beautifully curated boutique showcasing stylish fashion, accessories, and coastal-inspired pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346944/Mana_Boutique_iskoyo.webp" },
+  { name: "Prickly Pear by Cactus", desc:"Colourful clothing, accessories and unique local finds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp" },
+  { name: "Mana Boutique", desc:"A beautifully curated boutique showcasing stylish fashion, accessories, and coastal-inspired pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426472/mana_boutique_gbkpcm.webp" },
 ];
 
-function cardGrid(items) {
+function cardGrid(items, onImageClick) {
   return (
     <div className="eag-section-body">
       <StaggerReveal>
@@ -740,7 +798,17 @@ function cardGrid(items) {
             <div key={item.name} className="eag-card-item">
                   <div className="eag-card-img-wrap">
                     {item.image ? (
-                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img" />
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                        className="eag-card-img"
+                        onClick={() => onImageClick?.(item)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`View larger image of ${item.name}`}
+                        onKeyDown={(e) => { if (e.key === "Enter") onImageClick?.(item); }}
+                      />
                     ) : (
                       <div className="eag-card-img--placeholder">
                         <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
@@ -761,34 +829,34 @@ function cardGrid(items) {
   );
 }
 
-function WellnessSection() {
+function WellnessSection({ onImageClick }) {
   return (
     <section id="wellness" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Wellness</span></h2></Reveal>
-        {cardGrid(WELLNESS)}
+        {cardGrid(WELLNESS, onImageClick)}
       </div>
     </section>
   );
 }
 
-function NightLifeSection() {
+function NightLifeSection({ onImageClick }) {
   return (
     <section id="night-life" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Night Life</span></h2></Reveal>
-        {cardGrid(NIGHT_LIFE)}
+        {cardGrid(NIGHT_LIFE, onImageClick)}
       </div>
     </section>
   );
 }
 
-function BestRetailStoresSection() {
+function BestRetailStoresSection({ onImageClick }) {
   return (
     <section id="best-retail-stores" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Best Retail Stores</span></h2></Reveal>
-        {cardGrid(BEST_RETAIL_STORES)}
+        {cardGrid(BEST_RETAIL_STORES, onImageClick)}
       </div>
     </section>
   );
@@ -905,6 +973,7 @@ export default function ExperienceAhangamaGuide() {
   const [currentChapter, setCurrentChapter] = useState(1);
   const [currentBg, setCurrentBg] = useState("navy");
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const [lightboxItem, setLightboxItem] = useState(null);
 
   const scrollContainerRef = useRef(null);
 
@@ -981,15 +1050,17 @@ export default function ExperienceAhangamaGuide() {
           <BestSeasonSection />
           <HowLongSection />
           <TransportSection />
-          <BestStaysSection />
-          <BestEatsSection />
-          <BestExperiencesSection />
-          <WellnessSection />
-          <NightLifeSection />
-          <BestRetailStoresSection />
+          <BestStaysSection onImageClick={setLightboxItem} />
+          <BestEatsSection onImageClick={setLightboxItem} />
+          <BestExperiencesSection onImageClick={setLightboxItem} />
+          <WellnessSection onImageClick={setLightboxItem} />
+          <NightLifeSection onImageClick={setLightboxItem} />
+          <BestRetailStoresSection onImageClick={setLightboxItem} />
           <ClosingCTASection />
         </div>
       </div>
+
+      <ImageLightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
     </>
   );
 }

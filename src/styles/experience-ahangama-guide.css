@@ -723,11 +723,38 @@
   overflow: hidden;
   position: relative;
   z-index: 1;
+  cursor: zoom-in;
+}
+
+.eag-card-img-wrap::after {
+  content: "\002B";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,6,26,0.55);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.eag-card-item:hover .eag-card-img-wrap::after {
+  opacity: 1;
 }
 
 .eag-card-img {
   width: 100%;
-  height: 160px;
+  height: 220px;
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
@@ -738,7 +765,7 @@
 }
 
 @media (min-width: 1024px) {
-  .eag-card-img { height: 180px; }
+  .eag-card-img { height: 300px; }
 }
 
 .eag-card-img--placeholder {
@@ -746,7 +773,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 160px;
+  height: 220px;
   transition: transform 0.4s ease;
 }
 
@@ -755,7 +782,7 @@
 }
 
 @media (min-width: 1024px) {
-  .eag-card-img--placeholder { height: 180px; }
+  .eag-card-img--placeholder { height: 300px; }
 }
 
 .eag-card-img-label {
@@ -792,6 +819,125 @@
 .eag-card-meta-rating {
   color: var(--eag-gold);
   font-weight: 600;
+}
+
+/* ===== Image Lightbox ===== */
+.eag-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,6,26,0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+  animation: eag-lightbox-fade 0.2s ease;
+}
+
+@keyframes eag-lightbox-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.eag-lightbox-figure {
+  max-width: min(1200px, 94vw);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+  cursor: default;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+}
+
+.eag-lightbox-figure img {
+  width: 100%;
+  max-width: 62%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+  background: #000;
+}
+
+.eag-lightbox-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  max-width: 360px;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  color: var(--eag-cream);
+}
+
+.eag-lightbox-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.eag-lightbox-rating {
+  color: var(--eag-gold);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.eag-lightbox-desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+}
+
+@media (max-width: 767px) {
+  .eag-lightbox-figure {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+
+  .eag-lightbox-figure img {
+    max-width: 100%;
+    max-height: 50vh;
+  }
+
+  .eag-lightbox-caption {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.eag-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.eag-lightbox-close:hover {
+  background: rgba(255,255,255,0.22);
 }
 
 
