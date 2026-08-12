@@ -504,14 +504,30 @@
 .eag-bestfor-card {
   display: flex;
   flex-direction: column;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
-  background: var(--eag-cream);
+  background: linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.12));
+  border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.34), 0 12px 26px rgba(13, 24, 39, 0.08);
   transition: all 0.3s ease;
   text-decoration: none;
+  position: relative;
 }
 
-.eag-section--white .eag-bestfor-card { background: #F5F2ED; }
+.eag-bestfor-card::before,
+.eag-card-item::before,
+.eag-pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.06) 38%, rgba(255,255,255,0.12) 70%, rgba(255,255,255,0.18));
+  pointer-events: none;
+}
+
+.eag-section--white .eag-bestfor-card { background: rgba(245,242,237,0.24); }
 
 .eag-bestfor-card:hover {
   transform: translateY(-4px);
@@ -583,10 +599,14 @@
 }
 
 .eag-pricing-card {
-  background: var(--eag-white);
-  border-radius: 16px;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.12));
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 18px;
   padding: 16px 20px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.34), 0 12px 26px rgba(13, 24, 39, 0.08);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
@@ -685,16 +705,19 @@
 }
 
 .eag-card-item {
-  background: var(--eag-cream);
-  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.12));
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.34), 0 12px 26px rgba(13, 24, 39, 0.08);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
   transition: all 0.3s ease;
   flex-shrink: 0;
   position: relative;
 }
 
-.eag-section--white .eag-card-item { background: #F5F2ED; }
+.eag-section--white .eag-card-item { background: linear-gradient(180deg, rgba(245,242,237,0.36), rgba(245,242,237,0.2)); }
 
 .eag-card-item::after {
   content: "";
@@ -1202,24 +1225,173 @@
 
 .eag-top-btn {
   position: fixed;
-  bottom: 28px;
+  bottom: 24px;
   left: 50%;
-  transform: translateX(-50%) translateY(80px);
-  z-index: 99999;
-  width: 44px;
-  height: 44px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   border: none;
   background: var(--eag-teal);
   color: #fff;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(0,175,209,0.3);
+  cursor: pointer;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.eag-top-btn--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.eag-dark-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1001;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,6,26,0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--eag-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.eag-dark-toggle:hover {
+  background: var(--eag-teal);
+  border-color: var(--eag-teal);
+  color: #fff;
+}
+
+.eag-dark-toggle--on {
+  background: var(--eag-teal);
+  border-color: var(--eag-teal);
+  color: #fff;
+}
+
+/* ===== Dark Mode ===== */
+.eag-dark-mode .eag-section--cream {
+  background: rgba(16,26,46,0.88);
+  color: rgba(242,239,233,0.92);
+}
+
+.eag-dark-mode .eag-section--white {
+  background: rgba(16,26,46,0.88);
+  color: rgba(242,239,233,0.92);
+}
+
+.eag-dark-mode .eag-section--navy {
+  background: rgba(7,13,29,0.9);
+}
+
+.eag-dark-mode .eag-body {
+  color: rgba(242,239,233,0.88) !important;
+}
+
+.eag-dark-mode .eag-bestfor-label {
+  color: rgba(242,239,233,0.92) !important;
+}
+
+.eag-dark-mode .eag-headline {
+  color: #F2EFE9 !important;
+}
+
+.eag-dark-mode .eag-section--white .eag-card-item,
+.eag-dark-mode .eag-section--white .eag-bestfor-card {
+  background: linear-gradient(180deg, rgba(23,35,60,0.68), rgba(16,23,38,0.78));
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 12px 28px rgba(0,0,0,0.18);
+}
+
+.eag-dark-mode .eag-card-item,
+.eag-dark-mode .eag-bestfor-card {
+  background: linear-gradient(180deg, rgba(23,35,60,0.68), rgba(16,23,38,0.78));
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 12px 28px rgba(0,0,0,0.18);
+  color: rgba(242,239,233,0.94);
+}
+
+.eag-dark-mode .eag-card-body {
+  color: rgba(242,239,233,0.94);
+}
+
+.eag-dark-mode .eag-card-desc {
+  color: rgba(242,239,233,0.9) !important;
+}
+
+.eag-dark-mode .eag-card-meta {
+  color: rgba(242,239,233,0.7) !important;
+}
+
+.eag-dark-mode .eag-card-meta-name {
+  color: #F2EFE9 !important;
+}
+
+.eag-dark-mode .eag-card-meta-rating {
+  background: rgba(232, 184, 75, 0.14);
+  border-color: rgba(232, 184, 75, 0.42);
+  color: #F8D98E;
+}
+
+.eag-dark-mode .eag-card-meta-rating .eag-star-icon {
+  color: #FFD36B;
+}
+
+.eag-dark-mode .eag-pricing-card {
+  background: linear-gradient(180deg, rgba(23,35,60,0.68), rgba(16,23,38,0.78));
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 12px 28px rgba(0,0,0,0.18);
+}
+
+.eag-dark-mode .eag-pricing-price {
+  color: #8FE7FF;
+}
+
+.eag-dark-mode .eag-pricing-name {
+  color: #F2EFE9 !important;
+}
+
+.eag-dark-mode .eag-pricing-desc {
+  color: rgba(242,239,233,0.8) !important;
+}
+
+.eag-dark-mode .eag-chapter-progress--cream {
+  color: rgba(242,239,233,0.5);
+}
+
+.eag-dark-mode .eag-scroll-container::before {
+  filter: brightness(0.55) saturate(0.9);
+}
+
+.eag-dark-mode .eag-map-container {
+  background: #0A1224;
+}
+
+.eag-dark-mode .eag-toc-panel-item {
+  color: rgba(242,239,233,0.85);
+}
+
+.eag-dark-mode .eag-toc-panel-item:hover,
+.eag-dark-mode .eag-toc-panel-item--active {
+  color: #fff;
+}
+
+.eag-dark-mode .eag-cover-bg {
+  filter: brightness(0.8);
 }
 
 .eag-top-btn--visible {
