@@ -986,6 +986,13 @@ export default function ExperienceAhangamaGuide() {
   const [currentBg, setCurrentBg] = useState("navy");
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [lightboxItem, setLightboxItem] = useState(null);
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      return localStorage.getItem("eag-dark-mode") === "1";
+    } catch {
+      return false;
+    }
+  });
 
   const scrollContainerRef = useRef(null);
 
@@ -1030,13 +1037,45 @@ export default function ExperienceAhangamaGuide() {
     scrollContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("eag-dark-mode", next ? "1" : "0");
+      } catch {}
+      return next;
+    });
+  };
+
   return (
     <>
       <Helmet>
         <title>Experience Ahangama &mdash; The Insider&rsquo;s Guide to Sri Lanka&rsquo;s Coolest Coast</title>
         <meta name="description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
         <link rel="canonical" href="https://ahangama.com/online-guide" />
+        <meta property="og:title" content="Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast" />
+        <meta property="og:description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
+        <meta property="og:image" content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp" />
+        <meta property="og:image:secure_url" content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp" />
       </Helmet>
+
+      <button
+        className={`eag-dark-toggle ${darkMode ? "eag-dark-toggle--on" : ""}`}
+        onClick={toggleDarkMode}
+        aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+        title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+      >
+        {darkMode ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        )}
+      </button>
 
       <TocRibbon currentChapter={CHAPTERS[currentChapter - 1]?.id} />
       <ChapterProgress current={currentChapter} bg={currentBg} />
@@ -1051,7 +1090,7 @@ export default function ExperienceAhangamaGuide() {
         </svg>
       </button>
 
-      <div className="eag-scroll-container">
+      <div className={`eag-scroll-container ${darkMode ? "eag-dark-mode" : ""}`}>
         <div className="eag-desktop-frame">
           <CoverSection />
           <ContentsSection />
