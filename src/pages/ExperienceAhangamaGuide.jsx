@@ -572,20 +572,20 @@ function TransportSection() {
 
 function BestStaysSection({ onImageClick }) {
   const stays = [
-    { name: "Animals", rating: "4.8", desc: "A chic, minimalist oasis just a short walk from Kabalana Beach.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp" },
-    { name: "Ko Lake Villa", rating: "4.4", desc: "A tranquil lakeside retreat offering the best of both worlds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Ko_Lake_Villa_nqxg16.webp" },
-    { name: "Mana Villa", rating: "4.8", desc: "A beautifully designed tropical sanctuary offering slow living, lush private gardens, and high-end barefoot luxury.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783566/manavilla_ctqgqj.webp" },
-    { name: "Sola Hotel", rating: "4.4", desc: "A striking modern sanctuary nestled within lush tropical palms. Experience elevated jungle living and a stunning private pool.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp" },
+    { name: "Animals", rating: "4.8", desc: " A sleek pink boutique oasis blending premium co-working and laid back surf culture for adult travelers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp" },
+    { name: "Ko Lake Villa", rating: "4.4", desc: "A peaceful lakeside escape surrounded by nature, luxury and tranquility.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Ko_Lake_Villa_nqxg16.webp" },
+    { name: "Mana Villa", rating: "4.8", desc: "A peaceful nature retreat with sauna, ice baths and pools.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783566/manavilla_ctqgqj.webp" },
+    { name: "Sola Hotel", rating: "4.4", desc: "A nature-led escape in the heart of Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp" },
     { name: "Kelly", rating: "4.8", desc: "A sleek, contemporary getaway featuring a vibrant evening ambiance. Unwind in style beside the beautifully illuminated pool.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Kelly_Ahangama_ydgnq0.webp" },
-    { name: "Lighthouse", rating: "4.4", desc: "A prominent coastal escape offering sweeping, uninterrupted ocean views. Relax by the rocky shoreline at this towering haven.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp" },
-    { name: "Trebartha East – The Roundhouse", rating: "5.0", desc: "A striking circular retreat hidden within a working cinnamon estate, with views across rice fields, tropical forest and the distant ocean.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Threbatha_East_01_yb2dwm.webp" },
-    { name: "Mosvold Villa", rating: "4.5", desc: "A secluded beachfront retreat where every room enjoys uninterrupted Indian Ocean views, with warm hospitality and a peaceful atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Mosvold_imdadl.webp" },
-    { name: "The Benison", rating: "4.9", desc: "Thoughtfully designed cabanas, personalised hospitality and a calm atmosphere in the heart of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/The_Benison_02_uzlcpb.webp" },
-    { name: "Palm Hotel", rating: "4.6", desc: "A design-led lifestyle retreat set across four tropical acres, with A-frame cabanas, concept store, gym and pool.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Palm_Hotel_02_t78i4y.webp" },
-    { name: "Abode by the Beach", rating: "4.5", desc: "A boho-luxe Art Deco hideaway among the palms with an 18-metre pool, just two minutes from the ocean.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Abode_01_rorwfz.webp" },
-    { name: "Harding Boutique Hotel", rating: "4.6", desc: "Contemporary accommodation and warm service in the heart of Ahangama, close to beaches, restaurants and surf breaks.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Harding_Hotel_02_qwxzlc.webp" },
-    { name: "Casa Tikiri Boutique Hotel", rating: "", desc: "An Italian-designed, adults-only jungle retreat with curated rooms and a renowned restaurant, 300 metres from Kabalana Beach.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp" },
-    { name: "SĀMA", rating: "4.9", desc: "A top-rated stay-and-dine spot in the heart of Ahangama, known for healthy seasonal food and relaxed, stylish accommodation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Sama_01_mwposq.webp" },
+    { name: "Lighthouse", rating: "4.4", desc: "A beautiful beachfront escape with a rooftop spot to enjoy sunsets, good food, and great coastal vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp" },
+    { name: "Trebartha East – The Roundhouse", rating: "5.0", desc: "An architectural retreat amidst a cinnamon plantation", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Threbatha_East_01_yb2dwm.webp" },
+    { name: "Mosvold Villa", rating: "4.5", desc: "A boutique beachfront escape known for its charm, comfort, and personalised hospitality.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Mosvold_imdadl.webp" },
+    { name: "The Benison", rating: "4.9", desc: "A hidden retreat designed for slow living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/The_Benison_02_uzlcpb.webp" },
+    { name: "Palm Hotel", rating: "4.6", desc: "A modern tropical retreat among the palms", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Palm_Hotel_02_t78i4y.webp" },
+    { name: "Abode by the Beach", rating: "4.5", desc: "The ultimate beachfront hotspot for design lovers and surfers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Abode_01_rorwfz.webp" },
+    { name: "Harding Boutique Hotel", rating: "4.6", desc: "An architectural oceanfront masterpiece with a romantic rooftop vibe", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Harding_Hotel_02_qwxzlc.webp" },
+    { name: "Casa Tikiri Boutique Hotel", rating: "", desc: "An adults only boutique hideaway blending authentic Italian soul with tropical surf.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp" },
+    { name: "SĀMA", rating: "4.9", desc: "A beautiful coastal retreat to slow down,relax, and enjoy thoughtful stays, great food, and the charm of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Sama_01_mwposq.webp" },
   ];
 
   return (
@@ -645,12 +645,12 @@ function BestStaysSection({ onImageClick }) {
  */
 
 const EATS = [
-  { name: "Ceylon Sliders", desc: "Mediterranean beach bites, cocktails, and a surf shop built into the same space. · beachfront", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Ceylon_Sliders_dijus4.webp" },
-  { name: "Kai Rooftop", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp" },
-  { name: "Mermaid’s Kitchen", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp" },
-  { name: "Maria Bonita", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp" },
-  { name: "SAMA Restaurant", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Sama_image_uxmbzj.webp" },
-  { name: "Pickled Pelican", desc: "Rooftop views, tropical waffles, and the best post-surf refuel in town. · in front of Sion", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp" },
+  { name: "Ceylon Sliders", desc: "Beachfront sunsets, tropical cocktails and relaxed island vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341113/Ceylon_Sliders_dijus4.webp" },
+  { name: "Kai Rooftop", desc: "Rooftop dining, great cocktails and beautiful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp" },
+  { name: "Mermaid’s Kitchen", desc: "Fresh, flavourful food served in a relaxed tropical setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp" },
+  { name: "Maria Bonita", desc: "Colourful breakfasts and excellent coffee.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp" },
+  { name: "SAMA Restaurant", desc: "Refined dining featuring fresh, locally sourced ingredients", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Sama_image_uxmbzj.webp" },
+  { name: "Pickled Pelican", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp" },
 
 
 ];
@@ -702,14 +702,14 @@ function BestEatsSection({ onImageClick }) {
 }
 
 const EXPERIENCES = [
-  { name: "Kumbuk Kitchen & Art Space", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Kumbuk_Community_1_tnbbky.webp" },
-  { name: "Coconut Court Pickleball", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Coconut_Court_Pickleball_fdenxj.webp" },
-  { name: "Palm & Paint", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Palm_Paint_tfdtou.webp" },
-  { name: "Aggala", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427733/Aggala_2_djqa9c.webp" },
-  { name: "Qamar by Zan", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Qamar_by_Zan_02_ricehc.jpg" },
-  { name: "Olive Yu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Olive_yu_1_ciylad.webp" },
-  { name: "Frostys", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp" },
-  { name: "Pachcha Sanni", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp" },
+  { name: "Kumbuk Kitchen & Art Space", desc: "Join hands on Sri Lankan cooking classes and discover local flavours in a creative setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Kumbuk_Community_1_tnbbky.webp" },
+  { name: "Coconut Court Pickleball", desc: "Enjoy one of the fastest growing sports in a fun and social setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Coconut_Court_Pickleball_fdenxj.webp" },
+  { name: "Palm & Paint", desc: "Relax with guided painting sessions in a beautiful tropical atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Palm_Paint_tfdtou.webp" },
+  { name: "Aggala", desc: "A charming café where you can enjoy traditional Sri Lankan sweets, coffee, and local flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427733/Aggala_2_djqa9c.webp" },
+  { name: "Qamar by Zan", desc: "Design and create your own jewellery in a hands-on workshop while exploring beautifully curated fashion pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342538/Qamar_by_Zan_02_ricehc.jpg" },
+  { name: "Olive Yu", desc: "Craft your own handmade jewellery in a creative workshop overlooking the coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Olive_yu_1_ciylad.webp" },
+  { name: "Frostys", desc: "Refresh your body and mind with invigorating ice baths, sauna sessions, and guided recovery experiences.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp" },
+  { name: "Pachcha Sanni", desc: "Get inked at one of Ahangama's most creative tattoo studios, specialising in unique custom designs and artistic expression.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp" },
 
 ];
 
@@ -760,32 +760,32 @@ function BestExperiencesSection({ onImageClick }) {
 }
 
 const WELLNESS = [
-  { name: "Pura Pilates", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813854/01_-_Pura_Pilates__myhaog.webp" },
-  { name: "White Lotus Spa – Radisson Collection", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426471/Couple_Room_edited_1_vssbmp.webp" },
-  { name: "Banya Steam House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Banya_Steam_House_ac31sy.webp" },
-  { name: "The Nuga House", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Copy_of_Section_2_-_Yoga_in_Nuga_House_b3f1mw.avif" },
-  { name: "Sellam Gym Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344046/Sellam_01_wmr34n.webp" },
-  { name: "Spa Station Midigama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Spa_Station_1_xgyiqd.webp" },
-  { name: "Calma Samaya", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Calma_Samaya_ehqfln.webp" },
-  { name: "Palm Garden Ayurveda Resort", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344047/Palm_Garden_Ayurveda_Resort_01_euj0u2.webp" },
+  { name: "Pura Pilates", desc: "A welcoming Pilates studio helping people build strength, balance, and well-being.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813854/01_-_Pura_Pilates__myhaog.webp" },
+  { name: "White Lotus Spa – Radisson Collection", desc: "Luxury spa treatments designed to relax, restore, and rejuvenate.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426471/Couple_Room_edited_1_vssbmp.webp" },
+  { name: "Banya Steam House", desc: "Hot steam, cold plunges and deep relaxation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Banya_Steam_House_ac31sy.webp" },
+  { name: "The Nuga House", desc: "A tranquil sanctuary for rest and healing.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Copy_of_Section_2_-_Yoga_in_Nuga_House_b3f1mw.avif" },
+  { name: "Sellam Gym Ahangama", desc: "A modern gym for keeping your routine on track.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344046/Sellam_01_wmr34n.webp" },
+  { name: "Spa Station Midigama", desc: "Relaxing massages and rejuvenating treatments nearby.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Spa_Station_1_xgyiqd.webp" },
+  { name: "Calma Samaya", desc: "A rooftop wellness sanctuary offering yoga, breathwork, massage, and peaceful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Calma_Samaya_ehqfln.webp" },
+  { name: "Palm Garden Ayurveda Resort", desc: "A tranquil Ayurvedic sanctuary dedicated to deep traditional healing and holistic rejuvenation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344047/Palm_Garden_Ayurveda_Resort_01_euj0u2.webp" },
 ];
 
 const NIGHT_LIFE = [
-  { name: "Lamana", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Lamana_1_xtggum.webp" },
-  { name: "Hakuna Matata", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp" },
-  { name: "MONO", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp" },
-  { name: "Kurundu", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp" },
-  { name: "Kicks Ahangama", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp" },
-  { name: "Hotel De Uncle’s", desc: "", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp" },
+  { name: "Lamana", desc: "A popular late-night hangout with great energy.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Lamana_1_xtggum.webp" },
+  { name: "Hakuna Matata", desc: "Beachfront cocktails, music and DJs.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp" },
+  { name: "MONO", desc: "Modern nightlife with music and quality drinks.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp" },
+  { name: "Kurundu", desc: "A lively setting for drinks and evening entertainment.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp" },
+  { name: "Kicks Ahangama", desc: "Dance, socialise and enjoy the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp" },
+  { name: "Hotel De Uncle’s", desc: "A classic spot for evenings beside the sea.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp" },
 
 ];
 
 const BEST_RETAIL_STORES = [
   { name: "Gusta", desc:"Gourmet groceries, fresh produce and artisan products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346946/Gusta_01_mnzv6h.webp" },
   { name: "Mudra Herbal Spicy Tea Shop", desc:"Handcrafted teas, local spices and Sri Lankan flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346942/Mudra_Herbal_Spicy_Tea_Shop_bzqrm4.webp" },
-  { name: "Yiva Essentials", desc:"Natural skincare and thoughtful self-care products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp" },
+  { name: "Yiva Essentials", desc:"A lovely place to discover fashion, lifestyle, and unique finds in Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp" },
   { name: "Daydream", desc:"A thoughtfully curated lifestyle boutique featuring fashion, homeware, gifts, and unique coastal finds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346949/DayDream_izgfon.webp" },
-  { name: "Prickly Pear by Cactus", desc:"Colourful clothing, accessories and unique local finds.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp" },
+  { name: "Prickly Pear by Cactus", desc:" A colorful beachfront concept boutique serving up trendy resort style and sun-soaked cafe vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp" },
   { name: "Mana Boutique", desc:"A beautifully curated boutique showcasing stylish fashion, accessories, and coastal-inspired pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426472/mana_boutique_gbkpcm.webp" },
 ];
 
