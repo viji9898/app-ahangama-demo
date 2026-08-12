@@ -651,8 +651,6 @@ const EATS = [
   { name: "Maria Bonita", desc: "Colourful breakfasts and excellent coffee.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp" },
   { name: "SAMA Restaurant", desc: "Refined dining featuring fresh, locally sourced ingredients", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Sama_image_uxmbzj.webp" },
   { name: "Pickled Pelican", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp" },
-
-
 ];
 
 function BestEatsSection({ onImageClick }) {
@@ -710,7 +708,6 @@ const EXPERIENCES = [
   { name: "Olive Yu", desc: "Craft your own handmade jewellery in a creative workshop overlooking the coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Olive_yu_1_ciylad.webp" },
   { name: "Frostys", desc: "Refresh your body and mind with invigorating ice baths, sauna sessions, and guided recovery experiences.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp" },
   { name: "Pachcha Sanni", desc: "Get inked at one of Ahangama's most creative tattoo studios, specialising in unique custom designs and artistic expression.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp" },
-
 ];
 
 function BestExperiencesSection({ onImageClick }) {
@@ -777,7 +774,6 @@ const NIGHT_LIFE = [
   { name: "Kurundu", desc: "A lively setting for drinks and evening entertainment.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp" },
   { name: "Kicks Ahangama", desc: "Dance, socialise and enjoy the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp" },
   { name: "Hotel De Uncle’s", desc: "A classic spot for evenings beside the sea.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp" },
-
 ];
 
 const BEST_RETAIL_STORES = [
