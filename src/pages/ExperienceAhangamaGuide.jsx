@@ -777,7 +777,7 @@ const WELLNESS = [
   { name: "Ayurveda Palm Garden Resort", rating: "4.9", desc: "A tranquil Ayurvedic sanctuary dedicated to deep traditional healing and holistic rejuvenation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786546309/ayurvedha_palm2_ipnbov.webp" },
 ];
 const NIGHT_LIFE = [
-  { name: "Lamana", rating: "4.6", desc: "A popular late-night hangout with a lively atmosphere, great music, and a skate rink that adds a playful twist to the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786546842/lamana_new_i6uoto.webp" },
+  { name: "Lamana", rating: "4.6", desc: "A popular late-night hangout with a lively atmosphere, great music, and a skate rink that adds a playful twist to the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786620612/Lamana_23_vnrlgv.webp" },
   { name: "Hakuna Matata", rating: "4.5", desc: "Beachfront cocktails, music and DJs.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp" },
   { name: "MONO", rating: "4.7", desc: "Modern nightlife with a retro soul, creative cocktails, quality drinks, and timeless tunes that keep the night moving.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp" },
   { name: "Kurundu", rating: "4.4", desc: "A lively setting for drinks and evening entertainment.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp" },
