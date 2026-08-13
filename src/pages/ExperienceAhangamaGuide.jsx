@@ -776,14 +776,13 @@ const WELLNESS = [
   { name: "Calma Samaya", rating: "4.8", desc: "A rooftop wellness sanctuary offering yoga, breathwork, massage, and peaceful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Calma_Samaya_ehqfln.webp" },
   { name: "Ayurveda Palm Garden Resort", rating: "4.9", desc: "A tranquil Ayurvedic sanctuary dedicated to deep traditional healing and holistic rejuvenation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786546309/ayurvedha_palm2_ipnbov.webp" },
 ];
-
 const NIGHT_LIFE = [
-  { name: "Lamana", rating: "4.6", desc: "A popular late-night hangout with great energy.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786546842/lamana_new_i6uoto.webp" },
+  { name: "Lamana", rating: "4.6", desc: "A popular late-night hangout with a lively atmosphere, great music, and a skate rink that adds a playful twist to the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786546842/lamana_new_i6uoto.webp" },
   { name: "Hakuna Matata", rating: "4.5", desc: "Beachfront cocktails, music and DJs.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp" },
-  { name: "MONO", rating: "4.7", desc: "Modern nightlife with music and quality drinks.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp" },
+  { name: "MONO", rating: "4.7", desc: "Modern nightlife with a retro soul, creative cocktails, quality drinks, and timeless tunes that keep the night moving.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp" },
   { name: "Kurundu", rating: "4.4", desc: "A lively setting for drinks and evening entertainment.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp" },
   { name: "Kicks Ahangama", rating: "4.5", desc: "Dance, socialise and enjoy the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp" },
-  { name: "Hotel De Uncle’s", rating: "4.6", desc: "A classic spot for evenings beside the sea.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp" },
+  { name: "Hotel De Uncle’s", rating: "4.6", desc: "A laid-back seaside favourite for golden sunsets, chilled drinks, live bands, and unforgettable evenings by the ocean.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp" },
 ];
 
 const BEST_RETAIL_STORES = [
@@ -1042,7 +1041,9 @@ export default function ExperienceAhangamaGuide() {
       const next = !prev;
       try {
         localStorage.setItem("eag-dark-mode", next ? "1" : "0");
-      } catch {}
+      } catch {
+        // Ignore storage failures in restricted browsing modes.
+      }
       return next;
     });
   };
