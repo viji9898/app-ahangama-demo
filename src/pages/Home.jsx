@@ -538,11 +538,11 @@ const MINIMAL_GUIDE_CARDS = [
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
   },
   {
-    label: "WELLNESS GUIDE",
-    title: "Wellness in Ahangama",
-    href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    label: "AIRBNB GUIDE",
+    title: "Best Airbnbs in Ahangama",
+    href: "/best-airbnbs",
     image:
-      "https://images.squarespace-cdn.com/content/v1/687779bfeb67b07ba252ad9e/1765200138172-E21VJEEVSEA0JQ1ZDW90/Jungle+Shala+Launch-45+2.jpg",
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05162855/2-TheFind-SouthSriLankaHotels.jpeg",
   },
   {
     label: "TRANSPORT GUIDE",

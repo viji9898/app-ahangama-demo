@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Row, Space, Tag, Typography } from "antd";
+import { Card, Col, Row, Space, Typography } from "antd";
 import { ArrowRightOutlined, CheckOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
@@ -312,7 +312,7 @@ export default function SriLankasMostInterestingCoastalTownPage() {
   const passCtaUrl = buildPassCtaUrl();
 
   return (
-    <SiteLayout>
+    <SiteLayout navOverlayHero>
       <Seo
         title="Sri Lanka's Most Interesting Coastal Town"
         description="An editorial on why Ahangama has become one of Sri Lanka's most distinctive coastal destinations, shaped by surf, hospitality, food, wellness, and community."
@@ -320,115 +320,173 @@ export default function SriLankasMostInterestingCoastalTownPage() {
         ogImage={HERO_IMAGE}
       />
 
-      <div className="dm-heroCut" style={{ background: "#ffffff" }} />
-      <div className="dm-canvas" style={{ background: "#ffffff" }}>
-        <div
-          style={{
-            position: "relative",
-            minHeight: "calc(100vh - 88px)",
-            overflow: "hidden",
-            marginBottom: 32,
-            background: "#ffffff",
-          }}
-        >
-          <img
-            src={HERO_IMAGE}
-            alt="Coastline in Ahangama"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center center",
-            }}
-          />
-
+      <div
+        className="dm-canvas"
+        style={{
+          marginTop: 0,
+          paddingTop: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          background: "#ffffff",
+        }}
+      >
+        <div className="dm-wrap">
           <div
-            aria-hidden="true"
+            className="ahg-hero"
             style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(180deg, rgba(17,16,14,0.08) 0%, rgba(17,16,14,0.16) 34%, rgba(17,16,14,0.5) 100%)",
-            }}
-          />
-
-          <div
-            style={{
-              position: "relative",
-              zIndex: 1,
-              minHeight: "calc(100vh - 88px)",
-              maxWidth: 1180,
-              margin: "0 auto",
-              display: "flex",
-              alignItems: "flex-end",
-              padding:
-                "clamp(28px, 4vw, 44px) clamp(20px, 4vw, 36px) clamp(32px, 6vw, 56px)",
-              boxSizing: "border-box",
+              width: "100vw",
+              marginLeft: "calc(50% - 50vw)",
+              marginRight: "calc(50% - 50vw)",
+              borderRadius: 0,
+              background: "#FFFFFF",
+              boxShadow: "none",
             }}
           >
-            <div style={{ maxWidth: 840 }}>
-              <Space wrap size={[8, 8]} style={{ marginBottom: 14 }}>
-                <Tag
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="home-hero-media-layer"
+                style={{ position: "absolute", inset: 0, overflow: "hidden" }}
+              >
+                <div
+                  className="home-hero-overlay"
                   style={{
-                    borderRadius: 999,
-                    padding: "6px 12px",
-                    color: "#ffffff",
-                    borderColor: "rgba(255,255,255,0.32)",
-                    background: "rgba(255,255,255,0.14)",
-                    backdropFilter: "blur(10px)",
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(90deg, rgba(10,14,18,0.82) 0%, rgba(10,14,18,0.7) 23%, rgba(10,14,18,0.42) 45%, rgba(10,14,18,0.12) 68%, rgba(10,14,18,0) 100%)",
+                    pointerEvents: "none",
+                    zIndex: 2,
                   }}
-                >
-                  Editorial Guide
-                </Tag>
-                <Tag
+                />
+                <img
+                  className="home-hero-image"
+                  src={HERO_IMAGE}
+                  alt="Coastline and beach in Ahangama"
+                  width="1366"
+                  height="768"
+                  fetchPriority="high"
                   style={{
-                    borderRadius: 999,
-                    padding: "6px 12px",
-                    color: "#ffffff",
-                    borderColor: "rgba(255,255,255,0.32)",
-                    background: "rgba(255,255,255,0.14)",
-                    backdropFilter: "blur(10px)",
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center center",
                   }}
-                >
-                  South Coast Notes
-                </Tag>
-              </Space>
+                />
+              </div>
 
-              <Title
-                level={1}
-                className="twelve-things-heroTitle"
+              <div
                 style={{
-                  marginTop: 0,
-                  marginBottom: 0,
-                  color: "#ffffff",
-                  fontSize: "clamp(42px, 6vw, 82px)",
-                  lineHeight: 0.97,
-                  letterSpacing: -1.8,
-                  fontFamily:
-                    '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: 1100,
+                  margin: "0 auto",
                 }}
               >
-                Sri Lanka&apos;s Most Interesting Coastal Town
-              </Title>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    minHeight: "100svh",
+                    maxWidth: 820,
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 12,
+                      marginBottom: 18,
+                    }}
+                  >
+                    {["Culture", "South Coast Notes"].map((item) => (
+                      <Text
+                        key={item}
+                        style={{
+                          color: "#FFFFFF",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          letterSpacing: 1.6,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {item}
+                      </Text>
+                    ))}
+                  </div>
 
-              <Text
-                style={{
-                  display: "block",
-                  marginTop: 14,
-                  color: "rgba(255,255,255,0.82)",
-                  fontSize: 12,
-                  letterSpacing: 0.2,
-                }}
-              >
-                Words by Julian.
-              </Text>
+                  <Title
+                    className="home-hero-title"
+                    style={{
+                      margin: 0,
+                      color: "#FFFFFF",
+                      fontWeight: 500,
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                    }}
+                  >
+                    {["Sri Lanka's", "Most Interesting", "Coastal Town"].map(
+                      (line) => (
+                        <span
+                          key={line}
+                          className="home-hero-titleLine"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          {line}
+                        </span>
+                      ),
+                    )}
+                  </Title>
+
+                  <Text
+                    style={{
+                      display: "block",
+                      marginTop: 14,
+                      color: "#FFFFFF",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: 1.6,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Words by Julian
+                  </Text>
+
+                  <Paragraph
+                    style={{
+                      marginTop: 24,
+                      marginBottom: 22,
+                      maxWidth: 650,
+                      color: "#FFFFFF",
+                      fontSize: "clamp(16px, 1.45vw, 19px)",
+                      lineHeight: 1.72,
+                    }}
+                  >
+                    Why Ahangama has become one of Sri Lanka&apos;s most
+                    distinctive coastal destinations, shaped by surf,
+                    hospitality, food, wellness and community.
+                  </Paragraph>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="dm-wrap">
+        <div className="dm-wrap" style={{ paddingTop: 28 }}>
           <div
             style={{
               maxWidth: 920,
