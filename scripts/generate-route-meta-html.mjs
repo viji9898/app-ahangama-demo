@@ -329,6 +329,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/inside-the-launch-of-ahangama-circle/hero+-+Guests+networking+at+Surf+Club+Midigama+during+sunset+-+Option+01+.jpeg",
   },
   {
+    route: "/gusta-groceries-good-food-and-more-in-ahangama",
+    title: "Gusta: Groceries, Good Food and More in Ahangama",
+    description:
+      "From everyday essentials and CIAO favourites to local brands and lifestyle finds, Gusta brings a different kind of grocery shopping to the South Coast.",
+    publishDate: "2026-08-16T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Hero+Image+-+Outside-ahangama-gusta-outlet.webp",
+  },
+  {
     route: "/dulasiri-uncle",
     title: "Dulasiri Uncle",
     description:
