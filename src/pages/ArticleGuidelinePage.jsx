@@ -84,11 +84,36 @@ const pageSections = [
 ];
 
 const imageSpecs = [
-  ["Hero", "768, 1280, 1920, 2400 px", "3:2 WebP variants", "Eager, fetchPriority high"],
-  ["OG Image", "1200 x 630 px", "Landscape JPG/WebP", "Social and messaging previews"],
-  ["Wide Feature", "768, 1200, 1800 px", "3:2 WebP variants", "Lazy-loaded after intro"],
-  ["Portrait Gallery", "480, 800, 1200 px", "4:5 WebP variants", "Lazy-loaded gallery blocks"],
-  ["Video Poster", "480, 800, 1200 px", "4:5 WebP variants", "Lazy-loaded poster"],
+  [
+    "Hero",
+    "768, 1280, 1920, 2400 px",
+    "3:2 WebP variants",
+    "Eager, fetchPriority high",
+  ],
+  [
+    "OG Image",
+    "1200 x 630 px",
+    "Landscape JPG/WebP",
+    "Social and messaging previews",
+  ],
+  [
+    "Wide Feature",
+    "768, 1200, 1800 px",
+    "3:2 WebP variants",
+    "Lazy-loaded after intro",
+  ],
+  [
+    "Portrait Gallery",
+    "480, 800, 1200 px",
+    "4:5 WebP variants",
+    "Lazy-loaded gallery blocks",
+  ],
+  [
+    "Video Poster",
+    "480, 800, 1200 px",
+    "4:5 WebP variants",
+    "Lazy-loaded poster",
+  ],
 ];
 
 const filenameExamples = [
@@ -352,9 +377,7 @@ function SampleArticleWireframe() {
         </div>
 
         <div style={{ padding: "18px 24px" }}>
-          <Text style={{ ...labelStyle, marginBottom: 14 }}>
-            Body section
-          </Text>
+          <Text style={{ ...labelStyle, marginBottom: 14 }}>Body section</Text>
           <div style={{ maxWidth: 820 }}>
             {["88%", "96%", "82%", "90%", "72%"].map((width) => (
               <div

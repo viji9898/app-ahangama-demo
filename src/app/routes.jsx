@@ -65,9 +65,7 @@ import EmailPreviewPage from "../pages/EmailPreviewPage";
 import PassesIssuedPage, {
   PASSES_ISSUED_PATH,
 } from "../pages/PassesIssuedPage";
-import InteractionsPage, {
-  INTERACTIONS_PATH,
-} from "../pages/InteractionsPage";
+import InteractionsPage, { INTERACTIONS_PATH } from "../pages/InteractionsPage";
 import PassValidityPage from "../pages/PassValidityPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
@@ -297,7 +295,10 @@ const routes = [
   { path: "/retail/:slug", element: <PlaceDetail category="retail" /> },
   { path: "/transport/:slug", element: <PlaceDetail category="transport" /> },
   { path: "/co-working/:slug", element: <PlaceDetail category="co-working" /> },
-  { path: "/experiences/:slug", element: <PlaceDetail category="experiences" /> },
+  {
+    path: "/experiences/:slug",
+    element: <PlaceDetail category="experiences" />,
+  },
   { path: "/surf/:slug", element: <PlaceDetail category="surf" /> },
   { path: "*", element: <NotFound /> },
 ];

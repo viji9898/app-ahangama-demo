@@ -447,7 +447,8 @@ const routeMeta = [
   },
   {
     route: "/online-guide",
-    title: "Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast",
+    title:
+      "Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast",
     description:
       "The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama.",
     publishDate: "2026-08-01T08:00:00.000Z",

@@ -74,9 +74,8 @@ function buildHomepageEventsLabel(events) {
     return "Ahangama . Ongoing";
   }
 
-  const formatDate = (event) => event.date
-    .replace(/^[A-Za-z]{3} /, "")
-    .replace(/ \d{4}$/, "");
+  const formatDate = (event) =>
+    event.date.replace(/^[A-Za-z]{3} /, "").replace(/ \d{4}$/, "");
   const firstDate = formatDate(datedEvents[0]);
   const lastDate = formatDate(datedEvents[datedEvents.length - 1]);
 
