@@ -176,6 +176,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Shop Guide",
+    title: "Gusta: Groceries, Good Food and More",
+    date: "This Week",
+    href: "/gusta-groceries-good-food-and-more-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Hero+Image+-+Outside-ahangama-gusta-outlet.webp",
+  },
+  {
     category: "Community",
     title: "Inside the Launch of Ahangama Circle",
     date: "This Week",
