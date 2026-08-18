@@ -92,6 +92,9 @@ import InsideTheLaunchOfAhangamaCirclePage, {
 import GustaGroceriesAhangamaPage, {
   GUSTA_GROCERIES_AHANGAMA_PATH,
 } from "../pages/GustaGroceriesAhangamaPage";
+import PetalsAhangamaLegacyPage, {
+  PETALS_AHANGAMA_LEGACY_PATH,
+} from "../pages/PetalsAhangamaLegacyPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -190,6 +193,10 @@ const routes = [
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,
     element: <GustaGroceriesAhangamaPage />,
+  },
+  {
+    path: PETALS_AHANGAMA_LEGACY_PATH,
+    element: <PetalsAhangamaLegacyPage />,
   },
   {
     path: DULASIRI_UNCLE_PATH,

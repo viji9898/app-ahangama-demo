@@ -339,6 +339,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Hero+Image+-+Outside-ahangama-gusta-outlet.webp",
   },
   {
+    route: "/petals-ahangama-a-dream-rooted-in-legacy",
+    title: "Petals Ahangama: A Dream Rooted in Legacy",
+    description:
+      "How a 35-year family legacy in hospitality inspired Sawan Chamika Walgamage to create a welcoming cafe of his own in Kabalana.",
+    publishDate: "2026-08-18T09:00:00.000Z",
+    author: "Sawan Chamika Walgamage",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/petals-ahangama-a-dream-rooted-in-legacy/Hero+Image+-+Petals-entrance-with-sign+(1).jpg",
+  },
+  {
     route: "/dulasiri-uncle",
     title: "Dulasiri Uncle",
     description:

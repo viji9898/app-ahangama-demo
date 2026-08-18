@@ -531,11 +531,11 @@ const MINIMAL_GUIDE_CARDS = [
       "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
   },
   {
-    label: "WELLNESS STAY",
-    title: "My Wellness Stay at Samba",
-    href: "/3-days-in-ahangama",
+    label: "CAFE STORY",
+    title: "Petals: A Dream Rooted in Legacy",
+    href: "/petals-ahangama-a-dream-rooted-in-legacy",
     image:
-      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/petals-ahangama-a-dream-rooted-in-legacy/Hero+Image+-+Petals-entrance-with-sign+(1).jpg",
   },
   {
     label: "AIRBNB GUIDE",
