@@ -189,6 +189,8 @@ function WideImage({ src, alt }) {
       <img
         src={src}
         alt={alt}
+        width="1920"
+        height="1081"
         loading="lazy"
         decoding="async"
         style={{
@@ -220,6 +222,8 @@ function PortraitGrid({ images }) {
           key={image.src}
           src={image.src}
           alt={image.alt}
+          width={image.width || 540}
+          height={image.height || 720}
           loading="lazy"
           decoding="async"
           style={{
@@ -320,6 +324,8 @@ export default function PetalsAhangamaLegacyPage() {
                   className="home-hero-image"
                   src={HERO_IMAGE}
                   alt="The entrance and sign at Petals Ahangama in Kabalana"
+                  width="1920"
+                  height="1081"
                   fetchPriority="high"
                   style={{
                     position: "absolute",
@@ -463,7 +469,12 @@ export default function PetalsAhangamaLegacyPage() {
             images={[
               { src: JOHAN_IMAGE, alt: "Johan from the Petals Ahangama team" },
               { src: SAWAN_IMAGE, alt: "Sawan, founder of Petals Ahangama" },
-              { src: INTERIOR_IMAGE, alt: "The interior of Petals Ahangama" },
+              {
+                src: INTERIOR_IMAGE,
+                alt: "The interior of Petals Ahangama",
+                width: 540,
+                height: 405,
+              },
               { src: EXTERIOR_IMAGE, alt: "The exterior of Petals Ahangama" },
               {
                 src: AVOCADO_TOAST_IMAGE,
