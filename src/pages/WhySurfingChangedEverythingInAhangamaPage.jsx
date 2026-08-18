@@ -286,17 +286,20 @@ export default function WhySurfingChangedEverythingInAhangamaPage() {
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                     }}
                   >
-                    {["Why Surfing", "Changed", "Everything in", "Ahangama"].map(
-                      (line) => (
-                        <span
-                          key={line}
-                          className="home-hero-titleLine"
-                          style={{ color: "#FFFFFF" }}
-                        >
-                          {line}
-                        </span>
-                      ),
-                    )}
+                    {[
+                      "Why Surfing",
+                      "Changed",
+                      "Everything in",
+                      "Ahangama",
+                    ].map((line) => (
+                      <span
+                        key={line}
+                        className="home-hero-titleLine"
+                        style={{ color: "#FFFFFF" }}
+                      >
+                        {line}
+                      </span>
+                    ))}
                   </Title>
 
                   <Text

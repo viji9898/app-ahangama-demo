@@ -210,8 +210,7 @@ function PortraitGrid({ images }) {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns:
-          "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
         gap: 24,
         margin: "0 auto 28px",
         width: "100%",
