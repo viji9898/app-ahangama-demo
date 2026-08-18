@@ -175,6 +175,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Cafe Story",
+    title: "Petals Ahangama: A Dream Rooted in Legacy",
+    date: "This Week",
+    href: "/petals-ahangama-a-dream-rooted-in-legacy",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/petals-ahangama-a-dream-rooted-in-legacy/Hero+Image+-+Petals-entrance-with-sign+(1).jpg",
+  },
+  {
     category: "Shop Guide",
     title: "Gusta: Groceries, Good Food and More",
     date: "This Week",
@@ -1374,7 +1382,7 @@ export default function Home() {
                       style={
                         pick.image
                           ? {
-                              "--weekly-picks-image": `url(${pick.image})`,
+                              "--weekly-picks-image": `url("${pick.image}")`,
                             }
                           : undefined
                       }

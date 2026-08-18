@@ -215,6 +215,29 @@ Add the route to `publicRoutes`:
 
 Do not manually edit `public/sitemap.xml` unless the generated file itself is intentionally part of the change. The build regenerates it.
 
+## Add To Homepage Weekly Picks
+
+Update the `WEEKLY_PICKS` array in `src/pages/Home.jsx` so the new article appears in the homepage `2. Weekly Picks` rail.
+
+Add the newest article at the start of the array:
+
+```jsx
+const WEEKLY_PICKS = [
+  {
+    category: "Editorial",
+    title: "Article Title",
+    date: "This Week",
+    href: "/your-article-slug",
+    image: "https://customer-apps-techhq.s3.../Hero+image.webp",
+  },
+  // Existing weekly picks...
+];
+```
+
+Use the article route and hero image exactly as registered elsewhere. Choose a concise category that matches the story, such as `Editorial`, `Cafe Story`, `Community`, `Shop Guide`, or `Staff Pick`.
+
+After updating the array, verify that the card displays its background image and opens the new article. The Weekly Picks rail repeats its source list to create the continuous carousel, so seeing multiple copies in the rendered DOM is expected.
+
 ## Validate
 
 Run:
@@ -256,6 +279,7 @@ node --input-type=module -e 'const urls = ["https://example.com/image.webp"]; fo
 - `Seo` metadata is present in the page.
 - Static route metadata is added in `scripts/generate-route-meta-html.mjs`.
 - Sitemap source route is added in `scripts/generate-seo.mjs`.
+- The article is added to the start of `WEEKLY_PICKS` in `src/pages/Home.jsx` and its card is verified on the homepage.
 - All remote image URLs return `200`.
 - `npm run build` passes.
 - Generated `public/sitemap.xml` and `public/robots.txt` churn is restored unless intentionally needed.
