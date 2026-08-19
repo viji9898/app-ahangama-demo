@@ -104,6 +104,7 @@ import TransportPage, { TRANSPORT_PATH } from "../pages/TransportPage";
 import HostRetreatPage, { HOST_RETREAT_PATH } from "../pages/HostRetreatPage";
 import PassPerksPage, { PASS_PERKS_PATH } from "../pages/PassPerksPage";
 import ExternalRedirect from "./ExternalRedirect";
+import { Navigate } from "react-router-dom";
 
 const WELLNESS_GUIDE_BLOG_PATH =
   "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
@@ -160,7 +161,8 @@ const routes = [
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
-  { path: "/online-guide", element: <ExperienceAhangamaGuide /> },
+  { path: "/guide", element: <ExperienceAhangamaGuide /> },
+  { path: "/online-guide", element: <Navigate to="/guide" replace /> },
   { path: "/editors-picks", element: <EditorsPicksPage /> },
   {
     path: "/the-living-room-concept-store",

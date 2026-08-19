@@ -175,7 +175,7 @@ export default function VenueComingSoonPage({ venue }) {
                 >
                   Open Map
                 </Button>
-                <Link to="/online-guide">
+                <Link to="/guide">
                   <Button
                     size="large"
                     style={{

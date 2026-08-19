@@ -429,14 +429,6 @@ const routeMeta = [
   },
   {
     route: "/guide",
-    title: "Ahangama 2026/2027 Season Guide",
-    description: "Ahangama 2026/2027 Season Guide.",
-    publishDate: "2026-06-03T07:30:00.000Z",
-    image:
-      "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
-  },
-  {
-    route: "/online-guide",
     title: "Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast",
     description:
       "The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama.",

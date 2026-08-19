@@ -41,7 +41,7 @@ const HOME_PAGE_HERO_IMAGE =
 const AHANGAMA_GOOGLE_MAP_URL = "https://maps.app.goo.gl/nh4DYnE3haE3euCT6";
 const AHANGAMA_GOOGLE_MAP_EMBED_URL =
   "https://www.google.com/maps?q=Ahangama,Sri%20Lanka&z=14&output=embed";
-const AHANGAMA_GUIDE_PREVIEW_URL = "/online-guide";
+const AHANGAMA_GUIDE_PREVIEW_URL = "/guide";
 const PLASTIC_STANDS_IMAGE = ahangamaScanToGetGuideImage;
 const POSTCARDS_IMAGE = postcardStandKumbukImage;
 
