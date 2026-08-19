@@ -41,13 +41,16 @@ const pageSections = [
   },
   {
     kicker: "04",
-    title: "Image Sizes",
+    title: "Image Sizes And Responsive Delivery",
     body: [
-      "Hero image: upload at 2400 x 1600 px minimum, landscape, JPG or WebP. Keep the subject away from the far left if text overlays the hero. The page crops the hero to full viewport height, so the image must still work at wide desktop and tall mobile crops.",
+      "Every article image must be supplied as a high-resolution master plus responsive WebP variants. Uploading only one large file is not sufficient because mobile and standard-density screens would download pixels they cannot display.",
+      "Hero image: keep a 2400 x 1600 px landscape master and export 768 x 512, 1280 x 853, 1920 x 1280, and 2400 x 1600 variants. Keep the subject away from the far left if text overlays the hero. The hero must use srcSet and sizes, load eagerly, and set fetchPriority to high. Do not lazy-load the hero.",
       "Open graph image: use 1200 x 630 px, JPG or WebP, under 1 MB where possible. This is the image used by WhatsApp, iMessage, Facebook, LinkedIn, and other link previews.",
-      "Feature image: use 1800 x 1200 px for the wide image after the intro. This maps well to a 3:2 crop.",
-      "Portrait/gallery images: use 1200 x 1500 px or larger for 4:5 image slots. Keep faces and products centered vertically.",
-      "Video poster image: use 1200 x 1500 px for 4:5 video blocks. The poster should read clearly before the video is played.",
+      "Feature image: keep an 1800 x 1200 px master and export 768 x 512, 1200 x 800, and 1800 x 1200 variants for the 3:2 image after the intro.",
+      "Portrait/gallery images: crop to 4:5 and export 480 x 600, 800 x 1000, and 1200 x 1500 variants. Keep faces and products centered vertically so every size preserves the intended composition.",
+      "Video poster image: use the same 480 x 600, 800 x 1000, and 1200 x 1500 responsive variants used for 4:5 portrait images. The poster should read clearly before the video is played.",
+      "Every image element must include srcSet, an accurate sizes value, explicit width and height attributes, and descriptive alt text. Images below the hero must use loading=lazy and decoding=async.",
+      "Store versioned image variants in S3 with Content-Type image/webp and Cache-Control public, max-age=31536000, immutable. Use a consistent width suffix such as -480.webp, -800.webp, or -1200.webp before the file extension.",
     ],
   },
   {
@@ -81,17 +84,42 @@ const pageSections = [
 ];
 
 const imageSpecs = [
-  ["Hero", "2400 x 1600 px", "Landscape JPG/WebP", "Full-viewport article hero"],
-  ["OG Image", "1200 x 630 px", "Landscape JPG/WebP", "Social and messaging previews"],
-  ["Wide Feature", "1800 x 1200 px", "3:2 landscape", "Large image after intro"],
-  ["Portrait Gallery", "1200 x 1500 px", "4:5 portrait", "Two-column and gallery blocks"],
-  ["Video Poster", "1200 x 1500 px", "4:5 portrait", "Poster before video playback"],
+  [
+    "Hero",
+    "768, 1280, 1920, 2400 px",
+    "3:2 WebP variants",
+    "Eager, fetchPriority high",
+  ],
+  [
+    "OG Image",
+    "1200 x 630 px",
+    "Landscape JPG/WebP",
+    "Social and messaging previews",
+  ],
+  [
+    "Wide Feature",
+    "768, 1200, 1800 px",
+    "3:2 WebP variants",
+    "Lazy-loaded after intro",
+  ],
+  [
+    "Portrait Gallery",
+    "480, 800, 1200 px",
+    "4:5 WebP variants",
+    "Lazy-loaded gallery blocks",
+  ],
+  [
+    "Video Poster",
+    "480, 800, 1200 px",
+    "4:5 WebP variants",
+    "Lazy-loaded poster",
+  ],
 ];
 
 const filenameExamples = [
-  ["Good", "dulasiri-on-the-beach-holding-a-turtle.jpg"],
-  ["Good", "living-room-concept-store-showroom-floor.jpeg"],
-  ["Good", "marshmallow-cafe-ahangama-front-table.webp"],
+  ["Good", "dulasiri-on-the-beach-holding-a-turtle-480.webp"],
+  ["Good", "living-room-concept-store-showroom-floor-800.webp"],
+  ["Good", "marshmallow-cafe-ahangama-front-table-1200.webp"],
   ["Avoid", "IMG_3847.jpg"],
   ["Avoid", "hero-final-new-new.jpg"],
 ];
@@ -349,9 +377,7 @@ function SampleArticleWireframe() {
         </div>
 
         <div style={{ padding: "18px 24px" }}>
-          <Text style={{ ...labelStyle, marginBottom: 14 }}>
-            Body section
-          </Text>
+          <Text style={{ ...labelStyle, marginBottom: 14 }}>Body section</Text>
           <div style={{ maxWidth: 820 }}>
             {["88%", "96%", "82%", "90%", "72%"].map((width) => (
               <div

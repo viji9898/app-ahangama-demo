@@ -74,9 +74,8 @@ function buildHomepageEventsLabel(events) {
     return "Ahangama . Ongoing";
   }
 
-  const formatDate = (event) => event.date
-    .replace(/^[A-Za-z]{3} /, "")
-    .replace(/ \d{4}$/, "");
+  const formatDate = (event) =>
+    event.date.replace(/^[A-Za-z]{3} /, "").replace(/ \d{4}$/, "");
   const firstDate = formatDate(datedEvents[0]);
   const lastDate = formatDate(datedEvents[datedEvents.length - 1]);
 
@@ -175,6 +174,22 @@ const THIS_WEEK_FEATURES = [
 ];
 
 const WEEKLY_PICKS = [
+  {
+    category: "Cafe Story",
+    title: "Petals Ahangama: A Dream Rooted in Legacy",
+    date: "This Week",
+    href: "/petals-ahangama-a-dream-rooted-in-legacy",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/petals-ahangama-a-dream-rooted-in-legacy/Hero+Image+-+Petals-entrance-with-sign+(1).jpg",
+  },
+  {
+    category: "Shop Guide",
+    title: "Gusta: Groceries, Good Food and More",
+    date: "This Week",
+    href: "/gusta-groceries-good-food-and-more-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Hero+Image+-+Outside-ahangama-gusta-outlet.webp",
+  },
   {
     category: "Community",
     title: "Inside the Launch of Ahangama Circle",
@@ -524,18 +539,18 @@ const MINIMAL_GUIDE_CARDS = [
       "https://hips.hearstapps.com/hmg-prod/images/exploring-ahangama-the-surfing-sweet-spot-on-sri-lanka-s-southern-coast-66475f779dc88.jpg?crop=0.6672958942897593xw:1xh;center,top&resize=640:*",
   },
   {
-    label: "WELLNESS STAY",
-    title: "My Wellness Stay at Samba",
-    href: "/3-days-in-ahangama",
+    label: "CAFE STORY",
+    title: "Petals: A Dream Rooted in Legacy",
+    href: "/petals-ahangama-a-dream-rooted-in-legacy",
     image:
-      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/57/9b/6a/caption.jpg?w=1100&h=1100&s=1",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/petals-ahangama-a-dream-rooted-in-legacy/Hero+Image+-+Petals-entrance-with-sign+(1).jpg",
   },
   {
-    label: "WELLNESS GUIDE",
-    title: "Wellness in Ahangama",
-    href: "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
+    label: "AIRBNB GUIDE",
+    title: "Best Airbnbs in Ahangama",
+    href: "/best-airbnbs",
     image:
-      "https://images.squarespace-cdn.com/content/v1/687779bfeb67b07ba252ad9e/1765200138172-E21VJEEVSEA0JQ1ZDW90/Jungle+Shala+Launch-45+2.jpg",
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05162855/2-TheFind-SouthSriLankaHotels.jpeg",
   },
   {
     label: "TRANSPORT GUIDE",
@@ -1367,7 +1382,7 @@ export default function Home() {
                       style={
                         pick.image
                           ? {
-                              "--weekly-picks-image": `url(${pick.image})`,
+                              "--weekly-picks-image": `url("${pick.image}")`,
                             }
                           : undefined
                       }
