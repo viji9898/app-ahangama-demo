@@ -48,7 +48,7 @@ const PAGE_GROUPS = [
     icon: ReadOutlined,
     pages: [
       { title: "12 things to do", path: "/12-things", detail: "The essential Ahangama shortlist." },
-      { title: "Online guide", path: "/online-guide", detail: "A compact guide to experiencing Ahangama." },
+      { title: "Online guide", path: "/guide", detail: "A compact guide to experiencing Ahangama." },
       { title: "Editor's picks", path: "/editors-picks", detail: "Places and experiences selected by the editorial team." },
       { title: "All stories", path: "/blogs", detail: "Visitor stories, practical guides, and local discoveries." },
       { title: "Three days in Ahangama", path: "/3-days-in-ahangama", detail: "A practical three-day itinerary." },

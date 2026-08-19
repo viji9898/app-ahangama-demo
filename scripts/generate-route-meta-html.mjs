@@ -329,26 +329,6 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/inside-the-launch-of-ahangama-circle/hero+-+Guests+networking+at+Surf+Club+Midigama+during+sunset+-+Option+01+.jpeg",
   },
   {
-    route: "/gusta-groceries-good-food-and-more-in-ahangama",
-    title: "Gusta: Groceries, Good Food and More in Ahangama",
-    description:
-      "From everyday essentials and CIAO favourites to local brands and lifestyle finds, Gusta brings a different kind of grocery shopping to the South Coast.",
-    publishDate: "2026-08-16T09:00:00.000Z",
-    author: "Ahangama Guide Editorial Team",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Hero+Image+-+Outside-ahangama-gusta-outlet.webp",
-  },
-  {
-    route: "/petals-ahangama-a-dream-rooted-in-legacy",
-    title: "Petals Ahangama: A Dream Rooted in Legacy",
-    description:
-      "How a 35-year family legacy in hospitality inspired Sawan Chamika Walgamage to create a welcoming cafe of his own in Kabalana.",
-    publishDate: "2026-08-18T09:00:00.000Z",
-    author: "Sawan Chamika Walgamage",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/petals-ahangama-a-dream-rooted-in-legacy/Hero+Image+-+Petals-entrance-with-sign+(1).jpg",
-  },
-  {
     route: "/dulasiri-uncle",
     title: "Dulasiri Uncle",
     description:
@@ -449,16 +429,7 @@ const routeMeta = [
   },
   {
     route: "/guide",
-    title: "Ahangama 2026/2027 Season Guide",
-    description: "Ahangama 2026/2027 Season Guide.",
-    publishDate: "2026-06-03T07:30:00.000Z",
-    image:
-      "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
-  },
-  {
-    route: "/online-guide",
-    title:
-      "Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast",
+    title: "Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast",
     description:
       "The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama.",
     publishDate: "2026-08-01T08:00:00.000Z",

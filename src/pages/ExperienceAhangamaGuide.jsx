@@ -30,13 +30,15 @@ const CHAPTERS = [
   { id: "reality-check", label: "The Reality Check", bg: "cream" },
   { id: "best-season", label: "Best Season", bg: "cream" },
   { id: "how-long", label: "How Long Do People Usually Stay?", bg: "cream" },
-  { id: "transport", label: "Transport Reality Check", bg: "white" },
+  { id: "transport", label: "Reality Check", bg: "white" },
   { id: "best-stays", label: "Best Stays", bg: "white" },
   { id: "best-eats", label: "Best Eats", bg: "cream" },
   { id: "best-experiences", label: "Best Experiences", bg: "cream" },
   { id: "wellness", label: "Wellness", bg: "cream" },
   { id: "night-life", label: "Night Life", bg: "cream" },
   { id: "best-retail-stores", label: "Best Retail Stores", bg: "cream" },
+  { id: "best-cafes", label: "Best Cafes", bg: "cream" },
+  { id: "transport-guide", label: "Transport", bg: "white" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
 
@@ -269,15 +271,16 @@ function ContentsSection() {
 
   const contents = [
     "Overview", "Best For", "The Reality Check", "Best Season",
-    "How Long Do People Usually Stay?", "Transport Reality Check",
+    "How Long Do People Usually Stay?", "Reality Check",
     "Best Stays", "Best Eats", "Best Experiences", "Wellness",
-    "Night Life", "Best Retail Stores",
+    "Night Life", "Best Retail Stores", "Best Cafes", "Transport",
   ];
 
   const sectionIds = [
     "overview", "best-for", "reality-check", "best-season", "how-long",
     "transport", "best-stays", "best-eats", "best-experiences",
     "more-chapters", "more-chapters", "more-chapters",
+    "best-cafes", "transport-guide",
   ];
 
   return (
@@ -542,8 +545,8 @@ function TransportSection() {
       <div className="eag-content">
         <Reveal>
           <h2 className="eag-headline">
-            <span className="eag-headline-line">Transport</span>
-            <span className="eag-headline-line">Reality Check</span>
+            <span className="eag-headline-line">Reality</span>
+            <span className="eag-headline-line">Check</span>
           </h2>
         </Reveal>
         <Reveal delay={1}>
@@ -872,6 +875,49 @@ function BestRetailStoresSection({ onImageClick }) {
   );
 }
 
+const BEST_CAFES = [
+  { name: "Kaffi" },
+  { name: "Sisters Cafe" },
+  { name: "Cafe Ceylon" },
+  { name: "Petals" },
+  { name: "Donna" },
+  { name: "Veda Cafe" },
+  { name: "Living Room" },
+  { name: "Cafe Wave" },
+  { name: "Abraso" },
+  { name: "Crave" },
+  { name: "Cafe Samaya" },
+];
+
+function BestCafesSection({ onImageClick }) {
+  return (
+    <section id="best-cafes" className="eag-section eag-section--cream">
+      <div className="eag-content">
+        <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Best Cafes</span></h2></Reveal>
+        {cardGrid(BEST_CAFES, onImageClick)}
+      </div>
+    </section>
+  );
+}
+
+const TRANSPORT_VENUES = [
+  { name: "GIK Bike Rentals", rating: "5.0", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg" },
+  { name: "Scooty Rental & Taxi Service", rating: "5.0", desc: "Quick scooter access and local transport support while staying in the area.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/scooty_rental_and_taxi.jpeg" },
+  { name: "Happy Tours", rating: "5.0", desc: "A practical transport partner for local trips and travel support around the south coast.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/happy_tours.jpeg" },
+  { name: "Nova Rent a Car", rating: "4.9", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/nova_rental.jpeg" },
+];
+
+function TransportGuideSection({ onImageClick }) {
+  return (
+    <section id="transport-guide" className="eag-section eag-section--white">
+      <div className="eag-content">
+        <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Transport</span></h2></Reveal>
+        {cardGrid(TRANSPORT_VENUES, onImageClick)}
+      </div>
+    </section>
+  );
+}
+
 
 function ClosingCTASection() {
   return (
@@ -926,13 +972,15 @@ function TocRibbon({ currentChapter }) {
     { id: "reality-check", label: "Reality Check" },
     { id: "best-season", label: "Best Season" },
     { id: "how-long", label: "How Long" },
-    { id: "transport", label: "Transport" },
+    { id: "transport", label: "Reality Check" },
     { id: "best-stays", label: "Best Stays" },
     { id: "best-eats", label: "Best Eats" },
     { id: "best-experiences", label: "Experiences" },
     { id: "wellness", label: "Wellness" },
     { id: "night-life", label: "Night Life" },
     { id: "best-retail-stores", label: "Best Retail Stores" },
+    { id: "best-cafes", label: "Best Cafes" },
+    { id: "transport-guide", label: "Transport" },
     { id: "closing-cta", label: "Closing" },
   ];
 
@@ -1052,7 +1100,7 @@ export default function ExperienceAhangamaGuide() {
       <Helmet>
         <title>Experience Ahangama &mdash; The Insider&rsquo;s Guide to Sri Lanka&rsquo;s Coolest Coast</title>
         <meta name="description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
-        <link rel="canonical" href="https://ahangama.com/online-guide" />
+        <link rel="canonical" href="https://ahangama.com/guide" />
         <meta property="og:title" content="Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast" />
         <meta property="og:description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
         <meta property="og:image" content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp" />
@@ -1107,6 +1155,8 @@ export default function ExperienceAhangamaGuide() {
           <WellnessSection onImageClick={setLightboxItem} />
           <NightLifeSection onImageClick={setLightboxItem} />
           <BestRetailStoresSection onImageClick={setLightboxItem} />
+          <BestCafesSection onImageClick={setLightboxItem} />
+          <TransportGuideSection onImageClick={setLightboxItem} />
           <ClosingCTASection />
         </div>
       </div>
