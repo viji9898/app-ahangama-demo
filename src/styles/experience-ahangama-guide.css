@@ -872,6 +872,71 @@
   text-shadow: 0 0 0.5px rgba(122, 77, 0, 0.35);
 }
 
+/* ===== Instagram link ===== */
+.eag-insta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: rgba(10, 20, 35, 0.05);
+  border: 1px solid rgba(10, 20, 35, 0.14);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.eag-insta svg { width: 16px; height: 16px; }
+
+.eag-insta:hover {
+  background: linear-gradient(45deg, #F58529, #DD2A7B 55%, #8134AF);
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(221, 42, 123, 0.35);
+}
+
+.eag-insta:hover svg rect,
+.eag-insta:hover svg circle { stroke: #fff; }
+
+.eag-insta:hover svg circle:last-child { fill: #fff; }
+
+.eag-insta--empty {
+  pointer-events: none;
+  background: rgba(10, 20, 35, 0.05);
+  border-color: rgba(10, 20, 35, 0.12);
+}
+
+.eag-card-insta {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.eag-lightbox-insta {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.eag-lightbox-insta svg { width: 18px; height: 18px; }
+
+.eag-lightbox-insta:hover {
+  background: linear-gradient(45deg, #F58529, #DD2A7B 55%, #8134AF);
+  border-color: transparent;
+}
+
+.eag-lightbox-insta.eag-insta--empty {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.eag-dark-mode .eag-insta--empty {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
 /* ===== Image Lightbox ===== */
 .eag-lightbox {
   position: fixed;
