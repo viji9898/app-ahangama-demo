@@ -258,8 +258,10 @@ function ImageLightbox({ item, onClose }) {
           {item.rating ? (
             <span className="eag-lightbox-rating"><StarIcon /> {item.rating}</span>
           ) : null}
-          <InstagramLink handle={item.instagram} className="eag-lightbox-insta" />
-          <GoogleMapsLink url={item.googleMaps} className="eag-lightbox-map" />
+          <span className="eag-lightbox-social">
+            <InstagramLink handle={item.instagram} className="eag-lightbox-insta" />
+            <GoogleMapsLink url={item.googleMaps} className="eag-lightbox-map" />
+          </span>
           {item.desc ? (
             <span className="eag-lightbox-desc">{item.desc}</span>
           ) : null}
