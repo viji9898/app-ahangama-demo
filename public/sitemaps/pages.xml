@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ahangama.com/</loc>
-    <lastmod>2026-08-19T08:56:40.130Z</lastmod>
+    <lastmod>2026-08-20T15:39:41.264Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ahangama.com/new</loc>
+    <lastmod>2026-08-20T15:39:41.265Z</lastmod>
   </url>
   <url>
     <loc>https://ahangama.com/guide</loc>
-    <lastmod>2026-08-20T15:35:28.568Z</lastmod>
+    <lastmod>2026-08-20T15:40:13.711Z</lastmod>
   </url>
   <url>
     <loc>https://ahangama.com/map</loc>
@@ -82,7 +86,7 @@
   </url>
   <url>
     <loc>https://ahangama.com/partners</loc>
-    <lastmod>2026-08-19T08:41:34.349Z</lastmod>
+    <lastmod>2026-08-20T15:39:41.267Z</lastmod>
   </url>
   <url>
     <loc>https://ahangama.com/card</loc>

@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "../pages/Home";
+import NewHomePage, { NEW_HOME_PATH } from "../pages/NewHomePage";
 import HomeV2 from "../pages/HomeV2";
 import HomeMobile from "../pages/HomeMobile";
 import About from "../pages/About";
@@ -115,6 +116,7 @@ const WELLNESS_GUIDE_BLOG_PATH =
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 const routes = [
+  { path: NEW_HOME_PATH, element: <NewHomePage /> },
   { path: "/home-v-2", element: <HomeV2 /> },
   { path: "/home-mobile", element: <HomeMobile /> },
   { path: "/home-desktop", element: <HomeDesktop /> },
