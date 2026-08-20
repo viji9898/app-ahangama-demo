@@ -1133,16 +1133,65 @@ function ClosingCTASection() {
 
 /* ------ TOC Ribbon ------ */
 
+const tocMobileQuery =
+  typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)") : null;
+
+function isTocMobile() {
+  return tocMobileQuery ? tocMobileQuery.matches : false;
+}
+
 function TocRibbon({ currentChapter }) {
+  const [revealed, setRevealed] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const ribbonRef = useRef(null);
+
+  const hideAll = useCallback(() => {
+    setRevealed(false);
+    setExpanded(false);
+  }, []);
 
   const handleNav = useCallback((id) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
-      setExpanded(false);
+      hideAll();
     }
-  }, []);
+  }, [hideAll]);
+
+  const handleTabClick = useCallback(() => {
+    if (!isTocMobile()) {
+      setExpanded((v) => !v);
+      return;
+    }
+    if (!revealed) {
+      setRevealed(true);
+      return;
+    }
+    setExpanded((v) => !v);
+  }, [revealed]);
+
+  const handleRibbonTap = useCallback(() => {
+    if (isTocMobile() && !revealed) setRevealed(true);
+  }, [revealed]);
+
+  useEffect(() => {
+    if (!isTocMobile()) return;
+    const onScroll = () => {
+      if (!expanded) setRevealed(false);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [expanded]);
+
+  useEffect(() => {
+    if (!isTocMobile()) return;
+    if (!revealed && !expanded) return;
+    const onDocPointerDown = (e) => {
+      if (ribbonRef.current && !ribbonRef.current.contains(e.target)) hideAll();
+    };
+    document.addEventListener("pointerdown", onDocPointerDown);
+    return () => document.removeEventListener("pointerdown", onDocPointerDown);
+  }, [revealed, expanded, hideAll]);
 
   const tocItems = [
     { id: "cover", label: "Cover" },
@@ -1170,11 +1219,20 @@ function TocRibbon({ currentChapter }) {
 
   return (
     <div
-      className={`eag-toc-ribbon ${expanded ? "eag-toc-ribbon--expanded" : ""}`}
-      onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)}
+      ref={ribbonRef}
+      className={`eag-toc-ribbon ${expanded ? "eag-toc-ribbon--expanded" : ""} ${revealed ? "eag-toc-ribbon--revealed" : ""}`}
+      onClick={handleRibbonTap}
+      onMouseEnter={() => { if (!isTocMobile()) setExpanded(true); }}
+      onMouseLeave={() => { if (!isTocMobile()) setExpanded(false); }}
     >
-      <div className="eag-toc-tab" onClick={() => setExpanded((v) => !v)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") setExpanded((v) => !v); }}>
+      <div
+        className="eag-toc-tab"
+        onClick={handleTabClick}
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded || revealed}
+        onKeyDown={(e) => { if (e.key === "Enter") handleTabClick(); }}
+      >
         Contents
       </div>
       <div className="eag-toc-panel">

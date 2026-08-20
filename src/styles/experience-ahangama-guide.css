@@ -1236,6 +1236,50 @@
   border-left-color: var(--eag-teal);
 }
 
+/* Mobile: collapse to a thin glowing line; reveal on hover/tap */
+@media (max-width: 768px) {
+  .eag-toc-ribbon {
+    transform: translateX(calc(-100% + 5px)) translateY(-50%);
+  }
+
+  .eag-toc-ribbon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 20px;
+    display: none;
+  }
+
+  .eag-toc-ribbon:not(.eag-toc-ribbon--revealed):not(.eag-toc-ribbon--expanded) {
+    box-shadow: 0 0 14px 3px rgba(0, 175, 209, 0.6);
+  }
+
+  .eag-toc-ribbon:not(.eag-toc-ribbon--revealed):not(.eag-toc-ribbon--expanded)::before {
+    display: block;
+  }
+
+  .eag-toc-ribbon--revealed,
+  .eag-toc-ribbon--expanded {
+    transform: translate(0, -50%);
+  }
+
+  @media (hover: hover) {
+    .eag-toc-ribbon:hover {
+      transform: translate(0, -50%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eag-toc-ribbon,
+  .eag-toc-panel,
+  .eag-toc-tab {
+    transition: none;
+  }
+}
+
 /* ===== Chapter Progress ===== */
 .eag-chapter-progress {
   position: fixed;
