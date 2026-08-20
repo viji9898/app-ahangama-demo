@@ -3,6 +3,7 @@ import { Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import { PLACES } from "../data/places";
 import "../styles/new-home-page.css";
 
 const { Paragraph, Text, Title } = Typography;
@@ -351,8 +352,137 @@ const LISTS = [
   },
 ];
 
+const LIST_SECTIONS = [
+  {
+    title: "What's On",
+    description: "What is new, notable and worth making plans around right now.",
+    listTitles: [
+      "Things Happening This Week",
+      "Places to Go Tonight",
+      "New Places to Know",
+    ],
+  },
+  {
+    title: "Eat & Drink",
+    description: "From first coffee to dinner, drinks and the best sunset tables.",
+    listTitles: [
+      "Cafés We Love",
+      "Restaurants We Love",
+      "Places for Breakfast",
+      "Places for Dinner",
+      "Places for Drinks",
+      "Places for Sunset",
+    ],
+  },
+  {
+    title: "Stay",
+    description: "Hotels, private villas and places designed for settling in longer.",
+    listTitles: [
+      "Hotels We Love",
+      "Villas & Airbnbs We Love",
+      "Places for a Long Stay",
+    ],
+  },
+  {
+    title: "Surf & Wellness",
+    description: "Ways to move, recover and feel better by the coast.",
+    listTitles: [
+      "Surf Schools & Camps",
+      "Wellness Experiences",
+      "Yoga & Movement Classes",
+      "Massages & Treatments",
+    ],
+  },
+  {
+    title: "Explore & Live",
+    description: "Local favourites, useful places and reasons to venture further.",
+    listTitles: [
+      "Things You Have to Do",
+      "Places Locals Love",
+      "Day Trips from Ahangama",
+      "Shops Worth Knowing",
+      "Places to Work From",
+    ],
+  },
+];
+
+const LISTS_BY_TITLE = new Map(LISTS.map((list) => [list.title, list]));
+const ORDERED_LISTS = LIST_SECTIONS.flatMap((section) =>
+  section.listTitles.map((title) => LISTS_BY_TITLE.get(title)),
+);
+
+const PLACE_NAME_ALIASES = {
+  abrazo: "abrazo ahangama",
+  alma: "pebble alma",
+  "black honey": "black honey cafe",
+  folklore: "folklore ahangama",
+  "living room": "living room concept store",
+  marshmellow: "marshmellow surf cafe",
+  palm: "palm hotel",
+  pebble: "pebble alma",
+  "the lighthouse": "lighthouse",
+};
+
+function normalizePlaceName(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+const PLACES_BY_NAME = new Map(
+  PLACES.filter((place) => place.destinationSlug === "ahangama").map((place) => [
+    normalizePlaceName(place.name),
+    place,
+  ]),
+);
+
+function findRecommendationPlace(recommendation) {
+  const normalizedName = normalizePlaceName(recommendation);
+  return (
+    PLACES_BY_NAME.get(normalizedName) ||
+    PLACES_BY_NAME.get(PLACE_NAME_ALIASES[normalizedName]) ||
+    null
+  );
+}
+
+function buildEditorialDescription(place) {
+  const source = String(place.description || place.excerpt || "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (source.length <= 120) return source;
+
+  const shortened = source.slice(0, 117).replace(/\s+\S*$/, "").trim();
+  return `${shortened}...`;
+}
+
+function getInstagramUrl(place) {
+  if (place.instagramUrl) return place.instagramUrl;
+  if (!place.instagram) return null;
+  return `https://www.instagram.com/${String(place.instagram).replace(/^@/, "")}/`;
+}
+
+function getDirectionsUrl(place) {
+  if (place.mapUrl) return place.mapUrl;
+  if (typeof place.lat !== "number" || typeof place.lng !== "number") return null;
+  return `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`;
+}
+
 function RecommendationList({ list, index }) {
   const [expanded, setExpanded] = useState(false);
+  const [activeRecommendation, setActiveRecommendation] = useState(() => {
+    const linkedRecommendations = list.recommendations
+      .slice(0, 5)
+      .filter((recommendation) => findRecommendationPlace(recommendation));
+
+    return linkedRecommendations.length
+      ? linkedRecommendations[Math.floor(Math.random() * linkedRecommendations.length)]
+      : null;
+  });
   const listId = `new-home-list-${index + 1}`;
   const visibleRecommendations = expanded
     ? list.recommendations
@@ -366,16 +496,65 @@ function RecommendationList({ list, index }) {
       </div>
       <Title level={3}>{list.title}</Title>
       <ol id={listId}>
-        {visibleRecommendations.map((recommendation) => (
-          <li key={recommendation}>{recommendation}</li>
-        ))}
+        {visibleRecommendations.map((recommendation) => {
+          const place = findRecommendationPlace(recommendation);
+          const detailId = `${listId}-${normalizePlaceName(recommendation).replaceAll(" ", "-")}`;
+          const isActive = activeRecommendation === recommendation;
+          const instagramUrl = place ? getInstagramUrl(place) : null;
+          const directionsUrl = place ? getDirectionsUrl(place) : null;
+
+          return (
+            <li className={place ? "is-linked" : undefined} key={recommendation}>
+              {place ? (
+                <>
+                  <button
+                    className="new-home-recommendation-trigger"
+                    type="button"
+                    aria-expanded={isActive}
+                    aria-controls={detailId}
+                    onClick={() =>
+                      setActiveRecommendation((current) =>
+                        current === recommendation ? null : recommendation,
+                      )
+                    }
+                  >
+                    <span>{recommendation}</span>
+                    <span aria-hidden="true">{isActive ? "−" : "+"}</span>
+                  </button>
+                  {isActive ? (
+                    <div className="new-home-recommendation-detail" id={detailId}>
+                      <p>{buildEditorialDescription(place)}</p>
+                      <div>
+                        {directionsUrl ? (
+                          <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
+                            Google Maps
+                          </a>
+                        ) : null}
+                        {instagramUrl ? (
+                          <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+                            Instagram
+                          </a>
+                        ) : null}
+                      </div>
+                    </div>
+                  ) : null}
+                </>
+              ) : (
+                recommendation
+              )}
+            </li>
+          );
+        })}
       </ol>
       <button
         className="new-home-list-toggle"
         type="button"
         aria-expanded={expanded}
         aria-controls={listId}
-        onClick={() => setExpanded((current) => !current)}
+        onClick={() => {
+          setExpanded((current) => !current);
+          setActiveRecommendation(null);
+        }}
       >
         {expanded ? "Show fewer" : `View all ${list.recommendations.length}`}
       </button>
@@ -425,9 +604,29 @@ export default function NewHomePage() {
             </Paragraph>
           </div>
 
-          <div className="new-home-list-grid">
-            {LISTS.map((list, index) => (
-              <RecommendationList key={list.title} list={list} index={index} />
+          <div className="new-home-list-sections">
+            {LIST_SECTIONS.map((section, sectionIndex) => (
+              <section className="new-home-list-section" key={section.title}>
+                <header className="new-home-section-heading">
+                  <Text>{String(sectionIndex + 1).padStart(2, "0")}</Text>
+                  <Title level={2}>{section.title}</Title>
+                  <Paragraph>{section.description}</Paragraph>
+                </header>
+                <div className="new-home-list-grid">
+                  {section.listTitles.map((title) => {
+                    const list = LISTS_BY_TITLE.get(title);
+                    const listIndex = ORDERED_LISTS.indexOf(list);
+
+                    return (
+                      <RecommendationList
+                        key={list.title}
+                        list={list}
+                        index={listIndex}
+                      />
+                    );
+                  })}
+                </div>
+              </section>
             ))}
           </div>
         </section>

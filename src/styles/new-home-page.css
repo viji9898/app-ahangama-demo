@@ -105,6 +105,40 @@
   line-height: 1.7;
 }
 
+.new-home-list-sections {
+  display: grid;
+  gap: clamp(110px, 13vw, 170px);
+}
+
+.new-home-section-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 52px;
+  align-items: start;
+}
+
+.new-home-section-heading > span {
+  color: var(--new-home-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+
+.new-home-section-heading h2.ant-typography {
+  margin: 0;
+  color: var(--new-home-ink);
+  font: 400 clamp(40px, 4.5vw, 62px)/.95 "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.new-home-section-heading p.ant-typography {
+  margin: 0;
+  color: var(--new-home-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
 .new-home-list-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -140,26 +174,78 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  counter-reset: recommendation;
 }
 
 .new-home-list li {
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 1fr;
   padding: 10px 0;
   border-bottom: 1px solid var(--new-home-line);
   color: #3f413c;
   font-size: 13px;
   line-height: 1.35;
-  counter-increment: recommendation;
 }
 
-.new-home-list li::before {
-  color: #979990;
-  content: counter(recommendation, decimal-leading-zero);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .6px;
+.new-home-list li.is-linked {
+  padding-bottom: 0;
+}
+
+.new-home-recommendation-trigger {
+  display: flex;
+  width: 100%;
+  padding: 0 0 10px;
+  justify-content: space-between;
+  gap: 16px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.new-home-recommendation-trigger > span:last-child {
+  color: var(--new-home-muted);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.new-home-recommendation-trigger:hover > span:first-child,
+.new-home-recommendation-trigger:focus-visible > span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.new-home-recommendation-trigger:focus-visible {
+  outline: 1px solid var(--new-home-ink);
+  outline-offset: 3px;
+}
+
+.new-home-recommendation-detail {
+  grid-column: 1 / -1;
+  padding: 2px 0 14px;
+}
+
+.new-home-recommendation-detail p {
+  max-width: 34em;
+  margin: 0 0 10px;
+  color: var(--new-home-muted);
+  font: 400 12px/1.55 "Avenir Next", sans-serif;
+}
+
+.new-home-recommendation-detail > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.new-home-recommendation-detail a {
+  color: var(--new-home-ink);
+  font: 600 9px/1.4 "Avenir Next", sans-serif;
+  letter-spacing: .8px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-transform: uppercase;
 }
 
 .new-home-list-toggle {
@@ -187,11 +273,13 @@
 }
 
 @media (max-width: 900px) {
-  .new-home-lists-intro {
+  .new-home-lists-intro,
+  .new-home-section-heading {
     grid-template-columns: 1fr 2fr;
   }
 
-  .new-home-lists-intro p.ant-typography {
+  .new-home-lists-intro p.ant-typography,
+  .new-home-section-heading p.ant-typography {
     grid-column: 2;
   }
 
@@ -227,6 +315,7 @@
   }
 
   .new-home-lists-intro,
+  .new-home-section-heading,
   .new-home-list-grid {
     grid-template-columns: 1fr;
   }
@@ -237,6 +326,15 @@
   }
 
   .new-home-lists-intro p.ant-typography {
+    grid-column: auto;
+  }
+
+  .new-home-section-heading {
+    gap: 14px;
+    margin-bottom: 38px;
+  }
+
+  .new-home-section-heading p.ant-typography {
     grid-column: auto;
   }
 
