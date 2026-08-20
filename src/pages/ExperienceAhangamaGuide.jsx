@@ -40,6 +40,8 @@ const CHAPTERS = [
   { id: "best-cafes", label: "Best Cafes", bg: "cream" },
   { id: "transport-guide", label: "Transport", bg: "white" },
   { id: "local-women-owned", label: "Local Women-Owned Businesses", bg: "white" },
+  { id: "local-own", label: "Local Own", bg: "white" },
+  { id: "foreign-own", label: "Foreign Own", bg: "white" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
 
@@ -385,14 +387,14 @@ function ContentsSection() {
     "How Long Do People Usually Stay?", "Reality Check",
     "Best Stays", "Best Eats", "Best Experiences", "Wellness",
     "Night Life", "Best Retail Stores", "Best Cafes", "Transport",
-    "Women-Owned",
+    "Women-Owned", "Local Own", "Foreign Own",
   ];
 
   const sectionIds = [
     "overview", "best-for", "reality-check", "best-season", "how-long",
     "transport", "best-stays", "best-eats", "best-experiences",
     "more-chapters", "more-chapters", "more-chapters",
-    "best-cafes", "transport-guide", "local-women-owned",
+    "best-cafes", "transport-guide", "local-women-owned", "local-own", "foreign-own",
   ];
 
   return (
@@ -1039,6 +1041,16 @@ const LOCAL_WOMEN_OWNED_BUSINESSES = [
   { name: "Alikai Cafe", instagram: "", googleMaps: "" },
 ];
 
+const LOCAL_OWN_BUSINESSES = [
+  { name: "Local Owned Venue 1", instagram: "", googleMaps: "" },
+  { name: "Local Owned Venue 2", instagram: "", googleMaps: "" },
+];
+
+const FOREIGN_OWN_BUSINESSES = [
+  { name: "Foreign Owned Venue 1", instagram: "", googleMaps: "" },
+  { name: "Foreign Owned Venue 2", instagram: "", googleMaps: "" },
+];
+
 function LocalWomenOwnedSection({ onImageClick }) {
   return (
     <section id="local-women-owned" className="eag-section eag-section--white">
@@ -1050,6 +1062,38 @@ function LocalWomenOwnedSection({ onImageClick }) {
           </h2>
         </Reveal>
         {cardGrid(LOCAL_WOMEN_OWNED_BUSINESSES, onImageClick)}
+      </div>
+    </section>
+  );
+}
+
+function LocalOwnSection({ onImageClick }) {
+  return (
+    <section id="local-own" className="eag-section eag-section--white">
+      <div className="eag-content">
+        <Reveal>
+          <h2 className="eag-headline">
+            <span className="eag-headline-line">Local</span>
+            <span className="eag-headline-line">Own</span>
+          </h2>
+        </Reveal>
+        {cardGrid(LOCAL_OWN_BUSINESSES, onImageClick)}
+      </div>
+    </section>
+  );
+}
+
+function ForeignOwnSection({ onImageClick }) {
+  return (
+    <section id="foreign-own" className="eag-section eag-section--white">
+      <div className="eag-content">
+        <Reveal>
+          <h2 className="eag-headline">
+            <span className="eag-headline-line">Foreign</span>
+            <span className="eag-headline-line">Own</span>
+          </h2>
+        </Reveal>
+        {cardGrid(FOREIGN_OWN_BUSINESSES, onImageClick)}
       </div>
     </section>
   );
@@ -1119,6 +1163,8 @@ function TocRibbon({ currentChapter }) {
     { id: "best-cafes", label: "Best Cafes" },
     { id: "transport-guide", label: "Transport" },
     { id: "local-women-owned", label: "Women-Owned" },
+    { id: "local-own", label: "Local Own" },
+    { id: "foreign-own", label: "Foreign Own" },
     { id: "closing-cta", label: "Closing" },
   ];
 
@@ -1296,6 +1342,8 @@ export default function ExperienceAhangamaGuide() {
           <BestCafesSection onImageClick={setLightboxItem} />
           <TransportGuideSection onImageClick={setLightboxItem} />
           <LocalWomenOwnedSection onImageClick={setLightboxItem} />
+          <LocalOwnSection onImageClick={setLightboxItem} />
+          <ForeignOwnSection onImageClick={setLightboxItem} />
           <ClosingCTASection />
         </div>
       </div>
