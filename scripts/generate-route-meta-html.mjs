@@ -445,7 +445,7 @@ const routeMeta = [
     author: "Sawan Chamika Walgamage",
     type: "article",
     image:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787205024/Hero_Image_-_Petals-entrance-with-sign_ismfmq.jpg",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/w_1200,h_630,c_fill,q_auto,f_auto/v1787205024/Hero_Image_-_Petals-entrance-with-sign_ismfmq.jpg",
   },
   {
     route: "/editors-picks",
