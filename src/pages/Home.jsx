@@ -702,7 +702,7 @@ export default function Home() {
   };
 
   const heroImage =
-    "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp";
   const showWeeklyPicksSection = true;
   const showLatestStoriesSection = false;
   const weeklyPicksLooped = useMemo(

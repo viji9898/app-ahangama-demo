@@ -1,0 +1,250 @@
+.new-home-page {
+  --new-home-ink: #1c1d1a;
+  --new-home-muted: #686a63;
+  --new-home-line: #d6d6cf;
+  background: #f7f7f3;
+  color: var(--new-home-ink);
+  font-family: "Avenir Next", sans-serif;
+}
+
+.new-home-hero {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  min-height: 100svh;
+  margin-left: calc(50% - 50vw);
+  align-items: center;
+  overflow: hidden;
+  background: #19201c;
+}
+
+.new-home-hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 72%;
+}
+
+.new-home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 14, 18, .84) 0%, rgba(10, 14, 18, .72) 25%, rgba(10, 14, 18, .42) 48%, rgba(10, 14, 18, .08) 76%, transparent 100%);
+}
+
+.new-home-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, calc(100% - 64px));
+  margin: 0 auto;
+  padding-block: 140px 72px;
+}
+
+.new-home-hero-content > span,
+.new-home-lists-intro > span {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.new-home-hero h1.ant-typography {
+  display: flex;
+  flex-direction: column;
+  max-width: 850px;
+  margin: 22px 0 26px;
+  color: #fff;
+  font: 500 clamp(62px, 7vw, 98px)/.88 "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.new-home-hero h1 span {
+  color: #fff;
+}
+
+.new-home-hero p.ant-typography {
+  max-width: 470px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.65;
+}
+
+.new-home-lists {
+  width: min(1320px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: clamp(96px, 12vw, 168px) 0;
+}
+
+.new-home-lists-intro {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 84px;
+  align-items: start;
+}
+
+.new-home-lists-intro > span {
+  color: var(--new-home-muted);
+}
+
+.new-home-lists-intro h2.ant-typography {
+  max-width: 620px;
+  margin: 0;
+  color: var(--new-home-ink);
+  font: 400 clamp(46px, 5vw, 72px)/.95 "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.new-home-lists-intro p.ant-typography {
+  margin: 0;
+  color: var(--new-home-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.new-home-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(34px, 5vw, 78px);
+  row-gap: 88px;
+}
+
+.new-home-list {
+  border-top: 1px solid var(--new-home-ink);
+  padding-top: 15px;
+}
+
+.new-home-list-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--new-home-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.new-home-list h3.ant-typography {
+  min-height: 76px;
+  margin: 24px 0 30px;
+  color: var(--new-home-ink);
+  font: 400 clamp(28px, 2.4vw, 38px)/1.02 "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.new-home-list ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: recommendation;
+}
+
+.new-home-list li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--new-home-line);
+  color: #3f413c;
+  font-size: 13px;
+  line-height: 1.35;
+  counter-increment: recommendation;
+}
+
+.new-home-list li::before {
+  color: #979990;
+  content: counter(recommendation, decimal-leading-zero);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .6px;
+}
+
+.new-home-list-toggle {
+  width: 100%;
+  padding: 14px 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--new-home-ink);
+  cursor: pointer;
+  font: 600 10px/1.4 "Avenir Next", sans-serif;
+  letter-spacing: 1px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.new-home-list-toggle:hover,
+.new-home-list-toggle:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.new-home-list-toggle:focus-visible {
+  outline: 1px solid var(--new-home-ink);
+  outline-offset: 5px;
+}
+
+@media (max-width: 900px) {
+  .new-home-lists-intro {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .new-home-lists-intro p.ant-typography {
+    grid-column: 2;
+  }
+
+  .new-home-list-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .new-home-hero {
+    align-items: flex-end;
+  }
+
+  .new-home-hero > img {
+    object-position: 68% 72%;
+  }
+
+  .new-home-hero-overlay {
+    background: linear-gradient(90deg, rgba(10, 14, 18, .9) 0%, rgba(10, 14, 18, .72) 48%, rgba(10, 14, 18, .2) 100%);
+  }
+
+  .new-home-hero-content,
+  .new-home-lists {
+    width: calc(100% - 32px);
+  }
+
+  .new-home-hero-content {
+    padding-block: 150px 48px;
+  }
+
+  .new-home-hero h1.ant-typography {
+    font-size: clamp(48px, 15vw, 66px);
+  }
+
+  .new-home-lists-intro,
+  .new-home-list-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .new-home-lists-intro {
+    gap: 18px;
+    margin-bottom: 62px;
+  }
+
+  .new-home-lists-intro p.ant-typography {
+    grid-column: auto;
+  }
+
+  .new-home-list-grid {
+    row-gap: 64px;
+  }
+
+  .new-home-list h3.ant-typography {
+    min-height: 0;
+  }
+}

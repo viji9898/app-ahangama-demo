@@ -236,6 +236,14 @@ function applyMeta(html, meta) {
 
 const routeMeta = [
   {
+    route: "/new",
+    title: "The Ultimate Guide to Ahangama",
+    description:
+      "Twenty-one locally curated lists for eating, staying, surfing, shopping and exploring Ahangama.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp",
+  },
+  {
     route: "/tip",
     title: "Tourism Intelligence Platform | Ahangama.com",
     description:
@@ -429,7 +437,8 @@ const routeMeta = [
   },
   {
     route: "/guide",
-    title: "Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast",
+    title:
+      "Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast",
     description:
       "The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama.",
     publishDate: "2026-08-01T08:00:00.000Z",

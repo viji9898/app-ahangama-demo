@@ -36,7 +36,7 @@ const HERO_IMAGE =
   "https://polarsteps.s3.amazonaws.com/user_images/steps/large_thumb/u_8317798/3f3fcfc3-61bc-44c9-9e07-5bc8d35ab99c_455b553f-d99d-40ca-ad04-3a5774a62cef.jpg";
 
 const HOME_PAGE_HERO_IMAGE =
-  "https://images.suitcasemag.com/wp-content/uploads/2025/05/01113553/Hero-AhanagamaGuide-SriLanka.jpeg";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp";
 
 const AHANGAMA_GOOGLE_MAP_URL = "https://maps.app.goo.gl/nh4DYnE3haE3euCT6";
 const AHANGAMA_GOOGLE_MAP_EMBED_URL =
