@@ -1088,11 +1088,11 @@ function TransportGuideSection({ onImageClick }) {
 }
 
 const LOCAL_WOMEN_OWNED_BUSINESSES = [
-  { name: "Alikai Cafe", instagram: "", googleMaps: "" },
+  { name: "Aliikai Cafe", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787240709/IMG_1465_jgumgi.webp", instagram: "", googleMaps: "" },
 ];
 
 const LOCAL_OWN_BUSINESSES = [
-  { name: "Local Owned Venue 1", instagram: "", googleMaps: "" },
+  { name: "Citra", instagram: "", googleMaps: "" },
   { name: "Local Owned Venue 2", instagram: "", googleMaps: "" },
 ];
 
