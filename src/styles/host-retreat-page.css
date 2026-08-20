@@ -73,7 +73,7 @@
   .retreat-quote { min-height: 55svh; font-size: 52px; }
   .retreat-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: minmax(420px, 110vw) minmax(210px, 58vw); }
   .retreat-gallery img:first-child { grid-column: 1 / 3; grid-row: 1; }
-  .retreat-venue-title h2.ant-typography { font-size: 68px; }
+  .retreat-venue-title h2.ant-typography { font-size: clamp(52px, 16vw, 64px); white-space: nowrap; }
   .retreat-process ol { grid-template-columns: 1fr; }
   .retreat-process li { display: grid; grid-template-columns: 48px 1fr; min-height: 0; padding: 26px 0; border-right: 0; border-bottom: 1px solid #51534d; }
   .retreat-process li strong { margin: 0; }
