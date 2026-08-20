@@ -434,7 +434,7 @@ const routeMeta = [
       "The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama.",
     publishDate: "2026-08-01T08:00:00.000Z",
     image:
-      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp",
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787202527/Guide_oG_images_x6brj9.jpg",
   },
   {
     route: "/editors-picks",
