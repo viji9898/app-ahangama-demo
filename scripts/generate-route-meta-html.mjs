@@ -437,6 +437,17 @@ const routeMeta = [
       "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787202527/Guide_oG_images_x6brj9.jpg",
   },
   {
+    route: "/petals-ahangama-a-dream-rooted-in-legacy",
+    title: "Petals Ahangama: A Dream Rooted in Legacy",
+    description:
+      "How a 35-year family legacy in hospitality inspired Sawan Chamika Walgamage to create a welcoming cafe of his own in Kabalana.",
+    publishDate: "2026-08-18T09:00:00.000Z",
+    author: "Sawan Chamika Walgamage",
+    type: "article",
+    image:
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787205024/Hero_Image_-_Petals-entrance-with-sign_ismfmq.jpg",
+  },
+  {
     route: "/editors-picks",
     title: "Editor's Picks",
     description:
