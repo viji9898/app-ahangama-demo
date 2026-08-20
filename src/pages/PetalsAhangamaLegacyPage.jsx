@@ -268,7 +268,7 @@ export default function PetalsAhangamaLegacyPage() {
         title="Petals Ahangama: A Dream Rooted in Legacy"
         description="How a 35-year family legacy in hospitality inspired Sawan Chamika Walgamage to create a welcoming cafe of his own in Kabalana."
         canonical={canonical}
-        ogImage={HERO_IMAGE}
+        ogImage="https://res.cloudinary.com/dp7in4ulw/image/upload/v1787205024/Hero_Image_-_Petals-entrance-with-sign_ismfmq.jpg"
         ogType="article"
         author="Sawan Chamika Walgamage"
         publishDate={publishDate}
