@@ -39,6 +39,7 @@ const CHAPTERS = [
   { id: "best-retail-stores", label: "Best Retail Stores", bg: "cream" },
   { id: "best-cafes", label: "Best Cafes", bg: "cream" },
   { id: "transport-guide", label: "Transport", bg: "white" },
+  { id: "local-women-owned", label: "Local Women-Owned Businesses", bg: "white" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
 
@@ -384,13 +385,14 @@ function ContentsSection() {
     "How Long Do People Usually Stay?", "Reality Check",
     "Best Stays", "Best Eats", "Best Experiences", "Wellness",
     "Night Life", "Best Retail Stores", "Best Cafes", "Transport",
+    "Women-Owned",
   ];
 
   const sectionIds = [
     "overview", "best-for", "reality-check", "best-season", "how-long",
     "transport", "best-stays", "best-eats", "best-experiences",
     "more-chapters", "more-chapters", "more-chapters",
-    "best-cafes", "transport-guide",
+    "best-cafes", "transport-guide", "local-women-owned",
   ];
 
   return (
@@ -1033,6 +1035,26 @@ function TransportGuideSection({ onImageClick }) {
   );
 }
 
+const LOCAL_WOMEN_OWNED_BUSINESSES = [
+  { name: "Alikai Cafe", instagram: "", googleMaps: "" },
+];
+
+function LocalWomenOwnedSection({ onImageClick }) {
+  return (
+    <section id="local-women-owned" className="eag-section eag-section--white">
+      <div className="eag-content">
+        <Reveal>
+          <h2 className="eag-headline">
+            <span className="eag-headline-line">Local Women-Owned</span>
+            <span className="eag-headline-line">Businesses</span>
+          </h2>
+        </Reveal>
+        {cardGrid(LOCAL_WOMEN_OWNED_BUSINESSES, onImageClick)}
+      </div>
+    </section>
+  );
+}
+
 
 function ClosingCTASection() {
   return (
@@ -1096,6 +1118,7 @@ function TocRibbon({ currentChapter }) {
     { id: "best-retail-stores", label: "Best Retail Stores" },
     { id: "best-cafes", label: "Best Cafes" },
     { id: "transport-guide", label: "Transport" },
+    { id: "local-women-owned", label: "Women-Owned" },
     { id: "closing-cta", label: "Closing" },
   ];
 
@@ -1272,6 +1295,7 @@ export default function ExperienceAhangamaGuide() {
           <BestRetailStoresSection onImageClick={setLightboxItem} />
           <BestCafesSection onImageClick={setLightboxItem} />
           <TransportGuideSection onImageClick={setLightboxItem} />
+          <LocalWomenOwnedSection onImageClick={setLightboxItem} />
           <ClosingCTASection />
         </div>
       </div>
