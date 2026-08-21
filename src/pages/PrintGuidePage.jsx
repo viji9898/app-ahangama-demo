@@ -20,6 +20,14 @@ import "../styles/print-guide.css";
 
 export const PRINT_GUIDE_PATH = "/print-guide";
 
+const PRINT_GUIDE_META = {
+  title: "Ahangama Guide 2026/27 | 64-Page South Coast Guide",
+  description:
+    "Preview the 64-page Ahangama Guide 2026/27, locally edited for the best places to stay, eat, surf, shop and explore on Sri Lanka's south coast.",
+  image:
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp",
+};
+
 const VIEW_OPTIONS = [
   ["spread", "Spread"],
   ["overview", "All pages"],
@@ -347,9 +355,26 @@ export default function PrintGuidePage() {
   return (
     <main className="pg-workspace">
       <Seo
-        title="Ahangama Guide 2026/27 · Print Workspace"
-        description="The digital master edition of the 64-page Ahangama Guide."
+        title={PRINT_GUIDE_META.title}
+        description={PRINT_GUIDE_META.description}
         canonical={absUrl(PRINT_GUIDE_PATH)}
+        ogImage={PRINT_GUIDE_META.image}
+        ogImageWidth={1960}
+        ogImageHeight={1100}
+        author="Ahangama Guide Editorial Team"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: PRINT_GUIDE_META.title,
+          description: PRINT_GUIDE_META.description,
+          image: PRINT_GUIDE_META.image,
+          url: absUrl(PRINT_GUIDE_PATH),
+          creator: {
+            "@type": "Organization",
+            name: "Ahangama.com",
+            url: "https://ahangama.com",
+          },
+        }}
         noindex
       />
       <header className="pg-workspace-header">

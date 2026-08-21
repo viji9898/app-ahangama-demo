@@ -31,10 +31,13 @@ export function Seo({
   description,
   canonical,
   ogImage,
+  ogImageWidth,
+  ogImageHeight,
   ogType = "website",
   author,
   publishDate,
   jsonLd,
+  noindex = false,
 }) {
   const fullTitle = title ? `${title}` : "ahangama.com";
   const jsonLdEntries = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
@@ -59,6 +62,10 @@ export function Seo({
       <title>{fullTitle}</title>
       {description && <meta name="description" content={description} />}
       {canonical && <link rel="canonical" href={canonical} />}
+      <meta
+        name="robots"
+        content={noindex ? "noindex, nofollow" : "index, follow"}
+      />
       {author && <meta name="author" content={author} />}
       {author && <meta property="author" content={author} />}
       {publishDate && <meta name="publish_date" content={publishDate} />}
@@ -74,6 +81,12 @@ export function Seo({
       )}
       {ogImage && <meta property="og:image" content={ogImage} />}
       {ogImage && <meta property="og:image:secure_url" content={ogImage} />}
+      {ogImageWidth && (
+        <meta property="og:image:width" content={String(ogImageWidth)} />
+      )}
+      {ogImageHeight && (
+        <meta property="og:image:height" content={String(ogImageHeight)} />
+      )}
 
       <meta
         name="twitter:card"

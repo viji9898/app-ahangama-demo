@@ -117,6 +117,11 @@ function applyMeta(html, meta) {
   );
   nextHtml = replaceOrInsert(
     nextHtml,
+    /<meta\s+name=["']robots["'][^>]*>/i,
+    `<meta name="robots" content="${meta.noindex ? "noindex, nofollow" : "index, follow"}" />`,
+  );
+  nextHtml = replaceOrInsert(
+    nextHtml,
     /<meta\s+name=["']author["'][^>]*>/i,
     `<meta name="author" content="${escapeHtml(author)}" />`,
   );
@@ -181,6 +186,20 @@ function applyMeta(html, meta) {
       /<meta\s+property=["']og:image:secure_url["'][^>]*>/i,
       `<meta property="og:image:secure_url" content="${escapeHtml(ogImage)}" />`,
     );
+    if (meta.imageWidth) {
+      nextHtml = replaceOrInsert(
+        nextHtml,
+        /<meta\s+property=["']og:image:width["'][^>]*>/i,
+        `<meta property="og:image:width" content="${escapeHtml(meta.imageWidth)}" />`,
+      );
+    }
+    if (meta.imageHeight) {
+      nextHtml = replaceOrInsert(
+        nextHtml,
+        /<meta\s+property=["']og:image:height["'][^>]*>/i,
+        `<meta property="og:image:height" content="${escapeHtml(meta.imageHeight)}" />`,
+      );
+    }
     nextHtml = replaceOrInsert(
       nextHtml,
       /<meta\s+name=["']twitter:card["'][^>]*>/i,
@@ -235,6 +254,18 @@ function applyMeta(html, meta) {
 }
 
 const routeMeta = [
+  {
+    route: "/print-guide",
+    title: "Ahangama Guide 2026/27 | 64-Page South Coast Guide",
+    description:
+      "Preview the 64-page Ahangama Guide 2026/27, locally edited for the best places to stay, eat, surf, shop and explore on Sri Lanka's south coast.",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp",
+    imageWidth: 1960,
+    imageHeight: 1100,
+    noindex: true,
+  },
   {
     route: "/new",
     title: "The Ultimate Guide to Ahangama",
