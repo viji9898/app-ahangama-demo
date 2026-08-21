@@ -1,0 +1,265 @@
+import { PLACES } from "../../data/places";
+
+export const GUIDE_RATE_CARD = Object.freeze({
+  quarterPage: 350,
+  halfPage: 600,
+  fullPage: 1000,
+  premiumFullPage: 1250,
+  sectionOpener: 1500,
+  doublePageSpread: 1750,
+  insideBackCover: 1750,
+  insideFrontCover: 2000,
+  backCover: 2500,
+  sectionSponsor: 3000,
+});
+
+export const COMMERCIAL_LABELS = Object.freeze({
+  quarterPage: "Quarter Page",
+  halfPage: "Half Page",
+  fullPage: "Full Page",
+  premiumFullPage: "Premium Full Page",
+  doublePageSpread: "Double Page Spread",
+  sectionSponsor: "Section Sponsor",
+  insideFrontCover: "Inside Front Cover",
+  insideBackCover: "Inside Back Cover",
+  backCover: "Back Cover",
+});
+
+export const COMMERCIAL_EQUIVALENTS = Object.freeze({
+  quarterPage: 0.25,
+  halfPage: 0.5,
+  fullPage: 1,
+  premiumFullPage: 1,
+  doublePageSpread: 2,
+  sectionSponsor: 1,
+  insideFrontCover: 1,
+  insideBackCover: 1,
+  backCover: 1,
+});
+
+export const GUIDE_SECTIONS = Object.freeze({
+  opening: { label: "Opening", color: "#d95236" },
+  stay: { label: "Stay", color: "#2d6651" },
+  "eat-drink": { label: "Eat & Drink", color: "#c45432" },
+  surf: { label: "Beaches & Surf", color: "#28758a" },
+  experiences: { label: "Experiences", color: "#866232" },
+  wellness: { label: "Wellness", color: "#687e55" },
+  shopping: { label: "Shopping & Local", color: "#a34d54" },
+  editorial: { label: "Field Notes", color: "#4d5268" },
+  essentials: { label: "Essentials", color: "#3e665f" },
+  closing: { label: "Closing", color: "#222222" },
+});
+
+const GUIDE_IMAGES = [
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp",
+  "https://content.r9cdn.net/rimg/dimg/09/d4/c553223f-city-304822-172c638b4d6.jpg?crop=true&width=1366&height=768&xhint=1254&yhint=1207",
+  "https://stokedsurfadventures.com/wp-content/uploads/2024/05/Gota-Dagua-sri-lanka-surf-camp-ahangama-learn-to-surf-coaching-kabalana-stoked-surf-adventures-14-copy.jpg",
+  "https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/944/images/1440_6e0-1635949941.webp",
+];
+
+const SECTION_COPY = {
+  stay: {
+    headline: "Stay awhile",
+    subheadline: "Small hotels, private villas and rooms with a sense of place.",
+    body: "The best stays here understand the rhythm of the coast: early swims, long breakfasts and a shaded place to return to after the heat.",
+  },
+  "eat-drink": {
+    headline: "Eat & Drink",
+    subheadline: "Where to eat, drink and spend a long afternoon in Ahangama.",
+    body: "A new generation of cooks sits alongside short eats, market fruit, family kitchens and the daily catch from the bay.",
+  },
+  surf: {
+    headline: "Beaches & Surf",
+    subheadline: "Reef breaks, quiet coves and the changing moods of the Indian Ocean.",
+    body: "Read the water, respect the line-up and leave time to find the smaller beaches between the better-known breaks.",
+  },
+  experiences: {
+    headline: "Beyond the beach",
+    subheadline: "Lake mornings, village roads and a slower view of the south coast.",
+    body: "The most memorable days often begin without a checklist. Follow the back roads, ask questions and stay for tea.",
+  },
+  wellness: {
+    headline: "Wellness",
+    subheadline: "Ancient practice, modern movement and room to reset.",
+    body: "From Ayurveda and yoga to breathwork and ocean recovery, Ahangama makes looking after yourself feel refreshingly unforced.",
+  },
+  shopping: {
+    headline: "Made & found here",
+    subheadline: "Independent shops, useful objects and the people behind them.",
+    body: "Look for natural fibres, small-batch food, local craft and pieces made to live well beyond a holiday.",
+  },
+};
+
+const PAGE_PLAN = [
+  ["opening", "cover", "CoverPage", "Ahangama Guide", "2026 / 27"],
+  ["opening", "inside-cover", "InsideCoverAd", "Inside Front Cover", "A premium opening position"],
+  ["opening", "welcome", "IntroductionPage", "Welcome to Ahangama", "A note from the people who live here"],
+  ["opening", "contents", "ContentsPage", "Contents", "Sixty-four pages for the south coast"],
+  ["opening", "introduction", "IntroductionPage", "Take your time", "A better way to travel this coast"],
+  ["opening", "overview", "EditorialFeature", "Ahangama, in its own time", "A town between ocean, paddy and possibility"],
+  ["opening", "essential-info", "EssentialInfoPage", "Essential Ahangama", "What to know before you set out"],
+  ["opening", "getting-around", "EssentialInfoPage", "Getting around", "Tuk-tuks, scooters, trains and walking"],
+  ["opening", "map", "MapPage", "The lay of the land", "Kabalana to Midigama"],
+  ["stay", "section-opener", "SectionOpener", "Stay", "Small hotels, private villas and rooms with a sense of place"],
+  ["stay", "venue-grid", "VenueGrid", "Near the water", "Four stays for salt-air mornings"],
+  ["stay", "venue-feature", "VenueFeature", "A room with rhythm", "Inside one of Ahangama's most thoughtful stays"],
+  ["stay", "venue-list", "VenueList", "The stay edit", "Eight addresses worth keeping"],
+  ["stay", "full-page-ad", "FullPageAd", "Stay partner", "A full-page commercial position"],
+  ["stay", "photo-essay", "PhotoEssay", "Morning at the villa", "Light, linen and the first swim"],
+  ["stay", "venue-grid", "VenueGrid", "For a longer stay", "Space to unpack and settle in"],
+  ["stay", "editorial-feature", "EditorialFeature", "How to choose your coast", "A practical guide to each pocket of town"],
+  ["eat-drink", "section-opener", "SectionOpener", "Eat & Drink", "Where to eat, drink and spend a long afternoon"],
+  ["eat-drink", "venue-grid", "VenueGrid", "First coffee", "The town's early risers"],
+  ["eat-drink", "venue-feature", "VenueFeature", "At the counter", "A kitchen shaped by the island"],
+  ["eat-drink", "venue-list", "VenueList", "Breakfast, considered", "Ten starts to the day"],
+  ["eat-drink", "photo-essay", "PhotoEssay", "Market morning", "Colour, conversation and what is in season"],
+  ["eat-drink", "partial-ad", "HalfPageEditorialAd", "Dinner after dark", "Five tables and one half-page partner position"],
+  ["eat-drink", "venue-grid", "VenueGrid", "Lunch, slowly", "Places that reward an open afternoon"],
+  ["eat-drink", "venue-feature", "VenueFeature", "The new Sri Lankan table", "Tradition without nostalgia"],
+  ["eat-drink", "venue-list", "VenueList", "Drinks at six", "Rooftops, courtyards and a seat at the bar"],
+  ["eat-drink", "editorial-feature", "EditorialFeature", "The road to dinner", "A food crawl through central Ahangama"],
+  ["eat-drink", "venue-grid", "VenueGrid", "Sweet things", "Bakes, fruit and something cold"],
+  ["eat-drink", "venue-list", "VenueList", "The address book", "Eat and drink, from A to Z"],
+  ["surf", "section-opener", "SectionOpener", "Beaches & Surf", "Read the water and find your place in it"],
+  ["surf", "editorial-feature", "EditorialFeature", "A coast in motion", "Understanding the season and swell"],
+  ["surf", "venue-grid", "VenueGrid", "Learn well", "Schools and coaches who put safety first"],
+  ["surf", "partial-ad", "QuarterPageEditorialAd", "The break book", "Four waves, one quarter-page partner position"],
+  ["surf", "photo-essay", "PhotoEssay", "Dawn patrol", "Before the road wakes up"],
+  ["surf", "essential-info", "EssentialInfoPage", "Surf with care", "Etiquette, reef safety and local knowledge"],
+  ["experiences", "section-opener", "SectionOpener", "Experiences", "The best days begin beyond the main road"],
+  ["experiences", "venue-feature", "VenueFeature", "Across Koggala Lake", "A morning among islands and cinnamon"],
+  ["experiences", "venue-grid", "VenueGrid", "Go inland", "Four ways to see another side of the south"],
+  ["experiences", "photo-essay", "PhotoEssay", "The coastal train", "Windows open, heading east"],
+  ["experiences", "venue-list", "VenueList", "A good day out", "Small plans for curious travellers"],
+  ["experiences", "full-page-ad", "FullPageAd", "Experience partner", "A full-page commercial position"],
+  ["experiences", "editorial-feature", "EditorialFeature", "The art of doing less", "An unhurried Ahangama itinerary"],
+  ["experiences", "venue-grid", "VenueGrid", "After sunset", "Music, gatherings and late tables"],
+  ["wellness", "section-opener", "SectionOpener", "Wellness", "Ancient practice, modern movement and room to reset"],
+  ["wellness", "venue-feature", "VenueFeature", "A slower medicine", "Ayurveda on the south coast"],
+  ["wellness", "venue-grid", "VenueGrid", "Move well", "Yoga, pilates and strength by the sea"],
+  ["wellness", "venue-list", "VenueList", "The treatment list", "Massage, recovery and restorative rituals"],
+  ["wellness", "photo-essay", "PhotoEssay", "Quiet practice", "The rituals that hold a day together"],
+  ["wellness", "partial-ad", "HalfPageEditorialAd", "Reset by the sea", "Editorial above, partner space below"],
+  ["shopping", "section-opener", "SectionOpener", "Shopping & Local", "Independent shops and useful things made here"],
+  ["shopping", "venue-grid", "VenueGrid", "The independent edit", "Objects, clothes and provisions"],
+  ["shopping", "venue-feature", "VenueFeature", "Made with intention", "Meet a local creative business"],
+  ["shopping", "venue-list", "VenueList", "Take something home", "A concise local directory"],
+  ["editorial", "editorial-feature", "EditorialFeature", "The new old town", "How Ahangama is changing without losing itself"],
+  ["editorial", "premium-ad", "FullPageAd", "Ahangama, presented by", "A premium full-page position"],
+  ["editorial", "photo-essay", "PhotoEssay", "People of the coast", "Six portraits, six ways of living here"],
+  ["editorial", "editorial-feature", "EditorialFeature", "Twenty-four hours", "A day assembled by locals"],
+  ["essentials", "map", "MapPage", "Central Ahangama", "Food, shops and useful landmarks"],
+  ["essentials", "map", "MapPage", "Kabalana & Kathaluwa", "Beach, lake and the inland road"],
+  ["essentials", "essential-info", "EssentialInfoPage", "Useful numbers", "Health, safety, money and connectivity"],
+  ["essentials", "essential-info", "EssentialInfoPage", "Travel better", "Local etiquette and low-impact choices"],
+  ["closing", "directory", "DirectoryPage", "Keep exploring", "The complete directory and Ahangama.com"],
+  ["closing", "inside-cover", "InsideCoverAd", "Inside Back Cover", "A premium closing position"],
+  ["closing", "back-cover", "BackCoverAd", "Back Cover", "The final word"],
+];
+
+const COMMERCIAL_BY_PAGE = {
+  2: ["insideFrontCover", "available", null],
+  10: ["sectionSponsor", "reserved", "PALM"],
+  14: ["fullPage", "sold", "Trebartha East"],
+  18: ["sectionSponsor", "available", null],
+  23: ["halfPage", "sold", "Petals"],
+  30: ["sectionSponsor", "available", null],
+  33: ["quarterPage", "available", null],
+  36: ["sectionSponsor", "reserved", "Koggala Lake"],
+  41: ["fullPage", "available", null],
+  44: ["sectionSponsor", "sold", "Kurulu Bay"],
+  49: ["halfPage", "available", null],
+  50: ["sectionSponsor", "available", null],
+  55: ["premiumFullPage", "available", null],
+  63: ["insideBackCover", "available", null],
+  64: ["backCover", "sold", "Gusta"],
+};
+
+const CATEGORY_BY_SECTION = {
+  stay: "stays",
+  "eat-drink": "eat",
+  surf: "surf",
+  experiences: "experiences",
+  wellness: "wellness",
+  shopping: "retail",
+};
+
+const placesBySection = Object.fromEntries(
+  Object.entries(CATEGORY_BY_SECTION).map(([section, category]) => [
+    section,
+    PLACES.filter(
+      (place) =>
+        place.destinationSlug === "ahangama" && place.category === category,
+    ),
+  ]),
+);
+
+function getSectionPlaces(section, pageNumber) {
+  const places = placesBySection[section] || [];
+  if (!places.length) return [];
+  const offset = pageNumber % places.length;
+  return [...places.slice(offset), ...places.slice(0, offset)].slice(0, 6);
+}
+
+function getCommercial(pageNumber) {
+  const position = COMMERCIAL_BY_PAGE[pageNumber];
+  if (!position) {
+    return {
+      enabled: false,
+      type: null,
+      rate: 0,
+      status: "editorial",
+      partner: null,
+      internalNotes: "",
+    };
+  }
+
+  const [type, status, partner] = position;
+  return {
+    enabled: true,
+    type,
+    rate: GUIDE_RATE_CARD[type],
+    status,
+    partner,
+    internalNotes: "Initial 2026/27 inventory allocation.",
+  };
+}
+
+export const INITIAL_GUIDE_PAGES = PAGE_PLAN.map(
+  ([section, pageType, template, headline, subheadline], index) => {
+    const pageNumber = index + 1;
+    const venues = getSectionPlaces(section, pageNumber);
+    const sectionCopy = SECTION_COPY[section];
+    const fallbackImage = GUIDE_IMAGES[index % GUIDE_IMAGES.length];
+
+    return {
+      pageNumber,
+      section,
+      pageType,
+      template,
+      content: {
+        eyebrow: GUIDE_SECTIONS[section].label,
+        headline,
+        subheadline,
+        body:
+          sectionCopy?.body ||
+          "A locally edited guide to the places, people and details that make Ahangama worth knowing slowly.",
+        image: venues.find((venue) => venue.image)?.image || fallbackImage,
+        secondaryImage:
+          venues.find((venue) => venue.ogImage && venue.ogImage !== venue.image)
+            ?.ogImage || GUIDE_IMAGES[(index + 1) % GUIDE_IMAGES.length],
+        venueSlugs: venues.map((venue) => venue.slug),
+        pullQuote:
+          sectionCopy?.subheadline || "The south coast, selected with care.",
+      },
+      commercial: getCommercial(pageNumber),
+    };
+  },
+);
+
+export const GUIDE_PLACES_BY_SLUG = new Map(
+  PLACES.filter((place) => place.destinationSlug === "ahangama").map((place) => [
+    place.slug,
+    place,
+  ]),
+);
