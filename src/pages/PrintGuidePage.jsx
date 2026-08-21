@@ -34,6 +34,12 @@ const VIEW_OPTIONS = [
   ["commercial", "Commercial"],
 ];
 
+const PAGE_FORMATS = Object.freeze({
+  A4: { label: "A4", width: 210, height: 297, viewScale: 1.18 },
+  A5: { label: "A5", width: 148, height: 210, viewScale: 1 },
+  B5: { label: "B5", width: 176, height: 250, viewScale: 1.08 },
+});
+
 const TEMPLATE_OPTIONS = [
   "CoverPage",
   "InsideCoverAd",
@@ -69,7 +75,7 @@ function useMobilePageView() {
   return isMobile;
 }
 
-function GuideDashboard({ metrics }) {
+function GuideDashboard({ metrics, pageFormat }) {
   const items = [
     ["Pages", metrics.pageCount],
     ["Editorial", metrics.editorialPages],
@@ -85,6 +91,7 @@ function GuideDashboard({ metrics }) {
       <div className="pg-dashboard-title">
         <span>Ahangama Guide</span>
         <strong>2026/27</strong>
+        <em>{pageFormat.label} · {pageFormat.width} × {pageFormat.height} mm</em>
       </div>
       <div className="pg-dashboard-counts">
         {items.map(([label, value]) => (
@@ -110,6 +117,8 @@ function GuideDashboard({ metrics }) {
 function GuideToolbar({
   view,
   onViewChange,
+  pageFormatKey,
+  onPageFormatChange,
   managementMode,
   onManagementChange,
   zoom,
@@ -117,17 +126,33 @@ function GuideToolbar({
 }) {
   return (
     <nav className="pg-toolbar" aria-label="Guide workspace controls">
-      <div className="pg-view-switcher">
-        {VIEW_OPTIONS.map(([value, label]) => (
-          <button
-            type="button"
-            className={view === value ? "is-active" : ""}
-            key={value}
-            onClick={() => onViewChange(value)}
-          >
-            {label}
-          </button>
-        ))}
+      <div className="pg-toolbar-selectors">
+        <div className="pg-view-switcher" aria-label="Guide view">
+          {VIEW_OPTIONS.map(([value, label]) => (
+            <button
+              type="button"
+              className={view === value ? "is-active" : ""}
+              key={value}
+              onClick={() => onViewChange(value)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="pg-format-switcher" aria-label="Page size">
+          <span>Page size</span>
+          {Object.entries(PAGE_FORMATS).map(([key, format]) => (
+            <button
+              type="button"
+              className={pageFormatKey === key ? "is-active" : ""}
+              key={key}
+              title={`${format.label} · ${format.width} × ${format.height} mm`}
+              onClick={() => onPageFormatChange(key)}
+            >
+              {format.label}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="pg-toolbar-actions">
         <span className="pg-zoom-controls">
@@ -323,12 +348,14 @@ function PageEditor({ page, open, onClose, onChange }) {
 export default function PrintGuidePage() {
   const [pages, setPages] = useState(INITIAL_GUIDE_PAGES);
   const [view, setView] = useState("spread");
+  const [pageFormatKey, setPageFormatKey] = useState("A5");
   const [currentPage, setCurrentPage] = useState(1);
   const [managementMode, setManagementMode] = useState(true);
   const [zoom, setZoom] = useState(1);
   const [editingPageNumber, setEditingPageNumber] = useState(null);
   const isMobile = useMobilePageView();
   const metrics = useMemo(() => calculateGuideMetrics(pages), [pages]);
+  const pageFormat = PAGE_FORMATS[pageFormatKey];
   const editingPage = pages.find((page) => page.pageNumber === editingPageNumber);
 
   const openPage = (pageNumber) => {
@@ -353,7 +380,16 @@ export default function PrintGuidePage() {
   };
 
   return (
-    <main className="pg-workspace">
+    <main
+      className="pg-workspace"
+      style={{
+        "--page-width-mm": pageFormat.width,
+        "--page-height-mm": pageFormat.height,
+        "--page-print-width": `${pageFormat.width}mm`,
+        "--page-print-height": `${pageFormat.height}mm`,
+        "--page-view-scale": pageFormat.viewScale,
+      }}
+    >
       <Seo
         title={PRINT_GUIDE_META.title}
         description={PRINT_GUIDE_META.description}
@@ -378,10 +414,12 @@ export default function PrintGuidePage() {
         noindex
       />
       <header className="pg-workspace-header">
-        <GuideDashboard metrics={metrics} />
+        <GuideDashboard metrics={metrics} pageFormat={pageFormat} />
         <GuideToolbar
           view={view}
           onViewChange={setView}
+          pageFormatKey={pageFormatKey}
+          onPageFormatChange={setPageFormatKey}
           managementMode={managementMode}
           onManagementChange={setManagementMode}
           zoom={zoom}

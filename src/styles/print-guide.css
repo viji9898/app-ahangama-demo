@@ -1,6 +1,9 @@
 :root {
-  --page-width: 148;
-  --page-height: 210;
+  --page-width-mm: 148;
+  --page-height-mm: 210;
+  --page-print-width: 148mm;
+  --page-print-height: 210mm;
+  --page-view-scale: 1;
   --page-margin: 8cqw;
   --page-gutter: 5cqw;
   --pg-ink: #171714;
@@ -76,6 +79,15 @@
   font: 400 24px/1 "Iowan Old Style", Georgia, serif;
 }
 
+.pg-dashboard-title em {
+  margin-top: 6px;
+  color: #a9aaa3;
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .pg-dashboard-counts {
   display: grid;
   grid-template-columns: repeat(7, minmax(54px, 1fr));
@@ -130,14 +142,26 @@
   padding: 8px 22px;
 }
 
+.pg-toolbar-selectors,
 .pg-view-switcher,
+.pg-format-switcher,
 .pg-zoom-controls {
   display: inline-flex;
   align-items: center;
+}
+
+.pg-toolbar-selectors {
+  gap: 12px;
+}
+
+.pg-view-switcher,
+.pg-format-switcher,
+.pg-zoom-controls {
   border: 1px solid #4b4c47;
 }
 
 .pg-view-switcher button,
+.pg-format-switcher button,
 .pg-zoom-controls button {
   min-height: 32px;
   border: 0;
@@ -152,13 +176,23 @@
 }
 
 .pg-view-switcher button:last-child,
+.pg-format-switcher button:last-child,
 .pg-zoom-controls button:last-child {
   border-right: 0;
 }
 
-.pg-view-switcher button.is-active {
+.pg-view-switcher button.is-active,
+.pg-format-switcher button.is-active {
   color: #161714;
   background: #f3f1e9;
+}
+
+.pg-format-switcher > span {
+  padding: 0 11px;
+  color: #8f908a;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .pg-toolbar-actions,
@@ -204,14 +238,14 @@
 }
 
 .pg-spread-pages > .pg-page-shell {
-  width: calc(clamp(280px, 36vw, 460px) * var(--guide-zoom));
+  width: calc(clamp(280px, 36vw, 460px) * var(--guide-zoom) * var(--page-view-scale));
   flex: 0 0 auto;
 }
 
 .pg-page-shell {
   position: relative;
   width: 100%;
-  aspect-ratio: 148 / 210;
+  aspect-ratio: var(--page-width-mm) / var(--page-height-mm);
   container-type: inline-size;
   color: var(--pg-ink);
   background: var(--pg-paper);
@@ -1301,8 +1335,16 @@
     padding: 10px 14px;
   }
 
+  .pg-toolbar-selectors {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .pg-view-switcher { display: grid; grid-template-columns: repeat(3, 1fr); }
   .pg-view-switcher button { padding: 0 8px; }
+  .pg-format-switcher { display: grid; grid-template-columns: 1fr repeat(3, 48px); }
+  .pg-format-switcher > span { display: flex; align-items: center; }
 
   .pg-toolbar-actions {
     justify-content: space-between;
@@ -1353,8 +1395,8 @@
   }
 
   .pg-page-shell {
-    width: 148mm !important;
-    height: 210mm !important;
+    width: var(--page-print-width) !important;
+    height: var(--page-print-height) !important;
     box-shadow: none;
     break-after: page;
   }
