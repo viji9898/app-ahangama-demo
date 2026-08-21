@@ -935,6 +935,31 @@
   text-shadow: 0 0 0.5px rgba(122, 77, 0, 0.35);
 }
 
+/* ===== Ownership badge ===== */
+.eag-card-ownership {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.eag-card-ownership--local {
+  background: rgba(16, 163, 127, 0.08);
+  color: #0e8a6a;
+  border: 1px solid rgba(16, 163, 127, 0.18);
+}
+
+.eag-card-ownership--foreign {
+  background: rgba(79, 110, 180, 0.08);
+  color: #4a6fa5;
+  border: 1px solid rgba(79, 110, 180, 0.18);
+}
+
 /* ===== Instagram link ===== */
 .eag-insta {
   display: inline-flex;
@@ -1585,6 +1610,18 @@
 
 .eag-dark-mode .eag-card-meta-rating .eag-star-icon {
   color: #FFD36B;
+}
+
+.eag-dark-mode .eag-card-ownership--local {
+  background: rgba(16, 163, 127, 0.12);
+  color: #4dd4a8;
+  border-color: rgba(16, 163, 127, 0.28);
+}
+
+.eag-dark-mode .eag-card-ownership--foreign {
+  background: rgba(79, 110, 180, 0.12);
+  color: #8aace0;
+  border-color: rgba(79, 110, 180, 0.28);
 }
 
 .eag-dark-mode .eag-pricing-card {
