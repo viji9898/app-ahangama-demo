@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo, useId } from "react";
 import { Helmet } from "react-helmet-async";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -39,9 +39,7 @@ const CHAPTERS = [
   { id: "best-retail-stores", label: "Best Retail Stores", bg: "cream" },
   { id: "best-cafes", label: "Best Cafes", bg: "cream" },
   { id: "transport-guide", label: "Transport", bg: "white" },
-  { id: "local-women-owned", label: "Local Women-Owned Businesses", bg: "white" },
-  { id: "local-own", label: "Local Own", bg: "white" },
-  { id: "foreign-own", label: "Foreign Own", bg: "white" },
+  { id: "local-women-owned", label: "Women-Owned Local Businesses", bg: "white" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
 
@@ -134,6 +132,61 @@ function StarIcon({ className = "" }) {
   return <span className={className} style={{ color: "var(--eag-gold)" }}>★</span>;
 }
 
+function InstagramIcon() {
+  const gradientId = useId().replace(/:/g, "");
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id={`insta-grad-${gradientId}`} x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#F58529" />
+          <stop offset="40%" stopColor="#DD2A7B" />
+          <stop offset="100%" stopColor="#8134AF" />
+        </linearGradient>
+      </defs>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke={`url(#insta-grad-${gradientId})`} strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4.2" stroke={`url(#insta-grad-${gradientId})`} strokeWidth="1.8" />
+      <circle cx="17.4" cy="6.6" r="1.3" fill="#DD2A7B" />
+    </svg>
+  );
+}
+
+function MapPinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 21s-6.5-5.2-6.5-10a6.5 6.5 0 1113 0c0 4.8-6.5 10-6.5 10z" stroke="#4285F4" strokeWidth="1.8" />
+      <circle cx="12" cy="10.6" r="2.3" stroke="#34A853" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function mapsUrl(item) {
+  if (item.googleMaps && /^https?:\/\//i.test(item.googleMaps)) return item.googleMaps;
+  const query = item.lat && item.lng ? `${item.lat},${item.lng}` : encodeURIComponent(`${item.name} Ahangama`);
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}
+
+function CardLinks({ item }) {
+  const hasMap = Boolean(item.googleMaps || (item.lat && item.lng));
+  return (
+    <div className="eag-card-links">
+      {item.instagram ? (
+        <a className="eag-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`}>
+          <InstagramIcon />
+        </a>
+      ) : (
+        <span className="eag-insta eag-insta--empty" aria-hidden="true"><InstagramIcon /></span>
+      )}
+      {hasMap ? (
+        <a className="eag-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`}>
+          <MapPinIcon />
+        </a>
+      ) : (
+        <span className="eag-map eag-map--empty" aria-hidden="true"><MapPinIcon /></span>
+      )}
+    </div>
+  );
+}
+
 function ImageLightbox({ item, onClose }) {
   useEffect(() => {
     if (!item) return;
@@ -171,6 +224,22 @@ function ImageLightbox({ item, onClose }) {
           {item.desc ? (
             <span className="eag-lightbox-desc">{item.desc}</span>
           ) : null}
+          <span className="eag-lightbox-social">
+            {item.instagram ? (
+              <a className="eag-insta eag-lightbox-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`}>
+                <InstagramIcon />
+              </a>
+            ) : (
+              <span className="eag-insta eag-lightbox-insta eag-insta--empty" aria-hidden="true"><InstagramIcon /></span>
+            )}
+            {(item.googleMaps || (item.lat && item.lng)) ? (
+              <a className="eag-map eag-lightbox-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`}>
+                <MapPinIcon />
+              </a>
+            ) : (
+              <span className="eag-map eag-lightbox-map eag-map--empty" aria-hidden="true"><MapPinIcon /></span>
+            )}
+          </span>
         </figcaption>
       </figure>
     </div>
@@ -297,7 +366,7 @@ function ContentsSection() {
     "overview", "best-for", "reality-check", "best-season", "how-long",
     "transport", "best-stays", "best-eats", "best-experiences",
 "wellness", "night-life", "best-retail-stores",
-    "best-cafes", "transport-guide", "local-women-owned", "local-own", "foreign-own",
+    "best-cafes", "transport-guide", "local-women-owned",
   ];
 
   return (
@@ -584,19 +653,19 @@ function LocatedSection() {
 }
 
 const BEST_STAYS = [
-  { name: "Animals", rating: "4.8", desc: " A sleek pink boutique oasis blending premium co-working and laid back surf culture for adult travelers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp", lat: 5.979034944715787, lng: 80.3542700558208 },
-  { name: "Ko Lake Villa", rating: "4.4", desc: "A peaceful lakeside escape surrounded by nature, luxury and tranquility.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Ko_Lake_Villa_nqxg16.webp", lat: 5.9845509, lng: 80.3373084 },
-  { name: "Mana Villa", rating: "4.8", desc: "A peaceful nature retreat with sauna, ice baths and pools.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783566/manavilla_ctqgqj.webp", lat: 5.9816289, lng: 80.3492640 },
-  { name: "Sola Hotel", rating: "4.4", desc: "A nature-led escape in the heart of Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp", lat: 5.9878623, lng: 80.3740310 },
-  { name: "Lighthouse", rating: "4.4", desc: "A beautiful beachfront escape with a rooftop spot to enjoy sunsets, good food, and great coastal vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp", lat: 5.965762, lng: 80.377438 },
-  { name: "Trebartha East – The Roundhouse", rating: "5.0", desc: "An architectural retreat amidst a cinnamon plantation", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Threbatha_East_01_yb2dwm.webp", lat: 5.997323316318728, lng: 80.35726862935918 },
-  { name: "Mosvold Villa", rating: "4.5", desc: "A boutique beachfront escape known for its charm, comfort, and personalised hospitality.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Mosvold_imdadl.webp", lat: 5.977298709439299, lng: 80.35352992935663 },
-  { name: "The Benison", rating: "4.9", desc: "A hidden retreat designed for slow living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/The_Benison_02_uzlcpb.webp", lat: 5.9749308289716305, lng: 80.37235731469872 },
-  { name: "Palm Hotel", rating: "4.6", desc: "A modern tropical retreat among the palms", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Palm_Hotel_02_t78i4y.webp", lat: 5.989357169694588, lng: 80.38216766798632 },
-  { name: "Abode by the Beach", rating: "4.5", desc: "The ultimate beachfront hotspot for design lovers and surfers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Abode_01_rorwfz.webp", lat: 5.966115228787099, lng: 80.37946534469813 },
-  { name: "Harding Boutique Hotel", rating: "4.6", desc: "An architectural oceanfront masterpiece with a romantic rooftop vibe", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Harding_Hotel_02_qwxzlc.webp", lat: 5.973952979952777, lng: 80.36118506004209 },
-  { name: "Casa Tikiri Boutique Hotel", rating: "4.7", desc: "An adults only boutique hideaway blending authentic Italian soul with tropical surf.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp", lat: 5.9818709, lng: 80.3467529 },
-  { name: "SĀMA", rating: "4.9", desc: "A beautiful coastal retreat to slow down,relax, and enjoy thoughtful stays, great food, and the charm of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Sama_01_mwposq.webp", lat: 5.97195657116178, lng: 80.36734476798406 },
+  { name: "Animals", rating: "4.8", desc: " A sleek pink boutique oasis blending premium co-working and laid back surf culture for adult travelers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp", lat: 5.979034944715787, lng: 80.3542700558208, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Ko Lake Villa", rating: "4.4", desc: "A peaceful lakeside escape surrounded by nature, luxury and tranquility.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Ko_Lake_Villa_nqxg16.webp", lat: 5.9845509, lng: 80.3373084, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Mana Villa", rating: "4.8", desc: "A peaceful nature retreat with sauna, ice baths and pools.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783566/manavilla_ctqgqj.webp", lat: 5.9816289, lng: 80.3492640, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Sola Hotel", rating: "4.4", desc: "A nature-led escape in the heart of Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp", lat: 5.9878623, lng: 80.3740310, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Lighthouse", rating: "4.4", desc: "A beautiful beachfront escape with a rooftop spot to enjoy sunsets, good food, and great coastal vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp", lat: 5.965762, lng: 80.377438, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Trebartha East – The Roundhouse", rating: "5.0", desc: "An architectural retreat amidst a cinnamon plantation", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Threbatha_East_01_yb2dwm.webp", lat: 5.997323316318728, lng: 80.35726862935918, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Mosvold Villa", rating: "4.5", desc: "A boutique beachfront escape known for its charm, comfort, and personalised hospitality.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Mosvold_imdadl.webp", lat: 5.977298709439299, lng: 80.35352992935663, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "The Benison", rating: "4.9", desc: "A hidden retreat designed for slow living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/The_Benison_02_uzlcpb.webp", lat: 5.9749308289716305, lng: 80.37235731469872, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Palm Hotel", rating: "4.6", desc: "A modern tropical retreat among the palms", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Palm_Hotel_02_t78i4y.webp", lat: 5.989357169694588, lng: 80.38216766798632, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Abode by the Beach", rating: "4.5", desc: "The ultimate beachfront hotspot for design lovers and surfers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Abode_01_rorwfz.webp", lat: 5.966115228787099, lng: 80.37946534469813, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Harding Boutique Hotel", rating: "4.6", desc: "An architectural oceanfront masterpiece with a romantic rooftop vibe", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Harding_Hotel_02_qwxzlc.webp", lat: 5.973952979952777, lng: 80.36118506004209, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Casa Tikiri Boutique Hotel", rating: "4.7", desc: "An adults only boutique hideaway blending authentic Italian soul with tropical surf.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp", lat: 5.9818709, lng: 80.3467529, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "SĀMA", rating: "4.9", desc: "A beautiful coastal retreat to slow down,relax, and enjoy thoughtful stays, great food, and the charm of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Sama_01_mwposq.webp", lat: 5.97195657116178, lng: 80.36734476798406, instagram: "", googleMaps: "", ownership: "foreign" },
 ];
 
 function BestForSection() {
@@ -786,7 +855,7 @@ function BestStaysSection({ onImageClick }) {
                       {!stay.image && <span className="eag-card-img-label">[PHOTO: {stay.name}]</span>}
                     </div>
                   </div>
-                  <div className="eag-card-body">
+                   <div className="eag-card-body">
                     <p className="eag-card-desc">{stay.desc}</p>
                     <div className="eag-card-meta">
                       <span className="eag-card-meta-name">{stay.name}</span>
@@ -797,6 +866,7 @@ function BestStaysSection({ onImageClick }) {
                         </span>
                       )}
                     </div>
+                    <CardLinks item={stay} />
                   </div>
                 </div>
               ))} 
@@ -816,11 +886,12 @@ function BestStaysSection({ onImageClick }) {
  */
 
 const EATS = [
-  { name: "Kai Rooftop", rating: "4.7", desc: "Rooftop dining, great cocktails and beautiful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp", lat: 5.9723502, lng: 80.3635430 },
-  { name: "Mermaid’s Kitchen", rating: "4.6", desc: "Fresh, flavourful food served in a relaxed tropical setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp", lat: 5.9702466, lng: 80.3672881 },
-  { name: "Maria Bonita", rating: "4.8", desc: "Colourful breakfasts and excellent coffee.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp", lat: 5.9743119, lng: 80.3583762 },
-  { name: "SAMA Restaurant", rating: "4.9", desc: "Refined dining featuring fresh, locally sourced ingredients", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Sama_image_uxmbzj.webp", lat: 5.97195657116178, lng: 80.36734476798406 },
-  { name: "Pickled Pelican", rating: "4.7", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp", lat: 5.973088216727786, lng: 80.36383532958487 },
+  { name: "Citra", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787291036/Citra_ahangama_yihtdo.webp", rating: "4.7", desc: "A Culinary Experience Nestled Between The Palm Trees And The Ocean ",lat: 5.9730175, lng: 80.4349573, instagram: "https://www.instagram.com/citrasrilanka ", googleMaps: "https://maps.app.goo.gl/1hoMZCzCh5x8MdFK8?g_st=ic", ownership: "local" },
+  { name: "Kai Rooftop", rating: "4.7", desc: "Rooftop dining, great cocktails and beautiful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp", lat: 5.9723502, lng: 80.3635430, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Mermaid’s Kitchen", rating: "4.6", desc: "Fresh, flavourful food served in a relaxed tropical setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp", lat: 5.9702466, lng: 80.3672881, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Maria Bonita", rating: "4.8", desc: "Colourful breakfasts and excellent coffee.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp", lat: 5.9743119, lng: 80.3583762, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "SAMA Restaurant", rating: "4.9", desc: "Refined dining featuring fresh, locally sourced ingredients", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Sama_image_uxmbzj.webp", lat: 5.97195657116178, lng: 80.36734476798406, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Pickled Pelican", rating: "4.7", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp", lat: 5.973088216727786, lng: 80.36383532958487, instagram: "", googleMaps: "", ownership: "foreign" },
 ];
 
 function BestEatsSection({ onImageClick }) {
@@ -864,6 +935,7 @@ function BestEatsSection({ onImageClick }) {
                         </span>
                       )}
                     </div>
+                    <CardLinks item={item} />
                   </div>
                 </div>
               ))}
@@ -876,14 +948,14 @@ function BestEatsSection({ onImageClick }) {
 }
 
 const EXPERIENCES = [
-  { name: "Kumbuk Kitchen & Art Space", rating: "4.8", desc: "Join hands on Sri Lankan cooking classes and discover local flavours in a creative setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Kumbuk_Community_1_tnbbky.webp", lat: 6.0026417, lng: 80.3789287 },
-  { name: "Coconut Court Pickleball", rating: "4.5", desc: "Enjoy one of the fastest growing sports in a fun and social setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Coconut_Court_Pickleball_fdenxj.webp", lat: 5.978418297405438, lng: 80.34807776441775 },
-  { name: "Palm & Paint", rating: "4.7", desc: "Relax with guided painting sessions in a beautiful tropical atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Palm_Paint_tfdtou.webp", lat: 5.9925002, lng: 80.3576154 },
-  { name: "Aggala", rating: "4.6", desc: "A charming café where you can enjoy traditional Sri Lankan sweets, coffee, and local flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427733/Aggala_2_djqa9c.webp", lat: 5.972905711733899, lng: 80.36298551784026 },
-  { name: "Qamar by Zan", rating: "4.7", desc: "Design and create your own jewellery in a hands-on workshop while exploring beautifully curated fashion pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786522279/Qmar_by_zan_niowzn.webp", lat: 5.9817691, lng: 80.3494556 },
-  { name: "Olive Yu", rating: "4.8", desc: "Craft your own handmade jewellery in a creative workshop overlooking the coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786535255/Olive_yu_new_fkqs75.webp", lat: 5.9749796, lng: 80.3562258 },
-  { name: "Frostys", rating: "4.9", desc: "Refresh your body and mind with invigorating ice baths, sauna sessions, and guided recovery experiences.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp", lat: 5.979636614939634, lng: 80.35439605767189 },
-  { name: "Pachcha Sanni", rating: "4.5", desc: "Get inked at one of Ahangama's most creative tattoo studios, specialising in unique custom designs and artistic expression.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp", lat: 5.982642872487125, lng: 80.36866349380335 },
+  { name: "Kumbuk Kitchen & Art Space", rating: "4.8", desc: "Join hands on Sri Lankan cooking classes and discover local flavours in a creative setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Kumbuk_Community_1_tnbbky.webp", lat: 6.0026417, lng: 80.3789287, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Coconut Court Pickleball", rating: "4.5", desc: "Enjoy one of the fastest growing sports in a fun and social setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Coconut_Court_Pickleball_fdenxj.webp", lat: 5.978418297405438, lng: 80.34807776441775, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Palm & Paint", rating: "4.7", desc: "Relax with guided painting sessions in a beautiful tropical atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Palm_Paint_tfdtou.webp", lat: 5.9925002, lng: 80.3576154, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Aggala", rating: "4.6", desc: "A charming café where you can enjoy traditional Sri Lankan sweets, coffee, and local flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427733/Aggala_2_djqa9c.webp", lat: 5.972905711733899, lng: 80.36298551784026, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Qamar by Zan", rating: "4.7", desc: "Design and create your own jewellery in a hands-on workshop while exploring beautifully curated fashion pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786522279/Qmar_by_zan_niowzn.webp", lat: 5.9817691, lng: 80.3494556, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Olive Yu", rating: "4.8", desc: "Craft your own handmade jewellery in a creative workshop overlooking the coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786535255/Olive_yu_new_fkqs75.webp", lat: 5.9749796, lng: 80.3562258, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Frostys", rating: "4.9", desc: "Refresh your body and mind with invigorating ice baths, sauna sessions, and guided recovery experiences.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp", lat: 5.979636614939634, lng: 80.35439605767189, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Pachcha Sanni", rating: "4.5", desc: "Get inked at one of Ahangama's most creative tattoo studios, specialising in unique custom designs and artistic expression.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp", lat: 5.982642872487125, lng: 80.36866349380335, instagram: "", googleMaps: "", ownership: "foreign" },
 ];
 
 function BestExperiencesSection({ onImageClick }) {
@@ -927,6 +999,7 @@ function BestExperiencesSection({ onImageClick }) {
                         </span>
                       )}
                     </div>
+                    <CardLinks item={item} />
                   </div>
                 </div>
               ))}
@@ -939,30 +1012,30 @@ function BestExperiencesSection({ onImageClick }) {
 }
 
 const WELLNESS = [
-  { name: "Pura Pilates", rating: "4.8", desc: "A welcoming Pilates studio helping people build strength, balance, and well-being.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813854/01_-_Pura_Pilates__myhaog.webp", lat: 5.980186974839597, lng: 80.36560881118537 },
-  { name: "White Lotus Spa – Radisson Collection", rating: "4.9", desc: "Luxury spa treatments designed to relax, restore, and rejuvenate.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426471/Couple_Room_edited_1_vssbmp.webp", lat: 5.9996641, lng: 80.2671000 },
-  { name: "Banya Steam House", rating: "4.7", desc: "Hot steam, cold plunges and deep relaxation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Banya_Steam_House_ac31sy.webp", lat: 5.994568318002994, lng: 80.35071306820878 },
-  { name: "The Nuga House", rating: "4.8", desc: "A tranquil sanctuary for rest and healing.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Copy_of_Section_2_-_Yoga_in_Nuga_House_b3f1mw.avif", lat: 5.982442203112178, lng: 80.34663320384955 },
-  { name: "Sellam Gym Ahangama", rating: "4.4", desc: "A modern gym for keeping your routine on track.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786545879/Sellam_Gym2_vxn1mg.webp", lat: 5.9742794466164995, lng: 80.36432653558248 },
-  { name: "Spa Station Midigama", rating: "4.6", desc: "Relaxing massages and rejuvenating treatments nearby.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786545710/Spa_Station_midi_yseyx7.webp", lat: 5.965506394775779, lng: 80.39207693710006 },
-  { name: "Calma Samaya", rating: "4.8", desc: "A rooftop wellness sanctuary offering yoga, breathwork, massage, and peaceful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Calma_Samaya_ehqfln.webp", lat: 5.9734716, lng: 80.4348467 },
-  { name: "Ayurveda Palm Garden Resort", rating: "4.9", desc: "A tranquil Ayurvedic sanctuary dedicated to deep traditional healing and holistic rejuvenation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786546309/ayurvedha_palm2_ipnbov.webp", lat: 5.979557120672358, lng: 80.35709962209029 },
+  { name: "Pura Pilates", rating: "4.8", desc: "A welcoming Pilates studio helping people build strength, balance, and well-being.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782813854/01_-_Pura_Pilates__myhaog.webp", lat: 5.980186974839597, lng: 80.36560881118537, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "White Lotus Spa – Radisson Collection", rating: "4.9", desc: "Luxury spa treatments designed to relax, restore, and rejuvenate.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426471/Couple_Room_edited_1_vssbmp.webp", lat: 5.9996641, lng: 80.2671000, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Banya Steam House", rating: "4.7", desc: "Hot steam, cold plunges and deep relaxation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Banya_Steam_House_ac31sy.webp", lat: 5.994568318002994, lng: 80.35071306820878, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "The Nuga House", rating: "4.8", desc: "A tranquil sanctuary for rest and healing.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Copy_of_Section_2_-_Yoga_in_Nuga_House_b3f1mw.avif", lat: 5.982442203112178, lng: 80.34663320384955, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Sellam Gym Ahangama", rating: "4.4", desc: "A modern gym for keeping your routine on track.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786545879/Sellam_Gym2_vxn1mg.webp", lat: 5.9742794466164995, lng: 80.36432653558248, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Spa Station Midigama", rating: "4.6", desc: "Relaxing massages and rejuvenating treatments nearby.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786545710/Spa_Station_midi_yseyx7.webp", lat: 5.965506394775779, lng: 80.39207693710006, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Calma Samaya", rating: "4.8", desc: "A rooftop wellness sanctuary offering yoga, breathwork, massage, and peaceful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Calma_Samaya_ehqfln.webp", lat: 5.9734716, lng: 80.4348467, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Ayurveda Palm Garden Resort", rating: "4.9", desc: "A tranquil Ayurvedic sanctuary dedicated to deep traditional healing and holistic rejuvenation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786546309/ayurvedha_palm2_ipnbov.webp", lat: 5.979557120672358, lng: 80.35709962209029, instagram: "", googleMaps: "", ownership: "local" },
 ];
 const NIGHT_LIFE = [
-  { name: "Lamana", rating: "4.6", desc: "A popular late-night hangout with a lively atmosphere, great music, and a skate rink that adds a playful twist to the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786620612/Lamana_23_vnrlgv.webp", lat: 5.9723738, lng: 80.3639983 },
-  { name: "Hakuna Matata", rating: "4.5", desc: "Beachfront cocktails, music and DJs.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp", lat: 5.9669647, lng: 80.3748064 },
-  { name: "MONO", rating: "4.7", desc: "Modern nightlife with a retro soul, creative cocktails, quality drinks, and timeless tunes that keep the night moving.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp", lat: 5.9725588, lng: 80.3635790 },
-  { name: "Kurundu", rating: "4.4", desc: "A lively setting for drinks and evening entertainment.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp", lat: 5.9723740, lng: 80.3639553 },
-  { name: "Kicks Ahangama", rating: "4.5", desc: "Dance, socialise and enjoy the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp", lat: 5.9723763, lng: 80.3639558 },
-  { name: "Hotel De Uncle’s", rating: "4.6", desc: "A laid-back seaside favourite for golden sunsets, chilled drinks, live bands, and unforgettable evenings by the ocean.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp", lat: 5.9723415, lng: 80.3633269 },
+  { name: "Lamana", rating: "4.6", desc: "A popular late-night hangout with a lively atmosphere, great music, and a skate rink that adds a playful twist to the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786620612/Lamana_23_vnrlgv.webp", lat: 5.9723738, lng: 80.3639983, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Hakuna Matata", rating: "4.5", desc: "Beachfront cocktails, music and DJs.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp", lat: 5.9669647, lng: 80.3748064, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "MONO", rating: "4.7", desc: "Modern nightlife with a retro soul, creative cocktails, quality drinks, and timeless tunes that keep the night moving.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426470/mono3_c0p2jh.webp", lat: 5.9725588, lng: 80.3635790, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Kurundu", rating: "4.4", desc: "A lively setting for drinks and evening entertainment.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp", lat: 5.9723740, lng: 80.3639553, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Kicks Ahangama", rating: "4.5", desc: "Dance, socialise and enjoy the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp", lat: 5.9723763, lng: 80.3639558, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Hotel De Uncle’s", rating: "4.6", desc: "A laid-back seaside favourite for golden sunsets, chilled drinks, live bands, and unforgettable evenings by the ocean.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp", lat: 5.9723415, lng: 80.3633269, instagram: "", googleMaps: "", ownership: "local" },
 ];
 
 const BEST_RETAIL_STORES = [
-  { name: "Gusta", rating: "4.7", desc:"Gourmet groceries, fresh produce and artisan products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346946/Gusta_01_mnzv6h.webp", lat: 5.978468021160938, lng: 80.34854993743255 },
-  { name: "Mudra Herbal Spicy Tea Shop", rating: "4.8", desc:"Handcrafted teas, local spices and Sri Lankan flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346942/Mudra_Herbal_Spicy_Tea_Shop_bzqrm4.webp", lat: 5.973413421402998, lng: 80.3641129182273 },
-  { name: "Yiva Essentials", rating: "4.6", desc:"A lovely place to discover fashion, lifestyle, and unique finds in Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp", lat: 5.9709753, lng: 80.3664319 },
-  { name: "Prickly Pear by Cactus", rating: "4.5", desc:" A colorful beachfront concept boutique serving up trendy resort style and sun-soaked cafe vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp", lat: 5.9719583, lng: 80.3644725 },
-  { name: "Mana Boutique", rating: "4.7", desc:"A beautifully curated boutique showcasing stylish fashion, accessories, and coastal-inspired pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426472/mana_boutique_gbkpcm.webp", lat: 5.9816289, lng: 80.3492640  },
+  { name: "Gusta", rating: "4.7", desc:"Gourmet groceries, fresh produce and artisan products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346946/Gusta_01_mnzv6h.webp", lat: 5.978468021160938, lng: 80.34854993743255, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Mudra Herbal Spicy Tea Shop", rating: "4.8", desc:"Handcrafted teas, local spices and Sri Lankan flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346942/Mudra_Herbal_Spicy_Tea_Shop_bzqrm4.webp", lat: 5.973413421402998, lng: 80.3641129182273, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Yiva Essentials", rating: "4.6", desc:"A lovely place to discover fashion, lifestyle, and unique finds in Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp", lat: 5.9709753, lng: 80.3664319, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Prickly Pear by Cactus", rating: "4.5", desc:" A colorful beachfront concept boutique serving up trendy resort style and sun-soaked cafe vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp", lat: 5.9719583, lng: 80.3644725, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Mana Boutique", rating: "4.7", desc:"A beautifully curated boutique showcasing stylish fashion, accessories, and coastal-inspired pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426472/mana_boutique_gbkpcm.webp", lat: 5.9816289, lng: 80.3492640, instagram: "", googleMaps: "", ownership: "foreign" },
 ];
 
 function cardGrid(items, onImageClick) {
@@ -1002,6 +1075,7 @@ function cardGrid(items, onImageClick) {
                     </span>
                   )}
                 </div>
+                <CardLinks item={item} />
               </div>
             </div>
           ))}
@@ -1045,17 +1119,17 @@ function BestRetailStoresSection({ onImageClick }) {
 }
 
 const BEST_CAFES = [
-  { name: "Kaffi", lat: 5.9689078, lng: 80.3706031 },
-  { name: "Sisters Cafe", lat: 5.9779099, lng: 80.3513977 },
-  { name: "Cafe Ceylon", lat: 5.9782004, lng: 80.348526 },
-  { name: "Petals", lat: 5.9781800860434835, lng: 80.35357067301068 },
-  { name: "Donna", lat: 5.978427591667606, lng: 80.34855730859866 },
-  { name: "Veda Cafe", lat: 5.97829759746546, lng: 80.34999516626638 },
-  { name: "Living Room", lat: 5.972781176617157, lng: 80.36349925767135 },
-  { name: "Cafe Wave", lat: 5.98254317290508, lng: 80.33695907790974 },
-  { name: "Abraso", lat: 5.96829229558289, lng: 80.37337977301502 },
-  { name: "Crave", lat: 5.9726530766658374, lng: 80.3631771134925 },
-  { name: "Cafe Samaya", lat: 5.9730175, lng: 80.4349573 },
+  { name: "Kaffi", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/Kaffi_oyahe8.jpg", lat: 5.9689078, lng: 80.3706031, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Sisters Cafe", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/sisters_cafe_pumrbp.png", lat: 5.9779099, lng: 80.3513977, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Cafe Ceylon", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Ceylon_wku3on.png", lat: 5.9782004, lng: 80.348526, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Petals", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287257/Petals_vb8d5g.jpg", lat: 5.9781800860434835, lng: 80.35357067301068, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Black Honey", image:"", lat: 5.978427591667606, lng: 80.34855730859866, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Veda Cafe", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Veda_Cafe_eb12vq.png", lat: 5.97829759746546, lng: 80.34999516626638, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Living Room", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287267/Living_Room_zleo9f.png", lat: 5.972781176617157, lng: 80.36349925767135, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Cafe Wave", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/cafe_wave_nak6fe.jpg", lat: 5.98254317290508, lng: 80.33695907790974, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Abrazo", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/Abrazo_h3loxm.jpg", lat: 5.96829229558289, lng: 80.37337977301502, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Crave", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/crave_fjckup.jpg", lat: 5.9726530766658374, lng: 80.3631771134925, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Cafe Samaya", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Samaya_ufdsjh.png", lat: 5.9730175, lng: 80.4349573, instagram: "", googleMaps: "", ownership: "local" },
 ];
 
 function BestCafesSection({ onImageClick }) {
@@ -1070,10 +1144,10 @@ function BestCafesSection({ onImageClick }) {
 }
 
 const TRANSPORT_VENUES = [
-  { name: "GIK Bike Rentals", rating: "5.0", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg" },
-  { name: "Scooty Rental & Taxi Service", rating: "5.0", desc: "Quick scooter access and local transport support while staying in the area.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/scooty_rental_and_taxi.jpeg" },
-  { name: "Happy Tours", rating: "5.0", desc: "A practical transport partner for local trips and travel support around the south coast.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/happy_tours.jpeg" },
-  { name: "Nova Rent a Car", rating: "4.9", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/nova_rental.jpeg" },
+  { name: "GIK Bike Rentals", rating: "5.0", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg", instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Scooty Rental & Taxi Service", rating: "5.0", desc: "Quick scooter access and local transport support while staying in the area.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/scooty_rentals_and_bike_services_gtzqlc.webp", instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Happy Tours", rating: "5.0", desc: "A practical transport partner for local trips and travel support around the south coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287234/Happy_Tours_bkh98m.jpg", instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Nova Rent a Car", rating: "4.9", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Nova_Rent_a_Car_wuaos2.png", instagram: "", googleMaps: "", ownership: "foreign" },
 ];
 
 function TransportGuideSection({ onImageClick }) {
@@ -1088,17 +1162,9 @@ function TransportGuideSection({ onImageClick }) {
 }
 
 const LOCAL_WOMEN_OWNED_BUSINESSES = [
-  { name: "Aliikai Cafe", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787240709/IMG_1465_jgumgi.webp", instagram: "", googleMaps: "" },
-];
+  { name: "Aliikai Cafe", rating: "4.8", desc: "A cosy beachside cafe serving wholesome bowls, artisan coffee and tropical vibes in Ahangama.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787291090/WhatsApp_Image_2026-08-21_at_11.04.53_bwa4cy.jpg", instagram: "https://www.instagram.com/aliikai_ahangma_arugambay/?hl=en", googleMaps: "https://maps.app.goo.gl/83eH8u3i7fyih8Ux6", ownership: "local" },
+  { name: "Mint Ceylon", rating: "4.7", desc: "Consciously crafted slow fashion and unique lifestyle pieces, mindfully handmade by local artisans in the heart of Sri Lanka.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp", instagram: "https://www.instagram.com/mint.ceylon/?hl=en", googleMaps: "https://maps.app.goo.gl/DgphUYpCcKj7AJsf7", ownership: "local" },
 
-const LOCAL_OWN_BUSINESSES = [
-  { name: "Citra", instagram: "", googleMaps: "" },
-  { name: "Local Owned Venue 2", instagram: "", googleMaps: "" },
-];
-
-const FOREIGN_OWN_BUSINESSES = [
-  { name: "Foreign Owned Venue 1", instagram: "", googleMaps: "" },
-  { name: "Foreign Owned Venue 2", instagram: "", googleMaps: "" },
 ];
 
 function LocalWomenOwnedSection({ onImageClick }) {
@@ -1107,43 +1173,11 @@ function LocalWomenOwnedSection({ onImageClick }) {
       <div className="eag-content">
         <Reveal>
           <h2 className="eag-headline">
-            <span className="eag-headline-line">Local Women-Owned</span>
-            <span className="eag-headline-line">Businesses</span>
+            <span className="eag-headline-line">Women-Owned</span>
+            <span className="eag-headline-line">Local Businesses</span>
           </h2>
         </Reveal>
         {cardGrid(LOCAL_WOMEN_OWNED_BUSINESSES, onImageClick)}
-      </div>
-    </section>
-  );
-}
-
-function LocalOwnSection({ onImageClick }) {
-  return (
-    <section id="local-own" className="eag-section eag-section--white">
-      <div className="eag-content">
-        <Reveal>
-          <h2 className="eag-headline">
-            <span className="eag-headline-line">Local</span>
-            <span className="eag-headline-line">Own</span>
-          </h2>
-        </Reveal>
-        {cardGrid(LOCAL_OWN_BUSINESSES, onImageClick)}
-      </div>
-    </section>
-  );
-}
-
-function ForeignOwnSection({ onImageClick }) {
-  return (
-    <section id="foreign-own" className="eag-section eag-section--white">
-      <div className="eag-content">
-        <Reveal>
-          <h2 className="eag-headline">
-            <span className="eag-headline-line">Foreign</span>
-            <span className="eag-headline-line">Own</span>
-          </h2>
-        </Reveal>
-        {cardGrid(FOREIGN_OWN_BUSINESSES, onImageClick)}
       </div>
     </section>
   );
@@ -1262,8 +1296,6 @@ function TocRibbon({ currentChapter }) {
     { id: "best-cafes", label: "Best Cafes" },
     { id: "transport-guide", label: "Transport" },
     { id: "local-women-owned", label: "Women-Owned" },
-    { id: "local-own", label: "Local Own" },
-    { id: "foreign-own", label: "Foreign Own" },
     { id: "closing-cta", label: "Closing" },
   ];
 
@@ -1450,8 +1482,6 @@ export default function ExperienceAhangamaGuide() {
           <BestCafesSection onImageClick={setLightboxItem} />
           <TransportGuideSection onImageClick={setLightboxItem} />
           <LocalWomenOwnedSection onImageClick={setLightboxItem} />
-          <LocalOwnSection onImageClick={setLightboxItem} />
-          <ForeignOwnSection onImageClick={setLightboxItem} />
           <ClosingCTASection />
         </div>
       </div>
