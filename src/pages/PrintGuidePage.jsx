@@ -135,7 +135,9 @@ function GuideDashboard({ metrics, pageFormat }) {
       <div className="pg-dashboard-title">
         <span>Ahangama Guide</span>
         <strong>2026/27</strong>
-        <em>{pageFormat.label} · {pageFormat.width} × {pageFormat.height} mm</em>
+        <em>
+          {pageFormat.label} · {pageFormat.width} × {pageFormat.height} mm
+        </em>
       </div>
       <div className="pg-dashboard-counts">
         {items.map(([label, value]) => (
@@ -146,12 +148,20 @@ function GuideDashboard({ metrics, pageFormat }) {
         ))}
       </div>
       <div className="pg-dashboard-revenue">
-        <div><span>Potential revenue</span><strong>{formatCurrency(metrics.potentialRevenue)}</strong></div>
-        <div><span>Sold revenue</span><strong>{formatCurrency(metrics.soldRevenue)}</strong></div>
+        <div>
+          <span>Potential revenue</span>
+          <strong>{formatCurrency(metrics.potentialRevenue)}</strong>
+        </div>
+        <div>
+          <span>Sold revenue</span>
+          <strong>{formatCurrency(metrics.soldRevenue)}</strong>
+        </div>
         <div className="pg-utilisation">
           <span>Commercial utilisation</span>
           <strong>{metrics.commercialPercentage.toFixed(1)}%</strong>
-          <i><b style={{ width: `${metrics.commercialPercentage}%` }} /></i>
+          <i>
+            <b style={{ width: `${metrics.commercialPercentage}%` }} />
+          </i>
         </div>
       </div>
     </section>
@@ -200,14 +210,32 @@ function GuideToolbar({
       </div>
       <div className="pg-toolbar-actions">
         <span className="pg-zoom-controls">
-          <button type="button" aria-label="Zoom out" onClick={() => onZoomChange(Math.max(0.65, zoom - 0.1))}>−</button>
+          <button
+            type="button"
+            aria-label="Zoom out"
+            onClick={() => onZoomChange(Math.max(0.65, zoom - 0.1))}
+          >
+            −
+          </button>
           <b>{Math.round(zoom * 100)}%</b>
-          <button type="button" aria-label="Zoom in" onClick={() => onZoomChange(Math.min(1.4, zoom + 0.1))}>+</button>
-          <button type="button" onClick={() => onZoomChange(1)}>Fit</button>
+          <button
+            type="button"
+            aria-label="Zoom in"
+            onClick={() => onZoomChange(Math.min(1.4, zoom + 0.1))}
+          >
+            +
+          </button>
+          <button type="button" onClick={() => onZoomChange(1)}>
+            Fit
+          </button>
         </span>
         <label className="pg-management-toggle">
           <span>Management overlays</span>
-          <Switch size="small" checked={managementMode} onChange={onManagementChange} />
+          <Switch
+            size="small"
+            checked={managementMode}
+            onChange={onManagementChange}
+          />
         </label>
       </div>
     </nav>
@@ -255,20 +283,28 @@ function SpreadView({
           <span aria-hidden="true">←</span> Previous
         </button>
         <label>
-          <span>{isMobile ? `Page ${currentPage}` : `Pages ${spreadStart}–${lastVisible}`}</span>
+          <span>
+            {isMobile
+              ? `Page ${currentPage}`
+              : `Pages ${spreadStart}–${lastVisible}`}
+          </span>
           <input
             aria-label="Jump to page"
             type="number"
             min="1"
             max={pages.length}
             value={currentPage}
-            onChange={(event) => onPageChange(clampPageNumber(event.target.value, pages.length))}
+            onChange={(event) =>
+              onPageChange(clampPageNumber(event.target.value, pages.length))
+            }
           />
         </label>
         <button
           type="button"
           disabled={lastVisible >= pages.length}
-          onClick={() => onPageChange(Math.min(pages.length, spreadStart + step))}
+          onClick={() =>
+            onPageChange(Math.min(pages.length, spreadStart + step))
+          }
         >
           Next <span aria-hidden="true">→</span>
         </button>
@@ -283,7 +319,9 @@ function GuideOverview({ pages, managementMode, onOpenPage }) {
       <header>
         <span>Publication flatplan</span>
         <h1>All {pages.length} pages</h1>
-        <p>Review pacing, section rhythm and commercial distribution at a glance.</p>
+        <p>
+          Review pacing, section rhythm and commercial distribution at a glance.
+        </p>
       </header>
       <div className="pg-thumbnail-grid">
         {pages.map((page) => (
@@ -318,25 +356,50 @@ function CommercialInventory({ pages, metrics, onOpenPage }) {
   return (
     <section className="pg-inventory">
       <header>
-        <div><span>Revenue workspace</span><h1>Commercial inventory</h1></div>
-        <p>{metrics.inventoryCount} positions · {metrics.commercialPageEquivalent.toFixed(2)} full-page equivalents</p>
+        <div>
+          <span>Revenue workspace</span>
+          <h1>Commercial inventory</h1>
+        </div>
+        <p>
+          {metrics.inventoryCount} positions ·{" "}
+          {metrics.commercialPageEquivalent.toFixed(2)} full-page equivalents
+        </p>
       </header>
       <div className="pg-inventory-summary">
         {summary.map(([label, value]) => (
-          <div key={label}><span>{label}</span><strong>{formatCurrency(value)}</strong></div>
+          <div key={label}>
+            <span>{label}</span>
+            <strong>{formatCurrency(value)}</strong>
+          </div>
         ))}
       </div>
       <div className="pg-inventory-table-wrap">
         <table className="pg-inventory-table">
-          <thead><tr><th>Page</th><th>Section</th><th>Position</th><th>Rate</th><th>Status</th><th>Partner</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>Section</th>
+              <th>Position</th>
+              <th>Rate</th>
+              <th>Status</th>
+              <th>Partner</th>
+            </tr>
+          </thead>
           <tbody>
             {inventory.map((position) => (
-              <tr key={position.pageNumber} onClick={() => onOpenPage(position.pageNumber)}>
+              <tr
+                key={position.pageNumber}
+                onClick={() => onOpenPage(position.pageNumber)}
+              >
                 <td>{String(position.pageNumber).padStart(2, "0")}</td>
                 <td>{position.section}</td>
                 <td>{position.position}</td>
                 <td>{formatCurrency(position.rate)}</td>
-                <td><span className={`pg-status is-${position.status}`}>{position.status}</span></td>
+                <td>
+                  <span className={`pg-status is-${position.status}`}>
+                    {position.status}
+                  </span>
+                </td>
                 <td>{position.partner || "—"}</td>
               </tr>
             ))}
@@ -362,28 +425,141 @@ function PageEditor({ page, open, onClose, onChange }) {
     >
       <div className="pg-editor-form">
         <div className="pg-editor-grid">
-          <label><span>Page number</span><InputNumber min={1} max={INITIAL_GUIDE_PAGES.length} value={page.pageNumber} onChange={(value) => update("pageNumber", value)} /></label>
-          <label><span>Section</span><Select value={page.section} options={Object.entries(GUIDE_SECTIONS).map(([value, item]) => ({ value, label: item.label }))} onChange={(value) => update("section", value)} /></label>
+          <label>
+            <span>Page number</span>
+            <InputNumber
+              min={1}
+              max={INITIAL_GUIDE_PAGES.length}
+              value={page.pageNumber}
+              onChange={(value) => update("pageNumber", value)}
+            />
+          </label>
+          <label>
+            <span>Section</span>
+            <Select
+              value={page.section}
+              options={Object.entries(GUIDE_SECTIONS).map(([value, item]) => ({
+                value,
+                label: item.label,
+              }))}
+              onChange={(value) => update("section", value)}
+            />
+          </label>
         </div>
-        <label><span>Page type</span><Input value={page.pageType} onChange={(event) => update("pageType", event.target.value)} /></label>
-        <label><span>Template</span><Select value={page.template} options={TEMPLATE_OPTIONS.map((value) => ({ value, label: value }))} onChange={(value) => update("template", value)} /></label>
+        <label>
+          <span>Page type</span>
+          <Input
+            value={page.pageType}
+            onChange={(event) => update("pageType", event.target.value)}
+          />
+        </label>
+        <label>
+          <span>Template</span>
+          <Select
+            value={page.template}
+            options={TEMPLATE_OPTIONS.map((value) => ({ value, label: value }))}
+            onChange={(value) => update("template", value)}
+          />
+        </label>
         <hr />
-        <label><span>Headline</span><Input value={page.content.headline} onChange={(event) => update("content.headline", event.target.value)} /></label>
-        <label><span>Subheadline</span><Input.TextArea rows={2} value={page.content.subheadline} onChange={(event) => update("content.subheadline", event.target.value)} /></label>
-        <label><span>Body</span><Input.TextArea rows={5} value={page.content.body} onChange={(event) => update("content.body", event.target.value)} /></label>
-        <label><span>Image URL</span><Input value={page.content.image} onChange={(event) => update("content.image", event.target.value)} /></label>
+        <label>
+          <span>Headline</span>
+          <Input
+            value={page.content.headline}
+            onChange={(event) => update("content.headline", event.target.value)}
+          />
+        </label>
+        <label>
+          <span>Subheadline</span>
+          <Input.TextArea
+            rows={2}
+            value={page.content.subheadline}
+            onChange={(event) =>
+              update("content.subheadline", event.target.value)
+            }
+          />
+        </label>
+        <label>
+          <span>Body</span>
+          <Input.TextArea
+            rows={5}
+            value={page.content.body}
+            onChange={(event) => update("content.body", event.target.value)}
+          />
+        </label>
+        <label>
+          <span>Image URL</span>
+          <Input
+            value={page.content.image}
+            onChange={(event) => update("content.image", event.target.value)}
+          />
+        </label>
         <hr />
-        <label className="pg-editor-switch"><span>Commercial enabled</span><Switch checked={page.commercial.enabled} onChange={(value) => update("commercial.enabled", value)} /></label>
-        <label><span>Commercial type</span><Select value={page.commercial.type} options={commercialTypes.map((value) => ({ value, label: COMMERCIAL_LABELS[value] }))} onChange={(value) => {
-          update("commercial.type", value);
-          update("commercial.rate", GUIDE_RATE_CARD[value]);
-        }} /></label>
+        <label className="pg-editor-switch">
+          <span>Commercial enabled</span>
+          <Switch
+            checked={page.commercial.enabled}
+            onChange={(value) => update("commercial.enabled", value)}
+          />
+        </label>
+        <label>
+          <span>Commercial type</span>
+          <Select
+            value={page.commercial.type}
+            options={commercialTypes.map((value) => ({
+              value,
+              label: COMMERCIAL_LABELS[value],
+            }))}
+            onChange={(value) => {
+              update("commercial.type", value);
+              update("commercial.rate", GUIDE_RATE_CARD[value]);
+            }}
+          />
+        </label>
         <div className="pg-editor-grid">
-          <label><span>Rate</span><InputNumber min={0} prefix="$" value={page.commercial.rate} onChange={(value) => update("commercial.rate", value)} /></label>
-          <label><span>Status</span><Select value={page.commercial.status} options={["available", "reserved", "sold", "editorial", "house"].map((value) => ({ value, label: value }))} onChange={(value) => update("commercial.status", value)} /></label>
+          <label>
+            <span>Rate</span>
+            <InputNumber
+              min={0}
+              prefix="$"
+              value={page.commercial.rate}
+              onChange={(value) => update("commercial.rate", value)}
+            />
+          </label>
+          <label>
+            <span>Status</span>
+            <Select
+              value={page.commercial.status}
+              options={[
+                "available",
+                "reserved",
+                "sold",
+                "editorial",
+                "house",
+              ].map((value) => ({ value, label: value }))}
+              onChange={(value) => update("commercial.status", value)}
+            />
+          </label>
         </div>
-        <label><span>Partner</span><Input value={page.commercial.partner || ""} onChange={(event) => update("commercial.partner", event.target.value || null)} /></label>
-        <label><span>Internal notes</span><Input.TextArea rows={3} value={page.commercial.internalNotes} onChange={(event) => update("commercial.internalNotes", event.target.value)} /></label>
+        <label>
+          <span>Partner</span>
+          <Input
+            value={page.commercial.partner || ""}
+            onChange={(event) =>
+              update("commercial.partner", event.target.value || null)
+            }
+          />
+        </label>
+        <label>
+          <span>Internal notes</span>
+          <Input.TextArea
+            rows={3}
+            value={page.commercial.internalNotes}
+            onChange={(event) =>
+              update("commercial.internalNotes", event.target.value)
+            }
+          />
+        </label>
       </div>
     </Drawer>
   );
@@ -400,7 +576,9 @@ export default function PrintGuidePage() {
   const isMobile = useMobilePageView();
   const metrics = useMemo(() => calculateGuideMetrics(pages), [pages]);
   const pageFormat = PAGE_FORMATS[pageFormatKey];
-  const editingPage = pages.find((page) => page.pageNumber === editingPageNumber);
+  const editingPage = pages.find(
+    (page) => page.pageNumber === editingPageNumber,
+  );
 
   const openPage = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -483,10 +661,18 @@ export default function PrintGuidePage() {
         />
       ) : null}
       {view === "overview" ? (
-        <GuideOverview pages={pages} managementMode={managementMode} onOpenPage={openPage} />
+        <GuideOverview
+          pages={pages}
+          managementMode={managementMode}
+          onOpenPage={openPage}
+        />
       ) : null}
       {view === "commercial" ? (
-        <CommercialInventory pages={pages} metrics={metrics} onOpenPage={openPage} />
+        <CommercialInventory
+          pages={pages}
+          metrics={metrics}
+          onOpenPage={openPage}
+        />
       ) : null}
 
       <PageEditor
