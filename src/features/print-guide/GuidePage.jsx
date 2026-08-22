@@ -937,6 +937,198 @@ function InlandFeaturePage({ page }) {
   );
 }
 
+function WellnessOpenerPage({ page }) {
+  return (
+    <div className="pg-template pg-wellness-opener">
+      <img src={page.content.image} alt="Wellness practice in Ahangama" />
+      <div className="pg-wellness-opener-shade" />
+      <div className="pg-wellness-opener-copy">
+        <EditorialLabel page={page} inverse />
+        <span>06</span>
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
+function WellnessVenuesPage({ page }) {
+  const venues = getVenues(page).slice(0, 8);
+  return (
+    <div className="pg-template pg-wellness-venues pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-wellness-venues-grid">
+        {venues.map((venue, index) => (
+          <article key={venue.slug}>
+            <img src={venue.image || page.content.image} alt="" />
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><h2>{venue.name}</h2><p>{(venue.bestFor || venue.tags || ["Wellness", "Ahangama"]).slice(0, 2).join(" · ")}</p><small>{venue.area || "Ahangama"}</small></div>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function WellnessExperiencesPage({ page }) {
+  const modalities = [
+    ["Breathwork", "Guided practice for focus, regulation and a quieter start or finish to the day.", "Arrive rested · Avoid a heavy meal"],
+    ["Sound", "Immersive sessions using bowls, voice and vibration as an invitation to slow down.", "Wear something comfortable"],
+    ["Meditation", "From simple seated practice to longer guided sessions in gardens and studios.", "Beginner-friendly options available"],
+    ["Recovery", "Cold, heat, mobility and hands-on treatment for surf days and travel-tired bodies.", "Hydrate before and after"],
+  ];
+  return (
+    <div className="pg-template pg-wellness-experiences pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-wellness-modalities">
+        {modalities.map(([title, copy, note], index) => (
+          <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div className={`pg-wellness-symbol is-${index + 1}`} aria-hidden="true" /><h2>{title}</h2><p>{copy}</p><small>{note}</small></article>
+        ))}
+      </div>
+      <p className="pg-wellness-note">Tell your facilitator about injuries, pregnancy or health concerns before any session.</p>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function ShopLocalOpenerPage({ page }) {
+  return (
+    <div className="pg-template pg-shop-opener">
+      <img src={page.content.image} alt="Independent shopping in Ahangama" />
+      <div className="pg-shop-opener-shade" />
+      <div className="pg-shop-opener-copy">
+        <EditorialLabel page={page} inverse />
+        <span>07</span>
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
+function ShopRecommendationsPage({ page }) {
+  const venues = getVenues(page);
+  const recommendations = [
+    ...venues.map((venue) => ({ name: venue.name, area: venue.area || "Ahangama", image: venue.image, detail: (venue.bestFor || venue.tags || []).slice(0, 2).join(" · ") })),
+    ...Array.from({ length: Math.max(0, 10 - venues.length) }, (_, index) => ({ name: `Shop recommendation ${String(venues.length + index + 1).padStart(2, "0")}`, area: "Ahangama", image: null, detail: "Name and details to follow" })),
+  ];
+  return (
+    <div className="pg-template pg-shop-recommendations pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-shop-recommendations-grid">
+        {recommendations.map((item, index) => (
+          <article key={item.name}>
+            {item.image ? <img src={item.image} alt="" /> : <div className="pg-shop-placeholder" role="img" aria-label={`Image placeholder for ${item.name}`}>Image to follow</div>}
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><h2>{item.name}</h2><p>{item.detail}</p><small>{item.area}</small></div>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function TakeHomePage({ page }) {
+  const categories = [
+    ["Fashion", "Natural fibres, easy silhouettes and pieces designed for heat."],
+    ["Craft", "Small-batch ceramics, woven work and objects shaped by hand."],
+    ["Food", "Ceylon tea, spice blends, sweets and pantry finds that travel well."],
+    ["Gifts", "Useful, specific keepsakes with a real connection to the south coast."],
+    ["Homeware", "Textiles, tableware and quiet details that earn their luggage space."],
+  ];
+  return (
+    <div className="pg-template pg-take-home pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-take-home-list">
+        {categories.map(([title, copy], index) => (
+          <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div className={`pg-take-home-swatch is-${index + 1}`}><b>{title.charAt(0)}</b></div><div><h2>{title}</h2><p>{copy}</p><small>Buy fewer, better things · Ask who made it</small></div></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function BornAhangamaOpenerPage({ page }) {
+  return (
+    <div className="pg-template pg-born-opener">
+      <img src={page.content.image} alt="Independent creativity in Ahangama" />
+      <div className="pg-born-opener-shade" />
+      <div className="pg-born-opener-copy">
+        <EditorialLabel page={page} inverse />
+        <span>08</span>
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
+function BornCategoryPage({ page }) {
+  const isFashion = page.pageNumber === 58;
+  const categories = isFashion
+    ? ["Clothing", "Resortwear", "Swimwear", "Jewellery", "Bags", "Accessories"]
+    : ["Ceramics", "Art", "Homeware", "Skincare", "Surf goods", "Handmade objects"];
+  const venues = getVenues(page);
+  const venueByCategory = isFashion
+    ? { Clothing: venues[0], Accessories: venues[1] }
+    : { Art: venues[0], "Handmade objects": venues[1] };
+  return (
+    <div className="pg-template pg-born-category pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-born-category-grid">
+        {categories.map((category, index) => {
+          const venue = venueByCategory[category];
+          return (
+            <article key={category}>
+              {venue?.image ? <img src={venue.image} alt="" /> : <div className={`pg-born-placeholder is-${index + 1}`} role="img" aria-label={`Image placeholder for ${category}`}>Image to follow</div>}
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div><h2>{category}</h2><strong>{venue?.name || "Maker to be confirmed"}</strong><p>{venue ? `Find in ${venue.area || "Ahangama"}` : "Brand name · What they make · Where to find them"}</p></div>
+            </article>
+          );
+        })}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function BornBrandsPage({ page }) {
+  const venues = getVenues(page);
+  const brands = [
+    ...venues.map((venue) => ({ name: venue.name, makes: (venue.bestFor || venue.tags || ["Local goods"]).slice(0, 2).join(" · "), where: `${venue.area || "Ahangama"} · Origin to confirm` })),
+    ...Array.from({ length: Math.max(0, 12 - venues.length) }, (_, index) => ({ name: `Brand ${String(venues.length + index + 1).padStart(2, "0")}`, makes: "What they make · To be confirmed", where: "Where to find them · To follow" })),
+  ];
+  return (
+    <div className="pg-template pg-born-brands pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-born-brands-list">
+        {brands.map((brand, index) => (
+          <article key={brand.name}><span>{String(index + 1).padStart(2, "0")}</span><h2>{brand.name}</h2><p>{brand.makes}</p><small>{brand.where}</small></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
 function SectionOpener({ page }) {
   const partner = page.commercial.partner;
   return (
@@ -1224,6 +1416,15 @@ const TEMPLATE_COMPONENTS = {
   WholeDayPage,
   ExperienceYourWayPage,
   InlandFeaturePage,
+  WellnessOpenerPage,
+  WellnessVenuesPage,
+  WellnessExperiencesPage,
+  ShopLocalOpenerPage,
+  ShopRecommendationsPage,
+  TakeHomePage,
+  BornAhangamaOpenerPage,
+  BornCategoryPage,
+  BornBrandsPage,
   IntroductionPage,
   SectionOpener,
   EditorialFeature,

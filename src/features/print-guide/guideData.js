@@ -45,6 +45,7 @@ export const GUIDE_SECTIONS = Object.freeze({
   experiences: { label: "Experiences", color: "#866232" },
   wellness: { label: "Wellness", color: "#687e55" },
   shopping: { label: "Shopping & Local", color: "#a34d54" },
+  born: { label: "Born in Ahangama", color: "#9b5d38" },
   editorial: { label: "Field Notes", color: "#4d5268" },
   essentials: { label: "Essentials", color: "#3e665f" },
   closing: { label: "Closing", color: "#222222" },
@@ -139,18 +140,18 @@ const PAGE_PLAN = [
   ["experiences", "whole-day", "WholeDayPage", "If You Have a Whole Day", "Three routes for seeing more without rushing through it."],
   ["experiences", "your-way", "ExperienceYourWayPage", "Ahangama Your Way", "Couples · Kids · Groups · Solo travellers"],
   ["experiences", "inland-feature", "InlandFeaturePage", "Beyond the Main Road", "An editorial journey into inland Ahangama."],
-  ["wellness", "partial-ad", "HalfPageEditorialAd", "Reset by the sea", "Editorial above, partner space below"],
-  ["shopping", "section-opener", "SectionOpener", "Shopping & Local", "Independent shops and useful things made here"],
-  ["shopping", "venue-grid", "VenueGrid", "The independent edit", "Objects, clothes and provisions"],
-  ["shopping", "venue-feature", "VenueFeature", "Made with intention", "Meet a local creative business"],
-  ["shopping", "venue-list", "VenueList", "Take something home", "A concise local directory"],
-  ["editorial", "editorial-feature", "EditorialFeature", "The new old town", "How Ahangama is changing without losing itself"],
-  ["editorial", "premium-ad", "FullPageAd", "Ahangama, presented by", "A premium full-page position"],
-  ["editorial", "photo-essay", "PhotoEssay", "People of the coast", "Six portraits, six ways of living here"],
-  ["editorial", "editorial-feature", "EditorialFeature", "Twenty-four hours", "A day assembled by locals"],
-  ["essentials", "map", "MapPage", "Central Ahangama", "Food, shops and useful landmarks"],
-  ["essentials", "map", "MapPage", "Kabalana & Kathaluwa", "Beach, lake and the inland road"],
-  ["essentials", "essential-info", "EssentialInfoPage", "Useful numbers", "Health, safety, money and connectivity"],
+  ["wellness", "section-opener", "WellnessOpenerPage", "Wellness", "Movement, treatment and room to reset."],
+  ["wellness", "movement", "WellnessVenuesPage", "Yoga, Pilates & Movement", "Eight studios and spaces for strength, mobility and mindful practice."],
+  ["wellness", "treatments", "WellnessVenuesPage", "Massage, Spa & Ayurveda", "Eight places for treatment, restoration and traditional care."],
+  ["wellness", "wellness-experiences", "WellnessExperiencesPage", "Wellness Experiences", "Breathwork · Sound · Meditation · Recovery"],
+  ["wellness", "full-page-ad", "FullPageAd", "Wellness Partner", "A premium commercial position for a leading wellness partner."],
+  ["shopping", "section-opener", "ShopLocalOpenerPage", "Shop Local", "Independent shops, useful objects and things made with intention."],
+  ["shopping", "shops-edit", "ShopRecommendationsPage", "Independent Shops We Love", "Ten local addresses for thoughtful finds and everyday essentials."],
+  ["shopping", "take-home", "TakeHomePage", "What to Take Home", "Fashion · Craft · Food · Gifts · Homeware"],
+  ["born", "section-opener", "BornAhangamaOpenerPage", "Born in Ahangama", "Local brands, makers and creatives born on the South Coast."],
+  ["born", "fashion-accessories", "BornCategoryPage", "Fashion & Accessories", "Clothing · Resortwear · Swimwear · Jewellery · Bags · Accessories"],
+  ["born", "makers-objects", "BornCategoryPage", "Makers & Objects", "Ceramics · Art · Homeware · Skincare · Surf goods · Handmade objects"],
+  ["born", "brands-edit", "BornBrandsPage", "Brands We Love", "Twelve standout Ahangama-born brand profiles · What they make · Where to find them"],
   ["essentials", "essential-info", "EssentialInfoPage", "Travel better", "Local etiquette and low-impact choices"],
   ["closing", "directory", "DirectoryPage", "Keep exploring", "The complete directory and Ahangama.com"],
   ["closing", "inside-cover", "InsideCoverAd", "Inside Back Cover", "A premium closing position"],
@@ -163,9 +164,7 @@ const COMMERCIAL_BY_PAGE = {
   22: ["fullPage", "available", null],
   34: ["fullPage", "available", null],
   41: ["fullPage", "available", null],
-  49: ["halfPage", "available", null],
-  50: ["sectionSponsor", "available", null],
-  55: ["premiumFullPage", "available", null],
+  53: ["fullPage", "available", null],
   63: ["insideBackCover", "available", null],
   64: ["backCover", "sold", "Gusta"],
 };
@@ -207,13 +206,32 @@ const EXPERIENCE_VENUES_BY_PAGE = {
   48: ["kumbuk-community"],
 };
 
+const WELLNESS_VENUES_BY_PAGE = {
+  49: ["the-nuga-house"],
+  50: ["shramalaya", "senses", "pura", "the-nuga-house", "sellam", "krish-combat-fitness", "sarana-ahangama", "coconut"],
+  51: ["aksaaya-ayurveda-wellness-spa", "sarana-ahangama", "senses", "coconut", "frostys-recovery-centre-hangout", "spa-station-midigama", "banya-steam-house", "salon-change"],
+};
+
+const SHOPPING_VENUES_BY_PAGE = {
+  54: ["daydream"],
+  55: ["daydream", "gusta", "dirty-clothes-midigama", "klean-laundry-ahangama", "mudra-herbal-spicy-tea-shop", "tea-zone-ceylon", "pachcha-sanni"],
+};
+
+const BORN_VENUES_BY_PAGE = {
+  57: ["daydream"],
+  58: ["daydream", "pachcha-sanni"],
+  59: ["palm-and-paint", "kumbuk-community"],
+  60: ["daydream", "pachcha-sanni", "palm-and-paint", "kumbuk-community", "mudra-herbal-spicy-tea-shop", "tea-zone-ceylon", "aggala", "cristina-ailmentart-school"],
+};
+
 const CATEGORY_BY_SECTION = {
   stay: "stays",
   "eat-drink": "eat",
   surf: "surf",
   experiences: "Experiences",
   wellness: "wellness",
-  shopping: "retail",
+  shopping: "shops-essentials",
+  born: "shops-essentials",
 };
 
 const placesBySection = Object.fromEntries(
@@ -227,7 +245,7 @@ const placesBySection = Object.fromEntries(
 );
 
 function getSectionPlaces(section, pageNumber) {
-  const curatedSlugs = STAY_VENUES_BY_PAGE[pageNumber] || EAT_DRINK_VENUES_BY_PAGE[pageNumber] || SURF_VENUES_BY_PAGE[pageNumber] || EXPERIENCE_VENUES_BY_PAGE[pageNumber];
+  const curatedSlugs = STAY_VENUES_BY_PAGE[pageNumber] || EAT_DRINK_VENUES_BY_PAGE[pageNumber] || SURF_VENUES_BY_PAGE[pageNumber] || EXPERIENCE_VENUES_BY_PAGE[pageNumber] || WELLNESS_VENUES_BY_PAGE[pageNumber] || SHOPPING_VENUES_BY_PAGE[pageNumber] || BORN_VENUES_BY_PAGE[pageNumber];
   if (curatedSlugs) {
     return curatedSlugs
       .map((slug) => PLACES.find((place) => place.slug === slug))
