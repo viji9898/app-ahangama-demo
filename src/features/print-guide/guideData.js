@@ -1,7 +1,9 @@
 import { PLACES } from "../../data/places";
 
+export const GUIDE_MINIMUM_COMMERCIAL_RATE = 500;
+
 export const GUIDE_RATE_CARD = Object.freeze({
-  quarterPage: 350,
+  quarterPage: GUIDE_MINIMUM_COMMERCIAL_RATE,
   halfPage: 600,
   fullPage: 1000,
   premiumFullPage: 1250,

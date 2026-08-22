@@ -5,6 +5,8 @@ import { absUrl } from "../app/siteUrl";
 import GuidePage from "../features/print-guide/GuidePage";
 import {
   COMMERCIAL_LABELS,
+  GUIDE_MINIMUM_COMMERCIAL_RATE,
+  GUIDE_PLACES_BY_SLUG,
   GUIDE_RATE_CARD,
   GUIDE_SECTIONS,
   INITIAL_GUIDE_PAGES,
@@ -346,11 +348,61 @@ function GuideOverview({ pages, managementMode, onOpenPage }) {
 
 function CommercialInventory({ pages, metrics, onOpenPage }) {
   const inventory = getCommercialInventory(pages);
+  const salesSections = [
+    ["stay", "Hotels, villas and accommodation partners", 30, "New villas · Inland stays · Long-stay properties"],
+    ["eat-drink", "Restaurants, cafés, bars and food brands", 50, "New openings · Local kitchens · Drinks brands"],
+    ["surf", "Surf schools, coaches, rentals and beach venues", 12, "Surf schools · Board hire · Coaches · Beach clubs · Photographers"],
+    ["experiences", "Tours, workshops and cultural operators", 12, "Boat operators · Cooking hosts · Artists · Wildlife guides · Inland tours"],
+    ["wellness", "Studios, spas, practitioners and recovery spaces", 16, "Independent therapists · Retreats · Recovery · Fitness"],
+    ["shopping", "Independent retail and local essentials", 12, "Concept stores · Grocers · Gifts · Homeware"],
+    ["born", "South Coast brands, makers and creatives", 12, "Fashion · Ceramics · Skincare · Jewellery · Surf goods"],
+  ].map(([section, audience, growthTarget, growthLanes]) => {
+    const sectionPages = pages.filter((page) => page.section === section);
+    const sectionInventory = inventory.filter(
+      (position) => position.section === GUIDE_SECTIONS[section].label,
+    );
+    const venueSlugs = [
+      ...new Set(
+        sectionPages.flatMap((page) => page.content.venueSlugs || []),
+      ),
+    ];
+    const prospects = venueSlugs
+      .map((slug) => GUIDE_PLACES_BY_SLUG.get(slug)?.name)
+      .filter(Boolean);
+    const growthGap = Math.max(0, growthTarget - prospects.length);
+    return {
+      section,
+      label: GUIDE_SECTIONS[section].label,
+      audience,
+      pageStart: sectionPages[0]?.pageNumber,
+      pageEnd: sectionPages.at(-1)?.pageNumber,
+      prospects,
+      growthTarget,
+      growthGap,
+      growthLanes,
+      inventoryCount: sectionInventory.length,
+      inventoryValue: sectionInventory.reduce(
+        (total, position) => total + Number(position.rate || 0),
+        0,
+      ),
+      minimumAddressableValue:
+        prospects.length * GUIDE_MINIMUM_COMMERCIAL_RATE,
+      additionalPotential: growthGap * GUIDE_MINIMUM_COMMERCIAL_RATE,
+    };
+  });
+  const sectionMinimumValue = salesSections.reduce(
+    (total, section) => total + section.minimumAddressableValue,
+    0,
+  );
+  const additionalSectionPotential = salesSections.reduce(
+    (total, section) => total + section.additionalPotential,
+    0,
+  );
   const summary = [
-    ["Total inventory value", metrics.potentialRevenue],
-    ["Sold revenue", metrics.soldRevenue],
-    ["Reserved revenue", metrics.reservedRevenue],
-    ["Available value", metrics.availableRevenue],
+    ["Dedicated inventory", metrics.potentialRevenue],
+    ["Current section floor", sectionMinimumValue],
+    ["Additional section upside", additionalSectionPotential],
+    ["Expanded section potential", sectionMinimumValue + additionalSectionPotential],
   ];
 
   return (
@@ -373,6 +425,42 @@ function CommercialInventory({ pages, metrics, onOpenPage }) {
           </div>
         ))}
       </div>
+      <section className="pg-section-sales" aria-labelledby="section-sales-title">
+        <div className="pg-section-sales-heading">
+          <div>
+            <span>Feasibility by chapter</span>
+            <h2 id="section-sales-title">Section sales plan</h2>
+          </div>
+          <p>Every venue placement starts at {formatCurrency(GUIDE_MINIMUM_COMMERCIAL_RATE)}. Premium inventory retains its rate-card price.</p>
+        </div>
+        <div className="pg-section-sales-grid">
+          {salesSections.map((section) => (
+            <article key={section.section} style={{ "--section-accent": GUIDE_SECTIONS[section.section].color }}>
+              <header>
+                <div><span>Pages {section.pageStart}–{section.pageEnd}</span><h3>{section.label}</h3></div>
+                <strong>{formatCurrency(section.minimumAddressableValue)}</strong>
+              </header>
+              <p>{section.audience}</p>
+              <dl>
+                <div><dt>Current accounts</dt><dd>{section.prospects.length}</dd></div>
+                <div><dt>Growth target</dt><dd>{section.growthTarget}</dd></div>
+                <div><dt>Accounts to add</dt><dd>+{section.growthGap}</dd></div>
+                <div><dt>Additional potential</dt><dd>+{formatCurrency(section.additionalPotential)}</dd></div>
+              </dl>
+              <div className="pg-section-growth">
+                <strong>{section.growthGap ? `${section.growthGap} new accounts to reach target` : "Target coverage reached"}</strong>
+                <span>{section.growthLanes}</span>
+              </div>
+              <div className="pg-section-prospects">
+                <span>Priority outreach</span>
+                <p>{section.prospects.slice(0, 8).join(" · ") || "Prospect list to build"}</p>
+                {section.prospects.length > 8 ? <small>+ {section.prospects.length - 8} more featured accounts</small> : null}
+              </div>
+              {section.inventoryCount ? <small className="pg-section-inventory-note">{section.inventoryCount} dedicated position · {formatCurrency(section.inventoryValue)} rate-card value</small> : <small className="pg-section-inventory-note">No dedicated position currently allocated</small>}
+            </article>
+          ))}
+        </div>
+      </section>
       <div className="pg-inventory-table-wrap">
         <table className="pg-inventory-table">
           <thead>
@@ -520,10 +608,10 @@ function PageEditor({ page, open, onClose, onChange }) {
           <label>
             <span>Rate</span>
             <InputNumber
-              min={0}
+              min={GUIDE_MINIMUM_COMMERCIAL_RATE}
               prefix="$"
               value={page.commercial.rate}
-              onChange={(value) => update("commercial.rate", value)}
+              onChange={(value) => update("commercial.rate", Math.max(GUIDE_MINIMUM_COMMERCIAL_RATE, value || GUIDE_MINIMUM_COMMERCIAL_RATE))}
             />
           </label>
           <label>
