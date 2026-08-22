@@ -785,6 +785,158 @@ function DawnPatrolPage({ page }) {
   );
 }
 
+function ExperienceOpenerPage({ page }) {
+  return (
+    <div className="pg-template pg-experience-opener">
+      <img src={page.content.image} alt="An experience beyond the Ahangama coast road" />
+      <div className="pg-experience-opener-shade" />
+      <div className="pg-experience-opener-copy">
+        <EditorialLabel page={page} inverse />
+        <span>05</span>
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
+function ThingsToDoPage({ page }) {
+  const activities = [
+    ["Take the first swim", "Start early, before the heat and the main road gather pace."],
+    ["Learn the break", "Book a surf lesson and understand the water before paddling out."],
+    ["Cross Koggala Lake", "Move slowly through islands, birdlife and cinnamon country."],
+    ["Eat rice and curry", "Ask what was cooked today and let the table arrive in stages."],
+    ["Ride the coastal train", "Take a window seat for an everyday view of the shoreline."],
+    ["Follow an inland road", "Leave the A2 and watch the landscape change within minutes."],
+    ["Join a workshop", "Make, paint or cook with people who practise their craft here."],
+    ["Walk at sunset", "Choose a long beach and let the last light set the distance."],
+    ["Visit Galle Fort", "Go early or late, when the ramparts are cooler and quieter."],
+    ["Leave time unplanned", "The best invitation may not be the one already in your calendar."],
+  ];
+  return (
+    <div className="pg-template pg-things-to-do pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-things-list">
+        {activities.map(([title, copy], index) => (
+          <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{title}</h2><p>{copy}</p></div></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function BeyondBeachPage({ page }) {
+  const experiences = [
+    ["Nature", "Paddy paths, tropical gardens and the green edge of town."],
+    ["Culture", "Temples, workshops and communities with stories worth hearing."],
+    ["Cooking", "Market ingredients, spice and the generous logic of a shared meal."],
+    ["Lakes", "Koggala's islands, still water and a slower inland perspective."],
+    ["Wildlife", "Birds, monitor lizards and the quieter life beyond the coast road."],
+  ];
+  return (
+    <div className="pg-template pg-beyond-beach pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-beyond-beach-list">
+        {experiences.map(([title, copy], index) => (
+          <article key={title}>
+            <div className={`pg-experience-placeholder is-${index + 1}`} role="img" aria-label={`Image placeholder for ${title}`}><span>Image to follow</span></div>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><h2>{title}</h2><p>{copy}</p></div>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function HalfDayTripsPage({ page }) {
+  const trips = [
+    ["Koggala", "Lake · Cinnamon · Birdlife", "Leave after breakfast", "Boat across the lake, visit an island garden and return before lunch."],
+    ["Galle", "Fort · Design · History", "Go early or after 3pm", "Walk the ramparts, follow the lanes and stop for something cold."],
+    ["Weligama", "Bay · Market · Harbour", "Best before midday", "See the working town, broad bay and the coast from a different angle."],
+    ["Inland", "Paddy · Villages · Workshops", "Allow the road to lead", "Choose one destination and keep enough time for an unexpected stop."],
+  ];
+  return (
+    <div className="pg-template pg-half-day pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-half-day-list">
+        {trips.map(([place, tags, timing, copy], index) => (
+          <article key={place}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{place}</h2><small>{tags}</small><p>{copy}</p></div><strong>{timing}</strong></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function WholeDayPage({ page }) {
+  const itineraries = [
+    ["Lake to Fort", [["07:30", "Breakfast in Ahangama"], ["09:00", "Koggala Lake"], ["13:00", "Lunch towards Galle"], ["15:00", "Galle Fort"], ["18:00", "Rampart sunset"]]],
+    ["Coast in Motion", [["06:30", "Surf or first swim"], ["09:30", "Slow breakfast"], ["12:00", "Weligama and harbour"], ["15:30", "Midigama coast"], ["18:00", "Sunset drinks"]]],
+    ["The Inland Day", [["08:00", "Market provisions"], ["09:30", "Village roads"], ["12:30", "Sri Lankan lunch"], ["14:30", "Creative workshop"], ["17:30", "Return through paddy"]]],
+  ];
+  return (
+    <div className="pg-template pg-whole-day pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-whole-day-grid">
+        {itineraries.map(([title, stops], index) => (
+          <article key={title}><span>Route {String(index + 1).padStart(2, "0")}</span><h2>{title}</h2><ol>{stops.map(([time, stop]) => <li key={time}><b>{time}</b><p>{stop}</p></li>)}</ol></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function ExperienceYourWayPage({ page }) {
+  const groups = [
+    ["Couples", "Lake at first light · Long lunch · Workshop · Sunset walk", "Keep the day spacious and choose one thing to remember together."],
+    ["Kids", "Gentle beach · Train ride · Wildlife · Early dinner", "Short journeys, shade and enough pauses make the coast easier for everyone."],
+    ["Groups", "Surf lesson · Shared villa lunch · Galle · Drinks", "Book the anchors, then leave the middle of the day loose."],
+    ["Solo travellers", "Coffee counter · Class · Coastal train · Community table", "Choose experiences that make conversation happen naturally."],
+  ];
+  return (
+    <div className="pg-template pg-experience-way pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-experience-way-grid">
+        {groups.map(([title, route, copy], index) => (
+          <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h2>{title}</h2><strong>{route}</strong><p>{copy}</p></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function InlandFeaturePage({ page }) {
+  return (
+    <div className="pg-template pg-inland-feature">
+      <div className="pg-inland-feature-image"><img src={page.content.image} alt="Inland Ahangama" /><span>Field notes · Inland</span></div>
+      <div className="pg-inland-feature-copy">
+        <EditorialLabel page={page} />
+        <h1>{page.content.headline}</h1>
+        <p className="pg-standfirst">{page.content.subheadline}</p>
+        <div><p>The coast road tells only the quickest version of Ahangama. Turn inland and traffic gives way to paddy, cinnamon, home gardens and roads that narrow under the trees.</p><p>This is not an escape from the town but another part of it: quieter, older in rhythm and shaped by work that rarely announces itself to visitors.</p></div>
+        <blockquote>Go with time, ask before entering, and let curiosity move at the pace of the road.</blockquote>
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
 function SectionOpener({ page }) {
   const partner = page.commercial.partner;
   return (
@@ -1065,6 +1217,13 @@ const TEMPLATE_COMPONENTS = {
   SurfAhangamaPage,
   SurfServicesPage,
   DawnPatrolPage,
+  ExperienceOpenerPage,
+  ThingsToDoPage,
+  BeyondBeachPage,
+  HalfDayTripsPage,
+  WholeDayPage,
+  ExperienceYourWayPage,
+  InlandFeaturePage,
   IntroductionPage,
   SectionOpener,
   EditorialFeature,

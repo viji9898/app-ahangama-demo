@@ -132,13 +132,13 @@ const PAGE_PLAN = [
   ["surf", "surf-services", "SurfServicesPage", "Surf Schools, Coaches & Board Hire", "Eight useful contacts for learning, improving and finding the right equipment."],
   ["surf", "dawn-patrol", "DawnPatrolPage", "Dawn Patrol", "A photography-led study of the coast before the day begins."],
   ["surf", "full-page-ad", "FullPageAd", "Surf Partner", "A premium commercial position for a leading surf partner."],
-  ["experiences", "editorial-feature", "EditorialFeature", "The art of doing less", "An unhurried Ahangama itinerary"],
-  ["experiences", "venue-grid", "VenueGrid", "After sunset", "Music, gatherings and late tables"],
-  ["wellness", "section-opener", "SectionOpener", "Wellness", "Ancient practice, modern movement and room to reset"],
-  ["wellness", "venue-feature", "VenueFeature", "A slower medicine", "Ayurveda on the south coast"],
-  ["wellness", "venue-grid", "VenueGrid", "Move well", "Yoga, pilates and strength by the sea"],
-  ["wellness", "venue-list", "VenueList", "The treatment list", "Massage, recovery and restorative rituals"],
-  ["wellness", "photo-essay", "PhotoEssay", "Quiet practice", "The rituals that hold a day together"],
+  ["experiences", "section-opener", "ExperienceOpenerPage", "Experience Ahangama", "The best days begin beyond the main road."],
+  ["experiences", "things-to-do", "ThingsToDoPage", "10 Things You Should Do in Ahangama", "A first list for curious days on the south coast."],
+  ["experiences", "beyond-beach", "BeyondBeachPage", "Beyond the Beach", "Nature · Culture · Cooking · Lakes · Wildlife"],
+  ["experiences", "half-day-trips", "HalfDayTripsPage", "Half-Day Trips", "Koggala · Galle · Weligama · Inland"],
+  ["experiences", "whole-day", "WholeDayPage", "If You Have a Whole Day", "Three routes for seeing more without rushing through it."],
+  ["experiences", "your-way", "ExperienceYourWayPage", "Ahangama Your Way", "Couples · Kids · Groups · Solo travellers"],
+  ["experiences", "inland-feature", "InlandFeaturePage", "Beyond the Main Road", "An editorial journey into inland Ahangama."],
   ["wellness", "partial-ad", "HalfPageEditorialAd", "Reset by the sea", "Editorial above, partner space below"],
   ["shopping", "section-opener", "SectionOpener", "Shopping & Local", "Independent shops and useful things made here"],
   ["shopping", "venue-grid", "VenueGrid", "The independent edit", "Objects, clothes and provisions"],
@@ -163,7 +163,6 @@ const COMMERCIAL_BY_PAGE = {
   22: ["fullPage", "available", null],
   34: ["fullPage", "available", null],
   41: ["fullPage", "available", null],
-  44: ["sectionSponsor", "sold", "Kurulu Bay"],
   49: ["halfPage", "available", null],
   50: ["sectionSponsor", "available", null],
   55: ["premiumFullPage", "available", null],
@@ -202,11 +201,17 @@ const SURF_VENUES_BY_PAGE = {
   40: ["the-board-hut"],
 };
 
+const EXPERIENCE_VENUES_BY_PAGE = {
+  42: ["kumbuk-community"],
+  43: ["kumbuk-community", "palm-and-paint", "cristina-ailmentart-school", "aggala", "sarana-ahangama"],
+  48: ["kumbuk-community"],
+};
+
 const CATEGORY_BY_SECTION = {
   stay: "stays",
   "eat-drink": "eat",
   surf: "surf",
-  experiences: "experiences",
+  experiences: "Experiences",
   wellness: "wellness",
   shopping: "retail",
 };
@@ -222,7 +227,7 @@ const placesBySection = Object.fromEntries(
 );
 
 function getSectionPlaces(section, pageNumber) {
-  const curatedSlugs = STAY_VENUES_BY_PAGE[pageNumber] || EAT_DRINK_VENUES_BY_PAGE[pageNumber] || SURF_VENUES_BY_PAGE[pageNumber];
+  const curatedSlugs = STAY_VENUES_BY_PAGE[pageNumber] || EAT_DRINK_VENUES_BY_PAGE[pageNumber] || SURF_VENUES_BY_PAGE[pageNumber] || EXPERIENCE_VENUES_BY_PAGE[pageNumber];
   if (curatedSlugs) {
     return curatedSlugs
       .map((slug) => PLACES.find((place) => place.slug === slug))
