@@ -422,7 +422,7 @@
   display: grid;
   grid-template-columns: 10cqw 1fr;
   align-items: baseline;
-  padding: 3.3cqw 0;
+  padding: 2.6cqw 0;
   border-bottom: 1px solid #b7b5ad;
 }
 
@@ -509,7 +509,7 @@
 
 .pg-editorial-feature > img {
   width: 100%;
-  height: 63cqw;
+  height: 54cqw;
   margin-top: 6cqw;
   object-fit: cover;
 }
@@ -586,7 +586,7 @@
 .pg-venue-grid-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5cqw 4cqw;
+  gap: 2cqw 4cqw;
   margin-top: 6cqw;
 }
 
@@ -596,7 +596,7 @@
 
 .pg-venue-grid-items img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   display: block;
   object-fit: cover;
 }
@@ -630,7 +630,7 @@
   display: grid;
   grid-template-columns: 7cqw 1fr 18cqw;
   gap: 3cqw;
-  padding: 3.5cqw 0;
+  padding: 1.5cqw 0;
   border-bottom: 1px solid #c5c3ba;
 }
 
@@ -642,15 +642,19 @@
 }
 
 .pg-address-list h2 {
-  font: 400 4.2cqw/1 "Iowan Old Style", Georgia, serif;
+  font: 400 3.7cqw/1 "Iowan Old Style", Georgia, serif;
 }
 
 .pg-address-list p {
   max-width: 46cqw;
-  margin-top: 1.2cqw;
+  display: -webkit-box;
+  margin-top: 0.8cqw;
+  overflow: hidden;
   color: #55564f;
-  font-size: 2.15cqw;
-  line-height: 1.35;
+  font-size: 1.9cqw;
+  line-height: 1.25;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /* Photo essay */
@@ -700,7 +704,7 @@
 
 .pg-map-art {
   position: relative;
-  height: 105cqw;
+  height: 72cqw;
   margin-top: 7cqw;
   overflow: hidden;
   background: #d8e2d6;
@@ -756,12 +760,12 @@
 .pg-essential-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5cqw;
+  gap: 3cqw 5cqw;
   margin-top: 7cqw;
 }
 
 .pg-essential-list article {
-  min-height: 28cqw;
+  min-height: 20cqw;
   padding-top: 3cqw;
   border-top: 1px solid #777970;
 }
@@ -800,7 +804,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.7cqw;
-  padding: 2.3cqw 0;
+  padding: 1.1cqw 0;
   border-bottom: 1px solid #c4c2b8;
 }
 
@@ -818,7 +822,7 @@
   display: flex;
   align-items: center;
   gap: 3cqw;
-  margin-top: 5cqw;
+  margin-top: 2cqw;
 }
 
 .pg-directory-qr > div:last-child {
@@ -829,11 +833,11 @@
 }
 
 .pg-faux-qr {
-  width: 14cqw;
+  width: 9cqw;
   aspect-ratio: 1;
-  border: 3cqw dotted #171714;
+  border: 2cqw dotted #171714;
   outline: 1px solid #171714;
-  outline-offset: -2cqw;
+  outline-offset: -1.5cqw;
 }
 
 /* Commercial print treatments */
@@ -914,7 +918,7 @@
 .pg-partial-ad-print div {
   position: absolute;
   right: 7cqw;
-  bottom: 7cqw;
+  bottom: 11cqw;
   left: 7cqw;
   display: flex;
   flex-direction: column;
