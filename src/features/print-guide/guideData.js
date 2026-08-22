@@ -105,14 +105,14 @@ const PAGE_PLAN = [
   ["opening", "people-left", "PeopleSpreadPage", "People of Ahangama", "Four people helping shape this corner of the south coast."],
   ["opening", "people-right", "PeopleSpreadPage", "People of Ahangama", "The Local · The Maker · The Waterman · The New Generation"],
   ["opening", "opening-partner", "OpeningPartnerPage", "Ahangama Guide — Opening Partner", "A premium commercial space for our lead partner."],
-  ["stay", "photo-essay", "PhotoEssay", "Morning at the villa", "Light, linen and the first swim"],
-  ["stay", "venue-grid", "VenueGrid", "For a longer stay", "Space to unpack and settle in"],
-  ["stay", "editorial-feature", "EditorialFeature", "How to choose your coast", "A practical guide to each pocket of town"],
-  ["eat-drink", "section-opener", "SectionOpener", "Eat & Drink", "Where to eat, drink and spend a long afternoon"],
-  ["eat-drink", "venue-grid", "VenueGrid", "First coffee", "The town's early risers"],
-  ["eat-drink", "venue-feature", "VenueFeature", "At the counter", "A kitchen shaped by the island"],
-  ["eat-drink", "venue-list", "VenueList", "Breakfast, considered", "Ten starts to the day"],
-  ["eat-drink", "photo-essay", "PhotoEssay", "Market morning", "Colour, conversation and what is in season"],
+  ["stay", "section-opener", "StayOpenerPage", "Stay", "Small hotels, private villas and rooms with a sense of place."],
+  ["stay", "hotels-edit", "StayCollectionPage", "Hotels We Love", "Eight dependable addresses, from coast road classics to inland retreats."],
+  ["stay", "boutique-hotels", "StayCollectionPage", "Boutique Hotels", "Eight smaller stays with a clear point of view."],
+  ["stay", "villas-edit", "StayCollectionPage", "Villas We Love", "Eight private places for space, quiet and longer tables."],
+  ["stay", "stay-finder", "StayFinderPage", "Find Your Stay", "Start with the kind of trip you want to have."],
+  ["stay", "stay-neighbourhoods", "StayNeighbourhoodPage", "Where Should You Stay?", "Five neighbourhoods, five different ways to experience Ahangama."],
+  ["stay", "stay-story", "StayStoryPage", "A Room With Rhythm", "Inside one particularly interesting stay."],
+  ["stay", "full-page-ad", "FullPageAd", "Stay Partner", "A premium commercial position for a leading stay partner."],
   ["eat-drink", "partial-ad", "HalfPageEditorialAd", "Dinner after dark", "Five tables and one half-page partner position"],
   ["eat-drink", "venue-grid", "VenueGrid", "Lunch, slowly", "Places that reward an open afternoon"],
   ["eat-drink", "venue-feature", "VenueFeature", "The new Sri Lankan table", "Tradition without nostalgia"],
@@ -160,7 +160,7 @@ const PAGE_PLAN = [
 const COMMERCIAL_BY_PAGE = {
   2: ["insideFrontCover", "available", null],
   14: ["fullPage", "sold", "Trebartha East"],
-  18: ["sectionSponsor", "available", null],
+  22: ["fullPage", "available", null],
   23: ["halfPage", "sold", "Petals"],
   30: ["sectionSponsor", "available", null],
   33: ["quarterPage", "available", null],
@@ -176,6 +176,14 @@ const COMMERCIAL_BY_PAGE = {
 
 const OPENING_PARTNER_ARTWORK =
   "https://images.suitcasemag.com/wp-content/uploads/2025/03/18160116/Trebartha-Daisy-Wingate-Saul-9234-copy.jpeg";
+
+const STAY_VENUES_BY_PAGE = {
+  15: ["palm-hotel"],
+  16: ["lighthouse", "palm-hotel", "the-hotel", "sama", "kurulu-bay", "mosvold-villa", "ayurveda-palm-garden-resort", "samba-stay-ahangama"],
+  17: ["harding-boutique", "unu-boutique-hotel", "teal-ahangama", "merchant", "the-find", "pebble-alma", "mana", "the-benison-ahangama"],
+  18: ["villa-mugatiya", "tea-tree-villa", "southpoint-villa", "villa-queen-fort", "younger-villas-resorts", "surf-villa", "kabalana-house-by-ceilao-villas", "ekuku-lake-house"],
+  21: ["trebartha-east-the-roundhouse"],
+};
 
 const CATEGORY_BY_SECTION = {
   stay: "stays",
@@ -197,6 +205,11 @@ const placesBySection = Object.fromEntries(
 );
 
 function getSectionPlaces(section, pageNumber) {
+  if (STAY_VENUES_BY_PAGE[pageNumber]) {
+    return STAY_VENUES_BY_PAGE[pageNumber]
+      .map((slug) => PLACES.find((place) => place.slug === slug))
+      .filter(Boolean);
+  }
   const places = placesBySection[section] || [];
   if (!places.length) return [];
   const offset = pageNumber % places.length;

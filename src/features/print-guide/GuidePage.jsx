@@ -449,6 +449,128 @@ function PeopleSpreadPage({ page }) {
   );
 }
 
+function StayOpenerPage({ page }) {
+  return (
+    <div className="pg-template pg-stay-opener">
+      <img src={page.content.image} alt="A considered stay in Ahangama" />
+      <div className="pg-stay-opener-shade" />
+      <div className="pg-stay-opener-copy">
+        <EditorialLabel page={page} inverse />
+        <span>02</span>
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
+function StayCollectionPage({ page }) {
+  const venues = getVenues(page).slice(0, 8);
+  return (
+    <div className="pg-template pg-stay-collection pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-stay-collection-grid">
+        {venues.map((venue, index) => (
+          <article key={venue.slug}>
+            <div>
+              <img src={venue.image || page.content.image} alt="" />
+              <span>{String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <h2>{venue.name}</h2>
+            <p>{venue.area || "Ahangama"} · {venue.price || "Stay"}</p>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function StayFinderPage({ page }) {
+  const groups = [
+    ["Beachfront", "Abode by the Beach · Lighthouse", "Wake to the ocean and walk straight into the day."],
+    ["Under $100", "Mellow Hostel · King Lush Green View", "Simple, friendly bases that leave more room in the budget."],
+    ["Couples", "Merchant · The Find", "Intimate rooms, considered details and an unhurried atmosphere."],
+    ["Groups", "Southpoint Villa · Villa Mugatiya", "Private space, shared tables and enough room to settle in."],
+    ["Long stays", "Tea Tree Villa · Ekuku Lake House", "Kitchen access, calm surroundings and space to unpack."],
+  ];
+  return (
+    <div className="pg-template pg-stay-finder pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-stay-finder-list">
+        {groups.map(([title, recommendations, copy], index) => (
+          <article key={title}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><h2>{title}</h2><p>{copy}</p></div>
+            <strong>{recommendations}</strong>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function StayNeighbourhoodPage({ page }) {
+  const areas = [
+    ["Ahangama Central", "Connected", "Cafés, shops and the station close at hand."],
+    ["Ahangama Coast", "Oceanfront", "Sunset, swimming and the main coastal rhythm."],
+    ["Kabalana", "Surf-led", "A broad beach with breaks for different abilities."],
+    ["Midigama", "Low-key", "A smaller surf pocket with an easy village feel."],
+    ["Inland", "Quiet", "Gardens, paddy views and more room away from the road."],
+  ];
+  return (
+    <div className="pg-template pg-stay-neighbourhood pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-stay-neighbourhood-map" aria-label="Stylised map of Ahangama stay areas">
+        <div className="pg-stay-map-sea">Indian Ocean</div>
+        <div className="pg-stay-map-road" />
+        {areas.map(([name], index) => (
+          <span key={name} style={{ left: `${9 + index * 18}%`, top: `${29 + (index % 2) * 22}%` }}>
+            <i />{name.replace("Ahangama ", "")}
+          </span>
+        ))}
+      </div>
+      <div className="pg-stay-neighbourhood-list">
+        {areas.map(([name, mood, description]) => (
+          <article key={name}><h2>{name}</h2><strong>{mood}</strong><p>{description}</p></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function StayStoryPage({ page }) {
+  const [venue] = getVenues(page);
+  return (
+    <div className="pg-template pg-stay-story">
+      <div className="pg-stay-story-image">
+        <img src={venue?.image || page.content.image} alt={venue?.name || "Featured Ahangama stay"} />
+        <span>Stay story · 01</span>
+      </div>
+      <div className="pg-stay-story-copy">
+        <EditorialLabel page={page} />
+        <h1>{page.content.headline}</h1>
+        <p className="pg-standfirst">{page.content.subheadline}</p>
+        <div>
+          <p>{venue?.description || page.content.body}</p>
+          <p>Architecture sets the tempo, but the lasting impression is quieter: early light, an open door and a room that changes pace with the day.</p>
+        </div>
+        <strong>{venue?.name || "Featured stay"} · {venue?.area || "Ahangama"}</strong>
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
 function SectionOpener({ page }) {
   const partner = page.commercial.partner;
   return (
@@ -715,6 +837,11 @@ const TEMPLATE_COMPONENTS = {
   TownStoryPage,
   AhangamaEditPage,
   PeopleSpreadPage,
+  StayOpenerPage,
+  StayCollectionPage,
+  StayFinderPage,
+  StayNeighbourhoodPage,
+  StayStoryPage,
   IntroductionPage,
   SectionOpener,
   EditorialFeature,
