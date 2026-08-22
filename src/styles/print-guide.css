@@ -4231,6 +4231,91 @@
   text-transform: uppercase;
 }
 
+/* Distribution workspace */
+.pg-distribution {
+  min-height: calc(100vh - 230px);
+  padding: 56px clamp(24px, 5vw, 76px) 90px;
+  background: #eeede7;
+}
+
+.pg-distribution > header,
+.pg-distribution-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.pg-distribution > header span,
+.pg-distribution-heading span {
+  color: #6a6b65;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pg-distribution > header h1 {
+  margin: 7px 0 0;
+  font: 400 48px/1 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-distribution > header > p,
+.pg-distribution-heading > p {
+  max-width: 480px;
+  margin: 0 0 5px;
+  color: #686963;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.pg-distribution-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 34px;
+  border: 1px solid #a6a6a0;
+}
+
+.pg-distribution-kpis article {
+  min-height: 104px;
+  padding: 19px;
+  border-right: 1px solid #a6a6a0;
+  border-bottom: 1px solid #a6a6a0;
+  background: rgba(248, 247, 241, 0.72);
+}
+
+.pg-distribution-kpis article:nth-child(4n) { border-right: 0; }
+.pg-distribution-kpis article:nth-last-child(-n + 4) { border-bottom: 0; }
+.pg-distribution-kpis span { display: block; min-height: 26px; color: #6a6b65; font-size: 10px; line-height: 1.3; text-transform: uppercase; }
+.pg-distribution-kpis strong { display: block; margin-top: 10px; font: 400 25px/1 "Iowan Old Style", Georgia, serif; }
+
+.pg-distribution-block { margin-top: 46px; }
+.pg-distribution-heading h2 { margin: 7px 0 0; font: 400 36px/1 "Iowan Old Style", Georgia, serif; }
+.pg-distribution-table-wrap { margin-top: 20px; overflow-x: auto; border: 1px solid #a6a6a0; }
+.pg-distribution-table { width: 100%; min-width: 720px; border-collapse: collapse; background: rgba(248, 247, 241, 0.78); font-size: 13px; }
+.pg-distribution-table th,
+.pg-distribution-table td { padding: 14px 18px; border-bottom: 1px solid #c0c0ba; text-align: left; }
+.pg-distribution-table th { color: #676861; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; }
+.pg-distribution-table td:not(:first-child) { font-variant-numeric: tabular-nums; }
+.pg-distribution-table .is-total { background: #203f38; color: #fff; font-weight: 700; text-transform: uppercase; }
+.pg-distribution-table .is-total td { border-bottom: 0; }
+
+.pg-distribution-reserve {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 14px;
+  padding: 17px 20px;
+  border-left: 5px solid #b45537;
+  background: #f8f7f1;
+}
+
+.pg-distribution-reserve strong { font: 400 20px/1 Georgia, serif; }
+.pg-distribution-reserve span { color: #696a64; font-size: 12px; }
+.pg-distribution-formula { margin-top: 19px; padding: 14px 18px; background: #d9ddd7; color: #304b44; font-size: 12px; font-weight: 700; }
+.pg-property-distribution-table td:first-child { min-width: 190px; font-weight: 700; }
+
 .pg-inventory-table-wrap {
   margin-top: 24px;
   overflow-x: auto;
@@ -4442,11 +4527,13 @@
   }
 
   .pg-overview,
-  .pg-inventory {
+  .pg-inventory,
+  .pg-distribution {
     padding: 34px 16px 60px;
   }
   .pg-overview > header h1,
-  .pg-inventory header h1 {
+  .pg-inventory header h1,
+  .pg-distribution > header h1 {
     font-size: 38px;
   }
   .pg-thumbnail-grid {
@@ -4483,6 +4570,23 @@
   .pg-section-sales-grid {
     grid-template-columns: 1fr;
   }
+  .pg-distribution > header,
+  .pg-distribution-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .pg-distribution > header > p,
+  .pg-distribution-heading > p {
+    text-align: left;
+  }
+  .pg-distribution-kpis {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pg-distribution-kpis article:nth-child(odd) { border-right: 1px solid #a6a6a0; }
+  .pg-distribution-kpis article:nth-child(even) { border-right: 0; }
+  .pg-distribution-kpis article:nth-last-child(-n + 4) { border-bottom: 1px solid #a6a6a0; }
+  .pg-distribution-kpis article:nth-last-child(-n + 2) { border-bottom: 0; }
+  .pg-distribution-reserve { align-items: flex-start; flex-direction: column; }
 }
 
 @media print {

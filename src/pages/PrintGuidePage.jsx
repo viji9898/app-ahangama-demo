@@ -34,6 +34,7 @@ const VIEW_OPTIONS = [
   ["spread", "Spread"],
   ["overview", "All pages"],
   ["commercial", "Commercial"],
+  ["distribution", "Distribution"],
 ];
 
 const PAGE_FORMATS = Object.freeze({
@@ -498,6 +499,110 @@ function CommercialInventory({ pages, metrics, onOpenPage }) {
   );
 }
 
+const DISTRIBUTION_KPIS = [
+  ["Annual circulation", "20,000 copies"],
+  ["Distribution points", "200+"],
+  ["Accommodation rooms reached", "1,500+"],
+  ["Restaurants / cafés", "75+"],
+  ["Retail / wellness / surf", "50+"],
+  ["Estimated annual guests reached", "100,000+"],
+  ["Digital guide readers", "50,000+"],
+  ["Total estimated audience", "150,000+"],
+];
+
+const DISTRIBUTION_CHANNELS = [
+  ["Hotels", "25", "750 rooms", "5,000", "35,000"],
+  ["Boutique hotels", "30", "300 rooms", "3,000", "15,000"],
+  ["Villas / Airbnbs", "50", "150 rooms", "2,500", "10,000"],
+  ["Restaurants & cafés", "60", "—", "4,000", "20,000"],
+  ["Surf schools / beach clubs", "15", "—", "1,000", "5,000"],
+  ["Wellness / gyms / spas", "15", "—", "1,000", "5,000"],
+  ["Shops", "20", "—", "750", "3,000"],
+  ["Coworking", "5", "—", "500", "3,000"],
+  ["Drivers / transfers", "20", "—", "750", "4,000"],
+];
+
+const ACCOMMODATION_DISTRIBUTION = [
+  ["Palm Hotel", 12, 70, 3, 350],
+  ["Radisson Collection Resort & Spa, Galle", 106, 65, 3, 1000],
+  ["Lighthouse", 10, 72, 3, 300],
+  ["Mosvold Villa", 17, 68, 3.2, 400],
+  ["Kurulu Bay", 14, 65, 3.5, 325],
+  ["SĀMA", 8, 72, 3, 250],
+  ["Harding Boutique Hotel", 6, 75, 3, 225],
+  ["The Nuga House", 8, 70, 3.5, 225],
+  ["Merchant House", 14, 68, 3, 350],
+  ["Trebartha East", 4, 65, 4, 150],
+  ["The Find", 6, 70, 3.5, 175],
+];
+
+function calculateAnnualGuests(rooms, occupancy, averageStay) {
+  return Math.round((rooms * (occupancy / 100) * 365 * 2) / averageStay);
+}
+
+function DistributionWorkspace() {
+  const number = new Intl.NumberFormat("en-US");
+  const records = ACCOMMODATION_DISTRIBUTION.map(
+    ([property, rooms, occupancy, averageStay, copies]) => ({
+      property,
+      rooms,
+      occupancy,
+      averageStay,
+      copies,
+      annualGuests: calculateAnnualGuests(rooms, occupancy, averageStay),
+    }),
+  );
+  const recordTotals = records.reduce(
+    (totals, record) => ({
+      rooms: totals.rooms + record.rooms,
+      annualGuests: totals.annualGuests + record.annualGuests,
+      copies: totals.copies + record.copies,
+    }),
+    { rooms: 0, annualGuests: 0, copies: 0 },
+  );
+
+  return (
+    <section className="pg-distribution">
+      <header>
+        <div><span>Circulation workspace</span><h1>Distribution</h1></div>
+        <p>20,000 annual copies · 18,500 planned network allocation · 1,500 reserve</p>
+      </header>
+
+      <div className="pg-distribution-kpis">
+        {DISTRIBUTION_KPIS.map(([label, value]) => <article key={label}><span>{label}</span><strong>{value}</strong></article>)}
+      </div>
+
+      <section className="pg-distribution-block">
+        <div className="pg-distribution-heading"><div><span>Core plan</span><h2>Distribution network</h2></div><p>Physical circulation is weighted toward places with repeat guest turnover and useful dwell time.</p></div>
+        <div className="pg-distribution-table-wrap">
+          <table className="pg-distribution-table">
+            <thead><tr><th>Channel</th><th>Partners</th><th>Units / rooms</th><th>Copies / year</th><th>Est. audience</th></tr></thead>
+            <tbody>
+              {DISTRIBUTION_CHANNELS.map(([channel, partners, units, copies, audience]) => <tr key={channel}><td>{channel}</td><td>{partners}</td><td>{units}</td><td>{copies}</td><td>{audience}</td></tr>)}
+              <tr className="is-total"><td>Total</td><td>240</td><td>1,200+</td><td>18,500</td><td>100,000+</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <aside className="pg-distribution-reserve"><strong>1,500 copies held in reserve</strong><span>Events · Launches · Replacement stock · Direct distribution</span></aside>
+      </section>
+
+      <section className="pg-distribution-block">
+        <div className="pg-distribution-heading"><div><span>Individual distribution records</span><h2>Accommodation reach</h2></div><p>Planning assumptions until each property confirms room inventory, occupancy, stay length and allocation.</p></div>
+        <div className="pg-distribution-formula">Annual guests = rooms × occupancy × 365 ÷ average stay × 2 guests per occupied room</div>
+        <div className="pg-distribution-table-wrap">
+          <table className="pg-distribution-table pg-property-distribution-table">
+            <thead><tr><th>Property</th><th>Rooms</th><th>Occupancy</th><th>Avg. stay</th><th>Est. annual guests</th><th>Copies allocated</th></tr></thead>
+            <tbody>
+              {records.map((record) => <tr key={record.property}><td>{record.property}</td><td>{record.rooms}</td><td>{record.occupancy}%</td><td>{record.averageStay} nights</td><td>~{number.format(record.annualGuests)}</td><td>{number.format(record.copies)}</td></tr>)}
+              <tr className="is-total"><td>Initial tracked properties</td><td>{recordTotals.rooms}</td><td>—</td><td>—</td><td>~{number.format(recordTotals.annualGuests)}</td><td>{number.format(recordTotals.copies)}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  );
+}
+
 function PageEditor({ page, open, onClose, onChange }) {
   if (!page) return null;
   const update = (path, value) => onChange(page.pageNumber, path, value);
@@ -762,6 +867,7 @@ export default function PrintGuidePage() {
           onOpenPage={openPage}
         />
       ) : null}
+      {view === "distribution" ? <DistributionWorkspace /> : null}
 
       <PageEditor
         page={editingPage}
