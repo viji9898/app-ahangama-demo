@@ -1540,6 +1540,255 @@
   font: italic 2.7cqw/1.25 "Iowan Old Style", Georgia, serif;
 }
 
+/* Beach and surf section */
+.pg-surf-opener > img,
+.pg-dawn-patrol > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pg-surf-opener-shade,
+.pg-dawn-patrol-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 12, 16, 0.06) 20%, rgba(4, 12, 16, 0.8) 100%);
+}
+
+.pg-surf-opener-copy,
+.pg-dawn-patrol-copy {
+  position: absolute;
+  z-index: 1;
+  right: 8cqw;
+  bottom: 17cqw;
+  left: 8cqw;
+  color: #fff;
+}
+
+.pg-surf-opener-copy > span:not(.pg-editorial-label) {
+  display: block;
+  margin-top: 4cqw;
+  font-size: 2cqw;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.pg-surf-opener-copy h1,
+.pg-dawn-patrol-copy h1 {
+  max-width: 82cqw;
+  margin-top: 2cqw;
+  color: #fff !important;
+  font: 400 14cqw/0.86 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-surf-opener-copy p,
+.pg-dawn-patrol-copy p {
+  max-width: 68cqw;
+  margin-top: 4cqw;
+  font: italic 4cqw/1.22 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-surf-opener .pg-page-furniture,
+.pg-dawn-patrol .pg-page-furniture { z-index: 2; }
+
+.pg-beach-comparison > h1,
+.pg-beaches-love > h1,
+.pg-surf-ahangama > h1,
+.pg-surf-services > h1 {
+  margin-top: 3cqw;
+  font: 400 8cqw/0.94 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-beach-comparison > .pg-standfirst,
+.pg-beaches-love > .pg-standfirst,
+.pg-surf-ahangama > .pg-standfirst,
+.pg-surf-services > .pg-standfirst {
+  max-width: 80cqw;
+  margin-top: 2cqw;
+  font-size: 2.6cqw;
+}
+
+.pg-beach-table {
+  margin-top: 5cqw;
+  border-top: 1px solid #8e999a;
+}
+
+.pg-beach-table-head,
+.pg-beach-table-row {
+  display: grid;
+  grid-template-columns: 18cqw repeat(7, 1fr);
+  align-items: center;
+  border-bottom: 1px solid #bdc3c1;
+}
+
+.pg-beach-table-head { min-height: 9cqw; }
+.pg-beach-table-row { min-height: 14cqw; }
+
+.pg-beach-table-head span,
+.pg-beach-table-head b {
+  font-size: 1.3cqw;
+  text-transform: uppercase;
+}
+
+.pg-beach-table-head b { text-align: center; }
+
+.pg-beach-table-row > span {
+  display: flex;
+  flex-direction: column;
+  gap: 1cqw;
+  font: 400 2.6cqw/1 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-beach-table-row small {
+  color: var(--page-section-color);
+  font: 700 1.2cqw/1 "Avenir Next", sans-serif;
+}
+
+.pg-beach-table-row em {
+  font-size: 1.2cqw;
+  font-style: normal;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.pg-beach-note {
+  margin-top: 4cqw;
+  padding-left: 3cqw;
+  border-left: 1cqw solid var(--page-section-color);
+  color: #555c5c;
+  font-size: 1.8cqw;
+  line-height: 1.35;
+}
+
+.pg-beaches-love-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3cqw 4cqw;
+  margin-top: 4cqw;
+}
+
+.pg-beach-image-placeholder {
+  position: relative;
+  height: 20cqw;
+  overflow: hidden;
+  color: #eaf0ef;
+  background: linear-gradient(165deg, #91b2b6 0 52%, #d9c6a3 52% 68%, #668c85 68%);
+}
+
+.pg-beach-image-placeholder span,
+.pg-beach-image-placeholder b {
+  position: absolute;
+  bottom: 1.5cqw;
+  font-size: 1.2cqw;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pg-beach-image-placeholder span { left: 1.5cqw; }
+.pg-beach-image-placeholder b { right: 1.5cqw; }
+
+.pg-beaches-love-grid h2 {
+  margin-top: 1.3cqw;
+  font: 400 3.3cqw/1 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-beaches-love-grid p {
+  margin-top: 0.8cqw;
+  color: #585e5d;
+  font-size: 1.45cqw;
+  line-height: 1.25;
+}
+
+.pg-surf-conditions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 4cqw;
+  border-block: 1px solid #9fa8a7;
+}
+
+.pg-surf-conditions > div {
+  padding: 3cqw;
+  border-right: 1px solid #c5cac8;
+}
+
+.pg-surf-conditions > div:last-child { border-right: 0; }
+.pg-surf-conditions span { display: block; color: #666d6c; font-size: 1.3cqw; text-transform: uppercase; }
+.pg-surf-conditions strong { display: block; margin-top: 1cqw; font: 400 2.8cqw/1 "Iowan Old Style", Georgia, serif; }
+
+.pg-surf-essentials { margin-top: 3cqw; }
+
+.pg-surf-essentials article {
+  display: grid;
+  grid-template-columns: 6cqw 20cqw 1fr;
+  gap: 2cqw;
+  align-items: start;
+  padding: 3cqw 0;
+  border-bottom: 1px solid #c3c7c4;
+}
+
+.pg-surf-essentials article > span { color: var(--page-section-color); font-size: 1.4cqw; font-weight: 700; }
+.pg-surf-essentials h2 { font: 400 3.2cqw/1 "Iowan Old Style", Georgia, serif; }
+.pg-surf-essentials p { color: #555c5a; font-size: 1.6cqw; line-height: 1.3; }
+
+.pg-surf-services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5cqw 4cqw;
+  margin-top: 4cqw;
+}
+
+.pg-surf-services-grid article {
+  position: relative;
+  display: grid;
+  grid-template-columns: 13cqw 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0.5cqw 2cqw;
+  min-height: 16cqw;
+  padding-bottom: 2cqw;
+  border-bottom: 1px solid #c3c7c4;
+}
+
+.pg-surf-services-grid img,
+.pg-surf-service-placeholder {
+  grid-row: 1 / -1;
+  width: 13cqw;
+  height: 13cqw;
+  object-fit: cover;
+}
+
+.pg-surf-service-placeholder {
+  display: grid;
+  place-items: center;
+  padding: 1cqw;
+  color: #657170;
+  background: #d3ddda;
+  font-size: 1.1cqw;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pg-surf-services-grid article > span { position: absolute; top: 0.7cqw; left: 0.7cqw; padding: 0.3cqw 0.5cqw; color: #fff; background: #244e58; font-size: 1cqw; }
+.pg-surf-services-grid h2 { font: 400 2.7cqw/1 "Iowan Old Style", Georgia, serif; }
+.pg-surf-services-grid p { color: #555c5a; font-size: 1.3cqw; line-height: 1.25; }
+.pg-surf-services-grid small { color: #28758a; font-size: 1.2cqw; text-transform: uppercase; }
+
+.pg-dawn-patrol-index {
+  position: absolute;
+  z-index: 1;
+  top: 8cqw;
+  right: 8cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #fff;
+}
+
+.pg-dawn-patrol-index span { font: 400 7cqw/1 "Iowan Old Style", Georgia, serif; }
+.pg-dawn-patrol-index b { margin-top: 1cqw; font-size: 1.4cqw; letter-spacing: 0.08em; text-transform: uppercase; }
+.pg-dawn-patrol-copy small { display: block; max-width: 70cqw; margin-top: 3cqw; font-size: 1.7cqw; line-height: 1.35; }
+
 /* Section opener */
 .pg-section-opener::after {
   content: "";

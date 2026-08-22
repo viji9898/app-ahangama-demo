@@ -637,6 +637,154 @@ function FoodCulturePage({ page }) {
   );
 }
 
+function SurfOpenerPage({ page }) {
+  return (
+    <div className="pg-template pg-surf-opener">
+      <img src={page.content.image} alt="Surf on the Ahangama coast" />
+      <div className="pg-surf-opener-shade" />
+      <div className="pg-surf-opener-copy">
+        <EditorialLabel page={page} inverse />
+        <span>04</span>
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
+function BeachComparisonPage({ page }) {
+  const beaches = [
+    ["Kabalana", "Strong", "Excellent", "Good", "Good", "Plenty", "Open", "Lively"],
+    ["Ahangama Beach", "Good", "Variable", "Fair", "Good", "Plenty", "Good", "Social"],
+    ["Marshmellow", "Fair", "Good", "Good", "Fair", "Nearby", "Good", "Easy"],
+    ["Midigama", "Limited", "Excellent", "Mixed", "Limited", "Local", "Excellent", "Surf-led"],
+    ["Koggala", "Excellent", "Limited", "Fair", "Excellent", "Limited", "Open", "Quiet"],
+  ];
+  const criteria = ["Swim", "Surf", "Beginner", "Family", "Food", "Sunset", "Mood"];
+  return (
+    <div className="pg-template pg-beach-comparison pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-beach-table">
+        <div className="pg-beach-table-head"><span>Beach</span>{criteria.map((item) => <b key={item}>{item}</b>)}</div>
+        {beaches.map(([name, ...values], index) => (
+          <div className="pg-beach-table-row" key={name}>
+            <span><small>{String(index + 1).padStart(2, "0")}</small>{name}</span>
+            {values.map((value, valueIndex) => <em key={criteria[valueIndex]}>{value}</em>)}
+          </div>
+        ))}
+      </div>
+      <p className="pg-beach-note">Conditions change daily. Ask locally, read the flags and never assume yesterday's water is today's.</p>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function BeachesWeLovePage({ page }) {
+  const beaches = [
+    ["Kabalana", "A broad bay for long walks, surf watching and room to spread out."],
+    ["Ahangama Beach", "Central, sociable and easy to pair with breakfast or sunset drinks."],
+    ["Marshmellow", "A smaller pocket with a gentler rhythm and a familiar local crowd."],
+    ["Midigama", "Reef breaks, headlands and one of the coast's strongest surf identities."],
+    ["Koggala", "A long open shoreline where the horizon feels especially wide."],
+    ["Kathaluwa", "Quieter stretches between better-known stops, best explored slowly."],
+  ];
+  return (
+    <div className="pg-template pg-beaches-love pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-beaches-love-grid">
+        {beaches.map(([name, description], index) => (
+          <article key={name}>
+            <div className="pg-beach-image-placeholder" role="img" aria-label={`Image placeholder for ${name}`}>
+              <span>Beach portrait</span><b>{String(index + 1).padStart(2, "0")}</b>
+            </div>
+            <h2>{name}</h2>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function SurfAhangamaPage({ page }) {
+  const sections = [
+    ["Breaks", "Reef, beach and A-frame peaks sit close together. Each behaves differently with swell direction and wind."],
+    ["Levels", "Beginners should start with a coach on forgiving water. Experienced surfers should still ask before paddling out."],
+    ["Tides", "Some reefs need more water; others lose shape at high tide. Local advice matters more than a generic forecast."],
+    ["Season", "The south coast is most consistent from roughly November to April, with changing winds and rain outside that window."],
+    ["Etiquette", "Wait your turn, do not drop in, control your board and respect the surfers who know these breaks as home."],
+  ];
+  return (
+    <div className="pg-template pg-surf-ahangama pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-surf-conditions">
+        <div><span>Best window</span><strong>Nov — Apr</strong></div>
+        <div><span>First session</span><strong>With a coach</strong></div>
+        <div><span>Before paddling</span><strong>Check tide</strong></div>
+      </div>
+      <div className="pg-surf-essentials">
+        {sections.map(([title, copy], index) => (
+          <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h2>{title}</h2><p>{copy}</p></article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function SurfServicesPage({ page }) {
+  const [verifiedVenue] = getVenues(page);
+  const services = Array.from({ length: 8 }, (_, index) => index === 0
+    ? { name: verifiedVenue?.name || "The Board Hut", area: verifiedVenue?.area || "Ahangama", image: verifiedVenue?.image, detail: "Board hire · Local break advice" }
+    : { name: `Recommendation ${String(index + 1).padStart(2, "0")}`, area: "Ahangama coast", image: null, detail: "School / coach details to follow" });
+  return (
+    <div className="pg-template pg-surf-services pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-surf-services-grid">
+        {services.map((service, index) => (
+          <article key={service.name}>
+            {service.image ? <img src={service.image} alt="" /> : (
+              <div className="pg-surf-service-placeholder" role="img" aria-label={`Image placeholder for ${service.name}`}>Image to follow</div>
+            )}
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h2>{service.name}</h2>
+            <p>{service.detail}</p>
+            <small>{service.area}</small>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function DawnPatrolPage({ page }) {
+  return (
+    <div className="pg-template pg-dawn-patrol">
+      <img src={page.content.image} alt="Early surf session on the south coast" />
+      <div className="pg-dawn-patrol-shade" />
+      <div className="pg-dawn-patrol-index"><span>05:42</span><b>First light · Ahangama</b></div>
+      <div className="pg-dawn-patrol-copy">
+        <EditorialLabel page={page} inverse />
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+        <small>Before the road wakes, boards move through the half-light and the first lines begin to show.</small>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
 function SectionOpener({ page }) {
   const partner = page.commercial.partner;
   return (
@@ -911,6 +1059,12 @@ const TEMPLATE_COMPONENTS = {
   EatDrinkOpenerPage,
   EatDrinkRecommendationsPage,
   FoodCulturePage,
+  SurfOpenerPage,
+  BeachComparisonPage,
+  BeachesWeLovePage,
+  SurfAhangamaPage,
+  SurfServicesPage,
+  DawnPatrolPage,
   IntroductionPage,
   SectionOpener,
   EditorialFeature,

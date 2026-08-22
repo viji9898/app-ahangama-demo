@@ -125,13 +125,13 @@ const PAGE_PLAN = [
   ["eat-drink", "after-dark", "EatDrinkRecommendationsPage", "After Dark", "Eight late addresses for music, drinks and a livelier table."],
   ["eat-drink", "food-culture", "FoodCulturePage", "The New Ahangama Table", "How local ingredients, new ideas and old knowledge are reshaping the way the town eats."],
   ["eat-drink", "full-page-ad", "FullPageAd", "Eat & Drink Partner", "A premium commercial position for a leading food and drink partner."],
-  ["surf", "essential-info", "EssentialInfoPage", "Surf with care", "Etiquette, reef safety and local knowledge"],
-  ["experiences", "section-opener", "SectionOpener", "Experiences", "The best days begin beyond the main road"],
-  ["experiences", "venue-feature", "VenueFeature", "Across Koggala Lake", "A morning among islands and cinnamon"],
-  ["experiences", "venue-grid", "VenueGrid", "Go inland", "Four ways to see another side of the south"],
-  ["experiences", "photo-essay", "PhotoEssay", "The coastal train", "Windows open, heading east"],
-  ["experiences", "venue-list", "VenueList", "A good day out", "Small plans for curious travellers"],
-  ["experiences", "full-page-ad", "FullPageAd", "Experience partner", "A full-page commercial position"],
+  ["surf", "section-opener", "SurfOpenerPage", "Beach & Surf", "Swim, surf and find your place along the coast."],
+  ["surf", "beach-comparison", "BeachComparisonPage", "Which Beach Today?", "Compare the coast by swimming, surfing, beginners, families, food, sunset and atmosphere."],
+  ["surf", "beaches-edit", "BeachesWeLovePage", "Beaches We Love", "Six stretches of coast, each with a different reason to stop."],
+  ["surf", "surf-guide", "SurfAhangamaPage", "Surf Ahangama", "Breaks, levels, tides, season and the basics of sharing the water well."],
+  ["surf", "surf-services", "SurfServicesPage", "Surf Schools, Coaches & Board Hire", "Eight useful contacts for learning, improving and finding the right equipment."],
+  ["surf", "dawn-patrol", "DawnPatrolPage", "Dawn Patrol", "A photography-led study of the coast before the day begins."],
+  ["surf", "full-page-ad", "FullPageAd", "Surf Partner", "A premium commercial position for a leading surf partner."],
   ["experiences", "editorial-feature", "EditorialFeature", "The art of doing less", "An unhurried Ahangama itinerary"],
   ["experiences", "venue-grid", "VenueGrid", "After sunset", "Music, gatherings and late tables"],
   ["wellness", "section-opener", "SectionOpener", "Wellness", "Ancient practice, modern movement and room to reset"],
@@ -162,7 +162,6 @@ const COMMERCIAL_BY_PAGE = {
   14: ["fullPage", "sold", "Trebartha East"],
   22: ["fullPage", "available", null],
   34: ["fullPage", "available", null],
-  36: ["sectionSponsor", "reserved", "Koggala Lake"],
   41: ["fullPage", "available", null],
   44: ["sectionSponsor", "sold", "Kurulu Bay"],
   49: ["halfPage", "available", null],
@@ -197,6 +196,12 @@ const EAT_DRINK_VENUES_BY_PAGE = {
   33: ["manoris-kitchen"],
 };
 
+const SURF_VENUES_BY_PAGE = {
+  35: ["the-board-hut"],
+  39: ["the-board-hut"],
+  40: ["the-board-hut"],
+};
+
 const CATEGORY_BY_SECTION = {
   stay: "stays",
   "eat-drink": "eat",
@@ -217,7 +222,7 @@ const placesBySection = Object.fromEntries(
 );
 
 function getSectionPlaces(section, pageNumber) {
-  const curatedSlugs = STAY_VENUES_BY_PAGE[pageNumber] || EAT_DRINK_VENUES_BY_PAGE[pageNumber];
+  const curatedSlugs = STAY_VENUES_BY_PAGE[pageNumber] || EAT_DRINK_VENUES_BY_PAGE[pageNumber] || SURF_VENUES_BY_PAGE[pageNumber];
   if (curatedSlugs) {
     return curatedSlugs
       .map((slug) => PLACES.find((place) => place.slug === slug))
@@ -275,7 +280,11 @@ export const INITIAL_GUIDE_PAGES = PAGE_PLAN.map(
         image:
           pageNumber === 14
             ? OPENING_PARTNER_ARTWORK
-            : venues.find((venue) => venue.image)?.image || fallbackImage,
+            : pageNumber === 35
+              ? GUIDE_IMAGES[2]
+              : pageNumber === 40
+                ? GUIDE_IMAGES[3]
+              : venues.find((venue) => venue.image)?.image || fallbackImage,
         secondaryImage:
           venues.find((venue) => venue.ogImage && venue.ogImage !== venue.image)
             ?.ogImage || GUIDE_IMAGES[(index + 1) % GUIDE_IMAGES.length],
