@@ -268,6 +268,187 @@ function EssentialMapSpreadPage({ page }) {
   );
 }
 
+function ItineraryPage({ page }) {
+  const isFirstDay = page.pageNumber === 8;
+  const items = isFirstDay
+    ? [
+        ["08:00", "Breakfast", "[Venue] - A perfect introduction to the local morning vibe with exceptional coffee and fresh local ingredients."],
+        ["09:30", "Get in the water", "Head to Kabalana beach for a swim or a surf in the crystal clear morning waves."],
+        ["12:30", "Lunch", "[Venue]"],
+        ["14:00", "Slow down", "Relax by the pool, book a massage, or take a gentle boat trip on Koggala Lake."],
+        ["17:00", "Sunset", "[Venue/Location]"],
+        ["19:30", "Dinner", "[Venue]"],
+        ["22:00", "One more?", "[Bar Recommendation]"],
+      ]
+    : [
+        ["07:30", "Move", "Yoga, Pilates, or a morning surf session."],
+        ["09:00", "Coffee", "Find your caffeine fix at a local favourite."],
+        ["10:30", "Explore", "Venture inland to Koggala Lake for a cinnamon or cultural experience."],
+        ["13:30", "Sri Lankan lunch", "Authentic rice and curry at a traditional spot."],
+        ["15:30", "Shop", "Visit independent local shops for unique finds."],
+        ["17:30", "Sunset", "Watch the sky change from a different part of town."],
+        ["20:00", "Dinner", "A memorable evening meal."],
+        ["22:00", "After dark", "Late night drinks and music."],
+      ];
+
+  return (
+    <div className="pg-template pg-itinerary pg-safe-area">
+      <EditorialLabel page={page} />
+      <span className="pg-itinerary-kicker">{isFirstDay ? "Start here" : "48 hours in Ahangama"}</span>
+      <h1>{page.content.headline}</h1>
+      {isFirstDay ? <p className="pg-standfirst">{page.content.subheadline}</p> : null}
+      <div className="pg-itinerary-list">
+        {items.map(([time, title, description]) => (
+          <article key={time}>
+            <time>{time}</time>
+            <div>
+              <h2>{title}</h2>
+              <p>{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      {!isFirstDay ? (
+        <p className="pg-itinerary-more"><b>Staying longer?</b> Turn to P43 <span aria-hidden="true">→</span> 10 Things You Should Do.</p>
+      ) : null}
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function TownStoryPage({ page }) {
+  const chapters = [
+    ["The Town Before the Boom", "A glimpse into the local community, traditional fishing, and life along the railway and coastal road."],
+    ["Surf", "Why the breaks of Ahangama, Kabalana, and Midigama became magnets for international travellers."],
+    ["The New Arrivals", "The evolution of restaurants, cafés, villas, and wellness spaces led by creative entrepreneurs."],
+    ["What Remains", "How Sri Lankan life continues to thrive and ground the visitor economy."],
+    ["Where Ahangama Goes Next", "Managing growth while retaining the destination's unique character."],
+  ];
+
+  return (
+    <div className="pg-template pg-town-story pg-safe-area">
+      <EditorialLabel page={page} />
+      <span className="pg-town-story-kicker">The Ahangama Story</span>
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-town-story-list">
+        {chapters.map(([title, description], index) => (
+          <article key={title}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h2>{title}</h2>
+              <p>{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function AhangamaEditPage({ page }) {
+  const places = [
+    ["Cactus", "For breakfast after the beach."],
+    ["Marshmellow", "For a long, social brunch."],
+    ["Sisters Kabalana", "For Kabalana mornings."],
+    ["Abrazo", "For taco-fueled evenings."],
+    ["Jam House", "For dinner with a crowd."],
+    ["Petals", "For the local favourite flavour."],
+    ["Unsung", "For the Midigama surf community vibe."],
+    ["Folklore Ahangama", "For food and drinks with atmosphere."],
+    ["The Kip", "For the Ahangama state of mind."],
+    ["Kurulu Bay", "For disappearing beside the lake."],
+    ["Fi Midigama", "For a surf-town stay."],
+    ["The Nuga House", "For slowing everything down."],
+    ["White Lotus Spa", "For restoration and recovery."],
+    ["Cafe Wave", "For beachside coffee."],
+    ["Surf Club Midigama", "For catching the best breaks."],
+    ["Kumbuk Community", "For deep cultural connection."],
+    ["Pura Pilates", "For movement and balance."],
+    ["Daydream", "For thoughtfully curated local finds."],
+    ["Living Room Concept Store", "For unique design and coffee culture."],
+    ["Gusta", "For everything you need."],
+  ];
+
+  return (
+    <div className="pg-template pg-ahangama-edit pg-safe-area">
+      <EditorialLabel page={page} />
+      <span className="pg-ahangama-edit-kicker">The Ahangama Edit</span>
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-ahangama-edit-list">
+        {places.map(([name, description], index) => (
+          <article key={name}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h2>{name}</h2>
+              <p>{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function PeopleSpreadPage({ page }) {
+  const isLeftPage = page.pageNumber === 12;
+  const profiles = isLeftPage
+    ? [
+        ["The Local", "A life rooted in the rhythms, relationships and memory of Ahangama."],
+        ["The Maker", "Building something thoughtful here, with local materials and a distinct point of view."],
+      ]
+    : [
+        ["The Waterman", "Reading the coast through tides, seasons and years spent close to the ocean."],
+        ["The New Generation", "Carrying Ahangama forward while deciding what should never be left behind."],
+      ];
+
+  return (
+    <div className={`pg-template pg-people-spread pg-safe-area is-${isLeftPage ? "left" : "right"}`}>
+      <header className="pg-people-header">
+        {isLeftPage ? (
+          <>
+            <EditorialLabel page={page} />
+            <h1>{page.content.headline}</h1>
+            <p className="pg-standfirst">{page.content.subheadline}</p>
+          </>
+        ) : (
+          <>
+            <span>People of Ahangama · Continued</span>
+            <p>The Local · The Maker · The Waterman · The New Generation</p>
+          </>
+        )}
+      </header>
+      <div className="pg-people-profiles">
+        {profiles.map(([role, introduction], index) => {
+          const profileNumber = index + (isLeftPage ? 1 : 3);
+          return (
+            <article key={role}>
+              <div className="pg-portrait-placeholder" role="img" aria-label={`Portrait placeholder for ${role}`}>
+                <span>Portrait</span>
+                <b>{String(profileNumber).padStart(2, "0")}</b>
+              </div>
+              <div className="pg-people-profile-copy">
+                <span>{String(profileNumber).padStart(2, "0")}</span>
+                <h2>{role}</h2>
+                <p>{introduction}</p>
+                <dl>
+                  <div><dt>Perfect morning</dt><dd>[Profile response]</dd></div>
+                  <div><dt>Where they take friends</dt><dd>[Profile response]</dd></div>
+                  <div><dt>Hope for Ahangama</dt><dd>[Profile response]</dd></div>
+                </dl>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
 function SectionOpener({ page }) {
   const partner = page.commercial.partner;
   return (
@@ -480,6 +661,30 @@ function FullPageAd({ page }) {
   );
 }
 
+function OpeningPartnerPage({ page }) {
+  const partner = page.commercial.partner || "Opening partner";
+  return (
+    <div className="pg-template pg-opening-partner">
+      <img
+        src={page.content.image}
+        alt="Trebartha East among the inland landscape near Ahangama"
+      />
+      <div className="pg-opening-partner-shade" />
+      <div className="pg-opening-partner-topline">
+        <span>Ahangama Guide</span>
+        <span>Opening Partner</span>
+      </div>
+      <div className="pg-opening-partner-copy">
+        <span>In partnership with</span>
+        <h1>{partner}</h1>
+        <p>{page.content.subheadline}</p>
+        <small>High-quality artwork required</small>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
 function PartialPageAd({ page }) {
   const isQuarter = page.commercial.type === "quarterPage";
   return (
@@ -506,6 +711,10 @@ const TEMPLATE_COMPONENTS = {
   HowToUsePage,
   AreaGlancePage,
   EssentialMapSpreadPage,
+  ItineraryPage,
+  TownStoryPage,
+  AhangamaEditPage,
+  PeopleSpreadPage,
   IntroductionPage,
   SectionOpener,
   EditorialFeature,
@@ -516,6 +725,7 @@ const TEMPLATE_COMPONENTS = {
   MapPage,
   EssentialInfoPage,
   DirectoryPage,
+  OpeningPartnerPage,
   FullPageAd,
   HalfPageEditorialAd: PartialPageAd,
   QuarterPageEditorialAd: PartialPageAd,

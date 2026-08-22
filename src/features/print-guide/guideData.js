@@ -98,13 +98,13 @@ const PAGE_PLAN = [
   ["opening", "area-glance", "AreaGlancePage", "Ahangama at a Glance", "Distances here are short. Don't be afraid to explore beyond the part of Ahangama you're staying in."],
   ["opening", "essential-map-left", "EssentialMapSpreadPage", "The Essential Ahangama Map", "Koggala to Midigama"],
   ["opening", "essential-map-right", "EssentialMapSpreadPage", "The Essential Ahangama Map", "Koggala to Midigama"],
-  ["opening", "getting-around", "EssentialInfoPage", "Getting around", "Tuk-tuks, scooters, trains and walking"],
-  ["opening", "map", "MapPage", "The lay of the land", "Kabalana to Midigama"],
-  ["stay", "section-opener", "SectionOpener", "Stay", "Small hotels, private villas and rooms with a sense of place"],
-  ["stay", "venue-grid", "VenueGrid", "Near the water", "Four stays for salt-air mornings"],
-  ["stay", "venue-feature", "VenueFeature", "A room with rhythm", "Inside one of Ahangama's most thoughtful stays"],
-  ["stay", "venue-list", "VenueList", "The stay edit", "Eight addresses worth keeping"],
-  ["stay", "full-page-ad", "FullPageAd", "Stay partner", "A full-page commercial position"],
+  ["opening", "first-24-hours", "ItineraryPage", "Your First 24 Hours", "Just arrived? Don't overthink it. Here's how we'd spend your first day."],
+  ["opening", "48-hours", "ItineraryPage", "Day Two", "48 Hours in Ahangama"],
+  ["opening", "town-story", "TownStoryPage", "A Town in Motion", "Surf brought many travellers here. What they found was a place with much more going on beneath the surface."],
+  ["opening", "ahangama-edit", "AhangamaEditPage", "20 Places We Love", "If you only bookmark one page, make it this one."],
+  ["opening", "people-left", "PeopleSpreadPage", "People of Ahangama", "Four people helping shape this corner of the south coast."],
+  ["opening", "people-right", "PeopleSpreadPage", "People of Ahangama", "The Local · The Maker · The Waterman · The New Generation"],
+  ["opening", "opening-partner", "OpeningPartnerPage", "Ahangama Guide — Opening Partner", "A premium commercial space for our lead partner."],
   ["stay", "photo-essay", "PhotoEssay", "Morning at the villa", "Light, linen and the first swim"],
   ["stay", "venue-grid", "VenueGrid", "For a longer stay", "Space to unpack and settle in"],
   ["stay", "editorial-feature", "EditorialFeature", "How to choose your coast", "A practical guide to each pocket of town"],
@@ -159,7 +159,6 @@ const PAGE_PLAN = [
 
 const COMMERCIAL_BY_PAGE = {
   2: ["insideFrontCover", "available", null],
-  10: ["sectionSponsor", "reserved", "PALM"],
   14: ["fullPage", "sold", "Trebartha East"],
   18: ["sectionSponsor", "available", null],
   23: ["halfPage", "sold", "Petals"],
@@ -174,6 +173,9 @@ const COMMERCIAL_BY_PAGE = {
   63: ["insideBackCover", "available", null],
   64: ["backCover", "sold", "Gusta"],
 };
+
+const OPENING_PARTNER_ARTWORK =
+  "https://images.suitcasemag.com/wp-content/uploads/2025/03/18160116/Trebartha-Daisy-Wingate-Saul-9234-copy.jpeg";
 
 const CATEGORY_BY_SECTION = {
   stay: "stays",
@@ -244,7 +246,10 @@ export const INITIAL_GUIDE_PAGES = PAGE_PLAN.map(
         body:
           sectionCopy?.body ||
           "A locally edited guide to the places, people and details that make Ahangama worth knowing slowly.",
-        image: venues.find((venue) => venue.image)?.image || fallbackImage,
+        image:
+          pageNumber === 14
+            ? OPENING_PARTNER_ARTWORK
+            : venues.find((venue) => venue.image)?.image || fallbackImage,
         secondaryImage:
           venues.find((venue) => venue.ogImage && venue.ogImage !== venue.image)
             ?.ogImage || GUIDE_IMAGES[(index + 1) % GUIDE_IMAGES.length],
