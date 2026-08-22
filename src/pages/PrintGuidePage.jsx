@@ -21,9 +21,9 @@ import "../styles/print-guide.css";
 export const PRINT_GUIDE_PATH = "/print-guide";
 
 const PRINT_GUIDE_META = {
-  title: "Ahangama Guide 2026/27 | 64-Page South Coast Guide",
+  title: "Ahangama Guide 2026/27 | 68-Page South Coast Guide",
   description:
-    "Preview the 64-page Ahangama Guide 2026/27, locally edited for the best places to stay, eat, surf, shop and explore on Sri Lanka's south coast.",
+    "Preview the 68-page Ahangama Guide 2026/27, locally edited for the best places to stay, eat, surf, shop and explore on Sri Lanka's south coast.",
   image:
     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp",
 };
@@ -82,6 +82,12 @@ const TEMPLATE_OPTIONS = [
   "BornAhangamaOpenerPage",
   "BornCategoryPage",
   "BornBrandsPage",
+  "RainyDayPage",
+  "WhatsOnPage",
+  "UsefulAhangamaPage",
+  "GettingAroundPage",
+  "KnowBeforeYouGoPage",
+  "AhangamaDirectoryPage",
   "IntroductionPage",
   "SectionOpener",
   "EditorialFeature",
@@ -276,7 +282,7 @@ function GuideOverview({ pages, managementMode, onOpenPage }) {
     <section className="pg-overview">
       <header>
         <span>Publication flatplan</span>
-        <h1>All 64 pages</h1>
+        <h1>All {pages.length} pages</h1>
         <p>Review pacing, section rhythm and commercial distribution at a glance.</p>
       </header>
       <div className="pg-thumbnail-grid">
@@ -356,7 +362,7 @@ function PageEditor({ page, open, onClose, onChange }) {
     >
       <div className="pg-editor-form">
         <div className="pg-editor-grid">
-          <label><span>Page number</span><InputNumber min={1} max={64} value={page.pageNumber} onChange={(value) => update("pageNumber", value)} /></label>
+          <label><span>Page number</span><InputNumber min={1} max={INITIAL_GUIDE_PAGES.length} value={page.pageNumber} onChange={(value) => update("pageNumber", value)} /></label>
           <label><span>Section</span><Select value={page.section} options={Object.entries(GUIDE_SECTIONS).map(([value, item]) => ({ value, label: item.label }))} onChange={(value) => update("section", value)} /></label>
         </div>
         <label><span>Page type</span><Input value={page.pageType} onChange={(event) => update("pageType", event.target.value)} /></label>

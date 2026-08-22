@@ -152,8 +152,12 @@ const PAGE_PLAN = [
   ["born", "fashion-accessories", "BornCategoryPage", "Fashion & Accessories", "Clothing · Resortwear · Swimwear · Jewellery · Bags · Accessories"],
   ["born", "makers-objects", "BornCategoryPage", "Makers & Objects", "Ceramics · Art · Homeware · Skincare · Surf goods · Handmade objects"],
   ["born", "brands-edit", "BornBrandsPage", "Brands We Love", "Twelve standout Ahangama-born brand profiles · What they make · Where to find them"],
-  ["essentials", "essential-info", "EssentialInfoPage", "Travel better", "Local etiquette and low-impact choices"],
-  ["closing", "directory", "DirectoryPage", "Keep exploring", "The complete directory and Ahangama.com"],
+  ["essentials", "rainy-day", "RainyDayPage", "It's Raining. What Do We Do?", "Twelve useful ways to enjoy Ahangama when the weather turns."],
+  ["essentials", "whats-on", "WhatsOnPage", "What's On", "A live rhythm of music, movement, food and gatherings."],
+  ["essentials", "useful-ahangama", "UsefulAhangamaPage", "Useful Ahangama", "Doctors · Pharmacies · ATMs · Groceries · Laundry · SIMs · Coworking · Emergencies"],
+  ["essentials", "getting-around", "GettingAroundPage", "Getting Around", "Tuk-tuks · Scooters · Taxis · Trains · Airport transfers"],
+  ["essentials", "know-before-you-go", "KnowBeforeYouGoPage", "Know Before You Go", "Money · Weather · Ocean safety · Etiquette · Tipping · Driving · Sustainability"],
+  ["essentials", "directory", "AhangamaDirectoryPage", "The Ahangama Directory", "150 venues · Map numbers · Live updates"],
   ["closing", "inside-cover", "InsideCoverAd", "Inside Back Cover", "A premium closing position"],
   ["closing", "back-cover", "BackCoverAd", "Back Cover", "The final word"],
 ];
@@ -165,8 +169,8 @@ const COMMERCIAL_BY_PAGE = {
   34: ["fullPage", "available", null],
   41: ["fullPage", "available", null],
   53: ["fullPage", "available", null],
-  63: ["insideBackCover", "available", null],
-  64: ["backCover", "sold", "Gusta"],
+  67: ["insideBackCover", "available", null],
+  68: ["backCover", "sold", "Gusta"],
 };
 
 const OPENING_PARTNER_ARTWORK =

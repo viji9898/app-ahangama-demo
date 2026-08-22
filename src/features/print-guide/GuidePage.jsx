@@ -1276,25 +1276,42 @@ function MapPage({ page }) {
   );
 }
 
-function EssentialInfoPage({ page }) {
-  const items = [
-    ["Move", "Agree tuk-tuk fares before setting off or use a local ride app."],
-    ["Pay", "Carry cash for smaller places; ATMs are clustered around town."],
-    ["Connect", "Local SIMs are inexpensive and coverage is generally reliable."],
-    ["Respect", "Dress modestly at temples and ask before photographing people."],
-    ["Ocean", "Conditions change quickly. Swim and surf within your ability."],
-  ];
+const LIVE_EVENTS_URL = "https://ahangama.com/events";
+const LIVE_DIRECTORY_URL = "https://ahangama.com/search";
+
+function EssentialHeader({ page }) {
   return (
-    <div className="pg-template pg-essential pg-safe-area">
+    <header className="pg-essentials-header">
       <EditorialLabel page={page} />
       <h1>{page.content.headline}</h1>
-      <p className="pg-standfirst">{page.content.subheadline}</p>
-      <div className="pg-essential-list">
+      <p>{page.content.subheadline}</p>
+    </header>
+  );
+}
+
+function RainyDayPage({ page }) {
+  const items = [
+    ["Long breakfast", "Choose a café with cover and let the rain set the pace."],
+    ["Ayurveda", "Book a treatment or consultation; call ahead on wet days."],
+    ["Tea tasting", "Compare regional teas and take a favourite blend home."],
+    ["Cook Sri Lankan", "Learn sambols, hoppers and curry from a local kitchen."],
+    ["Make something", "Try painting, pottery or another small-group workshop."],
+    ["Cowork", "Use the weather for a focused session with reliable Wi-Fi."],
+    ["Browse local", "Visit independent fashion, craft and homeware shops."],
+    ["Read awhile", "Find a quiet hotel lounge or café and stay for another cup."],
+    ["Steam and recover", "Pair a sauna or steam with a slow recovery afternoon."],
+    ["Watch the ocean", "Enjoy the drama from shelter; avoid rough water."],
+    ["See Galle Fort", "Museums, shops and covered verandas reward a flexible visit."],
+    ["Plan tomorrow", "Check the forecast, save places and reserve your next table."],
+  ];
+  return (
+    <div className="pg-template pg-rainy-day pg-essentials-page pg-safe-area">
+      <EssentialHeader page={page} />
+      <div className="pg-rainy-grid">
         {items.map(([title, copy], index) => (
           <article key={title}>
             <span>{String(index + 1).padStart(2, "0")}</span>
-            <h2>{title}</h2>
-            <p>{copy}</p>
+            <div><h2>{title}</h2><p>{copy}</p></div>
           </article>
         ))}
       </div>
@@ -1303,24 +1320,115 @@ function EssentialInfoPage({ page }) {
   );
 }
 
-function DirectoryPage({ page }) {
-  const venues = Array.from(GUIDE_PLACES_BY_SLUG.values()).slice(0, 18);
+function WhatsOnPage({ page }) {
+  const events = [
+    ["Monday", "Slow starts", "Wellness sessions · Supper clubs"],
+    ["Tuesday", "Community nights", "Workshops · Live music"],
+    ["Wednesday", "Midweek rhythm", "Markets · DJs · Shared tables"],
+    ["Thursday", "Town wakes up", "Karaoke · Sundowners · Live sets"],
+    ["Friday", "Weekend begins", "Guest chefs · Parties · Performances"],
+    ["Saturday", "All-day energy", "Pop-ups · Markets · Late nights"],
+    ["Sunday", "Reset", "Brunch · Sound sessions · Sunset gatherings"],
+  ];
   return (
-    <div className="pg-template pg-directory pg-safe-area">
-      <EditorialLabel page={page} />
-      <h1>{page.content.headline}</h1>
-      <div className="pg-directory-columns">
-        {venues.map((venue) => (
-          <div key={venue.slug}>
-            <strong>{venue.name}</strong>
-            <span>{venue.category} · {venue.area || "Ahangama"}</span>
-          </div>
+    <div className="pg-template pg-whats-on pg-essentials-page pg-safe-area">
+      <EssentialHeader page={page} />
+      <div className="pg-whats-on-list">
+        {events.map(([day, title, detail], index) => (
+          <article key={day}>
+            <b>{String(index + 1).padStart(2, "0")}</b>
+            <span>{day}</span>
+            <div><h2>{title}</h2><p>{detail}</p></div>
+          </article>
         ))}
       </div>
-      <div className="pg-directory-qr">
-        <div className="pg-faux-qr" aria-hidden="true" />
-        <div><strong>Continue online</strong><span>ahangama.com</span></div>
+      <div className="pg-essential-qr">
+        <QRCodeSVG value={LIVE_EVENTS_URL} level="M" bgColor="#f5f0e7" fgColor="#173b35" />
+        <div><strong>See what's on now</strong><span>Live listings, dates and booking details</span><small>ahangama.com/events</small></div>
       </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function UsefulAhangamaPage({ page }) {
+  const items = [
+    ["Doctors", "IMC Medical Center, Weligama · Larger hospitals in Matara and Galle"],
+    ["Pharmacies", "Ahangama town and Weligama · Bring prescriptions and generic names"],
+    ["ATMs", "Commercial Bank, Ahangama · Keep cash for small businesses"],
+    ["Groceries", "Ahangama town supermarkets · Local fruit and vegetable stalls"],
+    ["Laundry", "Klean Laundry, Ahangama · Dirty Clothes, Midigama"],
+    ["SIMs", "Dialog and Mobitel counters · Passport usually required"],
+    ["Coworking", "Focus Hub and café workspaces · Confirm day rates and call access"],
+    ["Emergencies", "Police 119 · Ambulance 1990 · Fire 110 · Tourist Police 1912"],
+  ];
+  return (
+    <div className="pg-template pg-useful pg-essentials-page pg-safe-area">
+      <EssentialHeader page={page} />
+      <div className="pg-useful-grid">
+        {items.map(([title, copy], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h2>{title}</h2><p>{copy}</p></article>)}
+      </div>
+      <aside>For urgent medical help, call 1990. Ask your accommodation to confirm the nearest open provider before travelling.</aside>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function GettingAroundPage({ page }) {
+  const modes = [
+    ["Tuk-tuks", "Best for short hops", "Agree the fare before leaving or use PickMe where available."],
+    ["Scooters", "Best for independence", "Carry the correct licence, wear a helmet and avoid riding in heavy rain."],
+    ["Taxis", "Best for groups and luggage", "Pre-book longer journeys and confirm vehicle size and total fare."],
+    ["Trains", "Best for the coast", "Ahangama station connects Galle, Weligama, Matara and Colombo."],
+    ["Airport transfers", "Best booked ahead", "Allow generous time for traffic and confirm airport and terminal."],
+  ];
+  const journeys = [["Midigama", "10 min"], ["Weligama", "20 min"], ["Koggala", "20 min"], ["Galle Fort", "35–45 min"], ["Hiriketiya", "60–75 min"], ["Colombo airport", "2.5–3.5 hr"]];
+  return (
+    <div className="pg-template pg-getting-around pg-essentials-page pg-safe-area">
+      <EssentialHeader page={page} />
+      <div className="pg-transport-modes">{modes.map(([title, best, copy]) => <article key={title}><h2>{title}</h2><strong>{best}</strong><p>{copy}</p></article>)}</div>
+      <section className="pg-journey-times"><h2>Typical journey times from central Ahangama</h2><div>{journeys.map(([place, time]) => <p key={place}><span>{place}</span><strong>{time}</strong></p>)}</div><small>Indicative only. Traffic, weather and train schedules change.</small></section>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function KnowBeforeYouGoPage({ page }) {
+  const items = [
+    ["Money", "Carry rupees; cards are common at larger venues, not everywhere."],
+    ["Weather", "Rain can be sudden. Heat, humidity and UV remain strong."],
+    ["Ocean safety", "Reefs and currents shift. Ask locally and never swim alone in rough water."],
+    ["Etiquette", "Cover shoulders and knees at temples; remove shoes and hats."],
+    ["Tipping", "Service charges vary. Add a considered tip for good service."],
+    ["Driving", "Traffic keeps left. An international permit alone may not be sufficient."],
+    ["Sustainability", "Refill water, refuse unnecessary plastic and protect reef and wildlife."],
+  ];
+  return (
+    <div className="pg-template pg-before-you-go pg-essentials-page pg-safe-area">
+      <EssentialHeader page={page} />
+      <div className="pg-before-list">{items.map(([title, copy], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{title}</h2><p>{copy}</p></div></article>)}</div>
+      <aside><h2>Useful numbers</h2><p><strong>119</strong> Police</p><p><strong>1990</strong> Ambulance</p><p><strong>110</strong> Fire</p><p><strong>1912</strong> Tourist Police</p></aside>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function AhangamaDirectoryPage({ page }) {
+  const venues = Array.from(GUIDE_PLACES_BY_SLUG.values()).slice(0, 150);
+  const directoryEntries = [
+    ...venues.map((venue) => ({ key: venue.slug, name: venue.name })),
+    ...Array.from({ length: 150 - venues.length }, (_, index) => ({
+      key: `placeholder-${index}`,
+      name: "Listing to confirm",
+    })),
+  ];
+  return (
+    <div className="pg-template pg-master-directory pg-essentials-page pg-safe-area">
+      <EssentialHeader page={page} />
+      <div className="pg-master-directory-list">
+        {directoryEntries.map((venue, index) => <div key={venue.key} className={venue.name === "Listing to confirm" ? "is-placeholder" : ""}><b>{String(index + 1).padStart(3, "0")}</b><strong>{venue.name}</strong></div>)}
+      </div>
+      <div className="pg-essential-qr pg-directory-live"><QRCodeSVG value={LIVE_DIRECTORY_URL} level="M" bgColor="#f5f0e7" fgColor="#173b35" /><div><strong>Open the live directory</strong><span>{venues.length} verified listings · {150 - venues.length} production slots to confirm</span><small>ahangama.com/search</small></div></div>
       <PageFurniture page={page} />
     </div>
   );
@@ -1433,8 +1541,12 @@ const TEMPLATE_COMPONENTS = {
   VenueList,
   PhotoEssay,
   MapPage,
-  EssentialInfoPage,
-  DirectoryPage,
+  RainyDayPage,
+  WhatsOnPage,
+  UsefulAhangamaPage,
+  GettingAroundPage,
+  KnowBeforeYouGoPage,
+  AhangamaDirectoryPage,
   OpeningPartnerPage,
   FullPageAd,
   HalfPageEditorialAd: PartialPageAd,
