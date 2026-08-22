@@ -1,4 +1,5 @@
 import React from "react";
+import { QRCodeSVG } from "qrcode.react";
 import {
   COMMERCIAL_LABELS,
   GUIDE_PLACES_BY_SLUG,
@@ -87,6 +88,181 @@ function ContentsPage({ page }) {
         ))}
       </div>
       <p>{page.content.subheadline}</p>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function HowToUsePage({ page }) {
+  const bestForTags = ["Breakfast", "Sunset", "Date night", "Families", "Surf", "Rainy day"];
+
+  return (
+    <div className="pg-template pg-how-to-use pg-safe-area">
+      <EditorialLabel page={page} />
+      <span className="pg-how-to-kicker">How to use this guide</span>
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-how-to-grid">
+        <article className="pg-how-to-item">
+          <span className="pg-how-to-number">01</span>
+          <div>
+            <h2>Guide number</h2>
+            <p>Every featured place receives a number.</p>
+            <strong className="pg-guide-number-example">#027 <b>Petals</b></strong>
+            <small>The same number appears in recommendations, the directory and maps.</small>
+          </div>
+        </article>
+        <article className="pg-how-to-item">
+          <span className="pg-how-to-number">02</span>
+          <div>
+            <h2>Editor's pick</h2>
+            <p className="pg-editors-pick"><b aria-hidden="true">★</b> Editor's pick</p>
+            <small>Places we particularly recommend. This designation cannot be purchased.</small>
+          </div>
+        </article>
+        <article className="pg-how-to-item">
+          <span className="pg-how-to-number">03</span>
+          <div>
+            <h2>Price</h2>
+            <p className="pg-price-key"><b>$</b> inexpensive <b>$$</b> moderate <b>$$$</b> special occasion <b>$$$$</b> luxury</p>
+          </div>
+        </article>
+        <article className="pg-how-to-item">
+          <span className="pg-how-to-number">04</span>
+          <div>
+            <h2>Best for</h2>
+            <p>Use small tags:</p>
+            <div className="pg-best-for-tags">
+              {bestForTags.map((tag) => <span key={tag}>{tag}</span>)}
+            </div>
+          </div>
+        </article>
+        <article className="pg-how-to-item pg-how-to-qr">
+          <span className="pg-how-to-number">05</span>
+          <div className="pg-how-to-qr-copy">
+            <h2>QR scan for more</h2>
+            <p>QR codes connect you to the live guide for:</p>
+            <strong>Directions · Current opening hours · Menus · Events · Booking · More recommendations</strong>
+          </div>
+          <div className="pg-faux-qr" aria-hidden="true" />
+        </article>
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function AreaGlancePage({ page }) {
+  const areas = [
+    {
+      name: "Ahangama Town",
+      summary: "The centre of things.",
+      description: "Restaurants, cafés, shops, the railway station and plenty happening within a relatively small area.",
+      bestFor: "Food · Coffee · Convenience · Nightlife",
+    },
+    {
+      name: "Kabalana",
+      summary: "Beach days and surf.",
+      description: "A broad beach, one of the area's best-known surf zones and an increasingly strong collection of places to eat and stay.",
+      bestFor: "Beach · Surf · Breakfast · Staying",
+    },
+    {
+      name: "Kathaluwa",
+      summary: "A slower side of the coast.",
+      description: "Between Ahangama and Koggala, with access to the lake, quieter roads and a more residential feel.",
+      bestFor: "Villas · Exploring · Koggala Lake",
+    },
+    {
+      name: "Goviyapana",
+      summary: "The quieter western edge.",
+      description: "A coastal stretch between Ahangama and Midigama.",
+      bestFor: "Beach · Villas · Slower stays",
+    },
+    {
+      name: "Midigama",
+      summary: "Surf first.",
+      description: "A neighbouring surf community with several well-known breaks.",
+      bestFor: "Surf · Casual food · Backpackers",
+    },
+    {
+      name: "Koggala",
+      summary: "Lake, nature and history.",
+      description: "The landscape changes around Koggala, with the lake opening up opportunities for boat trips, nature and inland exploration.",
+      bestFor: "Nature · Day trips · Experiences",
+    },
+  ];
+
+  return (
+    <div className="pg-template pg-area-glance pg-safe-area">
+      <EditorialLabel page={page} />
+      <span className="pg-area-glance-kicker">Know the neighbourhoods</span>
+      <h1>{page.content.headline}</h1>
+      <div className="pg-area-glance-grid">
+        {areas.map((area, index) => (
+          <article key={area.name}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h2>{area.name}</h2>
+              <strong>{area.summary}</strong>
+              <p>{area.description}</p>
+              <small><b>Best for</b> {area.bestFor}</small>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p className="pg-area-glance-note">{page.content.subheadline}</p>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+const ESSENTIAL_MAP_IMAGE = "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-guide/ahangama-costal-guide.webp";
+const LIVE_MAP_URL = "https://ahangama.com/map";
+
+function EssentialMapSpreadPage({ page }) {
+  const isLeftPage = page.pageNumber === 6;
+  const keyItems = [
+    ["●", "Eat & Drink"],
+    ["■", "Stay"],
+    ["▲", "Surf"],
+    ["◆", "Experience"],
+    ["+", "Wellness"],
+    ["★", "Essential"],
+  ];
+
+  return (
+    <div className={`pg-template pg-essential-map-spread is-${isLeftPage ? "left" : "right"}`}>
+      <div className="pg-essential-map-header">
+        {isLeftPage ? (
+          <>
+            <EditorialLabel page={page} />
+            <h1>{page.content.headline}</h1>
+            <p>{page.content.subheadline}</p>
+            <small className="pg-essential-map-caption">Beaches, surf breaks, food, hotels and essential services along Galle Road and Koggala Lake.</small>
+          </>
+        ) : (
+          <>
+            <span className="pg-essential-map-route">Koggala · Ahangama · Midigama</span>
+            <div className="pg-essential-map-key" aria-label="Map key">
+              {keyItems.map(([symbol, label]) => (
+                <span key={label}><b>{symbol}</b>{label}</span>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      <div className="pg-essential-map-art">
+        <img src={ESSENTIAL_MAP_IMAGE} alt="Illustrated map of the Ahangama coastal corridor from Koggala to Midigama" />
+        {!isLeftPage ? (
+          <div className="pg-essential-map-qr">
+            <QRCodeSVG value={LIVE_MAP_URL} level="M" bgColor="#f7f4ed" fgColor="#171714" />
+            <div>
+              <strong>Open the live map</strong>
+              <p>Scan for directions, current opening hours and all 150 places.</p>
+            </div>
+          </div>
+        ) : null}
+      </div>
       <PageFurniture page={page} />
     </div>
   );
@@ -327,6 +503,9 @@ const TEMPLATE_COMPONENTS = {
   CoverPage,
   InsideCoverAd: FullPageAd,
   ContentsPage,
+  HowToUsePage,
+  AreaGlancePage,
+  EssentialMapSpreadPage,
   IntroductionPage,
   SectionOpener,
   EditorialFeature,
