@@ -1368,6 +1368,178 @@
   text-transform: uppercase;
 }
 
+/* Eat and drink section */
+.pg-eat-opener > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pg-eat-opener-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 8, 4, 0.08) 20%, rgba(18, 8, 4, 0.78) 100%);
+}
+
+.pg-eat-opener-copy {
+  position: absolute;
+  z-index: 1;
+  right: 8cqw;
+  bottom: 17cqw;
+  left: 8cqw;
+  color: #fff;
+}
+
+.pg-eat-opener-copy > span:not(.pg-editorial-label) {
+  display: block;
+  margin-top: 4cqw;
+  font-size: 2cqw;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.pg-eat-opener-copy h1 {
+  max-width: 80cqw;
+  margin-top: 2cqw;
+  color: #fff !important;
+  font: 400 14cqw/0.86 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-eat-opener-copy p {
+  max-width: 66cqw;
+  margin-top: 4cqw;
+  font: italic 4cqw/1.22 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-eat-opener .pg-page-furniture { z-index: 2; }
+
+.pg-eat-recommendations > h1,
+.pg-food-culture > h1 {
+  margin-top: 3cqw;
+  font: 400 8cqw/0.94 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-eat-recommendations > .pg-standfirst,
+.pg-food-culture > .pg-standfirst {
+  max-width: 78cqw;
+  margin-top: 2cqw;
+  font-size: 2.6cqw;
+}
+
+.pg-eat-recommendations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2cqw 4cqw;
+  margin-top: 4cqw;
+}
+
+.pg-eat-recommendations-grid article {
+  position: relative;
+  display: grid;
+  grid-template-columns: 14cqw 1fr;
+  gap: 2cqw;
+  align-items: center;
+  min-height: 14cqw;
+  padding-bottom: 2cqw;
+  border-bottom: 1px solid #c7c3b9;
+}
+
+.pg-eat-recommendations-grid img,
+.pg-image-placeholder {
+  width: 14cqw;
+  height: 11cqw;
+  display: block;
+  object-fit: cover;
+}
+
+.pg-image-placeholder {
+  display: grid;
+  place-items: center;
+  padding: 1cqw;
+  color: #77766e;
+  background: #dcd7cc;
+  font-size: 1.2cqw;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pg-eat-recommendations-grid article > span {
+  position: absolute;
+  top: 0.8cqw;
+  left: 0.8cqw;
+  padding: 0.35cqw 0.55cqw;
+  color: #fff;
+  background: rgba(28, 19, 14, 0.76);
+  font-size: 1.1cqw;
+}
+
+.pg-eat-recommendations-grid h2 {
+  font: 400 2.8cqw/1 "Iowan Old Style", Georgia, serif;
+}
+
+.pg-eat-recommendations-grid p {
+  margin-top: 1cqw;
+  color: #737169;
+  font-size: 1.3cqw;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.pg-eat-recommendations.is-8 .pg-eat-recommendations-grid {
+  row-gap: 4cqw;
+}
+
+.pg-eat-recommendations.is-8 .pg-eat-recommendations-grid article {
+  min-height: 16cqw;
+}
+
+.pg-food-culture-image {
+  position: relative;
+  height: 48cqw;
+  margin-top: 4cqw;
+  overflow: hidden;
+}
+
+.pg-food-culture-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pg-food-culture-image span {
+  position: absolute;
+  right: 2cqw;
+  bottom: 2cqw;
+  padding: 1cqw 1.4cqw;
+  color: #fff;
+  background: #5b2f20;
+  font-size: 1.4cqw;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pg-food-culture-copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3cqw 4cqw;
+  margin-top: 4cqw;
+  color: #4f4e48;
+  font-size: 1.75cqw;
+  line-height: 1.4;
+}
+
+.pg-food-culture-copy blockquote {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 2.5cqw;
+  border-top: 1px solid #b9b5aa;
+  color: #683823;
+  font: italic 2.7cqw/1.25 "Iowan Old Style", Georgia, serif;
+}
+
 /* Section opener */
 .pg-section-opener::after {
   content: "";

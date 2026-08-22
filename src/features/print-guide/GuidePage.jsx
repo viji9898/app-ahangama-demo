@@ -571,6 +571,72 @@ function StayStoryPage({ page }) {
   );
 }
 
+function EatDrinkOpenerPage({ page }) {
+  return (
+    <div className="pg-template pg-eat-opener">
+      <img src={page.content.image} alt="A table set in Ahangama" />
+      <div className="pg-eat-opener-shade" />
+      <div className="pg-eat-opener-copy">
+        <EditorialLabel page={page} inverse />
+        <span>03</span>
+        <h1>{page.content.headline}</h1>
+        <p>{page.content.subheadline}</p>
+      </div>
+      <PageFurniture page={page} inverse />
+    </div>
+  );
+}
+
+function EatDrinkRecommendationsPage({ page }) {
+  const venues = getVenues(page);
+  return (
+    <div className={`pg-template pg-eat-recommendations pg-safe-area is-${venues.length}`}>
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-eat-recommendations-grid">
+        {venues.map((venue, index) => (
+          <article key={venue.slug}>
+            {venue.image ? (
+              <img src={venue.image} alt="" />
+            ) : (
+              <div className="pg-image-placeholder" role="img" aria-label={`Image placeholder for ${venue.name}`}>
+                Image to follow
+              </div>
+            )}
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h2>{venue.name}</h2>
+              <p>{venue.area || "Ahangama"}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
+function FoodCulturePage({ page }) {
+  return (
+    <div className="pg-template pg-food-culture pg-safe-area">
+      <EditorialLabel page={page} />
+      <h1>{page.content.headline}</h1>
+      <p className="pg-standfirst">{page.content.subheadline}</p>
+      <div className="pg-food-culture-image">
+        <img src={page.content.image} alt="Ahangama's evolving food culture" />
+        <span>Field notes · Food culture</span>
+      </div>
+      <div className="pg-food-culture-copy">
+        <p>Ahangama's table is becoming more interesting without losing sight of what has always fed the coast: market produce, daily catch, rice, spice and the generosity of home cooking.</p>
+        <p>New kitchens bring different references and techniques. The best of them listen first, buy locally and understand that a memorable meal here should still feel connected to place.</p>
+        <blockquote>Tradition is not a fixed menu. It is a living conversation between ingredient, cook and season.</blockquote>
+      </div>
+      <PageFurniture page={page} />
+    </div>
+  );
+}
+
 function SectionOpener({ page }) {
   const partner = page.commercial.partner;
   return (
@@ -842,6 +908,9 @@ const TEMPLATE_COMPONENTS = {
   StayFinderPage,
   StayNeighbourhoodPage,
   StayStoryPage,
+  EatDrinkOpenerPage,
+  EatDrinkRecommendationsPage,
+  FoodCulturePage,
   IntroductionPage,
   SectionOpener,
   EditorialFeature,

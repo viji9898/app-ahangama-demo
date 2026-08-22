@@ -113,18 +113,18 @@ const PAGE_PLAN = [
   ["stay", "stay-neighbourhoods", "StayNeighbourhoodPage", "Where Should You Stay?", "Five neighbourhoods, five different ways to experience Ahangama."],
   ["stay", "stay-story", "StayStoryPage", "A Room With Rhythm", "Inside one particularly interesting stay."],
   ["stay", "full-page-ad", "FullPageAd", "Stay Partner", "A premium commercial position for a leading stay partner."],
-  ["eat-drink", "partial-ad", "HalfPageEditorialAd", "Dinner after dark", "Five tables and one half-page partner position"],
-  ["eat-drink", "venue-grid", "VenueGrid", "Lunch, slowly", "Places that reward an open afternoon"],
-  ["eat-drink", "venue-feature", "VenueFeature", "The new Sri Lankan table", "Tradition without nostalgia"],
-  ["eat-drink", "venue-list", "VenueList", "Drinks at six", "Rooftops, courtyards and a seat at the bar"],
-  ["eat-drink", "editorial-feature", "EditorialFeature", "The road to dinner", "A food crawl through central Ahangama"],
-  ["eat-drink", "venue-grid", "VenueGrid", "Sweet things", "Bakes, fruit and something cold"],
-  ["eat-drink", "venue-list", "VenueList", "The address book", "Eat and drink, from A to Z"],
-  ["surf", "section-opener", "SectionOpener", "Beaches & Surf", "Read the water and find your place in it"],
-  ["surf", "editorial-feature", "EditorialFeature", "A coast in motion", "Understanding the season and swell"],
-  ["surf", "venue-grid", "VenueGrid", "Learn well", "Schools and coaches who put safety first"],
-  ["surf", "partial-ad", "QuarterPageEditorialAd", "The break book", "Four waves, one quarter-page partner position"],
-  ["surf", "photo-essay", "PhotoEssay", "Dawn patrol", "Before the road wakes up"],
+  ["eat-drink", "section-opener", "EatDrinkOpenerPage", "Eat & Drink", "Where to eat, drink and spend a long afternoon."],
+  ["eat-drink", "breakfast", "EatDrinkRecommendationsPage", "Breakfast", "Ten starts to the day, from early coffee to a table worth lingering over."],
+  ["eat-drink", "coffee-cafes", "EatDrinkRecommendationsPage", "Coffee & Cafés", "Ten reliable stops for a flat white, a quick reset or a slow morning."],
+  ["eat-drink", "lunch", "EatDrinkRecommendationsPage", "Lunch", "Ten places that reward an open afternoon."],
+  ["eat-drink", "sri-lankan-food", "EatDrinkRecommendationsPage", "Sri Lankan Food", "Eight kitchens for rice, curry, spice and the flavours of home."],
+  ["eat-drink", "dinner", "EatDrinkRecommendationsPage", "Dinner", "Ten tables for the main event."],
+  ["eat-drink", "dinner-for-two", "EatDrinkRecommendationsPage", "Dinner for Two", "Eight intimate tables for an evening with fewer distractions."],
+  ["eat-drink", "eat-well-for-less", "EatDrinkRecommendationsPage", "Eat Well for Less", "Ten good-value addresses for casual meals and quick bites."],
+  ["eat-drink", "sunset-drinks", "EatDrinkRecommendationsPage", "Sunset Drinks", "Eight places to watch the light go and order another."],
+  ["eat-drink", "after-dark", "EatDrinkRecommendationsPage", "After Dark", "Eight late addresses for music, drinks and a livelier table."],
+  ["eat-drink", "food-culture", "FoodCulturePage", "The New Ahangama Table", "How local ingredients, new ideas and old knowledge are reshaping the way the town eats."],
+  ["eat-drink", "full-page-ad", "FullPageAd", "Eat & Drink Partner", "A premium commercial position for a leading food and drink partner."],
   ["surf", "essential-info", "EssentialInfoPage", "Surf with care", "Etiquette, reef safety and local knowledge"],
   ["experiences", "section-opener", "SectionOpener", "Experiences", "The best days begin beyond the main road"],
   ["experiences", "venue-feature", "VenueFeature", "Across Koggala Lake", "A morning among islands and cinnamon"],
@@ -161,9 +161,7 @@ const COMMERCIAL_BY_PAGE = {
   2: ["insideFrontCover", "available", null],
   14: ["fullPage", "sold", "Trebartha East"],
   22: ["fullPage", "available", null],
-  23: ["halfPage", "sold", "Petals"],
-  30: ["sectionSponsor", "available", null],
-  33: ["quarterPage", "available", null],
+  34: ["fullPage", "available", null],
   36: ["sectionSponsor", "reserved", "Koggala Lake"],
   41: ["fullPage", "available", null],
   44: ["sectionSponsor", "sold", "Kurulu Bay"],
@@ -183,6 +181,20 @@ const STAY_VENUES_BY_PAGE = {
   17: ["harding-boutique", "unu-boutique-hotel", "teal-ahangama", "merchant", "the-find", "pebble-alma", "mana", "the-benison-ahangama"],
   18: ["villa-mugatiya", "tea-tree-villa", "southpoint-villa", "villa-queen-fort", "younger-villas-resorts", "surf-villa", "kabalana-house-by-ceilao-villas", "ekuku-lake-house"],
   21: ["trebartha-east-the-roundhouse"],
+};
+
+const EAT_DRINK_VENUES_BY_PAGE = {
+  23: ["citra-ahangama"],
+  24: ["marshmellow-surf-cafe", "sisters-kabalana", "makai-cafe-ahangama", "rollingpin-bakery", "daily-dose-cafe", "lum-cafe", "veda-cafe", "coconut-republik", "maria-bonita-sri-lanka", "living"],
+  25: ["cactus-ahangama", "the-kip", "kaffi-ag", "twin-fin-surf-x-coffee", "cafe-ceylon-ahangama", "daily-dose-cafe", "makai-cafe-ahangama", "sisters-kabalana", "lum-cafe", "unsung"],
+  26: ["meori-ahangama", "jam-house-ahangama", "patels-ahangama", "tahini", "iluk-ahangama", "aliikai-ahangama", "citra-ahangama", "fruit-cafe-ahangama", "squeeze-me", "paradise-cove-midigama"],
+  27: ["manoris-kitchen", "thilenis", "patels-ahangama", "citra-ahangama", "rice-and-spoon", "the-cinnamon-trails-ahangama", "kalage", "soko"],
+  28: ["ceylon-sliders", "le-cafe-french-bistro-ahangama", "teddies-ahangama", "samba-ahangama", "moochies-ahangama", "jam-house-ahangama", "tahini", "iluk-ahangama", "donna-ahangama", "aliikai-ahangama"],
+  29: ["le-cafe-french-bistro-ahangama", "follow-the-white-rabbit-ahangama", "iluk-ahangama", "aliikai-ahangama", "donna-ahangama", "mora-rooftop-lounge", "citra-ahangama", "meori-ahangama"],
+  30: ["rollingpin-bakery", "sandwich-spot", "soko", "crave", "hungry-puppet", "hakuna-matata-ahangama", "cafe-ceylon-ahangama", "kaffi-ag", "chillinguito", "rice-and-spoon"],
+  31: ["moochies-ahangama", "mora-rooftop-lounge", "follow-the-white-rabbit-ahangama", "samba-ahangama", "ceylon-sliders", "animals", "folklore-ahangama", "paradise-cove-midigama"],
+  32: ["teddies-ahangama", "samba-ahangama", "ceylon-sliders", "moochies-ahangama", "animals", "folklore-ahangama", "mora-rooftop-lounge", "hakuna-matata-ahangama"],
+  33: ["manoris-kitchen"],
 };
 
 const CATEGORY_BY_SECTION = {
@@ -205,8 +217,9 @@ const placesBySection = Object.fromEntries(
 );
 
 function getSectionPlaces(section, pageNumber) {
-  if (STAY_VENUES_BY_PAGE[pageNumber]) {
-    return STAY_VENUES_BY_PAGE[pageNumber]
+  const curatedSlugs = STAY_VENUES_BY_PAGE[pageNumber] || EAT_DRINK_VENUES_BY_PAGE[pageNumber];
+  if (curatedSlugs) {
+    return curatedSlugs
       .map((slug) => PLACES.find((place) => place.slug === slug))
       .filter(Boolean);
   }
