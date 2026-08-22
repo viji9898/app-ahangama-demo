@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Drawer, Input, InputNumber, Select, Switch } from "antd";
+import { useNavigate } from "react-router-dom";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import GuidePage from "../features/print-guide/GuidePage";
@@ -18,6 +19,12 @@ import {
   getCommercialInventory,
   getSpreadStart,
 } from "../features/print-guide/guideUtils";
+import {
+  calculateDistributionMetrics,
+  DISTRIBUTION_CHANNELS,
+  DISTRIBUTION_TARGETS,
+  getAccommodationDistributionRecords,
+} from "../features/print-guide/distributionData";
 import "../styles/print-guide.css";
 
 export const PRINT_GUIDE_PATH = "/print-guide";
@@ -34,10 +41,11 @@ const VIEW_OPTIONS = [
   ["spread", "Spread"],
   ["overview", "All pages"],
   ["commercial", "Commercial"],
+  ["pitch", "The Pitch"],
   ["distribution", "Distribution"],
 ];
 
-const PAGE_FORMATS = Object.freeze({
+export const PAGE_FORMATS = Object.freeze({
   A4: { label: "A4", width: 210, height: 297, viewScale: 1.18 },
   A5: { label: "A5", width: 148, height: 210, viewScale: 1 },
   B5: { label: "B5", width: 176, height: 250, viewScale: 1.08 },
@@ -122,7 +130,7 @@ function useMobilePageView() {
   return isMobile;
 }
 
-function GuideDashboard({ metrics, pageFormat }) {
+export function GuideDashboard({ metrics, pageFormat }) {
   const items = [
     ["Pages", metrics.pageCount],
     ["Editorial", metrics.editorialPages],
@@ -171,7 +179,7 @@ function GuideDashboard({ metrics, pageFormat }) {
   );
 }
 
-function GuideToolbar({
+export function GuideToolbar({
   view,
   onViewChange,
   pageFormatKey,
@@ -180,6 +188,7 @@ function GuideToolbar({
   onManagementChange,
   zoom,
   onZoomChange,
+  navigationOnly = false,
 }) {
   return (
     <nav className="pg-toolbar" aria-label="Guide workspace controls">
@@ -196,7 +205,7 @@ function GuideToolbar({
             </button>
           ))}
         </div>
-        <div className="pg-format-switcher" aria-label="Page size">
+        {!navigationOnly ? <div className="pg-format-switcher" aria-label="Page size">
           <span>Page size</span>
           {Object.entries(PAGE_FORMATS).map(([key, format]) => (
             <button
@@ -209,9 +218,9 @@ function GuideToolbar({
               {format.label}
             </button>
           ))}
-        </div>
+        </div> : null}
       </div>
-      <div className="pg-toolbar-actions">
+      {!navigationOnly ? <div className="pg-toolbar-actions">
         <span className="pg-zoom-controls">
           <button
             type="button"
@@ -240,7 +249,7 @@ function GuideToolbar({
             onChange={onManagementChange}
           />
         </label>
-      </div>
+      </div> : null}
     </nav>
   );
 }
@@ -499,67 +508,20 @@ function CommercialInventory({ pages, metrics, onOpenPage }) {
   );
 }
 
-const DISTRIBUTION_KPIS = [
-  ["Annual circulation", "20,000 copies"],
-  ["Distribution points", "200+"],
-  ["Accommodation rooms reached", "1,500+"],
-  ["Restaurants / cafés", "75+"],
-  ["Retail / wellness / surf", "50+"],
-  ["Estimated annual guests reached", "100,000+"],
-  ["Digital guide readers", "50,000+"],
-  ["Total estimated audience", "150,000+"],
-];
-
-const DISTRIBUTION_CHANNELS = [
-  ["Hotels", "25", "750 rooms", "5,000", "35,000"],
-  ["Boutique hotels", "30", "300 rooms", "3,000", "15,000"],
-  ["Villas / Airbnbs", "50", "150 rooms", "2,500", "10,000"],
-  ["Restaurants & cafés", "60", "—", "4,000", "20,000"],
-  ["Surf schools / beach clubs", "15", "—", "1,000", "5,000"],
-  ["Wellness / gyms / spas", "15", "—", "1,000", "5,000"],
-  ["Shops", "20", "—", "750", "3,000"],
-  ["Coworking", "5", "—", "500", "3,000"],
-  ["Drivers / transfers", "20", "—", "750", "4,000"],
-];
-
-const ACCOMMODATION_DISTRIBUTION = [
-  ["Palm Hotel", 12, 70, 3, 350],
-  ["Radisson Collection Resort & Spa, Galle", 106, 65, 3, 1000],
-  ["Lighthouse", 10, 72, 3, 300],
-  ["Mosvold Villa", 17, 68, 3.2, 400],
-  ["Kurulu Bay", 14, 65, 3.5, 325],
-  ["SĀMA", 8, 72, 3, 250],
-  ["Harding Boutique Hotel", 6, 75, 3, 225],
-  ["The Nuga House", 8, 70, 3.5, 225],
-  ["Merchant House", 14, 68, 3, 350],
-  ["Trebartha East", 4, 65, 4, 150],
-  ["The Find", 6, 70, 3.5, 175],
-];
-
-function calculateAnnualGuests(rooms, occupancy, averageStay) {
-  return Math.round((rooms * (occupancy / 100) * 365 * 2) / averageStay);
-}
-
 function DistributionWorkspace() {
   const number = new Intl.NumberFormat("en-US");
-  const records = ACCOMMODATION_DISTRIBUTION.map(
-    ([property, rooms, occupancy, averageStay, copies]) => ({
-      property,
-      rooms,
-      occupancy,
-      averageStay,
-      copies,
-      annualGuests: calculateAnnualGuests(rooms, occupancy, averageStay),
-    }),
-  );
-  const recordTotals = records.reduce(
-    (totals, record) => ({
-      rooms: totals.rooms + record.rooms,
-      annualGuests: totals.annualGuests + record.annualGuests,
-      copies: totals.copies + record.copies,
-    }),
-    { rooms: 0, annualGuests: 0, copies: 0 },
-  );
+  const records = getAccommodationDistributionRecords();
+  const distribution = calculateDistributionMetrics();
+  const kpis = [
+    ["Annual circulation", `${number.format(distribution.annualCirculation)} copies`],
+    ["Distribution points", `${DISTRIBUTION_TARGETS.minimumDistributionPoints}+`],
+    ["Accommodation rooms reached", `${number.format(DISTRIBUTION_TARGETS.accommodationRooms)}+`],
+    ["Restaurants / cafes", `${DISTRIBUTION_TARGETS.restaurantsAndCafes}+`],
+    ["Retail / wellness / surf", `${DISTRIBUTION_TARGETS.retailWellnessAndSurf}+`],
+    ["Estimated annual guests reached", `${number.format(distribution.estimatedAnnualGuests)}+`],
+    ["Digital guide readers", `${number.format(distribution.digitalReaders)}+`],
+    ["Total estimated audience", `${number.format(distribution.estimatedAnnualGuests + distribution.digitalReaders)}+`],
+  ];
 
   return (
     <section className="pg-distribution">
@@ -569,7 +531,7 @@ function DistributionWorkspace() {
       </header>
 
       <div className="pg-distribution-kpis">
-        {DISTRIBUTION_KPIS.map(([label, value]) => <article key={label}><span>{label}</span><strong>{value}</strong></article>)}
+        {kpis.map(([label, value]) => <article key={label}><span>{label}</span><strong>{value}</strong></article>)}
       </div>
 
       <section className="pg-distribution-block">
@@ -578,8 +540,8 @@ function DistributionWorkspace() {
           <table className="pg-distribution-table">
             <thead><tr><th>Channel</th><th>Partners</th><th>Units / rooms</th><th>Copies / year</th><th>Est. audience</th></tr></thead>
             <tbody>
-              {DISTRIBUTION_CHANNELS.map(([channel, partners, units, copies, audience]) => <tr key={channel}><td>{channel}</td><td>{partners}</td><td>{units}</td><td>{copies}</td><td>{audience}</td></tr>)}
-              <tr className="is-total"><td>Total</td><td>240</td><td>1,200+</td><td>18,500</td><td>100,000+</td></tr>
+              {DISTRIBUTION_CHANNELS.map((channel) => <tr key={channel.channel}><td>{channel.channel}</td><td>{channel.partners}</td><td>{channel.unitsLabel}</td><td>{number.format(channel.copies)}</td><td>{number.format(channel.audience)}</td></tr>)}
+              <tr className="is-total"><td>Total</td><td>{distribution.distributionPoints}</td><td>{number.format(distribution.roomsReached)}+</td><td>{number.format(distribution.annualCopiesAllocated)}</td><td>{number.format(distribution.estimatedAnnualGuests)}+</td></tr>
             </tbody>
           </table>
         </div>
@@ -594,7 +556,7 @@ function DistributionWorkspace() {
             <thead><tr><th>Property</th><th>Rooms</th><th>Occupancy</th><th>Avg. stay</th><th>Est. annual guests</th><th>Copies allocated</th></tr></thead>
             <tbody>
               {records.map((record) => <tr key={record.property}><td>{record.property}</td><td>{record.rooms}</td><td>{record.occupancy}%</td><td>{record.averageStay} nights</td><td>~{number.format(record.annualGuests)}</td><td>{number.format(record.copies)}</td></tr>)}
-              <tr className="is-total"><td>Initial tracked properties</td><td>{recordTotals.rooms}</td><td>—</td><td>—</td><td>~{number.format(recordTotals.annualGuests)}</td><td>{number.format(recordTotals.copies)}</td></tr>
+              <tr className="is-total"><td>Initial tracked properties</td><td>{distribution.mappedRooms}</td><td>—</td><td>—</td><td>~{number.format(distribution.mappedAnnualGuests)}</td><td>{number.format(distribution.mappedCopies)}</td></tr>
             </tbody>
           </table>
         </div>
@@ -759,8 +721,12 @@ function PageEditor({ page, open, onClose, onChange }) {
 }
 
 export default function PrintGuidePage() {
+  const navigate = useNavigate();
   const [pages, setPages] = useState(INITIAL_GUIDE_PAGES);
-  const [view, setView] = useState("spread");
+  const [view, setView] = useState(() => {
+    const requestedView = typeof window === "undefined" ? null : new URLSearchParams(window.location.search).get("view");
+    return ["spread", "overview", "commercial", "distribution"].includes(requestedView) ? requestedView : "spread";
+  });
   const [pageFormatKey, setPageFormatKey] = useState("A5");
   const [currentPage, setCurrentPage] = useState(1);
   const [managementMode, setManagementMode] = useState(true);
@@ -832,7 +798,7 @@ export default function PrintGuidePage() {
         <GuideDashboard metrics={metrics} pageFormat={pageFormat} />
         <GuideToolbar
           view={view}
-          onViewChange={setView}
+          onViewChange={(nextView) => nextView === "pitch" ? navigate("/guide-pitch") : setView(nextView)}
           pageFormatKey={pageFormatKey}
           onPageFormatChange={setPageFormatKey}
           managementMode={managementMode}
