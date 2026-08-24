@@ -39,7 +39,6 @@ const CHAPTERS = [
   { id: "best-retail-stores", label: "Best Retail Stores", bg: "cream" },
   { id: "best-cafes", label: "Best Cafes", bg: "cream" },
   { id: "transport-guide", label: "Transport", bg: "white" },
-  { id: "local-women-owned", label: "Women-Owned Local Businesses", bg: "white" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
 
@@ -359,14 +358,13 @@ function ContentsSection() {
     "How Long Do People Usually Stay?", "Reality Check",
     "Best Stays", "Best Eats", "Best Experiences", "Wellness",
     "Night Life", "Best Retail Stores", "Best Cafes", "Transport",
-    "Women-Owned", "Local Own", "Foreign Own",
   ];
 
   const sectionIds = [
     "overview", "best-for", "reality-check", "best-season", "how-long",
     "transport", "best-stays", "best-eats", "best-experiences",
 "wellness", "night-life", "best-retail-stores",
-    "best-cafes", "transport-guide", "local-women-owned",
+    "best-cafes", "transport-guide",
   ];
 
   return (
@@ -886,7 +884,7 @@ function BestStaysSection({ onImageClick }) {
  */
 
 const EATS = [
-  { name: "Citra", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787291036/Citra_ahangama_yihtdo.webp", rating: "4.7", desc: "A Culinary Experience Nestled Between The Palm Trees And The Ocean ",lat: 5.9730175, lng: 80.4349573, instagram: "https://www.instagram.com/citrasrilanka ", googleMaps: "https://maps.app.goo.gl/1hoMZCzCh5x8MdFK8?g_st=ic", ownership: "local" },
+  { name: "Citra", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787500275/main_pic_g5ftha.webp", rating: "4.7", desc: "A Culinary Experience Nestled Between The Palm Trees And The Ocean",lat: 5.9730175, lng: 80.4349573, instagram: "https://www.instagram.com/citrasrilanka", googleMaps: "https://maps.app.goo.gl/1hoMZCzCh5x8MdFK8?g_st=ic", ownership: "local" },
   { name: "Kai Rooftop", rating: "4.7", desc: "Rooftop dining, great cocktails and beautiful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp", lat: 5.9723502, lng: 80.3635430, instagram: "", googleMaps: "", ownership: "foreign" },
   { name: "Mermaid’s Kitchen", rating: "4.6", desc: "Fresh, flavourful food served in a relaxed tropical setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp", lat: 5.9702466, lng: 80.3672881, instagram: "", googleMaps: "", ownership: "local" },
   { name: "Maria Bonita", rating: "4.8", desc: "Colourful breakfasts and excellent coffee.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp", lat: 5.9743119, lng: 80.3583762, instagram: "", googleMaps: "", ownership: "local" },
@@ -1075,6 +1073,9 @@ function cardGrid(items, onImageClick) {
                     </span>
                   )}
                 </div>
+                {item.tagline && (
+                  <span className="eag-card-tagline">{item.tagline}</span>
+                )}
                 <CardLinks item={item} />
               </div>
             </div>
@@ -1120,10 +1121,12 @@ function BestRetailStoresSection({ onImageClick }) {
 
 const BEST_CAFES = [
   { name: "Kaffi", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/Kaffi_oyahe8.jpg", lat: 5.9689078, lng: 80.3706031, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Aliikai Cafe", rating: "4.8", desc: "A cosy beachside cafe serving wholesome bowls, artisan coffee and tropical vibes in Ahangama.", tagline: "Local Woman-Owned", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787554069/Aliikai_2_abmchk.webp", instagram: "https://www.instagram.com/aliikai_ahangma_arugambay/?hl=en", googleMaps: "https://maps.app.goo.gl/83eH8u3i7fyih8Ux6", ownership: "local" },
+  { name: "Mint Ceylon", rating: "4.7", desc: "Consciously crafted slow fashion and unique lifestyle pieces, mindfully handmade by local artisans in the heart of Sri Lanka.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp", instagram: "https://www.instagram.com/mint.ceylon/?hl=en", googleMaps: "https://maps.app.goo.gl/DgphUYpCcKj7AJsf7", ownership: "local" },
   { name: "Sisters Cafe", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/sisters_cafe_pumrbp.png", lat: 5.9779099, lng: 80.3513977, instagram: "", googleMaps: "", ownership: "local" },
   { name: "Cafe Ceylon", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Ceylon_wku3on.png", lat: 5.9782004, lng: 80.348526, instagram: "", googleMaps: "", ownership: "local" },
   { name: "Petals", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287257/Petals_vb8d5g.jpg", lat: 5.9781800860434835, lng: 80.35357067301068, instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Black Honey", image:"", lat: 5.978427591667606, lng: 80.34855730859866, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Black Honey", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787500795/Black_Honey_new_gi0q8a.webp", lat: 5.978427591667606, lng: 80.34855730859866, instagram: "", googleMaps: "", ownership: "local" },
   { name: "Veda Cafe", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Veda_Cafe_eb12vq.png", lat: 5.97829759746546, lng: 80.34999516626638, instagram: "", googleMaps: "", ownership: "local" },
   { name: "Living Room", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287267/Living_Room_zleo9f.png", lat: 5.972781176617157, lng: 80.36349925767135, instagram: "", googleMaps: "", ownership: "foreign" },
   { name: "Cafe Wave", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/cafe_wave_nak6fe.jpg", lat: 5.98254317290508, lng: 80.33695907790974, instagram: "", googleMaps: "", ownership: "foreign" },
@@ -1156,28 +1159,6 @@ function TransportGuideSection({ onImageClick }) {
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Transport</span></h2></Reveal>
         {cardGrid(TRANSPORT_VENUES, onImageClick)}
-      </div>
-    </section>
-  );
-}
-
-const LOCAL_WOMEN_OWNED_BUSINESSES = [
-  { name: "Aliikai Cafe", rating: "4.8", desc: "A cosy beachside cafe serving wholesome bowls, artisan coffee and tropical vibes in Ahangama.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787291090/WhatsApp_Image_2026-08-21_at_11.04.53_bwa4cy.jpg", instagram: "https://www.instagram.com/aliikai_ahangma_arugambay/?hl=en", googleMaps: "https://maps.app.goo.gl/83eH8u3i7fyih8Ux6", ownership: "local" },
-  { name: "Mint Ceylon", rating: "4.7", desc: "Consciously crafted slow fashion and unique lifestyle pieces, mindfully handmade by local artisans in the heart of Sri Lanka.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp", instagram: "https://www.instagram.com/mint.ceylon/?hl=en", googleMaps: "https://maps.app.goo.gl/DgphUYpCcKj7AJsf7", ownership: "local" },
-
-];
-
-function LocalWomenOwnedSection({ onImageClick }) {
-  return (
-    <section id="local-women-owned" className="eag-section eag-section--white">
-      <div className="eag-content">
-        <Reveal>
-          <h2 className="eag-headline">
-            <span className="eag-headline-line">Women-Owned</span>
-            <span className="eag-headline-line">Local Businesses</span>
-          </h2>
-        </Reveal>
-        {cardGrid(LOCAL_WOMEN_OWNED_BUSINESSES, onImageClick)}
       </div>
     </section>
   );
@@ -1295,7 +1276,6 @@ function TocRibbon({ currentChapter }) {
     { id: "best-retail-stores", label: "Best Retail Stores" },
     { id: "best-cafes", label: "Best Cafes" },
     { id: "transport-guide", label: "Transport" },
-    { id: "local-women-owned", label: "Women-Owned" },
     { id: "closing-cta", label: "Closing" },
   ];
 
@@ -1481,7 +1461,6 @@ export default function ExperienceAhangamaGuide() {
           <BestRetailStoresSection onImageClick={setLightboxItem} />
           <BestCafesSection onImageClick={setLightboxItem} />
           <TransportGuideSection onImageClick={setLightboxItem} />
-          <LocalWomenOwnedSection onImageClick={setLightboxItem} />
           <ClosingCTASection />
         </div>
       </div>

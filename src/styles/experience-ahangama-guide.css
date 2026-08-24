@@ -9,8 +9,8 @@
   --eag-gold: #E8B84B;
   --eag-dark: #1A1A1A;
   --eag-content-max: 520px;
-  --eag-content-max-tablet: 680px;
-  --eag-content-max-desktop: 960px;
+  --eag-content-max-tablet: 720px;
+  --eag-content-max-desktop: 1200px;
   --eag-text-max: 680px;
   --eag-pad-mobile: 28px;
   --eag-pad-desktop: 48px;
@@ -933,6 +933,29 @@
   line-height: 1;
   transform: translateY(-0.5px);
   text-shadow: 0 0 0.5px rgba(122, 77, 0, 0.35);
+}
+
+/* ===== Tagline ===== */
+.eag-card-tagline {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  background: rgba(214, 87, 136, 0.08);
+  color: #c25580;
+  border: 1px solid rgba(214, 87, 136, 0.18);
+}
+
+.eag-dark-mode .eag-card-tagline {
+  background: rgba(214, 87, 136, 0.12);
+  color: #f08ab8;
+  border-color: rgba(214, 87, 136, 0.28);
 }
 
 /* ===== Ownership badge ===== */
