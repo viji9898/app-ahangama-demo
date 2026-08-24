@@ -272,6 +272,15 @@
   outline-offset: 5px;
 }
 
+.new-home-list-status {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--new-home-line);
+  color: var(--new-home-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 @media (max-width: 900px) {
   .new-home-lists-intro,
   .new-home-section-heading {

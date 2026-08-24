@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography } from "antd";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
@@ -12,23 +12,13 @@ export const NEW_HOME_PATH = "/new";
 
 const HERO_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp";
+const EVENTS_ENDPOINT = "/.netlify/functions/events";
 
 const LISTS = [
   {
     title: "Things Happening This Week",
     category: "Events / venues",
-    recommendations: [
-      "Sunset Sessions at The Lighthouse",
-      "Ahangama Community Market",
-      "Sunday at The Kip",
-      "Live Music at Hotel de Uncles",
-      "Open Decks at Cactus",
-      "Surf Film Night",
-      "Rooftop Sundowners",
-      "Local Makers Pop-Up",
-      "Saturday Social Club",
-      "Full Moon Gathering",
-    ],
+    recommendations: [],
   },
   {
     title: "Cafés We Love",
@@ -355,7 +345,8 @@ const LISTS = [
 const LIST_SECTIONS = [
   {
     title: "What's On",
-    description: "What is new, notable and worth making plans around right now.",
+    description:
+      "What is new, notable and worth making plans around right now.",
     listTitles: [
       "Things Happening This Week",
       "Places to Go Tonight",
@@ -364,7 +355,8 @@ const LIST_SECTIONS = [
   },
   {
     title: "Eat & Drink",
-    description: "From first coffee to dinner, drinks and the best sunset tables.",
+    description:
+      "From first coffee to dinner, drinks and the best sunset tables.",
     listTitles: [
       "Cafés We Love",
       "Restaurants We Love",
@@ -376,7 +368,8 @@ const LIST_SECTIONS = [
   },
   {
     title: "Stay",
-    description: "Hotels, private villas and places designed for settling in longer.",
+    description:
+      "Hotels, private villas and places designed for settling in longer.",
     listTitles: [
       "Hotels We Love",
       "Villas & Airbnbs We Love",
@@ -395,7 +388,8 @@ const LIST_SECTIONS = [
   },
   {
     title: "Explore & Live",
-    description: "Local favourites, useful places and reasons to venture further.",
+    description:
+      "Local favourites, useful places and reasons to venture further.",
     listTitles: [
       "Things You Have to Do",
       "Places Locals Love",
@@ -434,10 +428,9 @@ function normalizePlaceName(value) {
 }
 
 const PLACES_BY_NAME = new Map(
-  PLACES.filter((place) => place.destinationSlug === "ahangama").map((place) => [
-    normalizePlaceName(place.name),
-    place,
-  ]),
+  PLACES.filter((place) => place.destinationSlug === "ahangama").map(
+    (place) => [normalizePlaceName(place.name), place],
+  ),
 );
 
 function findRecommendationPlace(recommendation) {
@@ -449,15 +442,22 @@ function findRecommendationPlace(recommendation) {
   );
 }
 
-function buildEditorialDescription(place) {
-  const source = String(place.description || place.excerpt || "")
+function shortenEditorialDescription(value) {
+  const source = String(value || "")
     .replace(/\s+/g, " ")
     .trim();
 
   if (source.length <= 120) return source;
 
-  const shortened = source.slice(0, 117).replace(/\s+\S*$/, "").trim();
+  const shortened = source
+    .slice(0, 117)
+    .replace(/\s+\S*$/, "")
+    .trim();
   return `${shortened}...`;
+}
+
+function buildEditorialDescription(place) {
+  return shortenEditorialDescription(place.description || place.excerpt);
 }
 
 function getInstagramUrl(place) {
@@ -468,8 +468,55 @@ function getInstagramUrl(place) {
 
 function getDirectionsUrl(place) {
   if (place.mapUrl) return place.mapUrl;
-  if (typeof place.lat !== "number" || typeof place.lng !== "number") return null;
+  if (typeof place.lat !== "number" || typeof place.lng !== "number")
+    return null;
   return `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`;
+}
+
+function getRecommendationLabel(recommendation) {
+  return typeof recommendation === "string"
+    ? recommendation
+    : recommendation.label;
+}
+
+function getRecommendationDetail(recommendation) {
+  if (typeof recommendation !== "string") {
+    return recommendation.detail;
+  }
+
+  const place = findRecommendationPlace(recommendation);
+  if (!place) return null;
+
+  return {
+    description: buildEditorialDescription(place),
+    instagramUrl: getInstagramUrl(place),
+    directionsUrl: getDirectionsUrl(place),
+  };
+}
+
+function formatEventDate(day) {
+  if (String(day.key).startsWith("ongoing")) return "Ongoing";
+  return `${day.weekday} ${day.dayNumber} ${day.month}`;
+}
+
+function buildWeeklyEventRecommendations(days) {
+  return days
+    .flatMap((day) =>
+      (day.events || []).map((event) => ({
+        id: `${day.key}-${event.title}-${event.venue}`,
+        label: `${event.title} — ${event.venue}`,
+        detail: {
+          description: shortenEditorialDescription(
+            [formatEventDate(day), event.time, event.description]
+              .filter(Boolean)
+              .join(" · "),
+          ),
+          instagramUrl: event.instagramUrl || null,
+          directionsUrl: event.directionsUrl || null,
+        },
+      })),
+    )
+    .slice(0, 10);
 }
 
 function RecommendationList({ list, index }) {
@@ -477,16 +524,44 @@ function RecommendationList({ list, index }) {
   const [activeRecommendation, setActiveRecommendation] = useState(() => {
     const linkedRecommendations = list.recommendations
       .slice(0, 5)
-      .filter((recommendation) => findRecommendationPlace(recommendation));
+      .filter((recommendation) => getRecommendationDetail(recommendation));
 
     return linkedRecommendations.length
-      ? linkedRecommendations[Math.floor(Math.random() * linkedRecommendations.length)]
+      ? getRecommendationLabel(
+          linkedRecommendations[
+            Math.floor(Math.random() * linkedRecommendations.length)
+          ],
+        )
       : null;
   });
   const listId = `new-home-list-${index + 1}`;
   const visibleRecommendations = expanded
     ? list.recommendations
     : list.recommendations.slice(0, 5);
+
+  useEffect(() => {
+    const linkedRecommendations = list.recommendations
+      .slice(0, 5)
+      .filter((recommendation) => getRecommendationDetail(recommendation));
+
+    setActiveRecommendation((current) => {
+      if (
+        linkedRecommendations.some(
+          (recommendation) =>
+            getRecommendationLabel(recommendation) === current,
+        )
+      ) {
+        return current;
+      }
+
+      if (!linkedRecommendations.length) return null;
+      return getRecommendationLabel(
+        linkedRecommendations[
+          Math.floor(Math.random() * linkedRecommendations.length)
+        ],
+      );
+    });
+  }, [list.recommendations]);
 
   return (
     <article className="new-home-list">
@@ -497,15 +572,21 @@ function RecommendationList({ list, index }) {
       <Title level={3}>{list.title}</Title>
       <ol id={listId}>
         {visibleRecommendations.map((recommendation) => {
-          const place = findRecommendationPlace(recommendation);
-          const detailId = `${listId}-${normalizePlaceName(recommendation).replaceAll(" ", "-")}`;
-          const isActive = activeRecommendation === recommendation;
-          const instagramUrl = place ? getInstagramUrl(place) : null;
-          const directionsUrl = place ? getDirectionsUrl(place) : null;
+          const label = getRecommendationLabel(recommendation);
+          const detail = getRecommendationDetail(recommendation);
+          const detailId = `${listId}-${normalizePlaceName(label).replaceAll(" ", "-")}`;
+          const isActive = activeRecommendation === label;
 
           return (
-            <li className={place ? "is-linked" : undefined} key={recommendation}>
-              {place ? (
+            <li
+              className={detail ? "is-linked" : undefined}
+              key={
+                typeof recommendation === "string"
+                  ? recommendation
+                  : recommendation.id
+              }
+            >
+              {detail ? (
                 <>
                   <button
                     className="new-home-recommendation-trigger"
@@ -514,24 +595,35 @@ function RecommendationList({ list, index }) {
                     aria-controls={detailId}
                     onClick={() =>
                       setActiveRecommendation((current) =>
-                        current === recommendation ? null : recommendation,
+                        current === label ? null : label,
                       )
                     }
                   >
-                    <span>{recommendation}</span>
+                    <span>{label}</span>
                     <span aria-hidden="true">{isActive ? "−" : "+"}</span>
                   </button>
                   {isActive ? (
-                    <div className="new-home-recommendation-detail" id={detailId}>
-                      <p>{buildEditorialDescription(place)}</p>
+                    <div
+                      className="new-home-recommendation-detail"
+                      id={detailId}
+                    >
+                      <p>{detail.description}</p>
                       <div>
-                        {directionsUrl ? (
-                          <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
+                        {detail.directionsUrl ? (
+                          <a
+                            href={detail.directionsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             Google Maps
                           </a>
                         ) : null}
-                        {instagramUrl ? (
-                          <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+                        {detail.instagramUrl ? (
+                          <a
+                            href={detail.instagramUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             Instagram
                           </a>
                         ) : null}
@@ -540,30 +632,87 @@ function RecommendationList({ list, index }) {
                   ) : null}
                 </>
               ) : (
-                recommendation
+                label
               )}
             </li>
           );
         })}
       </ol>
-      <button
-        className="new-home-list-toggle"
-        type="button"
-        aria-expanded={expanded}
-        aria-controls={listId}
-        onClick={() => {
-          setExpanded((current) => !current);
-          setActiveRecommendation(null);
-        }}
-      >
-        {expanded ? "Show fewer" : `View all ${list.recommendations.length}`}
-      </button>
+      {list.status ? (
+        <p className="new-home-list-status">{list.status}</p>
+      ) : null}
+      {list.recommendations.length > 5 ? (
+        <button
+          className="new-home-list-toggle"
+          type="button"
+          aria-expanded={expanded}
+          aria-controls={listId}
+          onClick={() => {
+            setExpanded((current) => !current);
+            setActiveRecommendation(null);
+          }}
+        >
+          {expanded ? "Show fewer" : `View all ${list.recommendations.length}`}
+        </button>
+      ) : null}
     </article>
   );
 }
 
 export default function NewHomePage() {
   const canonical = absUrl(NEW_HOME_PATH);
+  const [weeklyEvents, setWeeklyEvents] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadWeeklyEvents() {
+      try {
+        const response = await fetch(EVENTS_ENDPOINT);
+        const payload = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(payload.error || "Unable to load events");
+        }
+
+        if (!cancelled) {
+          setWeeklyEvents(
+            buildWeeklyEventRecommendations(
+              Array.isArray(payload.days) ? payload.days : [],
+            ),
+          );
+        }
+      } catch (error) {
+        if (!cancelled) {
+          console.error("Unable to load weekly events", error);
+          setWeeklyEvents([]);
+        }
+      }
+    }
+
+    loadWeeklyEvents();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const currentLists = LISTS.map((list) =>
+    list.title === "Things Happening This Week"
+      ? {
+          ...list,
+          recommendations: weeklyEvents || [],
+          status:
+            weeklyEvents === null
+              ? "Loading this week's events..."
+              : weeklyEvents.length === 0
+                ? "No upcoming events are currently published."
+                : null,
+        }
+      : list,
+  );
+  const currentListsByTitle = new Map(
+    currentLists.map((list) => [list.title, list]),
+  );
 
   return (
     <SiteLayout navOverlayHero>
@@ -614,8 +763,10 @@ export default function NewHomePage() {
                 </header>
                 <div className="new-home-list-grid">
                   {section.listTitles.map((title) => {
-                    const list = LISTS_BY_TITLE.get(title);
-                    const listIndex = ORDERED_LISTS.indexOf(list);
+                    const list = currentListsByTitle.get(title);
+                    const listIndex = ORDERED_LISTS.findIndex(
+                      (orderedList) => orderedList.title === list.title,
+                    );
 
                     return (
                       <RecommendationList
