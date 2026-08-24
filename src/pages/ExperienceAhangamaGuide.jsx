@@ -1368,10 +1368,10 @@ export default function ExperienceAhangamaGuide() {
   return (
     <>
       <Helmet>
-        <title>Experience Ahangama &mdash; The Insider&rsquo;s Guide to Sri Lanka&rsquo;s Coolest Coast</title>
+        <title>Experience Ahangama, The Insider&rsquo;s Guide to Sri Lanka&rsquo;s Coolest Coast</title>
         <meta name="description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
         <link rel="canonical" href="https://ahangama.com/guide" />
-        <meta property="og:title" content="Experience Ahangama — The Insider's Guide to Sri Lanka's Coolest Coast" />
+        <meta property="og:title" content="Experience Ahangama, The Insider's Guide to Sri Lanka's Coolest Coast" />
         <meta property="og:description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
         <meta property="og:image" content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp" />
         <meta property="og:image:secure_url" content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp" />
