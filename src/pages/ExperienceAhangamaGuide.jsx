@@ -31,13 +31,13 @@ const CHAPTERS = [
   { id: "best-season", label: "Best Season", bg: "cream" },
   { id: "how-long", label: "How Long Do People Usually Stay?", bg: "cream" },
   { id: "transport", label: "Reality Check", bg: "white" },
+  { id: "best-cafes", label: "Best Cafes", bg: "cream" },
   { id: "best-stays", label: "Best Stays", bg: "white" },
   { id: "best-eats", label: "Best Eats", bg: "cream" },
   { id: "best-experiences", label: "Best Experiences", bg: "cream" },
   { id: "wellness", label: "Wellness", bg: "cream" },
   { id: "night-life", label: "Night Life", bg: "cream" },
   { id: "best-retail-stores", label: "Best Retail Stores", bg: "cream" },
-  { id: "best-cafes", label: "Best Cafes", bg: "cream" },
   { id: "transport-guide", label: "Transport", bg: "white" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
@@ -334,7 +334,7 @@ function CoverSection() {
         </Reveal>
         <Reveal delay={4}>
           <div className="eag-cover-cta">
-            <a href="#best-stays" className="eag-pill">Get Your Complimentary Pass</a>
+            <a href="#best-cafes" className="eag-pill">Get Your Complimentary Pass</a>
           </div>
           <span className="eag-cover-tag">Ahangama Season 2026/2027</span>
         </Reveal>
@@ -356,15 +356,15 @@ function ContentsSection() {
   const contents = [
     "Overview", "Best For", "The Reality Check", "Best Season",
     "How Long Do People Usually Stay?", "Reality Check",
-    "Best Stays", "Best Eats", "Best Experiences", "Wellness",
-    "Night Life", "Best Retail Stores", "Best Cafes", "Transport",
+    "Best Cafes", "Best Stays", "Best Eats", "Best Experiences", "Wellness",
+    "Night Life", "Best Retail Stores", "Transport",
   ];
 
   const sectionIds = [
     "overview", "best-for", "reality-check", "best-season", "how-long",
-    "transport", "best-stays", "best-eats", "best-experiences",
+    "transport", "best-cafes", "best-stays", "best-eats", "best-experiences",
 "wellness", "night-life", "best-retail-stores",
-    "best-cafes", "transport-guide",
+    "transport-guide",
   ];
 
   return (
@@ -1268,13 +1268,13 @@ function TocRibbon({ currentChapter }) {
     { id: "best-season", label: "Best Season" },
     { id: "how-long", label: "How Long" },
     { id: "transport", label: "Reality Check" },
+    { id: "best-cafes", label: "Best Cafes" },
     { id: "best-stays", label: "Best Stays" },
     { id: "best-eats", label: "Best Eats" },
     { id: "best-experiences", label: "Experiences" },
     { id: "wellness", label: "Wellness" },
     { id: "night-life", label: "Night Life" },
     { id: "best-retail-stores", label: "Best Retail Stores" },
-    { id: "best-cafes", label: "Best Cafes" },
     { id: "transport-guide", label: "Transport" },
     { id: "closing-cta", label: "Closing" },
   ];
@@ -1453,13 +1453,13 @@ export default function ExperienceAhangamaGuide() {
           <BestSeasonSection />
           <HowLongSection />
           <TransportSection />
+          <BestCafesSection onImageClick={setLightboxItem} />
           <BestStaysSection onImageClick={setLightboxItem} />
           <BestEatsSection onImageClick={setLightboxItem} />
           <BestExperiencesSection onImageClick={setLightboxItem} />
           <WellnessSection onImageClick={setLightboxItem} />
           <NightLifeSection onImageClick={setLightboxItem} />
           <BestRetailStoresSection onImageClick={setLightboxItem} />
-          <BestCafesSection onImageClick={setLightboxItem} />
           <TransportGuideSection onImageClick={setLightboxItem} />
           <ClosingCTASection />
         </div>
