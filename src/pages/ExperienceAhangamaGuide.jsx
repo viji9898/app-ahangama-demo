@@ -1147,7 +1147,7 @@ function BestCafesSection({ onImageClick }) {
 }
 
 const TRANSPORT_VENUES = [
-  { name: "GIK Bike Rentals", rating: "5.0", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg", instagram: "", googleMaps: "", ownership: "local" },
+  { name: "AK Bike Rentals", rating: "5.0", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg", instagram: "", googleMaps: "", ownership: "local" },
   { name: "Scooty Rental & Taxi Service", rating: "5.0", desc: "Quick scooter access and local transport support while staying in the area.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/scooty_rentals_and_bike_services_gtzqlc.webp", instagram: "", googleMaps: "", ownership: "local" },
   { name: "Happy Tours", rating: "5.0", desc: "A practical transport partner for local trips and travel support around the south coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287234/Happy_Tours_bkh98m.jpg", instagram: "", googleMaps: "", ownership: "foreign" },
   { name: "Nova Rent a Car", rating: "4.9", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Nova_Rent_a_Car_wuaos2.png", instagram: "", googleMaps: "", ownership: "foreign" },
