@@ -752,7 +752,7 @@ function HowLongSection() {
           </p>
         </Reveal>
         <Reveal delay={2}>
-          <div className="eag-season-banner" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/v1787647989/howlongpeoplestay_1_sqg1i8.webp)", backgroundPosition: "center 30%" }} />
+          <div className="eag-season-banner" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/v1787647989/howlongpeoplestay_1_sqg1i8.webp)", backgroundPosition: "center center" }} />
         </Reveal>
       </div>
     </section>
