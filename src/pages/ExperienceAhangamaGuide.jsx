@@ -1137,7 +1137,7 @@ function TransportGuideSection({ onImageClick }) {
 
 function ClosingCTASection() {
   return (
-    <section id="closing-cta" className="eag-section eag-section--navy">
+    <section id="closing-cta" className="eag-section eag-section--navy eag-section--closing">
       <div className="eag-orbs" aria-hidden="true">
         <span className="eag-orb eag-orb--1" />
         <span className="eag-orb eag-orb--2" />
@@ -1154,12 +1154,12 @@ function ClosingCTASection() {
                 <span className="eag-headline-line">Insider Tips?</span>
               </h2>
               <p className="eag-body eag-body--light">
-                Follow <strong>@NewDirection.lk</strong> on Instagram for real-time updates, hidden gems, and exclusive local content.
+                Follow <strong>@ahangama.pass</strong> on Instagram for real-time updates, hidden gems, and exclusive local content.
               </p>
             </div>
             <div className="eag-closing-cta-wrap">
               <a
-                href="https://instagram.com/NewDirection.lk"
+                href="https://instagram.com/ahangama.pass"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="eag-pill eag-pill--closing"
@@ -1172,12 +1172,12 @@ function ClosingCTASection() {
                 Follow Us
               </a>
               <a
-                href="https://www.instagram.com/newdirection.lk"
+                href="https://www.instagram.com/ahangama.pass"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="eag-closing-handle"
               >
-                @NewDirection.lk
+                @ahangama.pass
               </a>
             </div>
           </div>

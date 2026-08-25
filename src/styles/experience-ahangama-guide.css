@@ -2212,3 +2212,35 @@
     padding: 0 16px;
   }
 }
+
+/* --- Closing section: no extra blank space --- */
+.eag-section--closing {
+  min-height: auto;
+  height: auto;
+  min-height: 100dvh;
+  padding-bottom: 0;
+  justify-content: center;
+}
+
+.eag-section--closing .eag-content {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .eag-section--closing {
+    height: auto;
+    min-height: 100dvh;
+  }
+}
+
+/* Scroll container: last child no snap padding */
+.eag-scroll-container > .eag-section:last-child {
+  scroll-snap-align: none;
+}
+
+/* Remove any extra space after the scroll container */
+.eag-scroll-container::after {
+  content: '';
+  display: none;
+}
