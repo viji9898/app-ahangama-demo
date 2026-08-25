@@ -651,7 +651,7 @@ function LocatedSection() {
 
 const BEST_STAYS = [
   { name: "Ko Lake Villa", rating: "4.4", desc: "A private seven-bedroom lakeside villa made for slow days, sunset gatherings and unforgettable stays in Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787639927/Ko_Lake_Villa_2_i7p3nr.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/kolakevilla.ahangama/", googleMaps: "https://maps.app.goo.gl/jRahAEuMfkCtKUrQ7", ownership: "foreign" },
-  { name: "The Mugatiya Ahangama", rating: "4.4", desc: "A private garden retreat in Ahangama, blending the intimacy of a home with the beauty of tropical island living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787640178/Mugatiya_shycdl.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/villamugatiya/?hl=en", googleMaps: "https://maps.app.goo.gl/PFjbvXmuvUMmAtq18", ownership: "foreign" },
+  { name: "The Mugatiya Ahangama Luxury Heritage Villa", rating: "4.4", desc: "A private garden retreat in Ahangama, blending the intimacy of a home with the beauty of tropical island living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787640178/Mugatiya_shycdl.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/villamugatiya/?hl=en", googleMaps: "https://maps.app.goo.gl/PFjbvXmuvUMmAtq18", ownership: "foreign" },
   { name: "Animals", rating: "4.8", desc: " A sleek pink boutique oasis blending premium co-working and laid back surf culture for adult travelers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp", lat: 5.979034944715787, lng: 80.3542700558208, instagram: "https://www.instagram.com/animalsahangama/", googleMaps: "https://maps.app.goo.gl/YwNuhDw4sC6MiBpw9", ownership: "foreign" },
   { name: "Mana Villa", rating: "4.8", desc: "A peaceful nature retreat with sauna, ice baths and pools.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783566/manavilla_ctqgqj.webp", lat: 5.9816289, lng: 80.3492640, instagram: "https://www.instagram.com/mana.ahangama/", googleMaps: "https://maps.app.goo.gl/7XQMu7Dg5VCTvF1t8", ownership: "foreign" },
   { name: "Sola Hotel", rating: "4.4", desc: "A nature-led escape in the heart of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp", lat: 5.9878623, lng: 80.3740310, instagram: "", googleMaps: "https://maps.app.goo.gl/AD8Q2KNiFUPzv7ZN7", ownership: "foreign" },
@@ -1138,27 +1138,48 @@ function TransportGuideSection({ onImageClick }) {
 function ClosingCTASection() {
   return (
     <section id="closing-cta" className="eag-section eag-section--navy">
+      <div className="eag-orbs" aria-hidden="true">
+        <span className="eag-orb eag-orb--1" />
+        <span className="eag-orb eag-orb--2" />
+        <span className="eag-orb eag-orb--3" />
+      </div>
       <div className="eag-content">
         <StaggerReveal className="eag-closing-group">
-          <ScooterIllustration />
-          <div className="eag-closing-body">
-            <h2 className="eag-headline eag-headline--light">
-              <span className="eag-headline-line">Want More</span>
-              <span className="eag-headline-line">Insider Tips?</span>
-            </h2>
-            <p className="eag-body eag-body--light">
-              Follow @NewDirection.lk on Instagram for real-time updates, hidden gems, and exclusive local content.
-            </p>
-          </div>
-          <div className="eag-closing-cta-wrap">
-            <a
-              href="https://instagram.com/NewDirection.lk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="eag-pill eag-pill--closing"
-            >
-              Follow Us
-            </a>
+          <div className="eag-closing-card">
+            <div className="eag-closing-glow" />
+            <ScooterIllustration />
+            <div className="eag-closing-body">
+              <h2 className="eag-headline eag-headline--light">
+                <span className="eag-headline-line">Want More</span>
+                <span className="eag-headline-line">Insider Tips?</span>
+              </h2>
+              <p className="eag-body eag-body--light">
+                Follow <strong>@NewDirection.lk</strong> on Instagram for real-time updates, hidden gems, and exclusive local content.
+              </p>
+            </div>
+            <div className="eag-closing-cta-wrap">
+              <a
+                href="https://instagram.com/NewDirection.lk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="eag-pill eag-pill--closing"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{marginRight:8}}>
+                  <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8"/>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8"/>
+                  <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+                </svg>
+                Follow Us
+              </a>
+              <a
+                href="https://www.instagram.com/newdirection.lk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="eag-closing-handle"
+              >
+                @NewDirection.lk
+              </a>
+            </div>
           </div>
         </StaggerReveal>
       </div>
