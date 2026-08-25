@@ -2213,12 +2213,12 @@
   }
 }
 
-/* --- Closing section: no extra blank space --- */
+/* --- Closing section: no extra blank space, but tall enough to scroll to --- */
 .eag-section--closing {
   height: auto !important;
-  min-height: unset !important;
-  scroll-snap-align: none;
-  padding-bottom: 0;
+  min-height: 100dvh !important;
+  scroll-snap-align: start;
+  padding-bottom: 40px;
   justify-content: center;
 }
 
