@@ -209,7 +209,7 @@
 }
 
 .eag-eyebrow--white {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-weight: 700;
 }
 
