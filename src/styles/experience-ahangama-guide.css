@@ -2215,9 +2215,9 @@
 
 /* --- Closing section: no extra blank space --- */
 .eag-section--closing {
-  min-height: auto;
-  height: auto;
-  min-height: 100dvh;
+  height: auto !important;
+  min-height: unset !important;
+  scroll-snap-align: none;
   padding-bottom: 0;
   justify-content: center;
 }
@@ -2225,13 +2225,6 @@
 .eag-section--closing .eag-content {
   padding-bottom: 0;
   margin-bottom: 0;
-}
-
-@media (max-width: 768px) {
-  .eag-section--closing {
-    height: auto;
-    min-height: 100dvh;
-  }
 }
 
 /* Scroll container: last child no snap padding */
