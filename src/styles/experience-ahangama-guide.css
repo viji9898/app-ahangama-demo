@@ -208,6 +208,11 @@
   margin-bottom: 10px;
 }
 
+.eag-eyebrow--white {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
 .eag-section--navy .eag-eyebrow {
   color: var(--eag-teal);
 }

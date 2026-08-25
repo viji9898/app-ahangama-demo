@@ -318,7 +318,7 @@ function CoverSection() {
           <span className="eag-guide-badge">The Guide</span>
         </Reveal>
         <Reveal delay={1}>
-          <span className="eag-eyebrow">Discover &mdash; Things nobody tells you</span>
+          <span className="eag-eyebrow eag-eyebrow--white">Discover &mdash; Things nobody tells you</span>
         </Reveal>
         <Reveal delay={2}>
           <h1 className="eag-headline eag-headline--xl eag-headline--light">
