@@ -1147,12 +1147,12 @@ function ClosingCTASection() {
               <span className="eag-headline-line">Insider Tips?</span>
             </h2>
             <p className="eag-body eag-body--light">
-              Follow @NewDirection.lk on Instagram for real-time updates, hidden gems, and exclusive local content.
+              Follow @ahangama.pass on Instagram for real-time updates, hidden gems, and exclusive local content.
             </p>
           </div>
           <div className="eag-closing-cta-wrap">
             <a
-              href="https://instagram.com/NewDirection.lk"
+              href="https://www.instagram.com/ahangama.pass/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
               className="eag-pill eag-pill--closing"
