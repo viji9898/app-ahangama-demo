@@ -318,7 +318,7 @@ function CoverSection() {
           <span className="eag-guide-badge">The Guide</span>
         </Reveal>
         <Reveal delay={1}>
-          <span className="eag-eyebrow eag-eyebrow--white">Discover &mdash; Things nobody tells you</span>
+          <span className="eag-eyebrow eag-eyebrow--white">Discover - Things nobody tells you</span>
         </Reveal>
         <Reveal delay={2}>
           <h1 className="eag-headline eag-headline--xl eag-headline--light">
@@ -781,7 +781,7 @@ function TransportSection() {
           <div className="eag-transport-block">
             <div className="eag-transport-sub" style={{ color: "var(--eag-teal-dark)" }}>Getting Around</div>
             <p className="eag-body">
-              Renting a scooter (around $5 a day) is the ultimate way to explore the coast. If you aren&rsquo;t comfortable riding, local tuk-tuks are everywhere&mdash;just be sure to agree on a price before getting in.
+              Renting a scooter (around $5 a day) is the ultimate way to explore the coast. If you aren&rsquo;t comfortable riding, local tuk-tuks are everywhere-just be sure to agree on a price before getting in.
             </p>
           </div>
         </Reveal>
