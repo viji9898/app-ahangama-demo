@@ -64,6 +64,7 @@
   height: 100vh;
   height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
@@ -825,8 +826,10 @@
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-left: 28px;
   -webkit-overflow-scrolling: touch;
-  padding: 20px 0 40px;
+  overscroll-behavior-x: contain;
+  padding: 32px 0 48px;
   scrollbar-width: none;
 }
 
@@ -2009,4 +2012,203 @@
 .eag-top-btn:hover {
   background: var(--eag-teal-dark);
   box-shadow: 0 6px 20px rgba(0,175,209,0.45);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS — Comprehensive Fixes
+   ========================================================================== */
+
+/* --- Critical: Scroll snap relaxation on mobile --- */
+@media (max-width: 768px) {
+  .eag-scroll-container {
+    scroll-snap-type: y proximity;
+  }
+  .eag-section {
+    min-height: auto;
+    height: auto;
+    min-height: 100dvh;
+  }
+}
+
+/* --- Critical: Closing card padding --- */
+@media (max-width: 480px) {
+  .eag-closing-card {
+    padding: 32px 20px;
+  }
+}
+
+/* --- Critical: Card carousel overflow + touch --- */
+@media (max-width: 768px) {
+  .eag-cards-grid {
+    scroll-snap-type: x proximity;
+  }
+  .eag-cards-grid .eag-card-item {
+    min-width: min(280px, calc(100vw - 56px));
+  }
+}
+
+/* --- Critical: Orb performance on mobile --- */
+@media (max-width: 480px) {
+  .eag-orb--1 { width: 180px; height: 180px; filter: blur(40px); }
+  .eag-orb--2 { width: 120px; height: 120px; filter: blur(40px); }
+  .eag-orb--3 { width: 80px; height: 80px; filter: blur(30px); }
+  .eag-section::after { width: 140px; height: 140px; filter: blur(50px); }
+}
+
+/* --- Critical: Touch target sizes (44px minimum) --- */
+@media (max-width: 768px) {
+  .eag-insta,
+  .eag-map {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+  .eag-insta svg,
+  .eag-map svg {
+    width: 20px;
+    height: 20px;
+  }
+  .eag-lightbox-close {
+    width: 44px;
+    height: 44px;
+  }
+  .eag-dark-toggle {
+    width: 44px;
+    height: 44px;
+  }
+  .eag-pill {
+    padding: 12px 24px;
+  }
+  .eag-toc-panel-item {
+    padding: 10px 12px;
+  }
+}
+
+/* --- High: Headline sizes for small screens --- */
+@media (max-width: 374px) {
+  .eag-headline { font-size: 30px; }
+  .eag-headline--lg { font-size: 34px; }
+  .eag-headline--xl { font-size: 36px; }
+}
+@media (min-width: 375px) and (max-width: 479px) {
+  .eag-headline { font-size: 34px; }
+  .eag-headline--lg { font-size: 40px; }
+  .eag-headline--xl { font-size: 42px; }
+}
+
+/* --- High: TOC panel smaller on mobile --- */
+@media (max-width: 480px) {
+  .eag-toc-panel {
+    min-width: 180px;
+    padding: 16px 18px;
+  }
+}
+
+/* --- Medium: Lightbox mobile fixes --- */
+@media (max-width: 767px) {
+  .eag-lightbox-caption {
+    max-width: 100%;
+  }
+  .eag-lightbox-figure {
+    max-height: 88vh;
+  }
+}
+
+/* --- Medium: Reduced motion preference --- */
+@media (prefers-reduced-motion: reduce) {
+  .eag-scroll-container {
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+  }
+  .eag-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .eag-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .eag-orb--1,
+  .eag-orb--2,
+  .eag-orb--3,
+  .eag-section::after,
+  .eag-cover-bg,
+  .eag-scroll-cue,
+  .eag-closing-card,
+  .eag-closing-illustration,
+  .eag-closing-glow,
+  .eag-headline--light,
+  .eag-pill--closing {
+    animation: none !important;
+  }
+}
+
+/* --- Medium: Hover-only effects guarded for touch --- */
+@media (hover: none) {
+  .eag-card-item:hover {
+    transform: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .eag-card-item:hover::after {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  .eag-card-item:hover .eag-card-img {
+    transform: none;
+  }
+  .eag-card-item:hover .eag-card-img-wrap::after {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  .eag-pill:hover {
+    transform: none;
+  }
+  .eag-pill--closing:hover {
+    transform: none;
+  }
+  .eag-insta:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .eag-map:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* --- Medium: Card carousel scroll hint gradient on mobile --- */
+@media (max-width: 768px) {
+  .eag-section-body {
+    position: relative;
+  }
+  .eag-section-body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6));
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 0 12px 12px 0;
+  }
+  .eag-section--navy .eag-section-body::after {
+    background: linear-gradient(to right, transparent, rgba(0,6,26,0.5));
+  }
+}
+
+/* --- Medium: Content padding tweaks for very small screens --- */
+@media (max-width: 374px) {
+  .eag-content {
+    padding: 24px 16px;
+  }
+  .eag-section-body {
+    margin: 6px -16px 0;
+    padding: 0 16px;
+  }
 }
