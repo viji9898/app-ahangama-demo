@@ -318,7 +318,7 @@ function CoverSection() {
           <span className="eag-guide-badge">The Guide</span>
         </Reveal>
         <Reveal delay={1}>
-          <span className="eag-eyebrow">Discover &mdash; Things nobody tells you</span>
+          <span className="eag-eyebrow eag-eyebrow--white">Discover - Things nobody tells you</span>
         </Reveal>
         <Reveal delay={2}>
           <h1 className="eag-headline eag-headline--xl eag-headline--light">
@@ -611,8 +611,8 @@ function LocatedSection() {
                 style={{ width: "100%", height: "100%", borderRadius: "14px" }}
               >
                 <TileLayer
-                  url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 <MapResizer />
                 <GuideMapFitBounds places={visiblePlaces} />
@@ -650,11 +650,10 @@ function LocatedSection() {
 }
 
 const BEST_STAYS = [
-  { name: "Ko Lake Villa", rating: "4.6", desc: "A private seven-bedroom lakeside villa made for slow days, sunset gatherings and unforgettable stays in Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787639927/Ko_Lake_Villa_2_i7p3nr.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/kolakevilla.ahangama/", googleMaps: "https://maps.app.goo.gl/jRahAEuMfkCtKUrQ7", ownership: "foreign" },
-  { name: "The Mugatiya Ahangama Luxury Heritage Villa", rating: "4.4", desc: "More than a villa - a Love letter to Sri Lanka.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787644291/Mugatiya_2_s0vwgl.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/villamugatiya/?hl=en", googleMaps: "https://maps.app.goo.gl/PFjbvXmuvUMmAtq18", ownership: "foreign" },
-  { name: "Sisters", rating: "4.5", desc: "A warm, family-run cafe serving fresh breakfasts, homemade cakes and great coffee by the road.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787639927/Ko_Lake_Villa_2_i7p3nr.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/kolakevilla.ahangama/", googleMaps: "https://maps.app.goo.gl/jRahAEuMfkCtKUrQ7", ownership: "foreign" },
+  { name: "Ko Lake Villa", rating: "4.4", desc: "A private seven-bedroom lakeside villa made for slow days, sunset gatherings and unforgettable stays in Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787639927/Ko_Lake_Villa_2_i7p3nr.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/kolakevilla.ahangama/", googleMaps: "https://maps.app.goo.gl/jRahAEuMfkCtKUrQ7", ownership: "foreign" },
+  { name: "The Mugatiya Ahangama Luxury Heritage Villa", rating: "4.4", desc: "A private garden retreat in Ahangama, blending the intimacy of a home with the beauty of tropical island living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787640178/Mugatiya_shycdl.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/villamugatiya/?hl=en", googleMaps: "https://maps.app.goo.gl/PFjbvXmuvUMmAtq18", ownership: "foreign" },
+  { name: "Sisters Cafe", rating: "4.6", desc: "A warm, family-run cafe serving fresh breakfasts, homemade cakes and great coffee by the road.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/sisters_cafe_pumrbp.png", lat: 5.9779099, lng: 80.3513977, instagram: "https://www.instagram.com/sisterssrilanka/?hl=en", googleMaps: "https://maps.app.goo.gl/WiCocjs1b8VcNpvu8", ownership: "local" }, 
   { name: "Animals", rating: "4.8", desc: " A sleek pink boutique oasis blending premium co-working and laid back surf culture for adult travelers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp", lat: 5.979034944715787, lng: 80.3542700558208, instagram: "https://www.instagram.com/animalsahangama/", googleMaps: "https://maps.app.goo.gl/YwNuhDw4sC6MiBpw9", ownership: "foreign" },
-  { name: "Mana Villa", rating: "4.8", desc: "A peaceful nature retreat with sauna, ice baths and pools.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783566/manavilla_ctqgqj.webp", lat: 5.9816289, lng: 80.3492640, instagram: "https://www.instagram.com/mana.ahangama/", googleMaps: "https://maps.app.goo.gl/7XQMu7Dg5VCTvF1t8", ownership: "foreign" },
   { name: "Sola Hotel", rating: "4.4", desc: "A nature-led escape in the heart of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1783921928/Sola_Hotel_t86nt4.webp", lat: 5.9878623, lng: 80.3740310, instagram: "", googleMaps: "https://maps.app.goo.gl/AD8Q2KNiFUPzv7ZN7", ownership: "foreign" },
   { name: "Lighthouse", rating: "4.4", desc: "A beautiful beachfront escape with a rooftop spot to enjoy sunsets, good food, and great coastal vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp", lat: 5.965762, lng: 80.377438, instagram: "https://www.instagram.com/lighthouse_ahangama/", googleMaps: "https://maps.app.goo.gl/qi4E2nWnjq3M9pQP9", ownership: "foreign" },
   { name: "Trebartha East – The Roundhouse", rating: "5.0", desc: "An architectural retreat amidst a cinnamon plantation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Threbatha_East_01_yb2dwm.webp", lat: 5.997323316318728, lng: 80.35726862935918, instagram: "https://www.instagram.com/trebarthaeast/?hl=en", googleMaps: "https://maps.app.goo.gl/QMpJ6AvyxnnJv2jy7", ownership: "foreign" },
@@ -753,7 +752,7 @@ function HowLongSection() {
           </p>
         </Reveal>
         <Reveal delay={2}>
-          <div className="eag-season-banner" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784784340/color_graded_qfwaik.webp)", backgroundPosition: "bottom" }} />
+          <div className="eag-season-banner" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/v1787647989/howlongpeoplestay_1_sqg1i8.webp)", backgroundPosition: "center center" }} />
         </Reveal>
       </div>
     </section>
@@ -782,7 +781,7 @@ function TransportSection() {
           <div className="eag-transport-block">
             <div className="eag-transport-sub" style={{ color: "var(--eag-teal-dark)" }}>Getting Around</div>
             <p className="eag-body">
-              Renting a scooter (around $5 a day) is the ultimate way to explore the coast. If you aren&rsquo;t comfortable riding, local tuk-tuks are everywhere&mdash;just be sure to agree on a price before getting in.
+              Renting a scooter (around $5 a day) is the ultimate way to explore the coast. If you aren&rsquo;t comfortable riding, local tuk-tuks are everywhere-just be sure to agree on a price before getting in.
             </p>
           </div>
         </Reveal>
@@ -858,7 +857,6 @@ const EATS = [
   { name: "Citra", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787500275/main_pic_g5ftha.webp", rating: "4.7", desc: "A Culinary Experience Nestled Between The Palm Trees And The Ocean.",lat: 5.9730175, lng: 80.4349573, instagram: "https://www.instagram.com/citrasrilanka", googleMaps: "https://maps.app.goo.gl/1hoMZCzCh5x8MdFK8?g_st=ic", ownership: "local" },
   { name: "Kai Rooftop", rating: "4.7", desc: "Rooftop dining, great cocktails and beautiful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp", lat: 5.9723502, lng: 80.3635430, instagram: "https://www.instagram.com/kai_ahangama/", googleMaps: "https://maps.app.goo.gl/eRRmfHJ7uq3ry5VZ7", ownership: "foreign" },
   { name: "Mermaid’s Kitchen", rating: "4.6", desc: "Fresh, flavourful food served in a relaxed tropical setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp", lat: 5.9702466, lng: 80.3672881, instagram: "https://www.instagram.com/mermaids_kitchen_ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/e8BqTHRCjGfq9CDE7", ownership: "local" },
-  { name: "Maria Bonita", rating: "4.8", desc: "Colourful breakfasts and excellent coffee.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786341115/Maria_Bonita_02_my5zby.webp", lat: 5.9743119, lng: 80.3583762, instagram: "https://www.instagram.com/mariabonitasrilanka/", googleMaps: "https://maps.app.goo.gl/gNdtHFBVveTNaZCW6", ownership: "local" },
   { name: "SAMA Restaurant", rating: "4.9", desc: "Refined dining featuring fresh, locally sourced ingredients.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Sama_image_uxmbzj.webp", lat: 5.97195657116178, lng: 80.36734476798406, instagram: "https://www.instagram.com/sama.ahangama/", googleMaps: "https://maps.app.goo.gl/2mRapwFmfHu3B6C46", ownership: "foreign" },
   { name: "Pickled Pelican", rating: "4.7", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp", lat: 5.973088216727786, lng: 80.36383532958487, instagram: "https://www.instagram.com/pickledpelican/", googleMaps: "https://maps.app.goo.gl/i5eciTxYdUxBAymt7", ownership: "foreign" },
 ];
@@ -923,7 +921,6 @@ const EXPERIENCES = [
   { name: "Aggala", rating: "4.6", desc: "A charming café where you can enjoy traditional Sri Lankan sweets, coffee, and local flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427733/Aggala_2_djqa9c.webp", lat: 5.972905711733899, lng: 80.36298551784026, instagram: "https://www.instagram.com/aggala_ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/8YGEx37aMgPfmqtTA", ownership: "local" },
   { name: "Qamar by Zan", rating: "4.7", desc: "Design and create your own jewellery in a hands-on workshop while exploring beautifully curated fashion pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786522279/Qmar_by_zan_niowzn.webp", lat: 5.9817691, lng: 80.3494556, instagram: "https://www.instagram.com/qamar.by.zan/?hl=en", googleMaps: "https://maps.app.goo.gl/mVsQFDsEoLeTXjPo8", ownership: "foreign" },
   { name: "Olive Yu", rating: "4.8", desc: "Craft your own handmade jewellery in a creative workshop overlooking the coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786535255/Olive_yu_new_fkqs75.webp", lat: 5.9749796, lng: 80.3562258, instagram: "https://www.instagram.com/oliveyujewellery/?hl=en", googleMaps: "https://maps.app.goo.gl/KbnmDRKDd2azgdsg9", ownership: "foreign" },
-  { name: "Frostys", rating: "4.9", desc: "Refresh your body and mind with invigorating ice baths, sauna sessions, and guided recovery experiences.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342539/Frosty_s_01_w92lyq.webp", lat: 5.979636614939634, lng: 80.35439605767189, instagram: "https://www.instagram.com/frostys.kabalana/", googleMaps: "https://maps.app.goo.gl/1QkohCniuZr8es88A", ownership: "local" },
   { name: "Pachcha Sanni", rating: "4.5", desc: "Get inked at one of Ahangama's most creative tattoo studios, specialising in unique custom designs and artistic expression.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp", lat: 5.982642872487125, lng: 80.36866349380335, instagram: "https://www.instagram.com/pachchasanni/", googleMaps: "https://maps.app.goo.gl/wc392c7za4CWkUe37", ownership: "foreign" },
 ];
 
@@ -1004,7 +1001,6 @@ const BEST_RETAIL_STORES = [
   { name: "Mudra Herbal Spicy Tea Shop", rating: "4.8", desc:"Handcrafted teas, local spices and Sri Lankan flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346942/Mudra_Herbal_Spicy_Tea_Shop_bzqrm4.webp", lat: 5.973413421402998, lng: 80.3641129182273, instagram: "https://www.instagram.com/gunasekaranalaka033/?hl=en", googleMaps: "https://maps.app.goo.gl/u31u2MqweFkC6dCB6", ownership: "local" },
   { name: "Yiva Essentials", rating: "4.6", desc:"A lovely place to discover fashion, lifestyle, and unique finds in Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp", lat: 5.9709753, lng: 80.3664319, instagram: "https://www.instagram.com/yivaessentials/", googleMaps: "https://maps.app.goo.gl/KFY41m1dvgeqtdzg6", ownership: "foreign" },
   { name: "Prickly Pear by Cactus", rating: "4.5", desc:" A colorful beachfront concept boutique serving up trendy resort style and sun-soaked cafe vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp", lat: 5.9719583, lng: 80.3644725, instagram: "https://www.instagram.com/pricklypear.ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/LohJpBb5rVRDeHXi8", ownership: "foreign" },
-  { name: "Mana Boutique", rating: "4.7", desc:"A beautifully curated boutique showcasing stylish fashion, accessories, and coastal-inspired pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426472/mana_boutique_gbkpcm.webp", lat: 5.9816289, lng: 80.3492640, instagram: "https://www.instagram.com/mana.ahangama/", googleMaps: "", ownership: "foreign" },
 ];
 
 function cardGrid(items, onImageClick) {
@@ -1091,19 +1087,17 @@ function BestRetailStoresSection({ onImageClick }) {
 }
 
 const BEST_CAFES = [
-  { name: "Kaffi", desc: "Brews & Bakes To Save The Day.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787842830/MKN05086_ounxy7.webp", lat: 5.9689078, lng: 80.3706031, instagram: "https://www.instagram.com/kaffi.ahangama/", googleMaps: "https://maps.app.goo.gl/XY9S85T9woSk1bDv7", ownership: "local" },
+  { name: "Kaffi Ahangama", rating: "4.7", desc: "A charming specialty coffee spot known for its perfectly brewed cups and cosy island vibes.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/Kaffi_oyahe8.jpg", lat: 5.9689078, lng: 80.3706031, instagram: "https://www.instagram.com/kaffi.ahangama/", googleMaps: "https://maps.app.goo.gl/XY9S85T9woSk1bDv7", ownership: "local" },
   { name: "Aliikai Cafe", rating: "4.8", desc: "A cosy beachside cafe serving wholesome bowls, artisan coffee and tropical vibes in Ahangama.", tagline: "Local Woman-Owned", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787554069/Aliikai_2_abmchk.webp", instagram: "https://www.instagram.com/aliikai_ahangma_arugambay/?hl=en", googleMaps: "https://maps.app.goo.gl/83eH8u3i7fyih8Ux6", ownership: "local" },
-  { name: "Sisters Cafe", desc: "A warm, family-run cafe serving fresh breakfasts, homemade cakes and great coffee by the road.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/sisters_cafe_pumrbp.png", lat: 5.9779099, lng: 80.3513977, instagram: "https://www.instagram.com/kolakevilla.ahangama/", googleMaps: "https://maps.app.goo.gl/jRahAEuMfkCtKUrQ7", ownership: "local" },
+  { name: "Sisters Cafe", rating: "4.6", desc: "A warm, family-run cafe serving fresh breakfasts, homemade cakes and great coffee by the road.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/sisters_cafe_pumrbp.png", lat: 5.9779099, lng: 80.3513977, instagram: "https://www.instagram.com/sisterssrilanka/?hl=en", googleMaps: "https://maps.app.goo.gl/WiCocjs1b8VcNpvu8", ownership: "local" },
   { name: "Mint Ceylon", rating: "4.7", desc: "Consciously crafted slow fashion and unique lifestyle pieces, mindfully handmade by local artisans in the heart of Sri Lanka.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp", instagram: "https://www.instagram.com/mint.ceylon/?hl=en", googleMaps: "https://maps.app.goo.gl/DgphUYpCcKj7AJsf7", ownership: "local" },
-  { name: "Cafe Ceylon", desc: "A rustic cafe blending Ceylon tea traditions with modern café culture in a relaxed setting.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Ceylon_wku3on.png", lat: 5.9782004, lng: 80.348526, instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Petals", desc: "A floral-themed cafe offering artisan lattes, fresh pastries and a peaceful garden atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287257/Petals_vb8d5g.jpg", lat: 5.9781800860434835, lng: 80.35357067301068, instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Black Honey", desc: "A hidden gem serving rich single-origin brews, honey-infused treats and laid-back coastal charm.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787500795/Black_Honey_new_gi0q8a.webp", lat: 5.978427591667606, lng: 80.34855730859866, instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Veda Cafe", desc: "A wellness-inspired cafe serving wholesome bowls, herbal drinks and nourishing plant-based fare.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Veda_Cafe_eb12vq.png", lat: 5.97829759746546, lng: 80.34999516626638, instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Living Room", desc: "A trendy co-working cafe with great coffee, healthy meals and a creative social atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787593886/livingroom_uh4nno_copy_sa1icq.webp", lat: 5.972781176617157, lng: 80.36349925767135, instagram: "", googleMaps: "", ownership: "foreign" },
-  { name: "Cafe Wave", desc: "A breezy roadside cafe with fresh juices, light bites and a chilled surf-town vibe.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/cafe_wave_nak6fe.jpg", lat: 5.98254317290508, lng: 80.33695907790974, instagram: "", googleMaps: "", ownership: "foreign" },
-  { name: "Abrazo", desc: "A Spanish-inspired cafe serving tapas-style bites, specialty coffee and warm coastal hospitality.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/Abrazo_h3loxm.jpg", lat: 5.96829229558289, lng: 80.37337977301502, instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Crave", desc: "A popular local cafe known for its flavour-packed brunches, fresh smoothies and vibrant atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/crave_fjckup.jpg", lat: 5.9726530766658374, lng: 80.3631771134925, instagram: "", googleMaps: "", ownership: "foreign" },
-  { name: "Cafe Samaya", desc: "A serene hillside cafe with panoramic ocean views, traditional Sri Lankan flavours and mindful hospitality.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Samaya_ufdsjh.png", lat: 5.9730175, lng: 80.4349573, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Cafe Ceylon", rating: "4.5", desc: "A rustic cafe blending Ceylon tea traditions with modern cafe culture in a relaxed setting.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Ceylon_wku3on.png", lat: 5.9782004, lng: 80.348526, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Petals", rating: "4.6", desc: "A floral-themed cafe offering artisan lattes, fresh pastries and a peaceful garden atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287257/Petals_vb8d5g.jpg", lat: 5.9781800860434835, lng: 80.35357067301068, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Veda Cafe", rating: "4.5", desc: "A wellness-inspired cafe serving wholesome bowls, herbal drinks and nourishing plant-based fare.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Veda_Cafe_eb12vq.png", lat: 5.97829759746546, lng: 80.34999516626638, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Cafe Wave", rating: "4.4", desc: "A breezy roadside cafe with fresh juices, light bites and a chilled surf-town vibe.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/cafe_wave_nak6fe.jpg", lat: 5.98254317290508, lng: 80.33695907790974, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Abrazo", rating: "4.5", desc: "A Spanish-inspired cafe serving tapas-style bites, specialty coffee and warm coastal hospitality.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/Abrazo_h3loxm.jpg", lat: 5.96829229558289, lng: 80.37337977301502, instagram: "", googleMaps: "", ownership: "local" },
+  { name: "Crave", rating: "4.6", desc: "A popular local cafe known for its flavour-packed brunches, fresh smoothies and vibrant atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/crave_fjckup.jpg", lat: 5.9726530766658374, lng: 80.3631771134925, instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "Cafe Samaya", rating: "4.5", desc: "A serene hillside cafe with panoramic ocean views, traditional Sri Lankan flavours and mindful hospitality.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Samaya_ufdsjh.png", lat: 5.9730175, lng: 80.4349573, instagram: "", googleMaps: "", ownership: "local" },
 ];
 
 function BestCafesSection({ onImageClick }) {
@@ -1118,10 +1112,10 @@ function BestCafesSection({ onImageClick }) {
 }
 
 const TRANSPORT_VENUES = [
-  { name: "AK Bike Rentals", rating: "5.0", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787570539/AK_bike_rental_1_jajy1y.webp", instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Scooty Rental & Taxi Service", rating: "5.0", desc: "Quick scooter access and local transport support while staying in the area.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/scooty_rentals_and_bike_services_gtzqlc.webp", instagram: "", googleMaps: "", ownership: "local" },
-  { name: "Happy Tours", rating: "5.0", desc: "A practical transport partner for local trips and travel support around the south coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287234/Happy_Tours_bkh98m.jpg", instagram: "", googleMaps: "", ownership: "foreign" },
-  { name: "Nova Rent a Car", rating: "4.9", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Nova_Rent_a_Car_wuaos2.png", instagram: "", googleMaps: "", ownership: "foreign" },
+  { name: "AK Bike Rentals", rating: "5.0", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787570539/AK_bike_rental_1_jajy1y.webp", instagram: "", googleMaps: "https://maps.app.goo.gl/4i3vmix5xRGhJYzh9", ownership: "local" },
+  { name: "Scooty Rental & Taxi Service", rating: "5.0", desc: "Quick scooter access and local transport support while staying in the area.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/scooty_rentals_and_bike_services_gtzqlc.webp", instagram: "", googleMaps: "https://maps.app.goo.gl/hTVAV4kSbLJSvLeQ9", ownership: "local" },
+  { name: "Happy Tours", rating: "5.0", desc: "A practical transport partner for local trips and travel support around the south coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287234/Happy_Tours_bkh98m.jpg", instagram: "https://www.instagram.com/happy_tours_u/?hl=en", googleMaps: "https://maps.app.goo.gl/gVEjdx1WQRgYF52s7", ownership: "foreign" },
+  { name: "Nova Rent a Car", rating: "4.9", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Nova_Rent_a_Car_wuaos2.png", instagram: "", googleMaps: "https://maps.app.goo.gl/ew4MYxtAefLNsLMR8", ownership: "foreign" },
 ];
 
 function TransportGuideSection({ onImageClick }) {
@@ -1138,28 +1132,49 @@ function TransportGuideSection({ onImageClick }) {
 
 function ClosingCTASection() {
   return (
-    <section id="closing-cta" className="eag-section eag-section--navy">
+    <section id="closing-cta" className="eag-section eag-section--navy eag-section--closing">
+      <div className="eag-orbs" aria-hidden="true">
+        <span className="eag-orb eag-orb--1" />
+        <span className="eag-orb eag-orb--2" />
+        <span className="eag-orb eag-orb--3" />
+      </div>
       <div className="eag-content">
         <StaggerReveal className="eag-closing-group">
-          <ScooterIllustration />
-          <div className="eag-closing-body">
-            <h2 className="eag-headline eag-headline--light">
-              <span className="eag-headline-line">Want More</span>
-              <span className="eag-headline-line">Insider Tips?</span>
-            </h2>
-            <p className="eag-body eag-body--light">
-              Follow @ahangama.pass on Instagram for real-time updates, hidden gems, and exclusive local content.
-            </p>
-          </div>
-          <div className="eag-closing-cta-wrap">
-            <a
-              href="https://www.instagram.com/ahangama.pass/?hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="eag-pill eag-pill--closing"
-            >
-              Follow Us
-            </a>
+          <div className="eag-closing-card">
+            <div className="eag-closing-glow" />
+            <ScooterIllustration />
+            <div className="eag-closing-body">
+              <h2 className="eag-headline eag-headline--light">
+                <span className="eag-headline-line">Want More</span>
+                <span className="eag-headline-line">Insider Tips?</span>
+              </h2>
+              <p className="eag-body eag-body--light">
+                Follow <strong>@ahangama.pass</strong> on Instagram for real-time updates, hidden gems, and exclusive local content.
+              </p>
+            </div>
+            <div className="eag-closing-cta-wrap">
+              <a
+                href="https://instagram.com/ahangama.pass"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="eag-pill eag-pill--closing"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{marginRight:8}}>
+                  <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8"/>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8"/>
+                  <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+                </svg>
+                Follow Us
+              </a>
+              <a
+                href="https://www.instagram.com/ahangama.pass"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="eag-closing-handle"
+              >
+                @ahangama.pass
+              </a>
+            </div>
           </div>
         </StaggerReveal>
       </div>
