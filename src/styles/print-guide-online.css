@@ -31,7 +31,7 @@
 .pgo-closing a { display: inline-flex; align-items: center; gap: 14px; color: inherit; font-size: 11px; font-weight: 800; text-decoration: none; text-transform: uppercase; }
 .pgo-heroEdition { position: absolute; z-index: 1; right: 24px; bottom: 24px; writing-mode: vertical-rl; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 
-.pgo-chapterNav { position: sticky; z-index: 20; top: 68px; width: 100vw; margin-left: calc(50% - 50vw); overflow-x: auto; border-bottom: 1px solid rgba(28, 32, 28, .12); background: rgba(246, 245, 240, .94); backdrop-filter: blur(18px); scrollbar-width: none; }
+.pgo-chapterNav { position: sticky; z-index: 20; top: 0; width: 100vw; margin-left: calc(50% - 50vw); overflow-x: auto; border-bottom: 1px solid rgba(28, 32, 28, .12); background: rgba(246, 245, 240, .94); backdrop-filter: blur(18px); scrollbar-width: none; }
 .pgo-chapterNav::-webkit-scrollbar { display: none; }
 .pgo-chapterNav > div { display: flex; width: max-content; min-width: 100%; justify-content: center; }
 .pgo-chapterNav a { padding: 17px 19px 15px; color: var(--pgo-ink); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; white-space: nowrap; }

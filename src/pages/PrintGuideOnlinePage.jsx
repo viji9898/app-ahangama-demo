@@ -71,7 +71,7 @@ export default function PrintGuideOnlinePage() {
   const selectedInstagramUrl = instagramUrl(selectedVenue?.instagram);
 
   return (
-    <SiteLayout navOverlayHero>
+    <SiteLayout navOverlayHero showNav={false}>
       <Seo
         title="Ahangama Guide 2026/27 | Read Online"
         description="Read the Ahangama Guide online: a mobile-first local guide to the best places to stay, eat, surf, shop and explore on Sri Lanka's south coast."
@@ -157,7 +157,7 @@ export default function PrintGuideOnlinePage() {
         </section>
       </main>
 
-      <Drawer className="pgo-venueDrawer" rootClassName="pgo-venueDrawerRoot" open={Boolean(selectedVenue)} onClose={() => setSelectedVenue(null)} width={560} title={null} destroyOnHidden>
+      <Drawer className="pgo-venueDrawer" rootClassName="pgo-venueDrawerRoot" open={Boolean(selectedVenue)} onClose={() => setSelectedVenue(null)} width="90vw" title={null} destroyOnHidden>
         {selectedVenue ? (
           <article className="pgo-venueDetail">
             <div className="pgo-detailHero"><img src={selectedVenue.image || GUIDE_IMAGE} alt={selectedVenue.name} /><span>{selectedVenue.category}</span></div>
