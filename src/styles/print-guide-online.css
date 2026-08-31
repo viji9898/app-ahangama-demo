@@ -85,9 +85,23 @@
 .pgo-neighbourhoodGrid small { display: block; margin-top: 18px; color: #7b3a30; font-size: 9px; font-weight: 800; text-transform: uppercase; }
 .pgo-mapFeature { width: 100%; padding-inline: max(24px, calc((100vw - 1180px) / 2)); background: #253f35; color: #fff; }
 .pgo-mapFeature .pgo-openingTitle > span, .pgo-mapFeature .pgo-openingTitle p { color: rgba(255,255,255,.65); }
-.pgo-mapImage { position: relative; display: block; overflow: hidden; background: #d3cbb9; }
-.pgo-mapImage img { display: block; width: 100%; max-height: 720px; object-fit: cover; }
-.pgo-mapImage span { position: absolute; right: 20px; bottom: 20px; padding: 14px 18px; background: #f2eee4; color: #1c201c; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+.pgo-guideMapShell { display: grid; gap: 16px; }
+.pgo-guideMapFilters { display: flex; flex-wrap: wrap; gap: 8px; }
+.pgo-guideMapFilters button { min-height: 36px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.24); border-radius: 18px; background: transparent; color: rgba(255,255,255,.78); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.pgo-guideMapFilters button:hover, .pgo-guideMapFilters button:focus-visible, .pgo-guideMapFilters button.is-active { border-color: #f2eee4; background: #f2eee4; color: #253f35; }
+.pgo-guideMap { width: 100%; height: min(68svh, 680px); min-height: 440px; overflow: hidden; background: #d3cbb9; color: #1c201c; }
+.pgo-guideMap .leaflet-pane { z-index: 1; }
+.pgo-guideMap .leaflet-control { z-index: 2; }
+.pgo-guideMap .leaflet-popup-pane { z-index: 3; }
+.pgo-mapMarker { display: flex; width: 28px; height: 28px; align-items: center; justify-content: center; border: 2px solid #fff; border-radius: 50%; background: var(--pgo-marker); box-shadow: 0 2px 10px rgba(0,0,0,.3); color: #fff; }
+.pgo-mapMarker span { display: flex; width: 15px; height: 15px; }
+.pgo-mapMarker svg { width: 100%; height: 100%; }
+.pgo-guideMapPopup { display: grid; min-width: 190px; gap: 7px; color: #1c201c; }
+.pgo-guideMapPopup small { color: #9d4435; font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.pgo-guideMapPopup strong { font: 500 20px/1.05 "Iowan Old Style", Georgia, serif; }
+.pgo-guideMapPopup p { margin: 0; color: #646a65; font-size: 11px; line-height: 1.45; }
+.pgo-guideMapPopup button { justify-self: start; padding: 7px 0 2px; border: 0; border-bottom: 1px solid #9d4435; background: transparent; color: #7b3028; font-size: 9px; font-weight: 800; text-transform: uppercase; cursor: pointer; }
+.pgo-guideMapMeta { margin: 0; color: rgba(255,255,255,.65); font-size: 10px; font-weight: 700; text-transform: uppercase; }
 .pgo-itineraries { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
 .pgo-itinerary + .pgo-itinerary { border-left: 1px solid rgba(28,32,28,.18); padding-left: 80px; }
 .pgo-itinerary .pgo-openingTitle { grid-template-columns: 45px 1fr; }
@@ -198,7 +212,7 @@
   .pgo-guideKeyGrid h4 { margin: 28px 0 8px; }
   .pgo-neighbourhoodGrid { grid-template-columns: 1fr; gap: 38px; }
   .pgo-mapFeature { width: 100%; padding-inline: 16px; }
-  .pgo-mapImage img { min-height: 420px; object-fit: cover; }
+  .pgo-guideMap { height: 62svh; min-height: 420px; }
   .pgo-itineraries { grid-template-columns: 1fr; gap: 72px; }
   .pgo-itinerary + .pgo-itinerary { padding-left: 0; border-left: 0; }
   .pgo-townStory > div:last-child { grid-template-columns: 1fr; gap: 34px; }

@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import {
   ArrowDownOutlined,
   ArrowRightOutlined,
@@ -20,8 +23,6 @@ import {
   GUIDE_EDIT_PLACES,
   GUIDE_ITINERARIES,
   GUIDE_KEY_ITEMS,
-  GUIDE_MAP_IMAGE,
-  GUIDE_MAP_URL,
   GUIDE_TOWN_STORY_CHAPTERS,
 } from "../features/print-guide/openingGuideData";
 import SiteLayout from "../components/layout/SiteLayout";
@@ -31,6 +32,13 @@ export const PRINT_GUIDE_ONLINE_PATH = "/print-guide-online";
 
 const GUIDE_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp";
+const GUIDE_MAP_CENTER = [5.973, 80.3628];
+const GUIDE_MAP_BOUNDS = {
+  south: 5.93,
+  west: 80.3,
+  north: 6.04,
+  east: 80.42,
+};
 
 const SECTION_ORDER = [
   "stay",
@@ -109,6 +117,195 @@ function mapUrl(venue) {
     return `https://www.google.com/maps/search/?api=1&query=${venue.lat},${venue.lng}`;
   }
   return null;
+}
+
+function MapResizer() {
+  const map = useMap();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => map.invalidateSize(), 400);
+    return () => clearTimeout(timeout);
+  }, [map]);
+
+  return null;
+}
+
+function GuideMapFitBounds({ places }) {
+  const map = useMap();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      map.invalidateSize();
+
+      if (!places.length) {
+        map.setView(GUIDE_MAP_CENTER, 12);
+      } else if (places.length === 1) {
+        map.setView([places[0].lat, places[0].lng], 15);
+      } else {
+        map.fitBounds(
+          places.map((place) => [place.lat, place.lng]),
+          { padding: [28, 28] },
+        );
+      }
+    }, 180);
+
+    return () => clearTimeout(timeout);
+  }, [map, places]);
+
+  return null;
+}
+
+function getGuideMapIconSvg(categoryKey) {
+  const common =
+    'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+
+  switch (categoryKey) {
+    case "stay":
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><path ${common} d="M4 11.5 12 5l8 6.5"/><path ${common} d="M6.5 10.5V19h11v-8.5"/><path ${common} d="M10 19v-4.5h4V19"/></svg>`;
+    case "eat-drink":
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><path ${common} d="M7 4v7M10 4v7M7 7h3M8.5 11v9M15 4v16M15 4c2 1.2 3 3.1 3 5.5S17 13.8 15 15"/></svg>`;
+    case "surf":
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><path ${common} d="M3 15c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 5.8-.7M4 10.5c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 5.5-.7"/></svg>`;
+    case "experiences":
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><circle ${common} cx="12" cy="12" r="7.5"/><path ${common} d="m12 8 2.2 4.3 4.3.7-3.4 3.1.8 4.4-3.9-2-3.9 2 .8-4.4L5.5 13l4.3-.7L12 8Z"/></svg>`;
+    case "wellness":
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><path ${common} d="M12 20c4.8-3.2 7-6 7-9.3 0-2.4-1.8-4.2-4.1-4.2-1.4 0-2.4.6-2.9 1.6-.5-1-1.5-1.6-2.9-1.6C6.8 6.5 5 8.3 5 10.7 5 14 7.2 16.8 12 20Z"/></svg>`;
+    case "shopping":
+    case "born":
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><path ${common} d="M7 9V7.5A5 5 0 0 1 12 3a5 5 0 0 1 5 4.5V9"/><path ${common} d="M6 9h12l-1 11H7L6 9Z"/></svg>`;
+    default:
+      return `<svg viewBox="0 0 24 24" aria-hidden="true"><circle ${common} cx="12" cy="12" r="4.5"/></svg>`;
+  }
+}
+
+function createGuideMapIcon(categoryKey, color) {
+  const svg = getGuideMapIconSvg(categoryKey);
+
+  return L.divIcon({
+    className: "",
+    html: `<div class="pgo-mapMarker" style="--pgo-marker:${color}"><span>${svg}</span></div>`,
+    iconSize: [28, 28],
+    iconAnchor: [14, 14],
+  });
+}
+
+function EssentialGuideMap({ onSelectVenue }) {
+  const [activeCategory, setActiveCategory] = useState("all");
+  const categories = useMemo(
+    () =>
+      ONLINE_SECTIONS.map((section) => ({
+        key: section.key,
+        label: section.label,
+        color: section.color,
+        venues: [
+          ...new Map(
+            section.venueGroups
+              .flatMap((group) => group.venues)
+              .map((venue) => [venue.slug, venue]),
+          ).values(),
+        ],
+      })).filter((category) => category.venues.length),
+    [],
+  );
+  const iconMap = useMemo(
+    () =>
+      Object.fromEntries(
+        categories.map((category) => [
+          category.key,
+          createGuideMapIcon(category.key, category.color),
+        ]),
+      ),
+    [categories],
+  );
+  const allPlaces = useMemo(
+    () =>
+      categories.flatMap((category) =>
+        category.venues.map((venue) => ({
+          ...venue,
+          categoryKey: category.key,
+          categoryLabel: category.label,
+        })),
+      ),
+    [categories],
+  );
+  const categoryPlaces =
+    activeCategory === "all"
+      ? allPlaces
+      : allPlaces.filter((place) => place.categoryKey === activeCategory);
+  const visiblePlaces = categoryPlaces.filter(
+    (place) =>
+      typeof place.lat === "number" &&
+      typeof place.lng === "number" &&
+      place.lat >= GUIDE_MAP_BOUNDS.south &&
+      place.lat <= GUIDE_MAP_BOUNDS.north &&
+      place.lng >= GUIDE_MAP_BOUNDS.west &&
+      place.lng <= GUIDE_MAP_BOUNDS.east,
+  );
+
+  return (
+    <div className="pgo-guideMapShell">
+      <div className="pgo-guideMapFilters" aria-label="Filter map places">
+        <button
+          type="button"
+          className={activeCategory === "all" ? "is-active" : undefined}
+          onClick={() => setActiveCategory("all")}
+        >
+          All
+        </button>
+        {categories.map((category) => (
+          <button
+            type="button"
+            className={
+              activeCategory === category.key ? "is-active" : undefined
+            }
+            key={category.key}
+            onClick={() => setActiveCategory(category.key)}
+          >
+            {category.label}
+          </button>
+        ))}
+      </div>
+      <div className="pgo-guideMap">
+        <MapContainer
+          center={GUIDE_MAP_CENTER}
+          zoom={12}
+          scrollWheelZoom={false}
+          attributionControl={false}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <MapResizer />
+          <GuideMapFitBounds places={visiblePlaces} />
+          {visiblePlaces.map((place) => (
+            <Marker
+              key={`${place.categoryKey}-${place.slug}`}
+              position={[place.lat, place.lng]}
+              icon={iconMap[place.categoryKey]}
+            >
+              <Popup>
+                <div className="pgo-guideMapPopup">
+                  <small>{place.categoryLabel}</small>
+                  <strong>{place.name}</strong>
+                  {place.excerpt || place.description ? (
+                    <p>{place.excerpt || place.description}</p>
+                  ) : null}
+                  <button type="button" onClick={() => onSelectVenue(place)}>
+                    View details
+                  </button>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      </div>
+      <p className="pgo-guideMapMeta">
+        {visiblePlaces.length} mapped places shown
+      </p>
+    </div>
+  );
 }
 
 function ContentsRibbon() {
@@ -319,20 +516,7 @@ export default function PrintGuideOnlinePage() {
               <h3>{OPENING_PAGES.get(6)?.content.headline}</h3>
               <p>{OPENING_PAGES.get(6)?.content.subheadline}</p>
             </div>
-            <a
-              href={GUIDE_MAP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="pgo-mapImage"
-            >
-              <img
-                src={GUIDE_MAP_IMAGE}
-                alt="Illustrated map of the Ahangama coastal corridor from Koggala to Midigama"
-              />
-              <span>
-                <EnvironmentOutlined /> Open the live map
-              </span>
-            </a>
+            <EssentialGuideMap onSelectVenue={setSelectedVenue} />
           </div>
 
           <div className="pgo-openingBlock pgo-itineraries">
