@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   ArrowDownOutlined,
   ArrowRightOutlined,
+  CloseOutlined,
   EnvironmentOutlined,
   InstagramOutlined,
   RightOutlined,
@@ -153,6 +154,14 @@ function ContentsRibbon() {
         Contents
       </button>
       <nav className="pgo-tocPanel" id="pgo-contents-panel">
+        <button
+          type="button"
+          className="pgo-tocClose"
+          aria-label="Close guide contents"
+          onClick={() => setExpanded(false)}
+        >
+          <CloseOutlined />
+        </button>
         <span>Jump to section</span>
         {items.map((item) => (
           <a
