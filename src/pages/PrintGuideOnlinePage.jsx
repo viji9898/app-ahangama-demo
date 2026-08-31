@@ -114,14 +114,22 @@ function mapUrl(venue) {
 function ContentsRibbon() {
   const [expanded, setExpanded] = useState(false);
   const items = [
-    { id: "guide-cover", label: "Cover" },
-    { id: "guide-intro", label: "Welcome" },
-    { id: "guide-start", label: "Start here" },
-    ...ONLINE_SECTIONS.map((section) => ({
-      id: `guide-${section.key}`,
-      label: section.label,
-    })),
-    { id: "guide-closing", label: "Closing" },
+    { id: "guide-cover", label: "Cover", number: 1 },
+    { id: "guide-intro", label: "Welcome", number: 2 },
+    { id: "guide-start", label: "Start here", number: 3 },
+    ...ONLINE_SECTIONS.flatMap((section, sectionIndex) => [
+      {
+        id: `guide-${section.key}`,
+        label: section.label,
+        number: sectionIndex + 4,
+      },
+      ...section.venueGroups.map((group) => ({
+        id: `guide-${section.key}-${group.key}`,
+        label: group.headline,
+        subsection: true,
+      })),
+    ]),
+    { id: "guide-closing", label: "Closing", number: 12 },
   ];
 
   return (
@@ -146,13 +154,16 @@ function ContentsRibbon() {
       </button>
       <nav className="pgo-tocPanel" id="pgo-contents-panel">
         <span>Jump to section</span>
-        {items.map((item, index) => (
+        {items.map((item) => (
           <a
             href={`#${item.id}`}
             key={item.id}
+            className={item.subsection ? "is-subsection" : undefined}
             onClick={() => setExpanded(false)}
           >
-            <small>{String(index + 1).padStart(2, "0")}</small>
+            <small>
+              {item.subsection ? "-" : String(item.number).padStart(2, "0")}
+            </small>
             {item.label}
           </a>
         ))}
@@ -421,7 +432,11 @@ export default function PrintGuideOnlinePage() {
               {section.venueGroups.length ? (
                 <div className="pgo-venues">
                   {section.venueGroups.map((group, groupIndex) => (
-                    <section className="pgo-venueGroup" key={group.key}>
+                    <section
+                      className="pgo-venueGroup"
+                      id={`guide-${section.key}-${group.key}`}
+                      key={group.key}
+                    >
                       <div className="pgo-venuesHeading">
                         <div>
                           <span className="pgo-kicker">
