@@ -63,7 +63,7 @@
 .pgo-opening { width: 100vw; margin-left: calc(50% - 50vw); scroll-margin-top: 48px; background: #e5e0d4; }
 .pgo-openingHeader { min-height: 76svh; padding: 130px max(24px, calc((100vw - 1180px) / 2)); background: #752f28; color: #fff; }
 .pgo-openingHeader .pgo-kicker { color: #e8b4a4; }
-.pgo-openingHeader h2 { max-width: 900px; margin: 28px 0 20px; font: 400 clamp(64px, 8vw, 112px)/.86 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
+.pgo-openingHeader h2 { max-width: 900px; margin: 28px 0 20px; color: #fff8f0 !important; font: 400 clamp(64px, 8vw, 112px)/.86 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
 .pgo-openingHeader > p { max-width: 600px; font: italic 21px/1.5 "Iowan Old Style", Georgia, serif; }
 .pgo-welcomeCopy { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 70px; max-width: 760px; margin: 70px 0 0 auto; }
 .pgo-welcomeCopy p { margin: 0; color: rgba(255,255,255,.78); font-size: 15px; line-height: 1.75; }
@@ -85,6 +85,7 @@
 .pgo-neighbourhoodGrid small { display: block; margin-top: 18px; color: #7b3a30; font-size: 9px; font-weight: 800; text-transform: uppercase; }
 .pgo-mapFeature { width: 100%; padding-inline: max(24px, calc((100vw - 1180px) / 2)); background: #253f35; color: #fff; }
 .pgo-mapFeature .pgo-openingTitle > span, .pgo-mapFeature .pgo-openingTitle p { color: rgba(255,255,255,.65); }
+.pgo-mapFeature .pgo-openingTitle h3 { color: #f6f0e6 !important; }
 .pgo-guideMapShell { display: grid; gap: 16px; }
 .pgo-guideMapFilters { display: flex; flex-wrap: wrap; gap: 8px; }
 .pgo-guideMapFilters button { min-height: 36px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.24); border-radius: 18px; background: transparent; color: rgba(255,255,255,.78); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
@@ -151,7 +152,7 @@
 
 .pgo-closing { width: 100vw; min-height: 82svh; margin-left: calc(50% - 50vw); padding: 120px max(24px, calc((100vw - 1180px) / 2)); display: flex; flex-direction: column; justify-content: center; background: #263f34; color: #fff; }
 .pgo-closing .pgo-kicker { color: #e2a08f; }
-.pgo-closing h2 { max-width: 900px; margin: 22px 0 28px; }
+.pgo-closing h2 { max-width: 900px; margin: 22px 0 28px; color: #f6f0e6 !important; }
 .pgo-closing p { max-width: 530px; margin: 0 0 30px; color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.7; }
 
 .pgo-venueDrawer .ant-drawer-content { background: #f3f0e8; }
