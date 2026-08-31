@@ -105,6 +105,56 @@ const GUIDE_EDIT_VENUE_ALIASES = {
   marshmellow: "marshmellow-surf-cafe",
 };
 
+const GUIDE_EDIT_PLACES_BY_NAME = new Map(
+  GUIDE_EDIT_PLACES.map(([name, description], index) => [
+    name,
+    { name, description, number: index + 1 },
+  ]),
+);
+
+const GUIDE_EDIT_GROUPS = [
+  {
+    label: "Eat & Drink",
+    description: "From first coffee to dinner with a crowd.",
+    places: [
+      "Cactus",
+      "Marshmellow",
+      "Sisters Kabalana",
+      "Abrazo",
+      "Jam House",
+      "Petals",
+      "Folklore Ahangama",
+      "Cafe Wave",
+    ],
+  },
+  {
+    label: "Stay & Slow Down",
+    description: "Places with a distinct rhythm and reason to linger.",
+    places: ["The Kip", "Kurulu Bay", "Fi Midigama"],
+  },
+  {
+    label: "Surf & Wellness",
+    description: "For waves, movement, restoration and a slower pace.",
+    places: [
+      "Unsung",
+      "Surf Club Midigama",
+      "The Nuga House",
+      "White Lotus Spa",
+      "Pura Pilates",
+    ],
+  },
+  {
+    label: "Shop & Local Life",
+    description: "Creative spaces, useful stops and locally minded finds.",
+    places: [
+      "Kumbuk Community",
+      "Daydream",
+      "Living Room Concept Store",
+      "Gusta",
+    ],
+  },
+];
+
 function instagramUrl(value) {
   if (!value) return null;
   if (/^https?:\/\//i.test(value)) return value;
@@ -567,34 +617,48 @@ export default function PrintGuideOnlinePage() {
               <h3>{OPENING_PAGES.get(11)?.content.headline}</h3>
               <p>{OPENING_PAGES.get(11)?.content.subheadline}</p>
             </div>
-            <div className="pgo-editGrid">
-              {GUIDE_EDIT_PLACES.map(([name, description], index) => {
-                const normalizedName = name.toLowerCase();
-                const venue =
-                  GUIDE_PLACES_BY_NAME.get(normalizedName) ||
-                  GUIDE_PLACES_BY_SLUG.get(
-                    GUIDE_EDIT_VENUE_ALIASES[normalizedName],
-                  );
-                const content = (
-                  <>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{name}</strong>
-                    <small>{description}</small>
-                    {venue ? <RightOutlined /> : null}
-                  </>
-                );
-                return venue ? (
-                  <button
-                    type="button"
-                    key={name}
-                    onClick={() => setSelectedVenue(venue)}
-                  >
-                    {content}
-                  </button>
-                ) : (
-                  <article key={name}>{content}</article>
-                );
-              })}
+            <div className="pgo-editGroups">
+              {GUIDE_EDIT_GROUPS.map((group) => (
+                <section className="pgo-editGroup" key={group.label}>
+                  <header>
+                    <span>Our edit</span>
+                    <h4>{group.label}</h4>
+                    <p>{group.description}</p>
+                  </header>
+                  <div className="pgo-editGrid">
+                    {group.places.map((placeName) => {
+                      const place = GUIDE_EDIT_PLACES_BY_NAME.get(placeName);
+                      const normalizedName = place.name.toLowerCase();
+                      const venue =
+                        GUIDE_PLACES_BY_NAME.get(normalizedName) ||
+                        GUIDE_PLACES_BY_SLUG.get(
+                          GUIDE_EDIT_VENUE_ALIASES[normalizedName],
+                        );
+                      const content = (
+                        <>
+                          <span>
+                            {String(place.number).padStart(2, "0")}
+                          </span>
+                          <strong>{place.name}</strong>
+                          <small>{place.description}</small>
+                          {venue ? <RightOutlined /> : null}
+                        </>
+                      );
+                      return venue ? (
+                        <button
+                          type="button"
+                          key={place.name}
+                          onClick={() => setSelectedVenue(venue)}
+                        >
+                          {content}
+                        </button>
+                      ) : (
+                        <article key={place.name}>{content}</article>
+                      );
+                    })}
+                  </div>
+                </section>
+              ))}
             </div>
           </div>
         </section>
