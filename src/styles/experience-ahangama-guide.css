@@ -1929,7 +1929,7 @@
 }
 
 .eag-dark-mode .eag-chapter-progress--cream {
-  color: rgba(242,239,233,0.5);
+  color: rgba(242,239,233,0.8);
 }
 
 .eag-dark-mode .eag-scroll-container::before {

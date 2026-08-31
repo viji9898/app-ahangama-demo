@@ -1391,7 +1391,7 @@ export default function ExperienceAhangamaGuide() {
   };
 
   return (
-    <>
+    <div className={darkMode ? "eag-dark-mode" : ""}>
       <Helmet>
         <title>Experience Ahangama, The Insider&rsquo;s Guide to Sri Lanka&rsquo;s Coolest Coast</title>
         <meta name="description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
@@ -1433,7 +1433,7 @@ export default function ExperienceAhangamaGuide() {
         </svg>
       </button>
 
-      <div className={`eag-scroll-container ${darkMode ? "eag-dark-mode" : ""}`}>
+      <div className="eag-scroll-container">
         <div className="eag-desktop-frame">
           <CoverSection />
           <ContentsSection />
@@ -1456,6 +1456,6 @@ export default function ExperienceAhangamaGuide() {
       </div>
 
       <ImageLightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
-    </>
+    </div>
   );
 }
