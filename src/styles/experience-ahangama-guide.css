@@ -1119,6 +1119,11 @@
   border-color: rgba(255, 255, 255, 0.16);
 }
 
+.eag-dark-mode .eag-insta {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
 /* ===== Google Maps link ===== */
 .eag-map {
   display: inline-flex;
@@ -1174,6 +1179,11 @@
 .eag-dark-mode .eag-map--empty {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.16);
+}
+
+.eag-dark-mode .eag-map {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 /* ===== Image Lightbox ===== */
