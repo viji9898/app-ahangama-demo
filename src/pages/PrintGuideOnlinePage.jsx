@@ -46,9 +46,25 @@ const SECTION_ORDER = [
 const ONLINE_SECTIONS = SECTION_ORDER.map((key) => {
   const pages = INITIAL_GUIDE_PAGES.filter((page) => page.section === key);
   const opener = pages.find((page) => /Opener/.test(page.template)) || pages[0];
-  const venueSlugs = [
-    ...new Set(pages.flatMap((page) => page.content.venueSlugs || [])),
-  ];
+  const venueGroups = pages
+    .filter(
+      (page) =>
+        page.pageType !== "section-opener" &&
+        !page.commercial.enabled &&
+        page.content.venueSlugs?.length,
+    )
+    .map((page) => ({
+      key: page.pageType,
+      headline: page.content.headline,
+      subheadline: page.content.subheadline,
+      venues: page.content.venueSlugs
+        .map((slug) => GUIDE_PLACES_BY_SLUG.get(slug))
+        .filter(Boolean),
+    }))
+    .filter((group) => group.venues.length);
+  const venueCount = new Set(
+    venueGroups.flatMap((group) => group.venues.map((venue) => venue.slug)),
+  ).size;
 
   return {
     key,
@@ -58,9 +74,8 @@ const ONLINE_SECTIONS = SECTION_ORDER.map((key) => {
     subheadline: opener?.content.subheadline,
     body: opener?.content.body,
     image: opener?.content.image || GUIDE_IMAGE,
-    venues: venueSlugs
-      .map((slug) => GUIDE_PLACES_BY_SLUG.get(slug))
-      .filter(Boolean),
+    venueGroups,
+    venueCount,
   };
 });
 
@@ -352,48 +367,57 @@ export default function PrintGuideOnlinePage() {
                 <span>Our edit</span>
                 <p>{section.body}</p>
               </div>
-              {section.venues.length ? (
+              {section.venueGroups.length ? (
                 <div className="pgo-venues">
-                  <div className="pgo-venuesHeading">
-                    <div>
-                      <span className="pgo-kicker">In this chapter</span>
-                      <h3>Places worth knowing</h3>
-                    </div>
-                    <span>{section.venues.length} recommendations</span>
-                  </div>
-                  <div className="pgo-venueGrid">
-                    {section.venues.map((venue) => (
-                      <button
-                        type="button"
-                        className="pgo-venueCard"
-                        key={venue.slug}
-                        onClick={() => setSelectedVenue(venue)}
-                      >
-                        <span className="pgo-venueImage">
-                          <img
-                            src={venue.image || section.image}
-                            alt=""
-                            loading="lazy"
-                          />
-                          {venue.cardPerk ? <em>Pass perk</em> : null}
-                        </span>
-                        <span className="pgo-venueMeta">
-                          <span>
-                            {venue.area || "Ahangama"}
-                            {venue.stars ? (
-                              <>
-                                {" "}
-                                · <StarFilled /> {venue.stars}
-                              </>
-                            ) : null}
+                  {section.venueGroups.map((group, groupIndex) => (
+                    <section className="pgo-venueGroup" key={group.key}>
+                      <div className="pgo-venuesHeading">
+                        <div>
+                          <span className="pgo-kicker">
+                            {groupIndex === 0
+                              ? `${section.venueCount} places in this chapter`
+                              : section.label}
                           </span>
-                          <RightOutlined />
-                        </span>
-                        <strong>{venue.name}</strong>
-                        <small>{venue.excerpt || venue.description}</small>
-                      </button>
-                    ))}
-                  </div>
+                          <h3>{group.headline}</h3>
+                          <p>{group.subheadline}</p>
+                        </div>
+                        <span>{group.venues.length} recommendations</span>
+                      </div>
+                      <div className="pgo-venueGrid">
+                        {group.venues.map((venue) => (
+                          <button
+                            type="button"
+                            className="pgo-venueCard"
+                            key={venue.slug}
+                            onClick={() => setSelectedVenue(venue)}
+                          >
+                            <span className="pgo-venueImage">
+                              <img
+                                src={venue.image || section.image}
+                                alt=""
+                                loading="lazy"
+                              />
+                              {venue.cardPerk ? <em>Pass perk</em> : null}
+                            </span>
+                            <span className="pgo-venueMeta">
+                              <span>
+                                {venue.area || "Ahangama"}
+                                {venue.stars ? (
+                                  <>
+                                    {" "}
+                                    · <StarFilled /> {venue.stars}
+                                  </>
+                                ) : null}
+                              </span>
+                              <RightOutlined />
+                            </span>
+                            <strong>{venue.name}</strong>
+                            <small>{venue.excerpt || venue.description}</small>
+                          </button>
+                        ))}
+                      </div>
+                    </section>
+                  ))}
                 </div>
               ) : null}
             </div>

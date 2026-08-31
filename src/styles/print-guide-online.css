@@ -101,8 +101,10 @@
 .pgo-chapterLead > span { color: var(--pgo-accent); font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .pgo-chapterLead p { margin: 0; font: 400 clamp(26px, 3vw, 40px)/1.18 "Iowan Old Style", Georgia, serif; }
 
+.pgo-venueGroup + .pgo-venueGroup { margin-top: 110px; }
 .pgo-venuesHeading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; padding-bottom: 20px; border-bottom: 1px solid rgba(28, 32, 28, .18); }
 .pgo-venuesHeading h3 { margin: 10px 0 0; font: 400 42px/1 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
+.pgo-venuesHeading p { max-width: 620px; margin: 12px 0 0; color: #646a65; font: italic 15px/1.5 "Iowan Old Style", Georgia, serif; }
 .pgo-venuesHeading > span { color: #6b716c; font-size: 10px; font-weight: 700; text-transform: uppercase; }
 .pgo-venueGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 54px 22px; }
 .pgo-venueCard { display: flex; min-width: 0; padding: 0; flex-direction: column; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
@@ -187,6 +189,7 @@
   .pgo-chapterBody { width: calc(100% - 32px); padding: 62px 0 90px; }
   .pgo-chapterLead { grid-template-columns: 1fr; gap: 20px; margin-bottom: 68px; }
   .pgo-chapterLead p { font-size: 29px; }
+  .pgo-venueGroup + .pgo-venueGroup { margin-top: 76px; }
   .pgo-venuesHeading { align-items: flex-start; flex-direction: column; }
   .pgo-venuesHeading h3 { font-size: 36px; }
   .pgo-venueGrid { grid-template-columns: 1fr 1fr; gap: 42px 12px; }
