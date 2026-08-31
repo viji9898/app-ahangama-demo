@@ -826,56 +826,32 @@
 
 /* ===== Best Stays / Best Eats Grid ===== */
 .eag-cards-grid {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 28px;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  padding: 32px 0 48px;
-  scrollbar-width: none;
+  padding: 16px 0;
 }
 
-.eag-cards-grid::-webkit-scrollbar { display: none; }
-
 .eag-cards-grid .eag-card-item {
-  min-width: 280px;
-  max-width: 320px;
-  flex-shrink: 0;
-  scroll-snap-align: center;
+  max-width: 100%;
   transition: transform 0.3s ease;
 }
 
-.eag-cards-grid .eag-card-item:nth-child(odd) {
-  transform: translateY(24px);
-}
-
-.eag-cards-grid .eag-card-item:nth-child(even) {
-  transform: translateY(-24px);
-}
-
 .eag-cards-grid .eag-card-item:hover {
-  transform: translateY(0) scale(1.02);
+  transform: translateY(-4px);
 }
 
-@media (min-width: 768px) {
-  .eag-cards-grid .eag-card-item {
-    min-width: 320px;
-    max-width: 380px;
+@media (min-width: 480px) {
+  .eag-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
+}
 
-  .eag-cards-grid .eag-card-item:nth-child(odd) {
-    transform: translateY(32px);
-  }
-
-  .eag-cards-grid .eag-card-item:nth-child(even) {
-    transform: translateY(-32px);
-  }
-
-  .eag-cards-grid .eag-card-item:hover {
-    transform: translateY(0) scale(1.02);
+@media (min-width: 1024px) {
+  .eag-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }
 
@@ -2042,16 +2018,6 @@
   }
 }
 
-/* --- Critical: Card carousel overflow + touch --- */
-@media (max-width: 768px) {
-  .eag-cards-grid {
-    scroll-snap-type: x proximity;
-  }
-  .eag-cards-grid .eag-card-item {
-    min-width: min(280px, calc(100vw - 56px));
-  }
-}
-
 /* --- Critical: Orb performance on mobile --- */
 @media (max-width: 480px) {
   .eag-orb--1 { width: 180px; height: 180px; filter: blur(40px); }
@@ -2182,28 +2148,6 @@
     transform: none;
     background: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.4);
-  }
-}
-
-/* --- Medium: Card carousel scroll hint gradient on mobile --- */
-@media (max-width: 768px) {
-  .eag-section-body {
-    position: relative;
-  }
-  .eag-section-body::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 40px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.6));
-    pointer-events: none;
-    z-index: 5;
-    border-radius: 0 12px 12px 0;
-  }
-  .eag-section--navy .eag-section-body::after {
-    background: linear-gradient(to right, transparent, rgba(0,6,26,0.5));
   }
 }
 
