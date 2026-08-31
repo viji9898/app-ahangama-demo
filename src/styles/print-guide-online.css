@@ -38,12 +38,14 @@
 
 .pgo-toc { position: fixed; z-index: 40; top: 50%; left: 0; color: #fff; }
 .pgo-tocTab { position: relative; z-index: 1; padding: 18px 8px; border: 1px solid rgba(255,255,255,.3); border-left: 0; border-radius: 0 8px 8px 0; background: rgba(166,72,56,.88); box-shadow: 4px 0 24px rgba(58,27,20,.2); color: #fff; font: 800 9px/1 "Avenir Next", "Helvetica Neue", sans-serif; letter-spacing: .16em; text-transform: uppercase; writing-mode: vertical-rl; cursor: pointer; transform: translateY(-50%); backdrop-filter: blur(14px); }
-.pgo-tocPanel { position: fixed; top: 0; left: 0; display: flex; width: 280px; height: 100vh; height: 100dvh; padding: 72px 24px 28px; flex-direction: column; overflow-y: auto; box-sizing: border-box; border-right: 1px solid rgba(255,255,255,.16); background: rgba(28,32,28,.96); box-shadow: 8px 0 40px rgba(0,0,0,.22); opacity: 0; pointer-events: none; transform: translateX(-12px); transition: opacity 220ms ease, transform 220ms ease; backdrop-filter: blur(20px); }
+.pgo-tocPanel { position: fixed; top: 0; left: 0; display: flex; width: 280px; height: 100vh; height: 100dvh; padding: 0; flex-direction: column; overflow: hidden; box-sizing: border-box; border-right: 1px solid rgba(255,255,255,.16); background: rgba(28,32,28,.96); box-shadow: 8px 0 40px rgba(0,0,0,.22); opacity: 0; pointer-events: none; transform: translateX(-12px); transition: opacity 220ms ease, transform 220ms ease; backdrop-filter: blur(20px); }
 .pgo-toc.is-expanded .pgo-tocTab { opacity: 0; pointer-events: none; }
 .pgo-toc.is-expanded .pgo-tocPanel { opacity: 1; pointer-events: auto; transform: translateX(0); }
-.pgo-tocClose { position: absolute; top: 18px; right: 18px; display: grid; width: 36px; height: 36px; padding: 0; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; background: transparent; color: #fff; font-size: 14px; cursor: pointer; }
-.pgo-tocClose:hover, .pgo-tocClose:focus-visible { border-color: #efb2a4; color: #efb2a4; }
-.pgo-tocPanel > span { margin-bottom: 14px; color: rgba(255,255,255,.48); font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.pgo-tocClose { position: fixed; z-index: 2; top: 50%; left: 280px; padding: 18px 8px; border: 1px solid rgba(255,255,255,.3); border-left: 0; border-radius: 0 8px 8px 0; background: rgba(166,72,56,.92); box-shadow: 4px 0 24px rgba(58,27,20,.2); color: #fff; font: 800 9px/1 "Avenir Next", "Helvetica Neue", sans-serif; letter-spacing: .16em; text-transform: uppercase; writing-mode: vertical-rl; cursor: pointer; opacity: 0; pointer-events: none; transform: translate(-12px, -50%); transition: opacity 220ms ease, transform 220ms ease; backdrop-filter: blur(14px); }
+.pgo-toc.is-expanded .pgo-tocClose { opacity: 1; pointer-events: auto; transform: translate(0, -50%); }
+.pgo-tocClose:hover, .pgo-tocClose:focus-visible { background: #b65342; }
+.pgo-tocScroll { flex: 1; min-height: 0; padding: 28px 24px; overflow-y: auto; box-sizing: border-box; }
+.pgo-tocScroll > span { display: block; margin-bottom: 14px; color: rgba(255,255,255,.48); font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .pgo-tocPanel a { display: grid; grid-template-columns: 26px 1fr; gap: 8px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.78); font-size: 12px; line-height: 1.3; text-decoration: none; }
 .pgo-tocPanel a:last-child { border-bottom: 0; }
 .pgo-tocPanel a:hover, .pgo-tocPanel a:focus-visible { color: #efb2a4; }
@@ -170,7 +172,9 @@
 @media (max-width: 760px) {
   .pgo-toc { z-index: 30; }
   .pgo-tocTab { padding: 14px 6px; font-size: 8px; }
-  .pgo-tocPanel { width: min(300px, calc(100vw - 36px)); padding: 68px 20px 24px; }
+  .pgo-tocPanel { width: min(300px, calc(100vw - 36px)); }
+  .pgo-tocClose { left: min(300px, calc(100vw - 36px)); padding: 14px 6px; font-size: 8px; }
+  .pgo-tocScroll { padding: 24px 20px; }
   .pgo-hero { min-height: 620px; }
   .pgo-heroCopy { width: calc(100% - 32px); bottom: 7svh; }
   .pgo-heroCopy h1 { font-size: 54px; line-height: .86; }

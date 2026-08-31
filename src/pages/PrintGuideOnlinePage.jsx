@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   ArrowDownOutlined,
   ArrowRightOutlined,
-  CloseOutlined,
   EnvironmentOutlined,
   InstagramOutlined,
   RightOutlined,
@@ -154,29 +153,31 @@ function ContentsRibbon() {
         Contents
       </button>
       <nav className="pgo-tocPanel" id="pgo-contents-panel">
-        <button
-          type="button"
-          className="pgo-tocClose"
-          aria-label="Close guide contents"
-          onClick={() => setExpanded(false)}
-        >
-          <CloseOutlined />
-        </button>
-        <span>Jump to section</span>
-        {items.map((item) => (
-          <a
-            href={`#${item.id}`}
-            key={item.id}
-            className={item.subsection ? "is-subsection" : undefined}
-            onClick={() => setExpanded(false)}
-          >
-            <small>
-              {item.subsection ? "-" : String(item.number).padStart(2, "0")}
-            </small>
-            {item.label}
-          </a>
-        ))}
+        <div className="pgo-tocScroll">
+          <span>Jump to section</span>
+          {items.map((item) => (
+            <a
+              href={`#${item.id}`}
+              key={item.id}
+              className={item.subsection ? "is-subsection" : undefined}
+              onClick={() => setExpanded(false)}
+            >
+              <small>
+                {item.subsection ? "-" : String(item.number).padStart(2, "0")}
+              </small>
+              {item.label}
+            </a>
+          ))}
+        </div>
       </nav>
+      <button
+        type="button"
+        className="pgo-tocClose"
+        aria-label="Close guide contents"
+        onClick={() => setExpanded(false)}
+      >
+        Close
+      </button>
     </aside>
   );
 }
