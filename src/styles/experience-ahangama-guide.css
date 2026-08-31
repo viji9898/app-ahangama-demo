@@ -17,11 +17,10 @@
 }
 
 .eag-scroll-container {
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   font-family: 'Poppins', sans-serif;
@@ -61,17 +60,14 @@
 }
 
 .eag-section {
-  height: 100vh;
-  height: 100dvh;
   min-height: 100vh;
   min-height: 100dvh;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  padding: 60px 0;
   z-index: 1;
 }
 
@@ -179,15 +175,9 @@
 .eag-section-body {
   flex: 1;
   min-height: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
   margin: 6px calc(-1 * var(--eag-pad-mobile)) 0;
   padding: 0 var(--eag-pad-mobile);
-  scrollbar-width: none;
 }
-
-.eag-section-body::-webkit-scrollbar { display: none; }
 
 @media (min-width: 768px) {
   .eag-section-body {
@@ -1968,18 +1958,6 @@
    MOBILE RESPONSIVENESS — Comprehensive Fixes
    ========================================================================== */
 
-/* --- Critical: Scroll snap relaxation on mobile --- */
-@media (max-width: 768px) {
-  .eag-scroll-container {
-    scroll-snap-type: y proximity;
-  }
-  .eag-section {
-    min-height: auto;
-    height: auto;
-    min-height: 100dvh;
-  }
-}
-
 /* --- Critical: Closing card padding --- */
 @media (max-width: 480px) {
   .eag-closing-card {
@@ -2046,7 +2024,6 @@
 /* --- Medium: Reduced motion preference --- */
 @media (prefers-reduced-motion: reduce) {
   .eag-scroll-container {
-    scroll-snap-type: none !important;
     scroll-behavior: auto !important;
   }
   .eag-reveal {
@@ -2122,9 +2099,6 @@
 
 /* --- Closing section: centered with top padding --- */
 .eag-section--closing {
-  height: auto !important;
-  min-height: 100dvh !important;
-  scroll-snap-align: start;
   padding-top: 60px;
   padding-bottom: 60px;
   justify-content: center;
@@ -2133,11 +2107,6 @@
 .eag-section--closing .eag-content {
   padding-bottom: 0;
   margin-bottom: 0;
-}
-
-/* Scroll container: last child no snap padding */
-.eag-scroll-container > .eag-section:last-child {
-  scroll-snap-align: none;
 }
 
 /* Remove any extra space after the scroll container */
