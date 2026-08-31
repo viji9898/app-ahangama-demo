@@ -109,6 +109,9 @@ import TransportPage, { TRANSPORT_PATH } from "../pages/TransportPage";
 import HostRetreatPage, { HOST_RETREAT_PATH } from "../pages/HostRetreatPage";
 import PassPerksPage, { PASS_PERKS_PATH } from "../pages/PassPerksPage";
 import PrintGuidePage, { PRINT_GUIDE_PATH } from "../pages/PrintGuidePage";
+import PrintGuideOnlinePage, {
+  PRINT_GUIDE_ONLINE_PATH,
+} from "../pages/PrintGuideOnlinePage";
 import GuidePitchPage, { GUIDE_PITCH_PATH } from "../pages/GuidePitchPage";
 import ExternalRedirect from "./ExternalRedirect";
 import { Navigate } from "react-router-dom";
@@ -120,6 +123,7 @@ const cfg = (key) => CATEGORIES.find((c) => c.key === key);
 const routes = [
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
   { path: PRINT_GUIDE_PATH, element: <PrintGuidePage /> },
+  { path: PRINT_GUIDE_ONLINE_PATH, element: <PrintGuideOnlinePage /> },
   { path: NEW_HOME_PATH, element: <NewHomePage /> },
   { path: "/home-v-2", element: <HomeV2 /> },
   { path: "/home-mobile", element: <HomeMobile /> },
