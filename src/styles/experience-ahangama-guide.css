@@ -1964,6 +1964,28 @@
   color: rgba(242, 239, 233, 0.85);
 }
 
+.eag-dark-mode .leaflet-popup-content-wrapper {
+  background: rgba(16, 26, 46, 0.95);
+  color: rgba(242, 239, 233, 0.92);
+  border-radius: 10px;
+}
+
+.eag-dark-mode .leaflet-popup-tip {
+  background: rgba(16, 26, 46, 0.95);
+}
+
+.eag-dark-mode .leaflet-popup-close-button {
+  color: rgba(242, 239, 233, 0.7);
+}
+
+.eag-dark-mode .leaflet-popup-close-button:hover {
+  color: #fff;
+}
+
+.eag-dark-mode .eag-guide-map-popup p {
+  color: rgba(242, 239, 233, 0.75);
+}
+
 .eag-dark-mode .eag-toc-panel-item {
   color: rgba(242,239,233,0.85);
 }
