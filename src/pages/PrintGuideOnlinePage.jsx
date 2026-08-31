@@ -111,6 +111,56 @@ function mapUrl(venue) {
   return null;
 }
 
+function ContentsRibbon() {
+  const [expanded, setExpanded] = useState(false);
+  const items = [
+    { id: "guide-cover", label: "Cover" },
+    { id: "guide-intro", label: "Welcome" },
+    { id: "guide-start", label: "Start here" },
+    ...ONLINE_SECTIONS.map((section) => ({
+      id: `guide-${section.key}`,
+      label: section.label,
+    })),
+    { id: "guide-closing", label: "Closing" },
+  ];
+
+  return (
+    <aside
+      className={`pgo-toc${expanded ? " is-expanded" : ""}`}
+      aria-label="Guide contents"
+      onMouseEnter={() => {
+        if (window.matchMedia("(min-width: 761px)").matches) setExpanded(true);
+      }}
+      onMouseLeave={() => {
+        if (window.matchMedia("(min-width: 761px)").matches) setExpanded(false);
+      }}
+    >
+      <button
+        type="button"
+        className="pgo-tocTab"
+        aria-expanded={expanded}
+        aria-controls="pgo-contents-panel"
+        onClick={() => setExpanded((current) => !current)}
+      >
+        Contents
+      </button>
+      <nav className="pgo-tocPanel" id="pgo-contents-panel">
+        <span>Jump to section</span>
+        {items.map((item, index) => (
+          <a
+            href={`#${item.id}`}
+            key={item.id}
+            onClick={() => setExpanded(false)}
+          >
+            <small>{String(index + 1).padStart(2, "0")}</small>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </aside>
+  );
+}
+
 export default function PrintGuideOnlinePage() {
   const [selectedVenue, setSelectedVenue] = useState(null);
   const selectedMapUrl = selectedVenue ? mapUrl(selectedVenue) : null;
@@ -127,8 +177,9 @@ export default function PrintGuideOnlinePage() {
         ogImageHeight={1100}
         author="Ahangama Guide Editorial Team"
       />
+      <ContentsRibbon />
       <main className="pgo-webGuide">
-        <header className="pgo-hero">
+        <header className="pgo-hero" id="guide-cover">
           <img
             src={GUIDE_IMAGE}
             alt="The coast and everyday life in Ahangama"
@@ -424,7 +475,7 @@ export default function PrintGuideOnlinePage() {
           </section>
         ))}
 
-        <section className="pgo-closing">
+        <section className="pgo-closing" id="guide-closing">
           <span className="pgo-kicker">Keep exploring</span>
           <h2>
             Let the road
