@@ -25,7 +25,7 @@
   -webkit-overflow-scrolling: touch;
   font-family: 'Poppins', sans-serif;
   position: relative;
-  background: var(--eag-navy);
+  background: #FFFFFF;
 }
 
 .eag-scroll-container::before {
