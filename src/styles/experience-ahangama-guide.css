@@ -1940,6 +1940,30 @@
   background: #0A1224;
 }
 
+.eag-dark-mode .eag-guide-map-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(242, 239, 233, 0.85);
+}
+
+.eag-dark-mode .eag-guide-map-pill--active {
+  background: var(--eag-teal);
+  border-color: var(--eag-teal);
+  color: #fff;
+}
+
+.eag-dark-mode .eag-guide-map-meta {
+  color: rgba(242, 239, 233, 0.7);
+}
+
+.eag-dark-mode .eag-guide-map-popup strong {
+  color: #fff;
+}
+
+.eag-dark-mode .eag-guide-map-popup-rating {
+  color: rgba(242, 239, 233, 0.85);
+}
+
 .eag-dark-mode .eag-toc-panel-item {
   color: rgba(242,239,233,0.85);
 }
