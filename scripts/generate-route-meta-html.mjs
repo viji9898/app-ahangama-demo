@@ -255,6 +255,16 @@ function applyMeta(html, meta) {
 
 const routeMeta = [
   {
+    route: "/transport-rates",
+    title: "Ahangama Pass Transport Rates | Cars, Vans & Scooters",
+    description:
+      "Exclusive scooter, car and van rates for Ahangama Pass and Ahangama Circle holders, including transfers to Colombo airport, Ella and beyond.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/surf-trip.webp",
+    imageWidth: 1920,
+    imageHeight: 1087,
+  },
+  {
     route: "/print-guide",
     title: "Ahangama Guide 2026/27 | 64-Page South Coast Guide",
     description:
