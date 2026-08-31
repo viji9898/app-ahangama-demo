@@ -1329,9 +1329,9 @@ export default function ExperienceAhangamaGuide() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [darkMode, setDarkMode] = useState(() => {
     try {
-      return localStorage.getItem("eag-dark-mode") === "1";
+      return localStorage.getItem("eag-dark-mode") !== "0";
     } catch {
-      return false;
+      return true;
     }
   });
 
