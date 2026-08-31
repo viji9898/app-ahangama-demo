@@ -217,6 +217,7 @@ const routes = [
   { path: STAYS_PATH, element: <StaysPage /> },
   { path: BEST_AIRBNBS_PATH, element: <BestAirbnbsPage /> },
   { path: TRANSPORT_PATH, element: <TransportPage /> },
+  { path: "/transport", element: <Navigate to={TRANSPORT_PATH} replace /> },
   { path: HOST_RETREAT_PATH, element: <HostRetreatPage /> },
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },

@@ -3,7 +3,6 @@ import {
   ArrowRightOutlined,
   CarOutlined,
   CheckOutlined,
-  CompassOutlined,
   DashboardOutlined,
   EnvironmentOutlined,
   SafetyCertificateOutlined,
@@ -30,7 +29,7 @@ import "../styles/transport-page.css";
 
 const { Paragraph, Text, Title } = Typography;
 
-export const TRANSPORT_PATH = "/transport";
+export const TRANSPORT_PATH = "/transport-rates";
 
 const HERO_IMAGE =
   "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg";
@@ -39,66 +38,74 @@ const SERVICES = [
   {
     value: "scooter",
     number: "01",
-    title: "Rent a scooter",
+    title: "Honda Dio",
     shortTitle: "Scooter rental",
-    detail:
-      "Daily and weekly rentals for easy movement between beaches, cafes, surf breaks, and town.",
-    note: "From around LKR 2,500 per day",
+    detail: "A practical daily rental for beaches, cafes, surf breaks, and short trips around town.",
+    note: "LKR 1,640 per day",
     Icon: DashboardOutlined,
   },
   {
-    value: "tuk_tuk",
+    value: "scooter",
     number: "02",
-    title: "Book a tuk-tuk",
-    shortTitle: "Tuk-tuk rental or ride",
-    detail:
-      "A local ride, a driver for the day, or help arranging a self-drive tuk-tuk adventure.",
-    note: "Local rides and longer hires",
-    Icon: CarOutlined,
+    title: "TVS Ntorq",
+    shortTitle: "Scooter rental",
+    detail: "A larger scooter option for comfortable day-to-day travel along the south coast.",
+    note: "LKR 2,296 per day",
+    Icon: DashboardOutlined,
   },
   {
     value: "airport_transfer",
     number: "03",
-    title: "Airport transfer",
+    title: "Airport by car",
     shortTitle: "Airport transfer",
-    detail:
-      "Pre-book a private pickup between Ahangama and Bandaranaike International Airport.",
-    note: "Cars and vans for luggage or boards",
+    detail: "A private one-way car between Ahangama and Bandaranaike International Airport.",
+    note: "LKR 13,120 one way",
     Icon: EnvironmentOutlined,
   },
   {
     value: "private_transfer",
     number: "04",
-    title: "Travel further",
+    title: "Colombo by car",
     shortTitle: "Private transfer",
-    detail:
-      "Comfortable private travel from Ahangama to Colombo, Galle, Hiriketiya, or elsewhere.",
-    note: "One-way trips and day drivers",
+    detail: "A private one-way transfer from Ahangama to central Colombo.",
+    note: "LKR 13,120 one way",
     Icon: SwapOutlined,
   },
 ];
 
-const SERVICE_OPTIONS = SERVICES.map(({ value, shortTitle }) => ({
-  value,
-  label: shortTitle,
-}));
+const SERVICE_OPTIONS = SERVICES
+  .filter((service, index, services) => services.findIndex(({ value }) => value === service.value) === index)
+  .map(({ value, shortTitle }) => ({ value, label: shortTitle }));
 
 const DESTINATION_OPTIONS = [
   { value: "Bandaranaike International Airport", label: "Colombo airport (CMB)" },
   { value: "Colombo", label: "Colombo" },
   { value: "Hiriketiya", label: "Hiriketiya" },
+  { value: "Udawalawe", label: "Udawalawe" },
+  { value: "Arugam Bay", label: "Arugam Bay" },
+  { value: "Ella", label: "Ella" },
+  { value: "Sigiriya", label: "Sigiriya" },
+  { value: "Kandy", label: "Kandy" },
+  { value: "Tangalle", label: "Tangalle" },
   { value: "Galle", label: "Galle" },
   { value: "Weligama", label: "Weligama" },
   { value: "Ahangama local journey", label: "Around Ahangama" },
   { value: "Other", label: "Somewhere else" },
 ];
 
-const QUICK_ROUTES = [
-  { route: "Ahangama → Colombo airport", time: "Approx. 2.5–3 hours", destination: "Bandaranaike International Airport", serviceType: "airport_transfer" },
-  { route: "Ahangama → Colombo", time: "Approx. 2–2.5 hours", destination: "Colombo", serviceType: "private_transfer" },
-  { route: "Ahangama → Hiriketiya", time: "Approx. 1 hour", destination: "Hiriketiya", serviceType: "private_transfer" },
-  { route: "Ahangama → Galle", time: "Approx. 35 minutes", destination: "Galle", serviceType: "private_transfer" },
+const TRANSFER_RATES = [
+  { destination: "Colombo airport", formDestination: "Bandaranaike International Airport", car: 13120, van: 18860, featured: true },
+  { destination: "Colombo", car: 13120, van: 15580, featured: true },
+  { destination: "Hiriketiya", car: 7280, van: 9100, featured: true },
+  { destination: "Ella", car: 15580, van: 20500, featured: true },
+  { destination: "Udawalawe", car: 11480, van: 15580 },
+  { destination: "Tangalle", car: 8645, van: 10010 },
+  { destination: "Kandy", car: 20500, van: 25420 },
+  { destination: "Arugam Bay", car: 23780, van: 29520 },
+  { destination: "Sigiriya", car: 25420, van: 30340 },
 ];
+
+const formatLkr = (value) => `LKR ${new Intl.NumberFormat("en-LK").format(value)}`;
 
 export default function TransportPage() {
   const [form] = Form.useForm();
@@ -156,8 +163,8 @@ export default function TransportPage() {
   return (
     <SiteLayout navOverlayHero>
       <Seo
-        title="Transport & Travel in Ahangama"
-        description="Request scooter rentals, tuk-tuks, airport pickups, and private transfers from Ahangama to Colombo, Hiriketiya, Galle, and beyond."
+        title="Transport Rates from Ahangama"
+        description="Compare current scooter rental and private transfer rates from Ahangama to Colombo airport, Ella, Hiriketiya, Kandy, and beyond."
         canonical={absUrl(TRANSPORT_PATH)}
         ogImage={HERO_IMAGE}
       />
@@ -167,30 +174,30 @@ export default function TransportPage() {
           <img src={HERO_IMAGE} alt="Travelling along Sri Lanka's southern coast" />
           <div className="transport-heroShade" aria-hidden="true" />
           <div className="transport-heroContent">
-            <Text className="transport-eyebrow transport-eyebrowLight">Transport & travel</Text>
-            <Title>Move around the south, simply.</Title>
+            <Text className="transport-eyebrow transport-eyebrowLight">Ahangama transport rates</Text>
+            <Title>Know the rate before you ride.</Title>
             <Paragraph>
-              Rent a scooter, arrange a tuk-tuk, or request a private transfer to the airport, Colombo, Hiriketiya, and beyond.
+              Clear customer prices for scooter hire and private one-way transfers from Ahangama, with cars and vans for longer journeys.
             </Paragraph>
             <Button type="primary" size="large" onClick={() => openEnquiry()}>
-              Request transport <ArrowRightOutlined />
+              Check availability <ArrowRightOutlined />
             </Button>
           </div>
         </header>
 
         <section className="transport-intro transport-shell">
           <div>
-            <Text className="transport-eyebrow">Choose your ride</Text>
-            <Title level={2}>What do you need?</Title>
+            <Text className="transport-eyebrow">Key prices</Text>
+            <Title level={2}>The rates most travellers need.</Title>
           </div>
           <Paragraph>
-            Tell us where you are going and when. We will check the right local option and come back with availability and a direct quote before anything is confirmed.
+            These discounted rates are exclusively for Ahangama Pass and Ahangama Circle pass holders. Prices are in Sri Lankan rupees, and transfers are one way from Ahangama and include the vehicle, not a per-person charge.
           </Paragraph>
         </section>
 
         <section className="transport-services" aria-label="Transport services">
           {SERVICES.map(({ value, number, title, detail, note, Icon }) => (
-            <article className="transport-service" key={value}>
+            <article className="transport-service" key={`${value}-${number}`}>
               <div className="transport-serviceTop">
                 <Text>{number}</Text>
                 {React.createElement(Icon, { "aria-hidden": true })}
@@ -199,7 +206,7 @@ export default function TransportPage() {
               <Paragraph>{detail}</Paragraph>
               <Text className="transport-serviceNote">{note}</Text>
               <Button type="link" onClick={() => openEnquiry(value)}>
-                Request this <ArrowRightOutlined />
+                Check availability <ArrowRightOutlined />
               </Button>
             </article>
           ))}
@@ -208,36 +215,46 @@ export default function TransportPage() {
         <section className="transport-routes">
           <div className="transport-shell transport-routesInner">
             <div className="transport-routesIntro">
-              <Text className="transport-eyebrow">Popular routes</Text>
-              <Title level={2}>Start in Ahangama. Go anywhere.</Title>
+              <Text className="transport-eyebrow">One-way transfers</Text>
+              <Title level={2}>Compare car and van rates.</Title>
               <Paragraph>
-                Journey times are planning estimates. Your quote will reflect pickup details, vehicle size, luggage, surfboards, and current availability.
+                Rates shown are the best available customer price in the supplied rate card. A van is the practical choice for larger groups, extra luggage, or surfboards.
               </Paragraph>
             </div>
-            <div className="transport-routeList">
-              {QUICK_ROUTES.map((item) => (
-                <button
-                  type="button"
-                  key={item.route}
-                  onClick={() => openEnquiry(item.serviceType, item.destination)}
-                >
-                  <span><strong>{item.route}</strong><Text>{item.time}</Text></span>
-                  <ArrowRightOutlined />
-                </button>
+            <div className="transport-rateTable" role="table" aria-label="One-way transfer rates from Ahangama">
+              <div className="transport-rateRow transport-rateHeader" role="row">
+                <span role="columnheader">Destination</span>
+                <span role="columnheader">Car</span>
+                <span role="columnheader">Van</span>
+                <span aria-hidden="true" />
+              </div>
+              {TRANSFER_RATES.map((item) => (
+                <div className={`transport-rateRow${item.featured ? " transport-rateFeatured" : ""}`} role="row" key={item.destination}>
+                  <strong role="cell">{item.destination}</strong>
+                  <Text role="cell">{formatLkr(item.car)}</Text>
+                  <Text role="cell">{formatLkr(item.van)}</Text>
+                  <Button
+                    type="text"
+                    aria-label={`Request transport to ${item.destination}`}
+                    onClick={() => openEnquiry(item.destination === "Colombo airport" ? "airport_transfer" : "private_transfer", item.formDestination || item.destination)}
+                  >
+                    <ArrowRightOutlined />
+                  </Button>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         <section className="transport-assurance transport-shell">
-          <div><CompassOutlined /><Title level={3}>Local options</Title><Paragraph>Matched to established drivers and rental providers around the south coast.</Paragraph></div>
+          <div><CarOutlined /><Title level={3}>Private vehicle</Title><Paragraph>Transfer prices cover the car or van, rather than charging each passenger separately.</Paragraph></div>
           <div><SafetyCertificateOutlined /><Title level={3}>Quote first</Title><Paragraph>Availability and pricing are confirmed before you make a decision.</Paragraph></div>
-          <div><SendOutlined /><Title level={3}>One request</Title><Paragraph>Send the trip once and the Ahangama team will help organise the details.</Paragraph></div>
+          <div><SendOutlined /><Title level={3}>Special journey?</Title><Paragraph>Send one request for return trips, multiple stops, luggage, boards, or a destination not listed.</Paragraph></div>
         </section>
 
         <section className="transport-final">
-          <Text className="transport-eyebrow">Ready when you are</Text>
-          <Title level={2}>Tell us where you need to go.</Title>
+          <Text className="transport-eyebrow">Dates make the difference</Text>
+          <Title level={2}>Check your vehicle is available.</Title>
           <Button type="primary" size="large" onClick={() => openEnquiry()}>
             Request a quote <ArrowRightOutlined />
           </Button>
