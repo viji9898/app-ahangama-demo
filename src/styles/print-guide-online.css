@@ -43,6 +43,53 @@
 .pgo-closing h2 { margin: 0; font: 400 clamp(52px, 7vw, 92px)/.9 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
 .pgo-introGrid p { margin: 0 0 20px; color: #5b625c; font-size: 17px; line-height: 1.8; }
 
+.pgo-opening { width: 100vw; margin-left: calc(50% - 50vw); scroll-margin-top: 48px; background: #e5e0d4; }
+.pgo-openingHeader { min-height: 76svh; padding: 130px max(24px, calc((100vw - 1180px) / 2)); background: #752f28; color: #fff; }
+.pgo-openingHeader .pgo-kicker { color: #e8b4a4; }
+.pgo-openingHeader h2 { max-width: 900px; margin: 28px 0 20px; font: 400 clamp(64px, 8vw, 112px)/.86 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
+.pgo-openingHeader > p { max-width: 600px; font: italic 21px/1.5 "Iowan Old Style", Georgia, serif; }
+.pgo-welcomeCopy { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 70px; max-width: 760px; margin: 70px 0 0 auto; }
+.pgo-welcomeCopy p { margin: 0; color: rgba(255,255,255,.78); font-size: 15px; line-height: 1.75; }
+.pgo-welcomeCopy strong { grid-column: 1 / -1; font: italic 18px "Iowan Old Style", Georgia, serif; }
+.pgo-openingBlock { width: min(1180px, calc(100% - 48px)); margin: auto; padding: 120px 0; border-bottom: 1px solid rgba(28,32,28,.18); }
+.pgo-openingTitle { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 8px 24px; margin-bottom: 58px; }
+.pgo-openingTitle > span { grid-row: 1 / 3; color: #9d4435; font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+.pgo-openingTitle h3 { margin: 0; font: 400 clamp(46px, 5vw, 72px)/.92 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
+.pgo-openingTitle p { max-width: 660px; margin: 8px 0 0; color: #64665e; font-size: 15px; line-height: 1.6; }
+.pgo-guideKeyGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(28,32,28,.2); }
+.pgo-guideKeyGrid article { min-height: 260px; padding: 24px; background: #e5e0d4; }
+.pgo-guideKeyGrid span, .pgo-neighbourhoodGrid article > span, .pgo-townStory article > span { color: #9d4435; font-size: 10px; font-weight: 800; }
+.pgo-guideKeyGrid h4, .pgo-neighbourhoodGrid h4, .pgo-townStory h4, .pgo-itinerary h4 { margin: 55px 0 12px; font: 500 25px/1 "Iowan Old Style", Georgia, serif; letter-spacing: 0; }
+.pgo-guideKeyGrid p, .pgo-neighbourhoodGrid p, .pgo-townStory p, .pgo-itinerary p { margin: 0; color: #64665e; font-size: 12px; line-height: 1.6; }
+.pgo-neighbourhoodGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px; }
+.pgo-neighbourhoodGrid article { padding-top: 18px; border-top: 2px solid #9d4435; }
+.pgo-neighbourhoodGrid h4 { margin: 32px 0 8px; font-size: 31px; }
+.pgo-neighbourhoodGrid strong { display: block; margin-bottom: 12px; font-size: 12px; }
+.pgo-neighbourhoodGrid small { display: block; margin-top: 18px; color: #7b3a30; font-size: 9px; font-weight: 800; text-transform: uppercase; }
+.pgo-mapFeature { width: 100%; padding-inline: max(24px, calc((100vw - 1180px) / 2)); background: #253f35; color: #fff; }
+.pgo-mapFeature .pgo-openingTitle > span, .pgo-mapFeature .pgo-openingTitle p { color: rgba(255,255,255,.65); }
+.pgo-mapImage { position: relative; display: block; overflow: hidden; background: #d3cbb9; }
+.pgo-mapImage img { display: block; width: 100%; max-height: 720px; object-fit: cover; }
+.pgo-mapImage span { position: absolute; right: 20px; bottom: 20px; padding: 14px 18px; background: #f2eee4; color: #1c201c; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+.pgo-itineraries { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.pgo-itinerary + .pgo-itinerary { border-left: 1px solid rgba(28,32,28,.18); padding-left: 80px; }
+.pgo-itinerary .pgo-openingTitle { grid-template-columns: 45px 1fr; }
+.pgo-itinerary > div:last-child section { display: grid; grid-template-columns: 58px 1fr; gap: 20px; padding: 17px 0; border-top: 1px solid rgba(28,32,28,.16); }
+.pgo-itinerary time { color: #9d4435; font-size: 10px; font-weight: 800; }
+.pgo-itinerary h4 { margin: 0 0 5px; font-size: 21px; }
+.pgo-townStory > div:last-child { display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px; }
+.pgo-townStory article { padding-top: 18px; border-top: 2px solid #253f35; }
+.pgo-townStory h4 { margin: 45px 0 12px; font-size: 24px; }
+.pgo-editGrid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(28,32,28,.2); }
+.pgo-editGrid button, .pgo-editGrid > article { position: relative; display: grid; grid-template-columns: 38px 1fr; gap: 4px 18px; min-height: 105px; margin-block: 0; padding: 22px 50px 22px 0; border: 0; border-bottom: 1px solid rgba(28,32,28,.2); background: transparent; color: inherit; text-align: left; }
+.pgo-editGrid > :nth-child(odd) { margin-right: 28px; }
+.pgo-editGrid > :nth-child(even) { margin-left: 28px; }
+.pgo-editGrid button { cursor: pointer; }
+.pgo-editGrid > :where(button, article) > span { grid-row: 1 / 3; color: #9d4435; font-size: 10px; font-weight: 800; }
+.pgo-editGrid strong { font: 500 25px/1 "Iowan Old Style", Georgia, serif; }
+.pgo-editGrid small { color: #64665e; font-size: 11px; }
+.pgo-editGrid .anticon { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); }
+
 .pgo-chapter { width: 100vw; margin-left: calc(50% - 50vw); scroll-margin-top: 48px; background: var(--pgo-paper); }
 .pgo-chapterHero { height: min(90svh, 900px); margin-left: 0; }
 .pgo-chapterTitle { position: absolute; z-index: 1; right: 0; bottom: 9%; left: 0; width: min(1180px, calc(100% - 48px)); margin: auto; }
@@ -114,6 +161,25 @@
   .pgo-introGrid { grid-template-columns: 1fr; gap: 30px; }
   .pgo-introGrid h2 { font-size: 50px; }
   .pgo-introGrid p { font-size: 15px; line-height: 1.7; }
+  .pgo-openingHeader { min-height: auto; padding: 90px 18px; }
+  .pgo-openingHeader h2 { font-size: 58px; }
+  .pgo-welcomeCopy { grid-template-columns: 1fr; gap: 20px; margin-top: 50px; }
+  .pgo-welcomeCopy strong { grid-column: auto; }
+  .pgo-openingBlock { width: calc(100% - 32px); padding: 82px 0; }
+  .pgo-openingTitle { grid-template-columns: 38px minmax(0, 1fr); gap: 8px 12px; margin-bottom: 42px; }
+  .pgo-openingTitle h3 { font-size: 45px; }
+  .pgo-guideKeyGrid { grid-template-columns: 1fr; }
+  .pgo-guideKeyGrid article { min-height: 0; padding: 22px; }
+  .pgo-guideKeyGrid h4 { margin: 28px 0 8px; }
+  .pgo-neighbourhoodGrid { grid-template-columns: 1fr; gap: 38px; }
+  .pgo-mapFeature { width: 100%; padding-inline: 16px; }
+  .pgo-mapImage img { min-height: 420px; object-fit: cover; }
+  .pgo-itineraries { grid-template-columns: 1fr; gap: 72px; }
+  .pgo-itinerary + .pgo-itinerary { padding-left: 0; border-left: 0; }
+  .pgo-townStory > div:last-child { grid-template-columns: 1fr; gap: 34px; }
+  .pgo-townStory h4 { margin-top: 25px; }
+  .pgo-editGrid { grid-template-columns: 1fr; }
+  .pgo-editGrid > :nth-child(n) { margin: 0; }
   .pgo-chapterHero { height: 86svh; }
   .pgo-chapterTitle { width: calc(100% - 32px); bottom: 7%; }
   .pgo-chapterTitle h2 { font-size: 62px; }

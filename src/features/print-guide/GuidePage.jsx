@@ -5,6 +5,15 @@ import {
   GUIDE_PLACES_BY_SLUG,
   GUIDE_SECTIONS,
 } from "./guideData";
+import {
+  GUIDE_AREAS,
+  GUIDE_EDIT_PLACES,
+  GUIDE_ITINERARIES,
+  GUIDE_KEY_ITEMS,
+  GUIDE_MAP_IMAGE,
+  GUIDE_MAP_URL,
+  GUIDE_TOWN_STORY_CHAPTERS,
+} from "./openingGuideData";
 import { formatCurrency } from "./guideUtils";
 
 function getVenues(page) {
@@ -94,15 +103,6 @@ function ContentsPage({ page }) {
 }
 
 function HowToUsePage({ page }) {
-  const bestForTags = [
-    "Breakfast",
-    "Sunset",
-    "Date night",
-    "Families",
-    "Surf",
-    "Rainy day",
-  ];
-
   return (
     <div className="pg-template pg-how-to-use pg-safe-area">
       <EditorialLabel page={page} />
@@ -111,9 +111,9 @@ function HowToUsePage({ page }) {
       <p className="pg-standfirst">{page.content.subheadline}</p>
       <div className="pg-how-to-grid">
         <article className="pg-how-to-item">
-          <span className="pg-how-to-number">01</span>
+          <span className="pg-how-to-number">{GUIDE_KEY_ITEMS[0][0]}</span>
           <div>
-            <h2>Guide number</h2>
+            <h2>{GUIDE_KEY_ITEMS[0][1]}</h2>
             <p>Every featured place receives a number.</p>
             <strong className="pg-guide-number-example">
               #027 <b>Petals</b>
@@ -125,9 +125,9 @@ function HowToUsePage({ page }) {
           </div>
         </article>
         <article className="pg-how-to-item">
-          <span className="pg-how-to-number">02</span>
+          <span className="pg-how-to-number">{GUIDE_KEY_ITEMS[1][0]}</span>
           <div>
-            <h2>Editor's pick</h2>
+            <h2>{GUIDE_KEY_ITEMS[1][1]}</h2>
             <p className="pg-editors-pick">
               <b aria-hidden="true">★</b> Editor's pick
             </p>
@@ -138,9 +138,9 @@ function HowToUsePage({ page }) {
           </div>
         </article>
         <article className="pg-how-to-item">
-          <span className="pg-how-to-number">03</span>
+          <span className="pg-how-to-number">{GUIDE_KEY_ITEMS[2][0]}</span>
           <div>
-            <h2>Price</h2>
+            <h2>{GUIDE_KEY_ITEMS[2][1]}</h2>
             <p className="pg-price-key">
               <b>$</b> inexpensive <b>$$</b> moderate <b>$$$</b> special
               occasion <b>$$$$</b> luxury
@@ -148,21 +148,21 @@ function HowToUsePage({ page }) {
           </div>
         </article>
         <article className="pg-how-to-item">
-          <span className="pg-how-to-number">04</span>
+          <span className="pg-how-to-number">{GUIDE_KEY_ITEMS[3][0]}</span>
           <div>
-            <h2>Best for</h2>
+            <h2>{GUIDE_KEY_ITEMS[3][1]}</h2>
             <p>Use small tags:</p>
             <div className="pg-best-for-tags">
-              {bestForTags.map((tag) => (
+              {GUIDE_KEY_ITEMS[3][2].split(" · ").map((tag) => (
                 <span key={tag}>{tag}</span>
               ))}
             </div>
           </div>
         </article>
         <article className="pg-how-to-item pg-how-to-qr">
-          <span className="pg-how-to-number">05</span>
+          <span className="pg-how-to-number">{GUIDE_KEY_ITEMS[4][0]}</span>
           <div className="pg-how-to-qr-copy">
-            <h2>QR scan for more</h2>
+            <h2>{GUIDE_KEY_ITEMS[4][1]}</h2>
             <p>QR codes connect you to the live guide for:</p>
             <strong>
               Directions · Current opening hours · Menus · Events · Booking ·
@@ -178,65 +178,21 @@ function HowToUsePage({ page }) {
 }
 
 function AreaGlancePage({ page }) {
-  const areas = [
-    {
-      name: "Ahangama Town",
-      summary: "The centre of things.",
-      description:
-        "Restaurants, cafés, shops, the railway station and plenty happening within a relatively small area.",
-      bestFor: "Food · Coffee · Convenience · Nightlife",
-    },
-    {
-      name: "Kabalana",
-      summary: "Beach days and surf.",
-      description:
-        "A broad beach, one of the area's best-known surf zones and an increasingly strong collection of places to eat and stay.",
-      bestFor: "Beach · Surf · Breakfast · Staying",
-    },
-    {
-      name: "Kathaluwa",
-      summary: "A slower side of the coast.",
-      description:
-        "Between Ahangama and Koggala, with access to the lake, quieter roads and a more residential feel.",
-      bestFor: "Villas · Exploring · Koggala Lake",
-    },
-    {
-      name: "Goviyapana",
-      summary: "The quieter western edge.",
-      description: "A coastal stretch between Ahangama and Midigama.",
-      bestFor: "Beach · Villas · Slower stays",
-    },
-    {
-      name: "Midigama",
-      summary: "Surf first.",
-      description:
-        "A neighbouring surf community with several well-known breaks.",
-      bestFor: "Surf · Casual food · Backpackers",
-    },
-    {
-      name: "Koggala",
-      summary: "Lake, nature and history.",
-      description:
-        "The landscape changes around Koggala, with the lake opening up opportunities for boat trips, nature and inland exploration.",
-      bestFor: "Nature · Day trips · Experiences",
-    },
-  ];
-
   return (
     <div className="pg-template pg-area-glance pg-safe-area">
       <EditorialLabel page={page} />
       <span className="pg-area-glance-kicker">Know the neighbourhoods</span>
       <h1>{page.content.headline}</h1>
       <div className="pg-area-glance-grid">
-        {areas.map((area, index) => (
-          <article key={area.name}>
+        {GUIDE_AREAS.map(([name, summary, description, bestFor], index) => (
+          <article key={name}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div>
-              <h2>{area.name}</h2>
-              <strong>{area.summary}</strong>
-              <p>{area.description}</p>
+              <h2>{name}</h2>
+              <strong>{summary}</strong>
+              <p>{description}</p>
               <small>
-                <b>Best for</b> {area.bestFor}
+                <b>Best for</b> {bestFor}
               </small>
             </div>
           </article>
@@ -247,10 +203,6 @@ function AreaGlancePage({ page }) {
     </div>
   );
 }
-
-const ESSENTIAL_MAP_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-guide/ahangama-costal-guide.webp";
-const LIVE_MAP_URL = "https://ahangama.com/map";
 
 function EssentialMapSpreadPage({ page }) {
   const isLeftPage = page.pageNumber === 6;
@@ -296,13 +248,13 @@ function EssentialMapSpreadPage({ page }) {
       </div>
       <div className="pg-essential-map-art">
         <img
-          src={ESSENTIAL_MAP_IMAGE}
+          src={GUIDE_MAP_IMAGE}
           alt="Illustrated map of the Ahangama coastal corridor from Koggala to Midigama"
         />
         {!isLeftPage ? (
           <div className="pg-essential-map-qr">
             <QRCodeSVG
-              value={LIVE_MAP_URL}
+              value={GUIDE_MAP_URL}
               level="M"
               bgColor="#f7f4ed"
               fgColor="#171714"
@@ -323,50 +275,7 @@ function EssentialMapSpreadPage({ page }) {
 
 function ItineraryPage({ page }) {
   const isFirstDay = page.pageNumber === 8;
-  const items = isFirstDay
-    ? [
-        [
-          "08:00",
-          "Breakfast",
-          "[Venue] - A perfect introduction to the local morning vibe with exceptional coffee and fresh local ingredients.",
-        ],
-        [
-          "09:30",
-          "Get in the water",
-          "Head to Kabalana beach for a swim or a surf in the crystal clear morning waves.",
-        ],
-        ["12:30", "Lunch", "[Venue]"],
-        [
-          "14:00",
-          "Slow down",
-          "Relax by the pool, book a massage, or take a gentle boat trip on Koggala Lake.",
-        ],
-        ["17:00", "Sunset", "[Venue/Location]"],
-        ["19:30", "Dinner", "[Venue]"],
-        ["22:00", "One more?", "[Bar Recommendation]"],
-      ]
-    : [
-        ["07:30", "Move", "Yoga, Pilates, or a morning surf session."],
-        ["09:00", "Coffee", "Find your caffeine fix at a local favourite."],
-        [
-          "10:30",
-          "Explore",
-          "Venture inland to Koggala Lake for a cinnamon or cultural experience.",
-        ],
-        [
-          "13:30",
-          "Sri Lankan lunch",
-          "Authentic rice and curry at a traditional spot.",
-        ],
-        ["15:30", "Shop", "Visit independent local shops for unique finds."],
-        [
-          "17:30",
-          "Sunset",
-          "Watch the sky change from a different part of town.",
-        ],
-        ["20:00", "Dinner", "A memorable evening meal."],
-        ["22:00", "After dark", "Late night drinks and music."],
-      ];
+  const items = GUIDE_ITINERARIES[page.pageNumber];
 
   return (
     <div className="pg-template pg-itinerary pg-safe-area">
@@ -401,29 +310,6 @@ function ItineraryPage({ page }) {
 }
 
 function TownStoryPage({ page }) {
-  const chapters = [
-    [
-      "The Town Before the Boom",
-      "A glimpse into the local community, traditional fishing, and life along the railway and coastal road.",
-    ],
-    [
-      "Surf",
-      "Why the breaks of Ahangama, Kabalana, and Midigama became magnets for international travellers.",
-    ],
-    [
-      "The New Arrivals",
-      "The evolution of restaurants, cafés, villas, and wellness spaces led by creative entrepreneurs.",
-    ],
-    [
-      "What Remains",
-      "How Sri Lankan life continues to thrive and ground the visitor economy.",
-    ],
-    [
-      "Where Ahangama Goes Next",
-      "Managing growth while retaining the destination's unique character.",
-    ],
-  ];
-
   return (
     <div className="pg-template pg-town-story pg-safe-area">
       <EditorialLabel page={page} />
@@ -431,7 +317,7 @@ function TownStoryPage({ page }) {
       <h1>{page.content.headline}</h1>
       <p className="pg-standfirst">{page.content.subheadline}</p>
       <div className="pg-town-story-list">
-        {chapters.map(([title, description], index) => (
+        {GUIDE_TOWN_STORY_CHAPTERS.map(([title, description], index) => (
           <article key={title}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div>
@@ -447,29 +333,6 @@ function TownStoryPage({ page }) {
 }
 
 function AhangamaEditPage({ page }) {
-  const places = [
-    ["Cactus", "For breakfast after the beach."],
-    ["Marshmellow", "For a long, social brunch."],
-    ["Sisters Kabalana", "For Kabalana mornings."],
-    ["Abrazo", "For taco-fueled evenings."],
-    ["Jam House", "For dinner with a crowd."],
-    ["Petals", "For the local favourite flavour."],
-    ["Unsung", "For the Midigama surf community vibe."],
-    ["Folklore Ahangama", "For food and drinks with atmosphere."],
-    ["The Kip", "For the Ahangama state of mind."],
-    ["Kurulu Bay", "For disappearing beside the lake."],
-    ["Fi Midigama", "For a surf-town stay."],
-    ["The Nuga House", "For slowing everything down."],
-    ["White Lotus Spa", "For restoration and recovery."],
-    ["Cafe Wave", "For beachside coffee."],
-    ["Surf Club Midigama", "For catching the best breaks."],
-    ["Kumbuk Community", "For deep cultural connection."],
-    ["Pura Pilates", "For movement and balance."],
-    ["Daydream", "For thoughtfully curated local finds."],
-    ["Living Room Concept Store", "For unique design and coffee culture."],
-    ["Gusta", "For everything you need."],
-  ];
-
   return (
     <div className="pg-template pg-ahangama-edit pg-safe-area">
       <EditorialLabel page={page} />
@@ -477,7 +340,7 @@ function AhangamaEditPage({ page }) {
       <h1>{page.content.headline}</h1>
       <p className="pg-standfirst">{page.content.subheadline}</p>
       <div className="pg-ahangama-edit-list">
-        {places.map(([name, description], index) => (
+        {GUIDE_EDIT_PLACES.map(([name, description], index) => (
           <article key={name}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div>
