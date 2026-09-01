@@ -23,6 +23,10 @@ const GOOGLE_ADS_CONVERSION_CONFIG = {
   currency: "GBP",
 };
 
+const GOOGLE_ADS_PAGE_VIEW_CONVERSION_CONFIG = {
+  send_to: "AW-18209868538/bwCLCKmm_OscEPqVkutD",
+};
+
 const isPassConversionUrl = (destinationUrl) => {
   if (typeof window === "undefined" || !destinationUrl) {
     return false;
@@ -75,6 +79,11 @@ export const trackPageView = (url) => {
     window.gtag("event", "page_view", {
       page_path: url,
     });
+    window.gtag(
+      "event",
+      "conversion",
+      GOOGLE_ADS_PAGE_VIEW_CONVERSION_CONFIG,
+    );
   }
 };
 

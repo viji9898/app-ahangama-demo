@@ -112,6 +112,7 @@ import PrintGuidePage, { PRINT_GUIDE_PATH } from "../pages/PrintGuidePage";
 import PrintGuideOnlinePage, {
   PRINT_GUIDE_ONLINE_PATH,
 } from "../pages/PrintGuideOnlinePage";
+import GuideSalesPage, { GUIDE_SALES_PATH } from "../pages/GuideSalesPage";
 import GuidePitchPage, { GUIDE_PITCH_PATH } from "../pages/GuidePitchPage";
 import ExternalRedirect from "./ExternalRedirect";
 import { Navigate } from "react-router-dom";
@@ -124,6 +125,7 @@ const routes = [
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
   { path: PRINT_GUIDE_PATH, element: <PrintGuidePage /> },
   { path: PRINT_GUIDE_ONLINE_PATH, element: <PrintGuideOnlinePage /> },
+  { path: GUIDE_SALES_PATH, element: <GuideSalesPage /> },
   { path: NEW_HOME_PATH, element: <NewHomePage /> },
   { path: "/home-v-2", element: <HomeV2 /> },
   { path: "/home-mobile", element: <HomeMobile /> },

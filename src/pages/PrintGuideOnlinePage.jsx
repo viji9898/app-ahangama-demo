@@ -636,9 +636,7 @@ export default function PrintGuideOnlinePage() {
                         );
                       const content = (
                         <>
-                          <span>
-                            {String(place.number).padStart(2, "0")}
-                          </span>
+                          <span>{String(place.number).padStart(2, "0")}</span>
                           <strong>{place.name}</strong>
                           <small>{place.description}</small>
                           {venue ? <RightOutlined /> : null}
