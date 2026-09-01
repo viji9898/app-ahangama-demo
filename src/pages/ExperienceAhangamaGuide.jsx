@@ -333,7 +333,7 @@ function CoverSection() {
         </Reveal>
         <Reveal delay={4}>
           <div className="eag-cover-cta">
-            <a href="#best-cafes" className="eag-pill">Get Your Complimentary Pass</a>
+            <a href="https://ahangama.com/comp-pass/" className="eag-pill">Get Your Complimentary Pass</a>
           </div>
           <span className="eag-cover-tag">Ahangama Season 2026/2027</span>
         </Reveal>
