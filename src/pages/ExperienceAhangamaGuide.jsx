@@ -1233,8 +1233,11 @@ function TocRibbon({ currentChapter }) {
 
   const handleNav = useCallback((id) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    const container = document.querySelector(".eag-scroll-container");
+    if (el && container) {
+      const containerTop = container.scrollTop;
+      const elTop = el.getBoundingClientRect().top + containerTop - container.getBoundingClientRect().top;
+      container.scrollTo({ top: elTop, behavior: "smooth" });
       hideAll();
     }
   }, [hideAll]);
@@ -1364,30 +1367,40 @@ export default function ExperienceAhangamaGuide() {
   useEffect(() => {
     const container = document.querySelector(".eag-scroll-container");
     if (!container) return;
+    scrollContainerRef.current = container;
 
-    const sections = container.querySelectorAll(".eag-section");
+    const sections = Array.from(container.querySelectorAll(".eag-section"));
     if (!sections.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) {
-          const idx = Array.from(sections).indexOf(visible[0].target);
-          if (idx >= 0) {
-            setCurrentChapter(idx + 1);
-            setCurrentBg(CHAPTERS[idx]?.bg || "navy");
+    let ticking = false;
+    const onScroll = () => {
+      setShowTopBtn(container.scrollTop > 300);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const containerTop = container.scrollTop;
+        const containerMid = containerTop + container.clientHeight / 2;
+        let closest = 0;
+        let minDist = Infinity;
+        sections.forEach((section, i) => {
+          const rect = section.getBoundingClientRect();
+          const sectionTop = rect.top + containerTop;
+          const sectionMid = sectionTop + rect.height / 2;
+          const dist = Math.abs(sectionMid - containerMid);
+          if (dist < minDist) {
+            minDist = dist;
+            closest = i;
           }
-        }
-      },
-      { root: container, threshold: [0.1, 0.3, 0.5] },
-    );
+        });
+        setCurrentChapter(closest + 1);
+        setCurrentBg(CHAPTERS[closest]?.bg || "navy");
+        ticking = false;
+      });
+    };
 
-    for (const section of sections) {
-      observer.observe(section);
-    }
-    return () => observer.disconnect();
+    container.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => container.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
