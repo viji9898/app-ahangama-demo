@@ -379,6 +379,16 @@ const routeMeta = [
       "/12 Experiences Images /Why Ahangama Might Be Sri Lanka_s Most Interesting Coastal Town Right Now/Hero Image - Opening note.webp",
   },
   {
+    route: "/things-to-do-in-ahangama",
+    title: "Things to Do in Ahangama: Beaches, Surf, Food & More",
+    description:
+      "Discover what to do in Ahangama, from surf and beaches to restaurants, wellness, shopping, nightlife and carefully chosen south-coast day trips.",
+    publishDate: "2026-09-03T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "/12 Experiences Images /Why Ahangama Might Be Sri Lanka_s Most Interesting Coastal Town Right Now/The Social side - hero image.webp",
+  },
+  {
     route: "/community-market-in-ahangama",
     title: "Community Markets in Ahangama",
     description:

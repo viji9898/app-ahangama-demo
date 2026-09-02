@@ -105,6 +105,9 @@ import AhangamaAfterDarkPage, {
 import AhangamaSriLankaPage, {
   AHANGAMA_SRI_LANKA_PATH,
 } from "../pages/AhangamaSriLankaPage";
+import ThingsToDoAhangamaPage, {
+  THINGS_TO_DO_AHANGAMA_PATH,
+} from "../pages/ThingsToDoAhangamaPage";
 import ArticleGuidelinePage, {
   ARTICLE_GUIDELINE_PATH,
 } from "../pages/ArticleGuidelinePage";
@@ -229,6 +232,10 @@ const routes = [
   {
     path: AHANGAMA_SRI_LANKA_PATH,
     element: <AhangamaSriLankaPage />,
+  },
+  {
+    path: THINGS_TO_DO_AHANGAMA_PATH,
+    element: <ThingsToDoAhangamaPage />,
   },
   {
     path: ARTICLE_GUIDELINE_PATH,

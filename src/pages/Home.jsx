@@ -175,6 +175,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Things to do",
+    title: "Things to Do in Ahangama",
+    date: "This Week",
+    href: "/things-to-do-in-ahangama",
+    image:
+      "/12 Experiences Images /Why Ahangama Might Be Sri Lanka_s Most Interesting Coastal Town Right Now/The Social side - hero image.webp",
+  },
+  {
     category: "Destination Guide",
     title: "Ahangama, Sri Lanka: The Local Guide",
     date: "This Week",
