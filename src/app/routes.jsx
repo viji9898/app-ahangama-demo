@@ -102,6 +102,9 @@ import DulasiriUnclePage, {
 import AhangamaAfterDarkPage, {
   AHANGAMA_AFTER_DARK_PATH,
 } from "../pages/AhangamaAfterDarkPage";
+import AhangamaSriLankaPage, {
+  AHANGAMA_SRI_LANKA_PATH,
+} from "../pages/AhangamaSriLankaPage";
 import ArticleGuidelinePage, {
   ARTICLE_GUIDELINE_PATH,
 } from "../pages/ArticleGuidelinePage";
@@ -222,6 +225,10 @@ const routes = [
   {
     path: AHANGAMA_AFTER_DARK_PATH,
     element: <AhangamaAfterDarkPage />,
+  },
+  {
+    path: AHANGAMA_SRI_LANKA_PATH,
+    element: <AhangamaSriLankaPage />,
   },
   {
     path: ARTICLE_GUIDELINE_PATH,

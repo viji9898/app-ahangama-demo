@@ -175,6 +175,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Destination Guide",
+    title: "Ahangama, Sri Lanka: The Local Guide",
+    date: "This Week",
+    href: "/ahangama-sri-lanka",
+    image:
+      "/12 Experiences Images /Why Ahangama Might Be Sri Lanka_s Most Interesting Coastal Town Right Now/Hero Image - Opening note.webp",
+  },
+  {
     category: "Nightlife Guide",
     title: "Ahangama After Dark",
     date: "This Week",

@@ -1,0 +1,374 @@
+.asl-page {
+  --asl-ink: #18231d;
+  --asl-muted: #687069;
+  --asl-moss: #3d5a49;
+  --asl-sun: #e7b85c;
+  --asl-mist: #eef1eb;
+  color: var(--asl-ink);
+  background: #fff;
+}
+
+.asl-hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: min(820px, 92svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.asl-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(8, 18, 13, 0.84), rgba(8, 18, 13, 0.28) 62%, rgba(8, 18, 13, 0.08));
+}
+
+.asl-hero img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.asl-heroContent,
+.asl-inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.asl-heroContent {
+  padding: 160px 0 64px;
+  color: #fff;
+}
+
+.asl-eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.asl-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #fff !important;
+  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  font-size: clamp(54px, 8vw, 104px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.asl-standfirst {
+  max-width: 650px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.asl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.asl-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.asl-action:first-child {
+  border-color: #fff;
+  color: var(--asl-ink);
+  background: #fff;
+}
+
+.asl-section {
+  padding: 88px 0;
+}
+
+.asl-section--mist {
+  background: var(--asl-mist);
+}
+
+.asl-section--ink {
+  color: #fff;
+  background: var(--asl-ink);
+}
+
+.asl-sectionHead {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
+  gap: 64px;
+  margin-bottom: 42px;
+}
+
+.asl-section h2 {
+  margin: 0;
+  color: inherit;
+  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  font-size: clamp(38px, 5vw, 62px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.asl-sectionHead p,
+.asl-prose {
+  margin: 0;
+  color: var(--asl-muted);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.asl-section--ink .asl-sectionHead p,
+.asl-section--ink .asl-prose {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.asl-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.asl-card {
+  min-width: 0;
+  border-top: 1px solid rgba(24, 35, 29, 0.2);
+  padding-top: 18px;
+}
+
+.asl-card h3 {
+  margin: 0 0 10px;
+  color: inherit;
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+.asl-card p {
+  margin: 0;
+  color: var(--asl-muted);
+  line-height: 1.65;
+}
+
+.asl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.asl-tag {
+  padding: 5px 8px;
+  color: var(--asl-moss);
+  background: rgba(61, 90, 73, 0.1);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.asl-beaches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.asl-beach {
+  padding: 28px;
+  background: var(--asl-ink);
+}
+
+.asl-beach h3 {
+  margin: 0 0 24px;
+  color: #fff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+.asl-beach strong {
+  display: block;
+  margin: 18px 0 5px;
+  color: var(--asl-sun);
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.asl-beach p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+}
+
+.asl-featureImage {
+  width: 100%;
+  max-height: 660px;
+  margin-top: 48px;
+  object-fit: cover;
+  aspect-ratio: 16 / 8;
+}
+
+.asl-venueGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.asl-venue {
+  color: inherit;
+  text-decoration: none;
+}
+
+.asl-venue img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.asl-venueCopy {
+  padding-top: 15px;
+}
+
+.asl-venueCopy span {
+  color: var(--asl-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.asl-venueCopy h3 {
+  margin: 5px 0 7px;
+  color: inherit;
+  font-size: 21px;
+  letter-spacing: 0;
+}
+
+.asl-venueCopy p {
+  margin: 0;
+  color: var(--asl-muted);
+  line-height: 1.55;
+}
+
+.asl-surfGrid,
+.asl-planGrid,
+.asl-dayTrips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.asl-callout {
+  margin-top: 38px;
+  padding: 22px 24px;
+  border-left: 3px solid var(--asl-sun);
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  line-height: 1.65;
+}
+
+.asl-linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.asl-linkRow a,
+.asl-textLink {
+  color: var(--asl-moss);
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
+.asl-faq details {
+  border-top: 1px solid rgba(24, 35, 29, 0.16);
+  padding: 20px 0;
+}
+
+.asl-faq summary {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.asl-faq p {
+  max-width: 780px;
+  margin: 12px 0 0;
+  color: var(--asl-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .asl-grid,
+  .asl-venueGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .asl-sectionHead {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .asl-beaches,
+  .asl-surfGrid,
+  .asl-planGrid,
+  .asl-dayTrips {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .asl-hero {
+    min-height: 88svh;
+  }
+
+  .asl-heroContent,
+  .asl-inner {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .asl-heroContent {
+    padding-bottom: 34px;
+  }
+
+  .asl-hero h1 {
+    font-size: 52px;
+  }
+
+  .asl-standfirst {
+    font-size: 16px;
+  }
+
+  .asl-section {
+    padding: 64px 0;
+  }
+
+  .asl-grid,
+  .asl-venueGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .asl-featureImage {
+    aspect-ratio: 4 / 3;
+  }
+}

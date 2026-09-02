@@ -369,6 +369,16 @@ const routeMeta = [
       "/Light House Webpage images/light-house-beach-view-hero.webp",
   },
   {
+    route: "/ahangama-sri-lanka",
+    title: "Ahangama, Sri Lanka: Beaches, Surf, Food & Stays",
+    description:
+      "Plan your time in Ahangama with a locally curated guide to beaches, surf breaks, restaurants, boutique stays, shops, events and practical travel advice.",
+    publishDate: "2026-09-02T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "/12 Experiences Images /Why Ahangama Might Be Sri Lanka_s Most Interesting Coastal Town Right Now/Hero Image - Opening note.webp",
+  },
+  {
     route: "/community-market-in-ahangama",
     title: "Community Markets in Ahangama",
     description:
