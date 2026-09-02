@@ -684,7 +684,7 @@ function LocatedSection() {
 const BEST_STAYS = [
   { name: "Ko Lake Villa", rating: "4.4", desc: "A private seven-bedroom lakeside villa made for slow days, sunset gatherings and unforgettable stays in Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787639927/Ko_Lake_Villa_2_i7p3nr.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/kolakevilla.ahangama/", googleMaps: "https://maps.app.goo.gl/jRahAEuMfkCtKUrQ7", ownership: "foreign" , website: "" },
   { name: "The Mugatiya Ahangama Luxury Heritage Villa", rating: "4.4", desc: "A private garden retreat in Ahangama, blending the intimacy of a home with the beauty of tropical island living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787640178/Mugatiya_shycdl.webp", lat: 5.9845509, lng: 80.3373084, instagram: "https://www.instagram.com/villamugatiya/?hl=en", googleMaps: "https://maps.app.goo.gl/PFjbvXmuvUMmAtq18", ownership: "foreign" , website: "" },
-  { name: "Sisters Kabalana", rating: "4.6", desc: "Relaxed island stays with the warmth of home, thoughtfully cared for by our team of local women.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1788161176/Sisters_Acc_copy_g55nt7.webp", lat: 5.9779099, lng: 80.3513977, instagram: "https://www.instagram.com/sisterssrilanka/?hl=en", googleMaps: "https://maps.app.goo.gl/3Jix2eNgTmA8CBGT9", ownership: "local" , website: "" },
+  { name: "Sisters Kabalana", rating: "4.6", desc: "Relaxed island stays with the warmth of home, thoughtfully cared for by our team of local women.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1788161176/Sisters_Acc_copy_g55nt7.webp", lat: 5.9779099, lng: 80.3513977, instagram: "https://www.instagram.com/sisterssrilanka/?hl=en", googleMaps: "https://maps.app.goo.gl/3Jix2eNgTmA8CBGT9", ownership: "local" , website: "https://sisterssrilanka.com" },
   { name: "Casa Samaya", rating: "4.9", desc: "Casa Samaya is a beachfront boutique hotel in Weligama offering modern rooms, a surf school, and a relaxing wellness spa.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788320283/casa_samaya_kewdtl.webp", lat: 5.973244991042889, lng: 80.43546070822997, instagram: "https://www.instagram.com/casasamaya/?hl=en", googleMaps: "https://maps.app.goo.gl/L7iiybDudDBsUMk47", website: "" },
   { name: "Villa Alba", rating: "4.8", desc: "A luxury boutique villa nestled above the rice fields of Ahangama, blending modern design with serene nature.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788232974/Alba_ptcx0i.webp", lat: 6.004850003281442, lng: 80.34979863779847, instagram: "https://www.instagram.com/villaalba_srilanka/?hl=en", googleMaps: "https://maps.app.goo.gl/pymFpU8Agpkte4E3A", ownership: "foreign" , website: "" },
   { name: "Animals", rating: "4.8", desc: " A sleek pink boutique oasis blending premium co-working and laid back surf culture for adult travelers.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp", lat: 5.979034944715787, lng: 80.3542700558208, instagram: "https://www.instagram.com/animalsahangama/", googleMaps: "https://maps.app.goo.gl/YwNuhDw4sC6MiBpw9", ownership: "foreign" , website: "" },
@@ -1119,7 +1119,7 @@ function BestRetailStoresSection({ onImageClick }) {
 const BEST_CAFES = [
   { name: "Kaffi Ahangama", rating: "4.7", desc: "Brews & Bakes To Save The Day.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788240082/kafii01_czf6wl.webp", lat: 5.9689078, lng: 80.3706031, instagram: "https://www.instagram.com/kaffi.ahangama/", googleMaps: "https://maps.app.goo.gl/XY9S85T9woSk1bDv7", ownership: "local" , website: "" },
   { name: "Aliikai Cafe", rating: "4.8", desc: "A cosy beachside cafe serving wholesome bowls, artisan coffee and tropical vibes in Ahangama.", tagline: "Local Woman-Owned", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787554069/Aliikai_2_abmchk.webp", lat: 5.967050478875724, lng: 80.375273031689, instagram: "https://www.instagram.com/aliikai_ahangma_arugambay/?hl=en", googleMaps: "https://maps.app.goo.gl/83eH8u3i7fyih8Ux6", ownership: "local" , website: "" },
-  { name: "Sisters Cafe", rating: "4.6", desc: "Mediterranean flavours with an island twist, exceptional coffee, proudly brought to life by our team of local women.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1788160987/Sisters_Cafe_hunfx4.webp", lat: 5.9779099, lng: 80.3513977, instagram: "https://www.instagram.com/sisterssrilanka/?hl=en", googleMaps: "https://maps.app.goo.gl/Wd8wyGMaVWvMpE478", ownership: "local" , website: "" },
+  { name: "Sisters Cafe", rating: "4.6", desc: "Mediterranean flavours with an island twist, exceptional coffee, proudly brought to life by our team of local women.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1788160987/Sisters_Cafe_hunfx4.webp", lat: 5.9779099, lng: 80.3513977, instagram: "https://www.instagram.com/sisterssrilanka/?hl=en", googleMaps: "https://maps.app.goo.gl/Wd8wyGMaVWvMpE478", ownership: "local" , website: "https://sisterssrilanka.com" },
   { name: "Café Samaya", rating: "4.5", desc: "A serene hillside cafe with panoramic ocean views, traditional Sri Lankan flavours and mindful hospitality.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Samaya_ufdsjh.png", lat: 5.9730175, lng: 80.4349573, instagram: "", googleMaps: "", ownership: "local" , website: "" },
   { name: "Thileni's", rating: "4.8", desc: "A vibrant beachfront cafe and sunset lounge in Ahangama offering front-row surf views, creative coastal fusion cuisine, and an upscale, barefoot-luxury vibe.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1788154644/Thileni_s_mz5rq1.webp", lat: 5.9782004, lng: 80.348526, instagram: "https://www.instagram.com/thilenis_ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/6v8ZtnzJvpLWvZsc8", ownership: "local" , website: "" },
   { name: "Cafe Ceylon", rating: "4.5", desc: "A rustic cafe blending Ceylon tea traditions with modern cafe culture in a relaxed setting.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287237/Cafe_Ceylon_wku3on.png", lat: 5.9782004, lng: 80.348526, instagram: "https://www.instagram.com/cafe_ceylon/?hl=en", googleMaps: "https://maps.app.goo.gl/SHJXxj5BLrDB5q8V7", ownership: "local" , website: "" },
@@ -1362,22 +1362,26 @@ export default function ExperienceAhangamaGuide() {
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
-    const sections = document.querySelectorAll(".eag-section");
+    const container = document.querySelector(".eag-scroll-container");
+    if (!container) return;
+
+    const sections = container.querySelectorAll(".eag-section");
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const idx = Array.from(sections).indexOf(entry.target);
-            if (idx >= 0) {
-              setCurrentChapter(idx + 1);
-              setCurrentBg(CHAPTERS[idx]?.bg || "navy");
-            }
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible.length > 0) {
+          const idx = Array.from(sections).indexOf(visible[0].target);
+          if (idx >= 0) {
+            setCurrentChapter(idx + 1);
+            setCurrentBg(CHAPTERS[idx]?.bg || "navy");
           }
         }
       },
-      { threshold: 0.4 },
+      { root: container, threshold: [0.1, 0.3, 0.5] },
     );
 
     for (const section of sections) {
