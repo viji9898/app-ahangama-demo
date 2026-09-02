@@ -75,6 +75,7 @@ import PabcPage from "../pages/PabcPage";
 import ExperienceAhangamaGuide from "../pages/ExperienceAhangamaGuide";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import ArticlesPage, { ARTICLES_PATH } from "../pages/ArticlesPage";
+import MediaPage, { MEDIA_PATH } from "../pages/MediaPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
 import StaffPickExperienceAhangamaPage, {
   STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
@@ -190,6 +191,7 @@ const routes = [
   { path: "/guide", element: <ExperienceAhangamaGuide /> },
   { path: "/online-guide", element: <Navigate to="/guide" replace /> },
   { path: ARTICLES_PATH, element: <ArticlesPage /> },
+  { path: MEDIA_PATH, element: <MediaPage /> },
   { path: "/editors-picks", element: <EditorsPicksPage /> },
   {
     path: "/the-living-room-concept-store",

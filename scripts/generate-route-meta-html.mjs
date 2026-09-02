@@ -556,6 +556,12 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ariel-view-ahangama-beach-coastline.jpg",
   },
   {
+    route: "/media",
+    title: "Media Library | Ahangama",
+    description:
+      "Browse the images used across Ahangama, inspect their source links and identify media hosted outside the designated Ahangama S3 server.",
+  },
+  {
     route: "/why-surfing-changed-everything-in-ahangama",
     title: "Why Surfing Changed Everything in Ahangama",
     description:

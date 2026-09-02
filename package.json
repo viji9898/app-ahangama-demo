@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run meta:routes && npm run seo:gen",
+    "build": "npm run media:gen && vite build && npm run meta:routes && npm run seo:gen",
     "lint": "eslint .",
+    "media:gen": "node scripts/generate-media-inventory.mjs",
     "meta:routes": "node scripts/generate-route-meta-html.mjs",
     "preview": "vite preview",
     "seo:gen": "node scripts/generate-seo.mjs",
