@@ -36,3 +36,6 @@ netlify/functions/*.zip
 # Stripe environment documentation (sensitive information)
 STRIPE_ENVIRONMENTS.md
 
+# Google Places API cached matches
+scripts/.place-matches.json
+

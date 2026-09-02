@@ -10,6 +10,7 @@
     "meta:routes": "node scripts/generate-route-meta-html.mjs",
     "preview": "vite preview",
     "seo:gen": "node scripts/generate-seo.mjs",
+    "update-ratings": "node scripts/updateGoogleRatings.js",
     "email:test:promo": "node test-promo-emails.js"
   },
   "dependencies": {
