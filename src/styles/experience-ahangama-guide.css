@@ -1209,6 +1209,11 @@
   box-shadow: 0 4px 12px rgba(74, 144, 217, 0.35);
 }
 
+.eag-website:hover svg circle,
+.eag-website:hover svg ellipse,
+.eag-website:hover svg line,
+.eag-website:hover svg path { stroke: #fff; }
+
 .eag-website--empty {
   pointer-events: none;
   background: rgba(10, 20, 35, 0.05);
