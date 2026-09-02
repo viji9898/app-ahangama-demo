@@ -1186,6 +1186,65 @@
   border-color: rgba(255, 255, 255, 0.18);
 }
 
+/* ===== Website link ===== */
+.eag-website {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: rgba(10, 20, 35, 0.05);
+  border: 1px solid rgba(10, 20, 35, 0.14);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.eag-website svg { width: 16px; height: 16px; }
+
+.eag-website:hover {
+  background: linear-gradient(45deg, #4A90D9, #6C5CE7);
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 144, 217, 0.35);
+}
+
+.eag-website--empty {
+  pointer-events: none;
+  background: rgba(10, 20, 35, 0.05);
+  border-color: rgba(10, 20, 35, 0.12);
+}
+
+.eag-lightbox-website {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.eag-lightbox-website svg { width: 18px; height: 18px; }
+
+.eag-lightbox-website:hover {
+  background: linear-gradient(45deg, #4A90D9, #6C5CE7);
+  border-color: transparent;
+}
+
+.eag-lightbox-website.eag-website--empty {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.eag-dark-mode .eag-website--empty {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.eag-dark-mode .eag-website {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
 /* ===== Image Lightbox ===== */
 .eag-lightbox {
   position: fixed;
