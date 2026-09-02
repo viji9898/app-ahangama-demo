@@ -74,6 +74,7 @@ import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
 import ExperienceAhangamaGuide from "../pages/ExperienceAhangamaGuide";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
+import ArticlesPage, { ARTICLES_PATH } from "../pages/ArticlesPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
 import StaffPickExperienceAhangamaPage, {
   STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
@@ -188,6 +189,7 @@ const routes = [
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: "/guide", element: <ExperienceAhangamaGuide /> },
   { path: "/online-guide", element: <Navigate to="/guide" replace /> },
+  { path: ARTICLES_PATH, element: <ArticlesPage /> },
   { path: "/editors-picks", element: <EditorsPicksPage /> },
   {
     path: "/the-living-room-concept-store",

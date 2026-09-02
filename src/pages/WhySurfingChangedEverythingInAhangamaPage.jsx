@@ -26,7 +26,7 @@ const NEXT_ARTICLE = {
   kicker: "Discover More",
   title: "12 Ways to Experience Ahangama",
   image:
-    "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg",
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-train-station-sri-Lanka.webp",
 };
 
 const articleIntroduction = [

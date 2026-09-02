@@ -242,7 +242,7 @@ export default function TwelveThingsPage() {
   const canonical = absUrl("/12-things");
   const passCtaUrl = buildPassCtaUrl();
   const heroImage =
-    "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg";
+    "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-train-station-sri-Lanka.webp";
 
   return (
     <SiteLayout>
@@ -266,7 +266,7 @@ export default function TwelveThingsPage() {
         >
           <img
             src={heroImage}
-            alt="Clifftop coastal view near Ahangama"
+            alt="Ahangama railway station in Sri Lanka"
             style={{
               position: "absolute",
               inset: 0,

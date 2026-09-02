@@ -38,7 +38,7 @@ const TWELVE_THINGS_GROUP_KEY = "12-things-to-do";
 const TWELVE_THINGS_TAG_SLUG = "12-things-to-do";
 const TWELVE_THINGS_POST_PATH = "/12-things";
 const TWELVE_THINGS_POST_IMAGE =
-  "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-train-station-sri-Lanka.webp";
 const MAP_DEFAULT_CENTER = { lat: 5.9699, lng: 80.3666 };
 const MAP_DEFAULT_ZOOM = 14;
 
