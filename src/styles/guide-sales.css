@@ -1,0 +1,191 @@
+.guideSales-page {
+  --sales-ink: #20251f;
+  --sales-muted: #687067;
+  --sales-line: #d7d9d2;
+  width: min(1440px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 96px 0 80px;
+  color: var(--sales-ink);
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+.guideSales-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--sales-ink);
+}
+
+.guideSales-header > div > span {
+  color: #9d4435;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.guideSales-header h1 {
+  margin: 12px 0 10px;
+  font:
+    500 54px/1 "Iowan Old Style",
+    Georgia,
+    serif;
+  letter-spacing: 0;
+}
+
+.guideSales-header p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--sales-muted);
+}
+.guideSales-header dl {
+  display: flex;
+  gap: 36px;
+  margin: 0;
+}
+.guideSales-header dl div {
+  min-width: 100px;
+}
+.guideSales-header dt {
+  color: var(--sales-muted);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.guideSales-header dd {
+  margin: 5px 0 0;
+  font:
+    500 30px/1 "Iowan Old Style",
+    Georgia,
+    serif;
+}
+
+.guideSales-tools {
+  display: grid;
+  grid-template-columns: minmax(260px, 460px) 240px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 22px 0;
+}
+
+.guideSales-tools .ant-input-affix-wrapper,
+.guideSales-tools .ant-select-selector {
+  min-height: 44px;
+  border-radius: 3px;
+}
+.guideSales-tools > span {
+  justify-self: end;
+  color: var(--sales-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.guideSales-tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--sales-line);
+}
+.guideSales-status {
+  padding: 48px 24px;
+  border: 1px solid var(--sales-line);
+  background: #fff;
+  color: var(--sales-muted);
+  text-align: center;
+}
+.guideSales-status--error {
+  border-color: #cfa9a2;
+  color: #7f392f;
+}
+.guideSales-tableWrap table {
+  width: 100%;
+  min-width: 1060px;
+  border-collapse: collapse;
+  background: #fff;
+}
+.guideSales-tableWrap th,
+.guideSales-tableWrap td {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--sales-line);
+  text-align: left;
+  vertical-align: top;
+}
+.guideSales-tableWrap thead th {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: #293c32;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.guideSales-tableWrap tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.guideSales-tableWrap tbody tr:hover {
+  background: #f5f3ed;
+}
+.guideSales-tableWrap tbody th {
+  width: 230px;
+}
+.guideSales-tableWrap tbody th strong {
+  display: block;
+  font:
+    500 19px/1.1 "Iowan Old Style",
+    Georgia,
+    serif;
+}
+.guideSales-tableWrap tbody th small {
+  display: block;
+  margin-top: 6px;
+  color: var(--sales-muted);
+  font-size: 10px;
+  font-weight: 500;
+}
+.guideSales-tableWrap tbody td {
+  max-width: 280px;
+  color: #4f574f;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.guideSales-tableWrap a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #7f392f;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.guideSales-tableWrap a:hover {
+  text-decoration: underline;
+}
+.guideSales-empty {
+  color: #92978f;
+}
+
+@media (max-width: 760px) {
+  .guideSales-page {
+    width: calc(100% - 28px);
+    padding: 72px 0 56px;
+  }
+  .guideSales-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .guideSales-header h1 {
+    font-size: 44px;
+  }
+  .guideSales-header dl {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .guideSales-tools {
+    grid-template-columns: 1fr;
+  }
+  .guideSales-tools > span {
+    justify-self: start;
+  }
+}
