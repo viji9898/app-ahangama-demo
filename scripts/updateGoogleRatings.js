@@ -27,6 +27,11 @@ const MATCHES_PATH = resolve(ROOT, "scripts/.place-matches.json");
 // ── Load API key ──────────────────────────────────────────────────────────────
 config({ path: ENV_PATH });
 
+// Fallback: also check .env.example if .env doesn't have the key
+if (!process.env.GOOGLE_PLACES_API_KEY) {
+  config({ path: resolve(ROOT, ".env.example") });
+}
+
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 if (!API_KEY) {
   console.error("ERROR: GOOGLE_PLACES_API_KEY not found in .env file.");
