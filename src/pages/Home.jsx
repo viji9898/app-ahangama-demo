@@ -175,6 +175,13 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Nightlife Guide",
+    title: "Ahangama After Dark",
+    date: "This Week",
+    href: "/ahangama-after-dark",
+    image: "/Light House Webpage images/light-house-beach-view-hero.webp",
+  },
+  {
     category: "Cafe Story",
     title: "Petals Ahangama: A Dream Rooted in Legacy",
     date: "This Week",

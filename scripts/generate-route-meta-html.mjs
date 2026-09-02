@@ -359,6 +359,16 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/best-sunsets/Hero+Image+-+2400+x+1600+px.webp",
   },
   {
+    route: "/ahangama-after-dark",
+    title: "Ahangama After Dark",
+    description:
+      "An editorial guide to sunset drinks, live music, dinner spots and late-night events in Ahangama, Sri Lanka.",
+    publishDate: "2026-09-02T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "/Light House Webpage images/light-house-beach-view-hero.webp",
+  },
+  {
     route: "/community-market-in-ahangama",
     title: "Community Markets in Ahangama",
     description:

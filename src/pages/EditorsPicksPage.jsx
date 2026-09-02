@@ -28,6 +28,14 @@ const ARTICLES = [
       "https://images.pexels.com/photos/19065606/pexels-photo-19065606.jpeg",
   },
   {
+    category: "Nightlife Guide",
+    title: "Ahangama After Dark",
+    href: "/ahangama-after-dark",
+    description:
+      "Sunset drinks, live music, dinner spots, and the changing rhythm of a night out in Ahangama.",
+    image: "/Light House Webpage images/light-house-beach-view-hero.webp",
+  },
+  {
     category: "Editorial",
     title: "Sri Lanka's Most Interesting Coastal Town",
     href: "/sri-lankas-most-interesting-coastal-town",

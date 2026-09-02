@@ -99,6 +99,9 @@ import PetalsAhangamaLegacyPage, {
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
+import AhangamaAfterDarkPage, {
+  AHANGAMA_AFTER_DARK_PATH,
+} from "../pages/AhangamaAfterDarkPage";
 import ArticleGuidelinePage, {
   ARTICLE_GUIDELINE_PATH,
 } from "../pages/ArticleGuidelinePage";
@@ -215,6 +218,10 @@ const routes = [
   {
     path: DULASIRI_UNCLE_PATH,
     element: <DulasiriUnclePage />,
+  },
+  {
+    path: AHANGAMA_AFTER_DARK_PATH,
+    element: <AhangamaAfterDarkPage />,
   },
   {
     path: ARTICLE_GUIDELINE_PATH,
