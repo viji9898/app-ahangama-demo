@@ -1217,7 +1217,7 @@ function isTocMobile() {
   return tocMobileQuery ? tocMobileQuery.matches : false;
 }
 
-function TocRibbon({ currentChapter }) {
+function TocRibbon({ currentChapterId }) {
   const [revealed, setRevealed] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const ribbonRef = useRef(null);
@@ -1229,10 +1229,8 @@ function TocRibbon({ currentChapter }) {
 
   const handleNav = useCallback((id) => {
     const el = document.getElementById(id);
-    const container = document.querySelector(".eag-scroll-container");
-    if (el && container) {
-      const elTop = el.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop;
-      container.scrollTo({ top: elTop, behavior: "smooth" });
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
       hideAll();
     }
   }, [hideAll]);
@@ -1316,7 +1314,7 @@ function TocRibbon({ currentChapter }) {
           {tocItems.map((item) => (
             <div
               key={item.id}
-              className={`eag-toc-panel-item ${currentChapter === item.id ? "eag-toc-panel-item--active" : ""}`}
+              className={`eag-toc-panel-item ${currentChapterId === item.id ? "eag-toc-panel-item--active" : ""}`}
               onClick={() => handleNav(item.id)}
               role="button"
               tabIndex={0}
@@ -1456,7 +1454,7 @@ export default function ExperienceAhangamaGuide() {
         )}
       </button>
 
-      <TocRibbon currentChapter={CHAPTERS[currentChapter - 1]?.id} />
+      <TocRibbon currentChapterId={CHAPTERS[currentChapter - 1]?.id} />
       <ChapterProgress current={currentChapter} bg={currentBg} />
 
       <button
