@@ -114,6 +114,15 @@
   background: var(--asl-ink);
 }
 
+.asl-section--ink h2,
+.asl-section--ink h3 {
+  color: #fff !important;
+}
+
+.asl-section--ink .asl-card {
+  border-top-color: rgba(255, 255, 255, 0.22);
+}
+
 .asl-sectionHead {
   display: grid;
   grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
