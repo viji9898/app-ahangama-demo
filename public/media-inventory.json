@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-03T10:41:41.923Z",
+  "generatedAt": "2026-09-03T11:17:24.540Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 663,
+  "count": 670,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -6679,6 +6679,21 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788413091/Daily_Dose_wxycss.webp",
+      "fileName": "Daily_Dose_wxycss.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
       "url": "https://images.openai.com/static-rsc-4/dH7shEGk1uXluF2Jir2c0DGDyYL3Z1kIo7mtn_Fdm219IbR2HYzMwWZJYukJ89v_3Ndbo64q64fWu883O89hVuDk9nHpEKl8N9MnPcbePkvJsC0tOD_JN_5upPYy1qJeOVhQOa9CHEJ67Xjjr1h7N200gaHbZs10vAIJSwWklPk?purpose=inline",
       "fileName": "dH7shEGk1uXluF2Jir2c0DGDyYL3Z1kIo7mtn_Fdm219IbR2HYzMwWZJYukJ89v_3Ndbo64q64fWu883O89hVuDk9nHpEKl8N9MnPcbePkvJsC0tOD_JN_5upPYy1qJeOVhQOa9CHEJ67Xjjr1h7N200gaHbZs10vAIJSwWklPk",
       "format": "IMAGE",
@@ -6705,6 +6720,21 @@
       "pageRoutes": {
         "src/pages/SriLankasMostInterestingCoastalTownPage.jsx": [
           "/sri-lankas-most-interesting-coastal-town"
+        ]
+      }
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788409318/ebb_and_flow_jatgto.webp",
+      "fileName": "ebb_and_flow_jatgto.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
         ]
       }
     },
@@ -6828,21 +6858,6 @@
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287234/Happy_Tours_bkh98m.jpg",
       "fileName": "Happy_Tours_bkh98m.jpg",
       "format": "JPG",
-      "origin": "external",
-      "host": "res.cloudinary.com",
-      "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
-      ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
-    },
-    {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Harding_Hotel_02_qwxzlc.webp",
-      "fileName": "Harding_Hotel_02_qwxzlc.webp",
-      "format": "WEBP",
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
@@ -7273,6 +7288,21 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287267/Living_Room_zleo9f.png",
+      "fileName": "Living_Room_zleo9f.png",
+      "format": "PNG",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787500275/main_pic_g5ftha.webp",
       "fileName": "main_pic_g5ftha.webp",
       "format": "WEBP",
@@ -7420,6 +7450,21 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788408993/oyummy_jwioh8.webp",
+      "fileName": "oyummy_jwioh8.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp",
       "fileName": "Pachcha_Sanni_ghe4qa.webp",
       "format": "WEBP",
@@ -7459,6 +7504,21 @@
         "src/data/blogs.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788408665/pebble_alma_kzzjtc.webp",
+      "fileName": "pebble_alma_kzzjtc.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832562/people-enjoying-cocktails-in-the-rooftop-portrait_q7u32j.webp",
@@ -7784,8 +7844,19 @@
       }
     },
     {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Sama_01_mwposq.webp",
-      "fileName": "Sama_01_mwposq.webp",
+      "url": "https://ahangama.com/assets/Samba%20Haappy%20Hour%20-Bji6FvzF.png",
+      "fileName": "Samba Haappy Hour -Bji6FvzF.png",
+      "format": "PNG",
+      "origin": "external",
+      "host": "ahangama.com",
+      "sources": [
+        "lib/guest-welcome-email.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788409664/samba_zaegim.webp",
+      "fileName": "samba_zaegim.webp",
       "format": "WEBP",
       "origin": "external",
       "host": "res.cloudinary.com",
@@ -7797,17 +7868,6 @@
           "/guide"
         ]
       }
-    },
-    {
-      "url": "https://ahangama.com/assets/Samba%20Haappy%20Hour%20-Bji6FvzF.png",
-      "fileName": "Samba Haappy Hour -Bji6FvzF.png",
-      "format": "PNG",
-      "origin": "external",
-      "host": "ahangama.com",
-      "sources": [
-        "lib/guest-welcome-email.js"
-      ],
-      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/xmybcqyi/image/upload/v1783315427/Sarana_Cane_weaving_c6tuw6.jpg",
@@ -8210,14 +8270,9 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx",
         "src/pages/GuidePage.jsx"
       ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779727/Soul_Spa_Colored736923392_Topaz_Gigapixel_4x_scale_iklhr8.webp",
@@ -8328,6 +8383,21 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788411397/surfclub_iycmcx.webp",
+      "fileName": "surfclub_iycmcx.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
       "url": "https://res.cloudinary.com/xmybcqyi/image/upload/v1783316605/Surfing_wombat_offer_gztyv1.webp",
       "fileName": "Surfing_wombat_offer_gztyv1.webp",
       "format": "WEBP",
@@ -8352,6 +8422,21 @@
         "src/pages/GettingAroundAhangamaPage.jsx": [
           "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
           "/Getting-Around-Ahangama-Scooters,-Tuk-Tuks-Airport-Transfers"
+        ]
+      }
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788410783/taboo_d4m4ba.webp",
+      "fileName": "taboo_d4m4ba.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
         ]
       }
     },
@@ -8801,6 +8886,21 @@
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp",
       "fileName": "Yiva_essentials_ii7doq.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788410351/younger_villa_ca6lce.webp",
+      "fileName": "younger_villa_ca6lce.webp",
       "format": "WEBP",
       "origin": "external",
       "host": "res.cloudinary.com",
