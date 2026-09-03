@@ -185,12 +185,10 @@ function CardLinks({ item }) {
   const hasMap = Boolean(item.googleMaps || (item.lat && item.lng));
   return (
     <div className="eag-card-links">
-      {item.instagram ? (
+      {item.instagram && (
         <a className="eag-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`}>
           <InstagramIcon />
         </a>
-      ) : (
-        <span className="eag-insta eag-insta--empty" aria-hidden="true"><InstagramIcon /></span>
       )}
       {hasMap ? (
         <a className="eag-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`}>
@@ -246,12 +244,10 @@ function ImageLightbox({ item, onClose }) {
             <span className="eag-lightbox-desc">{item.desc}</span>
           ) : null}
           <span className="eag-lightbox-social">
-            {item.instagram ? (
+            {item.instagram && (
               <a className="eag-insta eag-lightbox-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`}>
                 <InstagramIcon />
               </a>
-            ) : (
-              <span className="eag-insta eag-lightbox-insta eag-insta--empty" aria-hidden="true"><InstagramIcon /></span>
             )}
             {(item.googleMaps || (item.lat && item.lng)) ? (
               <a className="eag-map eag-lightbox-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`}>
