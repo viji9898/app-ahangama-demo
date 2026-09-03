@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T21:55:02.761Z",
+  "generatedAt": "2026-09-03T10:41:41.923Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
   "count": 663,
   "media": [
@@ -1562,6 +1562,7 @@
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
         "src/features/print-guide/guideData.js",
+        "src/pages/BrandGuidelinePage.jsx",
         "src/pages/Home.jsx",
         "src/pages/NewHomePage.jsx",
         "src/pages/Partners.jsx",
@@ -1569,6 +1570,9 @@
         "src/pages/PrintGuidePage.jsx"
       ],
       "pageRoutes": {
+        "src/pages/BrandGuidelinePage.jsx": [
+          "/brand-guideline"
+        ],
         "src/pages/Home.jsx": [
           "/"
         ],
