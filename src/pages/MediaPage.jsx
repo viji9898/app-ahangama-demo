@@ -121,7 +121,24 @@ function ImageDetailModal({ item, onClose, onCopy, copiedUrl }) {
           <div className="media-detailSection">
             <h3>References ({item.sources.length})</h3>
             <ul>
-              {item.sources.map((source) => <li key={source}>{source}</li>)}
+              {item.sources.map((source) => {
+                const pageRoutes = item.pageRoutes?.[source] || [];
+
+                return (
+                  <li key={source}>
+                    <span>{source}</span>
+                    {pageRoutes.length > 0 && (
+                      <div className="media-referenceRoutes">
+                        {pageRoutes.map((route) => (
+                          <a href={route} key={route} rel="noreferrer" target="_blank">
+                            <LinkOutlined /> View {route}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

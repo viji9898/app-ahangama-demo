@@ -136,8 +136,48 @@ function extractSourceLinks(filePath, records) {
   }
 }
 
+function buildSourceRouteMap() {
+  const routesPath = path.join(rootDir, "src", "app", "routes.jsx");
+  const routesContent = fs.readFileSync(routesPath, "utf8");
+  const componentSources = new Map();
+  const routeConstants = new Map();
+  const sourceRoutes = new Map();
+  const importPattern =
+    /import\s+([A-Z][A-Za-z0-9]*)(?:\s*,\s*\{[\s\S]*?\})?\s+from\s+["']\.\.\/pages\/([^"']+)["'];/g;
+  const routePattern =
+    /\{\s*path:\s*(?:["']([^"']+)["']|([A-Z][A-Z0-9_]*)),\s*element:\s*<([A-Z][A-Za-z0-9]*)/g;
+
+  for (const match of routesContent.matchAll(importPattern)) {
+    componentSources.set(match[1], `src/pages/${match[2]}.jsx`);
+  }
+
+  for (const filePath of walk(path.join(rootDir, "src", "pages"))) {
+    if (!filePath.endsWith(".jsx")) continue;
+    const content = fs.readFileSync(filePath, "utf8");
+    const constantPattern =
+      /(?:export\s+)?const\s+([A-Z][A-Z0-9_]*)\s*=\s*["']([^"']+)["']/g;
+
+    for (const match of content.matchAll(constantPattern)) {
+      routeConstants.set(match[1], match[2]);
+    }
+  }
+
+  for (const match of routesContent.matchAll(routePattern)) {
+    const route = match[1] || routeConstants.get(match[2]);
+    const source = componentSources.get(match[3]);
+    if (!route || !source || route.includes(":")) continue;
+
+    const routes = sourceRoutes.get(source) || [];
+    if (!routes.includes(route)) routes.push(route);
+    sourceRoutes.set(source, routes);
+  }
+
+  return sourceRoutes;
+}
+
 function buildInventory() {
   const records = new Map();
+  const sourceRoutes = buildSourceRouteMap();
   const publicDir = path.join(rootDir, "public");
 
   for (const filePath of walk(publicDir)) {
@@ -156,7 +196,16 @@ function buildInventory() {
   }
 
   return [...records.values()]
-    .map((record) => ({ ...record, sources: record.sources.sort() }))
+    .map((record) => {
+      const sources = record.sources.sort();
+      const pageRoutes = Object.fromEntries(
+        sources
+          .filter((source) => sourceRoutes.has(source))
+          .map((source) => [source, sourceRoutes.get(source)]),
+      );
+
+      return { ...record, sources, pageRoutes };
+    })
     .sort((left, right) => {
       const originOrder = { owned: 0, local: 1, external: 2 };
       return (
