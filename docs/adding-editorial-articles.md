@@ -180,6 +180,30 @@ Add the route near the other editorial routes:
 },
 ```
 
+## Add To The Articles Index
+
+Every new editorial article must be added to `src/data/editorialArticles.js`.
+This registry powers the complete public index at `/articles`; do not maintain a
+second article list inside the page component.
+
+Add the newest article at the beginning of `EDITORIAL_ARTICLES`:
+
+```js
+{
+  category: "Editorial",
+  title: "Article Title",
+  href: "/your-article-slug",
+  description: "Short article description.",
+  image: "https://customer-apps-techhq.s3.../Hero+image.webp",
+  publishDate: "2026-06-30T09:00:00.000Z",
+},
+```
+
+Use the same route, title, description, image and publish date as the article's
+`Seo` component and static route metadata. Keep the array ordered newest first.
+After adding it, verify the card image loads, the category filter includes it,
+and the card opens the correct article route.
+
 ## Add Static Route Metadata
 
 Update `scripts/generate-route-meta-html.mjs` so the built route gets correct title, description, canonical, Open Graph tags, Twitter tags, and article schema.
@@ -276,6 +300,8 @@ node --input-type=module -e 'const urls = ["https://example.com/image.webp"]; fo
 - Page component exists in `src/pages/`.
 - Route constant is exported from the page component.
 - Route is imported and registered in `src/app/routes.jsx`.
+- Article is added to `EDITORIAL_ARTICLES` in `src/data/editorialArticles.js`.
+- Article appears and opens correctly from `/articles`.
 - `Seo` metadata is present in the page.
 - Static route metadata is added in `scripts/generate-route-meta-html.mjs`.
 - Sitemap source route is added in `scripts/generate-seo.mjs`.

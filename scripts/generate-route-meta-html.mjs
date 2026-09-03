@@ -359,6 +359,36 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/best-sunsets/Hero+Image+-+2400+x+1600+px.webp",
   },
   {
+    route: "/ahangama-after-dark",
+    title: "Ahangama After Dark",
+    description:
+      "An editorial guide to sunset drinks, live music, dinner spots and late-night events in Ahangama, Sri Lanka.",
+    publishDate: "2026-09-02T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "/Light House Webpage images/light-house-beach-view-hero.webp",
+  },
+  {
+    route: "/ahangama-sri-lanka",
+    title: "Ahangama, Sri Lanka: Beaches, Surf, Food & Stays",
+    description:
+      "Plan your time in Ahangama with a locally curated guide to beaches, surf breaks, restaurants, boutique stays, shops, events and practical travel advice.",
+    publishDate: "2026-09-02T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "/12 Experiences Images /Why Ahangama Might Be Sri Lanka_s Most Interesting Coastal Town Right Now/Hero Image - Opening note.webp",
+  },
+  {
+    route: "/things-to-do-in-ahangama",
+    title: "Things to Do in Ahangama: Beaches, Surf, Food & More",
+    description:
+      "Discover what to do in Ahangama, from surf and beaches to restaurants, wellness, shopping, nightlife and carefully chosen south-coast day trips.",
+    publishDate: "2026-09-03T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "/12 Experiences Images /Why Ahangama Might Be Sri Lanka_s Most Interesting Coastal Town Right Now/The Social side - hero image.webp",
+  },
+  {
     route: "/community-market-in-ahangama",
     title: "Community Markets in Ahangama",
     description:
@@ -485,7 +515,7 @@ const routeMeta = [
       "An editorial guide to Ahangama through surf, cafes, wellness, creative community, inland rituals and the routines that define daily life.",
     publishDate: "2026-05-27T08:40:00.000Z",
     image:
-      "https://sunshinestories.com/wp-content/uploads/2016/08/Sunshinestories-surf-travel-blog-IMG_8420.jpg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-train-station-sri-Lanka.webp",
   },
   {
     route: "/guide",
@@ -516,6 +546,20 @@ const routeMeta = [
     publishDate: "2026-06-08T10:20:00.000Z",
     image:
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/hero-the-living-room-concept-store.jpeg",
+  },
+  {
+    route: "/articles",
+    title: "Articles | Ahangama Editorial Guides & Stories",
+    description:
+      "Browse every Ahangama editorial article, including local guides, interviews, community stories and practical notes for Sri Lanka's south coast.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ariel-view-ahangama-beach-coastline.jpg",
+  },
+  {
+    route: "/media",
+    title: "Media Library | Ahangama",
+    description:
+      "Browse the images used across Ahangama, inspect their source links and identify media hosted outside the designated Ahangama S3 server.",
   },
   {
     route: "/why-surfing-changed-everything-in-ahangama",

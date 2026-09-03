@@ -74,6 +74,8 @@ import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
 import ExperienceAhangamaGuide from "../pages/ExperienceAhangamaGuide";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
+import ArticlesPage, { ARTICLES_PATH } from "../pages/ArticlesPage";
+import MediaPage, { MEDIA_PATH } from "../pages/MediaPage";
 import TheLivingRoomConceptStorePage from "../pages/TheLivingRoomConceptStorePage";
 import StaffPickExperienceAhangamaPage, {
   STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
@@ -99,6 +101,15 @@ import PetalsAhangamaLegacyPage, {
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
+import AhangamaAfterDarkPage, {
+  AHANGAMA_AFTER_DARK_PATH,
+} from "../pages/AhangamaAfterDarkPage";
+import AhangamaSriLankaPage, {
+  AHANGAMA_SRI_LANKA_PATH,
+} from "../pages/AhangamaSriLankaPage";
+import ThingsToDoAhangamaPage, {
+  THINGS_TO_DO_AHANGAMA_PATH,
+} from "../pages/ThingsToDoAhangamaPage";
 import ArticleGuidelinePage, {
   ARTICLE_GUIDELINE_PATH,
 } from "../pages/ArticleGuidelinePage";
@@ -112,6 +123,9 @@ import PrintGuidePage, { PRINT_GUIDE_PATH } from "../pages/PrintGuidePage";
 import PrintGuideOnlinePage, {
   PRINT_GUIDE_ONLINE_PATH,
 } from "../pages/PrintGuideOnlinePage";
+import BrandGuidelinePage, {
+  BRAND_GUIDELINE_PATH,
+} from "../pages/BrandGuidelinePage";
 import GuideSalesPage, { GUIDE_SALES_PATH } from "../pages/GuideSalesPage";
 import GuidePitchPage, { GUIDE_PITCH_PATH } from "../pages/GuidePitchPage";
 import ExternalRedirect from "./ExternalRedirect";
@@ -125,6 +139,7 @@ const routes = [
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
   { path: PRINT_GUIDE_PATH, element: <PrintGuidePage /> },
   { path: PRINT_GUIDE_ONLINE_PATH, element: <PrintGuideOnlinePage /> },
+  { path: BRAND_GUIDELINE_PATH, element: <BrandGuidelinePage /> },
   { path: GUIDE_SALES_PATH, element: <GuideSalesPage /> },
   { path: NEW_HOME_PATH, element: <NewHomePage /> },
   { path: "/home-v-2", element: <HomeV2 /> },
@@ -179,6 +194,8 @@ const routes = [
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: "/guide", element: <ExperienceAhangamaGuide /> },
   { path: "/online-guide", element: <Navigate to="/guide" replace /> },
+  { path: ARTICLES_PATH, element: <ArticlesPage /> },
+  { path: MEDIA_PATH, element: <MediaPage /> },
   { path: "/editors-picks", element: <EditorsPicksPage /> },
   {
     path: "/the-living-room-concept-store",
@@ -215,6 +232,18 @@ const routes = [
   {
     path: DULASIRI_UNCLE_PATH,
     element: <DulasiriUnclePage />,
+  },
+  {
+    path: AHANGAMA_AFTER_DARK_PATH,
+    element: <AhangamaAfterDarkPage />,
+  },
+  {
+    path: AHANGAMA_SRI_LANKA_PATH,
+    element: <AhangamaSriLankaPage />,
+  },
+  {
+    path: THINGS_TO_DO_AHANGAMA_PATH,
+    element: <ThingsToDoAhangamaPage />,
   },
   {
     path: ARTICLE_GUIDELINE_PATH,
