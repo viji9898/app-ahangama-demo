@@ -8,6 +8,8 @@ import "../styles/experience-ahangama-guide.css";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
+import { trackGuideEvent } from "../analytics";
+import { withGuideVenueIdentity } from "../data/guideVenueIdentities";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl, shadowUrl });
@@ -181,24 +183,44 @@ function mapsUrl(item) {
   return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }
 
+function withGuideSection(guideSection) {
+  return (venue) => ({
+    ...withGuideVenueIdentity(venue),
+    guideSection,
+  });
+}
+
+function trackVenueOutboundClick(item, linkType, destinationUrl, componentLocation) {
+  trackGuideEvent("guide_outbound_click", {
+    link_type: linkType,
+    venue_id: item.venueId,
+    venue_slug: item.venueSlug,
+    venue_name: item.name,
+    guide_section: item.guideSection,
+    component_location: componentLocation,
+    destination_url: destinationUrl,
+  });
+}
+
 function CardLinks({ item }) {
   const hasMap = Boolean(item.googleMaps || (item.lat && item.lng));
+  const mapDestination = hasMap ? mapsUrl(item) : "";
   return (
     <div className="eag-card-links">
       {item.instagram && (
-        <a className="eag-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`}>
+        <a className="eag-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`} onClick={() => trackVenueOutboundClick(item, "instagram", item.instagram, "venue_card")}>
           <InstagramIcon />
         </a>
       )}
       {hasMap ? (
-        <a className="eag-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`}>
+        <a className="eag-map" href={mapDestination} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`} onClick={() => trackVenueOutboundClick(item, "google_maps", mapDestination, "venue_card")}>
           <MapPinIcon />
         </a>
       ) : (
         <span className="eag-map eag-map--empty" aria-hidden="true"><MapPinIcon /></span>
       )}
       {item.website && (
-        <a className="eag-website" href={item.website} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} website`}>
+        <a className="eag-website" href={item.website} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} website`} onClick={() => trackVenueOutboundClick(item, "website", item.website, "venue_card")}>
           <WebsiteIcon />
         </a>
       )}
@@ -245,19 +267,19 @@ function ImageLightbox({ item, onClose }) {
           ) : null}
           <span className="eag-lightbox-social">
             {item.instagram && (
-              <a className="eag-insta eag-lightbox-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`}>
+              <a className="eag-insta eag-lightbox-insta" href={item.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Instagram`} onClick={() => trackVenueOutboundClick(item, "instagram", item.instagram, "venue_lightbox")}>
                 <InstagramIcon />
               </a>
             )}
             {(item.googleMaps || (item.lat && item.lng)) ? (
-              <a className="eag-map eag-lightbox-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`}>
+              <a className="eag-map eag-lightbox-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`} onClick={() => trackVenueOutboundClick(item, "google_maps", mapsUrl(item), "venue_lightbox")}>
                 <MapPinIcon />
               </a>
             ) : (
               <span className="eag-map eag-lightbox-map eag-map--empty" aria-hidden="true"><MapPinIcon /></span>
             )}
             {item.website && (
-              <a className="eag-website eag-lightbox-website" href={item.website} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} website`}>
+              <a className="eag-website eag-lightbox-website" href={item.website} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} website`} onClick={() => trackVenueOutboundClick(item, "website", item.website, "venue_lightbox")}>
                 <WebsiteIcon />
               </a>
             )}
@@ -313,6 +335,7 @@ function ScooterIllustration() {
 
 function CoverSection() {
   const bgRef = useRef(null);
+  const passUrl = "https://ahangama.com/comp-pass/";
 
   useEffect(() => {
     const el = bgRef.current;
@@ -357,7 +380,16 @@ function CoverSection() {
         </Reveal>
         <Reveal delay={4}>
           <div className="eag-cover-cta">
-            <a href="https://ahangama.com/comp-pass/" className="eag-pill">Get Your Complimentary Pass</a>
+            <a
+              href={passUrl}
+              className="eag-pill"
+              onClick={() => trackGuideEvent("guide_pass_cta_click", {
+                cta_location: "guide_cover",
+                destination_url: passUrl,
+              })}
+            >
+              Get Your Complimentary Pass
+            </a>
           </div>
           <span className="eag-cover-tag">Ahangama Season 2026/2027</span>
         </Reveal>
@@ -373,7 +405,13 @@ function CoverSection() {
 function ContentsSection() {
   const handleClick = useCallback((id) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      trackGuideEvent("guide_contents_select", {
+        target_section: id,
+        component_location: "contents_page",
+      });
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   }, []);
 
   const contents = [
@@ -543,6 +581,14 @@ function createGuideMapIcon(categoryKey, color) {
 function LocatedSection() {
   const [activeCategory, setActiveCategory] = useState("all");
 
+  const handleCategorySelect = (categoryKey) => {
+    setActiveCategory(categoryKey);
+    trackGuideEvent("guide_map_filter_select", {
+      selected_filter: categoryKey,
+      component_location: "guide_map",
+    });
+  };
+
   const categories = useMemo(
     () => [
       { key: "stays", ...GUIDE_MAP_CATEGORY_META.stays, items: BEST_STAYS },
@@ -610,7 +656,7 @@ function LocatedSection() {
               <button
                 type="button"
                 className={`eag-pill eag-guide-map-pill ${activeCategory === "all" ? "eag-guide-map-pill--active" : ""}`}
-                onClick={() => setActiveCategory("all")}
+                onClick={() => handleCategorySelect("all")}
               >
                 {GUIDE_MAP_CATEGORY_META.all.label}
               </button>
@@ -619,7 +665,7 @@ function LocatedSection() {
                   key={category.key}
                   type="button"
                   className={`eag-pill eag-guide-map-pill ${activeCategory === category.key ? "eag-guide-map-pill--active" : ""}`}
-                  onClick={() => setActiveCategory(category.key)}
+                  onClick={() => handleCategorySelect(category.key)}
                 >
                   {category.label}
                 </button>
@@ -645,6 +691,16 @@ function LocatedSection() {
                     key={`${place.categoryKey}-${place.name}`}
                     position={[place.lat, place.lng]}
                     icon={iconMap[place.categoryKey]}
+                    eventHandlers={{
+                      click: () => trackGuideEvent("guide_map_marker_select", {
+                        venue_id: place.venueId,
+                        venue_slug: place.venueSlug,
+                        venue_name: place.name,
+                        guide_section: place.guideSection,
+                        map_category: place.categoryKey,
+                        component_location: "guide_map",
+                      }),
+                    }}
                   >
                     <Popup>
                       <div className="eag-guide-map-popup">
@@ -688,7 +744,7 @@ const BEST_STAYS = [
   { name: "Trebartha East – The Roundhouse", rating: "4.9", desc: "An architectural retreat amidst a cinnamon plantation.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/Threbatha_East_01_yb2dwm.webp", lat: 5.997323316318728, lng: 80.35726862935918, instagram: "https://www.instagram.com/trebarthaeast/?hl=en", googleMaps: "https://maps.app.goo.gl/QMpJ6AvyxnnJv2jy7", ownership: "foreign" , website: "https://trebartha-east.com/" , reviewCount: 101 },
   { name: "The Benison", rating: "4.9", desc: "A hidden retreat designed for slow living.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339767/The_Benison_02_uzlcpb.webp", lat: 5.9749308289716305, lng: 80.37235731469872, instagram: "https://www.instagram.com/thebenison_ahangama/", googleMaps: "https://maps.app.goo.gl/Pm2h4n6Gr9cr94PA9", ownership: "local" , website: "https://thebenisonhotels.com/" , reviewCount: 121 },
   { name: "Casa Tikiri Boutique Hotel", rating: "4.9", desc: "An adults only boutique hideaway blending authentic Italian soul with tropical surf.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp", lat: 5.9818709, lng: 80.3467529, instagram: "https://www.instagram.com/casatikiri/?hl=en", googleMaps: "https://maps.app.goo.gl/rQJa2yj5y4XbdWXP8", ownership: "foreign" , website: "https://www.casatikiri.com/" , reviewCount: 286 },
-];
+].map(withGuideSection("best_stays"));
 
 function BestForSection() {
   const items = [
@@ -886,7 +942,7 @@ const EATS = [
   { name: "Kai Rooftop", rating: "4.6", desc: "Rooftop dining, great cocktails and beautiful ocean views.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp", lat: 5.9723502, lng: 80.3635430, instagram: "https://www.instagram.com/kai_ahangama/", googleMaps: "https://maps.app.goo.gl/eRRmfHJ7uq3ry5VZ7", ownership: "foreign" , website: "" , reviewCount: 1657 },
   { name: "Mermaid’s Kitchen", rating: "4.6", desc: "Fresh, flavourful food served in a relaxed tropical setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp", lat: 5.9702466, lng: 80.3672881, instagram: "https://www.instagram.com/mermaids_kitchen_ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/e8BqTHRCjGfq9CDE7", ownership: "local" , website: "" , reviewCount: 750 },
   { name: "Pickled Pelican", rating: "4.4", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp", lat: 5.973088216727786, lng: 80.36383532958487, instagram: "https://www.instagram.com/pickledpelican/", googleMaps: "https://maps.app.goo.gl/i5eciTxYdUxBAymt7", ownership: "foreign" , website: "" , reviewCount: 208 },
-];
+].map(withGuideSection("best_eats"));
 
 function BestEatsSection({ onImageClick }) {
   return (
@@ -947,7 +1003,7 @@ const EXPERIENCES = [
   { name: "Pachcha Sanni", rating: "5", desc: "Get inked at one of Ahangama's most creative tattoo studios, specialising in unique custom designs and artistic expression.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp", lat: 5.982642872487125, lng: 80.36866349380335, instagram: "https://www.instagram.com/pachchasanni/", googleMaps: "https://maps.app.goo.gl/wc392c7za4CWkUe37", ownership: "foreign" , website: "" , reviewCount: 3 },
   { name: "Qamar by Zan", rating: "5", desc: "Design and create your own jewellery in a hands-on workshop while exploring beautifully curated fashion pieces.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786522279/Qmar_by_zan_niowzn.webp", lat: 5.9817691, lng: 80.3494556, instagram: "https://www.instagram.com/qamar.by.zan/?hl=en", googleMaps: "https://maps.app.goo.gl/mVsQFDsEoLeTXjPo8", ownership: "foreign" , website: "" , reviewCount: 16 },
   { name: "JN Tattoo", rating: "5", desc: "JN Tattoo is a clean, top-rated Ahangama studio specializing in custom, fine-line tattoos for travelers in a relaxed, hygienic setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788156446/JN_Tattoo_mnh8gj.webp", lat: 5.978418297405438, lng: 80.34807776441775, instagram: "https://www.instagram.com/jntattoosri/?hl=en", googleMaps: "https://maps.app.goo.gl/mukDMPB7MiUaSE6q8", ownership: "local" , website: "" , reviewCount: 8 },
-];
+].map(withGuideSection("best_experiences"));
 
 function BestExperiencesSection({ onImageClick }) {
   return (
@@ -1011,7 +1067,7 @@ const WELLNESS = [
   { name: "The Nuga House", rating: "4.5", desc: "A tranquil sanctuary for rest and healing.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Copy_of_Section_2_-_Yoga_in_Nuga_House_b3f1mw.avif", lat: 5.982442203112178, lng: 80.34663320384955, instagram: "https://www.instagram.com/thenugahouse/", googleMaps: "https://maps.app.goo.gl/zhXuGWngQG6t6NFH7", ownership: "local" , website: "https://www.thenugahouse.com/" , reviewCount: 161 },
   { name: "Sellam Gym Ahangama", rating: "4.9", desc: "A modern gym for keeping your routine on track.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786545879/Sellam_Gym2_vxn1mg.webp", lat: 5.9742794466164995, lng: 80.36432653558248, instagram: "https://www.instagram.com/sellamgym/", googleMaps: "https://maps.app.goo.gl/q5VVPC53YaFyWMyXA", ownership: "local" , website: "" , reviewCount: 50 },
   { name: "Spa Station Midigama", rating: "4.8", desc: "Relaxing massages and rejuvenating treatments nearby.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786545710/Spa_Station_midi_yseyx7.webp", lat: 5.965506394775779, lng: 80.39207693710006, instagram: "https://www.instagram.com/spa.station.lk/", googleMaps: "https://maps.app.goo.gl/EyykJFTZHQtUss837", ownership: "local" , website: "" , reviewCount: 246 },
-];
+].map(withGuideSection("wellness"));
 const NIGHT_LIFE = [
   { name: "Lamana", rating: "4.4", desc: "A popular late-night hangout with a lively atmosphere, great music, and a skate rink that adds a playful twist to the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786620612/Lamana_23_vnrlgv.webp", lat: 5.9723738, lng: 80.3639983, instagram: "https://www.instagram.com/lamana_ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/jAMYSH9VbaigtUVP7", ownership: "foreign" , website: "" , reviewCount: 336 },
   { name: "Hakuna Matata", rating: "4.6", desc: "Beachfront cocktails, music and DJs.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp", lat: 5.9669647, lng: 80.3748064, instagram: "https://www.instagram.com/hakuna_matata_ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/TnhsB5gHBBvWB2Yz6", ownership: "foreign" , website: "" , reviewCount: 703 },
@@ -1019,7 +1075,7 @@ const NIGHT_LIFE = [
   { name: "Kurundu", rating: "4.8", desc: "A lively setting for drinks and evening entertainment.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Kurundu2_lzstjp.webp", lat: 5.9723740, lng: 80.3639553, instagram: "https://www.instagram.com/kurundu.ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/SEVUaahMCe4wsekf6", ownership: "local" , website: "https://kurundurestaurant.com/" , reviewCount: 306 },
   { name: "Kicks Ahangama", rating: "4.5", desc: "Dance, socialise and enjoy the night.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp", lat: 5.9723763, lng: 80.3639558, instagram: "https://www.instagram.com/kicks_ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/ZZcd5BL6RnGqE9xK6", ownership: "foreign" , website: "https://kicks.easyweek.io/" , reviewCount: 53 },
   { name: "Hotel De Uncle’s", rating: "4.7", desc: "A laid-back seaside favourite for golden sunsets, chilled drinks, live bands, and unforgettable evenings by the ocean.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp", lat: 5.9723415, lng: 80.3633269, instagram: "https://www.instagram.com/hoteldeuncles/", googleMaps: "https://maps.app.goo.gl/cpP7BNhzC4bi6pH69", ownership: "local" , website: "https://unclescolombo.lk/" , reviewCount: 372 },
-];
+].map(withGuideSection("night_life"));
 
 const BEST_RETAIL_STORES = [
   { name: "Gusta", rating: "4.6", desc:"Gourmet groceries, fresh produce and artisan products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346946/Gusta_01_mnzv6h.webp", lat: 5.978468021160938, lng: 80.34854993743255, instagram: "https://www.instagram.com/gusta.sl/", googleMaps: "https://maps.app.goo.gl/EwBjQhME4L1tuj72A", ownership: "local" , website: "https://www.gusta.lk/" , reviewCount: 31 },
@@ -1027,7 +1083,7 @@ const BEST_RETAIL_STORES = [
   { name: "Mint Ceylon", rating: "4.7", desc: "Consciously crafted slow fashion and unique lifestyle pieces, mindfully handmade by local artisans in the heart of Sri Lanka.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp", lat: 5.973834393620351, lng: 80.36327069432797, instagram: "https://www.instagram.com/mint.ceylon/?hl=en", googleMaps: "https://maps.app.goo.gl/DgphUYpCcKj7AJsf7", ownership: "local" , website: "https://mintceylon.com/" , reviewCount: 0 },
   { name: "Yiva Essentials", rating: "5", desc:"A lovely place to discover fashion, lifestyle, and unique finds in Ahangama", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp", lat: 5.9709753, lng: 80.3664319, instagram: "https://www.instagram.com/yivaessentials/", googleMaps: "https://maps.app.goo.gl/KFY41m1dvgeqtdzg6", ownership: "foreign" , website: "" , reviewCount: 13 },
   { name: "Prickly Pear by Cactus", rating: "3.8", desc:" A colorful beachfront concept boutique serving up trendy resort style and sun-soaked cafe vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp", lat: 5.9719583, lng: 80.3644725, instagram: "https://www.instagram.com/pricklypear.ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/LohJpBb5rVRDeHXi8", ownership: "foreign" , website: "" , reviewCount: 21 },
-];
+].map(withGuideSection("best_retail_stores"));
 
 function cardGrid(items, onImageClick) {
   return (
@@ -1125,7 +1181,7 @@ const BEST_CAFES = [
   { name: "Cafe Wave", rating: "4.8", desc: "A breezy roadside cafe with fresh juices, light bites and a chilled surf-town vibe.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/cafe_wave_nak6fe.jpg", lat: 5.98254317290508, lng: 80.33695907790974, instagram: "https://www.instagram.com/cafewavesl/", googleMaps: "https://maps.app.goo.gl/F3JsA1KrdsENUUiSA", reviewCount: 209 },
   { name: "Abrazo", rating: "4.8", desc: "A Spanish-inspired cafe serving tapas-style bites, specialty coffee and warm coastal hospitality.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/Abrazo_h3loxm.jpg", lat: 5.96829229558289, lng: 80.37337977301502, instagram: "https://www.instagram.com/abrazo_trincomalee_ahangama/", googleMaps: "https://maps.app.goo.gl/XNCVfRaERkxBui1o7", reviewCount: 756 },
   { name: "Crave", rating: "4.8", desc: "A popular local cafe known for its flavour-packed brunches, fresh smoothies and vibrant atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/crave_fjckup.jpg", lat: 5.9726530766658374, lng: 80.3631771134925, instagram: "https://www.instagram.com/crave_ahangama/", googleMaps: "https://maps.app.goo.gl/JDJqS6swF9gzUr9q6", reviewCount: 223 },
-];
+].map(withGuideSection("best_cafes"));
 
 function BestCafesSection({ onImageClick }) {
   return (
@@ -1144,7 +1200,7 @@ const TRANSPORT_VENUES = [
   { name: "Scooty Rental & Taxi Service", rating: "5", desc: "Quick scooter access and local transport support while staying in the area.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/scooty_rentals_and_bike_services_gtzqlc.webp", instagram: "", googleMaps: "https://maps.app.goo.gl/hTVAV4kSbLJSvLeQ9", ownership: "local" , website: "" , reviewCount: 497 },
   { name: "Happy Tours", rating: "5", desc: "A practical transport partner for local trips and travel support around the south coast.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287234/Happy_Tours_bkh98m.jpg", instagram: "https://www.instagram.com/happy_tours_u/?hl=en", googleMaps: "https://maps.app.goo.gl/gVEjdx1WQRgYF52s7", ownership: "foreign" , website: "" , reviewCount: 134 },
   { name: "Nova Rent a Car", rating: "4.8", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Nova_Rent_a_Car_wuaos2.png", instagram: "", googleMaps: "https://maps.app.goo.gl/ew4MYxtAefLNsLMR8", ownership: "foreign" , website: "" , reviewCount: 39 },
-];
+].map(withGuideSection("transport"));
 
 function TransportGuideSection({ onImageClick }) {
   return (
@@ -1186,6 +1242,11 @@ function ClosingCTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="eag-pill eag-pill--closing"
+                onClick={() => trackGuideEvent("guide_outbound_click", {
+                  link_type: "instagram",
+                  component_location: "closing_cta",
+                  destination_url: "https://instagram.com/ahangama.pass",
+                })}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{marginRight:8}}>
                   <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8"/>
@@ -1199,6 +1260,11 @@ function ClosingCTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="eag-closing-handle"
+                onClick={() => trackGuideEvent("guide_outbound_click", {
+                  link_type: "instagram",
+                  component_location: "closing_cta",
+                  destination_url: "https://www.instagram.com/ahangama.pass",
+                })}
               >
                 @ahangama.pass
               </a>
@@ -1232,6 +1298,10 @@ function TocRibbon({ currentChapterId }) {
   const handleNav = useCallback((id) => {
     const el = document.getElementById(id);
     if (el) {
+      trackGuideEvent("guide_contents_select", {
+        target_section: id,
+        component_location: "toc_ribbon",
+      });
       el.scrollIntoView({ behavior: "smooth" });
       hideAll();
     }
@@ -1414,6 +1484,17 @@ export default function ExperienceAhangamaGuide() {
     scrollContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const openLightbox = (item) => {
+    trackGuideEvent("guide_lightbox_open", {
+      venue_id: item.venueId,
+      venue_slug: item.venueSlug,
+      venue_name: item.name,
+      guide_section: item.guideSection,
+      component_location: "venue_card",
+    });
+    setLightboxItem(item);
+  };
+
   const toggleDarkMode = () => {
     setDarkMode((prev) => {
       const next = !prev;
@@ -1479,14 +1560,14 @@ export default function ExperienceAhangamaGuide() {
           <BestSeasonSection />
           <HowLongSection />
           <TransportSection />
-          <BestCafesSection onImageClick={setLightboxItem} />
-          <BestStaysSection onImageClick={setLightboxItem} />
-          <BestEatsSection onImageClick={setLightboxItem} />
-          <BestExperiencesSection onImageClick={setLightboxItem} />
-          <WellnessSection onImageClick={setLightboxItem} />
-          <NightLifeSection onImageClick={setLightboxItem} />
-          <BestRetailStoresSection onImageClick={setLightboxItem} />
-          <TransportGuideSection onImageClick={setLightboxItem} />
+          <BestCafesSection onImageClick={openLightbox} />
+          <BestStaysSection onImageClick={openLightbox} />
+          <BestEatsSection onImageClick={openLightbox} />
+          <BestExperiencesSection onImageClick={openLightbox} />
+          <WellnessSection onImageClick={openLightbox} />
+          <NightLifeSection onImageClick={openLightbox} />
+          <BestRetailStoresSection onImageClick={openLightbox} />
+          <TransportGuideSection onImageClick={openLightbox} />
           <ClosingCTASection />
         </div>
       </div>

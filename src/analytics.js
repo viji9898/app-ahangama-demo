@@ -128,6 +128,21 @@ export const trackQrEvent = (eventName, params = {}) => {
   window.gtag("event", eventName, params);
 };
 
+export const trackGuideEvent = (eventName, params = {}) => {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+    return false;
+  }
+
+  window.gtag("event", eventName, {
+    event_category: "guide_engagement",
+    source_domain: window.location.hostname,
+    page_path: window.location.pathname,
+    ...params,
+  });
+
+  return true;
+};
+
 export const trackPassPurchase = ({ sessionId, paymentData }) => {
   if (typeof window === "undefined" || typeof window.gtag !== "function") {
     return;
