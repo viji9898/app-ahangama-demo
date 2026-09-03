@@ -1,0 +1,260 @@
+.bg-guide {
+  --bg-ink: #171714;
+  --bg-paper: #f7f4ed;
+  --bg-soft-paper: #f0eee7;
+  --bg-red: #a64838;
+  --bg-grey: #64665e;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  background: var(--bg-paper);
+  color: var(--bg-ink);
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+.bg-guide * { box-sizing: border-box; }
+.bg-guide h1,
+.bg-guide h2,
+.bg-guide h3,
+.bg-guide p { margin: 0; }
+
+.bg-hero {
+  position: relative;
+  min-height: min(88svh, 860px);
+  overflow: hidden;
+  background: #252b26;
+  color: #fff;
+}
+.bg-hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bg-heroShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 12, 9, 0.08) 10%, rgba(9, 12, 9, 0.84) 100%);
+}
+.bg-heroCopy {
+  position: absolute;
+  right: 0;
+  bottom: clamp(58px, 9svh, 100px);
+  left: 0;
+  width: min(1180px, calc(100% - 48px));
+  margin: auto;
+}
+.bg-heroCopy > span,
+.bg-hero > small,
+.bg-sectionHeading small,
+.bg-chapterPalette small,
+.bg-imageFeature small {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.bg-heroCopy h1 {
+  margin: 12px 0 18px;
+  color: #fff !important;
+  font: 400 clamp(72px, 12vw, 168px)/0.82 "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+.bg-heroCopy p { max-width: 550px; font-size: 18px; line-height: 1.55; }
+.bg-hero > small {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  writing-mode: vertical-rl;
+}
+
+.bg-nav {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(23, 23, 20, 0.14);
+  background: rgba(247, 244, 237, 0.94);
+  backdrop-filter: blur(18px);
+  scrollbar-width: none;
+}
+.bg-nav::-webkit-scrollbar { display: none; }
+.bg-nav a {
+  padding: 17px 19px 15px;
+  color: var(--bg-ink);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bg-intro,
+.bg-section,
+.bg-footer {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.bg-intro { padding: clamp(80px, 11vw, 150px) 0; }
+.bg-introLead {
+  max-width: 980px;
+  font: 400 clamp(36px, 5.7vw, 72px)/1.03 "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+.bg-introLead em { color: var(--bg-red); font-style: normal; }
+.bg-principles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: clamp(70px, 10vw, 120px);
+  border-top: 1px solid rgba(23, 23, 20, 0.22);
+}
+.bg-principles article { min-height: 230px; padding: 22px 24px 24px 0; }
+.bg-principles article + article { padding-left: 24px; border-left: 1px solid rgba(23, 23, 20, 0.22); }
+.bg-principles span,
+.bg-sectionHeading > span { color: var(--bg-red); font-size: 10px; font-weight: 800; }
+.bg-principles h3 { margin: 58px 0 12px; font: 500 25px/1 "Iowan Old Style", Georgia, serif; }
+.bg-principles p,
+.bg-sectionHeading p,
+.bg-chapterPalette p,
+.bg-imageFeature p { color: var(--bg-grey); font-size: 14px; line-height: 1.65; }
+
+.bg-section { padding: clamp(76px, 10vw, 140px) 0; border-top: 1px solid rgba(23, 23, 20, 0.22); }
+.bg-sectionHeading { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; margin-bottom: clamp(54px, 8vw, 96px); }
+.bg-sectionHeading h2 { margin: 8px 0 18px; font: 400 clamp(50px, 7.6vw, 94px)/0.9 "Iowan Old Style", Georgia, serif; }
+.bg-sectionHeading p { max-width: 660px; font-size: 16px; }
+
+.bg-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.bg-swatch > div { width: 100%; aspect-ratio: 4 / 5; border: 1px solid rgba(23, 23, 20, 0.12); }
+.bg-swatch strong { display: block; margin-top: 16px; font-size: 12px; }
+.bg-swatch code,
+.bg-chapterColors code { display: block; margin-top: 6px; color: var(--bg-grey); font: 10px/1.4 "Avenir Next", sans-serif; }
+.bg-swatch p { margin-top: 12px; color: var(--bg-grey); font-size: 11px; line-height: 1.5; }
+.bg-chapterPalette {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(40px, 8vw, 110px);
+  margin-top: 100px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(23, 23, 20, 0.22);
+}
+.bg-chapterPalette h3 { margin: 10px 0 16px; font: 500 32px/1 "Iowan Old Style", Georgia, serif; }
+.bg-chapterColors { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+.bg-chapterColors > div { display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; align-items: center; }
+.bg-chapterColors span { grid-row: 1 / 3; width: 34px; height: 34px; background: var(--swatch); }
+.bg-chapterColors strong { font-size: 11px; }
+.bg-chapterColors code { margin: 2px 0 0; }
+
+.bg-typeSection { width: 100%; max-width: none; padding-right: max(24px, calc((100% - 1180px) / 2)); padding-left: max(24px, calc((100% - 1180px) / 2)); background: var(--bg-ink); color: var(--bg-paper); }
+.bg-typeSection .bg-sectionHeading h2 { color: var(--bg-paper) !important; }
+.bg-typeSection .bg-sectionHeading p { color: rgba(247, 244, 237, 0.65); }
+.bg-typeSpecimens { border-top: 1px solid rgba(247, 244, 237, 0.24); }
+.bg-typeSpecimens article { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; padding: 50px 0; border-bottom: 1px solid rgba(247, 244, 237, 0.24); }
+.bg-typeSpecimens span,
+.bg-typeSpecimens small { color: rgba(247, 244, 237, 0.58); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.bg-typeSpecimens small { grid-column: 2; text-transform: none; }
+.bg-serifSpecimen p { font: 400 clamp(44px, 7vw, 90px)/0.9 "Iowan Old Style", Georgia, serif; }
+.bg-sansSpecimen p { font-size: clamp(21px, 3.2vw, 42px); font-weight: 800; line-height: 1.05; }
+.bg-typeScale { margin-top: 80px; }
+.bg-typeScale > div { display: grid; grid-template-columns: 1.2fr 1fr 1fr 2fr; gap: 18px; padding: 18px 0; border-top: 1px solid rgba(247, 244, 237, 0.2); font-size: 12px; }
+.bg-typeScale span,
+.bg-typeScale p { color: rgba(247, 244, 237, 0.62); }
+.bg-rulePair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 80px; background: rgba(247, 244, 237, 0.2); }
+.bg-rulePair article { min-height: 190px; padding: 28px; background: var(--bg-ink); }
+.bg-rulePair span { color: #d86a50; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+.bg-rulePair p { max-width: 430px; margin-top: 52px; font: 400 24px/1.15 "Iowan Old Style", Georgia, serif; }
+
+.bg-layoutDemo { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(50px, 8vw, 110px); align-items: center; }
+.bg-layoutPage { position: relative; aspect-ratio: 148 / 210; padding: 9%; background: #e8e1d3; box-shadow: 0 24px 60px rgba(31, 27, 20, 0.13); }
+.bg-layoutPage > span { color: #687e55; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+.bg-layoutPage h3 { max-width: 80%; margin-top: 24%; font: 400 clamp(48px, 7vw, 86px)/0.9 "Iowan Old Style", Georgia, serif; }
+.bg-layoutPage p { max-width: 70%; margin-top: 28px; color: var(--bg-grey); font-size: 13px; line-height: 1.6; }
+.bg-layoutRule { width: 22%; margin-top: 50px; border-top: 3px solid #687e55; }
+.bg-layoutPage small { position: absolute; right: 9%; bottom: 6%; left: 9%; padding-top: 10px; border-top: 1px solid rgba(23, 23, 20, 0.25); font-size: 8px; text-transform: uppercase; }
+.bg-layoutNotes article { display: grid; grid-template-columns: 40px 1fr; gap: 20px; padding: 26px 0; border-top: 1px solid rgba(23, 23, 20, 0.22); }
+.bg-layoutNotes b { color: #687e55; font-size: 10px; }
+.bg-layoutNotes p { color: var(--bg-grey); font-size: 14px; line-height: 1.6; }
+
+.bg-imageSection { width: 100%; max-width: none; padding-right: max(24px, calc((100% - 1180px) / 2)); padding-left: max(24px, calc((100% - 1180px) / 2)); background: #e5e0d4; }
+.bg-imageFeature { position: relative; min-height: 680px; overflow: hidden; color: #fff; }
+.bg-imageFeature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bg-imageFeature::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 25%, rgba(12, 16, 12, 0.78)); }
+.bg-imageFeature > div { position: absolute; z-index: 1; right: 6%; bottom: 7%; left: 6%; }
+.bg-imageFeature h3 { max-width: 760px; margin: 14px 0 18px; font: 400 clamp(45px, 7vw, 88px)/0.9 "Iowan Old Style", Georgia, serif; }
+.bg-imageFeature p { max-width: 520px; color: rgba(255, 255, 255, 0.82); }
+.bg-imageRules { display: grid; grid-template-columns: repeat(3, 1fr); }
+.bg-imageRules article { min-height: 210px; padding: 28px 28px 28px 0; }
+.bg-imageRules article + article { padding-left: 28px; border-left: 1px solid rgba(23, 23, 20, 0.2); }
+.bg-imageRules strong { color: var(--bg-red); font-size: 10px; text-transform: uppercase; }
+.bg-imageRules p { margin-top: 55px; color: var(--bg-grey); font-size: 13px; line-height: 1.6; }
+
+.bg-applicationGrid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(23, 23, 20, 0.22); border-bottom: 1px solid rgba(23, 23, 20, 0.22); }
+.bg-applicationGrid article { min-height: 540px; padding: 34px 50px 42px 0; }
+.bg-applicationGrid article + article { padding-right: 0; padding-left: 50px; border-left: 1px solid rgba(23, 23, 20, 0.22); }
+.bg-applicationGrid > article > span { color: var(--bg-red); font-size: 10px; font-weight: 800; text-transform: uppercase; }
+.bg-applicationGrid h3 { margin-top: 70px; font: 400 clamp(38px, 5vw, 62px)/0.95 "Iowan Old Style", Georgia, serif; }
+.bg-applicationGrid ul { min-height: 190px; margin: 48px 0; padding: 0; list-style: none; }
+.bg-applicationGrid li { padding: 12px 0; border-top: 1px solid rgba(23, 23, 20, 0.15); color: var(--bg-grey); font-size: 13px; line-height: 1.5; }
+.bg-applicationGrid a,
+.bg-footer a { color: var(--bg-ink); font-size: 10px; font-weight: 800; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--bg-red); }
+.bg-footer { display: flex; justify-content: space-between; padding: 30px 0 44px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+
+@media (max-width: 800px) {
+  .bg-hero { min-height: 82svh; }
+  .bg-nav { justify-content: flex-start; }
+  .bg-intro,
+  .bg-section,
+  .bg-footer { width: min(100% - 32px, 1180px); }
+  .bg-principles { grid-template-columns: 1fr 1fr; }
+  .bg-principles article:nth-child(3) { border-left: 0; border-top: 1px solid rgba(23, 23, 20, 0.22); }
+  .bg-principles article:nth-child(4) { border-top: 1px solid rgba(23, 23, 20, 0.22); }
+  .bg-sectionHeading { grid-template-columns: 38px 1fr; }
+  .bg-swatches { grid-template-columns: repeat(2, 1fr); }
+  .bg-chapterPalette,
+  .bg-layoutDemo { grid-template-columns: 1fr; }
+  .bg-typeSection,
+  .bg-imageSection { width: 100%; }
+  .bg-typeSpecimens article { grid-template-columns: 1fr; }
+  .bg-typeSpecimens small { grid-column: 1; }
+  .bg-typeScale > div { grid-template-columns: 1fr 1fr; }
+  .bg-typeScale p { grid-column: 1 / -1; }
+  .bg-layoutPage { width: min(100%, 540px); }
+  .bg-imageFeature { min-height: 600px; }
+}
+
+@media (max-width: 560px) {
+  .bg-heroCopy { width: calc(100% - 32px); }
+  .bg-heroCopy h1 { font-size: clamp(60px, 18vw, 80px); }
+  .bg-hero > small { display: none; }
+  .bg-introLead { font-size: 38px; }
+  .bg-principles,
+  .bg-chapterColors,
+  .bg-rulePair,
+  .bg-imageRules,
+  .bg-applicationGrid { grid-template-columns: 1fr; }
+  .bg-principles article,
+  .bg-principles article + article { min-height: 190px; padding: 20px 0; border-left: 0; border-top: 1px solid rgba(23, 23, 20, 0.22); }
+  .bg-principles h3 { margin-top: 38px; }
+  .bg-swatch > div { aspect-ratio: 1; }
+  .bg-chapterPalette { margin-top: 70px; }
+  .bg-typeSpecimens article { padding: 36px 0; }
+  .bg-typeScale > div { grid-template-columns: 1fr 1fr; }
+  .bg-rulePair article { min-height: 170px; }
+  .bg-layoutPage h3 { max-width: 100%; }
+  .bg-imageFeature { min-height: 520px; }
+  .bg-imageRules article,
+  .bg-imageRules article + article { min-height: 160px; padding: 24px 0; border-left: 0; border-top: 1px solid rgba(23, 23, 20, 0.2); }
+  .bg-imageRules p { margin-top: 30px; }
+  .bg-applicationGrid article,
+  .bg-applicationGrid article + article { min-height: 0; padding: 36px 0 48px; border-left: 0; }
+  .bg-applicationGrid article + article { border-top: 1px solid rgba(23, 23, 20, 0.22); }
+  .bg-applicationGrid h3 { margin-top: 42px; }
+  .bg-applicationGrid ul { min-height: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-guide { scroll-behavior: auto; }
+}

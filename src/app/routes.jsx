@@ -123,6 +123,9 @@ import PrintGuidePage, { PRINT_GUIDE_PATH } from "../pages/PrintGuidePage";
 import PrintGuideOnlinePage, {
   PRINT_GUIDE_ONLINE_PATH,
 } from "../pages/PrintGuideOnlinePage";
+import BrandGuidelinePage, {
+  BRAND_GUIDELINE_PATH,
+} from "../pages/BrandGuidelinePage";
 import GuideSalesPage, { GUIDE_SALES_PATH } from "../pages/GuideSalesPage";
 import GuidePitchPage, { GUIDE_PITCH_PATH } from "../pages/GuidePitchPage";
 import ExternalRedirect from "./ExternalRedirect";
@@ -136,6 +139,7 @@ const routes = [
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
   { path: PRINT_GUIDE_PATH, element: <PrintGuidePage /> },
   { path: PRINT_GUIDE_ONLINE_PATH, element: <PrintGuideOnlinePage /> },
+  { path: BRAND_GUIDELINE_PATH, element: <BrandGuidelinePage /> },
   { path: GUIDE_SALES_PATH, element: <GuideSalesPage /> },
   { path: NEW_HOME_PATH, element: <NewHomePage /> },
   { path: "/home-v-2", element: <HomeV2 /> },
