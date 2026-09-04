@@ -49,6 +49,26 @@ export const EDITORIAL_ARTICLES = [
     publishDate: "2026-08-16T09:00:00.000Z",
   },
   {
+    category: "Stay Guide",
+    title: "Best Stays in Ahangama",
+    href: "/stays",
+    description:
+      "A hand-picked guide to Ahangama's best boutique hotels, beachfront villas and hidden retreats, with locally managed direct-booking enquiries.",
+    image:
+      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
+    publishDate: "2026-07-27T09:00:00.000Z",
+  },
+  {
+    category: "Stay Guide",
+    title: "Best Airbnbs & Private Villas in Ahangama",
+    href: "/best-airbnbs",
+    description:
+      "A hand-picked editorial guide to Ahangama's best private villas, beach houses and hidden retreats for couples, families and groups.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pebble_alma.jpg",
+    publishDate: "2026-07-27T09:00:00.000Z",
+  },
+  {
     category: "Community",
     title: "Inside the Launch of Ahangama Circle",
     href: "/inside-the-launch-of-ahangama-circle",
