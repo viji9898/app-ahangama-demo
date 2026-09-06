@@ -2,14 +2,13 @@
 
 > Ahangama.com is an independent, locally curated guide to Ahangama on Sri Lanka's south coast, covering places to eat and stay, surf, wellness, shopping, events, transport, editorial stories, and the Ahangama Pass.
 
-Use the destination guide for a broad introduction, the directory and map for place discovery, and the editorial pages for deeper local context. Listings and event details may change, so verify time-sensitive information on the linked page or with the venue.
-
-Last updated: 2026-09-06
+Use the destination guide for a broad introduction, the directory and map for place discovery, and editorial pages for deeper local context. Listings, offers, opening hours, and event details may change; verify time-sensitive information on the linked page or with the venue.
 
 ## Start Here
 
 - [Ahangama, Sri Lanka: The Local Guide](https://ahangama.com/ahangama-sri-lanka): Overview of beaches, surf breaks, restaurants, stays, shops, events, and practical travel details.
 - [Things to Do in Ahangama](https://ahangama.com/things-to-do-in-ahangama): Practical guide to surf, beaches, food, wellness, shopping, nightlife, and south-coast day trips.
+- [Read the Ahangama Guide online](https://ahangama.com/print-guide-online): The complete locally edited 2026/27 destination guide.
 - [Search the directory](https://ahangama.com/search): Search places and local recommendations across the site.
 - [Explore the map](https://ahangama.com/map): Browse recommended places by location.
 - [Events](https://ahangama.com/events): Current events and weekly highlights around Ahangama.
@@ -26,27 +25,26 @@ Last updated: 2026-09-06
 
 ## Guides and Stories
 
-- [Editorial articles](https://ahangama.com/articles): Index of destination guides, interviews, local stories, and practical features.
-- [12 Ways to Experience Ahangama](https://ahangama.com/12-things): Editorial introduction to the experiences and routines that define the town.
+- [Editorial articles](https://ahangama.com/articles): Destination guides, interviews, local stories, and practical features.
+- [12 Ways to Experience Ahangama](https://ahangama.com/12-things): Experiences and routines that define the town.
 - [Editor's Picks](https://ahangama.com/editors-picks): Places and experiences selected by the editorial team.
-- [Ahangama After Dark](https://ahangama.com/ahangama-after-dark): Guide to sunset drinks, live music, dinner, and nightlife.
+- [Ahangama After Dark](https://ahangama.com/ahangama-after-dark): Sunset drinks, live music, dinner, and nightlife.
 - [Getting Around Ahangama](https://ahangama.com/getting-around-ahangama-scooters-tuk-tuks-airport-transfers): Practical advice on scooters, tuk-tuks, and airport transfers.
-- [Why Surfing Changed Everything in Ahangama](https://ahangama.com/why-surfing-changed-everything-in-ahangama): Local context on surf culture and the town's development.
 
 ## Ahangama Pass
 
-- [What is the Ahangama Pass?](https://ahangama.com/what-is-ahangama-pass): Explanation of how the visitor pass works.
+- [What is the Ahangama Pass?](https://ahangama.com/what-is-ahangama-pass): How the visitor pass works.
 - [Pass perks](https://ahangama.com/pass-perks): Current perks and how to claim them.
 - [Pass products](https://ahangama.com/products): Available access and travel products.
 
 ## About
 
 - [About Ahangama.com](https://ahangama.com/about): Editorial approach and purpose of the guide.
-- [Partners](https://ahangama.com/partners): Information for local venues and businesses interested in working with Ahangama.com.
+- [Partners](https://ahangama.com/partners): Information for local venues and businesses.
 - [Newsletter](https://ahangama.com/newsletter): The Ahangama Dispatch, featuring local recommendations and stories.
 
 ## Optional
 
-- [Site map](https://ahangama.com/site-map): Grouped index of public pages.
-- [XML sitemap](https://ahangama.com/sitemap.xml): Machine-readable index of all canonical, indexable URLs.
-- [Media](https://ahangama.com/media): Press and media resources.
+- [Full LLM reference](https://ahangama.com/llms-full.txt): Expanded summaries of guides, stories, blogs, and public venue listings.
+- [XML sitemap](https://ahangama.com/sitemap.xml): Canonical index of public URLs.
+- [Robots policy](https://ahangama.com/robots.txt): Crawler access policy.

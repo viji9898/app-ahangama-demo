@@ -18,6 +18,7 @@ import {
   writeSitemapSection,
 } from "../lib/sitemap/utils.js";
 import { generateWellnessSitemap } from "../lib/sitemap/wellness.js";
+import { generateLlmsFiles } from "../lib/llms/generate.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -82,6 +83,8 @@ Sitemap: ${sitemap}
   const robotsTxt = buildRobots({ siteUrl });
   fs.writeFileSync(path.join(outDir, "robots.txt"), robotsTxt, "utf8");
 
+  const llmsFiles = generateLlmsFiles({ outDir, siteUrl });
+
   console.log(
     `✅ Generated public/sitemap.xml (${generatedSections.length} child sitemap files)`,
   );
@@ -90,6 +93,9 @@ Sitemap: ${sitemap}
   }
   console.log(
     `✅ Generated public/robots.txt (Sitemap: ${siteUrl}/sitemap.xml)`,
+  );
+  console.log(
+    `✅ Generated ${llmsFiles.map(({ fileName, bytes }) => `${fileName} (${bytes} bytes)`).join(", ")}`,
   );
 })().catch((err) => {
   console.error("❌ SEO generation failed:", err);
