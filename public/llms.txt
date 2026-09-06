@@ -1,0 +1,52 @@
+# Ahangama.com
+
+> Ahangama.com is an independent, locally curated guide to Ahangama on Sri Lanka's south coast, covering places to eat and stay, surf, wellness, shopping, events, transport, editorial stories, and the Ahangama Pass.
+
+Use the destination guide for a broad introduction, the directory and map for place discovery, and the editorial pages for deeper local context. Listings and event details may change, so verify time-sensitive information on the linked page or with the venue.
+
+Last updated: 2026-09-06
+
+## Start Here
+
+- [Ahangama, Sri Lanka: The Local Guide](https://ahangama.com/ahangama-sri-lanka): Overview of beaches, surf breaks, restaurants, stays, shops, events, and practical travel details.
+- [Things to Do in Ahangama](https://ahangama.com/things-to-do-in-ahangama): Practical guide to surf, beaches, food, wellness, shopping, nightlife, and south-coast day trips.
+- [Search the directory](https://ahangama.com/search): Search places and local recommendations across the site.
+- [Explore the map](https://ahangama.com/map): Browse recommended places by location.
+- [Events](https://ahangama.com/events): Current events and weekly highlights around Ahangama.
+
+## Places and Planning
+
+- [Where to eat](https://ahangama.com/eat): Curated restaurants, cafes, bars, and local favourites.
+- [Where to stay](https://ahangama.com/stays): Boutique hotels, villas, and retreats, including direct enquiry options.
+- [Private villas](https://ahangama.com/best-airbnbs): Curated villas and beach houses in and around Ahangama.
+- [Wellness](https://ahangama.com/wellness): Yoga, fitness, recovery, Ayurveda, spas, and treatments.
+- [Shops](https://ahangama.com/shops): Design stores, local products, groceries, and essentials.
+- [Transport and travel](https://ahangama.com/transport): Scooters, tuk-tuks, airport pickups, and private transfers.
+- [Host a retreat](https://ahangama.com/host-a-retreat-ahangama): Local venue and planning support for retreats and group gatherings.
+
+## Guides and Stories
+
+- [Editorial articles](https://ahangama.com/articles): Index of destination guides, interviews, local stories, and practical features.
+- [12 Ways to Experience Ahangama](https://ahangama.com/12-things): Editorial introduction to the experiences and routines that define the town.
+- [Editor's Picks](https://ahangama.com/editors-picks): Places and experiences selected by the editorial team.
+- [Ahangama After Dark](https://ahangama.com/ahangama-after-dark): Guide to sunset drinks, live music, dinner, and nightlife.
+- [Getting Around Ahangama](https://ahangama.com/getting-around-ahangama-scooters-tuk-tuks-airport-transfers): Practical advice on scooters, tuk-tuks, and airport transfers.
+- [Why Surfing Changed Everything in Ahangama](https://ahangama.com/why-surfing-changed-everything-in-ahangama): Local context on surf culture and the town's development.
+
+## Ahangama Pass
+
+- [What is the Ahangama Pass?](https://ahangama.com/what-is-ahangama-pass): Explanation of how the visitor pass works.
+- [Pass perks](https://ahangama.com/pass-perks): Current perks and how to claim them.
+- [Pass products](https://ahangama.com/products): Available access and travel products.
+
+## About
+
+- [About Ahangama.com](https://ahangama.com/about): Editorial approach and purpose of the guide.
+- [Partners](https://ahangama.com/partners): Information for local venues and businesses interested in working with Ahangama.com.
+- [Newsletter](https://ahangama.com/newsletter): The Ahangama Dispatch, featuring local recommendations and stories.
+
+## Optional
+
+- [Site map](https://ahangama.com/site-map): Grouped index of public pages.
+- [XML sitemap](https://ahangama.com/sitemap.xml): Machine-readable index of all canonical, indexable URLs.
+- [Media](https://ahangama.com/media): Press and media resources.
