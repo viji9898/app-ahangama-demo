@@ -365,8 +365,7 @@ const routeMeta = [
       "An editorial guide to sunset drinks, live music, dinner spots and late-night events in Ahangama, Sri Lanka.",
     publishDate: "2026-09-02T09:00:00.000Z",
     author: "Ahangama Guide Editorial Team",
-    image:
-      "/Light House Webpage images/light-house-beach-view-hero.webp",
+    image: "/Light House Webpage images/light-house-beach-view-hero.webp",
   },
   {
     route: "/ahangama-sri-lanka",
@@ -621,7 +620,17 @@ const routeMeta = [
     description:
       "Request scooter rentals, tuk-tuks, airport pickups, and private transfers from Ahangama to Colombo, Hiriketiya, Galle, and beyond.",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-person-on-bike-surfboard-transport-landscape.webp",
+  },
+  {
+    route: "/how-to-get-from-colombo-to-ahangama",
+    title: "How to Get from Colombo to Ahangama",
+    description:
+      "Compare private transfers, trains, buses and self-drive routes from Colombo or Bandaranaike Airport to Ahangama, with practical arrival advice.",
+    publishDate: "2026-09-06T09:00:00.000Z",
+    author: "Ahangama Guide Editorial Team",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-train-station-sri-Lanka.webp",
   },
   {
     route: "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers",
@@ -630,7 +639,7 @@ const routeMeta = [
       "A practical guide to scooters, tuk-tuks, airport transfers and exploring Sri Lanka's southern coast.",
     publishDate: "2026-06-01T12:25:00.000Z",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-person-on-bike-surfboard-transport-landscape.webp",
   },
   {
     route: "/3-days-in-ahangama",

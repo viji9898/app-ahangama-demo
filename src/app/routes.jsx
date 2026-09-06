@@ -44,6 +44,9 @@ import ThreeDaysInAhangamaPage from "../pages/ThreeDaysInAhangamaPage";
 import GettingAroundAhangamaPage, {
   GETTING_AROUND_AHANGAMA_PATH,
 } from "../pages/GettingAroundAhangamaPage";
+import HowToGetFromColomboToAhangamaPage, {
+  HOW_TO_GET_FROM_COLOMBO_TO_AHANGAMA_PATH,
+} from "../pages/HowToGetFromColomboToAhangamaPage";
 import SriLankasMostInterestingCoastalTownPage, {
   SRI_LANKAS_MOST_INTERESTING_COASTAL_TOWN_PATH,
 } from "../pages/SriLankasMostInterestingCoastalTownPage";
@@ -150,6 +153,10 @@ const routes = [
   {
     path: GETTING_AROUND_AHANGAMA_PATH,
     element: <GettingAroundAhangamaPage />,
+  },
+  {
+    path: HOW_TO_GET_FROM_COLOMBO_TO_AHANGAMA_PATH,
+    element: <HowToGetFromColomboToAhangamaPage />,
   },
   {
     path: "/Getting-Around-Ahangama-Scooters,-Tuk-Tuks-Airport-Transfers",

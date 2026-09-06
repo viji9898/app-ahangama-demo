@@ -1,5 +1,15 @@
 export const EDITORIAL_ARTICLES = [
   {
+    category: "Transport Guide",
+    title: "How to Get from Colombo to Ahangama",
+    href: "/how-to-get-from-colombo-to-ahangama",
+    description:
+      "Compare private transfers, trains, buses and self-drive routes from Colombo or Bandaranaike Airport to Ahangama, with practical arrival advice.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-train-station-sri-Lanka.webp",
+    publishDate: "2026-09-06T09:00:00.000Z",
+  },
+  {
     category: "Things to do",
     title: "Things to Do in Ahangama",
     href: "/things-to-do-in-ahangama",
@@ -155,7 +165,7 @@ export const EDITORIAL_ARTICLES = [
     description:
       "Practical notes on scooters, tuk-tuks, airport transfers and moving through Sri Lanka's south coast.",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-person-on-bike-surfboard-transport-landscape.webp",
     publishDate: "2026-06-01T12:25:00.000Z",
   },
   {

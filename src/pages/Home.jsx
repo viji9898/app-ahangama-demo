@@ -175,6 +175,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Transport Guide",
+    title: "How to Get from Colombo to Ahangama",
+    date: "This Week",
+    href: "/how-to-get-from-colombo-to-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-train-station-sri-Lanka.webp",
+  },
+  {
     category: "Things to do",
     title: "Things to Do in Ahangama",
     date: "This Week",

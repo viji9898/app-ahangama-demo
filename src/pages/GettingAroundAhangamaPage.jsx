@@ -14,7 +14,7 @@ export const GETTING_AROUND_AHANGAMA_PATH =
   "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
 
 const HERO_IMAGE =
-  "https://images.suitcasemag.com/wp-content/uploads/2025/03/21082617/SurfTrip_2042-copy-2.jpeg";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ahangama-person-on-bike-surfboard-transport-landscape.webp";
 const NEXT_ARTICLE = {
   href: "/where-to-stay-on-sri-lankas-southern-coast",
   kicker: "Discover More",
