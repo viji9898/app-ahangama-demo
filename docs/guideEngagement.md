@@ -7,6 +7,7 @@ This document describes the Google Analytics 4 (GA4) tracking implemented for `/
 The tracking answers these questions:
 
 - Which venues receive the most interest?
+- Which venue cards receive qualified exposure before an interaction?
 - Do visitors prefer Instagram, Google Maps, or venue websites?
 - Which guide sections and UI locations generate engagement?
 - Which map filters and markers are used?
@@ -31,7 +32,8 @@ flowchart LR
 
 Relevant files:
 
-- `src/analytics.js`: shared `trackGuideEvent()` GA4 transport
+- `src/analytics.js`: shared guide-event and venue-impression GA4 transports
+- `src/hooks/useTrackedImpression.js`: reusable timed visibility observer
 - `src/pages/ExperienceAhangamaGuide.jsx`: event triggers and guide-section context
 - `src/data/guideVenueIdentities.js`: one mapping from guide display names to canonical venue IDs and slugs
 - `lib/venues-db.js`: canonical venue API query and DTO normalization
@@ -94,6 +96,7 @@ GA4 Enhanced Measurement may also produce generic `click` events. Use the custom
 
 | Event | Trigger | Important parameters |
 | --- | --- | --- |
+| `venue_impression` | A venue card is at least 50% visible for one continuous second | venue fields, `guide_section`, `component_location`, `position`, content fields, available UTM attribution |
 | `guide_outbound_click` | Instagram, Google Maps, website, or guide social link | `link_type`, venue fields when applicable, `guide_section`, `component_location`, `destination_url` |
 | `guide_lightbox_open` | Venue image opens in the lightbox | venue fields, `guide_section`, `component_location` |
 | `guide_map_marker_select` | Map marker selected | venue fields, `guide_section`, `map_category`, `component_location` |
@@ -108,6 +111,8 @@ Venue fields are:
 - `venue_name`
 
 `component_location` distinguishes placements such as `venue_card`, `venue_lightbox`, `guide_map`, `contents_page`, `toc_ribbon`, and `closing_cta`.
+
+`venue_impression` is emitted once per canonical `venue_id` during one `/guide` render. Leaving the card before the one-second threshold cancels the pending impression. Map markers do not count as impressions, and cards without a canonical identity are not emitted. A full page refresh can count the venue again.
 
 Example outbound payload:
 
@@ -145,6 +150,10 @@ In GA4, open **Admin > Data display > Custom definitions > Create custom dimensi
 | Selected filter | `selected_filter` |
 | Map category | `map_category` |
 | CTA location | `cta_location` |
+| Position | `position` |
+| Page type | `page_type` |
+| Content ID | `content_id` |
+| Content type | `content_type` |
 
 Custom definitions are not retroactive. Create them before relying on breakdown reports. `eventName`, `eventCount`, `totalUsers`, `date`, `pagePath`, and similar built-in fields do not need custom definitions.
 

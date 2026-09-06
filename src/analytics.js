@@ -143,6 +143,54 @@ export const trackGuideEvent = (eventName, params = {}) => {
   return true;
 };
 
+export const trackVenueImpression = ({
+  venueId,
+  venueSlug,
+  venueName,
+  guideSection,
+  componentLocation,
+  position,
+  pageType,
+  contentId,
+  contentType,
+} = {}) => {
+  if (
+    typeof window === "undefined" ||
+    typeof window.gtag !== "function" ||
+    !venueId
+  ) {
+    return false;
+  }
+
+  const attribution = getAnalyticsAttribution();
+
+  window.gtag("event", "venue_impression", {
+    event_category: "venue_exposure",
+    source_domain: window.location.hostname,
+    page_path: window.location.pathname,
+    venue_id: venueId,
+    venue_slug: venueSlug,
+    venue_name: venueName,
+    guide_section: guideSection,
+    component_location: componentLocation,
+    position,
+    page_type: pageType,
+    content_id: contentId,
+    content_type: contentType,
+    ...(attribution.utm_source ? { utm_source: attribution.utm_source } : {}),
+    ...(attribution.utm_medium ? { utm_medium: attribution.utm_medium } : {}),
+    ...(attribution.utm_campaign
+      ? { utm_campaign: attribution.utm_campaign }
+      : {}),
+    ...(attribution.utm_content
+      ? { utm_content: attribution.utm_content }
+      : {}),
+    ...(attribution.utm_term ? { utm_term: attribution.utm_term } : {}),
+  });
+
+  return true;
+};
+
 export const trackPassPurchase = ({ sessionId, paymentData }) => {
   if (typeof window === "undefined" || typeof window.gtag !== "function") {
     return;

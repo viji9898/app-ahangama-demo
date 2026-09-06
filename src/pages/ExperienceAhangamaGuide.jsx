@@ -8,8 +8,9 @@ import "../styles/experience-ahangama-guide.css";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
-import { trackGuideEvent } from "../analytics";
+import { trackGuideEvent, trackVenueImpression } from "../analytics";
 import { withGuideVenueIdentity } from "../data/guideVenueIdentities";
+import useTrackedImpression from "../hooks/useTrackedImpression";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl, shadowUrl });
@@ -224,6 +225,70 @@ function CardLinks({ item }) {
           <WebsiteIcon />
         </a>
       )}
+    </div>
+  );
+}
+
+function GuideVenueCard({ item, position, onImageClick, impressedVenueIds }) {
+  const impressionRef = useTrackedImpression({
+    itemId: item.venueId,
+    impressedItemIds: impressedVenueIds,
+    onImpression: () =>
+      trackVenueImpression({
+        venueId: item.venueId,
+        venueSlug: item.venueSlug,
+        venueName: item.name,
+        guideSection: item.guideSection,
+        componentLocation: "venue_card",
+        position,
+        pageType: "guide",
+        contentId: "ahangama-guide",
+        contentType: "guide",
+      }),
+  });
+
+  return (
+    <div ref={impressionRef} className="eag-card-item">
+      <div className="eag-card-img-wrap">
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.name}
+            loading="lazy"
+            className="eag-card-img"
+            onClick={() => onImageClick?.(item)}
+            role="button"
+            tabIndex={0}
+            aria-label={`View larger image of ${item.name}`}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") onImageClick?.(item);
+            }}
+          />
+        ) : (
+          <div className="eag-card-img--placeholder">
+            <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
+          </div>
+        )}
+      </div>
+      <div className="eag-card-body">
+        <p className="eag-card-desc">{item.desc}</p>
+        <div className="eag-card-meta">
+          <span className="eag-card-meta-name">{item.name}</span>
+          {item.rating && (
+            <span className="eag-card-meta-rating">
+              <StarIcon className="eag-star-icon" />
+              <span>
+                {item.rating}
+                {item.reviewCount > 0 ? ` (${item.reviewCount})` : ""}
+              </span>
+            </span>
+          )}
+        </div>
+        {item.tagline && (
+          <span className="eag-card-tagline">{item.tagline}</span>
+        )}
+        <CardLinks item={item} />
+      </div>
     </div>
   );
 }
@@ -873,7 +938,7 @@ function TransportSection() {
   );
 }
 
-function BestStaysSection({ onImageClick }) {
+function BestStaysSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="best-stays" className="eag-section eag-section--white">
       <div className="eag-content">
@@ -886,37 +951,14 @@ function BestStaysSection({ onImageClick }) {
         <div className="eag-section-body">
           <StaggerReveal>
             <div className="eag-cards-grid">
-              {BEST_STAYS.map((item) => (
-                <div key={item.name} className="eag-card-item">
-                  <div className="eag-card-img-wrap">
-                    {item.image ? (
-                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img"
-                        onClick={() => onImageClick?.(item)}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`View larger image of ${item.name}`}
-                        onKeyDown={(e) => { if (e.key === "Enter") onImageClick?.(item); }}
-                      />
-                    ) : (
-                      <div className="eag-card-img--placeholder">
-                        <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="eag-card-body">
-                    <p className="eag-card-desc">{item.desc}</p>
-                    <div className="eag-card-meta">
-                      <span className="eag-card-meta-name">{item.name}</span>
-                      {item.rating && (
-                        <span className="eag-card-meta-rating">
-                          <StarIcon className="eag-star-icon" />
-                          <span>{item.rating}{item.reviewCount > 0 ? ` (${item.reviewCount})` : ""}</span>
-                        </span>
-                      )}
-                    </div>
-                    <CardLinks item={item} />
-                  </div>
-                </div>
+              {BEST_STAYS.map((item, index) => (
+                <GuideVenueCard
+                  key={item.venueId || item.name}
+                  item={item}
+                  position={index + 1}
+                  onImageClick={onImageClick}
+                  impressedVenueIds={impressedVenueIds}
+                />
               ))}
             </div>
           </StaggerReveal>
@@ -944,7 +986,7 @@ const EATS = [
   { name: "Pickled Pelican", rating: "4.4", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp", lat: 5.973088216727786, lng: 80.36383532958487, instagram: "https://www.instagram.com/pickledpelican/", googleMaps: "https://maps.app.goo.gl/i5eciTxYdUxBAymt7", ownership: "foreign" , website: "" , reviewCount: 208 },
 ].map(withGuideSection("best_eats"));
 
-function BestEatsSection({ onImageClick }) {
+function BestEatsSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="best-eats" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -957,37 +999,14 @@ function BestEatsSection({ onImageClick }) {
         <div className="eag-section-body">
           <StaggerReveal>
             <div className="eag-cards-grid">
-              {EATS.map((item) => (
-                <div key={item.name} className="eag-card-item">
-                  <div className="eag-card-img-wrap">
-                    {item.image ? (
-                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img"
-                        onClick={() => onImageClick?.(item)}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`View larger image of ${item.name}`}
-                        onKeyDown={(e) => { if (e.key === "Enter") onImageClick?.(item); }}
-                      />
-                    ) : (
-                      <div className="eag-card-img--placeholder">
-                        <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="eag-card-body">
-                    <p className="eag-card-desc">{item.desc}</p>
-                    <div className="eag-card-meta">
-                      <span className="eag-card-meta-name">{item.name}</span>
-                      {item.rating && (
-                        <span className="eag-card-meta-rating">
-                          <StarIcon className="eag-star-icon" />
-                          <span>{item.rating}{item.reviewCount > 0 ? ` (${item.reviewCount})` : ""}</span>
-                        </span>
-                      )}
-                    </div>
-                    <CardLinks item={item} />
-                  </div>
-                </div>
+              {EATS.map((item, index) => (
+                <GuideVenueCard
+                  key={item.venueId || item.name}
+                  item={item}
+                  position={index + 1}
+                  onImageClick={onImageClick}
+                  impressedVenueIds={impressedVenueIds}
+                />
               ))}
             </div>
           </StaggerReveal>
@@ -1005,7 +1024,7 @@ const EXPERIENCES = [
   { name: "JN Tattoo", rating: "5", desc: "JN Tattoo is a clean, top-rated Ahangama studio specializing in custom, fine-line tattoos for travelers in a relaxed, hygienic setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788156446/JN_Tattoo_mnh8gj.webp", lat: 5.978418297405438, lng: 80.34807776441775, instagram: "https://www.instagram.com/jntattoosri/?hl=en", googleMaps: "https://maps.app.goo.gl/mukDMPB7MiUaSE6q8", ownership: "local" , website: "" , reviewCount: 8 },
 ].map(withGuideSection("best_experiences"));
 
-function BestExperiencesSection({ onImageClick }) {
+function BestExperiencesSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="best-experiences" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1018,37 +1037,14 @@ function BestExperiencesSection({ onImageClick }) {
         <div className="eag-section-body">
           <StaggerReveal>
             <div className="eag-cards-grid">
-              {EXPERIENCES.map((item) => (
-                <div key={item.name} className="eag-card-item">
-                  <div className="eag-card-img-wrap">
-                    {item.image ? (
-                      <img src={item.image} alt={item.name} loading="lazy" className="eag-card-img"
-                        onClick={() => onImageClick?.(item)}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`View larger image of ${item.name}`}
-                        onKeyDown={(e) => { if (e.key === "Enter") onImageClick?.(item); }}
-                      />
-                    ) : (
-                      <div className="eag-card-img--placeholder">
-                        <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="eag-card-body">
-                    <p className="eag-card-desc">{item.desc}</p>
-                    <div className="eag-card-meta">
-                      <span className="eag-card-meta-name">{item.name}</span>
-                      {item.rating && (
-                        <span className="eag-card-meta-rating">
-                          <StarIcon className="eag-star-icon" />
-                          <span>{item.rating}{item.reviewCount > 0 ? ` (${item.reviewCount})` : ""}</span>
-                        </span>
-                      )}
-                    </div>
-                    <CardLinks item={item} />
-                  </div>
-                </div>
+              {EXPERIENCES.map((item, index) => (
+                <GuideVenueCard
+                  key={item.venueId || item.name}
+                  item={item}
+                  position={index + 1}
+                  onImageClick={onImageClick}
+                  impressedVenueIds={impressedVenueIds}
+                />
               ))}
             </div>
           </StaggerReveal>
@@ -1085,49 +1081,19 @@ const BEST_RETAIL_STORES = [
   { name: "Prickly Pear by Cactus", rating: "3.8", desc:" A colorful beachfront concept boutique serving up trendy resort style and sun-soaked cafe vibes.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Prickly_Pear_kjkltb.webp", lat: 5.9719583, lng: 80.3644725, instagram: "https://www.instagram.com/pricklypear.ahangama/?hl=en", googleMaps: "https://maps.app.goo.gl/LohJpBb5rVRDeHXi8", ownership: "foreign" , website: "" , reviewCount: 21 },
 ].map(withGuideSection("best_retail_stores"));
 
-function cardGrid(items, onImageClick) {
+function cardGrid(items, onImageClick, impressedVenueIds) {
   return (
     <div className="eag-section-body">
       <StaggerReveal>
         <div className="eag-cards-grid">
-          {items.map((item) => (
-            <div key={item.name} className="eag-card-item">
-                  <div className="eag-card-img-wrap">
-                    {item.image ? (
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        loading="lazy"
-                        className="eag-card-img"
-                        onClick={() => onImageClick?.(item)}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`View larger image of ${item.name}`}
-                        onKeyDown={(e) => { if (e.key === "Enter") onImageClick?.(item); }}
-                      />
-                    ) : (
-                      <div className="eag-card-img--placeholder">
-                        <span className="eag-card-img-label">[PHOTO: {item.name}]</span>
-                      </div>
-                    )}
-                  </div>
-              <div className="eag-card-body">
-                <p className="eag-card-desc">{item.desc}</p>
-                <div className="eag-card-meta">
-                  <span className="eag-card-meta-name">{item.name}</span>
-                  {item.rating && (
-                    <span className="eag-card-meta-rating">
-                      <StarIcon className="eag-star-icon" />
-                      <span>{item.rating}{item.reviewCount > 0 ? ` (${item.reviewCount})` : ""}</span>
-                    </span>
-                  )}
-                </div>
-                {item.tagline && (
-                  <span className="eag-card-tagline">{item.tagline}</span>
-                )}
-                <CardLinks item={item} />
-              </div>
-            </div>
+          {items.map((item, index) => (
+            <GuideVenueCard
+              key={item.venueId || item.name}
+              item={item}
+              position={index + 1}
+              onImageClick={onImageClick}
+              impressedVenueIds={impressedVenueIds}
+            />
           ))}
         </div>
       </StaggerReveal>
@@ -1135,34 +1101,34 @@ function cardGrid(items, onImageClick) {
   );
 }
 
-function WellnessSection({ onImageClick }) {
+function WellnessSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="wellness" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Wellness</span></h2></Reveal>
-        {cardGrid(WELLNESS, onImageClick)}
+        {cardGrid(WELLNESS, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
 }
 
-function NightLifeSection({ onImageClick }) {
+function NightLifeSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="night-life" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Night Life</span></h2></Reveal>
-        {cardGrid(NIGHT_LIFE, onImageClick)}
+        {cardGrid(NIGHT_LIFE, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
 }
 
-function BestRetailStoresSection({ onImageClick }) {
+function BestRetailStoresSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="best-retail-stores" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Best Retail Stores</span></h2></Reveal>
-        {cardGrid(BEST_RETAIL_STORES, onImageClick)}
+        {cardGrid(BEST_RETAIL_STORES, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
@@ -1183,12 +1149,12 @@ const BEST_CAFES = [
   { name: "Crave", rating: "4.8", desc: "A popular local cafe known for its flavour-packed brunches, fresh smoothies and vibrant atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/crave_fjckup.jpg", lat: 5.9726530766658374, lng: 80.3631771134925, instagram: "https://www.instagram.com/crave_ahangama/", googleMaps: "https://maps.app.goo.gl/JDJqS6swF9gzUr9q6", reviewCount: 223 },
 ].map(withGuideSection("best_cafes"));
 
-function BestCafesSection({ onImageClick }) {
+function BestCafesSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="best-cafes" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Best Cafes</span></h2></Reveal>
-        {cardGrid(BEST_CAFES, onImageClick)}
+        {cardGrid(BEST_CAFES, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
@@ -1202,12 +1168,12 @@ const TRANSPORT_VENUES = [
   { name: "Nova Rent a Car", rating: "4.8", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Nova_Rent_a_Car_wuaos2.png", instagram: "", googleMaps: "https://maps.app.goo.gl/ew4MYxtAefLNsLMR8", ownership: "foreign" , website: "" , reviewCount: 39 },
 ].map(withGuideSection("transport"));
 
-function TransportGuideSection({ onImageClick }) {
+function TransportGuideSection({ onImageClick, impressedVenueIds }) {
   return (
     <section id="transport-guide" className="eag-section eag-section--white">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Transport</span></h2></Reveal>
-        {cardGrid(TRANSPORT_VENUES, onImageClick)}
+        {cardGrid(TRANSPORT_VENUES, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
@@ -1428,6 +1394,7 @@ export default function ExperienceAhangamaGuide() {
   });
 
   const scrollContainerRef = useRef(null);
+  const impressedVenueIds = useRef(new Set());
 
   useEffect(() => {
     const container = document.querySelector(".eag-scroll-container");
@@ -1560,14 +1527,14 @@ export default function ExperienceAhangamaGuide() {
           <BestSeasonSection />
           <HowLongSection />
           <TransportSection />
-          <BestCafesSection onImageClick={openLightbox} />
-          <BestStaysSection onImageClick={openLightbox} />
-          <BestEatsSection onImageClick={openLightbox} />
-          <BestExperiencesSection onImageClick={openLightbox} />
-          <WellnessSection onImageClick={openLightbox} />
-          <NightLifeSection onImageClick={openLightbox} />
-          <BestRetailStoresSection onImageClick={openLightbox} />
-          <TransportGuideSection onImageClick={openLightbox} />
+          <BestCafesSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <BestStaysSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <BestEatsSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <BestExperiencesSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <WellnessSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <NightLifeSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <BestRetailStoresSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <TransportGuideSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
           <ClosingCTASection />
         </div>
       </div>
