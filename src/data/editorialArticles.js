@@ -49,6 +49,16 @@ export const EDITORIAL_ARTICLES = [
     publishDate: "2026-08-16T09:00:00.000Z",
   },
   {
+    category: "Retreat Guide",
+    title: "Host a Retreat in Ahangama",
+    href: "/host-a-retreat-ahangama",
+    description:
+      "Plan a yoga retreat, leadership offsite, creative gathering or fitness camp with trusted local venue and concierge support.",
+    image:
+      "https://images.openai.com/static-rsc-4/dH7shEGk1uXluF2Jir2c0DGDyYL3Z1kIo7mtn_Fdm219IbR2HYzMwWZJYukJ89v_3Ndbo64q64fWu883O89hVuDk9nHpEKl8N9MnPcbePkvJsC0tOD_JN_5upPYy1qJeOVhQOa9CHEJ67Xjjr1h7N200gaHbZs10vAIJSwWklPk?purpose=inline",
+    publishDate: "2026-07-30T09:00:00.000Z",
+  },
+  {
     category: "Stay Guide",
     title: "Best Stays in Ahangama",
     href: "/stays",
