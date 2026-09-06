@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T11:17:24.540Z",
+  "generatedAt": "2026-09-04T23:03:39.297Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
   "count": 670,
   "media": [
@@ -2799,6 +2799,7 @@
       "origin": "owned",
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
+        "src/data/editorialArticles.js",
         "src/data/places.js",
         "src/pages/BestAirbnbsPage.jsx"
       ],
