@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T05:14:18.082Z",
+  "generatedAt": "2026-09-07T14:37:45.911Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
   "count": 670,
   "media": [
@@ -3270,7 +3270,8 @@
         "src/pages/EatEditorialPage.jsx",
         "src/pages/EatIndex.jsx",
         "src/pages/Home.jsx",
-        "src/pages/ShopsEditorialPage.jsx"
+        "src/pages/ShopsEditorialPage.jsx",
+        "src/styles/wellness-classes.css"
       ],
       "pageRoutes": {
         "src/pages/EatEditorialPage.jsx": [
