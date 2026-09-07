@@ -30,6 +30,26 @@
   status = 200
 
 [[redirects]]
+  from = "/api/guide/venues"
+  to = "/.netlify/functions/api-guide-venues"
+  status = 200
+
+[[redirects]]
+  from = "/api/guide/venue"
+  to = "/.netlify/functions/api-guide-venue"
+  status = 200
+
+[[redirects]]
+  from = "/api/guide/content"
+  to = "/.netlify/functions/api-guide-content"
+  status = 200
+
+[[redirects]]
+  from = "/api/guide/google-rating"
+  to = "/.netlify/functions/api-guide-google-rating"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

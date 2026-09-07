@@ -2,9 +2,33 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { listVenues } from "./lib/venues-db.js";
 import {
+  listGuideVenues,
+  createGuideVenue,
+  getGuideVenue,
+  updateGuideVenue,
+  deleteGuideVenue,
+  listGuideContent,
+  updateGuideContent,
+} from "./lib/guide-db.js";
+import {
   buildPartnersKnowledgeRecords,
   renderPartnersKnowledgeHtml,
 } from "./lib/partners-knowledge.js";
+
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on("data", (c) => chunks.push(c));
+    req.on("end", () => {
+      try {
+        resolve(JSON.parse(Buffer.concat(chunks).toString()));
+      } catch {
+        resolve({});
+      }
+    });
+    req.on("error", reject);
+  });
+}
 
 function venuesApiPlugin() {
   return {
@@ -135,6 +159,95 @@ function venuesApiPlugin() {
               error: error instanceof Error ? error.message : String(error),
             }),
           );
+        }
+      });
+
+      // Guide admin API routes
+      server.middlewares.use(async (req, res, next) => {
+        if (!req.url?.startsWith("/api/guide/")) {
+          next();
+          return;
+        }
+
+        const url = new URL(req.url, "http://localhost:5173");
+        const json = (statusCode, body) => {
+          res.statusCode = statusCode;
+          res.setHeader("Content-Type", "application/json");
+          res.end(JSON.stringify(body));
+        };
+
+        try {
+          // GET /api/guide/venues
+          if (req.url.startsWith("/api/guide/venues") && req.method === "GET") {
+            const venues = await listGuideVenues({
+              section: url.searchParams.get("section") || "",
+              status: url.searchParams.get("status") || "",
+            });
+            return json(200, { ok: true, venues });
+          }
+
+          // POST /api/guide/venues
+          if (req.url.startsWith("/api/guide/venues") && req.method === "POST") {
+            const body = await readBody(req);
+            if (!body.name || !body.section) return json(400, { ok: false, error: "name and section required" });
+            const venue = await createGuideVenue(body);
+            return json(201, { ok: true, venue });
+          }
+
+          // /api/guide/venue?id=...
+          if (req.url.startsWith("/api/guide/venue")) {
+            const id = url.searchParams.get("id");
+            if (!id) return json(400, { ok: false, error: "id required" });
+
+            if (req.method === "GET") {
+              const venue = await getGuideVenue(id);
+              if (!venue) return json(404, { ok: false, error: "not found" });
+              return json(200, { ok: true, venue });
+            }
+            if (req.method === "PUT") {
+              const body = await readBody(req);
+              const venue = await updateGuideVenue(id, body);
+              if (!venue) return json(404, { ok: false, error: "not found" });
+              return json(200, { ok: true, venue });
+            }
+            if (req.method === "DELETE") {
+              await deleteGuideVenue(id);
+              return json(200, { ok: true });
+            }
+            return json(405, { ok: false, error: "Method not allowed" });
+          }
+
+          // GET /api/guide/content
+          if (req.url.startsWith("/api/guide/content") && req.method === "GET") {
+            const content = await listGuideContent();
+            return json(200, { ok: true, content });
+          }
+
+          // PUT /api/guide/content
+          if (req.url.startsWith("/api/guide/content") && req.method === "PUT") {
+            const body = await readBody(req);
+            if (!body.sectionKey) return json(400, { ok: false, error: "sectionKey required" });
+            const item = await updateGuideContent(body.sectionKey, body);
+            return json(200, { ok: true, content: item });
+          }
+
+          // GET /api/guide/google-rating
+          if (req.url.startsWith("/api/guide/google-rating") && req.method === "GET") {
+            const placeId = url.searchParams.get("placeId");
+            if (!placeId) return json(400, { ok: false, error: "placeId required" });
+            const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+            if (!apiKey) return json(500, { ok: false, error: "GOOGLE_PLACES_API_KEY not set" });
+            const gRes = await fetch(
+              `https://maps.googleapis.com/maps/api/place/details/json?place_id=${encodeURIComponent(placeId)}&fields=rating,user_ratings_total,name&key=${apiKey}`
+            );
+            const data = await gRes.json();
+            if (data.status !== "OK" || !data.result) return json(404, { ok: false, error: data.status });
+            return json(200, { ok: true, rating: data.result.rating || null, reviewCount: data.result.user_ratings_total || 0, name: data.result.name || "" });
+          }
+
+          next();
+        } catch (error) {
+          json(500, { ok: false, error: error.message || String(error) });
         }
       });
     },
