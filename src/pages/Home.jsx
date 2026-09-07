@@ -35,10 +35,7 @@ import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
-import {
-  WELLNESS_CLASSES_PATH,
-  WELLNESS_VENUES,
-} from "./WellnessClassesPage";
+import { WELLNESS_CLASSES_PATH, WELLNESS_VENUES } from "./WellnessClassesPage";
 import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
 import denitsaImage from "../assets/temp/denitsa.jpg";
 import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
@@ -96,7 +93,9 @@ function getColomboDateParts(date = new Date()) {
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(date);
-  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  const values = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
 
   return {
     day: values.weekday,
@@ -107,10 +106,11 @@ function getColomboDateParts(date = new Date()) {
 function buildTodayWellnessClasses(date = new Date(), limit = 6) {
   const { day, dateKey } = getColomboDateParts(date);
   const studioQueues = WELLNESS_VENUES.map((venue) => {
-    const schedule = venue.days.find((item) => (
-      item.day === day
-      && (venue.scheduleType !== "dated" || item.date === dateKey)
-    ));
+    const schedule = venue.days.find(
+      (item) =>
+        item.day === day &&
+        (venue.scheduleType !== "dated" || item.date === dateKey),
+    );
 
     return (schedule?.sessions || []).map((session) => ({
       ...session,
@@ -120,7 +120,10 @@ function buildTodayWellnessClasses(date = new Date(), limit = 6) {
   }).filter((sessions) => sessions.length > 0);
   const classes = [];
 
-  while (classes.length < limit && studioQueues.some((sessions) => sessions.length)) {
+  while (
+    classes.length < limit &&
+    studioQueues.some((sessions) => sessions.length)
+  ) {
     studioQueues.forEach((sessions) => {
       if (classes.length < limit && sessions.length) {
         classes.push(sessions.shift());
@@ -130,7 +133,9 @@ function buildTodayWellnessClasses(date = new Date(), limit = 6) {
 
   return {
     day,
-    classes: classes.sort((first, second) => first.time.localeCompare(second.time)),
+    classes: classes.sort((first, second) =>
+      first.time.localeCompare(second.time),
+    ),
   };
 }
 
@@ -566,6 +571,39 @@ const GETTING_AROUND_PREVIEW = [
     suffix: "/ day",
   },
 ];
+
+const HOME_TRANSPORT_RATES = [
+  {
+    route: "Ahangama to CMB airport",
+    price: "LKR 13,120",
+    detail: "Private car · one way",
+  },
+  {
+    route: "Ahangama to Hiriketiya",
+    price: "LKR 7,280",
+    detail: "Private car · one way",
+  },
+  {
+    route: "Self-drive tuk-tuk",
+    price: "From LKR 7,500",
+    detail: "Per day · licence required",
+  },
+  {
+    route: "Scooter rental",
+    price: "From LKR 1,640",
+    detail: "Per day · Honda Dio",
+  },
+  {
+    route: "Vehicle with driver",
+    price: "LKR 12,000–20,000",
+    detail: "Per day · route dependent",
+  },
+];
+
+const TRANSPORT_WHATSAPP_URL =
+  "https://wa.me/94777422274?text=Hi%2C%20I%27d%20like%20to%20inquire%20about%20transport%20or%20a%20vehicle%20rental%20in%20Ahangama.";
+const TRANSPORT_GUIDE_PATH =
+  "/getting-around-ahangama-scooters-tuk-tuks-airport-transfers";
 
 const TRANSPORT_CURRENCIES = ["LKR", "USD", "EUR", "GBP", "INR", "CNY"];
 
@@ -1385,11 +1423,18 @@ export default function Home() {
             <div className="home-section-divider" aria-hidden="true" />
           </div>
 
-          <section className="home-wellness" aria-labelledby="home-wellness-title">
+          <section
+            className="home-wellness"
+            aria-labelledby="home-wellness-title"
+          >
             <div className="home-wellness__header">
               <div>
                 <Text className="home-wellness__kicker">Move today</Text>
-                <Title level={2} id="home-wellness-title" className="home-wellness__title">
+                <Title
+                  level={2}
+                  id="home-wellness-title"
+                  className="home-wellness__title"
+                >
                   {todayWellness.day}&apos;s wellness classes
                 </Title>
               </div>
@@ -1410,7 +1455,9 @@ export default function Home() {
                       <time>{session.time}</time>
                     </div>
                     <Title level={3}>{session.className}</Title>
-                    <Text className="home-wellness__venue">{session.venueName}</Text>
+                    <Text className="home-wellness__venue">
+                      {session.venueName}
+                    </Text>
                     <Text className="home-wellness__category">
                       {session.category.replaceAll("-", " ")}
                     </Text>
@@ -1423,9 +1470,70 @@ export default function Home() {
               </Paragraph>
             )}
 
-            <a href={WELLNESS_CLASSES_PATH} className="home-wellness__link home-wellness__link--mobile">
+            <a
+              href={WELLNESS_CLASSES_PATH}
+              className="home-wellness__link home-wellness__link--mobile"
+            >
               See all classes <ArrowRightOutlined />
             </a>
+          </section>
+
+          <section
+            className="home-transport"
+            aria-labelledby="home-transport-title"
+          >
+            <div className="home-transport__intro">
+              <div>
+                <Text className="home-transport__kicker">
+                  Plan the road ahead
+                </Text>
+                <Title
+                  level={2}
+                  id="home-transport-title"
+                  className="home-transport__title"
+                >
+                  Transfers &amp; daily rentals
+                </Title>
+              </div>
+              <Text className="home-transport__note">
+                Guide prices. Confirm availability and the final fare before
+                travel.
+              </Text>
+            </div>
+
+            <div className="home-transport__rates">
+              {HOME_TRANSPORT_RATES.map((item, index) => (
+                <article className="home-transport__rate" key={item.route}>
+                  <span className="home-transport__number">0{index + 1}</span>
+                  <Text className="home-transport__route">{item.route}</Text>
+                  <strong>{item.price}</strong>
+                  <Text className="home-transport__detail">{item.detail}</Text>
+                </article>
+              ))}
+            </div>
+
+            <div className="home-transport__footer">
+              <p>
+                Need a different route, a larger vehicle or a multi-day rental?
+                Send the dates and passenger count for a tailored quote.
+              </p>
+              <div className="home-transport__actions">
+                <a
+                  className="home-transport__whatsapp"
+                  href={TRANSPORT_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <WhatsAppOutlined /> Inquire on WhatsApp
+                </a>
+                <a href="/transport-rates">
+                  Request a quote <ArrowRightOutlined />
+                </a>
+                <a href={TRANSPORT_GUIDE_PATH}>
+                  Read the transport guide <ReadOutlined />
+                </a>
+              </div>
+            </div>
           </section>
 
           <div className="home-section-divider" aria-hidden="true" />
