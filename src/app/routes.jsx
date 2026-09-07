@@ -132,6 +132,9 @@ import BrandGuidelinePage, {
 } from "../pages/BrandGuidelinePage";
 import GuideSalesPage, { GUIDE_SALES_PATH } from "../pages/GuideSalesPage";
 import GuidePitchPage, { GUIDE_PITCH_PATH } from "../pages/GuidePitchPage";
+import WellnessClassesPage, {
+  WELLNESS_CLASSES_PATH,
+} from "../pages/WellnessClassesPage";
 import ExternalRedirect from "./ExternalRedirect";
 import { Navigate } from "react-router-dom";
 
@@ -190,6 +193,7 @@ const routes = [
   },
   { path: "/local-intelligence", element: <LocalIntelligencePage /> },
   { path: "/events", element: <EventsPage /> },
+  { path: WELLNESS_CLASSES_PATH, element: <WellnessClassesPage /> },
   { path: NEWSLETTER_DATA_PATH, element: <NewsletterDataPage /> },
   {
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",

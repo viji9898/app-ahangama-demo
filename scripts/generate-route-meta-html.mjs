@@ -716,6 +716,14 @@ const routeMeta = [
       "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786347936/August_Calendar_OG_Image_kvxsyx.jpg",
   },
   {
+    route: "/wellness-classes",
+    title: "Wellness Classes & Weekly Schedule in Ahangama",
+    description:
+      "Find Pilates, yoga, CrossFit, strength training and martial arts classes in Ahangama, with weekly times, venues, prices and booking links.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+  },
+  {
     route: "/newsletter",
     title: "The Ahangama Dispatch",
     description:
