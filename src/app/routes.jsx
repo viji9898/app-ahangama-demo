@@ -33,6 +33,7 @@ import Vendors from "../pages/Vendors";
 import MapPage from "../pages/Map";
 import MapGoogle from "../pages/MapGoogle";
 import AdminDashboard from "../pages/AdminDashboard";
+import AdminGuidePage from "../pages/AdminGuidePage";
 import PlacesTable from "../pages/PlacesTable";
 import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
@@ -324,6 +325,7 @@ const routes = [
   { path: "/card/verify", element: <CardVerify /> },
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
+  { path: "/admin-guide", element: <AdminGuidePage /> },
   { path: "/partner-signup", element: <PartnerSignUp /> },
   { path: "/partner-signup/success", element: <PartnerSignUpSuccess /> },
   { path: "/resellers", element: <Resellers /> },

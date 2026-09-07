@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo, useId } from "react";
+
+const GUIDE_API_BASE = "/api/guide";
 import { Helmet } from "react-helmet-async";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -643,7 +645,7 @@ function createGuideMapIcon(categoryKey, color) {
   });
 }
 
-function LocatedSection() {
+function LocatedSection({ venueData }) {
   const [activeCategory, setActiveCategory] = useState("all");
 
   const handleCategorySelect = (categoryKey) => {
@@ -656,15 +658,15 @@ function LocatedSection() {
 
   const categories = useMemo(
     () => [
-      { key: "stays", ...GUIDE_MAP_CATEGORY_META.stays, items: BEST_STAYS },
-      { key: "eats", ...GUIDE_MAP_CATEGORY_META.eats, items: EATS },
-      { key: "experiences", ...GUIDE_MAP_CATEGORY_META.experiences, items: EXPERIENCES },
-      { key: "wellness", ...GUIDE_MAP_CATEGORY_META.wellness, items: WELLNESS },
-      { key: "nightlife", ...GUIDE_MAP_CATEGORY_META.nightlife, items: NIGHT_LIFE },
-      { key: "retail", ...GUIDE_MAP_CATEGORY_META.retail, items: BEST_RETAIL_STORES },
-      { key: "cafes", ...GUIDE_MAP_CATEGORY_META.cafes, items: BEST_CAFES },
+      { key: "stays", ...GUIDE_MAP_CATEGORY_META.stays, items: venueData?.stays || BEST_STAYS },
+      { key: "eats", ...GUIDE_MAP_CATEGORY_META.eats, items: venueData?.eats || EATS },
+      { key: "experiences", ...GUIDE_MAP_CATEGORY_META.experiences, items: venueData?.experiences || EXPERIENCES },
+      { key: "wellness", ...GUIDE_MAP_CATEGORY_META.wellness, items: venueData?.wellness || WELLNESS },
+      { key: "nightlife", ...GUIDE_MAP_CATEGORY_META.nightlife, items: venueData?.nightlife || NIGHT_LIFE },
+      { key: "retail", ...GUIDE_MAP_CATEGORY_META.retail, items: venueData?.retail || BEST_RETAIL_STORES },
+      { key: "cafes", ...GUIDE_MAP_CATEGORY_META.cafes, items: venueData?.cafes || BEST_CAFES },
     ],
-    [],
+    [venueData],
   );
 
   const iconMap = useMemo(
@@ -938,7 +940,8 @@ function TransportSection() {
   );
 }
 
-function BestStaysSection({ onImageClick, impressedVenueIds }) {
+function BestStaysSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || BEST_STAYS;
   return (
     <section id="best-stays" className="eag-section eag-section--white">
       <div className="eag-content">
@@ -951,7 +954,7 @@ function BestStaysSection({ onImageClick, impressedVenueIds }) {
         <div className="eag-section-body">
           <StaggerReveal>
             <div className="eag-cards-grid">
-              {BEST_STAYS.map((item, index) => (
+              {items.map((item, index) => (
                 <GuideVenueCard
                   key={item.venueId || item.name}
                   item={item}
@@ -986,7 +989,8 @@ const EATS = [
   { name: "Pickled Pelican", rating: "4.4", desc: "Creative dishes, refreshing drinks and a relaxed coastal atmosphere.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426469/Pickled_Pelican_a9llwm.webp", lat: 5.973088216727786, lng: 80.36383532958487, instagram: "https://www.instagram.com/pickledpelican/", googleMaps: "https://maps.app.goo.gl/i5eciTxYdUxBAymt7", ownership: "foreign" , website: "" , reviewCount: 208 },
 ].map(withGuideSection("best_eats"));
 
-function BestEatsSection({ onImageClick, impressedVenueIds }) {
+function BestEatsSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || EATS;
   return (
     <section id="best-eats" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -999,7 +1003,7 @@ function BestEatsSection({ onImageClick, impressedVenueIds }) {
         <div className="eag-section-body">
           <StaggerReveal>
             <div className="eag-cards-grid">
-              {EATS.map((item, index) => (
+              {items.map((item, index) => (
                 <GuideVenueCard
                   key={item.venueId || item.name}
                   item={item}
@@ -1024,7 +1028,8 @@ const EXPERIENCES = [
   { name: "JN Tattoo", rating: "5", desc: "JN Tattoo is a clean, top-rated Ahangama studio specializing in custom, fine-line tattoos for travelers in a relaxed, hygienic setting.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788156446/JN_Tattoo_mnh8gj.webp", lat: 5.978418297405438, lng: 80.34807776441775, instagram: "https://www.instagram.com/jntattoosri/?hl=en", googleMaps: "https://maps.app.goo.gl/mukDMPB7MiUaSE6q8", ownership: "local" , website: "" , reviewCount: 8 },
 ].map(withGuideSection("best_experiences"));
 
-function BestExperiencesSection({ onImageClick, impressedVenueIds }) {
+function BestExperiencesSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || EXPERIENCES;
   return (
     <section id="best-experiences" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1037,7 +1042,7 @@ function BestExperiencesSection({ onImageClick, impressedVenueIds }) {
         <div className="eag-section-body">
           <StaggerReveal>
             <div className="eag-cards-grid">
-              {EXPERIENCES.map((item, index) => (
+              {items.map((item, index) => (
                 <GuideVenueCard
                   key={item.venueId || item.name}
                   item={item}
@@ -1101,34 +1106,37 @@ function cardGrid(items, onImageClick, impressedVenueIds) {
   );
 }
 
-function WellnessSection({ onImageClick, impressedVenueIds }) {
+function WellnessSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || WELLNESS;
   return (
     <section id="wellness" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Wellness</span></h2></Reveal>
-        {cardGrid(WELLNESS, onImageClick, impressedVenueIds)}
+        {cardGrid(items, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
 }
 
-function NightLifeSection({ onImageClick, impressedVenueIds }) {
+function NightLifeSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || NIGHT_LIFE;
   return (
     <section id="night-life" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Night Life</span></h2></Reveal>
-        {cardGrid(NIGHT_LIFE, onImageClick, impressedVenueIds)}
+        {cardGrid(items, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
 }
 
-function BestRetailStoresSection({ onImageClick, impressedVenueIds }) {
+function BestRetailStoresSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || BEST_RETAIL_STORES;
   return (
     <section id="best-retail-stores" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Best Retail Stores</span></h2></Reveal>
-        {cardGrid(BEST_RETAIL_STORES, onImageClick, impressedVenueIds)}
+        {cardGrid(items, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
@@ -1149,12 +1157,13 @@ const BEST_CAFES = [
   { name: "Crave", rating: "4.8", desc: "A popular local cafe known for its flavour-packed brunches, fresh smoothies and vibrant atmosphere.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287235/crave_fjckup.jpg", lat: 5.9726530766658374, lng: 80.3631771134925, instagram: "https://www.instagram.com/crave_ahangama/", googleMaps: "https://maps.app.goo.gl/JDJqS6swF9gzUr9q6", reviewCount: 223 },
 ].map(withGuideSection("best_cafes"));
 
-function BestCafesSection({ onImageClick, impressedVenueIds }) {
+function BestCafesSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || BEST_CAFES;
   return (
     <section id="best-cafes" className="eag-section eag-section--cream">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Best Cafes</span></h2></Reveal>
-        {cardGrid(BEST_CAFES, onImageClick, impressedVenueIds)}
+        {cardGrid(items, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
@@ -1168,12 +1177,13 @@ const TRANSPORT_VENUES = [
   { name: "Nova Rent a Car", rating: "4.8", desc: "Cars and transport options for visitors looking to explore beyond Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Nova_Rent_a_Car_wuaos2.png", instagram: "", googleMaps: "https://maps.app.goo.gl/ew4MYxtAefLNsLMR8", ownership: "foreign" , website: "" , reviewCount: 39 },
 ].map(withGuideSection("transport"));
 
-function TransportGuideSection({ onImageClick, impressedVenueIds }) {
+function TransportGuideSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || TRANSPORT_VENUES;
   return (
     <section id="transport-guide" className="eag-section eag-section--white">
       <div className="eag-content">
         <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Transport</span></h2></Reveal>
-        {cardGrid(TRANSPORT_VENUES, onImageClick, impressedVenueIds)}
+        {cardGrid(items, onImageClick, impressedVenueIds)}
       </div>
     </section>
   );
@@ -1392,9 +1402,52 @@ export default function ExperienceAhangamaGuide() {
       return true;
     }
   });
+  const [dbVenueData, setDbVenueData] = useState(null);
 
   const scrollContainerRef = useRef(null);
   const impressedVenueIds = useRef(new Set());
+
+  useEffect(() => {
+    fetch(`${GUIDE_API_BASE}/venues?status=active`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (!d.ok || !d.venues?.length) return;
+        const mapApiVenue = (v) => ({
+          name: v.name,
+          rating: String(v.rating || ""),
+          desc: v.description || "",
+          image: v.image || "",
+          lat: v.lat,
+          lng: v.lng,
+          instagram: v.instagram || "",
+          googleMaps: v.googleMaps || "",
+          website: v.website || "",
+          ownership: v.ownership || undefined,
+          reviewCount: v.reviewCount || 0,
+          tagline: v.tagline || undefined,
+        });
+        const grouped = {};
+        for (const v of d.venues) {
+          const section = v.section;
+          if (!grouped[section]) grouped[section] = [];
+          grouped[section].push(mapApiVenue(v));
+        }
+        const result = {};
+        const sectionKeyMap = {
+          best_stays: "stays", best_eats: "eats", best_cafes: "cafes",
+          best_experiences: "experiences", wellness: "wellness",
+          night_life: "nightlife", best_retail_stores: "retail",
+          transport: "transport",
+        };
+        for (const [dbKey, mapKey] of Object.entries(sectionKeyMap)) {
+          if (grouped[dbKey]?.length) {
+            result[mapKey] = grouped[dbKey].map(withGuideSection(dbKey === "night_life" ? "night_life" : dbKey));
+          }
+        }
+        if (Object.keys(result).length) setDbVenueData(result);
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const container = document.querySelector(".eag-scroll-container");
@@ -1522,19 +1575,19 @@ export default function ExperienceAhangamaGuide() {
           <CoverSection />
           <ContentsSection />
           <OverviewSection />
-          <LocatedSection />
+          <LocatedSection venueData={dbVenueData} />
           <BestForSection />
           <BestSeasonSection />
           <HowLongSection />
           <TransportSection />
-          <BestCafesSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
-          <BestStaysSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
-          <BestEatsSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
-          <BestExperiencesSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
-          <WellnessSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
-          <NightLifeSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
-          <BestRetailStoresSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
-          <TransportGuideSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} />
+          <BestCafesSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.cafes} />
+          <BestStaysSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.stays} />
+          <BestEatsSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.eats} />
+          <BestExperiencesSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.experiences} />
+          <WellnessSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.wellness} />
+          <NightLifeSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.nightlife} />
+          <BestRetailStoresSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.retail} />
+          <TransportGuideSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.transport} />
           <ClosingCTASection />
         </div>
       </div>
