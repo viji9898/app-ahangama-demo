@@ -39,6 +39,8 @@ export const WELLNESS_VENUES = [
     venueId: "pura-pilates-ahangama",
     venueName: "Pura Pilates Ahangama",
     location: "Ahangama",
+    coordinates: { lat: 5.980186974839597, lng: 80.36560881118537 },
+    googleMapsUrl: "https://maps.app.goo.gl/gkoHq55mmjMBd9hR8",
     scheduleType: "dated",
     timezone: "Asia/Colombo",
     bookingUrl: "https://bookwhen.com/pura",
@@ -79,6 +81,8 @@ export const WELLNESS_VENUES = [
     venueId: "crossfit-ceylon-palm",
     venueName: "CrossFit Ceylon at PALM Hotel",
     location: "PALM Hotel, Ahangama",
+    coordinates: { lat: 5.988804340231071, lng: 80.38237393947473 },
+    googleMapsUrl: "https://maps.app.goo.gl/h5V3AJ9vZKGQ43UN7",
     scheduleType: "weekly-recurring",
     timezone: "Asia/Colombo",
     notes: ["Open gym is available outside class hours"],
@@ -114,6 +118,8 @@ export const WELLNESS_VENUES = [
     venueId: "krozz-fit-surf-coast",
     venueName: "Krozz Fit Surf Coast",
     location: "Ahangama",
+    coordinates: { lat: 5.9773439, lng: 80.3647306 },
+    googleMapsUrl: "https://www.google.com/maps/place/Krozz+Fit+Surf+Coast+Gym+Ahangama/@5.9773439,80.3647306,17z",
     scheduleType: "weekly-recurring",
     timezone: "Asia/Colombo",
     bookingUrl: "https://www.krozzfit-gym.com/",
@@ -141,6 +147,8 @@ export const WELLNESS_VENUES = [
     venueId: "ulu-pilates-ahangama",
     venueName: "Ulu Pilates Ahangama",
     location: "Ahangama",
+    coordinates: { lat: 5.9734375, lng: 80.3605625 },
+    googleMapsUrl: "https://www.google.com/maps/place/ULU+House+of+Pilates+Ahangama/@5.9734375,80.3605625,17z",
     scheduleType: "weekly-recurring",
     timezone: "Asia/Colombo",
     instagram: "ulupilatesrilanka",
@@ -197,6 +205,82 @@ function formatPrice(price) {
 
 function getInstagramUrl(handle) {
   return `https://www.instagram.com/${handle.replace(/^@/, "")}/`;
+}
+
+function getGoogleStaticMapUrl(apiKey) {
+  const parameters = new URLSearchParams({
+    center: "5.9811,80.3715",
+    zoom: "13",
+    size: "640x424",
+    scale: "2",
+    maptype: "roadmap",
+    key: apiKey,
+  });
+
+  WELLNESS_VENUES.forEach((venue, index) => {
+    parameters.append(
+      "markers",
+      `color:0xe9624f|label:${index + 1}|${venue.coordinates.lat},${venue.coordinates.lng}`,
+    );
+  });
+
+  return `https://maps.googleapis.com/maps/api/staticmap?${parameters.toString()}`;
+}
+
+function WellnessVenueMap() {
+  const googleMapsApiKey =
+    import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+    || import.meta.env.VITE_GOOGLE_MAPS_KEY
+    || "";
+  return (
+    <section className="wc-mapSection" aria-labelledby="wc-map-title">
+      <div className="wc-mapSection__heading">
+        <div>
+          <span className="wc-eyebrow">Find your class</span>
+          <h2 id="wc-map-title">Studios around Ahangama.</h2>
+        </div>
+        <p>Four studios, mapped from the coast road to PALM Hotel.</p>
+      </div>
+
+      <div className="wc-mapSection__layout">
+        <div className="wc-mapSection__frame">
+          {googleMapsApiKey ? (
+            <img
+              className="wc-mapSection__map"
+              src={getGoogleStaticMapUrl(googleMapsApiKey)}
+              alt="Google map showing four wellness studios around Ahangama"
+              loading="lazy"
+            />
+          ) : (
+            <div className="wc-mapSection__state">
+              <EnvironmentOutlined />
+              <strong>Google Maps needs a browser key.</strong>
+            </div>
+          )}
+        </div>
+
+        <div className="wc-mapSection__list">
+          {WELLNESS_VENUES.map((venue, index) => (
+            <a
+              className="wc-mapSection__venue"
+              href={venue.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${venue.venueName} in Google Maps`}
+              key={venue.venueId}
+            >
+              <span>0{index + 1}</span>
+              <span className="wc-mapSection__venueName">
+                <strong>{venue.venueName}</strong>
+                <small>{venue.location}</small>
+              </span>
+              <EnvironmentOutlined aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default function WellnessClassesPage() {
@@ -336,6 +420,8 @@ export default function WellnessClassesPage() {
             </div>
           )}
         </section>
+
+        <WellnessVenueMap />
 
         <section className="wc-venues">
           <div className="wc-venues__intro">
