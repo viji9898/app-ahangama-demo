@@ -7926,3 +7926,178 @@ h4,
     font-size: 15px !important;
   }
 }
+
+.home-wellness {
+  margin: 36px 0;
+  padding: 22px 24px;
+  border: 1px solid rgba(32, 30, 27, 0.1);
+  background: #ffffff;
+  color: #201e1b;
+}
+
+.home-wellness__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.home-wellness__kicker {
+  display: block;
+  margin-bottom: 5px;
+  color: #8f7753 !important;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.home-wellness__title {
+  margin: 0 !important;
+  color: #201e1b !important;
+  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-size: clamp(25px, 3vw, 34px) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+}
+
+.home-wellness__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #201e1b;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.home-wellness__link:hover {
+  color: #8f7753;
+}
+
+.home-wellness__link--mobile {
+  display: none;
+}
+
+.home-wellness__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(32, 30, 27, 0.12);
+  border-left: 1px solid rgba(32, 30, 27, 0.12);
+}
+
+.home-wellness__class {
+  min-height: 82px;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  align-content: center;
+  column-gap: 12px;
+  padding: 12px 14px;
+  border-right: 1px solid rgba(32, 30, 27, 0.12);
+  border-bottom: 1px solid rgba(32, 30, 27, 0.12);
+}
+
+.home-wellness__time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  grid-row: 1 / span 3;
+  margin: 2px 0 0;
+  color: #8f7753;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.home-wellness__class h3 {
+  grid-column: 2;
+  margin: 0 0 3px !important;
+  color: #201e1b !important;
+  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-size: 19px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.05 !important;
+}
+
+.home-wellness__venue {
+  grid-column: 2;
+  color: #686159 !important;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.home-wellness__category {
+  grid-column: 2;
+  margin-top: 3px;
+  padding-top: 0;
+  color: #5d766e !important;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.home-wellness__empty {
+  margin: 0 !important;
+  padding: 28px 0;
+  border-top: 1px solid rgba(32, 30, 27, 0.12);
+  color: #686159 !important;
+}
+
+@media (max-width: 760px) {
+  .home-wellness {
+    margin: 32px 0;
+    padding: 20px 16px;
+  }
+
+  .home-wellness__header {
+    margin-bottom: 22px;
+  }
+
+  .home-wellness__header > .home-wellness__link {
+    display: none;
+  }
+
+  .home-wellness__link--mobile {
+    display: inline-flex;
+    margin-top: 22px;
+  }
+
+  .home-wellness__grid {
+    display: flex;
+    overflow-x: auto;
+    border-left: 0;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .home-wellness__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-wellness__class {
+    flex: 0 0 210px;
+    min-height: 112px;
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    padding: 12px 14px;
+    scroll-snap-align: start;
+  }
+
+  .home-wellness__time {
+    grid-row: 1 / span 3;
+    margin: 2px 0 0;
+  }
+
+  .home-wellness__class h3,
+  .home-wellness__venue,
+  .home-wellness__category {
+    grid-column: 2;
+  }
+
+  .home-wellness__category {
+    margin-top: 8px;
+    padding-top: 0;
+  }
+}

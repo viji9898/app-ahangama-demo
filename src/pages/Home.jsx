@@ -35,6 +35,10 @@ import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
 import addToGoogleWalletLogo from "../assets/add_to_google_wallet.png";
+import {
+  WELLNESS_CLASSES_PATH,
+  WELLNESS_VENUES,
+} from "./WellnessClassesPage";
 import heroPassAppleWallet from "../assets/hero_pass_apple_wallet.png";
 import denitsaImage from "../assets/temp/denitsa.jpg";
 import muktiStudioImage from "../assets/temp/mukit_studio.jpg";
@@ -82,6 +86,52 @@ function buildHomepageEventsLabel(events) {
   return firstDate === lastDate
     ? `Ahangama . ${firstDate}`
     : `Ahangama . ${firstDate} - ${lastDate}`;
+}
+
+function getColomboDateParts(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Colombo",
+    weekday: "long",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+
+  return {
+    day: values.weekday,
+    dateKey: `${values.year}-${values.month}-${values.day}`,
+  };
+}
+
+function buildTodayWellnessClasses(date = new Date(), limit = 6) {
+  const { day, dateKey } = getColomboDateParts(date);
+  const studioQueues = WELLNESS_VENUES.map((venue) => {
+    const schedule = venue.days.find((item) => (
+      item.day === day
+      && (venue.scheduleType !== "dated" || item.date === dateKey)
+    ));
+
+    return (schedule?.sessions || []).map((session) => ({
+      ...session,
+      venueId: venue.venueId,
+      venueName: venue.venueName,
+    }));
+  }).filter((sessions) => sessions.length > 0);
+  const classes = [];
+
+  while (classes.length < limit && studioQueues.some((sessions) => sessions.length)) {
+    studioQueues.forEach((sessions) => {
+      if (classes.length < limit && sessions.length) {
+        classes.push(sessions.shift());
+      }
+    });
+  }
+
+  return {
+    day,
+    classes: classes.sort((first, second) => first.time.localeCompare(second.time)),
+  };
 }
 
 const TWELVE_THINGS_ORDER = [
@@ -821,6 +871,7 @@ export default function Home() {
   const [thisWeekEventsLabel, setThisWeekEventsLabel] = useState("Ahangama");
   const [canScrollWhatsOnLeft, setCanScrollWhatsOnLeft] = useState(false);
   const [canScrollWhatsOnRight, setCanScrollWhatsOnRight] = useState(false);
+  const todayWellness = buildTodayWellnessClasses();
   const weeklyPicksRailRef = useRef(null);
   const isWeeklyPicksAdjustingRef = useRef(false);
 
@@ -1333,6 +1384,51 @@ export default function Home() {
 
             <div className="home-section-divider" aria-hidden="true" />
           </div>
+
+          <section className="home-wellness" aria-labelledby="home-wellness-title">
+            <div className="home-wellness__header">
+              <div>
+                <Text className="home-wellness__kicker">Move today</Text>
+                <Title level={2} id="home-wellness-title" className="home-wellness__title">
+                  {todayWellness.day}&apos;s wellness classes
+                </Title>
+              </div>
+              <a href={WELLNESS_CLASSES_PATH} className="home-wellness__link">
+                See all classes <ArrowRightOutlined />
+              </a>
+            </div>
+
+            {todayWellness.classes.length ? (
+              <div className="home-wellness__grid">
+                {todayWellness.classes.map((session) => (
+                  <article
+                    className="home-wellness__class"
+                    key={`${session.venueId}-${session.time}-${session.className}`}
+                  >
+                    <div className="home-wellness__time">
+                      <ClockCircleOutlined />
+                      <time>{session.time}</time>
+                    </div>
+                    <Title level={3}>{session.className}</Title>
+                    <Text className="home-wellness__venue">{session.venueName}</Text>
+                    <Text className="home-wellness__category">
+                      {session.category.replaceAll("-", " ")}
+                    </Text>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <Paragraph className="home-wellness__empty">
+                No classes are listed for {todayWellness.day} yet.
+              </Paragraph>
+            )}
+
+            <a href={WELLNESS_CLASSES_PATH} className="home-wellness__link home-wellness__link--mobile">
+              See all classes <ArrowRightOutlined />
+            </a>
+          </section>
+
+          <div className="home-section-divider" aria-hidden="true" />
 
           <div style={{ marginTop: 20 }}>
             <div className="weekly-features-heading">

@@ -32,7 +32,9 @@ const CATEGORY_LABELS = {
   "martial-arts": "Martial arts",
 };
 
-const VENUES = [
+// Shared with the homepage's daily class preview.
+// eslint-disable-next-line react-refresh/only-export-components
+export const WELLNESS_VENUES = [
   {
     venueId: "pura-pilates-ahangama",
     venueName: "Pura Pilates Ahangama",
@@ -202,7 +204,7 @@ export default function WellnessClassesPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const schedule = useMemo(() => WEEKDAYS.map((day) => {
-    const sessions = VENUES.flatMap((venue) => {
+    const sessions = WELLNESS_VENUES.flatMap((venue) => {
       const venueDay = venue.days.find((item) => item.day === day);
       if (!venueDay) return [];
 
@@ -237,7 +239,7 @@ export default function WellnessClassesPage() {
             </p>
             <div className="wc-hero__stats" aria-label="Schedule overview">
               <div><strong>{totalClasses}</strong><span>classes shown</span></div>
-              <div><strong>{VENUES.length}</strong><span>local studios</span></div>
+              <div><strong>{WELLNESS_VENUES.length}</strong><span>local studios</span></div>
               <div><strong>GMT+5:30</strong><span>local time</span></div>
             </div>
           </div>
@@ -342,7 +344,7 @@ export default function WellnessClassesPage() {
             <p>Schedules can change. Confirm directly with the venue before setting off.</p>
           </div>
           <div className="wc-venues__grid">
-            {VENUES.map((venue, index) => (
+            {WELLNESS_VENUES.map((venue, index) => (
               <article className="wc-venue" key={venue.venueId}>
                 <span className="wc-venue__number">0{index + 1}</span>
                 <h3>{venue.venueName}</h3>
