@@ -32,6 +32,8 @@ const CATEGORY_LABELS = {
   all: "All classes",
   pilates: "Pilates",
   yoga: "Yoga",
+  "breathwork-and-recovery": "Breathwork & recovery",
+  "sound-healing": "Sound healing",
   "strength-and-conditioning": "Strength & conditioning",
   "martial-arts": "Martial arts",
 };
@@ -272,7 +274,78 @@ export const WELLNESS_VENUES = [
       ] },
     ],
   },
+  {
+    venueId: "ember-and-ice",
+    venueName: "Ember & Ice",
+    location: "Ahangama area",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Ember%20%26%20Ice%20Ahangama",
+    scheduleType: "weekly-recurring",
+    timezone: "Asia/Colombo",
+    availabilityLabel: "Confirm with venue",
+    days: [
+      { day: "Monday", sessions: [
+        { time: "10:00", className: "Open Access", category: "breathwork-and-recovery" },
+      ] },
+      { day: "Tuesday", sessions: [
+        { time: "10:00", className: "Breathwork + E&I Experience", category: "breathwork-and-recovery" },
+        { time: "10:00", className: "Open Access", category: "breathwork-and-recovery" },
+      ] },
+      { day: "Wednesday", sessions: [
+        { time: "10:00", className: "E&I Ritual", category: "breathwork-and-recovery", availabilityLabel: "No walk-ins" },
+        { time: "12:00", className: "Open Access", category: "breathwork-and-recovery" },
+      ] },
+      { day: "Thursday", sessions: [
+        { time: "10:00", className: "Open Access", category: "breathwork-and-recovery" },
+        { time: "11:00", className: "Hatha Yoga", category: "yoga" },
+      ] },
+      { day: "Friday", sessions: [
+        { time: "10:00", className: "Open Access", category: "breathwork-and-recovery" },
+      ] },
+      { day: "Saturday", sessions: [
+        { time: "10:00", className: "Open Access", category: "breathwork-and-recovery" },
+      ] },
+      { day: "Sunday", sessions: [
+        { time: "10:00", className: "Hatha Yoga", category: "yoga" },
+        { time: "10:00", className: "Open Access", category: "breathwork-and-recovery" },
+      ] },
+    ],
+  },
+  {
+    venueId: "kurulu-bay",
+    venueName: "Kurulu Bay",
+    location: "Ahangama area",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Kurulu%20Bay%20Ahangama",
+    scheduleType: "weekly-recurring",
+    timezone: "Asia/Colombo",
+    bookingUrl: "https://wa.me/94760950090?text=Hello%2C%20I%27d%20like%20to%20pre-book%20a%20class%20at%20Kurulu%20Bay.",
+    availabilityLabel: "Pre-booking required",
+    days: [
+      { day: "Monday", sessions: [
+        { time: "16:30", className: "Yin Yoga", instructor: "Nadeesh", category: "yoga" },
+      ] },
+      { day: "Tuesday", sessions: [
+        { time: "16:30", className: "Yin Yoga", instructor: "Nadeesh", category: "yoga" },
+      ] },
+      { day: "Wednesday", sessions: [
+        { time: "08:30", className: "Hatha Yoga", instructor: "Nadeesh", category: "yoga" },
+      ] },
+      { day: "Thursday", sessions: [
+        { time: "16:30", className: "Yin Yoga", instructor: "Nadeesh", category: "yoga" },
+      ] },
+      { day: "Friday", sessions: [
+        { time: "08:30", className: "Hatha Yoga", instructor: "Nadeesh", category: "yoga" },
+        { time: "16:30", className: "Sound Healing", instructor: "Sarala", category: "sound-healing" },
+      ] },
+      { day: "Saturday", sessions: [
+        { time: "16:30", className: "Yin Yoga", instructor: "Nadeesh", category: "yoga" },
+        { time: "16:30", className: "Sound Healing", instructor: "Sarala", category: "sound-healing" },
+      ] },
+      { day: "Sunday", sessions: [] },
+    ],
+  },
 ];
+
+const MAPPED_WELLNESS_VENUES = WELLNESS_VENUES.filter((venue) => venue.coordinates);
 
 function formatDate(date) {
   return new Intl.DateTimeFormat("en-GB", {
@@ -299,7 +372,7 @@ function getGoogleStaticMapUrl(apiKey) {
     key: apiKey,
   });
 
-  WELLNESS_VENUES.forEach((venue, index) => {
+  MAPPED_WELLNESS_VENUES.forEach((venue, index) => {
     parameters.append(
       "markers",
       `color:0xe9624f|label:${index + 1}|${venue.coordinates.lat},${venue.coordinates.lng}`,
@@ -321,7 +394,7 @@ function WellnessVenueMap() {
           <span className="wc-eyebrow">Find your class</span>
           <h2 id="wc-map-title">Studios around Ahangama.</h2>
         </div>
-        <p>Four studios, mapped from the coast road to PALM Hotel.</p>
+        <p>{MAPPED_WELLNESS_VENUES.length} studios, mapped from the coast road to PALM Hotel.</p>
       </div>
 
       <div className="wc-mapSection__layout">
@@ -330,7 +403,7 @@ function WellnessVenueMap() {
             <img
               className="wc-mapSection__map"
               src={getGoogleStaticMapUrl(googleMapsApiKey)}
-              alt="Google map showing four wellness studios around Ahangama"
+              alt={`Google map showing ${MAPPED_WELLNESS_VENUES.length} wellness studios around Ahangama`}
               loading="lazy"
             />
           ) : (
@@ -342,7 +415,7 @@ function WellnessVenueMap() {
         </div>
 
         <div className="wc-mapSection__list">
-          {WELLNESS_VENUES.map((venue, index) => (
+          {MAPPED_WELLNESS_VENUES.map((venue, index) => (
             <a
               className="wc-mapSection__venue"
               href={venue.googleMapsUrl}
@@ -590,7 +663,7 @@ export default function WellnessClassesPage() {
                         {session.audience ? <span>{session.audience}</span> : null}
                         {session.date ? <span>{formatDate(session.date)}</span> : <span>Weekly</span>}
                         {session.effectivePriceLkr ? <strong>LKR {formatPrice(session.effectivePriceLkr)}</strong> : <span>Price on request</span>}
-                        <span>{session.venue.availabilityLabel}</span>
+                        <span>{session.availabilityLabel || session.venue.availabilityLabel}</span>
                       </div>
                     </div>
                     <div className="wc-session__actions">
