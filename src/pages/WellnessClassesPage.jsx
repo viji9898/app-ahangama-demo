@@ -562,7 +562,15 @@ export default function WellnessClassesPage() {
               <div><strong>GMT+5:30</strong><span>local time</span></div>
             </div>
           </div>
-          <div className="wc-hero__image" role="img" aria-label="Pilates class in Ahangama" />
+          <a
+            className="wc-hero__image"
+            href="https://www.instagram.com/purapilatessrilanka/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Pura Pilates studio interior. View Pura Pilates on Instagram"
+          >
+            <span className="wc-hero__credit">Photo: Pura Pilates</span>
+          </a>
         </section>
 
         <section className="wc-controls" aria-label="Schedule filters">

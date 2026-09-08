@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-08T21:05:06.589Z",
+  "generatedAt": "2026-09-08T21:19:38.136Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 671,
+  "count": 672,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -3270,8 +3270,7 @@
         "src/pages/EatEditorialPage.jsx",
         "src/pages/EatIndex.jsx",
         "src/pages/Home.jsx",
-        "src/pages/ShopsEditorialPage.jsx",
-        "src/styles/wellness-classes.css"
+        "src/pages/ShopsEditorialPage.jsx"
       ],
       "pageRoutes": {
         "src/pages/EatEditorialPage.jsx": [
@@ -3293,6 +3292,17 @@
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
         "src/data/places.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura-pilates-studio-interior.webp",
+      "fileName": "pura-pilates-studio-interior.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/styles/wellness-classes.css"
       ],
       "pageRoutes": {}
     },
