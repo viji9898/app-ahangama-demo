@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import SiteLayout from "../components/layout/SiteLayout";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { EDITORIAL_ARTICLES } from "../data/editorialArticles";
+import TrackedArticleLink from "../components/ui/TrackedArticleLink";
 import "../styles/articles.css";
 
 export const ARTICLES_PATH = "/articles";
@@ -22,6 +23,7 @@ function formatDate(value) {
 
 export default function ArticlesPage() {
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES);
+  const impressedArticleIds = useRef(new Set());
   const featuredArticle = EDITORIAL_ARTICLES[0];
   const categories = useMemo(
     () => [
@@ -73,9 +75,14 @@ export default function ArticlesPage() {
             </div>
             <div>
               <p>{featuredArticle.description}</p>
-              <a href={featuredArticle.href}>
+              <TrackedArticleLink
+                article={featuredArticle}
+                componentLocation="articles_featured"
+                impressedArticleIds={impressedArticleIds}
+                position={1}
+              >
                 Read the latest <ArrowRightOutlined />
-              </a>
+              </TrackedArticleLink>
             </div>
           </div>
         </section>
@@ -118,7 +125,12 @@ export default function ArticlesPage() {
                   className={index === 0 && activeCategory === ALL_CATEGORIES ? "articles-card articles-card--lead" : "articles-card"}
                   key={article.href}
                 >
-                  <a href={article.href}>
+                  <TrackedArticleLink
+                    article={article}
+                    componentLocation="articles_index"
+                    impressedArticleIds={impressedArticleIds}
+                    position={index + 1}
+                  >
                     <div className="articles-cardImage">
                       <img src={article.image} alt="" />
                     </div>
@@ -135,7 +147,7 @@ export default function ArticlesPage() {
                         Read article <ArrowRightOutlined />
                       </strong>
                     </div>
-                  </a>
+                  </TrackedArticleLink>
                 </article>
               ))}
             </div>

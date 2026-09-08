@@ -31,6 +31,7 @@ import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
+import TrackedArticleLink from "../components/ui/TrackedArticleLink";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -745,6 +746,7 @@ const TWELVE_THINGS_GUIDE_PREVIEW = [
 ];
 
 export default function Home() {
+  const impressedWeeklyPickIds = useRef(new Set());
   const { loading, places } = usePlaces();
   const [transportCurrency, setTransportCurrency] = useState("LKR");
   const canonical = absUrl("/");
@@ -1613,9 +1615,12 @@ export default function Home() {
               <div className="weekly-picks-railWrap">
                 <div className="weekly-picks-grid" ref={weeklyPicksRailRef}>
                   {weeklyPicksLooped.map((pick, index) => (
-                    <a
+                    <TrackedArticleLink
                       key={`${pick.title}-${index}`}
-                      href={pick.href || "#"}
+                      article={pick}
+                      componentLocation="homepage_weekly_picks"
+                      impressedArticleIds={impressedWeeklyPickIds}
+                      position={(index % WEEKLY_PICKS.length) + 1}
                       onClick={
                         pick.href
                           ? undefined
@@ -1634,7 +1639,7 @@ export default function Home() {
                       <Title level={3} className="weekly-picks-title">
                         {pick.title}
                       </Title>
-                    </a>
+                    </TrackedArticleLink>
                   ))}
                 </div>
               </div>

@@ -143,6 +143,34 @@ export const trackGuideEvent = (eventName, params = {}) => {
   return true;
 };
 
+export const trackArticleEvent = (eventName, params = {}) => {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+    return false;
+  }
+
+  const attribution = getAnalyticsAttribution();
+
+  window.gtag("event", eventName, {
+    event_category: "article_engagement",
+    source_domain: window.location.hostname,
+    page_path: window.location.pathname,
+    page_type: "editorial_article",
+    content_type: "article",
+    ...params,
+    ...(attribution.utm_source ? { utm_source: attribution.utm_source } : {}),
+    ...(attribution.utm_medium ? { utm_medium: attribution.utm_medium } : {}),
+    ...(attribution.utm_campaign
+      ? { utm_campaign: attribution.utm_campaign }
+      : {}),
+    ...(attribution.utm_content
+      ? { utm_content: attribution.utm_content }
+      : {}),
+    ...(attribution.utm_term ? { utm_term: attribution.utm_term } : {}),
+  });
+
+  return true;
+};
+
 export const trackVenueImpression = ({
   venueId,
   venueSlug,

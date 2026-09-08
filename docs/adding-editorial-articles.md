@@ -262,6 +262,93 @@ Use the article route and hero image exactly as registered elsewhere. Choose a c
 
 After updating the array, verify that the card displays its background image and opens the new article. The Weekly Picks rail repeats its source list to create the continuous carousel, so seeing multiple copies in the rendered DOM is expected.
 
+## Add Article Analytics
+
+Every editorial article must use the shared anonymous GA4 article analytics. Do not
+send names, email addresses, booking details, pass IDs, or other personally
+identifiable information. Identified guest interactions belong in the separate
+email/pass tracking flow, not these browser events.
+
+Define stable analytics metadata near the article constants:
+
+```jsx
+const CONTENT_ID = "your-article-slug";
+const CONTENT_TITLE = "Article Title";
+const ARTICLE_CATEGORY = "editorial";
+const AUTHOR_NAME = "Ahangama Guide Editorial Team";
+```
+
+`CONTENT_ID` must equal the route without the leading slash. Keep
+`ARTICLE_CATEGORY` lowercase and snake-cased so reports do not split one category
+across several spellings.
+
+Attach `useArticleEngagement` to a ref around the article body. Exclude the hero
+and next-article card so they do not inflate reading progress:
+
+```jsx
+const articleBodyRef = useRef(null);
+
+useArticleEngagement({
+  articleRef: articleBodyRef,
+  contentId: CONTENT_ID,
+  contentTitle: CONTENT_TITLE,
+  articleCategory: ARTICLE_CATEGORY,
+  authorName: AUTHOR_NAME,
+});
+
+return <div ref={articleBodyRef}>{/* Article body */}</div>;
+```
+
+The hook emits:
+
+- `article_view` once when the article renders.
+- `article_progress` once at 25%, 50%, and 75% body depth.
+- `article_engaged_read` after 15 active seconds and at least 25% depth.
+- `article_complete` after 30 active seconds and at least 90% depth.
+
+Active reading time pauses when the page is hidden or the browser is not focused.
+Do not replace these qualification rules with bare scroll or timer events.
+
+Give every body section a durable lowercase kebab-case `id`, such as
+`what-people-take-home`. Use `useTrackedImpression` with 50% visibility for one
+continuous second and emit `article_section_view` through `trackArticleEvent`.
+De-duplicate section IDs with one `useRef(new Set())` per article render.
+
+All external links in article copy and `Places Mentioned` must emit
+`article_outbound_click` before navigation with:
+
+- `content_id`, `content_title`, `article_category`, and `author_name`
+- `article_section` and `component_location`
+- `destination_url`
+- `link_type`, such as `instagram`, `map`, or `external`
+
+Pass an `onClick` handler to `EditorialNextArticle` that emits
+`article_next_select`. Include `target_content_id` for the destination article
+and use `component_location: "article_footer"`.
+
+The shared `TrackedArticleLink` component already measures qualified
+`article_card_impression` and `article_select` events on `/articles` and in
+homepage Weekly Picks. Adding a complete article entry to both registries is
+therefore sufficient. The homepage carousel de-duplicates repeated copies by
+content ID and placement.
+
+GA4 should register these event-scoped custom dimensions:
+
+- `content_id`
+- `content_title`
+- `article_category`
+- `author_name`
+- `component_location`
+- `article_section`
+- `progress_percent`
+- `target_content_id`
+- `link_type`
+
+Register `active_read_seconds` as an event-scoped custom metric. Useful report
+rates are engaged reads divided by views, completions divided by engaged reads,
+article selections divided by card impressions, outbound clicks divided by
+engaged reads, and next-article selections divided by completions.
+
 ## Validate
 
 Run:
@@ -295,6 +382,13 @@ Optional image check for remote images:
 node --input-type=module -e 'const urls = ["https://example.com/image.webp"]; for (const url of urls) { const response = await fetch(url, { method: "HEAD" }); console.log(`${url.split("/").pop()} ${response.status} ${response.headers.get("content-type") || ""}`); }'
 ```
 
+Validate analytics in GA4 DebugView or temporarily capture `window.gtag` calls
+in the browser. Confirm each event fires once per intended interaction, progress
+milestones do not repeat, hidden-tab time is excluded, and card impressions
+require 50% visibility for one second. Also confirm the initial route produces
+one `page_view`; `index.html` disables the automatic config page view because
+`AnalyticsTracker` owns initial and SPA route views.
+
 ## Final Checklist
 
 - Page component exists in `src/pages/`.
@@ -306,6 +400,11 @@ node --input-type=module -e 'const urls = ["https://example.com/image.webp"]; fo
 - Static route metadata is added in `scripts/generate-route-meta-html.mjs`.
 - Sitemap source route is added in `scripts/generate-seo.mjs`.
 - The article is added to the start of `WEEKLY_PICKS` in `src/pages/Home.jsx` and its card is verified on the homepage.
+- Stable article analytics metadata and body ref are configured.
+- Every article section has a durable ID and a qualified `article_section_view`.
+- Outbound and next-article links emit the required events without PII.
+- `/articles` and homepage cards emit one qualified impression per placement and a selection event.
+- Reading milestones, qualified engagement, completion, and the single route `page_view` are verified.
 - All remote image URLs return `200`.
 - `npm run build` passes.
 - Generated `public/sitemap.xml` and `public/robots.txt` churn is restored unless intentionally needed.

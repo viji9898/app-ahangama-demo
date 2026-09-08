@@ -9,12 +9,14 @@ export default function EditorialNextArticle({
   title,
   image,
   ctaLabel = "Read now ->",
+  onClick,
   style,
 }) {
   return (
     <div style={{ marginTop: 16, marginBottom: 32, ...style }}>
       <a
         href={href}
+        onClick={onClick}
         style={{
           display: "block",
           position: "relative",

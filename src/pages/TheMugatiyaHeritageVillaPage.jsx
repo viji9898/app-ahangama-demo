@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
+import { trackArticleEvent } from "../analytics";
+import useArticleEngagement from "../hooks/useArticleEngagement";
+import useTrackedImpression from "../hooks/useTrackedImpression";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -21,6 +24,12 @@ const BREAKFAST_IMAGE = `${BASE_IMAGE_URL}/the-mugatiya-breakfast-verandah-garde
 const POOLSIDE_IMAGE = `${BASE_IMAGE_URL}/the-mugatiya-poolside-relaxing-ahangama.jpg`;
 
 const publishDate = "2026-09-08T09:00:00.000Z";
+const CONTENT_ID =
+  "the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama";
+const CONTENT_TITLE =
+  "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama";
+const ARTICLE_CATEGORY = "stay_story";
+const AUTHOR_NAME = "Yannick le borgne";
 
 const articleIntroduction = [
   "There are villas that perform luxury, and there are houses that remember.",
@@ -30,6 +39,7 @@ const articleIntroduction = [
 
 const articleSections = [
   {
+    id: "the-house-that-kept-its-bones",
     title: "The House That Kept Its Bones",
     body: [
       "Guest rooms sit apart from the old heart of the estate, allowing the original house to remain a place for dining, gathering and lingering. Four en-suite rooms look across the property, with rain showers, ceiling fans and space for two families, a group of friends, or simply a week without a schedule.",
@@ -38,6 +48,7 @@ const articleSections = [
     ],
   },
   {
+    id: "south-of-the-postcard-north-of-the-crowd",
     title: "South of the Postcard, North of the Crowd",
     body: [
       "Ahangama is not the loudest stretch of Sri Lanka's south coast, and that is part of its appeal. Surf points including Midigama, Kabalana and quieter coves are only minutes away. Galle Fort is a short drive away, with Dutch walls, its lighthouse, old streets and sunsets over stone and sea.",
@@ -45,6 +56,7 @@ const articleSections = [
     ],
   },
   {
+    id: "what-people-take-home",
     title: "What People Take Home",
     body: [
       "Guests talk less about amenities than about Sampath, who cooks and looks after the house as if it were his own. They remember breakfast, children disappearing into the garden, and nights when the pool holds the last of the heat and the paddy holds the last of the light.",
@@ -53,6 +65,7 @@ const articleSections = [
     ],
   },
   {
+    id: "the-invitation",
     title: "The Invitation",
     body: [
       "Drink this water. Breathe this air. Live this life.",
@@ -109,7 +122,26 @@ const NEXT_ARTICLE = {
     "https://res.cloudinary.com/dp7in4ulw/image/upload/w_1200,h_630,c_fill,q_auto,f_auto/v1787205024/Hero_Image_-_Petals-entrance-with-sign_ismfmq.jpg",
 };
 
-function renderLinkedText(text) {
+function trackOutboundClick(link, articleSection, componentLocation) {
+  const linkType = link.href.includes("instagram.com")
+    ? "instagram"
+    : link.href.includes("google.com/maps")
+      ? "map"
+      : "external";
+
+  trackArticleEvent("article_outbound_click", {
+    content_id: CONTENT_ID,
+    content_title: CONTENT_TITLE,
+    article_category: ARTICLE_CATEGORY,
+    author_name: AUTHOR_NAME,
+    article_section: articleSection,
+    component_location: componentLocation,
+    destination_url: link.href,
+    link_type: linkType,
+  });
+}
+
+function renderLinkedText(text, articleSection) {
   const matches = [];
 
   [...PLACE_LINKS]
@@ -151,6 +183,9 @@ function renderLinkedText(text) {
       <a
         key={`${match.label}-${match.start}`}
         href={match.href}
+        onClick={() =>
+          trackOutboundClick(match, articleSection, "article_body")
+        }
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -170,7 +205,7 @@ function renderLinkedText(text) {
   return segments;
 }
 
-function ArticleParagraph({ children }) {
+function ArticleParagraph({ articleSection, children }) {
   return (
     <Paragraph
       style={{
@@ -181,7 +216,7 @@ function ArticleParagraph({ children }) {
         lineHeight: 1.8,
       }}
     >
-      {renderLinkedText(children)}
+      {renderLinkedText(children, articleSection)}
     </Paragraph>
   );
 }
@@ -214,9 +249,29 @@ function EditorialImage({ src, alt, portrait = false }) {
   );
 }
 
-function ArticleSection({ section, first = false }) {
+function ArticleSection({
+  section,
+  first = false,
+  impressedSectionIds,
+}) {
+  const sectionRef = useTrackedImpression({
+    itemId: section.id,
+    impressedItemIds: impressedSectionIds,
+    onImpression: () =>
+      trackArticleEvent("article_section_view", {
+        content_id: CONTENT_ID,
+        content_title: CONTENT_TITLE,
+        article_category: ARTICLE_CATEGORY,
+        author_name: AUTHOR_NAME,
+        article_section: section.id,
+        component_location: "article_body",
+      }),
+  });
+
   return (
     <section
+      id={section.id}
+      ref={sectionRef}
       style={{
         padding: first ? "20px 0 36px" : "36px 0",
         borderTop: first ? "none" : "1px solid rgba(47,62,58,0.12)",
@@ -227,7 +282,9 @@ function ArticleSection({ section, first = false }) {
           {section.title}
         </Title>
         {section.body.map((paragraph) => (
-          <ArticleParagraph key={paragraph}>{paragraph}</ArticleParagraph>
+          <ArticleParagraph articleSection={section.id} key={paragraph}>
+            {paragraph}
+          </ArticleParagraph>
         ))}
       </div>
     </section>
@@ -236,6 +293,16 @@ function ArticleSection({ section, first = false }) {
 
 export default function TheMugatiyaHeritageVillaPage() {
   const canonical = absUrl(THE_MUGATIYA_HERITAGE_VILLA_PATH);
+  const articleBodyRef = useRef(null);
+  const impressedSectionIds = useRef(new Set());
+
+  useArticleEngagement({
+    articleRef: articleBodyRef,
+    contentId: CONTENT_ID,
+    contentTitle: CONTENT_TITLE,
+    articleCategory: ARTICLE_CATEGORY,
+    authorName: AUTHOR_NAME,
+  });
 
   return (
     <SiteLayout navOverlayHero>
@@ -383,7 +450,7 @@ export default function TheMugatiyaHeritageVillaPage() {
           </div>
         </div>
 
-        <div className="dm-wrap" style={{ paddingTop: 28 }}>
+        <div className="dm-wrap" ref={articleBodyRef} style={{ paddingTop: 28 }}>
           <div style={{ maxWidth: 920, paddingBottom: 12 }}>
             {articleIntroduction.map((paragraph, index) => (
               <Paragraph
@@ -395,7 +462,7 @@ export default function TheMugatiyaHeritageVillaPage() {
                   lineHeight: index === 0 ? 1.7 : 1.85,
                 }}
               >
-                {renderLinkedText(paragraph)}
+                {renderLinkedText(paragraph, "introduction")}
               </Paragraph>
             ))}
           </div>
@@ -404,27 +471,40 @@ export default function TheMugatiyaHeritageVillaPage() {
             src={FEATURE_IMAGE}
             alt="Heritage villa buildings and landscaped courtyard garden at The Mugatiya in Ahangama, surrounded by mature tropical trees"
           />
-          <ArticleSection section={articleSections[0]} first />
+          <ArticleSection
+            section={articleSections[0]}
+            first
+            impressedSectionIds={impressedSectionIds}
+          />
 
           <EditorialImage
             src={POOL_PAVILION_IMAGE}
             alt="Pool and garden view at The Mugatiya in Ahangama, with a tiled pavilion, tropical greenery and a sun hat in the foreground"
             portrait
           />
-          <ArticleSection section={articleSections[1]} />
+          <ArticleSection
+            section={articleSections[1]}
+            impressedSectionIds={impressedSectionIds}
+          />
 
           <EditorialImage
             src={BREAKFAST_IMAGE}
             alt="Breakfast served on the verandah at The Mugatiya, overlooking tropical gardens, palm trees and paddy fields in Ahangama"
             portrait
           />
-          <ArticleSection section={articleSections[2]} />
+          <ArticleSection
+            section={articleSections[2]}
+            impressedSectionIds={impressedSectionIds}
+          />
 
           <EditorialImage
             src={POOLSIDE_IMAGE}
             alt="Guests relaxing with a guitar beside the pool at The Mugatiya, surrounded by tropical gardens and heritage-style villa buildings in Ahangama"
           />
-          <ArticleSection section={articleSections[3]} />
+          <ArticleSection
+            section={articleSections[3]}
+            impressedSectionIds={impressedSectionIds}
+          />
 
           <section
             style={{
@@ -461,6 +541,13 @@ export default function TheMugatiyaHeritageVillaPage() {
                 >
                   <a
                     href={venue.href}
+                    onClick={() =>
+                      trackOutboundClick(
+                        venue,
+                        "places-mentioned",
+                        "places_mentioned",
+                      )
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -493,7 +580,19 @@ export default function TheMugatiyaHeritageVillaPage() {
             </div>
           </section>
 
-          <EditorialNextArticle {...NEXT_ARTICLE} />
+          <EditorialNextArticle
+            {...NEXT_ARTICLE}
+            onClick={() =>
+              trackArticleEvent("article_next_select", {
+                content_id: CONTENT_ID,
+                content_title: CONTENT_TITLE,
+                article_category: ARTICLE_CATEGORY,
+                author_name: AUTHOR_NAME,
+                component_location: "article_footer",
+                target_content_id: "petals-ahangama-a-dream-rooted-in-legacy",
+              })
+            }
+          />
         </div>
       </div>
     </SiteLayout>
