@@ -230,6 +230,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Stay Story",
+    title: "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama",
+    date: "This Week",
+    href: "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/hero-image-the-mugatiya-infinity-pool-paddy-view-ahangama.jpg.jpg",
+  },
+  {
     category: "Transport Guide",
     title: "How to Get from Colombo to Ahangama",
     date: "This Week",

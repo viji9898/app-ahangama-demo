@@ -102,6 +102,9 @@ import GustaGroceriesAhangamaPage, {
 import PetalsAhangamaLegacyPage, {
   PETALS_AHANGAMA_LEGACY_PATH,
 } from "../pages/PetalsAhangamaLegacyPage";
+import TheMugatiyaHeritageVillaPage, {
+  THE_MUGATIYA_HERITAGE_VILLA_PATH,
+} from "../pages/TheMugatiyaHeritageVillaPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -232,6 +235,10 @@ const routes = [
   {
     path: INSIDE_AHANGAMA_CIRCLE_LAUNCH_PATH,
     element: <InsideTheLaunchOfAhangamaCirclePage />,
+  },
+  {
+    path: THE_MUGATIYA_HERITAGE_VILLA_PATH,
+    element: <TheMugatiyaHeritageVillaPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,

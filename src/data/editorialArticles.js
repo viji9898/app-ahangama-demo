@@ -1,5 +1,15 @@
 export const EDITORIAL_ARTICLES = [
   {
+    category: "Stay Story",
+    title: "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama",
+    href: "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama",
+    description:
+      "A restored Arachchi Gedara in Ahangama, where old timber, open gardens, paddy fields and quiet days come together.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/hero-image-the-mugatiya-infinity-pool-paddy-view-ahangama.jpg.jpg",
+    publishDate: "2026-09-08T09:00:00.000Z",
+  },
+  {
     category: "Transport Guide",
     title: "How to Get from Colombo to Ahangama",
     href: "/how-to-get-from-colombo-to-ahangama",
