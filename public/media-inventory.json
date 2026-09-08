@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-08T19:41:20.392Z",
+  "generatedAt": "2026-09-08T20:49:13.439Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 670,
+  "count": 671,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -3504,6 +3504,21 @@
         "src/data/places.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sept_wellness_schedule_crozz.webp",
+      "fileName": "sept_wellness_schedule_crozz.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/WellnessClassesPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/WellnessClassesPage.jsx": [
+          "/wellness-classes"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/serving-coffee.jpeg",

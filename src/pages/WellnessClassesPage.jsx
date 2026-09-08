@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   CalendarOutlined,
   ClockCircleOutlined,
   EnvironmentOutlined,
   InstagramOutlined,
   LinkOutlined,
+  RightOutlined,
 } from "@ant-design/icons";
 import { Segmented } from "antd";
 import { Seo } from "../app/seo";
@@ -13,6 +14,9 @@ import SiteLayout from "../components/layout/SiteLayout";
 import "../styles/wellness-classes.css";
 
 export const WELLNESS_CLASSES_PATH = "/wellness-classes";
+
+const FILTER_STORAGE_KEY = "ahangama-wellness-filters";
+const COLOMBO_TIME_ZONE = "Asia/Colombo";
 
 const WEEKDAYS = [
   "Monday",
@@ -31,6 +35,44 @@ const CATEGORY_LABELS = {
   "strength-and-conditioning": "Strength & conditioning",
   "martial-arts": "Martial arts",
 };
+
+function getColomboDate(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: COLOMBO_TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+
+  return new Date(Date.UTC(Number(values.year), Number(values.month) - 1, Number(values.day), 12));
+}
+
+function addCalendarDays(date, days) {
+  const nextDate = new Date(date);
+  nextDate.setUTCDate(nextDate.getUTCDate() + days);
+  return nextDate;
+}
+
+function getWeekday(date) {
+  return new Intl.DateTimeFormat("en-GB", { weekday: "long", timeZone: "UTC" }).format(date);
+}
+
+function formatCalendarDate(date, options = {}) {
+  return new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", ...options }).format(date);
+}
+
+function getInitialFilters() {
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  try {
+    return JSON.parse(window.localStorage.getItem(FILTER_STORAGE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
 
 const GYM_PASSES = [
   {
@@ -77,6 +119,8 @@ export const WELLNESS_VENUES = [
     timezone: "Asia/Colombo",
     bookingUrl: "https://bookwhen.com/pura",
     instagram: "purapilatessrilanka",
+    availabilityLabel: "Walk-ins welcome",
+    dropInAvailable: true,
     pricingLkr: { reformer: 6000, matAndYoga: 3000 },
     notes: ["Walk-ins welcome", "Arrive 10 minutes early"],
     days: [
@@ -117,6 +161,9 @@ export const WELLNESS_VENUES = [
     googleMapsUrl: "https://maps.app.goo.gl/h5V3AJ9vZKGQ43UN7",
     scheduleType: "weekly-recurring",
     timezone: "Asia/Colombo",
+    availabilityLabel: "Drop-in available",
+    dropInAvailable: true,
+    defaultClassPriceLkr: 4500,
     notes: ["Open gym is available outside class hours"],
     days: [
       { day: "Monday", sessions: [
@@ -155,6 +202,8 @@ export const WELLNESS_VENUES = [
     scheduleType: "weekly-recurring",
     timezone: "Asia/Colombo",
     bookingUrl: "https://www.krozzfit-gym.com/",
+    availabilityLabel: "Booking recommended",
+    defaultClassPriceLkr: 2500,
     days: [
       { day: "Monday", sessions: [{ time: "10:00", className: "HYROX", category: "strength-and-conditioning" }] },
       { day: "Tuesday", sessions: [
@@ -184,6 +233,7 @@ export const WELLNESS_VENUES = [
     scheduleType: "weekly-recurring",
     timezone: "Asia/Colombo",
     instagram: "ulupilatesrilanka",
+    availabilityLabel: "Confirm with studio",
     days: [
       { day: "Monday", sessions: [
         { time: "09:00", className: "Power Reformer", level: 2, category: "pilates" },
@@ -316,8 +366,59 @@ function WellnessVenueMap() {
 }
 
 export default function WellnessClassesPage() {
-  const [selectedDay, setSelectedDay] = useState("All week");
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const today = useMemo(() => getColomboDate(), []);
+  const tomorrow = useMemo(() => addCalendarDays(today, 1), [today]);
+  const dateOptions = useMemo(() => {
+    const options = [
+      { label: "Today", value: "today" },
+      { label: "Tomorrow", value: "tomorrow" },
+    ];
+
+    for (let offset = 2; offset <= 6; offset += 1) {
+      const date = addCalendarDays(today, offset);
+      const weekday = getWeekday(date);
+      if (weekday === "Saturday" || weekday === "Sunday") break;
+      options.push({ label: weekday, value: `day:${weekday}` });
+    }
+
+    options.push(
+      { label: "Weekend", value: "weekend" },
+      { label: "Full week", value: "full-week" },
+    );
+    return options;
+  }, [today]);
+  const [initialFilters] = useState(getInitialFilters);
+  const [selectedRange, setSelectedRange] = useState(
+    dateOptions.some(({ value }) => value === initialFilters.selectedRange)
+      ? initialFilters.selectedRange
+      : "today",
+  );
+  const [selectedCategory, setSelectedCategory] = useState(
+    Object.hasOwn(CATEGORY_LABELS, initialFilters.selectedCategory)
+      ? initialFilters.selectedCategory
+      : "all",
+  );
+  const [underFiveThousand, setUnderFiveThousand] = useState(Boolean(initialFilters.underFiveThousand));
+  const [dropInOnly, setDropInOnly] = useState(Boolean(initialFilters.dropInOnly));
+  const [viewMode, setViewMode] = useState(initialFilters.viewMode === "map" ? "map" : "schedule");
+
+  const selectedDays = useMemo(() => {
+    if (selectedRange === "full-week") return new Set(WEEKDAYS);
+    if (selectedRange === "weekend") return new Set(["Saturday", "Sunday"]);
+    if (selectedRange === "tomorrow") return new Set([getWeekday(tomorrow)]);
+    if (selectedRange.startsWith("day:")) return new Set([selectedRange.slice(4)]);
+    return new Set([getWeekday(today)]);
+  }, [selectedRange, today, tomorrow]);
+
+  useEffect(() => {
+    window.localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify({
+      selectedRange,
+      selectedCategory,
+      underFiveThousand,
+      dropInOnly,
+      viewMode,
+    }));
+  }, [dropInOnly, selectedCategory, selectedRange, underFiveThousand, viewMode]);
 
   const schedule = useMemo(() => WEEKDAYS.map((day) => {
     const sessions = WELLNESS_VENUES.flatMap((venue) => {
@@ -325,16 +426,39 @@ export default function WellnessClassesPage() {
       if (!venueDay) return [];
 
       return venueDay.sessions
+        .map((session) => ({
+          ...session,
+          venue,
+          date: venueDay.date,
+          effectivePriceLkr: session.priceLkr || venue.defaultClassPriceLkr,
+        }))
         .filter((session) => selectedCategory === "all" || session.category === selectedCategory)
-        .map((session) => ({ ...session, venue, date: venueDay.date }));
+        .filter((session) => !underFiveThousand || (session.effectivePriceLkr && session.effectivePriceLkr < 5000))
+        .filter(() => !dropInOnly || venue.dropInAvailable);
     }).sort((first, second) => first.time.localeCompare(second.time));
 
     return { day, sessions };
   }).filter(({ day, sessions }) => (
-    sessions.length > 0 && (selectedDay === "All week" || selectedDay === day)
-  )), [selectedCategory, selectedDay]);
+    sessions.length > 0 && selectedDays.has(day)
+  )), [dropInOnly, selectedCategory, selectedDays, underFiveThousand]);
 
   const totalClasses = schedule.reduce((total, day) => total + day.sessions.length, 0);
+  const selectedRangeLabel = dateOptions.find(({ value }) => value === selectedRange)?.label || "Today";
+  const selectedHeading = selectedRange === "today"
+    ? `Today — ${formatCalendarDate(today, { weekday: "long", day: "numeric", month: "long" })}`
+    : selectedRange === "tomorrow"
+      ? `Tomorrow — ${formatCalendarDate(tomorrow, { weekday: "long", day: "numeric", month: "long" })}`
+      : selectedRange === "full-week"
+        ? "Your week in motion"
+        : selectedRangeLabel;
+  const weekStart = addCalendarDays(today, -((today.getUTCDay() + 6) % 7));
+  const weekEnd = addCalendarDays(weekStart, 6);
+
+  const clearFilters = () => {
+    setSelectedCategory("all");
+    setUnderFiveThousand(false);
+    setDropInOnly(false);
+  };
 
   return (
     <SiteLayout>
@@ -351,9 +475,14 @@ export default function WellnessClassesPage() {
             <span className="wc-eyebrow">Move well in Ahangama</span>
             <h1>Wellness classes, all in one place.</h1>
             <p>
-              This week&apos;s Pilates, yoga, CrossFit and martial arts sessions,
-              organised by day and ready to book.
+              The weekly guide to yoga, fitness, Pilates and restorative classes
+              across Ahangama.
             </p>
+            <div className="wc-hero__utility">
+              <span>Updated weekly</span>
+              <span>{formatCalendarDate(weekStart, { day: "numeric", month: "short" })}–{formatCalendarDate(weekEnd, { day: "numeric", month: "short", year: "numeric" })}</span>
+              <span>Last checked {formatCalendarDate(today, { day: "numeric", month: "long" })}</span>
+            </div>
             <div className="wc-hero__stats" aria-label="Schedule overview">
               <div><strong>{totalClasses}</strong><span>classes shown</span></div>
               <div><strong>{WELLNESS_VENUES.length}</strong><span>local studios</span></div>
@@ -366,33 +495,74 @@ export default function WellnessClassesPage() {
         <section className="wc-controls" aria-label="Schedule filters">
           <div className="wc-controlGroup">
             <span className="wc-controlLabel"><CalendarOutlined /> Day</span>
-            <Segmented
-              block
-              className="wc-dayPicker"
-              options={["All week", ...WEEKDAYS]}
-              value={selectedDay}
-              onChange={setSelectedDay}
-            />
+            <div className="wc-dayScroller">
+              <Segmented
+                block
+                className="wc-dayPicker"
+                options={dateOptions}
+                value={selectedRange}
+                onChange={setSelectedRange}
+              />
+              <span className="wc-dayScrollCue" aria-hidden="true">
+                <RightOutlined />
+              </span>
+            </div>
           </div>
-          <div className="wc-categoryPicker" aria-label="Filter by activity">
-            {Object.entries(CATEGORY_LABELS).map(([value, label]) => (
+          <div className="wc-categoryScroller">
+            <div className="wc-categoryPicker" aria-label="Filter by activity">
+              {Object.entries(CATEGORY_LABELS).map(([value, label]) => (
+                <button
+                  type="button"
+                  className={selectedCategory === value ? "is-active" : ""}
+                  key={value}
+                  onClick={() => setSelectedCategory(value)}
+                >
+                  {label}
+                </button>
+              ))}
               <button
                 type="button"
-                className={selectedCategory === value ? "is-active" : ""}
-                key={value}
-                onClick={() => setSelectedCategory(value)}
+                className={underFiveThousand ? "is-active" : ""}
+                onClick={() => setUnderFiveThousand((value) => !value)}
               >
-                {label}
+                Under LKR 5,000
               </button>
-            ))}
+              <button
+                type="button"
+                className={dropInOnly ? "is-active" : ""}
+                onClick={() => setDropInOnly((value) => !value)}
+              >
+                Drop-in available
+              </button>
+              {(selectedCategory !== "all" || underFiveThousand || dropInOnly) ? (
+                <button type="button" className="wc-clearFilters" onClick={clearFilters}>
+                  Clear filters
+                </button>
+              ) : null}
+            </div>
+            <span className="wc-categoryScrollCue" aria-hidden="true">
+              <RightOutlined />
+            </span>
+          </div>
+          <div className="wc-viewControls">
+            <strong>{totalClasses} {totalClasses === 1 ? "class" : "classes"} {selectedRangeLabel.toLowerCase()}</strong>
+            <Segmented
+              aria-label="Choose schedule or map view"
+              options={[
+                { label: "Schedule", value: "schedule" },
+                { label: "Map", value: "map" },
+              ]}
+              value={viewMode}
+              onChange={setViewMode}
+            />
           </div>
         </section>
 
-        <section className="wc-schedule" aria-live="polite">
+        {viewMode === "schedule" ? <section className="wc-schedule" aria-live="polite">
           <div className="wc-schedule__heading">
             <div>
               <span className="wc-eyebrow">Ahangama class calendar</span>
-              <h2>{selectedDay === "All week" ? "Your week in motion" : selectedDay}</h2>
+              <h2>{selectedHeading}</h2>
             </div>
             <p>{totalClasses} {totalClasses === 1 ? "session" : "sessions"}</p>
           </div>
@@ -419,26 +589,24 @@ export default function WellnessClassesPage() {
                         {session.level ? <span>Level {session.level}</span> : null}
                         {session.audience ? <span>{session.audience}</span> : null}
                         {session.date ? <span>{formatDate(session.date)}</span> : <span>Weekly</span>}
-                        {session.priceLkr ? <strong>LKR {formatPrice(session.priceLkr)}</strong> : null}
+                        {session.effectivePriceLkr ? <strong>LKR {formatPrice(session.effectivePriceLkr)}</strong> : <span>Price on request</span>}
+                        <span>{session.venue.availabilityLabel}</span>
                       </div>
                     </div>
                     <div className="wc-session__actions">
                       {session.venue.bookingUrl ? (
                         <a href={session.venue.bookingUrl} target="_blank" rel="noopener noreferrer">
-                          <LinkOutlined /> Book
+                          <LinkOutlined /> Book class
                         </a>
-                      ) : null}
-                      {session.venue.instagram ? (
+                      ) : (
                         <a
-                          className="wc-iconLink"
-                          href={getInstagramUrl(session.venue.instagram)}
+                          href={session.venue.instagram ? getInstagramUrl(session.venue.instagram) : session.venue.googleMapsUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`${session.venue.venueName} on Instagram`}
                         >
-                          <InstagramOutlined />
+                          <EnvironmentOutlined /> View studio
                         </a>
-                      ) : null}
+                      )}
                     </div>
                   </article>
                 ))}
@@ -447,12 +615,12 @@ export default function WellnessClassesPage() {
           )) : (
             <div className="wc-empty">
               <h3>No classes match these filters.</h3>
-              <button type="button" onClick={() => { setSelectedDay("All week"); setSelectedCategory("all"); }}>
-                Show all classes
+              <button type="button" onClick={() => { setSelectedRange("full-week"); clearFilters(); }}>
+                Show the full week
               </button>
             </div>
           )}
-        </section>
+        </section> : <WellnessVenueMap />}
 
         <section className="wc-passes" aria-labelledby="wc-passes-title">
           <div className="wc-passes__intro">
@@ -486,8 +654,6 @@ export default function WellnessClassesPage() {
             Prices are provided by the venues and may change. Confirm current rates before visiting.
           </p>
         </section>
-
-        <WellnessVenueMap />
 
         <section className="wc-venues">
           <div className="wc-venues__intro">
