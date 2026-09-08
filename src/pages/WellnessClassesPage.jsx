@@ -32,6 +32,38 @@ const CATEGORY_LABELS = {
   "martial-arts": "Martial arts",
 };
 
+const GYM_PASSES = [
+  {
+    gym: "Sellam",
+    passes: [
+      { name: "One-session pass", priceLkr: 2000 },
+      { name: "Three-session pass", priceLkr: 3500 },
+      { name: "Weekly membership", priceLkr: 6000 },
+      { name: "Monthly membership", priceLkr: 10000 },
+    ],
+  },
+  {
+    gym: "CrossFit Ceylon at PALM Hotel",
+    passes: [
+      { name: "Drop-in", priceLkr: 4500 },
+      { name: "Open gym drop-in", priceLkr: 3000 },
+    ],
+  },
+  {
+    gym: "Krozz Fit",
+    passes: [
+      { name: "Day pass", priceLkr: 2500 },
+      { name: "1 month", priceLkr: 10000 },
+      { name: "6 months", priceLkr: 55000 },
+      { name: "Annual", priceLkr: 100000 },
+    ],
+  },
+  {
+    gym: "Loka Lanka",
+    passes: [{ name: "Day pass", priceLkr: 4500 }],
+  },
+];
+
 // Shared with the homepage's daily class preview.
 // eslint-disable-next-line react-refresh/only-export-components
 export const WELLNESS_VENUES = [
@@ -419,6 +451,39 @@ export default function WellnessClassesPage() {
               </button>
             </div>
           )}
+        </section>
+
+        <section className="wc-passes" aria-labelledby="wc-passes-title">
+          <div className="wc-passes__intro">
+            <div>
+              <span className="wc-eyebrow">Train your way</span>
+              <h2 id="wc-passes-title">Gym passes &amp; memberships.</h2>
+            </div>
+            <p>Drop in for one session or settle into a longer training rhythm.</p>
+          </div>
+
+          <div className="wc-passes__grid">
+            {GYM_PASSES.map((gym, index) => (
+              <article className="wc-pass" key={gym.gym}>
+                <div className="wc-pass__heading">
+                  <span>0{index + 1}</span>
+                  <h3>{gym.gym}</h3>
+                </div>
+                <div className="wc-pass__prices">
+                  {gym.passes.map((pass) => (
+                    <div className="wc-pass__price" key={pass.name}>
+                      <span>{pass.name}</span>
+                      <strong>LKR {formatPrice(pass.priceLkr)}</strong>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="wc-passes__note">
+            Prices are provided by the venues and may change. Confirm current rates before visiting.
+          </p>
         </section>
 
         <WellnessVenueMap />
