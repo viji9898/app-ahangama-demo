@@ -721,7 +721,7 @@ const routeMeta = [
     description:
       "Find Pilates, yoga, CrossFit, strength training and martial arts classes in Ahangama, with weekly times, venues, prices and booking links.",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sept_wellness_schedule_crozz.webp",
   },
   {
     route: "/newsletter",

@@ -342,6 +342,7 @@ export default function WellnessClassesPage() {
         title="Wellness Classes & Weekly Schedule in Ahangama"
         description="Find Pilates, yoga, CrossFit, strength training and martial arts classes in Ahangama, with weekly times, venues, prices and booking links."
         canonical={absUrl(WELLNESS_CLASSES_PATH)}
+        ogImage="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/sept_wellness_schedule_crozz.webp"
       />
 
       <main className="wc-page">
