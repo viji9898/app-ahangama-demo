@@ -1725,9 +1725,18 @@
   line-height: 1.1 !important;
 }
 
+.home-hero-title.villa-alba-hero-title {
+  line-height: 1.05 !important;
+}
+
 @media (max-width: 640px) {
-  .mugatiya-portrait-pair {
+  .mugatiya-portrait-pair,
+  .villa-alba-portrait-grid {
     grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .villa-alba-hero-title .home-hero-titleLine {
+    white-space: normal;
   }
 }
 

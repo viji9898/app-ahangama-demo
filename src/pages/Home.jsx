@@ -232,6 +232,15 @@ const THIS_WEEK_FEATURES = [
 const WEEKLY_PICKS = [
   {
     category: "Stay Story",
+    title:
+      "Villa Alba: A Boutique Hotel with a Commitment to Those Who Built It",
+    date: "This Week",
+    href: "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Hero+-+Villa+Alba+aerial+with+surrounding+paddy+fields.webp",
+  },
+  {
+    category: "Stay Story",
     title: "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama",
     date: "This Week",
     href: "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama",

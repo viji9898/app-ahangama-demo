@@ -1,6 +1,17 @@
 export const EDITORIAL_ARTICLES = [
   {
     category: "Stay Story",
+    title:
+      "Villa Alba: A Boutique Hotel with a Commitment to Those Who Built It",
+    href: "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it",
+    description:
+      "A contemporary villa shaped by local architects, builders and designers, and by the landscape of inland Ahangama itself.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Hero+-+Villa+Alba+aerial+with+surrounding+paddy+fields.webp",
+    publishDate: "2026-09-09T09:00:00.000Z",
+  },
+  {
+    category: "Stay Story",
     title: "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama",
     href: "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama",
     description:

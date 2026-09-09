@@ -538,6 +538,19 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/hero-image-the-mugatiya-infinity-pool-paddy-view-ahangama.jpg.jpg",
   },
   {
+    route:
+      "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it",
+    title:
+      "Villa Alba: A Boutique Hotel with a Commitment to Those Who Built It",
+    description:
+      "A contemporary villa shaped by local architects, builders and designers, and by the landscape of inland Ahangama itself.",
+    publishDate: "2026-09-09T09:00:00.000Z",
+    author: "Chris & Euan",
+    type: "article",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/OG+image+-+Villa+Alba+living+room+view+over+the+pool+deck.webp",
+  },
+  {
     route: "/petals-ahangama-a-dream-rooted-in-legacy",
     title: "Petals Ahangama: A Dream Rooted in Legacy",
     description:

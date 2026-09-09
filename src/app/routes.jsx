@@ -105,6 +105,9 @@ import PetalsAhangamaLegacyPage, {
 import TheMugatiyaHeritageVillaPage, {
   THE_MUGATIYA_HERITAGE_VILLA_PATH,
 } from "../pages/TheMugatiyaHeritageVillaPage";
+import VillaAlbaBoutiqueHotelPage, {
+  VILLA_ALBA_BOUTIQUE_HOTEL_PATH,
+} from "../pages/VillaAlbaBoutiqueHotelPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -239,6 +242,10 @@ const routes = [
   {
     path: THE_MUGATIYA_HERITAGE_VILLA_PATH,
     element: <TheMugatiyaHeritageVillaPage />,
+  },
+  {
+    path: VILLA_ALBA_BOUTIQUE_HOTEL_PATH,
+    element: <VillaAlbaBoutiqueHotelPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,
