@@ -215,6 +215,7 @@ function ArticleParagraph({ articleSection, children, lead = false }) {
 function EditorialImage({ src, alt, portrait = false }) {
   return (
     <div
+      className={portrait ? undefined : "villa-alba-landscape-image"}
       style={{
         width: portrait ? "min(100%, 680px)" : "100%",
         margin: "8px auto 28px",
@@ -518,12 +519,13 @@ export default function VillaAlbaBoutiqueHotelPage() {
                         '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                     }}
                   >
-                    {[
-                      "Villa Alba:",
-                      "A Boutique Hotel",
-                      "with a Commitment",
-                      "to Those Who Built It",
-                    ].map((line) => (
+                    <span className="villa-alba-title-desktop">
+                      {[
+                        "Villa Alba:",
+                        "A Boutique Hotel",
+                        "with a Commitment",
+                        "to Those Who Built It",
+                      ].map((line) => (
                         <span
                           key={line}
                           className="home-hero-titleLine"
@@ -532,6 +534,20 @@ export default function VillaAlbaBoutiqueHotelPage() {
                           {line}
                         </span>
                       ))}
+                    </span>
+                    <span className="villa-alba-title-mobile">
+                      {["Villa Alba:", "A Boutique Hotel with a", "Commitment to Those", "Who Built It"].map(
+                        (line) => (
+                          <span
+                            key={line}
+                            className="home-hero-titleLine"
+                            style={{ color: "#FFFFFF" }}
+                          >
+                            {line}
+                          </span>
+                        ),
+                      )}
+                    </span>
                   </Title>
 
                   <Text

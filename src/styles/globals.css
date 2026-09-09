@@ -1729,14 +1729,31 @@
   line-height: 1.05 !important;
 }
 
+.villa-alba-title-mobile {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .mugatiya-portrait-pair,
   .villa-alba-portrait-grid {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
-  .villa-alba-hero-title .home-hero-titleLine {
-    white-space: normal;
+  .villa-alba-title-desktop {
+    display: none;
+  }
+
+  .villa-alba-title-mobile {
+    display: block;
+  }
+
+  .villa-alba-landscape-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .home-hero-title.villa-alba-hero-title {
+    font-size: 30px !important;
+    letter-spacing: 0 !important;
   }
 }
 
