@@ -1725,6 +1725,12 @@
   line-height: 1.1 !important;
 }
 
+@media (max-width: 640px) {
+  .mugatiya-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
 .stairway-hero-title {
   max-width: min(100%, 760px);
 }

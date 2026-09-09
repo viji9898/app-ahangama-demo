@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { ArrowRightOutlined, WhatsAppOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -32,6 +32,7 @@ const CONTENT_TITLE =
   "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama";
 const ARTICLE_CATEGORY = "stay_story";
 const AUTHOR_NAME = "Freda";
+const OWNER_WHATSAPP_LINK = "https://wa.me/6590056445";
 
 const articleIntroduction = [
   "There are villas that perform luxury, and there are houses that remember.",
@@ -125,11 +126,13 @@ const NEXT_ARTICLE = {
 };
 
 function trackOutboundClick(link, articleSection, componentLocation) {
-  const linkType = link.href.includes("instagram.com")
-    ? "instagram"
-    : link.href.includes("google.com/maps")
-      ? "map"
-      : "external";
+  const linkType = link.href.includes("wa.me")
+    ? "whatsapp"
+    : link.href.includes("instagram.com")
+      ? "instagram"
+      : link.href.includes("google.com/maps")
+        ? "map"
+        : "external";
 
   trackArticleEvent("article_outbound_click", {
     content_id: CONTENT_ID,
@@ -254,6 +257,7 @@ function EditorialImage({ src, alt, portrait = false }) {
 function EditorialPortraitPair({ images }) {
   return (
     <div
+      className="mugatiya-portrait-pair"
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
@@ -317,6 +321,35 @@ function ArticleSection({ section, first = false, impressedSectionIds }) {
             {paragraph}
           </ArticleParagraph>
         ))}
+        {section.id === "the-invitation" ? (
+          <a
+            href={OWNER_WHATSAPP_LINK}
+            onClick={() =>
+              trackOutboundClick(
+                { href: OWNER_WHATSAPP_LINK },
+                section.id,
+                "article_body_cta",
+              )
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 9,
+              marginTop: 8,
+              padding: "12px 18px",
+              border: "1px solid #2f2a24",
+              color: "#2f2a24",
+              fontSize: 14,
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
+          >
+            <WhatsAppOutlined style={{ fontSize: 17 }} />
+            Book directly with the owners · +65 9005 6445
+          </a>
+        ) : null}
       </div>
     </section>
   );
