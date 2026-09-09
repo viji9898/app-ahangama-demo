@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-08T21:35:05.137Z",
+  "generatedAt": "2026-09-09T19:06:59.747Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 677,
+  "count": 679,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -4177,6 +4177,21 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/the-mugatiya-heritage-villa-interior-ahangama.webp",
+      "fileName": "the-mugatiya-heritage-villa-interior-ahangama.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheMugatiyaHeritageVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheMugatiyaHeritageVillaPage.jsx": [
+          "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/the-mugatiya-pool-pavilion-tropical-garden-ahangama.jpg",
       "fileName": "the-mugatiya-pool-pavilion-tropical-garden-ahangama.jpg",
       "format": "JPG",
@@ -4377,6 +4392,21 @@
         "src/data/places.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/view-from-inside-the-villa-looking-out-across-a-table-and-two-chairs.webp",
+      "fileName": "view-from-inside-the-villa-looking-out-across-a-table-and-two-chairs.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheMugatiyaHeritageVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheMugatiyaHeritageVillaPage.jsx": [
+          "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/villa_mugatiya.jpeg",
@@ -6313,8 +6343,8 @@
       }
     },
     {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787554069/Aliikai_2_abmchk.webp",
-      "fileName": "Aliikai_2_abmchk.webp",
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788932503/Aliikai_new_rkwvbz.webp",
+      "fileName": "Aliikai_new_rkwvbz.webp",
       "format": "WEBP",
       "origin": "external",
       "host": "res.cloudinary.com",

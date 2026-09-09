@@ -20,7 +20,9 @@ const BASE_IMAGE_URL =
 const HERO_IMAGE = `${BASE_IMAGE_URL}/hero-image-the-mugatiya-infinity-pool-paddy-view-ahangama.jpg.jpg`;
 const FEATURE_IMAGE = `${BASE_IMAGE_URL}/wide-feature-the-mugatiya-heritage-villa-courtyard-garden-ahangama.webp`;
 const POOL_PAVILION_IMAGE = `${BASE_IMAGE_URL}/the-mugatiya-pool-pavilion-tropical-garden-ahangama.jpg`;
+const INTERIOR_IMAGE = `${BASE_IMAGE_URL}/the-mugatiya-heritage-villa-interior-ahangama.webp`;
 const BREAKFAST_IMAGE = `${BASE_IMAGE_URL}/the-mugatiya-breakfast-verandah-garden-view-ahangama.jpg`;
+const VILLA_VIEW_IMAGE = `${BASE_IMAGE_URL}/view-from-inside-the-villa-looking-out-across-a-table-and-two-chairs.webp`;
 const POOLSIDE_IMAGE = `${BASE_IMAGE_URL}/the-mugatiya-poolside-relaxing-ahangama.jpg`;
 
 const publishDate = "2026-09-08T09:00:00.000Z";
@@ -245,6 +247,39 @@ function EditorialImage({ src, alt, portrait = false }) {
           objectPosition: "center center",
         }}
       />
+    </div>
+  );
+}
+
+function EditorialPortraitPair({ images }) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+        gap: 24,
+        margin: "8px auto 28px",
+        width: "100%",
+        maxWidth: 1224,
+      }}
+    >
+      {images.map((image) => (
+        <img
+          key={image.src}
+          src={image.src}
+          alt={image.alt}
+          loading="lazy"
+          decoding="async"
+          style={{
+            display: "block",
+            width: "100%",
+            aspectRatio: "4 / 5",
+            objectFit: "cover",
+            objectPosition: "center center",
+            boxShadow: "0 16px 36px rgba(18,24,22,0.10)",
+          }}
+        />
+      ))}
     </div>
   );
 }
@@ -509,20 +544,34 @@ export default function TheMugatiyaHeritageVillaPage() {
             impressedSectionIds={impressedSectionIds}
           />
 
-          <EditorialImage
-            src={POOL_PAVILION_IMAGE}
-            alt="Pool and garden view at The Mugatiya in Ahangama, with a tiled pavilion, tropical greenery and a sun hat in the foreground"
-            portrait
+          <EditorialPortraitPair
+            images={[
+              {
+                src: POOL_PAVILION_IMAGE,
+                alt: "Pool and garden view at The Mugatiya in Ahangama, with a tiled pavilion and tropical greenery",
+              },
+              {
+                src: INTERIOR_IMAGE,
+                alt: "Heritage villa interior at The Mugatiya in Ahangama",
+              },
+            ]}
           />
           <ArticleSection
             section={articleSections[1]}
             impressedSectionIds={impressedSectionIds}
           />
 
-          <EditorialImage
-            src={BREAKFAST_IMAGE}
-            alt="Breakfast served on the verandah at The Mugatiya, overlooking tropical gardens, palm trees and paddy fields in Ahangama"
-            portrait
+          <EditorialPortraitPair
+            images={[
+              {
+                src: BREAKFAST_IMAGE,
+                alt: "Breakfast served on the verandah at The Mugatiya, overlooking tropical gardens, palm trees and paddy fields in Ahangama",
+              },
+              {
+                src: VILLA_VIEW_IMAGE,
+                alt: "View from inside The Mugatiya villa across a table and two chairs toward the tropical garden",
+              },
+            ]}
           />
           <ArticleSection
             section={articleSections[2]}

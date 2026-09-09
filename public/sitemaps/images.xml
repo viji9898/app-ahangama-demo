@@ -955,6 +955,19 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/stays/sisters-away</loc>
+    <lastmod>2026-09-09T05:24:58.551Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/stays/casa-tikiri</loc>
     <lastmod>2026-09-03T11:32:51.488Z</lastmod>
     <image:image>
