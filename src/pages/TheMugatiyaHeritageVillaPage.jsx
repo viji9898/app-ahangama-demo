@@ -402,7 +402,7 @@ export default function TheMugatiyaHeritageVillaPage() {
                   </div>
 
                   <Title
-                    className="home-hero-title"
+                    className="home-hero-title mugatiya-hero-title"
                     style={{
                       margin: 0,
                       color: "#FFFFFF",

@@ -5074,6 +5074,10 @@
     letter-spacing: -0.9px !important;
   }
 
+  .mugatiya-hero-title .home-hero-titleLine {
+    white-space: normal;
+  }
+
   .stairway-hero-title {
     max-width: calc(100vw - 64px);
     font-size: clamp(42px, 13.5vw, 58px) !important;
