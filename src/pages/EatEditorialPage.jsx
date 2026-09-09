@@ -226,7 +226,7 @@ const QUICK_REFERENCE_ROWS = [
   { slug: "le-cafe-french-bistro-ahangama", breakfast: false, lunch: true, dinner: true, coffee: true, work: false, sunset: false, pass: true },
   { slug: "patels-ahangama", breakfast: false, lunch: true, dinner: true, coffee: false, work: false, sunset: false, pass: true },
   { slug: "hakuna-matata-ahangama", breakfast: false, lunch: false, dinner: true, coffee: false, work: false, sunset: true, pass: true },
-  { slug: "sisters-kabalana", breakfast: true, lunch: false, dinner: false, coffee: true, work: false, sunset: false, pass: true },
+  { slug: "sisters-kabalana", breakfast: true, lunch: true, dinner: false, coffee: true, work: false, sunset: false, pass: true },
   { slug: "black-honey-cafe", breakfast: true, lunch: true, dinner: false, coffee: true, work: false, sunset: false, pass: true },
   { slug: "lighthouse", breakfast: false, lunch: false, dinner: true, coffee: false, work: false, sunset: true, pass: true },
 ];
