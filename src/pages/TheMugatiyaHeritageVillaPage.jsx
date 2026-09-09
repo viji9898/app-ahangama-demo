@@ -29,7 +29,7 @@ const CONTENT_ID =
 const CONTENT_TITLE =
   "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama";
 const ARTICLE_CATEGORY = "stay_story";
-const AUTHOR_NAME = "Yannick le borgne";
+const AUTHOR_NAME = "Freda";
 
 const articleIntroduction = [
   "There are villas that perform luxury, and there are houses that remember.",
@@ -249,11 +249,7 @@ function EditorialImage({ src, alt, portrait = false }) {
   );
 }
 
-function ArticleSection({
-  section,
-  first = false,
-  impressedSectionIds,
-}) {
+function ArticleSection({ section, first = false, impressedSectionIds }) {
   const sectionRef = useTrackedImpression({
     itemId: section.id,
     impressedItemIds: impressedSectionIds,
@@ -312,7 +308,7 @@ export default function TheMugatiyaHeritageVillaPage() {
         canonical={canonical}
         ogImage={HERO_IMAGE}
         ogType="article"
-        author="Yannick le borgne"
+        author="Freda"
         publishDate={publishDate}
       />
 
@@ -338,7 +334,13 @@ export default function TheMugatiyaHeritageVillaPage() {
               boxShadow: "none",
             }}
           >
-            <div style={{ position: "relative", overflow: "hidden", minHeight: "100svh" }}>
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                minHeight: "100svh",
+              }}
+            >
               <div
                 aria-hidden="true"
                 className="home-hero-media-layer"
@@ -373,7 +375,15 @@ export default function TheMugatiyaHeritageVillaPage() {
                 />
               </div>
 
-              <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: 1100, margin: "0 auto" }}>
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 3,
+                  width: "100%",
+                  maxWidth: 1100,
+                  margin: "0 auto",
+                }}
+              >
                 <div
                   style={{
                     display: "flex",
@@ -381,10 +391,18 @@ export default function TheMugatiyaHeritageVillaPage() {
                     justifyContent: "flex-end",
                     minHeight: "100svh",
                     maxWidth: 850,
-                    padding: "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
+                    padding:
+                      "clamp(44px, 5vw, 68px) clamp(32px, 4.8vw, 72px) 36px",
                   }}
                 >
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 18 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 12,
+                      marginBottom: 18,
+                    }}
+                  >
                     {["Stay Story", "Ahangama"].map((item) => (
                       <Text
                         key={item}
@@ -407,11 +425,21 @@ export default function TheMugatiyaHeritageVillaPage() {
                       margin: 0,
                       color: "#FFFFFF",
                       fontWeight: 500,
-                      fontFamily: '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
+                      fontFamily:
+                        '"Cormorant Garamond", "Iowan Old Style", Georgia, serif',
                     }}
                   >
-                    {["The Mugatiya:", "A Heritage Villa", "Made for Slower Days", "in Ahangama"].map((line) => (
-                      <span key={line} className="home-hero-titleLine" style={{ color: "#FFFFFF" }}>
+                    {[
+                      "The Mugatiya:",
+                      "A Heritage Villa",
+                      "Made for Slower Days",
+                      "in Ahangama",
+                    ].map((line) => (
+                      <span
+                        key={line}
+                        className="home-hero-titleLine"
+                        style={{ color: "#FFFFFF" }}
+                      >
                         {line}
                       </span>
                     ))}
@@ -428,7 +456,7 @@ export default function TheMugatiyaHeritageVillaPage() {
                       textTransform: "uppercase",
                     }}
                   >
-                    Words by Yannick le borgne
+                    Words by Freda
                   </Text>
 
                   <Paragraph
@@ -450,7 +478,11 @@ export default function TheMugatiyaHeritageVillaPage() {
           </div>
         </div>
 
-        <div className="dm-wrap" ref={articleBodyRef} style={{ paddingTop: 28 }}>
+        <div
+          className="dm-wrap"
+          ref={articleBodyRef}
+          style={{ paddingTop: 28 }}
+        >
           <div style={{ maxWidth: 920, paddingBottom: 12 }}>
             {articleIntroduction.map((paragraph, index) => (
               <Paragraph
@@ -537,7 +569,10 @@ export default function TheMugatiyaHeritageVillaPage() {
               {FEATURED_VENUES.map((venue) => (
                 <div
                   key={venue.label}
-                  style={{ paddingTop: 10, borderTop: "1px solid rgba(47,62,58,0.08)" }}
+                  style={{
+                    paddingTop: 10,
+                    borderTop: "1px solid rgba(47,62,58,0.08)",
+                  }}
                 >
                   <a
                     href={venue.href}
