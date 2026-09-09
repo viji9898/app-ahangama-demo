@@ -1721,6 +1721,10 @@
   white-space: nowrap;
 }
 
+.home-hero-title.mugatiya-hero-title {
+  line-height: 1.1 !important;
+}
+
 .stairway-hero-title {
   max-width: min(100%, 760px);
 }
@@ -5076,10 +5080,6 @@
 
   .mugatiya-hero-title .home-hero-titleLine {
     white-space: normal;
-  }
-
-  .mugatiya-hero-title {
-    line-height: 1.1 !important;
   }
 
   .stairway-hero-title {
