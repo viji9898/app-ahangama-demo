@@ -5078,6 +5078,10 @@
     white-space: normal;
   }
 
+  .mugatiya-hero-title {
+    line-height: 1.1 !important;
+  }
+
   .stairway-hero-title {
     max-width: calc(100vw - 64px);
     font-size: clamp(42px, 13.5vw, 58px) !important;
@@ -7955,7 +7959,8 @@ h4,
 .home-wellness__title {
   margin: 0 !important;
   color: #201e1b !important;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
   font-size: clamp(25px, 3vw, 34px) !important;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
@@ -8013,7 +8018,8 @@ h4,
   grid-column: 2;
   margin: 0 0 3px !important;
   color: #201e1b !important;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
   font-size: 19px !important;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
@@ -8072,7 +8078,8 @@ h4,
 .home-transport__title {
   margin: 0 !important;
   color: #1f3029 !important;
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", Georgia, serif !important;
   font-size: clamp(29px, 3.4vw, 42px) !important;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
