@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-09T19:18:11.047Z",
+  "generatedAt": "2026-09-10T10:59:14.786Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 679,
+  "count": 691,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -1643,7 +1643,8 @@
       "sources": [
         "src/data/editorialArticles.js",
         "src/pages/Home.jsx",
-        "src/pages/TheMugatiyaHeritageVillaPage.jsx"
+        "src/pages/TheMugatiyaHeritageVillaPage.jsx",
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
       ],
       "pageRoutes": {
         "src/pages/Home.jsx": [
@@ -1651,6 +1652,9 @@
         ],
         "src/pages/TheMugatiyaHeritageVillaPage.jsx": [
           "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama"
+        ],
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
         ]
       }
     },
@@ -1737,6 +1741,26 @@
         ],
         "src/pages/InsideTheLaunchOfAhangamaCirclePage.jsx": [
           "/inside-the-launch-of-ahangama-circle"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Hero+-+Villa+Alba+aerial+with+surrounding+paddy+fields.webp",
+      "fileName": "Hero+-+Villa+Alba+aerial+with+surrounding+paddy+fields.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/editorialArticles.js",
+        "src/pages/Home.jsx",
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
+        ],
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
         ]
       }
     },
@@ -2177,6 +2201,36 @@
         "src/data/places.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Landscape+-+Villa+Alba+pool+view.webp",
+      "fileName": "Landscape+-+Villa+Alba+pool+view.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Landscape+Image+-+Villa+Alba+pool+deck+with+sun+loungers.webp",
+      "fileName": "Landscape+Image+-+Villa+Alba+pool+deck+with+sun+loungers.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/inside-the-launch-of-ahangama-circle/Last-image-wide-Official+group+photo+of+all+attendees.jpg",
@@ -2671,6 +2725,21 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/OG+image+-+Villa+Alba+living+room+view+over+the+pool+deck.webp",
+      "fileName": "OG+image+-+Villa+Alba+living+room+view+over+the+pool+deck.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogImage-tip.jpg",
       "fileName": "ogImage-tip.jpg",
       "format": "JPG",
@@ -2937,6 +3006,21 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Portrait+-+Architectural+design+focus+green+shutters.webp",
+      "fileName": "Portrait+-+Architectural+design+focus+green+shutters.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Portrait+-+ciao-dairy-products-at-gusta-ahangama.webp",
       "fileName": "Portrait+-+ciao-dairy-products-at-gusta-ahangama.webp",
       "format": "WEBP",
@@ -2993,6 +3077,81 @@
       "pageRoutes": {
         "src/pages/GustaGroceriesAhangamaPage.jsx": [
           "/gusta-groceries-good-food-and-more-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Portrait+-+Percy+the+peacock+at+Villa+Alba.webp",
+      "fileName": "Portrait+-+Percy+the+peacock+at+Villa+Alba.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Portrait+-+Sri+Lankan+breakfast+with+egg+hoppers+coconut+roti+and+curries.webp",
+      "fileName": "Portrait+-+Sri+Lankan+breakfast+with+egg+hoppers+coconut+roti+and+curries.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Portrait+-+Thilake+tending+to+the+Villa+Alba+gardens.webp",
+      "fileName": "Portrait+-+Thilake+tending+to+the+Villa+Alba+gardens.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Portrait+-Chris+and+Euan+owners+together.webp",
+      "fileName": "Portrait+-Chris+and+Euan+owners+together.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Portrait+-Villa+Alba+staff+holding+eggs+during+Avurudu+sports.webp",
+      "fileName": "Portrait+-Villa+Alba+staff+holding+eggs+during+Avurudu+sports.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
         ]
       }
     },
@@ -4441,6 +4600,21 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/video/villa-alba-thumbnail.webp",
+      "fileName": "villa-alba-thumbnail.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/wave_cafe.jpg",
       "fileName": "wave_cafe.jpg",
       "format": "JPG",
@@ -4478,6 +4652,21 @@
       "pageRoutes": {
         "src/pages/TheMugatiyaHeritageVillaPage.jsx": [
           "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Wide+feature+-+Villa+Alba+interiors+living+room+and+entrance.webp",
+      "fileName": "Wide+feature+-+Villa+Alba+interiors+living+room+and+entrance.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
+          "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
         ]
       }
     },
