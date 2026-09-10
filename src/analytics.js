@@ -78,6 +78,8 @@ export const trackPageView = (url) => {
   if (window.gtag) {
     window.gtag("event", "page_view", {
       page_path: url,
+      page_title: document.title || "Ahangama.com — Discover Ahangama, Sri Lanka",
+      page_location: window.location.href,
     });
     window.gtag(
       "event",
