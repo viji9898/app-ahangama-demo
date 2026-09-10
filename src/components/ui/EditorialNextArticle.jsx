@@ -13,7 +13,13 @@ export default function EditorialNextArticle({
   style,
 }) {
   return (
-    <div style={{ marginTop: 16, marginBottom: 32, ...style }}>
+    <div
+      data-article-next
+      data-target-content-id={href
+        ?.split(/[?#]/)[0]
+        .replace(/^\/+|\/+$/g, "")}
+      style={{ marginTop: 16, marginBottom: 32, ...style }}
+    >
       <a
         href={href}
         onClick={onClick}

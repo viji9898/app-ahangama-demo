@@ -377,20 +377,20 @@ export default function ThreeDaysInAhangamaPage() {
           </Row>
 
           {daySections.map((section, index) => (
-            <Card
-              key={section.day}
-              style={{
-                borderRadius: 28,
-                border: "1px solid rgba(47,62,58,0.08)",
-                background:
-                  index % 2 === 0
-                    ? "linear-gradient(135deg, rgba(255,251,246,0.98) 0%, rgba(244,239,231,0.98) 100%)"
-                    : "linear-gradient(135deg, rgba(248,250,248,0.98) 0%, rgba(242,246,243,0.98) 100%)",
-                marginBottom: 24,
-                overflow: "hidden",
-              }}
-              bodyStyle={{ padding: 28 }}
-            >
+            <section id={`day-${index + 1}`} key={section.day}>
+              <Card
+                style={{
+                  borderRadius: 28,
+                  border: "1px solid rgba(47,62,58,0.08)",
+                  background:
+                    index % 2 === 0
+                      ? "linear-gradient(135deg, rgba(255,251,246,0.98) 0%, rgba(244,239,231,0.98) 100%)"
+                      : "linear-gradient(135deg, rgba(248,250,248,0.98) 0%, rgba(242,246,243,0.98) 100%)",
+                  marginBottom: 24,
+                  overflow: "hidden",
+                }}
+                bodyStyle={{ padding: 28 }}
+              >
               <Row gutter={[24, 24]}>
                 <Col xs={24} xl={15}>
                   <Space
@@ -487,7 +487,8 @@ export default function ThreeDaysInAhangamaPage() {
                   </Card>
                 </Col>
               </Row>
-            </Card>
+              </Card>
+            </section>
           ))}
 
           <Card

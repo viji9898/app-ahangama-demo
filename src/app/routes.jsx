@@ -141,6 +141,7 @@ import GuidePitchPage, { GUIDE_PITCH_PATH } from "../pages/GuidePitchPage";
 import WellnessClassesPage, {
   WELLNESS_CLASSES_PATH,
 } from "../pages/WellnessClassesPage";
+import EditorialArticleAnalytics from "../components/analytics/EditorialArticleAnalytics";
 import ExternalRedirect from "./ExternalRedirect";
 import { Navigate } from "react-router-dom";
 
@@ -148,6 +149,16 @@ const WELLNESS_GUIDE_BLOG_PATH =
   "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
 
 const cfg = (key) => CATEGORIES.find((c) => c.key === key);
+const trackedArticle = (
+  href,
+  element,
+  authorName = "Ahangama Guide Editorial Team",
+) => (
+  <>
+    <EditorialArticleAnalytics href={href} authorName={authorName} />
+    {element}
+  </>
+);
 const routes = [
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
   { path: PRINT_GUIDE_PATH, element: <PrintGuidePage /> },
@@ -162,20 +173,35 @@ const routes = [
   { path: "/", element: <Home /> },
   {
     path: GETTING_AROUND_AHANGAMA_PATH,
-    element: <GettingAroundAhangamaPage />,
+    element: trackedArticle(
+      GETTING_AROUND_AHANGAMA_PATH,
+      <GettingAroundAhangamaPage />,
+    ),
   },
   {
     path: HOW_TO_GET_FROM_COLOMBO_TO_AHANGAMA_PATH,
-    element: <HowToGetFromColomboToAhangamaPage />,
+    element: trackedArticle(
+      HOW_TO_GET_FROM_COLOMBO_TO_AHANGAMA_PATH,
+      <HowToGetFromColomboToAhangamaPage />,
+    ),
   },
   {
     path: "/Getting-Around-Ahangama-Scooters,-Tuk-Tuks-Airport-Transfers",
     element: <GettingAroundAhangamaPage />,
   },
-  { path: "/3-days-in-ahangama", element: <ThreeDaysInAhangamaPage /> },
+  {
+    path: "/3-days-in-ahangama",
+    element: trackedArticle(
+      "/3-days-in-ahangama",
+      <ThreeDaysInAhangamaPage />,
+    ),
+  },
   {
     path: SRI_LANKAS_MOST_INTERESTING_COASTAL_TOWN_PATH,
-    element: <SriLankasMostInterestingCoastalTownPage />,
+    element: trackedArticle(
+      SRI_LANKAS_MOST_INTERESTING_COASTAL_TOWN_PATH,
+      <SriLankasMostInterestingCoastalTownPage />,
+    ),
   },
   {
     path: "/Sri Lanka's Most Interesting Coastal Town",
@@ -183,7 +209,10 @@ const routes = [
   },
   {
     path: WHERE_TO_STAY_ON_SRI_LANKAS_SOUTHERN_COAST_PATH,
-    element: <WhereToStayOnSriLankasSouthernCoastPage />,
+    element: trackedArticle(
+      WHERE_TO_STAY_ON_SRI_LANKAS_SOUTHERN_COAST_PATH,
+      <WhereToStayOnSriLankasSouthernCoastPage />,
+    ),
   },
   {
     path: "/Where to Stay on Sri Lanka's Southern Coast",
@@ -191,7 +220,10 @@ const routes = [
   },
   {
     path: WHY_SURFING_CHANGED_PATH,
-    element: <WhySurfingChangedEverythingInAhangamaPage />,
+    element: trackedArticle(
+      WHY_SURFING_CHANGED_PATH,
+      <WhySurfingChangedEverythingInAhangamaPage />,
+    ),
   },
   {
     path: "/Why Surfing Changed Everything in Ahangama",
@@ -217,27 +249,47 @@ const routes = [
   { path: "/editors-picks", element: <EditorsPicksPage /> },
   {
     path: "/the-living-room-concept-store",
-    element: <TheLivingRoomConceptStorePage />,
+    element: trackedArticle(
+      "/the-living-room-concept-store",
+      <TheLivingRoomConceptStorePage />,
+      "viji.com",
+    ),
   },
   {
     path: STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
-    element: <StaffPickExperienceAhangamaPage />,
+    element: trackedArticle(
+      STAFF_PICK_EXPERIENCE_AHANGAMA_PATH,
+      <StaffPickExperienceAhangamaPage />,
+    ),
   },
   {
     path: BEST_SUNSETS_IN_AHANGAMA_PATH,
-    element: <BestSunsetsInAhangamaPage />,
+    element: trackedArticle(
+      BEST_SUNSETS_IN_AHANGAMA_PATH,
+      <BestSunsetsInAhangamaPage />,
+    ),
   },
   {
     path: COMMUNITY_MARKET_IN_AHANGAMA_PATH,
-    element: <CommunityMarketInAhangamaPage />,
+    element: trackedArticle(
+      COMMUNITY_MARKET_IN_AHANGAMA_PATH,
+      <CommunityMarketInAhangamaPage />,
+    ),
   },
   {
     path: WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH,
-    element: <WhereAhangamaGathersForSunsetPage />,
+    element: trackedArticle(
+      WHERE_AHANGAMA_GATHERS_FOR_SUNSET_PATH,
+      <WhereAhangamaGathersForSunsetPage />,
+      "viji.com",
+    ),
   },
   {
     path: INSIDE_AHANGAMA_CIRCLE_LAUNCH_PATH,
-    element: <InsideTheLaunchOfAhangamaCirclePage />,
+    element: trackedArticle(
+      INSIDE_AHANGAMA_CIRCLE_LAUNCH_PATH,
+      <InsideTheLaunchOfAhangamaCirclePage />,
+    ),
   },
   {
     path: THE_MUGATIYA_HERITAGE_VILLA_PATH,
@@ -249,37 +301,70 @@ const routes = [
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,
-    element: <GustaGroceriesAhangamaPage />,
+    element: trackedArticle(
+      GUSTA_GROCERIES_AHANGAMA_PATH,
+      <GustaGroceriesAhangamaPage />,
+    ),
   },
   {
     path: PETALS_AHANGAMA_LEGACY_PATH,
-    element: <PetalsAhangamaLegacyPage />,
+    element: trackedArticle(
+      PETALS_AHANGAMA_LEGACY_PATH,
+      <PetalsAhangamaLegacyPage />,
+      "Sawan Chamika Walgamage",
+    ),
   },
   {
     path: DULASIRI_UNCLE_PATH,
-    element: <DulasiriUnclePage />,
+    element: trackedArticle(
+      DULASIRI_UNCLE_PATH,
+      <DulasiriUnclePage />,
+      "Federica Lazza",
+    ),
   },
   {
     path: AHANGAMA_AFTER_DARK_PATH,
-    element: <AhangamaAfterDarkPage />,
+    element: trackedArticle(
+      AHANGAMA_AFTER_DARK_PATH,
+      <AhangamaAfterDarkPage />,
+    ),
   },
   {
     path: AHANGAMA_SRI_LANKA_PATH,
-    element: <AhangamaSriLankaPage />,
+    element: trackedArticle(
+      AHANGAMA_SRI_LANKA_PATH,
+      <AhangamaSriLankaPage />,
+    ),
   },
   {
     path: THINGS_TO_DO_AHANGAMA_PATH,
-    element: <ThingsToDoAhangamaPage />,
+    element: trackedArticle(
+      THINGS_TO_DO_AHANGAMA_PATH,
+      <ThingsToDoAhangamaPage />,
+    ),
   },
   {
     path: ARTICLE_GUIDELINE_PATH,
     element: <ArticleGuidelinePage />,
   },
-  { path: STAYS_PATH, element: <StaysPage /> },
-  { path: BEST_AIRBNBS_PATH, element: <BestAirbnbsPage /> },
+  {
+    path: STAYS_PATH,
+    element: trackedArticle(STAYS_PATH, <StaysPage />, "Ahangama"),
+  },
+  {
+    path: BEST_AIRBNBS_PATH,
+    element: trackedArticle(
+      BEST_AIRBNBS_PATH,
+      <BestAirbnbsPage />,
+      "Ahangama",
+    ),
+  },
   { path: TRANSPORT_PATH, element: <TransportPage /> },
   { path: "/transport", element: <Navigate to={TRANSPORT_PATH} replace /> },
-  { path: HOST_RETREAT_PATH, element: <HostRetreatPage /> },
+  {
+    path: HOST_RETREAT_PATH,
+    element: trackedArticle(HOST_RETREAT_PATH, <HostRetreatPage />),
+  },
   { path: "/lighthouse", element: <LighthousePage /> },
   { path: "/mosvold", element: <MosvoldPage /> },
   { path: "/pabc", element: <PabcPage /> },
@@ -305,7 +390,10 @@ const routes = [
   },
   { path: "/offers", element: <FullListPage /> },
   { path: "/full-list", element: <FullListPage /> },
-  { path: "/12-things", element: <TwelveThingsPage /> },
+  {
+    path: "/12-things",
+    element: trackedArticle("/12-things", <TwelveThingsPage />),
+  },
   { path: "/about", element: <About /> },
   { path: SITE_MAP_PATH, element: <SiteMapPage /> },
   { path: "/logo", element: <LogoPage /> },
