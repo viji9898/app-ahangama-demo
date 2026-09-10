@@ -347,7 +347,7 @@ function ArticleSection({ section, first = false, impressedSectionIds }) {
             }}
           >
             <WhatsAppOutlined style={{ fontSize: 17 }} />
-            Book directly with the owners · +65 9005 6445
+            Book directly with the owners
           </a>
         ) : null}
       </div>
