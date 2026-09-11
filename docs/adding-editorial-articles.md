@@ -100,6 +100,105 @@ const FEATURE_IMAGE = `${BASE_IMAGE_URL}/Feature+Image.webp`;
 
 Use descriptive `alt` text for every image.
 
+### Temporary Placeholder Images
+
+When final photography is not ready, use `https://placehold.co/` with dimensions
+that match the intended image slot. Put the width and height directly in the URL:
+
+```text
+https://placehold.co/{width}x{height}
+```
+
+Use these standard editorial placeholders:
+
+```jsx
+const HERO_IMAGE = "https://placehold.co/1600x900";
+const LANDSCAPE_IMAGE = "https://placehold.co/1200x800";
+const PORTRAIT_IMAGE = "https://placehold.co/800x1000";
+```
+
+- Use `1600x900` for a full-bleed hero.
+- Use `1200x800` for a desktop `3 / 2` editorial image.
+- Use `800x1000` for a `4 / 5` portrait image.
+- Add a label when several placeholders need to be distinguishable, for example
+  `https://placehold.co/800x1000?text=Portrait+1`. Use `+` for spaces in the
+  label.
+- Do not use one placeholder size for every slot. The URL dimensions should
+  represent the source image that will eventually replace it.
+- Keep the hero URL identical in the page `Seo`, `EDITORIAL_ARTICLES`, static
+  route metadata and `WEEKLY_PICKS`.
+- Replace all placeholder URLs with final image URLs before publication.
+
+### Responsive Image Arrangement
+
+Desktop and mobile use different editorial image arrangements:
+
+- Landscape images display at `3 / 2` on desktop and switch to a centered
+  `4 / 5` portrait frame at `640px` and below.
+- Portrait pairs display side by side in two equal columns on desktop.
+- On mobile, portrait pairs stack into one column and appear one after the
+  other in source order.
+- Keep `objectFit: "cover"` so each image fills its stable frame without
+  changing the page layout.
+
+Give the image wrappers page-scoped class names so the mobile rules can
+override their inline desktop geometry:
+
+```jsx
+function EditorialImage({ src, alt }) {
+  return (
+    <div
+      className="article-landscape-image"
+      style={{
+        width: "100%",
+        aspectRatio: "3 / 2",
+        overflow: "hidden",
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    </div>
+  );
+}
+
+function PortraitPair({ images }) {
+  return (
+    <div
+      className="article-portrait-pair"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+        gap: 24,
+      }}
+    >
+      {images.map((image) => (
+        <PortraitImage key={image.src} {...image} />
+      ))}
+    </div>
+  );
+}
+```
+
+Add the responsive rules to the relevant stylesheet. Use a page-specific
+prefix instead of the generic `article-` prefix when the styles should apply to
+only one article:
+
+```css
+@media (max-width: 640px) {
+  .article-landscape-image {
+    width: min(100%, 680px) !important;
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .article-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+```
+
 Preferred layout helpers from the prototype:
 
 ```jsx
@@ -405,6 +504,9 @@ one `page_view`; `index.html` disables the automatic config page view because
 - Outbound and next-article links emit the required events without PII.
 - `/articles` and homepage cards emit one qualified impression per placement and a selection event.
 - Reading milestones, qualified engagement, completion, and the single route `page_view` are verified.
+- Landscape images render at `3 / 2` on desktop and `4 / 5` on mobile.
+- Portrait pairs sit side by side on desktop and stack in source order on mobile.
+- Placeholder URLs use dimensions appropriate to each slot and are replaced before publication.
 - All remote image URLs return `200`.
 - `npm run build` passes.
 - Generated `public/sitemap.xml` and `public/robots.txt` churn is restored unless intentionally needed.

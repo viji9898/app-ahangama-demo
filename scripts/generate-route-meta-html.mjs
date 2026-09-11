@@ -538,6 +538,17 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/hero-image-the-mugatiya-infinity-pool-paddy-view-ahangama.jpg.jpg",
   },
   {
+    route: "/the-accidental-story-of-ribs",
+    title: "The Accidental Story of RIBS",
+    description:
+      "It started with a birthday, a missing cook and a BBQ nobody planned for. Five years later, RIBS is back in Kabalana with more smoke, a bigger team and the same slightly accidental spirit.",
+    publishDate: "2026-09-10T09:00:00.000Z",
+    author: "Cecile Rodrigo",
+    type: "article",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/OG+Image+-+bbq_pork_ribs_are_served.webp",
+  },
+  {
     route:
       "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it",
     title:

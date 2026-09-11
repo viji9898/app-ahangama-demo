@@ -1739,6 +1739,15 @@
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
+  .ribs-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .ribs-landscape-image {
+    width: min(100%, 680px) !important;
+    aspect-ratio: 4 / 5 !important;
+  }
+
   .villa-alba-title-desktop {
     display: none;
   }

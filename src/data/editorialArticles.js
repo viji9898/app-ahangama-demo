@@ -1,5 +1,15 @@
 export const EDITORIAL_ARTICLES = [
   {
+    category: "Food Story",
+    title: "The Accidental Story of RIBS",
+    href: "/the-accidental-story-of-ribs",
+    description:
+      "It started with a birthday, a missing cook and a BBQ nobody planned for. Five years later, RIBS is back in Kabalana with more smoke, a bigger team and the same slightly accidental spirit.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/OG+Image+-+bbq_pork_ribs_are_served.webp",
+    publishDate: "2026-09-10T09:00:00.000Z",
+  },
+  {
     category: "Stay Story",
     title:
       "Villa Alba: A Boutique Hotel with a Commitment to Those Who Built It",

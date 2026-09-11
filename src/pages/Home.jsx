@@ -231,6 +231,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Food Story",
+    title: "The Accidental Story of RIBS",
+    date: "This Week",
+    href: "/the-accidental-story-of-ribs",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Hero+Image+-+bbq_is_served.webp",
+  },
+  {
     category: "Stay Story",
     title:
       "Villa Alba: A Boutique Hotel with a Commitment to Those Who Built It",
