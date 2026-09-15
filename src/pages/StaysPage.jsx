@@ -41,7 +41,7 @@ const STAYS = [
     bestFor: "Oceanfront living and unforgettable sunsets",
     location: "Ahangama oceanfront",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lighthouse.jpg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026282/Lighhouse-beachfront-boutique-hotel-tropical-sunset-ocean-view.webp",
     description:
       "Set directly above the Indian Ocean with private beach access, The Lighthouse is all about relaxed coastal living. Family-owned and full of character, it pairs comfortable rooms and lush gardens with one of Ahangama's best rooftop terraces.",
     editorNote:
@@ -56,7 +56,7 @@ const STAYS = [
     bestFor: "Architecture lovers and nature seekers",
     location: "Cinnamon estate, inland Ahangama",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/18160116/Trebartha-Daisy-Wingate-Saul-9234-copy.jpeg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026352/Trebatha-eco-luxury-villa-tropical-forest-retreat.webp",
     description:
       "Hidden within a working cinnamon estate, this intimate retreat is designed around a striking circular form with views across rice fields, tropical forest and the distant ocean.",
     editorNote: "One of Sri Lanka's most distinctive boutique stays.",
@@ -70,7 +70,7 @@ const STAYS = [
     bestFor: "Barefoot luxury by the sea",
     location: "Kabalana beachfront",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mosvold.jpg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026413/Mosvold-villa-colonial-boutique-hotel-red-tile-roof-aeria.webp",
     description:
       "A secluded beachfront retreat where every room enjoys uninterrupted Indian Ocean views. Warm hospitality and a peaceful atmosphere make days between the beach, pool and long oceanfront dinners feel effortless.",
     editorNote: "Wake up to the ocean without leaving your bed.",
@@ -84,7 +84,7 @@ const STAYS = [
     bestFor: "Wellness, surfing and slow living",
     location: "Near Kabalana Beach",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/12164550/Sola_425-copy.jpeg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026473/Mana-villa-modern-tropical-villa-private-pool-courtyard.webp",
     description:
       "A short walk from Kabalana Beach, Mana combines considered rooms and a tranquil pool with a sauna, ice bath and curated wellness experiences for surfers and slow travellers.",
     editorNote:
@@ -99,7 +99,7 @@ const STAYS = [
     bestFor: "A quiet boutique experience",
     location: "Central Ahangama",
     image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_benison.jpeg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026524/Bension-tropical-boutique-villa-garden-bungalow-.webp",
     description:
       "Thoughtfully designed cabanas, personalised hospitality and a calm atmosphere make The Benison an intimate retreat for travellers seeking comfort without compromising on location.",
     editorNote: "Ideal for couples looking for a slower, peaceful escape.",
@@ -113,7 +113,7 @@ const STAYS = [
     bestFor: "Design lovers and creative travellers",
     location: "Ahangama jungle",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05162910/6-Palm-SouthSriLankaHotels.jpeg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026692/Palm-hotel-tropical-pool-palm-garden-pavilion.webp",
     description:
       "Set across four tropical acres, PALM's A-frame cabanas, contemporary architecture, concept store, restaurant, gym and pool make it a design-led lifestyle retreat rather than simply a hotel.",
     editorNote: "One of Ahangama's most recognisable design hotels.",
@@ -127,7 +127,7 @@ const STAYS = [
     bestFor: "Stylish stays near Kabalana Beach",
     location: "Kabalana",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05162855/2-TheFind-SouthSriLankaHotels.jpeg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026590/Animals-pink-boutique-hotel-tropical-pool-courtyard.webp",
     description:
       "This adults-only stay is known for its tropical courtyard, stylish pool, vibrant restaurant and relaxed social atmosphere, close to the surf, cafes and nightlife without sitting on the busy beach road.",
     editorNote:
@@ -142,7 +142,7 @@ const STAYS = [
     bestFor: "Jungle tranquillity close to the beach",
     location: "Ahangama, two minutes from the ocean",
     image:
-      "https://images.suitcasemag.com/wp-content/uploads/2025/03/05162858/3-TheFind-SouthSriLankaHotels.jpeg",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026648/Abode-luxury-villa-tropical-garden-sunset-exterior-.webp",
     description:
       "Hidden among palms in a restored Art Deco building, Abode blends boho-luxe interiors, an 18-metre pool and personal hospitality with easy access to Ahangama's cafe and surf scene.",
     editorNote: "A quiet jungle oasis with the beach just around the corner.",
@@ -156,7 +156,7 @@ const STAYS = [
     bestFor: "Modern comfort in the heart of Ahangama",
     location: "Central Ahangama",
     image:
-      "https://i0.wp.com/images.suitcasemag.com/wp-content/uploads/2025/03/05162919/8-Harding-SouthSriLankaHotels.jpeg?fit=1024%2C683&ssl=1",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026750/Harding-modern-tropical-boutique-hotel.webp",
     description:
       "Contemporary accommodation, warm service and easy access to beaches, restaurants and surf breaks make Harding an excellent base for travellers who want to explore the south coast.",
     editorNote: "A great choice if you plan to spend your days exploring.",
@@ -170,7 +170,7 @@ const STAYS = [
     bestFor: "Design, romance and Italian-inspired hospitality",
     location: "Near Kabalana Beach",
     image:
-      "https://i0.wp.com/images.suitcasemag.com/wp-content/uploads/2025/03/05162907/5-CasaTikiri-SouthSriLankaHotels.jpeg?fit=1024%2C683&ssl=1",
+      "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026801/Casa-Tikiri-tropical-villa-pool-palm-garden-retreat.webp",
     description:
       "Created by an Italian couple, Casa Tikiri brings together curated rooms, a renowned Italian restaurant and a peaceful adults-only jungle setting just 300 metres from Kabalana Beach.",
     editorNote:

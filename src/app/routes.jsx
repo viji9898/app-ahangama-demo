@@ -246,6 +246,10 @@ const routes = [
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: "/guide", element: <ExperienceAhangamaGuide /> },
+  {
+    path: "/ahangama-season-2026-2027",
+    element: <Navigate to="/guide" replace />,
+  },
   { path: "/online-guide", element: <Navigate to="/guide" replace /> },
   { path: ARTICLES_PATH, element: <ArticlesPage /> },
   { path: MEDIA_PATH, element: <MediaPage /> },
@@ -477,3 +481,4 @@ const routes = [
 ];
 
 export default routes;
+

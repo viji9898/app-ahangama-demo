@@ -508,36 +508,6 @@ const DESTINATION_CATEGORIES = [
   },
 ];
 
-const ITINERARY_FEATURES = [
-  {
-    category: "Short Stay",
-    date: "May 21, 2026",
-    title: "48 Hours in Ahangama",
-    description:
-      "A fast but thoughtful south-coast edit covering surf, coffee, one excellent dinner and the right sunset stop.",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
-  },
-  {
-    category: "Surf Trip",
-    date: "May 7, 2026",
-    title: "5 Day Surf Escape",
-    description:
-      "A rhythm of dawn sessions, lazy breakfasts, recovery spots and beach-to-beach movement without overplanning it.",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
-  },
-  {
-    category: "Wellness",
-    date: "May 6, 2026",
-    title: "Wellness Weekend",
-    description:
-      "Pilates, slow mornings, restorative treatments and the calmest corners of Ahangama for a lighter two-day reset.",
-    image:
-      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
-  },
-];
-
 const LATEST_STORIES = [
   {
     category: "Food",
@@ -1369,6 +1339,161 @@ export default function Home() {
           <div className="home-section-divider" aria-hidden="true" />
 
           <div style={{ marginTop: sectionSpacing }}>
+            <div
+              className="home-guide-perks-grid"
+              style={{
+                display: "grid",
+                gap: 16,
+              }}
+            >
+              <section
+                aria-label="Ahangama Guide"
+                style={{
+                  border: "1px solid rgba(35, 31, 32, 0.16)",
+                  borderRadius: 28,
+                  background: "#FFFFFF",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    padding: "28px 28px 20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    background: "#FFFFFF",
+                  }}
+                >
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#8B7B63",
+                      fontSize: 16,
+                      fontstyle:" bold", 
+                      fontWeight: 600,
+                      letterSpacing: "0.04em",
+                      lineHeight: 1.15,
+                      marginBottom: 12,
+                    }}
+                  >
+                    Ahangama Guide
+                  </Text>
+
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#231F20",
+                      fontSize: 14,
+                      lineHeight: 1.5,
+                      maxWidth: 420,
+                      marginBottom: 18,
+                    }}
+                  >
+                    A curated selection of places, experiences and local moments
+                    around town.
+                  </Text>
+
+                  <a
+                    href="/guide"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      width: "fit-content",
+                      color: "#231F20",
+                      textDecoration: "none",
+                      fontSize: 14,
+                      fontWeight: 650,
+                      lineHeight: 1.2,
+                      padding: 0,
+                      background: "transparent",
+                      boxShadow: "none",
+                    }}
+                  >
+                    <span>View guide</span>
+                    <span style={{ fontSize: 20, lineHeight: 1 }}>→</span>
+                  </a>
+                </div>
+              </section>
+
+              <section
+                aria-label="Ahangama Pass Perks"
+                style={{
+                  border: "1px solid rgba(35, 31, 32, 0.16)",
+                  borderRadius: 28,
+                  background: "#FFFFFF",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    padding: "28px 28px 20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    background: "#FFFFFF",
+                  }}
+                >
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#8B7B63",
+                      fontSize: 16,
+                      fontWeight: 600,
+                      letterSpacing: "0.04em",
+                      lineHeight: 1.15,
+                      marginBottom: 12,
+                    }}
+                  >
+                    Ahangama Pass Perks
+                  </Text>
+
+                  <Text
+                    style={{
+                      display: "block",
+                      color: "#231F20",
+                      fontSize: 14,
+                      lineHeight: 1.5,
+                      maxWidth: 420,
+                      marginBottom: 18,
+                    }}
+                  >
+                    Discover exclusive offers and benefits from places around town.
+                  </Text>
+
+                  <a
+                    href="/pass-perks"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      width: "fit-content",
+                      color: "#231F20",
+                      textDecoration: "none",
+                      fontSize: 14,
+                      fontWeight: 650,
+                      lineHeight: 1.2,
+                      padding: 0,
+                      background: "transparent",
+                      boxShadow: "none",
+                    }}
+                  >
+                    <span>View pass perks</span>
+                    <span style={{ fontSize: 20, lineHeight: 1 }}>→</span>
+                  </a>
+                </div>
+              </section>
+            </div>
+
+            <div
+              aria-hidden="true"
+              style={{
+                height: 0,
+                borderTop: "2px solid rgba(22, 20, 18, 0.92)",
+                margin: "18px 0 18px",
+              }}
+            />
+
             <div className="whats-on-board">
               <div className="whats-on-boardIntro">
                 <Text className="whats-on-boardKicker">
@@ -1844,43 +1969,6 @@ export default function Home() {
                     <Text className="destination-categories-cta">
                       Explore <ArrowRightOutlined />
                     </Text>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <div className="home-section-divider" aria-hidden="true" />
-          </div>
-
-          <div style={{ marginTop: 20 }}>
-            <div className="itineraries-heading">
-              <Text className="itineraries-kicker">4. Itineraries</Text>
-              <Paragraph className="itineraries-description">
-                Ready-made trip planning.
-              </Paragraph>
-            </div>
-
-            <div className="itineraries-grid">
-              {ITINERARY_FEATURES.map((item) => (
-                <a
-                  key={item.title}
-                  href="#"
-                  onClick={(event) => event.preventDefault()}
-                  className="itineraries-card"
-                >
-                  <div className="itineraries-imageWrap">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="itineraries-image"
-                    />
-                  </div>
-                  <div className="itineraries-body">
-                    <Text className="itineraries-date">{item.date}</Text>
-                    <Title level={3} className="itineraries-title">
-                      {item.title}
-                    </Title>
-                    <Text className="itineraries-tag">{item.category}</Text>
                   </div>
                 </a>
               ))}

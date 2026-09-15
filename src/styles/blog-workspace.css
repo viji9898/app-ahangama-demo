@@ -872,7 +872,7 @@
 
 .stories-archiveHero {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
   padding: clamp(26px, 4vw, 40px);
 }
@@ -918,7 +918,7 @@
 
 .stories-archiveLeadCard {
   display: grid;
-  grid-template-columns: minmax(220px, 0.95fr) minmax(0, 1fr);
+  grid-template-columns: 1fr;
   gap: 18px;
   border: 0;
   padding: 0;
@@ -1762,7 +1762,7 @@
   background: #f4efe6;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .blog-shell {
     grid-template-columns: 1fr;
   }

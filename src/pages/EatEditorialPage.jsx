@@ -10,7 +10,7 @@ import { shouldShowPlace } from "../data/placeStatus";
 const { Paragraph, Text, Title } = Typography;
 
 const HERO_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+27maria-bonita.webp";
+  "https://res.cloudinary.com/czuk4rf2/image/upload/v1789027166/Eats.png";
 const SUNSET_IMAGE =
   "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lighthouse.jpg";
 const DIRECTORY_PAGE_SIZE = 12;

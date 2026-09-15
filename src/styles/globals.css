@@ -609,6 +609,16 @@
   margin-bottom: 14px;
 }
 
+.home-guide-perks-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .home-guide-perks-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .home-intelligence-band {
   display: grid;
   grid-template-columns: 240px repeat(5, minmax(0, 1fr));

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Button, Drawer, Grid, Space, Typography } from "antd";
-import { ArrowLeftOutlined, HeartOutlined, MenuOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { trackPassCtaClick } from "../../analytics";
 import { buildPassCtaUrl } from "../../lib/passAttribution";
@@ -22,7 +22,10 @@ export default function TopNav({ overlayHero = false }) {
   const isHome = loc.pathname === "/";
 
   const navItems = useMemo(
-    () => [{ label: "Pass Perks", to: "/pass-perks" }],
+    () => [
+      { label: "Pass Perks", to: "/pass-perks" },
+      { label: "Guide", to: "/guide" },
+    ],
     [],
   );
 
@@ -181,12 +184,15 @@ export default function TopNav({ overlayHero = false }) {
                     key={item.label}
                     to={item.to}
                     style={{
+                      display: "inline-flex",
+                      alignItems: "center",
                       textDecoration: "none",
                       color: isActive(item.to)
                         ? navForeground
                         : navMutedForeground,
-                      fontSize: 14,
+                      fontSize: item.label === "Guide" ? 16 : 14,
                       fontWeight: isActive(item.to) ? 700 : 600,
+                      lineHeight: 1.2,
                       letterSpacing: 0.1,
                       whiteSpace: "nowrap",
                     }}
@@ -196,23 +202,7 @@ export default function TopNav({ overlayHero = false }) {
                 ))}
               </nav>
             ) : (
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <Link
-                  to="/pass-perks"
-                  aria-label="Pass Perks"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: 38,
-                    height: 38,
-                    color: navForeground,
-                    flexShrink: 0,
-                  }}
-                >
-                  <HeartOutlined style={{ fontSize: 21 }} />
-                </Link>
-
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <Button
                   type="text"
                   aria-label="Open menu"
@@ -257,21 +247,6 @@ export default function TopNav({ overlayHero = false }) {
                 />
               </a>
 
-              <Link
-                to="/pass-perks"
-                aria-label="Pass Perks"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 40,
-                  height: 40,
-                  color: navForeground,
-                }}
-              >
-                <HeartOutlined style={{ fontSize: 22 }} />
-              </Link>
-
               <Button
                 type="text"
                 aria-label="Open menu"
@@ -311,10 +286,13 @@ export default function TopNav({ overlayHero = false }) {
               to={item.to}
               onClick={() => setMobileNavOpen(false)}
               style={{
+                display: "inline-flex",
+                alignItems: "center",
                 textDecoration: "none",
                 color: "#1F1D1A",
-                fontSize: 16,
+                fontSize: item.label === "Guide" ? 18 : 16,
                 fontWeight: isActive(item.to) ? 700 : 600,
+                lineHeight: 1.2,
               }}
             >
               {item.label}
