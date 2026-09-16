@@ -3,6 +3,7 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import { Button, Grid, Input, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 import { createNewsletterSubscriber } from "../../services/newsletter";
+import { trackHomeEvent } from "../../analytics";
 
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
@@ -54,6 +55,13 @@ export default function NewsletterSignup({
         email: trimmedEmail,
         source,
       });
+
+      if (window.location.pathname === "/") {
+        trackHomeEvent("newsletter_signup_success", {
+          component_location: source,
+          home_section: "newsletter",
+        });
+      }
 
       setIsRedirecting(true);
       navigate(

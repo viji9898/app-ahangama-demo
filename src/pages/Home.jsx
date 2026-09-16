@@ -33,6 +33,7 @@ import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import TrackedArticleLink from "../components/ui/TrackedArticleLink";
+import HomepageAnalytics from "../components/analytics/HomepageAnalytics";
 import { PLACES } from "../data/places";
 import { shouldShowPlace } from "../data/placeStatus";
 import addToAppleWalletLogo from "../assets/add_to_apple_wallet.png";
@@ -737,6 +738,8 @@ const TWELVE_THINGS_GUIDE_PREVIEW = [
 ];
 
 export default function Home() {
+  const pageRootRef = useRef(null);
+  const impressedEditorPickIds = useRef(new Set());
   const impressedWeeklyPickIds = useRef(new Set());
   const { loading, places } = usePlaces();
   const [transportCurrency, setTransportCurrency] = useState("LKR");
@@ -1055,6 +1058,7 @@ export default function Home() {
 
   return (
     <SiteLayout navOverlayHero>
+      <HomepageAnalytics pageRootRef={pageRootRef} />
       <Seo
         title="Ahangama Guide to Perks & Discounts at the Best Local Spots"
         description="Ahangama guide to perks and discounts at the best cafés, stays, surf spots, and experiences—curated local favourites, unlocked with one pass."
@@ -1136,6 +1140,7 @@ export default function Home() {
       </div> */}
       {/* HERO */}
       <div
+        ref={pageRootRef}
         className="dm-canvas"
         style={{
           marginTop: 0,
@@ -1148,6 +1153,7 @@ export default function Home() {
           <div>
             <div
               className="ahg-hero"
+              data-home-section-view="hero"
               style={{
                 width: "100vw",
                 marginLeft: "calc(50% - 50vw)",
@@ -1315,6 +1321,11 @@ export default function Home() {
                         </Text>
                         <a
                           href={passCtaUrl}
+                          data-home-content-id="ahangama-pass"
+                          data-home-content-title="Get the Ahangama Pass"
+                          data-home-content-type="pass_cta"
+                          data-home-section="hero"
+                          data-home-position="1"
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => {
@@ -1516,7 +1527,10 @@ export default function Home() {
             />
 
             <div className="whats-on-board">
-              <div className="whats-on-boardIntro">
+              <div
+                className="whats-on-boardIntro"
+                data-home-section-view="whats_on"
+              >
                 <Text className="whats-on-boardKicker">
                   What&apos;s On This Week
                 </Text>
@@ -1526,7 +1540,15 @@ export default function Home() {
                 <Paragraph className="whats-on-boardDescription">
                   A curated selection of things happening around town this week.
                 </Paragraph>
-                <a href="/events" className="whats-on-boardLink">
+                <a
+                  href="/events"
+                  className="whats-on-boardLink"
+                  data-home-content-id="events-calendar"
+                  data-home-content-title="View full calendar"
+                  data-home-content-type="utility_link"
+                  data-home-section="whats_on"
+                  data-home-position="1"
+                >
                   View full calendar <ArrowRightOutlined />
                 </a>
               </div>
@@ -1537,6 +1559,8 @@ export default function Home() {
                     type="button"
                     className="whats-on-boardArrow whats-on-boardArrow--left"
                     onClick={handleWhatsOnScrollLeft}
+                    data-home-control="scroll_left"
+                    data-home-section="whats_on"
                     aria-label="Scroll events left"
                   >
                     <ArrowRightOutlined />
@@ -1545,9 +1569,15 @@ export default function Home() {
 
                 <div className="whats-on-boardRail" ref={whatsOnBoardRailRef}>
                   {thisWeekEvents.map((event) => (
-                    <div
+                    <a
                       className="whats-on-boardItem"
                       key={`${event.title}-${event.date}`}
+                      href="/events"
+                      data-home-content-id={`${event.dayKey}:${event.title}`}
+                      data-home-content-title={event.title}
+                      data-home-content-type="event"
+                      data-home-section="whats_on"
+                      data-home-position={thisWeekEvents.indexOf(event) + 1}
                     >
                       {event.image ? (
                         <div className="whats-on-boardImageWrap">
@@ -1569,7 +1599,7 @@ export default function Home() {
                           <span>{event.time}</span>
                         </span>
                       </div>
-                    </div>
+                    </a>
                   ))}
                 </div>
 
@@ -1578,6 +1608,8 @@ export default function Home() {
                     type="button"
                     className="whats-on-boardArrow whats-on-boardArrow--right"
                     onClick={handleWhatsOnScrollRight}
+                    data-home-control="scroll_right"
+                    data-home-section="whats_on"
                     aria-label="Scroll events right"
                   >
                     <ArrowRightOutlined />
@@ -1588,6 +1620,11 @@ export default function Home() {
               <a
                 href="/events"
                 className="whats-on-boardLink whats-on-boardLink--mobile"
+                data-home-content-id="events-calendar"
+                data-home-content-title="View full calendar"
+                data-home-content-type="utility_link"
+                data-home-section="whats_on"
+                data-home-position="1"
               >
                 View full calendar <ArrowRightOutlined />
               </a>
@@ -1601,7 +1638,7 @@ export default function Home() {
             aria-labelledby="home-wellness-title"
           >
             <div className="home-wellness__header">
-              <div>
+              <div data-home-section-view="wellness_classes">
                 <Text className="home-wellness__kicker">Move today</Text>
                 <Title
                   level={2}
@@ -1611,17 +1648,31 @@ export default function Home() {
                   {todayWellness.day}&apos;s wellness classes
                 </Title>
               </div>
-              <a href={WELLNESS_CLASSES_PATH} className="home-wellness__link">
+              <a
+                href={WELLNESS_CLASSES_PATH}
+                className="home-wellness__link"
+                data-home-content-id="wellness-classes"
+                data-home-content-title="See all classes"
+                data-home-content-type="utility_link"
+                data-home-section="wellness_classes"
+                data-home-position="1"
+              >
                 See all classes <ArrowRightOutlined />
               </a>
             </div>
 
             {todayWellness.classes.length ? (
               <div className="home-wellness__grid">
-                {todayWellness.classes.map((session) => (
-                  <article
+                {todayWellness.classes.map((session, index) => (
+                  <a
                     className="home-wellness__class"
                     key={`${session.venueId}-${session.time}-${session.className}`}
+                    href={WELLNESS_CLASSES_PATH}
+                    data-home-content-id={`${session.venueId}:${session.time}:${session.className}`}
+                    data-home-content-title={session.className}
+                    data-home-content-type="wellness_class"
+                    data-home-section="wellness_classes"
+                    data-home-position={index + 1}
                   >
                     <div className="home-wellness__time">
                       <ClockCircleOutlined />
@@ -1634,7 +1685,7 @@ export default function Home() {
                     <Text className="home-wellness__category">
                       {session.category.replaceAll("-", " ")}
                     </Text>
-                  </article>
+                  </a>
                 ))}
               </div>
             ) : (
@@ -1646,6 +1697,11 @@ export default function Home() {
             <a
               href={WELLNESS_CLASSES_PATH}
               className="home-wellness__link home-wellness__link--mobile"
+              data-home-content-id="wellness-classes"
+              data-home-content-title="See all classes"
+              data-home-content-type="utility_link"
+              data-home-section="wellness_classes"
+              data-home-position="1"
             >
               See all classes <ArrowRightOutlined />
             </a>
@@ -1656,7 +1712,7 @@ export default function Home() {
             aria-labelledby="home-transport-title"
           >
             <div className="home-transport__intro">
-              <div>
+              <div data-home-section-view="transport">
                 <Text className="home-transport__kicker">
                   Plan the road ahead
                 </Text>
@@ -1694,15 +1750,34 @@ export default function Home() {
                 <a
                   className="home-transport__whatsapp"
                   href={TRANSPORT_WHATSAPP_URL}
+                  data-home-content-id="transport-whatsapp-inquiry"
+                  data-home-content-title="Inquire on WhatsApp"
+                  data-home-content-type="transport_inquiry"
+                  data-home-section="transport"
+                  data-home-position="1"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <WhatsAppOutlined /> Inquire on WhatsApp
                 </a>
-                <a href="/transport-rates">
+                <a
+                  href="/transport-rates"
+                  data-home-content-id="transport-quote"
+                  data-home-content-title="Request a quote"
+                  data-home-content-type="transport_quote"
+                  data-home-section="transport"
+                  data-home-position="2"
+                >
                   Request a quote <ArrowRightOutlined />
                 </a>
-                <a href={TRANSPORT_GUIDE_PATH}>
+                <a
+                  href={TRANSPORT_GUIDE_PATH}
+                  data-home-content-id="transport-guide"
+                  data-home-content-title="Read the transport guide"
+                  data-home-content-type="article"
+                  data-home-section="transport"
+                  data-home-position="3"
+                >
                   Read the transport guide <ReadOutlined />
                 </a>
               </div>
@@ -1712,7 +1787,10 @@ export default function Home() {
           <div className="home-section-divider" aria-hidden="true" />
 
           <div style={{ marginTop: 20 }}>
-            <div className="weekly-features-heading">
+            <div
+              className="weekly-features-heading"
+              data-home-section-view="editors_picks"
+            >
               <Text className="weekly-features-kicker">
                 1. Editor&apos;s Picks
               </Text>
@@ -1727,10 +1805,13 @@ export default function Home() {
             />
 
             <div className="weekly-features-grid">
-              {THIS_WEEK_FEATURES.map((feature) => (
-                <a
+              {THIS_WEEK_FEATURES.map((feature, index) => (
+                <TrackedArticleLink
                   key={feature.title}
-                  href={feature.href || "#"}
+                  article={feature}
+                  componentLocation="homepage_editors_picks"
+                  impressedArticleIds={impressedEditorPickIds}
+                  position={index + 1}
                   onClick={
                     feature.href ? undefined : (event) => event.preventDefault()
                   }
@@ -1749,7 +1830,7 @@ export default function Home() {
                   <Title level={3} className="weekly-features-title">
                     {feature.title}
                   </Title>
-                </a>
+                </TrackedArticleLink>
               ))}
             </div>
           </div>
@@ -1761,7 +1842,10 @@ export default function Home() {
                 aria-hidden="true"
               />
 
-              <div className="weekly-picks-heading">
+              <div
+                className="weekly-picks-heading"
+                data-home-section-view="weekly_picks"
+              >
                 <div className="weekly-picks-headingCopy">
                   <Text className="weekly-picks-kicker">2. Weekly Picks</Text>
                   <Paragraph className="weekly-picks-description">
@@ -1812,13 +1896,24 @@ export default function Home() {
           ) : null}
 
           <div style={{ marginTop: 20 }}>
-            <div className="guide-sections-heading">
+            <div
+              className="guide-sections-heading"
+              data-home-section-view="guide_sections"
+            >
               <Text className="guide-sections-kicker">3. Guide Sections</Text>
               <div className="guide-sections-headingRow">
                 <Paragraph className="guide-sections-description">
                   Editorial guides for navigating Ahangama.
                 </Paragraph>
-                <a href="/blogs" className="guide-sections-link">
+                <a
+                  href="/blogs"
+                  className="guide-sections-link"
+                  data-home-content-id="all-guides"
+                  data-home-content-title="See all guides"
+                  data-home-content-type="utility_link"
+                  data-home-section="guide_sections"
+                  data-home-position="1"
+                >
                   See All
                 </a>
               </div>
@@ -1850,6 +1945,11 @@ export default function Home() {
                       <a
                         className={`guide-sections-cardLink${index === 0 ? " guide-sections-cardLink--first" : ""}`}
                         href={guide.href}
+                        data-home-content-id={guide.href}
+                        data-home-content-title={guide.title}
+                        data-home-content-type="guide"
+                        data-home-section="guide_sections"
+                        data-home-position={index + 1}
                         style={{
                           display: "block",
                           height: "100%",
@@ -1940,9 +2040,12 @@ export default function Home() {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <div className="destination-categories-heading">
+            <div
+              className="destination-categories-heading"
+              data-home-section-view="categories"
+            >
               <Text className="destination-categories-kicker">
-                3. Categories
+                4. Categories
               </Text>
               <Paragraph className="destination-categories-description">
                 Help visitors navigate the destination.
@@ -1959,6 +2062,11 @@ export default function Home() {
                 <a
                   key={category.key}
                   href={category.href}
+                  data-home-content-id={category.key}
+                  data-home-content-title={category.title}
+                  data-home-content-type="destination_category"
+                  data-home-section="categories"
+                  data-home-position={destinationCategoryCards.indexOf(category) + 1}
                   className={`destination-categories-card destination-categories-card--${category.key}`}
                   style={{
                     "--destination-category-tone": category.tone,
@@ -2034,20 +2142,16 @@ export default function Home() {
           ) : null}
 
           <div style={{ marginTop: 20 }}>
-            <div className="around-town-heading">
+            <div
+              className="around-town-heading"
+              data-home-section-view="around_town"
+            >
               <div className="around-town-headingCopy">
                 <Text className="around-town-kicker">5. Around the Town</Text>
                 <Paragraph className="around-town-description">
                   What we&apos;re reading, following and loving around Ahangama.
                 </Paragraph>
               </div>
-              <a
-                href="#"
-                onClick={(event) => event.preventDefault()}
-                className="around-town-link"
-              >
-                View all picks <ArrowRightOutlined />
-              </a>
             </div>
 
             <div
@@ -2060,6 +2164,11 @@ export default function Home() {
                 <a
                   key={pick.title}
                   href={pick.href}
+                  data-home-content-id={pick.href}
+                  data-home-content-title={pick.title}
+                  data-home-content-type="around_town_pick"
+                  data-home-section="around_town"
+                  data-home-position={AROUND_TOWN_PICKS.indexOf(pick) + 1}
                   className="around-town-card"
                   target={pick.href.startsWith("http") ? "_blank" : undefined}
                   rel={
@@ -3205,6 +3314,7 @@ export default function Home() {
           <div style={{ marginTop: sectionSpacing - 8 }}>
             <Card
               className="ahg-cardCta"
+              data-home-section-view="pass_cta"
               style={editorialCardStyle}
               bodyStyle={{ padding: 30 }}
             >
@@ -3265,6 +3375,11 @@ export default function Home() {
                     size="large"
                     block
                     href={passCtaUrl}
+                    data-home-content-id="ahangama-pass"
+                    data-home-content-title="Get the Card"
+                    data-home-content-type="pass_cta"
+                    data-home-section="pass_cta"
+                    data-home-position="1"
                     icon={<QrcodeOutlined />}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -3282,6 +3397,11 @@ export default function Home() {
                     size="large"
                     block
                     href="/pass-perks"
+                    data-home-content-id="pass-perks"
+                    data-home-content-title="Explore Pass Perks"
+                    data-home-content-type="pass_guide"
+                    data-home-section="pass_cta"
+                    data-home-position="2"
                     icon={<HeartOutlined />}
                     style={{ marginTop: 10, width: "100%" }}
                   >
