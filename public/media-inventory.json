@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-16T06:37:33.436Z",
+  "generatedAt": "2026-09-16T07:24:54.275Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 697,
+  "count": 718,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -416,15 +416,11 @@
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
         "src/data/places.js",
-        "src/pages/EatEditorialPage.jsx",
         "src/pages/EditorsPicksPage.jsx",
         "src/pages/ShopsEditorialPage.jsx",
         "src/styles/site-map-page.css"
       ],
       "pageRoutes": {
-        "src/pages/EatEditorialPage.jsx": [
-          "/eat"
-        ],
         "src/pages/EditorsPicksPage.jsx": [
           "/editors-picks"
         ],
@@ -1004,6 +1000,21 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/dinner_table_at_ribs.webp",
+      "fileName": "dinner_table_at_ribs.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/dirty_clothes.jpeg",
       "fileName": "dirty_clothes.jpeg",
       "format": "JPEG",
@@ -1518,21 +1529,6 @@
       }
     },
     {
-      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero-coffee-ocean.jpg",
-      "fileName": "hero-coffee-ocean.jpg",
-      "format": "JPG",
-      "origin": "owned",
-      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
-      "sources": [
-        "src/pages/Home.jsx"
-      ],
-      "pageRoutes": {
-        "src/pages/Home.jsx": [
-          "/"
-        ]
-      }
-    },
-    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama/hero-image-the-mugatiya-infinity-pool-paddy-view-ahangama.jpg.jpg",
       "fileName": "hero-image-the-mugatiya-infinity-pool-paddy-view-ahangama.jpg.jpg",
       "format": "JPG",
@@ -1636,11 +1632,15 @@
       "sources": [
         "src/data/editorialArticles.js",
         "src/pages/Home.jsx",
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx",
         "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
       ],
       "pageRoutes": {
         "src/pages/Home.jsx": [
           "/"
+        ],
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
         ],
         "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
           "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
@@ -1697,6 +1697,25 @@
       "pageRoutes": {
         "src/pages/Home.jsx": [
           "/"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Hero+Image+-+bbq_is_served.webp",
+      "fileName": "Hero+Image+-+bbq_is_served.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/Home.jsx",
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
+        ],
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
         ]
       }
     },
@@ -2153,8 +2172,7 @@
       "sources": [
         "src/data/places.js",
         "src/pages/EatEditorialPage.jsx",
-        "src/pages/EatIndex.jsx",
-        "src/pages/StaysPage.jsx"
+        "src/pages/EatIndex.jsx"
       ],
       "pageRoutes": {
         "src/pages/EatEditorialPage.jsx": [
@@ -2490,8 +2508,7 @@
       "origin": "owned",
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
-        "src/data/places.js",
-        "src/pages/StaysPage.jsx"
+        "src/data/places.js"
       ],
       "pageRoutes": {}
     },
@@ -2551,6 +2568,22 @@
         "src/data/places.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/OG+Image+-+bbq_pork_ribs_are_served.webp",
+      "fileName": "OG+Image+-+bbq_pork_ribs_are_served.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/editorialArticles.js",
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/OG+image+-+Villa+Alba+living+room+view+over+the+pool+deck.webp",
@@ -2833,6 +2866,21 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Portrait+-+cecile_setting_up_ribs_table.webp",
+      "fileName": "Portrait+-+cecile_setting_up_ribs_table.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Portrait+-+ciao-dairy-products-at-gusta-ahangama.webp",
       "fileName": "Portrait+-+ciao-dairy-products-at-gusta-ahangama.webp",
       "format": "WEBP",
@@ -2842,6 +2890,21 @@
         "src/pages/GustaGroceriesAhangamaPage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Portrait+-+customer_enjoying_ribs.webp",
+      "fileName": "Portrait+-+customer_enjoying_ribs.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/gusta-groceries-good-food-and-more-in-ahangama/Portrait+-+gusta-ahangama-lifestyle-products-inside-fridge.webp",
@@ -2877,6 +2940,51 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Portrait+-+kithul_glazed_prok_ribs.webp",
+      "fileName": "Portrait+-+kithul_glazed_prok_ribs.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Portrait+-+noel_at_the_bbq_at_ribs.webp",
+      "fileName": "Portrait+-+noel_at_the_bbq_at_ribs.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Portrait+-+noel_working_the_grill.webp",
+      "fileName": "Portrait+-+noel_working_the_grill.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it/Portrait+-+Percy+the+peacock+at+Villa+Alba.webp",
       "fileName": "Portrait+-+Percy+the+peacock+at+Villa+Alba.webp",
       "format": "WEBP",
@@ -2888,6 +2996,21 @@
       "pageRoutes": {
         "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
           "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Portrait+-+smoker_setup_at_ribs_edited.webp",
+      "fileName": "Portrait+-+smoker_setup_at_ribs_edited.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
         ]
       }
     },
@@ -2948,6 +3071,21 @@
       "pageRoutes": {
         "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
           "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Portrait+Closing+Image+-+guest_vibes_at_ribs_ahangama.webp",
+      "fileName": "Portrait+Closing+Image+-+guest_vibes_at_ribs_ahangama.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
         ]
       }
     },
@@ -3850,8 +3988,7 @@
       "origin": "owned",
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
-        "src/data/places.js",
-        "src/pages/StaysPage.jsx"
+        "src/data/places.js"
       ],
       "pageRoutes": {}
     },
@@ -4329,6 +4466,21 @@
       "pageRoutes": {
         "src/pages/TheMugatiyaHeritageVillaPage.jsx": [
           "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-accidental-story-of-ribs/Wide+feature+-+bbq_beef_ribs_on_the_grill.webp",
+      "fileName": "Wide+feature+-+bbq_beef_ribs_on_the_grill.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
+          "/the-accidental-story-of-ribs"
         ]
       }
     },
@@ -5721,7 +5873,6 @@
       "sources": [
         "src/pages/BestAirbnbsPage.jsx",
         "src/pages/Home.jsx",
-        "src/pages/StaysPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {
@@ -5748,7 +5899,6 @@
       "origin": "external",
       "host": "images.suitcasemag.com",
       "sources": [
-        "src/pages/StaysPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {}
@@ -5808,7 +5958,6 @@
       "origin": "external",
       "host": "i0.wp.com",
       "sources": [
-        "src/pages/StaysPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {}
@@ -5842,7 +5991,6 @@
       "origin": "external",
       "host": "images.suitcasemag.com",
       "sources": [
-        "src/pages/StaysPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {}
@@ -5887,7 +6035,6 @@
       "origin": "external",
       "host": "i0.wp.com",
       "sources": [
-        "src/pages/StaysPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {}
@@ -5911,6 +6058,17 @@
       "host": "images.suitcasemag.com",
       "sources": [
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026648/Abode-luxury-villa-tropical-garden-sunset-exterior-.webp",
+      "fileName": "Abode-luxury-villa-tropical-garden-sunset-exterior-.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
       ],
       "pageRoutes": {}
     },
@@ -6020,6 +6178,17 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026590/Animals-pink-boutique-hotel-tropical-pool-courtyard.webp",
+      "fileName": "Animals-pink-boutique-hotel-tropical-pool-courtyard.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
+      ],
+      "pageRoutes": {}
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786347936/August_Calendar_OG_Image_kvxsyx.jpg",
       "fileName": "August_Calendar_OG_Image_kvxsyx.jpg",
       "format": "JPG",
@@ -6092,6 +6261,17 @@
           "/guide"
         ]
       }
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026524/Bension-tropical-boutique-villa-garden-bungalow-.webp",
+      "fileName": "Bension-tropical-boutique-villa-garden-bungalow-.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814153/Boutique_retail_cf6yge.webp",
@@ -6285,6 +6465,17 @@
       "host": "res.cloudinary.com",
       "sources": [
         "src/data/eventsCalendar.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026801/Casa-Tikiri-tropical-villa-pool-palm-garden-retreat.webp",
+      "fileName": "Casa-Tikiri-tropical-villa-pool-palm-garden-retreat.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
       ],
       "pageRoutes": {}
     },
@@ -6524,6 +6715,21 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789027166/Eats.png",
+      "fileName": "Eats.png",
+      "format": "PNG",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/EatEditorialPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/EatEditorialPage.jsx": [
+          "/eat"
+        ]
+      }
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788409318/ebb_and_flow_jatgto.webp",
       "fileName": "ebb_and_flow_jatgto.webp",
       "format": "WEBP",
@@ -6668,6 +6874,17 @@
           "/guide"
         ]
       }
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026750/Harding-modern-tropical-boutique-hotel.webp",
+      "fileName": "Harding-modern-tropical-boutique-hotel.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814155/Hero_Image_-_Opening_note_suor1s.webp",
@@ -6998,6 +7215,17 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026282/Lighhouse-beachfront-boutique-hotel-tropical-sunset-ocean-view.webp",
+      "fileName": "Lighhouse-beachfront-boutique-hotel-tropical-sunset-ocean-view.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
+      ],
+      "pageRoutes": {}
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp",
       "fileName": "light-house-beach-view-hero_mzhrhn.webp",
       "format": "WEBP",
@@ -7089,6 +7317,17 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026473/Mana-villa-modern-tropical-villa-private-pool-courtyard.webp",
+      "fileName": "Mana-villa-modern-tropical-villa-private-pool-courtyard.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
+      ],
+      "pageRoutes": {}
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp",
       "fileName": "Mermaids_cbow9y.webp",
       "format": "WEBP",
@@ -7132,6 +7371,17 @@
           "/guide"
         ]
       }
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026413/Mosvold-villa-colonial-boutique-hotel-red-tile-roof-aeria.webp",
+      "fileName": "Mosvold-villa-colonial-boutique-hotel-red-tile-roof-aeria.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784536370/movie_night_igs5ht.jpg",
@@ -7260,6 +7510,17 @@
           "/guide"
         ]
       }
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026692/Palm-hotel-tropical-pool-palm-garden-pavilion.webp",
+      "fileName": "Palm-hotel-tropical-pool-palm-garden-pavilion.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786334394/Partner_Sign-Up_OG_Image_b6suln.jpg",
@@ -8007,7 +8268,6 @@
       "origin": "external",
       "host": "images.suitcasemag.com",
       "sources": [
-        "src/pages/StaysPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {}
@@ -8322,7 +8582,6 @@
       "host": "images.suitcasemag.com",
       "sources": [
         "src/features/print-guide/guideData.js",
-        "src/pages/StaysPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {}
@@ -8336,6 +8595,17 @@
       "sources": [
         "src/pages/BestAirbnbsPage.jsx",
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026352/Trebatha-eco-luxury-villa-tropical-forest-retreat.webp",
+      "fileName": "Trebatha-eco-luxury-villa-tropical-forest-retreat.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/StaysPage.jsx"
       ],
       "pageRoutes": {}
     },
