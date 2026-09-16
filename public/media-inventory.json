@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-16T07:24:54.275Z",
+  "generatedAt": "2026-09-16T08:53:36.783Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 718,
+  "count": 722,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -1404,15 +1404,11 @@
       "origin": "owned",
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
-        "src/pages/EatEditorialPage.jsx",
         "src/pages/EatIndex.jsx",
         "src/pages/Home.jsx",
         "src/pages/ShopsEditorialPage.jsx"
       ],
       "pageRoutes": {
-        "src/pages/EatEditorialPage.jsx": [
-          "/eat"
-        ],
         "src/pages/Home.jsx": [
           "/"
         ],
@@ -2171,14 +2167,9 @@
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
         "src/data/places.js",
-        "src/pages/EatEditorialPage.jsx",
         "src/pages/EatIndex.jsx"
       ],
-      "pageRoutes": {
-        "src/pages/EatEditorialPage.jsx": [
-          "/eat"
-        ]
-      }
+      "pageRoutes": {}
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/living_room.jpg",
@@ -2455,14 +2446,10 @@
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
         "src/data/places.js",
-        "src/pages/EatEditorialPage.jsx",
         "src/pages/EatIndex.jsx",
         "src/pages/ShopsEditorialPage.jsx"
       ],
       "pageRoutes": {
-        "src/pages/EatEditorialPage.jsx": [
-          "/eat"
-        ],
         "src/pages/ShopsEditorialPage.jsx": [
           "/shops"
         ]
@@ -2541,15 +2528,11 @@
       "origin": "owned",
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
-        "src/pages/EatEditorialPage.jsx",
         "src/pages/EatIndex.jsx",
         "src/pages/EditorsPicksPage.jsx",
         "src/pages/ShopsEditorialPage.jsx"
       ],
       "pageRoutes": {
-        "src/pages/EatEditorialPage.jsx": [
-          "/eat"
-        ],
         "src/pages/EditorsPicksPage.jsx": [
           "/editors-picks"
         ],
@@ -3308,15 +3291,11 @@
       "sources": [
         "src/data/blogs.js",
         "src/data/places.js",
-        "src/pages/EatEditorialPage.jsx",
         "src/pages/EatIndex.jsx",
         "src/pages/Home.jsx",
         "src/pages/ShopsEditorialPage.jsx"
       ],
       "pageRoutes": {
-        "src/pages/EatEditorialPage.jsx": [
-          "/eat"
-        ],
         "src/pages/Home.jsx": [
           "/"
         ],
@@ -6118,6 +6097,21 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789543738/Ahangama-Kabalana-beach-sunset-pink-sky.webp",
+      "fileName": "Ahangama-Kabalana-beach-sunset-pink-sky.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/EatEditorialPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/EatEditorialPage.jsx": [
+          "/eat"
+        ]
+      }
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/Ahankara_Surf_School_ej2rjp.jpg",
       "fileName": "Ahankara_Surf_School_ej2rjp.jpg",
       "format": "JPG",
@@ -6970,6 +6964,21 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789543813/Hero-AhanagamaGuide-SriLanka.jpg",
+      "fileName": "Hero-AhanagamaGuide-SriLanka.jpg",
+      "format": "JPG",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/EatEditorialPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/EatEditorialPage.jsx": [
+          "/eat"
+        ]
+      }
+    },
+    {
       "url": "https://images.suitcasemag.com/wp-content/uploads/2025/03/05163113/HERO2-TheFind-SouthCoastSriLanka.jpeg",
       "fileName": "HERO2-TheFind-SouthCoastSriLanka.jpeg",
       "format": "JPEG",
@@ -7221,9 +7230,14 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
+        "src/pages/EatEditorialPage.jsx",
         "src/pages/StaysPage.jsx"
       ],
-      "pageRoutes": {}
+      "pageRoutes": {
+        "src/pages/EatEditorialPage.jsx": [
+          "/eat"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782832527/light-house-beach-view-hero_mzhrhn.webp",
@@ -8035,9 +8049,14 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
+        "src/pages/Home.jsx",
         "src/styles/experience-ahangama-guide.css"
       ],
-      "pageRoutes": {}
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814117/section_1_-_Beachfront_breakfast_b8i8dh.webp",
@@ -8405,6 +8424,21 @@
         "src/data/blogs.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789027495/Surf-Club-Midigama.png",
+      "fileName": "Surf-Club-Midigama.png",
+      "format": "PNG",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/EatEditorialPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/EatEditorialPage.jsx": [
+          "/eat"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788411397/surfclub_iycmcx.webp",
@@ -8918,6 +8952,21 @@
         "src/data/eventsCalendar.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789543500/wood-glass-gym-tree-views-weights-cardio-machines-calm..webp",
+      "fileName": "wood-glass-gym-tree-views-weights-cardio-machines-calm..webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/EatEditorialPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/EatEditorialPage.jsx": [
+          "/eat"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426467/Yiva_essentials_ii7doq.webp",

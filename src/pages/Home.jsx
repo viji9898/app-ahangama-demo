@@ -27,6 +27,7 @@ import { absUrl } from "../app/siteUrl";
 import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
 import PassPartnersStrip from "../components/home/PassPartnersStrip";
+import AhangamaPassCard3D from "../components/AhangamaPassCard3D";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
@@ -45,6 +46,9 @@ import photoOfWeekImage from "../assets/temp/photo_of_week.jpeg";
 const { Title, Paragraph, Text } = Typography;
 
 const EVENTS_ENDPOINT = "/.netlify/functions/events";
+
+const GUIDE_CARD_IMAGE =
+  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784702191/Screenshot_2026-07-22_at_12.06.19_jmbgko.png";
 
 function formatHomepageEventDate(day) {
   if (String(day.key).startsWith("ongoing")) {
@@ -1198,6 +1202,7 @@ export default function Home() {
                 </div>
 
                 <div
+                  className="ahg-feature-panel-body ahg-guide-panel-body"
                   style={{
                     position: "relative",
                     zIndex: 3,
@@ -1356,6 +1361,7 @@ export default function Home() {
                 }}
               >
                 <div
+                  className="ahg-feature-panel-body ahg-guide-panel-body"
                   style={{
                     padding: "28px 28px 20px",
                     display: "flex",
@@ -1364,6 +1370,7 @@ export default function Home() {
                     background: "#FFFFFF",
                   }}
                 >
+                  <div className="ahg-guide3d-copy">
                   <Text
                     style={{
                       display: "block",
@@ -1413,6 +1420,14 @@ export default function Home() {
                     <span>View guide</span>
                     <span style={{ fontSize: 20, lineHeight: 1 }}>→</span>
                   </a>
+                  </div>
+                  <div className="ahg-guide3d-inline">
+                    <AhangamaPassCard3D
+                      image={GUIDE_CARD_IMAGE}
+                      alt="Experience Ahangama guide cover"
+                      variant="guide"
+                    />
+                  </div>
                 </div>
               </section>
 
@@ -1426,6 +1441,7 @@ export default function Home() {
                 }}
               >
                 <div
+                  className="ahg-feature-panel-body ahg-pass-panel-body"
                   style={{
                     padding: "28px 28px 20px",
                     display: "flex",
@@ -1434,6 +1450,7 @@ export default function Home() {
                     background: "#FFFFFF",
                   }}
                 >
+                  <div className="ahg-pass3d-copy">
                   <Text
                     style={{
                       display: "block",
@@ -1481,6 +1498,10 @@ export default function Home() {
                     <span>View pass perks</span>
                     <span style={{ fontSize: 20, lineHeight: 1 }}>→</span>
                   </a>
+                  </div>
+                  <div className="ahg-pass3d-inline">
+                    <AhangamaPassCard3D />
+                  </div>
                 </div>
               </section>
             </div>

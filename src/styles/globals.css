@@ -619,6 +619,416 @@
   }
 }
 
+.ahg-pass3d-scene {
+  display: grid;
+  width: 160px;
+  max-width: 160px;
+  min-width: 160px;
+  flex: 0 0 160px;
+  margin: 0 auto;
+  perspective: 900px;
+  perspective-origin: center;
+  touch-action: pan-y;
+}
+
+.ahg-pass3d-inline {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-guide-perks-grid section[aria-label="Ahangama Pass Perks"] > div {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 160px !important;
+  gap: 16px;
+  align-items: center;
+}
+
+.ahg-pass3d-copy {
+  min-width: 0;
+}
+
+.ahg-feature-panel-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+}
+
+.home-guide-perks-grid section[aria-label="Ahangama Guide"] > .ahg-feature-panel-body,
+.home-guide-perks-grid section[aria-label="Ahangama Pass Perks"] > .ahg-feature-panel-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+}
+
+.ahg-feature-panel-body .ahg-guide3d-inline,
+.ahg-feature-panel-body .ahg-pass3d-inline {
+  order: -1;
+  margin: 0 auto 18px;
+}
+
+.ahg-feature-panel-body .ahg-guide3d-copy,
+.ahg-feature-panel-body .ahg-pass3d-copy {
+  order: 1;
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  width: 68%;
+}
+
+.ahg-feature-panel-body {
+  position: relative;
+  min-height: 290px;
+}
+
+.ahg-feature-panel-body .ahg-guide3d-inline,
+.ahg-feature-panel-body .ahg-pass3d-inline {
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  z-index: 3;
+  width: 160px;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+.ahg-pass3d-inline .ahg-pass3d-scene {
+  width: 160px;
+  max-width: 160px;
+}
+
+.home-guide-perks-grid section[aria-label="Ahangama Guide"] > div {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 160px !important;
+  gap: 16px;
+  align-items: center;
+}
+
+.ahg-guide3d-inline {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ahg-guide3d-copy {
+  min-width: 0;
+}
+
+.ahg-guide3d-inline .ahg-pass3d-scene {
+  width: 160px;
+  max-width: 160px;
+}
+
+@media (max-width: 640px) {
+  .ahg-feature-panel-body {
+    min-height: 0;
+  }
+
+  .ahg-feature-panel-body .ahg-guide3d-copy,
+  .ahg-feature-panel-body .ahg-pass3d-copy {
+    width: 100%;
+  }
+
+  .ahg-feature-panel-body .ahg-guide3d-inline,
+  .ahg-feature-panel-body .ahg-pass3d-inline {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px auto 0;
+    transform: none;
+  }
+
+  .home-guide-perks-grid section[aria-label="Ahangama Pass Perks"] > div {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ahg-pass3d-perks-body {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.ahg-pass3d-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 20px;
+  background: linear-gradient(165deg, #58b4e5 0%, #2d91c8 48%, #4ca9d8 100%);
+  box-shadow: 0 22px 38px rgba(21, 77, 114, 0.23), inset 0 0 0 1px rgba(13, 67, 102, 0.12);
+  transform-style: preserve-3d;
+  transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 560ms ease;
+  will-change: transform;
+  user-select: none;
+}
+
+.ahg-pass3d-card--guide {
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+}
+
+.ahg-pass3d-card::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
+
+.ahg-pass3d-card:hover {
+  box-shadow: 0 30px 48px rgba(21, 77, 114, 0.3), inset 0 0 0 1px rgba(13, 67, 102, 0.12);
+}
+
+.ahg-pass3d-glare,
+.ahg-pass3d-topline,
+.ahg-pass3d-beach,
+.ahg-pass3d-fields,
+.ahg-pass3d-qr {
+  position: absolute;
+  transform: translateZ(18px);
+}
+
+.ahg-pass3d-glare {
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: background 180ms ease;
+}
+
+.ahg-pass3d-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ahg-guide3d-content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12% 10%;
+  box-sizing: border-box;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(8, 26, 42, 0.14) 20%, rgba(4, 15, 30, 0.78) 100%);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.38);
+}
+
+.ahg-guide3d-badge,
+.ahg-guide3d-eyebrow,
+.ahg-guide3d-season {
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ahg-guide3d-badge {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #08acd0;
+  font-size: 0.38rem;
+  letter-spacing: 0.2em;
+  text-shadow: none;
+}
+
+.ahg-guide3d-eyebrow {
+  margin-top: 9%;
+  width: 100%;
+  font-size: 0.32rem;
+  white-space: nowrap;
+}
+
+.ahg-guide3d-title {
+  width: 100%;
+  margin-top: 8%;
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+  font-size: 1.38rem;
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  overflow-wrap: break-word;
+}
+
+.ahg-guide3d-subtitle {
+  width: 100%;
+  margin-top: 9%;
+  font: 500 0.56rem/1.35 "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+.ahg-guide3d-subtitle b {
+  color: #08c2ea;
+}
+
+.ahg-guide3d-cta {
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 999px;
+  background: #168fae;
+  font: 700 0.54rem/1.1 "Avenir Next", "Helvetica Neue", sans-serif;
+  text-shadow: none;
+}
+
+.ahg-guide3d-season {
+  margin-top: 8px;
+  font-size: 0.34rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ahg-pass3d-topline {
+  z-index: 2;
+  top: 6%;
+  right: 7%;
+  left: 7%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.ahg-pass3d-logo {
+  width: 48%;
+  max-width: 145px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.08));
+}
+
+.ahg-pass3d-status {
+  display: grid;
+  gap: 2px;
+  color: #fff;
+  text-align: right;
+  text-shadow: 0 1px 2px rgba(20, 61, 88, 0.2);
+}
+
+.ahg-pass3d-status span,
+.ahg-pass3d-fields span {
+  font: 700 0.5rem/1.1 "Avenir Next", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.12em;
+}
+
+.ahg-pass3d-status strong {
+  font: 700 clamp(0.78rem, 1.5vw, 1.25rem)/1 "Avenir Next", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.ahg-pass3d-beach {
+  z-index: 1;
+  top: 21%;
+  right: 0;
+  left: 0;
+  height: 30%;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.24);
+  opacity: 0.92;
+}
+
+.ahg-pass3d-fields {
+  z-index: 2;
+  top: 56%;
+  right: 7%;
+  left: 7%;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(20, 61, 88, 0.22);
+}
+
+.ahg-pass3d-fields div:last-child {
+  text-align: right;
+}
+
+.ahg-pass3d-fields strong {
+  display: block;
+  margin-top: 5px;
+  font: 700 clamp(0.86rem, 1.7vw, 1.34rem)/1.05 "Avenir Next", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.ahg-pass3d-qr {
+  z-index: 2;
+  bottom: 5%;
+  left: 50%;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: #fff;
+  transform: translate3d(-50%, 0, 18px);
+}
+
+.ahg-pass3d-qr svg {
+  display: block;
+  width: clamp(70px, 11vw, 122px);
+  height: auto;
+}
+
+.ahg-pass3d-qr span {
+  color: #111;
+  font: 700 clamp(0.42rem, 0.8vw, 0.64rem)/1 "Avenir Next", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  .home-guide-perks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .ahg-feature-panel-body {
+    min-height: 0;
+  }
+
+  .ahg-feature-panel-body .ahg-guide3d-copy,
+  .ahg-feature-panel-body .ahg-pass3d-copy {
+    max-width: none;
+  }
+
+  .ahg-feature-panel-body .ahg-guide3d-inline,
+  .ahg-feature-panel-body .ahg-pass3d-inline {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px auto 0;
+    transform: none;
+  }
+
+  .ahg-pass3d-scene {
+    width: min(160px, 100%);
+    min-width: 0;
+    max-width: 160px;
+    flex-basis: auto;
+  }
+
+  .home-guide-perks-grid section[aria-label="Ahangama Guide"] > div {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ahg-guide3d-inline {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .ahg-pass3d-inline {
+    max-width: 150px;
+    margin: 0 auto;
+  }
+}
+
 .home-intelligence-band {
   display: grid;
   grid-template-columns: 240px repeat(5, minmax(0, 1fr));
