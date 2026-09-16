@@ -42,6 +42,7 @@ const CHAPTERS = [
   { id: "wellness", label: "Wellness", bg: "cream" },
   { id: "night-life", label: "Night Life", bg: "cream" },
   { id: "best-retail-stores", label: "Best Retail Stores", bg: "cream" },
+  { id: "surf-schools", label: "Surf Schools", bg: "cream" },
   { id: "transport-guide", label: "Transport", bg: "white" },
   { id: "closing-cta", label: "Closing", bg: "navy" },
 ];
@@ -59,6 +60,7 @@ const GUIDE_MAP_CATEGORY_META = {
   nightlife: { label: "Night Life", color: "#20455C" },
   retail: { label: "Retail Stores", color: "#8C6948" },
   cafes: { label: "Cafes", color: "#AA6846" },
+  surf_schools: { label: "Surf Schools", color: "#2E86AB" },
 };
 
 function Reveal({ delay = 0, children }) {
@@ -665,6 +667,7 @@ function LocatedSection({ venueData }) {
       { key: "nightlife", ...GUIDE_MAP_CATEGORY_META.nightlife, items: venueData?.nightlife || NIGHT_LIFE },
       { key: "retail", ...GUIDE_MAP_CATEGORY_META.retail, items: venueData?.retail || BEST_RETAIL_STORES },
       { key: "cafes", ...GUIDE_MAP_CATEGORY_META.cafes, items: venueData?.cafes || BEST_CAFES },
+      { key: "surf_schools", ...GUIDE_MAP_CATEGORY_META.surf_schools, items: venueData?.surf_schools || SURF_SCHOOLS },
     ],
     [venueData],
   );
@@ -1172,6 +1175,24 @@ function BestCafesSection({ onImageClick, impressedVenueIds, venues }) {
   );
 }
 
+const SURF_SCHOOLS = [
+  { name: "Surfing Sri Lanka", rating: "5", desc: "One of the most established surf schools in the area, offering beginner to advanced lessons with ISA-certified instructors and all equipment included.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Surfing_Sri_Lanka_fzqfya.jpg", lat: 5.9723, lng: 80.3613, instagram: "https://www.instagram.com/surfingsrilanka/", googleMaps: "https://maps.app.goo.gl/VwBHCzqRkXFqLiKZ7", ownership: "foreign", website: "https://www.surfingsrilanka.com/", reviewCount: 180 },
+  { name: "Sunrise Surf School", rating: "4.9", desc: "A locally-run surf school in Ahangama offering patient, personalised coaching for first-timers and progressing surfers alike.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287256/Sunrise_Surf_School_opb6xz.jpg", lat: 5.9715, lng: 80.3638, instagram: "https://www.instagram.com/sunrisesurfschoolsrilanka/", googleMaps: "https://maps.app.goo.gl/MBrAVqihUYg8K7id9", ownership: "local", website: "", reviewCount: 95 },
+  { name: "Ahankara Surf School", rating: "4.8", desc: "Small-group and private surf lessons run by experienced local surfers who know every break in the Ahangama stretch.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/Ahankara_Surf_School_ej2rjp.jpg", lat: 5.9698, lng: 80.3652, instagram: "https://www.instagram.com/ahankarasurfschool/", googleMaps: "https://maps.app.goo.gl/7C2YDwQbK8hEfxeA7", ownership: "local", website: "", reviewCount: 62 },
+].map(withGuideSection("surf_schools"));
+
+function SurfSchoolsSection({ onImageClick, impressedVenueIds, venues }) {
+  const items = venues || SURF_SCHOOLS;
+  return (
+    <section id="surf-schools" className="eag-section eag-section--cream">
+      <div className="eag-content">
+        <Reveal><h2 className="eag-headline"><span className="eag-headline-line">Surf Schools</span></h2></Reveal>
+        {cardGrid(items, onImageClick, impressedVenueIds)}
+      </div>
+    </section>
+  );
+}
+
 const TRANSPORT_VENUES = [
   { name: "AK Bike Rentals", rating: "5", desc: "Top-rated scooter rentals and easy local movement around Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787570539/AK_bike_rental_1_jajy1y.webp", instagram: "", googleMaps: "https://maps.app.goo.gl/4i3vmix5xRGhJYzh9", ownership: "local" , website: "" , reviewCount: 22 },
   { name: "Spring Tours", rating: "5", desc: "Experience Sri Lanka seamlessly with Spring Tours' premier private transport and custom island itineraries.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788260697/Spring_tours_exyfto.webp", lat: 5.982985357231829, lng: 80.37618523338615, instagram: "https://www.instagram.com/manoj.sanjeewa.35912/?hl=en", googleMaps: "https://maps.app.goo.gl/bYxqVSUbbgpTHSjn9", website: "" , reviewCount: 45 },
@@ -1337,6 +1358,7 @@ function TocRibbon({ currentChapterId }) {
     { id: "wellness", label: "Wellness" },
     { id: "night-life", label: "Night Life" },
     { id: "best-retail-stores", label: "Best Retail Stores" },
+    { id: "surf-schools", label: "Surf Schools" },
     { id: "transport-guide", label: "Transport" },
     { id: "closing-cta", label: "Closing" },
   ];
@@ -1440,7 +1462,7 @@ export default function ExperienceAhangamaGuide() {
           best_stays: "stays", best_eats: "eats", best_cafes: "cafes",
           best_experiences: "experiences", wellness: "wellness",
           night_life: "nightlife", best_retail_stores: "retail",
-          transport: "transport",
+          transport: "transport", surf_schools: "surf_schools",
         };
         for (const [dbKey, mapKey] of Object.entries(sectionKeyMap)) {
           if (grouped[dbKey]?.length) {
@@ -1590,6 +1612,7 @@ export default function ExperienceAhangamaGuide() {
           <WellnessSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.wellness} />
           <NightLifeSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.nightlife} />
           <BestRetailStoresSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.retail} />
+          <SurfSchoolsSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.surf_schools} />
           <TransportGuideSection onImageClick={openLightbox} impressedVenueIds={impressedVenueIds} venues={dbVenueData?.transport} />
           <ClosingCTASection />
         </div>
