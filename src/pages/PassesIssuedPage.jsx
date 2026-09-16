@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Alert, Button, Spin, Table, Tag, Typography } from "antd";
-import { Helmet } from "react-helmet-async";
 import { ReloadOutlined } from "@ant-design/icons";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -248,10 +247,8 @@ export default function PassesIssuedPage() {
         title="Passes Issued | Ahangama"
         description="Operational view of complimentary guest passes issued by venue."
         canonical={absUrl(PASSES_ISSUED_PATH)}
+        noindex
       />
-      <Helmet>
-        <meta name="robots" content="noindex,nofollow" />
-      </Helmet>
 
       <main
         style={{

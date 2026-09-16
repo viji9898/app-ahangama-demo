@@ -826,6 +826,8 @@ export default function Home() {
 
   const heroImage =
     "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Hero-AhanagamaGuide-SriLanka.webp";
+  const homepageSocialImage =
+    "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788150045/ahangam.com_dbbgls.webp";
   const showWeeklyPicksSection = true;
   const showLatestStoriesSection = false;
   const weeklyPicksLooped = useMemo(
@@ -1060,15 +1062,47 @@ export default function Home() {
     <SiteLayout navOverlayHero>
       <HomepageAnalytics pageRootRef={pageRootRef} />
       <Seo
-        title="Ahangama Guide to Perks & Discounts at the Best Local Spots"
-        description="Ahangama guide to perks and discounts at the best cafés, stays, surf spots, and experiences—curated local favourites, unlocked with one pass."
+        title="Ahangama, Sri Lanka: Local Guide, Events & Places"
+        description="Discover Ahangama, Sri Lanka with locally curated places to eat, stay, surf and explore, plus current events, wellness classes and transport guides."
         canonical={canonical}
-        ogImage={heroImage}
+        author="Ahangama.com"
+        ogTitle="Ahangama.com — The Local Guide to Ahangama, Sri Lanka"
+        ogImage={homepageSocialImage}
+        ogImageWidth={1200}
+        ogImageHeight={630}
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: "ahangama.com",
-          url: canonical,
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://ahangama.com/#organization",
+              name: "Ahangama.com",
+              url: "https://ahangama.com/",
+              description:
+                "A locally curated destination guide to Ahangama, Sri Lanka.",
+              sameAs: ["https://instagram.com/ahangama.pass"],
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://ahangama.com/#website",
+              url: "https://ahangama.com/",
+              name: "Ahangama.com",
+              description:
+                "Local guides, places, events and experiences in Ahangama, Sri Lanka.",
+              publisher: {
+                "@id": "https://ahangama.com/#organization",
+              },
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate:
+                    "https://ahangama.com/search?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            },
+          ],
         }}
       />
       {/* DISCLAIMER CARD */}

@@ -98,7 +98,10 @@ function applyMeta(html, meta) {
       : meta.image
     : null;
 
-  let nextHtml = html;
+  let nextHtml = html.replace(
+    /\s*<script[^>]*data-homepage-schema=["']true["'][^>]*>[\s\S]*?<\/script>/i,
+    "",
+  );
 
   nextHtml = replaceOrInsert(
     nextHtml,
@@ -107,125 +110,115 @@ function applyMeta(html, meta) {
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+name=["']title["'][^>]*>/i,
+    /<meta\b(?=[^>]*\bname=["']title["'])[^>]*>/i,
     `<meta name="title" content="${escapeHtml(meta.title)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+name=["']description["'][^>]*>/i,
-    `<meta name="description" content="${escapeHtml(meta.description)}" />`,
+    /<meta\b(?=[^>]*\bname=["']description["'])[^>]*>/i,
+    `<meta data-static-seo="true" name="description" content="${escapeHtml(meta.description)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+name=["']robots["'][^>]*>/i,
-    `<meta name="robots" content="${meta.noindex ? "noindex, nofollow" : "index, follow"}" />`,
+    /<meta\b(?=[^>]*\bname=["']robots["'])[^>]*>/i,
+    `<meta data-static-seo="true" name="robots" content="${meta.noindex ? "noindex, nofollow" : "index, follow"}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+name=["']author["'][^>]*>/i,
-    `<meta name="author" content="${escapeHtml(author)}" />`,
+    /<meta\b(?=[^>]*\bname=["']author["'])[^>]*>/i,
+    `<meta data-static-seo="true" name="author" content="${escapeHtml(author)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+property=["']author["'][^>]*>/i,
-    `<meta property="author" content="${escapeHtml(author)}" />`,
+    /<meta\b(?=[^>]*\bname=["']publish_date["'])[^>]*>/i,
+    `<meta data-static-seo="true" name="publish_date" content="${escapeHtml(publishDate)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+name=["']publish_date["'][^>]*>/i,
-    `<meta name="publish_date" content="${escapeHtml(publishDate)}" />`,
+    /<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/i,
+    `<link data-static-seo="true" rel="canonical" href="${escapeHtml(canonical)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<link\s+rel=["']canonical["'][^>]*>/i,
-    `<link rel="canonical" href="${escapeHtml(canonical)}" />`,
+    /<meta\b(?=[^>]*\bproperty=["']og:type["'])[^>]*>/i,
+    `<meta data-static-seo="true" property="og:type" content="${escapeHtml(pageType)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+property=["']og:type["'][^>]*>/i,
-    `<meta property="og:type" content="${escapeHtml(pageType)}" />`,
+    /<meta\b(?=[^>]*\bproperty=["']og:title["'])[^>]*>/i,
+    `<meta data-static-seo="true" property="og:title" content="${escapeHtml(meta.title)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+property=["']og:title["'][^>]*>/i,
-    `<meta property="og:title" content="${escapeHtml(meta.title)}" />`,
+    /<meta\b(?=[^>]*\bproperty=["']og:description["'])[^>]*>/i,
+    `<meta data-static-seo="true" property="og:description" content="${escapeHtml(meta.description)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+property=["']og:description["'][^>]*>/i,
-    `<meta property="og:description" content="${escapeHtml(meta.description)}" />`,
+    /<meta\b(?=[^>]*\bproperty=["']og:url["'])[^>]*>/i,
+    `<meta data-static-seo="true" property="og:url" content="${escapeHtml(canonical)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+property=["']og:url["'][^>]*>/i,
-    `<meta property="og:url" content="${escapeHtml(canonical)}" />`,
+    /<meta\b(?=[^>]*\bproperty=["']article:author["'])[^>]*>/i,
+    `<meta data-static-seo="true" property="article:author" content="${escapeHtml(author)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+property=["']article:author["'][^>]*>/i,
-    `<meta property="article:author" content="${escapeHtml(author)}" />`,
-  );
-  nextHtml = replaceOrInsert(
-    nextHtml,
-    /<meta\s+name=["']article:author["'][^>]*>/i,
-    `<meta name="article:author" content="${escapeHtml(author)}" />`,
-  );
-  nextHtml = replaceOrInsert(
-    nextHtml,
-    /<meta\s+property=["']article:published_time["'][^>]*>/i,
-    `<meta property="article:published_time" content="${escapeHtml(publishDate)}" />`,
+    /<meta\b(?=[^>]*\bproperty=["']article:published_time["'])[^>]*>/i,
+    `<meta data-static-seo="true" property="article:published_time" content="${escapeHtml(publishDate)}" />`,
   );
   if (ogImage) {
     nextHtml = replaceOrInsert(
       nextHtml,
-      /<meta\s+property=["']og:image["'][^>]*>/i,
-      `<meta property="og:image" content="${escapeHtml(ogImage)}" />`,
+      /<meta\b(?=[^>]*\bproperty=["']og:image["'])[^>]*>/i,
+      `<meta data-static-seo="true" property="og:image" content="${escapeHtml(ogImage)}" />`,
     );
     nextHtml = replaceOrInsert(
       nextHtml,
-      /<meta\s+property=["']og:image:secure_url["'][^>]*>/i,
-      `<meta property="og:image:secure_url" content="${escapeHtml(ogImage)}" />`,
+      /<meta\b(?=[^>]*\bproperty=["']og:image:secure_url["'])[^>]*>/i,
+      `<meta data-static-seo="true" property="og:image:secure_url" content="${escapeHtml(ogImage)}" />`,
     );
     if (meta.imageWidth) {
       nextHtml = replaceOrInsert(
         nextHtml,
-        /<meta\s+property=["']og:image:width["'][^>]*>/i,
-        `<meta property="og:image:width" content="${escapeHtml(meta.imageWidth)}" />`,
+        /<meta\b(?=[^>]*\bproperty=["']og:image:width["'])[^>]*>/i,
+        `<meta data-static-seo="true" property="og:image:width" content="${escapeHtml(meta.imageWidth)}" />`,
       );
     }
     if (meta.imageHeight) {
       nextHtml = replaceOrInsert(
         nextHtml,
-        /<meta\s+property=["']og:image:height["'][^>]*>/i,
-        `<meta property="og:image:height" content="${escapeHtml(meta.imageHeight)}" />`,
+        /<meta\b(?=[^>]*\bproperty=["']og:image:height["'])[^>]*>/i,
+        `<meta data-static-seo="true" property="og:image:height" content="${escapeHtml(meta.imageHeight)}" />`,
       );
     }
     nextHtml = replaceOrInsert(
       nextHtml,
-      /<meta\s+name=["']twitter:card["'][^>]*>/i,
-      '<meta name="twitter:card" content="summary_large_image" />',
+      /<meta\b(?=[^>]*\bname=["']twitter:card["'])[^>]*>/i,
+      '<meta data-static-seo="true" name="twitter:card" content="summary_large_image" />',
     );
   }
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+(?:name|property)=["']twitter:url["'][^>]*>/i,
-    `<meta name="twitter:url" content="${escapeHtml(canonical)}" />`,
+    /<meta\b(?=[^>]*\b(?:name|property)=["']twitter:url["'])[^>]*>/i,
+    `<meta data-static-seo="true" name="twitter:url" content="${escapeHtml(canonical)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+(?:name|property)=["']twitter:title["'][^>]*>/i,
-    `<meta name="twitter:title" content="${escapeHtml(meta.title)}" />`,
+    /<meta\b(?=[^>]*\b(?:name|property)=["']twitter:title["'])[^>]*>/i,
+    `<meta data-static-seo="true" name="twitter:title" content="${escapeHtml(meta.title)}" />`,
   );
   nextHtml = replaceOrInsert(
     nextHtml,
-    /<meta\s+(?:name|property)=["']twitter:description["'][^>]*>/i,
-    `<meta name="twitter:description" content="${escapeHtml(meta.description)}" />`,
+    /<meta\b(?=[^>]*\b(?:name|property)=["']twitter:description["'])[^>]*>/i,
+    `<meta data-static-seo="true" name="twitter:description" content="${escapeHtml(meta.description)}" />`,
   );
   if (ogImage) {
     nextHtml = replaceOrInsert(
       nextHtml,
-      /<meta\s+(?:name|property)=["']twitter:image["'][^>]*>/i,
-      `<meta name="twitter:image" content="${escapeHtml(ogImage)}" />`,
+      /<meta\b(?=[^>]*\b(?:name|property)=["']twitter:image["'])[^>]*>/i,
+      `<meta data-static-seo="true" name="twitter:image" content="${escapeHtml(ogImage)}" />`,
     );
   }
 
@@ -246,7 +239,7 @@ function applyMeta(html, meta) {
     nextHtml = replaceOrInsert(
       nextHtml,
       /<script\s+type=["']application\/ld\+json["']\s+data-route-article-schema=["']true["']>[\s\S]*?<\/script>/i,
-      `<script type="application/ld+json" data-route-article-schema="true">${serializeJsonLd(articleSchema)}</script>`,
+      `<script data-static-seo="true" type="application/ld+json" data-route-article-schema="true">${serializeJsonLd(articleSchema)}</script>`,
     );
   }
 
@@ -525,6 +518,19 @@ const routeMeta = [
     publishDate: "2026-08-01T08:00:00.000Z",
     image:
       "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787202527/Guide_oG_images_x6brj9.jpg",
+  },
+  {
+    route: "/interactions",
+    title: "Guest Interactions | Ahangama",
+    description: "Guest-level view of email clicks and pass interactions.",
+    noindex: true,
+  },
+  {
+    route: "/passes-issued",
+    title: "Passes Issued | Ahangama",
+    description:
+      "Operational view of complimentary guest passes issued by venue.",
+    noindex: true,
   },
   {
     route: "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama",

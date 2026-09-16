@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Alert, Button, Input, Spin, Table, Tag, Typography } from "antd";
-import { Helmet } from "react-helmet-async";
 import { LinkOutlined, ReloadOutlined, SearchOutlined } from "@ant-design/icons";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
@@ -438,10 +437,8 @@ export default function InteractionsPage() {
         title="Guest Interactions | Ahangama"
         description="Guest-level view of email clicks and pass interactions."
         canonical={absUrl(INTERACTIONS_PATH)}
+        noindex
       />
-      <Helmet>
-        <meta name="robots" content="noindex,nofollow" />
-      </Helmet>
 
       <main
         style={{

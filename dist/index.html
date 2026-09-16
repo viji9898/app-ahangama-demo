@@ -43,57 +43,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>Ahangama.com — Discover Ahangama, Sri Lanka</title>
-    <meta name="title" content="Ahangama.com — Discover Ahangama, Sri Lanka" />
+    <title>Ahangama, Sri Lanka: Local Guide, Events &amp; Places</title>
     <meta
+      data-static-seo="true"
       name="description"
-      content="Your local hub for the best of Ahangama — discover places to eat, stay, surf, relax, explore, and experience the south coast."
+      content="Discover Ahangama, Sri Lanka with locally curated places to eat, stay, surf and explore, plus current events, wellness classes and transport guides."
     />
     <meta
       name="keywords"
-      content="Ahangama, Sri Lanka, travel guide, cafes, restaurants, accommodations, surf, wellness, nightlife, local experiences, coastal town"
+      content="Ahangama, Ahangama Sri Lanka, Ahangama travel guide, Ahangama cafes, Ahangama restaurants, Ahangama accommodations, Ahangama surf, wellness, nightlife, local experiences, coastal town"
     />
-    <meta name="author" content="ahangama.com" />
-    <meta name="robots" content="index, follow" />
+    <meta data-static-seo="true" name="author" content="Ahangama.com" />
+    <meta data-static-seo="true" name="robots" content="index, follow" />
     <meta name="language" content="en" />
     <meta name="revisit-after" content="7 days" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ahangama.com" />
+    <link data-static-seo="true" rel="canonical" href="https://ahangama.com/" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ahangama.com/" />
+    <meta data-static-seo="true" property="og:type" content="website" />
     <meta
+      data-static-seo="true"
+      property="og:url"
+      content="https://ahangama.com/"
+    />
+    <meta
+      data-static-seo="true"
       property="og:title"
-      content="Ahangama.com — Discover Ahangama, Sri Lanka"
+      content="Ahangama.com — The Local Guide to Ahangama, Sri Lanka"
     />
     <meta
+      data-static-seo="true"
       property="og:description"
-      content="Your local hub for the best of Ahangama — discover places to eat, stay, surf, relax, explore, and experience the south coast."
+      content="Discover Ahangama, Sri Lanka with locally curated places to eat, stay, surf and explore, plus current events, wellness classes and transport guides."
     />
     <meta
+      data-static-seo="true"
       property="og:image"
       content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1788150045/ahangam.com_dbbgls.webp"
     />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta data-static-seo="true" property="og:image:width" content="1200" />
+    <meta data-static-seo="true" property="og:image:height" content="630" />
     <meta property="og:site_name" content="Ahangama.com" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://ahangama.com/" />
     <meta
-      property="twitter:title"
-      content="Ahangama.com — Discover Ahangama, Sri Lanka"
+      data-static-seo="true"
+      name="twitter:card"
+      content="summary_large_image"
     />
     <meta
-      property="twitter:description"
-      content="Your local hub for the best of Ahangama — discover places to eat, stay, surf, relax, explore, and experience the south coast."
+      data-static-seo="true"
+      name="twitter:url"
+      content="https://ahangama.com/"
     />
     <meta
-      property="twitter:image"
+      data-static-seo="true"
+      name="twitter:title"
+      content="Ahangama.com — The Local Guide to Ahangama, Sri Lanka"
+    />
+    <meta
+      data-static-seo="true"
+      name="twitter:description"
+      content="Discover Ahangama, Sri Lanka with locally curated places to eat, stay, surf and explore, plus current events, wellness classes and transport guides."
+    />
+    <meta
+      data-static-seo="true"
+      name="twitter:image"
       content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1788150045/ahangam.com_dbbgls.webp"
     />
     <meta property="twitter:creator" content="@ahangamacom" />
@@ -145,52 +163,44 @@
     />
 
     <!-- Structured Data -->
-    <script type="application/ld+json">
+    <script
+      data-static-seo="true"
+      data-homepage-schema="true"
+      type="application/ld+json"
+    >
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Ahangama.com",
-        "url": "https://ahangama.com",
-        "description": "Curated destination guides + local privileges for independent travellers in Ahangama, Sri Lanka",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Ahangama.com"
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://ahangama.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        },
-        "sameAs": ["https://instagram.com/ahangamacom"]
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://ahangama.com/#organization",
+            "name": "Ahangama.com",
+            "url": "https://ahangama.com/",
+            "description": "A locally curated destination guide to Ahangama, Sri Lanka.",
+            "sameAs": ["https://instagram.com/ahangama.pass"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ahangama.com/#website",
+            "url": "https://ahangama.com/",
+            "name": "Ahangama.com",
+            "description": "Local guides, places, events and experiences in Ahangama, Sri Lanka.",
+            "publisher": {
+              "@id": "https://ahangama.com/#organization"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ahangama.com/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }
+        ]
       }
     </script>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "name": "Ahangama.com",
-        "url": "https://ahangama.com",
-        "description": "Curated destination guides and privilege card for Ahangama, Sri Lanka",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ahangama",
-          "addressRegion": "Southern Province",
-          "addressCountry": "Sri Lanka"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "5.9732",
-          "longitude": "80.3736"
-        },
-        "serviceArea": {
-          "@type": "City",
-          "name": "Ahangama"
-        }
-      }
-    </script>
-
-    <script type="module" crossorigin src="/assets/index-D8cC9Iy0.js"></script>
+    <script type="module" crossorigin src="/assets/index-dZw0YKyo.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DlrlMlzS.css">
   </head>
   <body>

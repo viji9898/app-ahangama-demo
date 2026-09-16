@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo, useId } from "react";
 
 const GUIDE_API_BASE = "/api/guide";
-import { Helmet } from "react-helmet-async";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -11,6 +10,8 @@ import iconUrl from "leaflet/dist/images/marker-icon.png";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 import { trackGuideEvent, trackVenueImpression } from "../analytics";
+import { Seo } from "../app/seo";
+import { absUrl } from "../app/siteUrl";
 import { withGuideVenueIdentity } from "../data/guideVenueIdentities";
 import useTrackedImpression from "../hooks/useTrackedImpression";
 
@@ -1554,15 +1555,12 @@ export default function ExperienceAhangamaGuide() {
 
   return (
     <div className={darkMode ? "eag-dark-mode" : ""}>
-      <Helmet>
-        <title>Experience Ahangama, The Insider&rsquo;s Guide to Sri Lanka&rsquo;s Coolest Coast</title>
-        <meta name="description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
-        <link rel="canonical" href="https://ahangama.com/guide" />
-        <meta property="og:title" content="Experience Ahangama, The Insider's Guide to Sri Lanka's Coolest Coast" />
-        <meta property="og:description" content="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama." />
-        <meta property="og:image" content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp" />
-        <meta property="og:image:secure_url" content="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp" />
-      </Helmet>
+      <Seo
+        title="Experience Ahangama, The Insider's Guide to Sri Lanka's Coolest Coast"
+        description="The insider's guide to Sri Lanka's coolest coast. Curated chapters on stays, eats, surf, wellness, and slow living in Ahangama."
+        canonical={absUrl("/guide")}
+        ogImage="https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp"
+      />
 
       <button
         className={`eag-dark-toggle ${darkMode ? "eag-dark-toggle--on" : ""}`}

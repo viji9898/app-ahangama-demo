@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-16T15:59:29.343Z",
+  "generatedAt": "2026-09-16T20:50:17.711Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 722,
+  "count": 723,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -6093,6 +6093,21 @@
       "pageRoutes": {
         "src/pages/ExperienceAhangamaGuide.jsx": [
           "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788150045/ahangam.com_dbbgls.webp",
+      "fileName": "ahangam.com_dbbgls.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/Home.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
         ]
       }
     },

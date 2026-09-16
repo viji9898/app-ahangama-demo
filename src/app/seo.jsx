@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 
 function buildAuthorSchema(author) {
   const hasUrl = /^https?:\/\//i.test(author);
@@ -30,6 +29,7 @@ export function Seo({
   title,
   description,
   canonical,
+  ogTitle,
   ogImage,
   ogImageWidth,
   ogImageHeight,
@@ -40,7 +40,12 @@ export function Seo({
   noindex = false,
 }) {
   const fullTitle = title ? `${title}` : "ahangama.com";
-  const jsonLdEntries = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+  const socialTitle = ogTitle || fullTitle;
+  const jsonLdEntries = Array.isArray(jsonLd)
+    ? [...jsonLd]
+    : jsonLd
+      ? [jsonLd]
+      : [];
 
   if (ogType === "article" && author && publishDate) {
     jsonLdEntries.push({
@@ -57,48 +62,99 @@ export function Seo({
     });
   }
 
-  return (
-    <Helmet>
-      <title>{fullTitle}</title>
-      {description && <meta name="description" content={description} />}
-      {canonical && <link rel="canonical" href={canonical} />}
-      <meta
-        name="robots"
-        content={noindex ? "noindex, nofollow" : "index, follow"}
-      />
-      {author && <meta name="author" content={author} />}
-      {author && <meta property="author" content={author} />}
-      {publishDate && <meta name="publish_date" content={publishDate} />}
-
-      <meta property="og:title" content={fullTitle} />
-      {description && <meta property="og:description" content={description} />}
-      {canonical && <meta property="og:url" content={canonical} />}
-      <meta property="og:type" content={ogType} />
-      {author && <meta property="article:author" content={author} />}
-      {author && <meta name="article:author" content={author} />}
-      {publishDate && (
-        <meta property="article:published_time" content={publishDate} />
-      )}
-      {ogImage && <meta property="og:image" content={ogImage} />}
-      {ogImage && <meta property="og:image:secure_url" content={ogImage} />}
-      {ogImageWidth && (
-        <meta property="og:image:width" content={String(ogImageWidth)} />
-      )}
-      {ogImageHeight && (
-        <meta property="og:image:height" content={String(ogImageHeight)} />
-      )}
-
-      <meta
-        name="twitter:card"
-        content={ogImage ? "summary_large_image" : "summary"}
-      />
-      {ogImage && <meta name="twitter:image" content={ogImage} />}
-
-      {jsonLdEntries.map((entry, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(entry)}
-        </script>
-      ))}
-    </Helmet>
+  const serializedJsonLdEntries = JSON.stringify(
+    jsonLdEntries.map((entry) => JSON.stringify(entry)),
   );
+
+  React.useLayoutEffect(() => {
+    const head = document.head;
+    const appendMeta = (attribute, key, content) => {
+      if (!content) return;
+
+      const element = document.createElement("meta");
+      element.dataset.runtimeSeo = "true";
+      element.setAttribute(attribute, key);
+      element.setAttribute("content", String(content));
+      head.appendChild(element);
+    };
+
+    head
+      .querySelectorAll('[data-static-seo="true"], [data-runtime-seo="true"]')
+      .forEach((element) => element.remove());
+
+    document.title = fullTitle;
+
+    if (description) appendMeta("name", "description", description);
+    if (canonical) {
+      const canonicalLink = document.createElement("link");
+      canonicalLink.dataset.runtimeSeo = "true";
+      canonicalLink.rel = "canonical";
+      canonicalLink.href = canonical;
+      head.appendChild(canonicalLink);
+    }
+
+    appendMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
+    if (author) {
+      appendMeta("name", "author", author);
+    }
+    if (publishDate) appendMeta("name", "publish_date", publishDate);
+
+    appendMeta("property", "og:title", socialTitle);
+    if (description) appendMeta("property", "og:description", description);
+    if (canonical) appendMeta("property", "og:url", canonical);
+    appendMeta("property", "og:type", ogType);
+    if (author) {
+      appendMeta("property", "article:author", author);
+    }
+    if (publishDate) {
+      appendMeta("property", "article:published_time", publishDate);
+    }
+    if (ogImage) {
+      appendMeta("property", "og:image", ogImage);
+      appendMeta("property", "og:image:secure_url", ogImage);
+    }
+    if (ogImageWidth) appendMeta("property", "og:image:width", ogImageWidth);
+    if (ogImageHeight) {
+      appendMeta("property", "og:image:height", ogImageHeight);
+    }
+
+    appendMeta(
+      "name",
+      "twitter:card",
+      ogImage ? "summary_large_image" : "summary",
+    );
+    appendMeta("name", "twitter:title", socialTitle);
+    if (description) appendMeta("name", "twitter:description", description);
+    if (canonical) appendMeta("name", "twitter:url", canonical);
+    if (ogImage) appendMeta("name", "twitter:image", ogImage);
+
+    JSON.parse(serializedJsonLdEntries).forEach((entry) => {
+      const script = document.createElement("script");
+      script.dataset.runtimeSeo = "true";
+      script.type = "application/ld+json";
+      script.textContent = entry;
+      head.appendChild(script);
+    });
+
+    return () => {
+      head
+        .querySelectorAll('[data-runtime-seo="true"]')
+        .forEach((element) => element.remove());
+    };
+  }, [
+    author,
+    canonical,
+    description,
+    fullTitle,
+    noindex,
+    ogImage,
+    ogImageHeight,
+    ogImageWidth,
+    ogType,
+    publishDate,
+    serializedJsonLdEntries,
+    socialTitle,
+  ]);
+
+  return null;
 }
