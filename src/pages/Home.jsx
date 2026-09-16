@@ -3198,7 +3198,7 @@ export default function Home() {
                       fontSize: 38,
                     }}
                   >
-                    The Ahangama Card
+                    The Ahangama Pass
                   </Title>
                   <Paragraph
                     style={{
@@ -3255,7 +3255,7 @@ export default function Home() {
                     }}
                     style={{ ...editorialPrimaryButtonStyle, width: "100%" }}
                   >
-                    Get the Card
+                    Get the Pass
                   </Button>
                   <Button
                     size="large"

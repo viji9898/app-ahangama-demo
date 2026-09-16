@@ -12,7 +12,7 @@ const { Paragraph, Text, Title } = Typography;
 const HERO_IMAGE =
   "https://res.cloudinary.com/czuk4rf2/image/upload/v1789027166/Eats.png";
 const SUNSET_IMAGE =
-  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/lighthouse.jpg";
+  "https://res.cloudinary.com/czuk4rf2/image/upload/v1789027495/Surf-Club-Midigama.png";
 const DIRECTORY_PAGE_SIZE = 12;
 
 const EDITOR_NOTE =
@@ -235,25 +235,25 @@ const CONTINUE_EXPLORING = [
   {
     title: "Stays",
     href: "/stays",
-    image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/merchant.jpg",
+    image: "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026282/Lighhouse-beachfront-boutique-hotel-tropical-sunset-ocean-view.webp",
     description: "Boutique stays, villas and longer-stay addresses for building a trip around.",
   },
   {
     title: "Wellness",
     href: "/wellness",
-    image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/pura_pilates.jpeg",
+    image: "https://res.cloudinary.com/czuk4rf2/image/upload/v1789543500/wood-glass-gym-tree-views-weights-cardio-machines-calm..webp",
     description: "Yoga, recovery, Pilates and spa-led resets across the coast.",
   },
   {
     title: "Built in Ahangama",
     href: "/about",
-    image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/mukti.jpg",
+    image: "https://res.cloudinary.com/czuk4rf2/image/upload/v1789543738/Ahangama-Kabalana-beach-sunset-pink-sky.webp",
     description: "Creative businesses, local perspective and the people shaping the town's newer identity.",
   },
   {
     title: "Ahangama This Week",
     href: "/",
-    image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/hero_ahangama.jpg",
+    image: "https://res.cloudinary.com/czuk4rf2/image/upload/v1789543813/Hero-AhanagamaGuide-SriLanka.jpg",
     description: "The weekly pulse of openings, finds and what the town is paying attention to now.",
   },
 ];
