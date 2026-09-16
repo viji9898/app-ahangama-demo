@@ -751,8 +751,9 @@
 
 .ahg-pass3d-card {
   position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
+  width: 160px;
+  height: 213px;
+  aspect-ratio: auto;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.48);
   border-radius: 20px;
@@ -765,7 +766,8 @@
 }
 
 .ahg-pass3d-card--guide {
-  aspect-ratio: 3 / 4;
+  width: 160px;
+  height: 213px;
   border-radius: 14px;
 }
 
