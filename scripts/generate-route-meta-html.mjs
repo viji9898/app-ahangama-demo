@@ -12,8 +12,10 @@ const siteUrl = (process.env.VITE_SITE_URL || "https://ahangama.com").replace(
   /\/$/,
   "",
 );
-const defaultAuthor = "viji.com";
+const defaultAuthor = "Vijitha Wijesuriya";
 const defaultPublishDate = "2026-06-12T00:00:00.000Z";
+const organizationId = "https://ahangama.com/#organization";
+const vijithaId = "https://ahangama.com/#vijitha-wijesuriya";
 
 function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -40,6 +42,12 @@ function serializeJsonLd(data) {
 }
 
 function buildAuthorSchema(author) {
+  if (author === "Vijitha Wijesuriya") {
+    return {
+      "@id": vijithaId,
+    };
+  }
+
   const hasUrl = /^https?:\/\//i.test(author);
 
   if (hasUrl) {
@@ -229,6 +237,9 @@ function applyMeta(html, meta) {
       headline: meta.title,
       description: meta.description,
       author: buildAuthorSchema(author),
+      publisher: {
+        "@id": organizationId,
+      },
       datePublished: publishDate,
       dateModified: publishDate,
       mainEntityOfPage: canonical,

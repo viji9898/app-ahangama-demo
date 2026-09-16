@@ -1,6 +1,15 @@
 import React from "react";
 
+const ORGANIZATION_ID = "https://ahangama.com/#organization";
+const VIJITHA_ID = "https://ahangama.com/#vijitha-wijesuriya";
+
 function buildAuthorSchema(author) {
+  if (author === "Vijitha Wijesuriya") {
+    return {
+      "@id": VIJITHA_ID,
+    };
+  }
+
   const hasUrl = /^https?:\/\//i.test(author);
 
   if (hasUrl) {
@@ -34,7 +43,7 @@ export function Seo({
   ogImageWidth,
   ogImageHeight,
   ogType = "website",
-  author,
+  author = "Vijitha Wijesuriya",
   publishDate,
   jsonLd,
   noindex = false,
@@ -54,6 +63,9 @@ export function Seo({
       headline: fullTitle,
       description,
       author: buildAuthorSchema(author),
+      publisher: {
+        "@id": ORGANIZATION_ID,
+      },
       datePublished: publishDate,
       dateModified: publishDate,
       mainEntityOfPage: canonical,
@@ -103,7 +115,7 @@ export function Seo({
     if (description) appendMeta("property", "og:description", description);
     if (canonical) appendMeta("property", "og:url", canonical);
     appendMeta("property", "og:type", ogType);
-    if (author) {
+    if (ogType === "article" && author) {
       appendMeta("property", "article:author", author);
     }
     if (publishDate) {

@@ -1065,7 +1065,7 @@ export default function Home() {
         title="Ahangama, Sri Lanka: Local Guide, Events & Places"
         description="Discover Ahangama, Sri Lanka with locally curated places to eat, stay, surf and explore, plus current events, wellness classes and transport guides."
         canonical={canonical}
-        author="Ahangama.com"
+        author="Vijitha Wijesuriya"
         ogTitle="Ahangama.com — The Local Guide to Ahangama, Sri Lanka"
         ogImage={homepageSocialImage}
         ogImageWidth={1200}
@@ -1083,6 +1083,11 @@ export default function Home() {
               sameAs: ["https://instagram.com/ahangama.pass"],
             },
             {
+              "@type": "Person",
+              "@id": "https://ahangama.com/#vijitha-wijesuriya",
+              name: "Vijitha Wijesuriya",
+            },
+            {
               "@type": "WebSite",
               "@id": "https://ahangama.com/#website",
               url: "https://ahangama.com/",
@@ -1091,6 +1096,9 @@ export default function Home() {
                 "Local guides, places, events and experiences in Ahangama, Sri Lanka.",
               publisher: {
                 "@id": "https://ahangama.com/#organization",
+              },
+              creator: {
+                "@id": "https://ahangama.com/#vijitha-wijesuriya",
               },
               potentialAction: {
                 "@type": "SearchAction",

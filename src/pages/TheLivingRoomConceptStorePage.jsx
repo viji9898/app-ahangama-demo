@@ -115,7 +115,7 @@ export default function TheLivingRoomConceptStorePage() {
         canonical={canonical}
         ogImage={HERO_IMAGE}
         ogType="article"
-        author="viji.com"
+        author="Vijitha Wijesuriya"
         publishDate={publishDate}
       />
 

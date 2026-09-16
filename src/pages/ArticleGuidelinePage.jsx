@@ -591,7 +591,7 @@ export default function ArticleGuidelinePage() {
         canonical={canonical}
         ogImage={OG_IMAGE}
         ogType="article"
-        author="viji.com"
+        author="Vijitha Wijesuriya"
         publishDate={publishDate}
       />
 
