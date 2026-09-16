@@ -44,6 +44,7 @@ export const GUIDE_SECTIONS = Object.freeze({
   stay: { label: "Stay", color: "#2d6651" },
   "eat-drink": { label: "Eat & Drink", color: "#c45432" },
   surf: { label: "Beaches & Surf", color: "#28758a" },
+  "surf-schools": { label: "Surf Schools", color: "#2E86AB" },
   experiences: { label: "Experiences", color: "#866232" },
   wellness: { label: "Wellness", color: "#687e55" },
   shopping: { label: "Shopping & Local", color: "#a34d54" },

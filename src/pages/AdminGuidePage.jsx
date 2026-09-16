@@ -27,6 +27,7 @@ const SECTIONS = [
   { key: "wellness", label: "Wellness", color: "#8A6E8A", icon: "\u{1F9D8}" },
   { key: "night_life", label: "Night Life", color: "#20455C", icon: "\u{1F303}" },
   { key: "best_retail_stores", label: "Retail", color: "#8C6948", icon: "\u{1F6CD}" },
+  { key: "surf_schools", label: "Surf Schools", color: "#2E86AB", icon: "\u{1F3C4}" },
   { key: "transport", label: "Transport", color: "#5A7A6B", icon: "\u{1F6F2}" },
 ];
 
