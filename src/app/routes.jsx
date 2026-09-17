@@ -111,6 +111,9 @@ import VillaAlbaBoutiqueHotelPage, {
 import TheAccidentalStoryOfRibsPage, {
   THE_ACCIDENTAL_STORY_OF_RIBS_PATH,
 } from "../pages/TheAccidentalStoryOfRibsPage";
+import CrossFitCeylonPalmPage, {
+  CROSSFIT_CEYLON_PALM_PATH,
+} from "../pages/CrossFitCeylonPalmPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -309,6 +312,10 @@ const routes = [
   {
     path: THE_ACCIDENTAL_STORY_OF_RIBS_PATH,
     element: <TheAccidentalStoryOfRibsPage />,
+  },
+  {
+    path: CROSSFIT_CEYLON_PALM_PATH,
+    element: <CrossFitCeylonPalmPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,

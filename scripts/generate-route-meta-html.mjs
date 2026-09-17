@@ -544,6 +544,17 @@ const routeMeta = [
     noindex: true,
   },
   {
+    route: "/crossfit-ceylon-palm-training-in-the-jungle",
+    title: "CrossFit Ceylon Palm: Training in the Jungle",
+    description:
+      "Daily classes, open gym hours, expert coaching and serious strength training come together in an industrial space wrapped by jungle.",
+    publishDate: "2026-09-17T09:00:00.000Z",
+    author: "Ahangama",
+    type: "article",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
+  },
+  {
     route: "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama",
     title: "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama",
     description:

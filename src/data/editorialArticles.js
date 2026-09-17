@@ -1,5 +1,15 @@
 export const EDITORIAL_ARTICLES = [
   {
+    category: "Fitness Story",
+    title: "CrossFit Ceylon Palm: Training in the Jungle",
+    href: "/crossfit-ceylon-palm-training-in-the-jungle",
+    description:
+      "Daily classes, open gym hours, expert coaching and serious strength training come together in an industrial space wrapped by jungle.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
+    publishDate: "2026-09-17T09:00:00.000Z",
+  },
+  {
     category: "Food Story",
     title: "The Accidental Story of RIBS",
     href: "/the-accidental-story-of-ribs",

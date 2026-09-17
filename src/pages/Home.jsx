@@ -236,6 +236,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Fitness Story",
+    title: "CrossFit Ceylon Palm: Training in the Jungle",
+    date: "This Week",
+    href: "/crossfit-ceylon-palm-training-in-the-jungle",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Outside-view-of-crossfit-gym.webp",
+  },
+  {
     category: "Food Story",
     title: "The Accidental Story of RIBS",
     date: "This Week",
