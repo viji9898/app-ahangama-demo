@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-17T04:09:55.275Z",
+  "generatedAt": "2026-09-17T12:31:58.744Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 721,
+  "count": 732,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -771,6 +771,21 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Closing+image+landscape-rossfit-ceylon-team-group-photo.webp",
+      "fileName": "Closing+image+landscape-rossfit-ceylon-team-group-photo.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/clothes-rack.jpeg",
       "fileName": "clothes-rack.jpeg",
       "format": "JPEG",
@@ -943,6 +958,22 @@
         "src/data/places.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
+      "fileName": "crossfit-ceylon-heavy-dumbbell-workout.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/editorialArticles.js",
+        "src/pages/CrossFitCeylonPalmPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/the-living-room-concept-store/customer-clothing.jpeg",
@@ -1703,10 +1734,14 @@
       "origin": "owned",
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx",
         "src/pages/Home.jsx",
         "src/pages/TheAccidentalStoryOfRibsPage.jsx"
       ],
       "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ],
         "src/pages/Home.jsx": [
           "/"
         ],
@@ -2615,6 +2650,25 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Outside-view-of-crossfit-gym.webp",
+      "fileName": "Outside-view-of-crossfit-gym.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx",
+        "src/pages/Home.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ],
+        "src/pages/Home.jsx": [
+          "/"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/oyummy.jpeg",
       "fileName": "oyummy.jpeg",
       "format": "JPEG",
@@ -2821,6 +2875,51 @@
         "src/pages/StaffPickExperienceAhangamaPage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Portrait-athletes-training-knee-raise.webp",
+      "fileName": "Portrait-athletes-training-knee-raise.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Portrait-athletes-training-on-dumbells.webp",
+      "fileName": "Portrait-athletes-training-on-dumbells.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Portrait-crossfit-ceylon-coach-training-athlete-dumbbells.webp",
+      "fileName": "Portrait-crossfit-ceylon-coach-training-athlete-dumbbells.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/portrait+_+ahangama-evening-market-live-music.webp",
@@ -3082,6 +3181,21 @@
         "src/pages/StaffPickExperienceAhangamaPage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Potrait-crossfit-ceylon-coach-group-warmup.webp",
+      "fileName": "Potrait-crossfit-ceylon-coach-group-warmup.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/Potrait+_++ahangama-market-handmade-products..webp",
@@ -4510,6 +4624,21 @@
         "src/pages/PetalsAhangamaLegacyPage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/Wide+feature+image+-Interior-of-crossfit-gym.webp",
+      "fileName": "Wide+feature+image+-Interior-of-crossfit-gym.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/CrossFitCeylonPalmPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/CrossFitCeylonPalmPage.jsx": [
+          "/crossfit-ceylon-palm-training-in-the-jungle"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/best-sunsets/Wide+Feature+Image+1800+x+1200+px+-+.webp",
@@ -6213,6 +6342,21 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789624078/Azure_Swim_mipvqq.webp",
+      "fileName": "Azure_Swim_mipvqq.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto,f_auto,w_640/v1784786372/Backgroud_1_1_pbfsbl.webp",
       "fileName": "Backgroud_1_1_pbfsbl.webp",
       "format": "WEBP",
@@ -6520,6 +6664,21 @@
         "src/pages/WhereAhangamaGathersForSunsetPage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789624942/Coco_Kitchen_f6zx1k.webp",
+      "fileName": "Coco_Kitchen_f6zx1k.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342540/Coconut_Court_Pickleball_fdenxj.webp",
@@ -7466,8 +7625,8 @@
       "pageRoutes": {}
     },
     {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789112401/nirbana_doracz.webp",
-      "fileName": "nirbana_doracz.webp",
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789639005/nirbana_new_spwwso.webp",
+      "fileName": "nirbana_new_spwwso.webp",
       "format": "WEBP",
       "origin": "external",
       "host": "res.cloudinary.com",
@@ -7528,6 +7687,21 @@
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786342709/Pachcha_Sanni_ghe4qa.webp",
       "fileName": "Pachcha_Sanni_ghe4qa.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789639003/paddle_lxeciz.webp",
+      "fileName": "paddle_lxeciz.webp",
       "format": "WEBP",
       "origin": "external",
       "host": "res.cloudinary.com",
