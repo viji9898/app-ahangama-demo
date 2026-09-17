@@ -76,6 +76,7 @@ function extractVenuesFromJSX(source) {
     "BEST_RETAIL_STORES",
     "BEST_CAFES",
     "TRANSPORT_VENUES",
+    "SURF_SCHOOLS",
   ];
 
   const venues = [];
