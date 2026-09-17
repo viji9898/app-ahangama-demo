@@ -25,7 +25,7 @@ const POSTCARDS_IMAGE = `${BASE_IMAGE_URL}/Portait+-+gusta-ahangama-postcards-co
 const publishDate = "2026-08-16T09:00:00.000Z";
 
 const PLACE_LINKS = [
-  { label: "Gusta", href: "http://gusta.sl" },
+  { label: "Gusta", href: "https://www.instagram.com/gusta.sl/?hl=en" },
   {
     label: "Café Ceylon",
     href: "https://www.instagram.com/cafe_ceylon/",
