@@ -32,7 +32,7 @@ const CONTENT_TITLE =
   "The Mugatiya: A Heritage Villa Made for Slower Days in Ahangama";
 const ARTICLE_CATEGORY = "stay_story";
 const AUTHOR_NAME = "Freda";
-const OWNER_WHATSAPP_LINK = "https://wa.me/94772063689";
+const OWNER_WHATSAPP_LINK = "https://wa.me/6593806029";
 
 const articleIntroduction = [
   "There are villas that perform luxury, and there are houses that remember.",
