@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-16T20:59:26.184Z",
+  "generatedAt": "2026-09-17T04:09:55.275Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 723,
+  "count": 721,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/community-markets-in-ahangama/+portrait+_ahangama-evening-market-live-music.webp",
@@ -6127,21 +6127,6 @@
       }
     },
     {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287236/Ahankara_Surf_School_ej2rjp.jpg",
-      "fileName": "Ahankara_Surf_School_ej2rjp.jpg",
-      "format": "JPG",
-      "origin": "external",
-      "host": "res.cloudinary.com",
-      "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
-      ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
-    },
-    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787570539/AK_bike_rental_1_jajy1y.webp",
       "fileName": "AK_bike_rental_1_jajy1y.webp",
       "format": "WEBP",
@@ -6196,6 +6181,21 @@
         "src/pages/StaysPage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789551726/Ashen_surf_yn9ixa.webp",
+      "fileName": "Ashen_surf_yn9ixa.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786347936/August_Calendar_OG_Image_kvxsyx.jpg",
@@ -8378,21 +8378,6 @@
       }
     },
     {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287256/Sunrise_Surf_School_opb6xz.jpg",
-      "fileName": "Sunrise_Surf_School_opb6xz.jpg",
-      "format": "JPG",
-      "origin": "external",
-      "host": "res.cloudinary.com",
-      "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
-      ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
-    },
-    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782830708/Sunset_at_Light_house_kfxr9i.webp",
       "fileName": "Sunset_at_Light_house_kfxr9i.webp",
       "format": "WEBP",
@@ -8459,21 +8444,6 @@
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788411397/surfclub_iycmcx.webp",
       "fileName": "surfclub_iycmcx.webp",
       "format": "WEBP",
-      "origin": "external",
-      "host": "res.cloudinary.com",
-      "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
-      ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
-    },
-    {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787287258/Surfing_Sri_Lanka_fzqfya.jpg",
-      "fileName": "Surfing_Sri_Lanka_fzqfya.jpg",
-      "format": "JPG",
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
