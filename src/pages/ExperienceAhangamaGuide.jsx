@@ -209,8 +209,11 @@ function trackVenueOutboundClick(item, linkType, destinationUrl, componentLocati
 }
 
 function CardLinks({ item }) {
+  const [mapPopupOpen, setMapPopupOpen] = useState(false);
   const hasMap = Boolean(item.googleMaps || (item.lat && item.lng));
   const mapDestination = hasMap ? mapsUrl(item) : "";
+  const hasMapLinks = Boolean(item.mapLinks?.length);
+
   return (
     <div className="eag-card-links">
       {item.instagram && (
@@ -219,9 +222,30 @@ function CardLinks({ item }) {
         </a>
       )}
       {hasMap ? (
-        <a className="eag-map" href={mapDestination} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`} onClick={() => trackVenueOutboundClick(item, "google_maps", mapDestination, "venue_card")}>
-          <MapPinIcon />
-        </a>
+        hasMapLinks ? (
+          <>
+            <button type="button" className="eag-map eag-map--btn" aria-label={`${item.name} locations`} onClick={() => setMapPopupOpen(true)}>
+              <MapPinIcon />
+            </button>
+            {mapPopupOpen && (
+              <div className="eag-map-popup" role="dialog" aria-label="Locations">
+                <div className="eag-map-popup-header">
+                  <span className="eag-map-popup-title">{item.name}</span>
+                  <button type="button" className="eag-map-popup-close" onClick={() => setMapPopupOpen(false)} aria-label="Close">&times;</button>
+                </div>
+                {item.mapLinks.map((link) => (
+                  <a key={link.label} className="eag-map-popup-link" href={link.url} target="_blank" rel="noopener noreferrer" onClick={() => trackVenueOutboundClick(item, "google_maps", link.url, "venue_card")}>
+                    <MapPinIcon /> {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <a className="eag-map" href={mapDestination} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`} onClick={() => trackVenueOutboundClick(item, "google_maps", mapDestination, "venue_card")}>
+            <MapPinIcon />
+          </a>
+        )
       ) : (
         <span className="eag-map eag-map--empty" aria-hidden="true"><MapPinIcon /></span>
       )}
@@ -1088,7 +1112,7 @@ const NIGHT_LIFE = [
 ].map(withGuideSection("night_life"));
 
 const BEST_RETAIL_STORES = [
-  { name: "Azure Swim", rating: "4.6", desc: "Sustainable, high-quality swimwear and surf-lifestyle essentials in the heart of Ahangama.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789624078/Azure_Swim_mipvqq.webp", lat: 5.937391063289299, lng: 80.51264518734595, instagram: "https://www.instagram.com/azure_swim_sri_lanka/", googleMaps: "https://maps.app.goo.gl/XFHJRPsmCDeWmU7S7", reviewCount: 321},
+  { name: "Azure Swim", rating: "4.6", desc: "Sustainable, high-quality swimwear and surf-lifestyle essentials with stores in Ahangama and Matara.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1789624078/Azure_Swim_mipvqq.webp", lat: 5.937391063289299, lng: 80.51264518734595, instagram: "https://www.instagram.com/azure_swim_sri_lanka/", googleMaps: "https://maps.app.goo.gl/j3qzgmD5GX7iSAdP8", mapLinks: [{ label: "Ahangama", url: "https://maps.app.goo.gl/j3qzgmD5GX7iSAdP8" }, { label: "Matara", url: "https://maps.app.goo.gl/Pr1L1ozPVcFh9oeG6" }], reviewCount: 321},
   { name: "Gusta", rating: "4.6", desc:"Gourmet groceries, fresh produce and artisan products.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346946/Gusta_01_mnzv6h.webp", lat: 5.978468021160938, lng: 80.34854993743255, instagram: "https://www.instagram.com/gusta.sl/", googleMaps: "https://maps.app.goo.gl/EwBjQhME4L1tuj72A", ownership: "local" , website: "https://www.gusta.lk/" , reviewCount: 30 },
   { name: "Mudra Herbal Spicy Tea Shop", rating: "4.9", desc:"Handcrafted teas, local spices and Sri Lankan flavours.", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786346942/Mudra_Herbal_Spicy_Tea_Shop_bzqrm4.webp", lat: 5.973413421402998, lng: 80.3641129182273, instagram: "https://www.instagram.com/gunasekaranalaka033/?hl=en", googleMaps: "https://maps.app.goo.gl/u31u2MqweFkC6dCB6", ownership: "local", reviewCount: 37 },
   { name: "Mint Ceylon", rating: "4.7", desc: "Consciously crafted slow fashion and unique lifestyle pieces, mindfully handmade by local artisans in the heart of Sri Lanka.", image:"https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp", lat: 5.973834393620351, lng: 80.36327069432797, instagram: "https://www.instagram.com/mint.ceylon/?hl=en", googleMaps: "https://maps.app.goo.gl/DgphUYpCcKj7AJsf7", ownership: "local" , website: "https://mintceylon.com/" , reviewCount: 0 },

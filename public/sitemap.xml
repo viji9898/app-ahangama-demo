@@ -2,11 +2,11 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://ahangama.com/sitemaps/pages.xml</loc>
-    <lastmod>2026-09-17T12:18:23.667Z</lastmod>
+    <lastmod>2026-09-21T02:49:06.440Z</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/articles.xml</loc>
-    <lastmod>2026-09-17T12:31:24.535Z</lastmod>
+    <lastmod>2026-09-18T10:02:20.409Z</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/blogs.xml</loc>
@@ -14,19 +14,19 @@
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/eat.xml</loc>
-    <lastmod>2026-09-17T06:47:43.519Z</lastmod>
+    <lastmod>2026-01-01T00:00:00.000Z</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/stays.xml</loc>
-    <lastmod>2026-09-17T06:18:21.457Z</lastmod>
+    <lastmod>2026-01-01T00:00:00.000Z</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/wellness.xml</loc>
-    <lastmod>2026-08-31T22:48:18.984Z</lastmod>
+    <lastmod>2026-01-01T00:00:00.000Z</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/retail.xml</loc>
-    <lastmod>2026-09-03T11:32:51.488Z</lastmod>
+    <lastmod>2026-01-01T00:00:00.000Z</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/events.xml</loc>
@@ -34,6 +34,6 @@
   </sitemap>
   <sitemap>
     <loc>https://ahangama.com/sitemaps/images.xml</loc>
-    <lastmod>2026-09-17T06:47:43.519Z</lastmod>
+    <lastmod>2026-06-01T00:00:00.000Z</lastmod>
   </sitemap>
 </sitemapindex>
