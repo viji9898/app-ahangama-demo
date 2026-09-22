@@ -12,6 +12,7 @@ import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 import { trackGuideEvent, trackVenueImpression } from "../analytics";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
+import { QRCodeSVG } from "qrcode.react";
 import { withGuideVenueIdentity } from "../data/guideVenueIdentities";
 import useTrackedImpression from "../hooks/useTrackedImpression";
 
@@ -554,30 +555,22 @@ function ContentsSection() {
 
 function OverviewSection() {
   return (
-    <section id="overview" className="eag-section eag-section--cream">
-      <div className="eag-content">
+    <section id="overview" className="eag-section eag-section--hero">
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784788406/overview_image_ukm5or.webp)" }} />
+      <div className="eag-hero-overlay eag-hero-overlay--left" />
+      <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
-          <span className="eag-eyebrow">Discover</span>
+          <span className="eag-eyebrow eag-eyebrow--light">Discover</span>
         </Reveal>
         <Reveal delay={1}>
-          <h2 className="eag-headline">
+          <h2 className="eag-headline eag-headline--light">
             <span className="eag-headline-line">Overview</span>
           </h2>
         </Reveal>
         <Reveal delay={2}>
-          <p className="eag-body">
+          <p className="eag-body eag-body--light">
             Once a sleepy stretch of local fishing shacks, Ahangama has quietly evolved into the South Coast&rsquo;s coolest, most curated coastal hub. It has successfully dodged the overdeveloped chaos of other global surf towns, maintaining a delicate balance between slow island living and a thriving, modern aesthetic. If you are looking for barefoot luxury, world-class waves, and jungle-fringed cafes, you have found your spot.
           </p>
-        </Reveal>
-        <Reveal delay={3}>
-          <div className="eag-overview-photo">
-            <div className="eag-overlay-teal" />
-            <img
-              src="https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784788406/overview_image_ukm5or.webp"
-              alt="Jungle coastal cafe, Ahangama"
-              loading="lazy"
-            />
-          </div>
         </Reveal>
       </div>
     </section>
@@ -804,6 +797,23 @@ function LocatedSection({ venueData }) {
                           <span className="eag-guide-map-popup-rating"><StarIcon /> {place.rating}</span>
                         ) : null}
                         {place.desc ? <p>{place.desc}</p> : null}
+                        {place.googleMaps ? (
+                          <a
+                            className="eag-guide-map-popup-nav"
+                            href={place.googleMaps}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackGuideEvent("guide_map_popup_navigate", {
+                              venue_id: place.venueId,
+                              venue_slug: place.venueSlug,
+                              venue_name: place.name,
+                              component_location: "guide_map_popup",
+                            })}
+                          >
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Navigate
+                          </a>
+                        ) : null}
                       </div>
                     </Popup>
                   </Marker>
@@ -883,27 +893,26 @@ function BestForSection() {
 
 function BestSeasonSection() {
   return (
-    <section id="best-season" className="eag-section eag-section--cream">
-      <div className="eag-content">
+    <section id="best-season" className="eag-section eag-section--hero">
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784783799/colored-4247572_jezkyb.webp)" }} />
+      <div className="eag-hero-overlay eag-hero-overlay--right" />
+      <div className="eag-content eag-content--hero eag-content--hero-right">
         <Reveal>
-          <h2 className="eag-headline">
+          <h2 className="eag-headline eag-headline--light">
             <span className="eag-headline-line">Best</span>
             <span className="eag-headline-line">Season</span>
           </h2>
         </Reveal>
         <Reveal delay={1}>
-          <p className="eag-body">
+          <p className="eag-body eag-body--light">
             The undisputed prime time to visit is late October through April. During these months, the weather is hot and sunny (averaging around 29&deg;C to 31&deg;C), the rainfall is minimal, and the ocean is calm and glassy, creating pristine surfing conditions.
           </p>
         </Reveal>
         <Reveal delay={2}>
-          <div className="eag-temp-badge">
+          <div className="eag-temp-badge eag-temp-badge--light">
             <SunIcon />
             <span>29&ndash;31&deg;C</span>
           </div>
-        </Reveal>
-        <Reveal delay={3}>
-          <div className="eag-season-banner" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784783799/colored-4247572_jezkyb.webp)" }} />
         </Reveal>
       </div>
     </section>
@@ -912,22 +921,21 @@ function BestSeasonSection() {
 
 function HowLongSection() {
   return (
-    <section id="how-long" className="eag-section eag-section--cream">
-      <div className="eag-content">
+    <section id="how-long" className="eag-section eag-section--hero">
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/v1787647989/howlongpeoplestay_1_sqg1i8.webp)", backgroundPosition: "center center" }} />
+      <div className="eag-hero-overlay eag-hero-overlay--left" />
+      <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
-          <h2 className="eag-headline eag-headline--lg">
+          <h2 className="eag-headline eag-headline--light eag-headline--lg">
             <span className="eag-headline-line">How Long</span>
             <span className="eag-headline-line">Do People</span>
             <span className="eag-headline-line">Usually Stay?</span>
           </h2>
         </Reveal>
         <Reveal delay={1}>
-          <p className="eag-body">
+          <p className="eag-body eag-body--light">
             Vacationers typically carve out 5 to 10 days to soak up the surf and food scene. However, because of the infectious &ldquo;slow living&rdquo; rhythm, digital nomads and slow-travelers frequently end up extending their stays for 1 to 3 months.
           </p>
-        </Reveal>
-        <Reveal delay={2}>
-          <div className="eag-season-banner" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/v1787647989/howlongpeoplestay_1_sqg1i8.webp)", backgroundPosition: "center center" }} />
         </Reveal>
       </div>
     </section>
@@ -936,32 +944,31 @@ function HowLongSection() {
 
 function TransportSection() {
   return (
-    <section id="transport" className="eag-section eag-section--white">
-      <div className="eag-content">
+    <section id="transport" className="eag-section eag-section--hero">
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784784926/44yfmcvyf_zqm5q1.webp)", backgroundPosition: "bottom" }} />
+      <div className="eag-hero-overlay eag-hero-overlay--left" />
+      <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
-          <h2 className="eag-headline">
+          <h2 className="eag-headline eag-headline--light">
             <span className="eag-headline-line">Getting Around</span>
             <span className="eag-headline-line">Ahangama</span>
           </h2>
         </Reveal>
         <Reveal delay={1}>
           <div className="eag-transport-block">
-            <div className="eag-transport-sub" style={{ color: "var(--eag-teal-dark)" }}>Getting Here</div>
-            <p className="eag-body">
+            <div className="eag-transport-sub eag-transport-sub--light">Getting Here</div>
+            <p className="eag-body eag-body--light">
               Ahangama is around a 2–3 hour drive from Bandaranaike International Airport (CMB), depending on traffic and your exact destination. Private airport transfers are the most convenient option, with prices varying depending on the vehicle and provider. The train is a beautifully scenic and budget-friendly alternative, but expect a longer journey and additional connections from the airport.
             </p>
           </div>
         </Reveal>
         <Reveal delay={2}>
           <div className="eag-transport-block">
-            <div className="eag-transport-sub" style={{ color: "var(--eag-teal-dark)" }}>Getting Around</div>
-            <p className="eag-body">
+            <div className="eag-transport-sub eag-transport-sub--light">Getting Around</div>
+            <p className="eag-body eag-body--light">
               Renting a scooter is one of the best ways to explore Ahangama and the surrounding coast, with local rentals often starting at around LKR 2,000 per day. Local tuk-tuks are also widely available for shorter journeys—just agree on the price before getting in, or use a ride-hailing app where available.
             </p>
           </div>
-        </Reveal>
-        <Reveal delay={3}>
-          <div className="eag-season-banner" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784784926/44yfmcvyf_zqm5q1.webp)", backgroundPosition: "bottom" }} />
         </Reveal>
       </div>
     </section>
@@ -1510,11 +1517,12 @@ export default function ExperienceAhangamaGuide() {
 
     let ticking = false;
     const onScroll = () => {
-      setShowTopBtn(container.scrollTop > 300);
+      const scrollY = container.scrollTop || window.scrollY || document.documentElement.scrollTop;
+      setShowTopBtn(scrollY > 300);
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const containerTop = container.scrollTop;
+        const containerTop = container.scrollTop || window.scrollY || document.documentElement.scrollTop;
         const containerMid = containerTop + container.clientHeight / 2;
         let closest = 0;
         let minDist = Infinity;
@@ -1524,7 +1532,7 @@ export default function ExperienceAhangamaGuide() {
           const sectionMid = sectionTop + rect.height / 2;
           const dist = Math.abs(sectionMid - containerMid);
           if (dist < minDist) {
-            minDist = dist;
+            minDist = dist; 
             closest = i;
           }
         });
@@ -1535,24 +1543,18 @@ export default function ExperienceAhangamaGuide() {
     };
 
     container.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
-    return () => container.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const container = document.querySelector(".eag-scroll-container");
-    if (!container) return;
-    scrollContainerRef.current = container;
-
-    const onScroll = () => {
-      setShowTopBtn(container.scrollTop > 300);
+    return () => {
+      container.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScroll);
     };
-    container.addEventListener("scroll", onScroll, { passive: true });
-    return () => container.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollToTop = () => {
-    scrollContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    const container = scrollContainerRef.current;
+    if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const openLightbox = (item) => {
@@ -1577,6 +1579,8 @@ export default function ExperienceAhangamaGuide() {
       return next;
     });
   };
+
+  const guideUrl = absUrl("/guide");
 
   return (
     <div className={darkMode ? "eag-dark-mode" : ""}>
@@ -1604,6 +1608,19 @@ export default function ExperienceAhangamaGuide() {
           </svg>
         )}
       </button>
+
+      <div className="eag-qr-sidebar">
+        <div className="eag-qr-sidebar-inner">
+          <QRCodeSVG
+            value={guideUrl}
+            size={100}
+            bgColor="transparent"
+            fgColor={darkMode ? "#ffffff" : "#1a1a2e"}
+            level="M"
+          />
+          <span className="eag-qr-sidebar-label">Scan for<br />mobile</span>
+        </div>
+      </div>
 
       <TocRibbon currentChapterId={CHAPTERS[currentChapter - 1]?.id} />
       <ChapterProgress current={currentChapter} bg={currentBg} />
