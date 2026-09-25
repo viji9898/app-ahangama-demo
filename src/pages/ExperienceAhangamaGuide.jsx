@@ -13,7 +13,6 @@ import { trackGuideEvent, trackVenueImpression } from "../analytics";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { QRCodeSVG } from "qrcode.react";
-import { withGuideVenueIdentity } from "../data/guideVenueIdentities";
 import useTrackedImpression from "../hooks/useTrackedImpression";
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -192,7 +191,7 @@ function mapsUrl(item) {
 
 function withGuideSection(guideSection) {
   return (venue) => ({
-    ...withGuideVenueIdentity(venue),
+    ...venue,
     guideSection,
   });
 }
@@ -678,14 +677,14 @@ function LocatedSection({ venueData }) {
 
   const categories = useMemo(
     () => [
-      { key: "stays", ...GUIDE_MAP_CATEGORY_META.stays, items: venueData?.stays || BEST_STAYS },
-      { key: "eats", ...GUIDE_MAP_CATEGORY_META.eats, items: venueData?.eats || EATS },
-      { key: "experiences", ...GUIDE_MAP_CATEGORY_META.experiences, items: venueData?.experiences || EXPERIENCES },
-      { key: "wellness", ...GUIDE_MAP_CATEGORY_META.wellness, items: venueData?.wellness || WELLNESS },
-      { key: "nightlife", ...GUIDE_MAP_CATEGORY_META.nightlife, items: venueData?.nightlife || NIGHT_LIFE },
-      { key: "retail", ...GUIDE_MAP_CATEGORY_META.retail, items: venueData?.retail || BEST_RETAIL_STORES },
-      { key: "cafes", ...GUIDE_MAP_CATEGORY_META.cafes, items: venueData?.cafes || BEST_CAFES },
-      { key: "surf_schools", ...GUIDE_MAP_CATEGORY_META.surf_schools, items: venueData?.surf_schools || SURF_SCHOOLS },
+      { key: "stays", ...GUIDE_MAP_CATEGORY_META.stays, items: venueData?.stays || [] },
+      { key: "eats", ...GUIDE_MAP_CATEGORY_META.eats, items: venueData?.eats || [] },
+      { key: "experiences", ...GUIDE_MAP_CATEGORY_META.experiences, items: venueData?.experiences || [] },
+      { key: "wellness", ...GUIDE_MAP_CATEGORY_META.wellness, items: venueData?.wellness || [] },
+      { key: "nightlife", ...GUIDE_MAP_CATEGORY_META.nightlife, items: venueData?.nightlife || [] },
+      { key: "retail", ...GUIDE_MAP_CATEGORY_META.retail, items: venueData?.retail || [] },
+      { key: "cafes", ...GUIDE_MAP_CATEGORY_META.cafes, items: venueData?.cafes || [] },
+      { key: "surf_schools", ...GUIDE_MAP_CATEGORY_META.surf_schools, items: venueData?.surf_schools || [] },
     ],
     [venueData],
   );
@@ -977,7 +976,7 @@ function TransportSection() {
 }
 
 function BestStaysSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || BEST_STAYS;
+  const items = venues || [];
   return (
     <section id="best-stays" className="eag-section eag-section--white">
       <div className="eag-content">
@@ -1027,7 +1026,7 @@ const EATS = [
 ].map(withGuideSection("best_eats"));
 
 function BestEatsSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || EATS;
+  const items = venues || [];
   return (
     <section id="best-eats" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1067,7 +1066,7 @@ const EXPERIENCES = [
 ].map(withGuideSection("best_experiences"));
 
 function BestExperiencesSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || EXPERIENCES;
+  const items = venues || [];
   return (
     <section id="best-experiences" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1149,7 +1148,7 @@ function cardGrid(items, onImageClick, impressedVenueIds) {
 }
 
 function WellnessSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || WELLNESS;
+  const items = venues || [];
   return (
     <section id="wellness" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1161,7 +1160,7 @@ function WellnessSection({ onImageClick, impressedVenueIds, venues }) {
 }
 
 function NightLifeSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || NIGHT_LIFE;
+  const items = venues || [];
   return (
     <section id="night-life" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1173,7 +1172,7 @@ function NightLifeSection({ onImageClick, impressedVenueIds, venues }) {
 }
 
 function BestRetailStoresSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || BEST_RETAIL_STORES;
+  const items = venues || [];
   return (
     <section id="best-retail-stores" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1200,7 +1199,7 @@ const BEST_CAFES = [
 ].map(withGuideSection("best_cafes"));
 
 function BestCafesSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || BEST_CAFES;
+  const items = venues || [];
   return (
     <section id="best-cafes" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1216,7 +1215,7 @@ const SURF_SCHOOLS = [
 ].map(withGuideSection("surf_schools"));
 
 function SurfSchoolsSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || SURF_SCHOOLS;
+  const items = venues || [];
   return (
     <section id="surf-schools" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1236,7 +1235,7 @@ const TRANSPORT_VENUES = [
 ].map(withGuideSection("transport"));
 
 function TransportGuideSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || TRANSPORT_VENUES;
+  const items = venues || [];
   return (
     <section id="transport-guide" className="eag-section eag-section--white">
       <div className="eag-content">
@@ -1462,16 +1461,24 @@ export default function ExperienceAhangamaGuide() {
     }
   });
   const [dbVenueData, setDbVenueData] = useState(null);
+  const [venueDataError, setVenueDataError] = useState("");
 
   const scrollContainerRef = useRef(null);
   const impressedVenueIds = useRef(new Set());
 
   useEffect(() => {
     fetch(`${GUIDE_API_BASE}/venues?status=active`)
-      .then((r) => r.json())
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to load guide venues");
+        return response.json();
+      })
       .then((d) => {
-        if (!d.ok || !d.venues?.length) return;
+        if (!d.ok || !d.venues?.length) {
+          throw new Error("No guide venues returned");
+        }
         const mapApiVenue = (v) => ({
+          venueId: v.venueId,
+          venueSlug: v.venueSlug,
           name: v.name,
           rating: String(v.rating || ""),
           desc: v.description || "",
@@ -1503,9 +1510,12 @@ export default function ExperienceAhangamaGuide() {
             result[mapKey] = grouped[dbKey].map(withGuideSection(dbKey === "night_life" ? "night_life" : dbKey));
           }
         }
-        if (Object.keys(result).length) setDbVenueData(result);
+        setDbVenueData(result);
       })
-      .catch(() => {});
+      .catch(() => {
+        setVenueDataError("Guide venues are temporarily unavailable.");
+        setDbVenueData({});
+      });
   }, []);
 
   useEffect(() => {
@@ -1637,6 +1647,9 @@ export default function ExperienceAhangamaGuide() {
       </button>
 
       <div className="eag-scroll-container">
+        {venueDataError ? (
+          <div className="eag-data-error" role="alert">{venueDataError}</div>
+        ) : null}
         <div className="eag-desktop-frame">
           <CoverSection />
           <ContentsSection />

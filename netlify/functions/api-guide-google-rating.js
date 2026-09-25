@@ -1,7 +1,16 @@
+import {
+  guideAdminUnauthorizedResponse,
+  isGuideAdminAuthorized,
+} from "../../lib/guide-admin-auth.js";
+
 const headers = { "Content-Type": "application/json" };
 const json = (statusCode, body) => ({ statusCode, headers, body: JSON.stringify(body) });
 
 export const handler = async (event) => {
+  if (!isGuideAdminAuthorized(event.headers)) {
+    return guideAdminUnauthorizedResponse();
+  }
+
   if (event.httpMethod !== "GET") {
     return json(405, { ok: false, error: "Method not allowed" });
   }

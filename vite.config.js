@@ -10,6 +10,7 @@ import {
   listGuideContent,
   updateGuideContent,
 } from "./lib/guide-db.js";
+import { isGuideAdminAuthorized } from "./lib/guide-admin-auth.js";
 import {
   buildPartnersKnowledgeRecords,
   renderPartnersKnowledgeHtml,
@@ -179,6 +180,12 @@ function venuesApiPlugin() {
         try {
           // GET /api/guide/venues
           if (req.url.startsWith("/api/guide/venues") && req.method === "GET") {
+            if (
+              url.searchParams.get("status") !== "active" &&
+              !isGuideAdminAuthorized(req.headers)
+            ) {
+              return json(401, { ok: false, error: "Unauthorized" });
+            }
             const venues = await listGuideVenues({
               section: url.searchParams.get("section") || "",
               status: url.searchParams.get("status") || "",
@@ -188,6 +195,9 @@ function venuesApiPlugin() {
 
           // POST /api/guide/venues
           if (req.url.startsWith("/api/guide/venues") && req.method === "POST") {
+            if (!isGuideAdminAuthorized(req.headers)) {
+              return json(401, { ok: false, error: "Unauthorized" });
+            }
             const body = await readBody(req);
             if (!body.name || !body.section) return json(400, { ok: false, error: "name and section required" });
             const venue = await createGuideVenue(body);
@@ -196,6 +206,9 @@ function venuesApiPlugin() {
 
           // /api/guide/venue?id=...
           if (req.url.startsWith("/api/guide/venue")) {
+            if (!isGuideAdminAuthorized(req.headers)) {
+              return json(401, { ok: false, error: "Unauthorized" });
+            }
             const id = url.searchParams.get("id");
             if (!id) return json(400, { ok: false, error: "id required" });
 
@@ -225,6 +238,9 @@ function venuesApiPlugin() {
 
           // PUT /api/guide/content
           if (req.url.startsWith("/api/guide/content") && req.method === "PUT") {
+            if (!isGuideAdminAuthorized(req.headers)) {
+              return json(401, { ok: false, error: "Unauthorized" });
+            }
             const body = await readBody(req);
             if (!body.sectionKey) return json(400, { ok: false, error: "sectionKey required" });
             const item = await updateGuideContent(body.sectionKey, body);
@@ -233,6 +249,9 @@ function venuesApiPlugin() {
 
           // GET /api/guide/google-rating
           if (req.url.startsWith("/api/guide/google-rating") && req.method === "GET") {
+            if (!isGuideAdminAuthorized(req.headers)) {
+              return json(401, { ok: false, error: "Unauthorized" });
+            }
             const placeId = url.searchParams.get("placeId");
             if (!placeId) return json(400, { ok: false, error: "placeId required" });
             const apiKey = process.env.GOOGLE_PLACES_API_KEY;

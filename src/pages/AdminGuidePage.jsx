@@ -18,6 +18,7 @@ const { TextArea } = Input;
 const { TabPane } = Tabs;
 
 const API_BASE = "/api/guide";
+const ADMIN_PASSWORD_STORAGE_KEY = "ahangama-guide-admin-password";
 
 const SECTIONS = [
   { key: "best_stays", label: "Best Stays", color: "#6D8967", icon: "\u{1F3E8}" },
@@ -32,7 +33,17 @@ const SECTIONS = [
 ];
 
 const AdminGuidePage = () => {
+  const [adminPassword, setAdminPassword] = useState(() => {
+    try {
+      return sessionStorage.getItem(ADMIN_PASSWORD_STORAGE_KEY) || "";
+    } catch {
+      return "";
+    }
+  });
+  const [loginPassword, setLoginPassword] = useState("");
+  const [authenticating, setAuthenticating] = useState(false);
   const [venues, setVenues] = useState([]);
+  const [canonicalVenues, setCanonicalVenues] = useState([]);
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sectionFilter, setSectionFilter] = useState("");
@@ -46,26 +57,89 @@ const AdminGuidePage = () => {
   const [fetchingRating, setFetchingRating] = useState(false);
   const [venueForm] = Form.useForm();
   const [contentForm] = Form.useForm();
+  const selectedVenueId = Form.useWatch("venueId", venueForm);
+  const selectedCanonicalVenue = canonicalVenues.find(
+    (venue) => venue.id === selectedVenueId,
+  );
+
+  const adminFetch = useCallback((url, options = {}) => {
+    const headers = new Headers(options.headers || {});
+    headers.set("X-Admin-Password", adminPassword);
+    return fetch(url, { ...options, headers });
+  }, [adminPassword]);
 
   const fetchData = useCallback(async () => {
+    if (!adminPassword) {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     try {
-      const [venuesRes, contentRes] = await Promise.all([
-        fetch(`${API_BASE}/venues`),
-        fetch(`${API_BASE}/content`),
+      const [venuesRes, contentRes, canonicalVenuesRes] = await Promise.all([
+        adminFetch(`${API_BASE}/venues`),
+        adminFetch(`${API_BASE}/content`),
+        adminFetch("/api/venues?destinationSlug=ahangama"),
       ]);
+      if (venuesRes.status === 401 || contentRes.status === 401) {
+        try {
+          sessionStorage.removeItem(ADMIN_PASSWORD_STORAGE_KEY);
+        } catch {
+          // Ignore storage failures in restricted browsing modes.
+        }
+        setAdminPassword("");
+        throw new Error("Unauthorized");
+      }
       const venuesData = await venuesRes.json();
       const contentData = await contentRes.json();
+      const canonicalVenuesData = await canonicalVenuesRes.json();
       if (venuesData.ok) setVenues(venuesData.venues);
       if (contentData.ok) setContent(contentData.content);
+      if (canonicalVenuesData.ok) setCanonicalVenues(canonicalVenuesData.venues);
     } catch {
       message.error("Failed to load data");
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [adminFetch, adminPassword]);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {
+    if (adminPassword) fetchData();
+  }, [adminPassword, fetchData]);
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setAuthenticating(true);
+    try {
+      const response = await fetch(`${API_BASE}/venues`, {
+        headers: { "X-Admin-Password": loginPassword },
+      });
+      if (!response.ok) throw new Error("Invalid password");
+      try {
+        sessionStorage.setItem(ADMIN_PASSWORD_STORAGE_KEY, loginPassword);
+      } catch {
+        // The active React state still keeps the session usable.
+      }
+      setAdminPassword(loginPassword);
+      setLoginPassword("");
+    } catch {
+      message.error("Incorrect admin password");
+    } finally {
+      setAuthenticating(false);
+    }
+  };
+
+  const handleLogout = () => {
+    try {
+      sessionStorage.removeItem(ADMIN_PASSWORD_STORAGE_KEY);
+    } catch {
+      // Ignore storage failures in restricted browsing modes.
+    }
+    setAdminPassword("");
+    setVenues([]);
+    setCanonicalVenues([]);
+    setContent([]);
+  };
 
   const filteredVenues = venues.filter((v) => {
     const matchSection = !sectionFilter || v.section === sectionFilter;
@@ -97,7 +171,13 @@ const AdminGuidePage = () => {
 
   const openEditModal = (venue) => {
     setEditingVenue(venue);
-    venueForm.setFieldsValue({ ...venue, lat: venue.lat || undefined, lng: venue.lng || undefined });
+    venueForm.setFieldsValue({
+      ...venue,
+      canonicalName: venue.canonicalName,
+      nameOverride: venue.nameOverride,
+      lat: venue.lat || undefined,
+      lng: venue.lng || undefined,
+    });
     setModalOpen(true);
   };
 
@@ -107,9 +187,12 @@ const AdminGuidePage = () => {
       setSaving(true);
       const url = editingVenue ? `${API_BASE}/venue?id=${editingVenue.id}` : `${API_BASE}/venues`;
       const method = editingVenue ? "PUT" : "POST";
-      const res = await fetch(url, { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(values) });
+      const payload = editingVenue
+        ? values
+        : { ...values, name: selectedCanonicalVenue?.name };
+      const res = await adminFetch(url, { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       const data = await res.json();
-      if (data.ok) { message.success(editingVenue ? "Venue updated" : "Venue created"); setModalOpen(false); fetchData(); }
+      if (data.ok) { message.success(editingVenue ? "Venue updated" : "Venue added to category"); setModalOpen(false); fetchData(); }
       else { message.error(data.error || "Failed to save"); }
     } catch (err) { if (err.errorFields) return; message.error("Failed to save venue"); }
     finally { setSaving(false); }
@@ -117,7 +200,7 @@ const AdminGuidePage = () => {
 
   const handleDeleteVenue = async (id) => {
     try {
-      const res = await fetch(`${API_BASE}/venue?id=${id}`, { method: "DELETE" });
+      const res = await adminFetch(`${API_BASE}/venue?id=${id}`, { method: "DELETE" });
       const data = await res.json();
       if (data.ok) { message.success("Venue deleted"); fetchData(); }
       else { message.error(data.error || "Failed to delete"); }
@@ -129,7 +212,7 @@ const AdminGuidePage = () => {
     if (!placeId) { message.warning("Enter a Google Place ID first"); return; }
     setFetchingRating(true);
     try {
-      const res = await fetch(`${API_BASE}/google-rating?placeId=${encodeURIComponent(placeId)}`);
+      const res = await adminFetch(`${API_BASE}/google-rating?placeId=${encodeURIComponent(placeId)}`);
       const data = await res.json();
       if (data.ok) { venueForm.setFieldsValue({ rating: data.rating, reviewCount: data.reviewCount }); message.success(`Rating: ${data.rating} (${data.reviewCount} reviews)`); }
       else { message.error(data.error || "Failed to fetch rating"); }
@@ -143,13 +226,46 @@ const AdminGuidePage = () => {
     try {
       const values = await contentForm.validateFields();
       setSaving(true);
-      const res = await fetch(`${API_BASE}/content`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sectionKey: editingContent.sectionKey, ...values }) });
+      const res = await adminFetch(`${API_BASE}/content`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sectionKey: editingContent.sectionKey, ...values }) });
       const data = await res.json();
       if (data.ok) { message.success("Content updated"); setContentModalOpen(false); fetchData(); }
       else { message.error(data.error || "Failed to save"); }
     } catch (err) { if (err.errorFields) return; message.error("Failed to save content"); }
     finally { setSaving(false); }
   };
+
+  if (!adminPassword) {
+    return (
+      <div className="ag-admin">
+        <div className="ag-main-card" style={{ maxWidth: 440, margin: "15vh auto 0", padding: 32 }}>
+          <div className="ag-modal-header">
+            <div>
+              <h1 className="ag-title">Guide Dashboard</h1>
+              <p className="ag-subtitle">Enter the admin password to continue.</p>
+            </div>
+          </div>
+          <form onSubmit={handleLogin}>
+            <Input.Password
+              value={loginPassword}
+              onChange={(event) => setLoginPassword(event.target.value)}
+              placeholder="Admin password"
+              autoComplete="current-password"
+              size="large"
+              autoFocus
+            />
+            <button
+              type="submit"
+              className="ag-btn ag-btn--primary ag-btn--full"
+              style={{ marginTop: 16 }}
+              disabled={!loginPassword || authenticating}
+            >
+              {authenticating ? "Checking..." : "Sign in"}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   const venueColumns = [
     {
@@ -253,6 +369,9 @@ const AdminGuidePage = () => {
           </div>
         </div>
         <div className="ag-header-actions">
+          <button className="ag-btn ag-btn--ghost" onClick={handleLogout}>
+            Sign Out
+          </button>
           <button className="ag-btn ag-btn--ghost" onClick={fetchData} disabled={loading}>
             <ReloadOutlined className={loading ? "ag-spin" : ""} /> Refresh
           </button>
@@ -371,7 +490,7 @@ const AdminGuidePage = () => {
         onOk={handleSaveVenue}
         confirmLoading={saving}
         width={720}
-        okText={editingVenue ? "Update" : "Create"}
+        okText={editingVenue ? "Update" : "Add to Category"}
         destroyOnClose
         className="ag-modal"
         closable={false}
@@ -379,23 +498,88 @@ const AdminGuidePage = () => {
           <div className="ag-modal-footer">
             <button className="ag-btn ag-btn--ghost" onClick={() => setModalOpen(false)}>Cancel</button>
             <button className="ag-btn ag-btn--primary" onClick={handleSaveVenue} disabled={saving}>
-              {saving ? "Saving..." : editingVenue ? "Update Venue" : "Create Venue"}
+              {saving ? "Saving..." : editingVenue ? "Update Venue" : "Add to Category"}
             </button>
           </div>
         }
       >
         <div className="ag-modal-header">
-          <h2 className="ag-modal-title">{editingVenue ? "Edit Venue" : "Add New Venue"}</h2>
+          <h2 className="ag-modal-title">{editingVenue ? "Edit Venue" : "Add Venue to Category"}</h2>
           <button className="ag-modal-close" onClick={() => setModalOpen(false)}>&times;</button>
         </div>
         <Form form={venueForm} layout="vertical" className="ag-venue-form">
           <div className="ag-form-section">
             <h4 className="ag-form-section-title">Basic Info</h4>
+            {!editingVenue ? (
+              <Form.Item
+                name="venueId"
+                label="Venue"
+                extra="Venue details come from the canonical venues table."
+                rules={[{ required: true, message: "Select a venue" }]}
+              >
+                <Select
+                  showSearch
+                  placeholder="Search by venue name, ID, or slug"
+                  className="ag-select"
+                  popupClassName="ag-select-dropdown"
+                  optionFilterProp="label"
+                  options={canonicalVenues.map((venue) => ({
+                    value: venue.id,
+                    label: `${venue.name} (${venue.slug}) - ${venue.id}`,
+                  }))}
+                />
+              </Form.Item>
+            ) : null}
+            {editingVenue ? (
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Form.Item label="Venue ID" extra="Read-only canonical venue identifier.">
+                    <Input
+                      value={editingVenue.venueId || "Not assigned"}
+                      readOnly
+                      className="ag-input"
+                    />
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item label="Venue slug" extra="Read-only public venue slug.">
+                    <Input
+                      value={editingVenue.venueSlug || editingVenue.slug || "Not assigned"}
+                      readOnly
+                      className="ag-input"
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+            ) : selectedCanonicalVenue ? (
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Form.Item label="Venue ID">
+                    <Input value={selectedCanonicalVenue.id} readOnly className="ag-input" />
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item label="Venue slug">
+                    <Input value={selectedCanonicalVenue.slug} readOnly className="ag-input" />
+                  </Form.Item>
+                </Col>
+              </Row>
+            ) : null}
             <Row gutter={16}>
               <Col span={16}>
-                <Form.Item name="name" label="Venue Name" rules={[{ required: true }]}>
-                  <Input placeholder="e.g. Kai Rooftop" className="ag-input" />
-                </Form.Item>
+                {editingVenue ? (
+                  <Form.Item name="canonicalName" label="Canonical Venue Name" rules={[{ required: true }]}>
+                    <Input placeholder="e.g. Kai Rooftop" className="ag-input" />
+                  </Form.Item>
+                ) : (
+                  <Form.Item
+                    name="nameOverride"
+                    label="Guide Display Name"
+                    extra="Optional. Leave blank to use the canonical venue name."
+                  >
+                    <Input placeholder={selectedCanonicalVenue?.name} className="ag-input" />
+                  </Form.Item>
+                )}
               </Col>
               <Col span={8}>
                 <Form.Item name="section" label="Section" rules={[{ required: true }]}>
@@ -407,8 +591,17 @@ const AdminGuidePage = () => {
                 </Form.Item>
               </Col>
             </Row>
+            {editingVenue ? (
+              <Form.Item
+                name="nameOverride"
+                label="Guide Display Name"
+                extra="Leave blank to use the canonical venue name."
+              >
+                <Input placeholder={editingVenue.canonicalName} className="ag-input" />
+              </Form.Item>
+            ) : null}
             <Form.Item name="description" label="Description">
-              <TextArea rows={2} placeholder="Short description for the guide card" className="ag-input" />
+              <TextArea rows={2} placeholder="Guide-specific description for this category" className="ag-input" />
             </Form.Item>
             <Form.Item name="tagline" label="Tagline">
               <Input placeholder="Optional tagline (e.g. Local Woman-Owned)" className="ag-input" />
@@ -422,7 +615,7 @@ const AdminGuidePage = () => {
             </Form.Item>
           </div>
 
-          <div className="ag-form-section">
+          {editingVenue ? <div className="ag-form-section">
             <h4 className="ag-form-section-title">Coordinates</h4>
             <Row gutter={16}>
               <Col span={12}>
@@ -436,27 +629,22 @@ const AdminGuidePage = () => {
                 </Form.Item>
               </Col>
             </Row>
-          </div>
+          </div> : null}
 
-          <div className="ag-form-section">
+          {editingVenue ? <div className="ag-form-section">
             <h4 className="ag-form-section-title">Ratings</h4>
             <Row gutter={16}>
-              <Col span={7}>
+              <Col span={10}>
                 <Form.Item name="rating" label="Rating">
                   <InputNumber className="ag-input" style={{ width: "100%" }} min={0} max={5} step={0.1} placeholder="4.9" />
                 </Form.Item>
               </Col>
-              <Col span={7}>
+              <Col span={10}>
                 <Form.Item name="reviewCount" label="Review Count">
                   <InputNumber className="ag-input" style={{ width: "100%" }} min={0} placeholder="286" />
                 </Form.Item>
               </Col>
-              <Col span={7}>
-                <Form.Item name="priorityOrder" label="Order">
-                  <InputNumber className="ag-input" style={{ width: "100%" }} min={0} placeholder="1" />
-                </Form.Item>
-              </Col>
-              <Col span={3}>
+              <Col span={4}>
                 <Form.Item label=" " labelCol={0}>
                   <button type="button" className="ag-btn ag-btn--accent ag-btn--sm ag-btn--full" onClick={handleFetchRating} disabled={fetchingRating}>
                     <RiseOutlined /> {fetchingRating ? "..." : "Fetch"}
@@ -467,9 +655,9 @@ const AdminGuidePage = () => {
             <Form.Item name="googlePlaceId" label="Google Place ID">
               <Input placeholder="ChIJ..." className="ag-input" />
             </Form.Item>
-          </div>
+          </div> : null}
 
-          <div className="ag-form-section">
+          {editingVenue ? <div className="ag-form-section">
             <h4 className="ag-form-section-title">Links</h4>
             <Row gutter={16}>
               <Col span={8}>
@@ -488,20 +676,25 @@ const AdminGuidePage = () => {
                 </Form.Item>
               </Col>
             </Row>
-          </div>
+          </div> : null}
 
           <div className="ag-form-section">
             <h4 className="ag-form-section-title">Settings</h4>
             <Row gutter={16}>
-              <Col span={12}>
+              {editingVenue ? <Col span={8}>
                 <Form.Item name="ownership" label="Ownership">
                   <Select allowClear placeholder="Select" className="ag-select" popupClassName="ag-select-dropdown">
                     <Select.Option value="local">Local</Select.Option>
                     <Select.Option value="foreign">Foreign</Select.Option>
                   </Select>
                 </Form.Item>
+              </Col> : null}
+              <Col span={editingVenue ? 8 : 12}>
+                <Form.Item name="priorityOrder" label="Order">
+                  <InputNumber className="ag-input" style={{ width: "100%" }} min={0} placeholder="1" />
+                </Form.Item>
               </Col>
-              <Col span={12}>
+              <Col span={editingVenue ? 8 : 12}>
                 <Form.Item name="status" label="Status">
                   <Select className="ag-select" popupClassName="ag-select-dropdown">
                     <Select.Option value="active">Active</Select.Option>

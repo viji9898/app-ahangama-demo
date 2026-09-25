@@ -20,11 +20,10 @@ Tracking is anonymous and GA4-only. Do not include names, email addresses, pass 
 
 ```mermaid
 flowchart LR
-  DB[(venues260414)] --> API[Venue API]
-  API -. validates canonical ID and slug .-> Identity[guideVenueIdentities.js]
-  Editorial[Guide editorial arrays] --> Enrich[Identity and section enrichment]
-  Identity --> Enrich
-  Enrich --> UI[/guide interactions]
+  DB[(venues260414)] --> Join[Guide venue query]
+  Placement[(guide_venue_placements)] --> Join
+  Join --> API[Guide Venue API]
+  API --> UI[/guide interactions]
   UI --> Helper[trackGuideEvent]
   Helper --> GA4[GA4 property]
   GA4 --> DataAPI[Google Analytics Data API]
@@ -35,9 +34,9 @@ Relevant files:
 - `src/analytics.js`: shared guide-event and venue-impression GA4 transports
 - `src/hooks/useTrackedImpression.js`: reusable timed visibility observer
 - `src/pages/ExperienceAhangamaGuide.jsx`: event triggers and guide-section context
-- `src/data/guideVenueIdentities.js`: one mapping from guide display names to canonical venue IDs and slugs
+- `guide_venue_placements`: guide section, order, publication state, and optional editorial overrides
 - `lib/venues-db.js`: canonical venue API query and DTO normalization
-- `netlify/functions/api-venues-list.js`: public venue API endpoint
+- `lib/guide-db.js`: joined guide placement and canonical venue queries
 - `migrations/026_seed_guide_venues.sql`: idempotent seed for guide venues that were missing from the canonical table
 - `index.html`: GA4 tag for measurement ID `G-HZ20D69WMB`
 
@@ -52,28 +51,16 @@ The canonical venue source is the `venues260414` database table, exposed through
 - `mapUrl`
 - other mutable venue metadata
 
-`src/data/guideVenueIdentities.js` is the single identity bridge used while `/guide` still keeps its editorial copy, ordering, and images in static arrays. It maps each current guide display name to:
-
-```js
-{
-  venueId: "kaffi-ahangama",
-  venueSlug: "kaffi-ag",
-}
-```
-
-The guide must not repeat canonical IDs or slugs inside individual venue cards. Every venue collection is enriched through `withGuideVenueIdentity()` and receives a `guideSection` separately. This prevents ID drift and correctly handles records where `id !== slug`.
+`guide_venue_placements.venue_id` references `venues260414.id`. The guide API joins these tables and returns the canonical ID and slug directly, so analytics identity does not depend on display-name matching.
 
 Use `venue_id` as the durable reporting key. Use `venue_slug` for readable URLs and reports, and `venue_name` as the display-name snapshot captured when the event occurred. Names and slugs can change; historical reports should not join on either field alone.
 
 When adding or changing a guide venue:
 
 1. Create or update the canonical `venues260414` record first.
-2. Confirm the exact `id` and `slug` returned by the public venue API.
-3. Add or update the mapping only in `guideVenueIdentities.js`.
-4. Do not create a second mapping inside `ExperienceAhangamaGuide.jsx`.
-5. Validate that the registry pair resolves to one live API record.
-
-A future API-rendered guide should store only editorial configuration such as canonical venue ID, section, and position. The API should then supply mutable names, links, images, and coordinates. At that point, the temporary display-name identity bridge can be removed.
+2. Add a `guide_venue_placements` record for its section, order, and guide publication status.
+3. Use placement overrides only when the guide needs a different display name, description, or image.
+4. Validate that `/api/guide/venues?status=active` returns the canonical `venueId` and `venueSlug`.
 
 ## GA4 Event Transport
 

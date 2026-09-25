@@ -1,10 +1,18 @@
 import { getGuideVenue, updateGuideVenue, deleteGuideVenue } from "../../lib/guide-db.js";
+import {
+  guideAdminUnauthorizedResponse,
+  isGuideAdminAuthorized,
+} from "../../lib/guide-admin-auth.js";
 
 const headers = { "Content-Type": "application/json" };
 const json = (statusCode, body) => ({ statusCode, headers, body: JSON.stringify(body) });
 
 export const handler = async (event) => {
   try {
+    if (!isGuideAdminAuthorized(event.headers)) {
+      return guideAdminUnauthorizedResponse();
+    }
+
     const id = event.queryStringParameters?.id || event.path?.split("/").pop();
 
     if (!id) {

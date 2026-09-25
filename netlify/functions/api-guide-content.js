@@ -1,4 +1,8 @@
 import { listGuideContent, updateGuideContent } from "../../lib/guide-db.js";
+import {
+  guideAdminUnauthorizedResponse,
+  isGuideAdminAuthorized,
+} from "../../lib/guide-admin-auth.js";
 
 const headers = { "Content-Type": "application/json" };
 const json = (statusCode, body) => ({ statusCode, headers, body: JSON.stringify(body) });
@@ -11,6 +15,9 @@ export const handler = async (event) => {
     }
 
     if (event.httpMethod === "PUT") {
+      if (!isGuideAdminAuthorized(event.headers)) {
+        return guideAdminUnauthorizedResponse();
+      }
       const body = JSON.parse(event.body || "{}");
       if (!body.sectionKey) {
         return json(400, { ok: false, error: "sectionKey is required" });
