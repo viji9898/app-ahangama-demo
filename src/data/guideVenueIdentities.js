@@ -155,6 +155,12 @@ export const GUIDE_VENUE_IDENTITIES = Object.freeze({
     venueId: "nova-rent-a-car",
     venueSlug: "nova-rent-a-car",
   },
+  "Coco Kitchen": { venueId: "coco-kitchen", venueSlug: "coco-kitchen" },
+  "Azure Swim": { venueId: "azure-swim", venueSlug: "azure-swim" },
+  "Ahangama Beach House": {
+    venueId: "ahangama-beach-house",
+    venueSlug: "ahangama-beach-house",
+  },
 });
 
 export function withGuideVenueIdentity(venue) {
