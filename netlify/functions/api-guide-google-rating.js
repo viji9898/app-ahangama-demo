@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import {
   guideAdminUnauthorizedResponse,
   isGuideAdminAuthorized,
@@ -31,22 +33,27 @@ export const handler = async (event) => {
       });
     }
 
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${encodeURIComponent(placeId)}&fields=rating,user_ratings_total,name&key=${apiKey}`;
-    const response = await fetch(url);
+    const url = `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`;
+    const response = await fetch(url, {
+      headers: {
+        "X-Goog-Api-Key": apiKey,
+        "X-Goog-FieldMask": "displayName,rating,userRatingCount",
+      },
+    });
     const data = await response.json();
 
-    if (data.status !== "OK" || !data.result) {
-      return json(404, {
+    if (!response.ok) {
+      return json(response.status >= 500 ? 502 : response.status, {
         ok: false,
-        error: `Google Places API returned: ${data.status || "UNKNOWN"}`,
+        error: data.error?.message || `Google Places API returned HTTP ${response.status}`,
       });
     }
 
     return json(200, {
       ok: true,
-      rating: data.result.rating || null,
-      reviewCount: data.result.user_ratings_total || 0,
-      name: data.result.name || "",
+      rating: data.rating ?? null,
+      reviewCount: data.userRatingCount ?? 0,
+      name: data.displayName?.text || "",
     });
   } catch (error) {
     return json(500, { ok: false, error: error.message || String(error) });

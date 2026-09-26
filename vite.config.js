@@ -257,11 +257,17 @@ function venuesApiPlugin() {
             const apiKey = process.env.GOOGLE_PLACES_API_KEY;
             if (!apiKey) return json(500, { ok: false, error: "GOOGLE_PLACES_API_KEY not set" });
             const gRes = await fetch(
-              `https://maps.googleapis.com/maps/api/place/details/json?place_id=${encodeURIComponent(placeId)}&fields=rating,user_ratings_total,name&key=${apiKey}`
+              `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`,
+              {
+                headers: {
+                  "X-Goog-Api-Key": apiKey,
+                  "X-Goog-FieldMask": "displayName,rating,userRatingCount",
+                },
+              },
             );
             const data = await gRes.json();
-            if (data.status !== "OK" || !data.result) return json(404, { ok: false, error: data.status });
-            return json(200, { ok: true, rating: data.result.rating || null, reviewCount: data.result.user_ratings_total || 0, name: data.result.name || "" });
+            if (!gRes.ok) return json(gRes.status >= 500 ? 502 : gRes.status, { ok: false, error: data.error?.message || `Google Places API returned HTTP ${gRes.status}` });
+            return json(200, { ok: true, rating: data.rating ?? null, reviewCount: data.userRatingCount ?? 0, name: data.displayName?.text || "" });
           }
 
           next();
