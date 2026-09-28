@@ -1,4 +1,10 @@
-import { getGuideVenue, updateGuideVenue, deleteGuideVenue } from "../../lib/guide-db.js";
+import {
+  getGuideVenue,
+  updateGuideVenue,
+  deleteGuideVenue,
+  restoreGuideVenue,
+  deleteGuideVenuePermanently,
+} from "../../lib/guide-db.js";
 import {
   guideAdminUnauthorizedResponse,
   isGuideAdminAuthorized,
@@ -33,8 +39,19 @@ export const handler = async (event) => {
     }
 
     if (event.httpMethod === "DELETE") {
-      await deleteGuideVenue(id);
+      const permanent = event.queryStringParameters?.permanent === "1";
+      if (permanent) {
+        await deleteGuideVenuePermanently(id);
+      } else {
+        await deleteGuideVenue(id);
+      }
       return json(200, { ok: true });
+    }
+
+    if (event.httpMethod === "POST") {
+      const venue = await restoreGuideVenue(id);
+      if (!venue) return json(404, { ok: false, error: "Venue not found in trash" });
+      return json(200, { ok: true, venue });
     }
 
     return json(405, { ok: false, error: "Method not allowed" });

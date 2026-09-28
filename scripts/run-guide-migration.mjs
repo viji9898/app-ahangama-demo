@@ -7,6 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const migrationFiles = [
   "029_centralize_guide_venues.sql",
   "030_seed_guide_placements.sql",
+  "031_guide_venue_trash.sql",
 ];
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
