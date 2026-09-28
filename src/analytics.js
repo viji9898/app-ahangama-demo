@@ -17,6 +17,28 @@ const getAnalyticsAttribution = () => {
   };
 };
 
+const emitGuideTrackingDebugEvent = (eventName, params) => {
+  if (typeof window === "undefined") return false;
+
+  const debugEnabled = new URLSearchParams(window.location.search).get(
+    "tracking_debug",
+  ) === "1";
+
+  if (!debugEnabled || window.parent === window) return false;
+
+  window.parent.postMessage(
+    {
+      type: "ahangama:guide-tracking",
+      eventName,
+      params,
+      timestamp: Date.now(),
+    },
+    window.location.origin,
+  );
+
+  return true;
+};
+
 const GOOGLE_ADS_CONVERSION_CONFIG = {
   send_to: "AW-18209868538/xq0RCLWB6tgcEPqVkutD",
   value: 1.0,
@@ -131,16 +153,21 @@ export const trackQrEvent = (eventName, params = {}) => {
 };
 
 export const trackGuideEvent = (eventName, params = {}) => {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+  if (typeof window === "undefined") {
     return false;
   }
 
-  window.gtag("event", eventName, {
+  const payload = {
     event_category: "guide_engagement",
     source_domain: window.location.hostname,
     page_path: window.location.pathname,
     ...params,
-  });
+  };
+
+  if (emitGuideTrackingDebugEvent(eventName, payload)) return true;
+  if (typeof window.gtag !== "function") return false;
+
+  window.gtag("event", eventName, payload);
 
   return true;
 };
@@ -211,17 +238,13 @@ export const trackVenueImpression = ({
   contentId,
   contentType,
 } = {}) => {
-  if (
-    typeof window === "undefined" ||
-    typeof window.gtag !== "function" ||
-    !venueId
-  ) {
+  if (typeof window === "undefined" || !venueId) {
     return false;
   }
 
   const attribution = getAnalyticsAttribution();
 
-  window.gtag("event", "venue_impression", {
+  const payload = {
     event_category: "venue_exposure",
     source_domain: window.location.hostname,
     page_path: window.location.pathname,
@@ -243,7 +266,12 @@ export const trackVenueImpression = ({
       ? { utm_content: attribution.utm_content }
       : {}),
     ...(attribution.utm_term ? { utm_term: attribution.utm_term } : {}),
-  });
+  };
+
+  if (emitGuideTrackingDebugEvent("venue_impression", payload)) return true;
+  if (typeof window.gtag !== "function") return false;
+
+  window.gtag("event", "venue_impression", payload);
 
   return true;
 };

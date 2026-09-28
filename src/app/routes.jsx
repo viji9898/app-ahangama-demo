@@ -77,6 +77,9 @@ import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
 import ExperienceAhangamaGuide from "../pages/ExperienceAhangamaGuide";
+import GuideTrackingPage, {
+  GUIDE_TRACKING_PATH,
+} from "../pages/GuideTrackingPage";
 import EditorsPicksPage from "../pages/EditorsPicksPage";
 import ArticlesPage, { ARTICLES_PATH } from "../pages/ArticlesPage";
 import MediaPage, { MEDIA_PATH } from "../pages/MediaPage";
@@ -248,6 +251,7 @@ const routes = [
     element: <ExternalRedirect to={WELLNESS_GUIDE_BLOG_PATH} />,
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
+  { path: GUIDE_TRACKING_PATH, element: <GuideTrackingPage /> },
   { path: "/guide", element: <ExperienceAhangamaGuide /> },
   {
     path: "/ahangama-season-2026-2027",
