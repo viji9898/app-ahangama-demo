@@ -30,11 +30,6 @@
   status = 200
 
 [[redirects]]
-  from = "/api/guide/auth"
-  to = "/.netlify/functions/api-guide-auth"
-  status = 200
-
-[[redirects]]
   from = "/api/guide/venues"
   to = "/.netlify/functions/api-guide-venues"
   status = 200

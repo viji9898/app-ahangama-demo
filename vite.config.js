@@ -180,14 +180,6 @@ function venuesApiPlugin() {
         };
 
         try {
-          // GET /api/guide/auth
-          if (req.url.startsWith("/api/guide/auth")) {
-            if (!isGuideAdminAuthorized(req.headers)) {
-              return json(401, { ok: false, error: "Unauthorized" });
-            }
-            return json(200, { ok: true });
-          }
-
           // GET /api/guide/venues
           if (req.url.startsWith("/api/guide/venues") && req.method === "GET") {
             if (
