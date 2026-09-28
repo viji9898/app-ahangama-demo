@@ -40,7 +40,6 @@ const PRINT_GUIDE_META = {
 const VIEW_OPTIONS = [
   ["spread", "Spread"],
   ["overview", "All pages"],
-  ["commercial", "Commercial"],
   ["pitch", "The Pitch"],
   ["distribution", "Distribution"],
 ];

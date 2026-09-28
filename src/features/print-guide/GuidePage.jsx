@@ -39,17 +39,27 @@ function EditorialLabel({ page, inverse = false }) {
   );
 }
 
-function CoverPage({ page }) {
+function CoverPage() {
   return (
     <div className="pg-template pg-cover">
-      <img src={page.content.image} alt="Ahangama coast" />
-      <div className="pg-cover-shade" />
-      <div className="pg-cover-copy">
-        <span>Independent · Local · South Coast</span>
-        <h1>{page.content.headline}</h1>
-        <p>{page.content.subheadline}</p>
+      <header className="pg-cover-header">
+        <h1>Ahangama Seasonal Guide</h1>
+        <p>Your local guide to Sri Lanka&apos;s coolest surf town</p>
+      </header>
+      <div className="pg-cover-edition-row">
+        <strong>2026/27</strong>
+        <div>
+          <strong>Discover</strong>
+          <span>Local Insights</span>
+        </div>
       </div>
-      <span className="pg-cover-edition">A5 FIELD GUIDE · ISSUE 01</span>
+      <div className="pg-cover-image-placeholder">
+        <img
+          src="https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-print-guide/main-cover-kaffi.webp"
+          alt="Kaffi Ahangama"
+        />
+        <small>Kaffi Ahangama</small>
+      </div>
     </div>
   );
 }

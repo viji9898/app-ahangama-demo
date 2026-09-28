@@ -340,7 +340,6 @@
 }
 
 /* Cover */
-.pg-cover img,
 .pg-section-opener > img,
 .pg-full-ad > img,
 .pg-photo-main {
@@ -350,49 +349,84 @@
   object-fit: cover;
 }
 
-.pg-cover-shade {
-  position: absolute;
-  inset: 0;
-  background: rgba(8, 13, 10, 0.22);
+.pg-cover {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 0;
+  padding: 7.5cqw 6.5cqw 6cqw;
+  background: #fff;
+  color: #050505;
 }
 
-.pg-cover-copy {
-  position: absolute;
-  top: 9cqw;
-  right: 8cqw;
-  left: 8cqw;
-  color: #fff;
+.pg-template.pg-cover .pg-cover-header h1 {
+  margin: 0;
+  font: 700 6.5cqw/1.02 "Avenir Next", sans-serif;
+  font-family: "Avenir Next", sans-serif !important;
 }
 
-.pg-cover-copy > span,
-.pg-cover-edition {
-  font-size: 2.3cqw;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+.pg-cover-header p {
+  margin-top: 3.2cqw;
+  font: 500 3.2cqw/1.25 "Avenir Next", sans-serif;
 }
 
-.pg-cover-copy h1 {
-  max-width: 80cqw;
+.pg-cover-edition-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 9cqw;
+}
+
+.pg-cover-edition-row > strong,
+.pg-cover-edition-row div > strong {
+  font: 700 30px/1 "Avenir Next", sans-serif;
+}
+
+.pg-cover-edition-row div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2.1cqw;
+}
+
+.pg-cover-edition-row span {
+  font: 500 11.5px/1 "Avenir Next", sans-serif;
+}
+
+.pg-page-shell.is-thumbnail .pg-cover-edition-row > strong,
+.pg-page-shell.is-thumbnail .pg-cover-edition-row div > strong {
+  font-size: 8.5cqw;
+}
+
+.pg-page-shell.is-thumbnail .pg-cover-edition-row span {
+  font-size: 3.2cqw;
+}
+
+.pg-cover-image-placeholder {
+  position: relative;
+  min-height: 0;
   margin-top: 5cqw;
-  color: #fff !important;
-  font:
-    400 15cqw/0.86 "Iowan Old Style",
-    Georgia,
-    serif;
+  overflow: hidden;
+  border-radius: 7cqw;
+  background: #e5e5e1;
+  color: #77776f;
 }
 
-.pg-cover-copy p {
-  margin-top: 4cqw;
-  font-size: 4.5cqw;
-  letter-spacing: 0.05em;
+.pg-cover-image-placeholder > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
-.pg-cover-edition {
+.pg-cover-image-placeholder small {
   position: absolute;
-  right: 8cqw;
-  bottom: 7cqw;
-  color: #fff;
+  right: 1.7cqw;
+  bottom: 1.8cqw;
+  padding: 0.7cqw 1.2cqw;
+  border-radius: 0.8cqw;
+  background: #fff;
+  color: #252525;
+  font: 500 2.6cqw/1 "Avenir Next", sans-serif;
 }
 
 /* Intro and contents */

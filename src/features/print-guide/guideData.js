@@ -3,6 +3,7 @@ import { PLACES } from "../../data/places";
 export const GUIDE_MINIMUM_COMMERCIAL_RATE = 500;
 
 export const GUIDE_RATE_CARD = Object.freeze({
+  coverImage: 2500,
   quarterPage: GUIDE_MINIMUM_COMMERCIAL_RATE,
   halfPage: 600,
   fullPage: 1000,
@@ -16,6 +17,7 @@ export const GUIDE_RATE_CARD = Object.freeze({
 });
 
 export const COMMERCIAL_LABELS = Object.freeze({
+  coverImage: "Cover Image",
   quarterPage: "Quarter Page",
   halfPage: "Half Page",
   fullPage: "Full Page",
@@ -28,6 +30,7 @@ export const COMMERCIAL_LABELS = Object.freeze({
 });
 
 export const COMMERCIAL_EQUIVALENTS = Object.freeze({
+  coverImage: 1,
   quarterPage: 0.25,
   halfPage: 0.5,
   fullPage: 1,
@@ -560,6 +563,7 @@ const PAGE_PLAN = [
 ];
 
 const COMMERCIAL_BY_PAGE = {
+  1: ["coverImage", "available", null],
   2: ["insideFrontCover", "available", null],
   14: ["fullPage", "sold", "Trebartha East"],
   22: ["fullPage", "available", null],
