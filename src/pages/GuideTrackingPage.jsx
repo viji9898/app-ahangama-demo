@@ -59,6 +59,11 @@ const EVENT_LABELS = Object.freeze({
 
 const BASE_FIELDS = ["event_category", "source_domain", "page_path"];
 
+function normalizePath(path) {
+  if (typeof path !== "string") return "";
+  return path.replace(/\/+$/, "") || "/";
+}
+
 const AUTOMATED_TESTS = Object.freeze([
   ["guide_pass_cta_click", "Pass CTA"],
   ["guide_contents_select", "Contents navigation"],
@@ -106,7 +111,9 @@ function validateEvent(eventName, params, duplicate) {
   );
   const issues = missing.map((field) => `Missing ${field}`);
 
-  if (params.page_path !== "/guide") issues.push("page_path must be /guide");
+  if (normalizePath(params.page_path) !== "/guide") {
+    issues.push(`page_path must resolve to /guide; received ${params.page_path}`);
+  }
   if (params.destination_url) {
     try {
       new URL(params.destination_url, window.location.origin);
