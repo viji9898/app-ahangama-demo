@@ -277,7 +277,12 @@ function GuideVenueCard({ item, position, onImageClick, impressedVenueIds }) {
   });
 
   return (
-    <div ref={impressionRef} className="eag-card-item">
+    <div
+      ref={impressionRef}
+      className="eag-card-item"
+      data-track-venue-id={item.venueId}
+      data-track-guide-section={item.guideSection}
+    >
       <div className="eag-card-img-wrap">
         {item.image ? (
           <img
@@ -536,6 +541,7 @@ function ContentsSection() {
               <div
                 key={item}
                 className="eag-contents-item"
+                data-track-target-section={sectionIds[i]}
                 onClick={() => handleClick(sectionIds[i])}
                 role="button"
                 tabIndex={0}
@@ -806,7 +812,9 @@ function LocatedSection({ venueData }) {
                               venue_id: place.venueId,
                               venue_slug: place.venueSlug,
                               venue_name: place.name,
+                              guide_section: place.guideSection,
                               component_location: "guide_map_popup",
+                              destination_url: place.googleMaps,
                             })}
                           >
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>

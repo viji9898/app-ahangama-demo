@@ -84,8 +84,19 @@
 }
 
 .gt-actions button:first-child {
+  background: #176b47;
+  border-color: #176b47;
+  color: #fff;
+}
+
+.gt-actions button:nth-child(2) {
   background: #202522;
   color: #fff;
+}
+
+.gt-actions button:disabled {
+  cursor: wait;
+  opacity: 0.65;
 }
 
 .gt-workspace {
@@ -179,8 +190,39 @@
 }
 
 .gt-coverage-grid > div.is-covered i,
+.gt-coverage-grid > div.is-pass i,
 .gt-event-row.is-pass > i {
   background: #238457;
+}
+
+.gt-coverage-grid > div.is-pass {
+  color: #185f40;
+  font-weight: 700;
+}
+
+.gt-coverage-grid > div.is-running {
+  color: #176b8d;
+  font-weight: 700;
+}
+
+.gt-coverage-grid > div.is-running i {
+  background: #2589b3;
+  animation: gt-pulse 900ms ease-in-out infinite alternate;
+}
+
+.gt-coverage-grid > div.is-fail {
+  color: #a7352e;
+  font-weight: 700;
+}
+
+.gt-coverage-grid > div.is-fail i {
+  background: #c43f35;
+}
+
+@keyframes gt-pulse {
+  to {
+    opacity: 0.3;
+  }
 }
 
 .gt-event-log,
