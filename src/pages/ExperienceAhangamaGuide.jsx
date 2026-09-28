@@ -976,7 +976,7 @@ function TransportSection() {
 }
 
 function BestStaysSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || BEST_STAYS;
   return (
     <section id="best-stays" className="eag-section eag-section--white">
       <div className="eag-content">
@@ -1026,7 +1026,7 @@ const EATS = [
 ].map(withGuideSection("best_eats"));
 
 function BestEatsSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || EATS;
   return (
     <section id="best-eats" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1066,7 +1066,7 @@ const EXPERIENCES = [
 ].map(withGuideSection("best_experiences"));
 
 function BestExperiencesSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || EXPERIENCES;
   return (
     <section id="best-experiences" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1148,7 +1148,7 @@ function cardGrid(items, onImageClick, impressedVenueIds) {
 }
 
 function WellnessSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || WELLNESS;
   return (
     <section id="wellness" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1160,7 +1160,7 @@ function WellnessSection({ onImageClick, impressedVenueIds, venues }) {
 }
 
 function NightLifeSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || NIGHT_LIFE;
   return (
     <section id="night-life" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1172,7 +1172,7 @@ function NightLifeSection({ onImageClick, impressedVenueIds, venues }) {
 }
 
 function BestRetailStoresSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || BEST_RETAIL_STORES;
   return (
     <section id="best-retail-stores" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1199,7 +1199,7 @@ const BEST_CAFES = [
 ].map(withGuideSection("best_cafes"));
 
 function BestCafesSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || BEST_CAFES;
   return (
     <section id="best-cafes" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1215,7 +1215,7 @@ const SURF_SCHOOLS = [
 ].map(withGuideSection("surf_schools"));
 
 function SurfSchoolsSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || SURF_SCHOOLS;
   return (
     <section id="surf-schools" className="eag-section eag-section--cream">
       <div className="eag-content">
@@ -1235,7 +1235,7 @@ const TRANSPORT_VENUES = [
 ].map(withGuideSection("transport"));
 
 function TransportGuideSection({ onImageClick, impressedVenueIds, venues }) {
-  const items = venues || [];
+  const items = venues || TRANSPORT_VENUES;
   return (
     <section id="transport-guide" className="eag-section eag-section--white">
       <div className="eag-content">
