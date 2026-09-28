@@ -7,8 +7,6 @@ import {
   getGuideVenue,
   updateGuideVenue,
   deleteGuideVenue,
-  restoreGuideVenue,
-  deleteGuideVenuePermanently,
   listGuideContent,
   updateGuideContent,
 } from "./lib/guide-db.js";
@@ -226,18 +224,8 @@ function venuesApiPlugin() {
               return json(200, { ok: true, venue });
             }
             if (req.method === "DELETE") {
-              const permanent = url.searchParams.get("permanent") === "1";
-              if (permanent) {
-                await deleteGuideVenuePermanently(id);
-              } else {
-                await deleteGuideVenue(id);
-              }
+              await deleteGuideVenue(id);
               return json(200, { ok: true });
-            }
-            if (req.method === "POST") {
-              const venue = await restoreGuideVenue(id);
-              if (!venue) return json(404, { ok: false, error: "not found" });
-              return json(200, { ok: true, venue });
             }
             return json(405, { ok: false, error: "Method not allowed" });
           }
