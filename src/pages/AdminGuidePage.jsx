@@ -10,6 +10,7 @@ import {
   InstagramOutlined, LinkOutlined,
   PictureOutlined, RiseOutlined, SettingOutlined,
   FileTextOutlined, DashboardOutlined, AppstoreOutlined,
+  RestOutlined, UndoOutlined,
 } from "@ant-design/icons";
 import "../styles/admin-guide.css";
 
@@ -43,6 +44,7 @@ const AdminGuidePage = () => {
   const [loginPassword, setLoginPassword] = useState("");
   const [authenticating, setAuthenticating] = useState(false);
   const [venues, setVenues] = useState([]);
+  const [trashedVenues, setTrashedVenues] = useState([]);
   const [canonicalVenues, setCanonicalVenues] = useState([]);
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -76,12 +78,18 @@ const AdminGuidePage = () => {
 
     setLoading(true);
     try {
-      const [venuesRes, contentRes, canonicalVenuesRes] = await Promise.all([
+      const [venuesRes, contentRes, canonicalVenuesRes, trashRes] = await Promise.all([
         adminFetch(`${API_BASE}/venues`),
         adminFetch(`${API_BASE}/content`),
         adminFetch("/api/venues?destinationSlug=ahangama"),
+        adminFetch(`${API_BASE}/venues?status=trashed`),
       ]);
-      if (venuesRes.status === 401 || contentRes.status === 401) {
+      if (
+        venuesRes.status === 401 ||
+        contentRes.status === 401 ||
+        canonicalVenuesRes.status === 401 ||
+        trashRes.status === 401
+      ) {
         try {
           sessionStorage.removeItem(ADMIN_PASSWORD_STORAGE_KEY);
         } catch {
@@ -93,9 +101,11 @@ const AdminGuidePage = () => {
       const venuesData = await venuesRes.json();
       const contentData = await contentRes.json();
       const canonicalVenuesData = await canonicalVenuesRes.json();
+      const trashData = await trashRes.json();
       if (venuesData.ok) setVenues(venuesData.venues);
       if (contentData.ok) setContent(contentData.content);
       if (canonicalVenuesData.ok) setCanonicalVenues(canonicalVenuesData.venues);
+      if (trashData.ok) setTrashedVenues(trashData.venues);
     } catch {
       message.error("Failed to load data");
     } finally {
@@ -137,6 +147,7 @@ const AdminGuidePage = () => {
     }
     setAdminPassword("");
     setVenues([]);
+    setTrashedVenues([]);
     setCanonicalVenues([]);
     setContent([]);
   };
@@ -202,9 +213,33 @@ const AdminGuidePage = () => {
     try {
       const res = await adminFetch(`${API_BASE}/venue?id=${id}`, { method: "DELETE" });
       const data = await res.json();
-      if (data.ok) { message.success("Venue deleted"); fetchData(); }
+      if (data.ok) { message.success("Venue moved to trash"); fetchData(); }
       else { message.error(data.error || "Failed to delete"); }
     } catch { message.error("Failed to delete venue"); }
+  };
+
+  const handleRestoreVenue = async (id) => {
+    try {
+      const res = await adminFetch(`${API_BASE}/venue?id=${id}`, { method: "POST" });
+      const data = await res.json();
+      if (data.ok) { message.success("Venue restored"); fetchData(); }
+      else { message.error(data.error || "Failed to restore"); }
+    } catch { message.error("Failed to restore venue"); }
+  };
+
+  const handlePurgeVenue = async (id) => {
+    try {
+      const res = await adminFetch(`${API_BASE}/venue?id=${id}&permanent=1`, { method: "DELETE" });
+      const data = await res.json();
+      if (data.ok) { message.success("Venue permanently deleted"); fetchData(); }
+      else { message.error(data.error || "Failed to delete"); }
+    } catch { message.error("Failed to permanently delete venue"); }
+  };
+
+  const trashDaysLeft = (deletedAt) => {
+    if (!deletedAt) return 30;
+    const elapsed = Math.floor((Date.now() - new Date(deletedAt).getTime()) / 86400000);
+    return Math.max(0, 30 - elapsed);
   };
 
   const handleFetchRating = async () => {
@@ -267,28 +302,30 @@ const AdminGuidePage = () => {
     );
   }
 
+  const renderVenueCell = (_, r) => (
+    <div className="ag-venue-cell">
+      {r.image && (
+        <Image
+          src={r.image}
+          width={44}
+          height={44}
+          style={{ borderRadius: 10, objectFit: "cover", flexShrink: 0 }}
+          preview={false}
+          fallback="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88P/BfwAJhAPiN9pwQQAAAABJRU5ErkJggg=="
+        />
+      )}
+      <div className="ag-venue-cell-text">
+        <span className="ag-venue-name">{r.name}</span>
+        <span className="ag-venue-section">{SECTIONS.find((s) => s.key === r.section)?.label || r.section}</span>
+      </div>
+    </div>
+  );
+
   const venueColumns = [
     {
       title: "Venue",
       key: "venue",
-      render: (_, r) => (
-        <div className="ag-venue-cell">
-          {r.image && (
-            <Image
-              src={r.image}
-              width={44}
-              height={44}
-              style={{ borderRadius: 10, objectFit: "cover", flexShrink: 0 }}
-              preview={false}
-              fallback="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88P/BfwAJhAPiN9pwQQAAAABJRU5ErkJggg=="
-            />
-          )}
-          <div className="ag-venue-cell-text">
-            <span className="ag-venue-name">{r.name}</span>
-            <span className="ag-venue-section">{SECTIONS.find((s) => s.key === r.section)?.label || r.section}</span>
-          </div>
-        </div>
-      ),
+      render: renderVenueCell,
     },
     {
       title: "Rating",
@@ -344,6 +381,47 @@ const AdminGuidePage = () => {
           <button className="ag-action-btn" onClick={() => openEditModal(r)}><EditOutlined /></button>
           <Popconfirm title="Delete this venue?" onConfirm={() => handleDeleteVenue(r.id)} okText="Delete" cancelText="Cancel">
             <button className="ag-action-btn ag-action-btn--danger"><DeleteOutlined /></button>
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
+
+  const trashColumns = [
+    {
+      title: "Venue",
+      key: "venue",
+      render: renderVenueCell,
+    },
+    {
+      title: "Deleted",
+      key: "deletedAt",
+      width: 130,
+      render: (_, r) => r.deletedAt
+        ? new Date(r.deletedAt).toLocaleDateString()
+        : <span className="ag-empty">—</span>,
+    },
+    {
+      title: "Auto-purge in",
+      key: "daysLeft",
+      width: 130,
+      render: (_, r) => (
+        <span className="ag-trash-countdown">
+          {trashDaysLeft(r.deletedAt)} day{trashDaysLeft(r.deletedAt) === 1 ? "" : "s"}
+        </span>
+      ),
+    },
+    {
+      title: "",
+      key: "trashActions",
+      width: 100,
+      render: (_, r) => (
+        <Space size={4}>
+          <Popconfirm title="Restore this venue?" onConfirm={() => handleRestoreVenue(r.id)} okText="Restore" cancelText="Cancel">
+            <button className="ag-action-btn" title="Restore"><UndoOutlined /></button>
+          </Popconfirm>
+          <Popconfirm title="Permanently delete? This cannot be undone." onConfirm={() => handlePurgeVenue(r.id)} okText="Delete forever" cancelText="Cancel">
+            <button className="ag-action-btn ag-action-btn--danger" title="Delete permanently"><DeleteOutlined /></button>
           </Popconfirm>
         </Space>
       ),
@@ -479,6 +557,33 @@ const AdminGuidePage = () => {
                 </div>
               ))}
             </div>
+          </TabPane>
+
+          <TabPane tab={<span><RestOutlined /> Trash ({trashedVenues.length})</span>} key="trash">
+            {trashedVenues.length ? (
+              <div>
+                <div className="ag-trash-note">
+                  Deleted venues stay in the trash for 30 days, then are permanently removed automatically. You can restore or permanently delete them below.
+                </div>
+                <div className="ag-table-wrap">
+                  <Table
+                    columns={trashColumns}
+                    dataSource={trashedVenues}
+                    rowKey="id"
+                    loading={loading}
+                    pagination={{ pageSize: 10, showSizeChanger: false, showTotal: (t) => `${t} in trash` }}
+                    scroll={{ x: 700 }}
+                    size="middle"
+                    className="ag-table"
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="ag-empty-state">
+                <RestOutlined className="ag-empty-state-icon" />
+                <p className="ag-empty-state-text">Trash is empty. Deleted venues will appear here.</p>
+              </div>
+            )}
           </TabPane>
         </Tabs>
       </div>
@@ -699,7 +804,6 @@ const AdminGuidePage = () => {
                   <Select className="ag-select" popupClassName="ag-select-dropdown">
                     <Select.Option value="active">Active</Select.Option>
                     <Select.Option value="draft">Draft</Select.Option>
-                    <Select.Option value="archived">Archived</Select.Option>
                   </Select>
                 </Form.Item>
               </Col>
