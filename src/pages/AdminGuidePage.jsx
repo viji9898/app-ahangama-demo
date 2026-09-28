@@ -121,7 +121,7 @@ const AdminGuidePage = () => {
     event.preventDefault();
     setAuthenticating(true);
     try {
-      const response = await fetch(`${API_BASE}/venues`, {
+      const response = await fetch(`${API_BASE}/auth`, {
         headers: { "X-Admin-Password": loginPassword },
       });
       if (!response.ok) throw new Error("Invalid password");
