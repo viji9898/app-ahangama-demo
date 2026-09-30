@@ -4,6 +4,9 @@ import NewHomePage, { NEW_HOME_PATH } from "../pages/NewHomePage";
 import HomeV2 from "../pages/HomeV2";
 import HomeMobile from "../pages/HomeMobile";
 import About from "../pages/About";
+import DiversityAndInclusionPage, {
+  DIVERSITY_AND_INCLUSION_PATH,
+} from "../pages/DiversityAndInclusionPage";
 import BlogsPage from "../pages/BlogsPage";
 import EatEditorialPage from "../pages/EatEditorialPage";
 import ConceptPage from "../pages/ConceptPage";
@@ -424,6 +427,10 @@ const routes = [
     element: trackedArticle("/12-things", <TwelveThingsPage />),
   },
   { path: "/about", element: <About /> },
+  {
+    path: DIVERSITY_AND_INCLUSION_PATH,
+    element: <DiversityAndInclusionPage />,
+  },
   { path: SITE_MAP_PATH, element: <SiteMapPage /> },
   { path: "/logo", element: <LogoPage /> },
   { path: "/blogs", element: <BlogsPage /> },

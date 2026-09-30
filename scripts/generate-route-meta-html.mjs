@@ -769,6 +769,14 @@ const routeMeta = [
       "Learn about our curated guide to Ahangama - a thoughtful approach to travel that prioritizes quality over quantity, built for independent travelers and long-stay visitors.",
   },
   {
+    route: "/diversity-and-inclusion",
+    title: "Diversity, Inclusion and Community Responsibility",
+    description:
+      "How Ahangama.com approaches diversity, inclusion, fair participation and responsibility to the wider Ahangama community.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogimage-diversity-and-inclusion+.jpeg",
+  },
+  {
     route: "/site-map",
     title: "Site Map | Explore Ahangama.com",
     description:

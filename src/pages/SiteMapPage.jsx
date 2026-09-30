@@ -92,6 +92,7 @@ const PAGE_GROUPS = [
       { title: "Vendors", path: "/vendors", detail: "Venue and vendor resources." },
       { title: "Brand assets", path: "/logo", detail: "Ahangama.com logo and brand references." },
       { title: "About Ahangama.com", path: "/about", detail: "The thinking and team behind the guide." },
+      { title: "Diversity & inclusion", path: "/diversity-and-inclusion", detail: "Our commitment to fair participation and community responsibility." },
     ],
   },
   {

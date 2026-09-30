@@ -1,0 +1,230 @@
+.diversity-page {
+  --diversity-ink: #202b28;
+  --diversity-muted: #66706c;
+  --diversity-line: rgba(32, 43, 40, 0.14);
+  --diversity-accent: #9c643f;
+  background: #f7f7f3;
+  color: var(--diversity-ink);
+}
+
+.diversity-hero {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: min(72vh, 720px);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(120px, 17vw, 210px) clamp(22px, 6vw, 84px) clamp(54px, 8vw, 92px);
+  background:
+    linear-gradient(115deg, rgba(24, 48, 42, 0.97), rgba(43, 66, 57, 0.9)),
+    radial-gradient(circle at 82% 20%, rgba(218, 178, 111, 0.22), transparent 32%);
+}
+
+.diversity-heroInner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.diversity-eyebrow.ant-typography {
+  display: block;
+  margin-bottom: 22px;
+  color: #d7b785 !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.diversity-hero h1.ant-typography {
+  max-width: 980px;
+  margin: 0;
+  color: #fff !important;
+  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+.diversity-hero p.ant-typography {
+  max-width: 680px;
+  margin: 30px 0 0;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.7;
+}
+
+.diversity-content {
+  width: min(1120px, calc(100% - 44px));
+  margin: 0 auto;
+  padding: clamp(58px, 8vw, 110px) 0;
+}
+
+.diversity-section {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 760px);
+  gap: clamp(24px, 5vw, 72px);
+  padding: clamp(44px, 6vw, 76px) 0;
+  border-top: 1px solid var(--diversity-line);
+}
+
+.diversity-section:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.diversity-sectionNumber.ant-typography {
+  padding-top: 8px;
+  color: var(--diversity-accent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 28px;
+}
+
+.diversity-sectionBody h2.ant-typography {
+  margin: 0 0 28px;
+  color: var(--diversity-ink);
+  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  font-size: clamp(36px, 4.2vw, 56px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.diversity-sectionBody p.ant-typography {
+  margin: 0 0 20px;
+  color: var(--diversity-muted);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.diversity-leadQuote.ant-typography {
+  margin-bottom: 28px !important;
+  padding-left: 24px;
+  border-left: 2px solid var(--diversity-accent);
+  color: var(--diversity-ink) !important;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(25px, 2.8vw, 35px) !important;
+  line-height: 1.4 !important;
+}
+
+.diversity-listIntro.ant-typography {
+  display: block;
+  margin: 30px 0 15px;
+  color: var(--diversity-ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.diversity-expectations {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--diversity-line);
+}
+
+.diversity-expectations li {
+  position: relative;
+  padding: 17px 12px 17px 34px;
+  border-bottom: 1px solid var(--diversity-line);
+  color: #4f5b57;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.diversity-expectations li::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--diversity-accent);
+}
+
+.diversity-contactBand {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  margin: 34px 0;
+  padding: 24px;
+  background: #e8ece7;
+  border-left: 3px solid var(--diversity-accent);
+}
+
+.diversity-contactBand > .anticon {
+  color: var(--diversity-accent);
+  font-size: 28px;
+}
+
+.diversity-contactBand .ant-typography {
+  display: block;
+  margin-bottom: 5px;
+  color: #606b67;
+  font-size: 13px;
+}
+
+.diversity-contactBand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--diversity-ink);
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.diversity-contactBand a .anticon {
+  font-size: 13px;
+}
+
+.diversity-contactBand a:hover,
+.diversity-contactBand a:focus-visible {
+  color: var(--diversity-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.diversity-closingStatement.ant-typography {
+  margin: 30px 0 0 !important;
+  color: var(--diversity-ink) !important;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(27px, 3.4vw, 42px) !important;
+  line-height: 1.35 !important;
+}
+
+@media (max-width: 767px) {
+  .diversity-hero {
+    min-height: 78svh;
+    padding: 128px 22px 48px;
+  }
+
+  .diversity-hero h1.ant-typography {
+    font-size: 52px;
+    line-height: 0.98;
+  }
+
+  .diversity-content {
+    width: min(100% - 36px, 1120px);
+  }
+
+  .diversity-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .diversity-sectionNumber.ant-typography {
+    font-size: 20px;
+  }
+
+  .diversity-sectionBody h2.ant-typography {
+    margin-bottom: 22px;
+  }
+
+  .diversity-contactBand {
+    grid-template-columns: 1fr;
+    padding: 21px;
+  }
+}

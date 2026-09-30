@@ -4,6 +4,7 @@ import { Button, Grid, Input, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 import { createNewsletterSubscriber } from "../../services/newsletter";
 import { trackHomeEvent } from "../../analytics";
+import "../../styles/newsletter-signup.css";
 
 const { Paragraph, Text, Title } = Typography;
 const { useBreakpoint } = Grid;
@@ -87,6 +88,7 @@ export default function NewsletterSignup({
   if (variant === "footer") {
     return (
       <div
+        className="newsletter-signup-footer"
         style={{
           gridColumn: isMobile ? "auto" : "1 / -1",
           marginTop: isMobile ? 0 : 8,
@@ -97,6 +99,7 @@ export default function NewsletterSignup({
         }}
       >
         <div
+          className="newsletter-signup-footer-grid"
           style={{
             display: "grid",
             gridTemplateColumns: isMobile
@@ -147,6 +150,7 @@ export default function NewsletterSignup({
           </div>
 
           <div
+            className="newsletter-signup-footer-formWrap"
             style={{
               display: "flex",
               alignItems: isMobile ? "stretch" : "center",

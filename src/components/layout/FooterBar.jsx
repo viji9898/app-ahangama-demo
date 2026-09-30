@@ -79,6 +79,7 @@ const socialLinks = [
 const secondaryLinks = [
   { label: "Site Map", href: "/site-map" },
   { label: "Privacy", href: "/about" },
+  { label: "Diversity & Inclusion", href: "/diversity-and-inclusion" },
   { label: "Terms", href: "/card/terms" },
 ];
 
