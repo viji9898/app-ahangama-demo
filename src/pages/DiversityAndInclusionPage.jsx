@@ -63,7 +63,7 @@ export default function DiversityAndInclusionPage() {
             <Title level={1}>
               Diversity, Inclusion and Community Responsibility
             </Title>
-            <Paragraph>
+            <Paragraph className="diversity-heroSummary">
               A clear statement of how Ahangama.com approaches participation,
               concerns and responsibility to the wider community.
             </Paragraph>
@@ -95,20 +95,33 @@ export default function DiversityAndInclusionPage() {
             number="02"
             title="Our Commitment to Diversity and Inclusion"
           >
-            <Paragraph className="diversity-leadQuote">
-              Acceptance and tolerance do not mean indifference to suffering or
-              injustice. They mean refusing to answer division with further
-              division.
+            <Paragraph>
+              Sri Lanka&apos;s modern history includes nearly three decades of
+              civil war, during which ethnic and political divisions contributed
+              to immense suffering across our country. As a Sri Lankan platform,
+              we understand too well the consequences of allowing mistrust,
+              exclusion and separation to grow between communities—or of using
+              a person&apos;s identity to determine whether they belong.
             </Paragraph>
             <Paragraph>
-              Guided by the principle that hatred cannot overcome hatred, we
-              seek to treat all people with compassion, fairness and dignity.
+              We do not refer to this history to compare different conflicts,
+              dismiss present-day suffering or discourage legitimate criticism.
+              Instead, it reinforces our responsibility to resist discrimination,
+              encourage dialogue and treat every person with fairness and
+              humanity.
+            </Paragraph>
+            <Paragraph className="diversity-leadQuote">
+              For us, acceptance and tolerance do not mean indifference to
+              suffering or injustice. They mean refusing to answer division with
+              further division. Guided by the principle that hatred cannot
+              overcome hatred, we seek to approach difficult issues with
+              compassion, wisdom and fairness.
             </Paragraph>
             <Paragraph>
               Ahangama.com will not exclude a person or business solely because
               of nationality, ethnicity, religion, cultural background or
               assumed political beliefs. Businesses featured on our platform are
-              considered according to their conduct, the services they provide
+              assessed according to their conduct, the services they provide
               and how they treat their customers, employees, neighbours and the
               wider community.
             </Paragraph>
