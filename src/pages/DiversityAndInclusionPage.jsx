@@ -73,9 +73,9 @@ export default function DiversityAndInclusionPage() {
         <div className="diversity-content">
           <PolicySection number="01" title="What Ahangama.com Is Building">
             <Paragraph>
-              Ahangama.com is an independent destination and community platform
-              created to help people discover Ahangama while supporting the
-              people and businesses that make it special.
+              Ahangama.com is an independent destination discovery and community
+              platform created to help people discover Ahangama while supporting
+              the people and businesses that make it special.
             </Paragraph>
             <Paragraph>
               We work with local residents, business owners, hospitality
@@ -100,15 +100,15 @@ export default function DiversityAndInclusionPage() {
               civil war, during which ethnic and political divisions contributed
               to immense suffering across our country. As a Sri Lankan platform,
               we understand too well the consequences of allowing mistrust,
-              exclusion and separation to grow between communities—or of using
-              a person&apos;s identity to determine whether they belong.
+              exclusion and separation to grow between communities—or of using a
+              person&apos;s identity to determine whether they belong.
             </Paragraph>
             <Paragraph>
               We do not refer to this history to compare different conflicts,
               dismiss present-day suffering or discourage legitimate criticism.
-              Instead, it reinforces our responsibility to resist discrimination,
-              encourage dialogue and treat every person with fairness and
-              humanity.
+              Instead, it reinforces our responsibility to resist
+              discrimination, encourage dialogue and treat every person with
+              fairness and humanity.
             </Paragraph>
             <Paragraph className="diversity-leadQuote">
               For us, acceptance and tolerance do not mean indifference to
@@ -121,8 +121,8 @@ export default function DiversityAndInclusionPage() {
               Ahangama.com will not exclude a person or business solely because
               of nationality, ethnicity, religion, cultural background or
               assumed political beliefs. Businesses featured on our platform are
-              assessed according to their conduct, the services they provide
-              and how they treat their customers, employees, neighbours and the
+              assessed according to their conduct, the services they provide and
+              how they treat their customers, employees, neighbours and the
               wider community.
             </Paragraph>
             <Paragraph>
