@@ -1,6 +1,5 @@
-/* global exports, process, require */
-
-const sgMail = require("@sendgrid/mail");
+import sgMail from "@sendgrid/mail";
+import process from "node:process";
 
 const REQUIRED_FIELDS = [
   "partnerType",
@@ -23,7 +22,7 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
