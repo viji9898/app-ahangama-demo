@@ -117,6 +117,9 @@ import TheAccidentalStoryOfRibsPage, {
 import CrossFitCeylonPalmPage, {
   CROSSFIT_CEYLON_PALM_PATH,
 } from "../pages/CrossFitCeylonPalmPage";
+import CocoKitchenFineDiningPage, {
+  COCO_KITCHEN_FINE_DINING_PATH,
+} from "../pages/CocoKitchenFineDiningPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -320,6 +323,10 @@ const routes = [
   {
     path: CROSSFIT_CEYLON_PALM_PATH,
     element: <CrossFitCeylonPalmPage />,
+  },
+  {
+    path: COCO_KITCHEN_FINE_DINING_PATH,
+    element: <CocoKitchenFineDiningPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,

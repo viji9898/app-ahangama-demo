@@ -1,0 +1,14 @@
+@media (max-width: 640px) {
+  .coco-kitchen-hero-title .home-hero-titleLine {
+    white-space: normal;
+    letter-spacing: 0;
+  }
+
+  .coco-kitchen-landscape-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .coco-kitchen-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

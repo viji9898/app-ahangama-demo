@@ -236,6 +236,14 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Food Story",
+    title: "COCO Kitchen: The Pursuit of Coastal Fine Dining in Ahangama",
+    date: "This Week",
+    href: "/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama/coco-kitchen-hero-image-ahangama.webp",
+  },
+  {
     category: "Fitness Story",
     title: "CrossFit Ceylon Palm: Training in the Jungle",
     date: "This Week",

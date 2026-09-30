@@ -1,5 +1,15 @@
 export const EDITORIAL_ARTICLES = [
   {
+    category: "Food Story",
+    title: "COCO Kitchen: The Pursuit of Coastal Fine Dining in Ahangama",
+    href: "/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama",
+    description:
+      "One and a half years into redefining southern Sri Lanka's culinary landscape, one kitchen pairs daily reef catches with elevated island heritage.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama/+coco-kitchen-exterior-ahangama-og-image.webp",
+    publishDate: "2026-09-30T09:00:00.000Z",
+  },
+  {
     category: "Fitness Story",
     title: "CrossFit Ceylon Palm: Training in the Jungle",
     href: "/crossfit-ceylon-palm-training-in-the-jungle",
