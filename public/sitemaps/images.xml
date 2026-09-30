@@ -180,8 +180,231 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/eat/cactus-ahangama</loc>
+    <lastmod>2026-09-28T10:05:02.954Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cactus.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+5catus.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cactus-logo.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/hotel-de-uncles</loc>
+    <lastmod>2026-09-28T08:28:18.955Z</lastmod>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/kicks-ahangama</loc>
+    <lastmod>2026-09-28T08:27:51.448Z</lastmod>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/mono-ahangama</loc>
+    <lastmod>2026-09-28T08:27:00.779Z</lastmod>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789539698/Mono.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/hakuna-matata-ahangama</loc>
+    <lastmod>2026-09-28T08:26:38.189Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/hakuna_matata.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540896/Hakuna-Matata.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/lamana-ahangama</loc>
+    <lastmod>2026-09-28T08:25:07.121Z</lastmod>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786620612/Lamana_23_vnrlgv.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/animals</loc>
+    <lastmod>2026-09-28T08:10:44.671Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/animals.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/animals/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/animals/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/ebb-and-flow-jungalows</loc>
+    <lastmod>2026-09-28T08:08:28.911Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/ebb-and-flow-jungalows/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/ebb-and-flow-jungalows/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/ebb-and-flow-jungalows/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/oyummy</loc>
+    <lastmod>2026-09-28T07:59:51.353Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/oyummy.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/oyummy/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/oyummy/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/crave</loc>
+    <lastmod>2026-09-28T07:43:52.298Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/crave.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/crave/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/crave/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/abrazo-ahangama</loc>
+    <lastmod>2026-09-28T07:42:51.578Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/abrazo.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/abrazo-ahangama/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/abrazo-ahangama/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/cafe-wave</loc>
+    <lastmod>2026-09-28T07:42:18.246Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cafe_wave.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/cafe-wave/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/cafe-wave/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/patels-ahangama</loc>
+    <lastmod>2026-09-28T07:41:32.377Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/petals.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540616/Petals.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/patels-ahangama/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/cafe-ceylon-ahangama</loc>
+    <lastmod>2026-09-28T07:40:46.308Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cafe+ceylon.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/cafe-ceylon-ahangama/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/living-r-c-s</loc>
+    <lastmod>2026-09-28T07:39:58.503Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/living_room.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/living-room-concept-store/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/living-room-concept-store/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/daily-dose-cafe</loc>
+    <lastmod>2026-09-28T07:39:10.096Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/daily_dose.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/daily-dose-cafe/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/daily-dose-cafe/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/caf-samaya</loc>
+    <lastmod>2026-09-28T07:36:23.478Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/caf-samaya/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/caf-samaya/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/caf-samaya/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/sisters-kabalana</loc>
+    <lastmod>2026-09-28T07:35:49.334Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sister_kabalana.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789538487/Sisters-Cafe-.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-kabalana/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/aliikai-ahangama</loc>
+    <lastmod>2026-09-28T07:35:04.289Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/alii_kai.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789539335/Aliikai.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/aliikai-ahangama/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/eat/kaffi-ag</loc>
-    <lastmod>2026-09-26T05:53:10.088Z</lastmod>
+    <lastmod>2026-09-28T07:34:38.648Z</lastmod>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/kaffi.jpg</image:loc>
     </image:image>
@@ -190,8 +413,44 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/eat/pickled-pelican</loc>
+    <lastmod>2026-09-28T06:52:15.112Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pickled-pelican/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pickled-pelican/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/taboo-beach-club</loc>
+    <lastmod>2026-09-28T06:49:29.791Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540384/Taboo-Beach-Club.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/eat/samba-ahangama</loc>
+    <lastmod>2026-09-28T06:47:59.536Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/samba.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+23samba.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/eat/coco-kitchen</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T06:10:57.257Z</lastmod>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/coco-kitchen/logo.jpg</image:loc>
     </image:image>
@@ -203,45 +462,30 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/eat/hotel-de-uncles</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <loc>https://ahangama.com/eat/citra-ahangama</loc>
+    <lastmod>2026-09-28T06:09:45.514Z</lastmod>
     <image:image>
-      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426468/Uncle_2_c3vkpl.webp</image:loc>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/citra.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540751/Citra.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/citra-ahangama/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://ahangama.com/eat/kai-rooftop</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-27T10:00:13.839Z</lastmod>
     <image:image>
       <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426785/Kai_rooftop_ahangama_mcetbs.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/eat/kicks-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786344638/Kicks_Ahangama_bkuzuq.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/lamana-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786620612/Lamana_23_vnrlgv.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/eat/mermaids-kitchen</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-27T09:59:47.575Z</lastmod>
     <image:image>
       <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786427902/Mermaids_cbow9y.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/mono-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789539698/Mono.png</image:loc>
     </image:image>
   </url>
   <url>
@@ -255,133 +499,6 @@
     </image:image>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-club/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/ebb-and-flow-jungalows</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/ebb-and-flow-jungalows/logo.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/ebb-and-flow-jungalows/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/ebb-and-flow-jungalows/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/caf-samaya</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/caf-samaya/logo.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/caf-samaya/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/caf-samaya/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/taboo-beach-club</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/logo.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540384/Taboo-Beach-Club.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/taboo-beach-club/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/aliikai-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/alii_kai.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789539335/Aliikai.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/aliikai-ahangama/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/cactus-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cactus.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+5catus.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/cactus-logo.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/cafe-ceylon-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cafe+ceylon.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/cafe-ceylon-ahangama/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/citra-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/citra.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540751/Citra.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/citra-ahangama/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/hakuna-matata-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/hakuna_matata.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540896/Hakuna-Matata.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/pickled-pelican</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pickled-pelican/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pickled-pelican/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/sisters-kabalana</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sister_kabalana.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789538487/Sisters-Cafe-.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-kabalana/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -434,19 +551,6 @@
     </image:image>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/quinta/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/patels-ahangama</loc>
-    <lastmod>2026-09-16T06:37:22.189Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/petals.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/czuk4rf2/image/upload/v1789540616/Petals.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/patels-ahangama/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -548,19 +652,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/eat/daily-dose-cafe</loc>
-    <lastmod>2026-09-01T12:11:35.029Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/daily_dose.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/daily-dose-cafe/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/daily-dose-cafe/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/eat/aggala</loc>
     <lastmod>2026-08-31T22:51:09.637Z</lastmod>
     <image:image>
@@ -659,19 +750,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/eat/living-r-c-s</loc>
-    <lastmod>2026-08-31T21:52:14.549Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/living_room.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/living-room-concept-store/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/living-room-concept-store/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/eat/manoris-kitchen</loc>
     <lastmod>2026-08-31T21:52:14.549Z</lastmod>
     <image:image>
@@ -705,19 +783,6 @@
     </image:image>
     <image:image>
       <image:loc>https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/samba-ahangama</loc>
-    <lastmod>2026-08-31T21:52:14.549Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/samba.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/Asset+23samba.webp</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
     </image:image>
   </url>
   <url>
@@ -786,45 +851,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/eat/abrazo-ahangama</loc>
-    <lastmod>2026-08-31T20:56:10.576Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/abrazo.jpeg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/abrazo-ahangama/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/abrazo-ahangama/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/animals</loc>
-    <lastmod>2026-08-31T20:56:10.576Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/animals.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/animals/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/animals/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/cafe-wave</loc>
-    <lastmod>2026-08-31T20:56:10.576Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/cafe_wave.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/cafe-wave/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/cafe-wave/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/eat/ceylon-sliders</loc>
     <lastmod>2026-08-31T20:56:10.576Z</lastmod>
     <image:image>
@@ -845,19 +871,6 @@
     </image:image>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coconut_republik.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/crave</loc>
-    <lastmod>2026-08-31T20:56:10.576Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/crave.jpeg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/crave/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/crave/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -910,19 +923,6 @@
     </image:image>
     <image:image>
       <image:loc>https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/eat/oyummy</loc>
-    <lastmod>2026-08-31T20:56:10.576Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/oyummy.jpeg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/oyummy/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/oyummy/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -1014,28 +1014,31 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/stays/sisters-away</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <loc>https://ahangama.com/stays/pebble-alma</loc>
+    <lastmod>2026-09-29T08:28:57.259Z</lastmod>
     <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/logo.jpg</image:loc>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/pebble_alma.jpeg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/image.jpg</image:loc>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pebble-alma/image.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/og.jpg</image:loc>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pebble-alma/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/stays/casa-tikiri</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <loc>https://ahangama.com/stays/younger-villas-resorts</loc>
+    <lastmod>2026-09-28T08:09:56.153Z</lastmod>
     <image:image>
-      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp</image:loc>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/younger-villas-resorts/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/younger-villas-resorts/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://ahangama.com/stays/casa-samaya</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T07:58:54.020Z</lastmod>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/casa-samaya/logo.jpg</image:loc>
     </image:image>
@@ -1047,8 +1050,34 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/stays/sisters-away</loc>
+    <lastmod>2026-09-28T07:55:15.125Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sisters-away/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/stays/villa-mugatiya</loc>
+    <lastmod>2026-09-28T07:54:46.053Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/villa-mugatiya/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/villa-mugatiya/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/stays/ko-lake</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T07:54:08.486Z</lastmod>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/ko-lake/logo.jpg</image:loc>
     </image:image>
@@ -1060,8 +1089,15 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/stays/casa-tikiri</loc>
+    <lastmod>2026-09-28T06:06:33.606Z</lastmod>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1786339766/Casa_Tikiri_02_oe9tj4.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/stays/the-benison-ahangama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T06:01:07.371Z</lastmod>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the_bension.jpeg</image:loc>
     </image:image>
@@ -1074,25 +1110,12 @@
   </url>
   <url>
     <loc>https://ahangama.com/stays/trebartha-east-the-roundhouse</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T06:00:15.342Z</lastmod>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/Trebartha+East+The+Roundhouse.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/trebartha_east_the_roundhouse.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/stays/villa-mugatiya</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/coming_soon.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/villa-mugatiya/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/villa-mugatiya/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -1214,16 +1237,6 @@
     </image:image>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/kurula_bay.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/stays/younger-villas-resorts</loc>
-    <lastmod>2026-08-31T22:21:25.637Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/younger-villas-resorts/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/younger-villas-resorts/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -1437,19 +1450,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/stays/pebble-alma</loc>
-    <lastmod>2026-08-31T20:56:10.576Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/pebble_alma.jpeg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pebble-alma/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pebble-alma/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/stays/puffer-fish</loc>
     <lastmod>2026-08-31T20:56:10.576Z</lastmod>
     <image:image>
@@ -1598,21 +1598,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/wellness/calma-samaya</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/calma-samaya/logo.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/calma-samaya/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/calma-samaya/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/wellness/white-lotus-spa-wellness</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T10:28:52.623Z</lastmod>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/white-lotus-spa-wellness/logo.jpg</image:loc>
     </image:image>
@@ -1624,8 +1611,47 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/wellness/spa-station-midigama</loc>
+    <lastmod>2026-09-28T08:24:12.404Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/spa_station_midigama.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/spa-station-midigama/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/spa-station-midigama/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/wellness/sellam</loc>
+    <lastmod>2026-09-28T08:23:33.021Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sellam.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sellam/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sellam/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/wellness/the-nuga-house</loc>
+    <lastmod>2026-09-28T08:22:51.228Z</lastmod>
+    <image:image>
+      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the_nuga_house.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/the-nuga-house/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/the-nuga-house/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/wellness/banya-steam-house</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T08:22:20.150Z</lastmod>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/banya-steam-house/image.jpg</image:loc>
     </image:image>
@@ -1634,8 +1660,21 @@
     </image:image>
   </url>
   <url>
+    <loc>https://ahangama.com/wellness/calma-samaya</loc>
+    <lastmod>2026-09-28T08:20:51.786Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/calma-samaya/logo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/calma-samaya/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/calma-samaya/og.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://ahangama.com/wellness/coconut-c</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T08:16:14.462Z</lastmod>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/coconut_court.jpg</image:loc>
     </image:image>
@@ -1648,7 +1687,7 @@
   </url>
   <url>
     <loc>https://ahangama.com/wellness/pura</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T07:10:59.672Z</lastmod>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/pura_pilates.jpeg</image:loc>
     </image:image>
@@ -1657,45 +1696,6 @@
     </image:image>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/pura-pilates-ahangama/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/wellness/sellam</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sellam.jpeg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sellam/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/sellam/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/wellness/spa-station-midigama</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/spa_station_midigama.jpeg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/spa-station-midigama/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/spa-station-midigama/og.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ahangama.com/wellness/the-nuga-house</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the_nuga_house.jpeg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/the-nuga-house/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/the-nuga-house/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -1778,15 +1778,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/retail/mint-ceylon</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
-    <image:image>
-      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://ahangama.com/retail/yiva-essentials</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T10:04:36.107Z</lastmod>
     <image:image>
       <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/yiva-essentials/logo.jpg</image:loc>
     </image:image>
@@ -1795,21 +1788,25 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/retail/qamar-by-zan</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <loc>https://ahangama.com/retail/mint-ceylon</loc>
+    <lastmod>2026-09-28T10:04:16.931Z</lastmod>
     <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/qamar-by-zan/logo.jpg</image:loc>
+      <image:loc>https://res.cloudinary.com/dp7in4ulw/image/upload/v1787289095/mint_ceylong_axzbft.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahangama.com/retail/mudra-herbal-spicy-tea-shop</loc>
+    <lastmod>2026-09-28T08:32:34.415Z</lastmod>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/mudra-herbal-spicy-tea-shop/image.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/qamar-by-zan/image.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/qamar-by-zan/og.jpg</image:loc>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/mudra-herbal-spicy-tea-shop/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://ahangama.com/retail/gusta</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T08:30:19.705Z</lastmod>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/gusta.jpg</image:loc>
     </image:image>
@@ -1821,18 +1818,21 @@
     </image:image>
   </url>
   <url>
-    <loc>https://ahangama.com/retail/mudra-herbal-spicy-tea-shop</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <loc>https://ahangama.com/retail/qamar-by-zan</loc>
+    <lastmod>2026-09-28T08:17:12.915Z</lastmod>
     <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/mudra-herbal-spicy-tea-shop/image.jpg</image:loc>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/qamar-by-zan/logo.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/mudra-herbal-spicy-tea-shop/og.jpg</image:loc>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/qamar-by-zan/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/qamar-by-zan/og.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://ahangama.com/retail/pachcha-sanni</loc>
-    <lastmod>2026-09-25T14:49:45.592Z</lastmod>
+    <lastmod>2026-09-28T08:16:40.504Z</lastmod>
     <image:image>
       <image:loc>https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/pachcha_sanni.jpeg</image:loc>
     </image:image>
