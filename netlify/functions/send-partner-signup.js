@@ -1,6 +1,6 @@
-const sgMail = require("@sendgrid/mail");
+import sgMail from "@sendgrid/mail";
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
