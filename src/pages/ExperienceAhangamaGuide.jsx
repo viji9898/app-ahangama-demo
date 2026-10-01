@@ -561,7 +561,7 @@ function ContentsSection() {
 function OverviewSection() {
   return (
     <section id="overview" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784788406/overview_image_ukm5or.webp)" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-overview-section-ocean-image-with-surfer-67c60a7b.webp)" }} />
       <div className="eag-hero-overlay eag-hero-overlay--left" />
       <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
@@ -861,12 +861,12 @@ const BEST_STAYS = [
 
 function BestForSection() {
   const items = [
-    { key: "wellness", label: "Wellness", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779727/Soul_Spa_Colored736923392_Topaz_Gigapixel_4x_scale_iklhr8.webp" },
-    { key: "surfers", label: "Surfers", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779727/coloredgood-story-surf-school-1400_1_Topaz_Gigapixel_4x_scale_dr6h6l.webp" }, 
-    { key: "nomads", label: "Digital Nomads", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779727/Colored_Kalatmaka1_Topaz_Gigapixel_4x_scale_wavbpv.webp" },
-    { key: "cafe", label: "Café Lovers", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779727/Kaffi946318185961736_7826978568551728722_n_Topaz_Gigapixel_4x_scale_iz1aop.webp" },
-    { key: "souvenirs", label: "Souvenirs", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784793489/souvenir_qrb9cl.webp" },
-    { key: "nightlife", label: "Nightlife", image: "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779729/Hakuna_ColoredImage_ji8d1dji8d1dji8d_Topaz_Gigapixel_2x_scale_bxi6wt.webp" },
+    { key: "wellness", label: "Wellness", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-soul-spa-menu-welcome-drink-and-decorative-elements-arranged-on-a-table-1b4277f2.webp" },
+    { key: "surfers", label: "Surfers", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-six-surfers-standing-on-the-beach-smiling-555a8765.webp" }, 
+    { key: "nomads", label: "Digital Nomads", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-outdoor-patio-seating-area-at-kal-tmaka-creative-co-working-space-44c1a9d4.webp" },
+    { key: "cafe", label: "Café Lovers", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-a-paper-cup-labelled-kaffi-brown-color-on-the-table-d3dbe0b9.webp" },
+    { key: "souvenirs", label: "Souvenirs", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-traditional-sri-lankan-wooden-masks-displayed-with-souvenir-shops-ahangama-sri-l-f22f3195.jpg" },
+    { key: "nightlife", label: "Nightlife", image: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-dj-performing-at-night-at-hakuna-matata-beach-venue-in-ahangama-9fe225ee.webp" },
   ];
 
   return (
@@ -902,7 +902,7 @@ function BestForSection() {
 function BestSeasonSection() {
   return (
     <section id="best-season" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784783799/colored-4247572_jezkyb.webp)" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-high-angle-aerial-view-of-a-person-walking-on-a-sandy-beach-by-turquoise-ocean-w-fabb303e.webp)" }} />
       <div className="eag-hero-overlay eag-hero-overlay--right" />
       <div className="eag-content eag-content--hero eag-content--hero-right">
         <Reveal>
@@ -930,7 +930,7 @@ function BestSeasonSection() {
 function HowLongSection() {
   return (
     <section id="how-long" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/v1787647989/howlongpeoplestay_1_sqg1i8.webp)", backgroundPosition: "center center" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-tropical-beach-in-sri-lanka-with-beachfront-cafes-and-palm-trees-at-sunset-6fa14cea.jpg)", backgroundPosition: "center center" }} />
       <div className="eag-hero-overlay eag-hero-overlay--left" />
       <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
@@ -953,7 +953,7 @@ function HowLongSection() {
 function TransportSection() {
   return (
     <section id="transport" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784784926/44yfmcvyf_zqm5q1.webp)", backgroundPosition: "bottom" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-green-tuk-tuk-and-scooter-parked-on-a-sandy-beach-by-the-ocean-76ef6779.png)", backgroundPosition: "bottom" }} />
       <div className="eag-hero-overlay eag-hero-overlay--left" />
       <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
