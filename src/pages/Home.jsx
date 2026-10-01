@@ -49,7 +49,7 @@ const { Title, Paragraph, Text } = Typography;
 const EVENTS_ENDPOINT = "/.netlify/functions/events";
 
 const GUIDE_CARD_IMAGE =
-  "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784702191/Screenshot_2026-07-22_at_12.06.19_jmbgko.png";
+  "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-cover-page-image-ocean-side-878f3766.webp";
 
 function formatHomepageEventDate(day) {
   if (String(day.key).startsWith("ongoing")) {
