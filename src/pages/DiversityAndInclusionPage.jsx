@@ -95,21 +95,6 @@ export default function DiversityAndInclusionPage() {
             number="02"
             title="Our Commitment to Diversity and Inclusion"
           >
-            <Paragraph>
-              Sri Lanka&apos;s modern history includes nearly three decades of
-              civil war, during which ethnic and political divisions contributed
-              to immense suffering across our country. As a Sri Lankan platform,
-              we understand too well the consequences of allowing mistrust,
-              exclusion and separation to grow between communities—or of using a
-              person&apos;s identity to determine whether they belong.
-            </Paragraph>
-            <Paragraph>
-              We do not refer to this history to compare different conflicts,
-              dismiss present-day suffering or discourage legitimate criticism.
-              Instead, it reinforces our responsibility to resist
-              discrimination, encourage dialogue and treat every person with
-              fairness and humanity.
-            </Paragraph>
             <Paragraph className="diversity-leadQuote">
               For us, acceptance and tolerance do not mean indifference to
               suffering or injustice. They mean refusing to answer division with
