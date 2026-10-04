@@ -726,7 +726,7 @@ export default function PrintGuidePage() {
     const requestedView = typeof window === "undefined" ? null : new URLSearchParams(window.location.search).get("view");
     return ["spread", "overview", "commercial", "distribution"].includes(requestedView) ? requestedView : "spread";
   });
-  const [pageFormatKey, setPageFormatKey] = useState("A5");
+  const [pageFormatKey, setPageFormatKey] = useState("B5");
   const [currentPage, setCurrentPage] = useState(1);
   const [managementMode, setManagementMode] = useState(true);
   const [zoom, setZoom] = useState(1);

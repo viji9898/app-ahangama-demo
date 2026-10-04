@@ -146,6 +146,9 @@ import TransportPage, { TRANSPORT_PATH } from "../pages/TransportPage";
 import HostRetreatPage, { HOST_RETREAT_PATH } from "../pages/HostRetreatPage";
 import PassPerksPage, { PASS_PERKS_PATH } from "../pages/PassPerksPage";
 import PrintGuidePage, { PRINT_GUIDE_PATH } from "../pages/PrintGuidePage";
+import PrintGuidePreviewPage, {
+  PRINT_GUIDE_PREVIEW_PATH,
+} from "../pages/PrintGuidePreviewPage";
 import PrintGuideOnlinePage, {
   PRINT_GUIDE_ONLINE_PATH,
 } from "../pages/PrintGuideOnlinePage";
@@ -177,6 +180,7 @@ const trackedArticle = (
 );
 const routes = [
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
+  { path: PRINT_GUIDE_PREVIEW_PATH, element: <PrintGuidePreviewPage /> },
   { path: PRINT_GUIDE_PATH, element: <PrintGuidePage /> },
   { path: PRINT_GUIDE_ONLINE_PATH, element: <PrintGuideOnlinePage /> },
   { path: BRAND_GUIDELINE_PATH, element: <BrandGuidelinePage /> },
