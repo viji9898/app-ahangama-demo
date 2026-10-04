@@ -1582,6 +1582,50 @@
   font-size: 2.6cqw;
 }
 
+.pg-eat-recommendations.has-guide-qr > h1,
+.pg-eat-recommendations.has-guide-qr > .pg-standfirst {
+  max-width: 56cqw;
+}
+
+.pg-breakfast-qr {
+  position: absolute;
+  top: var(--page-margin);
+  right: var(--page-margin);
+  width: 24cqw;
+  display: grid;
+  grid-template-columns: 9cqw 1fr;
+  gap: 1.5cqw;
+  align-items: center;
+  padding: 1.5cqw;
+  border: 1px solid #9ca89e;
+  background: rgba(247, 244, 237, 0.92);
+  color: #173b35;
+}
+
+.pg-breakfast-qr svg {
+  width: 9cqw;
+  height: 9cqw;
+}
+
+.pg-breakfast-qr > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6cqw;
+}
+
+.pg-breakfast-qr strong {
+  font-size: 1.6cqw;
+  line-height: 1.1;
+}
+
+.pg-breakfast-qr span,
+.pg-breakfast-qr small {
+  overflow-wrap: anywhere;
+  font-size: 1.15cqw;
+  line-height: 1.2;
+}
+
 .pg-eat-recommendations-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

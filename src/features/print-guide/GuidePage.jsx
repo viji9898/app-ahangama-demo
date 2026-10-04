@@ -651,13 +651,29 @@ function EatDrinkOpenerPage({ page }) {
 
 function EatDrinkRecommendationsPage({ page }) {
   const venues = getVenues(page);
+  const isBreakfast = page.pageType === "breakfast";
   return (
     <div
-      className={`pg-template pg-eat-recommendations pg-safe-area is-${venues.length}`}
+      className={`pg-template pg-eat-recommendations pg-safe-area is-${venues.length}${isBreakfast ? " has-guide-qr" : ""}`}
     >
       <EditorialLabel page={page} />
       <h1>{page.content.headline}</h1>
       <p className="pg-standfirst">{page.content.subheadline}</p>
+      {isBreakfast ? (
+        <div className="pg-breakfast-qr">
+          <QRCodeSVG
+            value="http://ahangama.com/guide/breakfast"
+            level="M"
+            bgColor="#f7f4ed"
+            fgColor="#173b35"
+          />
+          <div>
+            <strong>Open the breakfast guide</strong>
+            <span>Rates · Instagram · Directions</span>
+            <small>ahangama.com/guide/breakfast</small>
+          </div>
+        </div>
+      ) : null}
       <div className="pg-eat-recommendations-grid">
         {venues.map((venue, index) => (
           <article key={venue.slug}>
