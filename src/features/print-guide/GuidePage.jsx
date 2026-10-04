@@ -2,6 +2,7 @@ import React from "react";
 import { QRCodeSVG } from "qrcode.react";
 import {
   COMMERCIAL_LABELS,
+  EAT_DRINK_GUIDES,
   GUIDE_PLACES_BY_SLUG,
   GUIDE_SECTIONS,
 } from "./guideData";
@@ -651,26 +652,29 @@ function EatDrinkOpenerPage({ page }) {
 
 function EatDrinkRecommendationsPage({ page }) {
   const venues = getVenues(page);
-  const isBreakfast = page.pageType === "breakfast";
+  const onlineGuide = EAT_DRINK_GUIDES[page.pageType];
+  const guideUrl = onlineGuide
+    ? `http://ahangama.com/guide/${page.pageType}`
+    : null;
   return (
     <div
-      className={`pg-template pg-eat-recommendations pg-safe-area is-${venues.length}${isBreakfast ? " has-guide-qr" : ""}`}
+      className={`pg-template pg-eat-recommendations pg-safe-area is-${venues.length}${onlineGuide ? " has-guide-qr" : ""}`}
     >
       <EditorialLabel page={page} />
       <h1>{page.content.headline}</h1>
       <p className="pg-standfirst">{page.content.subheadline}</p>
-      {isBreakfast ? (
-        <div className="pg-breakfast-qr">
+      {onlineGuide ? (
+        <div className="pg-guide-qr">
           <QRCodeSVG
-            value="http://ahangama.com/guide/breakfast"
+            value={guideUrl}
             level="M"
             bgColor="#f7f4ed"
             fgColor="#173b35"
           />
           <div>
-            <strong>Open the breakfast guide</strong>
+            <strong>Open the {onlineGuide.title.toLowerCase()} guide</strong>
             <span>Rates · Instagram · Directions</span>
-            <small>ahangama.com/guide/breakfast</small>
+            <small>{guideUrl.replace("http://", "")}</small>
           </div>
         </div>
       ) : null}

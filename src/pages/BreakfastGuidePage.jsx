@@ -7,14 +7,17 @@ import {
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { PLACES } from "../data/places";
-import { BREAKFAST_VENUE_SLUGS } from "../features/print-guide/guideData";
+import { EAT_DRINK_GUIDES } from "../features/print-guide/guideData";
 import "../styles/breakfast-guide.css";
 
-export const BREAKFAST_GUIDE_PATH = "/guide/breakfast";
-
-const BREAKFAST_PLACES = BREAKFAST_VENUE_SLUGS.map((slug) =>
-  PLACES.find((place) => place.slug === slug),
-).filter(Boolean);
+export const EAT_DRINK_GUIDE_PATHS = Object.freeze(
+  Object.fromEntries(
+    Object.keys(EAT_DRINK_GUIDES).map((guideKey) => [
+      guideKey,
+      `/guide/${guideKey}`,
+    ]),
+  ),
+);
 
 function getInstagramUrl(place) {
   if (!place.instagram) return null;
@@ -29,7 +32,7 @@ function getDirectionsUrl(place) {
   return null;
 }
 
-function BreakfastCard({ place, index }) {
+function GuideVenueCard({ place, index, guideTitle }) {
   const instagramUrl = getInstagramUrl(place);
   const directionsUrl = getDirectionsUrl(place);
   const offer = Array.isArray(place.offer) ? place.offer[0] : place.offer;
@@ -39,7 +42,7 @@ function BreakfastCard({ place, index }) {
       <div className="breakfast-card-media">
         <img
           src={place.image || place.ogImage || place.logo}
-          alt={`${place.name.trim()} breakfast venue`}
+          alt={`${place.name.trim()} ${guideTitle.toLowerCase()} venue`}
           loading="lazy"
         />
         <span>{String(index + 1).padStart(2, "0")}</span>
@@ -72,7 +75,7 @@ function BreakfastCard({ place, index }) {
           </div>
           <div>
             <dt>Best for</dt>
-            <dd>{(place.bestFor || ["Breakfast"]).slice(0, 2).join(" · ")}</dd>
+            <dd>{(place.bestFor || [guideTitle]).slice(0, 2).join(" · ")}</dd>
           </div>
         </dl>
         {offer ? (
@@ -102,32 +105,40 @@ function BreakfastCard({ place, index }) {
   );
 }
 
-export default function BreakfastGuidePage() {
+export default function EatDrinkGuidePage({ guideKey }) {
+  const guide = EAT_DRINK_GUIDES[guideKey];
+  const guidePath = EAT_DRINK_GUIDE_PATHS[guideKey];
+  const places = guide.venueSlugs
+    .map((slug) => PLACES.find((place) => place.slug === slug))
+    .filter(Boolean);
+
   return (
     <main className="breakfast-guide">
       <Seo
-        title="Breakfast in Ahangama | Ahangama Guide"
-        description="Ten breakfast places in Ahangama, with rates, Instagram profiles and Google directions."
-        canonical={absUrl(BREAKFAST_GUIDE_PATH)}
-        ogImage={BREAKFAST_PLACES[0]?.image}
+        title={`${guide.title} in Ahangama | Ahangama Guide`}
+        description={`${guide.description} Includes rates, Instagram profiles and Google directions.`}
+        canonical={absUrl(guidePath)}
+        ogImage={places[0]?.image}
       />
       <header className="breakfast-header">
         <div>
           <span>Ahangama Guide · Eat & Drink</span>
-          <h1>Breakfast</h1>
-          <p>
-            Ten starts to the day, from early coffee and bakery runs to a table
-            worth lingering over.
-          </p>
+          <h1>{guide.title}</h1>
+          <p>{guide.description}</p>
         </div>
         <aside>
-          <strong>{BREAKFAST_PLACES.length}</strong>
+          <strong>{places.length}</strong>
           <span>local addresses</span>
         </aside>
       </header>
-      <section className="breakfast-grid" aria-label="Breakfast places">
-        {BREAKFAST_PLACES.map((place, index) => (
-          <BreakfastCard key={place.slug} place={place} index={index} />
+      <section className="breakfast-grid" aria-label={`${guide.title} places`}>
+        {places.map((place, index) => (
+          <GuideVenueCard
+            key={place.slug}
+            place={place}
+            index={index}
+            guideTitle={guide.title}
+          />
         ))}
       </section>
       <footer className="breakfast-footer">

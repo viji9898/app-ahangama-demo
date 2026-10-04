@@ -625,97 +625,176 @@ export const BREAKFAST_VENUE_SLUGS = Object.freeze([
   "living",
 ]);
 
+export const COFFEE_CAFES_VENUE_SLUGS = Object.freeze([
+  "cactus-ahangama",
+  "the-kip",
+  "kaffi-ag",
+  "twin-fin-surf-x-coffee",
+  "cafe-ceylon-ahangama",
+  "daily-dose-cafe",
+  "makai-cafe-ahangama",
+  "sisters-kabalana",
+  "lum-cafe",
+  "unsung",
+]);
+
+export const LUNCH_VENUE_SLUGS = Object.freeze([
+  "meori-ahangama",
+  "jam-house-ahangama",
+  "patels-ahangama",
+  "tahini",
+  "iluk-ahangama",
+  "aliikai-ahangama",
+  "citra-ahangama",
+  "fruit-cafe-ahangama",
+  "squeeze-me",
+  "paradise-cove-midigama",
+]);
+
+export const SRI_LANKAN_FOOD_VENUE_SLUGS = Object.freeze([
+  "manoris-kitchen",
+  "thilenis",
+  "patels-ahangama",
+  "citra-ahangama",
+  "rice-and-spoon",
+  "the-cinnamon-trails-ahangama",
+  "kalage",
+  "soko",
+]);
+
+export const DINNER_VENUE_SLUGS = Object.freeze([
+  "ceylon-sliders",
+  "le-cafe-french-bistro-ahangama",
+  "teddies-ahangama",
+  "samba-ahangama",
+  "moochies-ahangama",
+  "jam-house-ahangama",
+  "tahini",
+  "iluk-ahangama",
+  "donna-ahangama",
+  "aliikai-ahangama",
+]);
+
+export const DINNER_FOR_TWO_VENUE_SLUGS = Object.freeze([
+  "le-cafe-french-bistro-ahangama",
+  "follow-the-white-rabbit-ahangama",
+  "iluk-ahangama",
+  "aliikai-ahangama",
+  "donna-ahangama",
+  "mora-rooftop-lounge",
+  "citra-ahangama",
+  "meori-ahangama",
+]);
+
+export const EAT_WELL_FOR_LESS_VENUE_SLUGS = Object.freeze([
+  "rollingpin-bakery",
+  "sandwich-spot",
+  "soko",
+  "crave",
+  "hungry-puppet",
+  "hakuna-matata-ahangama",
+  "cafe-ceylon-ahangama",
+  "kaffi-ag",
+  "chillinguito",
+  "rice-and-spoon",
+]);
+
+export const SUNSET_DRINKS_VENUE_SLUGS = Object.freeze([
+  "moochies-ahangama",
+  "mora-rooftop-lounge",
+  "follow-the-white-rabbit-ahangama",
+  "samba-ahangama",
+  "ceylon-sliders",
+  "animals",
+  "folklore-ahangama",
+  "paradise-cove-midigama",
+]);
+
+export const AFTER_DARK_VENUE_SLUGS = Object.freeze([
+  "teddies-ahangama",
+  "samba-ahangama",
+  "ceylon-sliders",
+  "moochies-ahangama",
+  "animals",
+  "folklore-ahangama",
+  "mora-rooftop-lounge",
+  "hakuna-matata-ahangama",
+]);
+
+export const EAT_DRINK_GUIDES = Object.freeze({
+  breakfast: {
+    pageNumber: 24,
+    title: "Breakfast",
+    description:
+      "Ten starts to the day, from early coffee and bakery runs to a table worth lingering over.",
+    venueSlugs: BREAKFAST_VENUE_SLUGS,
+  },
+  "coffee-cafes": {
+    pageNumber: 25,
+    title: "Coffee & Cafés",
+    description:
+      "Ten reliable stops for a flat white, a quick reset or a slow morning.",
+    venueSlugs: COFFEE_CAFES_VENUE_SLUGS,
+  },
+  lunch: {
+    pageNumber: 26,
+    title: "Lunch",
+    description: "Ten places that reward an open afternoon.",
+    venueSlugs: LUNCH_VENUE_SLUGS,
+  },
+  "sri-lankan-food": {
+    pageNumber: 27,
+    title: "Sri Lankan Food",
+    description:
+      "Eight kitchens for rice, curry, spice and the flavours of home.",
+    venueSlugs: SRI_LANKAN_FOOD_VENUE_SLUGS,
+  },
+  dinner: {
+    pageNumber: 28,
+    title: "Dinner",
+    description: "Ten tables for the main event.",
+    venueSlugs: DINNER_VENUE_SLUGS,
+  },
+  "dinner-for-two": {
+    pageNumber: 29,
+    title: "Dinner for Two",
+    description:
+      "Eight intimate tables for an evening with fewer distractions.",
+    venueSlugs: DINNER_FOR_TWO_VENUE_SLUGS,
+  },
+  "eat-well-for-less": {
+    pageNumber: 30,
+    title: "Eat Well for Less",
+    description:
+      "Ten good-value addresses for casual meals and quick bites.",
+    venueSlugs: EAT_WELL_FOR_LESS_VENUE_SLUGS,
+  },
+  "sunset-drinks": {
+    pageNumber: 31,
+    title: "Sunset Drinks",
+    description: "Eight places to watch the light go and order another.",
+    venueSlugs: SUNSET_DRINKS_VENUE_SLUGS,
+  },
+  "after-dark": {
+    pageNumber: 32,
+    title: "After Dark",
+    description:
+      "Eight late addresses for music, drinks and a livelier table.",
+    venueSlugs: AFTER_DARK_VENUE_SLUGS,
+  },
+});
+
 const EAT_DRINK_VENUES_BY_PAGE = {
   23: ["citra-ahangama"],
   24: BREAKFAST_VENUE_SLUGS,
-  25: [
-    "cactus-ahangama",
-    "the-kip",
-    "kaffi-ag",
-    "twin-fin-surf-x-coffee",
-    "cafe-ceylon-ahangama",
-    "daily-dose-cafe",
-    "makai-cafe-ahangama",
-    "sisters-kabalana",
-    "lum-cafe",
-    "unsung",
-  ],
-  26: [
-    "meori-ahangama",
-    "jam-house-ahangama",
-    "patels-ahangama",
-    "tahini",
-    "iluk-ahangama",
-    "aliikai-ahangama",
-    "citra-ahangama",
-    "fruit-cafe-ahangama",
-    "squeeze-me",
-    "paradise-cove-midigama",
-  ],
-  27: [
-    "manoris-kitchen",
-    "thilenis",
-    "patels-ahangama",
-    "citra-ahangama",
-    "rice-and-spoon",
-    "the-cinnamon-trails-ahangama",
-    "kalage",
-    "soko",
-  ],
-  28: [
-    "ceylon-sliders",
-    "le-cafe-french-bistro-ahangama",
-    "teddies-ahangama",
-    "samba-ahangama",
-    "moochies-ahangama",
-    "jam-house-ahangama",
-    "tahini",
-    "iluk-ahangama",
-    "donna-ahangama",
-    "aliikai-ahangama",
-  ],
-  29: [
-    "le-cafe-french-bistro-ahangama",
-    "follow-the-white-rabbit-ahangama",
-    "iluk-ahangama",
-    "aliikai-ahangama",
-    "donna-ahangama",
-    "mora-rooftop-lounge",
-    "citra-ahangama",
-    "meori-ahangama",
-  ],
-  30: [
-    "rollingpin-bakery",
-    "sandwich-spot",
-    "soko",
-    "crave",
-    "hungry-puppet",
-    "hakuna-matata-ahangama",
-    "cafe-ceylon-ahangama",
-    "kaffi-ag",
-    "chillinguito",
-    "rice-and-spoon",
-  ],
-  31: [
-    "moochies-ahangama",
-    "mora-rooftop-lounge",
-    "follow-the-white-rabbit-ahangama",
-    "samba-ahangama",
-    "ceylon-sliders",
-    "animals",
-    "folklore-ahangama",
-    "paradise-cove-midigama",
-  ],
-  32: [
-    "teddies-ahangama",
-    "samba-ahangama",
-    "ceylon-sliders",
-    "moochies-ahangama",
-    "animals",
-    "folklore-ahangama",
-    "mora-rooftop-lounge",
-    "hakuna-matata-ahangama",
-  ],
+  25: COFFEE_CAFES_VENUE_SLUGS,
+  26: LUNCH_VENUE_SLUGS,
+  27: SRI_LANKAN_FOOD_VENUE_SLUGS,
+  28: DINNER_VENUE_SLUGS,
+  29: DINNER_FOR_TWO_VENUE_SLUGS,
+  30: EAT_WELL_FOR_LESS_VENUE_SLUGS,
+  31: SUNSET_DRINKS_VENUE_SLUGS,
+  32: AFTER_DARK_VENUE_SLUGS,
   33: ["manoris-kitchen"],
 };
 

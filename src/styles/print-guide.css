@@ -1587,7 +1587,7 @@
   max-width: 56cqw;
 }
 
-.pg-breakfast-qr {
+.pg-guide-qr {
   position: absolute;
   top: var(--page-margin);
   right: var(--page-margin);
@@ -1602,25 +1602,25 @@
   color: #173b35;
 }
 
-.pg-breakfast-qr svg {
+.pg-guide-qr svg {
   width: 9cqw;
   height: 9cqw;
 }
 
-.pg-breakfast-qr > div {
+.pg-guide-qr > div {
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 0.6cqw;
 }
 
-.pg-breakfast-qr strong {
+.pg-guide-qr strong {
   font-size: 1.6cqw;
   line-height: 1.1;
 }
 
-.pg-breakfast-qr span,
-.pg-breakfast-qr small {
+.pg-guide-qr span,
+.pg-guide-qr small {
   overflow-wrap: anywhere;
   font-size: 1.15cqw;
   line-height: 1.2;
