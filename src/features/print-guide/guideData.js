@@ -612,20 +612,22 @@ const STAY_VENUES_BY_PAGE = {
   21: ["trebartha-east-the-roundhouse"],
 };
 
+export const BREAKFAST_VENUE_SLUGS = Object.freeze([
+  "marshmellow-surf-cafe",
+  "sisters-kabalana",
+  "makai-cafe-ahangama",
+  "rollingpin-bakery",
+  "daily-dose-cafe",
+  "lum-cafe",
+  "veda-cafe",
+  "coconut-republik",
+  "maria-bonita-sri-lanka",
+  "living",
+]);
+
 const EAT_DRINK_VENUES_BY_PAGE = {
   23: ["citra-ahangama"],
-  24: [
-    "marshmellow-surf-cafe",
-    "sisters-kabalana",
-    "makai-cafe-ahangama",
-    "rollingpin-bakery",
-    "daily-dose-cafe",
-    "lum-cafe",
-    "veda-cafe",
-    "coconut-republik",
-    "maria-bonita-sri-lanka",
-    "living",
-  ],
+  24: BREAKFAST_VENUE_SLUGS,
   25: [
     "cactus-ahangama",
     "the-kip",

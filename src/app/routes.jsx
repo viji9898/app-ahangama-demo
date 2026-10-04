@@ -149,6 +149,9 @@ import PrintGuidePage, { PRINT_GUIDE_PATH } from "../pages/PrintGuidePage";
 import PrintGuidePreviewPage, {
   PRINT_GUIDE_PREVIEW_PATH,
 } from "../pages/PrintGuidePreviewPage";
+import BreakfastGuidePage, {
+  BREAKFAST_GUIDE_PATH,
+} from "../pages/BreakfastGuidePage";
 import PrintGuideOnlinePage, {
   PRINT_GUIDE_ONLINE_PATH,
 } from "../pages/PrintGuideOnlinePage";
@@ -180,6 +183,7 @@ const trackedArticle = (
 );
 const routes = [
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
+  { path: BREAKFAST_GUIDE_PATH, element: <BreakfastGuidePage /> },
   { path: PRINT_GUIDE_PREVIEW_PATH, element: <PrintGuidePreviewPage /> },
   { path: PRINT_GUIDE_PATH, element: <PrintGuidePage /> },
   { path: PRINT_GUIDE_ONLINE_PATH, element: <PrintGuideOnlinePage /> },

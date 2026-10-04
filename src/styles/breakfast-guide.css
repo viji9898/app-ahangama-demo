@@ -1,0 +1,338 @@
+.breakfast-guide,
+.breakfast-guide * {
+  box-sizing: border-box;
+}
+
+.breakfast-guide {
+  min-height: 100vh;
+  padding: clamp(24px, 5vw, 72px);
+  color: #20221e;
+  background:
+    linear-gradient(rgba(31, 65, 51, 0.055) 1px, transparent 1px),
+    #f4f1e8;
+  background-size: 100% 48px;
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+.breakfast-header {
+  max-width: 1240px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0 auto 42px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #9ca398;
+}
+
+.breakfast-header > div {
+  max-width: 760px;
+}
+
+.breakfast-header > div > span {
+  color: #3c6c58;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.breakfast-header h1 {
+  margin: 10px 0 14px;
+  color: #181a17 !important;
+  font: 700 clamp(54px, 8vw, 104px)/0.88 "Avenir Next", "Helvetica Neue", sans-serif;
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif !important;
+  letter-spacing: 0;
+}
+
+.breakfast-header p {
+  max-width: 680px;
+  margin: 0;
+  color: #51574f;
+  font-size: clamp(16px, 2vw, 21px);
+  line-height: 1.45;
+}
+
+.breakfast-header aside {
+  flex: 0 0 auto;
+  padding-bottom: 5px;
+  text-align: right;
+}
+
+.breakfast-header aside strong,
+.breakfast-header aside span {
+  display: block;
+}
+
+.breakfast-header aside strong {
+  color: #c55534;
+  font-size: 48px;
+  line-height: 1;
+}
+
+.breakfast-header aside span {
+  margin-top: 4px;
+  color: #686d66;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.breakfast-grid {
+  max-width: 1240px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.breakfast-card {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(190px, 42%) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid #c8c8be;
+  border-radius: 6px;
+  background: rgba(255, 255, 252, 0.86);
+}
+
+.breakfast-card-media {
+  position: relative;
+  min-height: 330px;
+  overflow: hidden;
+  background: #d8d8d0;
+}
+
+.breakfast-card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.breakfast-card-media > span {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  min-width: 34px;
+  padding: 8px;
+  border-radius: 3px;
+  color: #fff;
+  background: #20221e;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.breakfast-card-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.breakfast-card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.breakfast-card-heading p {
+  margin: 0 0 5px;
+  color: #777c74;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.breakfast-card h2 {
+  margin: 0;
+  color: #20221e !important;
+  font: 700 24px/1.05 "Avenir Next", "Helvetica Neue", sans-serif;
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif !important;
+}
+
+.breakfast-rating {
+  flex: 0 0 auto;
+  color: #bb603f;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.breakfast-rating small {
+  color: #777c74;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.breakfast-description {
+  margin: 16px 0;
+  color: #565b54;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.breakfast-details {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 10px;
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid #d7d7ce;
+  border-bottom: 1px solid #d7d7ce;
+}
+
+.breakfast-details dt {
+  color: #858980;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.breakfast-details dd {
+  margin: 4px 0 0;
+  color: #282b27;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.breakfast-offer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 13px 0 0;
+  color: #315b49;
+  font-size: 11px;
+}
+
+.breakfast-offer span {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.breakfast-offer strong {
+  text-align: right;
+}
+
+.breakfast-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.breakfast-card-actions a,
+.breakfast-card-actions .is-unavailable {
+  min-width: 0;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px;
+  border: 1px solid #aeb2aa;
+  border-radius: 4px;
+  color: #283e35;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+}
+
+.breakfast-card-actions a:hover,
+.breakfast-card-actions a:focus-visible {
+  border-color: #315b49;
+  color: #fff;
+  background: #315b49;
+}
+
+.breakfast-card-actions .is-unavailable {
+  color: #92958f;
+  cursor: not-allowed;
+}
+
+.breakfast-footer {
+  max-width: 1240px;
+  margin: 36px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid #9ca398;
+  color: #666b64;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .breakfast-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .breakfast-guide {
+    padding: 24px 14px 36px;
+    background-size: 100% 40px;
+  }
+
+  .breakfast-header {
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .breakfast-header h1 {
+    font-size: 54px;
+  }
+
+  .breakfast-header aside {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .breakfast-header aside strong {
+    font-size: 30px;
+  }
+
+  .breakfast-header aside span {
+    margin: 0;
+  }
+
+  .breakfast-grid {
+    gap: 14px;
+  }
+
+  .breakfast-card {
+    display: block;
+  }
+
+  .breakfast-card-media {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .breakfast-card-body {
+    padding: 18px;
+  }
+
+  .breakfast-card h2 {
+    font-size: 22px;
+  }
+
+  .breakfast-description {
+    margin: 13px 0;
+  }
+
+  .breakfast-card-actions {
+    padding-top: 16px;
+  }
+}
