@@ -27,9 +27,28 @@ function formatAuditDate(value) {
   }).format(new Date(value));
 }
 
+function getImageHost(url) {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return "Unknown host";
+  }
+}
+
+function formatHost(host) {
+  const labels = {
+    "res.cloudinary.com": "Cloudinary",
+    "customer-apps-techhq.s3.eu-west-2.amazonaws.com": "Customer Apps S3",
+    "ahangama-pass.s3.eu-west-2.amazonaws.com": "Ahangama Pass S3",
+  };
+  return labels[host] || host;
+}
+
 export default function GuideSizesPage() {
   const [query, setQuery] = useState("");
   const [section, setSection] = useState("all");
+  const [host, setHost] = useState("all");
+  const [availability, setAvailability] = useState("all");
   const [audit, setAudit] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -65,13 +84,40 @@ export default function GuideSizesPage() {
       label,
     })),
   ];
+  const hosting = [...images.reduce((hosts, image) => {
+    const imageHost = getImageHost(image.url);
+    const current = hosts.get(imageHost) || { host: imageHost, count: 0, bytes: 0 };
+    current.count += 1;
+    current.bytes += image.bytes || 0;
+    hosts.set(imageHost, current);
+    return hosts;
+  }, new Map()).values()].sort((first, second) => second.count - first.count);
+  const hostOptions = [
+    { value: "all", label: "All hosts" },
+    ...hosting.map((item) => ({
+      value: item.host,
+      label: `${formatHost(item.host)} (${item.count})`,
+    })),
+  ];
+  const availabilityOptions = [
+    { value: "all", label: "All statuses" },
+    { value: "available", label: "Available" },
+    { value: "unavailable", label: "Unavailable" },
+  ];
   const rows = images
     .filter((image) => {
       const matchesSection = section === "all" || image.section === section;
-      const matchesQuery = `${image.name} ${image.section}`
+      const imageHost = getImageHost(image.url);
+      const matchesHost = host === "all" || imageHost === host;
+      const isAvailable = image.status === "Available";
+      const matchesAvailability =
+        availability === "all" ||
+        (availability === "available" && isAvailable) ||
+        (availability === "unavailable" && !isAvailable);
+      const matchesQuery = `${image.name} ${image.section} ${imageHost} ${formatHost(imageHost)}`
         .toLowerCase()
         .includes(deferredQuery);
-      return matchesSection && matchesQuery;
+      return matchesSection && matchesHost && matchesAvailability && matchesQuery;
     })
     .sort((first, second) => (second.bytes || -1) - (first.bytes || -1));
   const summary = audit?.summary || {
@@ -107,6 +153,26 @@ export default function GuideSizesPage() {
           </dl>
         </header>
 
+        <section className="guideSizes-hosting" aria-labelledby="guide-hosting-title">
+          <div>
+            <span>Storage overview</span>
+            <h2 id="guide-hosting-title">Where images are hosted</h2>
+          </div>
+          <dl>
+            {hosting.map((item) => (
+              <div key={item.host} className={host === item.host ? "is-active" : ""}>
+                <dt>
+                  <button type="button" onClick={() => setHost(item.host)}>
+                    {formatHost(item.host)}
+                  </button>
+                </dt>
+                <dd>{item.count} images</dd>
+                <small>{item.host}</small>
+              </div>
+            ))}
+          </dl>
+        </section>
+
         <aside className="guideSizes-notice">
           Unavailable files returned HTTP 401 because their Cloudinary account
           was disabled. Map tiles, SVG interface icons, and the Open Graph image
@@ -127,6 +193,18 @@ export default function GuideSizesPage() {
             options={sectionOptions}
             value={section}
             onChange={setSection}
+          />
+          <Select
+            aria-label="Filter by image host"
+            options={hostOptions}
+            value={host}
+            onChange={setHost}
+          />
+          <Select
+            aria-label="Filter by availability"
+            options={availabilityOptions}
+            value={availability}
+            onChange={setAvailability}
           />
           <div className="guideSizes-toolsEnd">
             <span aria-live="polite">{rows.length} results</span>
@@ -156,6 +234,7 @@ export default function GuideSizesPage() {
                 <th scope="col">#</th>
                 <th scope="col">Section</th>
                 <th scope="col">Image</th>
+                <th scope="col">Hosted on</th>
                 <th scope="col">Resolution</th>
                 <th scope="col">File size</th>
                 <th scope="col">Status</th>
@@ -167,6 +246,11 @@ export default function GuideSizesPage() {
                   <td>{image.id}</td>
                   <td>{image.section}</td>
                   <th scope="row">{image.name}</th>
+                  <td>
+                    <a href={image.url} target="_blank" rel="noopener noreferrer">
+                      {formatHost(getImageHost(image.url))}
+                    </a>
+                  </td>
                   <td>{image.width ? `${image.width} x ${image.height}` : "Not available"}</td>
                   <td>{formatBytes(image.bytes)}</td>
                   <td>
