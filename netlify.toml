@@ -50,6 +50,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/guide/image-sizes"
+  to = "/.netlify/functions/api-guide-image-sizes"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

@@ -80,6 +80,7 @@ import LighthousePage from "../pages/LighthousePage";
 import MosvoldPage from "../pages/MosvoldPage";
 import PabcPage from "../pages/PabcPage";
 import ExperienceAhangamaGuide from "../pages/ExperienceAhangamaGuide";
+import GuideSizesPage, { GUIDE_SIZES_PATH } from "../pages/GuideSizesPage";
 import GuideTrackingPage, {
   GUIDE_TRACKING_PATH,
 } from "../pages/GuideTrackingPage";
@@ -258,6 +259,7 @@ const routes = [
   },
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: GUIDE_TRACKING_PATH, element: <GuideTrackingPage /> },
+  { path: GUIDE_SIZES_PATH, element: <GuideSizesPage /> },
   { path: "/guide", element: <ExperienceAhangamaGuide /> },
   {
     path: "/ahangama-season-2026-2027",

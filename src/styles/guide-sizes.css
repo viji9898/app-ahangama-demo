@@ -1,0 +1,216 @@
+.guideSizes-page {
+  --sizes-ink: #20251f;
+  --sizes-muted: #687067;
+  --sizes-line: #d7d9d2;
+  width: min(1440px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 96px 0 80px;
+  color: var(--sizes-ink);
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+.guideSizes-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--sizes-ink);
+}
+
+.guideSizes-header > div > span {
+  color: #9d4435;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.guideSizes-header h1 {
+  margin: 12px 0 10px;
+  font: 500 54px/1 "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.guideSizes-header p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--sizes-muted);
+}
+
+.guideSizes-header dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(90px, auto));
+  gap: 28px;
+  margin: 0;
+}
+
+.guideSizes-header dt {
+  color: var(--sizes-muted);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.guideSizes-header dd {
+  margin: 5px 0 0;
+  font: 500 26px/1 "Iowan Old Style", Georgia, serif;
+}
+
+.guideSizes-notice {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-left: 3px solid #9d4435;
+  background: #f5f1e9;
+  color: #575d55;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.guideSizes-tools {
+  display: grid;
+  grid-template-columns: minmax(260px, 460px) 240px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 22px 0;
+}
+
+.guideSizes-tools .ant-input-affix-wrapper,
+.guideSizes-tools .ant-select-selector {
+  min-height: 44px;
+  border-radius: 3px;
+}
+
+.guideSizes-toolsEnd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.guideSizes-toolsEnd > span {
+  color: var(--sizes-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.guideSizes-toolsEnd .ant-btn {
+  min-height: 44px;
+  border-radius: 3px;
+}
+
+.guideSizes-message {
+  padding: 56px 24px;
+  border: 1px solid var(--sizes-line);
+  background: #fff;
+  color: var(--sizes-muted);
+  text-align: center;
+}
+
+.guideSizes-message.is-error {
+  border-color: #cfa9a2;
+  color: #7f392f;
+}
+
+.guideSizes-tableWrap {
+  overflow: auto;
+  max-height: calc(100vh - 250px);
+  border: 1px solid var(--sizes-line);
+}
+
+.guideSizes-tableWrap table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.guideSizes-tableWrap th,
+.guideSizes-tableWrap td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--sizes-line);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.guideSizes-tableWrap thead th {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: #293c32;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.guideSizes-tableWrap tbody tr:hover {
+  background: #f5f3ed;
+}
+
+.guideSizes-tableWrap tbody th {
+  width: 30%;
+  font: 500 16px/1.2 "Iowan Old Style", Georgia, serif;
+}
+
+.guideSizes-tableWrap tbody td {
+  color: #4f574f;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.guideSizes-status {
+  display: inline-block;
+  padding: 4px 7px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.guideSizes-status.is-available {
+  background: #e4ede4;
+  color: #31573a;
+}
+
+.guideSizes-status.is-error {
+  background: #f3dfdc;
+  color: #843e34;
+}
+
+@media (max-width: 900px) {
+  .guideSizes-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .guideSizes-header dl {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .guideSizes-page {
+    width: calc(100% - 28px);
+    padding: 72px 0 56px;
+  }
+
+  .guideSizes-header h1 {
+    font-size: 44px;
+  }
+
+  .guideSizes-header dl {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guideSizes-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .guideSizes-toolsEnd {
+    justify-content: space-between;
+  }
+}

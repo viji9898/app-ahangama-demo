@@ -11,6 +11,7 @@ import {
   updateGuideContent,
 } from "./lib/guide-db.js";
 import { isGuideAdminAuthorized } from "./lib/guide-admin-auth.js";
+import { getGuideImageAudit } from "./lib/guide-image-audit.js";
 import {
   buildPartnersKnowledgeRecords,
   renderPartnersKnowledgeHtml,
@@ -178,6 +179,16 @@ function venuesApiPlugin() {
         };
 
         try {
+          if (
+            req.url.startsWith("/api/guide/image-sizes") &&
+            req.method === "GET"
+          ) {
+            const audit = await getGuideImageAudit({
+              refresh: url.searchParams.get("refresh") === "1",
+            });
+            return json(200, { ok: true, ...audit });
+          }
+
           // GET /api/guide/venues
           if (req.url.startsWith("/api/guide/venues") && req.method === "GET") {
             if (
