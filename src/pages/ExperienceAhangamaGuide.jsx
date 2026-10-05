@@ -561,7 +561,7 @@ function ContentsSection() {
 function OverviewSection() {
   return (
     <section id="overview" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-overview-section-ocean-image-with-surfer-67c60a7b.webp)" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-overview-section-ocean-image-with-surfer-b5c5cbf7.webp)" }} />
       <div className="eag-hero-overlay eag-hero-overlay--left" />
       <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
