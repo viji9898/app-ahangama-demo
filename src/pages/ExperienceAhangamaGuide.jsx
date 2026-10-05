@@ -1304,7 +1304,7 @@ function ClosingCTASection() {
                 onClick={() => trackGuideEvent("guide_outbound_click", {
                   link_type: "instagram",
                   component_location: "closing_cta",
-                  destination_url: "https://www.instagram.com/ahangama.pass",
+                  destination_url: "https://www.instagram.com/ahangamacom/?hl=en",
                 })}
               >
                 @ahangama.pass
