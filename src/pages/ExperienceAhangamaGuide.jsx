@@ -1274,19 +1274,19 @@ function ClosingCTASection() {
                 <span className="eag-headline-line">Insider Tips?</span>
               </h2>
               <p className="eag-body eag-body--light">
-                Follow <strong>@ahangama.pass</strong> on Instagram for real-time updates, hidden gems, and exclusive local content.
+                Follow <strong>@ahangamacom</strong> on Instagram for real-time updates, hidden gems, and exclusive local content.
               </p>
             </div>
             <div className="eag-closing-cta-wrap">
               <a
-                href="https://instagram.com/ahangama.pass"
+                href="https://www.instagram.com/ahangamacom/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="eag-pill eag-pill--closing"
                 onClick={() => trackGuideEvent("guide_outbound_click", {
                   link_type: "instagram",
                   component_location: "closing_cta",
-                  destination_url: "https://instagram.com/ahangama.pass",
+                  destination_url: "https://www.instagram.com/ahangamacom/?hl=en",
                 })}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{marginRight:8}}>
@@ -1307,7 +1307,7 @@ function ClosingCTASection() {
                   destination_url: "https://www.instagram.com/ahangamacom/?hl=en",
                 })}
               >
-                @ahangama.pass
+                @ahangamacom
               </a>
             </div>
           </div>
