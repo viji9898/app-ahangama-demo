@@ -1297,7 +1297,7 @@ function ClosingCTASection() {
                 Follow Us
               </a>
               <a
-                href="https://www.instagram.com/ahangama.pass"
+                href="https://www.instagram.com/ahangamacom/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="eag-closing-handle"
