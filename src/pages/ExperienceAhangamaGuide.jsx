@@ -902,7 +902,7 @@ function BestForSection() {
 function BestSeasonSection() {
   return (
     <section id="best-season" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-high-angle-aerial-view-of-a-person-walking-on-a-sandy-beach-by-turquoise-ocean-w-fabb303e.webp)" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-high-angle-aerial-view-of-a-person-walking-on-a-sandy-beach-by-turquoise-ocean-w-3293c510.webp)" }} />
       <div className="eag-hero-overlay eag-hero-overlay--right" />
       <div className="eag-content eag-content--hero eag-content--hero-right">
         <Reveal>
@@ -930,7 +930,7 @@ function BestSeasonSection() {
 function HowLongSection() {
   return (
     <section id="how-long" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-tropical-beach-in-sri-lanka-with-beachfront-cafes-and-palm-trees-at-sunset-6fa14cea.jpg)", backgroundPosition: "center center" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-surfer-carrying-a-surfboard-on-the-beach-at-sunset-39f05bb9.webp)", backgroundPosition: "center center" }} />
       <div className="eag-hero-overlay eag-hero-overlay--left" />
       <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
@@ -953,7 +953,7 @@ function HowLongSection() {
 function TransportSection() {
   return (
     <section id="transport" className="eag-section eag-section--hero">
-      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-green-tuk-tuk-and-scooter-parked-on-a-sandy-beach-by-the-ocean-76ef6779.png)", backgroundPosition: "bottom" }} />
+      <div className="eag-hero-bg" style={{ backgroundImage: "url(https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-green-tuk-tuk-and-scooter-parked-on-a-sandy-beach-by-the-ocean-66f7e815.webp)", backgroundPosition: "bottom" }} />
       <div className="eag-hero-overlay eag-hero-overlay--left" />
       <div className="eag-content eag-content--hero eag-content--hero-left">
         <Reveal>
