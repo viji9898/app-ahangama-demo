@@ -1259,6 +1259,37 @@
   flex-shrink: 0;
 }
 
+/* Lightbox variant: dark surface, anchored above the social row. */
+.eag-lightbox-map-popup {
+  background: rgba(12, 15, 30, 0.97);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+}
+
+.eag-lightbox-map-popup .eag-map-popup-header {
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+.eag-lightbox-map-popup .eag-map-popup-title {
+  color: #fff;
+}
+
+.eag-lightbox-map-popup .eag-map-popup-close {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.eag-lightbox-map-popup .eag-map-popup-close:hover {
+  color: #fff;
+}
+
+.eag-lightbox-map-popup .eag-map-popup-link {
+  color: #fff;
+}
+
+.eag-lightbox-map-popup .eag-map-popup-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .eag-lightbox-map {
   width: 34px;
   height: 34px;
@@ -1425,6 +1456,7 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
+  position: relative;
 }
 
 .eag-lightbox-name {

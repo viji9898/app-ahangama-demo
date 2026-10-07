@@ -816,6 +816,38 @@
   color: var(--ag-text);
 }
 
+.ag-form-hint {
+  margin: -8px 0 16px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ag-text-muted);
+}
+
+.ag-map-link-row {
+  align-items: flex-end;
+}
+
+.ag-map-link-field {
+  margin-bottom: 8px;
+}
+
+.ag-map-link-remove .ant-form-item {
+  margin-bottom: 8px;
+}
+
+.ag-map-link-remove .ant-form-item-control-input-content {
+  display: flex;
+}
+
+.ag-map-link-remove .ag-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* -- Ant Design Overrides -- */
 .ag-input,
 .ag-input.ant-input,

@@ -43,7 +43,7 @@ The API joins each guide placement to its canonical venue and returns the result
 
 Only placements with `status = active` appear publicly. Draft and archived placements remain available to the admin but are hidden from visitors.
 
-If the venue API fails or returns no venues, `/guide` displays an unavailable message. It does not silently render an old hardcoded venue list.
+If the venue API fails or returns no venues, `/guide` falls back to the built-in static venue catalogue so the page still renders. Live venue data always wins when it is available.
 
 The public page also sends GA4 engagement events using canonical venue IDs. See [guideEngagement.md](guideEngagement.md) for event names, parameters, and reporting setup.
 
@@ -172,6 +172,8 @@ The admin **Delete** action does not delete the canonical venue. It changes the 
 
 The `id` returned for a guide venue is the placement ID. `venueId` is the durable canonical venue ID used by analytics and shared venue data.
 
+Venues with more than one physical location return `mapLinks`, an array of `{ label, url }` objects. It is edited in the admin **Locations** section. When it holds two or more entries, the guide card and image preview show a location picker instead of a single map link.
+
 ## Database Setup
 
 The guide uses `DATABASE_URL`, not `NETLIFY_DATABASE_URL`.
@@ -180,8 +182,11 @@ Required migrations:
 
 - `migrations/029_centralize_guide_venues.sql`
 - `migrations/030_seed_guide_placements.sql`
+- `migrations/032_guide_venue_map_links.sql`
 
-Migration 029 adds canonical metadata fields and creates the placement/content tables. Migration 030 seeds the current guide placements and canonical website/ownership values. Both are designed to be rerunnable.
+Migration 029 adds canonical metadata fields and creates the placement/content tables. Migration 030 seeds the current guide placements and canonical website/ownership values. Migration 032 creates `guide_app.venue_map_links` for venues with more than one physical location. All three are designed to be rerunnable.
+
+Migration 032 deliberately uses its own schema: the application role (`Enidu`) has no `ALTER` rights on `guide_venue_placements`, which is owned by `neondb_owner`, so a column could not be added with the credentials the app uses.
 
 With `DATABASE_URL` configured, apply them using:
 
@@ -224,6 +229,7 @@ Netlify redirects map `/api/guide/*` to the corresponding functions. Vite also c
 | `vite.config.js` | Local guide API middleware |
 | `migrations/029_centralize_guide_venues.sql` | Canonical guide schema |
 | `migrations/030_seed_guide_placements.sql` | Current guide placement seed |
+| `migrations/032_guide_venue_map_links.sql` | Multi-location links table (`guide_app.venue_map_links`) |
 | `docs/guideEngagement.md` | GA4 event and reporting documentation |
 
 ## Troubleshooting
@@ -234,6 +240,6 @@ Netlify redirects map `/api/guide/*` to the corresponding functions. Vite also c
 
 **The admin returns Unauthorized:** Sign out and sign in again. Confirm the temporary password and that requests include `X-Admin-Password`.
 
-**The guide shows “temporarily unavailable”:** Check `DATABASE_URL`, verify migrations 029 and 030 were applied, and inspect `/api/guide/venues?status=active`.
+**The guide shows “temporarily unavailable”:** Check `DATABASE_URL`, verify migrations 029, 030 and 032 were applied, and inspect `/api/guide/venues?status=active`.
 
 **A change appeared elsewhere on the site:** A canonical field was edited. Use placement overrides for guide-only display changes.

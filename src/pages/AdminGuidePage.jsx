@@ -165,7 +165,7 @@ const AdminGuidePage = () => {
   const openAddModal = () => {
     setEditingVenue(null);
     venueForm.resetFields();
-    venueForm.setFieldsValue({ status: "active", priorityOrder: 0, section: "best_stays" });
+    venueForm.setFieldsValue({ status: "active", priorityOrder: 0, section: "best_stays", mapLinks: [] });
     setModalOpen(true);
   };
 
@@ -177,6 +177,7 @@ const AdminGuidePage = () => {
       nameOverride: venue.nameOverride,
       lat: venue.lat || undefined,
       lng: venue.lng || undefined,
+      mapLinks: venue.mapLinks || [],
     });
     setModalOpen(true);
   };
@@ -677,6 +678,52 @@ const AdminGuidePage = () => {
               </Col>
             </Row>
           </div> : null}
+
+          <div className="ag-form-section">
+            <h4 className="ag-form-section-title">Locations</h4>
+            <p className="ag-form-hint">
+              Optional. Add one entry per physical location. Two or more entries turn the map pin
+              into a location picker on the guide card.
+            </p>
+            <Form.List name="mapLinks">
+              {(fields, { add, remove }) => (
+                <>
+                  {fields.map(({ key, name, ...restField }) => (
+                    <Row key={key} gutter={12} className="ag-map-link-row">
+                      <Col span={9}>
+                        <Form.Item {...restField} name={[name, "label"]} label="Label" className="ag-map-link-field">
+                          <Input placeholder="Ahangama" className="ag-input" />
+                        </Form.Item>
+                      </Col>
+                      <Col span={11}>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "url"]}
+                          label="Map link"
+                          className="ag-map-link-field"
+                          rules={[{ required: true, message: "Map link is required" }]}
+                        >
+                          <Input placeholder="https://maps.app.goo.gl/..." className="ag-input" />
+                        </Form.Item>
+                      </Col>
+                      <Col span={4} className="ag-map-link-remove">
+                        <Form.Item className="ag-map-link-field">
+                          <button type="button" className="ag-btn ag-btn--ghost ag-btn--sm" onClick={() => remove(name)} aria-label="Remove location">
+                            <DeleteOutlined />
+                          </button>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  ))}
+                  <Form.Item>
+                    <button type="button" className="ag-btn ag-btn--ghost ag-btn--sm" onClick={() => add({ label: "", url: "" })}>
+                      <PlusOutlined /> Add location
+                    </button>
+                  </Form.Item>
+                </>
+              )}
+            </Form.List>
+          </div>
 
           <div className="ag-form-section">
             <h4 className="ag-form-section-title">Settings</h4>
