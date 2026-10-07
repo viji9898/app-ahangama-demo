@@ -213,6 +213,7 @@ function CardLinks({ item }) {
   const hasMap = Boolean(item.googleMaps || (item.lat && item.lng));
   const mapDestination = hasMap ? mapsUrl(item) : "";
   const hasMapLinks = Boolean(item.mapLinks?.length);
+  const canOpenMap = hasMap || hasMapLinks;
 
   return (
     <div className="eag-card-links">
@@ -221,10 +222,10 @@ function CardLinks({ item }) {
           <InstagramIcon />
         </a>
       )}
-      {hasMap ? (
+      {canOpenMap ? (
         hasMapLinks ? (
           <>
-            <button type="button" className="eag-map eag-map--btn" aria-label={`${item.name} locations`} onClick={() => setMapPopupOpen(true)}>
+            <button type="button" className="eag-map eag-map--btn" aria-label={`${item.name} locations`} aria-expanded={mapPopupOpen} onClick={() => setMapPopupOpen((open) => !open)}>
               <MapPinIcon />
             </button>
             {mapPopupOpen && (
@@ -234,8 +235,8 @@ function CardLinks({ item }) {
                   <button type="button" className="eag-map-popup-close" onClick={() => setMapPopupOpen(false)} aria-label="Close">&times;</button>
                 </div>
                 {item.mapLinks.map((link) => (
-                  <a key={link.label} className="eag-map-popup-link" href={link.url} target="_blank" rel="noopener noreferrer" onClick={() => trackVenueOutboundClick(item, "google_maps", link.url, "venue_card")}>
-                    <MapPinIcon /> {link.label}
+                  <a key={`${link.label}-${link.url}`} className="eag-map-popup-link" href={link.url} target="_blank" rel="noopener noreferrer" onClick={() => trackVenueOutboundClick(item, "google_maps", link.url, "venue_card")}>
+                    <MapPinIcon /> {link.label || "Open in Google Maps"}
                   </a>
                 ))}
               </div>
@@ -328,6 +329,8 @@ function GuideVenueCard({ item, position, onImageClick, impressedVenueIds }) {
 }
 
 function ImageLightbox({ item, onClose }) {
+  const [popupVenueId, setPopupVenueId] = useState(null);
+
   useEffect(() => {
     if (!item) return;
     const onKey = (e) => {
@@ -370,7 +373,26 @@ function ImageLightbox({ item, onClose }) {
                 <InstagramIcon />
               </a>
             )}
-            {(item.googleMaps || (item.lat && item.lng)) ? (
+            {item.mapLinks?.length ? (
+              <>
+                <button type="button" className="eag-map eag-lightbox-map eag-map--btn" aria-label={`${item.name} locations`} aria-expanded={popupVenueId === item.venueId} onClick={() => setPopupVenueId((open) => (open === item.venueId ? null : item.venueId))}>
+                  <MapPinIcon />
+                </button>
+                {popupVenueId === item.venueId && (
+                  <div className="eag-map-popup eag-lightbox-map-popup" role="dialog" aria-label="Locations">
+                    <div className="eag-map-popup-header">
+                      <span className="eag-map-popup-title">{item.name}</span>
+                      <button type="button" className="eag-map-popup-close" onClick={() => setPopupVenueId(null)} aria-label="Close">&times;</button>
+                    </div>
+                    {item.mapLinks.map((link) => (
+                      <a key={`${link.label}-${link.url}`} className="eag-map-popup-link" href={link.url} target="_blank" rel="noopener noreferrer" onClick={() => trackVenueOutboundClick(item, "google_maps", link.url, "venue_lightbox")}>
+                        <MapPinIcon /> {link.label || "Open in Google Maps"}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (item.googleMaps || (item.lat && item.lng)) ? (
               <a className="eag-map eag-lightbox-map" href={mapsUrl(item)} target="_blank" rel="noopener noreferrer" aria-label={`${item.name} on Google Maps`} onClick={() => trackVenueOutboundClick(item, "google_maps", mapsUrl(item), "venue_lightbox")}>
                 <MapPinIcon />
               </a>
@@ -1495,6 +1517,7 @@ export default function ExperienceAhangamaGuide() {
           lng: v.lng,
           instagram: v.instagram || "",
           googleMaps: v.googleMaps || "",
+          mapLinks: Array.isArray(v.mapLinks) && v.mapLinks.length ? v.mapLinks : undefined,
           website: v.website || "",
           ownership: v.ownership || undefined,
           reviewCount: v.reviewCount || 0,
