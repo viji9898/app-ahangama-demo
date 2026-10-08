@@ -605,6 +605,7 @@
   font-size: 12px;
   line-height: 1.5;
   color: rgba(0, 24, 40, 0.74);
+  white-space: pre-line;
 }
 
 .eag-guide-map-popup-nav {
@@ -981,6 +982,7 @@
   line-height: 1.6;
   color: var(--eag-dark);
   margin: 0 0 6px 0;
+  white-space: pre-line;
 }
 
 .eag-card-meta {
@@ -1477,6 +1479,7 @@
   font-weight: 400;
   line-height: 1.7;
   color: rgba(255,255,255,0.85);
+  white-space: pre-line;
 }
 
 @media (max-width: 767px) {
