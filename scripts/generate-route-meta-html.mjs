@@ -537,13 +537,6 @@ const routeMeta = [
     noindex: true,
   },
   {
-    route: "/passes-issued",
-    title: "Passes Issued | Ahangama",
-    description:
-      "Operational view of complimentary guest passes issued by venue.",
-    noindex: true,
-  },
-  {
     route: "/crossfit-ceylon-palm-training-in-the-jungle",
     title: "CrossFit Ceylon Palm: Training in the Jungle",
     description:
