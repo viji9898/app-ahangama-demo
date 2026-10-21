@@ -70,9 +70,6 @@ import NewsletterDataPage, {
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import EmailPreviewPage from "../pages/EmailPreviewPage";
-import PassesIssuedPage, {
-  PASSES_ISSUED_PATH,
-} from "../pages/PassesIssuedPage";
 import InteractionsPage, { INTERACTIONS_PATH } from "../pages/InteractionsPage";
 import PassValidityPage from "../pages/PassValidityPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
@@ -494,7 +491,6 @@ const routes = [
   { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
   { path: "/email-preview", element: <EmailPreviewPage /> },
-  { path: PASSES_ISSUED_PATH, element: <PassesIssuedPage /> },
   { path: INTERACTIONS_PATH, element: <InteractionsPage /> },
   {
     path: "/stays",
