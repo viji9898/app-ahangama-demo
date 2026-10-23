@@ -1,4 +1,5 @@
 import { getPassVerificationByCode } from "../../lib/hotel-passes-db.js";
+import { maskDisplayName } from "../../lib/public-pass-data.js";
 
 function jsonHeaders() {
   return {
@@ -76,22 +77,16 @@ function publicPass(pass, now = new Date()) {
   const valid = isValidPass(pass, now);
 
   return {
-    code: pass.verificationCode,
     status: valid ? "valid" : "expired",
     isValid: valid,
     passholder: {
-      name: pass.fullName || "Guest",
-      email: pass.email || null,
-      phone: pass.phone || null,
+      name: maskDisplayName(pass.fullName),
     },
     pass: {
       sourceHotelSlug: pass.sourceHotelSlug,
-      destination: pass.destination,
-      passType: pass.passType,
       validFrom: formatDate(pass.validFrom),
       validUntil: formatDate(pass.validUntil),
       daysRemaining: calculateDaysRemaining(pass.validUntil, now),
-      issuedAt: formatDate(pass.issuedAt),
     },
   };
 }

@@ -70,7 +70,6 @@ import NewsletterDataPage, {
 import NewsletterLandingPage from "../pages/NewsletterLandingPage";
 import NewsletterPreferencesPage from "../pages/NewsletterPreferencesPage";
 import EmailPreviewPage from "../pages/EmailPreviewPage";
-import InteractionsPage, { INTERACTIONS_PATH } from "../pages/InteractionsPage";
 import PassValidityPage from "../pages/PassValidityPage";
 import ShopsEditorialPage from "../pages/ShopsEditorialPage";
 import LighthousePage from "../pages/LighthousePage";
@@ -163,6 +162,9 @@ import WellnessClassesPage, {
 import WellnessMapPage, {
   WELLNESS_MAP_PATH,
 } from "../pages/WellnessMapPage";
+import MidigamaDevelopmentPage, {
+  MIDIGAMA_DEVELOPMENT_PATH,
+} from "../pages/MidigamaDevelopmentPage";
 import EditorialArticleAnalytics from "../components/analytics/EditorialArticleAnalytics";
 import ExternalRedirect from "./ExternalRedirect";
 import { Navigate } from "react-router-dom";
@@ -260,6 +262,7 @@ const routes = [
   { path: "/events", element: <EventsPage /> },
   { path: WELLNESS_CLASSES_PATH, element: <WellnessClassesPage /> },
   { path: WELLNESS_MAP_PATH, element: <WellnessMapPage /> },
+  { path: MIDIGAMA_DEVELOPMENT_PATH, element: <MidigamaDevelopmentPage /> },
   { path: NEWSLETTER_DATA_PATH, element: <NewsletterDataPage /> },
   {
     path: "/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas",
@@ -491,7 +494,6 @@ const routes = [
   { path: "/newsletter", element: <NewsletterLandingPage /> },
   { path: "/newsletter/preferences", element: <NewsletterPreferencesPage /> },
   { path: "/email-preview", element: <EmailPreviewPage /> },
-  { path: INTERACTIONS_PATH, element: <InteractionsPage /> },
   {
     path: "/stays",
     element: <CategoryIndex categoryKey="stays" config={cfg("stays")} />,

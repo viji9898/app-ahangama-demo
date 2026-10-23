@@ -531,9 +531,12 @@ const routeMeta = [
       "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787202527/Guide_oG_images_x6brj9.jpg",
   },
   {
-    route: "/interactions",
-    title: "Guest Interactions | Ahangama",
-    description: "Guest-level view of email clicks and pass interactions.",
+    route: "/midigama",
+    title: "Midigama Two-Bedroom Villa | Market & Development Study",
+    description:
+      "A preliminary market study and development proposal for a compact two-bedroom pool villa on a 6.5-perch plot near Midigama Beach.",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/the_stables.jpeg",
     noindex: true,
   },
   {

@@ -10,7 +10,7 @@ import jsPDF from "jspdf";
 import QRCodeLib from "qrcode";
 import { sendPassEmailViaFunction } from "../services/emailService";
 import { Seo } from "../app/seo";
-import { getPromoPurchaseBySession, verifyPayment } from "../services/stripe";
+import { verifyPayment } from "../services/stripe";
 import { issuePurchasedCard, normalizeQrCode } from "../app/cardStore";
 import { trackPassPurchase } from "../analytics";
 import palmTreeIcon from "../assets/receipt_icons/palm-tree-icon.svg";
@@ -138,53 +138,6 @@ const isInvalidSessionId = (sessionId) => {
     normalized.includes("CHECKOUT_SESSION_ID") ||
     normalized.startsWith("{") ||
     normalized.startsWith("%7B")
-  );
-};
-
-const waitForPromoPurchase = async (
-  sessionId,
-  attempts = 5,
-  delayMs = 1200,
-) => {
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    const promoPurchase = await getPromoPurchaseBySession(sessionId);
-
-    if (promoPurchase?.passId) {
-      return promoPurchase;
-    }
-
-    if (attempt < attempts - 1) {
-      await new Promise((resolve) => {
-        window.setTimeout(resolve, delayMs);
-      });
-    }
-  }
-
-  return null;
-};
-
-const applyPromoPurchaseToState = (
-  promoPurchase,
-  sessionId,
-  setPaymentData,
-  setEmailSent,
-  setEmailError,
-) => {
-  const normalizedPromoData = normalizePromoPurchaseData(promoPurchase);
-
-  if (shouldTrackPurchase(sessionId)) {
-    trackPassPurchase({
-      sessionId,
-      paymentData: normalizedPromoData,
-    });
-  }
-
-  setPaymentData(normalizedPromoData);
-  setEmailSent(promoPurchase.customerEmailStatus === "sent");
-  setEmailError(
-    promoPurchase.customerEmailStatus === "failed"
-      ? "Email delivery failed."
-      : null,
   );
 };
 
@@ -394,6 +347,7 @@ export default function PaymentSuccess() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const sessionId = searchParams.get("session_id");
+  const accessToken = searchParams.get("access_token");
 
   const [loading, setLoading] = useState(true);
   const [paymentData, setPaymentData] = useState(null);
@@ -417,22 +371,15 @@ export default function PaymentSuccess() {
       return;
     }
 
+    if (!accessToken) {
+      setError("This checkout link is missing its secure access token.");
+      setLoading(false);
+      return;
+    }
+
     const verifyAndLoadPayment = async () => {
       try {
-        const promoPurchase = await waitForPromoPurchase(sessionId);
-
-        if (promoPurchase?.passId) {
-          applyPromoPurchaseToState(
-            promoPurchase,
-            sessionId,
-            setPaymentData,
-            setEmailSent,
-            setEmailError,
-          );
-          return;
-        }
-
-        const data = await verifyPayment(sessionId);
+        const data = await verifyPayment(sessionId, accessToken);
         const normalizedData = {
           ...data,
           qrCode: normalizeQrCode(data.passId || data.qrCode),
@@ -482,23 +429,6 @@ export default function PaymentSuccess() {
           navigate(`/card/pass/${normalizedData.qrCode}`);
         }
       } catch (err) {
-        const fallbackPromoPurchase = await waitForPromoPurchase(
-          sessionId,
-          3,
-          1500,
-        );
-
-        if (fallbackPromoPurchase?.passId) {
-          applyPromoPurchaseToState(
-            fallbackPromoPurchase,
-            sessionId,
-            setPaymentData,
-            setEmailSent,
-            setEmailError,
-          );
-          return;
-        }
-
         setError(err.message);
       } finally {
         setLoading(false);
@@ -533,7 +463,7 @@ export default function PaymentSuccess() {
     };
 
     verifyAndLoadPayment();
-  }, [navigate, sessionId]);
+  }, [accessToken, navigate, sessionId]);
 
   if (loading) {
     return (

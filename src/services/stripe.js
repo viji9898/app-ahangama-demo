@@ -97,33 +97,15 @@ export const createCheckoutSession = async (
   }
 };
 
-export const verifyPayment = async (sessionId) => {
+export const verifyPayment = async (sessionId, accessToken) => {
   const response = await fetch(
-    `/.netlify/functions/verify-payment?sessionId=${sessionId}`,
+    `/.netlify/functions/verify-payment?sessionId=${encodeURIComponent(sessionId)}&access_token=${encodeURIComponent(accessToken || "")}`,
   );
 
   if (!response.ok) {
     const errorText = await response.text();
     console.error("Payment verification failed:", errorText);
     throw new Error(`Payment verification failed: ${response.status}`);
-  }
-
-  return response.json();
-};
-
-export const getPromoPurchaseBySession = async (sessionId) => {
-  const response = await fetch(
-    `/.netlify/functions/promo-purchase-by-session?session_id=${encodeURIComponent(sessionId)}`,
-  );
-
-  if (response.status === 404) {
-    return null;
-  }
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("Promo purchase lookup failed:", errorText);
-    throw new Error(`Promo purchase lookup failed: ${response.status}`);
   }
 
   return response.json();
