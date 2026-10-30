@@ -3,6 +3,7 @@ import {
   getPromoRedemptionByPassAndVenue,
   listPromoRedemptionsForPass,
 } from "../../lib/promo-purchases-db.js";
+import { maskDisplayName } from "../../lib/public-pass-data.js";
 
 export const handler = async (event) => {
   const headers = {
@@ -61,26 +62,19 @@ export const handler = async (event) => {
       body: JSON.stringify({
         passId: purchase.passId,
         productName: purchase.productName,
-        customerName: purchase.customerName,
-        customerEmail: purchase.customerEmail,
-        customerPhone: purchase.customerPhone,
+        customerName: maskDisplayName(purchase.customerName),
         purchaseDate: purchase.createdAt,
         startDate: purchase.startDate,
         expiryDate: purchase.expiryDate,
         status: purchase.fulfillmentStatus,
+        maxPeople: purchase.maxPeople,
         venueSlug: purchase.venueSlug,
         venueName: purchase.venueSlug,
-        passUrl: purchase.passUrl,
-        passkitUrl: purchase.passkitUrl,
-        listPriceUsd: purchase.listPriceUsd,
-        discountUsd: purchase.discountUsd,
-        chargedPriceUsd: purchase.chargedPriceUsd,
         redemptionCount: redemptions.length,
         isRedeemedAtVenue: Boolean(venueRedemption),
         redeemedAt: venueRedemption?.redeemedAt || null,
         redemptionNumber: venueRedemption?.redemptionNumber || null,
         redemptionVenueSlug: venueRedemption?.venueSlug || purchase.venueSlug,
-        redemptions,
       }),
     };
   } catch (error) {

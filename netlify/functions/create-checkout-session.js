@@ -3,6 +3,10 @@ import { CARD_PRODUCTS } from "../../src/data/cardConfig.js";
 import { getPrPromoCheckoutContext } from "../../src/data/prPromotions.js";
 import { calculatePromoReceipt } from "../../src/lib/promoReceipt.js";
 import { getStripeKey } from "../../lib/stripe-config.js";
+import {
+  createCheckoutAccessToken,
+  hashCheckoutAccessToken,
+} from "../../lib/checkout-access.js";
 
 const stripe = new Stripe(getStripeKey());
 
@@ -130,6 +134,9 @@ export const handler = async (event) => {
     const productDescription = promoContext
       ? buildPromoBundleDescription(promoContext, product)
       : product.description;
+    const checkoutAccessToken = createCheckoutAccessToken();
+    const checkoutSuccessUrl = new URL(normalizeStripeSuccessUrl(successUrl));
+    checkoutSuccessUrl.searchParams.set("access_token", checkoutAccessToken);
 
     const coupon =
       promoContext && discountAmountUsd > 0
@@ -185,8 +192,9 @@ export const handler = async (event) => {
         validityDays: validityDays.toString(),
         maxPeople: product.maxPeople.toString(),
         startDate: startDate || new Date().toISOString().split("T")[0], // Default to today if not provided
+        checkoutAccessTokenHash: hashCheckoutAccessToken(checkoutAccessToken),
       },
-      success_url: normalizeStripeSuccessUrl(successUrl),
+      success_url: normalizeStripeSuccessUrl(checkoutSuccessUrl.toString()),
       cancel_url: cancelUrl,
       ...(!coupon ? { allow_promotion_codes: true } : {}),
     });

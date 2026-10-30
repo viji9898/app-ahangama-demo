@@ -183,6 +183,11 @@ Metadata stored on the Stripe Checkout session includes:
 - `validityDays`
 - `maxPeople`
 - `startDate`
+- a SHA-256 hash of a cryptographically random checkout access token
+
+The unhashed access token is added only to Stripe's success URL. The success
+page must present both the Stripe session ID and this token when verifying the
+payment. A session ID alone is not sufficient to retrieve customer details.
 
 ### 4. Stripe payment completes
 
@@ -290,16 +295,15 @@ Success page:
 
 Lookup endpoints used by the success page:
 
-- [netlify/functions/promo-purchase-by-session.js](/Users/viji/DevEnv/ahangama-app/netlify/functions/promo-purchase-by-session.js)
 - [netlify/functions/verify-payment.js](/Users/viji/DevEnv/ahangama-app/netlify/functions/verify-payment.js)
 
 What the success page does:
 
 - reads `session_id` from the URL
+- reads the checkout access token added to Stripe's success URL
 - guards against the raw placeholder value accidentally reaching the page
-- waits briefly for the promo purchase row to exist
-- uses the promo database record when available
-- falls back to `verify-payment` if needed
+- calls `verify-payment` with both values; the function validates the token hash
+- retrieves and synchronises the paid Stripe session only after authorization
 - tracks the GA4 `purchase` event once per session
 - prefers the PassKit smart link as the primary action
 - can auto-redirect promo purchases to the PassKit URL once per session
@@ -345,6 +349,9 @@ Current behavior for direct verify URLs:
 - it auto-verifies immediately
 - it renders the final result page directly
 - the direct result view can show valid or invalid status without requiring a manual scan step
+- the public lookup returns only a masked holder name, pass validity and
+	redemption state; customer contact, pricing, wallet and receipt data are not
+	returned
 
 ## Promo Routes and APIs
 
@@ -364,7 +371,6 @@ Primary Netlify functions:
 - `/.netlify/functions/create-checkout-session`
 - `/.netlify/functions/verify-payment`
 - `/.netlify/functions/stripe-webhook-promo`
-- `/.netlify/functions/promo-purchase-by-session`
 - `/.netlify/functions/promo-pass-by-id`
 - `/.netlify/functions/api-venues-list`
 

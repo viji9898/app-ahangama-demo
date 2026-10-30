@@ -123,7 +123,6 @@ const PAGE_GROUPS = [
       { title: "Admin dashboard", path: "/admin", detail: "Pass and guest operations." },
       { title: "Places table", path: "/places", detail: "Structured venue data and management." },
       { title: "Local intelligence", path: "/local-intelligence", detail: "Destination activity and visitor signals." },
-      { title: "Interactions", path: "/interactions", detail: "Visitor and content interaction reporting." },
       { title: "Email preview", path: "/email-preview", detail: "Preview operational email templates." },
     ],
   },

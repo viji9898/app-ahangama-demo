@@ -4,6 +4,7 @@ import { sendPromoNotifications } from "../../lib/promo-purchase-fulfillment.js"
 import { updatePromoPurchaseDeliveryStatus } from "../../lib/promo-purchases-db.js";
 import { syncPromoPurchaseFromSession } from "../../lib/promo-purchase-sync.js";
 import { getStripeKey } from "../../lib/stripe-config.js";
+import { verifyCheckoutAccessToken } from "../../lib/checkout-access.js";
 
 const stripe = new Stripe(getStripeKey());
 
@@ -77,7 +78,8 @@ export const handler = async (event) => {
   }
 
   try {
-    const { sessionId } = event.queryStringParameters || {};
+    const { sessionId, access_token: accessToken } =
+      event.queryStringParameters || {};
 
     if (!sessionId) {
       return {
@@ -145,6 +147,19 @@ export const handler = async (event) => {
     // Try to retrieve Stripe session
     console.log("Attempting to retrieve Stripe session:", sessionId);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+    if (
+      !verifyCheckoutAccessToken(
+        accessToken,
+        session.metadata?.checkoutAccessTokenHash,
+      )
+    ) {
+      return {
+        statusCode: 403,
+        headers,
+        body: JSON.stringify({ error: "Invalid checkout access token" }),
+      };
+    }
 
     if (session.payment_status !== "paid") {
       return {
