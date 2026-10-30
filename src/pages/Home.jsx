@@ -237,6 +237,13 @@ const THIS_WEEK_FEATURES = [
 const WEEKLY_PICKS = [
   {
     category: "Stay Story",
+    title: "The Spice Trail: Your South Coast Boutique Base",
+    date: "This Week",
+    href: "/the-spice-trail-your-south-coast-boutique-base",
+    image: "/the-spice-trail/placeholder.svg",
+  },
+  {
+    category: "Stay Story",
     title: "The Well: A Home Away from Home in Ahangama",
     date: "This Week",
     href: "/the-well-a-home-away-from-home-in-ahangama",

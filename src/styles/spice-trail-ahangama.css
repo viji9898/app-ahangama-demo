@@ -1,0 +1,14 @@
+@media (max-width: 640px) {
+  .spice-trail-hero-title .home-hero-titleLine {
+    white-space: normal;
+    letter-spacing: 0;
+  }
+
+  .spice-trail-landscape-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .spice-trail-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

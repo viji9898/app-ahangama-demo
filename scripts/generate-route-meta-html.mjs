@@ -548,6 +548,17 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
   },
   {
+    route: "/the-spice-trail-your-south-coast-boutique-base",
+    title: "The Spice Trail: Your South Coast Boutique Base",
+    description:
+      "A Basecamp to Tap into Ahangama Rhythm with Surf, Damn Good Food, Spa Therapy and the Coast's Best Coffee",
+    publishDate: "2026-10-30T10:00:00.000Z",
+    author: "The Spice Trail",
+    type: "article",
+    // TODO(images): swap in the hero/OG image once uploaded
+    image: `${siteUrl}/the-spice-trail/placeholder.svg`,
+  },
+  {
     route: "/the-well-a-home-away-from-home-in-ahangama",
     title: "The Well: A Home Away from Home in Ahangama",
     description:

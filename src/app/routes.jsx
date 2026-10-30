@@ -124,6 +124,9 @@ import CocoKitchenFineDiningPage, {
 import TheWellAhangamaPage, {
   THE_WELL_AHANGAMA_PATH,
 } from "../pages/TheWellAhangamaPage";
+import SpiceTrailAhangamaPage, {
+  SPICE_TRAIL_AHANGAMA_PATH,
+} from "../pages/SpiceTrailAhangamaPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -351,6 +354,10 @@ const routes = [
   {
     path: THE_WELL_AHANGAMA_PATH,
     element: <TheWellAhangamaPage />,
+  },
+  {
+    path: SPICE_TRAIL_AHANGAMA_PATH,
+    element: <SpiceTrailAhangamaPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,
