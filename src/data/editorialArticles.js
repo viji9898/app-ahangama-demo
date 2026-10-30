@@ -1,3 +1,9 @@
+import {
+  SPICE_TRAIL_HERO_IMAGE,
+  THE_WELL_HERO_IMAGE,
+  resolveHeroImage,
+} from "./articleHeroImages.js";
+
 export const EDITORIAL_ARTICLES = [
   {
     category: "Stay Story",
@@ -5,9 +11,9 @@ export const EDITORIAL_ARTICLES = [
     href: "/the-spice-trail-your-south-coast-boutique-base",
     description:
       "A Basecamp to Tap into Ahangama Rhythm with Surf, Damn Good Food, Spa Therapy and the Coast's Best Coffee",
-    // TODO(images): replace with the hero image once uploaded, e.g.
-    // ".../the-spice-trail-your-south-coast-boutique-base/hero-image-the-spice-trail-villa-pool-ahangama.webp"
-    image: "/the-spice-trail/placeholder.svg",
+    image:
+      resolveHeroImage(SPICE_TRAIL_HERO_IMAGE) ||
+      "/the-spice-trail/placeholder.svg",
     publishDate: "2026-10-30T10:00:00.000Z",
   },
   {
@@ -16,9 +22,9 @@ export const EDITORIAL_ARTICLES = [
     href: "/the-well-a-home-away-from-home-in-ahangama",
     description:
       "A place shaped around well-being, surf, yoga and the connections that come with travelling.",
-    // TODO(images): replace with the hero image once uploaded, e.g.
-    // ".../the-well-a-home-away-from-home-in-ahangama/the-well-ahangama-pool-garden-exterior.webp"
-    image: "/the-well-ahangama/placeholder.svg",
+    image:
+      resolveHeroImage(THE_WELL_HERO_IMAGE) ||
+      "/the-well-ahangama/placeholder.svg",
     publishDate: "2026-10-30T09:00:00.000Z",
   },
   {
