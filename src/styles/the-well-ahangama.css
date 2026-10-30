@@ -1,0 +1,14 @@
+@media (max-width: 640px) {
+  .the-well-hero-title .home-hero-titleLine {
+    white-space: normal;
+    letter-spacing: 0;
+  }
+
+  .the-well-landscape-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .the-well-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

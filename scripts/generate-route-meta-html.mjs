@@ -548,6 +548,17 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
   },
   {
+    route: "/the-well-a-home-away-from-home-in-ahangama",
+    title: "The Well: A Home Away from Home in Ahangama",
+    description:
+      "A place shaped around well-being, surf, yoga and the connections that come with travelling.",
+    publishDate: "2026-10-30T09:00:00.000Z",
+    author: "The Well",
+    type: "article",
+    // TODO(images): swap in the OG image once uploaded
+    image: `${siteUrl}/the-well-ahangama/placeholder.svg`,
+  },
+  {
     route: "/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama",
     title: "COCO Kitchen: The Pursuit of Coastal Fine Dining in Ahangama",
     description:
