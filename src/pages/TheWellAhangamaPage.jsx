@@ -7,6 +7,7 @@ import { absUrl } from "../app/siteUrl";
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import useArticleEngagement from "../hooks/useArticleEngagement";
+import { THE_WELL_HERO_IMAGE } from "../data/articleHeroImages";
 import "../styles/the-well-ahangama.css";
 
 const { Paragraph, Text, Title } = Typography;
@@ -31,11 +32,7 @@ export const THE_WELL_AHANGAMA_PATH =
 const IMAGE_BASE_URL = "";
 
 const IMAGE_SLOTS = {
-  hero: {
-    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-the-well-ahangama-pool-garden-exterior-37879a24.webp",
-    filename: "the-well-ahangama-pool-garden-exterior.webp",
-    alt: "Wide view of The Well's swimming pool, garden seating and building surrounded by tropical greenery.",
-  },
+  hero: THE_WELL_HERO_IMAGE,
   wideFeature: {
     src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-image-the-well-ahangama-rooms-greenery-bbbfa491.webp",
     filename: "the-well-ahangama-rooms-greenery.webp",

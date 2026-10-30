@@ -7,6 +7,11 @@ import { absUrl } from "../app/siteUrl";
 import SiteLayout from "../components/layout/SiteLayout";
 import EditorialNextArticle from "../components/ui/EditorialNextArticle";
 import useArticleEngagement from "../hooks/useArticleEngagement";
+import {
+  SPICE_TRAIL_HERO_IMAGE,
+  THE_WELL_HERO_IMAGE,
+  resolveHeroImage,
+} from "../data/articleHeroImages";
 import "../styles/spice-trail-ahangama.css";
 
 const { Paragraph, Text, Title } = Typography;
@@ -31,11 +36,7 @@ export const SPICE_TRAIL_AHANGAMA_PATH =
 const IMAGE_BASE_URL = "";
 
 const IMAGE_SLOTS = {
-  hero: {
-    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-the-spice-trail-villa-pool-ahangama-36cd3204.webp",
-    filename: "hero-image-the-spice-trail-villa-pool-ahangama.webp",
-    alt: "The Spice Trail villa and swimming pool in Ahangama.",
-  },
+  hero: SPICE_TRAIL_HERO_IMAGE,
   wideFeature: {
     src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-image-the-spice-trail-guest-bedroom-ahangama-39897181.webp",
     filename: "the-spice-trail-guest-bedroom-ahangama.webp",
@@ -185,7 +186,7 @@ const NEXT_ARTICLE = {
   href: "/the-well-a-home-away-from-home-in-ahangama",
   kicker: "Read Next",
   title: "The Well: A Home Away from Home in Ahangama",
-  image: "/the-well-ahangama/placeholder.svg",
+  image: resolveHeroImage(THE_WELL_HERO_IMAGE) || "/the-well-ahangama/placeholder.svg",
 };
 
 function trackOutboundClick(link, articleSection, componentLocation) {

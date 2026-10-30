@@ -555,8 +555,8 @@ const routeMeta = [
     publishDate: "2026-10-30T10:00:00.000Z",
     author: "The Spice Trail",
     type: "article",
-    // TODO(images): swap in the hero/OG image once uploaded
-    image: `${siteUrl}/the-spice-trail/placeholder.svg`,
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-the-spice-trail-villa-pool-ahangama-36cd3204.webp",
   },
   {
     route: "/the-well-a-home-away-from-home-in-ahangama",
@@ -566,8 +566,8 @@ const routeMeta = [
     publishDate: "2026-10-30T09:00:00.000Z",
     author: "The Well",
     type: "article",
-    // TODO(images): swap in the OG image once uploaded
-    image: `${siteUrl}/the-well-ahangama/placeholder.svg`,
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-the-well-ahangama-pool-f4484b76.webp",
   },
   {
     route: "/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama",

@@ -26,6 +26,11 @@ import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
+import {
+  SPICE_TRAIL_HERO_IMAGE,
+  THE_WELL_HERO_IMAGE,
+  resolveHeroImage,
+} from "../data/articleHeroImages";
 import PassPartnersStrip from "../components/home/PassPartnersStrip";
 import AhangamaPassCard3D from "../components/AhangamaPassCard3D";
 import HomeMapSection from "../components/home/HomeMapSection";
@@ -240,14 +245,14 @@ const WEEKLY_PICKS = [
     title: "The Spice Trail: Your South Coast Boutique Base",
     date: "This Week",
     href: "/the-spice-trail-your-south-coast-boutique-base",
-    image: "/the-spice-trail/placeholder.svg",
+    image: resolveHeroImage(SPICE_TRAIL_HERO_IMAGE),
   },
   {
     category: "Stay Story",
     title: "The Well: A Home Away from Home in Ahangama",
     date: "This Week",
     href: "/the-well-a-home-away-from-home-in-ahangama",
-    image: "/the-well-ahangama/placeholder.svg",
+    image: resolveHeroImage(THE_WELL_HERO_IMAGE),
   },
   {
     category: "Food Story",
