@@ -1,5 +1,16 @@
 export const EDITORIAL_ARTICLES = [
   {
+    category: "Stay Story",
+    title: "The Well: A Home Away from Home in Ahangama",
+    href: "/the-well-a-home-away-from-home-in-ahangama",
+    description:
+      "A place shaped around well-being, surf, yoga and the connections that come with travelling.",
+    // TODO(images): replace with the hero image once uploaded, e.g.
+    // ".../the-well-a-home-away-from-home-in-ahangama/the-well-ahangama-pool-garden-exterior.webp"
+    image: "/the-well-ahangama/placeholder.svg",
+    publishDate: "2026-10-30T09:00:00.000Z",
+  },
+  {
     category: "Food Story",
     title: "COCO Kitchen: The Pursuit of Coastal Fine Dining in Ahangama",
     href: "/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama",

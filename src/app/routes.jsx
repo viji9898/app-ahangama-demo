@@ -120,6 +120,9 @@ import CrossFitCeylonPalmPage, {
 import CocoKitchenFineDiningPage, {
   COCO_KITCHEN_FINE_DINING_PATH,
 } from "../pages/CocoKitchenFineDiningPage";
+import TheWellAhangamaPage, {
+  THE_WELL_AHANGAMA_PATH,
+} from "../pages/TheWellAhangamaPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -347,6 +350,10 @@ const routes = [
   {
     path: COCO_KITCHEN_FINE_DINING_PATH,
     element: <CocoKitchenFineDiningPage />,
+  },
+  {
+    path: THE_WELL_AHANGAMA_PATH,
+    element: <TheWellAhangamaPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,

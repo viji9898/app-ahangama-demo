@@ -236,6 +236,13 @@ const THIS_WEEK_FEATURES = [
 
 const WEEKLY_PICKS = [
   {
+    category: "Stay Story",
+    title: "The Well: A Home Away from Home in Ahangama",
+    date: "This Week",
+    href: "/the-well-a-home-away-from-home-in-ahangama",
+    image: "/the-well-ahangama/placeholder.svg",
+  },
+  {
     category: "Food Story",
     title: "COCO Kitchen: The Pursuit of Coastal Fine Dining in Ahangama",
     date: "This Week",
