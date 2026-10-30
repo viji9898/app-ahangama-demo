@@ -2,7 +2,7 @@ import {
   SPICE_TRAIL_HERO_IMAGE,
   THE_WELL_HERO_IMAGE,
   resolveHeroImage,
-} from "./articleHeroImages";
+} from "./articleHeroImages.js";
 
 export const EDITORIAL_ARTICLES = [
   {
