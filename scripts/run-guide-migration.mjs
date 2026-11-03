@@ -8,6 +8,7 @@ const migrationFiles = [
   "029_centralize_guide_venues.sql",
   "030_seed_guide_placements.sql",
   "032_guide_venue_map_links.sql",
+  "033_create_venue_stats_content.sql",
 ];
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });

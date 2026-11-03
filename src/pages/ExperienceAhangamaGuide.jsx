@@ -9,7 +9,7 @@ import "../styles/experience-ahangama-guide.css";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
-import { trackGuideEvent, trackVenueImpression } from "../analytics";
+import { trackGuideEvent, trackVenueImpression, trackVenueLinkClick } from "../analytics";
 import { Seo } from "../app/seo";
 import { absUrl } from "../app/siteUrl";
 import { QRCodeSVG } from "qrcode.react";
@@ -205,6 +205,15 @@ function trackVenueOutboundClick(item, linkType, destinationUrl, componentLocati
     guide_section: item.guideSection,
     component_location: componentLocation,
     destination_url: destinationUrl,
+  });
+  trackVenueLinkClick({
+    venueId: item.venueId,
+    venueSlug: item.venueSlug,
+    venueName: item.name,
+    linkType,
+    linkUrl: destinationUrl,
+    guideSection: item.guideSection,
+    componentLocation,
   });
 }
 

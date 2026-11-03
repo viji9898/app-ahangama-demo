@@ -37,6 +37,8 @@ import MapPage from "../pages/Map";
 import MapGoogle from "../pages/MapGoogle";
 import AdminDashboard from "../pages/AdminDashboard";
 import AdminGuidePage from "../pages/AdminGuidePage";
+import VenueStatsIndexPage from "../pages/VenueStatsIndexPage";
+import VenueStatsPage from "../pages/VenueStatsPage";
 import PlacesTable from "../pages/PlacesTable";
 import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
@@ -499,6 +501,8 @@ const routes = [
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
   { path: "/admin-guide", element: <AdminGuidePage /> },
+  { path: "/stats", element: <VenueStatsIndexPage /> },
+  { path: "/stats/:venueSlug", element: <VenueStatsPage /> },
   { path: "/partner-signup", element: <PartnerSignUp /> },
   { path: "/partner-signup/success", element: <PartnerSignUpSuccess /> },
   { path: "/resellers", element: <Resellers /> },
