@@ -30,6 +30,8 @@ export default function useAdminPassword() {
   );
 
   useEffect(() => {
+    if (password) return undefined;
+
     let cancelled = false;
     const controller = new AbortController();
 

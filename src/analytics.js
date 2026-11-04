@@ -2,7 +2,7 @@ import {
   getPassAttribution,
   getPassAttributionFromSearch,
   persistPassAttribution,
-} from "./lib/passAttribution";
+} from "./lib/passAttribution.js";
 
 const getAnalyticsAttribution = () => {
   const storedAttribution = getPassAttribution();

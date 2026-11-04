@@ -122,9 +122,36 @@ in the `guide_app` schema:
 `venue_key` is the statistics URL segment (for example `little-bang-kitchen`),
 not the database venue id. This keeps URLs stable.
 
+## Verification
+
+Run the pre-flight check after configuring the environment:
+
+```sh
+npm run check:venue-stats
+```
+
+It validates the eight-venue registry, the numeric GA4 property id, the
+service-account connection, the five event-scoped custom dimensions, the
+database connection, migration 033, and the admin password. It exits
+non-zero when a required check fails, so it can run in CI or before a
+deploy.
+
+Run the regression suite with:
+
+```sh
+npm run test:venue-stats
+```
+
+The tests cover registry integrity, the preview-bypass matrix, the
+`venue_link_click` payload, API auth/404/405/400 handling, and date-range
+resolution.
+
 ## API
 
-Both endpoints require `X-Admin-Password`.
+Both endpoints require `X-Admin-Password`. A lightweight
+`GET /api/venue-stats?check=1` probe returns `{ ok: true, authRequired }`
+without touching GA4 or the database; the frontend uses it to decide
+whether to show the password gate.
 
 ### `GET /api/venue-stats`
 

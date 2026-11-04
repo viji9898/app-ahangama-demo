@@ -8,6 +8,8 @@
     "build": "npm run media:gen && vite build && npm run meta:routes && npm run seo:gen",
     "lint": "eslint .",
     "test:hotel-opportunity": "node --test tests/hotel-opportunity-analysis.test.js",
+    "test:venue-stats": "node --test tests/venue-stats.test.js",
+    "check:venue-stats": "node scripts/check-venue-stats.mjs",
     "media:gen": "node scripts/generate-media-inventory.mjs",
     "meta:routes": "node scripts/generate-route-meta-html.mjs",
     "preview": "vite preview",

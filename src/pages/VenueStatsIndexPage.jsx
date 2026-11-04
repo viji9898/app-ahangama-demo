@@ -133,7 +133,7 @@ export default function VenueStatsIndexPage() {
   }, [loadStats]);
 
   const authorize = useCallback(async (candidate) => {
-    const response = await fetch(`${API_BASE}?scope=overview&days=7`, {
+    const response = await fetch(`${API_BASE}?check=1`, {
       headers: { "X-Admin-Password": candidate },
     });
     return response.ok;

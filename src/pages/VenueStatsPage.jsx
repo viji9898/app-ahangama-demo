@@ -472,17 +472,12 @@ export default function VenueStatsPage() {
     loadStats();
   }, [loadStats]);
 
-  const authorize = useCallback(
-    async (candidate) => {
-      if (!config) return false;
-      const response = await fetch(
-        `${API_BASE}?venue=${encodeURIComponent(config.key)}&days=7`,
-        { headers: { "X-Admin-Password": candidate } },
-      );
-      return response.ok;
-    },
-    [config],
-  );
+  const authorize = useCallback(async (candidate) => {
+    const response = await fetch(`${API_BASE}?check=1`, {
+      headers: { "X-Admin-Password": candidate },
+    });
+    return response.ok;
+  }, []);
 
   const savePost = async (event) => {
     event.preventDefault();
