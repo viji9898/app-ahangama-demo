@@ -122,6 +122,11 @@ in the `guide_app` schema:
 `venue_key` is the statistics URL segment (for example `little-bang-kitchen`),
 not the database venue id. This keeps URLs stable.
 
+For local preview against a different database, set an optional
+`VENUE_STATS_DATABASE_URL`. It is used only by the venue statistics content
+layer; the rest of the app keeps using `DATABASE_URL`. Production normally
+leaves it unset.
+
 ## Verification
 
 Run the pre-flight check after configuring the environment:
