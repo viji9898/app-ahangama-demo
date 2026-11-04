@@ -255,6 +255,10 @@ async function fetchLinkBreakdown(venue, range, errors) {
       ? metricValue(usersReport.rows[0], 0)
       : 0;
 
+  if (!usersReport.ok) {
+    addError(errors, "uniqueClickers", usersReport.error);
+  }
+
   return {
     available: true,
     totalClicks,
@@ -297,7 +301,10 @@ async function fetchGuidePages(range, errors) {
     dimensionFilter: {
       filter: {
         fieldName: "pagePath",
-        stringFilter: { matchType: "EXACT", value: GUIDE_PATH },
+        inListFilter: {
+          values: [GUIDE_PATH, `${GUIDE_PATH}/`],
+          caseSensitive: false,
+        },
       },
     },
   });
@@ -410,6 +417,12 @@ function pathnameOf(url) {
   }
 }
 
+function normaliseArticlePath(value) {
+  const path = String(value || "").trim();
+  if (!path) return "";
+  return path.replace(/\/+$/, "") || "/";
+}
+
 async function fetchArticleMetrics(paths, range, errors) {
   if (!paths.length) return { available: true, byPath: {} };
 
@@ -420,7 +433,10 @@ async function fetchArticleMetrics(paths, range, errors) {
     dimensionFilter: {
       filter: {
         fieldName: "pagePath",
-        inListFilter: { values: paths, caseSensitive: false },
+        inListFilter: {
+          values: paths.flatMap((path) => [path, `${path}/`]),
+          caseSensitive: false,
+        },
       },
     },
   });
@@ -432,7 +448,8 @@ async function fetchArticleMetrics(paths, range, errors) {
 
   const byPath = {};
   for (const row of report.rows) {
-    byPath[dimensionValue(row, 0)] = {
+    const key = dimensionValue(row, 0).replace(/\/+$/, "") || "/";
+    byPath[key] = {
       pageViews: metricValue(row, 0),
       uniqueVisitors: metricValue(row, 1),
     };
@@ -513,11 +530,13 @@ async function buildVenuePayload(venue, params) {
 
   const articleMap = new Map();
 
-  for (const path of venue.articlePaths || []) {
+  for (const articlePath of venue.articlePaths || []) {
+    const path = normaliseArticlePath(articlePath);
+    if (!path) continue;
     articleMap.set(path, { path, ...articleMeta(path), manual: false });
   }
   for (const article of manualArticles) {
-    const path = pathnameOf(article.url);
+    const path = normaliseArticlePath(pathnameOf(article.url));
     if (!path) continue;
     articleMap.set(path, {
       path,
