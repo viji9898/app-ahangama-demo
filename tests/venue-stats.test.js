@@ -148,6 +148,40 @@ test("preview bypass never applies when CONTEXT=production", async () => {
   );
 });
 
+test("preview bypass never applies to deploy previews or branch deploys", async () => {
+  for (const context of ["deploy-preview", "branch-deploy", "staging"]) {
+    await withEnv(
+      {
+        VENUE_STATS_AUTH_DISABLED: "1",
+        CONTEXT: context,
+        GUIDE_ADMIN_PASSWORD: undefined,
+      },
+      () => {
+        assert.equal(
+          isVenueStatsAuthDisabled(),
+          false,
+          `bypass must be off for CONTEXT=${context}`,
+        );
+        assert.equal(isVenueStatsAuthorized({}), false);
+      },
+    );
+  }
+});
+
+test("preview bypass applies to an explicit local dev context", async () => {
+  await withEnv(
+    {
+      VENUE_STATS_AUTH_DISABLED: "1",
+      CONTEXT: "dev",
+      GUIDE_ADMIN_PASSWORD: undefined,
+    },
+    () => {
+      assert.equal(isVenueStatsAuthDisabled(), true);
+      assert.equal(isVenueStatsAuthorized({}), true);
+    },
+  );
+});
+
 test("preview bypass does not accept other flag values", async () => {
   await withEnv(
     {

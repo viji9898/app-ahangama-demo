@@ -35,9 +35,9 @@ VENUE_STATS_AUTH_DISABLED=1
 
 The API answers a lightweight `GET /api/venue-stats?check=1` probe with
 `200`, and the pages skip the password gate. The switch is deliberately
-ignored when Netlify sets `CONTEXT=production`, so a production deploy
-stays locked even if the variable is present. Remove the line (or set it
-to anything other than `1`) to restore the gate.
+ignored outside local development (production, deploy previews and branch
+deploys), so a deployed site stays locked even if the variable is present.
+Remove the line (or set it to anything other than `1`) to restore the gate.
 
 ## Tracking
 

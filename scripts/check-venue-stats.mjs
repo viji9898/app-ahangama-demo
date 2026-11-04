@@ -240,10 +240,11 @@ function checkAuth() {
   }
 
   if (process.env.VENUE_STATS_AUTH_DISABLED === "1") {
-    if (process.env.CONTEXT === "production") {
+    const context = String(process.env.CONTEXT || "").trim();
+    if (context && context !== "dev" && context !== "development") {
       warn(
         "Preview bypass",
-        "VENUE_STATS_AUTH_DISABLED=1 is set but ignored because CONTEXT=production",
+        `VENUE_STATS_AUTH_DISABLED=1 is set but ignored because CONTEXT=${context}`,
       );
     } else {
       warn(

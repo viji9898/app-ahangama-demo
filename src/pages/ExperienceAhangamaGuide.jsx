@@ -839,14 +839,25 @@ function LocatedSection({ venueData }) {
                             href={place.googleMaps}
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => trackGuideEvent("guide_map_popup_navigate", {
-                              venue_id: place.venueId,
-                              venue_slug: place.venueSlug,
-                              venue_name: place.name,
-                              guide_section: place.guideSection,
-                              component_location: "guide_map_popup",
-                              destination_url: place.googleMaps,
-                            })}
+                            onClick={() => {
+                              trackGuideEvent("guide_map_popup_navigate", {
+                                venue_id: place.venueId,
+                                venue_slug: place.venueSlug,
+                                venue_name: place.name,
+                                guide_section: place.guideSection,
+                                component_location: "guide_map_popup",
+                                destination_url: place.googleMaps,
+                              });
+                              trackVenueLinkClick({
+                                venueId: place.venueId,
+                                venueSlug: place.venueSlug,
+                                venueName: place.name,
+                                linkType: "google_maps",
+                                linkUrl: place.googleMaps,
+                                guideSection: place.guideSection,
+                                componentLocation: "guide_map_popup",
+                              });
+                            }}
                           >
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             Navigate
