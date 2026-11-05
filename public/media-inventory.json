@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-30T15:20:47.827Z",
+  "generatedAt": "2026-11-05T07:27:18.643Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 741,
+  "count": 788,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama/+coco-kitchen-exterior-ahangama-og-image.webp",
@@ -71,6 +71,28 @@
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
         "src/data/places.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/abode-ahangama-exterior-of-a-white-tropical-villa-with-a-terracotta-roof-and-green-lawn-37575f64.webp",
+      "fileName": "abode-ahangama-exterior-of-a-white-tropical-villa-with-a-terracotta-roof-and-green-lawn-37575f64.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/abode-by-the-beach-beachfront-villa-and-outdoor-dining-area-at-abode-ahangama-at-sunset-d2a43496.webp",
+      "fileName": "abode-by-the-beach-beachfront-villa-and-outdoor-dining-area-at-abode-ahangama-at-sunset-d2a43496.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
       ],
       "pageRoutes": {}
     },
@@ -1461,6 +1483,455 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-a-paper-cup-labelled-kaffi-brown-color-on-the-table-d3dbe0b9.webp",
+      "fileName": "general-a-paper-cup-labelled-kaffi-brown-color-on-the-table-d3dbe0b9.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-cover-page-image-ocean-side-878f3766.webp",
+      "fileName": "general-cover-page-image-ocean-side-878f3766.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/Home.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-cover-page-image-ocean-side-eed0a271.webp",
+      "fileName": "general-cover-page-image-ocean-side-eed0a271.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/styles/experience-ahangama-guide.css"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-dj-performing-at-night-at-hakuna-matata-beach-venue-in-ahangama-9fe225ee.webp",
+      "fileName": "general-dj-performing-at-night-at-hakuna-matata-beach-venue-in-ahangama-9fe225ee.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-ko-lake-villa-between-trees-and-lake-b48fa3a1.webp",
+      "fileName": "general-hero-image-ko-lake-villa-between-trees-and-lake-b48fa3a1.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/articleHeroImages.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-the-spice-trail-villa-pool-ahangama-36cd3204.webp",
+      "fileName": "general-hero-image-the-spice-trail-villa-pool-ahangama-36cd3204.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/articleHeroImages.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-the-well-ahangama-pool-garden-exterior-37879a24.webp",
+      "fileName": "general-hero-image-the-well-ahangama-pool-garden-exterior-37879a24.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/articleHeroImages.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-4bd8366c.webp",
+      "fileName": "general-og-image-4bd8366c.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/KoLakeVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/KoLakeVillaPage.jsx": [
+          "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-the-well-ahangama-pool-f4484b76.webp",
+      "fileName": "general-og-image-the-well-ahangama-pool-f4484b76.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheWellAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheWellAhangamaPage.jsx": [
+          "/the-well-a-home-away-from-home-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-outdoor-patio-seating-area-at-kal-tmaka-creative-co-working-space-44c1a9d4.webp",
+      "fileName": "general-outdoor-patio-seating-area-at-kal-tmaka-creative-co-working-space-44c1a9d4.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-ko-lake-villa-team-4d155043.webp",
+      "fileName": "general-portrait-ko-lake-villa-team-4d155043.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/KoLakeVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/KoLakeVillaPage.jsx": [
+          "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-left-kaffi-coffee-latte-art-ahangama-b97456ce.webp",
+      "fileName": "general-portrait-left-kaffi-coffee-latte-art-ahangama-b97456ce.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-left-lbk-cheeseburger-ahangama-d3f07741.webp",
+      "fileName": "general-portrait-left-lbk-cheeseburger-ahangama-d3f07741.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-left-spa-therapy-back-massage-ahangama-018f67c4.webp",
+      "fileName": "general-portrait-left-spa-therapy-back-massage-ahangama-018f67c4.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-left-the-spice-trail-avocado-egg-rice-bowl-ahangama-d69380e8.webp",
+      "fileName": "general-portrait-left-the-spice-trail-avocado-egg-rice-bowl-ahangama-d69380e8.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-left-the-well-ahangama-yoga-session-40bdd097.webp",
+      "fileName": "general-portrait-left-the-well-ahangama-yoga-session-40bdd097.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheWellAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheWellAhangamaPage.jsx": [
+          "/the-well-a-home-away-from-home-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-rajiv-abeysinghe-ko-lake-villa-cf485471.webp",
+      "fileName": "general-portrait-rajiv-abeysinghe-ko-lake-villa-cf485471.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/KoLakeVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/KoLakeVillaPage.jsx": [
+          "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-right-kaffi-coffee-cake-ahangama-cf423e11.webp",
+      "fileName": "general-portrait-right-kaffi-coffee-cake-ahangama-cf423e11.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-right-little-bang-kitchen-ramen-ahangama-9f09a12f.webp",
+      "fileName": "general-portrait-right-little-bang-kitchen-ramen-ahangama-9f09a12f.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-right-spa-therapy-foot-massage-ahangama-6a0e6689.webp",
+      "fileName": "general-portrait-right-spa-therapy-foot-massage-ahangama-6a0e6689.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-right-the-spice-trail-poolside-drink-ahangama-fb3fb124.webp",
+      "fileName": "general-portrait-right-the-spice-trail-poolside-drink-ahangama-fb3fb124.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-right-the-well-ahangama-guests-community-6a51da54.webp",
+      "fileName": "general-portrait-right-the-well-ahangama-guests-community-6a51da54.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheWellAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheWellAhangamaPage.jsx": [
+          "/the-well-a-home-away-from-home-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-sri-lankan-rice-curries-ko-lake-villa-ff856a6d.webp",
+      "fileName": "general-portrait-sri-lankan-rice-curries-ko-lake-villa-ff856a6d.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/KoLakeVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/KoLakeVillaPage.jsx": [
+          "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-potrait-left-the-well-ahangama-surfer-with-board-0240b830.webp",
+      "fileName": "general-potrait-left-the-well-ahangama-surfer-with-board-0240b830.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheWellAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheWellAhangamaPage.jsx": [
+          "/the-well-a-home-away-from-home-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-potrait-right-the-well-ahangama-yellow-surfboard-garden-3ed12711.webp",
+      "fileName": "general-potrait-right-the-well-ahangama-yellow-surfboard-garden-3ed12711.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheWellAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheWellAhangamaPage.jsx": [
+          "/the-well-a-home-away-from-home-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-six-surfers-standing-on-the-beach-smiling-555a8765.webp",
+      "fileName": "general-six-surfers-standing-on-the-beach-smiling-555a8765.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-soul-spa-menu-welcome-drink-and-decorative-elements-arranged-on-a-table-1b4277f2.webp",
+      "fileName": "general-soul-spa-menu-welcome-drink-and-decorative-elements-arranged-on-a-table-1b4277f2.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-traditional-sri-lankan-wooden-masks-displayed-with-souvenir-shops-ahangama-sri-l-f22f3195.jpg",
+      "fileName": "general-traditional-sri-lankan-wooden-masks-displayed-with-souvenir-shops-ahangama-sri-l-f22f3195.jpg",
+      "format": "JPG",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/ExperienceAhangamaGuide.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/ExperienceAhangamaGuide.jsx": [
+          "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-image-the-spice-trail-guest-bedroom-ahangama-39897181.webp",
+      "fileName": "general-wide-feature-image-the-spice-trail-guest-bedroom-ahangama-39897181.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-image-the-well-ahangama-rooms-greenery-bbbfa491.webp",
+      "fileName": "general-wide-feature-image-the-well-ahangama-rooms-greenery-bbbfa491.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/TheWellAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/TheWellAhangamaPage.jsx": [
+          "/the-well-a-home-away-from-home-in-ahangama"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-ko-lake-villa-veranda-dining-pool-5dddb539.webp",
+      "fileName": "general-wide-feature-ko-lake-villa-veranda-dining-pool-5dddb539.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/KoLakeVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/KoLakeVillaPage.jsx": [
+          "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/gik_bike_rental.jpg",
       "fileName": "gik_bike_rental.jpg",
       "format": "JPG",
@@ -1800,6 +2271,7 @@
         "src/data/editorialArticles.js",
         "src/pages/Home.jsx",
         "src/pages/TheAccidentalStoryOfRibsPage.jsx",
+        "src/pages/TheWellAhangamaPage.jsx",
         "src/pages/VillaAlbaBoutiqueHotelPage.jsx"
       ],
       "pageRoutes": {
@@ -1808,6 +2280,9 @@
         ],
         "src/pages/TheAccidentalStoryOfRibsPage.jsx": [
           "/the-accidental-story-of-ribs"
+        ],
+        "src/pages/TheWellAhangamaPage.jsx": [
+          "/the-well-a-home-away-from-home-in-ahangama"
         ],
         "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
           "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
@@ -2728,6 +3203,28 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/namikaze-restaurant-bar-massage-therapist-performing-a-leg-massage-treatment-at-spice-trail-cdc2cb89.webp",
+      "fileName": "namikaze-restaurant-bar-massage-therapist-performing-a-leg-massage-treatment-at-spice-trail-cdc2cb89.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/nirbana-retreat-lake-view-8-people-paddle-boarding-3d5fafe5.webp",
+      "fileName": "nirbana-retreat-lake-view-8-people-paddle-boarding-3d5fafe5.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/nova_rental.jpeg",
       "fileName": "nova_rental.jpeg",
       "format": "JPEG",
@@ -2766,6 +3263,21 @@
       "pageRoutes": {
         "src/pages/VillaAlbaBoutiqueHotelPage.jsx": [
           "/villa-alba-a-boutique-hotel-with-a-commitment-to-those-who-built-it"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/ogimage-diversity-and-inclusion+.jpeg",
+      "fileName": "ogimage-diversity-and-inclusion+.jpeg",
+      "format": "JPEG",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/DiversityAndInclusionPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/DiversityAndInclusionPage.jsx": [
+          "/diversity-and-inclusion"
         ]
       }
     },
@@ -3662,6 +4174,17 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/salon-change-barber-styling-a-client-s-hair-in-a-barbershop-0cd0b28f.webp",
+      "fileName": "salon-change-barber-styling-a-client-s-hair-in-a-barbershop-0cd0b28f.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/sama.jpeg",
       "fileName": "sama.jpeg",
       "format": "JPEG",
@@ -4026,6 +4549,17 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/spa-therapy-spice-trail-massage-therapist-performing-a-leg-massage-treatment-at-spice-trail-39b95a6b.webp",
+      "fileName": "spa-therapy-spice-trail-massage-therapist-performing-a-leg-massage-treatment-at-spice-trail-39b95a6b.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/spice_trails.jpg",
       "fileName": "spice_trails.jpg",
       "format": "JPG",
@@ -4379,9 +4913,14 @@
       "origin": "owned",
       "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
       "sources": [
-        "src/data/places.js"
+        "src/data/places.js",
+        "src/pages/MidigamaDevelopmentPage.jsx"
       ],
-      "pageRoutes": {}
+      "pageRoutes": {
+        "src/pages/MidigamaDevelopmentPage.jsx": [
+          "/midigama"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the-kip.jpg",
@@ -4453,6 +4992,28 @@
           "/the-mugatiya-a-heritage-villa-made-for-slower-days-in-ahangama"
         ]
       }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/the-spice-trail-friends-toasting-with-wine-glasses-around-a-dining-table-at-little-bang-92b5bc93.webp",
+      "fileName": "the-spice-trail-friends-toasting-with-wine-glasses-around-a-dining-table-at-little-bang-92b5bc93.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/the-spice-trail-villa-with-red-tiled-roof-reflecting-in-a-swimming-pool-at-spice-trail-3300fdd7.webp",
+      "fileName": "the-spice-trail-villa-with-red-tiled-roof-reflecting-in-a-swimming-pool-at-spice-trail-3300fdd7.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "lib/venue-stats-config.js"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-demo/logos/the+find.jpg",
@@ -5561,6 +6122,57 @@
       "pageRoutes": {}
     },
     {
+      "url": "/ko-lake-villa/placeholder.svg",
+      "fileName": "placeholder.svg",
+      "format": "SVG",
+      "origin": "local",
+      "host": "ahangama.com",
+      "sources": [
+        "public/ko-lake-villa/placeholder.svg",
+        "src/data/editorialArticles.js",
+        "src/pages/Home.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
+        ]
+      }
+    },
+    {
+      "url": "/the-spice-trail/placeholder.svg",
+      "fileName": "placeholder.svg",
+      "format": "SVG",
+      "origin": "local",
+      "host": "ahangama.com",
+      "sources": [
+        "public/the-spice-trail/placeholder.svg",
+        "src/data/editorialArticles.js",
+        "src/pages/KoLakeVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/KoLakeVillaPage.jsx": [
+          "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
+    },
+    {
+      "url": "/the-well-ahangama/placeholder.svg",
+      "fileName": "placeholder.svg",
+      "format": "SVG",
+      "origin": "local",
+      "host": "ahangama.com",
+      "sources": [
+        "public/the-well-ahangama/placeholder.svg",
+        "src/data/editorialArticles.js",
+        "src/pages/SpiceTrailAhangamaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/SpiceTrailAhangamaPage.jsx": [
+          "/the-spice-trail-your-south-coast-boutique-base"
+        ]
+      }
+    },
+    {
       "url": "/12%20Experiences%20Images%20/Perfect%20Day%20In%20ahangama/Rolling%20pin%20Coffee_.webp",
       "fileName": "Rolling pin Coffee_.webp",
       "format": "WEBP",
@@ -6200,6 +6812,17 @@
       "host": "i0.wp.com",
       "sources": [
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
+      ],
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784784926/44yfmcvyf_zqm5q1.webp",
+      "fileName": "44yfmcvyf_zqm5q1.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "lib/guide-image-audit.js"
       ],
       "pageRoutes": {}
     },
@@ -6872,13 +7495,20 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
+        "lib/guide-image-audit.js"
       ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
+      "pageRoutes": {}
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784783799/colored-4247572_jezkyb.webp",
+      "fileName": "colored-4247572_jezkyb.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "lib/guide-image-audit.js"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784779727/coloredgood-story-surf-school-1400_1_Topaz_Gigapixel_4x_scale_dr6h6l.webp",
@@ -6887,13 +7517,9 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
+        "lib/guide-image-audit.js"
       ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784783052/colorred_animals_oj6aee.webp",
@@ -7175,13 +7801,9 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
+        "lib/guide-image-audit.js"
       ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426473/Hakuna_Matata_ldiwqq.webp",
@@ -7349,6 +7971,17 @@
       }
     },
     {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787647989/howlongpeoplestay_1_sqg1i8.webp",
+      "fileName": "howlongpeoplestay_1_sqg1i8.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "lib/guide-image-audit.js"
+      ],
+      "pageRoutes": {}
+    },
+    {
       "url": "https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-club/image.jpg",
       "fileName": "image.jpg",
       "format": "JPG",
@@ -7421,13 +8054,9 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
+        "lib/guide-image-audit.js"
       ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788240082/kafii01_czf6wl.webp",
@@ -7510,6 +8139,21 @@
         "src/pages/GuidePage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://your-image-host.com/ko-lake-villa-veranda-dining-pool.webp",
+      "fileName": "ko-lake-villa-veranda-dining-pool.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "your-image-host.com",
+      "sources": [
+        "src/pages/KoLakeVillaPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/KoLakeVillaPage.jsx": [
+          "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786426466/Kumbuk_Community_1_tnbbky.webp",
@@ -7823,6 +8467,17 @@
           "/guide"
         ]
       }
+    },
+    {
+      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784788406/overview_image_ukm5or.webp",
+      "fileName": "overview_image_ukm5or.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "res.cloudinary.com",
+      "sources": [
+        "lib/guide-image-audit.js"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1788408993/oyummy_jwioh8.webp",
@@ -8387,22 +9042,6 @@
       "pageRoutes": {}
     },
     {
-      "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1784702191/Screenshot_2026-07-22_at_12.06.19_jmbgko.png",
-      "fileName": "Screenshot_2026-07-22_at_12.06.19_jmbgko.png",
-      "format": "PNG",
-      "origin": "external",
-      "host": "res.cloudinary.com",
-      "sources": [
-        "src/pages/Home.jsx",
-        "src/styles/experience-ahangama-guide.css"
-      ],
-      "pageRoutes": {
-        "src/pages/Home.jsx": [
-          "/"
-        ]
-      }
-    },
-    {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1782814117/section_1_-_Beachfront_breakfast_b8i8dh.webp",
       "fileName": "section_1_-_Beachfront_breakfast_b8i8dh.webp",
       "format": "WEBP",
@@ -8653,13 +9292,9 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
+        "lib/guide-image-audit.js"
       ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/q_auto/v1784793489/souvenir_qrb9cl.webp",
@@ -8668,13 +9303,9 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
+        "lib/guide-image-audit.js"
       ],
-      "pageRoutes": {
-        "src/pages/ExperienceAhangamaGuide.jsx": [
-          "/guide"
-        ]
-      }
+      "pageRoutes": {}
     },
     {
       "url": "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786545710/Spa_Station_midi_yseyx7.webp",

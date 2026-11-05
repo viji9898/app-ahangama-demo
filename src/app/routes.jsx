@@ -179,6 +179,9 @@ import MidigamaDevelopmentPage, {
 import EditorialArticleAnalytics from "../components/analytics/EditorialArticleAnalytics";
 import ExternalRedirect from "./ExternalRedirect";
 import { Navigate } from "react-router-dom";
+import GuideQrLandingPage, {
+  GUIDE_QR_LANDING_PATH,
+} from "../pages/GuideQrLandingPage";
 
 const WELLNESS_GUIDE_BLOG_PATH =
   "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
@@ -195,6 +198,13 @@ const trackedArticle = (
   </>
 );
 const routes = [
+  // ── Physical Guide QR landing pages (/go/:section) ──────────────────────
+  // These seven permanent URLs correspond to the printed QR codes in the
+  // 2026/27 Ahangama Physical Guide. They fire a GA4 `qr_scan` event and
+  // then redirect to the relevant guide section.
+  // Destination URLs are configured in src/data/guideQrRedirects.js.
+  { path: GUIDE_QR_LANDING_PATH, element: <GuideQrLandingPage /> },
+
   { path: GUIDE_PITCH_PATH, element: <GuidePitchPage /> },
   ...Object.entries(EAT_DRINK_GUIDE_PATHS).map(([guideKey, path]) => ({
     path,
