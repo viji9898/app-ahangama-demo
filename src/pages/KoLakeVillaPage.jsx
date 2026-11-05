@@ -20,43 +20,71 @@ export const KO_LAKE_VILLA_PATH =
   "/ko-lake-villa-a-house-shaped-by-koggala-lake";
 
 /*
- * IMAGE PLACEHOLDERS
- * ------------------
- * The article is wired with labelled placeholders so the layout is ready
- * before the photography arrives. To swap them in, either:
+ * IMAGE LINKS — PASTE HERE
+ * ------------------------
+ * Every photo on the page is wired to a slot below. To add an image, paste
+ * its hosted link between the quotes of that slot's `src` field, for example:
  *
- *   1. Set IMAGE_BASE_URL to the uploaded image folder (for example the
- *      article's S3 folder), and every slot below resolves to
- *      `${IMAGE_BASE_URL}/${filename}` automatically, or
- *   2. Give an individual slot a `src` value to point at one file.
+ *   wideFeature: {
+ *     src: "https://your-image-host.com/ko-lake-villa-veranda-dining-pool.webp",
+ *     ...
+ *   },
+ *
+ * Leave a `src` empty ("") to keep the labelled placeholder on the page.
+ * Each placeholder on the page names the slot it belongs to, so you can
+ * find the right field quickly.
+ *
+ * The hero image lives in src/data/articleHeroImages.js so the homepage
+ * card, /articles index and social preview all use the same file.
  *
  * Filenames follow the brief in "Ko lake villa article .docx".
  */
 const IMAGE_BASE_URL = "";
 
 const IMAGE_SLOTS = {
+  // HERO — paste the link into KO_LAKE_VILLA_HERO_IMAGE.src in
+  // src/data/articleHeroImages.js
   hero: KO_LAKE_VILLA_HERO_IMAGE,
+  // WIDE FEATURE — veranda dining area and swimming pool
   wideFeature: {
+    slotKey: "wideFeature",
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-ko-lake-villa-veranda-dining-pool-5dddb539.webp", // ← paste wide feature image link here
     filename: "ko-lake-villa-veranda-dining-pool.webp",
     alt: "Ko Lake Villa's veranda dining area and swimming pool.",
   },
+
+  // PORTRAIT — illustrated portrait of Rajiv
   portrait: {
+    slotKey: "portrait",
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-rajiv-abeysinghe-ko-lake-villa-cf485471.webp", // ← paste portrait image link here
     filename: "rajiv-abeysinghe-ko-lake-villa-portrait.webp",
     alt: "Illustrated portrait of Rajiv Abeysinghe at Ko Lake Villa.",
   },
+
+  // TEAM — barbecue with the Ko Lake Villa team
   team: {
+    slotKey: "team",
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-ko-lake-villa-team-4d155043.webp", // ← paste team image link here
     filename: "ko-lake-villa-team-barbecue.webp",
     alt: "Ko Lake Villa team gathered around the barbecue.",
     caption:
       "At the barbecue with the Ko Lake Villa team. Faces blurred for privacy. Photo: Ko Lake Villa.",
   },
+
+  // FOOD — Sri Lankan rice and curries
   food: {
+    slotKey: "food",
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-sri-lankan-rice-curries-ko-lake-villa-ff856a6d.webp", // ← paste food image link here
     filename: "sri-lankan-rice-curries-ko-lake-villa.webp",
     alt: "Sri Lankan rice and curries served on banana leaves at Ko Lake Villa.",
     caption:
       "Rice and curries on banana leaves. Image: Ko Lake Villa website.",
   },
+
+  // OG / SOCIAL SHARE — optional; falls back to the hero image
   og: {
+    slotKey: "og",
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-4bd8366c.webp", // ← paste social share image link here
     filename: "og-ko-lake-villa-koggala-lake.webp",
     alt: "Ko Lake Villa beside Koggala Lake.",
   },
@@ -269,7 +297,7 @@ function renderLinkedText(text, articleSection) {
   return segments;
 }
 
-function ImagePlaceholder({ filename, alt, align = "center", style }) {
+function ImagePlaceholder({ filename, alt, hint, align = "center", style }) {
   const isTopRight = align === "topRight";
 
   return (
@@ -326,6 +354,24 @@ function ImagePlaceholder({ filename, alt, align = "center", style }) {
       >
         {alt}
       </span>
+      {hint ? (
+        <span
+          style={{
+            marginTop: 4,
+            padding: "4px 10px",
+            borderRadius: 999,
+            background: isTopRight
+              ? "rgba(255,255,255,0.12)"
+              : "rgba(139,98,61,0.1)",
+            fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+            fontSize: 11,
+            lineHeight: 1.4,
+            color: isTopRight ? "rgba(255,255,255,0.8)" : "#8b623d",
+          }}
+        >
+          {hint}
+        </span>
+      ) : null}
     </div>
   );
 }
@@ -370,7 +416,15 @@ function EditorialImage({ slot }) {
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         ) : (
-          <ImagePlaceholder filename={slot.filename} alt={slot.alt} />
+          <ImagePlaceholder
+            filename={slot.filename}
+            alt={slot.alt}
+            hint={
+              slot.slotKey
+                ? `Add link in IMAGE_SLOTS.${slot.slotKey}.src`
+                : undefined
+            }
+          />
         )}
       </div>
       <Caption>{slot.caption}</Caption>
@@ -407,7 +461,15 @@ function PortraitImage({ slot }) {
             }}
           />
         ) : (
-          <ImagePlaceholder filename={slot.filename} alt={slot.alt} />
+          <ImagePlaceholder
+            filename={slot.filename}
+            alt={slot.alt}
+            hint={
+              slot.slotKey
+                ? `Add link in IMAGE_SLOTS.${slot.slotKey}.src`
+                : undefined
+            }
+          />
         )}
       </div>
       <Caption>{slot.caption}</Caption>
@@ -454,7 +516,15 @@ function PortraitPair({ images }) {
                   }}
                 />
               ) : (
-                <ImagePlaceholder filename={slot.filename} alt={slot.alt} />
+                <ImagePlaceholder
+            filename={slot.filename}
+            alt={slot.alt}
+            hint={
+              slot.slotKey
+                ? `Add link in IMAGE_SLOTS.${slot.slotKey}.src`
+                : undefined
+            }
+          />
               )}
             </div>
             <Caption>{slot.caption}</Caption>

@@ -26,7 +26,7 @@ export const THE_WELL_HERO_IMAGE = {
  * renders a labelled placeholder.
  */
 export const KO_LAKE_VILLA_HERO_IMAGE = {
-  src: "",
+  src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-ko-lake-villa-between-trees-and-lake-b48fa3a1.webp",
   filename: "ko-lake-villa-between-trees-and-lake.webp",
   alt: "Ko Lake Villa, between the trees and the lake.",
 };
