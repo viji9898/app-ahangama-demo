@@ -127,7 +127,7 @@ const articleSections = [
   {
     title: "Building on Wet Ground",
     body: [
-      "The land was a bargain. The original idea was a lower building, set farther from the river. I wanted to build higher, which meant deeper foundations. We found groundwater and put the foundations in at ten feet.",
+      "The land was a bargain. The original idea was a lower building, the villa is on the lakeshore. I wanted to build higher, which meant deeper foundations. We found groundwater and put the foundations in at ten feet.",
       "Rain also demanded proper drainage. I had led large technology programmes and thought I understood difficult projects. Koggala disagreed.",
       "Covid arrived shortly after we started, followed by the economic crisis. Supplies disappeared, and prices could change by 15 per cent in a week. Finding labour and professional help became harder.",
       "I tried to manage much of the build from afar, despite having family in construction. It was a strain. One architect had a vision that did not fit mine. Another understood what I wanted. A quantity surveyor we trusted helped us through the project, then became seriously ill near the end.",
