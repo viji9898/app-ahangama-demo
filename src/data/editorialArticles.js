@@ -1,10 +1,22 @@
 import {
+  KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
   THE_WELL_HERO_IMAGE,
   resolveHeroImage,
 } from "./articleHeroImages.js";
 
 export const EDITORIAL_ARTICLES = [
+  {
+    category: "Stay Story",
+    title: "Ko Lake Villa: A House Shaped by Koggala Lake",
+    href: "/ko-lake-villa-a-house-shaped-by-koggala-lake",
+    description:
+      "A villa raised ten feet above the ground, shaped by a working lake, a difficult build and the people who make it a home.",
+    image:
+      resolveHeroImage(KO_LAKE_VILLA_HERO_IMAGE) ||
+      "/ko-lake-villa/placeholder.svg",
+    publishDate: "2026-11-05T09:00:00.000Z",
+  },
   {
     category: "Stay Story",
     title: "The Spice Trail: Your South Coast Boutique Base",

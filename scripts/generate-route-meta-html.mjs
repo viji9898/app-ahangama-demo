@@ -551,6 +551,15 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
   },
   {
+    route: "/ko-lake-villa-a-house-shaped-by-koggala-lake",
+    title: "Ko Lake Villa: A House Shaped by Koggala Lake",
+    description:
+      "A villa raised ten feet above the ground, shaped by a working lake, a difficult build and the people who make it a home.",
+    publishDate: "2026-11-05T09:00:00.000Z",
+    author: "Rajiv Abeysinghe",
+    type: "article",
+  },
+  {
     route: "/the-spice-trail-your-south-coast-boutique-base",
     title: "The Spice Trail: Your South Coast Boutique Base",
     description:
