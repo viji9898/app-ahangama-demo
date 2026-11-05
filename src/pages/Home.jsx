@@ -27,6 +27,7 @@ import { absUrl } from "../app/siteUrl";
 import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
 import {
+  KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
   THE_WELL_HERO_IMAGE,
   resolveHeroImage,
@@ -240,6 +241,15 @@ const THIS_WEEK_FEATURES = [
 ];
 
 const WEEKLY_PICKS = [
+  {
+    category: "Stay Story",
+    title: "Ko Lake Villa: A House Shaped by Koggala Lake",
+    date: "This Week",
+    href: "/ko-lake-villa-a-house-shaped-by-koggala-lake",
+    image:
+      resolveHeroImage(KO_LAKE_VILLA_HERO_IMAGE) ||
+      "/ko-lake-villa/placeholder.svg",
+  },
   {
     category: "Stay Story",
     title: "The Spice Trail: Your South Coast Boutique Base",

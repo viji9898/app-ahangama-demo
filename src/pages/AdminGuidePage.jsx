@@ -10,6 +10,7 @@ import {
   InstagramOutlined, LinkOutlined,
   PictureOutlined, RiseOutlined, SettingOutlined,
   FileTextOutlined, DashboardOutlined, AppstoreOutlined,
+  BarChartOutlined,
 } from "@ant-design/icons";
 import "../styles/admin-guide.css";
 
@@ -370,6 +371,9 @@ const AdminGuidePage = () => {
           </div>
         </div>
         <div className="ag-header-actions">
+          <a className="ag-btn ag-btn--ghost" href="/stats">
+            <BarChartOutlined /> Venue Stats
+          </a>
           <button className="ag-btn ag-btn--ghost" onClick={handleLogout}>
             Sign Out
           </button>

@@ -180,8 +180,9 @@ Required migrations:
 - `migrations/029_centralize_guide_venues.sql`
 - `migrations/030_seed_guide_placements.sql`
 - `migrations/032_guide_venue_map_links.sql`
+- `migrations/033_create_venue_stats_content.sql`
 
-Migration 029 adds canonical metadata fields and creates the placement/content tables. Migration 030 seeds the current guide placements and canonical website/ownership values. Migration 032 creates `guide_app.venue_map_links` for venues with more than one physical location. All three are designed to be rerunnable.
+Migration 029 adds canonical metadata fields and creates the placement/content tables. Migration 030 seeds the current guide placements and canonical website/ownership values. Migration 032 creates `guide_app.venue_map_links` for venues with more than one physical location. Migration 033 creates the venue statistics content tables. All are designed to be rerunnable.
 
 Migration 032 deliberately uses its own schema: the application role (`Enidu`) has no `ALTER` rights on `guide_venue_placements`, which is owned by `neondb_owner`, so a column could not be added with the credentials the app uses.
 

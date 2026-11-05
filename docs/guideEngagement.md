@@ -84,6 +84,7 @@ GA4 Enhanced Measurement may also produce generic `click` events. Use the custom
 | Event | Trigger | Important parameters |
 | --- | --- | --- |
 | `venue_impression` | A venue card is at least 50% visible for one continuous second | venue fields, `guide_section`, `component_location`, `position`, content fields, available UTM attribution |
+| `venue_link_click` | Instagram, Google Maps, or website link for a specific venue | venue fields, `link_type`, `link_url`, `page_location`, `guide_section`, `component_location` |
 | `guide_outbound_click` | Instagram, Google Maps, website, or guide social link | `link_type`, venue fields when applicable, `guide_section`, `component_location`, `destination_url` |
 | `guide_lightbox_open` | Venue image opens in the lightbox | venue fields, `guide_section`, `component_location` |
 | `guide_map_marker_select` | Map marker selected | venue fields, `guide_section`, `map_category`, `component_location` |
@@ -131,6 +132,7 @@ In GA4, open **Admin > Data display > Custom definitions > Create custom dimensi
 | Venue name | `venue_name` |
 | Guide section | `guide_section` |
 | Link type | `link_type` |
+| Link URL | `link_url` |
 | Component location | `component_location` |
 | Destination URL | `destination_url` |
 | Target section | `target_section` |

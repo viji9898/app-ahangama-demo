@@ -2,7 +2,7 @@ import {
   getPassAttribution,
   getPassAttributionFromSearch,
   persistPassAttribution,
-} from "./lib/passAttribution";
+} from "./lib/passAttribution.js";
 
 const getAnalyticsAttribution = () => {
   const storedAttribution = getPassAttribution();
@@ -272,6 +272,48 @@ export const trackVenueImpression = ({
   if (typeof window.gtag !== "function") return false;
 
   window.gtag("event", "venue_impression", payload);
+
+  return true;
+};
+
+/**
+ * Canonical venue outbound-link event used by the venue statistics pages.
+ *
+ * The guide also keeps emitting `guide_outbound_click` for backwards
+ * compatibility with existing reports; this event is the single source of
+ * truth for the per-venue statistics system.
+ */
+export const trackVenueLinkClick = ({
+  venueId,
+  venueSlug,
+  venueName,
+  linkType,
+  linkUrl,
+  guideSection,
+  componentLocation,
+} = {}) => {
+  if (typeof window === "undefined" || !venueId || !linkType) {
+    return false;
+  }
+
+  const payload = {
+    event_category: "venue_engagement",
+    source_domain: window.location.hostname,
+    page_path: window.location.pathname,
+    page_location: window.location.href,
+    venue_id: venueId,
+    venue_slug: venueSlug,
+    venue_name: venueName,
+    link_type: linkType,
+    link_url: linkUrl,
+    guide_section: guideSection,
+    component_location: componentLocation,
+  };
+
+  if (emitGuideTrackingDebugEvent("venue_link_click", payload)) return true;
+  if (typeof window.gtag !== "function") return false;
+
+  window.gtag("event", "venue_link_click", payload);
 
   return true;
 };

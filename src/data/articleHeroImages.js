@@ -20,6 +20,17 @@ export const THE_WELL_HERO_IMAGE = {
   alt: "Wide view of The Well's swimming pool, garden seating and building surrounded by tropical greenery.",
 };
 
+/*
+ * Ko Lake Villa's hero image is added by the editorial team. Until then the
+ * card falls back to /ko-lake-villa/placeholder.svg and the article hero
+ * renders a labelled placeholder.
+ */
+export const KO_LAKE_VILLA_HERO_IMAGE = {
+  src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-ko-lake-villa-between-trees-and-lake-b48fa3a1.webp",
+  filename: "ko-lake-villa-between-trees-and-lake.webp",
+  alt: "Ko Lake Villa, between the trees and the lake.",
+};
+
 export function resolveHeroImage(slot) {
   return slot?.src || "";
 }

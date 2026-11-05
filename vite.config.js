@@ -16,6 +16,8 @@ import {
   buildPartnersKnowledgeRecords,
   renderPartnersKnowledgeHtml,
 } from "./lib/partners-knowledge.js";
+import { handler as venueStatsHandler } from "./netlify/functions/api-venue-stats.js";
+import { handler as venueContentHandler } from "./netlify/functions/api-venue-content.js";
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -30,6 +32,62 @@ function readBody(req) {
     });
     req.on("error", reject);
   });
+}
+
+function readRawBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on("data", (chunk) => chunks.push(chunk));
+    req.on("end", () =>
+      resolve(globalThis.Buffer.concat(chunks).toString("utf8")),
+    );
+    req.on("error", reject);
+  });
+}
+
+function venueStatsApiPlugin() {
+  return {
+    name: "venue-stats-api-plugin",
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (
+          !req.url?.startsWith("/api/venue-stats") &&
+          !req.url?.startsWith("/api/venue-content")
+        ) {
+          next();
+          return;
+        }
+
+        const url = new URL(req.url, "http://localhost:5173");
+        const handler = req.url.startsWith("/api/venue-stats")
+          ? venueStatsHandler
+          : venueContentHandler;
+
+        try {
+          const result = await handler({
+            httpMethod: req.method,
+            headers: req.headers,
+            queryStringParameters: Object.fromEntries(url.searchParams),
+            body: req.method === "GET" ? "" : await readRawBody(req),
+          });
+          res.statusCode = result.statusCode || 200;
+          for (const [key, value] of Object.entries(result.headers || {})) {
+            res.setHeader(key, value);
+          }
+          res.end(result.body || "");
+        } catch (error) {
+          res.statusCode = 500;
+          res.setHeader("Content-Type", "application/json");
+          res.end(
+            JSON.stringify({
+              ok: false,
+              error: error instanceof Error ? error.message : String(error),
+            }),
+          );
+        }
+      });
+    },
+  };
 }
 
 function venuesApiPlugin() {
@@ -300,6 +358,6 @@ export default defineConfig(({ mode }) => {
     server: {
       allowedHosts: [".ngrok-free.dev", ".ngrok-free.app"],
     },
-    plugins: [react(), venuesApiPlugin()],
+    plugins: [react(), venuesApiPlugin(), venueStatsApiPlugin()],
   };
 });

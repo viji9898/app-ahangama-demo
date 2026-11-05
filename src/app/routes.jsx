@@ -37,6 +37,8 @@ import MapPage from "../pages/Map";
 import MapGoogle from "../pages/MapGoogle";
 import AdminDashboard from "../pages/AdminDashboard";
 import AdminGuidePage from "../pages/AdminGuidePage";
+import VenueStatsIndexPage from "../pages/VenueStatsIndexPage";
+import VenueStatsPage from "../pages/VenueStatsPage";
 import PlacesTable from "../pages/PlacesTable";
 import PartnerSignUp from "../pages/PartnerSignUp";
 import PartnerSignUpSuccess from "../pages/PartnerSignUpSuccess";
@@ -126,6 +128,9 @@ import TheWellAhangamaPage, {
 import SpiceTrailAhangamaPage, {
   SPICE_TRAIL_AHANGAMA_PATH,
 } from "../pages/SpiceTrailAhangamaPage";
+import KoLakeVillaPage, {
+  KO_LAKE_VILLA_PATH,
+} from "../pages/KoLakeVillaPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -363,6 +368,10 @@ const routes = [
     element: <SpiceTrailAhangamaPage />,
   },
   {
+    path: KO_LAKE_VILLA_PATH,
+    element: <KoLakeVillaPage />,
+  },
+  {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,
     element: trackedArticle(
       GUSTA_GROCERIES_AHANGAMA_PATH,
@@ -499,6 +508,8 @@ const routes = [
   { path: "/card/verify/:cardId", element: <CardVerify /> },
   { path: "/admin", element: <AdminDashboard /> },
   { path: "/admin-guide", element: <AdminGuidePage /> },
+  { path: "/stats", element: <VenueStatsIndexPage /> },
+  { path: "/stats/:venueSlug", element: <VenueStatsPage /> },
   { path: "/partner-signup", element: <PartnerSignUp /> },
   { path: "/partner-signup/success", element: <PartnerSignUpSuccess /> },
   { path: "/resellers", element: <Resellers /> },

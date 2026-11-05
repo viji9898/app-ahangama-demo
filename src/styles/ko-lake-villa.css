@@ -1,0 +1,14 @@
+@media (max-width: 640px) {
+  .ko-lake-villa-hero-title .home-hero-titleLine {
+    white-space: normal;
+    letter-spacing: 0;
+  }
+
+  .ko-lake-villa-landscape-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .ko-lake-villa-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

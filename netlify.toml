@@ -55,6 +55,16 @@
   status = 200
 
 [[redirects]]
+  from = "/api/venue-stats"
+  to = "/.netlify/functions/api-venue-stats"
+  status = 200
+
+[[redirects]]
+  from = "/api/venue-content"
+  to = "/.netlify/functions/api-venue-content"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
