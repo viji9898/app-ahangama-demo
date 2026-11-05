@@ -1,0 +1,8 @@
+Section Name,Permanent QR URL,QR Section ID,GA4 Event Name,qr_section,qr_code_id,qr_source,qr_medium,qr_campaign,SVG Filename,PNG Filename
+"Best Eats","https://ahangama.com/go/eats","qr_best_eats","qr_scan","eats","qr_best_eats","physical_guide","qr","ahangama_guide_2026_27","QR-Best-Eats.svg","QR-Best-Eats.png"
+"Best Stays","https://ahangama.com/go/stays","qr_best_stays","qr_scan","stays","qr_best_stays","physical_guide","qr","ahangama_guide_2026_27","QR-Best-Stays.svg","QR-Best-Stays.png"
+"Best Wellness","https://ahangama.com/go/wellness","qr_best_wellness","qr_scan","wellness","qr_best_wellness","physical_guide","qr","ahangama_guide_2026_27","QR-Best-Wellness.svg","QR-Best-Wellness.png"
+"Best Beaches & Surf","https://ahangama.com/go/beaches-surf","qr_beaches_surf","qr_scan","beaches_surf","qr_beaches_surf","physical_guide","qr","ahangama_guide_2026_27","QR-Best-Beaches-Surf.svg","QR-Best-Beaches-Surf.png"
+"Best Experiences","https://ahangama.com/go/experiences","qr_experiences","qr_scan","experiences","qr_experiences","physical_guide","qr","ahangama_guide_2026_27","QR-Best-Experiences.svg","QR-Best-Experiences.png"
+"What's On in Ahangama","https://ahangama.com/go/events","qr_whats_on","qr_scan","events","qr_whats_on","physical_guide","qr","ahangama_guide_2026_27","QR-Whats-On-Ahangama.svg","QR-Whats-On-Ahangama.png"
+"Transport","https://ahangama.com/go/transport","qr_transport","qr_scan","transport","qr_transport","physical_guide","qr","ahangama_guide_2026_27","QR-Transport.svg","QR-Transport.png"

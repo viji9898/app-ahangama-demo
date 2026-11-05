@@ -152,6 +152,38 @@ export const trackQrEvent = (eventName, params = {}) => {
   window.gtag("event", eventName, params);
 };
 
+/**
+ * Fire the canonical `qr_scan` event for a Physical Guide QR code landing.
+ *
+ * Each genuine QR landing (including repeat scans and page reloads) fires
+ * exactly one event. The only guard retained is the useRef flag in
+ * GuideQrLandingPage, which prevents React Strict Mode's double-invocation
+ * of useEffect from sending a duplicate hit within the same render cycle.
+ *
+ * sessionStorage deduplication has been intentionally removed: each new
+ * navigation to a /go/ URL — whether from a fresh scan, a repeat scan, or
+ * a page reload — counts as a genuine QR landing and must be tracked.
+ *
+ * @param {{ section: string, codeId: string }} config
+ */
+export const trackPhysicalGuideQrScan = ({ section, codeId }) => {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+    return false;
+  }
+
+  window.gtag("event", "qr_scan", {
+    qr_section:    section,
+    qr_code_id:    codeId,
+    qr_source:     "physical_guide",
+    qr_medium:     "qr",
+    qr_campaign:   "ahangama_guide_2026_27",
+    page_path:     window.location.pathname,
+    page_location: window.location.href,
+  });
+
+  return true;
+};
+
 export const trackGuideEvent = (eventName, params = {}) => {
   if (typeof window === "undefined") {
     return false;
