@@ -61,15 +61,12 @@ The admin dashboard provides:
 
 ### Signing In
 
-The current temporary password is:
-
-```text
-admin123
-```
+Set `GUIDE_ADMIN_PASSWORD` to a secure value in the local `.env` file and in
+the Netlify environment variables. Do not commit the password to source control.
 
 The browser stores it in `sessionStorage` under `ahangama-guide-admin-password`, so it lasts only for the current browser tab session. Admin requests send it in the `X-Admin-Password` header, and the server validates it.
 
-This is temporary authentication, not production-grade identity management. Replace the hardcoded password in `lib/guide-admin-auth.js` with environment-backed authentication before giving the dashboard broad access.
+This is temporary authentication, not production-grade identity management. Replace it with identity-based authentication before giving the dashboard broad access.
 
 ## Understanding the Data Model
 

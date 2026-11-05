@@ -19,7 +19,7 @@ test("guide admin authorization fails closed without a configured secret", () =>
   delete process.env.GUIDE_ADMIN_PASSWORD;
 
   assert.equal(
-    isGuideAdminAuthorized({ "x-admin-password": "admin123" }),
+    isGuideAdminAuthorized({ "x-admin-password": "unconfigured-attempt" }),
     false,
   );
 
