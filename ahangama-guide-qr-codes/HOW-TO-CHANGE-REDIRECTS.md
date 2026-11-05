@@ -43,7 +43,7 @@ What **can** change is where those URLs redirect to. All redirect destinations l
 | Best Wellness | `wellness` | `/guide#wellness` |
 | Best Beaches & Surf | `beaches-surf` | `/guide#surf-schools` |
 | Best Experiences | `experiences` | `/guide#best-experiences` |
-| What's On in Ahangama | `events` | `/events` |
+| What's On in Ahangama | `events` | `https://ahangama.com/events/` |
 | Transport | `transport` | `/transport-rates` |
 
 ## How the Tracking Works

@@ -62,7 +62,7 @@ export const GUIDE_QR_REDIRECTS = [
     slug:        "events",
     section:     "events",
     codeId:      "qr_whats_on",
-    destination: "/events",
+    destination: "https://ahangama.com/events/",
     label:       "What's On in Ahangama",
   },
   {
