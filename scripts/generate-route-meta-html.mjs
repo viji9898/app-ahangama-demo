@@ -551,6 +551,15 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
   },
   {
+    route: "/two-sides-of-ahangama-discover-abode-boutique-hotels",
+    title: "Two Sides of Ahangama: Discover Abode Boutique Hotels",
+    description:
+      "From tropical gardens and slow mornings by the pool to beachfront breakfasts overlooking the surf, discover two distinctive boutique stays on Sri Lanka's south coast.",
+    publishDate: "2026-11-10T09:00:00.000Z",
+    author: "Abode Boutique Hotels",
+    type: "article",
+  },
+  {
     route: "/ko-lake-villa-a-house-shaped-by-koggala-lake",
     title: "Ko Lake Villa: A House Shaped by Koggala Lake",
     description:

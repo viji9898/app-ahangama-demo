@@ -31,6 +31,17 @@ export const KO_LAKE_VILLA_HERO_IMAGE = {
   alt: "Ko Lake Villa, between the trees and the lake.",
 };
 
+/*
+ * Abode Boutique Hotels' hero image is added by the editorial team. Until then
+ * the card falls back to /abode-boutique-hotels/placeholder.svg and the
+ * article hero renders a labelled placeholder.
+ */
+export const ABODE_HERO_IMAGE = {
+  src: "",
+  filename: "hero-image-abode-boutique-hotels-ahangama.webp",
+  alt: "Abode Boutique Hotels in Ahangama on Sri Lanka's south coast.",
+};
+
 export function resolveHeroImage(slot) {
   return slot?.src || "";
 }

@@ -27,6 +27,7 @@ import { absUrl } from "../app/siteUrl";
 import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
 import {
+  ABODE_HERO_IMAGE,
   KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
   THE_WELL_HERO_IMAGE,
@@ -241,6 +242,15 @@ const THIS_WEEK_FEATURES = [
 ];
 
 const WEEKLY_PICKS = [
+  {
+    category: "Stay Story",
+    title: "Two Sides of Ahangama: Discover Abode Boutique Hotels",
+    date: "This Week",
+    href: "/two-sides-of-ahangama-discover-abode-boutique-hotels",
+    image:
+      resolveHeroImage(ABODE_HERO_IMAGE) ||
+      "/abode-boutique-hotels/placeholder.svg",
+  },
   {
     category: "Stay Story",
     title: "Ko Lake Villa: A House Shaped by Koggala Lake",

@@ -131,6 +131,9 @@ import SpiceTrailAhangamaPage, {
 import KoLakeVillaPage, {
   KO_LAKE_VILLA_PATH,
 } from "../pages/KoLakeVillaPage";
+import AbodeBoutiqueHotelsPage, {
+  ABODE_BOUTIQUE_HOTELS_PATH,
+} from "../pages/AbodeBoutiqueHotelsPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -380,6 +383,10 @@ const routes = [
   {
     path: KO_LAKE_VILLA_PATH,
     element: <KoLakeVillaPage />,
+  },
+  {
+    path: ABODE_BOUTIQUE_HOTELS_PATH,
+    element: <AbodeBoutiqueHotelsPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,

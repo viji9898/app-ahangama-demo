@@ -1,4 +1,5 @@
 import {
+  ABODE_HERO_IMAGE,
   KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
   THE_WELL_HERO_IMAGE,
@@ -6,6 +7,17 @@ import {
 } from "./articleHeroImages.js";
 
 export const EDITORIAL_ARTICLES = [
+  {
+    category: "Stay Story",
+    title: "Two Sides of Ahangama: Discover Abode Boutique Hotels",
+    href: "/two-sides-of-ahangama-discover-abode-boutique-hotels",
+    description:
+      "From tropical gardens and slow mornings by the pool to beachfront breakfasts overlooking the surf, discover two distinctive boutique stays on Sri Lanka's south coast.",
+    image:
+      resolveHeroImage(ABODE_HERO_IMAGE) ||
+      "/abode-boutique-hotels/placeholder.svg",
+    publishDate: "2026-11-10T09:00:00.000Z",
+  },
   {
     category: "Stay Story",
     title: "Ko Lake Villa: A House Shaped by Koggala Lake",
