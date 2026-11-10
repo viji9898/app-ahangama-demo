@@ -49,7 +49,7 @@ const IMAGE_SLOTS = {
   // WIDE FEATURE — pool and tropical gardens at Abode Ahangama
   wideFeature: {
     slotKey: "wideFeature",
-    src: "", // ← paste wide feature image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-abode-ahangama-pool-tropical-gardens-a7871b8a.webp", // ← paste wide feature image link here
     filename: "abode-ahangama-pool-tropical-gardens.webp",
     alt: "Swimming pool surrounded by tropical gardens at Abode Ahangama.",
   },
@@ -57,13 +57,13 @@ const IMAGE_SLOTS = {
   // PORTRAIT PAIR — Abode Ahangama
   abodeAhangamaBedroomBreakfast: {
     slotKey: "abodeAhangamaBedroomBreakfast",
-    src: "", // ← paste bedroom / breakfast in bed image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-by-the-beach-bedroom-breakfast-59e6a1f8.webp", // ← paste bedroom / breakfast in bed image link here
     filename: "abode-ahangama-bedroom-breakfast.webp",
     alt: "Breakfast served in a guest room at Abode Ahangama.",
   },
   abodeAhangamaBedroom: {
     slotKey: "abodeAhangamaBedroom",
-    src: "", // ← paste bedroom image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-ahangama-bedroom-92a9f6a9.webp", // ← paste bedroom image link here
     filename: "abode-ahangama-bedroom.webp",
     alt: "Guest bedroom at Abode Ahangama.",
   },
@@ -71,13 +71,13 @@ const IMAGE_SLOTS = {
   // PORTRAIT PAIR — Abode by the Beach
   abodeByTheBeachBreakfastCafe: {
     slotKey: "abodeByTheBeachBreakfastCafe",
-    src: "", // ← paste beachfront café breakfast image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-ahangama-bedroom-breakfast-b44198eb.webp", // ← paste beachfront café breakfast image link here
     filename: "abode-by-the-beach-breakfast-cafe.webp",
     alt: "Breakfast served at the beachfront café at Abode by the Beach.",
   },
   abodeByTheBeachOceanViewRoom: {
     slotKey: "abodeByTheBeachOceanViewRoom",
-    src: "", // ← paste ocean view room image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-by-the-beach-ocean-view-room-b24fb232.webp", // ← paste ocean view room image link here
     filename: "abode-by-the-beach-ocean-view-room.webp",
     alt: "Guest room overlooking the ocean at Abode by the Beach.",
   },
@@ -85,7 +85,7 @@ const IMAGE_SLOTS = {
   // CLOSING — relaxed poolside or beachfront lifestyle image
   closing: {
     slotKey: "closing",
-    src: "", // ← paste closing image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-closing-image-fdc457d8.webp", // ← paste closing image link here
     filename: "abode-boutique-hotels-slow-coastal-living.webp",
     alt: "Guests enjoying a relaxed stay at Abode Boutique Hotels in Ahangama.",
   },
@@ -93,7 +93,7 @@ const IMAGE_SLOTS = {
   // OG / SOCIAL SHARE — optional; falls back to the hero image
   og: {
     slotKey: "og",
-    src: "", // ← paste social share image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-dfff825d.webp", // ← paste social share image link here
     filename: "og-abode-boutique-hotels-ahangama.webp",
     alt: "Abode Boutique Hotels on Sri Lanka's south coast.",
   },

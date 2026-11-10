@@ -37,7 +37,7 @@ export const KO_LAKE_VILLA_HERO_IMAGE = {
  * article hero renders a labelled placeholder.
  */
 export const ABODE_HERO_IMAGE = {
-  src: "",
+  src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-abode-boutique-hotels-ahangama-735093ab.webp",
   filename: "hero-image-abode-boutique-hotels-ahangama.webp",
   alt: "Abode Boutique Hotels in Ahangama on Sri Lanka's south coast.",
 };
