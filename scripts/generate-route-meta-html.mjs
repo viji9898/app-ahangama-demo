@@ -558,6 +558,10 @@ const routeMeta = [
     publishDate: "2026-11-10T09:00:00.000Z",
     author: "Abode Boutique Hotels",
     type: "article",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-dfff825d.webp",
+    imageWidth: 1200,
+    imageHeight: 630,
   },
   {
     route: "/ko-lake-villa-a-house-shaped-by-koggala-lake",
