@@ -57,7 +57,7 @@ const IMAGE_SLOTS = {
   // PORTRAIT PAIR — Abode Ahangama
   abodeAhangamaBedroomBreakfast: {
     slotKey: "abodeAhangamaBedroomBreakfast",
-    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-by-the-beach-bedroom-breakfast-59e6a1f8.webp", // ← paste bedroom / breakfast in bed image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-ahangama-bedroom-breakfast-b44198eb.webp", // ← paste bedroom / breakfast in bed image link here
     filename: "abode-ahangama-bedroom-breakfast.webp",
     alt: "Breakfast served in a guest room at Abode Ahangama.",
   },
@@ -71,7 +71,7 @@ const IMAGE_SLOTS = {
   // PORTRAIT PAIR — Abode by the Beach
   abodeByTheBeachBreakfastCafe: {
     slotKey: "abodeByTheBeachBreakfastCafe",
-    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-ahangama-bedroom-breakfast-b44198eb.webp", // ← paste beachfront café breakfast image link here
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-by-the-beach-bedroom-breakfast-59e6a1f8.webp", // ← paste beachfront café breakfast image link here
     filename: "abode-by-the-beach-breakfast-cafe.webp",
     alt: "Breakfast served at the beachfront café at Abode by the Beach.",
   },
