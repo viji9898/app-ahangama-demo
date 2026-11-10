@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-05T08:59:51.410Z",
+  "generatedAt": "2026-11-10T08:02:12.094Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 788,
+  "count": 798,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama/+coco-kitchen-exterior-ahangama-og-image.webp",
@@ -1498,6 +1498,21 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-closing-image-fdc457d8.webp",
+      "fileName": "general-closing-image-fdc457d8.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-cover-page-image-ocean-side-878f3766.webp",
       "fileName": "general-cover-page-image-ocean-side-878f3766.webp",
       "format": "WEBP",
@@ -1537,6 +1552,17 @@
           "/guide"
         ]
       }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-abode-boutique-hotels-ahangama-735093ab.webp",
+      "fileName": "general-hero-image-abode-boutique-hotels-ahangama-735093ab.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/articleHeroImages.js"
+      ],
+      "pageRoutes": {}
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-ko-lake-villa-between-trees-and-lake-b48fa3a1.webp",
@@ -1587,6 +1613,21 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-dfff825d.webp",
+      "fileName": "general-og-image-dfff825d.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-the-well-ahangama-pool-f4484b76.webp",
       "fileName": "general-og-image-the-well-ahangama-pool-f4484b76.webp",
       "format": "WEBP",
@@ -1613,6 +1654,66 @@
       "pageRoutes": {
         "src/pages/ExperienceAhangamaGuide.jsx": [
           "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-ahangama-bedroom-92a9f6a9.webp",
+      "fileName": "general-portrait-abode-ahangama-bedroom-92a9f6a9.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-ahangama-bedroom-breakfast-b44198eb.webp",
+      "fileName": "general-portrait-abode-ahangama-bedroom-breakfast-b44198eb.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-by-the-beach-bedroom-breakfast-59e6a1f8.webp",
+      "fileName": "general-portrait-abode-by-the-beach-bedroom-breakfast-59e6a1f8.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-abode-by-the-beach-ocean-view-room-b24fb232.webp",
+      "fileName": "general-portrait-abode-by-the-beach-ocean-view-room-b24fb232.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
         ]
       }
     },
@@ -1883,6 +1984,21 @@
       "pageRoutes": {
         "src/pages/ExperienceAhangamaGuide.jsx": [
           "/guide"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-wide-feature-abode-ahangama-pool-tropical-gardens-a7871b8a.webp",
+      "fileName": "general-wide-feature-abode-ahangama-pool-tropical-gardens-a7871b8a.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
         ]
       }
     },
@@ -6122,6 +6238,23 @@
       "pageRoutes": {}
     },
     {
+      "url": "/abode-boutique-hotels/placeholder.svg",
+      "fileName": "placeholder.svg",
+      "format": "SVG",
+      "origin": "local",
+      "host": "ahangama.com",
+      "sources": [
+        "public/abode-boutique-hotels/placeholder.svg",
+        "src/data/editorialArticles.js",
+        "src/pages/Home.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
+        ]
+      }
+    },
+    {
       "url": "/ko-lake-villa/placeholder.svg",
       "fileName": "placeholder.svg",
       "format": "SVG",
@@ -6130,9 +6263,13 @@
       "sources": [
         "public/ko-lake-villa/placeholder.svg",
         "src/data/editorialArticles.js",
+        "src/pages/AbodeBoutiqueHotelsPage.jsx",
         "src/pages/Home.jsx"
       ],
       "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ],
         "src/pages/Home.jsx": [
           "/"
         ]
@@ -6946,6 +7083,21 @@
         "src/pages/WhereToStayOnSriLankasSouthernCoastPage.jsx"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://your-image-host.com/abode-ahangama-pool-tropical-gardens.webp",
+      "fileName": "abode-ahangama-pool-tropical-gardens.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "your-image-host.com",
+      "sources": [
+        "src/pages/AbodeBoutiqueHotelsPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AbodeBoutiqueHotelsPage.jsx": [
+          "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ]
+      }
     },
     {
       "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026648/Abode-luxury-villa-tropical-garden-sunset-exterior-.webp",

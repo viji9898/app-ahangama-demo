@@ -15,7 +15,15 @@
  * codeId        – unique QR code ID sent as `qr_code_id` in GA4
  * destination   – where to redirect (absolute URL or root-relative path)
  * label         – human-readable section name for reference sheets
+ *
+ * NEW QR CODES (37)
+ * -----------------
+ * The 37 newer Physical Guide QR codes live in `guideQrRedirectsNew.js` and
+ * are looked up by `getQrRedirect()` below. They are kept in a separate file
+ * so the original seven entries above stay untouched.
  */
+
+import { GUIDE_QR_REDIRECTS_NEW } from "./guideQrRedirectsNew.js";
 
 export const QR_CAMPAIGN = "ahangama_guide_2026_27";
 export const QR_SOURCE   = "physical_guide";
@@ -76,9 +84,14 @@ export const GUIDE_QR_REDIRECTS = [
 
 /**
  * Returns the redirect config for a given /go/ slug, or null if not found.
+ * Checks the original seven codes first, then the 37 newer codes.
  * @param {string} slug
  */
 export function getQrRedirect(slug) {
-  return GUIDE_QR_REDIRECTS.find((r) => r.slug === slug) ?? null;
+  return (
+    GUIDE_QR_REDIRECTS.find((r) => r.slug === slug) ??
+    GUIDE_QR_REDIRECTS_NEW.find((r) => r.slug === slug) ??
+    null
+  );
 }
 
