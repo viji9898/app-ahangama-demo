@@ -200,6 +200,19 @@ Each GA4 query is isolated: a missing dimension returns
 `GA4_DIMENSION_UNAVAILABLE` for that section instead of failing the whole
 report.
 
+Article entries in `content.articles` expose five metrics:
+
+| Field | Source |
+| --- | --- |
+| `pageViews` | GA4 `screenPageViews` for the article path |
+| `uniqueVisitors` | GA4 `totalUsers` for the article path |
+| `engagedReads` | `article_engaged_read` event count |
+| `completions` | `article_complete` event count |
+| `placeClicks` | `article_outbound_click` event count |
+
+A metric is `null` when the relevant GA4 query could not run. The interface
+renders that as an em dash (`—`). A legitimate zero stays `0`.
+
 ### `/api/venue-content`
 
 | Method | Query | Body |
