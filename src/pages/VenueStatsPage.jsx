@@ -54,6 +54,11 @@ function formatNumber(value) {
   return numberFormat.format(Number(value) || 0);
 }
 
+function formatNullableNumber(value) {
+  if (value === null || value === undefined) return "—";
+  return numberFormat.format(Number(value) || 0);
+}
+
 function formatPercent(value, digits = 1) {
   const numeric = Number(value) || 0;
   return `${(numeric * 100).toFixed(digits)}%`;
@@ -966,50 +971,74 @@ export default function VenueStatsPage() {
               No Ahangama.com articles are linked to this venue yet.
             </p>
           ) : (
-            <div className="vs-table-scroll">
-              <table className="vs-table">
-                <thead>
-                  <tr>
-                    <th>Article</th>
-                    <th>Published</th>
-                    <th>Page views</th>
-                    <th>Unique visitors</th>
-                    <th />
-                  </tr>
-                </thead>
-                <tbody>
-                  {articles.map((article) => (
-                    <tr key={article.path || article.url}>
-                      <td>
+            <>
+              <div className="vs-articles">
+                {articles.map((article) => (
+                  <article
+                    className="vs-article"
+                    key={article.path || article.url}
+                  >
+                    <div className="vs-article__head">
+                      <div className="vs-article__identity">
                         <a
+                          className="vs-article__title"
                           href={article.url}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           {article.title}
                         </a>
-                      </td>
-                      <td>{formatDate(article.publishedAt)}</td>
-                      <td>{formatNumber(article.pageViews)}</td>
-                      <td>{formatNumber(article.uniqueVisitors)}</td>
-                      <td className="vs-table__actions">
-                        {article.manual ? (
-                          <button
-                            type="button"
-                            className="is-danger"
-                            onClick={() => removeArticle(article)}
-                          >
-                            Remove
-                          </button>
-                        ) : (
-                          <span className="vs-table__static">Linked</span>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                        <p className="vs-article__meta">
+                          <span>{formatDate(article.publishedAt)}</span>
+                          <span aria-hidden="true">·</span>
+                          <span>
+                            {article.manual ? "Manual link" : "Editorial link"}
+                          </span>
+                        </p>
+                      </div>
+                      {article.manual ? (
+                        <button
+                          type="button"
+                          className="vs-article__remove"
+                          onClick={() => removeArticle(article)}
+                        >
+                          Remove
+                        </button>
+                      ) : null}
+                    </div>
+
+                    <dl className="vs-article__metrics">
+                      <div className="vs-article__metric">
+                        <dt>Views</dt>
+                        <dd>{formatNullableNumber(article.pageViews)}</dd>
+                      </div>
+                      <div className="vs-article__metric">
+                        <dt>Visitors</dt>
+                        <dd>{formatNullableNumber(article.uniqueVisitors)}</dd>
+                      </div>
+                      <div className="vs-article__metric">
+                        <dt>Engaged reads</dt>
+                        <dd>{formatNullableNumber(article.engagedReads)}</dd>
+                      </div>
+                      <div className="vs-article__metric">
+                        <dt>Completions</dt>
+                        <dd>{formatNullableNumber(article.completions)}</dd>
+                      </div>
+                      <div className="vs-article__metric">
+                        <dt>Place clicks</dt>
+                        <dd>{formatNullableNumber(article.placeClicks)}</dd>
+                      </div>
+                    </dl>
+                  </article>
+                ))}
+              </div>
+              <p className="vs-article__note">
+                Views and visitors come from GA4 page traffic. Engaged reads,
+                completions and place clicks come from article events. A dash
+                (—) means GA4 did not return that metric for this period; it is
+                not zero.
+              </p>
+            </>
           )}
         </div>
       </section>
@@ -1038,11 +1067,13 @@ export default function VenueStatsPage() {
             </p>
           </article>
           <article>
-            <h3>Page views</h3>
+            <h3>Article reads</h3>
             <p>
               Guide page views and unique visitors come from GA4 for{" "}
-              <code>/guide</code>. Article traffic comes from GA4 for each
-              associated article URL.
+              <code>/guide</code>. Article views and visitors come from GA4 page
+              traffic for each associated article URL. Engaged reads,
+              completions and place clicks count the corresponding article
+              events. Metrics GA4 cannot return are shown as a dash, not zero.
             </p>
           </article>
           <article>

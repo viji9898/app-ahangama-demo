@@ -37,6 +37,12 @@ const GUIDE_PATH = "/guide";
 const CLICK_EVENT = "venue_link_click";
 const IMPRESSION_EVENT = "venue_impression";
 
+const ARTICLE_ENGAGEMENT_EVENTS = [
+  "article_engaged_read",
+  "article_complete",
+  "article_outbound_click",
+];
+
 let cachedFirstTrackedDate;
 let cachedFirstTrackedAt = 0;
 
@@ -423,38 +429,122 @@ function normaliseArticlePath(value) {
   return path.replace(/\/+$/, "") || "/";
 }
 
+function emptyArticleMetrics({ trafficAvailable, engagementAvailable }) {
+  return {
+    // `null` means GA4 could not return the metric. A legitimate zero is
+    // kept as 0 so the UI can distinguish "no activity" from "unavailable".
+    pageViews: trafficAvailable ? 0 : null,
+    uniqueVisitors: trafficAvailable ? 0 : null,
+    engagedReads: engagementAvailable ? 0 : null,
+    completions: engagementAvailable ? 0 : null,
+    placeClicks: engagementAvailable ? 0 : null,
+  };
+}
+
 async function fetchArticleMetrics(paths, range, errors) {
-  if (!paths.length) return { available: true, byPath: {} };
-
-  const report = await runGa4Report({
-    dateRanges: [range.ga4],
-    dimensions: [{ name: "pagePath" }],
-    metrics: [{ name: "screenPageViews" }, { name: "totalUsers" }],
-    dimensionFilter: {
-      filter: {
-        fieldName: "pagePath",
-        inListFilter: {
-          values: paths.flatMap((path) => [path, `${path}/`]),
-          caseSensitive: false,
-        },
-      },
-    },
-  });
-
-  if (!report.ok) {
-    addError(errors, "articles", report.error);
-    return { available: false, byPath: {} };
-  }
-
-  const byPath = {};
-  for (const row of report.rows) {
-    const key = dimensionValue(row, 0).replace(/\/+$/, "") || "/";
-    byPath[key] = {
-      pageViews: metricValue(row, 0),
-      uniqueVisitors: metricValue(row, 1),
+  if (!paths.length) {
+    return {
+      available: true,
+      trafficAvailable: true,
+      engagementAvailable: true,
+      byPath: {},
     };
   }
-  return { available: true, byPath };
+
+  const pathValues = paths.flatMap((path) => [path, `${path}/`]);
+
+  const [report, engagementReport] = await Promise.all([
+    runGa4Report({
+      dateRanges: [range.ga4],
+      dimensions: [{ name: "pagePath" }],
+      metrics: [{ name: "screenPageViews" }, { name: "totalUsers" }],
+      dimensionFilter: {
+        filter: {
+          fieldName: "pagePath",
+          inListFilter: {
+            values: pathValues,
+            caseSensitive: false,
+          },
+        },
+      },
+    }),
+    runGa4Report({
+      dateRanges: [range.ga4],
+      dimensions: [{ name: "pagePath" }, { name: "eventName" }],
+      metrics: [{ name: "eventCount" }],
+      dimensionFilter: andFilter([
+        {
+          filter: {
+            fieldName: "pagePath",
+            inListFilter: {
+              values: pathValues,
+              caseSensitive: false,
+            },
+          },
+        },
+        {
+          filter: {
+            fieldName: "eventName",
+            inListFilter: {
+              values: ARTICLE_ENGAGEMENT_EVENTS,
+              caseSensitive: true,
+            },
+          },
+        },
+      ]),
+    }),
+  ]);
+
+  if (!report.ok) addError(errors, "articles", report.error);
+  if (!engagementReport.ok) {
+    addError(errors, "articleEngagement", engagementReport.error);
+  }
+
+  const trafficAvailable = report.ok;
+  const engagementAvailable = engagementReport.ok;
+  const byPath = {};
+  const metricsFor = (path) => {
+    if (!byPath[path]) {
+      byPath[path] = emptyArticleMetrics({
+        trafficAvailable,
+        engagementAvailable,
+      });
+    }
+    return byPath[path];
+  };
+
+  for (const path of paths) metricsFor(path);
+
+  if (report.ok) {
+    for (const row of report.rows) {
+      const key = normaliseArticlePath(dimensionValue(row, 0));
+      if (!key) continue;
+      const metrics = metricsFor(key);
+      metrics.pageViews = metricValue(row, 0);
+      metrics.uniqueVisitors = metricValue(row, 1);
+    }
+  }
+
+  if (engagementReport.ok) {
+    for (const row of engagementReport.rows) {
+      const key = normaliseArticlePath(dimensionValue(row, 0));
+      const eventName = dimensionValue(row, 1);
+      if (!key) continue;
+      const count = metricValue(row, 0);
+      const metrics = metricsFor(key);
+
+      if (eventName === "article_engaged_read") metrics.engagedReads = count;
+      if (eventName === "article_complete") metrics.completions = count;
+      if (eventName === "article_outbound_click") metrics.placeClicks = count;
+    }
+  }
+
+  return {
+    available: trafficAvailable || engagementAvailable,
+    trafficAvailable,
+    engagementAvailable,
+    byPath,
+  };
 }
 
 /* ------------------------------------------------------------------ */
@@ -551,16 +641,21 @@ async function buildVenuePayload(venue, params) {
   const articleMetrics = await fetchArticleMetrics(articlePaths, range, errors);
 
   const articles = articlePaths.map((path) => {
-    const metrics = articleMetrics.byPath[path] || {
-      pageViews: 0,
-      uniqueVisitors: 0,
-    };
+    const metrics =
+      articleMetrics.byPath[path] ||
+      emptyArticleMetrics({
+        trafficAvailable: false,
+        engagementAvailable: false,
+      });
     const meta = articleMap.get(path);
     return {
       ...meta,
       url: meta.url || `https://ahangama.com${path}`,
       pageViews: metrics.pageViews,
       uniqueVisitors: metrics.uniqueVisitors,
+      engagedReads: metrics.engagedReads,
+      completions: metrics.completions,
+      placeClicks: metrics.placeClicks,
     };
   });
 
