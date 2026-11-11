@@ -1,5 +1,6 @@
 import {
   ABODE_HERO_IMAGE,
+  BAPPA_SURF_SCHOOL_HERO_IMAGE,
   KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
   THE_WELL_HERO_IMAGE,
@@ -7,6 +8,17 @@ import {
 } from "./articleHeroImages.js";
 
 export const EDITORIAL_ARTICLES = [
+  {
+    category: "Surf Culture",
+    title: "Bappa Surf School: A Local Life Shaped by Surfing",
+    href: "/bappa-surf-school-a-local-life-shaped-by-surfing",
+    description:
+      "From nearly two decades in the water to building his own surf school, G.H. Roshan Pradeep Kumara has made surfing part of everyday life along Sri Lanka's southern coast.",
+    image:
+      resolveHeroImage(BAPPA_SURF_SCHOOL_HERO_IMAGE) ||
+      "/bappa-surf-school/placeholder.svg",
+    publishDate: "2026-11-11T09:00:00.000Z",
+  },
   {
     category: "Stay Story",
     title: "Two Sides of Ahangama: Discover Abode Boutique Hotels",

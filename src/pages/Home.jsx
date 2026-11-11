@@ -28,6 +28,7 @@ import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
 import {
   ABODE_HERO_IMAGE,
+  BAPPA_SURF_SCHOOL_HERO_IMAGE,
   KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
   THE_WELL_HERO_IMAGE,
@@ -242,6 +243,15 @@ const THIS_WEEK_FEATURES = [
 ];
 
 const WEEKLY_PICKS = [
+  {
+    category: "Surf Culture",
+    title: "Bappa Surf School: A Local Life Shaped by Surfing",
+    date: "This Week",
+    href: "/bappa-surf-school-a-local-life-shaped-by-surfing",
+    image:
+      resolveHeroImage(BAPPA_SURF_SCHOOL_HERO_IMAGE) ||
+      "/bappa-surf-school/placeholder.svg",
+  },
   {
     category: "Stay Story",
     title: "Two Sides of Ahangama: Discover Abode Boutique Hotels",

@@ -134,6 +134,9 @@ import KoLakeVillaPage, {
 import AbodeBoutiqueHotelsPage, {
   ABODE_BOUTIQUE_HOTELS_PATH,
 } from "../pages/AbodeBoutiqueHotelsPage";
+import BappaSurfSchoolPage, {
+  BAPPA_SURF_SCHOOL_PATH,
+} from "../pages/BappaSurfSchoolPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -390,6 +393,10 @@ const routes = [
   {
     path: ABODE_BOUTIQUE_HOTELS_PATH,
     element: <AbodeBoutiqueHotelsPage />,
+  },
+  {
+    path: BAPPA_SURF_SCHOOL_PATH,
+    element: <BappaSurfSchoolPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,
