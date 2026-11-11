@@ -531,6 +531,22 @@ const routeMeta = [
       "https://res.cloudinary.com/dp7in4ulw/image/upload/v1787202527/Guide_oG_images_x6brj9.jpg",
   },
   {
+    route: "/guide/day-01",
+    title: "Your First 24 Hours in Ahangama (Day 1) | Ahangama Guide",
+    description:
+      "An hour-by-hour first day in Ahangama, from breakfast and a morning swim at Kabalana to Koggala Lake, sunset and dinner.",
+    image:
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp",
+  },
+  {
+    route: "/guide/day-02",
+    title: "Day 02 in Ahangama | Ahangama Guide",
+    description:
+      "A slower second day in Ahangama: morning movement, coffee, Koggala Lake, a Sri Lankan lunch, shopping and sunset.",
+    image:
+      "https://res.cloudinary.com/dp7in4ulw/image/upload/v1786550110/Guide_OG_Image_kbrjmt.webp",
+  },
+  {
     route: "/midigama",
     title: "Midigama Two-Bedroom Villa | Market & Development Study",
     description:

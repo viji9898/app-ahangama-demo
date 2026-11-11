@@ -52,9 +52,11 @@ const csvCell = (value) => `"${String(value).replace(/"/g, '""')}"`;
 const csvHeader = [
   "Page Title",
   "Slug",
-  "Permanent QR URL",
+  "Encoded QR URL",
+  "Canonical /go/ URL",
+  "Legacy /go/ Aliases",
   "Planned Destination",
-  "Temporary Destination",
+  "Live Destination",
   "Guide Group",
   "QR Section ID",
   "GA4 Event Name",
@@ -68,11 +70,13 @@ const csvHeader = [
 ];
 
 const csvRows = GUIDE_QR_REDIRECTS_NEW.map((entry) => {
-  const url = `${BASE_URL}/go/${entry.slug}`;
+  const encodedSlug = entry.encodedSlug ?? entry.slug;
   return [
     entry.label,
     entry.slug,
-    url,
+    `${BASE_URL}/go/${encodedSlug}`,
+    `${BASE_URL}/go/${entry.slug}`,
+    (entry.legacySlugs ?? []).map((s) => `${BASE_URL}/go/${s}`).join(" "),
     entry.plannedDestination,
     entry.destination,
     entry.group,
@@ -120,9 +124,11 @@ const TOTAL_PAGES = Math.ceil(GUIDE_QR_REDIRECTS_NEW.length / PER_PAGE);
 
 // Embed 480 px renderings in the PDF (≈400 dpi at 30 mm). The standalone PNG
 // assets remain 1200 × 1200 px as required; this only keeps the PDF portable.
+// Use encodedSlug when present so the PDF QR always matches the printed
+// artwork; otherwise the canonical slug is used.
 const qrDataUrls = await Promise.all(
   GUIDE_QR_REDIRECTS_NEW.map((entry) =>
-    QRCode.toDataURL(`${BASE_URL}/go/${entry.slug}`, {
+    QRCode.toDataURL(`${BASE_URL}/go/${entry.encodedSlug ?? entry.slug}`, {
       errorCorrectionLevel: "H",
       margin: 4,
       width: 480,
@@ -191,14 +197,17 @@ GUIDE_QR_REDIRECTS_NEW.forEach((entry, idx) => {
     });
   });
 
-  // Permanent URL
+  // Encoded URL (the exact URL printed into this QR code)
   const urlY = titleY + titleLines.length * 3.4 + 2.2;
   doc.setTextColor(90, 100, 95);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(5.6);
-  doc.text(`${BASE_URL}/go/${entry.slug}`, cellX + COL_W / 2, urlY, {
-    align: "center",
-  });
+  doc.text(
+    `${BASE_URL}/go/${entry.encodedSlug ?? entry.slug}`,
+    cellX + COL_W / 2,
+    urlY,
+    { align: "center" },
+  );
 
   // Faint cell separator
   if (row < ROWS - 1) {

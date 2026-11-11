@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T08:02:12.094Z",
+  "generatedAt": "2026-11-10T09:31:42.600Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
   "count": 798,
   "media": [
@@ -7923,11 +7923,16 @@
       "origin": "external",
       "host": "res.cloudinary.com",
       "sources": [
-        "src/pages/ExperienceAhangamaGuide.jsx"
+        "src/pages/ExperienceAhangamaGuide.jsx",
+        "src/pages/GuideDayPage.jsx"
       ],
       "pageRoutes": {
         "src/pages/ExperienceAhangamaGuide.jsx": [
           "/guide"
+        ],
+        "src/pages/GuideDayPage.jsx": [
+          "/guide/day-01",
+          "/guide/day-02"
         ]
       }
     },
