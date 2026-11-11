@@ -574,6 +574,10 @@ const routeMeta = [
     publishDate: "2026-11-11T09:00:00.000Z",
     author: "Tharusha Shanaka",
     type: "article",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-bappa-surf-school-feb68f60.webp",
+    imageWidth: 2400,
+    imageHeight: 1600,
   },
   {
     route: "/two-sides-of-ahangama-discover-abode-boutique-hotels",

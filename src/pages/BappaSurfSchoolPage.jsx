@@ -605,6 +605,8 @@ export default function BappaSurfSchoolPage() {
         description={DESCRIPTION}
         canonical={canonical}
         ogImage={ogImage || undefined}
+        ogImageWidth={ogImage ? 2400 : undefined}
+        ogImageHeight={ogImage ? 1600 : undefined}
         ogType="article"
         author={AUTHOR_NAME}
         publishDate={publishDate}
