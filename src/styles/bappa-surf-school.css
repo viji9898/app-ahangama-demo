@@ -1,0 +1,10 @@
+@media (max-width: 640px) {
+  .bappa-hero-title .home-hero-titleLine {
+    white-space: normal;
+    letter-spacing: 0;
+  }
+
+  .bappa-landscape-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+}

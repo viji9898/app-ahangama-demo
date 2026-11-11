@@ -567,6 +567,15 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
   },
   {
+    route: "/bappa-surf-school-a-local-life-shaped-by-surfing",
+    title: "Bappa Surf School: A Local Life Shaped by Surfing",
+    description:
+      "From nearly two decades in the water to building his own surf school, G.H. Roshan Pradeep Kumara has made surfing part of everyday life along Sri Lanka's southern coast.",
+    publishDate: "2026-11-11T09:00:00.000Z",
+    author: "Tharusha Shanaka",
+    type: "article",
+  },
+  {
     route: "/two-sides-of-ahangama-discover-abode-boutique-hotels",
     title: "Two Sides of Ahangama: Discover Abode Boutique Hotels",
     description:

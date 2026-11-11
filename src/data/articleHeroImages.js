@@ -42,6 +42,17 @@ export const ABODE_HERO_IMAGE = {
   alt: "Abode Boutique Hotels in Ahangama on Sri Lanka's south coast.",
 };
 
+/*
+ * Bappa Surf School's hero image is added by the editorial team. Until then
+ * the card falls back to /bappa-surf-school/placeholder.svg and the article
+ * hero renders a labelled placeholder.
+ */
+export const BAPPA_SURF_SCHOOL_HERO_IMAGE = {
+  src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-bappa-surf-school-feb68f60.webp",
+  filename: "hero-image-bappa-surf-school-ahangama.webp",
+  alt: "Bappa surfing on a wave along the southern coast near Ahangama.",
+};
+
 export function resolveHeroImage(slot) {
   return slot?.src || "";
 }
