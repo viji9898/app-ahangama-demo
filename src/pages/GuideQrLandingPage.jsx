@@ -91,25 +91,32 @@ function buildDestinationUrl(destination) {
 export default function GuideQrLandingPage() {
   const { section = "" } = useParams();
   const redirect = getQrRedirect(section);
-  const firedRef = useRef(false);
+  // Tracks the slug already reported, so StrictMode's double effect invocation
+  // and ordinary re-renders cannot send duplicate qr_scan events. It also
+  // allows a new slug to be tracked if this route is reused for a new param.
+  const trackedSlugRef = useRef(null);
 
   useEffect(() => {
     if (!redirect) return;
-    if (firedRef.current) return;
-    firedRef.current = true;
 
-    // Fire GA4 event first, then redirect on the next tick so gtag has a
-    // chance to queue the hit before navigation starts.
-    trackPhysicalGuideQrScan({
-      section: redirect.section,
-      codeId:  redirect.codeId,
-    });
+    // Fire the GA4 event once per slug, before the redirect is scheduled.
+    if (trackedSlugRef.current !== redirect.slug) {
+      trackedSlugRef.current = redirect.slug;
+      trackPhysicalGuideQrScan({
+        section: redirect.section,
+        codeId:  redirect.codeId,
+      });
+    }
 
     const destination = buildDestinationUrl(redirect.destination);
 
     // Small delay (200 ms) lets the gtag beacon get queued before navigation.
     // GA4 uses navigator.sendBeacon so the hit survives page unload, but the
     // brief pause gives gtag time to call sendBeacon on this page.
+    //
+    // The timer is always scheduled, even on a repeated effect run: under
+    // React StrictMode the first timer is cleaned up, so the second run must
+    // schedule a replacement or the redirect would never happen.
     const timer = setTimeout(() => {
       window.location.replace(destination);
     }, 200);

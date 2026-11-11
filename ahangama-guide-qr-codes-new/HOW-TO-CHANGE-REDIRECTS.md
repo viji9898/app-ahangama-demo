@@ -17,8 +17,8 @@ https://ahangama.com/go/{slug}
 That URL is printed on paper and must never change. Only the destination it
 redirects to can change later.
 
-Because the individual pages do not exist yet, **every new entry currently uses
-a safe fallback destination**:
+Because most of the individual pages do not exist yet, **most new entries still
+use a safe fallback destination**:
 
 ```js
 destination: "/guide"
@@ -26,7 +26,14 @@ destination: "/guide"
 
 `/guide` is the live online guide, so no QR code can produce a 404.
 
-The intended future page for each entry is recorded separately:
+Day 1 and Day 2 are already live and point straight at their permanent pages:
+
+```js
+destination: "/guide/day-01"
+destination: "/guide/day-02"
+```
+
+The intended future page for every entry is recorded separately:
 
 ```js
 plannedDestination: "/guide/{slug}"
@@ -35,48 +42,74 @@ plannedDestination: "/guide/{slug}"
 `plannedDestination` is documentation only — it is not used by the redirect
 until you copy it into `destination`.
 
+### Encoded URL vs canonical slug
+
+The URL printed into a QR code must never change after printing, so the config
+records it explicitly when it differs from the canonical slug:
+
+```js
+{
+  slug: "day-01",                    // canonical /go/ URL used by the config
+  legacySlugs: ["first-24-hours"],   // older /go/ URL that must keep working
+  ...
+}
+```
+
+- Day 1 artwork encodes `https://ahangama.com/go/day-01`.
+- The legacy `https://ahangama.com/go/first-24-hours` alias is retained so any
+  QR copies printed before this change still land on the right page.
+- Both URLs resolve to `/guide/day-01` and share the same GA4 identity
+  (`qr_section: "first_24_hours"`, `qr_code_id: "qr_first_24_hours"`), so scans
+  are not split across two rows in reporting.
+
+For every other entry the printed URL is simply
+`https://ahangama.com/go/{slug}`. If a future reprint must encode a different
+URL than the canonical slug, set `encodedSlug` on that entry before running the
+generator; the reference sheet will then show both URLs.
+
 ## Prerequisite: publish the page first
 
 Before changing a destination, confirm the target page actually exists and
-returns 200. For the planned URLs this means creating a route/pages such as
-`/guide/first-24-hours`.
+returns 200. For the planned URLs this means creating a route/page such as
+`/guide/rise-and-dine`.
 
 If the page is not live yet, leave `destination: "/guide"` in place.
 
 ## Step-by-step: update one destination
 
 1. Open `src/data/guideQrRedirectsNew.js`.
-2. Find the entry by its `slug` (for example `first-24-hours`).
+2. Find the entry by its `slug` (for example `rise-and-dine`).
 3. Change **only** the `destination` field:
 
 ```js
 // Before — safe fallback
 {
-  slug: "first-24-hours",
+  slug: "rise-and-dine",
   ...
   destination: "/guide",
-  plannedDestination: "/guide/first-24-hours",
+  plannedDestination: "/guide/rise-and-dine",
 }
 
 // After — dedicated page is now live
 {
-  slug: "first-24-hours",
+  slug: "rise-and-dine",
   ...
-  destination: "/guide/first-24-hours",
-  plannedDestination: "/guide/first-24-hours",
+  destination: "/guide/rise-and-dine",
+  plannedDestination: "/guide/rise-and-dine",
 }
 ```
 
 4. Save and redeploy. **No QR codes need to be regenerated.**
 
 > Do **not** change `slug`, `section`, or `codeId`. They are printed into the
-> QR codes and sent to GA4.
+> QR codes and sent to GA4. `slug` is also a permanent URL once artwork is
+> printed.
 
 ## Destination formats
 
 | Format | Example | When to use |
 |--------|---------|-------------|
-| Root-relative path | `/guide/first-24-hours` | Same-domain pages |
+| Root-relative path | `/guide/day-01` | Same-domain pages |
 | Absolute URL | `https://pass.ahangama.com/day-pass` | External or subdomain pages |
 
 ## Updating many destinations safely
@@ -105,8 +138,8 @@ codes are unchanged.
 
 | # | Page title | Slug | Planned destination | Live destination |
 |---|------------|------|---------------------|------------------|
-| 1 | Your First 24 hours in Ahangama | `first-24-hours` | `/guide/first-24-hours` | `/guide` |
-| 2 | Day 02 | `day-02` | `/guide/day-02` | `/guide` |
+| 1 | Your First 24 Hours in Ahangama (Day 1) | `day-01` | `/guide/day-01` | `/guide/day-01` |
+| 2 | Day 02 | `day-02` | `/guide/day-02` | `/guide/day-02` |
 | 3 | Rise & Dine | `rise-and-dine` | `/guide/rise-and-dine` | `/guide` |
 | 4 | Brew with a View | `brew-with-a-view` | `/guide/brew-with-a-view` | `/guide` |
 | 5 | Taste of Sri Lanka | `taste-of-sri-lanka` | `/guide/taste-of-sri-lanka` | `/guide` |
@@ -142,6 +175,10 @@ codes are unchanged.
 | 35 | Build Your Hill-Country Adventure | `hill-country-adventure` | `/guide/hill-country-adventure` | `/guide` |
 | 36 | Five Ways To Continue Your Sri Lankan Story | `continue-your-sri-lankan-story` | `/guide/continue-your-sri-lankan-story` | `/guide` |
 | 37 | Ahangama Directory | `ahangama-directory` | `/guide/ahangama-directory` | `/guide` |
+
+> Every row encodes `/go/{slug}`. Day 1 additionally keeps the legacy
+> `/go/first-24-hours` alias working for copies printed before the artwork was
+> corrected; both resolve to `/guide/day-01`.
 
 ## Regenerating files (not normally needed)
 

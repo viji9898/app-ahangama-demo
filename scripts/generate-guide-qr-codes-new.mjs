@@ -35,13 +35,17 @@ const slugs = GUIDE_QR_REDIRECTS_NEW.map((s) => s.slug);
 const sections = GUIDE_QR_REDIRECTS_NEW.map((s) => s.section);
 const codeIds = GUIDE_QR_REDIRECTS_NEW.map((s) => s.codeId);
 const files = GUIDE_QR_REDIRECTS_NEW.map((s) => s.file);
-const urls = slugs.map((slug) => `${BASE_URL}/go/${slug}`);
+const encodedSlugs = GUIDE_QR_REDIRECTS_NEW.map(
+  (s) => s.encodedSlug ?? s.slug,
+);
+const urls = encodedSlugs.map((slug) => `${BASE_URL}/go/${slug}`);
 
 for (const [name, values] of [
   ["slug", slugs],
   ["section", sections],
   ["codeId", codeIds],
   ["file", files],
+  ["encoded slug", encodedSlugs],
   ["permanent URL", urls],
 ]) {
   const dupes = values.filter((v, i) => values.indexOf(v) !== i);
@@ -78,7 +82,8 @@ console.log(`\nGenerating 37 new QR codes → ${OUT_DIR}\n`);
 let index = 0;
 for (const entry of GUIDE_QR_REDIRECTS_NEW) {
   index += 1;
-  const url = `${BASE_URL}/go/${entry.slug}`;
+  const encodedSlug = entry.encodedSlug ?? entry.slug;
+  const url = `${BASE_URL}/go/${encodedSlug}`;
 
   // --- SVG ---
   const svgContent = await QRCode.toString(url, SVG_OPTIONS);
@@ -90,6 +95,9 @@ for (const entry of GUIDE_QR_REDIRECTS_NEW) {
 
   console.log(`  ✓  ${String(index).padStart(2, "0")}. ${entry.label}`);
   console.log(`        URL : ${url}`);
+  if (entry.encodedSlug && entry.encodedSlug !== entry.slug) {
+    console.log(`        Canonical alias: ${BASE_URL}/go/${entry.slug}`);
+  }
   console.log(`        SVG : ahangama-guide-qr-codes-new/${entry.file}.svg`);
   console.log(`        PNG : ahangama-guide-qr-codes-new/${entry.file}.png`);
 }

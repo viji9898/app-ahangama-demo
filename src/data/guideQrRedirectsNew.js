@@ -11,10 +11,14 @@
  * 2. Leave `slug`, `section` and `codeId` unchanged — they are printed into the
  *    QR codes and feed GA4 tracking.
  *
- * Until the individual pages are published, every entry uses the safe fallback
- * `destination: "/guide"` (the existing online guide) so no QR code can 404.
- * The intended page for each entry is recorded in `plannedDestination`
- * (`/guide/{slug}`) and can be promoted once that page exists.
+ * Most entries still use the safe fallback `destination: "/guide"` (the existing
+ * online guide) so no QR code can 404. The intended page for each entry is
+ * recorded in `plannedDestination` (`/guide/{slug}`) and can be promoted once
+ * that page exists. Day 1 and Day 2 already point at their live pages.
+ *
+ * Day 1 is a special case: the artwork now encodes `/go/day-01`, while the
+ * legacy `/go/first-24-hours` alias is kept working for any earlier printed
+ * copies. Both resolve to the same entry and GA4 identity.
  */
 
 /**
@@ -26,20 +30,23 @@ export const QR_FALLBACK_DESTINATION = "/guide";
 /**
  * @typedef {Object} GuideQrRedirect
  * @property {string} slug                URL segment after /go/ (permanent)
+ * @property {string[]} [legacySlugs]     older /go/ aliases that must keep working
+ * @property {string} [encodedSlug]       slug actually encoded in the printed QR,
+ *                                        when it differs from the canonical slug
  * @property {string} section             unique qr_section value for GA4
  * @property {string} codeId              unique qr_code_id value for GA4
  * @property {string} label               human-readable page title
  * @property {string} group               guide section grouping
  * @property {string} file                base filename for SVG/PNG output
- * @property {string} destination         live redirect target (safe fallback)
+ * @property {string} destination         live redirect target
  * @property {string} plannedDestination  intended page once published
  */
 
 /** @type {GuideQrRedirect[]} */
 export const GUIDE_QR_REDIRECTS_NEW = [
   // ── First 24 Hours ────────────────────────────────────────────────────────
-  { slug: "first-24-hours", section: "first_24_hours", codeId: "qr_first_24_hours", label: "Your First 24 hours in Ahangama", group: "First 24 Hours", file: "QR-Your-First-24-Hours-In-Ahangama", destination: QR_FALLBACK_DESTINATION, plannedDestination: "/guide/first-24-hours" },
-  { slug: "day-02", section: "day_02", codeId: "qr_day_02", label: "Day 02", group: "First 24 Hours", file: "QR-Day-02", destination: QR_FALLBACK_DESTINATION, plannedDestination: "/guide/day-02" },
+  { slug: "day-01", legacySlugs: ["first-24-hours"], section: "first_24_hours", codeId: "qr_first_24_hours", label: "Your First 24 Hours in Ahangama (Day 1)", group: "First 24 Hours", file: "QR-Your-First-24-Hours-In-Ahangama", destination: "/guide/day-01", plannedDestination: "/guide/day-01" },
+  { slug: "day-02", section: "day_02", codeId: "qr_day_02", label: "Day 02", group: "First 24 Hours", file: "QR-Day-02", destination: "/guide/day-02", plannedDestination: "/guide/day-02" },
 
   // ── Food & Dining ─────────────────────────────────────────────────────────
   { slug: "rise-and-dine", section: "rise_and_dine", codeId: "qr_rise_and_dine", label: "Rise & Dine", group: "Food & Dining", file: "QR-Rise-And-Dine", destination: QR_FALLBACK_DESTINATION, plannedDestination: "/guide/rise-and-dine" },
@@ -95,8 +102,13 @@ export const GUIDE_QR_REDIRECTS_NEW = [
 
 /**
  * Returns the redirect config for a NEW /go/ slug, or null if not found.
+ * Matches both the canonical slug and any legacy aliases.
  * @param {string} slug
  */
 export function getNewQrRedirect(slug) {
-  return GUIDE_QR_REDIRECTS_NEW.find((r) => r.slug === slug) ?? null;
+  return (
+    GUIDE_QR_REDIRECTS_NEW.find(
+      (r) => r.slug === slug || r.legacySlugs?.includes(slug),
+    ) ?? null
+  );
 }

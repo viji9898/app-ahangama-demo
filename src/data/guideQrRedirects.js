@@ -23,7 +23,7 @@
  * so the original seven entries above stay untouched.
  */
 
-import { GUIDE_QR_REDIRECTS_NEW } from "./guideQrRedirectsNew.js";
+import { getNewQrRedirect } from "./guideQrRedirectsNew.js";
 
 export const QR_CAMPAIGN = "ahangama_guide_2026_27";
 export const QR_SOURCE   = "physical_guide";
@@ -88,10 +88,6 @@ export const GUIDE_QR_REDIRECTS = [
  * @param {string} slug
  */
 export function getQrRedirect(slug) {
-  return (
-    GUIDE_QR_REDIRECTS.find((r) => r.slug === slug) ??
-    GUIDE_QR_REDIRECTS_NEW.find((r) => r.slug === slug) ??
-    null
-  );
+  return GUIDE_QR_REDIRECTS.find((r) => r.slug === slug) ?? getNewQrRedirect(slug);
 }
 

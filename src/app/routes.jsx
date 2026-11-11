@@ -185,6 +185,7 @@ import { Navigate } from "react-router-dom";
 import GuideQrLandingPage, {
   GUIDE_QR_LANDING_PATH,
 } from "../pages/GuideQrLandingPage";
+import GuideDayPage from "../pages/GuideDayPage";
 
 const WELLNESS_GUIDE_BLOG_PATH =
   "/blogs/the-ultimate-wellness-guide-to-ahangama-yoga-gyms-pilates-ice-baths-spas";
@@ -299,6 +300,8 @@ const routes = [
   { path: "/what-is-ahangama-pass", element: <WhatIsAhangamaPassPage /> },
   { path: GUIDE_TRACKING_PATH, element: <GuideTrackingPage /> },
   { path: GUIDE_SIZES_PATH, element: <GuideSizesPage /> },
+  { path: "/guide/day-01", element: <GuideDayPage day="day-01" /> },
+  { path: "/guide/day-02", element: <GuideDayPage day="day-02" /> },
   { path: "/guide", element: <ExperienceAhangamaGuide /> },
   {
     path: "/ahangama-season-2026-2027",
