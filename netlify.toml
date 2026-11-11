@@ -2,12 +2,29 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "22.21.1"
+
 [dev]
   port = 8889
   targetPort = 5173
 
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[functions."api-venue-stats"]
+  external_node_modules = [
+    "googleapis",
+    "googleapis-common",
+    "google-auth-library",
+    "gaxios",
+    "gtoken",
+    "gcp-metadata",
+    "node-fetch",
+    "fetch-blob",
+    "formdata-polyfill"
+  ]
 
 [[redirects]]
   from = "/partners-knowledge"
