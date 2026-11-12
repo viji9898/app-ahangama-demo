@@ -2,7 +2,7 @@
 /**
  * generate-guide-qr-codes-new.mjs
  *
- * Generates the 37 NEW QR code files (SVG + PNG) for the Physical Ahangama
+ * Generates the 38 NEW QR code files (SVG + PNG) for the Physical Ahangama
  * Guide 2026/27. The original seven QR codes are NOT touched.
  *
  * Run with:  node scripts/generate-guide-qr-codes-new.mjs
@@ -25,9 +25,9 @@ mkdirSync(OUT_DIR, { recursive: true });
 const BASE_URL = "https://ahangama.com";
 
 // ── Sanity checks ────────────────────────────────────────────────────────────
-if (GUIDE_QR_REDIRECTS_NEW.length !== 37) {
+if (GUIDE_QR_REDIRECTS_NEW.length !== 38) {
   throw new Error(
-    `Expected 37 new QR entries, found ${GUIDE_QR_REDIRECTS_NEW.length}`,
+    `Expected 38 new QR entries, found ${GUIDE_QR_REDIRECTS_NEW.length}`,
   );
 }
 
@@ -77,7 +77,7 @@ const PNG_OPTIONS = {
   width: 1200, // 1200 × 1200 px — high-res for print
 };
 
-console.log(`\nGenerating 37 new QR codes → ${OUT_DIR}\n`);
+console.log(`\nGenerating 38 new QR codes → ${OUT_DIR}\n`);
 
 let index = 0;
 for (const entry of GUIDE_QR_REDIRECTS_NEW) {
@@ -102,4 +102,4 @@ for (const entry of GUIDE_QR_REDIRECTS_NEW) {
   console.log(`        PNG : ahangama-guide-qr-codes-new/${entry.file}.png`);
 }
 
-console.log("\nAll 37 new QR codes generated successfully.\n");
+console.log("\nAll 38 new QR codes generated successfully.\n");

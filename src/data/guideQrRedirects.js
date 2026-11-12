@@ -16,9 +16,9 @@
  * destination   – where to redirect (absolute URL or root-relative path)
  * label         – human-readable section name for reference sheets
  *
- * NEW QR CODES (37)
+ * NEW QR CODES (38)
  * -----------------
- * The 37 newer Physical Guide QR codes live in `guideQrRedirectsNew.js` and
+ * The 38 newer Physical Guide QR codes live in `guideQrRedirectsNew.js` and
  * are looked up by `getQrRedirect()` below. They are kept in a separate file
  * so the original seven entries above stay untouched.
  */
@@ -84,7 +84,7 @@ export const GUIDE_QR_REDIRECTS = [
 
 /**
  * Returns the redirect config for a given /go/ slug, or null if not found.
- * Checks the original seven codes first, then the 37 newer codes.
+ * Checks the original seven codes first, then the 38 newer codes.
  * @param {string} slug
  */
 export function getQrRedirect(slug) {
