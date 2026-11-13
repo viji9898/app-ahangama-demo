@@ -269,6 +269,43 @@ fields, supported and unsupported metrics, rate limits, invalid credentials,
 partial collection failures, cursor safety and credential redaction. It never
 calls the live API or a database.
 
+### Phase 2B persistence contract
+
+`lib/instagram-sync-persistence.js` writes a Phase 2A retrieval result through
+the existing Phase 1 database methods:
+
+- `persistInstagramRetrieval(retrieval)` persists both `media` and `stories`
+  and returns per-collection counts plus a flattened error list.
+- `persistInstagramCollection(collection)` persists one collection. It accepts
+  an optional `store` override, used by the mocked tests; the default store is
+  `upsertInstagramMedia`, `saveInstagramMediaMetrics` and
+  `markInstagramMediaMetricsFailed`.
+
+`upsertInstagramMedia` keys on `ig_media_id`, so repeated syncs update the same
+row instead of duplicating it. Null or omitted API metadata is passed through
+as `null`, which the SQL `COALESCE` preserves existing useful values. Story
+expiry is written once: a later sync never moves the original
+`story_expires_at`, and expired Stories remain in the table with their last
+captured metrics.
+
+`ok` and `partial` insight states call `saveInstagramMediaMetrics`; `error` and
+`unavailable` states call `markInstagramMediaMetricsFailed`, which advances
+`metrics_fetched_at` without replacing the metric values or
+`metrics_captured_at`. `pending` and `skipped` states only refresh metadata.
+Meta's `saved` is mapped to `saves`; `impressions` is never forwarded.
+
+A collection-level failure (for example an expired token or timeout) writes
+nothing for that collection, so failed collections are never treated as empty
+ones. One item failing does not abort the rest of its collection. Persistence
+never assigns media to venues, edits manual Instagram records, uses advisory
+locks, retries or schedules work.
+
+Run the mocked persistence tests with:
+
+```sh
+npm run test:instagram-sync-persistence
+```
+
 Run the regression suite with:
 
 ```sh
@@ -284,6 +321,7 @@ integration suite:
 
 ```sh
 npm run test:instagram-sync      # migration structure and safety invariants
+npm run test:instagram-sync-persistence  # mocked Phase 2B persistence
 npm run test:instagram-sync-db   # skipped unless a test database is supplied
 ```
 

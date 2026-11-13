@@ -5,6 +5,7 @@ import { dirname, join } from "node:path";
 import { after, before, beforeEach, describe, test } from "node:test";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
+import { persistInstagramRetrieval } from "../lib/instagram-sync-persistence.js";
 import {
   INSTAGRAM_SYNC_LOCK_ID,
   assignInstagramMediaToVenues,
@@ -51,6 +52,86 @@ const PRODUCTION_NAME_PATTERN =
   /(^|[-_.])(prod|production|live|primary|main)([-_.]|$)/i;
 
 const createdManualPostIds = new Set();
+
+function persistenceItem({
+  igMediaId,
+  mediaType = "IMAGE",
+  mediaProductType = "FEED",
+  caption = `caption ${igMediaId}`,
+  permalink = `https://www.instagram.com/p/${igMediaId}/`,
+  mediaUrl = `https://cdn.example.test/${igMediaId}.jpg`,
+  thumbnailUrl = null,
+  postedAt = "2026-11-01T10:00:00.000Z",
+  storyExpiresAt = null,
+  insights = {},
+  insightStatus = "ok",
+  insightErrors = [],
+} = {}) {
+  return {
+    media: {
+      igMediaId,
+      mediaType,
+      mediaProductType,
+      caption,
+      permalink,
+      mediaUrl,
+      thumbnailUrl,
+      postedAt,
+      storyExpiresAt,
+      username: "ahangamacom",
+      likeCount: 10,
+      commentsCount: 2,
+      children: [],
+    },
+    insights: {
+      views: 100,
+      reach: 80,
+      likes: 12,
+      comments: 3,
+      shares: 2,
+      saves: 4,
+      ...insights,
+    },
+    insightState: {
+      status: insightStatus,
+      supported: [],
+      unavailable: [],
+      errors: insightErrors,
+    },
+    retrievedAt: "2026-11-13T08:00:00.000Z",
+    metricsFetchedAt: "2026-11-13T08:00:01.000Z",
+    metricsCapturedAt:
+      insightStatus === "ok" || insightStatus === "partial"
+        ? "2026-11-13T08:00:01.000Z"
+        : null,
+  };
+}
+
+function persistenceRetrieval({
+  mediaItems = [],
+  storyItems = [],
+  mediaOk = true,
+  storiesOk = true,
+  mediaError = null,
+  storiesError = null,
+} = {}) {
+  return {
+    ok: mediaOk && storiesOk,
+    retrievedAt: "2026-11-13T08:00:00.000Z",
+    media: {
+      ok: mediaOk,
+      items: mediaItems,
+      counts: { total: mediaItems.length },
+      error: mediaError,
+    },
+    stories: {
+      ok: storiesOk,
+      items: storyItems,
+      counts: { total: storyItems.length },
+      error: storiesError,
+    },
+  };
+}
 
 const MIGRATION_033 = readFileSync(
   join(ROOT, "migrations/033_create_venue_stats_content.sql"),
@@ -1104,6 +1185,450 @@ describe(
 
       const stillRunning = await getInstagramSyncStatus();
       assert.equal(stillRunning.latestRun.status, "running");
+    });
+
+    /* -------------------------------------------------------------- */
+    /* Phase 2B persistence                                            */
+    /* -------------------------------------------------------------- */
+
+    test("persistence inserts once and updates the same media row on repeat syncs", async () => {
+      const first = persistenceRetrieval({
+        mediaItems: [
+          persistenceItem({
+            igMediaId: "persist-repeat",
+            caption: "first caption",
+            thumbnailUrl: "https://cdn.example.test/old.jpg",
+            insights: { views: 111 },
+          }),
+          persistenceItem({
+            igMediaId: "persist-carousel",
+            mediaType: "CAROUSEL_ALBUM",
+          }),
+          persistenceItem({
+            igMediaId: "persist-reel",
+            mediaType: "VIDEO",
+            mediaProductType: "REELS",
+            thumbnailUrl: "https://cdn.example.test/reel.jpg",
+          }),
+        ],
+        storyItems: [
+          persistenceItem({
+            igMediaId: "persist-story",
+            mediaProductType: "STORY",
+            postedAt: "2026-11-12T10:00:00.000Z",
+            storyExpiresAt: "2027-01-01T00:00:00.000Z",
+          }),
+        ],
+      });
+
+      const firstResult = await persistInstagramRetrieval(first);
+      assert.equal(firstResult.ok, true);
+      assert.equal(firstResult.counts.persisted, 4);
+      assert.equal(firstResult.counts.metricsCaptured, 4);
+
+      const inserted = await getInstagramMediaByIgId("persist-repeat");
+      assert.ok(inserted);
+      const databaseId = inserted.id;
+      assert.equal(inserted.mediaType, "IMAGE");
+      assert.equal(inserted.caption, "first caption");
+      assert.equal(inserted.metrics.views, 111);
+      assert.equal(inserted.metricsStatus, "ok");
+      assert.ok(inserted.metricsFetchedAt);
+      assert.ok(inserted.metricsCapturedAt);
+      assert.equal(
+        (await getInstagramMediaByIgId("persist-carousel")).mediaType,
+        "CAROUSEL_ALBUM",
+      );
+      assert.equal(
+        (await getInstagramMediaByIgId("persist-reel")).mediaProductType,
+        "REELS",
+      );
+
+      const secondResult = await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-repeat",
+              caption: "second caption",
+              thumbnailUrl: "https://cdn.example.test/new.jpg",
+              insights: { views: 222 },
+            }),
+          ],
+        }),
+      );
+
+      assert.equal(secondResult.ok, true);
+      const updated = await getInstagramMediaByIgId("persist-repeat");
+      assert.equal(updated.id, databaseId);
+      assert.equal(updated.caption, "second caption");
+      assert.equal(updated.thumbnailUrl, "https://cdn.example.test/new.jpg");
+      assert.equal(updated.metrics.views, 222);
+
+      const count = await admin.query(
+        `SELECT COUNT(*)::int AS count
+         FROM guide_app.instagram_media
+         WHERE ig_media_id = $1`,
+        ["persist-repeat"],
+      );
+      assert.equal(count.rows[0].count, 1);
+    });
+
+    test("null API metadata never erases stored useful metadata", async () => {
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-null",
+              caption: "keep caption",
+              mediaUrl: "https://cdn.example.test/keep.jpg",
+              thumbnailUrl: "https://cdn.example.test/keep-thumb.jpg",
+            }),
+          ],
+        }),
+      );
+
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-null",
+              caption: null,
+              mediaUrl: null,
+              thumbnailUrl: null,
+              permalink: null,
+              insights: { views: 250 },
+            }),
+          ],
+        }),
+      );
+
+      const row = await getInstagramMediaByIgId("persist-null");
+      assert.equal(row.caption, "keep caption");
+      assert.equal(row.mediaUrl, "https://cdn.example.test/keep.jpg");
+      assert.equal(
+        row.thumbnailUrl,
+        "https://cdn.example.test/keep-thumb.jpg",
+      );
+      assert.match(row.permalink, /persist-null/);
+      assert.equal(row.metrics.views, 250);
+    });
+
+    test("partial insights update available metrics and preserve missing ones", async () => {
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({ igMediaId: "persist-partial" }),
+          ],
+        }),
+      );
+      const before = await getInstagramMediaByIgId("persist-partial");
+      await new Promise((resolve) => setTimeout(resolve, 25));
+
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-partial",
+              insights: {
+                views: 250,
+                reach: null,
+                likes: null,
+                comments: 9,
+                shares: null,
+                saves: null,
+              },
+              insightStatus: "partial",
+            }),
+          ],
+        }),
+      );
+
+      const row = await getInstagramMediaByIgId("persist-partial");
+      assert.equal(row.metricsStatus, "partial");
+      assert.equal(row.metrics.views, 250);
+      assert.equal(row.metrics.comments, 9);
+      assert.equal(row.metrics.reach, 80);
+      assert.equal(row.metrics.likes, 12);
+      assert.equal(row.metrics.shares, 2);
+      assert.equal(row.metrics.saves, 4);
+      assert.ok(
+        Date.parse(row.metricsCapturedAt) >
+          Date.parse(before.metricsCapturedAt),
+      );
+    });
+
+    test("failed and unavailable insights preserve metrics and captured time", async () => {
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({ igMediaId: "persist-failure" }),
+          ],
+        }),
+      );
+      const before = await getInstagramMediaByIgId("persist-failure");
+      await new Promise((resolve) => setTimeout(resolve, 25));
+
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-failure",
+              insights: {
+                views: null,
+                reach: null,
+                likes: null,
+                comments: null,
+                shares: null,
+                saves: null,
+              },
+              insightStatus: "error",
+              insightErrors: [
+                {
+                  code: "META_RATE_LIMITED",
+                  message: "Application request limit reached",
+                },
+              ],
+            }),
+          ],
+        }),
+      );
+
+      const failed = await getInstagramMediaByIgId("persist-failure");
+      assert.equal(failed.metricsStatus, "error");
+      assert.equal(failed.metrics.views, 100);
+      assert.equal(failed.metrics.saves, 4);
+      assert.equal(failed.metricsCapturedAt, before.metricsCapturedAt);
+      assert.ok(
+        Date.parse(failed.metricsFetchedAt) > Date.parse(before.metricsFetchedAt),
+      );
+      assert.equal(failed.metricsErrorCode, "META_RATE_LIMITED");
+      assert.match(failed.metricsErrorMessage, /limit reached/);
+
+      await new Promise((resolve) => setTimeout(resolve, 25));
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-failure",
+              insights: {
+                views: null,
+                reach: null,
+                likes: null,
+                comments: null,
+                shares: null,
+                saves: null,
+              },
+              insightStatus: "unavailable",
+              insightErrors: [
+                {
+                  code: "META_INVALID_REQUEST",
+                  message: "The metric is not supported.",
+                },
+              ],
+            }),
+          ],
+        }),
+      );
+
+      const unavailable = await getInstagramMediaByIgId("persist-failure");
+      assert.equal(unavailable.metricsStatus, "unavailable");
+      assert.equal(unavailable.metrics.views, 100);
+      assert.equal(unavailable.metricsCapturedAt, before.metricsCapturedAt);
+      assert.equal(unavailable.metricsErrorCode, "META_INVALID_REQUEST");
+    });
+
+    test("Story expiry is preserved and expired Stories are retained", async () => {
+      const active = persistenceItem({
+        igMediaId: "persist-story-expiry",
+        mediaType: "VIDEO",
+        mediaProductType: "STORY",
+        postedAt: "2026-11-12T10:00:00.000Z",
+        storyExpiresAt: "2027-01-01T00:00:00.000Z",
+      });
+
+      await persistInstagramRetrieval(
+        persistenceRetrieval({ storyItems: [active] }),
+      );
+      const first = await getInstagramMediaByIgId("persist-story-expiry");
+      assert.equal(first.storyExpiresAt, "2027-01-01T00:00:00.000Z");
+
+      const changed = persistenceItem({
+        igMediaId: "persist-story-expiry",
+        mediaType: "VIDEO",
+        mediaProductType: "STORY",
+        caption: "updated story",
+        postedAt: "2026-11-12T10:00:00.000Z",
+        storyExpiresAt: "2027-02-01T00:00:00.000Z",
+        insights: { views: 200 },
+      });
+      await persistInstagramRetrieval(
+        persistenceRetrieval({ storyItems: [changed] }),
+      );
+
+      const updated = await getInstagramMediaByIgId("persist-story-expiry");
+      assert.equal(updated.storyExpiresAt, "2027-01-01T00:00:00.000Z");
+      assert.equal(updated.caption, "updated story");
+      assert.equal(updated.metrics.views, 200);
+
+      const expired = persistenceItem({
+        igMediaId: "persist-expired-story",
+        mediaProductType: "STORY",
+        postedAt: "2020-01-01T10:00:00.000Z",
+        storyExpiresAt: "2020-01-02T10:00:00.000Z",
+        insights: { views: 77 },
+      });
+      await persistInstagramRetrieval(
+        persistenceRetrieval({ storyItems: [expired] }),
+      );
+
+      const expiredRow = await getInstagramMediaByIgId(
+        "persist-expired-story",
+      );
+      assert.equal(expiredRow.metrics.views, 77);
+
+      await persistInstagramRetrieval(persistenceRetrieval());
+
+      const retained = await getInstagramMediaByIgId(
+        "persist-expired-story",
+      );
+      assert.equal(retained.metrics.views, 77);
+      assert.equal(retained.storyExpiresAt, "2020-01-02T10:00:00.000Z");
+      assert.equal(
+        (await listExpiredInstagramStories()).some(
+          (story) => story.igMediaId === "persist-expired-story",
+        ),
+        true,
+      );
+    });
+
+    test("empty retrieval writes nothing and failed collections do not erase rows", async () => {
+      const empty = await persistInstagramRetrieval(persistenceRetrieval());
+      assert.equal(empty.ok, true);
+      assert.equal(empty.counts.persisted, 0);
+
+      await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-preserve",
+              caption: "before failure",
+              insights: { views: 42 },
+            }),
+          ],
+        }),
+      );
+
+      const failed = await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaOk: false,
+          storiesOk: false,
+          mediaError: {
+            code: "META_TOKEN_EXPIRED",
+            message: "Invalid OAuth access token.",
+          },
+          storiesError: {
+            code: "META_TIMEOUT",
+            message: "Graph API request timed out.",
+          },
+        }),
+      );
+
+      assert.equal(failed.ok, false);
+      assert.equal(failed.media.skipped, true);
+      assert.equal(failed.stories.skipped, true);
+      assert.equal(failed.errors.length, 2);
+
+      const preserved = await getInstagramMediaByIgId("persist-preserve");
+      assert.equal(preserved.caption, "before failure");
+      assert.equal(preserved.metrics.views, 42);
+    });
+
+    test("media without an insight attempt keeps metrics pending", async () => {
+      const result = await persistInstagramRetrieval(
+        persistenceRetrieval({
+          mediaItems: [
+            persistenceItem({
+              igMediaId: "persist-no-insights",
+              insightStatus: "skipped",
+            }),
+          ],
+        }),
+      );
+
+      assert.equal(result.ok, true);
+      assert.equal(result.counts.metricsSkipped, 1);
+      const row = await getInstagramMediaByIgId("persist-no-insights");
+      assert.equal(row.metricsStatus, "pending");
+      assert.equal(row.metrics.views, null);
+      assert.equal(row.metricsFetchedAt, null);
+      assert.equal(row.metricsCapturedAt, null);
+    });
+
+    test("persistence leaves manual content and venue assignments untouched", async () => {
+      const before = await listInstagramPosts("namikaze");
+      const manual = await saveInstagramPost("namikaze", {
+        postUrl: "https://www.instagram.com/p/persistence-manual/",
+        postDate: "2026-02-01",
+        postType: "post",
+        reach: 321,
+        impressions: 456,
+        likes: 12,
+        comments: 3,
+        shares: 2,
+        saves: 1,
+        notes: "manual record for persistence isolation",
+      });
+      createdManualPostIds.add(manual.id);
+
+      try {
+        const assigned = await upsertInstagramMedia({
+          igMediaId: "persist-assigned",
+          mediaType: "IMAGE",
+          mediaProductType: "FEED",
+          postedAt: "2026-11-01T10:00:00.000Z",
+        });
+        await assignInstagramMediaToVenues(assigned.id, ["namikaze"]);
+        const assignmentsBefore = await listInstagramMediaVenues(assigned.id);
+        const manualBefore = (await listInstagramPosts("namikaze")).find(
+          (post) => post.id === manual.id,
+        );
+
+        const result = await persistInstagramRetrieval(
+          persistenceRetrieval({
+            mediaItems: [
+              persistenceItem({ igMediaId: "persist-unassigned" }),
+            ],
+            storyItems: [],
+          }),
+        );
+        assert.equal(result.ok, true);
+
+        assert.deepEqual(
+          await listInstagramMediaVenues(assigned.id),
+          assignmentsBefore,
+        );
+        assert.deepEqual(
+          (await listInstagramPosts("namikaze")).find(
+            (post) => post.id === manual.id,
+          ),
+          manualBefore,
+        );
+
+        const unassigned = await getInstagramMediaByIgId(
+          "persist-unassigned",
+        );
+        assert.deepEqual(await listInstagramMediaVenues(unassigned.id), []);
+        assert.deepEqual(
+          (await listInstagramPosts("namikaze")).filter(
+            (post) => post.id !== manual.id,
+          ),
+          before,
+          "pre-existing manual posts must remain unchanged",
+        );
+      } finally {
+        createdManualPostIds.delete(manual.id);
+        assert.equal(await deleteInstagramPost("namikaze", manual.id), true);
+      }
     });
 
     /* -------------------------------------------------------------- */
