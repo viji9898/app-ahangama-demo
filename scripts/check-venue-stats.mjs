@@ -15,7 +15,7 @@ import { LINK_TYPES, VENUE_STATS } from "../lib/venue-stats-config.js";
  * Verifies the three things that cannot be guessed from the source:
  *   1. the venue registry is complete and consistent
  *   2. GA4 credentials work and the custom dimensions are registered
- *   3. the database is reachable and migration 033 has been applied
+ *   3. the database is reachable and the migration 033/034 schema is complete
  *
  * Usage: npm run check:venue-stats
  * Exits non-zero when a required check fails.
@@ -182,6 +182,285 @@ async function checkGa4() {
   }
 }
 
+const INSTAGRAM_TABLES = [
+  "instagram_media",
+  "instagram_media_venues",
+  "instagram_sync_runs",
+];
+
+const INSTAGRAM_COLUMNS = {
+  instagram_media: [
+    "id",
+    "ig_media_id",
+    "media_type",
+    "media_product_type",
+    "permalink",
+    "caption",
+    "media_url",
+    "thumbnail_url",
+    "posted_at",
+    "story_expires_at",
+    "views",
+    "reach",
+    "likes",
+    "comments",
+    "shares",
+    "saves",
+    "metrics_status",
+    "metrics_fetched_at",
+    "metrics_captured_at",
+    "metrics_error_code",
+    "metrics_error_message",
+    "last_seen_at",
+    "last_synced_at",
+    "created_at",
+    "updated_at",
+  ],
+  instagram_media_venues: ["id", "media_id", "venue_key", "assigned_at"],
+  instagram_sync_runs: [
+    "id",
+    "trigger_source",
+    "status",
+    "started_at",
+    "finished_at",
+    "duration_ms",
+    "media_seen",
+    "media_created",
+    "media_updated",
+    "stories_seen",
+    "insights_attempted",
+    "insights_failed",
+    "has_more",
+    "error_code",
+    "error_message",
+    "graph_trace_id",
+    "account_followers",
+    "account_media_count",
+    "account_fetched_at",
+    "created_at",
+  ],
+};
+
+const INSTAGRAM_CONSTRAINTS = [
+  {
+    table: "instagram_media",
+    name: "instagram_media_ig_media_id_unique",
+    type: "u",
+  },
+  {
+    table: "instagram_media",
+    name: "instagram_media_metrics_status_check",
+    type: "c",
+  },
+  {
+    table: "instagram_media",
+    name: "instagram_media_metric_values_check",
+    type: "c",
+  },
+  {
+    table: "instagram_media",
+    name: "instagram_media_story_expiry_check",
+    type: "c",
+  },
+  {
+    table: "instagram_media",
+    name: "instagram_media_product_type_check",
+    type: "c",
+  },
+  {
+    table: "instagram_media_venues",
+    name: "instagram_media_venues_unique",
+    type: "u",
+  },
+  {
+    table: "instagram_sync_runs",
+    name: "instagram_sync_runs_status_check",
+    type: "c",
+  },
+  {
+    table: "instagram_sync_runs",
+    name: "instagram_sync_runs_terminal_check",
+    type: "c",
+  },
+  {
+    table: "instagram_sync_runs",
+    name: "instagram_sync_runs_duration_check",
+    type: "c",
+  },
+  {
+    table: "instagram_sync_runs",
+    name: "instagram_sync_runs_finished_after_start_check",
+    type: "c",
+  },
+  {
+    table: "instagram_sync_runs",
+    name: "instagram_sync_runs_counters_check",
+    type: "c",
+  },
+  {
+    table: "instagram_sync_runs",
+    name: "instagram_sync_runs_account_check",
+    type: "c",
+  },
+];
+
+const INSTAGRAM_INDEXES = [
+  "idx_instagram_media_posted",
+  "idx_instagram_media_product_posted",
+  "idx_instagram_media_stories",
+  "idx_instagram_media_refresh_due",
+  "idx_instagram_media_refresh_retry",
+  "idx_instagram_media_metrics_status",
+  "idx_instagram_media_venues_venue",
+  "idx_instagram_sync_runs_started",
+  "idx_instagram_sync_runs_status_started",
+  "idx_instagram_sync_runs_last_success",
+];
+
+async function checkInstagramSyncSchema(client) {
+  const tableResult = await client.query(
+    `SELECT table_name
+     FROM information_schema.tables
+     WHERE table_schema = 'guide_app' AND table_name = ANY($1::text[])`,
+    [INSTAGRAM_TABLES],
+  );
+  const presentTables = new Set(tableResult.rows.map((row) => row.table_name));
+  const missingTables = INSTAGRAM_TABLES.filter(
+    (table) => !presentTables.has(table),
+  );
+
+  if (missingTables.length) {
+    fail(
+      "Migration 034 tables",
+      `missing table(s): ${missingTables
+        .map((table) => `guide_app.${table}`)
+        .join(", ")}. Apply migrations/034_create_instagram_sync.sql atomically.`,
+    );
+    return;
+  }
+  pass(
+    "Migration 034 tables",
+    `${INSTAGRAM_TABLES.length} Instagram sync tables are present`,
+  );
+
+  const columnResult = await client.query(
+    `SELECT table_name, column_name
+     FROM information_schema.columns
+     WHERE table_schema = 'guide_app' AND table_name = ANY($1::text[])`,
+    [INSTAGRAM_TABLES],
+  );
+  const presentColumns = new Set(
+    columnResult.rows.map((row) => `${row.table_name}.${row.column_name}`),
+  );
+  const missingColumns = [];
+  let expectedColumnCount = 0;
+
+  for (const [table, columns] of Object.entries(INSTAGRAM_COLUMNS)) {
+    expectedColumnCount += columns.length;
+    for (const column of columns) {
+      if (!presentColumns.has(`${table}.${column}`)) {
+        missingColumns.push(`${table}.${column}`);
+      }
+    }
+  }
+
+  if (missingColumns.length) {
+    fail(
+      "Migration 034 columns",
+      `missing column(s): ${missingColumns.join(", ")}`,
+    );
+  } else {
+    pass(
+      "Migration 034 columns",
+      `${expectedColumnCount} essential columns are present`,
+    );
+  }
+
+  const constraintResult = await client.query(
+    `SELECT t.relname AS table_name,
+            c.conname,
+            c.contype,
+            pg_get_constraintdef(c.oid) AS definition
+     FROM pg_constraint c
+     JOIN pg_class t ON t.oid = c.conrelid
+     JOIN pg_namespace n ON n.oid = t.relnamespace
+     WHERE n.nspname = 'guide_app' AND t.relname = ANY($1::text[])`,
+    [INSTAGRAM_TABLES],
+  );
+  const constraints = new Map(
+    constraintResult.rows.map((row) => [row.conname, row]),
+  );
+  const missingConstraints = [];
+
+  for (const expected of INSTAGRAM_CONSTRAINTS) {
+    const found = constraints.get(expected.name);
+    if (!found) {
+      missingConstraints.push(expected.name);
+    } else if (
+      found.table_name !== expected.table ||
+      found.contype !== expected.type
+    ) {
+      missingConstraints.push(`${expected.name} (wrong table or type)`);
+    }
+  }
+
+  if (missingConstraints.length) {
+    fail(
+      "Migration 034 constraints",
+      `missing or incorrect: ${missingConstraints.join(", ")}`,
+    );
+  } else {
+    pass(
+      "Migration 034 constraints",
+      `${INSTAGRAM_CONSTRAINTS.length} constraints are present`,
+    );
+  }
+
+  const foreignKey = constraints.get("instagram_media_venues_media_id_fkey");
+  const expectedForeignKey =
+    /FOREIGN KEY \(media_id\) REFERENCES guide_app\.instagram_media\(id\) ON DELETE CASCADE/i;
+
+  if (!foreignKey) {
+    fail(
+      "Migration 034 foreign key",
+      "missing instagram_media_venues_media_id_fkey",
+    );
+  } else if (!expectedForeignKey.test(foreignKey.definition)) {
+    fail(
+      "Migration 034 foreign key",
+      `unexpected definition: ${foreignKey.definition}`,
+    );
+  } else {
+    pass(
+      "Migration 034 foreign key",
+      "media assignments cascade with their media row",
+    );
+  }
+
+  const indexResult = await client.query(
+    `SELECT indexname
+     FROM pg_indexes
+     WHERE schemaname = 'guide_app' AND tablename = ANY($1::text[])`,
+    [INSTAGRAM_TABLES],
+  );
+  const indexes = new Set(indexResult.rows.map((row) => row.indexname));
+  const missingIndexes = INSTAGRAM_INDEXES.filter(
+    (index) => !indexes.has(index),
+  );
+
+  if (missingIndexes.length) {
+    fail(
+      "Migration 034 indexes",
+      `missing index(es): ${missingIndexes.join(", ")}`,
+    );
+  } else {
+    pass(
+      "Migration 034 indexes",
+      `${INSTAGRAM_INDEXES.length} supporting indexes are present`,
+    );
+  }
+}
+
 async function checkDatabase() {
   const connectionString =
     process.env.VENUE_STATS_DATABASE_URL || process.env.DATABASE_URL || "";
@@ -223,6 +502,8 @@ async function checkDatabase() {
     } else {
       pass("Migration 033", "content tables are present");
     }
+
+    await checkInstagramSyncSchema(client);
   } catch (error) {
     fail("Database connection", error.message);
   } finally {
