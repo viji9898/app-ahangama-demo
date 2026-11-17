@@ -574,6 +574,10 @@ const routeMeta = [
     publishDate: "2026-11-17T09:00:00.000Z",
     author: "Tharu",
     type: "article",
+    image:
+      "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-and-og-image-97f6182f.webp",
+    imageWidth: 2400,
+    imageHeight: 1600,
   },
   {
     route: "/bappa-surf-school-a-local-life-shaped-by-surfing",
