@@ -36,6 +36,7 @@ function createMemoryStore() {
     async upsertInstagramMedia(media, { client } = {}) {
       calls.upsert.push({ media, client });
       let record = records.get(media.igMediaId);
+      const created = !record;
 
       if (!record) {
         record = {
@@ -82,7 +83,7 @@ function createMemoryStore() {
       if (!record.storyExpiresAt && media.storyExpiresAt) {
         record.storyExpiresAt = media.storyExpiresAt;
       }
-      return { ...record };
+      return { ...record, created };
     },
     async saveInstagramMediaMetrics(igMediaId, metrics, { status } = {}) {
       calls.save.push({ igMediaId, metrics, status });
@@ -236,6 +237,33 @@ test("repeated syncs update the same media row instead of duplicating it", async
   assert.equal(store.calls.upsert.length, 2);
   assert.equal(store.calls.upsert[0].media.igMediaId, "m1");
   assert.equal(store.calls.upsert[1].media.igMediaId, "m1");
+});
+
+test("reports inserted and updated counts from the store", async () => {
+  const store = createMemoryStore();
+
+  const first = await persistInstagramRetrieval(
+    retrieval({ mediaItems: [item({ media: { igMediaId: "count-1" } })] }),
+    { store },
+  );
+  assert.equal(first.media.created, 1);
+  assert.equal(first.media.updated, 0);
+  assert.equal(first.counts.created, 1);
+  assert.equal(first.counts.updated, 0);
+
+  const second = await persistInstagramRetrieval(
+    retrieval({
+      mediaItems: [
+        item({ media: { igMediaId: "count-1" } }),
+        item({ media: { igMediaId: "count-2" } }),
+      ],
+    }),
+    { store },
+  );
+  assert.equal(second.media.created, 1);
+  assert.equal(second.media.updated, 1);
+  assert.equal(second.counts.created, 1);
+  assert.equal(second.counts.updated, 1);
 });
 
 test("refreshes available metadata and thumbnail URLs", async () => {

@@ -137,6 +137,9 @@ import AbodeBoutiqueHotelsPage, {
 import BappaSurfSchoolPage, {
   BAPPA_SURF_SCHOOL_PATH,
 } from "../pages/BappaSurfSchoolPage";
+import AliikaiPage, {
+  ALIIKAI_PATH,
+} from "../pages/AliikaiPage";
 import DulasiriUnclePage, {
   DULASIRI_UNCLE_PATH,
 } from "../pages/DulasiriUnclePage";
@@ -397,6 +400,10 @@ const routes = [
   {
     path: BAPPA_SURF_SCHOOL_PATH,
     element: <BappaSurfSchoolPage />,
+  },
+  {
+    path: ALIIKAI_PATH,
+    element: <AliikaiPage />,
   },
   {
     path: GUSTA_GROCERIES_AHANGAMA_PATH,

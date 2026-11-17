@@ -306,6 +306,86 @@ Run the mocked persistence tests with:
 npm run test:instagram-sync-persistence
 ```
 
+### Phase 2C orchestration contract
+
+`lib/instagram-sync-orchestrator.js` runs one bounded sync pass through
+`runInstagramSync(options)`. It does not schedule itself and is not yet wired
+to a Netlify function. A pass:
+
+1. acquires the existing PostgreSQL advisory lock with
+   `withInstagramSyncLock`;
+2. reconciles stale `running` rows older than `reconcileAfterMinutes`
+   (default 10) and starts a new `instagram_sync_runs` row;
+3. retrieves media and active Stories with `includeInsights: false`, so
+   discovery is metadata-only;
+4. persists that retrieval through Phase 2B;
+5. reads `getInstagramMediaRefreshQueue` and captures insights for a bounded
+   slice, persisting each result immediately; and
+6. finalises the run row and returns a structured summary.
+
+Every run-lifecycle and persistence call receives the lock-bound client. When
+the lock is already held the pass writes a `skipped` run with
+`error_code = 'SYNC_LOCKED'` and returns without touching the Graph API.
+
+Defaults:
+
+| Option | Default |
+| --- | --- |
+| `triggerSource` | `manual` |
+| `timeBudgetMs` | `20000` |
+| `reserveMs` | `2500` |
+| `maxInsightItems` | `10` |
+| `pageSize` / `maxPages` | `100` / `10` |
+| `maxMediaItems` / `maxStoryItems` | `1000` / `100` |
+| `requestTimeoutMs` / `insightTimeoutMs` | `8000` / `8000` |
+| `staleAfterMinutes` / `retryAfterMinutes` | `180` / `60` |
+
+The refresh queue orders active Stories first, then media that has never had
+metrics or whose `metrics_fetched_at` is older than the retry window. Expired
+Stories are excluded from refresh but remain stored with their last metrics.
+This rotation means repeated runs gradually cover the library instead of
+always re-reading the newest discovery page.
+
+Before each new insight request the orchestrator checks the remaining budget
+after reserving `reserveMs` for finalisation. If less than one second remains,
+it stops and sets `has_more = true`. Each request is also capped by
+`insightTimeoutMs`. A fatal Meta error (`META_TOKEN_INVALID`,
+`META_TOKEN_EXPIRED`, `META_PERMISSION_DENIED`, `META_NOT_CONFIGURED` or
+`META_RATE_LIMITED`) stops further insight requests and sets
+`has_more = true`; earlier results stay saved.
+
+Run status mapping:
+
+- `META_NOT_CONFIGURED`, both collections failing, every persistence item
+  failing, an unexpected exception, or a fatal error before any work succeeds
+  produces `failed`;
+- pagination truncation, queue overflow, deadline stop, fatal insight stop,
+  any recorded error, or a `partial` insight capture produces `partial`;
+- otherwise the run is `success`. An empty library is a successful no-op.
+
+`insights_failed` counts only `error` insight states. `unavailable` insights
+are attempted but counted separately, so unsupported metrics do not fail a
+run. The run row stores `media_seen`, `media_created`, `media_updated`,
+`stories_seen`, `insights_attempted`, `insights_failed` and `has_more`.
+Per-collection detail stays in the returned summary. Account follower and media
+counts remain `NULL` in this phase.
+
+`media_created` and `media_updated` come from the database upsert result
+(`RETURNING *, (xmax = 0) AS created`), so a repeat sync reports updates rather
+than re-counting existing rows as new.
+
+Completed runs are finalised even when retrieval or persistence throws. A
+finalisation failure is returned with `finalisationFailed: true` and
+`error_code = 'SYNC_FINALISATION_FAILED'`. The orchestrator never deletes
+media or Stories, assigns media to venues, edits manual Instagram content,
+retries, or schedules itself.
+
+Run the mocked orchestration tests with:
+
+```sh
+npm run test:instagram-sync-orchestrator
+```
+
 Run the regression suite with:
 
 ```sh
@@ -322,6 +402,7 @@ integration suite:
 ```sh
 npm run test:instagram-sync      # migration structure and safety invariants
 npm run test:instagram-sync-persistence  # mocked Phase 2B persistence
+npm run test:instagram-sync-orchestrator  # mocked Phase 2C orchestration
 npm run test:instagram-sync-db   # skipped unless a test database is supplied
 ```
 

@@ -13,6 +13,7 @@
     "test:instagram-retrieval": "node --test tests/instagram-retrieval.test.js",
     "test:instagram-sync": "node --test tests/instagram-sync.test.js",
     "test:instagram-sync-persistence": "node --test tests/instagram-sync-persistence.test.js",
+    "test:instagram-sync-orchestrator": "node --test tests/instagram-sync-orchestrator.test.js",
     "test:instagram-sync-db": "node --test tests/instagram-sync-db.test.js",
     "check:venue-stats": "node scripts/check-venue-stats.mjs",
     "check:meta": "node scripts/check-meta-instagram.mjs",

@@ -28,6 +28,7 @@ import { trackPassCtaClick } from "../analytics";
 import { buildPassCtaUrl } from "../lib/passAttribution";
 import {
   ABODE_HERO_IMAGE,
+  ALIIKAI_HERO_IMAGE,
   BAPPA_SURF_SCHOOL_HERO_IMAGE,
   KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
@@ -39,6 +40,7 @@ import AhangamaPassCard3D from "../components/AhangamaPassCard3D";
 import HomeMapSection from "../components/home/HomeMapSection";
 import HomeMapSectionMobile from "../components/home/HomeMapSectionMobile";
 import HomeGoogleMapSection from "../components/home/HomeGoogleMapSection";
+import NamikazePartnerSpotlight from "../components/home/NamikazePartnerSpotlight";
 import FreeGuideCtaMobile from "../components/home/FreeGuideCtaMobile";
 import TrackedArticleLink from "../components/ui/TrackedArticleLink";
 import HomepageAnalytics from "../components/analytics/HomepageAnalytics";
@@ -243,6 +245,15 @@ const THIS_WEEK_FEATURES = [
 ];
 
 const WEEKLY_PICKS = [
+  {
+    category: "Cafe Story",
+    title: "Beyond the Bali Blueprint: Building a Little Piece of Sri Lanka at ALIIKAI",
+    date: "This Week",
+    href: "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai",
+    image:
+      resolveHeroImage(ALIIKAI_HERO_IMAGE) ||
+      "/aliikai/placeholder.svg",
+  },
   {
     category: "Surf Culture",
     title: "Bappa Surf School: A Local Life Shaped by Surfing",
@@ -1632,6 +1643,8 @@ export default function Home() {
                 margin: "18px 0 18px",
               }}
             />
+
+            <NamikazePartnerSpotlight />
 
             <div className="whats-on-board">
               <div

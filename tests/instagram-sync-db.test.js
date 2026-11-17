@@ -6,6 +6,7 @@ import { after, before, beforeEach, describe, test } from "node:test";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import { persistInstagramRetrieval } from "../lib/instagram-sync-persistence.js";
+import { runInstagramSync } from "../lib/instagram-sync-orchestrator.js";
 import {
   INSTAGRAM_SYNC_LOCK_ID,
   assignInstagramMediaToVenues,
@@ -130,6 +131,73 @@ function persistenceRetrieval({
       counts: { total: storyItems.length },
       error: storiesError,
     },
+  };
+}
+
+/*
+ * Phase 2A retrieval with insights disabled: Phase 2C uses this shape for the
+ * metadata discovery pass. Every item is `skipped`, so only metadata reaches
+ * the database until the refresh queue is processed.
+ */
+function discoveryItem(item) {
+  return {
+    ...item,
+    insights: null,
+    insightState: {
+      status: "skipped",
+      supported: [],
+      unavailable: [],
+      errors: [],
+      reason: "disabled",
+    },
+    metricsFetchedAt: null,
+    metricsCapturedAt: null,
+  };
+}
+
+function discoveryRetrieval(options = {}) {
+  const base = persistenceRetrieval(options);
+
+  return {
+    ...base,
+    media: {
+      ...base.media,
+      items: base.media.items.map(discoveryItem),
+    },
+    stories: {
+      ...base.stories,
+      items: base.stories.items.map(discoveryItem),
+    },
+  };
+}
+
+function orchestratorCapture(overrides = {}) {
+  const status = overrides.status || "ok";
+  const captured = status === "ok" || status === "partial";
+  const fetchedAt = new Date().toISOString();
+
+  return {
+    insights: captured
+      ? {
+          views: 500,
+          reach: 400,
+          likes: 20,
+          comments: 2,
+          shares: 3,
+          saves: 4,
+          ...overrides.insights,
+        }
+      : {},
+    insightState: {
+      status,
+      supported: [],
+      unavailable: status === "unavailable" ? ["reach"] : [],
+      errors: overrides.errors || [],
+      ...(overrides.reason ? { reason: overrides.reason } : {}),
+    },
+    metricsFetchedAt: fetchedAt,
+    metricsCapturedAt: captured ? fetchedAt : null,
+    fatal: overrides.fatal === true,
   };
 }
 
@@ -1629,6 +1697,529 @@ describe(
         createdManualPostIds.delete(manual.id);
         assert.equal(await deleteInstagramPost("namikaze", manual.id), true);
       }
+    });
+
+    /* -------------------------------------------------------------- */
+    /* Phase 2C orchestration                                          */
+    /* -------------------------------------------------------------- */
+
+    test("orchestrator persists discovery and captures queued insights", async () => {
+      const retrieval = discoveryRetrieval({
+        mediaItems: [
+          persistenceItem({ igMediaId: "orc-media-1" }),
+          persistenceItem({ igMediaId: "orc-media-2" }),
+        ],
+        storyItems: [
+          persistenceItem({
+            igMediaId: "orc-story-1",
+            mediaProductType: "STORY",
+            postedAt: "2026-11-12T10:00:00.000Z",
+            storyExpiresAt: "2027-01-01T00:00:00.000Z",
+          }),
+        ],
+      });
+      const captured = [];
+
+      const result = await runInstagramSync(
+        { maxInsightItems: 10 },
+        {
+          retrieve: async () => retrieval,
+          captureInsights: async (media) => {
+            captured.push(media.igMediaId);
+            return orchestratorCapture();
+          },
+        },
+      );
+
+      assert.equal(result.ok, true);
+      assert.equal(result.status, "success");
+      assert.equal(result.hasMore, false);
+      assert.equal(result.counts.mediaSeen, 2);
+      assert.equal(result.counts.mediaCreated, 2);
+      assert.equal(result.counts.mediaUpdated, 0);
+      assert.equal(result.counts.storiesSeen, 1);
+      assert.equal(result.counts.insightsAttempted, 3);
+      assert.equal(result.counts.insightsFailed, 0);
+      assert.equal(captured.length, 3);
+      assert.equal(captured[0], "orc-story-1");
+
+      const media = await getInstagramMediaByIgId("orc-media-1");
+      assert.equal(media.metricsStatus, "ok");
+      assert.equal(media.metrics.views, 500);
+      assert.equal(media.metrics.saves, 4);
+
+      const story = await getInstagramMediaByIgId("orc-story-1");
+      assert.equal(story.metricsStatus, "ok");
+      assert.equal(story.storyExpiresAt, "2027-01-01T00:00:00.000Z");
+
+      const runs = await listInstagramSyncRuns({ limit: 5 });
+      assert.equal(runs[0].status, "success");
+      assert.equal(runs[0].mediaSeen, 2);
+      assert.equal(runs[0].mediaCreated, 2);
+      assert.equal(runs[0].storiesSeen, 1);
+      assert.equal(runs[0].insightsAttempted, 3);
+      assert.equal(runs[0].hasMore, false);
+
+      const status = await getInstagramSyncStatus();
+      assert.equal(status.status, "success");
+      assert.equal(status.latestRun.id, result.runId);
+    });
+
+    test("orchestrator updates existing rows without duplicates on a repeat run", async () => {
+      const retrieval = discoveryRetrieval({
+        mediaItems: [
+          persistenceItem({ igMediaId: "orc-repeat-1" }),
+          persistenceItem({ igMediaId: "orc-repeat-2" }),
+        ],
+      });
+      const dependencies = {
+        retrieve: async () => retrieval,
+        captureInsights: async () => orchestratorCapture(),
+      };
+
+      const first = await runInstagramSync({ maxInsightItems: 10 }, dependencies);
+      assert.equal(first.status, "success");
+      assert.equal(first.counts.mediaCreated, 2);
+
+      const second = await runInstagramSync(
+        { maxInsightItems: 10 },
+        dependencies,
+      );
+      assert.equal(second.status, "success");
+      assert.equal(second.counts.mediaCreated, 0);
+      assert.equal(second.counts.mediaUpdated, 2);
+      assert.equal(second.counts.insightsAttempted, 0);
+      assert.equal(second.hasMore, false);
+
+      const count = await admin.query(
+        `SELECT COUNT(*)::int AS count
+         FROM guide_app.instagram_media
+         WHERE ig_media_id LIKE 'orc-repeat-%'`,
+      );
+      assert.equal(count.rows[0].count, 2);
+    });
+
+    test("orchestrator respects the insight budget and resumes on later runs", async () => {
+      const retrieval = discoveryRetrieval({
+        mediaItems: [
+          persistenceItem({ igMediaId: "orc-budget-1" }),
+          persistenceItem({ igMediaId: "orc-budget-2" }),
+          persistenceItem({ igMediaId: "orc-budget-3" }),
+        ],
+      });
+      const captured = [];
+      const dependencies = {
+        retrieve: async () => retrieval,
+        captureInsights: async (media) => {
+          captured.push(media.igMediaId);
+          return orchestratorCapture();
+        },
+      };
+
+      const first = await runInstagramSync(
+        { maxInsightItems: 1 },
+        dependencies,
+      );
+      assert.equal(first.status, "partial");
+      assert.equal(first.hasMore, true);
+      assert.equal(first.counts.insightsAttempted, 1);
+      assert.equal(captured.length, 1);
+
+      const second = await runInstagramSync(
+        { maxInsightItems: 1 },
+        dependencies,
+      );
+      assert.equal(second.status, "partial");
+      assert.equal(second.hasMore, true);
+      assert.equal(captured.length, 2);
+      assert.notEqual(captured[0], captured[1]);
+
+      const third = await runInstagramSync(
+        { maxInsightItems: 1 },
+        dependencies,
+      );
+      assert.equal(third.status, "success");
+      assert.equal(third.hasMore, false);
+      assert.equal(captured.length, 3);
+      assert.deepEqual(new Set(captured).size, 3);
+    });
+
+    test("a failed refresh preserves previously captured metrics and captured time", async () => {
+      const retrieval = discoveryRetrieval({
+        mediaItems: [persistenceItem({ igMediaId: "orc-failure" })],
+      });
+
+      await runInstagramSync(
+        { maxInsightItems: 10 },
+        {
+          retrieve: async () => retrieval,
+          captureInsights: async () =>
+            orchestratorCapture({
+              insights: {
+                views: 77,
+                reach: 70,
+                likes: 7,
+                comments: 1,
+                shares: 1,
+                saves: 1,
+              },
+            }),
+        },
+      );
+
+      await admin.query(
+        `UPDATE guide_app.instagram_media
+         SET metrics_captured_at = NOW() - INTERVAL '4 hours',
+             metrics_fetched_at = NOW() - INTERVAL '2 hours'
+         WHERE ig_media_id = $1`,
+        ["orc-failure"],
+      );
+      const before = await getInstagramMediaByIgId("orc-failure");
+      assert.equal(before.metrics.views, 77);
+
+      const result = await runInstagramSync(
+        { maxInsightItems: 10 },
+        {
+          retrieve: async () => retrieval,
+          captureInsights: async () =>
+            orchestratorCapture({
+              status: "error",
+              errors: [
+                {
+                  code: "META_RATE_LIMITED",
+                  message: "Application request limit reached",
+                },
+              ],
+            }),
+        },
+      );
+
+      const after = await getInstagramMediaByIgId("orc-failure");
+      assert.equal(result.status, "partial");
+      assert.equal(result.counts.insightsFailed, 1);
+      assert.equal(after.metricsStatus, "error");
+      assert.equal(after.metrics.views, 77);
+      assert.equal(after.metricsCapturedAt, before.metricsCapturedAt);
+      assert.ok(
+        Date.parse(after.metricsFetchedAt) >
+          Date.parse(before.metricsFetchedAt),
+      );
+    });
+
+    test("orchestrator prioritises active Stories and retains expired Stories", async () => {
+      const expired = await upsertInstagramMedia({
+        igMediaId: "orc-expired-story",
+        mediaType: "IMAGE",
+        mediaProductType: "STORY",
+        postedAt: "2020-01-01T10:00:00.000Z",
+        storyExpiresAt: "2020-01-02T10:00:00.000Z",
+      });
+      await saveInstagramMediaMetrics(
+        expired.igMediaId,
+        { views: 77 },
+        { status: "ok" },
+      );
+
+      const retrieval = discoveryRetrieval({
+        storyItems: [
+          persistenceItem({
+            igMediaId: "orc-active-story",
+            mediaProductType: "STORY",
+            postedAt: "2026-11-12T10:00:00.000Z",
+            storyExpiresAt: "2027-01-01T00:00:00.000Z",
+          }),
+        ],
+      });
+      const captured = [];
+
+      const result = await runInstagramSync(
+        { maxInsightItems: 10 },
+        {
+          retrieve: async () => retrieval,
+          captureInsights: async (media) => {
+            captured.push(media.igMediaId);
+            return orchestratorCapture();
+          },
+        },
+      );
+
+      assert.equal(result.status, "success");
+      assert.deepEqual(captured, ["orc-active-story"]);
+
+      const expiredRow = await getInstagramMediaByIgId("orc-expired-story");
+      assert.equal(expiredRow.metrics.views, 77);
+      assert.equal(expiredRow.metricsStatus, "ok");
+      assert.equal(expiredRow.storyExpiresAt, "2020-01-02T10:00:00.000Z");
+
+      const activeRow = await getInstagramMediaByIgId("orc-active-story");
+      assert.equal(activeRow.metrics.views, 500);
+    });
+
+    test("orchestrator persists successful media when one collection fails", async () => {
+      const retrieval = discoveryRetrieval({
+        mediaItems: [persistenceItem({ igMediaId: "orc-partial-media" })],
+        storiesOk: false,
+        storiesError: {
+          code: "META_TIMEOUT",
+          message: "Graph API request timed out.",
+        },
+      });
+
+      const result = await runInstagramSync(
+        { maxInsightItems: 10 },
+        {
+          retrieve: async () => retrieval,
+          captureInsights: async () => orchestratorCapture(),
+        },
+      );
+
+      assert.equal(result.status, "partial");
+      assert.equal(result.ok, false);
+      assert.equal(result.hasMore, false);
+      assert.equal(result.counts.mediaSeen, 1);
+      assert.ok(await getInstagramMediaByIgId("orc-partial-media"));
+
+      const runs = await listInstagramSyncRuns({ limit: 1 });
+      assert.equal(runs[0].status, "partial");
+      assert.equal(runs[0].errorCode, "META_TIMEOUT");
+    });
+
+    test("orchestrator records a skipped run when the advisory lock is held", async () => {
+      let signalStarted;
+      const started = new Promise((resolve) => {
+        signalStarted = resolve;
+      });
+      let releaseFirst;
+      const gate = new Promise((resolve) => {
+        releaseFirst = resolve;
+      });
+
+      const holding = withInstagramSyncLock(async () => {
+        signalStarted();
+        await gate;
+        return "held";
+      });
+      await started;
+
+      const result = await runInstagramSync(
+        { triggerSource: "schedule" },
+        {
+          retrieve: async () => {
+            throw new Error("retrieval must not run while the lock is held");
+          },
+          captureInsights: async () => orchestratorCapture(),
+        },
+      );
+
+      assert.equal(result.skipped, true);
+      assert.equal(result.status, "skipped");
+      assert.equal(result.lockAcquired, false);
+
+      const runs = await listInstagramSyncRuns({ limit: 5 });
+      assert.equal(runs[0].status, "skipped");
+      assert.equal(runs[0].triggerSource, "schedule");
+      assert.equal(runs[0].errorCode, "SYNC_LOCKED");
+
+      releaseFirst();
+      assert.deepEqual(await holding, { acquired: true, result: "held" });
+    });
+
+    test("orchestrator reconciles a stale running run before starting", async () => {
+      const stale = await admin.query(
+        `INSERT INTO guide_app.instagram_sync_runs (status, started_at)
+         VALUES ('running', NOW() - INTERVAL '60 minutes')
+         RETURNING id`,
+      );
+
+      const result = await runInstagramSync(
+        {},
+        {
+          retrieve: async () => discoveryRetrieval(),
+          captureInsights: async () => orchestratorCapture(),
+        },
+      );
+
+      assert.equal(result.status, "success");
+      const oldRun = await admin.query(
+        "SELECT status, error_code FROM guide_app.instagram_sync_runs WHERE id = $1",
+        [stale.rows[0].id],
+      );
+      assert.equal(oldRun.rows[0].status, "failed");
+      assert.equal(oldRun.rows[0].error_code, "SYNC_INTERRUPTED");
+
+      const runs = await listInstagramSyncRuns({ limit: 5 });
+      assert.equal(runs[0].status, "success");
+      assert.equal(runs[0].id, result.runId);
+    });
+
+    test("orchestrator leaves manual content and venue assignments untouched", async () => {
+      const before = await listInstagramPosts("namikaze");
+      const manual = await saveInstagramPost("namikaze", {
+        postUrl: "https://www.instagram.com/p/orchestrator-manual/",
+        postDate: "2026-03-01",
+        postType: "post",
+        reach: 321,
+        impressions: 456,
+        likes: 12,
+        comments: 3,
+        shares: 2,
+        saves: 1,
+        notes: "manual record for orchestrator isolation",
+      });
+      createdManualPostIds.add(manual.id);
+
+      try {
+        const assigned = await upsertInstagramMedia({
+          igMediaId: "orc-assigned",
+          mediaType: "IMAGE",
+          mediaProductType: "FEED",
+          postedAt: "2026-11-01T10:00:00.000Z",
+        });
+        await assignInstagramMediaToVenues(assigned.id, ["namikaze"]);
+        const assignmentsBefore = await listInstagramMediaVenues(assigned.id);
+        const manualBefore = (await listInstagramPosts("namikaze")).find(
+          (post) => post.id === manual.id,
+        );
+
+        const result = await runInstagramSync(
+          { maxInsightItems: 10 },
+          {
+            retrieve: async () =>
+              discoveryRetrieval({
+                mediaItems: [
+                  persistenceItem({ igMediaId: "orc-unassigned" }),
+                ],
+              }),
+            captureInsights: async () => orchestratorCapture(),
+          },
+        );
+        assert.equal(result.ok, true);
+
+        assert.deepEqual(
+          await listInstagramMediaVenues(assigned.id),
+          assignmentsBefore,
+        );
+        assert.deepEqual(
+          (await listInstagramPosts("namikaze")).find(
+            (post) => post.id === manual.id,
+          ),
+          manualBefore,
+        );
+
+        const unassigned = await getInstagramMediaByIgId("orc-unassigned");
+        assert.deepEqual(await listInstagramMediaVenues(unassigned.id), []);
+        assert.deepEqual(
+          (await listInstagramPosts("namikaze")).filter(
+            (post) => post.id !== manual.id,
+          ),
+          before,
+        );
+      } finally {
+        createdManualPostIds.delete(manual.id);
+        assert.equal(await deleteInstagramPost("namikaze", manual.id), true);
+      }
+    });
+
+    test("orchestrator counts unavailable insights as attempted, not failed", async () => {
+      const retrieval = discoveryRetrieval({
+        mediaItems: [persistenceItem({ igMediaId: "orc-unavailable" })],
+      });
+
+      const result = await runInstagramSync(
+        { maxInsightItems: 10 },
+        {
+          retrieve: async () => retrieval,
+          captureInsights: async () =>
+            orchestratorCapture({ status: "unavailable" }),
+        },
+      );
+
+      assert.equal(result.status, "success");
+      assert.equal(result.counts.insightsAttempted, 1);
+      assert.equal(result.counts.insightsUnavailable, 1);
+      assert.equal(result.counts.insightsFailed, 0);
+
+      const runs = await listInstagramSyncRuns({ limit: 1 });
+      assert.equal(runs[0].status, "success");
+      assert.equal(runs[0].insightsAttempted, 1);
+      assert.equal(runs[0].insightsFailed, 0);
+    });
+
+    test("orchestrator stops after a fatal insight error", async () => {
+      const retrieval = discoveryRetrieval({
+        mediaItems: [
+          persistenceItem({ igMediaId: "orc-fatal-1" }),
+          persistenceItem({ igMediaId: "orc-fatal-2" }),
+          persistenceItem({ igMediaId: "orc-fatal-3" }),
+        ],
+      });
+      let captures = 0;
+
+      const result = await runInstagramSync(
+        { maxInsightItems: 10 },
+        {
+          retrieve: async () => retrieval,
+          captureInsights: async () => {
+            captures += 1;
+            return orchestratorCapture({
+              status: "error",
+              fatal: true,
+              reason: "META_RATE_LIMITED",
+              errors: [
+                {
+                  code: "META_RATE_LIMITED",
+                  message: "Application request limit reached",
+                },
+              ],
+            });
+          },
+        },
+      );
+
+      assert.equal(captures, 1);
+      assert.equal(result.status, "partial");
+      assert.equal(result.hasMore, true);
+      assert.equal(result.counts.insightsFailed, 1);
+
+      const runs = await listInstagramSyncRuns({ limit: 1 });
+      assert.equal(runs[0].errorCode, "META_RATE_LIMITED");
+      assert.equal(runs[0].hasMore, true);
+    });
+
+    test("orchestrator fails cleanly when Meta is not configured", async () => {
+      const result = await runInstagramSync(
+        {},
+        {
+          retrieve: async () => ({
+            ok: false,
+            readOnly: true,
+            retrievedAt: "2026-11-13T08:00:00.000Z",
+            media: null,
+            stories: null,
+            errors: [
+              {
+                scope: "account",
+                code: "META_NOT_CONFIGURED",
+                message: "Meta Instagram credentials are not configured.",
+              },
+            ],
+            warnings: [],
+          }),
+          captureInsights: async () => orchestratorCapture(),
+        },
+      );
+
+      assert.equal(result.status, "failed");
+      assert.equal(result.ok, false);
+
+      const runs = await listInstagramSyncRuns({ limit: 1 });
+      assert.equal(runs[0].status, "failed");
+      assert.equal(runs[0].errorCode, "META_NOT_CONFIGURED");
+
+      const count = await admin.query(
+        "SELECT COUNT(*)::int AS count FROM guide_app.instagram_media",
+      );
+      assert.equal(count.rows[0].count, 0);
     });
 
     /* -------------------------------------------------------------- */

@@ -1,0 +1,14 @@
+@media (max-width: 640px) {
+  .aliikai-hero-title .home-hero-titleLine {
+    white-space: normal;
+    letter-spacing: 0;
+  }
+
+  .aliikai-landscape-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .aliikai-portrait-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
