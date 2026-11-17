@@ -101,7 +101,19 @@ GA4_SERVICE_ACCOUNT_PRIVATE_KEY=...
 GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 
 GUIDE_ADMIN_PASSWORD=...             # shared with the guide dashboard
+
+# Meta / Instagram Graph API — Ahangama's own Business account only.
+META_SYSTEM_USER_ACCESS_TOKEN=...    # System User token, server-side only
+META_PAGE_ID=...                     # Facebook Page linked to the account
+META_INSTAGRAM_ACCOUNT_ID=...        # Instagram Business account id
+META_GRAPH_API_VERSION=v26.0
 ```
+
+The System User needs `instagram_basic`, `pages_show_list`,
+`pages_read_engagement` and `instagram_manage_insights`, and must be assigned
+to both the Facebook Page and the Instagram Business account. Partner venue
+accounts are not queried with these credentials; their posts are assigned
+manually in the dashboard.
 
 The service account needs at least **Viewer** access to the GA4 property.
 Enable the **Google Analytics Data API v1** in the Google Cloud project.
@@ -118,6 +130,40 @@ in the `guide_app` schema:
 - `guide_app.venue_instagram_posts` — manually entered Instagram Insights.
 - `guide_app.venue_articles` — associations between a venue and an
   Ahangama.com article. Article traffic is always read live from GA4.
+
+`migrations/034_create_instagram_sync.sql` adds the Instagram sync
+foundation:
+
+- `guide_app.instagram_media` — automatically synced media and last captured
+  Insights. `metrics_fetched_at` records the last attempt;
+  `metrics_captured_at` records the last successful capture.
+- `guide_app.instagram_media_venues` — venue assignments for synced media.
+  Assignment is insert-only: existing pairs are left alone and removal is an
+  explicit operation.
+- `guide_app.instagram_sync_runs` — audit log of sync attempts. Every
+  non-running run must have `finished_at` and `duration_ms`.
+
+Migration 034 owns an explicit transaction, so a failed statement rolls back
+the whole Instagram schema instead of leaving a partial one. Apply it as one
+file (`node scripts/run-guide-migration.mjs`, or
+`psql -v ON_ERROR_STOP=1 -f migrations/034_create_instagram_sync.sql`). It has
+not been applied to staging or production as part of Phase 1.
+
+Manual `venue_instagram_posts` rows are never migrated, merged or deleted by
+the sync foundation. Expired Stories are retained with their last captured
+metrics and `story_expires_at`; there is no cleanup job.
+
+**Planned Phase 2 contract.** The sync worker is not implemented in Phase 1.
+When it is added, it will use PostgreSQL session advisory lock `734001`.
+Acquisition, run updates and release will all use the same database
+connection, exposed to the worker only as a restricted client-bound `query`
+interface. Overlapping attempts will record a `skipped` run and exit without
+syncing. No scheduler, API endpoint, dashboard UI or automatic Meta sync
+exists yet.
+
+`getInstagramSyncStatus` takes account follower and media counts from the
+newest successful run that contains each value, so a newer success with empty
+account fields cannot hide earlier captured counts.
 
 `venue_key` is the statistics URL segment (for example `little-bang-kitchen`),
 not the database venue id. This keeps URLs stable.
@@ -137,9 +183,208 @@ npm run check:venue-stats
 
 It validates the eight-venue registry, the numeric GA4 property id, the
 service-account connection, the five event-scoped custom dimensions, the
-database connection, migration 033, and the admin password. It exits
-non-zero when a required check fails, so it can run in CI or before a
+database connection, migration 033, and the admin password. For migration 034
+it verifies all three tables, their essential columns, named constraints, the
+cascade foreign key and the supporting indexes. The check is read-only: it
+reports missing schema elements and never applies or repairs a migration. It
+exits non-zero when a required check fails, so it can run in CI or before a
 deploy.
+
+Validate the Meta connection separately with the read-only check:
+
+```sh
+npm run check:meta
+```
+
+It verifies the token, Page, linked Instagram account, media/story reads and
+Insights access. It never writes to the database, never changes content, and
+never prints the access token.
+
+Validate the Phase 2A retrieval layer with the live, read-only check:
+
+```sh
+npm run check:instagram-retrieval
+```
+
+It retrieves posts, carousels, Reels and active Stories through
+`retrieveInstagramContent()` and prints a safe summary: counts by media and
+product type, insight success/failure counts, unsupported metrics, and
+pagination pages/duplicates/truncation. Media ids are masked and URLs are
+removed from error text. It never opens a database connection, writes data,
+changes content or prints credentials. It exits non-zero when a collection or a
+fatal insight request fails; unsupported metrics remain warnings because Meta
+reports them per media type.
+
+### Phase 2A retrieval contract
+
+`lib/meta-instagram.js` exposes `retrieveInstagramContent(options)`. It is
+read-only and returns a normalised object rather than writing to PostgreSQL:
+
+- `media.items` and `stories.items` — each has `media` metadata, `insights`,
+  `insightState`, `retrievedAt`, `metricsFetchedAt` and `metricsCapturedAt`.
+- `insights` — aggregate counts of `ok`, `partial`, `unavailable`, `error` and
+  `skipped` items, plus any fatal error.
+- `errors` and `warnings` — collection-level and safety failures.
+- `media.pagination` and `stories.pagination` — pages, fetched/unique/duplicate
+  counts, `truncated`, `stoppedReason` and any cursor error.
+
+Metadata fields are `igMediaId`, `mediaType`, `mediaProductType`, `caption`,
+`permalink`, `mediaUrl`, `thumbnailUrl`, `postedAt`, `storyExpiresAt`,
+`username`, `likeCount`, `commentsCount` and carousel `children`. Missing
+fields are `null`, never guessed.
+
+Insight values use the Phase 1 column names: `views`, `reach`, `likes`,
+`comments`, `shares` and `saves`. Meta's `saved` metric is mapped to `saves`.
+Metrics unsupported for a media type are left `null` and listed in
+`insightState.unavailable`; temporary failures are listed in
+`insightState.errors` and never converted to zero.
+
+Supported insight requests in the configured Graph API version:
+
+| Product type | Metrics |
+| --- | --- |
+| `FEED` (images and carousels) | `views, reach, likes, comments, shares, saved` |
+| `REELS` | `views, reach, likes, comments, shares, saved` |
+| `STORY` | `views, reach, shares` |
+
+`impressions` is not requested: it is unsupported from v22.0 onward and `views`
+replaces it. Stories also support `navigation`, `replies` and `link_clicks`;
+those remain deferred because migration 034 does not have columns for them.
+
+Pagination follows only `paging.next` URLs on `graph.facebook.com`. The
+`access_token` query parameter is stripped from the cursor and the token is
+sent in the Authorization header instead. Retrieval stops on the end of the
+collection, an invalid or off-origin cursor, a repeated cursor, the page limit
+or the item limit. Duplicate media ids are counted and skipped.
+
+Run the retrieval tests with:
+
+```sh
+npm run test:instagram-retrieval
+```
+
+The suite uses a mocked Graph API. It covers posts, carousels, Reels, active
+Stories, multi-page collections, duplicate ids, empty results, missing optional
+fields, supported and unsupported metrics, rate limits, invalid credentials,
+partial collection failures, cursor safety and credential redaction. It never
+calls the live API or a database.
+
+### Phase 2B persistence contract
+
+`lib/instagram-sync-persistence.js` writes a Phase 2A retrieval result through
+the existing Phase 1 database methods:
+
+- `persistInstagramRetrieval(retrieval)` persists both `media` and `stories`
+  and returns per-collection counts plus a flattened error list.
+- `persistInstagramCollection(collection)` persists one collection. It accepts
+  an optional `store` override, used by the mocked tests; the default store is
+  `upsertInstagramMedia`, `saveInstagramMediaMetrics` and
+  `markInstagramMediaMetricsFailed`.
+
+`upsertInstagramMedia` keys on `ig_media_id`, so repeated syncs update the same
+row instead of duplicating it. Null or omitted API metadata is passed through
+as `null`, which the SQL `COALESCE` preserves existing useful values. Story
+expiry is written once: a later sync never moves the original
+`story_expires_at`, and expired Stories remain in the table with their last
+captured metrics.
+
+`ok` and `partial` insight states call `saveInstagramMediaMetrics`; `error` and
+`unavailable` states call `markInstagramMediaMetricsFailed`, which advances
+`metrics_fetched_at` without replacing the metric values or
+`metrics_captured_at`. `pending` and `skipped` states only refresh metadata.
+Meta's `saved` is mapped to `saves`; `impressions` is never forwarded.
+
+A collection-level failure (for example an expired token or timeout) writes
+nothing for that collection, so failed collections are never treated as empty
+ones. One item failing does not abort the rest of its collection. Persistence
+never assigns media to venues, edits manual Instagram records, uses advisory
+locks, retries or schedules work.
+
+Run the mocked persistence tests with:
+
+```sh
+npm run test:instagram-sync-persistence
+```
+
+### Phase 2C orchestration contract
+
+`lib/instagram-sync-orchestrator.js` runs one bounded sync pass through
+`runInstagramSync(options)`. It does not schedule itself and is not yet wired
+to a Netlify function. A pass:
+
+1. acquires the existing PostgreSQL advisory lock with
+   `withInstagramSyncLock`;
+2. reconciles stale `running` rows older than `reconcileAfterMinutes`
+   (default 10) and starts a new `instagram_sync_runs` row;
+3. retrieves media and active Stories with `includeInsights: false`, so
+   discovery is metadata-only;
+4. persists that retrieval through Phase 2B;
+5. reads `getInstagramMediaRefreshQueue` and captures insights for a bounded
+   slice, persisting each result immediately; and
+6. finalises the run row and returns a structured summary.
+
+Every run-lifecycle and persistence call receives the lock-bound client. When
+the lock is already held the pass writes a `skipped` run with
+`error_code = 'SYNC_LOCKED'` and returns without touching the Graph API.
+
+Defaults:
+
+| Option | Default |
+| --- | --- |
+| `triggerSource` | `manual` |
+| `timeBudgetMs` | `20000` |
+| `reserveMs` | `2500` |
+| `maxInsightItems` | `10` |
+| `pageSize` / `maxPages` | `100` / `10` |
+| `maxMediaItems` / `maxStoryItems` | `1000` / `100` |
+| `requestTimeoutMs` / `insightTimeoutMs` | `8000` / `8000` |
+| `staleAfterMinutes` / `retryAfterMinutes` | `180` / `60` |
+
+The refresh queue orders active Stories first, then media that has never had
+metrics or whose `metrics_fetched_at` is older than the retry window. Expired
+Stories are excluded from refresh but remain stored with their last metrics.
+This rotation means repeated runs gradually cover the library instead of
+always re-reading the newest discovery page.
+
+Before each new insight request the orchestrator checks the remaining budget
+after reserving `reserveMs` for finalisation. If less than one second remains,
+it stops and sets `has_more = true`. Each request is also capped by
+`insightTimeoutMs`. A fatal Meta error (`META_TOKEN_INVALID`,
+`META_TOKEN_EXPIRED`, `META_PERMISSION_DENIED`, `META_NOT_CONFIGURED` or
+`META_RATE_LIMITED`) stops further insight requests and sets
+`has_more = true`; earlier results stay saved.
+
+Run status mapping:
+
+- `META_NOT_CONFIGURED`, both collections failing, every persistence item
+  failing, an unexpected exception, or a fatal error before any work succeeds
+  produces `failed`;
+- pagination truncation, queue overflow, deadline stop, fatal insight stop,
+  any recorded error, or a `partial` insight capture produces `partial`;
+- otherwise the run is `success`. An empty library is a successful no-op.
+
+`insights_failed` counts only `error` insight states. `unavailable` insights
+are attempted but counted separately, so unsupported metrics do not fail a
+run. The run row stores `media_seen`, `media_created`, `media_updated`,
+`stories_seen`, `insights_attempted`, `insights_failed` and `has_more`.
+Per-collection detail stays in the returned summary. Account follower and media
+counts remain `NULL` in this phase.
+
+`media_created` and `media_updated` come from the database upsert result
+(`RETURNING *, (xmax = 0) AS created`), so a repeat sync reports updates rather
+than re-counting existing rows as new.
+
+Completed runs are finalised even when retrieval or persistence throws. A
+finalisation failure is returned with `finalisationFailed: true` and
+`error_code = 'SYNC_FINALISATION_FAILED'`. The orchestrator never deletes
+media or Stories, assigns media to venues, edits manual Instagram content,
+retries, or schedules itself.
+
+Run the mocked orchestration tests with:
+
+```sh
+npm run test:instagram-sync-orchestrator
+```
 
 Run the regression suite with:
 
@@ -150,6 +395,44 @@ npm run test:venue-stats
 The tests cover registry integrity, the preview-bypass matrix, the
 `venue_link_click` payload, API auth/404/405/400 handling, and date-range
 resolution.
+
+The Instagram sync foundation has a static suite and a real-PostgreSQL
+integration suite:
+
+```sh
+npm run test:instagram-sync      # migration structure and safety invariants
+npm run test:instagram-sync-persistence  # mocked Phase 2B persistence
+npm run test:instagram-sync-orchestrator  # mocked Phase 2C orchestration
+npm run test:instagram-sync-db   # skipped unless a test database is supplied
+```
+
+To run the database suite against a disposable local database:
+
+```sh
+createdb ahangama_instagram_test
+INSTAGRAM_TEST_DATABASE_URL=postgres://localhost/ahangama_instagram_test \
+ALLOW_INSTAGRAM_DB_TESTS=1 \
+npm run test:instagram-sync-db
+```
+
+The suite is opt-in and deliberately refuses uncertain databases:
+
+- `ALLOW_INSTAGRAM_DB_TESTS=1` is required.
+- `NODE_ENV=production` and Netlify `CONTEXT=production` are rejected.
+- The URL must use `postgres://` or `postgresql://` and must not be the
+  configured `DATABASE_URL` or `VENUE_STATS_DATABASE_URL`.
+- The database name must contain an explicit `test`, `tests`, `testing`, `ci`,
+  `dev`, `development` or `staging` segment, and must not contain a `prod`,
+  `production`, `live`, `primary` or `main` segment.
+- The host must be loopback (`localhost`, `127.0.0.1`, `::1`) unless it is
+  explicitly listed in `INSTAGRAM_TEST_DATABASE_HOSTS`.
+- Cleanup truncates only the three Instagram sync tables. Pre-existing
+  `venue_instagram_posts` and `venue_articles` rows are never truncated; tests
+  remove only the rows they create.
+
+Do not point the suite at a shared database whose Instagram sync tables are
+not disposable: the suite still truncates those three sync tables between
+tests.
 
 ## API
 

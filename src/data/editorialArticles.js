@@ -1,5 +1,6 @@
 import {
   ABODE_HERO_IMAGE,
+  ALIIKAI_HERO_IMAGE,
   BAPPA_SURF_SCHOOL_HERO_IMAGE,
   KO_LAKE_VILLA_HERO_IMAGE,
   SPICE_TRAIL_HERO_IMAGE,
@@ -8,6 +9,17 @@ import {
 } from "./articleHeroImages.js";
 
 export const EDITORIAL_ARTICLES = [
+  {
+    category: "Cafe Story",
+    title: "Beyond the Bali Blueprint: Building a Little Piece of Sri Lanka at ALIIKAI",
+    href: "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai",
+    description:
+      "From working nights for a Canadian company to a beach café rooted in Sri Lankan coastal culture, ALIIKAI goes beyond good food and an ocean view.",
+    image:
+      resolveHeroImage(ALIIKAI_HERO_IMAGE) ||
+      "/aliikai/placeholder.svg",
+    publishDate: "2026-11-17T09:00:00.000Z",
+  },
   {
     category: "Surf Culture",
     title: "Bappa Surf School: A Local Life Shaped by Surfing",

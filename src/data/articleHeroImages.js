@@ -36,6 +36,17 @@ export const KO_LAKE_VILLA_HERO_IMAGE = {
  * the card falls back to /abode-boutique-hotels/placeholder.svg and the
  * article hero renders a labelled placeholder.
  */
+/*
+ * ALIIKAI's hero image is added by the editorial team. Until then the
+ * card falls back to /aliikai/placeholder.svg and the article hero renders
+ * a labelled placeholder.
+ */
+export const ALIIKAI_HERO_IMAGE = {
+  src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-and-og-image-97f6182f.webp",
+  filename: "hero-image-aliikai-oceanfront-cafe-ahangama.webp",
+  alt: "ALIIKAI café overlooking the ocean in Ahangama.",
+};
+
 export const ABODE_HERO_IMAGE = {
   src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-abode-boutique-hotels-ahangama-735093ab.webp",
   filename: "hero-image-abode-boutique-hotels-ahangama.webp",

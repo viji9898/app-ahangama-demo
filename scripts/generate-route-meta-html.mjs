@@ -567,6 +567,15 @@ const routeMeta = [
       "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/crossfit-ceylon-palm-training-in-the-jungle/crossfit-ceylon-heavy-dumbbell-workout.webp",
   },
   {
+    route: "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai",
+    title: "Beyond the Bali Blueprint: Building a Little Piece of Sri Lanka at ALIIKAI",
+    description:
+      "From working nights for a Canadian company to a beach café rooted in Sri Lankan coastal culture, ALIIKAI goes beyond good food and an ocean view.",
+    publishDate: "2026-11-17T09:00:00.000Z",
+    author: "Tharu",
+    type: "article",
+  },
+  {
     route: "/bappa-surf-school-a-local-life-shaped-by-surfing",
     title: "Bappa Surf School: A Local Life Shaped by Surfing",
     description:
