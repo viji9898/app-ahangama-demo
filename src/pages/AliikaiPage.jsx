@@ -45,7 +45,8 @@ export const ALIIKAI_PATH =
  *   PORTRAIT PAIR — FOOD ..... aliikai-sweet-toast-ahangama.webp (left)
  *                              aliikai-panipol-pancakes-ahangama.webp (right)
  *   PORTRAIT IMAGE — EXPERIENCE aliikai-guest-experience-ahangama.webp
- *   CLOSING IMAGE ............ aliikai-cafe-garden-seating-ahangama.jpg
+ *   CLOSING IMAGE (pair) ..... aliikai-cafe-garden-seating-ahangama.jpg
+ *                              aliikai-cafe-garden-seating-2-ahangama.jpg (derived)
  *   OG / SOCIAL-SHARING IMAGE  og-aliikai-oceanfront-ahangama.webp
  *
  * Each placeholder tagline shows the document's label for that slot.
@@ -97,13 +98,22 @@ const IMAGE_SLOTS = {
     alt: "A guest taking part in an experience at ALIIKAI in Ahangama.",
   },
 
-  // CLOSING IMAGE — single image
+  // CLOSING IMAGE — 2 portraits. The document lists one filename for the
+  // pair; the second portrait uses a derived filename and its link is yet
+  // to be pasted, so it renders as a labelled placeholder for now.
   closingImage: {
     slotKey: "closingImage",
     docLabel: "Closing Image",
     src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-closing-image-aliikai-cafe-garden-seating-ahangama-82e56ff2.webp", // ← paste closing image link here
     filename: "aliikai-cafe-garden-seating-ahangama.jpg",
     alt: "Garden seating at ALIIKAI café in Ahangama.",
+  },
+  closingImageSecond: {
+    slotKey: "closingImageSecond",
+    docLabel: "Closing Image",
+    src: "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-closing-image-aliikai-cafe-garden-seating-ahangama-2-5da32911.webp", // ← paste second closing image link here
+    filename: "aliikai-cafe-garden-seating-2-ahangama.jpg",
+    alt: "Guests relaxing in the garden seating area at ALIIKAI in Ahangama.",
   },
 
   // OG / SOCIAL SHARE — optional; falls back to the hero image
@@ -715,7 +725,9 @@ export default function AliikaiPage() {
             />
           </section>
 
-          <SinglePortrait slot={IMAGE_SLOTS.closingImage} />
+          <PortraitPair
+            images={[IMAGE_SLOTS.closingImage, IMAGE_SLOTS.closingImageSecond]}
+          />
 
           <section
             style={{
