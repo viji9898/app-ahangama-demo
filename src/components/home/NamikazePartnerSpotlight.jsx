@@ -1,8 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Card, Typography } from "antd";
 import japaneseTeaRoomImage from "../../assets/namikaze/japanese-tea-room.jpg";
 import primeAndVineImage from "../../assets/namikaze/prime-and-vine.jpg";
 import sushiAtLastLightImage from "../../assets/namikaze/sushi-at-last-light.jpg";
+import christmasEve01Image from "../../assets/namikaze/Christmas Eve 1080px x 1350px promo-01.jpg";
+import christmasEve02Image from "../../assets/namikaze/Christmas Eve 1080px x 1350px promo-02.jpg";
+import christmasEve03Image from "../../assets/namikaze/Christmas Eve 1080px x 1350px promo-03.jpg";
+import christmasEve04Image from "../../assets/namikaze/Christmas Eve 1080px x 1350px promo-04.jpg";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -19,10 +23,27 @@ const flyers = [
     src: sushiAtLastLightImage,
     alt: "Namikaze Sushi at Last Light promotional flyer",
   },
+  {
+    src: christmasEve01Image,
+    alt: "Namikaze Christmas Eve promotional flyer 1",
+  },
+  {
+    src: christmasEve02Image,
+    alt: "Namikaze Christmas Eve promotional flyer 2",
+  },
+  {
+    src: christmasEve03Image,
+    alt: "Namikaze Christmas Eve promotional flyer 3",
+  },
+  {
+    src: christmasEve04Image,
+    alt: "Namikaze Christmas Eve promotional flyer 4",
+  },
 ];
 
 const NamikazePartnerSpotlight = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(null);
 
   const goTo = (index) => {
@@ -52,6 +73,16 @@ const NamikazePartnerSpotlight = () => {
 
     touchStartX.current = null;
   };
+
+  useEffect(() => {
+    if (isPaused) return undefined;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % flyers.length);
+    }, 4000);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
 
   return (
     <div
@@ -107,6 +138,8 @@ const NamikazePartnerSpotlight = () => {
         </div>
 
         <div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           style={{
             position: "relative",
             maxWidth: 420,
@@ -121,6 +154,7 @@ const NamikazePartnerSpotlight = () => {
               borderRadius: 16,
               border: "1px solid rgba(32,30,27,0.08)",
               background: "#F7F3EC",
+              boxShadow: "0 18px 40px rgba(32,30,27,0.12)",
             }}
           >
             <div
