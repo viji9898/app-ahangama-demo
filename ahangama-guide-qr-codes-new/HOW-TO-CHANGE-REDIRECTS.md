@@ -2,7 +2,7 @@
 
 **File to edit:** `src/data/guideQrRedirectsNew.js`
 
-These are the **38 new** QR codes for the Ahangama Physical Guide 2026/27.
+These are the **39 new** QR codes for the Ahangama Physical Guide 2026/27.
 The original seven QR codes live in `src/data/guideQrRedirects.js` and are
 **not affected** by this file.
 
@@ -176,6 +176,7 @@ codes are unchanged.
 | 36 | Five Ways To Continue Your Sri Lankan Story | `continue-your-sri-lankan-story` | `/guide/continue-your-sri-lankan-story` | `/guide` |
 | 37 | Ahangama Directory | `ahangama-directory` | `/guide/ahangama-directory` | `/guide` |
 | 38 | Ahangama Guide – Main Page | `main-page` | `/guide` | `/guide` |
+| 39 | Ahangama Transport Rates | `transport-rates` | `/transport-rates` | `/transport-rates` |
 
 > Every row encodes `/go/{slug}`. Day 1 additionally keeps the legacy
 > `/go/first-24-hours` alias working for copies printed before the artwork was
@@ -185,6 +186,11 @@ codes are unchanged.
 > reports `qr_section: "main_page"` / `qr_code_id: "qr_main_page"`. Its dedicated
 > page is `/guide` itself, so both `plannedDestination` and `destination` are
 > `/guide`.
+>
+> The transport-rates code (row 39) encodes
+> `https://ahangama.com/go/transport-rates`, reports
+> `qr_section: "transport_rates"` / `qr_code_id: "qr_transport_rates"`, and
+> redirects straight to the live `/transport-rates` page.
 
 ## Regenerating files (not normally needed)
 
@@ -200,9 +206,9 @@ node scripts/generate-qr-reference-sheet-new.mjs
 
 | File | Purpose |
 |------|---------|
-| `src/data/guideQrRedirectsNew.js` | Redirect map for the 38 new codes — edit destinations here |
+| `src/data/guideQrRedirectsNew.js` | Redirect map for the 39 new codes — edit destinations here |
 | `src/data/guideQrRedirects.js` | Original seven codes (unchanged) + combined lookup |
 | `src/pages/GuideQrLandingPage.jsx` | Shared `/go/:slug` landing page (unchanged) |
-| `scripts/generate-guide-qr-codes-new.mjs` | Generates the 38 SVG + PNG files |
+| `scripts/generate-guide-qr-codes-new.mjs` | Generates the 39 SVG + PNG files |
 | `scripts/generate-qr-reference-sheet-new.mjs` | Generates the CSV + PDF |
 | `ahangama-guide-qr-codes-new/` | All new QR assets and this document |
