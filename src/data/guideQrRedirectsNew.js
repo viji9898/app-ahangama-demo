@@ -1,7 +1,7 @@
 /**
  * guideQrRedirectsNew.js
  *
- * Redirect mapping for the 38 NEW Physical Ahangama Guide QR codes (2026/27).
+ * Redirect mapping for the 39 NEW Physical Ahangama Guide QR codes (2026/27).
  * Kept separate from `guideQrRedirects.js` so the original seven QR codes and
  * their analytics configuration remain completely untouched.
  *
@@ -101,6 +101,9 @@ export const GUIDE_QR_REDIRECTS_NEW = [
 
   // ── Main Guide Page ───────────────────────────────────────────────────────
   { slug: "main-page", section: "main_page", codeId: "qr_main_page", label: "Ahangama Guide – Main Page", group: "Ahangama Guide", file: "QR-Ahangama-Guide-Main-Page", destination: "/guide", plannedDestination: "/guide" },
+
+  // ── Transport ─────────────────────────────────────────────────────────────
+  { slug: "transport-rates", section: "transport_rates", codeId: "qr_transport_rates", label: "Ahangama Transport Rates", group: "Transport", file: "QR-Ahangama-Transport-Rates", destination: "/transport-rates", plannedDestination: "/transport-rates" },
 ];
 
 /**

@@ -2,7 +2,7 @@
 /**
  * generate-qr-reference-sheet-new.mjs
  *
- * Generates the CSV and PDF reference sheets for the 38 NEW Physical Guide QR
+ * Generates the CSV and PDF reference sheets for the 39 NEW Physical Guide QR
  * codes. Depends on the SVG/PNG files produced by:
  *   node scripts/generate-guide-qr-codes-new.mjs
  *
@@ -28,9 +28,9 @@ const QR_SOURCE = "physical_guide";
 const QR_MEDIUM = "qr";
 const QR_CAMPAIGN = "ahangama_guide_2026_27";
 
-if (GUIDE_QR_REDIRECTS_NEW.length !== 38) {
+if (GUIDE_QR_REDIRECTS_NEW.length !== 39) {
   throw new Error(
-    `Expected 38 new QR entries, found ${GUIDE_QR_REDIRECTS_NEW.length}`,
+    `Expected 39 new QR entries, found ${GUIDE_QR_REDIRECTS_NEW.length}`,
   );
 }
 
@@ -99,7 +99,7 @@ writeFileSync(
   [csvHeader.map(csvCell).join(","), ...csvRows].join("\n"),
   "utf8",
 );
-console.log("✓  QR-Reference-Sheet.csv (38 rows)");
+console.log("✓  QR-Reference-Sheet.csv (39 rows)");
 
 // ── PDF ──────────────────────────────────────────────────────────────────────
 
@@ -144,7 +144,7 @@ function drawPageHeader() {
   doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
   doc.text(
-    "Ahangama.com — New Physical Guide QR Codes (38)",
+    "Ahangama.com — New Physical Guide QR Codes (39)",
     MARGIN,
     12.5,
   );
