@@ -53,7 +53,72 @@ function normalizedPlaceText(place) {
     .toLowerCase();
 }
 
+const EXPLICIT_CATEGORY_MAP = {
+  stays: "stays",
+  stay: "stays",
+  accommodation: "stays",
+  hotel: "stays",
+  hotels: "stays",
+  villa: "stays",
+  villas: "stays",
+  hostel: "stays",
+  guesthouse: "stays",
+  eat: "eat",
+  eats: "eat",
+  "eat & drink": "eat",
+  "eat-and-drink": "eat",
+  food: "eat",
+  drink: "eat",
+  drinks: "eat",
+  restaurant: "eat",
+  restaurants: "eat",
+  cafe: "eat",
+  cafes: "eat",
+  bar: "eat",
+  night_life: "eat",
+  "night-life": "eat",
+  best_eats: "eat",
+  best_cafes: "eat",
+  best_stays: "stays",
+  wellness: "wellness",
+  spa: "wellness",
+  yoga: "wellness",
+  pilates: "wellness",
+  fitness: "wellness",
+  gym: "wellness",
+  experiences: "experiences",
+  experience: "experiences",
+  surf: "experiences",
+  surf_schools: "experiences",
+  "surf-schools": "experiences",
+  best_experiences: "experiences",
+  shopping: "shopping",
+  retail: "shopping",
+  shop: "shopping",
+  shops: "shopping",
+  "shops-essentials": "shopping",
+  best_retail_stores: "shopping",
+  transport: "transport",
+  "getting-around": "transport",
+  other: "other",
+  more: "other",
+};
+
+function getExplicitPerkCategory(place) {
+  const candidates = [place.guideSection, place.category, ...(place.categories || [])];
+
+  for (const candidate of candidates) {
+    const key = String(candidate || "").trim().toLowerCase();
+    if (EXPLICIT_CATEGORY_MAP[key]) return EXPLICIT_CATEGORY_MAP[key];
+  }
+
+  return null;
+}
+
 function getPerkCategory(place) {
+  const explicitCategory = getExplicitPerkCategory(place);
+  if (explicitCategory) return explicitCategory;
+
   const text = normalizedPlaceText(place);
 
   if (/stay|hotel|villa|hostel|guesthouse|accommodation/.test(text)) {
