@@ -105,7 +105,10 @@ const EXPLICIT_CATEGORY_MAP = {
 };
 
 function getExplicitPerkCategory(place) {
-  const candidates = [place.guideSection, place.category, ...(place.categories || [])];
+  // The canonical venue category is the source of truth. It must win over the
+  // keyword matching below, otherwise copy such as "Boutique stays" or
+  // "accommodation discount" would keep an Eat & Drink venue under Stays.
+  const candidates = [place.category, ...(place.categories || [])];
 
   for (const candidate of candidates) {
     const key = String(candidate || "").trim().toLowerCase();
