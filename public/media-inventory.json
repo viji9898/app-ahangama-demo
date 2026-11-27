@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-10T09:31:42.600Z",
+  "generatedAt": "2026-11-25T04:41:42.513Z",
   "ownedBaseUrl": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/",
-  "count": 798,
+  "count": 814,
   "media": [
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/app-ahangama-edits/coco-kitchen-the-pursuit-of-coastal-fine-dining-in-ahangama/+coco-kitchen-exterior-ahangama-og-image.webp",
@@ -1498,6 +1498,36 @@
       }
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-closing-image-aliikai-cafe-garden-seating-ahangama-2-5da32911.webp",
+      "fileName": "general-closing-image-aliikai-cafe-garden-seating-ahangama-2-5da32911.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-closing-image-aliikai-cafe-garden-seating-ahangama-82e56ff2.webp",
+      "fileName": "general-closing-image-aliikai-cafe-garden-seating-ahangama-82e56ff2.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-closing-image-fdc457d8.webp",
       "fileName": "general-closing-image-fdc457d8.webp",
       "format": "WEBP",
@@ -1565,6 +1595,38 @@
       "pageRoutes": {}
     },
     {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-and-og-image-97f6182f.webp",
+      "fileName": "general-hero-image-and-og-image-97f6182f.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/articleHeroImages.js",
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-bappa-surf-school-feb68f60.webp",
+      "fileName": "general-hero-image-bappa-surf-school-feb68f60.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/data/articleHeroImages.js",
+        "src/pages/BappaSurfSchoolPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/BappaSurfSchoolPage.jsx": [
+          "/bappa-surf-school-a-local-life-shaped-by-surfing"
+        ]
+      }
+    },
+    {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-hero-image-ko-lake-villa-between-trees-and-lake-b48fa3a1.webp",
       "fileName": "general-hero-image-ko-lake-villa-between-trees-and-lake-b48fa3a1.webp",
       "format": "WEBP",
@@ -1596,6 +1658,66 @@
         "src/data/articleHeroImages.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-image-01-wide-feature-7de8ca64.webp",
+      "fileName": "general-image-01-wide-feature-7de8ca64.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/BappaSurfSchoolPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/BappaSurfSchoolPage.jsx": [
+          "/bappa-surf-school-a-local-life-shaped-by-surfing"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-image-02-wide-feature-8d3c9af8.webp",
+      "fileName": "general-image-02-wide-feature-8d3c9af8.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/BappaSurfSchoolPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/BappaSurfSchoolPage.jsx": [
+          "/bappa-surf-school-a-local-life-shaped-by-surfing"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-image-03-wide-feature-3766ceae.webp",
+      "fileName": "general-image-03-wide-feature-3766ceae.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/BappaSurfSchoolPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/BappaSurfSchoolPage.jsx": [
+          "/bappa-surf-school-a-local-life-shaped-by-surfing"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-image-04-wide-feature-3118445c.webp",
+      "fileName": "general-image-04-wide-feature-3118445c.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/BappaSurfSchoolPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/BappaSurfSchoolPage.jsx": [
+          "/bappa-surf-school-a-local-life-shaped-by-surfing"
+        ]
+      }
     },
     {
       "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-og-image-4bd8366c.webp",
@@ -1714,6 +1836,51 @@
       "pageRoutes": {
         "src/pages/AbodeBoutiqueHotelsPage.jsx": [
           "/two-sides-of-ahangama-discover-abode-boutique-hotels"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-aliikai-guest-experience-ahangama-f5088faf.webp",
+      "fileName": "general-portrait-aliikai-guest-experience-ahangama-f5088faf.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-aliikai-panipol-pancakes-ahangama-d99dd067.webp",
+      "fileName": "general-portrait-aliikai-panipol-pancakes-ahangama-d99dd067.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-aliikai-sweet-toast-ahangama-85d09dc8.webp",
+      "fileName": "general-portrait-aliikai-sweet-toast-ahangama-85d09dc8.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
         ]
       }
     },
@@ -1909,6 +2076,21 @@
       "pageRoutes": {
         "src/pages/KoLakeVillaPage.jsx": [
           "/ko-lake-villa-a-house-shaped-by-koggala-lake"
+        ]
+      }
+    },
+    {
+      "url": "https://customer-apps-techhq.s3.eu-west-2.amazonaws.com/ahangama-online-guide/general-portrait-tharu-alika-ocean-view-ahangama-4a74302e.webp",
+      "fileName": "general-portrait-tharu-alika-ocean-view-ahangama-4a74302e.webp",
+      "format": "WEBP",
+      "origin": "owned",
+      "host": "customer-apps-techhq.s3.eu-west-2.amazonaws.com",
+      "sources": [
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
         ]
       }
     },
@@ -6246,9 +6428,51 @@
       "sources": [
         "public/abode-boutique-hotels/placeholder.svg",
         "src/data/editorialArticles.js",
+        "src/pages/BappaSurfSchoolPage.jsx",
         "src/pages/Home.jsx"
       ],
       "pageRoutes": {
+        "src/pages/BappaSurfSchoolPage.jsx": [
+          "/bappa-surf-school-a-local-life-shaped-by-surfing"
+        ],
+        "src/pages/Home.jsx": [
+          "/"
+        ]
+      }
+    },
+    {
+      "url": "/aliikai/placeholder.svg",
+      "fileName": "placeholder.svg",
+      "format": "SVG",
+      "origin": "local",
+      "host": "ahangama.com",
+      "sources": [
+        "public/aliikai/placeholder.svg",
+        "src/data/editorialArticles.js",
+        "src/pages/Home.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/Home.jsx": [
+          "/"
+        ]
+      }
+    },
+    {
+      "url": "/bappa-surf-school/placeholder.svg",
+      "fileName": "placeholder.svg",
+      "format": "SVG",
+      "origin": "local",
+      "host": "ahangama.com",
+      "sources": [
+        "public/bappa-surf-school/placeholder.svg",
+        "src/data/editorialArticles.js",
+        "src/pages/AliikaiPage.jsx",
+        "src/pages/Home.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
+        ],
         "src/pages/Home.jsx": [
           "/"
         ]
@@ -7231,6 +7455,21 @@
       }
     },
     {
+      "url": "https://your-image-host.com/alikai-oceanfront-cafe-ahangama.webp",
+      "fileName": "alikai-oceanfront-cafe-ahangama.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "your-image-host.com",
+      "sources": [
+        "src/pages/AliikaiPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/AliikaiPage.jsx": [
+          "/beyond-the-bali-blueprint-building-a-little-piece-of-sri-lanka-at-aliikai"
+        ]
+      }
+    },
+    {
       "url": "https://res.cloudinary.com/czuk4rf2/image/upload/v1789026590/Animals-pink-boutique-hotel-tropical-pool-courtyard.webp",
       "fileName": "Animals-pink-boutique-hotel-tropical-pool-courtyard.webp",
       "format": "WEBP",
@@ -8137,6 +8376,21 @@
         "lib/guide-image-audit.js"
       ],
       "pageRoutes": {}
+    },
+    {
+      "url": "https://your-image-host.com/image-01-wide-feature-bappa-paddling.webp",
+      "fileName": "image-01-wide-feature-bappa-paddling.webp",
+      "format": "WEBP",
+      "origin": "external",
+      "host": "your-image-host.com",
+      "sources": [
+        "src/pages/BappaSurfSchoolPage.jsx"
+      ],
+      "pageRoutes": {
+        "src/pages/BappaSurfSchoolPage.jsx": [
+          "/bappa-surf-school-a-local-life-shaped-by-surfing"
+        ]
+      }
     },
     {
       "url": "https://ahangama-pass.s3.eu-west-2.amazonaws.com/venues/surf-club/image.jpg",

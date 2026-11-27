@@ -21,9 +21,18 @@
  * The 39 newer Physical Guide QR codes live in `guideQrRedirectsNew.js` and
  * are looked up by `getQrRedirect()` below. They are kept in a separate file
  * so the original seven entries above stay untouched.
+ *
+ * TASK-LIST QR CODES (180)
+ * ------------------------
+ * The 20 November 2026 task-list batch lives in
+ * `guideQrRedirectsTasklist.js`. It covers the five advertiser QR codes, five
+ * provisional "Five Ways to Continue Your Sri Lankan Story" routes, and one QR
+ * code for every live guide place. It is also kept separate so neither earlier
+ * batch is modified.
  */
 
 import { getNewQrRedirect } from "./guideQrRedirectsNew.js";
+import { getTasklistQrRedirect } from "./guideQrRedirectsTasklist.js";
 
 export const QR_CAMPAIGN = "ahangama_guide_2026_27";
 export const QR_SOURCE   = "physical_guide";
@@ -84,10 +93,15 @@ export const GUIDE_QR_REDIRECTS = [
 
 /**
  * Returns the redirect config for a given /go/ slug, or null if not found.
- * Checks the original seven codes first, then the 39 newer codes.
+ * Checks the original seven codes first, then the 39 newer codes, then the
+ * 180 task-list codes.
  * @param {string} slug
  */
 export function getQrRedirect(slug) {
-  return GUIDE_QR_REDIRECTS.find((r) => r.slug === slug) ?? getNewQrRedirect(slug);
+  return (
+    GUIDE_QR_REDIRECTS.find((r) => r.slug === slug) ??
+    getNewQrRedirect(slug) ??
+    getTasklistQrRedirect(slug)
+  );
 }
 
